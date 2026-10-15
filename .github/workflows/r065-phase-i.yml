@@ -1,0 +1,82 @@
+name: R065 Phase I Model3 beta sensitivity
+
+on:
+  push:
+    paths:
+      - 'research/R065/r065_phase_i_beta_profile.py'
+      - 'research/R065/test_r065_phase_i_beta_profile.py'
+      - 'research/R065/r065_phase_h_model3_reset.py'
+      - 'research/R065/R065_PHASE_I_RESULTS.json'
+      - '.github/workflows/r065-phase-i.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  aggregate-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run fixed beta profile unit tests
+        working-directory: research/R065
+        run: python -m unittest -v test_r065_phase_h_model3_reset.py test_r065_phase_i_beta_profile.py
+      - name: Reproduce aggregate beta profiles
+        run: |
+          python research/R065/r065_phase_i_beta_profile.py --aggregate-input research/R065/R065_PHASE_I_RESULTS.json --output /tmp/phase_i_aggregate.json >/dev/null
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          j=json.loads(Path('research/R065/R065_PHASE_I_RESULTS.json').read_text())
+          r=json.loads(Path('/tmp/phase_i_aggregate.json').read_text())
+          for model in ('author','block'):
+              assert r['models'][model]['counts']==j['models'][model]['counts']
+              assert math.isclose(r['models'][model]['pooled_fit']['beta'],
+                     j['models'][model]['pooled_fit']['beta'],abs_tol=1e-5)
+              assert math.isclose(r['models'][model]['pooled_fit']['total_nll']/542,
+                     j['models'][model]['pooled_fit']['mean_nll'],abs_tol=1e-8)
+          print('Phase I offline count-based beta profile replay PASS')
+          PY
+
+  exact-raw-10-sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download exactly ten pinned upstream participant files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r065_phase_i_raw
+          base='https://raw.githubusercontent.com/arielevy8/obs-learning-fishing/fd5f435b5368b69916e7acc6a9991aa5f46b3ddb/data'
+          for name in MEVVC Q3A3A 1XAVL JCGCF SMZVB 8X46Z 2MZGN 6Q6XN 47ZAD YC4CP; do
+            curl -fsSL --retry 2 "$base/$name.csv" -o "/tmp/r065_phase_i_raw/$name.csv"
+          done
+      - name: Refit beta in all ten leave-one-subject-out folds
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'rm -rf /tmp/r065_phase_i_raw /tmp/r065_phase_i_raw_results.json' EXIT
+          python research/R065/r065_phase_i_beta_profile.py --source-dir /tmp/r065_phase_i_raw --output /tmp/r065_phase_i_raw_results.json >/dev/null
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          result=json.loads(Path('/tmp/r065_phase_i_raw_results.json').read_text())
+          archived=json.loads(Path('research/R065/R065_PHASE_I_RESULTS.json').read_text())
+          assert result['subjects']==archived['subjects']==10
+          for model in ('author','block'):
+              r,a=result['models'][model],archived['models'][model]
+              assert r['counts']==a['counts']
+              assert math.isclose(r['pooled_fit']['beta'],a['pooled_fit']['beta'],rel_tol=0,abs_tol=1e-5)
+              assert math.isclose(r['pooled_fit']['total_nll']/542,a['pooled_fit']['mean_nll'],rel_tol=0,abs_tol=1e-8)
+              assert math.isclose(r['lopo']['mean_nll'],a['lopo']['mean_nll'],rel_tol=0,abs_tol=1e-8)
+              assert r['lopo']['folds']==10
+          print('Source-byte-pinned, ten-fold raw-trial replay PASS')
+          PY
