@@ -16,7 +16,7 @@
 
 从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
 
-最新增量主控台 [v4.5](docs/RESEARCH_CONTROL_v4.5_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+最新增量主控台 [v4.6](docs/RESEARCH_CONTROL_v4.6_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
 
 ## 已核验的重点研究结果
 
@@ -85,3 +85,11 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 完整方法、严格来源与边界请阅读 [R065 Phase E 审计](research/R065/R065_PHASE_E_DAY89_AUDIT.md)和 [机读 JSON](research/R065/R065_PHASE_E_DAY89_RESULTS.json)。独立 [复算 Python 程序](research/R065/r065_phase_e_day89.py)与 [8 项本地通过的测试](research/R065/test_r065_phase_e_day89.py)已同步，程序和测试远端 Git blob 与本地执行字节一致。GitHub Actions 已添加 Phase E 来源校验，但 CI 成功证据尚未取得。
 
 本阶段属事后、来源条件性的预测界限检查，不能替代作者七个认知模型的真实重新拟合，也不应修改 PESEN v0.1。整体研究关口依然 OPEN。
+
+## R065 第六阶段：不依赖个人原始记录的统计证书
+
+在不复制原作者第三方逐人数据的前提下，新建 [R065 Phase F 独立汇总量审计](research/R065/R065_PHASE_F_AGGREGATE_CERTIFICATE_AUDIT.md)，用第五阶段已公开的 226 名合格参与者、73 次 day89 直接模仿和 Beta(4,4) 平滑规则，精确重算历史平均 Log loss、Brier 及**条件性二项分布 bootstrap 95% 百分位区间**。程序确认 Phase E 当时的有限次模拟区间与精确分布计算一致；这只认证汇总算术，不认证原始来源或心理机制。
+
+本地已实际运行 [9 项新测试](research/R065/test_r065_phase_f_aggregate_certificate.py)，均 PASS；[复算程序](research/R065/r065_phase_f_aggregate_certificate.py)和[结果 JSON](research/R065/R065_PHASE_F_AGGREGATE_RESULTS.json)已按本地 Git blob 原样提交并远端核验。仓库的 GitHub Actions 新增可独立运行的无外部数据 `aggregate-certificate` 任务，但尚无远端作业成功证明。
+
+最新主控台见 [v4.6](docs/RESEARCH_CONTROL_v4.6_2026-10-16.md)。完整原始 CSV 的本地 Python 复算与原作者七个模型的真实对照重拟合仍待执行。PESEN v0.1 冻结。
