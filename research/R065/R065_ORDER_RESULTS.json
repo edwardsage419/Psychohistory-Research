@@ -1,0 +1,94 @@
+{
+  "study": "R065",
+  "phase": "B",
+  "completed": "2026-10-15",
+  "analysis_kind": "post_hoc_descriptive_sensitivity",
+  "source": {
+    "repository": "arielevy8/obs-learning-fishing",
+    "csv": "data/processed/unified_data_2025-01-16_00.csv",
+    "git_blob_sha1": "01bf211468abe093618dfa5e5c39e883230c9c03",
+    "author_analysis_git_blob_sha1": "125a7d380218cb9a3ba62aaf340fd7ebf2744e5b",
+    "author_critical_simulator_git_blob_sha1": "a43cc625bb118150c209f3c4b6e332b5545b3c47"
+  },
+  "evidence": "GitHub connector fixed exact ASCII blob read and recomputed hash in Phase A; 15 Python tests now actually executed locally with synthetic data only; raw original CSV locally blocked",
+  "cohort": {
+    "raw_participants": 295,
+    "eligible_participants": 226,
+    "critical_rows": 1808,
+    "per_person_critical_blocks": 8,
+    "balanced_stakes_per_person": {
+      "high": 4,
+      "low": 4
+    }
+  },
+  "counterbalance": {
+    "high_first": "HLHLHLHL",
+    "high_first_n": 121,
+    "low_first": "LHLHLHLH",
+    "low_first_n": 105,
+    "author_counterbalance_code": {
+      "0": "low_first",
+      "1": "high_first"
+    }
+  },
+  "block_copying_rates": [
+    0.47345132743362833,
+    0.46017699115044247,
+    0.3672566371681416,
+    0.35398230088495575,
+    0.3672566371681416,
+    0.3230088495575221,
+    0.35398230088495575,
+    0.3274336283185841
+  ],
+  "first_two_block_copy_rate": 0.4668141592920354,
+  "last_two_block_copy_rate": 0.3407079646017699,
+  "observed": {
+    "first_two_minus_last_two": 0.1261061946902655,
+    "slope_copy_probability_per_block": -0.01991150442477876,
+    "first_high_group_high_minus_low": 0.026859504132231406,
+    "first_low_group_high_minus_low": -0.02142857142857143,
+    "order_group_difference": 0.048288075560802834
+  },
+  "bootstrap": {
+    "method": "person-level paired resampling for temporal trend; stratified person-level resampling by first stake for subgroup and between-sequence difference",
+    "seed": 20261015,
+    "draws": 20000,
+    "CI95": {
+      "early_minus_late": [
+        0.06415929203539823,
+        0.18805309734513273
+      ],
+      "slope_per_block": [
+        -0.029498525073746295,
+        -0.010271807838179511
+      ],
+      "high_first_stake_delta": [
+        -0.022727272727272728,
+        0.0743801652892562
+      ],
+      "low_first_stake_delta": [
+        -0.0761904761904762,
+        0.030952380952380953
+      ],
+      "interaction_highfirst_minus_lowfirst": [
+        -0.02331759149940968,
+        0.12083825265643447
+      ]
+    }
+  },
+  "tests": {
+    "local_synthetic_unittests_passed": 15,
+    "local_synthetic_unittests_failed": 0,
+    "raw_data_python_replay": "NOT_COMPLETED"
+  },
+  "inference_boundary": [
+    "The temporal trend is a descriptive within-participant observation, not randomized over time.",
+    "Counterbalance pattern is observed; random assignment of counterbalance not independently established.",
+    "First versus last two blocks each contain one high and one low stake trial per participant.",
+    "The two order-subgroup stake effects point in different directions but the uncertainty interval for their difference crosses zero.",
+    "Does not identify underlying imitative-versus-emulative cognitive mechanism.",
+    "No external replication cohort; published directional outcomes were already known.",
+    "PESEN v0.1 FROZEN"
+  ]
+}
