@@ -1,6 +1,6 @@
 # R065 关键试次测量审计
 
-日期：2026-10-15。阶段：**Phase A 至 Phase D 的限定范围研究已归档；R065 完整研究仍 OPEN**。
+日期：2026-10-15。阶段：**Phase A 至 Phase E 的限定范围研究已归档；R065 完整研究仍 OPEN**。
 
 本阶段完成对 Levy 等人 2025 年公开处理后数据的 Git blob 字节哈希重算，在 GitHub 连接器执行环境内进行 16,103 条真实记录的关键试次审计。原始固定文件 Git blob `01bf211468abe093618dfa5e5c39e883230c9c03`（4,427,523 字节）。源数据未在本仓库重新分发。
 
@@ -81,3 +81,15 @@ python r065_phase_d_loso.py --source /path/to/unified_data_2025-01-16_00.csv --o
 ```
 
 PESEN v0.1 保持 FROZEN。
+
+## Phase E（2026-10-16）：第 89 轮统一重置后的预测信息损失界限
+
+* [事后冻结方案](../../protocols/R065_PHASE_E_DAY89_BOUND_2026-10-16.md)
+* [Phase E 源码条件及证据报告](R065_PHASE_E_DAY89_AUDIT.md)
+* [固定原作者 CSV 的结果 JSON](R065_PHASE_E_DAY89_RESULTS.json)
+* [SHA1 严格门控的 Python 复算](r065_phase_e_day89.py)
+* [在本地实际执行 8/8 通过的边界测试](test_r065_phase_e_day89.py)
+
+226 人中的 73 人在 day=89 选择作者定义的 `copied` 行动。公开七模型源代码在该日预先重置，任务所给正规化转移分布与等权代币先验意味着两条动作的初始预测均为 0.5。基于各被试以外其余 225 人的 day=89 结果、固定 Beta(4,4) 的经验概率估计，平均 Log loss 为 0.63346543，相比等概率 0.69314718 降低 0.05968175；个人级配对 Bootstrap 95% 区间为 [0.01513433,0.10422917]。这是后验选择的结构性预测上界比较，**不能解释为重置代码修复后原作者七模型实际获得此种提升**。
+
+本地 Phase E 源代码与测试文件已运行并逐字节比较 Git blob；8 项 synthetic 测试均 PASS。GitHub Actions 已增加 Phase E 固定来源重算，但远端作业是否成功仍未核实。完整研究门仍 OPEN，PESEN v0.1 冻结。
