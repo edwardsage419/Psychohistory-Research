@@ -12,6 +12,12 @@
 
 归档完整表示当前能检索的 ZIP 文件已经保存，不能自动证明每轮研究的外部原始数据、科学有效性或所有散落非 ZIP 附件均已完整复现。PESEN v0.1 仍然冻结。
 
+## 独立文档与源代码快照
+
+从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
+
+最新研究主控台 [v4.0](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md) 与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+
 ## 已核验的重点研究结果
 
 | 轮次 | 类型 | 当前证据 |
