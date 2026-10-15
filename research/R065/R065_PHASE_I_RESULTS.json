@@ -1,0 +1,99 @@
+{
+  "study": "R065_PHASE_I",
+  "protocol": "protocols/R065_PHASE_I_MODEL3_BETA_PROFILE_2026-10-16.md",
+  "source_level": "CONNECTOR_EXECUTED_SOURCE_EQUIVALENT_RAW_SAMPLE_REDUCTION",
+  "upstream_repository": "arielevy8/obs-learning-fishing",
+  "upstream_commit": "fd5f435b5368b69916e7acc6a9991aa5f46b3ddb",
+  "fixed_raw_sample_git_blob_sha1": [
+    "4e56c2d130d29c5dd9a30cb78587672acd084cc5",
+    "c7e5d21544d1f5e673c8b6ec905ad59a70cd4d1c",
+    "9b1f5c8d506480d473fd8a1d71e999f36d40a7ba",
+    "62b70b81a551af31f91fa7fbd9b79dfb785b3766",
+    "96cff2cd222739ac3becef728754107b6d3845cb",
+    "bfc4d832826d3de03c643bc0640d9e883976b26c",
+    "5b509dcd748be3fc7354e76f946cb44fd6b7d180",
+    "214c78ffc3d58f8fed420f3dae80e71ddd546a36",
+    "561bb3b072362a80c43b242d236bf34624c8911d",
+    "a1b0ddc977df858aebb25e1a13a4f4457e4da973"
+  ],
+  "subjects": 10,
+  "fixed_beta5_source_check": {
+    "author_mean_nll": 1.4176814699609261,
+    "block_mean_nll": 1.5294617860236366,
+    "match_1e_minus8": true
+  },
+  "models": {
+    "author": {
+      "reset_days": [
+        23,
+        45,
+        67,
+        89,
+        111
+      ],
+      "counts": {
+        "match": 182,
+        "mismatch": 120,
+        "uniform": 240,
+        "play": 542
+      },
+      "pooled_fit": {
+        "beta": 0.4165149636843214,
+        "mean_nll": 0.681321137068958,
+        "analytic_check_beta": 0.41651494429474933
+      },
+      "lopo": {
+        "total_nll": 372.00242556204523,
+        "mean_nll": 0.6863513386753602,
+        "min_beta": 0.2643016601151559,
+        "max_beta": 0.5088434747070605,
+        "zero_boundary_folds": 0,
+        "folds": 10
+      }
+    },
+    "block": {
+      "reset_days": [
+        18,
+        35,
+        52,
+        69,
+        86,
+        103,
+        120
+      ],
+      "counts": {
+        "match": 188,
+        "mismatch": 135,
+        "uniform": 219,
+        "play": 542
+      },
+      "pooled_fit": {
+        "beta": 0.3311672144425851,
+        "mean_nll": 0.6850880972950696,
+        "analytic_check_beta": 0.33116718439151976
+      },
+      "lopo": {
+        "total_nll": 374.4488078878774,
+        "mean_nll": 0.6908649592027258,
+        "min_beta": 0.17106440945319995,
+        "max_beta": 0.422856891091016,
+        "zero_boundary_folds": 0,
+        "folds": 10
+      }
+    }
+  },
+  "beta_grid": [
+    0,
+    0.5,
+    1,
+    2,
+    3,
+    5,
+    10,
+    20,
+    30
+  ],
+  "comparison_scope": "same 10 nonrandom source files and 542 observed play trials; fit beta independently per schedule; 10 leave-one-subject-out folds, each beta trained only on other nine; no generalization or causal claim",
+  "native_original_python_optimization": "NOT_EXECUTED",
+  "PESEN_v0_1": "FROZEN"
+}
