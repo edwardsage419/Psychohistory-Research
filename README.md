@@ -16,7 +16,7 @@
 
 从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
 
-最新增量主控台 [v4.6](docs/RESEARCH_CONTROL_v4.6_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+最新增量主控台 [v4.7](docs/RESEARCH_CONTROL_v4.7_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
 
 ## 已核验的重点研究结果
 
@@ -93,3 +93,11 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 本地已实际运行 [9 项新测试](research/R065/test_r065_phase_f_aggregate_certificate.py)，均 PASS；[复算程序](research/R065/r065_phase_f_aggregate_certificate.py)和[结果 JSON](research/R065/R065_PHASE_F_AGGREGATE_RESULTS.json)已按本地 Git blob 原样提交并远端核验。仓库的 GitHub Actions 新增可独立运行的无外部数据 `aggregate-certificate` 任务，但尚无远端作业成功证明。
 
 最新主控台见 [v4.6](docs/RESEARCH_CONTROL_v4.6_2026-10-16.md)。完整原始 CSV 的本地 Python 复算与原作者七个模型的真实对照重拟合仍待执行。PESEN v0.1 冻结。
+
+## R065 第七阶段：匿名单元独立复算（2026-10-16）
+
+从固定来源数据中提取八实验块×高低收益的 16 个聚合计数单元，保留 226 人、1,808 次关键选择及模仿总计 684 次的证据约束。使用 [独立 Python 复算程序](research/R065/r065_phase_g_cell_certificate.py) 完全脱离个人原始记录，重建 R065 Phase D 的 M2（按实验块）与 M3（按实验块×收益）对数损失及 Brier，数值与历史计算吻合，12 项本地测试通过。
+
+进一步确认：在每个固定实验块中，收益标签与先高/先低序列组完全对应，故 M3 的交叉预测不能单独识别收益效应。参见 [Phase G 研究审计](research/R065/R065_PHASE_G_AUDIT.md)、[匿名聚合数据](research/R065/R065_PHASE_G_CELLS.json)和[本地重算结果](research/R065/R065_PHASE_G_RESULTS.json)。
+
+最新控制台见 [v4.7](docs/RESEARCH_CONTROL_v4.7_2026-10-16.md)。GitHub Actions 离线作业已添加，但成功执行尚无可核实证据。R065 完整研究门保持 OPEN；PESEN v0.1 冻结。
