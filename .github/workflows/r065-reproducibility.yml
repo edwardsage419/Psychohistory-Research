@@ -1,0 +1,81 @@
+name: R065 reproducibility checks
+
+on:
+  push:
+    paths:
+      - "research/R065/**"
+      - "protocols/R065_PHASE_D_RETROSPECTIVE_PLAN_2026-10-16.md"
+      - ".github/workflows/r065-reproducibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run R065 synthetic unit tests
+        working-directory: research/R065
+        run: python -m unittest discover -p 'test_*.py' -v
+      - name: Verify fixed source and reproduce aggregate results
+        shell: bash
+        run: |
+          set -euo pipefail
+          csv="$(mktemp)"
+          objectives="$(mktemp)"
+          trap 'rm -f "$csv" "$objectives"' EXIT
+          upstream="https://raw.githubusercontent.com/arielevy8/obs-learning-fishing/fd5f435b5368b69916e7acc6a9991aa5f46b3ddb"
+          curl --fail --location --silent --show-error --retry 2 --output "$csv" "$upstream/data/processed/unified_data_2025-01-16_00.csv"
+          curl --fail --location --silent --show-error --retry 2 --output "$objectives" "$upstream/model_fitting/objectives.py"
+          export R065_TEMP_CSV="$csv" R065_TEMP_OBJECTIVES="$objectives"
+          python - <<'PY'
+          import hashlib, os
+          from pathlib import Path
+          sources = [
+              (Path(os.environ["R065_TEMP_CSV"]), "01bf211468abe093618dfa5e5c39e883230c9c03"),
+              (Path(os.environ["R065_TEMP_OBJECTIVES"]), "5e98133fa274ef2a112b24f6fdcd802d4f9d3eec"),
+          ]
+          for path, expected in sources:
+              data = path.read_bytes()
+              calculated = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+              if calculated != expected:
+                  raise SystemExit("Upstream Git blob mismatch; stop")
+          print("Source Git blob identities confirmed")
+          PY
+          python research/R065/r065_critical_replay.py --source "$csv" --output /tmp/r065_a.json
+          python research/R065/r065_order_audit.py --source "$csv" --output /tmp/r065_b.json
+          python research/R065/r065_reset_alignment.py --source "$objectives" --output /tmp/r065_c.json
+          python research/R065/r065_phase_d_loso.py --source "$csv" --output /tmp/r065_d.json
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          p = Path("research/R065")
+          current = json.loads(Path("/tmp/r065_d.json").read_text())
+          frozen = json.loads((p/"R065_PHASE_D_PREDICTION_RESULTS.json").read_text())
+          assert current["eligible_participants"] == frozen["eligible_participants"] == 226
+          assert current["diagnostic_rows"] == frozen["diagnostic_rows"] == 1808
+          for name in ("M0", "M1", "M2", "M3"):
+              for metric in ("logloss", "brier"):
+                  assert math.isclose(current["models"][name][metric],
+                                      frozen["summary"][name][metric],
+                                      abs_tol=1e-10, rel_tol=0), (name,metric)
+          for comparison, row in current["contrasts"].items():
+              expected = next(x for x in frozen["contrasts"] if x["name"] == comparison)
+              for metric in ("mean_logloss", "mean_brier"):
+                  assert math.isclose(row[metric],expected[metric],
+                                      abs_tol=1e-10, rel_tol=0), (comparison,metric)
+          a = json.loads(Path("/tmp/r065_a.json").read_text())
+          c = json.loads(Path("/tmp/r065_c.json").read_text())
+          assert a["participants"] == 226
+          assert len(c["models"]) == 7
+          for model in c["models"].values():
+              assert model["source_reset_days"] == [23,45,67,89,111]
+              assert model["critical_days_reset_by_source"] == [89]
+          print("R065 real-source replay and checked aggregate statistics PASS")
+          PY
