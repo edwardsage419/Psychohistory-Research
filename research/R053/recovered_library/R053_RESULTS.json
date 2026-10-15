@@ -1,0 +1,68 @@
+{
+  "study": "De Geest and Kingsley, InequalityCPR",
+  "analysis_round": "R053",
+  "analysis_date": "2026-10-15",
+  "origin": "GitHub connector full CSV text read and JavaScript numerical analysis; local original raw CSV bytes not staged",
+  "source_repository": "https://github.com/lrdegeest/InequalityCPR",
+  "source_path": "data/data.csv",
+  "source_git_blob_sha1": "73c02176bc9e060af987149594a85f9f7b591230",
+  "source_status": "CONNECTOR_SOURCE_READ; LOCAL_RAW_BYTES_NOT_STAGED",
+  "design": "Retrospective exploratory leave-one-session-out ridge linear next-round absolute extraction prediction; ridge diagonal penalty 1e-6 for nonintercept coefficients; predictions clipped to [0, participant endowment]",
+  "participant_count": 128,
+  "group_count": 32,
+  "session_count": 8,
+  "source_person_round_rows": 2048,
+  "prediction_count": 1792,
+  "predictions_per_held_out_session": 224,
+  "punishment_treatment_predictions": 896,
+  "nonpunishment_predictions": 896,
+  "affected_previous_punishment_predictors_by_data_correction": 76,
+  "metrics": {
+    "all": {
+      "M0_last_investment_MSE": 126.11496,
+      "M1_history_environment_MSE": 86.87900,
+      "M2_original_received_MSE": 86.93567,
+      "M3_reconstructed_received_MSE": 86.73149
+    },
+    "punishment_treatment": {
+      "M0_last_investment_MSE": 131.47210,
+      "M1_history_environment_MSE": 85.01131,
+      "M2_original_received_MSE": 85.20306,
+      "M3_reconstructed_received_MSE": 84.91626
+    },
+    "no_punishment_treatment": {
+      "M0_last_investment_MSE": 120.75781,
+      "M1_history_environment_MSE": 88.74669,
+      "M2_original_received_MSE": 88.66827,
+      "M3_reconstructed_received_MSE": 88.54672
+    }
+  },
+  "heldout_folds_rounded_4_decimals": [
+    {"session":1,"punishment":false,"equal":false,"n":224,"M0":105.6339,"M1":85.0845,"M2":84.9552,"M3":84.7273},
+    {"session":2,"punishment":false,"equal":false,"n":224,"M0":163.9420,"M1":106.7578,"M2":106.7648,"M3":106.9636},
+    {"session":3,"punishment":false,"equal":true,"n":224,"M0":105.6429,"M1":83.1413,"M2":83.0164,"M3":82.7057},
+    {"session":4,"punishment":false,"equal":true,"n":224,"M0":107.8125,"M1":80.0031,"M2":79.9367,"M3":79.7903},
+    {"session":5,"punishment":true,"equal":false,"n":224,"M0":96.1384,"M1":61.8618,"M2":61.6487,"M3":61.2345},
+    {"session":6,"punishment":true,"equal":false,"n":224,"M0":93.3125,"M1":55.0962,"M2":54.9833,"M3":54.9248},
+    {"session":7,"punishment":true,"equal":true,"n":224,"M0":142.7634,"M1":102.1567,"M2":101.9110,"M3":100.2390},
+    {"session":8,"punishment":true,"equal":true,"n":224,"M0":193.6741,"M1":120.9305,"M2":122.2693,"M3":123.2667}
+  ],
+  "comparison_M3_minus_M1": {
+    "MSE_diff": -0.14751,
+    "relative_reduction_percent": 0.16979,
+    "sessions_with_better_M3": 6,
+    "sessions_with_worse_M3": 2,
+    "session_resample_bootstrap_95_interval_approx": [-0.846, 0.702],
+    "session_level_exact_signflip_p_approx": 0.6328125,
+    "uncertainty_note": "Computed from displayed per-session rounded metrics, 20000 draws with seed 20261015, eight sessions only. Exploratory interval and test, not randomization-based treatment inference."
+  },
+  "limitations": [
+    "Same previously studied De Geest/Kingsley source, not a novel external experiment",
+    "In-sample historical model family and features selected post hoc",
+    "No identified causal punishment effect",
+    "Only eight sessions, four punishment sessions, two per punishment treatment cell",
+    "No original-raw local end-to-end replay yet",
+    "M3 predictor is reconstructed monetary sanction, not independently verified perceived social evaluation",
+    "No external novel dataset observations validated at R053"
+  ]
+}

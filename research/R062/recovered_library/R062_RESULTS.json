@@ -1,0 +1,122 @@
+{
+  "round": "R062",
+  "research_date": "2026-10-15",
+  "data_provenance": "GITHUB_CONNECTOR_ORIGINAL_AUTHOR_CSV",
+  "local_raw_replay": "NOT_VERIFIED",
+  "source": {
+    "1": {
+      "git_blob_sha1": "6f90784a49c26c92806b4876cb0ce4b446f810b1",
+      "bytes": 652938,
+      "raw_rows": 9600,
+      "participants": 24,
+      "private_decisions": 5760,
+      "demo_rows": 3840
+    },
+    "2": {
+      "git_blob_sha1": "5239155f233d42e4dbbe3f986865d5459a3e9cee",
+      "bytes": 905163,
+      "raw_rows": 13200,
+      "participants": 44,
+      "private_decisions": 7920,
+      "demo_rows": 5280
+    }
+  },
+  "grid": {
+    "private_alpha": [
+      0.05,
+      0.1,
+      0.3,
+      0.6
+    ],
+    "inverse_temperature": [
+      0.5,
+      1,
+      2,
+      4
+    ],
+    "perseveration": [
+      0,
+      0.15,
+      0.4
+    ],
+    "social_alpha": [
+      0,
+      0.03,
+      0.1,
+      0.3
+    ],
+    "reliability_q_difference_threshold": 0.1,
+    "reliability_beta_prior": [
+      1,
+      1
+    ]
+  },
+  "experiments": {
+    "1": {
+      "participants": 24,
+      "n": 5760,
+      "mean_logloss": {
+        "rw": 0.47395591903316253,
+        "fixed": 0.47395591903316253,
+        "adaptive": 0.4731690398633052
+      },
+      "delta_adaptive_minus_rw": -0.0007868791698573373,
+      "delta_adaptive_minus_fixed": -0.0007868791698573373,
+      "improved_vs_rw": 15,
+      "improved_vs_fixed": 15,
+      "bootstrap_95_adaptive_minus_rw": [
+        -0.0020615748045260036,
+        0.0005903869118624901
+      ],
+      "bootstrap_95_adaptive_minus_fixed": [
+        -0.0020615748045260036,
+        0.0005903869118624901
+      ],
+      "reliability_diagnostic": {
+        "fixed_private_alpha": 0.1,
+        "threshold": 0.1,
+        "skilled_mean": 0.6256717195674479,
+        "unskilled_mean": 0.3647189312020968,
+        "difference": 0.26095278836535113,
+        "bootstrap_95_difference": [
+          0.2235780739325387,
+          0.298125102937228
+        ],
+        "status": "POSTHOC_SKILL_LABEL_AUDIT_NOT_INPUT_FEATURE"
+      }
+    },
+    "2": {
+      "participants": 44,
+      "n": 7920,
+      "mean_logloss": {
+        "rw": 0.6042948357827499,
+        "fixed": 0.6093700681348669,
+        "adaptive": 0.6071787192866966
+      },
+      "delta_adaptive_minus_rw": 0.0028838835039468828,
+      "delta_adaptive_minus_fixed": -0.0021913488481702017,
+      "improved_vs_rw": 23,
+      "improved_vs_fixed": 25,
+      "bootstrap_95_adaptive_minus_rw": [
+        -0.0030806801902910253,
+        0.009154155292892686
+      ],
+      "bootstrap_95_adaptive_minus_fixed": [
+        -0.006217923090111905,
+        0.0018999749292642097
+      ],
+      "reliability_diagnostic": {
+        "fixed_private_alpha": 0.1,
+        "threshold": 0.1,
+        "skilled_mean": 0.5674024930080551,
+        "unskilled_mean": 0.4027773627200608,
+        "difference": 0.1646251302879943,
+        "bootstrap_95_difference": [
+          0.12915900836421318,
+          0.19934619440573903
+        ],
+        "status": "POSTHOC_SKILL_LABEL_AUDIT_NOT_INPUT_FEATURE"
+      }
+    }
+  }
+}

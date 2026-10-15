@@ -1,0 +1,136 @@
+{
+  "provenance_level": "real_source_derived_connector_aggregates_only",
+  "new_independent_study": false,
+  "outcome": "subject Invest / assigned Token, averaged within session over 15 non-practice rounds",
+  "session_summary": [
+    {
+      "session": 1,
+      "homo": 0,
+      "ff": 0,
+      "n": 240,
+      "fraction": 0.6526388888888889
+    },
+    {
+      "session": 2,
+      "homo": 0,
+      "ff": 0,
+      "n": 240,
+      "fraction": 0.6518402777777778
+    },
+    {
+      "session": 3,
+      "homo": 1,
+      "ff": 0,
+      "n": 240,
+      "fraction": 0.666
+    },
+    {
+      "session": 4,
+      "homo": 1,
+      "ff": 0,
+      "n": 240,
+      "fraction": 0.6618333333333334
+    },
+    {
+      "session": 5,
+      "homo": 0,
+      "ff": 1,
+      "n": 240,
+      "fraction": 0.6025
+    },
+    {
+      "session": 6,
+      "homo": 0,
+      "ff": 1,
+      "n": 240,
+      "fraction": 0.6032986111111112
+    },
+    {
+      "session": 7,
+      "homo": 1,
+      "ff": 1,
+      "n": 240,
+      "fraction": 0.587
+    },
+    {
+      "session": 8,
+      "homo": 1,
+      "ff": 1,
+      "n": 240,
+      "fraction": 0.5928333333333333
+    }
+  ],
+  "observed": {
+    "cell_means": {
+      "h0_f0": 0.6522395833333333,
+      "h0_f1": 0.6028993055555556,
+      "h1_f0": 0.6639166666666667,
+      "h1_f1": 0.5899166666666666
+    },
+    "punishment_difference": -0.061670138888888885,
+    "homo_difference": -0.0006527777777777777,
+    "factorial_interaction": -0.024659722222222222
+  },
+  "fixed_effect_rank": {
+    "n_rows": 8,
+    "n_columns": 11,
+    "rank": 8,
+    "added_treatment_columns": 3,
+    "additional_rank_from_treatment_columns": 0
+  },
+  "reference_enumeration": {
+    "stratified": {
+      "punishment": {
+        "extreme": 2,
+        "assignments": 36,
+        "reference_fraction": 0.05555555555555555
+      },
+      "interaction": {
+        "extreme": 20,
+        "assignments": 36,
+        "reference_fraction": 0.5555555555555556
+      }
+    },
+    "unrestricted": {
+      "punishment": {
+        "extreme": 72,
+        "assignments": 2520,
+        "reference_fraction": 0.02857142857142857
+      },
+      "interaction": {
+        "extreme": 1296,
+        "assignments": 2520,
+        "reference_fraction": 0.5142857142857142
+      }
+    }
+  },
+  "observational_equivalence_example": {
+    "case_A": "punishment coefficient = 0; session intercept equals observed session mean",
+    "case_B": "punishment coefficient equals the observed pooled difference; session intercept adjusts by minus that coefficient times FF",
+    "max_prediction_difference": 0.0
+  },
+  "illustrative_session_shock_sensitivity": [
+    {
+      "hypothetical_shock_difference": -0.07,
+      "implied_punishment_effect": 0.008329861111111121
+    },
+    {
+      "hypothetical_shock_difference": -0.04,
+      "implied_punishment_effect": -0.021670138888888885
+    },
+    {
+      "hypothetical_shock_difference": 0,
+      "implied_punishment_effect": -0.061670138888888885
+    },
+    {
+      "hypothetical_shock_difference": 0.04,
+      "implied_punishment_effect": -0.10167013888888889
+    },
+    {
+      "hypothetical_shock_difference": 0.07,
+      "implied_punishment_effect": -0.1316701388888889
+    }
+  ],
+  "causal_identification_status": "UNIDENTIFIED_UNDER_ARBITRARY_SESSION_FIXED_EFFECTS",
+  "reference_warning": "These assignment frequencies have no inferential validity until actual session-level randomization scheme and exchangeability are independently verified."
+}

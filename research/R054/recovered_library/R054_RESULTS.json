@@ -1,0 +1,185 @@
+{
+  "analysis_round": "R054",
+  "date": "2026-10-15",
+  "evidence_class": "GITHUB_CONNECTOR_SIDE_GENUINE_CSV_NUMERICAL_CALCULATION_NOT_LOCAL_SOURCE_BYTE_REPLAY",
+  "author_source": "https://github.com/lrdegeest/InequalityCPR/blob/master/data/data.csv",
+  "source_git_blob_sha1": "73c02176bc9e060af987149594a85f9f7b591230",
+  "raw_file_locally_present": false,
+  "author_sample_rows": 2048,
+  "unique_participants": 128,
+  "groups": 32,
+  "sessions": 8,
+  "predictions": 1792,
+  "predictions_per_session": 224,
+  "rules": {
+    "practice_round_excluded": 1,
+    "first_predicted_round": 3,
+    "last_predicted_round": 16,
+    "feature_cutoff": "all history strictly earlier than predicted round",
+    "mean3": "last up to 3 formal rounds",
+    "mean5": "last up to 5 formal rounds",
+    "meanAll": "all preceding formal rounds",
+    "ewmaHalf": "EWMA alpha=0.5 starting from first formal decision",
+    "priorGroupMean": "mean extraction of 4 members at t-1"
+  },
+  "overall": {
+    "persistence": {
+      "mse": 126.11495535714286,
+      "mae": 7.443080357142857
+    },
+    "mean3": {
+      "mse": 94.10150049603173,
+      "mae": 6.747581845238095
+    },
+    "mean5": {
+      "mse": 90.11103903149801,
+      "mae": 6.623186383928571
+    },
+    "meanAll": {
+      "mse": 89.08302920528821,
+      "mae": 6.589530577309596
+    },
+    "ewmaHalf": {
+      "mse": 92.04122347873636,
+      "mae": 6.601685115269253
+    },
+    "priorGroupMean": {
+      "mse": 117.62332589285714,
+      "mae": 8.172991071428571
+    }
+  },
+  "per_session": [
+    {
+      "session": 1,
+      "n": 224,
+      "mse": {
+        "persistence": 105.63392857142857,
+        "mean3": 70.28435019841274,
+        "mean5": 73.07053075396824,
+        "meanAll": 79.28602239882878,
+        "ewmaHalf": 75.05328393414882,
+        "priorGroupMean": 135.0859375
+      },
+      "r053_M1_mse_as_saved_4_decimals": 85.0845
+    },
+    {
+      "session": 2,
+      "n": 224,
+      "mse": {
+        "persistence": 163.94196428571428,
+        "mean3": 110.10168650793644,
+        "mean5": 105.7309300595238,
+        "meanAll": 107.06415342146688,
+        "ewmaHalf": 114.00797656950142,
+        "priorGroupMean": 154.98214285714286
+      },
+      "r053_M1_mse_as_saved_4_decimals": 106.7578
+    },
+    {
+      "session": 3,
+      "n": 224,
+      "mse": {
+        "persistence": 105.64285714285714,
+        "mean3": 83.34374999999999,
+        "mean5": 75.63484002976192,
+        "meanAll": 72.85934961009298,
+        "ewmaHalf": 78.57133728505245,
+        "priorGroupMean": 114.4140625
+      },
+      "r053_M1_mse_as_saved_4_decimals": 83.1413
+    },
+    {
+      "session": 4,
+      "n": 224,
+      "mse": {
+        "persistence": 107.8125,
+        "mean3": 83.89682539682539,
+        "mean5": 75.84065848214284,
+        "meanAll": 73.34729568733268,
+        "ewmaHalf": 79.35877418225365,
+        "priorGroupMean": 107.40959821428571
+      },
+      "r053_M1_mse_as_saved_4_decimals": 80.0031
+    },
+    {
+      "session": 5,
+      "n": 224,
+      "mse": {
+        "persistence": 96.13839285714286,
+        "mean3": 81.40500992063492,
+        "mean5": 80.36540922619047,
+        "meanAll": 81.56076371907201,
+        "ewmaHalf": 77.39022825112832,
+        "priorGroupMean": 73.73772321428571
+      },
+      "r053_M1_mse_as_saved_4_decimals": 61.8618
+    },
+    {
+      "session": 6,
+      "n": 224,
+      "mse": {
+        "persistence": 93.3125,
+        "mean3": 73.18712797619051,
+        "mean5": 68.59391369047621,
+        "meanAll": 68.49852957224087,
+        "ewmaHalf": 69.57355128022444,
+        "priorGroupMean": 64.18303571428571
+      },
+      "r053_M1_mse_as_saved_4_decimals": 55.0962
+    },
+    {
+      "session": 7,
+      "n": 224,
+      "mse": {
+        "persistence": 142.76339285714286,
+        "mean3": 106.19221230158726,
+        "mean5": 102.21731274801589,
+        "meanAll": 101.02280500691107,
+        "ewmaHalf": 102.57649890745857,
+        "priorGroupMean": 138.83258928571428
+      },
+      "r053_M1_mse_as_saved_4_decimals": 102.1567
+    },
+    {
+      "session": 8,
+      "n": 224,
+      "mse": {
+        "persistence": 193.67410714285714,
+        "mean3": 144.40104166666666,
+        "mean5": 139.43471726190475,
+        "meanAll": 129.02531422636042,
+        "ewmaHalf": 139.79813742012317,
+        "priorGroupMean": 152.34151785714286
+      },
+      "r053_M1_mse_as_saved_4_decimals": 120.9305
+    }
+  ],
+  "comparison_against_r053_M1": {
+    "mse_r053_m1": 86.879,
+    "mse_history_meanAll": 89.08302920528821,
+    "M1_minus_history_meanAll": -2.2040417052882093,
+    "M1_better_sessions": 4,
+    "session_differences_M1_minus_meanAll": [
+      5.7984776011712285,
+      -0.3063534214668806,
+      10.281950389907024,
+      6.655804312667328,
+      -19.69896371907201,
+      -13.402329572240866,
+      1.13389499308893,
+      -8.094814226360427
+    ],
+    "session_bootstrap_20k_95": [
+      -9.426033024697482,
+      4.287809699240032
+    ],
+    "exact_signflip_two_sided_p": 0.5625
+  },
+  "limitations": [
+    "R053 and R054 models all examined post hoc and extensively reuse this data; not preregistered",
+    "No independent researcher/team data obtained; no external prospective validation",
+    "Historical baselines exploit sequential observed held-out subject behavior; compatible with one-step online evaluation but not cold-start forecast",
+    "Eight clusters and treatment/session confounding impede causal transport claims",
+    "Remote connector JS calculation verified author blob identity; local program passed synthetic-data tests but did not replay original source bytes"
+  ]
+}

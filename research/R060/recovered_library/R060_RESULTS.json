@@ -1,0 +1,42 @@
+{
+  "source_tier": "CONNECTOR_DERIVED_ONLY",
+  "methods": {
+    "target": "repeat own preceding response",
+    "sample": "t>=3, full history observed",
+    "alpha": 0.2,
+    "network_weight": 0.25,
+    "cross_network_training": false,
+    "online_network_context": "earlier complete rounds only"
+  },
+  "networks": 26,
+  "eligible": 36780,
+  "weighted_logloss": {
+    "self_ewma": 0.41839651221255525,
+    "online_network": 0.42117800244504977,
+    "online_network_reward": 0.4034280162372114
+  },
+  "networks_better_than_self": {
+    "online_network": 9,
+    "online_network_reward": 22
+  },
+  "exploratory_contrasts": {
+    "online_network": {
+      "delta_logloss": 0.002781490232494521,
+      "network_bootstrap95": [
+        -0.0018222658542554459,
+        0.00753214696250805
+      ],
+      "draws": 20000,
+      "seed": 6001
+    },
+    "online_network_reward": {
+      "delta_logloss": -0.014968495975343832,
+      "network_bootstrap95": [
+        -0.01876804264645399,
+        -0.011019673759525594
+      ],
+      "draws": 20000,
+      "seed": 6001
+    }
+  }
+}

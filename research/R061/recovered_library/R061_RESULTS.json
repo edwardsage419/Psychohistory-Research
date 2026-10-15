@@ -1,0 +1,99 @@
+{
+  "round": "R061",
+  "date": "2026-10-15",
+  "data_retrieval": "GITHUB_CONNECTOR_REAL_AUTHOR_CSV",
+  "local_author_raw_byte_replay": "NOT_COMPLETED",
+  "source": {
+    "1": {
+      "path": "data/task1.csv",
+      "repo": "hrl-team/mfree_imitation",
+      "git_blob_sha1": "6f90784a49c26c92806b4876cb0ce4b446f810b1",
+      "bytes": 652938,
+      "raw_rows": 9600,
+      "participant_count": 24,
+      "sessions_per_person": 4,
+      "private_decisions": 5760,
+      "demonstrations": 3840,
+      "correct_private": 4308
+    },
+    "2": {
+      "path": "data/task2.csv",
+      "repo": "hrl-team/mfree_imitation",
+      "git_blob_sha1": "5239155f233d42e4dbbe3f986865d5459a3e9cee",
+      "bytes": 905163,
+      "raw_rows": 13200,
+      "participant_count": 44,
+      "sessions_per_person": 3,
+      "private_decisions": 7920,
+      "demonstrations": 5280,
+      "correct_private": 4916
+    }
+  },
+  "model": {
+    "training": "leave_one_subject_out_nested_grid",
+    "grid_points": 192,
+    "per_stimulus_state": true,
+    "same_private_reward_learning_rule": true,
+    "social_learning_nonnegative_including_zero": true,
+    "reward_for_demonstrator_unavailable": true,
+    "primary_metric": "binary_logloss_of_real_private_cgb_choice"
+  },
+  "experiments": {
+    "1": {
+      "accuracy": {
+        "private_correct_choice_rate": 0.7479166666666667,
+        "skilled_minus_private": 0.021354166666666678,
+        "unskilled_minus_private": -0.010416666666666663,
+        "skilled_minus_unskilled_diff_in_differences": 0.03177083333333334,
+        "participants_skilled": 24,
+        "participants_unskilled": 24,
+        "bootstrap_95_exploratory": [
+          -0.017708333333333326,
+          0.08281250000000001
+        ],
+        "label_permutation_p_two_sided_conditional_exchangeability": null
+      },
+      "cv": {
+        "delta_social_minus_private": 0.0,
+        "selected_social_better_subjects": 0,
+        "delta_bootstrap_95_exploratory": [
+          0.0,
+          0.0
+        ],
+        "source_true_model_losses": {
+          "RW": 0.47395591903316253,
+          "VS_nested": 0.47395591903316253
+        },
+        "selected_social_learning_zero_subjects": 24
+      }
+    },
+    "2": {
+      "accuracy": {
+        "private_correct_choice_rate": 0.6207070707070707,
+        "skilled_minus_private": 0.052651515149999994,
+        "unskilled_minus_private": -0.04507575757727273,
+        "skilled_minus_unskilled_diff_in_differences": 0.09772727272727272,
+        "participants_skilled": 22,
+        "participants_unskilled": 22,
+        "bootstrap_95_exploratory": [
+          0.03295454545909089,
+          0.1640151514909091
+        ],
+        "label_permutation_p_two_sided_conditional_exchangeability": 0.00584
+      },
+      "cv": {
+        "delta_social_minus_private": 0.005075232352117148,
+        "selected_social_better_subjects": 15,
+        "delta_bootstrap_95_exploratory": [
+          7.661554571563892e-05,
+          0.010487301882308002
+        ],
+        "source_true_model_losses": {
+          "RW": 0.6042948357827496,
+          "VS_nested": 0.6093700681348669
+        },
+        "selected_social_learning_zero_subjects": 9
+      }
+    }
+  }
+}
