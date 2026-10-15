@@ -52,6 +52,7 @@ jobs:
           python research/R065/r065_order_audit.py --source "$csv" --output /tmp/r065_b.json
           python research/R065/r065_reset_alignment.py --source "$objectives" --output /tmp/r065_c.json
           python research/R065/r065_phase_d_loso.py --source "$csv" --output /tmp/r065_d.json
+          python research/R065/r065_phase_e_day89.py --source "$csv" --output /tmp/r065_e.json
           python - <<'PY'
           import json, math
           from pathlib import Path
@@ -77,5 +78,15 @@ jobs:
           for model in c["models"].values():
               assert model["source_reset_days"] == [23,45,67,89,111]
               assert model["critical_days_reset_by_source"] == [89]
+          e = json.loads(Path("/tmp/r065_e.json").read_text())
+          e_frozen = json.loads((p/"R065_PHASE_E_DAY89_RESULTS.json").read_text())
+          assert e["eligible_participants"] == e_frozen["eligible_participants"] == 226
+          assert e["copied_day89"] == e_frozen["copied_day89"] == 73
+          for name in ("uniform_logloss","uniform_brier","heldout_loo_logloss",
+                       "heldout_loo_brier","uniform_minus_loo_mean_logloss",
+                       "uniform_minus_loo_mean_brier"):
+              assert math.isclose(e[name], e_frozen[name], abs_tol=1e-10, rel_tol=0), name
+          assert e["paired_bootstrap_95"]["logloss"][0] > 0
+          print("R065 Phase E source identity, cohort and predictive-loss cross-check PASS")
           print("R065 real-source replay and checked aggregate statistics PASS")
           PY
