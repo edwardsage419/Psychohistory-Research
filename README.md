@@ -16,7 +16,7 @@
 
 从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
 
-最新增量主控台 [v4.4](docs/RESEARCH_CONTROL_v4.4_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+最新增量主控台 [v4.5](docs/RESEARCH_CONTROL_v4.5_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
 
 ## 已核验的重点研究结果
 
@@ -77,3 +77,11 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 代码已提交 [严格 Git blob 约束的本地复现脚本](research/R065/r065_phase_d_loso.py)、[构造样本测试](research/R065/test_r065_phase_d_loso.py)及 [GitHub Actions 来源重算工作流](.github/workflows/r065-reproducibility.yml)。目前容器成功运行四项独立 synthetic 排除算法测试。原作者完整处理 CSV 本地获取仍受网络限制，GitHub Actions 作业成功状态尚未证实，不能声称完成本地真人数据复算。未来需要检查 CI 日志，并进一步比较原作者七模型状态重置规则对真实预测分数的影响。
 
 研究总关口仍 OPEN，PESEN v0.1 冻结。
+
+## R065 第五阶段：day 89 固定源码的初始预测损失界限（2026-10-16）
+
+按照先行提交的 [Phase E 事后研究计划](protocols/R065_PHASE_E_DAY89_BOUND_2026-10-16.md)，检查所有七模型公开源码在第 89 轮重置学习状态的预测后果。226 名合格被试中当日 73 名选择了作者定义的直接模仿动作。两选项等概率预测 Log loss 0.69314718；按其他参与者同日观察值计算的 Beta(4,4) 留人基线 Log loss 0.63346543，平均差 0.05968175，20,000 次受试者重抽样描述性区间 [0.01513433,0.10422917]。
+
+完整方法、严格来源与边界请阅读 [R065 Phase E 审计](research/R065/R065_PHASE_E_DAY89_AUDIT.md)和 [机读 JSON](research/R065/R065_PHASE_E_DAY89_RESULTS.json)。独立 [复算 Python 程序](research/R065/r065_phase_e_day89.py)与 [8 项本地通过的测试](research/R065/test_r065_phase_e_day89.py)已同步，程序和测试远端 Git blob 与本地执行字节一致。GitHub Actions 已添加 Phase E 来源校验，但 CI 成功证据尚未取得。
+
+本阶段属事后、来源条件性的预测界限检查，不能替代作者七个认知模型的真实重新拟合，也不应修改 PESEN v0.1。整体研究关口依然 OPEN。
