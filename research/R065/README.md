@@ -1,6 +1,6 @@
 # R065 关键试次测量审计
 
-日期：2026-10-15。阶段：**PHASE A、PHASE B、PHASE C 已完成限定范围审计；完整 R065 研究仍 OPEN**。
+日期：2026-10-15。阶段：**Phase A 至 Phase D 的限定范围研究已归档；R065 完整研究仍 OPEN**。
 
 本阶段完成对 Levy 等人 2025 年公开处理后数据的 Git blob 字节哈希重算，在 GitHub 连接器执行环境内进行 16,103 条真实记录的关键试次审计。原始固定文件 Git blob `01bf211468abe093618dfa5e5c39e883230c9c03`（4,427,523 字节）。源数据未在本仓库重新分发。
 
@@ -59,3 +59,25 @@ python r065_reset_alignment.py --source /path/to/objectives.py --output reset_al
 ```
 
 R065 的研究整体关口依然 OPEN；PESEN v0.1 冻结。
+
+## Phase D（2026-10-16）：不泄漏的留整人预测对照
+
+在看本阶段四模型新分数前已将 [回顾性比较方案](../../protocols/R065_PHASE_D_RETROSPECTIVE_PLAN_2026-10-16.md) 单独提交，研究仍属先前已见数据上的后续分析。
+
+* [Phase D 结果与证据审计](R065_PHASE_D_PREDICTION_AUDIT.md)
+* [Phase D 真实 CSV 连接器侧派生结果](R065_PHASE_D_PREDICTION_RESULTS.json)
+* [严格 Git SHA 的 Python 复算程序](r065_phase_d_loso.py)
+* [Python 构造数据测试](test_r065_phase_d_loso.py)
+* [GitHub Actions 独立复算工作流](../../.github/workflows/r065-reproducibility.yml)
+
+四种模型依次为总体模仿率 M0、收益分层 M1、实验块分层 M2、块与收益交叉 M3。在相同 226 人、1,808 条关键试次和 Beta(4,4) 下的完整留整人评估，平均 Log loss 分别 0.664810、0.665154、0.661563、0.663022。M2 的平均分数最好，但相对于 M0 的受试者重抽样差值区间跨零。研究中首次草算的单行扣除数据泄漏已纠正，最终分数与 Phase A 既有 M0/M1 独立交叉核对一致。
+
+**复现与执行边界**：容器中实际运行了四项有限 synthetic 排除逻辑测试。GitHub 的十项新增 synthetic 测试及完整原始 CSV CI 回放已配置，尚需 GitHub 成功作业日志确认；之前三个阶段已记录的测试状态独立保留。公开仓库只保存分析程序、派生结果和来源哈希，不重新分发原作者个体原始数据。
+
+```bash
+cd research/R065
+python -m unittest discover -p 'test_*.py' -v
+python r065_phase_d_loso.py --source /path/to/unified_data_2025-01-16_00.csv --output phase_d_results.json
+```
+
+PESEN v0.1 保持 FROZEN。
