@@ -160,3 +160,51 @@ jobs:
           assert observed['diagnostic_rows']==1808
           print('R065 Phase G independent cell certificate PASS')
           PY
+
+
+  model3-raw-sensitivity:
+    name: Verify Phase H fixed raw-trial model3 reset contrast
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test source-equivalent Model3 reset logic offline
+        working-directory: research/R065
+        run: python -m unittest -v test_r065_phase_h_model3_reset.py
+      - name: Fetch fixed upstream individual raw files temporarily
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://raw.githubusercontent.com/arielevy8/obs-learning-fishing/fd5f435b5368b69916e7acc6a9991aa5f46b3ddb/data"
+          mkdir -p /tmp/r065_raw_phase_h
+          for file in MEVVC Q3A3A 1XAVL JCGCF SMZVB 8X46Z 2MZGN 6Q6XN 47ZAD YC4CP; do
+            curl --fail --silent --show-error --location --retry 2 \
+              --output "/tmp/r065_raw_phase_h/$file.csv" "$base/$file.csv"
+          done
+      - name: Run pinned Python replay and compare archived aggregate scores
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'rm -rf /tmp/r065_raw_phase_h /tmp/r065_h_replay.json' EXIT
+          python research/R065/r065_phase_h_model3_reset.py \
+            --source-dir /tmp/r065_raw_phase_h \
+            --output /tmp/r065_h_replay.json
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          actual=json.loads(Path("/tmp/r065_h_replay.json").read_text())
+          archived=json.loads(Path("research/R065/R065_PHASE_H_RESULTS.json").read_text())
+          for key in ("selected_raw_files_count","number_of_scored_play_trials",
+                      "changed_play_probabilities_count","changed_day89_participants",
+                      "day89_source_uniform_count",
+                      "day89_alternative_history_available_count"):
+              assert actual[key] == archived[key], key
+          for key in ("source_model3_mean_nll", "alternative_model3_mean_nll",
+                      "alternative_minus_source_mean_nll",
+                      "day89_source_mean_nll", "day89_alternative_mean_nll"):
+              assert math.isclose(actual[key], archived[key], rel_tol=0, abs_tol=1e-10), key
+          print("R065 Phase H exact Git-blob-gated raw trial comparison PASS")
+          PY
