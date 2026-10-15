@@ -16,7 +16,7 @@
 
 从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
 
-最新增量主控台 [v4.3](docs/RESEARCH_CONTROL_v4.3_2026-10-15.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+最新增量主控台 [v4.4](docs/RESEARCH_CONTROL_v4.4_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
 
 ## 已核验的重点研究结果
 
@@ -69,3 +69,11 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 对七个模型的 [原作者固定源码](https://github.com/arielevy8/obs-learning-fishing/blob/fd5f435b5368b69916e7acc6a9991aa5f46b3ddb/model_fitting/objectives.py) 实读发现，模型统一在 day 23、45、67、89、111 重置学习状态；真人实验 8 个各 17 日的区块起点则是 day 18、35、52、69、86、103、120，两者没有重合。day 89 正是第六个关键选择，公开实现若逐字使用，会在该次选择前清空历史，令两动作的初始化预测等概率。有关结构反例、来源限定及待验证事项见 [R065 Phase C 审计](research/R065/R065_PHASE_C_RESET_AUDIT.md)，其机读数据位于 [R065 Phase C JSON](research/R065/R065_PHASE_C_RESET_RESULTS.json)。
 
 截至本轮，R065 全部 **25 项本地人工样本与代码结构测试通过**，但完整原始行为文件与作者模型拟合的本地端到端重放尚未完成。公开源码差异对论文已发表模型拟合的实际影响仍为 UNKNOWN。PESEN v0.1 维持冻结。
+
+## R065 第四阶段：回顾性关键试次预测比较（2026-10-16）
+
+新增 [R065 Phase D 审计](research/R065/R065_PHASE_D_PREDICTION_AUDIT.md)及[完整派生数值](research/R065/R065_PHASE_D_PREDICTION_RESULTS.json)。在 226 名参与者、1,808 个关键选择的完整留整人评分中，统一概率 M0、收益分层 M1、实验块分层 M2、实验块与收益交叉 M3 的平均 Log loss 分别为 0.664810、0.665154、0.661563、0.663022。M2 试次时间分层的平均分数最好，但相对 M0 的受试者重抽样区间跨零。此次计算纠正并记录了初始草算中单行扣除导致同一参与者数据泄漏的问题；正式结果与 R065 Phase A 的 M0、M1 既有结果一致。
+
+代码已提交 [严格 Git blob 约束的本地复现脚本](research/R065/r065_phase_d_loso.py)、[构造样本测试](research/R065/test_r065_phase_d_loso.py)及 [GitHub Actions 来源重算工作流](.github/workflows/r065-reproducibility.yml)。目前容器成功运行四项独立 synthetic 排除算法测试。原作者完整处理 CSV 本地获取仍受网络限制，GitHub Actions 作业成功状态尚未证实，不能声称完成本地真人数据复算。未来需要检查 CI 日志，并进一步比较原作者七模型状态重置规则对真实预测分数的影响。
+
+研究总关口仍 OPEN，PESEN v0.1 冻结。
