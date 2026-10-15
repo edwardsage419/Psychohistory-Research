@@ -1,6 +1,6 @@
 # R065 关键试次测量审计
 
-日期：2026-10-15。阶段：**PHASE A、PHASE B 已完成；完整 R065 研究仍 OPEN**。
+日期：2026-10-15。阶段：**PHASE A、PHASE B、PHASE C 已完成限定范围审计；完整 R065 研究仍 OPEN**。
 
 本阶段完成对 Levy 等人 2025 年公开处理后数据的 Git blob 字节哈希重算，在 GitHub 连接器执行环境内进行 16,103 条真实记录的关键试次审计。原始固定文件 Git blob `01bf211468abe093618dfa5e5c39e883230c9c03`（4,427,523 字节）。源数据未在本仓库重新分发。
 
@@ -40,3 +40,22 @@ python r065_order_audit.py --source /path/to/unified_data_2025-01-16_00.csv --ou
 ```
 
 当前容器的完整外部 CSV 下载失败，因此两项真实数据 Python 完整重放均仍开放。禁止用测试通过替代原始数据的实证复现。
+
+## Phase C：公开模型源码状态重置对齐审计
+
+* [七模型重置时间轴审计报告](R065_PHASE_C_RESET_AUDIT.md)
+* [固定源码取证与可检验结果 JSON](R065_PHASE_C_RESET_RESULTS.json)
+* [SHA1 严格门控 AST 复算程序](r065_reset_alignment.py)
+* [十项新增合成 AST 和代数测试](test_r065_reset_alignment.py)
+
+真实源代码连接器核对：公开目标函数对模型 1 至 7 均采用 23、45、67、89、111 的状态重置日期；固定作者实验的实际区块起点为 18、35、52、69、86、103、120，零重合。第 89 天又是关键选择，按源码初始化状态会使这些模型在该日的二选一预测退化为等概率。**真实作者拟合和效应幅度尚未重算，不能据此给论文发布结果下结论。**
+
+截至本阶段，R065 三个测试文件的 **25 项本地构造输入测试全部通过**。第三方完整 Python 原始源码和真人实验源文件未进入本地容器，第三方资料继续只读、无再分发。
+
+```bash
+cd research/R065
+python -m unittest discover -p 'test_*.py' -v
+python r065_reset_alignment.py --source /path/to/objectives.py --output reset_alignment.json
+```
+
+R065 的研究整体关口依然 OPEN；PESEN v0.1 冻结。
