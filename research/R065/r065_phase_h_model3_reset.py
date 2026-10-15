@@ -94,8 +94,11 @@ def predict(trials: list[dict], reset_days: tuple[int, ...], beta: float = BETA)
                 p = 0.5
             else:
                 # Author model3: softmax([1,0], beta), pair of available boats.
-                prob_match = 1.0 / (1.0 + math.exp(-beta))
-                p = prob_match if chosen == prior_action else 1.0 - prob_match
+                exp_neg_beta = math.exp(-beta)
+                denominator = 1.0 + exp_neg_beta
+                # Compute each softmax branch independently: 1-p_match
+                # loses relative precision when beta approaches 30.
+                p = (1.0 if chosen == prior_action else exp_neg_beta) / denominator
             output.append({'day': row['day'], 'p': p,
                            'nll': -math.log(p + 1e-10),
                            'history_available': prior_action is not None and prior_action in available})
