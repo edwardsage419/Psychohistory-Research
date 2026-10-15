@@ -123,3 +123,40 @@ jobs:
           print("R065 Phase E source identity, cohort and predictive-loss cross-check PASS")
           print("R065 real-source replay and checked aggregate statistics PASS")
           PY
+
+  aggregate-cell-certificate:
+    name: Verify Phase G from anonymized block counts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute independent block-score tests
+        working-directory: research/R065
+        run: python -m unittest -v test_r065_phase_g_cell_certificate.py
+      - name: Rebuild and compare M2 and M3 from 16 count cells
+        run: |
+          set -euo pipefail
+          python research/R065/r065_phase_g_cell_certificate.py \
+            --cells research/R065/R065_PHASE_G_CELLS.json \
+            --output /tmp/r065_phase_g_independent.json >/dev/null
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          observed=json.loads(Path('/tmp/r065_phase_g_independent.json').read_text())
+          archived=json.loads(Path('research/R065/R065_PHASE_G_RESULTS.json').read_text())
+          historical=json.loads(Path('research/R065/R065_PHASE_D_PREDICTION_RESULTS.json').read_text())
+          for model in ('M2','M3'):
+              for metric in ('logloss','brier'):
+                  a=observed['scores'][model][metric]
+                  b=archived['scores'][model][metric]
+                  c=historical['summary'][model][metric]
+                  assert math.isclose(a,b,rel_tol=0,abs_tol=1e-12), (model,metric,'artifact')
+                  assert math.isclose(a,c,rel_tol=0,abs_tol=1e-12), (model,metric,'historical')
+          assert observed['total_copied']==684
+          assert observed['day89_copied']==73
+          assert observed['diagnostic_rows']==1808
+          print('R065 Phase G independent cell certificate PASS')
+          PY
