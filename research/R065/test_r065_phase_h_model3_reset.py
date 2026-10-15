@@ -26,6 +26,11 @@ class Model3Tests(unittest.TestCase):
         self.assertAlmostEqual(q[0]['p'], 1/(1+math.exp(-5)))
         self.assertAlmostEqual(q[1]['p'], 1/(1+math.exp(+5)))
 
+    def test_stable_mismatched_probability_at_beta_30(self):
+        q=predict([example(1,'observe',0),example(2,'play',1)],(),30)
+        expected=math.exp(-30)/(1+math.exp(-30))
+        self.assertAlmostEqual(q[0]['p'],expected,places=22)
+
     def test_last_observed_unavailable_is_uniform(self):
         q=predict([example(1,'observe',0,(0,1)), example(2,'play',2,(1,2))],(),5)
         self.assertEqual(q[0]['p'],.5)
