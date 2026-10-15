@@ -24,7 +24,7 @@ jobs:
           python-version: '3.11'
       - name: Run fixed beta profile unit tests
         working-directory: research/R065
-        run: python -m unittest -v test_r065_phase_h_model3_reset.py test_r065_phase_i_beta_profile.py
+        run: python -m unittest -v test_r065_phase_h_model3_reset test_r065_phase_i_beta_profile
       - name: Reproduce aggregate beta profiles
         run: |
           python research/R065/r065_phase_i_beta_profile.py --aggregate-input research/R065/R065_PHASE_I_RESULTS.json --output /tmp/phase_i_aggregate.json >/dev/null
