@@ -1,0 +1,101 @@
+{
+  "study_id": "R065",
+  "stage": "PHASE_A_CRITICAL_MEASUREMENT_AND_SOURCE_AUDIT",
+  "date": "2026-10-15",
+  "evidence_level": "EXACT_AUTHOR_GIT_BLOB_RECOMPUTED_IN_CONNECTOR_ISOLATE; LOCAL_CONTAINER_RAW_CSV_ABSENT",
+  "upstream_repo": "arielevy8/obs-learning-fishing",
+  "upstream_csv_path": "data/processed/unified_data_2025-01-16_00.csv",
+  "upstream_git_blob_sha1": "01bf211468abe093618dfa5e5c39e883230c9c03",
+  "source_bytes_checked": 4427523,
+  "content_byte_encoding": "ASCII (all code units <=127)",
+  "independently_recomputed_git_blob_sha1": "01bf211468abe093618dfa5e5c39e883230c9c03",
+  "author_analysis_file_git_blob_sha1": "125a7d380218cb9a3ba62aaf340fd7ebf2744e5b",
+  "complete_processed_rows": 16103,
+  "processed_columns": 40,
+  "complete_required_field_rows": 16103,
+  "participants_raw": 295,
+  "participant_exclusions": {
+    "accuracy_below_0_45": 25,
+    "comprehension_mean_above_2": 50,
+    "union": 69,
+    "excluded_rows": 3780
+  },
+  "participants_eligible": 226,
+  "eligible_all_rows": 12323,
+  "critical_row_definition": "critical==1; exclude participants using entire processed trial history before subsetting",
+  "critical_days": [
+    4,
+    21,
+    38,
+    55,
+    72,
+    89,
+    106,
+    123
+  ],
+  "balanced_per_participant": {
+    "critical": 8,
+    "high": 4,
+    "low": 4
+  },
+  "critical_rows": 1808,
+  "critical_outcomes_complement_count": 1808,
+  "critical_high": {
+    "n": 904,
+    "copied": 344,
+    "accurate": 560,
+    "copy_rate": 0.3805309734513274
+  },
+  "critical_low": {
+    "n": 904,
+    "copied": 340,
+    "accurate": 564,
+    "copy_rate": 0.37610619469026546
+  },
+  "critical_copied_high_minus_low_equal_participant_weight": 0.004424778761061947,
+  "critical_emulation_consistent_accuracy_rate": 0.6216814159292036,
+  "critical_participant_bootstrap_95_copy_difference": [
+    -0.032079646017699116,
+    0.04092920353982301
+  ],
+  "previous_R064_all_trial_copied_high_minus_low": 0.005829972225598635,
+  "prediction_procedure": "Exploratory, leave-one-whole-participant-out, Beta(4,4) smoothed. M0 pooled, M1 stake specific; macro subject score",
+  "prediction": {
+    "M0_logloss": 0.6648095962336775,
+    "M1_logloss": 0.6651537585910515,
+    "M1_minus_M0_logloss": 0.00034416235737478256,
+    "M0_brier": 0.23593455507825598,
+    "M1_brier": 0.23609692055010859,
+    "M1_minus_M0_brier": 0.00016236547185289414,
+    "M1_wins": 109,
+    "M1_loses": 117,
+    "M1_ties": 0
+  },
+  "participant_bootstrap": {
+    "draws": 20000,
+    "seed": 20261015,
+    "critical_copying_difference_CI95": [
+      -0.032079646017699116,
+      0.04092920353982301
+    ],
+    "prediction_loss_delta_CI95": [
+      0.00013043716797077787,
+      0.0005681491962271099
+    ],
+    "prediction_brier_delta_CI95": [
+      0.00006162572503099494,
+      0.00026785939711923817
+    ]
+  },
+  "synthetic_python_unittests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "notes": [
+    "All descriptive results computed from GitHub connector fixed blob, with SHA1 hash recomputed over ASCII Git blob contents.",
+    "Local Python tests used synthetic rows; local byte-identical CSV execution remains pending.",
+    "This is retrospective post-hoc follow-up to the prior R064 all-row primary endpoint. Original R064 precommit is unchanged.",
+    "Critical copied and accurate complement observed empirically; consistent with diagnostic actions, but cognitive strategy is not uniquely identified.",
+    "No new independent cohort, no randomized provenance audit, no prospective prediction, no PESEN v0.1 change."
+  ]
+}
