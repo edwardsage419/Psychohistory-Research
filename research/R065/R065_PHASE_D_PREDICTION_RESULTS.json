@@ -1,0 +1,146 @@
+{
+  "research_stage": "R065_PHASE_D",
+  "frozen_plan": "protocols/R065_PHASE_D_RETROSPECTIVE_PLAN_2026-10-16.md",
+  "source_repository": "arielevy8/obs-learning-fishing",
+  "source_csv_git_blob_sha1": "01bf211468abe093618dfa5e5c39e883230c9c03",
+  "source_ascii_bytes": 4427523,
+  "raw_processed_rows": 16103,
+  "raw_participants": 295,
+  "excluded": {
+    "acc": 25,
+    "rep": 50,
+    "union": 69,
+    "rows": 3780
+  },
+  "eligible_participants": 226,
+  "diagnostic_rows": 1808,
+  "analysis_level": "AUTHOR_PROCESSED_CSV_RETRIEVED_FROM_GITHUB_CONNECTOR_AND_ANALYZED_IN_CONNECTOR_EXECUTION",
+  "crosscheck_with_phase_A": {
+    "M0_expected_logloss": 0.6648095962336775,
+    "M1_expected_logloss": 0.6651537585910515,
+    "absolute_tolerance": 1e-10,
+    "passed": true
+  },
+  "algorithm": "LOSO subject all eight outcomes removed from each training cell, Beta(4,4) smoothing, macro logloss and Brier; 20000 participant bootstrap xorshift32 seed 20261016",
+  "models": {
+    "M0": "pooled",
+    "M1": "stakes-only",
+    "M2": "critical-block-only",
+    "M3": "critical-block-stakes interaction"
+  },
+  "summary": {
+    "M0": {
+      "logloss": 0.6648095962336775,
+      "brier": 0.23593455507825598
+    },
+    "M1": {
+      "logloss": 0.6651537585910515,
+      "brier": 0.23609692055010859
+    },
+    "M2": {
+      "logloss": 0.6615627546126365,
+      "brier": 0.2343594760065642
+    },
+    "M3": {
+      "logloss": 0.6630223954616707,
+      "brier": 0.2350364741552214
+    }
+  },
+  "contrasts": [
+    {
+      "name": "M1_minus_M0",
+      "mean_logloss": 0.0003441623573747619,
+      "mean_brier": 0.00016236547185289658,
+      "wins": 109,
+      "losses": 117,
+      "ties": 0
+    },
+    {
+      "name": "M2_minus_M0",
+      "mean_logloss": -0.0032468416210408497,
+      "mean_brier": -0.0015750790716917368,
+      "wins": 111,
+      "losses": 115,
+      "ties": 0
+    },
+    {
+      "name": "M3_minus_M2",
+      "mean_logloss": 0.0014596408490352099,
+      "mean_brier": 0.0006769981486573792,
+      "wins": 94,
+      "losses": 132,
+      "ties": 0
+    },
+    {
+      "name": "M3_minus_M1",
+      "mean_logloss": -0.002131363129380401,
+      "mean_brier": -0.001060446394887254,
+      "wins": 132,
+      "losses": 94,
+      "ties": 0
+    },
+    {
+      "name": "M2_minus_M1",
+      "mean_logloss": -0.0035910039784156113,
+      "mean_brier": -0.0017374445435446339,
+      "wins": 105,
+      "losses": 121,
+      "ties": 0
+    }
+  ],
+  "participant_bootstrap_CI95": {
+    "M1_minus_M0": {
+      "logloss": [
+        0.00013230912693243144,
+        0.0005662879414614077
+      ],
+      "brier": [
+        0.00006253366918671103,
+        0.0002669764832436178
+      ]
+    },
+    "M2_minus_M0": {
+      "logloss": [
+        -0.008244664443174803,
+        0.0016901381842828733
+      ],
+      "brier": [
+        -0.003960955627822389,
+        0.0007901431199340728
+      ]
+    },
+    "M3_minus_M2": {
+      "logloss": [
+        -0.002475556089051572,
+        0.005410667054966336
+      ],
+      "brier": [
+        -0.0011527633408531669,
+        0.0025150046405060067
+      ]
+    },
+    "M3_minus_M1": {
+      "logloss": [
+        -0.00809270540177943,
+        0.0038346424233979257
+      ],
+      "brier": [
+        -0.003871417514034987,
+        0.0017489307703771441
+      ]
+    },
+    "M2_minus_M1": {
+      "logloss": [
+        -0.008593613818942396,
+        0.001325768934094413
+      ],
+      "brier": [
+        -0.004114085967270046,
+        0.000608139987022341
+      ]
+    }
+  },
+  "bootstrap_draws": 20000,
+  "bootstrap_seed": 20261016,
+  "conclusion_limits": "Retrospective follow-up prompted by prior discovery of temporal pattern. No independent validation, no mechanism identification or causal claim; local complete author CSV Python replay remains unexecuted."
+}
