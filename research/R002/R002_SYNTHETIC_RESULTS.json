@@ -1,0 +1,140 @@
+{
+  "research_round": "R002 RETROSPECTIVE GAPFILL",
+  "evidence_type": "SYNTHETIC_METHOD_VALIDATION_ONLY",
+  "creation_date": "2026-10-15",
+  "warning": "Not historical recovered R002; not evidence on real human social influence.",
+  "runs": [
+    {
+      "synthetic_truth": "M0",
+      "train_people": 180,
+      "test_people": 80,
+      "train_observations": 5040,
+      "test_observations": 2240,
+      "train_seed": 425,
+      "test_seed": 984,
+      "model_results": {
+        "M0": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 0.0,
+            "rho": null
+          },
+          "test_logloss": 0.5312037299651887,
+          "test_brier": 0.17627628546930227
+        },
+        "M1": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 0.0,
+            "rho": null
+          },
+          "test_logloss": 0.5312037299651887,
+          "test_brier": 0.17627628546930227
+        },
+        "M2": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 0.0,
+            "rho": null
+          },
+          "test_logloss": 0.5312037299651887,
+          "test_brier": 0.17627628546930227
+        }
+      },
+      "best_test_logloss": "M0"
+    },
+    {
+      "synthetic_truth": "M1",
+      "train_people": 180,
+      "test_people": 80,
+      "train_observations": 5040,
+      "test_observations": 2240,
+      "train_seed": 425,
+      "test_seed": 984,
+      "model_results": {
+        "M0": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 0.0,
+            "rho": null
+          },
+          "test_logloss": 0.5743287299651887,
+          "test_brier": 0.19425598073121195
+        },
+        "M1": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 2.1,
+            "rho": null
+          },
+          "test_logloss": 0.47455266944161395,
+          "test_brier": 0.15529273156140536
+        },
+        "M2": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 0.0,
+            "rho": null
+          },
+          "test_logloss": 0.5743287299651887,
+          "test_brier": 0.19425598073121195
+        }
+      },
+      "best_test_logloss": "M1"
+    },
+    {
+      "synthetic_truth": "M2",
+      "train_people": 180,
+      "test_people": 80,
+      "train_observations": 5040,
+      "test_observations": 2240,
+      "train_seed": 425,
+      "test_seed": 984,
+      "model_results": {
+        "M0": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 0.0,
+            "rho": null
+          },
+          "test_logloss": 0.5405787299651887,
+          "test_brier": 0.1800555406633395
+        },
+        "M1": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 0.0,
+            "rho": null
+          },
+          "test_logloss": 0.5405787299651887,
+          "test_brier": 0.1800555406633395
+        },
+        "M2": {
+          "parameters_train_only": {
+            "b0": -0.7,
+            "bx": 0.9,
+            "gamma": 2.1,
+            "rho": 0.65
+          },
+          "test_logloss": 0.5218148317288274,
+          "test_brier": 0.1732569711257797
+        }
+      },
+      "best_test_logloss": "M2"
+    }
+  ],
+  "nonidentification_cases": [
+    "M1 with gamma=0 equals M0 on every observed event",
+    "M2 with gamma=0 equals M0 on every observed event",
+    "If exposure does not vary, an immediate effect can become indistinguishable from the intercept",
+    "Without exogenous exposure assignment, common-shock/confounding remains possible"
+  ]
+}

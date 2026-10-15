@@ -1,0 +1,58 @@
+{
+  "analysis_protocol": "R064_PROTOCOL_PRECOMMIT.md, originally created 2026-10-15T09:31:42+00:00; read before outcomes in this conversation",
+  "source_access": "GITHUB_CONNECTOR_READ_EXACT_BLOB_COMPLETE_TEXT; raw bytes not materialized in local container",
+  "author_repository": "arielevy8/obs-learning-fishing",
+  "author_processed_csv_blob_sha1": "01bf211468abe093618dfa5e5c39e883230c9c03",
+  "author_analysis_script_sha1": "125a7d380218cb9a3ba62aaf340fd7ebf2744e5b",
+  "row_count": 16103,
+  "participant_count": 295,
+  "complete_required_rows": 16103,
+  "stakes": ["high", "low"],
+  "copied_values": [0, 1],
+  "exclusion": {
+    "accuracy_below_0_45": 25,
+    "mean_comprehension_repetition_above_2": 50,
+    "union": 69,
+    "excluded_rows": 3780,
+    "eligible_subjects_with_both_stakes": 226,
+    "eligible_rows": 12323
+  },
+  "primary_equal_subject_weight_high_minus_low": 0.005829972225598635,
+  "primary_paired_bootstrap_95_percent": [-0.011031096781020485, 0.022882026174204314],
+  "primary_pooled_difference_secondary": 0.005134432066604466,
+  "eligible_stake_counts": {
+    "high": {"n": 6162, "copied": 2260, "rate": 0.3667640376501136},
+    "low": {"n": 6161, "copied": 2228, "rate": 0.36162960558350915}
+  },
+  "sensitivity_no_exclusions": {
+    "subjects_with_both": 295,
+    "equal_subject_weight_difference": 0.006040022555868784,
+    "pooled_difference": 0.005707824788402538,
+    "high": {"n":8046,"copied":2917},
+    "low": {"n":8057,"copied":2875}
+  },
+  "within_subject_stake_trial_counts_eligible": {"high_min":24,"high_max":31,"low_min":24,"low_max":30},
+  "predictive_comparison": {
+    "unit": "leave_one_entire_participant_out",
+    "smoothing": "Beta(4,4)",
+    "macro_logloss_M0": 0.6558931621123176,
+    "macro_logloss_M1": 0.6559589089766908,
+    "macro_logloss_delta_M1_minus_M0": 0.00006574686437327233,
+    "macro_brier_M0": 0.23160195997950314,
+    "macro_brier_M1": 0.23163241699874051,
+    "macro_brier_delta_M1_minus_M0": 0.000030457019237364855,
+    "participant_bootstrap_95_logloss_delta": [-0.00002534824271541047, 0.0001573384357359144],
+    "participant_bootstrap_95_brier_delta": [-0.000011712338620889814, 0.00007287482651137058],
+    "M1_wins":111,
+    "M1_ties":0,
+    "M1_loses":115
+  },
+  "bootstrap": {"draws":20000,"seed":20261015,"unit":"participant","percentile":95},
+  "limitations": [
+    "Published directional conclusion was known: retrospective independent-author evaluation",
+    "Author-computed processed outcomes; copied does not identify imitation vs emulation",
+    "Assignment provenance not independently audited; no causal P-value",
+    "Local exact CSV byte-for-byte replay remains pending; connector has verified author SHA-addressed blob",
+    "Does not validate R063 metaVS or PESEN v0.1"
+  ]
+}
