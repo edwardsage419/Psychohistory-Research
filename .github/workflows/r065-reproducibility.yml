@@ -12,6 +12,39 @@ permissions:
   contents: read
 
 jobs:
+
+  aggregate-certificate:
+    name: Verify Phase F from published summary counts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run independent aggregate arithmetic tests
+        working-directory: research/R065
+        run: python3 -m unittest -v test_r065_phase_f_aggregate_certificate.py
+      - name: Rebuild certificate without external participant data
+        run: |
+          set -euo pipefail
+          python3 research/R065/r065_phase_f_aggregate_certificate.py \
+            --n 226 --copied 73 --pseudo 4 \
+            --output /tmp/r065_phase_f_independent.json >/dev/null
+          python3 - <<'PY'
+          import json, math
+          from pathlib import Path
+          observed=json.loads(Path('/tmp/r065_phase_f_independent.json').read_text())
+          archived=json.loads(Path('research/R065/R065_PHASE_F_AGGREGATE_RESULTS.json').read_text())
+          for key in ('n','copied','loo_logloss','loo_brier',
+                      'uniform_minus_loo_mean_logloss','uniform_minus_loo_mean_brier'):
+              if not math.isclose(observed[key], archived[key], rel_tol=0, abs_tol=1e-12):
+                  raise SystemExit('Phase F count-derived audit mismatch: '+key)
+          for field in ('logloss','brier'):
+              for actual, target in zip(observed['conditional_exact_bootstrap_percentile_95'][field],
+                                        archived['conditional_exact_bootstrap_percentile_95'][field]):
+                  if not math.isclose(actual, target, rel_tol=0, abs_tol=1e-12):
+                      raise SystemExit('Phase F exact bootstrap mismatch: '+field)
+          print('Independent Phase F aggregate certificate PASS')
+          PY
+
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
