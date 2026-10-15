@@ -16,7 +16,7 @@
 
 从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
 
-最新研究主控台 [v4.0](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md) 与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+最新增量主控台 [v4.2](docs/RESEARCH_CONTROL_v4.2_2026-10-15.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
 
 ## 已核验的重点研究结果
 
@@ -57,3 +57,9 @@ R063 的部分精确非参数检验依赖 SciPy，缺少 SciPy 时程序会说�
 R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实质研究阶段为 R065 PHASE A，不将新增 R065 研究文件误记为历史 R065 正式 ZIP。
 
 最新主控台：[v4.1 增量记录](docs/RESEARCH_CONTROL_v4.1_2026-10-15.md)；每阶段交付同步要求：[GitHub 同步规程](docs/RESEARCH_SYNC_WORKFLOW_2026-10-15.md)。
+
+## R065 第二阶段：顺序与时间趋势（2026-10-15）
+
+继续完成 [R065 Phase B 分块趋势与 counterbalance 审计](research/R065/R065_PHASE_B_ORDER_AUDIT.md)。226 人每人 8 次关键试次，前两个实验块平均模仿率 46.68%，最后两个 34.07%，前减后 +12.61 个百分点，受试者 Bootstrap 区间 +6.42 至 +18.81 个百分点。顺序分组为先高收益 121 人、先低收益 105 人，收益效应的组间差异区间跨零。全部属于已见结果上的回顾性分析。
+
+本轮 [R065 复现程序与测试](research/R065/README.md) 共有 15 项本地构造数据单元测试实际通过，外部来源数据 Git blob 在连接器端核验成功；完整原始 CSV 的本地 Python 全字节重算仍受网络条件阻碍。PESEN v0.1 继续冻结，研究整体关口未关闭。
