@@ -1,0 +1,32 @@
+{
+  "source_blob_sha1": "01bf211468abe093618dfa5e5c39e883230c9c03",
+  "source_validation_level": "AGGREGATE_COUNTS_ONLY",
+  "n_subjects": 226,
+  "diagnostic_rows": 1808,
+  "high_first": 121,
+  "low_first": 105,
+  "total_copied": 684,
+  "day89_copied": 73,
+  "prior_beta_symmetric": 4.0,
+  "scores": {
+    "M2": {
+      "logloss": 0.661562754612636,
+      "brier": 0.23435947600656398
+    },
+    "M3": {
+      "logloss": 0.6630223954616713,
+      "brier": 0.23503647415522147
+    }
+  },
+  "M3_minus_M2": {
+    "logloss": 0.0014596408490352708,
+    "brier": 0.0006769981486574872
+  },
+  "design_alias": "At a fixed block, stake label uniquely determines high-first/low-first sequence; M3 cannot isolate stakes from sequence-by-block differences.",
+  "not_identified": [
+    "individual-level paired-bootstrap covariance",
+    "M0/M1 all-subject-out score from marginal cell totals",
+    "causal stake effects",
+    "latent cognitive learning strategies"
+  ]
+}
