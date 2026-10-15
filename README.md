@@ -16,7 +16,7 @@
 
 从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
 
-最新增量主控台 [v4.8](docs/RESEARCH_CONTROL_v4.8_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+最新增量主控台 [v4.9](docs/RESEARCH_CONTROL_v4.9_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
 
 ## 已核验的重点研究结果
 
@@ -109,3 +109,13 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 查看 [Phase H 研究报告](research/R065/R065_PHASE_H_AUDIT.md)、[聚合结果与来源 SHA](research/R065/R065_PHASE_H_RESULTS.json)、[Python 程序](research/R065/r065_phase_h_model3_reset.py)和[12 项实际通过的单元测试](research/R065/test_r065_phase_h_model3_reset.py)。原作者原始文件在 GitHub 连接器端实读，未在本仓库重新分发；本地 Python 使用完整原始样本的重放仍未执行，原作者七模型的 native 拟合亦未执行。工作流已增加独立来源重放配置，但成功执行记录尚无核验。
 
 主控台现为 [v4.8](docs/RESEARCH_CONTROL_v4.8_2026-10-16.md)。R065 全研究门仍 OPEN；PESEN v0.1 保持 FROZEN。
+
+## R065 第九阶段：调整 Model 3 β 后重置日期敏感性（2026-10-16）
+
+固定十份原作者逐人实验文件、542 次 `play`，延续前阶段的两个状态重置方案。将先前固定 β=5 的损失比较扩展到 β∈[0,30] 的独立拟合和**留出整名参与者、其他九人拟合 β**的十折预测。作者时钟平均留人 NLL 约 **0.68635**、区块边界约 **0.69086**；对比 β=5 时平均 NLL 1.41768、1.52946，表明参数选择对预测效果影响非常大。
+
+已提交 [Phase I 审计](research/R065/R065_PHASE_I_AUDIT.md)、[匿名计数及真实连接器侧十折结果](research/R065/R065_PHASE_I_RESULTS.json)、[Python 复算程序](research/R065/r065_phase_i_beta_profile.py)、[12 项本地通过测试](research/R065/test_r065_phase_i_beta_profile.py)和 [GitHub Actions 两类校验配置](.github/workflows/r065-phase-i.yml)。同时修正 Phase H 在极高 β 下的 Softmax 精度问题；本地两阶段共 25 项测试通过。
+
+这仍属十人便利样本上的事后敏感性实验，不是论文全部七模型的 native 重新拟合或独立可推广预测证据。自动复算的 GitHub 作业是否成功尚无可核验记录。
+
+最新 [主控台 v4.9](docs/RESEARCH_CONTROL_v4.9_2026-10-16.md)。PESEN v0.1 冻结；R065 整体科学验证仍 OPEN。
