@@ -1,0 +1,61 @@
+{
+  "study": "R065_PHASE_E",
+  "date": "2026-10-16",
+  "plan": "protocols/R065_PHASE_E_DAY89_BOUND_2026-10-16.md",
+  "source_repository": "arielevy8/obs-learning-fishing",
+  "source_blob_sha1": "01bf211468abe093618dfa5e5c39e883230c9c03",
+  "source_ascii_bytes": 4427523,
+  "raw_rows": 16103,
+  "raw_participants": 295,
+  "excluded": {
+    "accuracy": 25,
+    "repetitions": 50,
+    "union": 69,
+    "rows": 3780
+  },
+  "eligible_participants": 226,
+  "critical_day": 89,
+  "eligible_day89_rows": 226,
+  "copied_day89": 73,
+  "copy_rate_day89": 0.3230088495575221,
+  "original_source_reset_critical_day": 89,
+  "number_of_author_models_reset_at_day89": 7,
+  "source_derived_uniform_binary_prediction": 0.5,
+  "author_source_runtime_fit": "NOT_EXECUTED",
+  "counterfactual": "Beta(4,4) leave entire day89 held-out participant from training cell; one day89 observation per person",
+  "uniform_logloss": 0.6931471805599453,
+  "uniform_brier": 0.25,
+  "heldout_loo_logloss": 0.6334654316626881,
+  "heldout_loo_brier": 0.2205921211242944,
+  "uniform_minus_loo_mean_logloss": 0.05968174889725955,
+  "uniform_minus_loo_mean_brier": 0.029407878875705774,
+  "paired_bootstrap_95": {
+    "logloss": [
+      0.015134327049981215,
+      0.10422917074453737
+    ],
+    "brier": [
+      0.008047271428541149,
+      0.05076848632286998
+    ]
+  },
+  "bootstrap_seed": 20261016,
+  "bootstrap_draws": 20000,
+  "descriptive_groups": {
+    "high|low": {
+      "n": 121,
+      "copied": 46
+    },
+    "low|high": {
+      "n": 105,
+      "copied": 27
+    }
+  },
+  "inference_limits": [
+    "Retrospective analysis, comparisons proposed after Phase B and C findings.",
+    "Uniform binary forecast is a source-based analytic implication under two-action normalized transition conditions; complete original model fitting and runtime with raw participant files not performed.",
+    "Comparator pools across persons and uses test person's first-stake structure only for descriptive tabulation; no cognitive mechanism identification.",
+    "Paired bootstrap freezes fitted leave-person-out probability; does not refit for every bootstrap resample.",
+    "PESEN v0.1 FROZEN"
+  ]
+}
