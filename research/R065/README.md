@@ -1,6 +1,6 @@
 # R065 关键试次测量审计
 
-日期：2026-10-15。阶段：**Phase A 至 Phase E 的限定范围研究已归档；R065 完整研究仍 OPEN**。
+日期：2026-10-15。阶段：**Phase A 至 Phase F 的限定范围研究已归档；R065 完整研究仍 OPEN**。
 
 本阶段完成对 Levy 等人 2025 年公开处理后数据的 Git blob 字节哈希重算，在 GitHub 连接器执行环境内进行 16,103 条真实记录的关键试次审计。原始固定文件 Git blob `01bf211468abe093618dfa5e5c39e883230c9c03`（4,427,523 字节）。源数据未在本仓库重新分发。
 
@@ -93,3 +93,20 @@ PESEN v0.1 保持 FROZEN。
 226 人中的 73 人在 day=89 选择作者定义的 `copied` 行动。公开七模型源代码在该日预先重置，任务所给正规化转移分布与等权代币先验意味着两条动作的初始预测均为 0.5。基于各被试以外其余 225 人的 day=89 结果、固定 Beta(4,4) 的经验概率估计，平均 Log loss 为 0.63346543，相比等概率 0.69314718 降低 0.05968175；个人级配对 Bootstrap 95% 区间为 [0.01513433,0.10422917]。这是后验选择的结构性预测上界比较，**不能解释为重置代码修复后原作者七模型实际获得此种提升**。
 
 本地 Phase E 源代码与测试文件已运行并逐字节比较 Git blob；8 项 synthetic 测试均 PASS。GitHub Actions 已增加 Phase E 固定来源重算，但远端作业是否成功仍未核实。完整研究门仍 OPEN，PESEN v0.1 冻结。
+
+## Phase F（2026-10-16）：独立汇总量算术复现
+
+在不访问第三方个人行的前提下，仅根据 R065 Phase E 已记录的 226 位参与者、day89 模仿次数 73，运用 Beta(4,4) 与留整人排除的固定定义，重建 uniform − 留人概率基线的对数损失差 +0.05968174889725945，以及严格二项分布的条件性 95% 区间 [0.015134327049981177, 0.10422917074453769]。这一确定性区间与 Phase E 的有限次模拟区间端点一致。
+
+* [第六阶段审计报告](R065_PHASE_F_AGGREGATE_CERTIFICATE_AUDIT.md)
+* [可直接运行的闭式计算与精确二项分布程序](r065_phase_f_aggregate_certificate.py)
+* [本地运行 9/9 通过的独立数值测试](test_r065_phase_f_aggregate_certificate.py)
+* [与本地程序字节完全一致的结果 JSON](R065_PHASE_F_AGGREGATE_RESULTS.json)
+
+```bash
+cd research/R065
+python3 -m unittest -v test_r065_phase_f_aggregate_certificate.py
+python3 r065_phase_f_aggregate_certificate.py --n 226 --copied 73 --pseudo 4 --output R065_PHASE_F_AGGREGATE_RESULTS.json
+```
+
+GitHub Actions 现在同时包含不依赖作者原始 CSV 的 `aggregate-certificate` 独立作业与依赖固定来源文件的原复算作业。**配置已提交，工作流的真实作业执行结果仍没有得到核实。** 本阶段仅独立验证“给定汇总数值→统计计算”，原始来源重新验证与七模型原始重拟合均未闭合。
