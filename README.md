@@ -16,7 +16,7 @@
 
 从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
 
-最新增量主控台 [v4.7](docs/RESEARCH_CONTROL_v4.7_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+最新增量主控台 [v4.8](docs/RESEARCH_CONTROL_v4.8_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
 
 ## 已核验的重点研究结果
 
@@ -101,3 +101,11 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 进一步确认：在每个固定实验块中，收益标签与先高/先低序列组完全对应，故 M3 的交叉预测不能单独识别收益效应。参见 [Phase G 研究审计](research/R065/R065_PHASE_G_AUDIT.md)、[匿名聚合数据](research/R065/R065_PHASE_G_CELLS.json)和[本地重算结果](research/R065/R065_PHASE_G_RESULTS.json)。
 
 最新控制台见 [v4.7](docs/RESEARCH_CONTROL_v4.7_2026-10-16.md)。GitHub Actions 离线作业已添加，但成功执行尚无可核实证据。R065 完整研究门保持 OPEN；PESEN v0.1 冻结。
+
+## R065 第八阶段：固定原作者逐人试次上的 Model 3 敏感性
+
+在作者原始逐人 CSV 的十份便利样本、共 542 次正式 `play` 选择中，固定 Model 3 与 β=5，只替换状态重置时间轴：原作者公开日期方案平均 NLL **1.417681470**，按实际实验区块边界重置的平均 NLL **1.529461786**。有 21 次自主选择预测概率受到影响。样本非随机，未重新拟合参数；这一有限结果说明“修正不对齐日期”不会自动改善具体模型的预测表现。
+
+查看 [Phase H 研究报告](research/R065/R065_PHASE_H_AUDIT.md)、[聚合结果与来源 SHA](research/R065/R065_PHASE_H_RESULTS.json)、[Python 程序](research/R065/r065_phase_h_model3_reset.py)和[12 项实际通过的单元测试](research/R065/test_r065_phase_h_model3_reset.py)。原作者原始文件在 GitHub 连接器端实读，未在本仓库重新分发；本地 Python 使用完整原始样本的重放仍未执行，原作者七模型的 native 拟合亦未执行。工作流已增加独立来源重放配置，但成功执行记录尚无核验。
+
+主控台现为 [v4.8](docs/RESEARCH_CONTROL_v4.8_2026-10-16.md)。R065 全研究门仍 OPEN；PESEN v0.1 保持 FROZEN。
