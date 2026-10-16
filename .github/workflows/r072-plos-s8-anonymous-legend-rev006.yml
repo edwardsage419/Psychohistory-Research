@@ -1,0 +1,53 @@
+name: R072 PLOS source original anonymous codebook footer gate rev006
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_plos_s8_legend_rev006.py'
+      - 'research/R072/test_r072_plos_s8_legend_rev006.py'
+      - '.github/workflows/r072-plos-s8-anonymous-legend-rev006.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-footer-privacy-precheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify footer legend keyword only, never real member data
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_legend_rev006
+
+  actual-publisher-S8-footer-codebook-candidate:
+    needs: synthetic-footer-privacy-precheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: SHA-pin genuine source and extract only permitted footer semantic booleans
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_rev006
+          python research/R072/r072_plos_s8_legend_rev006.py \
+            --output /tmp/r072_rev006/anonymous_footer_legend_candidate.json
+      - name: Archive only safe footer keyword presence or failure receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-original-PLOS-S8-footer-legend-candidate
+          path: /tmp/r072_rev006/anonymous_footer_legend_candidate.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Erase temporary report
+        if: always()
+        run: rm -rf /tmp/r072_rev006
