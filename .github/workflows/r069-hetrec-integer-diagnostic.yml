@@ -1,0 +1,39 @@
+name: R069 diagnose real HetRec field encoding without changing protocol
+
+on:
+  push:
+    paths:
+      - 'research/R069/r069_hetrec_nonpositive_diagnostic.py'
+      - '.github/workflows/r069-hetrec-integer-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  true-source-aggregate-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Diagnose original nonpositive integer fields only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r069_diagnostic
+          python research/R069/r069_hetrec_nonpositive_diagnostic.py \
+            --output /tmp/r069_diagnostic/no_identifying_data.json
+      - name: Retain only source SHA and per-field aggregate anomaly counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r069-hetrec-original-zip-integer-fail-closed-diagnostic
+          path: /tmp/r069_diagnostic/no_identifying_data.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase diagnostic temporary records
+        if: always()
+        run: rm -rf /tmp/r069_diagnostic
