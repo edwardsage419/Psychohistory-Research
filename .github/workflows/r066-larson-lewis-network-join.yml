@@ -1,0 +1,71 @@
+name: R066 real network nominations and attitude-wave join audit
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_larson_lewis_join_gate.py'
+      - 'research/R066/test_r066_larson_lewis_join_gate.py'
+      - '.github/workflows/r066-larson-lewis-network-join.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  join-contract-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test within-village join safety, missing outcomes and blocked identities
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_larson_lewis_join_gate
+
+  real-respondent-structure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Load original pinned three V1 source files temporarily in memory
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r066_join_sources /tmp/r066_join_output
+          python - <<'PY'
+          from urllib import request
+          from pathlib import Path
+          from research.R066.r066_larson_lewis_public_schema import FILES
+          dest=Path("/tmp/r066_join_sources")
+          for name,file_id,_ in FILES.values():
+              req=request.Request("https://dataverse.harvard.edu/api/access/datafile/"+str(file_id),
+                                  headers={"User-Agent":"R066-frozen-network-join-audit/1.0"})
+              with request.urlopen(req,timeout=30) as resp:
+                  raw=resp.read(10_000_001)
+              if len(raw)>10_000_000: raise ValueError("oversized source")
+              (dest/name).write_bytes(raw)
+          PY
+      - name: Compute only aggregate village ego/alter linkage and wave completeness
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R066/r066_larson_lewis_join_gate.py \
+            --source-dir /tmp/r066_join_sources \
+            --output /tmp/r066_join_output/anonymous_join.json
+      - name: Upload no identifier/edge artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-larson-lewis-anonymous-real-network-join-audit
+          path: /tmp/r066_join_output/anonymous_join.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete raw respondent sources and computed temporary data
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r066_join_sources /tmp/r066_join_output
