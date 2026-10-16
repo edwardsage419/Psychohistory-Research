@@ -1,0 +1,67 @@
+name: R073 permanently archive pinned real-human 12-session memory LOSO E2 aggregate
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r073-archive-real-human-memory-e2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reproducible-real-human-signed-source-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Repeat all 23 fabricated-data time-order and train/test partition controls
+        working-directory: research/R073
+        run: python -m unittest -v test_r073_human_ipd_memory_loso
+      - name: Redownload original author submission CSV, never put human rows in Git
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r073_private_source
+          python - <<'PY'
+          from urllib import request
+          from pathlib import Path
+          src="https://raw.githubusercontent.com/eladiomontero/PairwiseStrategies/4743f74d8a03a031b8f70aff64956f8ad5155182"
+          for name in ("fix.csv","rand.csv"):
+              with request.urlopen(request.Request(src+"/"+name,headers={"User-Agent":"R073-reproducible-archive/1.0"}),timeout=40) as r:
+                  blob=r.read(2_000_001)
+              if len(blob)>2_000_000:raise ValueError("human original file too large")
+              (Path("/tmp/r073_private_source")/name).write_bytes(blob)
+          PY
+      - name: Replay entire 188-person 18424-target heldout comparison and check byte-identical result checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R073/r073_human_ipd_memory_loso.py \
+            --source-dir /tmp/r073_private_source \
+            --output /tmp/r073_real_anonymous_result.json
+          echo '6d9f6dc6c7a5f7d29aaf81b36c8d53cb88957a00c86c827019073b319936607a  /tmp/r073_real_anonymous_result.json' | sha256sum --check --status
+      - name: Commit ONLY byte-reproduced session-aggregate real human scores and theory status
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R073/R073_E2_HUMAN_12_SESSION_MEMORY_LOSO_RESULTS.json
+          if [ -f "$dest" ]; then
+            cmp -s /tmp/r073_real_anonymous_result.json "$dest"
+            echo "Original anonymous result already archived"
+            exit 0
+          fi
+          cp /tmp/r073_real_anonymous_result.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R073): archive SHA-confirmed true IPD 12-session heldout memory Brier scores, no human rows"
+          git push origin HEAD:main
+      - name: Erase temporary raw person-level source and replayed metrics
+        if: always()
+        run: rm -rf /tmp/r073_private_source /tmp/r073_real_anonymous_result.json
