@@ -1,0 +1,317 @@
+{
+  "research_id": "R070",
+  "date": "2026-10-16",
+  "stage": "E1_MOBILITY_DISTANCE_RESTRICTION_FULL_PAIRED_ENUMERATION",
+  "status": "E1_MOBILITY_DISTANCE_COMPETITION_PASS",
+  "protocol": "protocols/R070_E1_MOVEMENT_DISTANCE_COMPETITOR_2026-10-16.md",
+  "protocol_frozen_commit": "957579cf8cc5d6774e38625f956d84a5079b25c3",
+  "source_model_sha_git_blob": "b18d07d7fd489033c936dfe553149f2e3dbf6ff6",
+  "source_exhaustive_sha_git_blob": "de4da4671aada3c950fa6193163fbe306627b835",
+  "experiment": {
+    "grid": "3x3",
+    "two_abstract_agent_types": {
+      "A": 2,
+      "B": 2
+    },
+    "vacancies": 5,
+    "initial_boards": 756,
+    "tau": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "policies": [
+      "GLOBAL_ROW_MAJOR",
+      "RADIUS_1",
+      "RADIUS_2",
+      "NEAREST_SATISFICING"
+    ],
+    "full_paired_experimental_trajectory_cases": 15120,
+    "max_moves": 40,
+    "source_unrestricted_full_trace_exact_parity": true,
+    "nearest_policy_not_a_radius_cap": true
+  },
+  "results_by_tolerance": {
+    "0.0": {
+      "GLOBAL_ROW_MAJOR": {
+        "stable_all_satisfied": 756,
+        "stalled_first_unhappy": 0,
+        "of_stalled_first_another_unhappy_has_feasible_move": 0,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      },
+      "RADIUS_1": {
+        "stable_all_satisfied": 756,
+        "stalled_first_unhappy": 0,
+        "of_stalled_first_another_unhappy_has_feasible_move": 0,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      },
+      "RADIUS_2": {
+        "stable_all_satisfied": 756,
+        "stalled_first_unhappy": 0,
+        "of_stalled_first_another_unhappy_has_feasible_move": 0,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      },
+      "NEAREST_SATISFICING": {
+        "stable_all_satisfied": 756,
+        "stalled_first_unhappy": 0,
+        "of_stalled_first_another_unhappy_has_feasible_move": 0,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      }
+    },
+    "0.25": {
+      "GLOBAL_ROW_MAJOR": {
+        "stable_all_satisfied": 756,
+        "stalled_first_unhappy": 0,
+        "of_stalled_first_another_unhappy_has_feasible_move": 0,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      },
+      "RADIUS_1": {
+        "stable_all_satisfied": 496,
+        "stalled_first_unhappy": 260,
+        "of_stalled_first_another_unhappy_has_feasible_move": 120,
+        "global_stable_this_policy_stalled": 260,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 212,
+        "lower_final_heterotypic_cardinal_contact_than_global": 16
+      },
+      "RADIUS_2": {
+        "stable_all_satisfied": 720,
+        "stalled_first_unhappy": 36,
+        "of_stalled_first_another_unhappy_has_feasible_move": 0,
+        "global_stable_this_policy_stalled": 36,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 58,
+        "lower_final_heterotypic_cardinal_contact_than_global": 16
+      },
+      "NEAREST_SATISFICING": {
+        "stable_all_satisfied": 756,
+        "stalled_first_unhappy": 0,
+        "of_stalled_first_another_unhappy_has_feasible_move": 0,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 104,
+        "lower_final_heterotypic_cardinal_contact_than_global": 22
+      }
+    },
+    "0.5": {
+      "GLOBAL_ROW_MAJOR": {
+        "stable_all_satisfied": 642,
+        "stalled_first_unhappy": 114,
+        "of_stalled_first_another_unhappy_has_feasible_move": 114,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      },
+      "RADIUS_1": {
+        "stable_all_satisfied": 294,
+        "stalled_first_unhappy": 462,
+        "of_stalled_first_another_unhappy_has_feasible_move": 144,
+        "global_stable_this_policy_stalled": 348,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 300,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      },
+      "RADIUS_2": {
+        "stable_all_satisfied": 528,
+        "stalled_first_unhappy": 228,
+        "of_stalled_first_another_unhappy_has_feasible_move": 176,
+        "global_stable_this_policy_stalled": 118,
+        "global_stalled_this_policy_stable": 4,
+        "higher_final_heterotypic_cardinal_contact_than_global": 106,
+        "lower_final_heterotypic_cardinal_contact_than_global": 4
+      },
+      "NEAREST_SATISFICING": {
+        "stable_all_satisfied": 646,
+        "stalled_first_unhappy": 110,
+        "of_stalled_first_another_unhappy_has_feasible_move": 110,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 4,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 4
+      }
+    },
+    "0.75": {
+      "GLOBAL_ROW_MAJOR": {
+        "stable_all_satisfied": 210,
+        "stalled_first_unhappy": 546,
+        "of_stalled_first_another_unhappy_has_feasible_move": 428,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      },
+      "RADIUS_1": {
+        "stable_all_satisfied": 90,
+        "stalled_first_unhappy": 666,
+        "of_stalled_first_another_unhappy_has_feasible_move": 160,
+        "global_stable_this_policy_stalled": 120,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 130,
+        "lower_final_heterotypic_cardinal_contact_than_global": 2
+      },
+      "RADIUS_2": {
+        "stable_all_satisfied": 170,
+        "stalled_first_unhappy": 586,
+        "of_stalled_first_another_unhappy_has_feasible_move": 322,
+        "global_stable_this_policy_stalled": 40,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 48,
+        "lower_final_heterotypic_cardinal_contact_than_global": 2
+      },
+      "NEAREST_SATISFICING": {
+        "stable_all_satisfied": 210,
+        "stalled_first_unhappy": 546,
+        "of_stalled_first_another_unhappy_has_feasible_move": 428,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      }
+    },
+    "1.0": {
+      "GLOBAL_ROW_MAJOR": {
+        "stable_all_satisfied": 210,
+        "stalled_first_unhappy": 546,
+        "of_stalled_first_another_unhappy_has_feasible_move": 428,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      },
+      "RADIUS_1": {
+        "stable_all_satisfied": 90,
+        "stalled_first_unhappy": 666,
+        "of_stalled_first_another_unhappy_has_feasible_move": 160,
+        "global_stable_this_policy_stalled": 120,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 130,
+        "lower_final_heterotypic_cardinal_contact_than_global": 2
+      },
+      "RADIUS_2": {
+        "stable_all_satisfied": 170,
+        "stalled_first_unhappy": 586,
+        "of_stalled_first_another_unhappy_has_feasible_move": 322,
+        "global_stable_this_policy_stalled": 40,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 48,
+        "lower_final_heterotypic_cardinal_contact_than_global": 2
+      },
+      "NEAREST_SATISFICING": {
+        "stable_all_satisfied": 210,
+        "stalled_first_unhappy": 546,
+        "of_stalled_first_another_unhappy_has_feasible_move": 428,
+        "global_stable_this_policy_stalled": 0,
+        "global_stalled_this_policy_stable": 0,
+        "higher_final_heterotypic_cardinal_contact_than_global": 0,
+        "lower_final_heterotypic_cardinal_contact_than_global": 0
+      }
+    }
+  },
+  "first_lexicographic_witnesses": {
+    "global_stall_but_other_feasible": {
+      "tau": 0.5,
+      "board": [
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "global_moves": 0,
+      "global_result": "STALLED_FIRST_AGENT",
+      "some_other_agent_can_move": true
+    },
+    "nearest_rescue": {
+      "tau": 0.5,
+      "board": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "global_moves": 1,
+      "global_result": "STALLED_FIRST_AGENT",
+      "nearest_moves": 3,
+      "nearest_result": "STABLE_ALL_SATISFIED"
+    },
+    "radius_one_blocks_global": {
+      "tau": 0.25,
+      "board": [
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "global_moves": 1,
+      "radius_one_moves": 0
+    }
+  },
+  "reported_full_artifact": {
+    "workflow_run_id": 38883813870,
+    "workflow_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38883813870",
+    "workflow_success": true,
+    "original_synthetic_tests": 25,
+    "artifact_id": 12038990926,
+    "actual_full_json_sha256": "b7db982fe25755296fd36ad4838b60add8dd8efa12df1cd7fe376eb8a2be0902",
+    "full_json_bytes": 52180
+  },
+  "interpretation": {
+    "hard_reachability_changes_termination_in_toy_model": true,
+    "selection_order_changes_termination_in_toy_model": true,
+    "previous_stall_meant_chosen_first_unhappy_cannot_move_not_global_infeasibility": true,
+    "not_a_replication_of_gambetta_gravity_model": true,
+    "human_e2": "BLOCKED_EVENT_LEVEL_SOURCE_AND_RULE_PARITY",
+    "independent_E3": "OPEN"
+  },
+  "pesen_v01": "FROZEN"
+}
