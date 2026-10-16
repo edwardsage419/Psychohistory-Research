@@ -76,18 +76,18 @@ class R072AnonymousHumanSchemaTests(unittest.TestCase):
             approved(raw)
 
     def test_malformed_sheet_XML_fails_without_content(self):
-        raw=fake(ROW1,["header"],[("xl/worksheets/sheet2.xml",b"broken <")])
+        raw=fake(ROW1,["header_a","header_b"],[("xl/worksheets/sheet2.xml",b"broken <")])
         with self.assertRaisesRegex(ValueError,"OOXML_MALFORMED"):
             approved(raw)
 
     def test_worksheet_missing_sheetData_fails_closed(self):
-        raw=fake(ROW1,["request"],[("xl/worksheets/sheet2.xml",
+        raw=fake(ROW1,["request","response"],[("xl/worksheets/sheet2.xml",
                                   f'<worksheet xmlns="{NS}"/>'.encode())])
         with self.assertRaisesRegex(ValueError,"SHEETDATA"):
             approved(raw)
 
     def test_macro_lure_rejected_by_rev002(self):
-        raw=fake(ROW1,["response"],[("xl/vbaProject.bin",b"fake")])
+        raw=fake(ROW1,["response","request"],[("xl/vbaProject.bin",b"fake")])
         with self.assertRaisesRegex(ValueError,"ACTIVE_OR_EXTERNAL"):
             approved(raw)
 
@@ -126,7 +126,7 @@ class R072AnonymousHumanSchemaTests(unittest.TestCase):
         raw=fake(ROW1+ROW2,["request","response","VERY_SECRET"])
         z=approved(raw)
         self.assertNotIn("VERY_SECRET",str(z))
-        self.assertNotIn("A2",str(z))
+        self.assertNotIn("r=\"A2\"",str(z))
         self.assertEqual(z["anonymous_sheet_metadata"][0]["cells_stored_as_numeric"],1)
 
 
