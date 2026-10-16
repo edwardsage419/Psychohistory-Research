@@ -1,0 +1,187 @@
+{
+  "study": "R070",
+  "date": "2026-10-16",
+  "stage": "E1_COMPLETE_3X3_TWOTYPE_STATE_SPACE_ENUMERATION",
+  "status": "E1_EXHAUSTIVE_SMALL_BOARD_PASS",
+  "protocol": "protocols/R070_E1_EXHAUSTIVE_SMALL_BOARD_ROBUSTNESS_2026-10-16.md",
+  "protocol_pre_execution_commit": "1f01324c45cdda37cd0c6f0adf763550f4db9fc1",
+  "model": "research/R070/r070_schelling_spatial_migration.py",
+  "enumerator": "research/R070/r070_exhaustive_3x3.py",
+  "population": {
+    "board_dimension": [
+      3,
+      3
+    ],
+    "A_agents": 2,
+    "B_agents": 2,
+    "empty": 5,
+    "distinct_initial_boards": 756,
+    "tolerances": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "initial_board_and_threshold_pairs": 3780,
+    "max_moves_per_pair": 40
+  },
+  "by_tolerance": {
+    "0.00": {
+      "cases": 756,
+      "stable_all_satisfied": 756,
+      "stalled_unsatisfied": 0,
+      "maximum_step_budget": 0,
+      "total_moves": 0,
+      "mean_moves": 0,
+      "max_moves": 0,
+      "final_heterotypic_cardinal_share_increased_boards": 0,
+      "final_heterotypic_cardinal_share_decreased_boards": 0,
+      "single_moves_with_heterotypic_contact_share_increase": 0,
+      "mean_initial_heterotypic_cardinal_share_defined": 0.6666666666666671,
+      "mean_final_heterotypic_cardinal_share_defined": 0.6666666666666671
+    },
+    "0.25": {
+      "cases": 756,
+      "stable_all_satisfied": 756,
+      "stalled_unsatisfied": 0,
+      "maximum_step_budget": 0,
+      "total_moves": 638,
+      "mean_moves": 0.843915343915344,
+      "max_moves": 2,
+      "final_heterotypic_cardinal_share_increased_boards": 24,
+      "final_heterotypic_cardinal_share_decreased_boards": 272,
+      "single_moves_with_heterotypic_contact_share_increase": 30,
+      "mean_initial_heterotypic_cardinal_share_defined": 0.6666666666666671,
+      "mean_final_heterotypic_cardinal_share_defined": 0.4954832881662146
+    },
+    "0.50": {
+      "cases": 756,
+      "stable_all_satisfied": 642,
+      "stalled_unsatisfied": 114,
+      "maximum_step_budget": 0,
+      "total_moves": 976,
+      "mean_moves": 1.291005291005291,
+      "max_moves": 4,
+      "final_heterotypic_cardinal_share_increased_boards": 2,
+      "final_heterotypic_cardinal_share_decreased_boards": 500,
+      "single_moves_with_heterotypic_contact_share_increase": 22,
+      "mean_initial_heterotypic_cardinal_share_defined": 0.6666666666666671,
+      "mean_final_heterotypic_cardinal_share_defined": 0.13379629629629633
+    },
+    "0.75": {
+      "cases": 756,
+      "stable_all_satisfied": 210,
+      "stalled_unsatisfied": 546,
+      "maximum_step_budget": 0,
+      "total_moves": 318,
+      "mean_moves": 0.42063492063492064,
+      "max_moves": 2,
+      "final_heterotypic_cardinal_share_increased_boards": 18,
+      "final_heterotypic_cardinal_share_decreased_boards": 178,
+      "single_moves_with_heterotypic_contact_share_increase": 24,
+      "mean_initial_heterotypic_cardinal_share_defined": 0.6666666666666671,
+      "mean_final_heterotypic_cardinal_share_defined": 0.519337016574586
+    },
+    "1.00": {
+      "cases": 756,
+      "stable_all_satisfied": 210,
+      "stalled_unsatisfied": 546,
+      "maximum_step_budget": 0,
+      "total_moves": 318,
+      "mean_moves": 0.42063492063492064,
+      "max_moves": 2,
+      "final_heterotypic_cardinal_share_increased_boards": 18,
+      "final_heterotypic_cardinal_share_decreased_boards": 178,
+      "single_moves_with_heterotypic_contact_share_increase": 24,
+      "mean_initial_heterotypic_cardinal_share_defined": 0.6666666666666671,
+      "mean_final_heterotypic_cardinal_share_defined": 0.519337016574586
+    }
+  },
+  "fixed_math_witnesses": {
+    "tau025_final_contact_increase": {
+      "initial_board": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "initial_cardinal_heterotypic_share": 0,
+      "final_cardinal_heterotypic_share": 0.3333333333333333,
+      "moves": 1
+    },
+    "tau05_no_satisfying_vacancy": {
+      "initial_board": [
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "moves": 0,
+      "remaining_unhappy_agents": 3
+    },
+    "tau05_final_contact_increase": {
+      "initial_board": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "initial_cardinal_heterotypic_share": 0.6666666666666666,
+      "final_cardinal_heterotypic_share": 1,
+      "moves": 1
+    }
+  },
+  "workflow": {
+    "run_id": 38881863192,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38881863192",
+    "conclusion": "success",
+    "synthetic_tests": 16,
+    "full_enumeration_artifact_id": 12037587660,
+    "full_generated_aggregate_JSON_sha256": "13104263bc8fad5552cf3c245f43149a906ce0ab43b0dd7fdab19c9b6dbb73e9",
+    "full_aggregate_reproducible_with_command": "python research/R070/r070_exhaustive_3x3.py --output /tmp/exhaustive_3780.json"
+  },
+  "scientific_limits": {
+    "deterministic_row_major_order": true,
+    "not_original_1971_exact_full_algorithms": true,
+    "macro_metric": "occupied cardinal heterotypic edges / all occupied cardinal edges, undefined if none",
+    "full_human_experimental_data_reproduced": false,
+    "true_residential_causal_factors": "NOT_ESTABLISHED",
+    "real_E2": "OPEN",
+    "external_E3": "OPEN"
+  },
+  "pesen_v01": "FROZEN"
+}
