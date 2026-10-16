@@ -1,0 +1,66 @@
+name: R068 actual human four-option social frequency 38-room heldout
+
+on:
+  push:
+    paths:
+      - 'research/R068/r068_frequency_room_loro.py'
+      - 'research/R068/test_r068_frequency_room_loro.py'
+      - '.github/workflows/r068-fourchoice-frequency-room-heldout.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-room-mechanism-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate frequency exponents, prior choice and no heldout label leakage
+        working-directory: research/R068
+        run: python -m unittest -v test_r068_frequency_room_loro
+
+  original-human-room-heldout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve only original pinned human LFS experiment source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r068_loro_orig /tmp/r068_loro_out
+          cd /tmp/r068_loro_orig
+          git init -q
+          git remote add origin https://github.com/WataruToyokawa/ToyokawaGaissmaier2021.git
+          git fetch -q --depth=1 origin 6fca0b26c33af3a5b3c415719fa3df0dced15149
+          GIT_LFS_SKIP_SMUDGE=1 git checkout -q --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "6fca0b26c33af3a5b3c415719fa3df0dced15149"
+          git lfs install --local
+          git lfs pull --include="experimentalAnalysis/allBehaviour1022_group.csv,experimentalAnalysis/allBehaviour1022_indiv.csv" --exclude=""
+      - name: Compare 4-option real frequency exponent with inertia across 38 heldout rooms
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R068/r068_frequency_room_loro.py \
+            --source-dir /tmp/r068_loro_orig/experimentalAnalysis \
+            --output /tmp/r068_loro_out/anonymous_heldout_score.json
+      - name: Archive only full-study anonymous predictive losses
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r068-real-38room-4option-frequency-vs-inertia-nll
+          path: /tmp/r068_loro_out/anonymous_heldout_score.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete all participants, trial labels, group IDs and LFS source
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r068_loro_orig /tmp/r068_loro_out
