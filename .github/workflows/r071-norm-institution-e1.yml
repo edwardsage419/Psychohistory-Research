@@ -1,0 +1,41 @@
+name: R071 conditionally learned norm and costly public goods sanction E1
+
+on:
+  push:
+    paths:
+      - 'research/R071/r071_norm_cooperation_punishment.py'
+      - 'research/R071/test_r071_norm_cooperation_punishment.py'
+      - '.github/workflows/r071-norm-institution-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pure-math-public-goods-accounting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 28 synthetic payoff accounting, lag, sanctions, institutional costs and source-boundary tests
+        working-directory: research/R071
+        run: python -m unittest -v test_r071_norm_cooperation_punishment
+      - name: Execute the complete frozen 56 group compositions x two thresholds x two initial norms x three regimes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r071_aggregates
+          python research/R071/r071_norm_cooperation_punishment.py \
+            --output /tmp/r071_aggregates/complete_672_abstract_cases.json
+      - name: Archive purely synthetic aggregate and transparent mathematical witnesses
+        uses: actions/upload-artifact@v4
+        with:
+          name: r071-norms-672-compositions-8-rounds-e1
+          path: /tmp/r071_aggregates/complete_672_abstract_cases.json
+          retention-days: 30
+      - name: Erase ephemeral E1 outputs
+        if: always()
+        run: rm -rf /tmp/r071_aggregates
