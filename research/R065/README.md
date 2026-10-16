@@ -1,6 +1,6 @@
 # R065 关键试次测量审计
 
-日期：2026-10-15。阶段：**Phase A 至 Phase K 的限定范围研究已归档；R065 完整研究仍 OPEN**。
+日期：2026-10-15。阶段：**Phase A 至 Phase L 的限定范围研究已归档；R065 完整研究仍 OPEN**。
 
 本阶段完成对 Levy 等人 2025 年公开处理后数据的 Git blob 字节哈希重算，在 GitHub 连接器执行环境内进行 16,103 条真实记录的关键试次审计。原始固定文件 Git blob `01bf211468abe093618dfa5e5c39e883230c9c03`（4,427,523 字节）。源数据未在本仓库重新分发。
 
@@ -175,3 +175,17 @@ GitHub Actions 另配置不依赖原始个人行的 Phase G 汇总复算作业�
 * [真正从原作者数据和源码下载重放的 CI](../../.github/workflows/r065-phase-k.yml)
 
 **全部七模型的同等条件参数重拟合、层级 EM/iBIC 与独立预测仍 OPEN；PESEN v0.1 仍 FROZEN。** 此节实际取得的 CI 证据也更新了此前 Phase J 未验证的远端状态：Phase J [run 38840809171](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38840809171) 中两项作业都已成功。
+
+
+## Phase L（2026-10-16）：原作者七模型同预算两折真实数据预测
+
+* [先于结果独立提交的 Phase L 研究协议](../../protocols/R065_PHASE_L_SEVEN_NATIVE_HELDOUT_2026-10-16.md)
+* [七模型 24 人真实留整人评分及证据限制报告](R065_PHASE_L_NATIVE_HELDOUT_AUDIT.md)
+* [七模型、两折完整匿名聚合结果与远端作业身份](R065_PHASE_L_NATIVE_HELDOUT_RESULTS.json)
+* [严格来源核验、七模型原生共同优化及两折留出实现](r065_phase_l_native_heldout.py)
+* [12 项排除泄漏、起点、收敛、全集拒绝测试](test_r065_phase_l_native_heldout.py)
+* [GitHub Actions 真实八作业全通过](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38843245182)
+
+固定 Phase J 24 人及作者原始模型时钟，七模型分别以同一优化协议拟合，分层两折留出每折 12 人，合计 1,327 次选择。所有模型两折均达到经过检查的收敛状态。留出 NLL/选择：M1=0.652143151、M2=0.654715246、M3=0.677494426、M4=0.654015923、M5=0.653463996、M6=0.648259169、M7=0.650629545。**M6 只是此限定样本与本次既定方法下的描述性最低损失模型**；尚无独立新队列验证、参与者级差值置信区间、全 226 人拟合或原作者层级 EM/iBIC 重算。不能将此项记录为整个 R065 研究的完成。
+
+**R065_PHASE_L_NATIVE_SEVEN_2FOLD=PASS_BOUNDED；R065_FULL_RESEARCH_GATE=OPEN；PESEN_v0.1=FROZEN。**
