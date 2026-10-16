@@ -1,0 +1,84 @@
+{
+  "research_id": "R072",
+  "date": "2026-10-16",
+  "final_status": "CLOSED_BOUNDED",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "bounded_consolidation": "RETROSPECTIVE_SCOPE_DECISION",
+  "final_report": "research/R072/R072_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md",
+  "evidence_report": "research/R072/R072_E1_REPUTATION_SIGNAL_FULL_ENUMERATION_AUDIT.md",
+  "source_boundary": "research/R072/R072_E2_HUMAN_REPUTATION_EVIDENCE_SCOPE.md",
+  "open_gates": "research/R072/R072_POST_CLOSURE_OPEN_GATES.md",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "gate_scope_notes": {
+    "A01": "Only pre-frozen E1 mathematical models plus separately pre-frozen failed real-source attempt.",
+    "A02": "E1 original theoretical references verified. Human PLOS source byte original NOT recovered.",
+    "A03": "30 E1 tests and 11664 scenarios, 279936 events real CI; 13 provenance tests pass but real source job FAIL.",
+    "A04": "Average masking 912 distinct paired Image Scoring outcomes; real-source failure retained.",
+    "A05": "No human experiment replicated, causal reputational norms and ESS not observed.",
+    "A06": "Permanent source SHA-verified JSON, all programs, tests, source failure and open blockers."
+  },
+  "E1": {
+    "scientific_status": "PASS_COMPLETE_SYNTHETIC_MATHEMATICAL_MECHANISM",
+    "freeze_commit": "ee2b2145caa73b1273e1c07b96761b4f0e9fe2f4",
+    "executed_CI_run": 38920131192,
+    "passed_unit_tests": 30,
+    "source_jar_archive_CI_run": 38920307122,
+    "full_JSON": "research/R072/R072_E1_FULL_11664_PUBLIC_REPUTATION_RESULTS.json",
+    "SHA256": "6137894586488cabcc684ae350e692ccd0c6c2a731d6e0787153197de3a8868a",
+    "bytes": 45784,
+    "cases": 11664,
+    "decisions": 279936,
+    "model_cells": 9,
+    "verified_help_rate": {
+      "IMAGE_SCORING": {
+        "VERIFIED": 0.5,
+        "FLIP_EVERY_FOURTH": 0.5,
+        "NO_OBSERVATION": 0.5
+      },
+      "SIMPLE_STANDING": {
+        "VERIFIED": 0.5684156378600823,
+        "FLIP_EVERY_FOURTH": 0.5704732510288066,
+        "NO_OBSERVATION": 0.5
+      },
+      "STERN_JUDGING": {
+        "VERIFIED": 0.5416666666666666,
+        "FLIP_EVERY_FOURTH": 0.5277777777777778,
+        "NO_OBSERVATION": 0.5
+      }
+    },
+    "verified_paired_cases": {
+      "image_verified_vs_flip_differ": 912,
+      "image_verified_vs_no_observation_differ": 828,
+      "image_verified_vs_simple_standing_verified_differ": 624,
+      "all_norms_differ_under_no_observation": 0
+    },
+    "these_are_not_independent_human_samples": true,
+    "no_evolutionary_ESS_fitted": true,
+    "predefined_synthetic_deterministic_errors_every_fourth": true
+  },
+  "E2_PLOS_field": {
+    "status": "SOURCE_UNRESOLVED",
+    "paper_DOI": "10.1371/journal.pone.0152076",
+    "supplement_DOI": "10.1371/journal.pone.0152076.s008",
+    "true_original_source_attempt_CI_run": 38921163855,
+    "workflow_result": "failure",
+    "privacy_synthetic_tests_passed": 13,
+    "original_spreadsheet_SHA256": null,
+    "original_spreadsheet_sheet_schema": null,
+    "real_subject_event_rows_read": false,
+    "machine_receipt": "research/R072/R072_E2_PLOS_FIELD_S8_SOURCE_ATTEMPT_RESULTS.json",
+    "human_model_fit": "BLOCKED_MODEL_AND_MEASUREMENT_CONTRACT"
+  },
+  "E3": {
+    "status": "OPEN"
+  },
+  "PESEN_v01": "FROZEN",
+  "next_priority": "Recover one ethically usable real human cooperation/reputation event dataset and predefine exact hypothesis-congruent model before expanding synthetic models"
+}
