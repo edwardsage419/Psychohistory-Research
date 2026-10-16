@@ -1,0 +1,69 @@
+{
+  "research_id": "R070",
+  "date": "2026-10-16",
+  "final_status": "CLOSED_BOUNDED",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "retrospective_scope_decision": true,
+  "final_report": "research/R070/R070_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md",
+  "backlog": "research/R070/R070_POST_CLOSURE_OPEN_GATES.md",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "evidence": {
+    "E1_INITIAL": {
+      "status": "PASS_SYNTHETIC_4x4",
+      "run": 38879457522,
+      "tests": 22,
+      "original_human_experiment_parity": false
+    },
+    "E1_COMPLETE": {
+      "status": "PASS_756_BOARDS_5_TAU_3780",
+      "run": 38882124414,
+      "tests": 17,
+      "old_tau05_stalled_first_actor": 114,
+      "old_tau075_stalled_first_actor": 546
+    },
+    "E1_DISTANCE": {
+      "status": "PASS_FOUR_POLICIES_15120",
+      "run": 38884013460,
+      "tests": 27,
+      "reference_raw_model_trajectory_parity": true,
+      "old_stall_does_not_imply_globally_immobile": true
+    },
+    "E1_ACTIVATION": {
+      "status": "PASS_TWO_ACTIVATIONS_4_DISTANCE_POLICIES_5_TAU_756_STATES",
+      "run": 38889203300,
+      "tests": 23,
+      "complete_trajectories": 30240,
+      "tau_half_global_all_satisfied_before": 642,
+      "tau_half_global_all_satisfied_after": 756,
+      "tau_075_global_all_satisfied_before": 210,
+      "tau_075_global_all_satisfied_after": 570,
+      "tau_075_global_all_immobile_stalls_after": 186,
+      "no_new_rule_harm_on_final_unhappy_counts_found_within_finite_universe": true,
+      "macro_heterotypic_contacts_can_increase": true,
+      "full_original_JSON_sha256": "213be6839db3067854d811a755ec9f3047d5f42def4e3df55f1fd56b835d1dcd",
+      "full_original_JSON_bytes": 108904,
+      "permanent_full_result": "research/R070/R070_E1_FEASIBLE_ACTOR_ACTIVATION_COMPLETE_30240.json",
+      "full_artifact_archived_by_CI_run": 38889607481,
+      "full_artifact_in_git_verified": true
+    }
+  },
+  "real_human_E2": {
+    "status": "BLOCKED_EVENT_LEVEL_SOURCE_AND_RULE_PARITY",
+    "candidate_Doi": "10.1140/epjds/s13688-016-0065-5",
+    "source_abstract_verified": true,
+    "data_licence_unverified": true,
+    "event_level_movements_not_recovered": true,
+    "proxy_derived_from_published_tables_only": false
+  },
+  "independent_E3": "OPEN",
+  "historical_residential_causal_claim": "NOT_ESTABLISHED",
+  "pesen_v01": "FROZEN",
+  "next_research": "R071"
+}
