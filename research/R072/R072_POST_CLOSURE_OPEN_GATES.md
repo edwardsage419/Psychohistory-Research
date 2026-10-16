@@ -17,3 +17,14 @@
 | PESEN v0.1 原创模型采纳升级 | `FROZEN` | 必须另有独立授权、可重放证据门与对原计划跨尺度因果有效性的实际检验 |
 
 **状态：`R072=CLOSED_BOUNDED`，`E1_FULL_ENUMERATION=PASS`，`E2_PLOS_S8_SOURCE=SOURCE_UNRESOLVED`，`REAL_HUMAN_REPUTATION_MECHANISM=NOT_ESTABLISHED`，`E3=OPEN`，`PESEN_v0.1=FROZEN`。** 新发现需要新编号/新冻结协议，避免在 R072 下把多个不同研究问题不断堆积成不可完成的共同目标。下一主线建议优先获取一个**真实可核验且任务规则匹配**的跨时事件数据，减少合成模型数量本身与人类经验证据的落差。
+
+## 2026-10-16 后续更新：官方附件字节和匿名表结构已恢复，但人类机制仍 OPEN
+
+本清单主体是**R072 原有限结题时点的原始历史状态**，不得抹去早期 `S8 SOURCE_UNRESOLVED`。之后新增[REV-002 官方 signed PLOS 对象源门](../../protocols/R072_E2_PLOS_SIGNED_ORIGIN_REDIRECT_RECOVERY_2026-10-16.md)及[REV-003 SHA固定匿名结构门](../../protocols/R072_E2_S8_ANONYMOUS_SCHEMA_DIAGNOSTIC_2026-10-16.md)，真实通过 [run 38924258028](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38924258028) 和 [run 38924991302](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38924991302)。**原始S8字节SHA已核验、匿名1表/199物理行标签/10列结构已实读**，新来源进度从未获取文件修正为 `E2_SOURCE_BYTE=PASS`、`ANONYMOUS_SCHEMA_STRUCTURE=PASS`；同时保留原作者**189服务请求**计数的真实纳排/编码尚未核对、下游互惠真实响应对照未复算、Image/Standing/Stern 三种机制不匹配。下一步 E2 待解决项收窄为 **作者数据字典、有效样本宇宙、随机服务历史处理编码和回应结局的逐项合法映射**；任何效果估计必须另事前冻结协议，不允许在看到响应值后选择定义。详细 [2026-10-16新增研究报告](R072_E2_PLOS_S8_PUBLISHER_RECOVERY_AND_SCHEMA_AUDIT.md)及[机读收据](R072_E2_PLOS_S8_RECOVERY_AND_ANONYMOUS_SCHEMA_RESULTS.json)。
+
+`R072_ORIGINAL_CLOSED_BOUNDED=UNCHANGED`；
+`S8_SOURCE_BYTE_PROVENANCE=PASS_NEW_POSTCLOSURE`；
+`S8_ANONYMOUS_STRUCTURE=PASS_NEW_POSTCLOSURE`；
+`FULL_HUMAN_REPUTATION_MECHANISM_E2=BLOCKED_BY_MEASUREMENT`；
+`E3=OPEN`；
+`PESEN_v0.1=FROZEN`。
