@@ -1,0 +1,51 @@
+name: R072 revised true PLOS S8 signed publisher object byte gate
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_plos_s8_signed_redirect_rev002.py'
+      - 'research/R072/test_r072_plos_s8_signed_redirect_rev002.py'
+      - '.github/workflows/r072-plos-s8-signed-delegated-rev002.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  signed-source-boundary-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test strict one-publisher-one-supplement signed redirect invariants
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_signed_redirect_rev002
+  official-original-publisher-byte-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Audit original S8 XLSX bytes through only PLOS-attested signed cloud object
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_rev002
+          python research/R072/r072_plos_s8_signed_redirect_rev002.py \
+            --output /tmp/r072_rev002/anonymous_S8_rev002_receipt.json
+      - name: Archive just anonymous source-byte SHA or legitimate failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-plos-S8-verified-signed-origin-rev002
+          path: /tmp/r072_rev002/anonymous_S8_rev002_receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Delete temporary receipt
+        if: always()
+        run: rm -rf /tmp/r072_rev002
