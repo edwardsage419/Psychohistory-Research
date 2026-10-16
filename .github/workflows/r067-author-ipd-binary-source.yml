@@ -1,0 +1,59 @@
+name: R067 author submission fixed random IPD real source audit
+
+on:
+  push:
+    paths:
+      - 'research/R067/r067_author_ipd_submission_audit.py'
+      - 'research/R067/test_r067_author_ipd_submission_audit.py'
+      - '.github/workflows/r067-author-ipd-binary-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Synthetic source integrity and binary action anti-recoding gates
+        working-directory: research/R067
+        run: python -m unittest -v test_r067_author_ipd_submission_audit
+      - name: Download original fixed-commit author C/D datasets to ephemeral runner directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r067_original_ipd /tmp/r067_original_ipd_aggregate
+          python - <<'PY'
+          from pathlib import Path
+          from urllib import request
+          repo="https://raw.githubusercontent.com/eladiomontero/PairwiseStrategies/4743f74d8a03a031b8f70aff64956f8ad5155182"
+          for name in ("fix.csv","rand.csv"):
+              req=request.Request(repo+"/"+name,headers={"User-Agent":"R067-author-public-tag-integrity-gate/1.0"})
+              with request.urlopen(req,timeout=30) as res:
+                  raw=res.read(2000001)
+              if len(raw)>2000000: raise ValueError("unexpected source size")
+              (Path("/tmp/r067_original_ipd")/name).write_bytes(raw)
+          PY
+      - name: Run pinned source full CSV C/D session/round fingerprint
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R067/r067_author_ipd_submission_audit.py \
+            --source-dir /tmp/r067_original_ipd \
+            --output /tmp/r067_original_ipd_aggregate/anonymous_source_schema.json
+      - name: Upload only nonidentifying source counts and hash metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r067-author-submission-real-IPD-binary-source-gate
+          path: /tmp/r067_original_ipd_aggregate/anonymous_source_schema.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete all original human gameplay records
+        if: always()
+        run: rm -rf /tmp/r067_original_ipd /tmp/r067_original_ipd_aggregate
