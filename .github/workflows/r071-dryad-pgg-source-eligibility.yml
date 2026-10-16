@@ -1,0 +1,52 @@
+name: R071 real Dryad noise public-goods CSV provenance eligibility
+
+on:
+  push:
+    paths:
+      - 'research/R071/r071_dryad_pgg_source_audit.py'
+      - 'research/R071/test_r071_dryad_pgg_source_audit.py'
+      - '.github/workflows/r071-dryad-pgg-source-eligibility.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-source-safety-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test 11 synthetic source anti-ID and column contract invariants
+        working-directory: research/R071
+        run: python -m unittest -v test_r071_dryad_pgg_source_audit
+
+  original-dryad-csv:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read original official Dryad PGG file, retain only schema and whole-file hash
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r071_dryad_aggregate
+          python research/R071/r071_dryad_pgg_source_audit.py \
+            --output /tmp/r071_dryad_aggregate/real_csv_anonymous_provenance.json
+      - name: Archive only allowed field headings and anonymous aggregate counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r071-dryad-noise-PGG-human-source-eligibility
+          path: /tmp/r071_dryad_aggregate/real_csv_anonymous_provenance.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Destroy actual-data audit aggregates
+        if: always()
+        run: rm -rf /tmp/r071_dryad_aggregate
