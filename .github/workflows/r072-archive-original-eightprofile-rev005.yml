@@ -1,0 +1,48 @@
+name: R072 permanently archive genuine source eight-profile group parity rev005
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r072-archive-original-eightprofile-rev005.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  exact-private-source-anonymous-eight-group-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run all synthetic negative / privacy tests
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_profile_block_parity_rev005
+      - name: Recompute real SHA pinned PLOS S8 group-size distribution and check exact result bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R072/r072_plos_s8_profile_block_parity_rev005.py \
+            --output /tmp/r072_rev005_exact_real_result.json
+          echo '2df9275477749e8f8ad6a91b890f705172b4d70b1fa617d3275253c618497086  /tmp/r072_rev005_exact_real_result.json' | sha256sum --check --status
+      - name: Commit only anonymous genuine aggregate into main with separate source and result SHA pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=research/R072/R072_E2_PLOS_S8_ANONYMOUS_PROFILE_BLOCK_PARITY_REV005.json
+          if [ -f "$target" ]; then
+            cmp -s /tmp/r072_rev005_exact_real_result.json "$target"
+            echo "Existing exact anonymous archive confirmed"
+            exit 0
+          fi
+          cp /tmp/r072_rev005_exact_real_result.json "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$target"
+          git commit -m "results(R072): preserve SHA-pinned original 189 candidate rows and 8 anonymous profile size matching without human IDs"
+          git push origin HEAD:main
