@@ -1,0 +1,43 @@
+name: R072 all 11664 reputation norms and public signal E1 cases
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_reputation_public_signals.py'
+      - 'research/R072/test_r072_reputation_public_signals.py'
+      - '.github/workflows/r072-reputation-public-signals-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-reputation-synthetic-mechanisms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run 30 independent error-signal, frozen prior, utility and all-cases invariants
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_reputation_public_signals
+      - name: Execute all 11664 paired norm and signal cases, 279936 true donation decisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_e1
+          python research/R072/r072_reputation_public_signals.py \
+            --output /tmp/r072_e1/complete_11664_reputations.json
+      - name: Archive only synthetic strategies and anonymous model-math aggregates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-full-11664-reputation-and-signal-e1
+          path: /tmp/r072_e1/complete_11664_reputations.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase temporary synthetic results
+        if: always()
+        run: rm -rf /tmp/r072_e1
