@@ -1,6 +1,10 @@
 # R066：群体意见动力学的可检验三模型研究
 
-日期：2026-10-16。当前状态：**ACTIVE**。该编号研究群体层认知互动与观点演变，接替已 [CLOSED_BOUNDED 的 R065](../R065/R065_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md) 成为下一条研究主线。
+日期：2026-10-16。当前最新状态：**R066=CLOSED_BOUNDED（限定范围正式结题）**。
+
+**正式结题总入口：** [六门验收与结题报告](R066_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md) · [机读验收结果](R066_FINAL_ACCEPTANCE_STATUS.json) · [开放科学问题移交](R066_POST_CLOSURE_OPEN_GATES.md)。以下早期「ACTIVE」及「缺数据」阶段文字均按当时证据理解，不应在已完成来源与模型核验后再当作当前状态。
+
+该编号研究群体层认知互动与观点演变，接替已 [CLOSED_BOUNDED 的 R065](../R065/R065_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md) 成为下一条研究主线。
 
 ## 事前协议与真正取得的成绩
 
@@ -39,3 +43,11 @@
 主要成果：**16 个村庄、1,872 行基线/末次六题态度配对完整记录**；按照作者 R 的家庭成员映射与四类提名方式，经 Python 产生 8,659 条匿名去重家庭关系与 2,067 个至少一条关系的家庭节点。早先直接把 `ego` 当成唯一家庭节点出现重复和低匹配，已保留原失败记录，不能拿它否定经过家庭层转换的关系数据。作者 R/igraph 与 Python 的**逐边一致性仍未验证**，现阶段无 DeGroot/FJ/HK 真人数据参数拟合或真实预测名次。
 
 状态：`R066_SOURCE_AUDIT_E2=PASS`；`R066_AUTHOR_DERIVED_HOUSEHOLD_NETWORK=PASS_BOUNDED`；`R066_SOURCE_R_PARITY=OPEN`；`R066_REAL_THREE_MODEL_PREDICTION=OPEN`；`PESEN_v0.1=FROZEN`。
+
+
+## 最终实证结果与正式限定结题（2026-10-16）
+
+* [原作者 R 两核心家庭关系函数逐边对照：14,767 条分类无向边完全一致](R066_E2_AUTHOR_R_CORE_EDGE_PARITY_AUDIT.md)；[真实 GitHub Actions 38865507356](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38865507356) 全部成功。
+* [三类模型整村留出预测完整审计](R066_E2_THREE_MODEL_LOVO_AUDIT.md)与 [匿名聚合结果](R066_E2_THREE_MODEL_LOVO_RESULTS.json)：真实 16 村/1,872 配对完整基线末次，模型网格与漂移只依据训练 15 村选择，每折留一个村作末次预测，[真实 GitHub Actions 38866210819](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38866210819) 双作业成功，17 测试通过。
+* 主要村等权归一化 MSE：Persistence+drift 0.0422710；DeGroot 0.0286146；FJ 0.0266149；HK 0.0265478。HK 主要 MSE 最低但只微弱优于 FJ，FJ 的参与者加权 MSE/MAE 略优；两者数学信息假设不一样，**没有足够证据识别真实社会因果机制或宣布通用胜者**。
+* 依照 [研究六门统一验收](../../protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md)，该有限 E1+E2 研究包完整归档并判 **CLOSED_BOUNDED**。完整作者 igraph 回归分析、配对村级不确定性、真实干预扩散建模和新的 E3 外部样本仍 `OPEN`；PESEN v0.1 继续 `FROZEN`。后续研究主线移交 R067 演化博弈。
