@@ -1,0 +1,41 @@
+name: R070 four movement policies 15120 exhaustive paired E1
+
+on:
+  push:
+    paths:
+      - 'research/R070/r070_distance_competitors.py'
+      - 'research/R070/test_r070_distance_competitors.py'
+      - '.github/workflows/r070-distance-mobility-15120-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mobility-policy-paired-universe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 25 pure synthetic migration distance, false equilibrium, original model parity and complete universe tests
+        working-directory: research/R070
+        run: python -m unittest -v test_r070_distance_competitors
+      - name: Run all 15120 board-threshold-policy scenarios and paired outcome diagnostics
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r070_mobility_agg
+          python research/R070/r070_distance_competitors.py \
+            --output /tmp/r070_mobility_agg/complete_15120_synthetic_paired.json
+      - name: Archive full synthetic-only paired aggregate and lexicographic witnesses
+        uses: actions/upload-artifact@v4
+        with:
+          name: r070-exhaustive-15120-mobility-policies-and-witnesses
+          path: /tmp/r070_mobility_agg/complete_15120_synthetic_paired.json
+          retention-days: 30
+      - name: Clean synthetic output
+        if: always()
+        run: rm -rf /tmp/r070_mobility_agg
