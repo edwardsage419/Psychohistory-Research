@@ -1,0 +1,104 @@
+{
+  "research_id": "R073",
+  "date": "2026-10-17",
+  "research_status": "CLOSED_BOUNDED",
+  "study_type": "REAL_HUMAN_OBSERVATIONAL_HELDOUT_CONDITIONAL_PREDICTION_E2",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "protocol": "protocols/R073_HUMAN_IPD_LAGGED_SOCIAL_MEMORY_LOSO_2026-10-17.md",
+  "protocol_frozen_before_all_R073_real_scoring_commit": "8f8e5451692065f1b62db0338bc5b4fa5def486f",
+  "formal_report": "research/R073/R073_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-17.md",
+  "research_audit": "research/R073/R073_REAL_HUMAN_MEMORY_E2_METHODS_RESULTS_AND_LIMITS_2026-10-17.md",
+  "open_gates": "research/R073/R073_POST_CLOSURE_OPEN_GATES.md",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "gate_notes": {
+    "A01": "Pre-frozen seven model families, alpha=20, t>=3, full session heldout and two paired memory comparisons",
+    "A02": "Author Git tag submission two exact blobs verified. Final Dryad raw equality unknown and not represented as verified.",
+    "A03": "23 synthetic controls and 188-person 18424 actual human event scores in CI; independent reexecution SHA identical",
+    "A04": "Opponent lag and two-lag models are not strictly universally better across sessions; fixed TFT/WSLS fail in many cohorts",
+    "A05": "Human conditional prediction only; no causal history or third-party reputation norm claims; no individual IDs or session scores exported",
+    "A06": "Full original aggregated source JSON, frozen protocol, code, tests, independent rerun CI, limits and open gates"
+  },
+  "source": {
+    "author": "Montero-Porras et al. 2022",
+    "paper_DOI": "10.1038/s41598-022-11654-2",
+    "author_repo": "eladiomontero/PairwiseStrategies",
+    "author_submission_commit": "4743f74d8a03a031b8f70aff64956f8ad5155182",
+    "source_blobs": {
+      "fix.csv": "3bf78bf85f6642afee18d6f1965dca7272582f40",
+      "rand.csv": "f5a86cd033b739da45d3fc7c5019068f612146a2"
+    },
+    "source_vs_final_Dryad": "UNKNOWN"
+  },
+  "experiment": {
+    "sessions": 12,
+    "FP_sessions": 6,
+    "SP_sessions": 6,
+    "humans": 188,
+    "FP_humans": 92,
+    "SP_humans": 96,
+    "original_human_actions": 18800,
+    "scored_human_t3_to_t100": 18424,
+    "score_rounds_per_person": 98,
+    "training": "5 OTHER SAME-TREATMENT sessions only for each heldout session",
+    "target": "own next C/D from previous true own and preceding partner actions; teacher-forced",
+    "fixed_smoothing_alpha": 20,
+    "fixed_TFT_WSLS_error_probability": 0.05,
+    "no_synthetic_imitation_of_source_data": true
+  },
+  "numerical": {
+    "Brier_all_sessions_equal": {
+      "M0_TREATMENT_PREVALENCE": 0.22641120367481707,
+      "M1_OWN_LAST": 0.1341970798874635,
+      "M2_OPPONENT_LAST": 0.17783121496259624,
+      "M3_JOINT_LAST": 0.12475795617162207,
+      "M4_JOINT_TWO_LAGS": 0.12054640684474983,
+      "M5_TFT_NOISY": 0.25389956875607306,
+      "M6_WSLS_NOISY": 0.4650692419825148
+    },
+    "M3_vs_M1": {
+      "FP_sessions_improve": 6,
+      "FP_sessions_worse": 0,
+      "SP_sessions_improve": 4,
+      "SP_sessions_worse": 2,
+      "global_Brier_delta": -0.00943912371584143
+    },
+    "M4_vs_M3": {
+      "FP_sessions_improve": 4,
+      "FP_sessions_worse": 2,
+      "SP_sessions_improve": 6,
+      "SP_sessions_worse": 0,
+      "global_Brier_delta": -0.00421154932687224
+    }
+  },
+  "execution": {
+    "true_human_workflow_run": 38931506064,
+    "conclusion": "success",
+    "synthetic_unit_tests": 23,
+    "independent_full_original_replay_workflow_run": 38931698718,
+    "archive_conclusion": "success",
+    "full_aggregate_result_path": "research/R073/R073_E2_HUMAN_12_SESSION_MEMORY_LOSO_RESULTS.json",
+    "full_result_sha256": "6d9f6dc6c7a5f7d29aaf81b36c8d53cb88957a00c86c827019073b319936607a",
+    "full_result_bytes": 8079
+  },
+  "limitations": {
+    "author_HMM": "NOT_REPRODUCED",
+    "long_run_open_loop_prediction": "NOT_TESTED",
+    "causal_effect_of_opponent_behavior": "NOT_IDENTIFIED",
+    "reputation_of_current_partner_in_shuffled": "NOT_OBSERVED",
+    "E3_independent_external_population": "OPEN",
+    "cross_society_era": "NOT_ESTABLISHED"
+  },
+  "privacy": {
+    "human_person_rows_in_git": false,
+    "session_id_labels_in_report": false,
+    "individual_C_D_trajectories_published": false
+  },
+  "PESEN_v01": "FROZEN"
+}
