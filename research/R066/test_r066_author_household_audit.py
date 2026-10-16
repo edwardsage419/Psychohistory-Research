@@ -63,7 +63,7 @@ class HouseholdProof(unittest.TestCase):
 
     def test_member_ambiguity_not_silently_assigned_to_one_house(self):
         rows=fixture()
-        rows[0]["hh1"]=rows[1]["hhh"] # household member in two rows
+        rows[0]["hh1"]=rows[16]["hhh"] # same-village household member in two rows
         r=summarize_author_households(rows)
         self.assertGreater(r["ambiguous_person_identifiers_shared_by_multiple_households"],0)
 
