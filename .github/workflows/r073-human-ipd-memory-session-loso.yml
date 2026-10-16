@@ -1,0 +1,68 @@
+name: R073 real 188-human IPD individual memory-one vs memory-two session LOSO
+
+on:
+  push:
+    paths:
+      - 'research/R073/r073_human_ipd_memory_loso.py'
+      - 'research/R073/test_r073_human_ipd_memory_loso.py'
+      - '.github/workflows/r073-human-ipd-memory-session-loso.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-history-leakage-and-comparison-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check 23 invented person, memory, temporal and full holdout contracts
+        working-directory: research/R073
+        run: python -m unittest -v test_r073_human_ipd_memory_loso
+
+  true-original-human-fixed-vs-shuffled-12-session-LOSO:
+    needs: synthetic-history-leakage-and-comparison-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download only author's Git-SHA pinned published submission original individual CSV to runner temp
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r073_original_ipd /tmp/r073_anonymous_reports
+          python - <<'PY'
+          from urllib import request
+          from pathlib import Path
+          base="https://raw.githubusercontent.com/eladiomontero/PairwiseStrategies/4743f74d8a03a031b8f70aff64956f8ad5155182"
+          for name in ("fix.csv","rand.csv"):
+              req=request.Request(base+"/"+name,headers={"User-Agent":"R073-Psychohistory-Research-Human-IPD-evidence/1.0"})
+              with request.urlopen(req,timeout=40) as resp: blob=resp.read(2_000_001)
+              if len(blob)>2_000_000:raise ValueError("original source exceeded byte budget")
+              (Path("/tmp/r073_original_ipd")/name).write_bytes(blob)
+          PY
+      - name: Verify both author Git blobs, 188 people 12 sessions and score all 18424 real personal heldout predictions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R073/r073_human_ipd_memory_loso.py \
+            --source-dir /tmp/r073_original_ipd \
+            --output /tmp/r073_anonymous_reports/r073_real_12_session_memory_loso.json
+      - name: Publish exclusively aggregated model Brier and log-loss plus anonymous per-treatment session macro comparisons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r073-real-human-188-people-18424-conditional-memory-e2
+          path: /tmp/r073_anonymous_reports/r073_real_12_session_memory_loso.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase all temporary individual-person data and aggregate reports
+        if: always()
+        run: rm -rf /tmp/r073_original_ipd /tmp/r073_anonymous_reports
