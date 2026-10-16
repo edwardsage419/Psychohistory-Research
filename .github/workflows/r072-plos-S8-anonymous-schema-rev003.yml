@@ -1,0 +1,53 @@
+name: R072 original PLOS S8 checksum locked privacy safe schema REV003
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_plos_s8_anonymous_schema_rev003.py'
+      - 'research/R072/test_r072_plos_s8_anonymous_schema_rev003.py'
+      - '.github/workflows/r072-plos-S8-anonymous-schema-rev003.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fake-workbook-privacy-and-schema-boundaries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prove 19 SHA, workbook structure, PII non-export and formula fail-closed properties
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_anonymous_schema_rev003
+
+  publisher-original-anonymous-structure:
+    needs: fake-workbook-privacy-and-schema-boundaries
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch EXACT original publisher S8 SHA and compute only anonymous sheet structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_s8_rev003
+          python research/R072/r072_plos_s8_anonymous_schema_rev003.py \
+            --output /tmp/r072_s8_rev003/anonymous_real_workbook_structure.json
+      - name: Archive only anonymous counts and publisher SHA, never original workbook
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-real-S8-rev003-anonymous-structure-or-failure
+          path: /tmp/r072_s8_rev003/anonymous_real_workbook_structure.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Remove ephemeral aggregate
+        if: always()
+        run: rm -rf /tmp/r072_s8_rev003
