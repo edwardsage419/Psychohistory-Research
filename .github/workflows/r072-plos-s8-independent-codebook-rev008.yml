@@ -1,0 +1,53 @@
+name: R072 independent author footer profile codebook provenance gate REV008
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_plos_s8_independent_codebook_rev008.py'
+      - 'research/R072/test_r072_plos_s8_independent_codebook_rev008.py'
+      - '.github/workflows/r072-plos-s8-independent-codebook-rev008.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  artificial-codebook-privacy-and-inference-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 15 fictional source-codebook syntax, conflicts and no result-dependent treatment selection tests
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_independent_codebook_rev008
+
+  source-locked-publisher-original-notes:
+    needs: artificial-codebook-privacy-and-inference-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read only exact original PLOS source footer note metadata, no human response table evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_rev008
+          python research/R072/r072_plos_s8_independent_codebook_rev008.py \
+            --output /tmp/r072_rev008/anonymous_author_codebook_gate.json
+      - name: Preserve bounded boolean author-codebook gate or original-source failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-original-S8-independent-codebook-rev008
+          path: /tmp/r072_rev008/anonymous_author_codebook_gate.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase temporary anonymous source report
+        if: always()
+        run: rm -rf /tmp/r072_rev008
