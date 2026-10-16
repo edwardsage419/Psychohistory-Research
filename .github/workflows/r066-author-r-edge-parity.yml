@@ -1,0 +1,84 @@
+name: R066 original author R core exact household edge parity
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_author_r_edge_parity.py'
+      - 'research/R066/r066_author_r_edge_parity.R'
+      - 'research/R066/test_r066_author_r_edge_parity.py'
+      - '.github/workflows/r066-author-r-edge-parity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-full-set-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate full-set comparison and fail-closed tests
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_author_r_edge_parity
+
+  original-R-vs-Python-per-edge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+          use-public-rspm: false
+      - name: Fetch byte-pinned original CC0 author R, tab and codebook
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r066_parity_input /tmp/r066_parity_ephemeral /tmp/r066_parity_public
+          python - <<'PY'
+          from urllib import request
+          from pathlib import Path
+          from research.R066.r066_larson_lewis_public_schema import FILES
+          folder=Path("/tmp/r066_parity_input")
+          for name,identifier,_ in FILES.values():
+              u="https://dataverse.harvard.edu/api/access/datafile/"+str(identifier)
+              with request.urlopen(request.Request(u,headers={"User-Agent":"R066-original-author-R-parity/1.0"}), timeout=30) as resp:
+                  raw=resp.read(10000001)
+              if len(raw)>10000000: raise ValueError("source exceeded 10 MB")
+              (folder/name).write_bytes(raw)
+          PY
+      - name: Validate source bytes and execute untouched original author R core functions
+        shell: bash
+        run: |
+          set -euo pipefail
+          Rscript research/R066/r066_author_r_edge_parity.R \
+            /tmp/r066_parity_input/Data_LarsonLewis_nws.tab \
+            /tmp/r066_parity_input/LL_SpecialIssue_Replication.R \
+            /tmp/r066_parity_ephemeral/author_r_core_edges.tsv
+      - name: Independently rebuild household edges in Python and compare ALL edge identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R066/r066_author_r_edge_parity.py \
+            --source-dir /tmp/r066_parity_input \
+            --r-edge-file /tmp/r066_parity_ephemeral/author_r_core_edges.tsv \
+            --output /tmp/r066_parity_public/only_anonymous_aggregate.json
+      - name: Archive ONLY comparison status and anonymous aggregate counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-original-author-r-core-edge-parity-anonymous
+          path: /tmp/r066_parity_public/only_anonymous_aggregate.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Destroy ephemeral respondent data and all edge-list files
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r066_parity_input /tmp/r066_parity_ephemeral /tmp/r066_parity_public
