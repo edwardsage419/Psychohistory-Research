@@ -1,0 +1,100 @@
+{
+  "study": "R067",
+  "date": "2026-10-16",
+  "stage": "E2_HUMAN_IPD_12_SESSION_LOSO_ONE_STEP",
+  "status": "HUMAN_LOSO_12_SESSION_ONE_STEP_COMPLETE",
+  "protocol": "protocols/R067_E2_HUMAN_IPD_SESSION_HELDOUT_2026-10-16.md",
+  "protocol_commit": "a7faa8051e252bb10a148d3db8363560ce9183ec",
+  "source_repository": "eladiomontero/PairwiseStrategies",
+  "source_commit": "4743f74d8a03a031b8f70aff64956f8ad5155182",
+  "source_blobs": {
+    "fix.csv": "3bf78bf85f6642afee18d6f1965dca7272582f40",
+    "rand.csv": "f5a86cd033b739da45d3fc7c5019068f612146a2"
+  },
+  "dataset": {
+    "people": 188,
+    "fixed_partner_people": 92,
+    "shuffled_partner_people": 96,
+    "total_actions": 18800,
+    "actions_cooperate_fixed": 5161,
+    "actions_cooperate_shuffled": 2738,
+    "sessions": 12,
+    "sessions_per_treatment": 6,
+    "rounds_per_session": 100,
+    "one_step_group_frequency_transitions": 1188
+  },
+  "real_payoff_matrix": [
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "method": "12 folds, leave entire session out; 11 other sessions for fixed grid parameter selection; next-round session C share predicted from current observed session C share",
+  "metrics": {
+    "persistence": {
+      "MSE_macro": 0.01060890842767772,
+      "fixed": 0.008246098644439696,
+      "shuffled": 0.012971718210915745,
+      "selected": {
+        "no_parameter": 12
+      }
+    },
+    "replicator": {
+      "MSE_macro": 0.010624921489819824,
+      "fixed": 0.008395613886568945,
+      "shuffled": 0.012854229093070704,
+      "selected": {
+        "dt=0.01": 2,
+        "dt=0.05": 10
+      }
+    },
+    "dynamic_logit": {
+      "MSE_macro": 0.01037710044931476,
+      "fixed": 0.008819316861384057,
+      "shuffled": 0.011934884037245463,
+      "selected": {
+        "lambda=0.5,eta=0.1": 11,
+        "lambda=0.5,eta=0.2": 1
+      }
+    },
+    "best_response": {
+      "MSE_macro": 0.010640702548549664,
+      "fixed": 0.008450589824387643,
+      "shuffled": 0.012830815272711684,
+      "selected": {
+        "eta=0.01": 11,
+        "eta=0.05": 1
+      }
+    },
+    "train_only_treatment_prevalence": {
+      "MSE_macro": 0.021996882939263676,
+      "fixed": 0.02752389057280813,
+      "shuffled": 0.016469875305719223,
+      "selected": {
+        "train_only_prevalence": 12
+      }
+    }
+  },
+  "workflow": {
+    "run_id": 38868663010,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38868663010",
+    "conclusion": "success",
+    "synthetic_tests_pass": 12,
+    "artifact_id": 12031774603
+  },
+  "boundaries": {
+    "model_payoff_difference": "pi_C-pi_D=-1 for all x in actual single-round PD",
+    "target": "one-step group cooperation frequency, not individual personal action nor full 100-round open-loop predictions",
+    "internal_session_holdout": "E2; only 12 sessions; no p-values or standard errors for ranking",
+    "fixed_partner_prevalence_and_shuffled_heterogeneous": true,
+    "original_author_HMM": "NOT_REPRODUCED",
+    "submission_Git_csv_vs_final_Dryad_bytes": "UNKNOWN_DRYAD_403_401",
+    "historical_institutional_causality": "NOT_ESTABLISHED",
+    "new_independent_cohort": "OPEN"
+  },
+  "pesen_v01": "FROZEN"
+}
