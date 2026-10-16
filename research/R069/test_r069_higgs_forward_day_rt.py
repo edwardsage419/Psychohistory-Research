@@ -135,8 +135,9 @@ class ForwardTimeTests(unittest.TestCase):
 
     def test_brier_and_logloss_zero_if_impossible_not_allowed(self):
         for p in (0.,1.):
-            self.assertFalse(0<m.shrink(("x",),{},p)<1)
-            # The real trainer has Beta(1,1), so it cannot return 0 or 1.
+            with self.assertRaisesRegex(ValueError,"invalid shrinkage probability"):
+                m.shrink(("x",),{},p)
+        # The real trainer has Beta(1,1), so it cannot return 0 or 1.
 
     def test_risk_cohort_not_based_on_ever_future_actor(self):
         c=m.create_cohorts(synthetic_week())
