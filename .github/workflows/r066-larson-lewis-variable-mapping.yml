@@ -1,0 +1,72 @@
+name: R066 Larson Lewis fixed variable dictionary audit
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_larson_lewis_semantic_mapping.py'
+      - 'research/R066/test_r066_larson_lewis_semantic_mapping.py'
+      - '.github/workflows/r066-larson-lewis-variable-mapping.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mapping-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test exact variable names, fixed joins, missing counts, privacy
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_larson_lewis_semantic_mapping
+
+  mapping-original-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download published Larson-Lewis V1 data, R code and codebook
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r066_mapping_source /tmp/r066_mapping_output
+          python - <<'PY'
+          from urllib import request
+          from pathlib import Path
+          from research.R066.r066_larson_lewis_public_schema import FILES
+          target=Path("/tmp/r066_mapping_source")
+          for name,file_id,_ in FILES.values():
+              req=request.Request(
+                  "https://dataverse.harvard.edu/api/access/datafile/"+str(file_id),
+                  headers={"User-Agent":"R066-V1-frozen-semantic-audit/1.0"})
+              with request.urlopen(req,timeout=30) as res:
+                  b=res.read(10_000_001)
+              if len(b)>10_000_000:
+                  raise ValueError("file exceeds fixed public-source size limit")
+              (target/name).write_bytes(b)
+          PY
+      - name: Verify all fixed SHA256 and output only column dictionary summaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R066/r066_larson_lewis_semantic_mapping.py \
+            --source-dir /tmp/r066_mapping_source \
+            --output /tmp/r066_mapping_output/mapping.json
+      - name: Archive safe variable index only, not survey records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-larson-lewis-v1-safe-variable-dictionary
+          path: /tmp/r066_mapping_output/mapping.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete raw respondent records after audit
+        if: always()
+        run: rm -rf /tmp/r066_mapping_source /tmp/r066_mapping_output
