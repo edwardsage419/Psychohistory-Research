@@ -16,7 +16,7 @@
 
 从 ChatGPT Library 另行恢复 **163 份独立文件**（87份 Markdown、58份 Python、12份 JSON、5份 CSV、1份 TXT），合计原始字节 2,068,126。已保存为 [完整 ZIP 快照](archives/library-standalone/心理史学_独立文件原始快照_2026-10-15.zip)（845,358字节，SHA256: `0f57a02eda0cb111ca02e5a0d20bef2aca40c6f7f3bbc2cba3848edc64fbf12b`），并保留 [163份文件逐项 SHA256](manifests/STANDALONE_FILES_SHA256_2026-10-15.csv)。
 
-最新增量主控台 [v4.9](docs/RESEARCH_CONTROL_v4.9_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
+最新增量主控台 [v5.0](docs/RESEARCH_CONTROL_v5.0_2026-10-16.md)（另保留 [v4.0 历史快照](docs/RESEARCH_CONTROL_v4.0_2026-10-15.md)）与 [R065 研究入口](protocols/R065_RESEARCH_GATE.md) 单独提供便于在线阅读。ZIP 中保留所有旧主控台版本、独立报告、程序与附表，包括可能重复出现在逐轮研究包中的文件。
 
 ## 已核验的重点研究结果
 
@@ -119,3 +119,13 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 这仍属十人便利样本上的事后敏感性实验，不是论文全部七模型的 native 重新拟合或独立可推广预测证据。自动复算的 GitHub 作业是否成功尚无可核验记录。
 
 最新 [主控台 v4.9](docs/RESEARCH_CONTROL_v4.9_2026-10-16.md)。PESEN v0.1 冻结；R065 整体科学验证仍 OPEN。
+
+## R065 第十阶段：扩大到作者筛选合格的 24 名参与者（2026-10-16）
+
+本轮首先锁定选样方法，再从原作者固定处理数据中的 226 名合格者按两种实验收益顺序各选 12 人，读取 24 份固定 Git blob 的原始实验文件，分析 1,327 次自主选择。比较作者源码与区块起始日两套重置时间轴，独立拟合 Model 3 的 β，并用其他 23 人拟合后预测留出的第 24 人。
+
+24 折留人平均对数损失分别为 **0.67843771**（作者时钟）与 **0.67867746**（区块时钟），差异仅 **0.00023975**。24 人中 13 人在作者规则下得分较好，11 人在区块规则下得分较好。对照先前十人便利样本，本次差距显著缩小，仍不能据此宣称某套规则具有稳定优势。
+
+已提交 [Phase J 研究报告](research/R065/R065_PHASE_J_SCREENED_24_AUDIT.md)、[匿名充分计数及来源哈希](research/R065/R065_PHASE_J_SCREENED_24_RESULTS.json)、[可复现的严格筛选与 24 折程序](research/R065/r065_phase_j_screened_replay.py)、[10 项已通过的本地测试](research/R065/test_r065_phase_j_screened_replay.py)及 [GitHub Actions 来源回放配置](.github/workflows/r065-phase-j.yml)。远端 CI 是否已运行成功，**仍未得到证据**。
+
+研究主控台更新至 [v5.0](docs/RESEARCH_CONTROL_v5.0_2026-10-16.md)。原作者七个认知模型的完整 native 拟合未完成，R065 科学验证门仍开放，PESEN v0.1 保持冻结。
