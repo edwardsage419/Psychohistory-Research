@@ -1,0 +1,53 @@
+name: R069 HetRec real source Rev002 strict timestamp amendment
+
+on:
+  push:
+    paths:
+      - 'research/R069/r069_hetrec_source_rev002.py'
+      - 'research/R069/test_r069_hetrec_source_rev002.py'
+      - '.github/workflows/r069-hetrec-source-rev002.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-time-sentinel-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify seven source identity, invalid-negative exclusion and time tie tests
+        working-directory: research/R069
+        run: python -m unittest -v test_r069_hetrec_source_rev002
+
+  original-hetrec-source-rev002:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Require original archive exact SHA256 and only four invalid timestamps filtered
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r069_rev002
+          python research/R069/r069_hetrec_source_rev002.py \
+            --output /tmp/r069_rev002/only_anonymous_real_tag_friend_timing.json
+      - name: Archive only original source hash and nonidentifying scientific counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r069-hetrec-lastfm-rev002-temporal-proxy-anonymous
+          path: /tmp/r069_rev002/only_anonymous_real_tag_friend_timing.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Destroy temporary output
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r069_rev002
