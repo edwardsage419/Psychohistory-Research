@@ -80,6 +80,18 @@ class ExhaustiveGridTests(unittest.TestCase):
         self.assertEqual(set(q["terminal_status_counts"]),set(e.TERMINATIONS))
         self.assertEqual(sum(q["terminal_status_counts"].values()),756)
 
+    def test_three_quarter_and_full_satisfaction_identical_on_all_756(self):
+        # With only two of each abstract type, an agent can have at most
+        # one similar neighbor; any occupied-neighbor fraction is
+        # 0, 1/3, 1/2 or 1 (or undefined for isolation). Thus tau=.75 and
+        # tau=1 demand exactly the same local condition on this board.
+        for board in self.boards:
+            a=e.run(board,.75,e.MOVE_BUDGET)
+            b=e.run(board,1.,e.MOVE_BUDGET)
+            self.assertEqual(a["termination"],b["termination"])
+            self.assertEqual(a["actual_moves"],b["actual_moves"])
+            self.assertEqual(a["snapshots"][-1]["board"],b["snapshots"][-1]["board"])
+
     def test_e1_summary_keeps_zero_real_human_claims(self):
         self.assertIn("E1",e.evaluate()["status"])
         self.assertEqual(e.evaluate()["empirical_human_e2"],
