@@ -1,0 +1,76 @@
+{
+  "research_id": "R069",
+  "date": "2026-10-16",
+  "final_status": "CLOSED_BOUNDED",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "final_report": "research/R069/R069_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md",
+  "postclosure": "research/R069/R069_POST_CLOSURE_OPEN_GATES.md",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "evidence": {
+    "E1": {
+      "status": "PASS_SYNTHETIC_MATH",
+      "run": 38872162843,
+      "tests": 22,
+      "threshold_IC_Bass_empirically_identified": false
+    },
+    "E2_HETREC": {
+      "status": "PASS_BOUNDED_REAL_SOURCE_AND_EARLIER_TAG_PROXY",
+      "first_failure": 38874370089,
+      "original_negative_timestamps": 4,
+      "implausible_pre2002_positive_timestamp_rows": 1,
+      "rev002_success": 38874783610,
+      "sensitivity_success": 38875206526,
+      "earlier_friend_tag_proxy_positive": 11602,
+      "true_peer_exposure_observed": false
+    },
+    "E2_SNAP_SOURCE": {
+      "status": "PASS_ORIGINAL_REAL_EVENT_GZIP",
+      "run": 38876285461,
+      "tests": 18,
+      "real_timed_events": 563069,
+      "RT_events": 354930,
+      "MT_events": 171237,
+      "RE_events": 36902
+    },
+    "E2_SNAP_RT_PARITY": {
+      "status": "EXACT_DIRECTIONAL_MULTISET_MATCH",
+      "run": 38876563448,
+      "tests": 13,
+      "directed_RT_pairs": 328132,
+      "weight_mismatch": 0,
+      "derived_RT_graph_is_independent_tie_data": false
+    },
+    "E2_FORWARD_DAY": {
+      "status": "PASS_BOUNDED_OUT_OF_TIME_BEHAVIOR_PREDICTION",
+      "first_run_with_test_failure": 38878398763,
+      "passed_run": 38878472077,
+      "tests": 22,
+      "scored_days": 4,
+      "at_risk_actor_days": 763846,
+      "July04_first_seen_RT_actor_count_excluded": 143001,
+      "primary_four_day_equal_logloss_nats": {
+        "POOLED_GLOBAL": 0.3654034464516812,
+        "YESTERDAY_GLOBAL": 0.36688469901418885,
+        "ACTIVITY_HISTORY": 0.37383497124434595,
+        "ACTIVITY_PLUS_TARGET_PROXY": 0.3749479312001215
+      }
+    }
+  },
+  "causal_claims": {
+    "Watts_real_adoption_threshold": "BLOCKED_BY_MEASUREMENT",
+    "IC_true_edge_transmission": "BLOCKED_BY_MEASUREMENT",
+    "Bass_first_adoption_cohort": "BLOCKED_BY_MEASUREMENT",
+    "independent_E3": "OPEN",
+    "historical_institutional_transfer": "NOT_ESTABLISHED"
+  },
+  "source_original_gzip_sha256": "901b199716a23b0fc0371705e3ae9941b5c9493277aec65456abc4988674ad79",
+  "next_research": "R070",
+  "pesen_v01": "FROZEN"
+}
