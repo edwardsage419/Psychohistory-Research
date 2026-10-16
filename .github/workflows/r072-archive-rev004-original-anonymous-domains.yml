@@ -1,0 +1,47 @@
+name: R072 archive checksum verified real S8 anonymous column domains REV004
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r072-archive-rev004-original-anonymous-domains.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  immutable-original-source-verified-anonymous-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconfirm tests never output raw human rows or codes
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_column_domains_rev004
+      - name: Recompute genuine PLOS-source anonymous metadata and verify exact source derived result
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R072/r072_plos_s8_column_domains_rev004.py --output /tmp/r072_rev004_original.json
+          echo '2b1f26b3d615a393ada59b1b0f51c356f619467ecaae3bb6b4ce32b64611c7fa  /tmp/r072_rev004_original.json' | sha256sum --check --status
+      - name: Commit only complete anonymous metadata, never the personal workbook
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=research/R072/R072_E2_PLOS_S8_ANONYMOUS_COLUMN_DOMAINS_REV004.json
+          if [ -f "$target" ]; then
+            cmp -s /tmp/r072_rev004_original.json "$target"
+            echo "Pinned anonymous source evidence already in main"
+            exit 0
+          fi
+          cp /tmp/r072_rev004_original.json "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$target"
+          git commit -m "results(R072): archive SHA-locked anonymous real PLOS S8 column domains and 189 row-universe blocker"
+          git push origin HEAD:main
