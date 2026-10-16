@@ -1,0 +1,69 @@
+{
+  "study": "R067",
+  "date": "2026-10-16",
+  "stage": "E2_R047_AND_BINARY_PD_SOURCE_APPLICABILITY",
+  "protocol": "protocols/R067_E2_BEHAVIORAL_DATA_APPLICABILITY_2026-10-16.md",
+  "protocol_commit": "1ef6f6ebf4f5155199e224ab1fc7a0b49df1b746",
+  "author_repository": "lrdegeest/InequalityCPR",
+  "author_commit": "1142b0915a0a46e72264358378b3535948f6b2b4",
+  "r047": {
+    "source_status": "R047_ORIGINAL_BYTES_AND_STRUCTURE_PASS",
+    "data_blob": "73c02176bc9e060af987149594a85f9f7b591230",
+    "data_bytes": 239510,
+    "theory_blob": "8b6f116b0e1f4b750ceb312a46a0b6f505faf09d",
+    "raw_experimental_rows": 2048,
+    "tail_blank_rows": 1984,
+    "post_practice_rows": 1920,
+    "participants": 128,
+    "independent_groups_of_four": 32,
+    "periods": 16,
+    "practice_round": 1,
+    "endowment_counts": {
+      "40": 512,
+      "50": 1024,
+      "60": 512
+    },
+    "punishment_ff_counts": {
+      "0": 1024,
+      "1": 1024
+    },
+    "conditions": {
+      "FF=0,Homo=0": 512,
+      "FF=0,Homo=1": 512,
+      "FF=1,Homo=0": 512,
+      "FF=1,Homo=1": 512
+    },
+    "Invest_distinct_postpractice": 45,
+    "Invest_min": 0,
+    "Invest_max": 60,
+    "groups_with_three_or_more_extraction_levels": 32,
+    "behavioral_type": "MULTILEVEL_COMMON_POOL_EXTRACTION",
+    "is_exact_binary_pd": false,
+    "status_for_original_r067_2x2_model": "BLOCKED_MODEL_MISMATCH",
+    "arbitrary_binary_conversion": false
+  },
+  "alternative_data": {
+    "repository": "Dryad",
+    "doi": "10.5061/dryad.37pvmcvmk",
+    "dataset_version_number": 8,
+    "api_doi_identity": "PASS",
+    "public_license": "CC0-1.0",
+    "candidate_payoffs": {
+      "R": 3,
+      "T": 4,
+      "S": 0,
+      "P": 1
+    },
+    "raw_participant_data_not_downloaded_in_this_run": true,
+    "status": "CATALOG_IDENTITY_VERIFIED_BEHAVIORAL_SCHEMA_OPEN"
+  },
+  "workflow": {
+    "run_id": 38867710076,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38867710076",
+    "conclusion": "success",
+    "synthetic_contract_tests_pass": 10,
+    "aggregate_artifact_id": 12031723331
+  },
+  "scientific_boundary": "R047 payoff and extraction scale cannot be mapped without arbitrary thresholds to R067 fixed 2x2 choice and payoff assumptions. Real data source verification does not support real R067 model fitting.",
+  "pesen_v01": "FROZEN"
+}
