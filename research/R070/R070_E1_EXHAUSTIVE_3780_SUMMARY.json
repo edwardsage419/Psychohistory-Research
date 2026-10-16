@@ -183,5 +183,20 @@
     "real_E2": "OPEN",
     "external_E3": "OPEN"
   },
-  "pesen_v01": "FROZEN"
+  "pesen_v01": "FROZEN",
+  "interpretation_erratum": {
+    "issued": "2026-10-16",
+    "source": "research/R070/R070_E1_DISTANCE_POLICY_COMPETITION_AND_ORDERING_ERRATUM.md",
+    "historical_numeric_fields_unchanged": true,
+    "old_STALLED_NO_SATISFYING_VACANCY_meaning": "The row-major first selected unhappy agent has no satisfying eligible vacancy. Other unhappy agents MAY still have feasible relocation.",
+    "tau_0_5": {
+      "stalled_cases": 114,
+      "stalled_with_another_feasible_unsatisfied_agent": 114
+    },
+    "tau_0_75": {
+      "stalled_cases": 546,
+      "stalled_with_another_feasible_unsatisfied_agent": 428
+    },
+    "cause": "chosen-agent execution/activation policy; not proof of global equilibrium"
+  }
 }
