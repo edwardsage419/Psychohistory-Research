@@ -100,7 +100,18 @@ class AnonymousProfileGroupTests(unittest.TestCase):
         self.assertEqual(q["human_image_standing_stern_reputation_model"],"NOT_TESTED")
 
     def test_segment_lengths_not_released_if_any_short(self):
-        q=scan(synthetic_groups(sizes=PUB_GROUP_SORTED,annotations=9))
+        # Insert a fake annotation *inside* the first 19-case group, so
+        # one numeric run has only 2 rows: exactly the privacy edge to test.
+        rows={}
+        rid=2
+        for group_ix,size in enumerate(PUB_GROUP_SORTED,1):
+            for j in range(size):
+                if group_ix==1 and j==2:
+                    rows[rid]={1:"FAKE_NOTE_SPLITTING_A_GROUP"}
+                    rid+=1
+                rows[rid]={1:group_ix,2:j%2}
+                rid+=1
+        q=scan(workbook(rows))
         self.assertIsNone(q["candidate_data_runs_orderless_sorted_if_min_ge10"])
 
     def test_outcomes_not_used_as_filters(self):
