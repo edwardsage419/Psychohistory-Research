@@ -1,0 +1,41 @@
+name: R067 Dryad real iterated PD source schema and access audit
+
+on:
+  push:
+    paths:
+      - 'research/R067/r067_dryad_ipd_source_schema.py'
+      - 'research/R067/test_r067_dryad_ipd_source_schema.py'
+      - '.github/workflows/r067-dryad-ipd-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-and-public-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Synthetic access and schema fail-closed checks
+        working-directory: research/R067
+        run: python -m unittest -v test_r067_dryad_ipd_source_schema
+      - name: Fetch Dryad CC0 fixed and random pairing files and README only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r067_dryad_aggregate
+          python research/R067/r067_dryad_ipd_source_schema.py \
+            --output /tmp/r067_dryad_aggregate/anonymous_file_audit.json
+      - name: Archive no respondent rows, only record counts or access failure codes
+        uses: actions/upload-artifact@v4
+        with:
+          name: r067-dryad-ipd-original-source-schema-audit
+          path: /tmp/r067_dryad_aggregate/anonymous_file_audit.json
+          retention-days: 30
+      - name: Delete all temporary audit metadata
+        if: always()
+        run: rm -rf /tmp/r067_dryad_aggregate
