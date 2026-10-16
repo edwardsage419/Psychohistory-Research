@@ -1,0 +1,122 @@
+{
+  "study": "R066",
+  "stage": "E2_TWO_CANDIDATE_SOURCE_MEASUREMENT_AUDIT",
+  "protocol": "protocols/R066_E2_TWO_DATASET_MEASUREMENT_AUDIT_2026-10-16.md",
+  "protocol_commit": "4b8f1ada0568d66b8da54adb5605777803fde127",
+  "workflow": {
+    "run_id": 38861027481,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38861027481",
+    "conclusion": "success",
+    "real_source_job_id": 116843100304,
+    "synthetic_job_id": 116843100521,
+    "synthetic_tests_pass": 13,
+    "artifact_id": 12029108180
+  },
+  "reddit": {
+    "repository": "corradomonti/learnable-opinion-dynamics",
+    "commit": "5d31ba59e716e5bde85e4c56b9cdacc3920aaaf6",
+    "files": [
+      {
+        "path": "edges_user.tsv.bz2",
+        "blob": "e2e261b123963b257ed126a66b101fbaef6f937d",
+        "compressed_bytes": 321422,
+        "rows": 90772,
+        "months": 120,
+        "time_range": [
+          "200801",
+          "201712"
+        ],
+        "aggregate_weight": 139529,
+        "columns": [
+          "yearmonth",
+          "parent",
+          "author",
+          "count"
+        ]
+      },
+      {
+        "path": "edges_feature.tsv.bz2",
+        "blob": "12b6d3f407697e593bc368b9cd65fca1bfd7ce2d",
+        "compressed_bytes": 490710,
+        "rows": 144677,
+        "months": 120,
+        "time_range": [
+          "200801",
+          "201712"
+        ],
+        "aggregate_weight": 4226515,
+        "columns": [
+          "yearmonth",
+          "author",
+          "subreddit",
+          "count"
+        ]
+      },
+      {
+        "path": "feature_scores.tsv.bz2",
+        "blob": "6c7d8a9e63d9860541d24b1c25c45d1cc2b8c565",
+        "compressed_bytes": 776604,
+        "rows": 144677,
+        "columns": [
+          "author",
+          "subreddit",
+          "date",
+          "sum_p",
+          "count_p",
+          "sum_n",
+          "count_n"
+        ]
+      },
+      {
+        "path": "interaction_scores.tsv.bz2",
+        "blob": "18e367869399850fb4a1f28659a4b375e2ed43a1",
+        "compressed_bytes": 1922336,
+        "rows": 139529,
+        "columns": [
+          "date",
+          "subreddit_x",
+          "author_x",
+          "author_y",
+          "score_x",
+          "score_y",
+          "id_x",
+          "link_id_x",
+          "permalink"
+        ]
+      }
+    ],
+    "total_rows": 519655,
+    "direct_repeated_person_opinion": "NO",
+    "empirical_three_model_gate": "BLOCKED_MEASUREMENT"
+  },
+  "annotated_post": {
+    "repository": "mayaokawa/opinion_dynamics",
+    "commit": "32441421a9a012acc64b206f73a2b6525580e3ce",
+    "path": "working/posts_final_sample_twitter_Abortion.tsv",
+    "blob": "2a88788f32496a8ebe45293ecf95eaf516876df6",
+    "bytes": 279372,
+    "rows": 9944,
+    "distinct_user_id_values": 300,
+    "users_with_repeated_distinct_times": 300,
+    "distinct_timestamps": 9942,
+    "time_min": 0,
+    "time_max": 1,
+    "post_annotation_class_counts": {
+      "0": 3700,
+      "1": 2995,
+      "2": 1862,
+      "3": 1387
+    },
+    "paper_readme_claim": "100 most active users",
+    "observed_distinct_user_id_values": 300,
+    "readme_vs_file_discrepancy": "UNRESOLVED; cannot assume 300 independently distinct people without data documentation audit",
+    "measurement": "MANUALLY_ANNOTATED_POST_CLASS_LABEL_NOT_CONTINUOUS_PERSON_LEVEL_OPINION",
+    "exposure_network": "NO",
+    "empirical_three_model_gate": "BLOCKED_MISSING_NETWORK_AND_LATENT_MEASUREMENT"
+  },
+  "overall_source_integrity": "PASS",
+  "overall_empirical_model_identification": "BLOCKED",
+  "scientific_evidence_level": "SOURCE_VERIFIED_E2_NOT_MODEL_VALIDATED",
+  "raw_identifiable_content_redistributed": false,
+  "pesen_v01": "FROZEN"
+}
