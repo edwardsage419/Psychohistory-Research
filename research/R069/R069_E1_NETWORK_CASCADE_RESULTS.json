@@ -1,0 +1,164 @@
+{
+  "research_id": "R069",
+  "date": "2026-10-16",
+  "stage": "E1_NETWORK_THRESHOLDS_IC_AND_BASS",
+  "status": "E1_MECHANISM_PASS",
+  "protocol": "protocols/R069_NETWORK_CASCADE_THREE_MECHANISMS_2026-10-16.md",
+  "protocol_commit": "48427dd93615b168b86bee2ed0bf610b194976ce",
+  "fixed_graph": {
+    "n": 6,
+    "undirected_path_edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "directed_IC_path_edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "initial_adopters": [
+      0
+    ]
+  },
+  "watts": {
+    "threshold_0_5_traces": [
+      [
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
+    "threshold_0_75_traces": [
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ]
+    ],
+    "synchronous_irreversible": true
+  },
+  "independent_cascade": {
+    "edge_probability": 0.5,
+    "live_edge_configurations_exhaustively_enumerated": 32,
+    "node_adoption_probabilities": [
+      1,
+      0.5,
+      0.25,
+      0.125,
+      0.0625,
+      0.03125
+    ],
+    "expected_final_adopters": 1.96875,
+    "expected_final_adoption_fraction": 0.328125,
+    "monte_carlo_samples": 0
+  },
+  "bass_euler": {
+    "initial": 0.16666666666666666,
+    "innovation_p": 0.03,
+    "imitation_q": 0.4,
+    "dt": 1,
+    "time_series": [
+      0.16666666666666666,
+      0.24722222222222223,
+      0.34424691358024695,
+      0.45421589660112793,
+      0.5697509460534786,
+      0.6807123398817322
+    ],
+    "is_exact_solution_to_continuous_time_Bass": false
+  },
+  "original_literature_DOIs": [
+    "10.1086/226707",
+    "10.1073/pnas.082090499",
+    "10.1145/956750.956769",
+    "10.1287/mnsc.15.5.215"
+  ],
+  "workflow": {
+    "run_id": 38872162843,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38872162843",
+    "conclusion": "success",
+    "unit_tests": 22,
+    "artifact_id": 12033399439
+  },
+  "scope": "Only small-network mathematical mechanism sanity checks. No true network exposures, timestamps, or institutional diffusion human data.",
+  "empirical_E2": "OPEN",
+  "external_E3": "OPEN",
+  "actual_historical_prediction": "UNSUPPORTED",
+  "pesen_v01": "FROZEN"
+}
