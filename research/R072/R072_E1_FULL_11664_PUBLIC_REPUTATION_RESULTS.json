@@ -1,0 +1,1398 @@
+{
+  "research_id": "R072",
+  "stage": "E1_REPUTATION_ASSESSMENT_AND_PUBLIC_SIGNAL",
+  "status": "E1_PUBLIC_REPUTATION_FULL_ENUMERATION_PASS",
+  "protocol": "protocols/R072_REPUTATION_PUBLIC_SIGNAL_DONATION_E1_2026-10-16.md",
+  "source_papers_DOI": [
+    "10.1038/31225",
+    "10.1016/j.jtbi.2004.06.005",
+    "10.2307/2297925"
+  ],
+  "fixed_strategy_population": 4,
+  "fixed_roles": [
+    "ALLC",
+    "ALLD",
+    "DISC"
+  ],
+  "public_assessment_norms": [
+    "IMAGE_SCORING",
+    "SIMPLE_STANDING",
+    "STERN_JUDGING"
+  ],
+  "signal_channels": [
+    "VERIFIED",
+    "FLIP_EVERY_FOURTH",
+    "NO_OBSERVATION"
+  ],
+  "ordered_pairs_each_12_repeated_twice": true,
+  "schedule_size": 24,
+  "strategy_vectors": 81,
+  "initial_reputation_vectors": 16,
+  "complete_model_cases": 11664,
+  "actual_decision_events": 279936,
+  "cases_with_no_reputation_sensitive_DISC_role_across_role_and_seeds": 256,
+  "payoff_per_actual_help": {
+    "donor": -1,
+    "recipient": 2
+  },
+  "norm_channel_results": {
+    "IMAGE_SCORING": {
+      "VERIFIED": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 15552,
+        "first_12_helps_total": 7776,
+        "last_12_helps_total": 7776,
+        "final_good_reputation_slots_total": 2592,
+        "true_group_net_payoff_total": 15552,
+        "reputation_changed_count": 6136,
+        "true_help_rate_all_scheduled_24_transactions": 0.5,
+        "true_help_rate_first_12": 0.5,
+        "true_help_rate_last_12": 0.5,
+        "change_help_rate_last_minus_first": 0.0,
+        "final_good_reputation_slot_fraction": 0.5
+      },
+      "FLIP_EVERY_FOURTH": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 15552,
+        "first_12_helps_total": 7776,
+        "last_12_helps_total": 7776,
+        "final_good_reputation_slots_total": 2592,
+        "true_group_net_payoff_total": 15552,
+        "reputation_changed_count": 15592,
+        "true_help_rate_all_scheduled_24_transactions": 0.5,
+        "true_help_rate_first_12": 0.5,
+        "true_help_rate_last_12": 0.5,
+        "change_help_rate_last_minus_first": 0.0,
+        "final_good_reputation_slot_fraction": 0.5
+      },
+      "NO_OBSERVATION": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 15552,
+        "first_12_helps_total": 7776,
+        "last_12_helps_total": 7776,
+        "final_good_reputation_slots_total": 2592,
+        "true_group_net_payoff_total": 15552,
+        "reputation_changed_count": 0,
+        "true_help_rate_all_scheduled_24_transactions": 0.5,
+        "true_help_rate_first_12": 0.5,
+        "true_help_rate_last_12": 0.5,
+        "change_help_rate_last_minus_first": 0.0,
+        "final_good_reputation_slot_fraction": 0.5
+      }
+    },
+    "SIMPLE_STANDING": {
+      "VERIFIED": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 17680,
+        "first_12_helps_total": 8640,
+        "last_12_helps_total": 9040,
+        "final_good_reputation_slots_total": 3840,
+        "true_group_net_payoff_total": 17680,
+        "reputation_changed_count": 5800,
+        "true_help_rate_all_scheduled_24_transactions": 0.5684156378600823,
+        "true_help_rate_first_12": 0.5555555555555556,
+        "true_help_rate_last_12": 0.581275720164609,
+        "change_help_rate_last_minus_first": 0.0257201646090535,
+        "final_good_reputation_slot_fraction": 0.7407407407407407
+      },
+      "FLIP_EVERY_FOURTH": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 17744,
+        "first_12_helps_total": 8640,
+        "last_12_helps_total": 9104,
+        "final_good_reputation_slots_total": 3792,
+        "true_group_net_payoff_total": 17744,
+        "reputation_changed_count": 14984,
+        "true_help_rate_all_scheduled_24_transactions": 0.5704732510288066,
+        "true_help_rate_first_12": 0.5555555555555556,
+        "true_help_rate_last_12": 0.5853909465020576,
+        "change_help_rate_last_minus_first": 0.029835390946502057,
+        "final_good_reputation_slot_fraction": 0.7314814814814815
+      },
+      "NO_OBSERVATION": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 15552,
+        "first_12_helps_total": 7776,
+        "last_12_helps_total": 7776,
+        "final_good_reputation_slots_total": 2592,
+        "true_group_net_payoff_total": 15552,
+        "reputation_changed_count": 0,
+        "true_help_rate_all_scheduled_24_transactions": 0.5,
+        "true_help_rate_first_12": 0.5,
+        "true_help_rate_last_12": 0.5,
+        "change_help_rate_last_minus_first": 0.0,
+        "final_good_reputation_slot_fraction": 0.5
+      }
+    },
+    "STERN_JUDGING": {
+      "VERIFIED": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 16848,
+        "first_12_helps_total": 8208,
+        "last_12_helps_total": 8640,
+        "final_good_reputation_slots_total": 3456,
+        "true_group_net_payoff_total": 16848,
+        "reputation_changed_count": 10656,
+        "true_help_rate_all_scheduled_24_transactions": 0.5416666666666666,
+        "true_help_rate_first_12": 0.5277777777777778,
+        "true_help_rate_last_12": 0.5555555555555556,
+        "change_help_rate_last_minus_first": 0.027777777777777776,
+        "final_good_reputation_slot_fraction": 0.6666666666666666
+      },
+      "FLIP_EVERY_FOURTH": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 16416,
+        "first_12_helps_total": 8208,
+        "last_12_helps_total": 8208,
+        "final_good_reputation_slots_total": 3024,
+        "true_group_net_payoff_total": 16416,
+        "reputation_changed_count": 15744,
+        "true_help_rate_all_scheduled_24_transactions": 0.5277777777777778,
+        "true_help_rate_first_12": 0.5277777777777778,
+        "true_help_rate_last_12": 0.5277777777777778,
+        "change_help_rate_last_minus_first": 0.0,
+        "final_good_reputation_slot_fraction": 0.5833333333333334
+      },
+      "NO_OBSERVATION": {
+        "cases": 1296,
+        "transactions": 31104,
+        "true_help_total": 15552,
+        "first_12_helps_total": 7776,
+        "last_12_helps_total": 7776,
+        "final_good_reputation_slots_total": 2592,
+        "true_group_net_payoff_total": 15552,
+        "reputation_changed_count": 0,
+        "true_help_rate_all_scheduled_24_transactions": 0.5,
+        "true_help_rate_first_12": 0.5,
+        "true_help_rate_last_12": 0.5,
+        "change_help_rate_last_minus_first": 0.0,
+        "final_good_reputation_slot_fraction": 0.5
+      }
+    }
+  },
+  "cooperation_by_DISC_role_count": {
+    "IMAGE_SCORING": {
+      "VERIFIED": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 512,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 512,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6144,
+          "first_12_helps_total": 3072,
+          "last_12_helps_total": 3072,
+          "final_good_reputation_slots_total": 1024,
+          "true_group_net_payoff_total": 6144,
+          "reputation_changed_count": 2304,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 4608,
+          "first_12_helps_total": 2304,
+          "last_12_helps_total": 2304,
+          "final_good_reputation_slots_total": 768,
+          "true_group_net_payoff_total": 4608,
+          "reputation_changed_count": 2432,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 1536,
+          "first_12_helps_total": 768,
+          "last_12_helps_total": 768,
+          "final_good_reputation_slots_total": 256,
+          "true_group_net_payoff_total": 1536,
+          "reputation_changed_count": 832,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 192,
+          "first_12_helps_total": 96,
+          "last_12_helps_total": 96,
+          "final_good_reputation_slots_total": 32,
+          "true_group_net_payoff_total": 192,
+          "reputation_changed_count": 56,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        }
+      },
+      "FLIP_EVERY_FOURTH": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 512,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 3072,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6144,
+          "first_12_helps_total": 3072,
+          "last_12_helps_total": 3072,
+          "final_good_reputation_slots_total": 1024,
+          "true_group_net_payoff_total": 6144,
+          "reputation_changed_count": 6144,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 4608,
+          "first_12_helps_total": 2304,
+          "last_12_helps_total": 2304,
+          "final_good_reputation_slots_total": 768,
+          "true_group_net_payoff_total": 4608,
+          "reputation_changed_count": 4608,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 1536,
+          "first_12_helps_total": 768,
+          "last_12_helps_total": 768,
+          "final_good_reputation_slots_total": 256,
+          "true_group_net_payoff_total": 1536,
+          "reputation_changed_count": 1568,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 192,
+          "first_12_helps_total": 96,
+          "last_12_helps_total": 96,
+          "final_good_reputation_slots_total": 32,
+          "true_group_net_payoff_total": 192,
+          "reputation_changed_count": 200,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        }
+      },
+      "NO_OBSERVATION": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 512,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6144,
+          "first_12_helps_total": 3072,
+          "last_12_helps_total": 3072,
+          "final_good_reputation_slots_total": 1024,
+          "true_group_net_payoff_total": 6144,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 4608,
+          "first_12_helps_total": 2304,
+          "last_12_helps_total": 2304,
+          "final_good_reputation_slots_total": 768,
+          "true_group_net_payoff_total": 4608,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 1536,
+          "first_12_helps_total": 768,
+          "last_12_helps_total": 768,
+          "final_good_reputation_slots_total": 256,
+          "true_group_net_payoff_total": 1536,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 192,
+          "first_12_helps_total": 96,
+          "last_12_helps_total": 96,
+          "final_good_reputation_slots_total": 32,
+          "true_group_net_payoff_total": 192,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        }
+      }
+    },
+    "SIMPLE_STANDING": {
+      "VERIFIED": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 672,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 1584,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.65625
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6552,
+          "first_12_helps_total": 3264,
+          "last_12_helps_total": 3288,
+          "final_good_reputation_slots_total": 1456,
+          "true_group_net_payoff_total": 6552,
+          "reputation_changed_count": 2496,
+          "true_help_rate_all_scheduled_24_transactions": 0.533203125,
+          "true_help_rate_first_12": 0.53125,
+          "true_help_rate_last_12": 0.53515625,
+          "change_help_rate_last_minus_first": 0.00390625,
+          "final_good_reputation_slot_fraction": 0.7109375
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 5536,
+          "first_12_helps_total": 2688,
+          "last_12_helps_total": 2848,
+          "final_good_reputation_slots_total": 1200,
+          "true_group_net_payoff_total": 5536,
+          "reputation_changed_count": 1368,
+          "true_help_rate_all_scheduled_24_transactions": 0.6006944444444444,
+          "true_help_rate_first_12": 0.5833333333333334,
+          "true_help_rate_last_12": 0.6180555555555556,
+          "change_help_rate_last_minus_first": 0.034722222222222224,
+          "final_good_reputation_slot_fraction": 0.78125
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 2184,
+          "first_12_helps_total": 1008,
+          "last_12_helps_total": 1176,
+          "final_good_reputation_slots_total": 448,
+          "true_group_net_payoff_total": 2184,
+          "reputation_changed_count": 320,
+          "true_help_rate_all_scheduled_24_transactions": 0.7109375,
+          "true_help_rate_first_12": 0.65625,
+          "true_help_rate_last_12": 0.765625,
+          "change_help_rate_last_minus_first": 0.109375,
+          "final_good_reputation_slot_fraction": 0.875
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 336,
+          "first_12_helps_total": 144,
+          "last_12_helps_total": 192,
+          "final_good_reputation_slots_total": 64,
+          "true_group_net_payoff_total": 336,
+          "reputation_changed_count": 32,
+          "true_help_rate_all_scheduled_24_transactions": 0.875,
+          "true_help_rate_first_12": 0.75,
+          "true_help_rate_last_12": 1.0,
+          "change_help_rate_last_minus_first": 0.25,
+          "final_good_reputation_slot_fraction": 1.0
+        }
+      },
+      "FLIP_EVERY_FOURTH": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 672,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 2864,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.65625
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6680,
+          "first_12_helps_total": 3264,
+          "last_12_helps_total": 3416,
+          "final_good_reputation_slots_total": 1488,
+          "true_group_net_payoff_total": 6680,
+          "reputation_changed_count": 5888,
+          "true_help_rate_all_scheduled_24_transactions": 0.5436197916666666,
+          "true_help_rate_first_12": 0.53125,
+          "true_help_rate_last_12": 0.5559895833333334,
+          "change_help_rate_last_minus_first": 0.024739583333333332,
+          "final_good_reputation_slot_fraction": 0.7265625
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 5608,
+          "first_12_helps_total": 2688,
+          "last_12_helps_total": 2920,
+          "final_good_reputation_slots_total": 1184,
+          "true_group_net_payoff_total": 5608,
+          "reputation_changed_count": 4512,
+          "true_help_rate_all_scheduled_24_transactions": 0.6085069444444444,
+          "true_help_rate_first_12": 0.5833333333333334,
+          "true_help_rate_last_12": 0.6336805555555556,
+          "change_help_rate_last_minus_first": 0.050347222222222224,
+          "final_good_reputation_slot_fraction": 0.7708333333333334
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 2096,
+          "first_12_helps_total": 1008,
+          "last_12_helps_total": 1088,
+          "final_good_reputation_slots_total": 400,
+          "true_group_net_payoff_total": 2096,
+          "reputation_changed_count": 1528,
+          "true_help_rate_all_scheduled_24_transactions": 0.6822916666666666,
+          "true_help_rate_first_12": 0.65625,
+          "true_help_rate_last_12": 0.7083333333333334,
+          "change_help_rate_last_minus_first": 0.052083333333333336,
+          "final_good_reputation_slot_fraction": 0.78125
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 288,
+          "first_12_helps_total": 144,
+          "last_12_helps_total": 144,
+          "final_good_reputation_slots_total": 48,
+          "true_group_net_payoff_total": 288,
+          "reputation_changed_count": 192,
+          "true_help_rate_all_scheduled_24_transactions": 0.75,
+          "true_help_rate_first_12": 0.75,
+          "true_help_rate_last_12": 0.75,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.75
+        }
+      },
+      "NO_OBSERVATION": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 512,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6144,
+          "first_12_helps_total": 3072,
+          "last_12_helps_total": 3072,
+          "final_good_reputation_slots_total": 1024,
+          "true_group_net_payoff_total": 6144,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 4608,
+          "first_12_helps_total": 2304,
+          "last_12_helps_total": 2304,
+          "final_good_reputation_slots_total": 768,
+          "true_group_net_payoff_total": 4608,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 1536,
+          "first_12_helps_total": 768,
+          "last_12_helps_total": 768,
+          "final_good_reputation_slots_total": 256,
+          "true_group_net_payoff_total": 1536,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 192,
+          "first_12_helps_total": 96,
+          "last_12_helps_total": 96,
+          "final_good_reputation_slots_total": 32,
+          "true_group_net_payoff_total": 192,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        }
+      }
+    },
+    "STERN_JUDGING": {
+      "VERIFIED": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 512,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 3072,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6144,
+          "first_12_helps_total": 3072,
+          "last_12_helps_total": 3072,
+          "final_good_reputation_slots_total": 1280,
+          "true_group_net_payoff_total": 6144,
+          "reputation_changed_count": 4864,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.625
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 5184,
+          "first_12_helps_total": 2496,
+          "last_12_helps_total": 2688,
+          "final_good_reputation_slots_total": 1152,
+          "true_group_net_payoff_total": 5184,
+          "reputation_changed_count": 2304,
+          "true_help_rate_all_scheduled_24_transactions": 0.5625,
+          "true_help_rate_first_12": 0.5416666666666666,
+          "true_help_rate_last_12": 0.5833333333333334,
+          "change_help_rate_last_minus_first": 0.041666666666666664,
+          "final_good_reputation_slot_fraction": 0.75
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 2112,
+          "first_12_helps_total": 960,
+          "last_12_helps_total": 1152,
+          "final_good_reputation_slots_total": 448,
+          "true_group_net_payoff_total": 2112,
+          "reputation_changed_count": 384,
+          "true_help_rate_all_scheduled_24_transactions": 0.6875,
+          "true_help_rate_first_12": 0.625,
+          "true_help_rate_last_12": 0.75,
+          "change_help_rate_last_minus_first": 0.125,
+          "final_good_reputation_slot_fraction": 0.875
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 336,
+          "first_12_helps_total": 144,
+          "last_12_helps_total": 192,
+          "final_good_reputation_slots_total": 64,
+          "true_group_net_payoff_total": 336,
+          "reputation_changed_count": 32,
+          "true_help_rate_all_scheduled_24_transactions": 0.875,
+          "true_help_rate_first_12": 0.75,
+          "true_help_rate_last_12": 1.0,
+          "change_help_rate_last_minus_first": 0.25,
+          "final_good_reputation_slot_fraction": 1.0
+        }
+      },
+      "FLIP_EVERY_FOURTH": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 512,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 3072,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6144,
+          "first_12_helps_total": 3072,
+          "last_12_helps_total": 3072,
+          "final_good_reputation_slots_total": 1152,
+          "true_group_net_payoff_total": 6144,
+          "reputation_changed_count": 6144,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5625
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 4992,
+          "first_12_helps_total": 2496,
+          "last_12_helps_total": 2496,
+          "final_good_reputation_slots_total": 960,
+          "true_group_net_payoff_total": 4992,
+          "reputation_changed_count": 4736,
+          "true_help_rate_all_scheduled_24_transactions": 0.5416666666666666,
+          "true_help_rate_first_12": 0.5416666666666666,
+          "true_help_rate_last_12": 0.5416666666666666,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.625
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 1920,
+          "first_12_helps_total": 960,
+          "last_12_helps_total": 960,
+          "final_good_reputation_slots_total": 352,
+          "true_group_net_payoff_total": 1920,
+          "reputation_changed_count": 1600,
+          "true_help_rate_all_scheduled_24_transactions": 0.625,
+          "true_help_rate_first_12": 0.625,
+          "true_help_rate_last_12": 0.625,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.6875
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 288,
+          "first_12_helps_total": 144,
+          "last_12_helps_total": 144,
+          "final_good_reputation_slots_total": 48,
+          "true_group_net_payoff_total": 288,
+          "reputation_changed_count": 192,
+          "true_help_rate_all_scheduled_24_transactions": 0.75,
+          "true_help_rate_first_12": 0.75,
+          "true_help_rate_last_12": 0.75,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.75
+        }
+      },
+      "NO_OBSERVATION": {
+        "0": {
+          "cases": 256,
+          "transactions": 6144,
+          "true_help_total": 3072,
+          "first_12_helps_total": 1536,
+          "last_12_helps_total": 1536,
+          "final_good_reputation_slots_total": 512,
+          "true_group_net_payoff_total": 3072,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "1": {
+          "cases": 512,
+          "transactions": 12288,
+          "true_help_total": 6144,
+          "first_12_helps_total": 3072,
+          "last_12_helps_total": 3072,
+          "final_good_reputation_slots_total": 1024,
+          "true_group_net_payoff_total": 6144,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "2": {
+          "cases": 384,
+          "transactions": 9216,
+          "true_help_total": 4608,
+          "first_12_helps_total": 2304,
+          "last_12_helps_total": 2304,
+          "final_good_reputation_slots_total": 768,
+          "true_group_net_payoff_total": 4608,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "3": {
+          "cases": 128,
+          "transactions": 3072,
+          "true_help_total": 1536,
+          "first_12_helps_total": 768,
+          "last_12_helps_total": 768,
+          "final_good_reputation_slots_total": 256,
+          "true_group_net_payoff_total": 1536,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        },
+        "4": {
+          "cases": 16,
+          "transactions": 384,
+          "true_help_total": 192,
+          "first_12_helps_total": 96,
+          "last_12_helps_total": 96,
+          "final_good_reputation_slots_total": 32,
+          "true_group_net_payoff_total": 192,
+          "reputation_changed_count": 0,
+          "true_help_rate_all_scheduled_24_transactions": 0.5,
+          "true_help_rate_first_12": 0.5,
+          "true_help_rate_last_12": 0.5,
+          "change_help_rate_last_minus_first": 0.0,
+          "final_good_reputation_slot_fraction": 0.5
+        }
+      }
+    }
+  },
+  "paired_channel_counterfactuals": {
+    "IMAGE_SCORING|FLIP_EVERY_FOURTH": {
+      "different_true_help_cases": 912,
+      "equal_true_help_cases": 384,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "DISC",
+          "ALLC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "channel",
+        "first_result": {
+          "norm": "IMAGE_SCORING",
+          "channel": "VERIFIED",
+          "true_help_count": 23,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "IMAGE_SCORING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 22,
+          "final_public_reputations": [
+            1,
+            1,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "IMAGE_SCORING|NO_OBSERVATION": {
+      "different_true_help_cases": 828,
+      "equal_true_help_cases": 468,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLC",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "channel",
+        "first_result": {
+          "norm": "IMAGE_SCORING",
+          "channel": "VERIFIED",
+          "true_help_count": 24,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "IMAGE_SCORING",
+          "channel": "NO_OBSERVATION",
+          "true_help_count": 18,
+          "final_public_reputations": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "SIMPLE_STANDING|FLIP_EVERY_FOURTH": {
+      "different_true_help_cases": 680,
+      "equal_true_help_cases": 616,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLD",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "channel",
+        "first_result": {
+          "norm": "SIMPLE_STANDING",
+          "channel": "VERIFIED",
+          "true_help_count": 17,
+          "final_public_reputations": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "SIMPLE_STANDING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 18,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            0
+          ]
+        }
+      }
+    },
+    "SIMPLE_STANDING|NO_OBSERVATION": {
+      "different_true_help_cases": 863,
+      "equal_true_help_cases": 433,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLC",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "channel",
+        "first_result": {
+          "norm": "SIMPLE_STANDING",
+          "channel": "VERIFIED",
+          "true_help_count": 24,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "SIMPLE_STANDING",
+          "channel": "NO_OBSERVATION",
+          "true_help_count": 18,
+          "final_public_reputations": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "STERN_JUDGING|FLIP_EVERY_FOURTH": {
+      "different_true_help_cases": 912,
+      "equal_true_help_cases": 384,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLC",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "channel",
+        "first_result": {
+          "norm": "STERN_JUDGING",
+          "channel": "VERIFIED",
+          "true_help_count": 21,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "STERN_JUDGING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 18,
+          "final_public_reputations": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "STERN_JUDGING|NO_OBSERVATION": {
+      "different_true_help_cases": 860,
+      "equal_true_help_cases": 436,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLC",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "channel",
+        "first_result": {
+          "norm": "STERN_JUDGING",
+          "channel": "VERIFIED",
+          "true_help_count": 21,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "STERN_JUDGING",
+          "channel": "NO_OBSERVATION",
+          "true_help_count": 18,
+          "final_public_reputations": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  },
+  "paired_norm_counterfactuals": {
+    "VERIFIED|IMAGE_SCORING|SIMPLE_STANDING": {
+      "different_true_help_cases": 624,
+      "equal_true_help_cases": 672,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLD",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "norm",
+        "first_result": {
+          "norm": "IMAGE_SCORING",
+          "channel": "VERIFIED",
+          "true_help_count": 16,
+          "final_public_reputations": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "second_result": {
+          "norm": "SIMPLE_STANDING",
+          "channel": "VERIFIED",
+          "true_help_count": 17,
+          "final_public_reputations": [
+            1,
+            1,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    "VERIFIED|IMAGE_SCORING|STERN_JUDGING": {
+      "different_true_help_cases": 616,
+      "equal_true_help_cases": 680,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLC",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "norm",
+        "first_result": {
+          "norm": "IMAGE_SCORING",
+          "channel": "VERIFIED",
+          "true_help_count": 24,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "STERN_JUDGING",
+          "channel": "VERIFIED",
+          "true_help_count": 21,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "VERIFIED|SIMPLE_STANDING|STERN_JUDGING": {
+      "different_true_help_cases": 408,
+      "equal_true_help_cases": 888,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLC",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "norm",
+        "first_result": {
+          "norm": "SIMPLE_STANDING",
+          "channel": "VERIFIED",
+          "true_help_count": 24,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "STERN_JUDGING",
+          "channel": "VERIFIED",
+          "true_help_count": 21,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "FLIP_EVERY_FOURTH|IMAGE_SCORING|SIMPLE_STANDING": {
+      "different_true_help_cases": 712,
+      "equal_true_help_cases": 584,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLD",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "norm",
+        "first_result": {
+          "norm": "IMAGE_SCORING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 16,
+          "final_public_reputations": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "second_result": {
+          "norm": "SIMPLE_STANDING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 18,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            0
+          ]
+        }
+      }
+    },
+    "FLIP_EVERY_FOURTH|IMAGE_SCORING|STERN_JUDGING": {
+      "different_true_help_cases": 760,
+      "equal_true_help_cases": 536,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLC",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "norm",
+        "first_result": {
+          "norm": "IMAGE_SCORING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 24,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        "second_result": {
+          "norm": "STERN_JUDGING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 18,
+          "final_public_reputations": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "FLIP_EVERY_FOURTH|SIMPLE_STANDING|STERN_JUDGING": {
+      "different_true_help_cases": 592,
+      "equal_true_help_cases": 704,
+      "first_lexicographic_witness": {
+        "abstract_roles": [
+          "ALLC",
+          "ALLC",
+          "ALLC",
+          "DISC"
+        ],
+        "initial_public_reputations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparison": "norm",
+        "first_result": {
+          "norm": "SIMPLE_STANDING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 24,
+          "final_public_reputations": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        "second_result": {
+          "norm": "STERN_JUDGING",
+          "channel": "FLIP_EVERY_FOURTH",
+          "true_help_count": 18,
+          "final_public_reputations": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "NO_OBSERVATION|IMAGE_SCORING|SIMPLE_STANDING": {
+      "different_true_help_cases": 0,
+      "equal_true_help_cases": 1296,
+      "first_lexicographic_witness": null
+    },
+    "NO_OBSERVATION|IMAGE_SCORING|STERN_JUDGING": {
+      "different_true_help_cases": 0,
+      "equal_true_help_cases": 1296,
+      "first_lexicographic_witness": null
+    },
+    "NO_OBSERVATION|SIMPLE_STANDING|STERN_JUDGING": {
+      "different_true_help_cases": 0,
+      "equal_true_help_cases": 1296,
+      "first_lexicographic_witness": null
+    }
+  },
+  "synthetic_only": true,
+  "real_human_trust_signal_E2": "NOT_ESTABLISHED",
+  "model_evolutionary_ESS": "NOT_CALCULATED",
+  "external_E3": "OPEN",
+  "pesen_v01": "FROZEN"
+}
