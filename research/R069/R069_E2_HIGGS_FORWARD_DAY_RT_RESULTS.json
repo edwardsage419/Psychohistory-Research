@@ -1,0 +1,182 @@
+{
+  "research_id": "R069",
+  "date": "2026-10-16",
+  "stage": "E2_SNAP_HIGGS_FORWARD_DAY_RT_ACTIVITY",
+  "status": "REAL_HIGGS_FORWARD_DAY_RT_PREDICTION_PASS_BOUNDED",
+  "source": {
+    "official": "https://snap.stanford.edu/data/higgs-activity_time.txt.gz",
+    "sha256": "901b199716a23b0fc0371705e3ae9941b5c9493277aec65456abc4988674ad79",
+    "gzip_bytes": 4169461,
+    "event_rows": 563069,
+    "RT_rows": 354930,
+    "MT_rows": 171237,
+    "RE_rows": 36902
+  },
+  "protocol": "protocols/R069_E2_HIGGS_FORWARD_DAY_RT_2026-10-16.md",
+  "protocol_commit": "730ce9639c86f08ca772ebd2b7fd3ce6844b487c",
+  "task": "For each previously observed actor (prior RT,MT,RE), predict whether they perform at least one RT in next 24-hour UTC day",
+  "training": "July 2--3 initially; each July 4--7 test day adds only preceding completed training days; no future or same-day features",
+  "features": "actor RT or any activity yesterday; previous total act bin 1/2-4/5+; observed historical activity targets with any RT yesterday; no full-period RT graph",
+  "smoothing": {
+    "global": "Beta(1,1)",
+    "group_pseudocount": 100
+  },
+  "test_days": 4,
+  "scored_account_days": 763846,
+  "daily_results": [
+    {
+      "date_UTC": "2012-07-04",
+      "risk_accounts": 31769,
+      "RT_positive": 11130,
+      "new_RT_accounts_not_in_prior_risk": 143001,
+      "historical_target_prior_day_RT_proxy_accounts": 7973,
+      "RT_positive_rate": 0.350341527904561,
+      "model_scores": {
+        "POOLED_GLOBAL": {
+          "logloss_nats": 0.8146815608175142,
+          "Brier": 0.2782534981697589
+        },
+        "YESTERDAY_GLOBAL": {
+          "logloss_nats": 0.7972532512545331,
+          "Brier": 0.2743200224357327
+        },
+        "ACTIVITY_HISTORY": {
+          "logloss_nats": 0.8116678081643185,
+          "Brier": 0.2701388185327139
+        },
+        "ACTIVITY_PLUS_TARGET_PROXY": {
+          "logloss_nats": 0.8068297838835339,
+          "Brier": 0.26975772278664567
+        }
+      }
+    },
+    {
+      "date_UTC": "2012-07-05",
+      "risk_accounts": 204339,
+      "RT_positive": 13455,
+      "new_RT_accounts_not_in_prior_risk": 41023,
+      "historical_target_prior_day_RT_proxy_accounts": 96514,
+      "RT_positive_rate": 0.06584646102799759,
+      "model_scores": {
+        "POOLED_GLOBAL": {
+          "logloss_nats": 0.3872492894209975,
+          "Brier": 0.10598867969348533
+        },
+        "YESTERDAY_GLOBAL": {
+          "logloss_nats": 0.4719829710827189,
+          "Brier": 0.1424535082621366
+        },
+        "ACTIVITY_HISTORY": {
+          "logloss_nats": 0.4203427688721711,
+          "Brier": 0.12365682706856461
+        },
+        "ACTIVITY_PLUS_TARGET_PROXY": {
+          "logloss_nats": 0.4308438904400772,
+          "Brier": 0.1280382131246555
+        }
+      }
+    },
+    {
+      "date_UTC": "2012-07-06",
+      "risk_accounts": 255696,
+      "RT_positive": 6052,
+      "new_RT_accounts_not_in_prior_risk": 11585,
+      "historical_target_prior_day_RT_proxy_accounts": 58827,
+      "RT_positive_rate": 0.02366873161879732,
+      "model_scores": {
+        "POOLED_GLOBAL": {
+          "logloss_nats": 0.16201808751298036,
+          "Brier": 0.029792524621661525
+        },
+        "YESTERDAY_GLOBAL": {
+          "logloss_nats": 0.13089431440804522,
+          "Brier": 0.024887842090535895
+        },
+        "ACTIVITY_HISTORY": {
+          "logloss_nats": 0.1867256238891271,
+          "Brier": 0.0358828991538981
+        },
+        "ACTIVITY_PLUS_TARGET_PROXY": {
+          "logloss_nats": 0.18690113035375255,
+          "Brier": 0.03584358347392248
+        }
+      }
+    },
+    {
+      "date_UTC": "2012-07-07",
+      "risk_accounts": 272042,
+      "RT_positive": 3178,
+      "new_RT_accounts_not_in_prior_risk": 5049,
+      "historical_target_prior_day_RT_proxy_accounts": 44045,
+      "RT_positive_rate": 0.01168201968813639,
+      "model_scores": {
+        "POOLED_GLOBAL": {
+          "logloss_nats": 0.09766484805523266,
+          "Brier": 0.014304957408595134
+        },
+        "YESTERDAY_GLOBAL": {
+          "logloss_nats": 0.0674082593114582,
+          "Brier": 0.011689320699514161
+        },
+        "ACTIVITY_HISTORY": {
+          "logloss_nats": 0.07660368405176722,
+          "Brier": 0.012427377399295258
+        },
+        "ACTIVITY_PLUS_TARGET_PROXY": {
+          "logloss_nats": 0.0752169201231222,
+          "Brier": 0.012336347901470967
+        }
+      }
+    }
+  ],
+  "model_summary": {
+    "POOLED_GLOBAL": {
+      "primary_four_day_equal_NLL_nats": 0.3654034464516812,
+      "secondary_all_account_days_weighted_NLL": 0.2264960064672322,
+      "primary_four_day_equal_Brier": 0.10708491497337522,
+      "secondary_all_account_days_Brier": 0.054993853214197065
+    },
+    "YESTERDAY_GLOBAL": {
+      "primary_four_day_equal_NLL_nats": 0.36688469901418885,
+      "secondary_all_account_days_weighted_NLL": 0.22724410046483742,
+      "primary_four_day_equal_Brier": 0.11333767337197985,
+      "secondary_all_account_days_Brier": 0.06201169878543111
+    },
+    "ACTIVITY_HISTORY": {
+      "primary_four_day_equal_NLL_nats": 0.37383497124434595,
+      "secondary_all_account_days_weighted_NLL": 0.23599352512012617,
+      "primary_four_day_equal_Brier": 0.11052648053861797,
+      "secondary_all_account_days_Brier": 0.060752867589597144
+    },
+    "ACTIVITY_PLUS_TARGET_PROXY": {
+      "primary_four_day_equal_NLL_nats": 0.3749479312001215,
+      "secondary_all_account_days_weighted_NLL": 0.23816635544847842,
+      "primary_four_day_equal_Brier": 0.11149396682167365,
+      "secondary_all_account_days_Brier": 0.061863515947780015
+    }
+  },
+  "workflow": {
+    "first_run_id": 38878398763,
+    "first_run_conclusion": "failure_SAFETY_TEST_ASSERTION_EXPECTATION",
+    "test_corrected_commit": "f9f9508ac954f7c5a2f163ede9407a944d70eb7e",
+    "verified_run_id": 38878472077,
+    "verified_run_conclusion": "success",
+    "synthetic_tests": 22,
+    "anonymous_artifact_id": 12035908489,
+    "actual_anonymous_artifact_json_sha256": "d125dfe75e2ac734f90b6e4a47f38e10dc9bb93b0053ca7b1a183e7fd95a971d"
+  },
+  "interpretation": "Global training prevalence yields lowest four-day macro logloss; additive prior target activity proxy worsens scores relative to own-activity strata. Predictive negative result only, not evidence for no social contagion.",
+  "limits": {
+    "all_observed_actor_population_only": true,
+    "initial_new_RT_actors_excluded": true,
+    "only_four_days_one_news_topic": true,
+    "true_preexisting_follow_graph_observed": false,
+    "failed_exposure_opportunities_observed": false,
+    "true_first_adoption_not_observed": true,
+    "peer_indicator_not_proven_exposure": true,
+    "causal_IC_Watts_fit": "NOT_IDENTIFIED",
+    "E3": "OPEN"
+  },
+  "raw_user_or_target_ids_published": false,
+  "pesen_v01": "FROZEN"
+}
