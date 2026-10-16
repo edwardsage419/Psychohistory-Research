@@ -1,0 +1,98 @@
+{
+  "study": "R066",
+  "stage": "E2_ORIGINAL_AUTHOR_HOUSEHOLD_NETWORK_AUDIT",
+  "protocol": "protocols/R066_E2_AUTHOR_HOUSEHOLD_NETWORK_MAPPING_2026-10-16.md",
+  "protocol_commit": "aefa9d71f9c326d38f8b76d9701baefb8c1c6d57",
+  "workflow": {
+    "run": 38864457996,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38864457996",
+    "conclusion": "success",
+    "synthetic_tests_passed": 6,
+    "artifact_id": 12030611888
+  },
+  "source": {
+    "doi": "10.7910/DVN/RAHSVM",
+    "version": "1.0",
+    "license": "CC0 1.0",
+    "data_sha256": "10b3e31a6d160e003ff9edf96fc1f6e1a8549ea547b8b8b08aadab1f52b40cae",
+    "script_sha256": "2e7b7b22887c69c057a6f2fa1a1ff393566826fdb19e6aad6360393ea9f86ff2",
+    "codebook_sha256": "48741e3447d27fbf57bb54c995ff68c45ade21592c89e2454e71ab840fc8d161"
+  },
+  "dataset_rows": 2125,
+  "distinct_villages": 16,
+  "original_R_method": {
+    "index_formula": "sum six 1-5 item responses noprob+fit+burden+values+land+threat per wave",
+    "code_reference_lines": [
+      31,
+      32,
+      33
+    ],
+    "network_method": "individual nominations -> family member alias sets (ego,hhh,hh1..hh11) -> all associated households -> undirected deduplicated no-self-edge network per village",
+    "R_line_ranges": [
+      "117-182",
+      "206-320"
+    ]
+  },
+  "scores": {
+    "baseline_complete": 1981,
+    "immediate_complete": 905,
+    "endline_complete": 2016,
+    "baseline_endline_complete": 1872,
+    "all_three_complete": 858,
+    "each_complete_index_range": [
+      6,
+      30
+    ]
+  },
+  "original_naive_person_ID_join": {
+    "status": "JOIN_CANDIDATE_BLOCKED",
+    "duplicate_village_ego_keys": 20,
+    "reason": "ego is not a unique household-network key; original author uses member-to-household expansion",
+    "workflow_run": 38863706284
+  },
+  "household_network": {
+    "status": "AUTHOR_ALGORITHM_DERIVED_PYTHON_COUNTS",
+    "source_igraph_exact_parity": "NOT_TESTED",
+    "family_member_aliases_in_multiple_households": 456,
+    "duplicate_hhnum_within_village": 0,
+    "by_relationship": {
+      "visit": {
+        "nominations": 7493,
+        "converted": 3900,
+        "expanded_pairs": 5541,
+        "undirected_edges": 4845,
+        "nodes_with_edge": 1955
+      },
+      "meal": {
+        "nominations": 6387,
+        "converted": 3498,
+        "expanded_pairs": 4999,
+        "undirected_edges": 4110,
+        "nodes_with_edge": 1882
+      },
+      "borrow": {
+        "nominations": 4014,
+        "converted": 2205,
+        "expanded_pairs": 3130,
+        "undirected_edges": 2785,
+        "nodes_with_edge": 1633
+      },
+      "rumor": {
+        "nominations": 4375,
+        "converted": 2408,
+        "expanded_pairs": 3483,
+        "undirected_edges": 3027,
+        "nodes_with_edge": 1738
+      }
+    },
+    "union_unique_undirected_edges": 8659,
+    "union_nodes_with_edge": 2067,
+    "union_isolated_nodes": 58
+  },
+  "research_claim": "Public source files and author-algorithm-derived 16 village household graph appear structurally sufficient to design a bounded, retrospective, cross-village opinion-dynamics prediction experiment; however author R exact graph parity and valid shock/survey measurement evaluation still OPEN.",
+  "empirical_three_model_fit": "NOT_YET_PERFORMED",
+  "cross_village_heldout": "NOT_YET_PERFORMED",
+  "external_independent_validation": "OPEN",
+  "individual_data_redistributed": false,
+  "pesen_v01": "FROZEN"
+}
