@@ -1,0 +1,53 @@
+name: R072 official PLOS S8 eight anonymous group table3 parity rev005
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_plos_s8_profile_block_parity_rev005.py'
+      - 'research/R072/test_r072_plos_s8_profile_block_parity_rev005.py'
+      - '.github/workflows/r072-plos-s8-eight-group-parity-rev005.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entirely-invented-eight-group-safety-and-negative-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run all synthetic group-partition, nonclaim and source-SHA gates
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_profile_block_parity_rev005
+
+  genuine-original-eight-anonymous-groups:
+    needs: entirely-invented-eight-group-safety-and-negative-checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: SHA-pin genuine PLOS original and compare only anonymous candidate sizes to Table 3
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_rev005
+          python research/R072/r072_plos_s8_profile_block_parity_rev005.py \
+            --output /tmp/r072_rev005/anonymous_eight_group_parity.json
+      - name: Archive only privacy-protected group-size counts and nonclaim constraints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-genuine-PLOS-S8-anonymous-table3-eightgroup-parity
+          path: /tmp/r072_rev005/anonymous_eight_group_parity.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Remove temporary report
+        if: always()
+        run: rm -rf /tmp/r072_rev005
