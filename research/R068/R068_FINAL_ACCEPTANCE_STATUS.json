@@ -1,0 +1,67 @@
+{
+  "research_id": "R068",
+  "date": "2026-10-16",
+  "formal_status": "CLOSED_BOUNDED",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "retrospective_scope": true,
+  "final_report": "research/R068/R068_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md",
+  "backlog": "research/R068/R068_POST_CLOSURE_OPEN_GATES.md",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "evidence": {
+    "e1": {
+      "status": "PASS_SYNTHETIC",
+      "run": 38869217831,
+      "tests": 18,
+      "strict_binary_three_demonstrator_real_data": "NOT_TESTED"
+    },
+    "e2_source": {
+      "status": "PASS_TRUE_LFS_SOURCE",
+      "run": 38870499060,
+      "tests": 13,
+      "source_rows_group": 12880,
+      "source_rows_individual": 7929
+    },
+    "e2_temporal": {
+      "status": "PASS_PREVIOUS_TRIAL_SELF_SUBTRACTION",
+      "run": 38870896074,
+      "tests": 12,
+      "valid_peer_exposures": 12674,
+      "mixed_task_rooms": 1
+    },
+    "e2_heldout": {
+      "status": "PASS_BOUNDED_38_ROOMS",
+      "run": 38871373620,
+      "tests": 18,
+      "source_people_group": 184,
+      "train_other_rooms": 37,
+      "heldout_rooms": 38,
+      "scored_trials": 12329,
+      "room_equal_NLL": {
+        "uniform": 1.386294361119894,
+        "inertia": 1.1655191936613014,
+        "frequency_exponent": 1.4567653050844371,
+        "inertia_frequency_mixture": 1.1514808469206488
+      },
+      "strong_conformity_theta_gt_one_selected_folds": 0,
+      "model_causal_inference": "NOT_ESTABLISHED",
+      "paper_complete_RL_reproduction": false
+    }
+  },
+  "outstanding": {
+    "exact_three_demonstrator_human": "OPEN",
+    "observed_peer_payoff_success_bias": "BLOCKED_BY_MEASUREMENT",
+    "external_e3": "OPEN",
+    "historical_scale": "UNSUPPORTED",
+    "room_level_CI": "OPEN"
+  },
+  "source_commit": "6fca0b26c33af3a5b3c415719fa3df0dced15149",
+  "next_research": "R069",
+  "pesen_v01": "FROZEN"
+}
