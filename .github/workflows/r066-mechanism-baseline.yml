@@ -1,0 +1,37 @@
+name: R066 three opinion models reproducibility baseline
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_three_opinion_models.py'
+      - 'research/R066/test_r066_three_opinion_models.py'
+      - '.github/workflows/r066-mechanism-baseline.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  theoretical-mechanism-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test synthetic DeGroot FJ HK mechanisms and exclusions
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_three_opinion_models
+      - name: Execute frozen three-model benchmark; mark E1 ONLY
+        shell: bash
+        run: |
+          mkdir -p /tmp/r066_output
+          python research/R066/r066_three_opinion_models.py \
+            --output /tmp/r066_output/r066_three_model_e1.json
+      - name: Archive synthetic aggregate benchmark only
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-three-model-e1-synthetic-baseline
+          path: /tmp/r066_output/r066_three_model_e1.json
+          retention-days: 30
