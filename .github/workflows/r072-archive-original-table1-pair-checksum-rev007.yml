@@ -1,0 +1,48 @@
+name: R072 archive SHA-pinned original S8 eight response pairs rev007
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r072-archive-original-table1-pair-checksum-rev007.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  anonymized-eight-pair-science-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reexecute all synthetic no-codebook, privacy and pair-denominator tests
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_table1_group_checksum_rev007
+      - name: Recompute genuine original SHA-locked publisher table checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R072/r072_plos_s8_table1_group_checksum_rev007.py \
+            --output /tmp/r072_rev007_pair_checksum_original.json
+          echo '3cd8a9baa0b881942e8c394ae7d547f419a6ea2348dab1b5bb3aa5c543b1f09a  /tmp/r072_rev007_pair_checksum_original.json' | sha256sum --check --status
+      - name: Commit only source-authentic unlabelled eight-group count pairs
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=research/R072/R072_E2_PLOS_S8_ANONYMOUS_TABLE1_PAIR_CHECKSUM_REV007.json
+          if [ -f "$target" ]; then
+            cmp -s /tmp/r072_rev007_pair_checksum_original.json "$target"
+            echo "Existing anonymized eight-pair checksum fully verified"
+            exit 0
+          fi
+          cp /tmp/r072_rev007_pair_checksum_original.json "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$target"
+          git commit -m "results(R072): preserve exact original PLOS Table1 eight-pair aggregate parity without profile code or human rows"
+          git push origin HEAD:main
