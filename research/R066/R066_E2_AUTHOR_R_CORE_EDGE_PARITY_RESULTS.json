@@ -1,0 +1,49 @@
+{
+  "research": "R066",
+  "date": "2026-10-16",
+  "stage": "E2_AUTHOR_R_CORE_HOUSEHOLD_EDGE_PARITY",
+  "protocol": "protocols/R066_E2_AUTHOR_R_EDGE_PARITY_2026-10-16.md",
+  "protocol_commit": "b6f82e636bf13a71c6f510a4cbf13166306d30b4",
+  "workflow": {
+    "run_id": 38865507356,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38865507356",
+    "conclusion": "success",
+    "original_r_job_id": 116857289111,
+    "synthetic_job_id": 116857289392,
+    "synthetic_tests_passed": 11,
+    "artifact_id": 12031415976
+  },
+  "source": {
+    "doi": "10.7910/DVN/RAHSVM",
+    "version": "1.0",
+    "data_sha256": "10b3e31a6d160e003ff9edf96fc1f6e1a8549ea547b8b8b08aadab1f52b40cae",
+    "author_r_sha256": "2e7b7b22887c69c057a6f2fa1a1ff393566826fdb19e6aad6360393ea9f86ff2",
+    "codebook_sha256": "48741e3447d27fbf57bb54c995ff68c45ade21592c89e2454e71ab840fc8d161"
+  },
+  "scope": "16 villages, four types of personal-nomination-to-household-edge conversions, exact original author R make_el and convert_to_hh run via Rscript",
+  "status": "AUTHOR_R_CORE_EDGE_PARITY_PASS",
+  "dataset_household_rows": 2125,
+  "edge_sets": {
+    "python_edges": 14767,
+    "original_r_core_edges": 14767,
+    "only_in_python": 0,
+    "only_in_r": 0,
+    "comparison": "all canonical per-village per-type per-edge identities equal (not merely same counts)",
+    "counts_per_category": {
+      "visit": 4845,
+      "meal": 4110,
+      "borrow": 2785,
+      "rumor": 3027
+    },
+    "deduplicated_union_without_type": 8659
+  },
+  "boundaries": {
+    "original_full_igraph_statistics_parity": "OPEN",
+    "actual_degrees_and_neighbors_parity": "SAME_INPUT_EDGES_NO_FULL_PIPELINE_COMPARISON",
+    "intervention_and_missingness_handling": "OPEN",
+    "true_three_model_heldout_prediction": "NOT_STARTED",
+    "external_new_data_validation": "OPEN",
+    "no_raw_person_or_edge_artifact": true
+  },
+  "pesen_v01": "FROZEN"
+}
