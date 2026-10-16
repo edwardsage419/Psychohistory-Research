@@ -48,3 +48,14 @@
 [详细完整科研审计](R072_E2_REAL_S8_189_CANDIDATE_EIGHT_GROUP_EVIDENCE_AUDIT_2026-10-16.md) · [源层门禁机器状态](R072_POSTCLOSURE_REAL_E2_S8_189_ANONYMOUS_GATE_STATUS.json)。
 
 **严禁误报：** 作者正文中的 `96 serving / 93 neutral` 是**出版者已发表事实**，项目只独立发现8个**未命名**组的数量完全对应；目前没有被权威验证的代码本指出哪4个匿名代码是 serving，亦没有绑定0/1或yes/maybe/no回应值。因此 `R072_TABLE3_SERVING96_NEUTRAL93_REPRODUCED=NO`，`R072_REAL_RESPONSE_EFFECT_FITTED=NO`，`R072_E2_REAL_IMAGE_STANDING_STERN_VERIFIED=NO`。要前进必须从可审计的作者原始说明或出版代码中找到独立编码映射，再另冻真人结果核验协议；绝不可选择看起来能得到更显著效果的映射。**R072 原`CLOSED_BOUNDED`、PESEN v0.1 FROZEN不变。**
+
+
+## REV-007：PLOS 原始 S8 与作者 Table 1 的八组请求数×回应数精确匿名联合一致（2026-10-16）
+
+在 REV004/005/006 已经核验来源 SHA、198个物理非表头行中的189个numeric候选行和8个匿名组大小多集的基础上，本次[REV-007 独立事后探索性冻结协议](../../protocols/R072_E2_S8_REV007_PUBLISHED_GROUP_RESPONSE_CHECKSUM_2026-10-16.md)事先指定**唯一**候选字段：第2列数字代码 `1` 作为“可能收到任何回复”的候选。因为前阶段已经观测该列共有89个`1`，而出版者论文 Table1已报告总回复89，本轮**不是未看数据前的独立确认性实验**。
+
+[真实首次 Actions38928749514](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38928749514)：16个虚构隐私、损坏格式、分组联合计数反例测试 PASS，原作者 38,647 byte XLSX SHA固定真实计算 SUCCESS。八个不带原编码的 `(组请求数, 第二列数字1数量)` 按数目排序为 **(19,9), (19,10), (19,11), (19,12), (25,11), (28,14), (30,6), (30,16)**，**逐对完全等于**出版社 Table1八组 `(requests, any responses)` 多集，总请求189、代码1总数89。与只检验总计数的弱条件不同，合成对照证明即使总人数和总回复保持189/89，也可能存在组间分布不符的失败配置。将0/1取反产生100而非出版者89，也不匹配。
+
+[独立真实结果归档 run38928909389](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38928909389) 二次计算并验证1,816字节匿名JSON SHA256 `3cd8a9baa0b881942e8c394ae7d547f419a6ea2348dab1b5bb3aa5c543b1f09a` 后永久存入 [REV007 真实来源匿名机读联合一致性结果](R072_E2_PLOS_S8_ANONYMOUS_TABLE1_PAIR_CHECKSUM_REV007.json)。[完整科研审计与循环论证风险](R072_E2_REV007_REAL_TABLE1_ANONYMOUS_GROUP_CHECKSUM_AND_SCIENTIFIC_BOUNDARY.md)；[新增机读科学状态](R072_POSTCLOSURE_S8_REV007_GROUP_RESPONSE_PARITY_STATUS.json)。
+
+**最重要的证据边界：** 这**仅是八个匿名组的描述性数据与作者 Table1已发表结果精确吻合**；不等于原始编码字典已恢复，更不能用已发表的每组回复人数倒推出哪些原数值是 serving/neutral，然后再“检验”服务历史引起的效果，那样存在严重的 outcome→treatment 循环论证。作者处理分配96/93与 `yes/maybe/no` 原始编码仍未由**独立于结果**的材料绑定，原R072 IMAGE/STANDING/STERN 真人模型依然未受验证。R072`CLOSED_BOUNDED`、E3 OPEN、PESEN v0.1 FROZEN不变。
