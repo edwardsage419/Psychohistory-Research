@@ -35,3 +35,16 @@
 随后[REV-003 匿名结构事先冻结协议](../../protocols/R072_E2_S8_ANONYMOUS_SCHEMA_DIAGNOSTIC_2026-10-16.md)仅允许SHA固定源的工作簿结构与匿名表头类别。最初两次 CI 因合成测试夹具失败（run `38924768397`、`38924890902`），**原件结构还未读取**；修复测试后，[run 38924991302](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38924991302) **19 tests PASS、真实源结构作业 SUCCESS**。原始S8实际只有 **1张工作表、199个XML行标签、使用列至第10列，非空1819格（数字1790、文本29）**；只发现安全匿名表头关键词 `provider/reference/request/service`；**没有发表原始字段名称、参与者身份或任何人类响应行**。
 
 详见[正式新增源恢复审计](R072_E2_PLOS_S8_PUBLISHER_RECOVERY_AND_SCHEMA_AUDIT.md)和[固定来源SHA及匿名机读结果](R072_E2_PLOS_S8_RECOVERY_AND_ANONYMOUS_SCHEMA_RESULTS.json)。PLOS作者报告**189次**服务请求（其中历史服务档案96，中性档案93），这与工作簿物理199个XML行标签不是同一种量；当前**尚未**核对作者样本纳排、具体处理编码、行为变量含义与真实统计。**后续 E2 来源字节验证/匿名结构门现为PASS，但E2人类信誉机制仍未获得识别；R072此前 `CLOSED_BOUNDED`、E1结果及历史失败未改变**。PESEN v0.1继续FROZEN。
+
+
+## 2026-10-16 后续真人来源进一步实读：189候选记录、8个匿名组规模完全对应作者Table3（编码仍阻塞）
+
+正式延续前两阶段 `S8_SOURCE_BYTES=PASS`、`ANONYMOUS_SCHEMA=PASS`，另立三次真实原件 E2 可适用性核验：
+
+- [REV-004先验协议](../../protocols/R072_E2_PLOS_S8_REV004_AUTHOR_ROW_UNIVERSE_AND_COLUMN_DOMAINS_2026-10-16.md) → [CI38926189750](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38926189750) **18测试PASS、真实原件数据结构检验成功**：除一行表头外有198物理行；第1列有189 numeric＋9 textual，第2列189个匿名二元numeric＋9空；**不**用作者报告189直接删除9行。随后[重算归档CI38926470942](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38926470942)将[全部匿名列域结果](R072_E2_PLOS_S8_ANONYMOUS_COLUMN_DOMAINS_REV004.json)永久同步main。
+- [REV-005另冻事后探索性结构拆分协议](../../protocols/R072_E2_S8_REV005_ANONYMOUS_BLOCK_COHORT_PARITY_2026-10-16.md)，首CI `38926856955`因**仅人工测试夹具失配**失败（历史保留）；修复后[CI38926940610](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38926940610) **15测试PASS、真实189候选numeric行＋9非候选行、8个匿名数值编码规模排序19/19/19/19/25/28/30/30**，与出版者Table3八个档案规模多集完全吻合。但“八种编码对应哪种性别×国家×服务历史”完全未独立解码。[成功归档CI38927095385](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38927095385)发布[匿名八组机读结果](R072_E2_PLOS_S8_ANONYMOUS_PROFILE_BLOCK_PARITY_REV005.json)。
+- [REV-006字典来源侦查协议](../../protocols/R072_E2_S8_REV006_INTERNAL_CODEBOOK_LEGEND_DETECTION_2026-10-16.md) → [真实CI38927407735](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38927407735) **12合成保护测试PASS**，真正发现9个非候选行都在189候选记录之后，内含 `service/neutral/yes/maybe/no/reply` 等关键词，但**未证实数值标签与处理组的赋值关系**；[CI归档38927611260](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38927611260)保存[匿名关键词机读负证据](R072_E2_PLOS_S8_ANONYMOUS_FOOTER_LEGEND_REV006.json)。
+
+[详细完整科研审计](R072_E2_REAL_S8_189_CANDIDATE_EIGHT_GROUP_EVIDENCE_AUDIT_2026-10-16.md) · [源层门禁机器状态](R072_POSTCLOSURE_REAL_E2_S8_189_ANONYMOUS_GATE_STATUS.json)。
+
+**严禁误报：** 作者正文中的 `96 serving / 93 neutral` 是**出版者已发表事实**，项目只独立发现8个**未命名**组的数量完全对应；目前没有被权威验证的代码本指出哪4个匿名代码是 serving，亦没有绑定0/1或yes/maybe/no回应值。因此 `R072_TABLE3_SERVING96_NEUTRAL93_REPRODUCED=NO`，`R072_REAL_RESPONSE_EFFECT_FITTED=NO`，`R072_E2_REAL_IMAGE_STANDING_STERN_VERIFIED=NO`。要前进必须从可审计的作者原始说明或出版代码中找到独立编码映射，再另冻真人结果核验协议；绝不可选择看起来能得到更显著效果的映射。**R072 原`CLOSED_BOUNDED`、PESEN v0.1 FROZEN不变。**
