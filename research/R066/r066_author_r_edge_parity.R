@@ -29,8 +29,8 @@ extract_author_function <- function(name) {
   end <- NA_integer_
   for (line_idx in seq.int(positions[[1]],length(source_lines))) {
     line <- strsplit(source_lines[[line_idx]], "#", fixed=TRUE)[[1]][1]
-    opened <- nchar(gsub("[^\\{]", "", line))
-    closed <- nchar(gsub("[^\\}]", "", line))
+    opened <- nchar(gsub("[^{]", "", line))
+    closed <- nchar(gsub("[^}]", "", line))
     if (opened > 0) started <- TRUE
     depth <- depth + opened - closed
     if (started && depth == 0) {end <- line_idx; break}
@@ -68,8 +68,8 @@ for (village in unique(DF$village_number)) {
   hhnum <- suppressWarnings(as.numeric(df$hhnum))
   if (any(is.na(hhnum))) stop("household sort cannot resolve numeric hhnum")
   df <- df[order(hhnum),,drop=FALSE]
-  df[, c("ego",members,unlist(nomination))] <-
-    lapply(df[,c("ego",members,unlist(nomination)),drop=FALSE],function(col) {
+  df[, c(members,unlist(nomination))] <-
+    lapply(df[,c(members,unlist(nomination)),drop=FALSE],function(col) {
       col[is.na(col)] <- ""
       col
     })
