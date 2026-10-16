@@ -1,0 +1,53 @@
+name: R066 longitudinal opinion dataset catalog gate
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_dataverse_catalog_gate.py'
+      - 'research/R066/test_r066_dataverse_catalog_gate.py'
+      - '.github/workflows/r066-dataverse-catalog.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalog-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify status classification and privacy/safety bounds
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_dataverse_catalog_gate
+
+  real-dataverse-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Get public metadata for target and known control, no raw datasets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r066_dataverse_catalog
+          python research/R066/r066_dataverse_catalog_gate.py \
+            --output /tmp/r066_dataverse_catalog/public_metadata.json
+      - name: Archive limited public metadata and exact status of both requests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-public-dataverse-catalog-metadata
+          path: /tmp/r066_dataverse_catalog/public_metadata.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Remove temporary metadata
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r066_dataverse_catalog
