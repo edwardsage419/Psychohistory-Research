@@ -1,0 +1,273 @@
+{
+  "research_id": "R070",
+  "date": "2026-10-16",
+  "status": "E1_SYNTHETIC_SPATIAL_RULE_PASS",
+  "protocol": "protocols/R070_SCHELLING_SPATIAL_MICRO_MACRO_2026-10-16.md",
+  "protocol_commit": "db7be59b4cb4138def430fa28813f595c8301918",
+  "original_literature": "Schelling 1971 DOI 10.1080/0022250X.1971.9989794",
+  "setup": {
+    "board_dimension": [
+      4,
+      4
+    ],
+    "initial_board": [
+      [
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "agents_type_A": 2,
+    "agents_type_B": 2,
+    "vacant": 12,
+    "tolerance_thresholds": [
+      0,
+      0.5
+    ],
+    "max_steps": 8,
+    "update": "asynchronous first unhappy then first nonisolated satisfactory vacancy row major",
+    "neighborhood": "Moore-8"
+  },
+  "neutral_tau0": {
+    "moves": 0,
+    "termination": "STABLE_ALL_SATISFIED",
+    "final_board": [
+      [
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "initial_unhappy": 0
+  },
+  "tolerant_tau0_5": {
+    "moves": 3,
+    "termination": "STABLE_ALL_SATISFIED",
+    "full_synthetic_trace": [
+      {
+        "tick": 0,
+        "board": [
+          [
+            1,
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "unhappy_agents": 4,
+        "mean_same_type_fraction_with_occupied_neighbors": 0.3333333333333333,
+        "heterotypic_cardinal_occupied_edge_share": 0.5
+      },
+      {
+        "tick": 1,
+        "board": [
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "unhappy_agents": 2,
+        "mean_same_type_fraction_with_occupied_neighbors": 0.41666666666666663,
+        "heterotypic_cardinal_occupied_edge_share": 0.3333333333333333
+      },
+      {
+        "tick": 2,
+        "board": [
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "unhappy_agents": 1,
+        "mean_same_type_fraction_with_occupied_neighbors": 0.5833333333333333,
+        "heterotypic_cardinal_occupied_edge_share": 0.3333333333333333
+      },
+      {
+        "tick": 3,
+        "board": [
+          [
+            2,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "unhappy_agents": 0,
+        "mean_same_type_fraction_with_occupied_neighbors": 1,
+        "heterotypic_cardinal_occupied_edge_share": 0
+      }
+    ],
+    "moves_detail": [
+      {
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          2,
+          0
+        ],
+        "type": 1,
+        "destination_same_neighbor_fraction": 0.5
+      },
+      {
+        "from": [
+          1,
+          0
+        ],
+        "to": [
+          2,
+          1
+        ],
+        "type": 1,
+        "destination_same_neighbor_fraction": 0.5
+      },
+      {
+        "from": [
+          1,
+          1
+        ],
+        "to": [
+          0,
+          0
+        ],
+        "type": 2,
+        "destination_same_neighbor_fraction": 1
+      }
+    ],
+    "final_cardinal_occupied_heterotypic_edges": 0,
+    "final_cardinal_occupied_same_type_edges": 2
+  },
+  "workflow": {
+    "run_id": 38879457522,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38879457522",
+    "conclusion": "success",
+    "synthetic_tests": 22,
+    "artifact_id": 12036812511,
+    "original_aggregate_JSON_SHA256": "f77c66f44353c1c38b684216fcf8bd31a832ad4474fc1b19b30fafd93b4078f0"
+  },
+  "science": {
+    "status": "E1_MATH_AND_DETERMINISTIC_AGENT_BASED_ONLY",
+    "not_original_schelling_full_algorithm": true,
+    "real_demographic_data_fitted": false,
+    "causal_residential_mobility": "NOT_IDENTIFIED",
+    "empirical_E2": "OPEN",
+    "independent_E3": "OPEN",
+    "historical_extrapolation": "UNSUPPORTED"
+  },
+  "pesen_v01": "FROZEN"
+}
