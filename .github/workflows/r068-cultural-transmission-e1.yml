@@ -1,0 +1,38 @@
+name: R068 cultural transmission and finite population drift E1
+
+on:
+  push:
+    paths:
+      - 'research/R068/r068_cultural_transmission.py'
+      - 'research/R068/test_r068_cultural_transmission.py'
+      - '.github/workflows/r068-cultural-transmission-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cultural-mechanism-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all eighteen exact probability and finite-drift controls
+        working-directory: research/R068
+        run: python -m unittest -v test_r068_cultural_transmission
+      - name: Run prespecified 3 mechanism probability and sampling-variance baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r068_aggregate
+          python research/R068/r068_cultural_transmission.py \
+            --output /tmp/r068_aggregate/r068_cultural_mechanisms_e1.json
+      - name: Archive only synthetic mathematical mechanism probabilities
+        uses: actions/upload-artifact@v4
+        with:
+          name: r068-cultural-transmission-three-mechanism-e1
+          path: /tmp/r068_aggregate/r068_cultural_mechanisms_e1.json
+          retention-days: 30
