@@ -1,0 +1,53 @@
+name: R072 real PLOS S8 Table1 eight group anonymous response checksum rev007
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_plos_s8_table1_group_checksum_rev007.py'
+      - 'research/R072/test_r072_plos_s8_table1_group_checksum_rev007.py'
+      - '.github/workflows/r072-plos-s8-table1-unlabelled-parity-rev007.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-eight-group-codebook-privacy-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 16 aggregate-pair, swapped order, preserved annotation and inference limit tests
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_table1_group_checksum_rev007
+
+  official-original-human-eight-pair-checksum:
+    needs: synthetic-eight-group-codebook-privacy-gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch source SHA-pinned publisher S8, output only anonymous eight published-comparison pairs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_rev007
+          python research/R072/r072_plos_s8_table1_group_checksum_rev007.py \
+            --output /tmp/r072_rev007/anonymous_eight_group_response_checksum.json
+      - name: Archive only anonymous group pairs, failed or successful checksum
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-original-S8-unlabelled-eight-group-table1-response-parity
+          path: /tmp/r072_rev007/anonymous_eight_group_response_checksum.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Destroy temporary receipt
+        if: always()
+        run: rm -rf /tmp/r072_rev007
