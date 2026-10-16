@@ -1,0 +1,79 @@
+name: R066 Larson Lewis published V1 source schema
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_larson_lewis_public_schema.py'
+      - 'research/R066/test_r066_larson_lewis_public_schema.py'
+      - '.github/workflows/r066-larson-lewis-source-schema.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-contract-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test source size, schema, docx package and no privacy leak
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_larson_lewis_public_schema
+
+  real-three-files:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve original CC0 V1.0 source files in runner temporary directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r066_source /tmp/r066_source_audit
+          python - <<'PY'
+          from urllib import request
+          from pathlib import Path
+          import json
+          from research.R066.r066_larson_lewis_public_schema import FILES
+          base="https://dataverse.harvard.edu"
+          urls=[("/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/RAHSVM",
+                  Path("/tmp/r066_source/catalog.json"))]
+          urls += [("/api/access/datafile/"+str(file_id),
+                    Path("/tmp/r066_source")/filename)
+                   for filename,file_id,_ in FILES.values()]
+          for url,out in urls:
+              req=request.Request(base+url,headers={"User-Agent":"R066-fixed-source-audit/1.0"})
+              with request.urlopen(req,timeout=30) as resp:
+                  raw=resp.read(10_000_001)
+              if len(raw)>10_000_000:
+                  raise ValueError("file exceeded fixed download limit")
+              out.write_bytes(raw)
+              print("Fetched pinned source",out.name,"bytes",len(raw))
+          PY
+      - name: Verify public V1.0 identity, row structure, R script and DOCX integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R066/r066_larson_lewis_public_schema.py \
+            --source-dir /tmp/r066_source \
+            --metadata /tmp/r066_source/catalog.json \
+            --output /tmp/r066_source_audit/aggregate.json
+      - name: Archive only anonymous source schema and SHA256
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-larson-lewis-v1-public-anonymous-source-schema
+          path: /tmp/r066_source_audit/aggregate.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Destroy source files including all participant records
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r066_source /tmp/r066_source_audit
