@@ -64,8 +64,12 @@ jobs:
             if (length(loaded)!=1L || loaded!=dataset) stop("SOURCE_RDATA_OBJECT_IDENTITY_FAILURE")
             x <- get(dataset,envir=env)
             exp <- candidates[[dataset]]
-            if (!is.data.frame(x) || nrow(x)!=exp$expected_n || !identical(names(x),exp$fields))
+            if (!is.data.frame(x) || nrow(x)!=exp$expected_n || !identical(names(x),exp$fields)) {
+              cat(sprintf("SCHEMA_DISCOVERY %s: nrow=%d, names=%s\n",
+                dataset,if(is.data.frame(x))nrow(x) else -1L,
+                paste(names(x),collapse=",")))
               stop("SOURCE_RDATA_SCHEMA_MISMATCH")
+            }
             if (anyNA(x[,c("treatment","id","game","period","choice")]))
               stop("SOURCE_KEY_OR_ACTION_MISSING")
             if (!all(as.character(x$choice) %in% c("c","d")))
