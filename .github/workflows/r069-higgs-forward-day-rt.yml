@@ -1,0 +1,52 @@
+name: R069 genuine SNAP Higgs rolling future-day RT prediction
+
+on:
+  push:
+    paths:
+      - 'research/R069/r069_higgs_forward_day_rt.py'
+      - 'research/R069/test_r069_higgs_forward_day_rt.py'
+      - '.github/workflows/r069-higgs-forward-day-rt.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  strict-temporal-isolation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prove 22 no-current-day or future-day input controls
+        working-directory: research/R069
+        run: python -m unittest -v test_r069_higgs_forward_day_rt
+
+  actual-higgs-timestamp-heldout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch SHA-pinned original SNAP actions and evaluate Jul04 through Jul07 only from earlier days
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r069_rt_forward_aggregate
+          python research/R069/r069_higgs_forward_day_rt.py \
+            --output /tmp/r069_rt_forward_aggregate/nonidentifying_day_scores.json
+      - name: Upload anonymous daily RT aggregates and strictly forward metrics only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r069-SNAP-Higgs-forward-days-actor-RT-risk-prediction
+          path: /tmp/r069_rt_forward_aggregate/nonidentifying_day_scores.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase temporary research aggregates
+        if: always()
+        run: rm -rf /tmp/r069_rt_forward_aggregate
