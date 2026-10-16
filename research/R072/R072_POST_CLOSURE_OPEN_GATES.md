@@ -28,3 +28,12 @@
 `FULL_HUMAN_REPUTATION_MECHANISM_E2=BLOCKED_BY_MEASUREMENT`；
 `E3=OPEN`；
 `PESEN_v0.1=FROZEN`。
+
+
+## 2026-10-16 新增三阶段原件域核验：八匿名组总量已交叉一致，但处理变量编码仍缺
+
+R072在 [REV-004](../../protocols/R072_E2_PLOS_S8_REV004_AUTHOR_ROW_UNIVERSE_AND_COLUMN_DOMAINS_2026-10-16.md) 中看到198个源Excel非表头行、189 numeric／9 textual区分；之后**另行冻结的探索性[REV-005](../../protocols/R072_E2_S8_REV005_ANONYMOUS_BLOCK_COHORT_PARITY_2026-10-16.md)** 根据原字段格式识别189候选请求＋9非候选行，并核算8个匿名数值编码人数多集 **19、19、19、19、25、28、30、30**，与出版者Table3八个profile发请求量完全相同。[REV-006](../../protocols/R072_E2_S8_REV006_INTERNAL_CODEBOOK_LEGEND_DETECTION_2026-10-16.md) 对9个**全部位于候选数据之后**的说明行扫描公开语义关键词，发现服务历史、回复类别相关文本迹象，但**没有找到可可靠绑定数值编码→serving/neutral档案与回应含义的author codebook**。本轮真实日志分别为 [REV004 run38926189750](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38926189750)、[REV005 run38926940610](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38926940610)、[REV006 run38927407735](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38927407735)，**18＋15＋12项虚构合成安全/来源测试PASS**，所有真实原件访问与匿名结构任务成功；REV005第一轮测试夹具失败也保留。
+
+因此旧清单里“189真实样本数尚未核验”的描述需历史化理解：项目现在**确实独立识别出189条格式候选**且8个组规模与作者表3结构完全一致，但这不是作者纳排因果认证或档案标签映射。正式 [科研审计](R072_E2_REAL_S8_189_CANDIDATE_EIGHT_GROUP_EVIDENCE_AUDIT_2026-10-16.md)、[源层门禁机器状态](R072_POSTCLOSURE_REAL_E2_S8_189_ANONYMOUS_GATE_STATUS.json)可复查。
+
+**现在最上游的真正阻塞：** `AUTHOR_EXACT_CODEBOOK_AND_MAPPING=NOT_RECOVERED`，导致 `EXACT_96_93_SERVING_VS_NEUTRAL_IN_REAL_CSV=NOT_REPLICATED`、`YES/MAYBE/NO_RESPONSE_MEASUREMENT=NOT_REPRODUCED`、`HUMAN_REPUTATION_RULE_E2=NOT_IDENTIFIED`。应优先从同一出版物的原作者附录/S8中明确的字段编码说明或公开分析代码恢复映射，**禁止用处理组人数/结果显著性倒推哪种编码更“像”服务历史**。R072 `CLOSED_BOUNDED` 不动，E3 OPEN，PESEN v0.1 FROZEN。
