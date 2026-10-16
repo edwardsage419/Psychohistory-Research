@@ -30,3 +30,9 @@
 `R072_REAL_REPUTATION_CAUSAL_MECHANISM=NOT_ESTABLISHED`；
 `R072_E3_EXTERNAL=OPEN`；
 `PESEN_v0.1=FROZEN`。
+
+## 补充：已执行官方 S8 首次字节来源门，实际未恢复（2026-10-16）
+
+在上文仅确认 PLOS 官网“存在 S8 XLSX 公开链接”的来源调查后，已先冻结 [仅源字节的获取与隐私协议](../../protocols/R072_E2_PLOS_FIELD_SUPPLEMENT_SOURCE_IDENTITY_2026-10-16.md)，然后执行 [GitHub Actions 38921163855](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38921163855)：**13 项**人工合成 XLSX 文件封装、第三方域名、ZIP安全防线全部 PASS，但从预定的出版者/DOI 地址获取真实 S8 文件的 job FAIL，错误为 `PUBLISHER_S8_ORIGINAL_UNAVAILABLE_ValueError_ValueError`，整体工作流结论 FAILURE。它表明**当前官方源获取合同未满足**，而不一定意味着 S8 学术附录根本不存在；官网可读的 S8 元数据仍有效，但原始文件字节数、SHA256、合法数据字段、实际观察个数均未得到核验。没有绕过安全域名约束或换不透明第三方镜像“修复”结果。
+
+[完整匿名失败收据](R072_E2_PLOS_FIELD_S8_SOURCE_ATTEMPT_RESULTS.json)已入 Git。这个来源失败与 [11,664 组 E1 合成数学完整结果](R072_E1_FULL_11664_PUBLIC_REPUTATION_RESULTS.json)分立，不允许把 E1 SUCCESS 宣称成 E2 人类规则验证。后续应根据出版者明确授权/真实链接与适用数据结构先冻新协议再独立验证。
