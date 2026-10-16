@@ -71,7 +71,8 @@ class S8AuthorCodebookIndependentGate(unittest.TestCase):
     def test_publisher_response_rates_irrelevant_to_matching(self):
         z=m.characterize_codebook(CODES,test_notes())
         self.assertEqual(z["status"],"FULL_AUTHOR_CODEBOOK_CANDIDATE_REQUIRES_NEXT_STAGE_CONFIRMATION")
-        self.assertNotIn("responses",str(z))
+        self.assertFalse(z["human_serving_effect_calculated"])
+        self.assertFalse(z["raw_group_codes_notes_and_individual_responses_disclosed"])
 
     def test_no_individual_header_or_profile_text_exported(self):
         notes=test_notes()+[{2:("SECRET_PERSON_ACCOUNT_NAME_78654","text")}]
