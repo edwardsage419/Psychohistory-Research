@@ -94,7 +94,7 @@ class DistanceCompetitionTests(unittest.TestCase):
 
     def test_population_vacancy_invariants_hold(self):
         for policy in m.POLICIES:
-            q=m.run_policy(INITIAL,.5,12)
+            q=m.run_policy(INITIAL,.5,policy,12)
             self.assertTrue(q["source_type_counts_preserved"])
             for snap in q["snapshots"]:
                 self.assertEqual(tuple(snap["metrics"][k] for k in
