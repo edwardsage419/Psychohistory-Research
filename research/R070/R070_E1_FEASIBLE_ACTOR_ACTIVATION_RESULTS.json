@@ -1,0 +1,408 @@
+{
+  "research_id": "R070",
+  "date": "2026-10-16",
+  "stage": "E1_FIRST_FEASIBLE_AGENT_ACTIVATION_PAIRED_ALL_CASES",
+  "scientific_status": "E1_AGENT_ACTIVATION_COMPETITION_PASS",
+  "frozen_protocol": "protocols/R070_E1_FEASIBLE_ACTOR_ACTIVATION_2026-10-16.md",
+  "protocol_commit": "fa9d786416e225c97eba4fac31525266321681e1",
+  "frozen_source_model": "research/R070/r070_distance_competitors.py",
+  "initial_states_per_threshold_and_policy": 756,
+  "tolerances": [
+    0,
+    0.25,
+    0.5,
+    0.75,
+    1
+  ],
+  "mobility_policies": [
+    "GLOBAL_ROW_MAJOR",
+    "RADIUS_1",
+    "RADIUS_2",
+    "NEAREST_SATISFICING"
+  ],
+  "activation_rules": [
+    "FIRST_UNHAPPY",
+    "FIRST_FEASIBLE_UNHAPPY"
+  ],
+  "total_full_trajectories": 30240,
+  "maximum_moves_per_trajectory": 40,
+  "status_distinction": "original selected-first can be blocked when later agents can move; new stalled implies ALL currently unhappy agents immobile",
+  "summary_by_threshold": {
+    "0.0": {
+      "GLOBAL_ROW_MAJOR": {
+        "old_satisfied": 756,
+        "new_satisfied": 756,
+        "new_fully_immobile": 0,
+        "old_stalled_new_satisfied": 0,
+        "new_initial_boards_with_immobile_skips": 0,
+        "new_total_skipped_candidates": 0,
+        "different_terminal_boards": 0,
+        "new_terminal_unhappy_less": 0,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 0,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_1": {
+        "old_satisfied": 756,
+        "new_satisfied": 756,
+        "new_fully_immobile": 0,
+        "old_stalled_new_satisfied": 0,
+        "new_initial_boards_with_immobile_skips": 0,
+        "new_total_skipped_candidates": 0,
+        "different_terminal_boards": 0,
+        "new_terminal_unhappy_less": 0,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 0,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_2": {
+        "old_satisfied": 756,
+        "new_satisfied": 756,
+        "new_fully_immobile": 0,
+        "old_stalled_new_satisfied": 0,
+        "new_initial_boards_with_immobile_skips": 0,
+        "new_total_skipped_candidates": 0,
+        "different_terminal_boards": 0,
+        "new_terminal_unhappy_less": 0,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 0,
+        "new_budget_exhausted": 0
+      },
+      "NEAREST_SATISFICING": {
+        "old_satisfied": 756,
+        "new_satisfied": 756,
+        "new_fully_immobile": 0,
+        "old_stalled_new_satisfied": 0,
+        "new_initial_boards_with_immobile_skips": 0,
+        "new_total_skipped_candidates": 0,
+        "different_terminal_boards": 0,
+        "new_terminal_unhappy_less": 0,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 0,
+        "new_budget_exhausted": 0
+      }
+    },
+    "0.25": {
+      "GLOBAL_ROW_MAJOR": {
+        "old_satisfied": 756,
+        "new_satisfied": 756,
+        "new_fully_immobile": 0,
+        "old_stalled_new_satisfied": 0,
+        "new_initial_boards_with_immobile_skips": 0,
+        "new_total_skipped_candidates": 0,
+        "different_terminal_boards": 0,
+        "new_terminal_unhappy_less": 0,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 0,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_1": {
+        "old_satisfied": 496,
+        "new_satisfied": 600,
+        "new_fully_immobile": 156,
+        "old_stalled_new_satisfied": 104,
+        "new_initial_boards_with_immobile_skips": 120,
+        "new_total_skipped_candidates": 120,
+        "different_terminal_boards": 120,
+        "new_terminal_unhappy_less": 112,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 8,
+        "new_macro_heterotypic_contact_lower": 36,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_2": {
+        "old_satisfied": 720,
+        "new_satisfied": 720,
+        "new_fully_immobile": 36,
+        "old_stalled_new_satisfied": 0,
+        "new_initial_boards_with_immobile_skips": 0,
+        "new_total_skipped_candidates": 0,
+        "different_terminal_boards": 0,
+        "new_terminal_unhappy_less": 0,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 0,
+        "new_budget_exhausted": 0
+      },
+      "NEAREST_SATISFICING": {
+        "old_satisfied": 756,
+        "new_satisfied": 756,
+        "new_fully_immobile": 0,
+        "old_stalled_new_satisfied": 0,
+        "new_initial_boards_with_immobile_skips": 0,
+        "new_total_skipped_candidates": 0,
+        "different_terminal_boards": 0,
+        "new_terminal_unhappy_less": 0,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 0,
+        "new_budget_exhausted": 0
+      }
+    },
+    "0.5": {
+      "GLOBAL_ROW_MAJOR": {
+        "old_satisfied": 642,
+        "new_satisfied": 756,
+        "new_fully_immobile": 0,
+        "old_stalled_new_satisfied": 114,
+        "new_initial_boards_with_immobile_skips": 114,
+        "new_total_skipped_candidates": 120,
+        "different_terminal_boards": 114,
+        "new_terminal_unhappy_less": 114,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 104,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_1": {
+        "old_satisfied": 294,
+        "new_satisfied": 362,
+        "new_fully_immobile": 394,
+        "old_stalled_new_satisfied": 68,
+        "new_initial_boards_with_immobile_skips": 144,
+        "new_total_skipped_candidates": 180,
+        "different_terminal_boards": 144,
+        "new_terminal_unhappy_less": 144,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 40,
+        "new_macro_heterotypic_contact_lower": 56,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_2": {
+        "old_satisfied": 528,
+        "new_satisfied": 666,
+        "new_fully_immobile": 90,
+        "old_stalled_new_satisfied": 138,
+        "new_initial_boards_with_immobile_skips": 176,
+        "new_total_skipped_candidates": 212,
+        "different_terminal_boards": 176,
+        "new_terminal_unhappy_less": 176,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 10,
+        "new_macro_heterotypic_contact_lower": 146,
+        "new_budget_exhausted": 0
+      },
+      "NEAREST_SATISFICING": {
+        "old_satisfied": 646,
+        "new_satisfied": 756,
+        "new_fully_immobile": 0,
+        "old_stalled_new_satisfied": 110,
+        "new_initial_boards_with_immobile_skips": 110,
+        "new_total_skipped_candidates": 120,
+        "different_terminal_boards": 110,
+        "new_terminal_unhappy_less": 110,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 0,
+        "new_macro_heterotypic_contact_lower": 110,
+        "new_budget_exhausted": 0
+      }
+    },
+    "0.75": {
+      "GLOBAL_ROW_MAJOR": {
+        "old_satisfied": 210,
+        "new_satisfied": 570,
+        "new_fully_immobile": 186,
+        "old_stalled_new_satisfied": 360,
+        "new_initial_boards_with_immobile_skips": 428,
+        "new_total_skipped_candidates": 732,
+        "different_terminal_boards": 428,
+        "new_terminal_unhappy_less": 428,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 24,
+        "new_macro_heterotypic_contact_lower": 308,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_1": {
+        "old_satisfied": 90,
+        "new_satisfied": 186,
+        "new_fully_immobile": 570,
+        "old_stalled_new_satisfied": 96,
+        "new_initial_boards_with_immobile_skips": 160,
+        "new_total_skipped_candidates": 282,
+        "different_terminal_boards": 160,
+        "new_terminal_unhappy_less": 160,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 34,
+        "new_macro_heterotypic_contact_lower": 86,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_2": {
+        "old_satisfied": 170,
+        "new_satisfied": 442,
+        "new_fully_immobile": 314,
+        "old_stalled_new_satisfied": 272,
+        "new_initial_boards_with_immobile_skips": 322,
+        "new_total_skipped_candidates": 524,
+        "different_terminal_boards": 322,
+        "new_terminal_unhappy_less": 322,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 10,
+        "new_macro_heterotypic_contact_lower": 226,
+        "new_budget_exhausted": 0
+      },
+      "NEAREST_SATISFICING": {
+        "old_satisfied": 210,
+        "new_satisfied": 570,
+        "new_fully_immobile": 186,
+        "old_stalled_new_satisfied": 360,
+        "new_initial_boards_with_immobile_skips": 428,
+        "new_total_skipped_candidates": 738,
+        "different_terminal_boards": 428,
+        "new_terminal_unhappy_less": 428,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 24,
+        "new_macro_heterotypic_contact_lower": 308,
+        "new_budget_exhausted": 0
+      }
+    },
+    "1.0": {
+      "GLOBAL_ROW_MAJOR": {
+        "old_satisfied": 210,
+        "new_satisfied": 570,
+        "new_fully_immobile": 186,
+        "old_stalled_new_satisfied": 360,
+        "new_initial_boards_with_immobile_skips": 428,
+        "new_total_skipped_candidates": 732,
+        "different_terminal_boards": 428,
+        "new_terminal_unhappy_less": 428,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 24,
+        "new_macro_heterotypic_contact_lower": 308,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_1": {
+        "old_satisfied": 90,
+        "new_satisfied": 186,
+        "new_fully_immobile": 570,
+        "old_stalled_new_satisfied": 96,
+        "new_initial_boards_with_immobile_skips": 160,
+        "new_total_skipped_candidates": 282,
+        "different_terminal_boards": 160,
+        "new_terminal_unhappy_less": 160,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 34,
+        "new_macro_heterotypic_contact_lower": 86,
+        "new_budget_exhausted": 0
+      },
+      "RADIUS_2": {
+        "old_satisfied": 170,
+        "new_satisfied": 442,
+        "new_fully_immobile": 314,
+        "old_stalled_new_satisfied": 272,
+        "new_initial_boards_with_immobile_skips": 322,
+        "new_total_skipped_candidates": 524,
+        "different_terminal_boards": 322,
+        "new_terminal_unhappy_less": 322,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 10,
+        "new_macro_heterotypic_contact_lower": 226,
+        "new_budget_exhausted": 0
+      },
+      "NEAREST_SATISFICING": {
+        "old_satisfied": 210,
+        "new_satisfied": 570,
+        "new_fully_immobile": 186,
+        "old_stalled_new_satisfied": 360,
+        "new_initial_boards_with_immobile_skips": 428,
+        "new_total_skipped_candidates": 738,
+        "different_terminal_boards": 428,
+        "new_terminal_unhappy_less": 428,
+        "new_terminal_unhappy_more": 0,
+        "new_macro_heterotypic_contact_higher": 24,
+        "new_macro_heterotypic_contact_lower": 308,
+        "new_budget_exhausted": 0
+      }
+    }
+  },
+  "counterexamples": {
+    "old_first_unhappy_stuck_second_can_move_tau_half": {
+      "tau": 0.5,
+      "initial": [
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "old_status": "STALLED_NO_SATISFYING_VACANCY",
+      "old_moves": 0,
+      "new_status": "STABLE_ALL_SATISFIED",
+      "new_moves": 2,
+      "new_terminal": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ]
+    },
+    "nearest_same_grid_stall_rescued": {
+      "tau": 0.75,
+      "initial": [
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "old_status": "STALLED_NO_SATISFYING_VACANCY",
+      "new_status": "STABLE_ALL_SATISFIED",
+      "old_moves": 0,
+      "new_moves": 3
+    },
+    "real_socioeconomic_conclusion": "NONE"
+  },
+  "workflow": {
+    "run_id": 38889203300,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38889203300",
+    "outcome": "success",
+    "tests": 23,
+    "full_artifact_id": 12040952947,
+    "full_source_generated_JSON_sha256": "213be6839db3067854d811a755ec9f3047d5f42def4e3df55f1fd56b835d1dcd",
+    "full_original_JSON_bytes": 108904,
+    "full_recompute_command": "python research/R070/r070_feasible_actor_activation.py --output /tmp/r070_full_30240.json"
+  },
+  "scope": {
+    "E1": "MATH_AND_SYNTHETIC_AGENT_MECHANISM_ONLY",
+    "E2": "BLOCKED_EVENT_LEVEL_SOURCE_AND_RULE_PARITY",
+    "E3": "OPEN",
+    "causal_residential_policy_effect": "NOT_ESTABLISHED",
+    "real_participants_or_demographic_data_used": false
+  },
+  "pesen_v01": "FROZEN"
+}
