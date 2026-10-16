@@ -1,0 +1,206 @@
+{
+  "research_id": "R073",
+  "stage": "E2_HUMAN_IPD_INDIVIDUAL_NEXT_ACTION_MEMORY_LOSO",
+  "status": "R073_REAL_HUMAN_12_SESSION_LOSO_COMPLETED",
+  "protocol": "protocols/R073_HUMAN_IPD_LAGGED_SOCIAL_MEMORY_LOSO_2026-10-17.md",
+  "publisher_paper_DOI": "10.1038/s41598-022-11654-2",
+  "source_repository": "eladiomontero/PairwiseStrategies",
+  "source_submission_commit": "4743f74d8a03a031b8f70aff64956f8ad5155182",
+  "source_git_blobs": {
+    "fix.csv": "3bf78bf85f6642afee18d6f1965dca7272582f40",
+    "rand.csv": "f5a86cd033b739da45d3fc7c5019068f612146a2"
+  },
+  "source_universe": {
+    "sessions": 12,
+    "humans": 188,
+    "individual_source_decisions": 18800,
+    "individual_scorable_outcomes": 18424,
+    "score_rounds_from": 3,
+    "score_rounds_through": 100,
+    "fixed_sessions": 6,
+    "shuffled_sessions": 6,
+    "individual_record_or_ID_exported": false
+  },
+  "training": "leave out one entire session; 5 other same-treatment sessions; no target labels in outer heldout",
+  "heldout_test_rounds_per_person": "3..100 (98), real past own/opponent actions available at t-1 and t-2",
+  "scoring": "one-step teacher-forced individual choice conditional on actual previous actions",
+  "Brier_and_logloss_session_macro": {
+    "M0_TREATMENT_PREVALENCE": {
+      "all_12_sessions_equal_weight_Brier": 0.22641120367481707,
+      "all_12_sessions_equal_weight_log_loss": 0.6446583311011672,
+      "fixed_six_sessions_equal_weight_Brier": 0.25037039106086684,
+      "shuffled_six_sessions_equal_weight_Brier": 0.2024520162887672,
+      "fixed_six_sessions_equal_weight_log_loss": 0.6939653616692819,
+      "shuffled_six_sessions_equal_weight_log_loss": 0.5953513005330525,
+      "heldout_session_count": 12,
+      "individual_test_records": 18424
+    },
+    "M1_OWN_LAST": {
+      "all_12_sessions_equal_weight_Brier": 0.1341970798874635,
+      "all_12_sessions_equal_weight_log_loss": 0.43618755287217037,
+      "fixed_six_sessions_equal_weight_Brier": 0.11863337235974093,
+      "shuffled_six_sessions_equal_weight_Brier": 0.14976078741518603,
+      "fixed_six_sessions_equal_weight_log_loss": 0.4013974886953278,
+      "shuffled_six_sessions_equal_weight_log_loss": 0.470977617049013,
+      "heldout_session_count": 12,
+      "individual_test_records": 18424
+    },
+    "M2_OPPONENT_LAST": {
+      "all_12_sessions_equal_weight_Brier": 0.17783121496259624,
+      "all_12_sessions_equal_weight_log_loss": 0.5404986542280869,
+      "fixed_six_sessions_equal_weight_Brier": 0.15453789424155365,
+      "shuffled_six_sessions_equal_weight_Brier": 0.20112453568363886,
+      "fixed_six_sessions_equal_weight_log_loss": 0.4889923856187471,
+      "shuffled_six_sessions_equal_weight_log_loss": 0.5920049228374268,
+      "heldout_session_count": 12,
+      "individual_test_records": 18424
+    },
+    "M3_JOINT_LAST": {
+      "all_12_sessions_equal_weight_Brier": 0.12475795617162207,
+      "all_12_sessions_equal_weight_log_loss": 0.4041088725626012,
+      "fixed_six_sessions_equal_weight_Brier": 0.10221674756175277,
+      "shuffled_six_sessions_equal_weight_Brier": 0.14729916478149138,
+      "fixed_six_sessions_equal_weight_log_loss": 0.3426611615662658,
+      "shuffled_six_sessions_equal_weight_log_loss": 0.46555658355893664,
+      "heldout_session_count": 12,
+      "individual_test_records": 18424
+    },
+    "M4_JOINT_TWO_LAGS": {
+      "all_12_sessions_equal_weight_Brier": 0.12054640684474983,
+      "all_12_sessions_equal_weight_log_loss": 0.390297169790725,
+      "fixed_six_sessions_equal_weight_Brier": 0.09991012715126191,
+      "shuffled_six_sessions_equal_weight_Brier": 0.14118268653823776,
+      "fixed_six_sessions_equal_weight_log_loss": 0.33109780586777754,
+      "shuffled_six_sessions_equal_weight_log_loss": 0.4494965337136725,
+      "heldout_session_count": 12,
+      "individual_test_records": 18424
+    },
+    "M5_TFT_NOISY": {
+      "all_12_sessions_equal_weight_Brier": 0.25389956875607306,
+      "all_12_sessions_equal_weight_log_loss": 0.8737718383775643,
+      "fixed_six_sessions_equal_weight_Brier": 0.1727715014577241,
+      "shuffled_six_sessions_equal_weight_Brier": 0.335027636054422,
+      "fixed_six_sessions_equal_weight_log_loss": 0.6083533454245724,
+      "shuffled_six_sessions_equal_weight_log_loss": 1.1391903313305562,
+      "heldout_session_count": 12,
+      "individual_test_records": 18424
+    },
+    "M6_WSLS_NOISY": {
+      "all_12_sessions_equal_weight_Brier": 0.4650692419825148,
+      "all_12_sessions_equal_weight_log_loss": 1.5646343017839646,
+      "fixed_six_sessions_equal_weight_Brier": 0.3762396744412097,
+      "shuffled_six_sessions_equal_weight_Brier": 0.55389880952382,
+      "fixed_six_sessions_equal_weight_log_loss": 1.2740195893716162,
+      "shuffled_six_sessions_equal_weight_log_loss": 1.8552490141963123,
+      "heldout_session_count": 12,
+      "individual_test_records": 18424
+    }
+  },
+  "session_equal_paired_Brier_comparisons": {
+    "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+      "fix": {
+        "Brier_delta_compared_to_reference": -0.016416624797988156,
+        "sessions_better": 6,
+        "sessions_equal": 0,
+        "sessions_worse": 0,
+        "sessions": 6
+      },
+      "rand": {
+        "Brier_delta_compared_to_reference": -0.002461622633694651,
+        "sessions_better": 4,
+        "sessions_equal": 0,
+        "sessions_worse": 2,
+        "sessions": 6
+      }
+    },
+    "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+      "fix": {
+        "Brier_delta_compared_to_reference": -0.0023066204104908775,
+        "sessions_better": 4,
+        "sessions_equal": 0,
+        "sessions_worse": 2,
+        "sessions": 6
+      },
+      "rand": {
+        "Brier_delta_compared_to_reference": -0.0061164782432536246,
+        "sessions_better": 6,
+        "sessions_equal": 0,
+        "sessions_worse": 0,
+        "sessions": 6
+      }
+    },
+    "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+      "fix": {
+        "Brier_delta_compared_to_reference": -0.1317370187011259,
+        "sessions_better": 6,
+        "sessions_equal": 0,
+        "sessions_worse": 0,
+        "sessions": 6
+      },
+      "rand": {
+        "Brier_delta_compared_to_reference": -0.05269122887358113,
+        "sessions_better": 6,
+        "sessions_equal": 0,
+        "sessions_worse": 0,
+        "sessions": 6
+      }
+    },
+    "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+      "fix": {
+        "Brier_delta_compared_to_reference": -0.09583249681931322,
+        "sessions_better": 6,
+        "sessions_equal": 0,
+        "sessions_worse": 0,
+        "sessions": 6
+      },
+      "rand": {
+        "Brier_delta_compared_to_reference": -0.0013274806051283238,
+        "sessions_better": 4,
+        "sessions_equal": 0,
+        "sessions_worse": 2,
+        "sessions": 6
+      }
+    },
+    "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+      "fix": {
+        "Brier_delta_compared_to_reference": -0.07759888960314278,
+        "sessions_better": 6,
+        "sessions_equal": 0,
+        "sessions_worse": 0,
+        "sessions": 6
+      },
+      "rand": {
+        "Brier_delta_compared_to_reference": 0.13257561976565482,
+        "sessions_better": 0,
+        "sessions_equal": 0,
+        "sessions_worse": 6,
+        "sessions": 6
+      }
+    },
+    "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+      "fix": {
+        "Brier_delta_compared_to_reference": 0.12586928338034284,
+        "sessions_better": 1,
+        "sessions_equal": 0,
+        "sessions_worse": 5,
+        "sessions": 6
+      },
+      "rand": {
+        "Brier_delta_compared_to_reference": 0.35144679323505285,
+        "sessions_better": 0,
+        "sessions_equal": 0,
+        "sessions_worse": 6,
+        "sessions": 6
+      }
+    }
+  },
+  "smoothing_alpha_fixed_before_results": 20.0,
+  "deterministic_reference_observation_flip": 0.05,
+  "original_author_hmm_clusters": "NOT_REPRODUCED",
+  "author_submission_equals_final_Dryad": "NOT_VERIFIED",
+  "causal_psychological_memory_effect": "NOT_IDENTIFIED",
+  "cross_society_historical_evolution": "NOT_STUDIED",
+  "independent_E3": "OPEN",
+  "individual_ids_or_rows_exported": false,
+  "pesen_v01": "FROZEN"
+}
