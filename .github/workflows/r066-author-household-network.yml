@@ -1,0 +1,70 @@
+name: R066 author-defined household network and six-item source audit
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_author_household_audit.py'
+      - 'research/R066/test_r066_author_household_audit.py'
+      - '.github/workflows/r066-author-household-network.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-household-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify household alter conversion and prevent cross-village ties
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_author_household_audit
+
+  exact-source-household-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve only pinned public source files in runner temporary directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r066_hh_source /tmp/r066_hh_out
+          python - <<'PY'
+          from urllib import request
+          from pathlib import Path
+          from research.R066.r066_larson_lewis_public_schema import FILES
+          for name,file_id,_ in FILES.values():
+              req=request.Request("https://dataverse.harvard.edu/api/access/datafile/"+str(file_id),
+                                  headers={"User-Agent":"R066-fixed-author-household-audit/1.0"})
+              with request.urlopen(req,timeout=30) as resp:
+                  raw=resp.read(10_000_001)
+              if len(raw)>10_000_000: raise ValueError("oversized source")
+              (Path("/tmp/r066_hh_source")/name).write_bytes(raw)
+          PY
+      - name: Rebuild household graph algorithm as source-derived counts only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R066/r066_author_household_audit.py \
+            --source-dir /tmp/r066_hh_source \
+            --output /tmp/r066_hh_out/anonymous_household_network.json
+      - name: Archive anonymous derived graph sizes without any original network edges
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-anonymous-author-household-network-audit
+          path: /tmp/r066_hh_out/anonymous_household_network.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Remove raw questionnaire/household member files
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r066_hh_source /tmp/r066_hh_out
