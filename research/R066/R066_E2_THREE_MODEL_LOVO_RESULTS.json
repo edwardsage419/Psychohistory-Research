@@ -1,0 +1,94 @@
+{
+  "stage": "R066_E2_THREE_OPINION_MODELS_LOVO",
+  "status": "SOURCE_PINNED_16_VILLAGE_HELDOUT_COMPLETE",
+  "date": "2026-10-16",
+  "protocol": "protocols/R066_E2_THREE_MODELS_LOVO_2026-10-16.md",
+  "protocol_commit": "85b8abb398f2e4cc060b6e4b36dc6880893455a1",
+  "source": "doi:10.7910/DVN/RAHSVM",
+  "source_version": "1.0",
+  "source_data_sha256": "10b3e31a6d160e003ff9edf96fc1f6e1a8549ea547b8b8b08aadab1f52b40cae",
+  "dataset_universe": {
+    "source_rows": 2125,
+    "villages": 16,
+    "baseline_endline_scored": 1872,
+    "household_union_edges": 8659,
+    "household_typed_edges": 14767,
+    "observed_immediate_six_item_values": 905,
+    "imputed_baseline_and_immediate_absent": 144
+  },
+  "classes": {
+    "persistence": {
+      "heldout_village_count": 16,
+      "heldout_household_responses": 1872,
+      "primary_macro_village_mse": 0.04227103404620483,
+      "secondary_household_weighted_mse": 0.043873190667059206,
+      "secondary_household_weighted_mae": 0.1500580777708,
+      "variant_selected_in_training_fold_counts": {
+        "start": 16
+      },
+      "train_fitted_drift_min": 0.06631114666540296,
+      "train_fitted_drift_max": 0.08015147456346944,
+      "village_label_level_detail_exported": false,
+      "individual_prediction_exported": false
+    },
+    "degroot": {
+      "heldout_village_count": 16,
+      "heldout_household_responses": 1872,
+      "primary_macro_village_mse": 0.028614616600241692,
+      "secondary_household_weighted_mse": 0.030476078765453087,
+      "secondary_household_weighted_mae": 0.13412070674630056,
+      "variant_selected_in_training_fold_counts": {
+        "steps=2": 16
+      },
+      "train_fitted_drift_min": 0.06632518652290367,
+      "train_fitted_drift_max": 0.08042887344743122,
+      "village_label_level_detail_exported": false,
+      "individual_prediction_exported": false
+    },
+    "fj": {
+      "heldout_village_count": 16,
+      "heldout_household_responses": 1872,
+      "primary_macro_village_mse": 0.0266149141842743,
+      "secondary_household_weighted_mse": 0.02822275983149589,
+      "secondary_household_weighted_mae": 0.12901516753537692,
+      "variant_selected_in_training_fold_counts": {
+        "alpha=0.75,steps=2": 3,
+        "alpha=0.75,steps=4": 13
+      },
+      "train_fitted_drift_min": 0.06682420481484183,
+      "train_fitted_drift_max": 0.08094448094799662,
+      "village_label_level_detail_exported": false,
+      "individual_prediction_exported": false
+    },
+    "hk": {
+      "heldout_village_count": 16,
+      "heldout_household_responses": 1872,
+      "primary_macro_village_mse": 0.0265478188648263,
+      "secondary_household_weighted_mse": 0.028286836914033952,
+      "secondary_household_weighted_mae": 0.13028151332943008,
+      "variant_selected_in_training_fold_counts": {
+        "eps=0.5,steps=1": 16
+      },
+      "train_fitted_drift_min": 0.06339951039773231,
+      "train_fitted_drift_max": 0.07771868312107362,
+      "village_label_level_detail_exported": false,
+      "individual_prediction_exported": false
+    }
+  },
+  "primary_metric": "equal-village-average heldout normalized attitude MSE",
+  "secondary_metric": "household-weighted heldout normalized attitude MSE/MAE",
+  "model_selection": "grid and additive drift trained on 15 other villages each fold",
+  "forecast_origin": "post-intervention immediate score when available else baseline, prior to endline",
+  "hk_network_semantics": "full village confidence peers, not observed social ties",
+  "source_r_core_edge_parity_run": 38865507356,
+  "workflow": {
+    "run_id": 38866210819,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38866210819",
+    "conclusion": "success",
+    "synthetic_tests_passed": 17,
+    "artifact_id": 12031028109
+  },
+  "scientific_interpretation": "retrospective internal 16-village conditional prediction; cannot identify causal opinion mechanism; HK uses different information structure",
+  "e3_external_independent_cohort": "OPEN",
+  "pesen_v01": "FROZEN"
+}
