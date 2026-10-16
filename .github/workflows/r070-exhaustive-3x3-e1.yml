@@ -1,0 +1,38 @@
+name: R070 exhaustive 756 spatial boards by five tolerance values
+
+on:
+  push:
+    paths:
+      - 'research/R070/r070_exhaustive_3x3.py'
+      - 'research/R070/test_r070_exhaustive_3x3.py'
+      - '.github/workflows/r070-exhaustive-3x3-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exhaustive-spatial-falsification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prove 16 complete-state, false-convergence and no-human-data checks
+        working-directory: research/R070
+        run: python -m unittest -v test_r070_exhaustive_3x3
+      - name: Enumerate all 3780 R070 deterministic cases from the existing agent model
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r070_exhaustive
+          python research/R070/r070_exhaustive_3x3.py \
+            --output /tmp/r070_exhaustive/complete_3780_cases_aggregate.json
+      - name: Archive exclusively synthetic aggregate with first lexicographic counterexamples
+        uses: actions/upload-artifact@v4
+        with:
+          name: r070-3x3-all-756-boards-five-tolerances-e1
+          path: /tmp/r070_exhaustive/complete_3780_cases_aggregate.json
+          retention-days: 30
