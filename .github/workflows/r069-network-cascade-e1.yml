@@ -1,0 +1,38 @@
+name: R069 threshold cascade independent contagion Bass E1
+
+on:
+  push:
+    paths:
+      - 'research/R069/r069_network_cascade_baselines.py'
+      - 'research/R069/test_r069_network_cascade_baselines.py'
+      - '.github/workflows/r069-network-cascade-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-network-mechanism-e1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact 32 live-edge worlds, synchronous thresholds and Euler failure guards
+        working-directory: research/R069
+        run: python -m unittest -v test_r069_network_cascade_baselines
+      - name: Execute exact fixed 6-node network and macro Bass demonstration
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r069_results
+          python research/R069/r069_network_cascade_baselines.py \
+            --output /tmp/r069_results/three_mechanism_e1.json
+      - name: Archive only synthetic adoption probabilities and mathematical traces
+        uses: actions/upload-artifact@v4
+        with:
+          name: r069-exact-network-cascade-ic-bass-e1
+          path: /tmp/r069_results/three_mechanism_e1.json
+          retention-days: 30
