@@ -113,7 +113,7 @@ class R072AnonymousHumanSchemaTests(unittest.TestCase):
             approved(fake(ROW1,["response"],extra))
 
     def test_worksheet_with_DTD_rejected(self):
-        raw=fake(ROW1,["response"],[("xl/worksheets/sheet2.xml",b'<!DOCTYPE p><worksheet/>')])
+        raw=fake(ROW1,["response","request"],[("xl/worksheets/sheet2.xml",b'<!DOCTYPE p><worksheet/>')])
         with self.assertRaisesRegex(ValueError,"DTD"):
             approved(raw)
 
