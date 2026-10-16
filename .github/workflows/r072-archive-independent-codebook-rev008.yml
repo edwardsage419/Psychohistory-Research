@@ -1,0 +1,47 @@
+name: R072 permanently archive true original S8 negative codebook REV008
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r072-archive-independent-codebook-rev008.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  permanent-SHA-pinned-real-source-codebook-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Revalidate 15 independent fictional codebook privacy tests
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_independent_codebook_rev008
+      - name: Recompute original PLOS source anonymous codebook-status checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R072/r072_plos_s8_independent_codebook_rev008.py --output /tmp/r072_rev008_source.json
+          echo 'cdc0ec4fe5f076d20f8981891afb42b767fb1735d7646842caac1afbb27d33ae  /tmp/r072_rev008_source.json' | sha256sum --check --status
+      - name: Archive only source-hash-bound boolean failed codebook result in Git main
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=research/R072/R072_E2_PLOS_S8_INDEPENDENT_AUTHOR_CODEBOOK_REV008.json
+          if [ -f "$target" ]; then
+            cmp -s /tmp/r072_rev008_source.json "$target"
+            echo 'Existing anonymous source outcome verified'
+            exit 0
+          fi
+          cp /tmp/r072_rev008_source.json "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$target"
+          git commit -m "results(R072): archive independently checked genuine S8 codebook failure without human records"
+          git push origin HEAD:main
