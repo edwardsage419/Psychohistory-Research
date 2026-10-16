@@ -1,0 +1,358 @@
+{
+  "stage": "R065_PHASE_M",
+  "date": "2026-10-16",
+  "protocol": "protocols/R065_PHASE_M_SEVEN_NATIVE_TWO_CLOCK_2026-10-16.md",
+  "protocol_commit": "5e0e41c03d0536f4c59eefe0a01dac15c993957a",
+  "upstream": {
+    "repo": "arielevy8/obs-learning-fishing",
+    "commit": "fd5f435b5368b69916e7acc6a9991aa5f46b3ddb",
+    "objectives_git_blob": "5e98133fa274ef2a112b24f6fdcd802d4f9d3eec",
+    "fit_utils_git_blob": "6046f083a1181b10a7d991c8c9fd2e53c1f2b487",
+    "processed_git_blob": "01bf211468abe093618dfa5e5c39e883230c9c03",
+    "raw_sha1_manifest": "research/R065/R065_PHASE_J_SCREENED_24_RESULTS.json"
+  },
+  "inputs": {
+    "subjects": 24,
+    "play_trials": 1327,
+    "folds": [
+      667,
+      660
+    ],
+    "phase_l_results": "research/R065/R065_PHASE_L_NATIVE_HELDOUT_RESULTS.json"
+  },
+  "author_clock": [
+    23,
+    45,
+    67,
+    89,
+    111
+  ],
+  "reviewed_candidate_clock": [
+    18,
+    35,
+    52,
+    69,
+    86,
+    103,
+    120
+  ],
+  "source_patch_review": "Seven exact reset expression substitutions in-memory on hash verified source; original source untouched; per-model author-clock adapter numerically checked against native author.",
+  "workflow": {
+    "run_id": 38844279247,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38844279247",
+    "conclusion": "failure",
+    "success_jobs": 7,
+    "failed_jobs": 1,
+    "synthetic_tests_pass": 30
+  },
+  "gate": "PARTIAL_BLOCKED_FAIL_CLOSED",
+  "verified_model_comparisons": 6,
+  "failed_author_clock_phase_l_anchor": [
+    5
+  ],
+  "model_5_failure": "Both optimizer fits converged but original-clock repeat failed frozen 1e-7 Phase L fold score tolerance; fold B score differs by ~3.84e-6. No approved Model 5 time-clock comparison, no total seven-model PASS.",
+  "models": [
+    {
+      "model": 1,
+      "status": "TWO_CLOCK_COMPLETE",
+      "author_nll_per_play": 0.6521431462082178,
+      "candidate_nll_per_play": 0.6521466596529328,
+      "candidate_minus_author": 0.0000035134447150531045,
+      "folds": [
+        {
+          "name": "A",
+          "plays": 667,
+          "author_nll": 0.630710403835,
+          "candidate_nll": 0.628610761886,
+          "candidate_minus_author": -0.0020996419490000306,
+          "phase_l_anchor_error": 6.589084389219124e-9
+        },
+        {
+          "name": "B",
+          "plays": 660,
+          "author_nll": 0.673803205546,
+          "candidate_nll": 0.675932180578,
+          "candidate_minus_author": 0.0021289750319999357,
+          "phase_l_anchor_error": -1.671249960644161e-8
+        }
+      ],
+      "optimizer": {
+        "method": "L-BFGS-B",
+        "starts": 2,
+        "author_selected_starts": [
+          1,
+          1
+        ],
+        "candidate_selected_starts": [
+          0,
+          1
+        ],
+        "author_total_function_evals": 234,
+        "candidate_total_function_evals": 255,
+        "both_clock_fits_converged": true
+      },
+      "artifact_id": 12022037738,
+      "artifact_name": "r065-phase-m-two-clock-1"
+    },
+    {
+      "model": 2,
+      "status": "TWO_CLOCK_COMPLETE",
+      "author_nll_per_play": 0.654715245684505,
+      "candidate_nll_per_play": 0.6544016216799344,
+      "candidate_minus_author": -0.0003136240045705785,
+      "folds": [
+        {
+          "name": "A",
+          "plays": 667,
+          "author_nll": 0.649041907654,
+          "candidate_nll": 0.646975166179,
+          "candidate_minus_author": -0.002066741475000078,
+          "phase_l_anchor_error": -3.3850700020821023e-13
+        },
+        {
+          "name": "B",
+          "plays": 660,
+          "author_nll": 0.660448755482,
+          "candidate_nll": 0.661906842618,
+          "candidate_minus_author": 0.0014580871360000414,
+          "phase_l_anchor_error": -4.355404925604489e-13
+        }
+      ],
+      "optimizer": {
+        "method": "L-BFGS-B",
+        "starts": 2,
+        "author_selected_starts": [
+          0,
+          0
+        ],
+        "candidate_selected_starts": [
+          1,
+          0
+        ],
+        "author_total_function_evals": 255,
+        "candidate_total_function_evals": 312,
+        "both_clock_fits_converged": true
+      },
+      "artifact_id": 12022476920,
+      "artifact_name": "r065-phase-m-two-clock-2"
+    },
+    {
+      "model": 3,
+      "status": "TWO_CLOCK_COMPLETE",
+      "author_nll_per_play": 0.6774944105289826,
+      "candidate_nll_per_play": 0.6774842814954054,
+      "candidate_minus_author": -0.000010129033577221946,
+      "folds": [
+        {
+          "name": "A",
+          "plays": 667,
+          "author_nll": 0.68202449816,
+          "candidate_nll": 0.681172615389,
+          "candidate_minus_author": -0.0008518827710000121,
+          "phase_l_anchor_error": -2.779254326679137e-8
+        },
+        {
+          "name": "B",
+          "plays": 660,
+          "author_nll": 0.672916276514,
+          "candidate_nll": 0.673756828909,
+          "candidate_minus_author": 0.0008405523950000271,
+          "phase_l_anchor_error": -2.1547620354667174e-9
+        }
+      ],
+      "optimizer": {
+        "method": "L-BFGS-B",
+        "starts": 2,
+        "author_selected_starts": [
+          0,
+          1
+        ],
+        "candidate_selected_starts": [
+          1,
+          1
+        ],
+        "author_total_function_evals": 98,
+        "candidate_total_function_evals": 92,
+        "both_clock_fits_converged": true
+      },
+      "artifact_id": 12022473102,
+      "artifact_name": "r065-phase-m-two-clock-3"
+    },
+    {
+      "model": 4,
+      "status": "TWO_CLOCK_COMPLETE",
+      "author_nll_per_play": 0.6540159228851808,
+      "candidate_nll_per_play": 0.6533630481140023,
+      "candidate_minus_author": -0.0006528747711785909,
+      "folds": [
+        {
+          "name": "A",
+          "plays": 667,
+          "author_nll": 0.636140837905,
+          "candidate_nll": 0.633285786923,
+          "candidate_minus_author": -0.002855050982000007,
+          "phase_l_anchor_error": 3.6359804056473877e-13
+        },
+        {
+          "name": "B",
+          "plays": 660,
+          "author_nll": 0.6720805921,
+          "candidate_nll": 0.673653249954,
+          "candidate_minus_author": 0.0015726578539999592,
+          "phase_l_anchor_error": -3.256284131225584e-13
+        }
+      ],
+      "optimizer": {
+        "method": "L-BFGS-B",
+        "starts": 2,
+        "author_selected_starts": [
+          0,
+          0
+        ],
+        "candidate_selected_starts": [
+          1,
+          1
+        ],
+        "author_total_function_evals": 620,
+        "candidate_total_function_evals": 640,
+        "both_clock_fits_converged": true
+      },
+      "artifact_id": 12022857540,
+      "artifact_name": "r065-phase-m-two-clock-4"
+    },
+    {
+      "model": 5,
+      "status": "PHASE_L_ANCHOR_FAIL_CLOSED",
+      "author_nll_per_play": 0.6534660067407099,
+      "candidate_nll_per_play": 0.6534535951830445,
+      "candidate_minus_author": null,
+      "folds": [
+        {
+          "name": "A",
+          "plays": 667,
+          "author_nll": 0.636052870286,
+          "candidate_nll": 0.63359608958,
+          "candidate_minus_author": -0.0024567807059999724,
+          "phase_l_anchor_error": 1.994648994863013e-7
+        },
+        {
+          "name": "B",
+          "plays": 660,
+          "author_nll": 0.671063827976,
+          "candidate_nll": 0.673521710694,
+          "candidate_minus_author": 0.0024578827180000706,
+          "phase_l_anchor_error": 0.000003840352194584007
+        }
+      ],
+      "optimizer": {
+        "method": "L-BFGS-B",
+        "starts": 2,
+        "author_selected_starts": [
+          0,
+          1
+        ],
+        "candidate_selected_starts": [
+          0,
+          0
+        ],
+        "author_total_function_evals": 822,
+        "candidate_total_function_evals": 888,
+        "both_clock_fits_converged": true
+      },
+      "artifact_id": 12022816570,
+      "artifact_name": "r065-phase-m-two-clock-5"
+    },
+    {
+      "model": 6,
+      "status": "TWO_CLOCK_COMPLETE",
+      "author_nll_per_play": 0.6482591689603466,
+      "candidate_nll_per_play": 0.6478772587367746,
+      "candidate_minus_author": -0.0003819102235720351,
+      "folds": [
+        {
+          "name": "A",
+          "plays": 667,
+          "author_nll": 0.63054121832,
+          "candidate_nll": 0.62727300042,
+          "candidate_minus_author": -0.003268217899999981,
+          "phase_l_anchor_error": -3.8680170177940454e-13
+        },
+        {
+          "name": "B",
+          "plays": 660,
+          "author_nll": 0.666165037259,
+          "candidate_nll": 0.668700047066,
+          "candidate_minus_author": 0.002535009806999944,
+          "phase_l_anchor_error": -2.8121949213755215e-13
+        }
+      ],
+      "optimizer": {
+        "method": "L-BFGS-B",
+        "starts": 2,
+        "author_selected_starts": [
+          0,
+          0
+        ],
+        "candidate_selected_starts": [
+          0,
+          1
+        ],
+        "author_total_function_evals": 276,
+        "candidate_total_function_evals": 292,
+        "both_clock_fits_converged": true
+      },
+      "artifact_id": 12022782790,
+      "artifact_name": "r065-phase-m-two-clock-6"
+    },
+    {
+      "model": 7,
+      "status": "TWO_CLOCK_COMPLETE",
+      "author_nll_per_play": 0.6506295449885509,
+      "candidate_nll_per_play": 0.6500245710196361,
+      "candidate_minus_author": -0.0006049739689147904,
+      "folds": [
+        {
+          "name": "A",
+          "plays": 667,
+          "author_nll": 0.632259977141,
+          "candidate_nll": 0.628184372351,
+          "candidate_minus_author": -0.00407560479000002,
+          "phase_l_anchor_error": -3.7259084706420253e-13
+        },
+        {
+          "name": "B",
+          "plays": 660,
+          "author_nll": 0.669193941586,
+          "candidate_nll": 0.672096408159,
+          "candidate_minus_author": 0.0029024665729999732,
+          "phase_l_anchor_error": -8.670841822322473e-14
+        }
+      ],
+      "optimizer": {
+        "method": "L-BFGS-B",
+        "starts": 2,
+        "author_selected_starts": [
+          1,
+          0
+        ],
+        "candidate_selected_starts": [
+          1,
+          1
+        ],
+        "author_total_function_evals": 495,
+        "candidate_total_function_evals": 500,
+        "both_clock_fits_converged": true
+      },
+      "artifact_id": 12021908310,
+      "artifact_name": "r065-phase-m-two-clock-7"
+    }
+  ],
+  "interpretation": "Across six valid models candidate improves fold A and worsens fold B; overall differences 10^-6 to 10^-4. Clock-change also alters reset count. Not an independent external sample, no seven-model clock conclusion, no causal clock effect proven.",
+  "future_gates": {
+    "model_5_numerical_repeatability": "OPEN",
+    "author_226_seven_model_refit": "OPEN",
+    "original_hierarchical_EM_iBIC": "OPEN",
+    "external_replication": "OPEN"
+  },
+  "pesen_v01": "FROZEN"
+}
