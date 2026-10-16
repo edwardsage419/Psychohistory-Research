@@ -1,0 +1,71 @@
+{
+  "study": "R066",
+  "stage": "E2_LARSON_LEWIS_V1_0_REAL_FILE_SCHEMA",
+  "protocol": "protocols/R066_E2_LARSON_LEWIS_FILE_SCHEMA_AUDIT_2026-10-16.md",
+  "protocol_commit": "e900c9c5abd14f10964d8f687c5ea9f1e55ca868",
+  "github_actions": {
+    "run_id": 38862848577,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38862848577",
+    "result": "success",
+    "synthetic_tests_passed": 15,
+    "real_data_job": "success",
+    "artifact_id": 12029468681
+  },
+  "doi": "10.7910/DVN/RAHSVM",
+  "version": "1.0",
+  "release": "2026-07-29T00:35:44Z",
+  "license": "CC0 1.0",
+  "verified_files": {
+    "data": {
+      "name": "Data_LarsonLewis_nws.tab",
+      "id": 14101729,
+      "size": 444658,
+      "sha256": "10b3e31a6d160e003ff9edf96fc1f6e1a8549ea547b8b8b08aadab1f52b40cae",
+      "rows": 2125,
+      "columns": 66,
+      "safely_redacted_candidate_column_names": [
+        "village_number",
+        "gender",
+        "refugee_meet",
+        "been_refugee",
+        "treatment_type"
+      ],
+      "headers_unique_nonempty": true,
+      "ragged_rows": 0
+    },
+    "script": {
+      "name": "LL_SpecialIssue_Replication.R",
+      "id": 14101728,
+      "size": 72914,
+      "sha256": "2e7b7b22887c69c057a6f2fa1a1ff393566826fdb19e6aad6360393ea9f86ff2",
+      "lines": 2163,
+      "patterns": {
+        "network": 56,
+        "igraph": 20,
+        "attitude": 30,
+        "refugee": 33,
+        "village": 181,
+        "treat": 42,
+        "edge": 20
+      }
+    },
+    "codebook": {
+      "name": "Uganda_Codebook_NWS_2026.docx",
+      "id": 14101730,
+      "size": 30623,
+      "sha256": "48741e3447d27fbf57bb54c995ff68c45ade21592c89e2454e71ab840fc8d161",
+      "paragraphs": 187,
+      "tables": 0,
+      "text_nodes": 223
+    }
+  },
+  "integrity": "SOURCE_SCHEMA_PASS",
+  "limitations": [
+    "Only field names, not variable semantics, assessed",
+    "No identified baseline/endline ID+network join contract yet",
+    "No social influence parameter fitting",
+    "No raw respondent rows/edges republished"
+  ],
+  "empirical_identification": "OPEN_PENDING_CODEBOOK_AND_SCRIPT_MAPPING",
+  "pesen_v01": "FROZEN"
+}
