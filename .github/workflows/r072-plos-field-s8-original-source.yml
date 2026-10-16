@@ -1,0 +1,52 @@
+name: R072 verify original PLOS indirect reciprocity field S8 source bytes only
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_plos_s8_original_source_identity.py'
+      - 'research/R072/test_r072_plos_s8_original_source_identity.py'
+      - '.github/workflows/r072-plos-field-s8-original-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-source-privacy-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run 13 synthetic byte-only XLSX publisher restrictions, macro and archive safety tests
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_original_source_identity
+
+  original-human-supplement-hash-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download official PLOS S8 and verify only original bytes and safe OOXML ZIP envelope
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_s8
+          python research/R072/r072_plos_s8_original_source_identity.py \
+            --output /tmp/r072_s8/anonymous_source_byte_receipt.json
+      - name: Preserve only anonymized byte-source success or failure receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-plos-indirect-reciprocity-S8-provenance-only
+          path: /tmp/r072_s8/anonymous_source_byte_receipt.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase temporary source receipt
+        if: always()
+        run: rm -rf /tmp/r072_s8
