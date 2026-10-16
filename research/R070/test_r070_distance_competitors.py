@@ -137,6 +137,27 @@ class DistanceCompetitionTests(unittest.TestCase):
         self.assertTrue(m.EXPECTED_TOTAL==15120)
         self.assertIn("RADIUS_1",m.POLICIES)
 
+    def test_posthoc_original_tau_half_stall_has_other_feasible_agent(self):
+        # POST-RESULT regression; identified in CI run 38883813870, not
+        # pretended to be a preregistered invariant.
+        board=((1,1,2),(2,0,0),(0,0,0))
+        q=m.run_policy(board,.5,"GLOBAL_ROW_MAJOR",40)
+        self.assertEqual(q["termination"],"STALLED_NO_SATISFYING_VACANCY")
+        self.assertEqual(q["actual_moves"],0)
+        self.assertTrue(q["stalled_first_unhappy_while_another_could_move"])
+        self.assertTrue(any(m.candidate_destinations(board,u,.5,"GLOBAL_ROW_MAJOR")
+            for u in m.unsatisfied(board,.5)[1:]))
+
+    def test_posthoc_nearest_witness_rescues_global_stall(self):
+        # POST-RESULT regression on the first lexicographic counterexample.
+        board=((1,0,0),(2,0,0),(0,1,2))
+        base=m.run_policy(board,.5,"GLOBAL_ROW_MAJOR",40)
+        near=m.run_policy(board,.5,"NEAREST_SATISFICING",40)
+        self.assertEqual(base["termination"],"STALLED_NO_SATISFYING_VACANCY")
+        self.assertEqual(base["actual_moves"],1)
+        self.assertEqual(near["termination"],"STABLE_ALL_SATISFIED")
+        self.assertEqual(near["actual_moves"],3)
+
     def test_entire_paired_experiment_counts(self):
         x=m.evaluate()
         self.assertEqual(x["status"],"E1_MOBILITY_DISTANCE_COMPETITION_PASS")
