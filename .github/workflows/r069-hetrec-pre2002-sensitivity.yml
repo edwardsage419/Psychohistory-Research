@@ -1,0 +1,44 @@
+name: R069 HetRec original Lastfm pre-2002 temporal plausibility
+
+on:
+  push:
+    paths:
+      - 'research/R069/r069_hetrec_pre2002_sensitivity.py'
+      - 'research/R069/test_r069_hetrec_pre2002_sensitivity.py'
+      - '.github/workflows/r069-hetrec-pre2002-sensitivity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-temporal-sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test six synthetic time plausibility and same-time exposure controls
+        working-directory: research/R069
+        run: python -m unittest -v test_r069_hetrec_pre2002_sensitivity
+      - name: Re-download official source, reverify original SHA and classify pre-2002 timestamps
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r069_pre2002
+          python research/R069/r069_hetrec_pre2002_sensitivity.py \
+            --output /tmp/r069_pre2002/safe_anonymous_aggregate.json
+      - name: Archive anonymous source timestamp sensitivity only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r069-lastfm-pre2002-timestamp-source-sensitivity
+          path: /tmp/r069_pre2002/safe_anonymous_aggregate.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Destroy all temporary research artifacts
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r069_pre2002
