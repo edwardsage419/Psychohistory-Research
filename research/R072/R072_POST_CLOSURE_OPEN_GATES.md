@@ -37,3 +37,19 @@ R072在 [REV-004](../../protocols/R072_E2_PLOS_S8_REV004_AUTHOR_ROW_UNIVERSE_AND
 因此旧清单里“189真实样本数尚未核验”的描述需历史化理解：项目现在**确实独立识别出189条格式候选**且8个组规模与作者表3结构完全一致，但这不是作者纳排因果认证或档案标签映射。正式 [科研审计](R072_E2_REAL_S8_189_CANDIDATE_EIGHT_GROUP_EVIDENCE_AUDIT_2026-10-16.md)、[源层门禁机器状态](R072_POSTCLOSURE_REAL_E2_S8_189_ANONYMOUS_GATE_STATUS.json)可复查。
 
 **现在最上游的真正阻塞：** `AUTHOR_EXACT_CODEBOOK_AND_MAPPING=NOT_RECOVERED`，导致 `EXACT_96_93_SERVING_VS_NEUTRAL_IN_REAL_CSV=NOT_REPLICATED`、`YES/MAYBE/NO_RESPONSE_MEASUREMENT=NOT_REPRODUCED`、`HUMAN_REPUTATION_RULE_E2=NOT_IDENTIFIED`。应优先从同一出版物的原作者附录/S8中明确的字段编码说明或公开分析代码恢复映射，**禁止用处理组人数/结果显著性倒推哪种编码更“像”服务历史**。R072 `CLOSED_BOUNDED` 不动，E3 OPEN，PESEN v0.1 FROZEN。
+
+
+## 2026-10-16 REV-007：来源8组回应数和论文Table1精确一致，但不许可倒推处理代码
+
+此前源级REV-004显示第2列在189候选行中为二元0/1，代码1总数89；REV-005显示8个匿名组的规模多集与作者表3一致。另行冻结[REV-007事后探索性八组联合结果比对协议](../../protocols/R072_E2_S8_REV007_PUBLISHED_GROUP_RESPONSE_CHECKSUM_2026-10-16.md)，在[CI38928749514](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38928749514)进行了**真实PLOS S8数据的八组 (请求数,第二列代码1人数) 联合配对复算**：得到19/9、19/10、19/11、19/12、25/11、28/14、30/6、30/16，精确匹配作者发表的Table1对应八组 `(requests, responses)` 数字多集。16项合成审计通过；[CI38928909389](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38928909389)二次重算、核实SHA并永久归档[完整匿名结果](R072_E2_PLOS_S8_ANONYMOUS_TABLE1_PAIR_CHECKSUM_REV007.json)。[完整解释报告](R072_E2_REV007_REAL_TABLE1_ANONYMOUS_GROUP_CHECKSUM_AND_SCIENTIFIC_BOUNDARY.md)。
+
+**仍然没有解决：** 一手作者代码字典还未独立说明 S8 第一列哪4个数值编码为 serving、哪4个为neutral；通过出版者已公布的八组有差异的回应人数**可以数学上为匿名组对号入座，但这用 outcome 反向指定 treatment**，将导致下游的处理效应验证发生数据泄漏/循环证据。严禁此策略。第二列作为 respond 的解释虽有八组全量强吻合，仍是**看到89之后的事后语义候选**，`yes/maybe/no`编码和个人行为预测、外部E3均未验证。新的最上游科学门是**找得到独立、真实来源的S8数字组代码↔服务历史档案身份映射**。获得它后必须先冻结处理效果/随机化分析，再读取对应结果，不能倒改已观察的组标签或源数据。
+
+本次状态只更新：
+`E2_PUBLISHED_ANONYMOUS_EIGHT_GROUP_AGGREGATE_PARITY=PASS_POSTEXPLORATORY`；
+`E2_AUTHOR_TREATMENT_NUMERIC_CODEBOOK=NOT_RECOVERED`；
+`E2_CLAIM_ABOUT_SERVING_PROFILE_EFFECT=NOT_REPRODUCED`；
+`R072_IMAGE_STANDING_STERN_HUMAN_MECHANISM=NOT_IDENTIFIED`；
+`R072_CLOSED_BOUNDED=UNCHANGED`；
+`E3=OPEN`；
+`PESEN_v0.1=FROZEN`。
