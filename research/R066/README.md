@@ -28,3 +28,14 @@
 **两个真实来源的可重放数据结构验证 PASS；经验三模型对比因没有同时成立的重复连续意见测量与真实社交影响网络，仍 `BLOCKED_MEASUREMENT`。** 另已找到 2026 年 16 村庄调查和网络干预论文（DOI `10.1017/nws.2026.10038`）作为高匹配度候选，但关联 Dataverse DOI 的原始数据尚未取得，不能计作真实数据测试。
 
 **截至本节：`R066_E1=PASS`、`R066_SOURCE_AUDIT_E2=PASS`、`R066_EMPIRICAL_MECHANISM_E2=BLOCKED`、`R066_E3=OPEN`、`PESEN_v0.1=FROZEN`。**
+
+
+## 新进展：2026-10-16 Larson–Lewis 真实纵向网络与态度数据
+
+[统一源证据/方法审计](R066_E2_LARSON_LEWIS_REAL_SOURCE_AND_NETWORK_AUDIT.md) · [Dataverse 目录版本](R066_E2_DATAVERSE_CATALOG_RESULTS.json) · [三文件 SHA256/66 列结构](R066_E2_LARSON_LEWIS_V1_SCHEMA_RESULTS.json) · [原作者代码本/变量映射](r066_larson_lewis_semantic_mapping.py) · [初始错误身份联结证据](R066_E2_VILLAGE_NETWORK_JOIN_AGGREGATES.json) · [按作者家庭映射派生的匿名网络统计](R066_E2_AUTHOR_HOUSEHOLD_NETWORK_RESULTS.json)。
+
+真实原始来源为 Harvard Dataverse `doi:10.7910/DVN/RAHSVM`，V1.0，CC0。已核验下载表格 2,125 行×66 列、R 作者脚本与 DOCX 代码本，全部有精确 SHA256；GitHub Actions 目录 [38862426339](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38862426339)、原始文件 [38862848577](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38862848577)、字段映射 [38863264795](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38863264795)、初始直接联结 [38863706284](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38863706284)、原作者源码审查 [38864150195](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38864150195)、家庭网络计算 [38864457996](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38864457996) 均已真正完成。
+
+主要成果：**16 个村庄、1,872 行基线/末次六题态度配对完整记录**；按照作者 R 的家庭成员映射与四类提名方式，经 Python 产生 8,659 条匿名去重家庭关系与 2,067 个至少一条关系的家庭节点。早先直接把 `ego` 当成唯一家庭节点出现重复和低匹配，已保留原失败记录，不能拿它否定经过家庭层转换的关系数据。作者 R/igraph 与 Python 的**逐边一致性仍未验证**，现阶段无 DeGroot/FJ/HK 真人数据参数拟合或真实预测名次。
+
+状态：`R066_SOURCE_AUDIT_E2=PASS`；`R066_AUTHOR_DERIVED_HOUSEHOLD_NETWORK=PASS_BOUNDED`；`R066_SOURCE_R_PARITY=OPEN`；`R066_REAL_THREE_MODEL_PREDICTION=OPEN`；`PESEN_v0.1=FROZEN`。
