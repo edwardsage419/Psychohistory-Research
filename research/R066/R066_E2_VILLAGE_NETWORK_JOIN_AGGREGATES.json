@@ -1,0 +1,84 @@
+{
+  "stage": "R066_E2_VILLAGE_NETWORK_AND_ATTITUDE_WAVE_JOIN",
+  "protocol": "protocols/R066_E2_LARSON_LEWIS_NETWORK_JOIN_GATE_2026-10-16.md",
+  "protocol_commit": "0719237631d1bc7eefd66059e47c1c1df3b715ea",
+  "workflow": {
+    "run": 38863706284,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38863706284",
+    "conclusion": "success",
+    "synthetic_tests": 9,
+    "source_job": "success",
+    "artifact_id": 12030585581
+  },
+  "source": {
+    "doi": "10.7910/DVN/RAHSVM",
+    "version": "1.0",
+    "data_sha256": "10b3e31a6d160e003ff9edf96fc1f6e1a8549ea547b8b8b08aadab1f52b40cae",
+    "script_sha256": "2e7b7b22887c69c057a6f2fa1a1ff393566826fdb19e6aad6360393ea9f86ff2",
+    "codebook_sha256": "48741e3447d27fbf57bb54c995ff68c45ade21592c89e2454e71ab840fc8d161"
+  },
+  "rows": 2125,
+  "villages": 16,
+  "columns": 66,
+  "distinct_within_village_ego_keys": 2105,
+  "duplicate_within_village_ego_keys": 20,
+  "waves": {
+    "suffix_1": {
+      "complete_six_items": 1981,
+      "all_six_item_values_within_1_5": true
+    },
+    "suffix_2": {
+      "complete_six_items": 905,
+      "all_six_item_values_within_1_5": true
+    },
+    "suffix_e": {
+      "complete_six_items": 2016,
+      "all_six_item_values_within_1_5": true
+    },
+    "suffix_1_and_e_complete": 1872,
+    "all_three_complete": 858
+  },
+  "nomination_types": {
+    "visit": {
+      "nomination_slots_nonmissing": 7493,
+      "matched_same_village_ego": 2176,
+      "unmatched_or_other_id_scheme": 5317,
+      "unique_target_nodes": 1030,
+      "nominators_with_match": 1276,
+      "self_nominations": 4
+    },
+    "meal": {
+      "nomination_slots_nonmissing": 6387,
+      "matched_same_village_ego": 1853,
+      "unmatched_or_other_id_scheme": 4534,
+      "unique_target_nodes": 954,
+      "nominators_with_match": 1136,
+      "self_nominations": 4
+    },
+    "borrow": {
+      "nomination_slots_nonmissing": 4014,
+      "matched_same_village_ego": 1164,
+      "unmatched_or_other_id_scheme": 2850,
+      "unique_target_nodes": 658,
+      "nominators_with_match": 832,
+      "self_nominations": 3
+    },
+    "rumor": {
+      "nomination_slots_nonmissing": 4375,
+      "matched_same_village_ego": 1271,
+      "unmatched_or_other_id_scheme": 3104,
+      "unique_target_nodes": 742,
+      "nominators_with_match": 945,
+      "self_nominations": 2
+    }
+  },
+  "total_nonmissing_nominations": 22269,
+  "total_matched_nominations": 6464,
+  "identity_gate": "JOIN_CANDIDATE_BLOCKED",
+  "wave_gate": "WAVE_INDEX_CANDIDATE_SUPPORTED",
+  "interpretation": "Exact same-village ego-ID matching found 20 duplicate keys, and many nomination values do not directly match. This gate does not establish the author's actual ego/household nomination-ID encoding. Model network W construction is blocked pending source R code and codebook review. Reported count aggregates are not network causality evidence.",
+  "model_identification": "OPEN",
+  "three_model_empirical_fit_performed": false,
+  "raw_person_data_redistributed": false,
+  "pesen_v01": "FROZEN"
+}
