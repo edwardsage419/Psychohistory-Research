@@ -1,0 +1,74 @@
+{
+  "study": "R068",
+  "stage": "E2_TOYOKAWA_SOURCE_AND_TEMPORAL_CUES",
+  "date": "2026-10-16",
+  "source": "WataruToyokawa/ToyokawaGaissmaier2021",
+  "commit": "6fca0b26c33af3a5b3c415719fa3df0dced15149",
+  "paper_doi": "10.7554/eLife.75308",
+  "lfs_source": {
+    "allBehaviour1022_group.csv": {
+      "sha256": "b01af9eb32945c57b6a9528c2f7e291e955819c1df799cfc942708473cd4ceb3",
+      "bytes": 4144197,
+      "rows": 12880,
+      "columns": 57
+    },
+    "allBehaviour1022_indiv.csv": {
+      "sha256": "06ddbf5dbe64893f841ef6801c6e1e00553869eb774ee05740b8cf0d1f6801c1",
+      "bytes": 2306541,
+      "rows": 7929,
+      "columns": 56
+    }
+  },
+  "source_protocol": "protocols/R068_E2_TOYOKAWA_EXPERIMENT_LFS_SOURCE_2026-10-16.md",
+  "temporal_protocol": "protocols/R068_E2_TOYOKAWA_SOURCE_TEMPORAL_SEMANTICS_2026-10-16.md",
+  "source_run": {
+    "id": 38870499060,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38870499060",
+    "conclusion": "success",
+    "tests": 13,
+    "artifact": 12033351598
+  },
+  "temporal_run": {
+    "id": 38870896074,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38870896074",
+    "conclusion": "success",
+    "tests": 12,
+    "artifact": 12032642925
+  },
+  "measurements": {
+    "group_people": 184,
+    "group_rooms": 39,
+    "group_rows": 12880,
+    "individual_people": 115,
+    "individual_rooms": 114,
+    "individual_rows": 7929,
+    "group_round1_rows": 184,
+    "valid_group_other_people_previous_trial_frequency": 12674,
+    "previous_current_choice_invalid": 22,
+    "negative_after_subtraction": 0,
+    "group_person_round_duplicates": 0,
+    "group_people_multiple_rooms": 0,
+    "mixed_task_rooms": 1,
+    "mixed_task_rows_all": 350,
+    "mixed_task_rows_valid": 345,
+    "risk_distribution_codes": {
+      "11": 6790,
+      "12": 6090
+    },
+    "choice_option_counts": {
+      "0": 5817,
+      "1": 1932,
+      "2": 1769,
+      "3": 3349,
+      "-1": 13
+    }
+  },
+  "gate": "FOUR_CHOICE_PREVIOUS_TRIAL_CUES_RECOVERABLE",
+  "source_author_code": "experimentalAnalysis/model_fitting/multiVar_model_fitting_both_1022.R",
+  "source_author_code_blob": "86558839d1763e795613b804ad5579de774bd0da",
+  "author_preprocessing": "F_j(t) = field_socialFreq_j(t) - indicator(j == own_choice(t-1)); missing prior or first trial no peer signal",
+  "epistemic_limit": "Four-choice variable-sized groups: not the E1 exact three demonstrator two trait mechanism. Only observed peer frequencies, not demonstrated peer payoffs; success-weighted rule cannot be assessed directly.",
+  "next_protocol_stage": "ROOM_HELDOUT_FREQUENCY_EXPONENT_RESTRICTED_PREDICTION",
+  "personal_data_exported": false,
+  "pesen_v01": "FROZEN"
+}
