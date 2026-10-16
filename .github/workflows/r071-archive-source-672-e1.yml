@@ -1,0 +1,48 @@
+name: R071 archive exact complete 672 normative punishment E1 source result
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r071-archive-source-672-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  original-source-hash-verified-science-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Full synthetic and numerical payoff tests
+        working-directory: research/R071
+        run: python -m unittest -v test_r071_norm_cooperation_punishment
+      - name: Recompute all 672 runs, 5376 person-group rounds, exact source result SHA256
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R071/r071_norm_cooperation_punishment.py \
+            --output /tmp/r071_full_672.json
+          echo 'bd8bf1dcc97c5ee9c933e889b68ca50a7403f1d1cf05f67f08195a9cf9b280d8  /tmp/r071_full_672.json' | sha256sum --check --status
+      - name: Commit only complete checksum-verified synthetic source output
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=research/R071/R071_E1_COMPLETE_672_NORM_INSTITUTION_RESULTS.json
+          if [ -e "$target" ]; then
+            cmp -s /tmp/r071_full_672.json "$target"
+            echo "Exact result already archived in main"
+            exit 0
+          fi
+          cp /tmp/r071_full_672.json "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$target"
+          git commit -m "results(R071): permanently archive source-hash-reproduced complete 672 E1 norm cases"
+          git push origin HEAD:main
