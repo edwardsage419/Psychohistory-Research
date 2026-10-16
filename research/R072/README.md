@@ -27,3 +27,11 @@
 [正式六门验收与有限结题报告](R072_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md) · [机读验收状态](R072_FINAL_ACCEPTANCE_STATUS.json) · [E2/E3/ESS 和长期文化演化开放问题](R072_POST_CLOSURE_OPEN_GATES.md)。
 
 六门 PASS 指**已完成有限 E1 数学机制与真实来源失败证据的可复现科研归档**，并非真实间接互惠或跨尺度历史预测验证。下一步优先寻找**确能合法取得、可固定原始字节和精确暴露/帮助行为/声誉前序的真人来源**，避免项目长期只堆叠相同层次的合成机制。PESEN v0.1 不改。
+
+## 2026-10-16 结题后新增证据：PLOS 原始 S8 文件安全恢复＋匿名结构（不修改 E1 结题）
+
+原先 [真实附件首次来源门 38921163855](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38921163855) 下载失败，**历史记录原样保留**。重新核对 PLOS 下载入口发现其使用签名的 PLOS Google Cloud Storage 对象跳转；[REV-002 独立预冻安全协议](../../protocols/R072_E2_PLOS_SIGNED_ORIGIN_REDIRECT_RECOVERY_2026-10-16.md) 仅允许从 PLOS 正式入口跳转到指定 DOI 的 S8、时效合法签名 URL，并在 [GitHub Actions 38924258028](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38924258028) 中以 **22 tests PASS、真实原件任务 success** 恢复 **38,647 字节，SHA256 `5fed03458fc72be7425b3d38386dcc7a149c3f7a69c3c14ed9dbb6e269bc4e1b`** 的官方 XLSX。
+
+随后[REV-003 匿名结构事先冻结协议](../../protocols/R072_E2_S8_ANONYMOUS_SCHEMA_DIAGNOSTIC_2026-10-16.md)仅允许SHA固定源的工作簿结构与匿名表头类别。最初两次 CI 因合成测试夹具失败（run `38924768397`、`38924890902`），**原件结构还未读取**；修复测试后，[run 38924991302](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38924991302) **19 tests PASS、真实源结构作业 SUCCESS**。原始S8实际只有 **1张工作表、199个XML行标签、使用列至第10列，非空1819格（数字1790、文本29）**；只发现安全匿名表头关键词 `provider/reference/request/service`；**没有发表原始字段名称、参与者身份或任何人类响应行**。
+
+详见[正式新增源恢复审计](R072_E2_PLOS_S8_PUBLISHER_RECOVERY_AND_SCHEMA_AUDIT.md)和[固定来源SHA及匿名机读结果](R072_E2_PLOS_S8_RECOVERY_AND_ANONYMOUS_SCHEMA_RESULTS.json)。PLOS作者报告**189次**服务请求（其中历史服务档案96，中性档案93），这与工作簿物理199个XML行标签不是同一种量；当前**尚未**核对作者样本纳排、具体处理编码、行为变量含义与真实统计。**后续 E2 来源字节验证/匿名结构门现为PASS，但E2人类信誉机制仍未获得识别；R072此前 `CLOSED_BOUNDED`、E1结果及历史失败未改变**。PESEN v0.1继续FROZEN。
