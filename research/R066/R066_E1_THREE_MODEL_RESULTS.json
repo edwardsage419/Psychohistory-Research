@@ -1,0 +1,71 @@
+{
+  "research_id": "R066",
+  "date": "2026-10-16",
+  "stage": "E1_MECHANISM_BASELINE",
+  "frozen_protocol": "protocols/R066_OPINION_DYNAMICS_THREE_MODELS_2026-10-16.md",
+  "protocol_commit": "b7bce5a51002add42de69af23849eea85c3f6e1d",
+  "model_implementations": [
+    "DeGroot linear mixing",
+    "Friedkin-Johnsen fixed initial opinions",
+    "Hegselmann-Krause synchronous bounded confidence"
+  ],
+  "source_papers": [
+    {
+      "author": "Morris H. DeGroot",
+      "year": 1974,
+      "doi": "10.1080/01621459.1974.10480137"
+    },
+    {
+      "author": "Noah E. Friedkin & Eugene C. Johnsen",
+      "year": 1990,
+      "doi": "10.1080/0022250X.1990.9990069"
+    },
+    {
+      "author": "Rainer Hegselmann & Ulrich Krause",
+      "year": 2002,
+      "url": "https://www.jasss.org/5/3/2.html"
+    }
+  ],
+  "real_github_actions_run": 38845611874,
+  "real_github_actions_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38845611874",
+  "run_conclusion": "success",
+  "synthetic_tests_passed": 25,
+  "input": {
+    "initial_opinions": [
+      0,
+      0.2,
+      1
+    ],
+    "linear_network": "all W_ij=1/3",
+    "FJ_alpha": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "HK_epsilon": 0.25
+  },
+  "first_step": {
+    "DeGroot": [
+      0.39999999999999997,
+      0.39999999999999997,
+      0.39999999999999997
+    ],
+    "FJ": [
+      0.19999999999999998,
+      0.3,
+      0.7
+    ],
+    "HK": [
+      0.1,
+      0.1,
+      1
+    ]
+  },
+  "second_step_stationary_within_1e_12": true,
+  "level": "E1_SYNTHETIC_ONLY",
+  "empirical_time_series": "OPEN",
+  "empirical_parameter_inference": "OPEN",
+  "external_validation": "OPEN",
+  "note": "This is a deterministic discriminating fixture for 3 different opinion mechanism classes; no direct evidence of which mechanism best explains human behavior.",
+  "pesen_v01": "FROZEN"
+}
