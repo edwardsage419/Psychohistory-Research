@@ -53,3 +53,14 @@ R072在 [REV-004](../../protocols/R072_E2_PLOS_S8_REV004_AUTHOR_ROW_UNIVERSE_AND
 `R072_CLOSED_BOUNDED=UNCHANGED`；
 `E3=OPEN`；
 `PESEN_v0.1=FROZEN`。
+
+
+## REV008 2026-10-17：原始作者代码本独立恢复门已做有界阴性结题
+
+在 REV007 完整八个匿名 `(requests,coded1)` 与作者Table1公开 `(requests,responses)` 多集相等之后，独立提交 [REV008来源限定协议](../../protocols/R072_E2_S8_REV008_INDEPENDENT_LEGEND_CODEBOOK_BINDING_2026-10-17.md)；仅检查原始S8末尾9条非候选行，不看回应值、不从已发表效果反推哪组 serving。严格检查两类明确的数字与处理类型编码形式，没有取得完整八码且各4个处理分组的唯一语义合同。原件SHA固定成功复算 [CI38930145114](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38930145114)，15项测试通过；[永久归档CI38930303469](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38930303469) 成功；首次假测试误报 [CI38930015652](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38930015652) 保留。
+
+**证据层级重申：** 独立八组频数与已发表响应人数吻合 `PASS_POST_EXPLORATORY`，**处理身份编码 `BLOCKED_NO_UNAMBIGUOUS_SOURCE_CODEBOOK`**，来源八组 96/93 的**实际随机处理映射验证 `NOT_REPLICATED`**，R072 Image/Standing/Stern 真实人类信誉决策 `NOT_TESTED`；论文作者本人的估计与本项目自身复现不能混为一谈。
+
+此同一S8源内 codebook 搜寻已做 REV006/REV008 两个有界阶段；若无源独立的作者程序/明确代码本进一步证据，不得继续逐个枚举所有可被 Table1 结果支持的编码来选择显著处理效应。科研资源下一阶段应优先真正**标记明确的公开真人实验数据**，对曾学过的已有12场次IPD或者R063模仿学习先定义紧贴实验测量的机制，除非另新编号独立协议明确解决新的上游问题。R072 CLOSED_BOUNDED 不变，E3 OPEN，PESEN v0.1 FROZEN。
+
+[完整阴性科学报告](R072_E2_REV008_INDEPENDENT_AUTHOR_CODEBOOK_NEGATIVE_AUDIT_2026-10-17.md)；[机读研究状态](R072_POSTCLOSURE_S8_REV008_AUTHOR_CODEBOOK_GATE_STATUS.json)。
