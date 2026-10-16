@@ -1,0 +1,44 @@
+{
+  "research_id": "R068",
+  "date": "2026-10-16",
+  "stage": "E1_MINIMAL_CULTURAL_TRANSMISSION",
+  "status": "E1_MECHANISM_PASS",
+  "protocol": "protocols/R068_CULTURAL_TRANSMISSION_BIAS_2026-10-16.md",
+  "protocol_commit": "bfe2962a6fbd93d231eaee04d24e8f52aa08503e",
+  "scenario": {
+    "initial_A_frequency": 0.2,
+    "symmetric_error_rate": 0.01,
+    "finite_population": 100,
+    "log_success_advantage": 0.6931471805599453
+  },
+  "results": {
+    "neutral": {
+      "raw_probability_A": 0.2,
+      "probability_A_after_mutation": 0.20600000000000002,
+      "binomial_sampling_frequency_variance": 0.00163564
+    },
+    "conformist_three": {
+      "raw_probability_A": 0.10400000000000002,
+      "probability_A_after_mutation": 0.11192000000000003,
+      "binomial_sampling_frequency_variance": 0.0009939391360000002
+    },
+    "success_weighted": {
+      "raw_probability_A": 0.3333333333333333,
+      "probability_A_after_mutation": 0.3366666666666667,
+      "binomial_sampling_frequency_variance": 0.0022332222222222224
+    }
+  },
+  "workflow": {
+    "run_id": 38869217831,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38869217831",
+    "conclusion": "success",
+    "synthetic_math_tests": 18,
+    "artifact_id": 12032476497
+  },
+  "evidence": "E1_SYNTHETIC_MATHEMATICS_ONLY",
+  "claim_limit": "No original author's full population spatial model reconstructed; no real cultural group observed; variance conditional on idealized independent Binomial sample not a fitted empirical sampling variance.",
+  "human_e2": "OPEN",
+  "external_e3": "OPEN",
+  "history_evolution": "UNSUPPORTED",
+  "pesen_v01": "FROZEN"
+}
