@@ -1,0 +1,74 @@
+{
+  "research_id": "R066",
+  "date": "2026-10-16",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "closure": "CLOSED_BOUNDED",
+  "scope_decision": "RETROSPECTIVE_SCOPE_DECISION",
+  "final_report": "research/R066/R066_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md",
+  "backlog": "research/R066/R066_POST_CLOSURE_OPEN_GATES.md",
+  "accepted_scope": "source-pinned three opinion model E1 mechanisms, two rejected measurement candidate audits, real 16-village source 2125 rows, original R core household edges exactly matched, and real 16-village heldout evaluation on 1872 complete baseline/endline rows",
+  "gates": {
+    "A01": {
+      "status": "PASS",
+      "reason": "bounded scope, retrospective closure not original full prospective proof"
+    },
+    "A02": {
+      "status": "PASS",
+      "reason": "Dataverse published V1.0 CC0 original table/R/codebook SHA256 pinned"
+    },
+    "A03": {
+      "status": "PASS",
+      "reason": "E1 models, R original-vs-Python exact edge identity and real 16-village heldout CI"
+    },
+    "A04": {
+      "status": "PASS",
+      "reason": "first two dataset measurement blockers and naive ego ID key failure not suppressed"
+    },
+    "A05": {
+      "status": "PASS",
+      "reason": "E2 internal cross village not E3, network model information differences"
+    },
+    "A06": {
+      "status": "PASS",
+      "reason": "final report, JSON results, open-gates backlog and R067 handoff"
+    }
+  },
+  "evidence_level": "E2_INTERNAL_CROSS_VILLAGE_CONDITIONAL_PREDICTION",
+  "source": {
+    "dataset_doi": "10.7910/DVN/RAHSVM",
+    "version": "1.0",
+    "households": 2125,
+    "villages": 16,
+    "paired_complete": 1872,
+    "union_edges": 8659,
+    "typed_edges": 14767
+  },
+  "real_r_core_edge_parity": {
+    "run_id": 38865507356,
+    "status": "PASS",
+    "only_python": 0,
+    "only_author_r": 0
+  },
+  "heldout": {
+    "run_id": 38866210819,
+    "status": "PASS_BOUNDED",
+    "synthetic_tests": 17,
+    "metric": "village equal weighted normalized attitude MSE",
+    "persistence": 0.04227103404620483,
+    "degroot": 0.028614616600241692,
+    "fj": 0.0266149141842743,
+    "hk": 0.0265478188648263,
+    "model_mechanism_causality": "NOT_ESTABLISHED",
+    "hk_uses_actual_household_network": false,
+    "fq_parameter_tuning": "training villages only",
+    "external_cohort": false
+  },
+  "unresolved": {
+    "all_author_igraph_analysis": "OPEN",
+    "paired_village_uncertainty": "OPEN",
+    "new_independent_cohort": "OPEN",
+    "historical_cross_scale_prediction": "UNSUPPORTED"
+  },
+  "next_research_id": "R067",
+  "pesen_v01": "FROZEN"
+}
