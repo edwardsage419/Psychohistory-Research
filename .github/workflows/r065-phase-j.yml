@@ -1,0 +1,75 @@
+name: R065 Phase J screened original-source replay
+
+on:
+  push:
+    paths:
+      - 'research/R065/r065_phase_j_screened_replay.py'
+      - 'research/R065/test_r065_phase_j_screened_replay.py'
+      - 'research/R065/R065_PHASE_J_SCREENED_24_RESULTS.json'
+      - '.github/workflows/r065-phase-j.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selection-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute tested selector and artifact fail-closed rules
+        working-directory: research/R065
+        run: python -m unittest -v test_r065_phase_j_screened_replay
+
+  screened-raw-24:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch exact author processed CSV and derive screened selection
+        shell: bash
+        run: |
+          set -euo pipefail
+          source='https://raw.githubusercontent.com/arielevy8/obs-learning-fishing/fd5f435b5368b69916e7acc6a9991aa5f46b3ddb/data'
+          mkdir -p /tmp/r065_phase_j_raw
+          curl -fsSL --retry 2 "$source/processed/unified_data_2025-01-16_00.csv" -o /tmp/r065_phase_j_processed.csv
+          PYTHONPATH=research/R065 python - <<'PY'
+          from pathlib import Path
+          from r065_critical_replay import parse_verified
+          from r065_phase_j_screened_replay import select_eligible
+          items=select_eligible(parse_verified(Path('/tmp/r065_phase_j_processed.csv').read_bytes()))
+          identifiers=items['first_high']+items['first_low']
+          assert len(identifiers)==24
+          Path('/tmp/r065_phase_j_ids.txt').write_text('\n'.join(identifiers)+'\n')
+          print('Author processed Git blob verified; selected 12+12 eligible participants')
+          PY
+          while IFS= read -r person; do
+            curl -fsSL --retry 2 "$source/$person.csv" -o "/tmp/r065_phase_j_raw/$person.csv"
+          done < /tmp/r065_phase_j_ids.txt
+      - name: Recompute screened 24-subject Model3 fits
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'rm -rf /tmp/r065_phase_j_raw /tmp/r065_phase_j_processed.csv /tmp/r065_phase_j_ids.txt /tmp/r065_phase_j_replayed.json' EXIT
+          python research/R065/r065_phase_j_screened_replay.py \
+            --processed /tmp/r065_phase_j_processed.csv \
+            --raw-dir /tmp/r065_phase_j_raw \
+            --manifest research/R065/R065_PHASE_J_SCREENED_24_RESULTS.json \
+            --output /tmp/r065_phase_j_replayed.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('/tmp/r065_phase_j_replayed.json').read_text())
+          assert x['status']=='EXACT_SOURCE_BYTES_REPLAY'
+          assert x['subjects']==24
+          assert x['models']['author']['counts']['play']==1327
+          assert x['models']['boundary']['counts']['play']==1327
+          print('Phase J screened original-source replay PASS')
+          PY
