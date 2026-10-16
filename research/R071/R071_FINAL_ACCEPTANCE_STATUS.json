@@ -1,0 +1,74 @@
+{
+  "research_id": "R071",
+  "date": "2026-10-16",
+  "final_status": "CLOSED_BOUNDED",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "scope_closure_mode": "RETROSPECTIVE_SCOPE_DECISION",
+  "final_report": "research/R071/R071_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md",
+  "open_gates": "research/R071/R071_POST_CLOSURE_OPEN_GATES.md",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS_BOUNDED_SOURCE_AUDIT_WITH_REAL_BYTES_UNRECOVERED",
+    "A03": "PASS_E1_IMPLEMENTATION_AND_SEPARATE_E2_FAIL_PRESERVED",
+    "A04": "PASS_NEGATIVE_RESULTS_PRESERVED",
+    "A05": "PASS_INFERENCE_BOUNDED",
+    "A06": "PASS"
+  },
+  "evidence": {
+    "E1": {
+      "status": "PASS_SYNTHETIC_MECHANISM",
+      "protocol": "protocols/R071_NORM_COOPERATION_PUNISHMENT_E1_2026-10-16.md",
+      "previous_commit_frozen": "dcf3a0b2e2137cb8f6430a2437b88cb8738b2f08",
+      "verified_run": 38890695079,
+      "final_reproducible_archive_run": 38890837355,
+      "tests_passed": 28,
+      "compositions": 56,
+      "scenarios": 672,
+      "group_rounds": 5376,
+      "full_original_result_path": "research/R071/R071_E1_COMPLETE_672_NORM_INSTITUTION_RESULTS.json",
+      "full_result_json_sha256": "bd8bf1dcc97c5ee9c933e889b68ca50a7403f1d1cf05f67f08195a9cf9b280d8",
+      "full_result_json_bytes": 68172,
+      "theta_half_seed_zero_cooperation": {
+        "no_sanctions": 0.5607142857142857,
+        "variable_punishment": 0.6392857142857142,
+        "fixed_monitoring": 0.6392857142857142
+      },
+      "theta_half_seed_zero_average_group_payoff_per_round": {
+        "no_sanctions": 2.765625,
+        "variable_punishment": 2.1875,
+        "fixed_monitoring": 0.6875
+      },
+      "modeled_human_behavior": false
+    },
+    "E2_dryad": {
+      "status": "SOURCE_UNRESOLVED",
+      "dataset_DOI": "10.5061/dryad.n02v6wx03",
+      "actual_source_run": 38891213930,
+      "real_source_job": "failure_HTTPError",
+      "synthetic_provenance_tests_passed": 11,
+      "raw_CSV_sha256": null,
+      "raw_person_row_count": null,
+      "raw_header_fields": null,
+      "published_sample_counts_verified_against_CSV": false,
+      "receipt": "research/R071/R071_E2_DRYAD_SOURCE_ATTEMPT_RESULTS.json"
+    },
+    "E2_R047": {
+      "status": "BLOCKED_MODEL_MISMATCH",
+      "cited_prior_audit": "research/R067/R067_E2_R047_APPLICABILITY_RESULTS.json",
+      "reason": "four-person multilevel common-pool extraction is not this five-person binary-contribution fixed-enforcer game"
+    },
+    "E3": {
+      "status": "OPEN"
+    }
+  },
+  "scientific_limits": {
+    "human_causal_norm_formation": "NOT_ESTABLISHED",
+    "human_institutional_punishment_effect": "NOT_ESTABLISHED",
+    "long_run_cultural_evolution": "NOT_IMPLEMENTED",
+    "model_institutions_are_identified_in_human_data": false,
+    "pensum_rule": "penalties assumed destructive and roles C/D/P/N fixed; no strategy selection",
+    "complete_synthesis_is_not_an_empirical_study": true
+  },
+  "next_research": "R072",
+  "pesen_v01": "FROZEN"
+}
