@@ -1,0 +1,52 @@
+name: R069 original SNAP Higgs timed retweet activities and graph source audit
+
+on:
+  push:
+    paths:
+      - 'research/R069/r069_higgs_temporal_source_audit.py'
+      - 'research/R069/test_r069_higgs_temporal_source_audit.py'
+      - '.github/workflows/r069-higgs-temporal-source-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-source-and-direction-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 18 gzip/RT direction/temporal-leak and anti-causality probes
+        working-directory: research/R069
+        run: python -m unittest -v test_r069_higgs_temporal_source_audit
+
+  original-timed-snap-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch only SNAP official Higgs activity and retweet aggregate originals
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r069_higgs_anonymous
+          python research/R069/r069_higgs_temporal_source_audit.py \
+            --output /tmp/r069_higgs_anonymous/source_and_temporal_proxy.json
+      - name: Archive only public gzip SHA256 and aggregated non-identifying results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r069-original-snap-higgs-timed-activities-source
+          path: /tmp/r069_higgs_anonymous/source_and_temporal_proxy.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase temporary aggregate
+        if: always()
+        run: rm -rf /tmp/r069_higgs_anonymous
