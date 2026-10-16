@@ -97,7 +97,7 @@ def main():
                  "reason_type":type(e).__name__,
                  "reason":str(e)[:95] if isinstance(e,ValueError) else "SOURCE_OR_TIME_ERROR",
                  "pesen_v01":"FROZEN"}
-    a.output.write_text(json.dumps(outcome,indent=2)+"\n",encoding="utf-8")
+    args.output.write_text(json.dumps(outcome,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(outcome,sort_keys=True))
     if outcome["status"]!="SENSITIVITY_DESCRIPTIVE_COMPLETE":
         raise RuntimeError("real pre-2002 sensitivity did not complete")
