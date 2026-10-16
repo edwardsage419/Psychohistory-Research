@@ -1,0 +1,50 @@
+{
+  "research_id": "R072",
+  "date": "2026-10-17",
+  "scope": "POSTCLOSURE_SOURCE_INDEPENDENT_CODEBOOK_SEARCH_NOT_TREATMENT_EFFECT_FIT",
+  "original_model_study_status": "CLOSED_BOUNDED_UNCHANGED",
+  "current_stage": "REV008",
+  "publisher_paper_DOI": "10.1371/journal.pone.0152076",
+  "supplement_DOI": "10.1371/journal.pone.0152076.s008",
+  "pinned_original_SHA256": "5fed03458fc72be7425b3d38386dcc7a149c3f7a69c3c14ed9dbb6e269bc4e1b",
+  "protocol": "protocols/R072_E2_S8_REV008_INDEPENDENT_LEGEND_CODEBOOK_BINDING_2026-10-17.md",
+  "protocol_commit": "71a0c82f84f730691351f19b68913e4fb6d065f1",
+  "first_synthetic_test_failed_run": 38930015652,
+  "test_failure_is_only_false_positive_on_static_no_disclosure_field_name": true,
+  "successful_original_source_run": 38930145114,
+  "passed_synthetic_tests": 15,
+  "permanent_result_archive_run": 38930303469,
+  "archive_conclusion": "success",
+  "machine_result": "research/R072/R072_E2_PLOS_S8_INDEPENDENT_AUTHOR_CODEBOOK_REV008.json",
+  "machine_result_sha256": "cdc0ec4fe5f076d20f8981891afb42b767fb1735d7646842caac1afbb27d33ae",
+  "machine_result_bytes": 1030,
+  "actual_source_outcome": {
+    "source_verified": true,
+    "source_candidate_request_rows": 189,
+    "source_noncandidate_note_rows": 9,
+    "source_independent_complete_numeric_profile_to_treatment_map": false,
+    "source_complete_eight_assignments_four_each": false,
+    "conflicting_accepted_codes_detected": false,
+    "range_hint_found": false,
+    "interpretation": "A/B explicit code-to-serving-or-neutral patterns not recovered within the fixed 9 footer records",
+    "no_human_outcome_values_queried_by_codebook_algorithm": true
+  },
+  "scientific_gates": {
+    "REAL_SOURCE_PROVENANCE": "PASS",
+    "PUBLISHED_TABLE1_UNLABELLED_8_GROUP_AGGREGATE_PARITY": "PASS_POST_EXPLORATORY_REV007",
+    "AUTHOR_SERVING_NEUTRAL_NUMERIC_CODEBOOK": "BLOCKED_NO_UNAMBIGUOUS_SOURCE_CODEBOOK",
+    "INDEPENDENT_96_93_SOURCE_TREATMENT_REPLICATION": "NOT_PERFORMED",
+    "TRUE_SERVING_HISTORY_CAUSAL_EFFECT_ESTIMATION": "NOT_PERFORMED",
+    "HUMAN_IMAGE_STANDING_STERN_R072": "NOT_IDENTIFIED",
+    "INDEPENDENT_E3": "OPEN",
+    "PESEN_v01": "FROZEN"
+  },
+  "privacy": {
+    "no_personal_XLSX_committed": true,
+    "no_note_text_exported": true,
+    "no_group_code_exported": true,
+    "no_human_outcome_by_treatment_estimated": true
+  },
+  "scientific_audit": "research/R072/R072_E2_REV008_INDEPENDENT_AUTHOR_CODEBOOK_NEGATIVE_AUDIT_2026-10-17.md",
+  "next_priority": "Stop same S8 regex enumeration absent independently sourced author codebook; instead research independently labeled and reusable real-human datasets."
+}
