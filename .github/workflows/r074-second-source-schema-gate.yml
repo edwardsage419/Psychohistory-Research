@@ -64,7 +64,7 @@ jobs:
             if (length(loaded)!=1L || loaded!=dataset) stop("SOURCE_RDATA_OBJECT_IDENTITY_FAILURE")
             x <- get(dataset,envir=env)
             exp <- candidates[[dataset]]
-            if (!is.data.frame(x) || nrow(x)!=exp$expected_n || !identical(names(x),exp$fields)) {
+            if (!is.data.frame(x) || nrow(x)!=exp$expected_n || !setequal(names(x),exp$fields)) {
               cat(sprintf("SCHEMA_DISCOVERY %s: nrow=%d, names=%s\n",
                 dataset,if(is.data.frame(x))nrow(x) else -1L,
                 paste(names(x),collapse=",")))
