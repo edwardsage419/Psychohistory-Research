@@ -1,0 +1,53 @@
+name: R072 genuine S8 original anonymous 10 column domains rev004
+
+on:
+  push:
+    paths:
+      - 'research/R072/r072_plos_s8_column_domains_rev004.py'
+      - 'research/R072/test_r072_plos_s8_column_domains_rev004.py'
+      - '.github/workflows/r072-plos-s8-column-domains-rev004.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entirely-synthetic-row-and-privacy-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test source SHA and 189-universe fail-closed rules on invented data
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_column_domains_rev004
+
+  original-human-source-anonymous-domains:
+    needs: entirely-synthetic-row-and-privacy-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: SHA verify official 38647-byte original and report anonymized column domains only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r072_rev004
+          python research/R072/r072_plos_s8_column_domains_rev004.py \
+            --output /tmp/r072_rev004/anonymous_source_row_domains.json
+      - name: Preserve only safe anonymous integer column summary or explicit failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r072-actual-PLOS-S8-row-universe-column-domains-rev004
+          path: /tmp/r072_rev004/anonymous_source_row_domains.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Clear temporary anonymous receipt
+        if: always()
+        run: rm -rf /tmp/r072_rev004
