@@ -1,0 +1,38 @@
+name: R070 Schelling-type spatial satisfaction and mobility E1
+
+on:
+  push:
+    paths:
+      - 'research/R070/r070_schelling_spatial_migration.py'
+      - 'research/R070/test_r070_schelling_spatial_migration.py'
+      - '.github/workflows/r070-schelling-spatial-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-spatial-agent-rules:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 22 synthetic satisfice migration and macro pattern invariants
+        working-directory: research/R070
+        run: python -m unittest -v test_r070_schelling_spatial_migration
+      - name: Run fixed 4x4 Schelling micro-macro synthetic benchmark
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r070_e1
+          python research/R070/r070_schelling_spatial_migration.py \
+            --output /tmp/r070_e1/synthetic_4x4_spatial.json
+      - name: Archive only synthetic abstract types and spatial metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: r070-schelling-local-satisfaction-e1-no-human-data
+          path: /tmp/r070_e1/synthetic_4x4_spatial.json
+          retention-days: 30
