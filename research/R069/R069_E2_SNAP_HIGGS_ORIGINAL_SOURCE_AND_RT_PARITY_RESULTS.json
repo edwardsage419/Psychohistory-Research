@@ -1,0 +1,100 @@
+{
+  "research_id": "R069",
+  "date": "2026-10-16",
+  "stage": "E2_ORIGINAL_SNAP_HIGGS_TIMED_INTERACTIONS_AND_EXACT_RT_PARITY",
+  "scientific_status": "SOURCE_TIME_ACTIVITY_PASS_AND_EXACT_RT_PARITY_PASS_BOUNDED",
+  "original_source": {
+    "publishing_institution": "Stanford Network Analysis Project",
+    "url": "https://snap.stanford.edu/data/higgs-twitter.html",
+    "original_paper_DOI": "10.1038/srep02980",
+    "snap_page_update": "2015-03-31"
+  },
+  "source_gzip": {
+    "higgs-activity_time.txt.gz": {
+      "bytes": 4169461,
+      "sha256": "901b199716a23b0fc0371705e3ae9941b5c9493277aec65456abc4988674ad79",
+      "official_url": "https://snap.stanford.edu/data/higgs-activity_time.txt.gz"
+    },
+    "higgs-retweet_network.edgelist.gz": {
+      "bytes": 1957437,
+      "sha256": "4097edebd539043cfc62d9b4ba67676f79523f6dbe896d345fcc127dec3e936e",
+      "official_url": "https://snap.stanford.edu/data/higgs-retweet_network.edgelist.gz"
+    }
+  },
+  "source_temporal_activity": {
+    "total_interaction_rows": 563069,
+    "RT": 354930,
+    "MT": 171237,
+    "RE": 36902,
+    "distinct_active_users": 279379,
+    "distinct_targets": 59977,
+    "distinct_union_actor_target_nodes": 304691,
+    "earliest_UTC": "2012-07-01T00:02:52+00:00",
+    "latest_UTC": "2012-07-07T23:59:53+00:00",
+    "out_of_official_window": 0,
+    "distinct_event_seconds": 194437,
+    "same_second_excess_event_rows": 368632,
+    "self_interaction_rows_across_all_three_types": 7588,
+    "users_with_RT_activity": 228556,
+    "RT_rows_which_are_at_actor_first_RT_second": 228578,
+    "RT_rows_with_target_strictly_earlier_any_observed_action": 185484,
+    "RT_rows_with_target_strictly_earlier_RT": 112692,
+    "first_RT_second_RT_rows_with_target_strictly_earlier_action": 105806,
+    "first_RT_second_RT_rows_with_target_strictly_earlier_RT": 59065,
+    "identification_boundary": "B prior RT is only earlier activity in dataset; not particular source tweet, not guaranteed exposure or independent IC event"
+  },
+  "aggregated_graph": {
+    "nodes": 256491,
+    "unique_directed_retweet_pair_edges": 328132,
+    "edge_rows": 328132,
+    "weight_sum": 354930,
+    "duplicate_weighted_graph_pairs": 0,
+    "RT_self_events": 0
+  },
+  "parity": {
+    "state": "DIRECTIONAL_RT_MULTISET_EXACT_PASS",
+    "RT_action_rows": 354930,
+    "RT_action_unique_directed_pairs": 328132,
+    "weighted_graph_unique_directed_pairs": 328132,
+    "pairs_only_in_action_log": 0,
+    "pairs_only_in_aggregate_graph": 0,
+    "common_pair_weights_mismatched": 0,
+    "sum_absolute_weight_differences": 0,
+    "reverse_orientation_symmetric_difference_edges": 653232,
+    "is_independent_dataset": false
+  },
+  "workflow": {
+    "original_source": {
+      "run_id": 38876285461,
+      "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38876285461",
+      "conclusion": "success",
+      "tests": 18,
+      "aggregate_artifact_id": 12035342535
+    },
+    "directional_parity": {
+      "run_id": 38876563448,
+      "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38876563448",
+      "conclusion": "success",
+      "tests": 13,
+      "aggregate_artifact_id": 12036031028
+    }
+  },
+  "protocol": {
+    "original": "protocols/R069_E2_HIGGS_TEMPORAL_RETWEET_SOURCE_GATE_2026-10-16.md",
+    "original_precompute_commit": "84e39d03b95c40403ecb9eb6def721223a28fa9c",
+    "parity": "protocols/R069_E2_HIGGS_ORIGINAL_RT_EXACT_PARITY_2026-10-16.md",
+    "parity_precompute_commit": "ccf8b9867798e93681d8722b4f67816aaa3ca290"
+  },
+  "scientific_limits": {
+    "retweet_edges_derived_from_same_events": true,
+    "independent_pre_event_network": false,
+    "raw_tweet_ID_for_lineage": false,
+    "failed_exposure_opportunities": false,
+    "belief_change_or_adoption_times": false,
+    "causal_threshold_and_IC_parameters": "NOT_IDENTIFIED",
+    "original_SNAP_external_license": "NO_DATA_REPUBLICATION_RIGHTS_ASSUMED",
+    "external_E3": "OPEN"
+  },
+  "raw_events_or_user_ids_redistributed": false,
+  "pesen_v01": "FROZEN"
+}
