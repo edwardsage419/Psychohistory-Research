@@ -1,0 +1,103 @@
+{
+  "research_id": "R072",
+  "date": "2026-10-16",
+  "scope": "POST_CLOSURE_REAL_SOURCE_ANONYMOUS_ELIGIBILITY_NOT_CAUSAL_FIT",
+  "original_closed_bounded_status": "UNCHANGED",
+  "source": {
+    "doi": "10.1371/journal.pone.0152076.s008",
+    "source_SHA256": "5fed03458fc72be7425b3d38386dcc7a149c3f7a69c3c14ed9dbb6e269bc4e1b",
+    "bytes": 38647,
+    "publisher_origin": "PLOS_SIGNED_DELEGATED_BUCKET_EXACT_OBJECT",
+    "original_real_rows_redistributed": false
+  },
+  "publisher_published": {
+    "paper_DOI": "10.1371/journal.pone.0152076",
+    "table3_total_requests": 189,
+    "table3_serving_history_requests": 96,
+    "table3_neutral_requests": 93,
+    "eight_profile_group_sizes_sorted": [
+      19,
+      19,
+      19,
+      19,
+      25,
+      28,
+      30,
+      30
+    ],
+    "published_values_are_not_independent_project_statistics": true
+  },
+  "REV004": {
+    "protocol": "protocols/R072_E2_PLOS_S8_REV004_AUTHOR_ROW_UNIVERSE_AND_COLUMN_DOMAINS_2026-10-16.md",
+    "run": 38926189750,
+    "tests_passed": 18,
+    "archive_run": 38926470942,
+    "machine_results": "research/R072/R072_E2_PLOS_S8_ANONYMOUS_COLUMN_DOMAINS_REV004.json",
+    "physical_nonheader_rows": 198,
+    "first_col_numeric": 189,
+    "first_col_text": 9,
+    "second_col_binary_numeric": 189,
+    "second_col_empty": 9,
+    "actual_distinct_rows_complete_all10": 89,
+    "original_result_SHA256": "2b1f26b3d615a393ada59b1b0f51c356f619467ecaae3bb6b4ce32b64611c7fa",
+    "scientific_status": "ANONYMOUS_SOURCE_DOMAINS_PASS_AUTHOR_ROW_UNIVERSE_NOT_ESTABLISHED"
+  },
+  "REV005": {
+    "protocol": "protocols/R072_E2_S8_REV005_ANONYMOUS_BLOCK_COHORT_PARITY_2026-10-16.md",
+    "failed_initial_run_due_to_synthetic_test_fixture": 38926856955,
+    "successful_run": 38926940610,
+    "tests_passed": 15,
+    "archive_run": 38927095385,
+    "machine_results": "research/R072/R072_E2_PLOS_S8_ANONYMOUS_PROFILE_BLOCK_PARITY_REV005.json",
+    "candidate_row_selector": "after exploratory REV004 finding, first two cell OOXML numeric",
+    "candidate_rows": 189,
+    "noncandidate_format_rows": 9,
+    "anonymous_profile_codes": 8,
+    "profile_group_sizes_sorted": [
+      19,
+      19,
+      19,
+      19,
+      25,
+      28,
+      30,
+      30
+    ],
+    "matches_published_eight_group_multiset": true,
+    "coded_binary_second_col_zeros": 100,
+    "coded_binary_second_col_ones": 89,
+    "second_col_semantics": "UNKNOWN_NOT_ASSIGNED",
+    "source_original_result_SHA256": "2df9275477749e8f8ad6a91b890f705172b4d70b1fa617d3275253c618497086",
+    "scientific_status": "POSTEXPLORATORY_STRUCTURAL_SIZE_PARITY_ONLY"
+  },
+  "REV006": {
+    "protocol": "protocols/R072_E2_S8_REV006_INTERNAL_CODEBOOK_LEGEND_DETECTION_2026-10-16.md",
+    "successful_run": 38927407735,
+    "tests_passed": 12,
+    "archive_run": 38927611260,
+    "machine_results": "research/R072/R072_E2_PLOS_S8_ANONYMOUS_FOOTER_LEGEND_REV006.json",
+    "noncandidate_format_rows_after_numeric_189": 9,
+    "has_bounded_metadata_keywords_for_service_and_replies": true,
+    "strict_number_to_serving_vs_neutral_assignment_not_found": true,
+    "original_result_SHA256": "b9f855fefc086cbd4849dc408ddab190ff68c78388bb65b0067faf3c0bca7e53",
+    "scientific_status": "CODEBOOK_NOT_RECOVERED"
+  },
+  "scientific_gates": {
+    "G1_real_original_byte_identity": "PASS",
+    "G2_anonymous_row_structure": "PASS",
+    "G3_postexploratory_eight_profile_size_multiset": "EXACT_MATCH_ONLY",
+    "G4_author_code_to_serving_neutral_identity": "BLOCKED_AUTHOR_CODEBOOK",
+    "G5_independent_table3_serving96_neutral93": "NOT_REPLICATED",
+    "G6_independent_any_response_yes_maybe_no": "NOT_REPLICATED",
+    "G7_r072_original_image_standing_stern_E2": "NOT_ESTABLISHED",
+    "G8_external_independent_E3": "OPEN",
+    "G9_PESEN_v01": "FROZEN"
+  },
+  "privacy": {
+    "identifiers_or_individual_rows_in_repo": false,
+    "raw_publisher_XLSX_in_repo": false,
+    "only_anonymized_aggregates_exported": true
+  },
+  "future_requirement": "Independent source-backed codebook and frozen action/treatment field mappings before response effect estimates",
+  "audit": "research/R072/R072_E2_REAL_S8_189_CANDIDATE_EIGHT_GROUP_EVIDENCE_AUDIT_2026-10-16.md"
+}
