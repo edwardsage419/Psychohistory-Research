@@ -1,0 +1,4574 @@
+{
+  "research_id": "R070",
+  "stage": "E1_FIRST_FEASIBLE_ACTOR_ACTIVATION_PAIRED_ENUMERATION",
+  "status": "E1_AGENT_ACTIVATION_COMPETITION_PASS",
+  "protocol": "protocols/R070_E1_FEASIBLE_ACTOR_ACTIVATION_2026-10-16.md",
+  "fixed_chessboard": "3x3 with 2 of abstract A, 2 of B and 5 vacancies",
+  "initial_layouts": 756,
+  "threshold_values": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "frozen_mobility_policies": [
+    "GLOBAL_ROW_MAJOR",
+    "RADIUS_1",
+    "RADIUS_2",
+    "NEAREST_SATISFICING"
+  ],
+  "compared_activation_rules": [
+    "FIRST_UNHAPPY",
+    "FIRST_FEASIBLE_UNHAPPY"
+  ],
+  "executed_trajectories": 30240,
+  "maximum_moves": 40,
+  "experimental_results": {
+    "0.0": {
+      "GLOBAL_ROW_MAJOR": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 756,
+          "first_actor_stalled": 0,
+          "budget_exhausted": 0,
+          "total_moves": 0
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 756,
+          "all_unhappy_agents_immobile": 0,
+          "budget_exhausted": 0,
+          "total_moves": 0,
+          "mean_moves": 0.0,
+          "max_moves": 0,
+          "initial_boards_actually_using_skip": 0,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 0,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 0,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 0,
+          "new_more_moves": 0,
+          "new_fewer_moves": 0,
+          "equal_moves": 756,
+          "new_less_unhappy": 0,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 756,
+          "macro_both_defined_cases": 720,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 0,
+          "equal_heterotypic_contact_share": 720,
+          "old_mean_macro_contact_in_paired_defined": 0.6666666666666671,
+          "new_mean_macro_contact_in_paired_defined": 0.6666666666666671
+        },
+        "first_lexicographic_synthetic_witnesses": {}
+      },
+      "RADIUS_1": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 756,
+          "first_actor_stalled": 0,
+          "budget_exhausted": 0,
+          "total_moves": 0
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 756,
+          "all_unhappy_agents_immobile": 0,
+          "budget_exhausted": 0,
+          "total_moves": 0,
+          "mean_moves": 0.0,
+          "max_moves": 0,
+          "initial_boards_actually_using_skip": 0,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 0,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 0,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 0,
+          "new_more_moves": 0,
+          "new_fewer_moves": 0,
+          "equal_moves": 756,
+          "new_less_unhappy": 0,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 756,
+          "macro_both_defined_cases": 720,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 0,
+          "equal_heterotypic_contact_share": 720,
+          "old_mean_macro_contact_in_paired_defined": 0.6666666666666671,
+          "new_mean_macro_contact_in_paired_defined": 0.6666666666666671
+        },
+        "first_lexicographic_synthetic_witnesses": {}
+      },
+      "RADIUS_2": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 756,
+          "first_actor_stalled": 0,
+          "budget_exhausted": 0,
+          "total_moves": 0
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 756,
+          "all_unhappy_agents_immobile": 0,
+          "budget_exhausted": 0,
+          "total_moves": 0,
+          "mean_moves": 0.0,
+          "max_moves": 0,
+          "initial_boards_actually_using_skip": 0,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 0,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 0,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 0,
+          "new_more_moves": 0,
+          "new_fewer_moves": 0,
+          "equal_moves": 756,
+          "new_less_unhappy": 0,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 756,
+          "macro_both_defined_cases": 720,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 0,
+          "equal_heterotypic_contact_share": 720,
+          "old_mean_macro_contact_in_paired_defined": 0.6666666666666671,
+          "new_mean_macro_contact_in_paired_defined": 0.6666666666666671
+        },
+        "first_lexicographic_synthetic_witnesses": {}
+      },
+      "NEAREST_SATISFICING": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 756,
+          "first_actor_stalled": 0,
+          "budget_exhausted": 0,
+          "total_moves": 0
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 756,
+          "all_unhappy_agents_immobile": 0,
+          "budget_exhausted": 0,
+          "total_moves": 0,
+          "mean_moves": 0.0,
+          "max_moves": 0,
+          "initial_boards_actually_using_skip": 0,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 0,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 0,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 0,
+          "new_more_moves": 0,
+          "new_fewer_moves": 0,
+          "equal_moves": 756,
+          "new_less_unhappy": 0,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 756,
+          "macro_both_defined_cases": 720,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 0,
+          "equal_heterotypic_contact_share": 720,
+          "old_mean_macro_contact_in_paired_defined": 0.6666666666666671,
+          "new_mean_macro_contact_in_paired_defined": 0.6666666666666671
+        },
+        "first_lexicographic_synthetic_witnesses": {}
+      }
+    },
+    "0.25": {
+      "GLOBAL_ROW_MAJOR": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 756,
+          "first_actor_stalled": 0,
+          "budget_exhausted": 0,
+          "total_moves": 638
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 756,
+          "all_unhappy_agents_immobile": 0,
+          "budget_exhausted": 0,
+          "total_moves": 638,
+          "mean_moves": 0.843915343915344,
+          "max_moves": 2,
+          "initial_boards_actually_using_skip": 0,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 0,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 0,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 0,
+          "new_more_moves": 0,
+          "new_fewer_moves": 0,
+          "equal_moves": 756,
+          "new_less_unhappy": 0,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 756,
+          "macro_both_defined_cases": 738,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 0,
+          "equal_heterotypic_contact_share": 738,
+          "old_mean_macro_contact_in_paired_defined": 0.4954832881662146,
+          "new_mean_macro_contact_in_paired_defined": 0.4954832881662146
+        },
+        "first_lexicographic_synthetic_witnesses": {}
+      },
+      "RADIUS_1": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 496,
+          "first_actor_stalled": 260,
+          "budget_exhausted": 0,
+          "total_moves": 328
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 600,
+          "all_unhappy_agents_immobile": 156,
+          "budget_exhausted": 0,
+          "total_moves": 488,
+          "mean_moves": 0.6455026455026455,
+          "max_moves": 2,
+          "initial_boards_actually_using_skip": 120,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 120,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 104,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 120,
+          "new_more_moves": 120,
+          "new_fewer_moves": 0,
+          "equal_moves": 636,
+          "new_less_unhappy": 112,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 644,
+          "macro_both_defined_cases": 714,
+          "new_higher_heterotypic_contact_share": 8,
+          "new_lower_heterotypic_contact_share": 36,
+          "equal_heterotypic_contact_share": 670,
+          "old_mean_macro_contact_in_paired_defined": 0.5989729225023345,
+          "new_mean_macro_contact_in_paired_defined": 0.5751633986928107
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.25,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.25,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.25,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.25,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                2
+              ]
+            ],
+            "tau": 0.25,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                2
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "RADIUS_2": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 720,
+          "first_actor_stalled": 36,
+          "budget_exhausted": 0,
+          "total_moves": 602
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 720,
+          "all_unhappy_agents_immobile": 36,
+          "budget_exhausted": 0,
+          "total_moves": 602,
+          "mean_moves": 0.7962962962962963,
+          "max_moves": 2,
+          "initial_boards_actually_using_skip": 0,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 0,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 0,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 0,
+          "new_more_moves": 0,
+          "new_fewer_moves": 0,
+          "equal_moves": 756,
+          "new_less_unhappy": 0,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 756,
+          "macro_both_defined_cases": 730,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 0,
+          "equal_heterotypic_contact_share": 730,
+          "old_mean_macro_contact_in_paired_defined": 0.5328767123287668,
+          "new_mean_macro_contact_in_paired_defined": 0.5328767123287668
+        },
+        "first_lexicographic_synthetic_witnesses": {}
+      },
+      "NEAREST_SATISFICING": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 756,
+          "first_actor_stalled": 0,
+          "budget_exhausted": 0,
+          "total_moves": 644
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 756,
+          "all_unhappy_agents_immobile": 0,
+          "budget_exhausted": 0,
+          "total_moves": 644,
+          "mean_moves": 0.8518518518518519,
+          "max_moves": 2,
+          "initial_boards_actually_using_skip": 0,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 0,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 0,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 0,
+          "new_more_moves": 0,
+          "new_fewer_moves": 0,
+          "equal_moves": 756,
+          "new_less_unhappy": 0,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 756,
+          "macro_both_defined_cases": 738,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 0,
+          "equal_heterotypic_contact_share": 738,
+          "old_mean_macro_contact_in_paired_defined": 0.5478771454381208,
+          "new_mean_macro_contact_in_paired_defined": 0.5478771454381208
+        },
+        "first_lexicographic_synthetic_witnesses": {}
+      }
+    },
+    "0.5": {
+      "GLOBAL_ROW_MAJOR": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 642,
+          "first_actor_stalled": 114,
+          "budget_exhausted": 0,
+          "total_moves": 976
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 756,
+          "all_unhappy_agents_immobile": 0,
+          "budget_exhausted": 0,
+          "total_moves": 1234,
+          "mean_moves": 1.6322751322751323,
+          "max_moves": 4,
+          "initial_boards_actually_using_skip": 114,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 120,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 114,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 114,
+          "new_more_moves": 114,
+          "new_fewer_moves": 0,
+          "equal_moves": 642,
+          "new_less_unhappy": 114,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 642,
+          "macro_both_defined_cases": 710,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 104,
+          "equal_heterotypic_contact_share": 606,
+          "old_mean_macro_contact_in_paired_defined": 0.12159624413145544,
+          "new_mean_macro_contact_in_paired_defined": 0.0
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "RADIUS_1": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 294,
+          "first_actor_stalled": 462,
+          "budget_exhausted": 0,
+          "total_moves": 356
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 362,
+          "all_unhappy_agents_immobile": 394,
+          "budget_exhausted": 0,
+          "total_moves": 542,
+          "mean_moves": 0.716931216931217,
+          "max_moves": 3,
+          "initial_boards_actually_using_skip": 144,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 180,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 68,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 144,
+          "new_more_moves": 144,
+          "new_fewer_moves": 0,
+          "equal_moves": 612,
+          "new_less_unhappy": 144,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 612,
+          "macro_both_defined_cases": 674,
+          "new_higher_heterotypic_contact_share": 40,
+          "new_lower_heterotypic_contact_share": 56,
+          "equal_heterotypic_contact_share": 578,
+          "old_mean_macro_contact_in_paired_defined": 0.45351137487635973,
+          "new_mean_macro_contact_in_paired_defined": 0.42927794263105834
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                2,
+                1
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                2,
+                1
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          }
+        }
+      },
+      "RADIUS_2": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 528,
+          "first_actor_stalled": 228,
+          "budget_exhausted": 0,
+          "total_moves": 776
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 666,
+          "all_unhappy_agents_immobile": 90,
+          "budget_exhausted": 0,
+          "total_moves": 1124,
+          "mean_moves": 1.4867724867724867,
+          "max_moves": 4,
+          "initial_boards_actually_using_skip": 176,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 212,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 138,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 176,
+          "new_more_moves": 176,
+          "new_fewer_moves": 0,
+          "equal_moves": 580,
+          "new_less_unhappy": 176,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 580,
+          "macro_both_defined_cases": 718,
+          "new_higher_heterotypic_contact_share": 10,
+          "new_lower_heterotypic_contact_share": 146,
+          "equal_heterotypic_contact_share": 562,
+          "old_mean_macro_contact_in_paired_defined": 0.24698235840297114,
+          "new_mean_macro_contact_in_paired_defined": 0.08495821727019498
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                2
+              ],
+              [
+                1,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                2
+              ],
+              [
+                1,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                2
+              ],
+              [
+                1,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                2
+              ],
+              [
+                1,
+                0,
+                2
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "NEAREST_SATISFICING": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 646,
+          "first_actor_stalled": 110,
+          "budget_exhausted": 0,
+          "total_moves": 998
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 756,
+          "all_unhappy_agents_immobile": 0,
+          "budget_exhausted": 0,
+          "total_moves": 1264,
+          "mean_moves": 1.6719576719576719,
+          "max_moves": 4,
+          "initial_boards_actually_using_skip": 110,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 120,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 110,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 110,
+          "new_more_moves": 110,
+          "new_fewer_moves": 0,
+          "equal_moves": 646,
+          "new_less_unhappy": 110,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 646,
+          "macro_both_defined_cases": 706,
+          "new_higher_heterotypic_contact_share": 0,
+          "new_lower_heterotypic_contact_share": 110,
+          "equal_heterotypic_contact_share": 596,
+          "old_mean_macro_contact_in_paired_defined": 0.13078375826251182,
+          "new_mean_macro_contact_in_paired_defined": 0.0
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.5,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      }
+    },
+    "0.75": {
+      "GLOBAL_ROW_MAJOR": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 210,
+          "first_actor_stalled": 546,
+          "budget_exhausted": 0,
+          "total_moves": 318
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 570,
+          "all_unhappy_agents_immobile": 186,
+          "budget_exhausted": 0,
+          "total_moves": 944,
+          "mean_moves": 1.2486772486772486,
+          "max_moves": 3,
+          "initial_boards_actually_using_skip": 428,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 732,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 360,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 428,
+          "new_more_moves": 428,
+          "new_fewer_moves": 0,
+          "equal_moves": 328,
+          "new_less_unhappy": 428,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 328,
+          "macro_both_defined_cases": 718,
+          "new_higher_heterotypic_contact_share": 24,
+          "new_lower_heterotypic_contact_share": 308,
+          "equal_heterotypic_contact_share": 386,
+          "old_mean_macro_contact_in_paired_defined": 0.5194986072423402,
+          "new_mean_macro_contact_in_paired_defined": 0.23026926648096566
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "RADIUS_1": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 90,
+          "first_actor_stalled": 666,
+          "budget_exhausted": 0,
+          "total_moves": 102
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 186,
+          "all_unhappy_agents_immobile": 570,
+          "budget_exhausted": 0,
+          "total_moves": 288,
+          "mean_moves": 0.38095238095238093,
+          "max_moves": 2,
+          "initial_boards_actually_using_skip": 160,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 282,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 96,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 160,
+          "new_more_moves": 160,
+          "new_fewer_moves": 0,
+          "equal_moves": 596,
+          "new_less_unhappy": 160,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 596,
+          "macro_both_defined_cases": 710,
+          "new_higher_heterotypic_contact_share": 34,
+          "new_lower_heterotypic_contact_share": 86,
+          "equal_heterotypic_contact_share": 590,
+          "old_mean_macro_contact_in_paired_defined": 0.6319248826291086,
+          "new_mean_macro_contact_in_paired_defined": 0.5821596244131457
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "RADIUS_2": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 170,
+          "first_actor_stalled": 586,
+          "budget_exhausted": 0,
+          "total_moves": 238
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 442,
+          "all_unhappy_agents_immobile": 314,
+          "budget_exhausted": 0,
+          "total_moves": 680,
+          "mean_moves": 0.8994708994708994,
+          "max_moves": 3,
+          "initial_boards_actually_using_skip": 322,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 524,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 272,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 322,
+          "new_more_moves": 322,
+          "new_fewer_moves": 0,
+          "equal_moves": 434,
+          "new_less_unhappy": 322,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 434,
+          "macro_both_defined_cases": 718,
+          "new_higher_heterotypic_contact_share": 10,
+          "new_lower_heterotypic_contact_share": 226,
+          "equal_heterotypic_contact_share": 482,
+          "old_mean_macro_contact_in_paired_defined": 0.5659238625812446,
+          "new_mean_macro_contact_in_paired_defined": 0.3714020427112348
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "NEAREST_SATISFICING": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 210,
+          "first_actor_stalled": 546,
+          "budget_exhausted": 0,
+          "total_moves": 318
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 570,
+          "all_unhappy_agents_immobile": 186,
+          "budget_exhausted": 0,
+          "total_moves": 944,
+          "mean_moves": 1.2486772486772486,
+          "max_moves": 3,
+          "initial_boards_actually_using_skip": 428,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 738,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 360,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 428,
+          "new_more_moves": 428,
+          "new_fewer_moves": 0,
+          "equal_moves": 328,
+          "new_less_unhappy": 428,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 328,
+          "macro_both_defined_cases": 718,
+          "new_higher_heterotypic_contact_share": 24,
+          "new_lower_heterotypic_contact_share": 308,
+          "equal_heterotypic_contact_share": 386,
+          "old_mean_macro_contact_in_paired_defined": 0.5194986072423402,
+          "new_mean_macro_contact_in_paired_defined": 0.23026926648096566
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 0.75,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      }
+    },
+    "1.0": {
+      "GLOBAL_ROW_MAJOR": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 210,
+          "first_actor_stalled": 546,
+          "budget_exhausted": 0,
+          "total_moves": 318
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 570,
+          "all_unhappy_agents_immobile": 186,
+          "budget_exhausted": 0,
+          "total_moves": 944,
+          "mean_moves": 1.2486772486772486,
+          "max_moves": 3,
+          "initial_boards_actually_using_skip": 428,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 732,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 360,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 428,
+          "new_more_moves": 428,
+          "new_fewer_moves": 0,
+          "equal_moves": 328,
+          "new_less_unhappy": 428,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 328,
+          "macro_both_defined_cases": 718,
+          "new_higher_heterotypic_contact_share": 24,
+          "new_lower_heterotypic_contact_share": 308,
+          "equal_heterotypic_contact_share": 386,
+          "old_mean_macro_contact_in_paired_defined": 0.5194986072423402,
+          "new_mean_macro_contact_in_paired_defined": 0.23026926648096566
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 2
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "RADIUS_1": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 90,
+          "first_actor_stalled": 666,
+          "budget_exhausted": 0,
+          "total_moves": 102
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 186,
+          "all_unhappy_agents_immobile": 570,
+          "budget_exhausted": 0,
+          "total_moves": 288,
+          "mean_moves": 0.38095238095238093,
+          "max_moves": 2,
+          "initial_boards_actually_using_skip": 160,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 282,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 96,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 160,
+          "new_more_moves": 160,
+          "new_fewer_moves": 0,
+          "equal_moves": 596,
+          "new_less_unhappy": 160,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 596,
+          "macro_both_defined_cases": 710,
+          "new_higher_heterotypic_contact_share": 34,
+          "new_lower_heterotypic_contact_share": 86,
+          "equal_heterotypic_contact_share": 590,
+          "old_mean_macro_contact_in_paired_defined": 0.6319248826291086,
+          "new_mean_macro_contact_in_paired_defined": 0.5821596244131457
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "RADIUS_2": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 170,
+          "first_actor_stalled": 586,
+          "budget_exhausted": 0,
+          "total_moves": 238
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 442,
+          "all_unhappy_agents_immobile": 314,
+          "budget_exhausted": 0,
+          "total_moves": 680,
+          "mean_moves": 0.8994708994708994,
+          "max_moves": 3,
+          "initial_boards_actually_using_skip": 322,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 524,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 272,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 322,
+          "new_more_moves": 322,
+          "new_fewer_moves": 0,
+          "equal_moves": 434,
+          "new_less_unhappy": 322,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 434,
+          "macro_both_defined_cases": 718,
+          "new_higher_heterotypic_contact_share": 10,
+          "new_lower_heterotypic_contact_share": 226,
+          "equal_heterotypic_contact_share": 482,
+          "old_mean_macro_contact_in_paired_defined": 0.5659238625812446,
+          "new_mean_macro_contact_in_paired_defined": 0.3714020427112348
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 2,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                0,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                2
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 4
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      },
+      "NEAREST_SATISFICING": {
+        "total_initial_boards": 756,
+        "original_first_unhappy": {
+          "satisfied": 210,
+          "first_actor_stalled": 546,
+          "budget_exhausted": 0,
+          "total_moves": 318
+        },
+        "new_first_feasible_unhappy": {
+          "satisfied": 570,
+          "all_unhappy_agents_immobile": 186,
+          "budget_exhausted": 0,
+          "total_moves": 944,
+          "mean_moves": 1.2486772486772486,
+          "max_moves": 3,
+          "initial_boards_actually_using_skip": 428,
+          "total_earlier_immobile_candidates_skipped_in_actual_moves": 738,
+          "revisited_board_states_across_moves": 0
+        },
+        "paired_comparison": {
+          "old_stalled_new_satisfied": 360,
+          "old_satisfied_new_stalled": 0,
+          "old_satisfied_new_budget": 0,
+          "old_stalled_new_budget": 0,
+          "different_terminal_boards": 428,
+          "new_more_moves": 428,
+          "new_fewer_moves": 0,
+          "equal_moves": 328,
+          "new_less_unhappy": 428,
+          "new_more_unhappy": 0,
+          "equal_unhappy": 328,
+          "macro_both_defined_cases": 718,
+          "new_higher_heterotypic_contact_share": 24,
+          "new_lower_heterotypic_contact_share": 308,
+          "equal_heterotypic_contact_share": 386,
+          "old_mean_macro_contact_in_paired_defined": 0.5194986072423402,
+          "new_mean_macro_contact_in_paired_defined": 0.23026926648096566
+        },
+        "first_lexicographic_synthetic_witnesses": {
+          "skip_immobile_first_actor": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          },
+          "old_stall_new_stable": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          },
+          "different_final_board": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          },
+          "new_less_unhappy": {
+            "initial_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STABLE_ALL_SATISFIED",
+            "old_moves": 0,
+            "new_moves": 3,
+            "old_final_board": [
+              [
+                1,
+                1,
+                2
+              ],
+              [
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                2,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 3
+          },
+          "new_higher_heterotypic_contact": {
+            "initial_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "tau": 1.0,
+            "old_status": "STALLED_NO_SATISFYING_VACANCY",
+            "new_status": "STALLED_ALL_UNHAPPY_IMMOBILE",
+            "old_moves": 0,
+            "new_moves": 1,
+            "old_final_board": [
+              [
+                1,
+                2,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "new_final_board": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                2,
+                1
+              ],
+              [
+                2,
+                0,
+                0
+              ]
+            ],
+            "new_skipped_immobile_unhappy": 1
+          }
+        }
+      }
+    }
+  },
+  "historical_baseline_reused_unchanged": true,
+  "hypothesis_causal_real_world": "NOT_TESTED",
+  "human_event_level_E2": "BLOCKED_EVENT_LEVEL_SOURCE_AND_RULE_PARITY",
+  "external_E3": "OPEN",
+  "pesen_v01": "FROZEN"
+}
