@@ -59,3 +59,12 @@
 [独立真实结果归档 run38928909389](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38928909389) 二次计算并验证1,816字节匿名JSON SHA256 `3cd8a9baa0b881942e8c394ae7d547f419a6ea2348dab1b5bb3aa5c543b1f09a` 后永久存入 [REV007 真实来源匿名机读联合一致性结果](R072_E2_PLOS_S8_ANONYMOUS_TABLE1_PAIR_CHECKSUM_REV007.json)。[完整科研审计与循环论证风险](R072_E2_REV007_REAL_TABLE1_ANONYMOUS_GROUP_CHECKSUM_AND_SCIENTIFIC_BOUNDARY.md)；[新增机读科学状态](R072_POSTCLOSURE_S8_REV007_GROUP_RESPONSE_PARITY_STATUS.json)。
 
 **最重要的证据边界：** 这**仅是八个匿名组的描述性数据与作者 Table1已发表结果精确吻合**；不等于原始编码字典已恢复，更不能用已发表的每组回复人数倒推出哪些原数值是 serving/neutral，然后再“检验”服务历史引起的效果，那样存在严重的 outcome→treatment 循环论证。作者处理分配96/93与 `yes/maybe/no` 原始编码仍未由**独立于结果**的材料绑定，原R072 IMAGE/STANDING/STERN 真人模型依然未受验证。R072`CLOSED_BOUNDED`、E3 OPEN、PESEN v0.1 FROZEN不变。
+
+
+## 2026-10-17 REV008：独立原作者处理编码字典仍未恢复，后续工作调整
+
+已先冻结 [REV008 仅源注释编码绑定协议](../../protocols/R072_E2_S8_REV008_INDEPENDENT_LEGEND_CODEBOOK_BINDING_2026-10-17.md)，只允许扫描原 PLOS S8 最后的9条非候选说明行是否含“数字代码—服务历史/中性”明确语义关联；禁止访问任何回应列或使用已发表 Table1 八组回应人数选择处理组编码。[首次CI38930015652](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38930015652) 一项合成测试误报、真实源工作跳过（历史保留）；修复测试后，[实际CI38930145114](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38930145114) **15测试PASS且原始SHA固定S8源读取SUCCESS**。返回 `BLOCKED_NO_UNAMBIGUOUS_SOURCE_CODEBOOK`：未取得八个编码与服务历史、中性档案各四个之间独立且无歧义的映射。
+
+[重复计算并固定SHA的永久归档CI38930303469](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38930303469) SUCCESS，写入 [匿名REV008真实结果](R072_E2_PLOS_S8_INDEPENDENT_AUTHOR_CODEBOOK_REV008.json)（1030bytes，SHA256 `cdc0ec4fe5f076d20f8981891afb42b767fb1735d7646842caac1afbb27d33ae`）；[独立科学阴性报告](R072_E2_REV008_INDEPENDENT_AUTHOR_CODEBOOK_NEGATIVE_AUDIT_2026-10-17.md)和[最新源编码门机器状态](R072_POSTCLOSURE_S8_REV008_AUTHOR_CODEBOOK_GATE_STATUS.json)。
+
+**不可混同：** REV007 已确实以真人源匿名计数复核八组 `(n,reply)` 与论文Table1全部一致，属于事后探索性描述性一致性证据；REV008 没有找到**独立于结果**的作者编码字典，不能用那些已发表回复计数倒推组标签后再检验服务历史对回应率的效应。因此 R072原`CLOSED_BOUNDED`不变，E2真实信誉规则未验证，E3 OPEN，PESEN v0.1 FROZEN。除非出现权威作者新代码本，应停止对相同S8末尾9行无限扩张正则试探，优先寻找实验角色/变量编码明确的新真人证据。
