@@ -1,0 +1,69 @@
+name: R068 Toyokawa original human LFS observational source audit
+
+on:
+  push:
+    paths:
+      - 'research/R068/r068_toyokawa_lfs_schema.py'
+      - 'research/R068/test_r068_toyokawa_lfs_schema.py'
+      - '.github/workflows/r068-toyokawa-source-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-source-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify thirteen synthetic source/structure/fail-closed cases
+        working-directory: research/R068
+        run: python -m unittest -v test_r068_toyokawa_lfs_schema
+
+  original-human-LFS-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Clone only the original author revision, never a moving branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r068_author /tmp/r068_pointers /tmp/r068_anonymous
+          cd /tmp/r068_author
+          git init -q
+          git remote add origin https://github.com/WataruToyokawa/ToyokawaGaissmaier2021.git
+          git fetch -q --depth=1 origin 6fca0b26c33af3a5b3c415719fa3df0dced15149
+          GIT_LFS_SKIP_SMUDGE=1 git checkout -q --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "6fca0b26c33af3a5b3c415719fa3df0dced15149"
+          git cat-file -p HEAD:experimentalAnalysis/allBehaviour1022_group.csv > /tmp/r068_pointers/allBehaviour1022_group.csv
+          git cat-file -p HEAD:experimentalAnalysis/allBehaviour1022_indiv.csv > /tmp/r068_pointers/allBehaviour1022_indiv.csv
+          git lfs install --local
+          git lfs pull --include="experimentalAnalysis/allBehaviour1022_group.csv,experimentalAnalysis/allBehaviour1022_indiv.csv" --exclude=""
+      - name: Verify actual Git LFS payload hashes, size, UTF8 CSV and anonymous structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R068/r068_toyokawa_lfs_schema.py \
+            --source-dir /tmp/r068_author/experimentalAnalysis \
+            --pointer-dir /tmp/r068_pointers \
+            --output /tmp/r068_anonymous/source_gate.json
+      - name: Archive only public source hashes and safe CSV schema
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r068-pinned-toyokawa-human-lfs-aggregate-schema
+          path: /tmp/r068_anonymous/source_gate.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete any original participant source and LFS storage
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r068_author /tmp/r068_pointers /tmp/r068_anonymous
