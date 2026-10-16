@@ -8,10 +8,10 @@
   "open_gates": "research/R071/R071_POST_CLOSURE_OPEN_GATES.md",
   "gates": {
     "A01": "PASS",
-    "A02": "PASS_BOUNDED_SOURCE_AUDIT_WITH_REAL_BYTES_UNRECOVERED",
-    "A03": "PASS_E1_IMPLEMENTATION_AND_SEPARATE_E2_FAIL_PRESERVED",
-    "A04": "PASS_NEGATIVE_RESULTS_PRESERVED",
-    "A05": "PASS_INFERENCE_BOUNDED",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
     "A06": "PASS"
   },
   "evidence": {
@@ -70,5 +70,12 @@
     "complete_synthesis_is_not_an_empirical_study": true
   },
   "next_research": "R072",
-  "pesen_v01": "FROZEN"
+  "pesen_v01": "FROZEN",
+  "gate_rationale": {
+    "A02": "PASS refers only to E1 literature/source and explicit E2 unrecovered-source reporting; real Dryad bytes NOT VERIFIED",
+    "A03": "E1 true computation and 28 tests PASS; separate E2 CSV source workflow genuinely failed and remains a negative record",
+    "A04": "all negative welfare / failed human-source evidence preserved",
+    "A05": "no causal human-cooperation claims and no E3",
+    "A06": "full source JSON SHA and GitHub provenance archived"
+  }
 }
