@@ -1,0 +1,91 @@
+name: R065 Phase M seven native objectives two reset clocks
+
+on:
+  push:
+    paths:
+      - 'research/R065/r065_phase_m_native_two_clock.py'
+      - 'research/R065/test_r065_phase_m_native_two_clock.py'
+      - '.github/workflows/r065-phase-m.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-execution-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate adapter-only source edits and delta anchoring
+        working-directory: research/R065
+        run: python -m unittest -v test_r065_phase_l_native_heldout test_r065_phase_m_native_two_clock
+
+  two-clocks-native-24:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        model: [1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen numerical environment
+        run: python -m pip install --disable-pip-version-check --no-cache-dir numpy==1.26.4 pandas==2.2.3 scipy==1.14.1
+      - name: Obtain untouched exact-source author code and 24 Phase J original raw files
+        shell: bash
+        run: |
+          set -euo pipefail
+          repo='https://raw.githubusercontent.com/arielevy8/obs-learning-fishing/fd5f435b5368b69916e7acc6a9991aa5f46b3ddb'
+          mkdir -p /tmp/r065_m_author /tmp/r065_m_raw
+          curl -fsSL --retry 2 "$repo/model_fitting/objectives.py" -o /tmp/r065_m_author/objectives.py
+          curl -fsSL --retry 2 "$repo/model_fitting/fit_utils.py" -o /tmp/r065_m_author/fit_utils.py
+          curl -fsSL --retry 2 "$repo/data/processed/unified_data_2025-01-16_00.csv" -o /tmp/r065_m_processed.csv
+          PYTHONPATH=research/R065 python - <<'PY'
+          from pathlib import Path
+          from r065_critical_replay import parse_verified
+          from r065_phase_j_screened_replay import select_eligible
+          from r065_phase_k_native_objectives import verified_upstream
+          verified_upstream(Path('/tmp/r065_m_author'))
+          selected = select_eligible(parse_verified(Path('/tmp/r065_m_processed.csv').read_bytes()), strict=True)
+          ids = selected['first_high'] + selected['first_low']
+          if len(ids) != 24 or len(set(ids)) != 24:
+              raise ValueError('Phase J source universe invalid')
+          Path('/tmp/r065_m_ids.txt').write_text('\n'.join(ids) + '\n')
+          print('Original model source hashes and pinned subject identity PASS')
+          PY
+          while IFS= read -r person; do
+            curl -fsSL --retry 2 "$repo/data/$person.csv" -o "/tmp/r065_m_raw/$person.csv"
+          done < /tmp/r065_m_ids.txt
+      - name: Run both clocks, full model refits, and Phase L anchor
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r065_m_output
+          python research/R065/r065_phase_m_native_two_clock.py \
+            --upstream-dir /tmp/r065_m_author \
+            --processed /tmp/r065_m_processed.csv \
+            --raw-dir /tmp/r065_m_raw \
+            --manifest research/R065/R065_PHASE_J_SCREENED_24_RESULTS.json \
+            --phase-l-results research/R065/R065_PHASE_L_NATIVE_HELDOUT_RESULTS.json \
+            --model-number ${{ matrix.model }} \
+            --output "/tmp/r065_m_output/model_${{ matrix.model }}.json"
+      - name: Persist only anonymous aggregated two-clock optimizer diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r065-phase-m-two-clock-${{ matrix.model }}
+          path: /tmp/r065_m_output/model_${{ matrix.model }}.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Remove original subject rows and source from runner
+        if: always()
+        shell: bash
+        run: |
+          rm -rf /tmp/r065_m_author /tmp/r065_m_raw /tmp/r065_m_processed.csv /tmp/r065_m_ids.txt /tmp/r065_m_output
