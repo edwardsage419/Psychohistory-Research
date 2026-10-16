@@ -1,0 +1,100 @@
+{
+  "research_id": "R068",
+  "stage": "E2_TOYOKAWA_38_ROOM_FREQUENCY_HELDOUT",
+  "status": "SOURCE_PINNED_38_ROOM_HELDOUT_COMPLETE",
+  "date": "2026-10-16",
+  "protocol": "protocols/R068_E2_38_ROOM_FREQUENCY_HOLDOUT_2026-10-16.md",
+  "protocol_commit": "7b9e217e9e54735a3b2a9d092b0ee3496be5906c",
+  "source": "WataruToyokawa/ToyokawaGaissmaier2021",
+  "source_commit": "6fca0b26c33af3a5b3c415719fa3df0dced15149",
+  "lfs_sha256": {
+    "group": "b01af9eb32945c57b6a9528c2f7e291e955819c1df799cfc942708473cd4ceb3",
+    "individual": "06ddbf5dbe64893f841ef6801c6e1e00553869eb774ee05740b8cf0d1f6801c1"
+  },
+  "source_counts": {
+    "source_group_rows": 12880,
+    "source_group_people": 184,
+    "total_rooms": 39,
+    "mixed_rooms_excluded": 1,
+    "valid_pre_exclusion": 12674,
+    "valid_mixed_task_room_excluded": 345,
+    "eligible_heldout_rooms": 38,
+    "scored_group_trial_decisions": 12329,
+    "risk_task_room_counts": {
+      "11": 20,
+      "12": 18
+    }
+  },
+  "class_scores": {
+    "uniform": {
+      "heldout_room_count": 38,
+      "scored_trial_decisions": 12329,
+      "primary_room_equal_NLL_nats": 1.386294361119894,
+      "secondary_trial_weighted_NLL_nats": 1.3862943611198935,
+      "task_11_room_equal_NLL_nats": 1.3862943611198937,
+      "task_12_room_equal_NLL_nats": 1.3862943611198935,
+      "heldout_training_selected_parameters": {
+        "uniform": 38
+      },
+      "individual_trial_or_room_outcomes_exported": false
+    },
+    "inertia": {
+      "heldout_room_count": 38,
+      "scored_trial_decisions": 12329,
+      "primary_room_equal_NLL_nats": 1.1655191936613014,
+      "secondary_trial_weighted_NLL_nats": 1.164089230706693,
+      "task_11_room_equal_NLL_nats": 1.137876767503358,
+      "task_12_room_equal_NLL_nats": 1.1962330005034605,
+      "heldout_training_selected_parameters": {
+        "rho=0.5": 38
+      },
+      "individual_trial_or_room_outcomes_exported": false
+    },
+    "frequency_exponent": {
+      "heldout_room_count": 38,
+      "scored_trial_decisions": 12329,
+      "primary_room_equal_NLL_nats": 1.4567653050844371,
+      "secondary_trial_weighted_NLL_nats": 1.4502204686410027,
+      "task_11_room_equal_NLL_nats": 1.452535596619867,
+      "task_12_room_equal_NLL_nats": 1.4614649811561817,
+      "heldout_training_selected_parameters": {
+        "theta=0.0": 9,
+        "theta=0.5": 29
+      },
+      "individual_trial_or_room_outcomes_exported": false
+    },
+    "inertia_frequency_mixture": {
+      "heldout_room_count": 38,
+      "scored_trial_decisions": 12329,
+      "primary_room_equal_NLL_nats": 1.1514808469206488,
+      "secondary_trial_weighted_NLL_nats": 1.1487701965318717,
+      "task_11_room_equal_NLL_nats": 1.1277814427775261,
+      "task_12_room_equal_NLL_nats": 1.1778135181907852,
+      "heldout_training_selected_parameters": {
+        "rho=0.5,theta=0.5,w=0.25": 8,
+        "rho=0.5,theta=1.0,w=0.25": 30
+      },
+      "individual_trial_or_room_outcomes_exported": false
+    }
+  },
+  "run": {
+    "id": 38871373620,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38871373620",
+    "conclusion": "success",
+    "synthetic_tests": 18,
+    "artifact_id": 12032808309,
+    "original_artifact_json_sha256": "f235fd78ccb4839a85cbdd01af63070a9f24a63f8e4eaa0093f4e5bd5ba3f850"
+  },
+  "interpretation": "retrospective bounded E2, group-level LOOR categorical next-choice prediction conditioned on same person's prior choice and the previous trial's visible peer choices; no demonstrator payoffs",
+  "limits": {
+    "binary_three_demonstrator_E1_not_directly_tested": true,
+    "observed_success_payoffs_of_peers": false,
+    "individual_RL_not_modeled": true,
+    "original_cmdstanr_not_reproduced": true,
+    "room_level_CI": "OPEN",
+    "causal_cultural_transmission": "NOT_ESTABLISHED",
+    "new_experiment_E3": "OPEN"
+  },
+  "personal_records_redistributed": false,
+  "pesen_v01": "FROZEN"
+}
