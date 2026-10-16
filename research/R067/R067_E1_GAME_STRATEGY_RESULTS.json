@@ -1,0 +1,91 @@
+{
+  "research_id": "R067",
+  "status": "E1_MECHANISM_PASS",
+  "evidence": "SYNTHETIC_ONLY",
+  "protocol": "protocols/R067_EVOLUTIONARY_GAME_STRATEGY_2026-10-16.md",
+  "protocol_commit": "c76cdbf5c4053a9b14ddf6623e816508b7f0bbfe",
+  "workflow": {
+    "run_id": 38866940132,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38866940132",
+    "conclusion": "success",
+    "tests_passed": 22,
+    "artifact_id": 12030903153
+  },
+  "payoff_matrices": {
+    "prisoners_dilemma": [
+      [
+        3,
+        0
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "coordination": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "parameters": {
+    "x0": 0.5,
+    "replicator_dt": 0.1,
+    "dynamic_logit_lambda": 2,
+    "dynamic_logit_eta": 0.2,
+    "best_response_eta": 0.2
+  },
+  "coordination_exact_payoff_indifference_threshold": 0.42857142857142855,
+  "results": {
+    "prisoners_dilemma": {
+      "replicator": {
+        "x0": 0.5,
+        "step1": 0.4625,
+        "step5": 0.32691092377260667,
+        "step20": 0.07168714285697504
+      },
+      "logit_response": {
+        "x0": 0.5,
+        "step1": 0.40948517463551337,
+        "step5": 0.20853379816745235,
+        "step20": 0.1017412691613565
+      },
+      "best_response": {
+        "x0": 0.5,
+        "step1": 0.4,
+        "step5": 0.16384000000000007,
+        "step20": 0.0057646075230342415
+      }
+    },
+    "coordination": {
+      "replicator": {
+        "x0": 0.5,
+        "step1": 0.5125,
+        "step5": 0.5878811713118888,
+        "step20": 0.9941433885216009
+      },
+      "logit_response": {
+        "x0": 0.5,
+        "step1": 0.546211715726001,
+        "step5": 0.7791643908882332,
+        "step20": 0.9916093515738214
+      },
+      "best_response": {
+        "x0": 0.5,
+        "step1": 0.6000000000000001,
+        "step5": 0.8361600000000002,
+        "step20": 0.994235392476966
+      }
+    }
+  },
+  "not_a_QRE_fixed_point_solution": true,
+  "real_behavioral_experiment_fitted": false,
+  "e2_human_data": "OPEN",
+  "e3_external": "OPEN",
+  "pesen_v01": "FROZEN"
+}
