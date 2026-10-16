@@ -1,0 +1,50 @@
+name: R066 original R network identity contract review
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r066-network-source-join-review.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-author-code-identity-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Strictly verify author R script bytes and print source-only graph/ID contexts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import re,hashlib
+          from urllib import request
+          url="https://dataverse.harvard.edu/api/access/datafile/14101728"
+          with request.urlopen(request.Request(url,headers={"User-Agent":"R066-source-identity-review/1.0"}),timeout=30) as res:
+              raw=res.read(100000)
+          if (len(raw)!=72914 or
+              hashlib.sha256(raw).hexdigest()!="2e7b7b22887c69c057a6f2fa1a1ff393566826fdb19e6aad6360393ea9f86ff2"):
+              raise ValueError("source exact bytes changed")
+          lines=raw.decode("utf-8-sig").splitlines()
+          triggers=re.compile(r"graph_from_|\\bego\\b|\\bhhnum\\b|\\bhhh\\b|visit[1-5]|meal[1-5]|borrow[1-5]|rumor[1-5]|as_edgelist",re.I)
+          seen=set()
+          print("ORIGINAL PUBLIC R SOURCE ONLY -- NO RESPONDENT DATA")
+          for i,line in enumerate(lines):
+              if not triggers.search(line): continue
+              for j in range(max(0,i-1),min(len(lines),i+2)):
+                  if j in seen: continue
+                  seen.add(j)
+                  # Source code may contain author's private filesystem paths:
+                  # do not quote those lines in logs.
+                  s=lines[j].strip()
+                  if re.search(r"/Users/|/home/|[A-Z]:\\\\Users",s,re.I): continue
+                  if len(s)>240: s=s[:240]+"..."
+                  if s: print(str(j+1)+": "+s)
+          print("MATCHED_SOURCE_LINES",len(seen))
+          PY
