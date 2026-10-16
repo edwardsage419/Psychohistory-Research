@@ -1,0 +1,48 @@
+name: R072 permanently archive exact 11664 complete reputation E1 JSON
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r072-archive-full-reputation-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  permanent-full-synthetic-math-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all independent science and measurement guards
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_reputation_public_signals
+      - name: Recompute exactly 11664 synthetic cases, confirm source result SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R072/r072_reputation_public_signals.py \
+            --output /tmp/r072_verified_full.json
+          echo '6137894586488cabcc684ae350e692ccd0c6c2a731d6e0787153197de3a8868a  /tmp/r072_verified_full.json' | sha256sum --check --status
+      - name: Commit SHA-pinned original entire E1 science result into GitHub main
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=research/R072/R072_E1_FULL_11664_PUBLIC_REPUTATION_RESULTS.json
+          if [ -e "$target" ]; then
+            cmp -s /tmp/r072_verified_full.json "$target"
+            echo "Exact original source JSON already committed"
+            exit 0
+          fi
+          cp /tmp/r072_verified_full.json "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$target"
+          git commit -m "results(R072): commit SHA-pinned all 11664 public reputation and signal cases"
+          git push origin HEAD:main
