@@ -1,6 +1,8 @@
 # R068：文化传递偏差、社会模仿与有限群体随机漂变
 
-研究开始：2026-10-16。**当前状态：ACTIVE；E1 数学机制 PASS，真实行为 E2 OPEN，外部独立 E3 OPEN。** 接替 [R067 正式限定结题](../R067/R067_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md)，研究全新文化演化机制族，不再扩张单项二策略博弈研究。
+研究开始：2026-10-16。**当前正式状态：R068=CLOSED_BOUNDED（2026-10-16），E1 合成机制 PASS、E2 真实四选项留房预测 PASS_BOUNDED、E3 OPEN。** 接替 [R067 正式限定结题](../R067/R067_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md)，研究全新文化演化机制族，不再扩张单项二策略博弈研究。
+
+**正式结题与来源证据总入口：** [六门结题报告](R068_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md) · [机读状态](R068_FINAL_ACCEPTANCE_STATUS.json) · [保留的开放科学问题](R068_POST_CLOSURE_OPEN_GATES.md)。早期文内 E2「待开展」只是研究开始时的状态，已被下面真实来源与实验补充。
 
 ## 原始文献与机制
 
@@ -31,3 +33,11 @@
 `R068_E1=PASS`
 `R068_E2=OPEN`
 `PESEN_v0.1=FROZEN`
+
+
+## 真实 E2：先校验作者 LFS，再读懂前一轮信息，最后整房间留出（已完成）
+
+- Toyokawa–Gaissmaier 2022，作者固定 Git `6fca0b26c33af3a5b3c415719fa3df0dced15149`，真正 Git LFS 实验表格经 SHA256 对齐：群体 12880×57、个体 7929×56；[来源 CI 38870499060](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38870499060) 成功、13 tests。
+- [时间来源与语义结果](R068_E2_TOYOKAWA_SOURCE_TEMPORAL_RESULTS.json)：群体 184 人/39 rooms，上一轮同伴选择计数按原作者源码减去本人上一轮选择，可得 12674 条合法有同伴信息观测；原作者报告的 1 个混合任务房间保留异常并整房间排除；[CI 38870896074](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38870896074) 成功、12 tests。
+- [正式 E2 详细审计](R068_E2_TOYOKAWA_REAL_SOURCE_AND_MODEL_AUDIT.md)及[全部匿名得分](R068_E2_TOYOKAWA_ROOM_HELDOUT_RESULTS.json)：先冻结 38 房间完整留出协议，每折仅其他 37 房训练模型网格，评价 12329 条有可见频率及前期个人选择的当前四选项选择。[真实 CI run 38871373620](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38871373620) 全成功、18 tests。38 房等权 NLL（越低越好）：混合 `1.15148`、自身上轮惯性 `1.16552`、Uniform `1.38629`、仅社会频率 `1.45677`。强频率强化 θ>1 在后者 38 折**从未被训练选中**。
+- **重要边界：** 真实实验是四选项、非固定三人示范者，且仅展示同伴选择频率，不能直接证明 E1 三人多数或 success-weighted copying。纯社会频率不佳也不能否认作者更丰富的个人强化学习与群体社会学习解释；完整 cmdstanr/WAIC、外部 E3、多代文化历史均 OPEN。研究依照六门统一标准 `CLOSED_BOUNDED`，PESEN v0.1 保持 `FROZEN`。后续主线是 R069 网络局部阈值/级联机制。
