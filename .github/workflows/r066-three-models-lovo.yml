@@ -1,0 +1,75 @@
+name: R066 16-village conditional heldout 3 opinion models
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_three_models_lovo.py'
+      - 'research/R066/test_r066_three_models_lovo.py'
+      - '.github/workflows/r066-three-models-lovo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-prediction-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact numerical dependency
+        run: python -m pip install --no-cache-dir numpy==1.26.4
+      - name: Verify three models, fixed grid and no heldout outcome leakage
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_three_models_lovo
+
+  real-16-village-lovo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact numerical dependency
+        run: python -m pip install --no-cache-dir numpy==1.26.4
+      - name: Retrieve public original Larson Lewis V1 source files, only in temporary runner folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r066_prediction_inputs /tmp/r066_prediction_public
+          python - <<'PY'
+          from urllib import request
+          from pathlib import Path
+          from research.R066.r066_larson_lewis_public_schema import FILES
+          root=Path("/tmp/r066_prediction_inputs")
+          for name,file_id,_ in FILES.values():
+              req=request.Request("https://dataverse.harvard.edu/api/access/datafile/"+str(file_id),
+                                  headers={"User-Agent":"R066-16village-frozen-lovo/1.0"})
+              with request.urlopen(req,timeout=30) as resp:
+                  raw=resp.read(10000001)
+              if len(raw)>10000000: raise ValueError("oversized source")
+              (root/name).write_bytes(raw)
+          PY
+      - name: Fit only on 15 training villages and score one heldout village, repeat 16 times
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R066/r066_three_models_lovo.py \
+            --source-dir /tmp/r066_prediction_inputs \
+            --output /tmp/r066_prediction_public/anonymous_lovo_3model_results.json
+      - name: Archive only anonymous combined model class loss and drift summaries
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-three-models-16-village-heldout-anonymous
+          path: /tmp/r066_prediction_public/anonymous_lovo_3model_results.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete respondent rows and original graph edges
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r066_prediction_inputs /tmp/r066_prediction_public
