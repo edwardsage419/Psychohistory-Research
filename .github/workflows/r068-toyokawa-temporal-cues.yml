@@ -1,0 +1,66 @@
+name: R068 Toyokawa source-derived four-option temporal social cue audit
+
+on:
+  push:
+    paths:
+      - 'research/R068/r068_toyokawa_temporal_cue_audit.py'
+      - 'research/R068/test_r068_toyokawa_temporal_cue_audit.py'
+      - '.github/workflows/r068-toyokawa-temporal-cues.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  temporal-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Confirm self-excluded prior round social cues and fail-closed logic
+        working-directory: research/R068
+        run: python -m unittest -v test_r068_toyokawa_temporal_cue_audit
+
+  real-author-prior-round-behavior:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Obtain only byte-pinned group/individual LFS source files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r068_temporal_original /tmp/r068_temporal_aggregate
+          cd /tmp/r068_temporal_original
+          git init -q
+          git remote add origin https://github.com/WataruToyokawa/ToyokawaGaissmaier2021.git
+          git fetch -q --depth=1 origin 6fca0b26c33af3a5b3c415719fa3df0dced15149
+          GIT_LFS_SKIP_SMUDGE=1 git checkout -q --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "6fca0b26c33af3a5b3c415719fa3df0dced15149"
+          git lfs install --local
+          git lfs pull --include="experimentalAnalysis/allBehaviour1022_group.csv,experimentalAnalysis/allBehaviour1022_indiv.csv" --exclude=""
+      - name: Verify original payload SHA256 and audit the author's previous-choice subtraction
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R068/r068_toyokawa_temporal_cue_audit.py \
+            --source-dir /tmp/r068_temporal_original/experimentalAnalysis \
+            --output /tmp/r068_temporal_aggregate/anonymous_temporal_semantics.json
+      - name: Archive only aggregate temporal audit, no human trial records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r068-toyokawa-anonymous-real-four-option-temporal-cues
+          path: /tmp/r068_temporal_aggregate/anonymous_temporal_semantics.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase original human data, LFS contents and temporary aggregates
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r068_temporal_original /tmp/r068_temporal_aggregate
