@@ -1,0 +1,221 @@
+{
+  "stage": "R065_PHASE_L",
+  "date": "2026-10-16",
+  "protocol": "protocols/R065_PHASE_L_SEVEN_NATIVE_HELDOUT_2026-10-16.md",
+  "protocol_commit": "3fe15727a46fe86e6a76e112146f1f13e043491f",
+  "workflow_run_id": 38843245182,
+  "workflow_run_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38843245182",
+  "workflow_head_commit": "fbdf1626d5467ad70c277b82ddf1a3a7b159b3e8",
+  "github_actions_jobs_completed_success": 8,
+  "github_actions_seven_native_jobs_success": 7,
+  "offline_checks_passed": 12,
+  "upstream": {
+    "repository": "arielevy8/obs-learning-fishing",
+    "commit": "fd5f435b5368b69916e7acc6a9991aa5f46b3ddb",
+    "native_source_objectives_blob": "5e98133fa274ef2a112b24f6fdcd802d4f9d3eec",
+    "native_source_fit_utils_blob": "6046f083a1181b10a7d991c8c9fd2e53c1f2b487",
+    "processed_git_blob": "01bf211468abe093618dfa5e5c39e883230c9c03",
+    "original_raw_blob_manifest": "research/R065/R065_PHASE_J_SCREENED_24_RESULTS.json"
+  },
+  "sampling": {
+    "type": "fixed retrospective Phase J screened deterministic 24 people, stratified two folds of 12",
+    "num_participants": 24,
+    "source_play_trials": 1327,
+    "fold_A_play": 667,
+    "fold_B_play": 660,
+    "training_participants_each_fold": 12,
+    "heldout_participants_each_fold": 12
+  },
+  "method": {
+    "author_clock_only": true,
+    "unmodified_native_author_objectives": true,
+    "group_shared_params_within_training_fold": true,
+    "optimizer": "L-BFGS-B",
+    "starts": 2,
+    "maxiter": 80,
+    "maxfun": 900,
+    "ftol": 1e-8,
+    "gtol": 0.00001,
+    "latent_bounds": [
+      -8,
+      8
+    ],
+    "heldout_metric": "trial-weighted negative log-likelihood per play",
+    "fit_validity": "at least one successful finite optimizer start for each model and fold",
+    "runtime": "Python 3.11, numpy 1.26.4, pandas 2.2.3, scipy 1.14.1"
+  },
+  "models": [
+    {
+      "model_number": 1,
+      "job_id": 116787896831,
+      "status": "TWO_FOLD_COMPLETE",
+      "folds": [
+        {
+          "heldout_mean_nll": 0.6307103972459156,
+          "heldout_play": 667,
+          "status": "PASS",
+          "test_fold": "A",
+          "training_play": 660
+        },
+        {
+          "heldout_mean_nll": 0.6738032222584996,
+          "heldout_play": 660,
+          "status": "PASS",
+          "test_fold": "B",
+          "training_play": 667
+        }
+      ],
+      "heldout_mean_nll": 0.6521431512084669
+    },
+    {
+      "model_number": 2,
+      "job_id": 116787896632,
+      "status": "TWO_FOLD_COMPLETE",
+      "folds": [
+        {
+          "heldout_mean_nll": 0.6490419076543386,
+          "heldout_play": 667,
+          "status": "PASS",
+          "test_fold": "A",
+          "training_play": 660
+        },
+        {
+          "heldout_mean_nll": 0.6604487554824355,
+          "heldout_play": 660,
+          "status": "PASS",
+          "test_fold": "B",
+          "training_play": 667
+        }
+      ],
+      "heldout_mean_nll": 0.6547152456848917
+    },
+    {
+      "model_number": 3,
+      "job_id": 116787896646,
+      "status": "TWO_FOLD_COMPLETE",
+      "folds": [
+        {
+          "heldout_mean_nll": 0.6820245259525433,
+          "heldout_play": 667,
+          "status": "PASS",
+          "test_fold": "A",
+          "training_play": 660
+        },
+        {
+          "heldout_mean_nll": 0.672916278668762,
+          "heldout_play": 660,
+          "status": "PASS",
+          "test_fold": "B",
+          "training_play": 667
+        }
+      ],
+      "heldout_mean_nll": 0.6774944255702556
+    },
+    {
+      "model_number": 4,
+      "job_id": 116787896713,
+      "status": "TWO_FOLD_COMPLETE",
+      "folds": [
+        {
+          "heldout_mean_nll": 0.6361408379046364,
+          "heldout_play": 667,
+          "status": "PASS",
+          "test_fold": "A",
+          "training_play": 660
+        },
+        {
+          "heldout_mean_nll": 0.6720805921003257,
+          "heldout_play": 660,
+          "status": "PASS",
+          "test_fold": "B",
+          "training_play": 667
+        }
+      ],
+      "heldout_mean_nll": 0.6540159228851601
+    },
+    {
+      "model_number": 5,
+      "job_id": 116787896406,
+      "status": "TWO_FOLD_COMPLETE",
+      "folds": [
+        {
+          "heldout_mean_nll": 0.6360526708211005,
+          "heldout_play": 667,
+          "status": "PASS",
+          "test_fold": "A",
+          "training_play": 660
+        },
+        {
+          "heldout_mean_nll": 0.6710599876238054,
+          "heldout_play": 660,
+          "status": "PASS",
+          "test_fold": "B",
+          "training_play": 667
+        }
+      ],
+      "heldout_mean_nll": 0.6534639964351059
+    },
+    {
+      "model_number": 6,
+      "job_id": 116787896481,
+      "status": "TWO_FOLD_COMPLETE",
+      "folds": [
+        {
+          "heldout_mean_nll": 0.6305412183203868,
+          "heldout_play": 667,
+          "status": "PASS",
+          "test_fold": "A",
+          "training_play": 660
+        },
+        {
+          "heldout_mean_nll": 0.6661650372592812,
+          "heldout_play": 660,
+          "status": "PASS",
+          "test_fold": "B",
+          "training_play": 667
+        }
+      ],
+      "heldout_mean_nll": 0.6482591689606808
+    },
+    {
+      "model_number": 7,
+      "job_id": 116787896468,
+      "status": "TWO_FOLD_COMPLETE",
+      "folds": [
+        {
+          "heldout_mean_nll": 0.6322599771413726,
+          "heldout_play": 667,
+          "status": "PASS",
+          "test_fold": "A",
+          "training_play": 660
+        },
+        {
+          "heldout_mean_nll": 0.6691939415860867,
+          "heldout_play": 660,
+          "status": "PASS",
+          "test_fold": "B",
+          "training_play": 667
+        }
+      ],
+      "heldout_mean_nll": 0.6506295449887813
+    }
+  ],
+  "descriptive_model_order_lowest_loss_first": [
+    6,
+    7,
+    1,
+    5,
+    4,
+    2,
+    3
+  ],
+  "artifact_note": "Detailed optimizer traces (aggregate fold parameters and candidate metadata) available in seven 30-day GH Actions artifacts. Permanent repository record archives runner-logged fold mean and overall scores; individual raw records remain undistributed.",
+  "research_scope": "Retrospective Phase J 24-person two-fold conditional prediction; exploratory model selection; no nested model selection, confidence interval, full 226-person fit, native hierarchical EM/iBIC, alternate clock, external independent replication",
+  "future_gates": {
+    "full_author_226_seven_model_refit": "OPEN",
+    "author_hierarchical_EM_iBIC": "OPEN",
+    "two_clock_equivalent_budget_comparison": "OPEN",
+    "external_independent_cohort": "OPEN"
+  },
+  "pesen_v01": "FROZEN"
+}
