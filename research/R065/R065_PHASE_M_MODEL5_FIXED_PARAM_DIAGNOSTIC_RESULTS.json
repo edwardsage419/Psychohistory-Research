@@ -1,0 +1,62 @@
+{
+  "stage": "R065_PHASE_M_MODEL5_POSTHOC_FIXED_PARAM_DIAGNOSTIC",
+  "date": "2026-10-16",
+  "protocol": "protocols/R065_PHASE_M_MODEL5_POSTHOC_FIXED_PARAM_DIAGNOSTIC_2026-10-16.md",
+  "protocol_commit": "34e08a1898cb5b55a931d83995c3823f06e74239",
+  "original_phase_m_run_id": 38844279247,
+  "diagnostic_run_id": 38844938066,
+  "diagnostic_run_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38844938066",
+  "status": "FOUR_PARAMETER_VECTORS_REPLAY_PASS",
+  "synthetic_tests_passed": 7,
+  "real_source_job_conclusion": "success",
+  "upstream_objectives_git_blob": "5e98133fa274ef2a112b24f6fdcd802d4f9d3eec",
+  "upstream_fit_utils_git_blob": "6046f083a1181b10a7d991c8c9fd2e53c1f2b487",
+  "sample": {
+    "participants": 24,
+    "play_trials": 1327,
+    "raw_manifest": "research/R065/R065_PHASE_J_SCREENED_24_RESULTS.json"
+  },
+  "cases": [
+    {
+      "fit": "Phase L",
+      "test_fold": "A",
+      "train_total_nll": 431.3305695660382,
+      "heldout_nll_per_play": 0.6360526708211004,
+      "train_error": 0,
+      "test_error": -1.1102230246251565e-16
+    },
+    {
+      "fit": "Phase L",
+      "test_fold": "B",
+      "train_total_nll": 413.5733573690336,
+      "heldout_nll_per_play": 0.6710599876238054,
+      "train_error": 0,
+      "test_error": 0
+    },
+    {
+      "fit": "Phase M",
+      "test_fold": "A",
+      "train_total_nll": 431.3305695539493,
+      "heldout_nll_per_play": 0.6360528702863637,
+      "train_error": 0,
+      "test_error": 0
+    },
+    {
+      "fit": "Phase M",
+      "test_fold": "B",
+      "train_total_nll": 413.5733590011091,
+      "heldout_nll_per_play": 0.6710638279760015,
+      "train_error": -5.684341886080802e-14,
+      "test_error": 0
+    }
+  ],
+  "result_interpretation": "At original parameters exactly as independently archived in respective Phase L and M artifacts, the same native objective reproduces all original scoring numbers. Previously seen Phase L vs M rerun mismatch is associated with fitted parameter differences. The particular numerical optimization cause is not established by this probe.",
+  "remaining": {
+    "phase_m_model5_comparison": "FAIL_CLOSED_FROZEN_1E-7",
+    "phase_m_seven_model_complete": false,
+    "optimization_endpoint_repeatability_explanation": "OPEN",
+    "author_full_226": "OPEN",
+    "hierarchical_EM_iBIC": "OPEN"
+  },
+  "pesen_v01": "FROZEN"
+}
