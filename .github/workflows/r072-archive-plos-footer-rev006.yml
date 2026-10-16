@@ -1,0 +1,48 @@
+name: R072 source SHA-verified anonymous PLOS codebook footer archive REV006
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r072-archive-plos-footer-rev006.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  official-anonymous-footer-results-permanent-git-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: All safe synthetic codebook/footer tests
+        working-directory: research/R072
+        run: python -m unittest -v test_r072_plos_s8_legend_rev006
+      - name: Repeat exact original SHA-verified publisher-source anonymous footer audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R072/r072_plos_s8_legend_rev006.py \
+            --output /tmp/r072_original_safe_footer.json
+          echo 'b9f855fefc086cbd4849dc408ddab190ff68c78388bb65b0067faf3c0bca7e53  /tmp/r072_original_safe_footer.json' | sha256sum --check --status
+      - name: Commit solely anonymous source codebook status and boolean keywords
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=research/R072/R072_E2_PLOS_S8_ANONYMOUS_FOOTER_LEGEND_REV006.json
+          if [ -f "$target" ]; then
+            cmp -s /tmp/r072_original_safe_footer.json "$target"
+            echo "Exact safe footer archive already verified"
+            exit 0
+          fi
+          cp /tmp/r072_original_safe_footer.json "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$target"
+          git commit -m "results(R072): archive authentic anonymous S8 footer keywords with unmapped codebook negative finding"
+          git push origin HEAD:main
