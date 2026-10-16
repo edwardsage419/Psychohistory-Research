@@ -1,0 +1,43 @@
+name: R070 first-feasible actor 30240 exhaustive paired activation E1
+
+on:
+  push:
+    paths:
+      - 'research/R070/r070_feasible_actor_activation.py'
+      - 'research/R070/test_r070_feasible_actor_activation.py'
+      - '.github/workflows/r070-feasible-actor-activation-e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exhaustive-actor-activation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check first-feasible selection, source parity, full state universe and fail-closed cases
+        working-directory: research/R070
+        run: python -m unittest -v test_r070_feasible_actor_activation
+      - name: Evaluate all 30240 paired first-selected vs first-feasible activation trajectories
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r070_agent_activation
+          python research/R070/r070_feasible_actor_activation.py \
+            --output /tmp/r070_agent_activation/synthetic_paired_activation_results.json
+      - name: Archive only abstract spatial states, paired science counts, and witnesses
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r070-30240-paired-first-feasible-activation-e1
+          path: /tmp/r070_agent_activation/synthetic_paired_activation_results.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase temporary research aggregates
+        if: always()
+        run: rm -rf /tmp/r070_agent_activation
