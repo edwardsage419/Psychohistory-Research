@@ -36,7 +36,7 @@ jobs:
           seen=set()
           print("ORIGINAL PUBLIC R SOURCE ONLY -- NO RESPONDENT DATA")
           for i,line in enumerate(lines):
-              if not triggers.search(line): continue
+              if not triggers.search(line) and not (185 <= i+1 <= 335): continue
               for j in range(max(0,i-1),min(len(lines),i+2)):
                   if j in seen: continue
                   seen.add(j)
