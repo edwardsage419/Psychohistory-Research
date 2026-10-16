@@ -1,6 +1,6 @@
 # R065 关键试次测量审计
 
-日期：2026-10-15。阶段：**Phase A 至 Phase J 的限定范围研究已归档；R065 完整研究仍 OPEN**。
+日期：2026-10-15。阶段：**Phase A 至 Phase K 的限定范围研究已归档；R065 完整研究仍 OPEN**。
 
 本阶段完成对 Levy 等人 2025 年公开处理后数据的 Git blob 字节哈希重算，在 GitHub 连接器执行环境内进行 16,103 条真实记录的关键试次审计。原始固定文件 Git blob `01bf211468abe093618dfa5e5c39e883230c9c03`（4,427,523 字节）。源数据未在本仓库重新分发。
 
@@ -160,3 +160,18 @@ GitHub Actions 另配置不依赖原始个人行的 Phase G 汇总复算作业�
 * [包含离线测试和完整来源回放两个作业的 CI 配置](../../.github/workflows/r065-phase-j.yml)
 
 此为作者原始记录上的**连接器端源码等价实验与本地独立匿名算术复算**。本地完整原始 24 人 CSV 回放和 GitHub Actions 成功作业尚无证据；原作者七模型 native 重新拟合仍开放。不得将本轮成绩外推到全体人群或 PESEN v0.1 的模型参数。
+
+
+## Phase K（2026-10-16）：原作者七模型 native Python 执行成功
+
+在 [结果前冻结的 Phase K 协议](../../protocols/R065_PHASE_K_NATIVE_7_OBJECTIVES_GATE_2026-10-16.md)下，固定作者 Git 提交及原始源码 SHA1，继承 Phase J 同样的 24 人、1,327 个 play，真实运行全部七个**未修改的作者 Python 目标函数**。各模型以无约束参数零向量执行有限数值 smoke test；这些不同模型在相同零向量位置的分数不能比较优劣。Model 3 使用 Phase J 已归档 β 再算作者原始时间轴，native 均值 NLL 0.6765811147513733、β=5 时 1.352738455600013，均与 Phase J 一致。
+
+[GitHub Actions run 38842410238](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38842410238) 中离线合成测试与实际来源 native 作业均为 **success**。此为首次得到 R065 七模型作者原生目标函数在固定真实原始数据上的成功执行证据。
+
+* [Phase K 原生来源与证据审计](R065_PHASE_K_NATIVE_AUDIT.md)
+* [真实 CI 作业聚合结果](R065_PHASE_K_NATIVE_RESULTS.json)
+* [原生 Python 执行及 SHA 验证代码](r065_phase_k_native_objectives.py)
+* [十项 fail-closed 本地及远端测试](test_r065_phase_k_native_objectives.py)
+* [真正从原作者数据和源码下载重放的 CI](../../.github/workflows/r065-phase-k.yml)
+
+**全部七模型的同等条件参数重拟合、层级 EM/iBIC 与独立预测仍 OPEN；PESEN v0.1 仍 FROZEN。** 此节实际取得的 CI 证据也更新了此前 Phase J 未验证的远端状态：Phase J [run 38840809171](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38840809171) 中两项作业都已成功。
