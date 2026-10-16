@@ -1,0 +1,38 @@
+name: R067 evolutionary game strategy dynamics E1
+
+on:
+  push:
+    paths:
+      - 'research/R067/r067_strategy_dynamics.py'
+      - 'research/R067/test_r067_strategy_dynamics.py'
+      - '.github/workflows/r067-evolutionary-game-baseline.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mathematical-mechanism-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test replicator, finite-logit response, optimal response invariants
+        working-directory: research/R067
+        run: python -m unittest -v test_r067_strategy_dynamics
+      - name: Run exact fixed PD and coordination E1 benchmarks
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r067_benchmark
+          python research/R067/r067_strategy_dynamics.py \
+            --output /tmp/r067_benchmark/evolutionary_strategy_e1.json
+      - name: Archive only synthetic analytic mechanism outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: r067-three-game-strategy-e1-mathematical-baseline
+          path: /tmp/r067_benchmark/evolutionary_strategy_e1.json
+          retention-days: 30
