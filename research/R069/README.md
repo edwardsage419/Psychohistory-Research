@@ -1,6 +1,8 @@
 # R069：网络集体行动的局部阈值、随机级联与宏观创新扩散
 
-建立日期：2026-10-16。状态：**ACTIVE；E1 三机制数学基线 PASS；E2 真实网络与标签时间来源、先行关系代理 PASS_BOUNDED，但真实网络采纳与因果传播模型仍 BLOCKED_BY_MEASUREMENT；外部独立 E3 OPEN**。从 [R068 文化学习有限结题](../R068/R068_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md)转向与短期选择明显不同的社会传播/技术制度采纳机制。
+建立日期：2026-10-16。状态：**CLOSED_BOUNDED（2026-10-16）**；E1 三机制数学基线 PASS，E2 两套真实网络/社交行为来源和四日严格向前预测 PASS_BOUNDED；真实 Watts/IC/Bass 采纳因果机制仍 BLOCKED_BY_MEASUREMENT；外部独立 E3 OPEN。从 [R068 文化学习有限结题](../R068/R068_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md)转向与短期选择明显不同的社会传播/技术制度采纳机制。
+
+**正式结题入口：** [六门验收报告](R069_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md) · [机读结题状态](R069_FINAL_ACCEPTANCE_STATUS.json) · [开放机制识别问题](R069_POST_CLOSURE_OPEN_GATES.md)。以下原始 E1/E2 研究时间线按实际发生次序保留，不应把早期 ACTIVE 标志覆盖为当前正式研究状态。
 
 ## 文献锚和冻结协议
 
@@ -58,3 +60,12 @@
 - 上期 [HetRec Last.fm E2审计](R069_E2_HETREC_SOURCE_AND_IDENTIFICATION_AUDIT.md)及 4 条负时间戳/1 条明显不合理 1979 年正时间的失败历史不受本新独立源工作影响。两次 E2 数据源不可视为已证明机制，PESEN v0.1 保持冻结，R069 尚 `ACTIVE`。
 
 **下一个关键门：** 真实源具有时间标记和关系方向，但 RT 汇总图来自**全观察期的目标行为本身**，不能作为训练时可见的传播图。若尝试做下一阶段留出预测，必须事前冻结严格时间切分、只由训练窗构造的暴露代理以及不需要外部社交边的新闻时间趋势基线，同时分离这种预测能力和真实 IC/阈值因果辨识。或者优先寻找包含历史合法有效关系与真正传播机会的独立数据。
+
+
+## R069 最终 E2：严格历史特征的 4 日向前转发预测（2026-10-16）
+
+已在[独立冻结预测协议](../../protocols/R069_E2_HIGGS_FORWARD_DAY_RT_2026-10-16.md)后，从官方 SHA 固定活动 gzip 真正重跑 SNAP 2012-07-04 至 07-07 四个 UTC 日的条件 RT 活动预测，风险集只含预测日 00:00 前曾在数据中发起过 RT/MT/RE 的账户。最初训练 7 月 2、3 日，每次只使用之前已结束训练日的账户历史活动和历史互动对象在昨日的 RT 行为。不使用同一原始来源生成的全周期聚合 RT 图预测本期行动，也不把互动代理叫作有效曝光。共 **763846 个相关的账户日观测**，而不是独立个体样本。
+
+真实[GitHub Actions 38878472077](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38878472077) 双作业 SUCCESS，**22 项合成时间隔离/失效边界测试 PASS**；最初[run 38878398763](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38878398763) 因 1 个测试断言错误 overall FAIL，原样留证，修复仅修改该测试并重跑。四日等权二元 logloss（越低越好）：历史全局训练比例 **0.365403**、昨日训练总体比例 0.366885、个人历史活跃度 0.373835、个人历史活跃度加上目标昨日 RT 代理 0.374948。**在这项限定预测比较中，简单全局率更好，而加入互动对象代理没有改进。** 单 7 月 4 日被排除的首次 RT 发起者即有 143001 名，预测任务有严重首次进入风险集覆盖限制。
+
+详见 [正式跨日行为研究审计](R069_E2_HIGGS_FORWARD_DAY_RESULTS_AUDIT.md)与 [完整匿名四日数值](R069_E2_HIGGS_FORWARD_DAY_RT_RESULTS.json)。**正式状态更新为 `R069=CLOSED_BOUNDED`，不是因果传播机制成功**。未来网络历史有效边、未传播的机会、原帖树、首次采纳及真正独立 E3 均见 [开放门清单](R069_POST_CLOSURE_OPEN_GATES.md)。PESEN v0.1 仍 `FROZEN`，下一项 R070 另立研究。
