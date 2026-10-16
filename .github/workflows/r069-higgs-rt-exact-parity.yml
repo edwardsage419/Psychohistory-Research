@@ -1,0 +1,53 @@
+name: R069 original SNAP Higgs RT graph exact event multiset parity
+
+on:
+  push:
+    paths:
+      - 'research/R069/r069_higgs_rt_edge_parity.py'
+      - 'research/R069/test_r069_higgs_rt_edge_parity.py'
+      - '.github/workflows/r069-higgs-rt-exact-parity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-exactness-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test 13 edge multiset, direction, source hash and privacy invariants
+        working-directory: research/R069
+        run: python -m unittest -v test_r069_higgs_rt_edge_parity
+
+  real-original-rt-edge-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Re-fetch original pinned gzip sources and compare RT count for every directed pair
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r069_higgs_parity
+          python research/R069/r069_higgs_rt_edge_parity.py \
+            --output /tmp/r069_higgs_parity/anonymous_exact_source_parity.json
+      - name: Archive only aggregate original RT graph parity counts and source hashes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r069-original-snap-higgs-exact-rt-parity
+          path: /tmp/r069_higgs_parity/anonymous_exact_source_parity.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase parity temp outputs
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r069_higgs_parity
