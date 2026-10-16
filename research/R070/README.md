@@ -32,6 +32,23 @@ Schelling, Thomas C. (1971), *Dynamic Models of Segregation*, *Journal of Mathem
 
 已先行冻结 [756 板面×5 阈值=3,780 次穷举协议](../../protocols/R070_E1_EXHAUSTIVE_SMALL_BOARD_ROBUSTNESS_2026-10-16.md)，然后实际通过 GitHub Actions [run 38881863192](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38881863192) 的完整批量运行（16 tests PASS）。后续专门加入“阈值 0.75 与 1.0 对两类各 2 人的小板面数学等价”测试，再经 [run 38882124414](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38882124414) **全部 17 tests SUCCESS**。完整可复现源程序 [r070_exhaustive_3x3.py](r070_exhaustive_3x3.py)，[研究全文、反例和边界](R070_E1_3780_CASES_ROBUSTNESS_AND_MODEL_SCOPE_REPORT.md)，[机读正式汇总](R070_E1_EXHAUSTIVE_3780_SUMMARY.json)。
 
-在两类代理各 2 人/5 空位的**全体** 756 个布局中，阈值 0 和 0.25 有 756/756 个完全满意结束；阈值 0.5 有 **642 个满意 / 114 个不满意但无可行空位停滞**；阈值 0.75 和 1.0 都只有 **210 个满意 / 546 个停滞**。所有 3,780 案例均在 40 步内结束，无到达上限者。更重要，阈值 0.25 的 **24 个布局**末态水平/竖直邻接的异类型比例竟高于初始状态，明确推翻个体每次搬往满意位置就必然使宏观接触比例单调下降的过强命题。
+在两类代理各 2 人/5 空位的**全体** 756 个布局中，阈值 0 和 0.25 有 756/756 个完全满意结束；阈值 0.5 有 **642 个满意 / 114 个被行优先选中的首位不满意代理无法迁居而停滞**；阈值 0.75 和 1.0 都只有 **210 个满意 / 546 个首位代理停滞**。**2026-10-16 勘误：这不是所有代理均无可行搬迁位置；详见新增的 15,120 条迁移距离竞争结果。**所有 3,780 案例均在 40 步内结束，无到达上限者。更重要，阈值 0.25 的 **24 个布局**末态水平/竖直邻接的异类型比例竟高于初始状态，明确推翻个体每次搬往满意位置就必然使宏观接触比例单调下降的过强命题。
 
 此数学穷举是 **E1 固定模型内部反例**，非现实居住政策结论。另已完成[真人实验候选及来源适用性审计](R070_E2_HUMAN_GAME_SOURCE_ELIGIBILITY_AUDIT.md)：Tsvetkova et al. 2016 有**399 位 16–19 岁真实参与者**与 6×6 四类实时迁移游戏，但逐行动原始数据和使用许可尚未实际恢复，实验决策规则也不同于当前 row-major toy model；因伦理/数据身份、行为合约均未成立，**真实 E2=BLOCKED_EVENT_LEVEL_SOURCE_AND_RULE_PARITY**。Gambetta et al. 2023 的原作者 GitHub 模型虽可获取，其数据是模拟而非真人。不得改写为“真人机制验证成功”。R070 保持 **ACTIVE**，待额外竞争迁移机制或合法真实迁移事件数据；PESEN v0.1 保持 **FROZEN**。
+
+
+## E1 迁居距离/执行顺序竞争机制：15,120 个配对实验完成
+
+[事先冻结的四政策协议](../../protocols/R070_E1_MOVEMENT_DISTANCE_COMPETITOR_2026-10-16.md) · [新模型及所有逐轨迹源对照](r070_distance_competitors.py) · [27 项合成正反例测试](test_r070_distance_competitors.py) · [正式机读结果](R070_E1_DISTANCE_COMPETITION_RESULTS.json) · [详细机制报告与旧研究勘误](R070_E1_DISTANCE_POLICY_COMPETITION_AND_ORDERING_ERRATUM.md)。
+
+完整 3×3 棋盘两类代理各2人/5空格，756初态×5阈值×4种政策 = **15,120** 条确定性轨迹。原始 `GLOBAL_ROW_MAJOR` 任意距离行优先迁入目标的轨迹逐一与上一版 R070 `run` 完全一致；对手：曼哈顿半径 `RADIUS_1`、`RADIUS_2`，以及允许远迁、仅将**最近**满意位置排到优先顺位的 `NEAREST_SATISFICING`。测试前没有看到真实穷举结果，结果于 [CI run 38883813870](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38883813870) 首次 PASS（25 tests）。观察到顺序问题后添加两项*事后*回归检查，[run 38884013460](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38884013460) **27 tests + 15120 scenarios 全部成功**。
+
+| tau | 任意距离原模型满意数 | 最多1格满意数 | 最多2格满意数 | 最近可行满意数 |
+|---|---:|---:|---:|---:|
+| .25 | 756 | **496** | 720 | 756 |
+| .5 | 642 | **294** | 528 | **646** |
+| .75 / 1 | 210 | **90** | 170 | 210 |
+
+**必须保留的科学解释修订：** `STALLED_NO_SATISFYING_VACANCY` 仅表示**当前被选择的第一名不满意代理**没有可行目标，并非所有代理都无可行迁居位置。tau=.5 原模型旧记录的 **114 个停滞**中，**全部 114 个**至少另一名不满意代理仍有可行移动；tau=.75/1 的 546 个停滞有 **428 个**如此。新模型展示“距离限制使原来可满意的初态停滞”，也证明只改最近满意空位的选择顺序会在 tau=.5 **救出4个**先前停滞的初态。宏观接触结构并非简单单调，不能把这个小棋盘类比真实身份群体或房产政策。
+
+R070 状态仍 `ACTIVE`、`E1_FULL_PAIRED_DISTANCE=PASS`、`E2_HUMAN_REAL_MOVEMENT=BLOCKED_EVENT_LEVEL_SOURCE_AND_RULE_PARITY`、`E3=OPEN`、`PESEN_v0.1=FROZEN`。下一步应独立冻结“跳过当前不可搬迁者、选择下一位可搬者”的代理激活规则，以直接区分**执行激活次序**与**物理可达性约束**，或先取得与真实人类实验动作语义严格匹配的合法原始材料。
