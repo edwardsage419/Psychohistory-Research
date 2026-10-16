@@ -1,0 +1,67 @@
+name: R066 E2 two-source measurement audit
+
+on:
+  push:
+    paths:
+      - 'research/R066/r066_e2_measurement_source_audit.py'
+      - 'research/R066/test_r066_e2_measurement_source_audit.py'
+      - '.github/workflows/r066-e2-two-source-measurement.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-synthetic-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test synthetic source-hash schema parsing and privacy boundary
+        working-directory: research/R066
+        run: python -m unittest -v test_r066_e2_measurement_source_audit
+
+  audit-original-two-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch exact original commits into private runner temporary folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          monti='https://raw.githubusercontent.com/corradomonti/learnable-opinion-dynamics/5d31ba59e716e5bde85e4c56b9cdacc3920aaaf6'
+          okawa='https://raw.githubusercontent.com/mayaokawa/opinion_dynamics/32441421a9a012acc64b206f73a2b6525580e3ce'
+          mkdir -p /tmp/r066_e2_reddit /tmp/r066_e2_opinion /tmp/r066_e2_result
+          for file in edges_user.tsv.bz2 edges_feature.tsv.bz2 feature_scores.tsv.bz2 interaction_scores.tsv.bz2; do
+            curl -fLsS --retry 2 "${monti}/data/reddit/${file}" -o "/tmp/r066_e2_reddit/${file}"
+          done
+          curl -fLsS --retry 2 \
+            "${okawa}/working/posts_final_sample_twitter_Abortion.tsv" \
+            -o /tmp/r066_e2_opinion/posts_final_sample_twitter_Abortion.tsv
+      - name: Audit bytes, compressed source schemas and opinion measurement gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R066/r066_e2_measurement_source_audit.py \
+            --reddit-dir /tmp/r066_e2_reddit \
+            --annotated-opinion /tmp/r066_e2_opinion/posts_final_sample_twitter_Abortion.tsv \
+            --output /tmp/r066_e2_result/aggregate.json
+      - name: Archive aggregate diagnostics without identifiers or raw source rows
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r066-two-candidate-e2-source-audit-aggregate
+          path: /tmp/r066_e2_result/aggregate.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete temporary raw file data
+        if: always()
+        shell: bash
+        run: rm -rf /tmp/r066_e2_reddit /tmp/r066_e2_opinion /tmp/r066_e2_result
