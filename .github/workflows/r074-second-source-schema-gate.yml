@@ -1,0 +1,124 @@
+name: R074 independent human IPD second-source schema and session eligibility audit
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r074-second-source-schema-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-two-independent-published-datasets-no-model-fitting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+      - name: Download pinned third-party data in runner tmp; exact Git blob hash and bytes fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r074_human_source /tmp/r074_public_audit
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          from urllib.request import urlopen,Request
+          commit = "a6373b23d80dc816a63f18f973d372c9e8421914"
+          records = {
+            "DF2011": (3298, "52e216b02e1a7ab7fb1a6e335b5f7e2ef6b7f5a0"),
+            "FRD2012": (26923, "6b196ca1624081850b41dc2084c762257d59dd8f"),
+          }
+          for name,(length,expected) in records.items():
+              url=f"https://raw.githubusercontent.com/cran/stratEst/{commit}/data/{name}.rda"
+              req=Request(url,headers={"User-Agent":"Psychohistory-Research-R074-source-gate/1.0"})
+              with urlopen(req,timeout=40) as response: body=response.read(100001)
+              if len(body)!=length: raise ValueError("SECOND_SOURCE_BYTE_LENGTH_MISMATCH")
+              blob=hashlib.sha1(b"blob "+str(len(body)).encode()+b"\0"+body).hexdigest()
+              if blob!=expected: raise ValueError("SECOND_SOURCE_GIT_BLOB_MISMATCH")
+              (Path("/tmp/r074_human_source")/(name+".rda")).write_bytes(body)
+              print(f"{name}: exact published Git blob verified; raw human rows kept in temporary runner")
+          PY
+      - name: Verify field definitions, session obstruction, games and valid previous-two-round risk set
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/r074_human_source/audit.R <<'RSCRIPT'
+          candidates <- list(
+            DF2011 = list(expected_n = 7358L,
+              fields = c("treatment","id","game","period","choice","other.choice")),
+            FRD2012 = list(expected_n = 13126L,
+              fields = c("treatment","id","game","period","choice","last.choice","last.other","bc","error"))
+          )
+          out <- file("/tmp/r074_public_audit/source_eligibility.tsv", open="wt")
+          cat("candidate\trows\tfields_ok\tsession_present\tpersons\tperson_games\tvalid_t3_events\tmax_period\tlast_own_checked\tlast_own_mismatch\tgate\n",file=out)
+          for (dataset in names(candidates)) {
+            env <- new.env(parent=baseenv())
+            loaded <- load(file.path("/tmp/r074_human_source",paste0(dataset,".rda")), envir=env)
+            if (length(loaded)!=1L || loaded!=dataset) stop("SOURCE_RDATA_OBJECT_IDENTITY_FAILURE")
+            x <- get(dataset,envir=env)
+            exp <- candidates[[dataset]]
+            if (!is.data.frame(x) || nrow(x)!=exp$expected_n || !identical(names(x),exp$fields))
+              stop("SOURCE_RDATA_SCHEMA_MISMATCH")
+            if (anyNA(x[,c("treatment","id","game","period","choice")]))
+              stop("SOURCE_KEY_OR_ACTION_MISSING")
+            if (!all(as.character(x$choice) %in% c("c","d")))
+              stop("SOURCE_TARGET_OUTSIDE_C_D")
+            if (dataset=="DF2011" && !all(as.character(x$other.choice) %in% c("c","d")))
+              stop("SOURCE_OPPONENT_OUTSIDE_C_D")
+            if (dataset=="FRD2012" && !all(na.omit(as.character(x$last.other)) %in% c("c","d")))
+              stop("SOURCE_LAG_OPPONENT_OUTSIDE_C_D")
+            if (any(!is.finite(as.numeric(x$period))) || any(as.numeric(x$period)<1))
+              stop("SOURCE_ROUND_INVALID")
+            # The published third-party version has no true experiment session label.
+            session_present <- "session" %in% names(x)
+            if (session_present) stop("UNEXPECTED_SESSION_NEEDS_EXPLICIT_INDEPENDENT_AUDIT")
+            group <- interaction(x$treatment,x$id,x$game,drop=TRUE)
+            by_person_game <- split(seq_len(nrow(x)), group)
+            eligible <- 0L
+            lag_checked <- 0L
+            lag_mismatched <- 0L
+            for (ix in by_person_game) {
+              ix <- ix[order(as.integer(x$period[ix]))]
+              periods <- as.integer(x$period[ix])
+              if (anyDuplicated(periods)) stop("DUPLICATE_PERSON_GAME_ROUND")
+              if (length(ix)<2L) next
+              for (k in seq.int(2L,length(ix))) {
+                if (periods[k] != periods[k-1L]+1L) next
+                if (dataset=="FRD2012" && !is.na(x$last.choice[ix[k]])) {
+                  lag_checked <- lag_checked + 1L
+                  if (as.character(x$last.choice[ix[k]]) != as.character(x$choice[ix[k-1L]]))
+                    lag_mismatched <- lag_mismatched + 1L
+                }
+                if (k>=3L && periods[k-1L]==periods[k]-1L &&
+                    periods[k-2L]==periods[k]-2L)
+                  eligible <- eligible+1L
+              }
+            }
+            n_people <- length(unique(interaction(x$treatment,x$id,drop=TRUE)))
+            cat(paste(dataset,nrow(x),"TRUE","FALSE",n_people,length(by_person_game),
+                eligible,max(as.integer(x$period)),lag_checked,lag_mismatched,
+                "BLOCKED_NO_INDEPENDENT_SESSION_ID",sep="\t"),"\n",sep="",file=out)
+            cat(sprintf("%s: %d rows, %d anonymous people, %d person-games, %d eligible t>=3 continuous events; E3=BLOCKED_NO_SESSION_ID\n",
+                dataset,nrow(x),n_people,length(by_person_game),eligible))
+          }
+          close(out)
+          RSCRIPT
+          Rscript /tmp/r074_human_source/audit.R
+      - name: Upload only anonymous source audit metadata; no raw participant rows
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r074-anonymous-second-real-human-source-eligibility
+          path: /tmp/r074_public_audit/source_eligibility.tsv
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase runner raw files after audit
+        if: always()
+        run: rm -rf /tmp/r074_human_source /tmp/r074_public_audit
