@@ -1,0 +1,2086 @@
+{
+  "research_id": "R071",
+  "stage": "E1_NORM_FEEDBACK_AND_COSTLY_PUNISHMENT",
+  "status": "E1_SYNTHETIC_NORM_INSTITUTION_MECHANISMS_PASS",
+  "protocol": "protocols/R071_NORM_COOPERATION_PUNISHMENT_E1_2026-10-16.md",
+  "literature_DOI": [
+    "10.1257/jep.14.3.137",
+    "10.1257/aer.90.4.980",
+    "10.1073/pnas.0630443100"
+  ],
+  "mechanism": "four fixed strategy roles C/D/P/N; N responds to previous visible cooperation or deterrence, not learned psychology",
+  "group_size": 5,
+  "benefit_per_contribution": 2.0,
+  "cost_per_contribution": 1.0,
+  "institution_parameters": {
+    "NONE": {
+      "fine": 0.0,
+      "variable_cost": 0.0,
+      "monitor_cost": 0.0
+    },
+    "VARIABLE_PUNISHMENT": {
+      "fine": 0.8,
+      "variable_cost": 0.2,
+      "monitor_cost": 0.0
+    },
+    "FIXED_MONITORING": {
+      "fine": 0.8,
+      "variable_cost": 0.2,
+      "monitor_cost": 1.2
+    }
+  },
+  "conditional_thresholds": [
+    0.5,
+    0.75
+  ],
+  "initial_norm_values": [
+    0.0,
+    1.0
+  ],
+  "distinct_group_compositions": 56,
+  "full_factorial_cases": 672,
+  "all_verified_group_rounds": 5376,
+  "rounds_per_case": 8,
+  "aggregate": {
+    "NONE": {
+      "theta=0.5,initial_norm=0.0": {
+        "cases": 56,
+        "end_cooperators_sum": 157,
+        "cooperator_round_total": 1239,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 1239.0,
+        "all_five_cooperate_final": 15,
+        "zero_cooperate_final": 6,
+        "only_fixed_C_and_P_cooperate_final": 43,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 0,
+        "costly_P_with_no_defectors_final": 0,
+        "mean_final_coop_fraction_over_compositions": 0.5607142857142857,
+        "mean_round_coop_fraction_over_compositions": 0.553125
+      },
+      "theta=0.5,initial_norm=1.0": {
+        "cases": 56,
+        "end_cooperators_sum": 205,
+        "cooperator_round_total": 1645,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 1645.0,
+        "all_five_cooperate_final": 21,
+        "zero_cooperate_final": 3,
+        "only_fixed_C_and_P_cooperate_final": 25,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 0,
+        "costly_P_with_no_defectors_final": 0,
+        "mean_final_coop_fraction_over_compositions": 0.7321428571428571,
+        "mean_round_coop_fraction_over_compositions": 0.734375
+      },
+      "theta=0.75,initial_norm=0.0": {
+        "cases": 56,
+        "end_cooperators_sum": 145,
+        "cooperator_round_total": 1155,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 1155.0,
+        "all_five_cooperate_final": 11,
+        "zero_cooperate_final": 6,
+        "only_fixed_C_and_P_cooperate_final": 51,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 0,
+        "costly_P_with_no_defectors_final": 0,
+        "mean_final_coop_fraction_over_compositions": 0.5178571428571429,
+        "mean_round_coop_fraction_over_compositions": 0.515625
+      },
+      "theta=0.75,initial_norm=1.0": {
+        "cases": 56,
+        "end_cooperators_sum": 195,
+        "cooperator_round_total": 1575,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 1575.0,
+        "all_five_cooperate_final": 21,
+        "zero_cooperate_final": 4,
+        "only_fixed_C_and_P_cooperate_final": 31,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 0,
+        "costly_P_with_no_defectors_final": 0,
+        "mean_final_coop_fraction_over_compositions": 0.6964285714285714,
+        "mean_round_coop_fraction_over_compositions": 0.703125
+      }
+    },
+    "VARIABLE_PUNISHMENT": {
+      "theta=0.5,initial_norm=0.0": {
+        "cases": 56,
+        "end_cooperators_sum": 179,
+        "cooperator_round_total": 1428,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 980.0,
+        "all_five_cooperate_final": 18,
+        "zero_cooperate_final": 6,
+        "only_fixed_C_and_P_cooperate_final": 33,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 10,
+        "costly_P_with_no_defectors_final": 0,
+        "mean_final_coop_fraction_over_compositions": 0.6392857142857142,
+        "mean_round_coop_fraction_over_compositions": 0.6375
+      },
+      "theta=0.5,initial_norm=1.0": {
+        "cases": 56,
+        "end_cooperators_sum": 206,
+        "cooperator_round_total": 1652,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 1204.0,
+        "all_five_cooperate_final": 21,
+        "zero_cooperate_final": 3,
+        "only_fixed_C_and_P_cooperate_final": 24,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 10,
+        "costly_P_with_no_defectors_final": 0,
+        "mean_final_coop_fraction_over_compositions": 0.7357142857142858,
+        "mean_round_coop_fraction_over_compositions": 0.7375
+      },
+      "theta=0.75,initial_norm=0.0": {
+        "cases": 56,
+        "end_cooperators_sum": 176,
+        "cooperator_round_total": 1407,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 959.0,
+        "all_five_cooperate_final": 17,
+        "zero_cooperate_final": 6,
+        "only_fixed_C_and_P_cooperate_final": 35,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 10,
+        "costly_P_with_no_defectors_final": 0,
+        "mean_final_coop_fraction_over_compositions": 0.6285714285714286,
+        "mean_round_coop_fraction_over_compositions": 0.628125
+      },
+      "theta=0.75,initial_norm=1.0": {
+        "cases": 56,
+        "end_cooperators_sum": 200,
+        "cooperator_round_total": 1610,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 1162.0,
+        "all_five_cooperate_final": 21,
+        "zero_cooperate_final": 4,
+        "only_fixed_C_and_P_cooperate_final": 27,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 10,
+        "costly_P_with_no_defectors_final": 0,
+        "mean_final_coop_fraction_over_compositions": 0.7142857142857143,
+        "mean_round_coop_fraction_over_compositions": 0.71875
+      }
+    },
+    "FIXED_MONITORING": {
+      "theta=0.5,initial_norm=0.0": {
+        "cases": 56,
+        "end_cooperators_sum": 179,
+        "cooperator_round_total": 1428,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 308.0000000000001,
+        "all_five_cooperate_final": 18,
+        "zero_cooperate_final": 6,
+        "only_fixed_C_and_P_cooperate_final": 33,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 20,
+        "costly_P_with_no_defectors_final": 15,
+        "mean_final_coop_fraction_over_compositions": 0.6392857142857142,
+        "mean_round_coop_fraction_over_compositions": 0.6375
+      },
+      "theta=0.5,initial_norm=1.0": {
+        "cases": 56,
+        "end_cooperators_sum": 206,
+        "cooperator_round_total": 1652,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 532.0000000000001,
+        "all_five_cooperate_final": 21,
+        "zero_cooperate_final": 3,
+        "only_fixed_C_and_P_cooperate_final": 24,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 20,
+        "costly_P_with_no_defectors_final": 15,
+        "mean_final_coop_fraction_over_compositions": 0.7357142857142858,
+        "mean_round_coop_fraction_over_compositions": 0.7375
+      },
+      "theta=0.75,initial_norm=0.0": {
+        "cases": 56,
+        "end_cooperators_sum": 176,
+        "cooperator_round_total": 1407,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 287.0000000000001,
+        "all_five_cooperate_final": 17,
+        "zero_cooperate_final": 6,
+        "only_fixed_C_and_P_cooperate_final": 35,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 20,
+        "costly_P_with_no_defectors_final": 15,
+        "mean_final_coop_fraction_over_compositions": 0.6285714285714286,
+        "mean_round_coop_fraction_over_compositions": 0.628125
+      },
+      "theta=0.75,initial_norm=1.0": {
+        "cases": 56,
+        "end_cooperators_sum": 200,
+        "cooperator_round_total": 1610,
+        "round_count": 448,
+        "group_total_payoff_over_all_rounds": 490.0000000000001,
+        "all_five_cooperate_final": 21,
+        "zero_cooperate_final": 4,
+        "only_fixed_C_and_P_cooperate_final": 27,
+        "P_and_C_coexisting_with_P_lower_payoff_final": 20,
+        "costly_P_with_no_defectors_final": 15,
+        "mean_final_coop_fraction_over_compositions": 0.7142857142857143,
+        "mean_round_coop_fraction_over_compositions": 0.71875
+      }
+    }
+  },
+  "pairwise_against_no_institution": {
+    "theta=0.5,initial_norm=0.0,institution=NONE": {
+      "equal_to_no_institution": 56
+    },
+    "theta=0.5,initial_norm=0.0,institution=VARIABLE_PUNISHMENT": {
+      "equal_to_no_institution": 46,
+      "greater_than_no_institution": 10
+    },
+    "theta=0.5,initial_norm=0.0,institution=FIXED_MONITORING": {
+      "equal_to_no_institution": 46,
+      "greater_than_no_institution": 10
+    },
+    "theta=0.5,initial_norm=1.0,institution=NONE": {
+      "equal_to_no_institution": 56
+    },
+    "theta=0.5,initial_norm=1.0,institution=VARIABLE_PUNISHMENT": {
+      "equal_to_no_institution": 55,
+      "greater_than_no_institution": 1
+    },
+    "theta=0.5,initial_norm=1.0,institution=FIXED_MONITORING": {
+      "equal_to_no_institution": 55,
+      "greater_than_no_institution": 1
+    },
+    "theta=0.75,initial_norm=0.0,institution=NONE": {
+      "equal_to_no_institution": 56
+    },
+    "theta=0.75,initial_norm=0.0,institution=VARIABLE_PUNISHMENT": {
+      "equal_to_no_institution": 40,
+      "greater_than_no_institution": 16
+    },
+    "theta=0.75,initial_norm=0.0,institution=FIXED_MONITORING": {
+      "equal_to_no_institution": 40,
+      "greater_than_no_institution": 16
+    },
+    "theta=0.75,initial_norm=1.0,institution=NONE": {
+      "equal_to_no_institution": 56
+    },
+    "theta=0.75,initial_norm=1.0,institution=VARIABLE_PUNISHMENT": {
+      "equal_to_no_institution": 52,
+      "greater_than_no_institution": 4
+    },
+    "theta=0.75,initial_norm=1.0,institution=FIXED_MONITORING": {
+      "equal_to_no_institution": 52,
+      "greater_than_no_institution": 4
+    }
+  },
+  "initial_norm_path_dependence": {
+    "theta=0.5,institution=NONE": {
+      "distinct_compositions_with_different_final_outcome_by_seed": 18,
+      "first_lexicographic_abstract_witness": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    "theta=0.5,institution=VARIABLE_PUNISHMENT": {
+      "distinct_compositions_with_different_final_outcome_by_seed": 9,
+      "first_lexicographic_abstract_witness": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    "theta=0.5,institution=FIXED_MONITORING": {
+      "distinct_compositions_with_different_final_outcome_by_seed": 9,
+      "first_lexicographic_abstract_witness": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    "theta=0.75,institution=NONE": {
+      "distinct_compositions_with_different_final_outcome_by_seed": 20,
+      "first_lexicographic_abstract_witness": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    "theta=0.75,institution=VARIABLE_PUNISHMENT": {
+      "distinct_compositions_with_different_final_outcome_by_seed": 8,
+      "first_lexicographic_abstract_witness": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    "theta=0.75,institution=FIXED_MONITORING": {
+      "distinct_compositions_with_different_final_outcome_by_seed": 8,
+      "first_lexicographic_abstract_witness": [
+        0,
+        0,
+        0,
+        5
+      ]
+    }
+  },
+  "synthetic_witnesses": {
+    "norm_seed_zero_all_N_no_sanction": {
+      "composition_by_C_D_P_N": [
+        0,
+        0,
+        0,
+        5
+      ],
+      "theta": 0.5,
+      "initial_public_norm": 0.0,
+      "institution": "NONE",
+      "rounds": 8,
+      "trajectory": [
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 0,
+          "noncontributor_count": 5,
+          "contributor_fraction": 0.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -1.0,
+            "D": 0.0,
+            "P": -1.0,
+            "N": 0.0
+          },
+          "group_total_payoff": 0.0,
+          "accounting_expected_total": 0.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 1
+        },
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 0,
+          "noncontributor_count": 5,
+          "contributor_fraction": 0.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -1.0,
+            "D": 0.0,
+            "P": -1.0,
+            "N": 0.0
+          },
+          "group_total_payoff": 0.0,
+          "accounting_expected_total": 0.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 2
+        },
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 0,
+          "noncontributor_count": 5,
+          "contributor_fraction": 0.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -1.0,
+            "D": 0.0,
+            "P": -1.0,
+            "N": 0.0
+          },
+          "group_total_payoff": 0.0,
+          "accounting_expected_total": 0.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 3
+        },
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 0,
+          "noncontributor_count": 5,
+          "contributor_fraction": 0.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -1.0,
+            "D": 0.0,
+            "P": -1.0,
+            "N": 0.0
+          },
+          "group_total_payoff": 0.0,
+          "accounting_expected_total": 0.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 4
+        },
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 0,
+          "noncontributor_count": 5,
+          "contributor_fraction": 0.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -1.0,
+            "D": 0.0,
+            "P": -1.0,
+            "N": 0.0
+          },
+          "group_total_payoff": 0.0,
+          "accounting_expected_total": 0.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 5
+        },
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 0,
+          "noncontributor_count": 5,
+          "contributor_fraction": 0.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -1.0,
+            "D": 0.0,
+            "P": -1.0,
+            "N": 0.0
+          },
+          "group_total_payoff": 0.0,
+          "accounting_expected_total": 0.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 6
+        },
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 0,
+          "noncontributor_count": 5,
+          "contributor_fraction": 0.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -1.0,
+            "D": 0.0,
+            "P": -1.0,
+            "N": 0.0
+          },
+          "group_total_payoff": 0.0,
+          "accounting_expected_total": 0.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 7
+        },
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 0,
+          "noncontributor_count": 5,
+          "contributor_fraction": 0.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -1.0,
+            "D": 0.0,
+            "P": -1.0,
+            "N": 0.0
+          },
+          "group_total_payoff": 0.0,
+          "accounting_expected_total": 0.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 8
+        }
+      ],
+      "end_contributor_count": 0,
+      "end_fraction": 0.0,
+      "average_contributor_fraction": 0.0,
+      "total_group_payoff_over_rounds": 0.0,
+      "true_human_behavior_observed": false
+    },
+    "norm_seed_one_all_N_no_sanction": {
+      "composition_by_C_D_P_N": [
+        0,
+        0,
+        0,
+        5
+      ],
+      "theta": 0.5,
+      "initial_public_norm": 1.0,
+      "institution": "NONE",
+      "rounds": 8,
+      "trajectory": [
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 5,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 2.0,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 1
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 5,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 2.0,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 2
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 5,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 2.0,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 3
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 5,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 2.0,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 4
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 5,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 2.0,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 5
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 5,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 2.0,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 6
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 5,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 2.0,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 7
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 5,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 2.0,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 8
+        }
+      ],
+      "end_contributor_count": 5,
+      "end_fraction": 1.0,
+      "average_contributor_fraction": 1.0,
+      "total_group_payoff_over_rounds": 40.0,
+      "true_human_behavior_observed": false
+    },
+    "P_one_N_four_no_punishment": {
+      "composition_by_C_D_P_N": [
+        0,
+        0,
+        1,
+        4
+      ],
+      "theta": 0.5,
+      "initial_public_norm": 0.0,
+      "institution": "NONE",
+      "rounds": 8,
+      "trajectory": [
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": 0.4,
+            "P": -0.6,
+            "N": 0.4
+          },
+          "group_total_payoff": 1.0,
+          "accounting_expected_total": 1.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 1
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": 0.4,
+            "P": -0.6,
+            "N": 0.4
+          },
+          "group_total_payoff": 1.0,
+          "accounting_expected_total": 1.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 2
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": 0.4,
+            "P": -0.6,
+            "N": 0.4
+          },
+          "group_total_payoff": 1.0,
+          "accounting_expected_total": 1.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 3
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": 0.4,
+            "P": -0.6,
+            "N": 0.4
+          },
+          "group_total_payoff": 1.0,
+          "accounting_expected_total": 1.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 4
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": 0.4,
+            "P": -0.6,
+            "N": 0.4
+          },
+          "group_total_payoff": 1.0,
+          "accounting_expected_total": 1.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 5
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": 0.4,
+            "P": -0.6,
+            "N": 0.4
+          },
+          "group_total_payoff": 1.0,
+          "accounting_expected_total": 1.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 6
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": 0.4,
+            "P": -0.6,
+            "N": 0.4
+          },
+          "group_total_payoff": 1.0,
+          "accounting_expected_total": 1.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 7
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": false,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": -0.6,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": 0.4,
+            "P": -0.6,
+            "N": 0.4
+          },
+          "group_total_payoff": 1.0,
+          "accounting_expected_total": 1.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 8
+        }
+      ],
+      "end_contributor_count": 1,
+      "end_fraction": 0.2,
+      "average_contributor_fraction": 0.19999999999999998,
+      "total_group_payoff_over_rounds": 8.0,
+      "true_human_behavior_observed": false
+    },
+    "P_one_N_four_variable_punishment": {
+      "composition_by_C_D_P_N": [
+        0,
+        0,
+        1,
+        4
+      ],
+      "theta": 0.5,
+      "initial_public_norm": 0.0,
+      "institution": "VARIABLE_PUNISHMENT",
+      "rounds": 8,
+      "trajectory": [
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 1
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 2
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 3
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 4
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 5
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 6
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 7
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": 1.0,
+            "N": 1.0
+          },
+          "group_total_payoff": 5.0,
+          "accounting_expected_total": 5.0,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 8
+        }
+      ],
+      "end_contributor_count": 5,
+      "end_fraction": 1.0,
+      "average_contributor_fraction": 1.0,
+      "total_group_payoff_over_rounds": 40.0,
+      "true_human_behavior_observed": false
+    },
+    "P_one_N_four_fixed_monitoring": {
+      "composition_by_C_D_P_N": [
+        0,
+        0,
+        1,
+        4
+      ],
+      "theta": 0.5,
+      "initial_public_norm": 0.0,
+      "institution": "FIXED_MONITORING",
+      "rounds": 8,
+      "trajectory": [
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": -0.19999999999999996,
+            "N": 1.0
+          },
+          "group_total_payoff": 3.8,
+          "accounting_expected_total": 3.8,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 1.2,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 1
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": -0.19999999999999996,
+            "N": 1.0
+          },
+          "group_total_payoff": 3.8,
+          "accounting_expected_total": 3.8,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 1.2,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 2
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": -0.19999999999999996,
+            "N": 1.0
+          },
+          "group_total_payoff": 3.8,
+          "accounting_expected_total": 3.8,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 1.2,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 3
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": -0.19999999999999996,
+            "N": 1.0
+          },
+          "group_total_payoff": 3.8,
+          "accounting_expected_total": 3.8,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 1.2,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 4
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": -0.19999999999999996,
+            "N": 1.0
+          },
+          "group_total_payoff": 3.8,
+          "accounting_expected_total": 3.8,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 1.2,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 5
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": -0.19999999999999996,
+            "N": 1.0
+          },
+          "group_total_payoff": 3.8,
+          "accounting_expected_total": 3.8,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 1.2,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 6
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": -0.19999999999999996,
+            "N": 1.0
+          },
+          "group_total_payoff": 3.8,
+          "accounting_expected_total": 3.8,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 1.2,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 7
+        },
+        {
+          "prior_coop_fraction": 1.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 4,
+          "contributor_count": 5,
+          "noncontributor_count": 0,
+          "contributor_fraction": 1.0,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": 1.0,
+            "D": 1.2,
+            "P": -0.19999999999999996,
+            "N": 1.0
+          },
+          "group_total_payoff": 3.8,
+          "accounting_expected_total": 3.8,
+          "sanction_event_count": 0,
+          "monitoring_cost_total": 1.2,
+          "variable_sanction_cost_total": 0.0,
+          "destructive_fines_total": 0.0,
+          "round": 8
+        }
+      ],
+      "end_contributor_count": 5,
+      "end_fraction": 1.0,
+      "average_contributor_fraction": 1.0,
+      "total_group_payoff_over_rounds": 30.400000000000002,
+      "true_human_behavior_observed": false
+    },
+    "P_one_D_four_variable_punishment": {
+      "composition_by_C_D_P_N": [
+        0,
+        4,
+        1,
+        0
+      ],
+      "theta": 0.5,
+      "initial_public_norm": 0.0,
+      "institution": "VARIABLE_PUNISHMENT",
+      "rounds": 8,
+      "trajectory": [
+        {
+          "prior_coop_fraction": 0.0,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": -0.4,
+            "P": -1.4,
+            "N": -0.6
+          },
+          "group_total_payoff": -3.0,
+          "accounting_expected_total": -3.0,
+          "sanction_event_count": 4,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.8,
+          "destructive_fines_total": 3.2,
+          "round": 1
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": -0.4,
+            "P": -1.4,
+            "N": -0.6
+          },
+          "group_total_payoff": -3.0,
+          "accounting_expected_total": -3.0,
+          "sanction_event_count": 4,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.8,
+          "destructive_fines_total": 3.2,
+          "round": 2
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": -0.4,
+            "P": -1.4,
+            "N": -0.6
+          },
+          "group_total_payoff": -3.0,
+          "accounting_expected_total": -3.0,
+          "sanction_event_count": 4,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.8,
+          "destructive_fines_total": 3.2,
+          "round": 3
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": -0.4,
+            "P": -1.4,
+            "N": -0.6
+          },
+          "group_total_payoff": -3.0,
+          "accounting_expected_total": -3.0,
+          "sanction_event_count": 4,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.8,
+          "destructive_fines_total": 3.2,
+          "round": 4
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": -0.4,
+            "P": -1.4,
+            "N": -0.6
+          },
+          "group_total_payoff": -3.0,
+          "accounting_expected_total": -3.0,
+          "sanction_event_count": 4,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.8,
+          "destructive_fines_total": 3.2,
+          "round": 5
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": -0.4,
+            "P": -1.4,
+            "N": -0.6
+          },
+          "group_total_payoff": -3.0,
+          "accounting_expected_total": -3.0,
+          "sanction_event_count": 4,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.8,
+          "destructive_fines_total": 3.2,
+          "round": 6
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": -0.4,
+            "P": -1.4,
+            "N": -0.6
+          },
+          "group_total_payoff": -3.0,
+          "accounting_expected_total": -3.0,
+          "sanction_event_count": 4,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.8,
+          "destructive_fines_total": 3.2,
+          "round": 7
+        },
+        {
+          "prior_coop_fraction": 0.2,
+          "N_strategy_cooperates": true,
+          "N_current_contributors": 0,
+          "contributor_count": 1,
+          "noncontributor_count": 4,
+          "contributor_fraction": 0.2,
+          "marginal_payoff_N_coop_vs_defect": 0.20000000000000007,
+          "per_role_payoff": {
+            "C": -0.6,
+            "D": -0.4,
+            "P": -1.4,
+            "N": -0.6
+          },
+          "group_total_payoff": -3.0,
+          "accounting_expected_total": -3.0,
+          "sanction_event_count": 4,
+          "monitoring_cost_total": 0.0,
+          "variable_sanction_cost_total": 0.8,
+          "destructive_fines_total": 3.2,
+          "round": 8
+        }
+      ],
+      "end_contributor_count": 1,
+      "end_fraction": 0.2,
+      "average_contributor_fraction": 0.19999999999999998,
+      "total_group_payoff_over_rounds": -24.0,
+      "true_human_behavior_observed": false
+    },
+    "D_five_all_regimes": {
+      "NONE": {
+        "composition_by_C_D_P_N": [
+          0,
+          5,
+          0,
+          0
+        ],
+        "theta": 0.5,
+        "initial_public_norm": 0.0,
+        "institution": "NONE",
+        "rounds": 8,
+        "trajectory": [
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -1.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 1
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -1.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 2
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -1.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 3
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -1.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 4
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -1.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 5
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -1.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 6
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -1.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 7
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -1.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 8
+          }
+        ],
+        "end_contributor_count": 0,
+        "end_fraction": 0.0,
+        "average_contributor_fraction": 0.0,
+        "total_group_payoff_over_rounds": 0.0,
+        "true_human_behavior_observed": false
+      },
+      "VARIABLE_PUNISHMENT": {
+        "composition_by_C_D_P_N": [
+          0,
+          5,
+          0,
+          0
+        ],
+        "theta": 0.5,
+        "initial_public_norm": 0.0,
+        "institution": "VARIABLE_PUNISHMENT",
+        "rounds": 8,
+        "trajectory": [
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -2.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 1
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -2.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 2
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -2.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 3
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -2.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 4
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -2.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 5
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -2.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 6
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -2.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 7
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -2.0,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 8
+          }
+        ],
+        "end_contributor_count": 0,
+        "end_fraction": 0.0,
+        "average_contributor_fraction": 0.0,
+        "total_group_payoff_over_rounds": 0.0,
+        "true_human_behavior_observed": false
+      },
+      "FIXED_MONITORING": {
+        "composition_by_C_D_P_N": [
+          0,
+          5,
+          0,
+          0
+        ],
+        "theta": 0.5,
+        "initial_public_norm": 0.0,
+        "institution": "FIXED_MONITORING",
+        "rounds": 8,
+        "trajectory": [
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -3.2,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 1
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -3.2,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 2
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -3.2,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 3
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -3.2,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 4
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -3.2,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 5
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -3.2,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 6
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -3.2,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 7
+          },
+          {
+            "prior_coop_fraction": 0.0,
+            "N_strategy_cooperates": false,
+            "N_current_contributors": 0,
+            "contributor_count": 0,
+            "noncontributor_count": 5,
+            "contributor_fraction": 0.0,
+            "marginal_payoff_N_coop_vs_defect": -0.6,
+            "per_role_payoff": {
+              "C": -1.0,
+              "D": 0.0,
+              "P": -3.2,
+              "N": 0.0
+            },
+            "group_total_payoff": 0.0,
+            "accounting_expected_total": 0.0,
+            "sanction_event_count": 0,
+            "monitoring_cost_total": 0.0,
+            "variable_sanction_cost_total": 0.0,
+            "destructive_fines_total": 0.0,
+            "round": 8
+          }
+        ],
+        "end_contributor_count": 0,
+        "end_fraction": 0.0,
+        "average_contributor_fraction": 0.0,
+        "total_group_payoff_over_rounds": 0.0,
+        "true_human_behavior_observed": false
+      }
+    }
+  },
+  "causal_human_institutional_mechanisms": "NOT_ESTABLISHED",
+  "human_E2": "OPEN_REQUIRE_EXACT_PUBLIC_GOODS_INSTITUTION_AND_BEHAVIOR_SOURCE",
+  "R047_CPR_extraction_direct_model_match": false,
+  "E3_independent_new_cohort": "OPEN",
+  "pesen_v01": "FROZEN"
+}
