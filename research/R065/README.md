@@ -1,6 +1,8 @@
 # R065 关键试次测量审计
 
-日期：2026-10-15。阶段：**Phase A 至 Phase L 的限定范围研究已归档；R065 完整研究仍 OPEN**。
+日期：2026-10-15 至 2026-10-16。最新总状态：**R065=CLOSED_BOUNDED（限定范围正式结题）**。完整 226 人及原作者层级 EM/iBIC 仍 OPEN，Phase M Model5 的重跑门控保持 FAIL_CLOSED。
+
+**最新研究验收入口（2026-10-16）：** [最终结题报告](R065_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md) · [机读六门验收记录](R065_FINAL_ACCEPTANCE_STATUS.json) · [未解决证据清单](R065_POST_CLOSURE_OPEN_GATES.md) · [统一验收标准 v1](../../protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md)。以下早期阶段文字保留当时证据状态；以此最新结题入口为准，不将早期“仍待验证”记录混同为当前状态。
 
 本阶段完成对 Levy 等人 2025 年公开处理后数据的 Git blob 字节哈希重算，在 GitHub 连接器执行环境内进行 16,103 条真实记录的关键试次审计。原始固定文件 Git blob `01bf211468abe093618dfa5e5c39e883230c9c03`（4,427,523 字节）。源数据未在本仓库重新分发。
 
@@ -189,3 +191,18 @@ GitHub Actions 另配置不依赖原始个人行的 Phase G 汇总复算作业�
 固定 Phase J 24 人及作者原始模型时钟，七模型分别以同一优化协议拟合，分层两折留出每折 12 人，合计 1,327 次选择。所有模型两折均达到经过检查的收敛状态。留出 NLL/选择：M1=0.652143151、M2=0.654715246、M3=0.677494426、M4=0.654015923、M5=0.653463996、M6=0.648259169、M7=0.650629545。**M6 只是此限定样本与本次既定方法下的描述性最低损失模型**；尚无独立新队列验证、参与者级差值置信区间、全 226 人拟合或原作者层级 EM/iBIC 重算。不能将此项记录为整个 R065 研究的完成。
 
 **R065_PHASE_L_NATIVE_SEVEN_2FOLD=PASS_BOUNDED；R065_FULL_RESEARCH_GATE=OPEN；PESEN_v0.1=FROZEN。**
+
+
+## Phase M（2026-10-16）：七模型两套状态重置时钟的审计
+
+[正式协议](../../protocols/R065_PHASE_M_SEVEN_NATIVE_TWO_CLOCK_2026-10-16.md) | [双时钟研究审计](R065_PHASE_M_TWO_CLOCK_AUDIT.md) | [源日志与聚合数据](R065_PHASE_M_TWO_CLOCK_AGGREGATE_RESULTS.json) | [Model5 事后固定参数诊断](R065_PHASE_M_MODEL5_FIXED_PARAM_DIAGNOSTIC_RESULTS.json)。
+
+七模型在同 24 人、同折及共同拟合预算下分别计算作者重置日与实验块重置日。GitHub Actions [run 38844279247](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38844279247) 的七模型作业中六成功、一失败（Model 5 原生时钟没有达到 Phase L 精确重跑容差）；整轮 conclusion=failure，按既定规则如实记录为 **PARTIAL_FAIL_CLOSED**。六个完整模型的 A 折候选时钟全部较好、B 折全部较差，不形成稳定的七模型重置结论。
+
+Model 5 两次训练产生了轻微不同的数值最优参数。后验固定参数诊断 run [38844938066](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38844938066) 已成功重现四套原生目标评分，但原双时钟实验失败判定依然有效。
+
+## R065 限定范围正式结题
+
+依据 [2026-10-16 统一验收规程](../../protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md)，最终判定为 **CLOSED_BOUNDED**：已完成来源、测量、作者七目标函数及有限 24 人内部留出比较；完整 226 人拟合、作者层级 EM/iBIC 和外部独立验证仍 OPEN。见 [正式结题报告](R065_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md)。
+
+**下一个研究编号：R066（DeGroot / Friedkin–Johnsen / Hegselmann–Krause 群体意见动力学）。PESEN v0.1 保持 FROZEN。**
