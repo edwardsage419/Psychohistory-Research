@@ -1,0 +1,114 @@
+{
+  "stage": "R065_PHASE_J",
+  "date": "2026-10-16",
+  "frozen_protocol": "protocols/R065_PHASE_J_SCREENED_24_MODEL3_2026-10-16.md",
+  "upstream_commit": "fd5f435b5368b69916e7acc6a9991aa5f46b3ddb",
+  "author_processed_git_blob": "01bf211468abe093618dfa5e5c39e883230c9c03",
+  "author_model3_objectives_git_blob": "5e98133fa274ef2a112b24f6fdcd802d4f9d3eec",
+  "author_fit_utils_git_blob": "6046f083a1181b10a7d991c8c9fd2e53c1f2b487",
+  "sample_selection": "Screen 295 raw-processed participants using full-trial author exclusion, 226 eligible; sort ASCII IDs per first-high/first-low group, choose floor((j+0.5)*group_size/12), j 0..11. No replacement.",
+  "eligible_total": 226,
+  "eligible_first_high": 121,
+  "eligible_first_low": 105,
+  "selected_subjects": 24,
+  "selected_first_high": 12,
+  "selected_first_low": 12,
+  "experimental_trials_per_subject": 136,
+  "scored_play_trials": 1327,
+  "pinned_raw_git_blobs_in_group_order": [
+    "367dd652f382b65f052e03e3cfcc693f139c26f8",
+    "3b6c130d85147d6896bf0322594808bffcf1f26a",
+    "50718a2a3610db3ff3c4c104366468669d072452",
+    "b152368a220e459ffb9592b4be14a8bfbb9eaa5e",
+    "b52174f523b9438790dee756dacd40dfcd2495da",
+    "ba5a5aa03c88ea8df1c378d0eb302bc0adde2846",
+    "8dd23c8fe05f1876906571fbc4ef4cba25368463",
+    "367ab3aa7c36fd35c412d4739e8efa5901d59478",
+    "fa6a6aded6a3257bff7203c81edb6fa0237b8a37",
+    "1869521ca860070fc0da366d4c23deac10cce7cb",
+    "3ebe73cd9513c801e4637e1779a3dfccfc7ec4d5",
+    "f614543480c1723c3bd50383ea0324481ff39ef9",
+    "0a574d49fce191cdcc522416ae7ba8368c2390fc",
+    "3debb294fe4966c2e7acc58d53e40706ae421179",
+    "badea927a0239a6bc017be3198a249d8cc657d96",
+    "acc311098d5f14cffe6163ee7047c9e069c3fa03",
+    "3f0754b9b9078789361d2caa93c24077c86604a6",
+    "f4bd28f6f29fedad4b57d230e7c9a1b43c95564f",
+    "af5ffef9ef5edfa2b0342407096f77254ffa9413",
+    "f412d10f8b8beb19d2c51635f460e3325266e5a8",
+    "584a8e2bc9318f261970bb7658a6d15bd792d5f1",
+    "8ba09825fd6da069aeb8a90447d8a6983aa7f10a",
+    "d2342b6a3828171e28dcec13e73b47461c82565b",
+    "54aab72228a5223db3adaef382eaae59d3b1870b"
+  ],
+  "models": {
+    "author": {
+      "reset_days": [
+        23,
+        45,
+        67,
+        89,
+        111
+      ],
+      "counts": {
+        "match": 453,
+        "mismatch": 275,
+        "uniform": 599,
+        "play": 1327
+      },
+      "beta_optimal": 0.4991210117528604,
+      "in_sample_mean_nll": 0.6765811147513738,
+      "fixed_beta5_mean_nll": 1.3527384556000137,
+      "looo_mean_nll": 0.6784377117739945,
+      "looo_total_nll": 900.2868435240906,
+      "training_beta_range": [
+        0.45232056475295396,
+        0.5363786773065305
+      ]
+    },
+    "boundary": {
+      "reset_days": [
+        18,
+        35,
+        52,
+        69,
+        86,
+        103,
+        120
+      ],
+      "counts": {
+        "match": 487,
+        "mismatch": 303,
+        "uniform": 537,
+        "play": 1327
+      },
+      "beta_optimal": 0.474531307924614,
+      "in_sample_mean_nll": 0.6768503350406734,
+      "fixed_beta5_mean_nll": 1.4261681662271641,
+      "looo_mean_nll": 0.6786774593212161,
+      "looo_total_nll": 900.6049885192539,
+      "training_beta_range": [
+        0.42977571811372584,
+        0.5122330759617161
+      ]
+    }
+  },
+  "boundary_minus_author_loso_mean_nll": 0.00023974754722166924,
+  "by_participant_lower_loso_nll": {
+    "author": 13,
+    "boundary": 11,
+    "ties": 0
+  },
+  "cross_language_independent_recalculation": {
+    "scipy_vs_JS_agreement_abs_nll": 1e-8,
+    "verified": true
+  },
+  "evidence": "Fixed 24 eligible pseudonymous participants, strict source blob metadata, true original raw experiment rows computed via Github connector V8; Python/scipy independent aggregate optimization; native author Python functions NOT executed.",
+  "limits": [
+    "Post-hoc single author dataset and systematic deterministic sample, not independent external validation.",
+    "No per-person raw participant records or source identifiers publicly redistributed.",
+    "Author 7-model native refitting not done.",
+    "Github Actions run status unverified.",
+    "PESEN v0.1 FROZEN."
+  ]
+}
