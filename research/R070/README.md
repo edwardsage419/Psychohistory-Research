@@ -1,6 +1,8 @@
 # R070：局部满意度、迁居行为与空间结构的微观—宏观机制
 
-建立：2026-10-16。状态 **ACTIVE，E1 数学与有限代理模型通过，真实空间迁移数据 E2 OPEN、外部独立 E3 OPEN**。R070 接续 [R069 有界结题](../R069/R069_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md)，研究另一族不同于“网络信息级联”的个体空间选择与群体模式形成机制。
+建立：2026-10-16。**正式状态 CLOSED_BOUNDED（2026-10-16）；E1 四阶段数学及完整穷举 PASS，真实空间迁移逐行动 E2 BLOCKED，外部独立 E3 OPEN**。R070 接续 [R069 有界结题](../R069/R069_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md)，研究另一族不同于“网络信息级联”的个体空间选择与群体模式形成机制。
+
+**正式验收与永久档案：** [六门限定结题报告](R070_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md) · [机读结题状态](R070_FINAL_ACCEPTANCE_STATUS.json) · [独立开放科学问题](R070_POST_CLOSURE_OPEN_GATES.md)。以下研究节保留当时的 ACTIVE/OPEN 历史叙述；以本段最终状态为准。
 
 ## 原始文献与限定的研究范围
 
@@ -52,3 +54,14 @@ Schelling, Thomas C. (1971), *Dynamic Models of Segregation*, *Journal of Mathem
 **必须保留的科学解释修订：** `STALLED_NO_SATISFYING_VACANCY` 仅表示**当前被选择的第一名不满意代理**没有可行目标，并非所有代理都无可行迁居位置。tau=.5 原模型旧记录的 **114 个停滞**中，**全部 114 个**至少另一名不满意代理仍有可行移动；tau=.75/1 的 546 个停滞有 **428 个**如此。新模型展示“距离限制使原来可满意的初态停滞”，也证明只改最近满意空位的选择顺序会在 tau=.5 **救出4个**先前停滞的初态。宏观接触结构并非简单单调，不能把这个小棋盘类比真实身份群体或房产政策。
 
 R070 状态仍 `ACTIVE`、`E1_FULL_PAIRED_DISTANCE=PASS`、`E2_HUMAN_REAL_MOVEMENT=BLOCKED_EVENT_LEVEL_SOURCE_AND_RULE_PARITY`、`E3=OPEN`、`PESEN_v0.1=FROZEN`。下一步应独立冻结“跳过当前不可搬迁者、选择下一位可搬者”的代理激活规则，以直接区分**执行激活次序**与**物理可达性约束**，或先取得与真实人类实验动作语义严格匹配的合法原始材料。
+
+
+## E1 最终：30240 个“第一名不满意者”对“第一名能迁居者”的配对轨迹（2026-10-16）
+
+[先冻结的实验协议](../../protocols/R070_E1_FEASIBLE_ACTOR_ACTIVATION_2026-10-16.md) · [独立模型源码](r070_feasible_actor_activation.py) · [23 项合成/边界测试](test_r070_feasible_actor_activation.py) · [详细中文报告](R070_E1_ACTIVATION_30240_COMPLETE_AUDIT.md) · [全阈值和四政策摘要](R070_E1_FEASIBLE_ACTOR_ACTIVATION_RESULTS.json) · [**永久完整 108904 字节 / 30240 轨迹计算汇总及合成反例**](R070_E1_FEASIBLE_ACTOR_ACTIVATION_COMPLETE_30240.json)。
+
+固定 756 个 3×3 初态（2A、2B、5 空位）×五个 tau ×四种距离政策 ×两种执行/激活机制，**30240 条确定性实验**已在 [GitHub Actions 38889203300](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38889203300) 真正完成，23 tests PASS。追加[永久归档 Actions 38889607481](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38889607481) 重跑和校验 JSON SHA256 `213be6839db3067854d811a755ec9f3047d5f42def4e3df55f1fd56b835d1dcd` 后自动同步到 GitHub main；完整成果不只存在短期 CI 工件。
+
+最核心反例：`GLOBAL_ROW_MAJOR`、tau=.5：原 `FIRST_UNHAPPY` 停滞 114 个初态，改为 `FIRST_FEASIBLE_UNHAPPY` 后**756/756** 全员满意；tau=.75，210→**570**，仍有186个**在当前最终状态所有不满意代理均无满足空位**。RADIUS_1、tau=.5 只有 294→362，说明“执行先后堵塞”与“迁移真实半径限制”是两个独立可配置条件。局部个体满意和宏观异类型接触比例也非同义指标；新机制在部分配置中接触比例更高。**这不是人类住房迁移/歧视认知的实证结论**。
+
+至此按[研究六门标准](../../protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md)正式结题 `R070=CLOSED_BOUNDED`，把真人事件级移动、行动机会集合、合法许可、住房经济与制度歧视等识别缺口清晰转至[后续开放门](R070_POST_CLOSURE_OPEN_GATES.md)。不得将通过的 E1 小棋盘数学任务当作 E2/E3 成功，PESEN v0.1 继续 `FROZEN`。下一个不同家族 R071 可研究群体规范/制度执行与惩罚合作。
