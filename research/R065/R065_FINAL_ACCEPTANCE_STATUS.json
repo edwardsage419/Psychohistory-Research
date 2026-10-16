@@ -1,0 +1,73 @@
+{
+  "research_id": "R065",
+  "as_of": "2026-10-16",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "closure": "CLOSED_BOUNDED",
+  "closure_scope_decision": "RETROSPECTIVE_SCOPE_DECISION",
+  "claim": "Source-pinned behavioural measurement audit and all seven native objectives with 24-person two-fold heldout replication are accepted as bounded E2 research package; wider original goals not claimed.",
+  "gates": {
+    "A01": {
+      "status": "PASS",
+      "scope": "bounded retrospectively, not prespecified complete original target"
+    },
+    "A02": {
+      "status": "PASS",
+      "scope": "source Git blob/SHA evidence, original author records not redistributed"
+    },
+    "A03": {
+      "status": "PASS",
+      "scope": "Phase K real objective execution + Phase L seven-model heldout; Phase M six pass one failed recorded"
+    },
+    "A04": {
+      "status": "PASS",
+      "scope": "Phase M Model5 FAIL_CLOSED preserved and posthoc vector replay separately labeled"
+    },
+    "A05": {
+      "status": "PASS",
+      "scope": "E2 only; no independent new cohort or historical/causal claim"
+    },
+    "A06": {
+      "status": "PASS",
+      "scope": "final report, evidence index, backlog and GitHub archival handoff"
+    }
+  },
+  "evidence_level": "E2",
+  "reference_author_repo": "arielevy8/obs-learning-fishing",
+  "reference_author_commit": "fd5f435b5368b69916e7acc6a9991aa5f46b3ddb",
+  "dataset": {
+    "original_screened_subjects": 226,
+    "original_processed_records": 16103,
+    "phase_l_native_cohort": 24,
+    "phase_l_scored_play": 1327
+  },
+  "phase_l": {
+    "status": "PASS_BOUNDED",
+    "run_id": 38843245182,
+    "seven_models_native_two_fold": true,
+    "lowest_mean_nll_descriptive_model": 6,
+    "lowest_heldout_mean_nll": 0.6482591689606808
+  },
+  "phase_m": {
+    "status": "PARTIAL_FAIL_CLOSED",
+    "run_id": 38844279247,
+    "successful_model_count": 6,
+    "failed_model": 5,
+    "model5_anchor_gate": "FAIL_CLOSED"
+  },
+  "phase_m_model5_diagnostic": {
+    "status": "POSTHOC_FIXED_PARAM_REPLAY_PASS",
+    "run_id": 38844938066,
+    "not_overriding_phase_m": true
+  },
+  "not_completed": {
+    "full_226_7_native_fits": "OPEN",
+    "original_author_hierarchical_EM_iBIC": "OPEN",
+    "new_external_cohort": "OPEN",
+    "model5_original_protocol_clock_comparison": "FAIL_CLOSED",
+    "longitudinal_macrohistorical_claims": "UNSUPPORTED"
+  },
+  "final_report": "research/R065/R065_FINAL_ACCEPTANCE_AND_CLOSURE_2026-10-16.md",
+  "backlog": "research/R065/R065_POST_CLOSURE_OPEN_GATES.md",
+  "next_research": "R066",
+  "pesen_v01": "FROZEN"
+}
