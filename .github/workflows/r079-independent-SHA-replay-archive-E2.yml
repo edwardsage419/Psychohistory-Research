@@ -1,0 +1,90 @@
+name: R079 independent exact SHA replay and archive original human dyad E2 aggregates
+on:
+  push:
+    paths:
+      - '.github/workflows/r079-independent-SHA-replay-archive-E2.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  revalidate-first-party-author-cleaned-original-and-archive-anonymous-session-macro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently run same 34 wholly fabricated pair and group identity controls
+        working-directory: research/R079
+        run: python -m unittest -v test_r079_real_human_dyad_matching_moments
+      - name: Re-download immutable original authors human source and recheck true Git blob SHA-1
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r079_archive_private
+          python - <<'PY'
+          from urllib.request import Request,urlopen
+          from pathlib import Path
+          import hashlib
+          commit="979abf87b5d3cfb7aa8be13b81ef233076c3bb75"
+          url=f"https://raw.githubusercontent.com/seyhunsaral/stabilitycondcoop/{commit}/data/csv/subjects.csv"
+          with urlopen(Request(url,headers={
+            "User-Agent":"Psychohistory-R079-author-replicate-independent-byte-hash/1.0"}),timeout=70) as r:
+              raw=r.read(425702)
+          gitsha=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
+          if len(raw)!=425701 or gitsha!="bd4c1550002621bee7dfb50e0d15d317764d1ea9":
+              raise ValueError("R079_AUTHOR_CLEANED_SOURCE_FIXED_BLOB_MISMATCH")
+          Path("/tmp/r079_archive_private/original.csv").write_bytes(raw)
+          print("R079 independent original author CSV byte check PASS")
+          PY
+      - name: Independently recompute genuine human dyad moments twice and demand original anonymous SHA256 identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R079/r079_real_human_dyad_matching_moments.py \
+            --source /tmp/r079_archive_private/original.csv \
+            --output /tmp/r079_archive_private/once.json
+          python research/R079/r079_real_human_dyad_matching_moments.py \
+            --source /tmp/r079_archive_private/original.csv \
+            --output /tmp/r079_archive_private/twice.json
+          cmp /tmp/r079_archive_private/once.json /tmp/r079_archive_private/twice.json
+          test "$(wc -c < /tmp/r079_archive_private/once.json | tr -d '[:space:]')" = 3771
+          printf '%s  %s\n' \
+            82efe8ad7bcc6c01ac10616676d84c5208ad9f6cc83670aa4c5b72f3860ff102 \
+            /tmp/r079_archive_private/once.json | sha256sum --check --status
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path("/tmp/r079_archive_private/once.json")
+          j=json.loads(p.read_text())
+          assert j["status"]=="R079_REAL_AUTHOR_HUMAN_DYAD_MOMENTS_COMPUTED_DESCRIPTIVE_E2"
+          assert j["source_universe"]["original_source_sessions"]==6
+          assert j["source_universe"]["actual_realized_two_person_dyads"]==670
+          assert j["source_universe"]["source_original_rows"]==1340
+          assert j["source_universe"]["all_dyad_partner_and_action_reciprocals_verified"]
+          assert j["causal_peer_influence"]=="NOT_IDENTIFIED"
+          assert j["treatments_session_equal_weight"]["CondInfo"]["original_sessions"]==3
+          assert j["treatments_session_equal_weight"]["NoCondInfo"]["original_sessions"]==3
+          print("R079 independent original E2 exact decimal SHA and all source universe gates PASS")
+          PY
+      - name: Persist anonymized per-treatment and grand session means only
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R079/R079_REAL_AUTHOR_HUMAN_DYAD_NETWORK_MOMENTS_E2_RESULTS.json
+          if [ -e "$dest" ]; then
+            cmp "$dest" /tmp/r079_archive_private/once.json
+            echo "R079 already archived exact identical"
+            exit 0
+          fi
+          cp /tmp/r079_archive_private/once.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R079): exact original author 6-session human dyad finite matching moment E2 SHA archive"
+          git push origin HEAD:main
+      - name: Purge all individual original human choices/IDs and temporary anonymous calculations
+        if: always()
+        run: rm -rf /tmp/r079_archive_private
