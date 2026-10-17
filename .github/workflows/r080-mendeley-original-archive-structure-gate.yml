@@ -1,0 +1,49 @@
+name: R080 first-party Mendeley v1 real-human bot network ZIP exact source and schema gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r080-mendeley-original-archive-structure-gate.yml'
+      - 'research/R080/r080_original_mendeley_zip_manifest_and_json_schema.py'
+      - 'research/R080/test_r080_original_mendeley_zip_manifest_and_json_schema.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-archive-24-fake-source-privacy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run no-human ZIP and JSON source schema safety fixtures
+        working-directory: research/R080
+        run: python -m unittest -v test_r080_original_mendeley_zip_manifest_and_json_schema
+  immutable-official-v1-archive-structure-scan-no-real-model:
+    needs: original-archive-24-fake-source-privacy-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download Mendeley official v1 ZIP and inspect aggregate format only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r080_structural_public
+          python research/R080/r080_original_mendeley_zip_manifest_and_json_schema.py \
+            --output /tmp/r080_structural_public/real_network_archive_schema.json
+      - name: Upload safe byte-checksum, code topic and anonymous JSON schema only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r080-official-author-network-v1-zip-structural-audit-no-human-results
+          path: /tmp/r080_structural_public/real_network_archive_schema.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Wipe structural audit output
+        if: always()
+        run: rm -rf /tmp/r080_structural_public
