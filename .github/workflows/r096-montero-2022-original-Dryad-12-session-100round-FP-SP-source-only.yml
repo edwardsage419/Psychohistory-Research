@@ -1,0 +1,54 @@
+name: R096 original Montero-Porras 2022 Dryad 12 session 100-round FP SP first-party CSV source admission
+on:
+  push:
+    paths:
+      - '.github/workflows/r096-montero-2022-original-Dryad-12-session-100round-FP-SP-source-only.yml'
+      - 'research/R096/r096_montero_2022_original_dryad_100round_FP_SP_source_gate.py'
+      - 'research/R096/test_r096_montero_2022_original_dryad_100round_FP_SP_source_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strict-23-synthetic-original-Dryad-URL-header-actor-privacy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          PYTHONPATH=research/R096 python -m unittest -v             research/R096/test_r096_montero_2022_original_dryad_100round_FP_SP_source_gate.py
+  actual-original-Dryad-FP-SP-file-stream-only-not-actor-values:
+    needs: strict-23-synthetic-original-Dryad-URL-header-actor-privacy-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Independent original Dryad publisher 2022 fix rand and README, write ONLY source SHA/header/rows, HTTP403 receipt if blocked
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r096_original_privacy
+          PYTHONPATH=research/R096 python             research/R096/r096_montero_2022_original_dryad_100round_FP_SP_source_gate.py             --output /tmp/r096_original_privacy/author_source_only.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r096_original_privacy/author_source_only.json').read_bytes()
+          x=json.loads(b)
+          assert x["R096_first_party_original_FP_and_SP_CSV_both_eligible_for_next_roster_gate"]
+          assert not x["real_original_binary_human_cooperation_scoring_performed"]
+          assert not x["real_original_session_identity_verified_from_source"]
+          assert x["PESEN_v0.1"]=="FROZEN"
+          print("R096_REAL_FIRST_PARTY_DRYAD_SOURCE_ONLY_OUTPUT_BYTES",len(b))
+          print("R096_REAL_FIRST_PARTY_DRYAD_SOURCE_ONLY_OUTPUT_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r096-original-Montero-2022-Dryad-source-only-safe-receipts
+          path: /tmp/r096_original_privacy/author_source_only.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r096_original_privacy
