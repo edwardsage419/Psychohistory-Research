@@ -1,0 +1,49 @@
+name: R080 original author Mendeley 64 human bot networks public source qualification only
+on:
+  push:
+    paths:
+      - '.github/workflows/r080-network-original-mendeley-public-source-gate.yml'
+      - 'research/R080/r080_original_mendeley_public_source_gate.py'
+      - 'research/R080/test_r080_original_mendeley_public_source_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-public-metadata-synthetic-no-human-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all 24 metadata source and privacy protection fixtures
+        working-directory: research/R080
+        run: python -m unittest -v test_r080_original_mendeley_public_source_gate
+  official-mendeley-source-version-and-JSON-network-structure-access-only:
+    needs: exact-public-metadata-synthetic-no-human-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe only public official Mendeley v1 source metadata and ZIP HEAD
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r080_aggregate_metadata_only
+          python research/R080/r080_original_mendeley_public_source_gate.py \
+            --output /tmp/r080_aggregate_metadata_only/official_mendeley_source_access_audit.json
+      - name: Upload only safe access metadata without any human rows or signed URLs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r080-real-human-bot-original-64-networks-official-source-access-only
+          path: /tmp/r080_aggregate_metadata_only/official_mendeley_source_access_audit.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase source audit runner temporary files
+        if: always()
+        run: rm -rf /tmp/r080_aggregate_metadata_only
