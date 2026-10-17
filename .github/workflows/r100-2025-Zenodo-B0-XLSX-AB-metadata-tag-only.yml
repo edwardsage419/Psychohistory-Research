@@ -1,0 +1,93 @@
+name: R100 B0 original SHA pinned XLSX A B identity column structural tags only
+on:
+  push:
+    paths:
+      - '.github/workflows/r100-2025-Zenodo-B0-XLSX-AB-metadata-tag-only.yml'
+      - 'research/R100/r100_phase_b0_zenodo_xlsx_ab_tag_structure_only.py'
+      - 'research/R100/test_r100_phase_b0_zenodo_xlsx_ab_tag_structure_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-no-values-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: 20 original source and 15 new B0 pure synthetics
+        run: |
+          PYTHONPATH=research/R100 python -m unittest -v \
+            research/R100/test_r100_2025_original_threshold_pgg_zenodo_xlsx_source_directory_only.py \
+            research/R100/test_r100_phase_b0_zenodo_xlsx_ab_tag_structure_only.py
+  official-original-B0-ten-worksheets-no-values:
+    runs-on: ubuntu-latest
+    needs: synthetic-no-values-tests
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Actual 217396 bytes pinned SHA XLSX worksheet A B cell tags only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r100_B0_zerocellvalues
+          python research/R100/r100_phase_b0_zenodo_xlsx_ab_tag_structure_only.py --output /tmp/r100_B0_zerocellvalues/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('/tmp/r100_B0_zerocellvalues/receipt.json')
+          r=json.loads(p.read_text())
+          assert r["status"]=="B0_REAL_XLSX_WORKSHEET_A_B_TAG_STRUCTURE_VERIFIED_ONLY"
+          assert r["official_source_MD5"]=="c40171abb172da8e16b0839db98a2cf2"
+          assert r["official_source_SHA256"]=="825b1cd3226aeca7a19d76d9594f655114b12059648f9ca03b3291c3cf9ab200"
+          assert len(r["anonymous_sheets"])==10
+          assert r["worksheet_cell_value_dereferences"]==0 and r["original_human_model_scores"]==0
+          assert not r["original_contributions_or_survey_values_republished"]
+          print("R100_B0_ACTUAL_ANONYMOUS_SOURCE_SCHEMA_ONLY",len(r["anonymous_sheets"]))
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r100-B0-original-xlsx-A-B-tags-no-human-values
+          path: /tmp/r100_B0_zerocellvalues/receipt.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Commit anonymized B0 real structure receipt or safe failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r100_B0_zerocellvalues/receipt.json
+          dst=research/R100/R100_PHASE_B0_LIVE_CI_SOURCE_AB_TAG_RECEIPT.json
+          if [ ! -f "$src" ]; then
+            echo "Missing B0 receipt, fail closed."
+            exit 1
+          fi
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r100_B0_zerocellvalues/receipt.json').read_text())
+          assert x["research_id"]=="R100" and x["phase"]=="B0"
+          assert x["original_human_model_scores"]==0 and x["PESEN_v0_1"]=="FROZEN"
+          assert x["status"] in ("B0_BLOCKED_FAIL_CLOSED","B0_REAL_XLSX_WORKSHEET_A_B_TAG_STRUCTURE_VERIFIED_ONLY")
+          allowed={"research_id","phase","status","safe_failure","official_source_bytes","official_source_MD5","official_source_SHA256","anonymous_sheets","worksheet_cell_value_dereferences","actor_identifiers_or_pair_values_republished","original_contributions_or_survey_values_republished","original_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "anonymous_sheets" in x:
+              assert len(x["anonymous_sheets"])==10
+              expect={"anonymous_sheet_slot","row_tag_count","column_A_cell_tag_count","column_B_cell_tag_count","rows_with_both_A_and_B_cell_tags"}
+              for row in x["anonymous_sheets"]:
+                  assert set(row)==expect
+                  assert row["row_tag_count"]>0 and row["column_A_cell_tag_count"]>0 and row["column_B_cell_tag_count"]>0
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then
+            echo "Identical B0 real receipt already archived."
+            exit 0
+          fi
+          git commit -m "receipt(R100 B0): official SHA real 10sheet anonymous AB tag census or fail-closed"
+          git pull --rebase origin main
+          git push origin HEAD:main
