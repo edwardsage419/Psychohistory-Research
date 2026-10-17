@@ -1,0 +1,62 @@
+name: R090 new original climate clubs 30 complete group historical prediction external-author E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r090-cross-author-30group-15round-history-predictive-transfer-E2.yml'
+      - 'research/R090/r090_original30_stable_six_person_LOOG_cross_author_history_transfer_E2.py'
+      - 'research/R090/test_r090_original30_stable_six_person_LOOG_cross_author_history_transfer_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-plus-37-new-full-group-history-synthetic-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          PYTHONPATH=research/R090 python -m unittest -v             research/R090/test_r090_independent_climate_clubs_original_roster_source_gate.py             research/R090/test_r090_phase_b_independent_original_otree_round_metadata_only.py             research/R090/test_r090_original30_stable_six_person_LOOG_cross_author_history_transfer_E2.py
+  author-original-real-180-human-30-group-420-outcome-predictions:
+    needs: original-source-plus-37-new-full-group-history-synthetic-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Strict author Zenodo source MD5+whole SHA and 8 sessions, 180 participants 30 stable groups; fit source other-group round M0 and lag M1 M2
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r090_privacy_safe
+          PYTHONPATH=research/R090 python             research/R090/r090_original30_stable_six_person_LOOG_cross_author_history_transfer_E2.py             --output /tmp/r090_privacy_safe/anonymous_pred.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          p=pathlib.Path('/tmp/r090_privacy_safe/anonymous_pred.json')
+          b=p.read_bytes();v=json.loads(b)
+          assert v["status"]=="R090_ORIGINAL_INDEPENDENT_AUTHOR_30GROUP_15ROUND_HISTORY_TRANSFER_E2_EXECUTED"
+          q=v["original_2700_row_real_human_behavior_source_eligibility"]
+          p=v["transfer_group_level_prediction_results"]
+          assert q["original_2700_actor_round_contributions_read"]==2700
+          assert q["original_30_stable_six_person_groups_verified"]==30
+          assert q["original_450_group_round_contribution_shares"]==450
+          assert p["source_independent_author_heldout_forecast_targets"]==420
+          assert p["source_independent_groups_heldout"]==30
+          assert not v["individual_actor_actions_or_group_ID_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R090_TRUE_INDEPENDENT_ORIGINAL_GROUP_TRANSFER_RESULT_BYTES",len(b))
+          print("R090_TRUE_INDEPENDENT_ORIGINAL_GROUP_TRANSFER_RESULT_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r090-original-new-authors-climate-clubs-30-stable-groups-420-outcomes-macro-only
+          path: /tmp/r090_privacy_safe/anonymous_pred.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r090_privacy_safe
