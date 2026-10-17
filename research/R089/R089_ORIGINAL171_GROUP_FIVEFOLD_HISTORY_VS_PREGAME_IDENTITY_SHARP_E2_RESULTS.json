@@ -1,0 +1,552 @@
+{
+  "PESEN_v0.1": "FROZEN",
+  "causal_identity_effect": "NOT_IDENTIFIED",
+  "frozen_protocol": "protocols/R089_171_GROUP_COMPLETE_HOLDOUT_HISTORY_AND_BASELINE_IDENTITY_PREDICTION_FREEZE_2026-10-17.md",
+  "future_round_identity_or_postsurvey_used_for_prediction": false,
+  "independent_external_lab_E3": "NOT_ESTABLISHED",
+  "original_author_full_groups_blob": "f902865203bdb465a505869b593eca432831b2fa",
+  "original_author_identity_trends_blob": "027fab69c27af7155d673469bdb32d6cbafa1080",
+  "original_author_initial_identity_analysis_blob": "c67bbdd50dbf4fe9efcfca8fe303ae418d0dd6a1",
+  "original_group_holdout_predictive_evaluation": {
+    "by_frozen_treatment": {
+      "Balanced": {
+        "heldout_group_rounds": 1083,
+        "heldout_history_lag_had_missing_slots": 24,
+        "original_missing_target_action_slots": 18,
+        "shared_unknown_target_paired_improvement_vs_M0": {
+          "M1_LAST_GROUP_ROUND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.058781180157968675,
+            "score_gain_sharp_upper": 0.05995705292744217
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.051728086992557445,
+            "score_gain_sharp_upper": 0.052316023377294185
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.051641172463986904,
+            "score_gain_sharp_upper": 0.052229917342866604
+          }
+        },
+        "squared_group_share_error_sharp_bounds": {
+          "M0_CONDITION_ROUND": {
+            "score_sharp_lower": 0.09259738224467536,
+            "score_sharp_upper": 0.09355989814824335
+          },
+          "M1_LAST_GROUP_ROUND": {
+            "score_sharp_lower": 0.03335641735918767,
+            "score_sharp_upper": 0.03404893813481095
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "score_sharp_lower": 0.04075398663988054,
+            "score_sharp_upper": 0.04134007060278949
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "score_sharp_lower": 0.040840580272909745,
+            "score_sharp_upper": 0.04142616026950502
+          }
+        },
+        "unique_heldout_groups": 57
+      },
+      "GlobalBoost": {
+        "heldout_group_rounds": 1083,
+        "heldout_history_lag_had_missing_slots": 17,
+        "original_missing_target_action_slots": 6,
+        "shared_unknown_target_paired_improvement_vs_M0": {
+          "M1_LAST_GROUP_ROUND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.04214165540380545,
+            "score_gain_sharp_upper": 0.04242423956571035
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03946804679554239,
+            "score_gain_sharp_upper": 0.03960933887649483
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.039457641225070304,
+            "score_gain_sharp_upper": 0.039597456218572455
+          }
+        },
+        "squared_group_share_error_sharp_bounds": {
+          "M0_CONDITION_ROUND": {
+            "score_sharp_lower": 0.07566977801703115,
+            "score_sharp_upper": 0.07590391422343977
+          },
+          "M1_LAST_GROUP_ROUND": {
+            "score_sharp_lower": 0.03341412742382293,
+            "score_sharp_upper": 0.03359366984713267
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "score_sharp_lower": 0.03617636729184664,
+            "score_sharp_upper": 0.03631993927658714
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "score_sharp_lower": 0.03618716344996195,
+            "score_sharp_upper": 0.03633143134686616
+          }
+        },
+        "unique_heldout_groups": 57
+      },
+      "GlobalOnly": {
+        "heldout_group_rounds": 1083,
+        "heldout_history_lag_had_missing_slots": 19,
+        "original_missing_target_action_slots": 11,
+        "shared_unknown_target_paired_improvement_vs_M0": {
+          "M1_LAST_GROUP_ROUND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03383096145133784,
+            "score_gain_sharp_upper": 0.034631418324231715
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03342285508960074,
+            "score_gain_sharp_upper": 0.033823083526047674
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03348459562729054,
+            "score_gain_sharp_upper": 0.03388591122485858
+          }
+        },
+        "squared_group_share_error_sharp_bounds": {
+          "M0_CONDITION_ROUND": {
+            "score_sharp_lower": 0.06849964310688526,
+            "score_sharp_upper": 0.06902244734889407
+          },
+          "M1_LAST_GROUP_ROUND": {
+            "score_sharp_lower": 0.03431183954037168,
+            "score_sharp_upper": 0.03474787113983819
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "score_sharp_lower": 0.03498224015937782,
+            "score_sharp_upper": 0.03529391168075269
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "score_sharp_lower": 0.034920449585115115,
+            "score_sharp_upper": 0.035231134018514604
+          }
+        },
+        "unique_heldout_groups": 57
+      }
+    },
+    "by_outer_fold": {
+      "0": {
+        "heldout_group_rounds": 684,
+        "heldout_history_lag_had_missing_slots": 13,
+        "original_missing_target_action_slots": 10,
+        "shared_unknown_target_paired_improvement_vs_M0": {
+          "M1_LAST_GROUP_ROUND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.04723948932688372,
+            "score_gain_sharp_upper": 0.04833056578345725
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.04402184409067938,
+            "score_gain_sharp_upper": 0.04456738231896615
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.044049730581217895,
+            "score_gain_sharp_upper": 0.044598017211044914
+          }
+        },
+        "squared_group_share_error_sharp_bounds": {
+          "M0_CONDITION_ROUND": {
+            "score_sharp_lower": 0.08533060188193374,
+            "score_sharp_upper": 0.086082352658051
+          },
+          "M1_LAST_GROUP_ROUND": {
+            "score_sharp_lower": 0.037646198830409525,
+            "score_sharp_upper": 0.038174139051332205
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "score_sharp_lower": 0.041204974670902346,
+            "score_sharp_upper": 0.041607472685486126
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "score_sharp_lower": 0.04117526198361779,
+            "score_sharp_upper": 0.04157834907084708
+          }
+        },
+        "unique_heldout_groups": 36
+      },
+      "1": {
+        "heldout_group_rounds": 684,
+        "heldout_history_lag_had_missing_slots": 12,
+        "original_missing_target_action_slots": 8,
+        "shared_unknown_target_paired_improvement_vs_M0": {
+          "M1_LAST_GROUP_ROUND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03553786730199988,
+            "score_gain_sharp_upper": 0.036202981734170844
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.034990005234279094,
+            "score_gain_sharp_upper": 0.03532256245036457
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03492857956037149,
+            "score_gain_sharp_upper": 0.03526041204530974
+          }
+        },
+        "squared_group_share_error_sharp_bounds": {
+          "M0_CONDITION_ROUND": {
+            "score_sharp_lower": 0.07038462926864475,
+            "score_sharp_upper": 0.0708818857844198
+          },
+          "M1_LAST_GROUP_ROUND": {
+            "score_sharp_lower": 0.03451916829109827,
+            "score_sharp_upper": 0.03500649772579614
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "score_sharp_lower": 0.03528091383293627,
+            "score_sharp_upper": 0.03567303353548483
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "score_sharp_lower": 0.03534244049205829,
+            "score_sharp_upper": 0.03573508295532527
+          }
+        },
+        "unique_heldout_groups": 36
+      },
+      "2": {
+        "heldout_group_rounds": 627,
+        "heldout_history_lag_had_missing_slots": 14,
+        "original_missing_target_action_slots": 5,
+        "shared_unknown_target_paired_improvement_vs_M0": {
+          "M1_LAST_GROUP_ROUND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.036907991884486714,
+            "score_gain_sharp_upper": 0.037360649659798954
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03587265499404218,
+            "score_gain_sharp_upper": 0.036098983881698285
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03587694706572949,
+            "score_gain_sharp_upper": 0.036103218753730196
+          }
+        },
+        "squared_group_share_error_sharp_bounds": {
+          "M0_CONDITION_ROUND": {
+            "score_sharp_lower": 0.07132442933296076,
+            "score_sharp_upper": 0.07183487320724904
+          },
+          "M1_LAST_GROUP_ROUND": {
+            "score_sharp_lower": 0.034356725146198926,
+            "score_sharp_upper": 0.034533935849725424
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "score_sharp_lower": 0.03544406952572182,
+            "score_sharp_upper": 0.03574359413874758
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "score_sharp_lower": 0.035439666858276334,
+            "score_sharp_upper": 0.035739469862473845
+          }
+        },
+        "unique_heldout_groups": 33
+      },
+      "3": {
+        "heldout_group_rounds": 627,
+        "heldout_history_lag_had_missing_slots": 19,
+        "original_missing_target_action_slots": 12,
+        "shared_unknown_target_paired_improvement_vs_M0": {
+          "M1_LAST_GROUP_ROUND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.031902485664860064,
+            "score_gain_sharp_upper": 0.03343574349102406
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.031629871629856095,
+            "score_gain_sharp_upper": 0.0323965005429381
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.03163223214994255,
+            "score_gain_sharp_upper": 0.032397433603020435
+          }
+        },
+        "squared_group_share_error_sharp_bounds": {
+          "M0_CONDITION_ROUND": {
+            "score_sharp_lower": 0.06353074383774066,
+            "score_sharp_upper": 0.06462771661663563
+          },
+          "M1_LAST_GROUP_ROUND": {
+            "score_sharp_lower": 0.030923267765373182,
+            "score_sharp_upper": 0.031897926634768904
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "score_sharp_lower": 0.03173955268157648,
+            "score_sharp_upper": 0.032371828914539214
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "score_sharp_lower": 0.0317392187566512,
+            "score_sharp_upper": 0.03236863026201053
+          }
+        },
+        "unique_heldout_groups": 33
+      },
+      "4": {
+        "heldout_group_rounds": 627,
+        "heldout_history_lag_had_missing_slots": 2,
+        "original_missing_target_action_slots": 0,
+        "shared_unknown_target_paired_improvement_vs_M0": {
+          "M1_LAST_GROUP_ROUND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.07364351005997359,
+            "score_gain_sharp_upper": 0.07364351005997359
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.061553709446720666,
+            "score_gain_sharp_upper": 0.061553709446720666
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "robust_direction": "BETTER_THAN_M0",
+            "score_gain_sharp_lower": 0.06152218944901293,
+            "score_gain_sharp_upper": 0.06152218944901293
+          }
+        },
+        "squared_group_share_error_sharp_bounds": {
+          "M0_CONDITION_ROUND": {
+            "score_sharp_lower": 0.10423450775623445,
+            "score_sharp_upper": 0.10423450775623445
+          },
+          "M1_LAST_GROUP_ROUND": {
+            "score_sharp_lower": 0.030590997696260988,
+            "score_sharp_upper": 0.030590997696260988
+          },
+          "M2_FIXED_HALF_BLEND": {
+            "score_sharp_lower": 0.0426807983095138,
+            "score_sharp_upper": 0.0426807983095138
+          },
+          "M3_PREGAME_GLOBAL_IDENTITY": {
+            "score_sharp_lower": 0.042712318307221504,
+            "score_sharp_upper": 0.042712318307221504
+          }
+        },
+        "unique_heldout_groups": 33
+      }
+    },
+    "effective_sampling_unit": "ORIGINAL_FULL_SIX_PERSON_GROUP_NO_RANDOM_SESSION_EFFECTS_IDENTIFIED",
+    "fold_heldout_group_sizes_by_condition": {
+      "Balanced": {
+        "0": 12,
+        "1": 12,
+        "2": 11,
+        "3": 11,
+        "4": 11
+      },
+      "GlobalBoost": {
+        "0": 12,
+        "1": 12,
+        "2": 11,
+        "3": 11,
+        "4": 11
+      },
+      "GlobalOnly": {
+        "0": 12,
+        "1": 12,
+        "2": 11,
+        "3": 11,
+        "4": 11
+      }
+    },
+    "groupwise_sign_of_paired_improvement_vs_M0": {
+      "Balanced": {
+        "M1_LAST_GROUP_ROUND": {
+          "ambiguous": 0,
+          "guaranteed_gain": 52,
+          "guaranteed_loss": 5
+        },
+        "M2_FIXED_HALF_BLEND": {
+          "ambiguous": 0,
+          "guaranteed_gain": 56,
+          "guaranteed_loss": 1
+        },
+        "M3_PREGAME_GLOBAL_IDENTITY": {
+          "ambiguous": 0,
+          "guaranteed_gain": 56,
+          "guaranteed_loss": 1
+        }
+      },
+      "GlobalBoost": {
+        "M1_LAST_GROUP_ROUND": {
+          "ambiguous": 0,
+          "guaranteed_gain": 33,
+          "guaranteed_loss": 24
+        },
+        "M2_FIXED_HALF_BLEND": {
+          "ambiguous": 0,
+          "guaranteed_gain": 43,
+          "guaranteed_loss": 14
+        },
+        "M3_PREGAME_GLOBAL_IDENTITY": {
+          "ambiguous": 0,
+          "guaranteed_gain": 43,
+          "guaranteed_loss": 14
+        }
+      },
+      "GlobalOnly": {
+        "M1_LAST_GROUP_ROUND": {
+          "ambiguous": 1,
+          "guaranteed_gain": 31,
+          "guaranteed_loss": 25
+        },
+        "M2_FIXED_HALF_BLEND": {
+          "ambiguous": 1,
+          "guaranteed_gain": 37,
+          "guaranteed_loss": 19
+        },
+        "M3_PREGAME_GLOBAL_IDENTITY": {
+          "ambiguous": 1,
+          "guaranteed_gain": 37,
+          "guaranteed_loss": 19
+        }
+      }
+    },
+    "heldout_171_groups_x_19_future_rounds": 3249,
+    "identity_source_eligible_for_M3": true,
+    "model_not_hyperparameter_tuned_on_heldout_results": true,
+    "overall": {
+      "heldout_group_rounds": 3249,
+      "heldout_history_lag_had_missing_slots": 60,
+      "original_missing_target_action_slots": 35,
+      "shared_unknown_target_paired_improvement_vs_M0": {
+        "M1_LAST_GROUP_ROUND": {
+          "robust_direction": "BETTER_THAN_M0",
+          "score_gain_sharp_lower": 0.04491793233770402,
+          "score_gain_sharp_upper": 0.04567090360579471
+        },
+        "M2_FIXED_HALF_BLEND": {
+          "robust_direction": "BETTER_THAN_M0",
+          "score_gain_sharp_lower": 0.04153966295923339,
+          "score_gain_sharp_upper": 0.04191614859327873
+        },
+        "M3_PREGAME_GLOBAL_IDENTITY": {
+          "robust_direction": "BETTER_THAN_M0",
+          "score_gain_sharp_lower": 0.041527803105449256,
+          "score_gain_sharp_upper": 0.04190442826209921
+        }
+      },
+      "squared_group_share_error_sharp_bounds": {
+        "M0_CONDITION_ROUND": {
+          "score_sharp_lower": 0.07892226778953057,
+          "score_sharp_upper": 0.07949541990685903
+        },
+        "M1_LAST_GROUP_ROUND": {
+          "score_sharp_lower": 0.03369412810779313,
+          "score_sharp_upper": 0.03413015970725962
+        },
+        "M2_FIXED_HALF_BLEND": {
+          "score_sharp_lower": 0.03730419803036808,
+          "score_sharp_upper": 0.03765130718670951
+        },
+        "M3_PREGAME_GLOBAL_IDENTITY": {
+          "score_sharp_lower": 0.03731606443599554,
+          "score_sharp_upper": 0.037662908544961876
+        }
+      },
+      "unique_heldout_groups": 171
+    },
+    "training_only_identity_ridge_beta_no_actor_or_group_IDs": {
+      "Balanced_fold0": {
+        "heldout_groups": 12,
+        "identity_ridge_beta": -0.012637386995455274,
+        "trained_groups": 45
+      },
+      "Balanced_fold1": {
+        "heldout_groups": 12,
+        "identity_ridge_beta": -0.02979475153074868,
+        "trained_groups": 45
+      },
+      "Balanced_fold2": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": 0.004264406299631063,
+        "trained_groups": 46
+      },
+      "Balanced_fold3": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": -0.01599261199841901,
+        "trained_groups": 46
+      },
+      "Balanced_fold4": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": 0.033694887260895826,
+        "trained_groups": 46
+      },
+      "GlobalBoost_fold0": {
+        "heldout_groups": 12,
+        "identity_ridge_beta": 0.02239481437197726,
+        "trained_groups": 45
+      },
+      "GlobalBoost_fold1": {
+        "heldout_groups": 12,
+        "identity_ridge_beta": 0.031112831286352494,
+        "trained_groups": 45
+      },
+      "GlobalBoost_fold2": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": 0.03935268778223956,
+        "trained_groups": 46
+      },
+      "GlobalBoost_fold3": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": 0.0017675519627383493,
+        "trained_groups": 46
+      },
+      "GlobalBoost_fold4": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": 0.015442372769023646,
+        "trained_groups": 46
+      },
+      "GlobalOnly_fold0": {
+        "heldout_groups": 12,
+        "identity_ridge_beta": 0.04023595859155592,
+        "trained_groups": 45
+      },
+      "GlobalOnly_fold1": {
+        "heldout_groups": 12,
+        "identity_ridge_beta": 0.048452149153804094,
+        "trained_groups": 45
+      },
+      "GlobalOnly_fold2": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": 0.026348041279088328,
+        "trained_groups": 46
+      },
+      "GlobalOnly_fold3": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": 0.0437364812999944,
+        "trained_groups": 46
+      },
+      "GlobalOnly_fold4": {
+        "heldout_groups": 11,
+        "identity_ridge_beta": 0.03354225774622181,
+        "trained_groups": 46
+      }
+    }
+  },
+  "publisher_original_fixed_commit": "8ce2c0cac4784485232aa96295f48ff147290b05",
+  "research_evidence": "E2_SAME_ORIGINAL_AUTHOR_171_GROUP_DATA_NEW_GROUP_HELDOUT_SCORE_NOT_NEW_E3",
+  "research_id": "R089",
+  "source_actor_group_identity_or_actions_exported": false,
+  "source_eligibility": {
+    "all_pregame_identity_rows_in_three_arms_eligible": true,
+    "complete_sixperson_group_identity_failures": 0,
+    "original_missing_action_slots": 64
+  },
+  "status": "R089_REAL_ORIGINAL171_GROUP_COMPLETE_HOLDOUT_E2_PREDICTION_EXECUTED"
+}
