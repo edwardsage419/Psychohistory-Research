@@ -1,0 +1,60 @@
+name: R092 Wang Hilbe Zhang 2025 independent 4player threshold MAT publisher MD5 source only
+on:
+  push:
+    paths:
+      - '.github/workflows/r092-original-wang-hilbe-zhang-4player-threshold-mat-source-only.yml'
+      - 'research/R092/r092_original_2025_4player_threshold_mat_source_structure_only.py'
+      - 'research/R092/test_r092_original_2025_4player_threshold_mat_source_structure_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-author-source-md5-no-actor-data-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check scipy numpy
+          PYTHONPATH=research/R092 python -m unittest -v             research/R092/test_r092_original_2025_4player_threshold_mat_source_structure_only.py
+  first-party-original-fixed-zenodo-mat-only-no-human-outcome:
+    needs: synthetic-author-source-md5-no-actor-data-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check scipy numpy
+      - name: Secure pinned 2025 original MAT MD5 then whosmat source shape-only, no actor/contribution actual values
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r092_publisher_safe
+          PYTHONPATH=research/R092 python             research/R092/r092_original_2025_4player_threshold_mat_source_structure_only.py             --output /tmp/r092_publisher_safe/source_shape.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          b=pathlib.Path('/tmp/r092_publisher_safe/source_shape.json').read_bytes()
+          v=json.loads(b)
+          assert v["phase"]=="A_ORIGINAL_AUTHOR_2025_FOURPLAYER_THRESHOLD_MAT_ONLY"
+          assert v["first_party_original_source"]["original_author_MD5_exact"]=="6036f73c2f758ab3aeed6dcf4f74585b"
+          assert v["original_source_structure"]["original_behavior_contributions_scored"] is False
+          assert v["real_original_contribution_score_rows"]==0
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R092_AUTHOR_ORIGINAL_MAT_ONLY_BYTES",len(b))
+          print("R092_AUTHOR_ORIGINAL_MAT_ONLY_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r092-wang-original-threshold-public-goods-MAT-safe-shape
+          path: /tmp/r092_publisher_safe/source_shape.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r092_publisher_safe
