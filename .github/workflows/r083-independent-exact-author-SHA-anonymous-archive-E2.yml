@@ -1,0 +1,72 @@
+name: R083 independent original author Stata SHA replay and byte-identical anonymous human archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r083-independent-exact-author-SHA-anonymous-archive-E2.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-reacquisition-main-replication-independent-byte-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin Stata reader used on the first human outcome run
+        run: python -m pip install pandas==2.2.3
+      - name: Re-execute all synthetic guards before any original human source
+        run: |
+          PYTHONPATH=research/R083 python -m unittest -v \
+            research/R083/test_r083_author_sha_coordinated_punishment_replication.py
+      - name: Strict SHA-locked source redownload and byte-identical match to first published original-human execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r083_second_source
+          PYTHONPATH=research/R083 python \
+            research/R083/r083_author_sha_coordinated_punishment_replication.py \
+            --output /tmp/r083_second_source/once.json
+          test "$(wc -c < /tmp/r083_second_source/once.json | tr -d '[:space:]')" = 6019
+          printf '%s  %s\n' \
+            a75638fbb3619667a077e1fa640bc1b3ca97dce062b2538c779eeac053e216ae \
+            /tmp/r083_second_source/once.json | sha256sum --check --status
+          python - <<'PY'
+          import json,hashlib,pathlib
+          p=pathlib.Path("/tmp/r083_second_source/once.json")
+          v=json.loads(p.read_bytes())
+          assert v["status"]=="R083_REAL_AUTHOR_MAIN_AND_REPLICATION_PAIRED_STRATEGY_E2_EXECUTED"
+          assert v["source_authentication"]["original_git_blob_verified"]
+          assert v["source_authentication"]["original_analysis_script_git_blob_verified"]
+          assert v["original_dataset_git_blob"]=="7989855cadae3dc70b83dd29bab572a1bc0d30fb"
+          assert v["author_original_rows"]==4320
+          assert v["cohort_counts_and_paired_effects"]["main"]["main_paired_table"]["n"]==1336
+          assert v["cohort_counts_and_paired_effects"]["replication"]["main_paired_table"]["n"]==1544
+          assert v["predeclared_two_cohort_directional_gate"]=="PASS_POSITIVE_IN_BOTH"
+          assert v["PESEN_v0.1"]=="FROZEN"
+          assert not v["human_source_rows_exported"] and not v["human_id_exported"]
+          print("R083_ORIGINAL_HUMAN_PAIRED_TWO_COHORT_SECOND_SHA",hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
+      - name: Permanently store only cohort-level and predeclared subgroup human strategy tables in main
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R083/R083_ORIGINAL_HUMAN_COORDINATED_PUNISHMENT_MAIN_REPLICATION_E2_RESULTS.json
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r083_second_source/once.json
+            echo "R083 safe macro already byte identical"
+            exit 0
+          fi
+          cp /tmp/r083_second_source/once.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R083): archive exact author-original SHA paired punishment main and replication E2 macro"
+          git push origin HEAD:main
+      - name: Wipe temporary second-source aggregate
+        if: always()
+        run: rm -rf /tmp/r083_second_source
