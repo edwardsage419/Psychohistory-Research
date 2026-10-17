@@ -1,0 +1,125 @@
+{
+  "research_id": "R094",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_RETROSPECTIVE_2015_NISHI_REAL_HUMAN_BINARY_NETWORK_CHOICES_FROM_ZHU_2026_SECONDARY_PUBLISHED_CURATED_SOURCE_INDIVIDUAL_LOO",
+  "primary_scientific_conclusion": "M1_OWN_PREVIOUS_BINARY_DECISION_POSITIVE_VISIBILITY0_NEGATIVE_VISIBILITY1_VS_CROSS_SESSION_OTHER_ACTORS_MEAN",
+  "secondary_scientific_conclusion": "M2_FIXED_HALFBLEND_POSITIVE_BOTH_VISIBILITY_STRATA",
+  "A01_to_A06": {
+    "A01": "PASS_SOURCE_EXPERIMENT_2015_VS_SECONDARY_CURATED_ANALYSIS_2026_AND_PRESCORE_BINARY_PERSON_LOO_M0_M1_M2",
+    "A02": "PASS_ZENODO_PUBLISHER_MD5_FULL_SOURCE_SHA_1462_PEOPLE_10_ROUNDS_13560_VALID_CHOICES_1060_MISSING",
+    "A03": "PASS_80_SYNTHETICS_IN_TWO_REAL_SOURCE_REACQUISITIONS_12110_BINARY_PERSON_NEXT_ROUND_TARGETS_EXACT_RESULT_SHA",
+    "A04": "PASS_INITIAL_SYNTHETIC_UNDERSIZED_GROUP_FAILURE_REAL_SOURCE_KEYERROR_NEGATIVE_VISIBILITY1_AND_558_NEGATIVE_PERSONS_RETAINED",
+    "A05": "PASS_2026_SECONDARY_REANALYSIS_ORIGINAL_2015_HUMANS_E2_ONLY_NO_80_SESSION_LINKAGE_OR_CAUSAL_E3",
+    "A06": "PASS_PHASE_A_B_C_C2_C3_FROZEN_SOURCE_CODES_80_TESTS_TWO_SUCCESSFUL_REAL_CI_ANONYMOUS_RESULTS_REPORT_MAIN_INDEX"
+  },
+  "source": {
+    "original_primary_human_experiment": "Nishi, Shirado, Rand, Christakis (2015)",
+    "original_primary_DOI": "10.1038/nature15392",
+    "original_published_design_sessions": 80,
+    "secondary_curating_reanalyst": "Zeyu Zhu (2026)",
+    "secondary_publication_DOI": "10.1371/journal.pone.0347919",
+    "secondary_Zenodo_record": 19544006,
+    "secondary_Zenodo_DOI": "10.5281/zenodo.19544006",
+    "source_filename": "individual_data.csv",
+    "publisher_md5": "85db2536b5be1cd50266900e61590d5a",
+    "original_curated_source_full_sha256": "b37fa71434dd46249a0e7f43f9b9e798b1d3cafcffea3c80bc6997b99b6dd0a5",
+    "original_curated_source_bytes": 720707,
+    "original_source_actor_round_rows": 14620,
+    "original_node_ids": 1462,
+    "rounds_each": 10,
+    "valid_binary_original_decisions": 13560,
+    "missing_original_binary_decision": 1060,
+    "original_session_identifiers_available": false,
+    "original_network_wealth_inequality_condition_ids_available": false,
+    "evidence_is_unmodified_primary_2015_raw_logs": false
+  },
+  "source_cohort": {
+    "source_original_people_visibility0": 726,
+    "source_original_people_visibility1": 736,
+    "source_rows_visibility0": 7260,
+    "source_rows_visibility1": 7360,
+    "all_1462_people_unique_id_and_all_10_rounds_verified": true,
+    "duplicate_actor_rounds": 0
+  },
+  "frozen_score": {
+    "unit": "entire source person ID holdout from own cross-person visibility-and-target-round M0; own prior round observed binary M1",
+    "target": "binary 0/1 original source decision next-round t2..10, both current and previous legal source actions",
+    "total_eligible_person_next_round_targets": 12110,
+    "visibility0_targets": 5910,
+    "visibility1_targets": 6200,
+    "M0": "mean other participants' observed binary cooperation at same visibility and round across original unknowable session IDs",
+    "M1": "target participant's previous observed binary cooperation/defect",
+    "M2": "fixed 0.5 M0 + 0.5 M1",
+    "scoring": "binary Brier squared probability error",
+    "current_or_future_data_leakage_from_source_decision_lead": false,
+    "original_80_sessions_LOSO_reconstructed": false,
+    "actual_calendar_forward_prediction": false
+  },
+  "real_pooled": {
+    "M0_Brier": 0.2221813660172249,
+    "M1_Brier": 0.21073492981007433,
+    "M2_Brier": 0.16103550044443668,
+    "gain_M0_minus_M1": 0.011446436207153278,
+    "gain_M0_minus_M2": 0.06114586557279011
+  },
+  "real_by_original_visibility": {
+    "invisible0": {
+      "n": 5910,
+      "M0": 0.20162979514279958,
+      "M1": 0.1532994923857868,
+      "M2": 0.12771097169532825,
+      "gain_M1": 0.04833030275701347,
+      "gain_M2": 0.07391882344747316
+    },
+    "visible1": {
+      "n": 6200,
+      "M0": 0.241771653737843,
+      "M1": 0.26548387096774195,
+      "M2": 0.19280130123592665,
+      "gain_M1": -0.023712217229891152,
+      "gain_M2": 0.04897035250192174
+    }
+  },
+  "distinct_original_people_M1_prediction_better": 856,
+  "distinct_original_people_M1_prediction_worse": 558,
+  "distinct_original_people_without_valid_adjacent_pair": 48,
+  "source_evidence_workflows": {
+    "phaseA_only_first_party_2026_publisher_MD5_header_run": 39019242351,
+    "phaseB_identity_round_visibility_MD5_run": 39019371936,
+    "first_synthetic_failure_on_missing_original_action_peers": 39019608534,
+    "original_real_source_KeyError_safe_block": 39019647183,
+    "exception_class_only_original_real_failure": 39019811350,
+    "file_line_only_original_real_failure": 39019903763,
+    "first_completed_true_binary_original_E2_run": 39019950466,
+    "second_full_reacquisition_80synthetic_SHA_archive_run": 39020029476
+  },
+  "original_E2_replay": {
+    "synthetic_test_count": 80,
+    "anonymous_full_result_bytes": 3685,
+    "anonymous_full_result_sha256": "2b68edc1efc87cf63df4eb915c09e19ac5fc5696bcbdd54874601393718045f0",
+    "anonymous_full_result_git_blob": "eea544b6b61d1f0658284456c760862b646a9edd"
+  },
+  "protocols": [
+    "protocols/R094_ZHU_2026_NISHI_2015_BINARY_NETWORK_PGG_SECONDARY_CURATED_ZENODO_CSV_SOURCE_PRE_OUTCOME_FREEZE_2026-10-17.md",
+    "protocols/R094_PHASE_B_ZHU_2026_NISHI_BINARY_NETWORK_NODE_ROUND_VISIBILITY_METADATA_FREEZE_2026-10-17.md",
+    "protocols/R094_PHASE_C_NISHI_ZHU_BINARY_NETWORK_1462_PARTICIPANT_LOO_M012_PRESCORE_FREEZE_2026-10-17.md",
+    "protocols/R094_PHASE_C2_FIRST_TRUE_BINARY_MODEL_SOURCE_EXCEPTION_CLASS_ONLY_2026-10-17.md",
+    "protocols/R094_PHASE_C3_SAFE_KEYERROR_CODE_LOCATION_BEFORE_REACCESS_2026-10-17.md"
+  ],
+  "archive_result": "research/R094/R094_ZHU_NISHI_2015_BINARY_NETWORK_1462_ACTORS_12110_INDIVIDUAL_HOLDOUT_E2_RESULTS.json",
+  "science_report": "research/R094/R094_NISHI_2015_BINARY_NETWORK_ZHU_2026_SECONDARY_1462_PERSON_HISTORY_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "scientific_limits": {
+    "secondary_curated_2026_source_not_identical_verifiable_first_party_2015_action_logs": true,
+    "original_80_distinct_sessions_not_separately_scored": true,
+    "human_individual_test_events_not_independent_network_groups": true,
+    "original_wealth_inequality_treatment_hidden_in_secondary_source": true,
+    "causal_wealth_visibility_effect_not_established": true,
+    "source_reaction_time_proves_manual_choice": false,
+    "E3_new_recruited_humans": false,
+    "R089_global_binary_group_vote_exact_outcome_same": false,
+    "long_term_history_model_validation": false
+  },
+  "next": "R095 prioritize first-party original human experiment preserved 80 session IDs to permit independent leave-one-session-out binary group behavior and clustered uncertainty",
+  "PESEN_v0_1": "FROZEN"
+}
