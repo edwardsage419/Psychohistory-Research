@@ -1,0 +1,49 @@
+name: R075 inspect coauthor original nonhuman analysis code for choice and lag semantics
+on:
+  push:
+    paths:
+      - '.github/workflows/r075-coauthor-codebook-logic-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-coauthor-code-only-intent-feedback-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Hash lock original source and inspect bounded analytic code statements without reading or emitting any human row
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import io,zipfile,hashlib,urllib.request,re,json
+          url="https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip"
+          with urllib.request.urlopen(urllib.request.Request(url,headers={
+            "User-Agent":"Psychohistory-R075-frozen-original-code-only/1.0"}),timeout=60) as r:
+              blob=r.read(4_000_001)
+          if len(blob)!=1129409 or hashlib.sha256(blob).hexdigest()!="328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef":
+            raise ValueError("ORIGINAL_DATA_AND_CODE_CHANGED")
+          with zipfile.ZipFile(io.BytesIO(blob)) as zipf:
+            for index,info in enumerate(zipf.infolist()):
+              ext="."+info.filename.rsplit(".",1)[-1].lower()
+              if ext not in (".do",".m"):continue
+              if info.file_size>20000:raise ValueError("ANALYSIS_CODE_MEMBER_TOO_LARGE")
+              text=zipf.read(info).decode("latin-1","replace").splitlines()
+              output=[]
+              for ln,line in enumerate(text):
+                if not re.search(r"decision|you_p_|other_p_|cooperat|defect|intended|actually|actual|play c|play d",line,re.I):
+                  continue
+                s=line.strip()
+                # Suppress external file system paths, URLs, emails, participant raw labels
+                if len(s)>170 or re.search(r"https?://|[A-Z]:\\|/Users/|/home/|@",s,re.I):
+                  continue
+                if re.search(r"^\s*\d+(\t|,)",s):continue
+                output.append({"code_line":ln+1,"statement":s})
+                if len(output)>=35:break
+              print("ORIGINAL_ANALYTIC_CODE_EXCERPTS",index,ext,json.dumps(output))
+          print("AUDIT_ONLY_NO_MODEL_SCORING_NO_PARTICIPANT_DATA")
+          PY
