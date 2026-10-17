@@ -1,0 +1,60 @@
+name: R092 independent author original threshold MAT fixed file signature proof only
+on:
+  push:
+    paths:
+      - '.github/workflows/r092-phase-a3-fixed-original-threshold-MAT-file-signature-only.yml'
+      - 'research/R092/r092_phase_a3_fixed_author_original_mat_signature_only.py'
+      - 'research/R092/test_r092_phase_a3_fixed_author_original_mat_signature_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-only-47-synthetic-MAT-HDF-file-format-privacy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check scipy numpy h5py
+          PYTHONPATH=research/R092 python -m unittest -v             research/R092/test_r092_original_2025_4player_threshold_mat_source_structure_only.py             research/R092/test_r092_phase_a2_original_mat_v73_HDF5_metadata_only.py             research/R092/test_r092_phase_a3_fixed_author_original_mat_signature_only.py
+  real-independent-author-actual-MAT-only-signature:
+    needs: original-source-only-47-synthetic-MAT-HDF-file-format-privacy
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check scipy numpy h5py
+      - name: Original Zenodo source exact publisher MD5 then only safe magic flags, never actor/source values
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r092_format_privacy
+          PYTHONPATH=research/R092 python             research/R092/r092_phase_a3_fixed_author_original_mat_signature_only.py             --output /tmp/r092_format_privacy/format_only.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r092_format_privacy/format_only.json').read_bytes()
+          v=json.loads(b)
+          assert v["phase"]=="A3_ORIGINAL_AUTHOR_FIXED_MD5_FORMAT_SIGNATURE_NO_ACTOR_ARRAY"
+          assert v["source_identity"]["original_author_MD5_exact"]=="6036f73c2f758ab3aeed6dcf4f74585b"
+          assert v["original_author_source_format_flags"]["real_human_behavior_read"] is False
+          assert not v["actual_original_human_behavioral_scores_computed"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R092_REAL_ORIGINAL_SOURCE_SIGNATURE_BYTES",len(b))
+          print("R092_REAL_ORIGINAL_SOURCE_SIGNATURE_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r092-real-original-Zenodo-fixed-MD5-signatures-without-actor-outcomes
+          path: /tmp/r092_format_privacy/format_only.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r092_format_privacy
