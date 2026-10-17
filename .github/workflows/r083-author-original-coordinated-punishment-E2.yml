@@ -1,0 +1,72 @@
+name: R083 exact author-SHA human paired punishment choices main and replication E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r083-author-original-coordinated-punishment-E2.yml'
+      - 'research/R083/r083_author_sha_coordinated_punishment_replication.py'
+      - 'research/R083/test_r083_author_sha_coordinated_punishment_replication.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-binary-paired-source-and-privacy-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen Stata input reader
+        run: python -m pip install pandas==2.2.3
+      - name: Check synthetic-only original SHA guards and main/replication paired code before touching real actor decisions
+        run: |
+          PYTHONPATH=research/R083 python -m unittest -v \
+            research/R083/test_r083_author_sha_coordinated_punishment_replication.py
+
+  original-human-source-SHA-main-versus-replication-paired-E2:
+    needs: synthetic-binary-paired-source-and-privacy-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen Stata reader and no fitted statistical packages
+        run: python -m pip install pandas==2.2.3
+      - name: Verify original author .dta AND .do fixed Git blobs before one original human response; report anonymous cohort matched tables only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r083_author_private
+          PYTHONPATH=research/R083 python research/R083/r083_author_sha_coordinated_punishment_replication.py \
+            --output /tmp/r083_author_private/main_retest_paired_anonymized_E2.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          p=pathlib.Path("/tmp/r083_author_private/main_retest_paired_anonymized_E2.json")
+          raw=p.read_bytes();d=json.loads(raw)
+          assert d["status"]=="R083_REAL_AUTHOR_MAIN_AND_REPLICATION_PAIRED_STRATEGY_E2_EXECUTED"
+          assert d["source_authentication"]["original_git_blob_verified"]
+          assert d["source_authentication"]["original_analysis_script_git_blob_verified"]
+          assert d["author_original_cohort_count"]==2
+          assert d["human_source_rows_exported"] is False
+          assert d["human_id_exported"] is False
+          assert d["PESEN_v0.1"]=="FROZEN"
+          assert d["cohort_counts_and_paired_effects"]["main"]["main_paired_table"]["n"]>0
+          assert d["cohort_counts_and_paired_effects"]["replication"]["main_paired_table"]["n"]>0
+          assert "synthetic-person" not in raw.decode()
+          print("R083_ORIGINAL_AUTHOR_REAL_HUMAN_ANON_BYTES",len(raw))
+          print("R083_ORIGINAL_AUTHOR_REAL_HUMAN_ANON_SHA256",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Save only cohort and subgroup anonymous aggregate E2, no human Stata rows or individual IDs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r083-original-author-real-human-coordinated-punishment-main-retest-paired-E2
+          path: /tmp/r083_author_private/main_retest_paired_anonymized_E2.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Wipe temporary safe macro results
+        if: always()
+        run: rm -rf /tmp/r083_author_private
