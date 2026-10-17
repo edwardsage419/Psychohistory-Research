@@ -1,0 +1,61 @@
+name: R092 original 2025 four-player threshold PGG MATLAB v73 HDF5 source-only strict
+on:
+  push:
+    paths:
+      - '.github/workflows/r092-phase-a2-original-4player-threshold-v73-hdf5-source-only.yml'
+      - 'research/R092/r092_phase_a2_original_mat_v73_HDF5_metadata_only.py'
+      - 'research/R092/test_r092_phase_a2_original_mat_v73_HDF5_metadata_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-MAT-and-HDF5-34-synthetic-source-privacy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check scipy numpy h5py
+          PYTHONPATH=research/R092 python -m unittest -v             research/R092/test_r092_original_2025_4player_threshold_mat_source_structure_only.py             research/R092/test_r092_phase_a2_original_mat_v73_HDF5_metadata_only.py
+  original-2025-author-fixed-md5-hdf5-source-variables-no-actor-values:
+    needs: original-MAT-and-HDF5-34-synthetic-source-privacy
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check scipy numpy h5py
+      - name: Read original v2 Zenodo MAT exact publisher MD5 and only HDF5 metadata without player arrays
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r092_hdf_struct_privacy
+          PYTHONPATH=research/R092 python             research/R092/r092_phase_a2_original_mat_v73_HDF5_metadata_only.py             --output /tmp/r092_hdf_struct_privacy/anonymous_structure.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          b=pathlib.Path('/tmp/r092_hdf_struct_privacy/anonymous_structure.json').read_bytes()
+          v=json.loads(b)
+          assert v["phase"]=="A2_AUTHOR_OFFICIAL_MATLAB_V73_HDF5_SOURCE_STRUCTURE_ONLY"
+          assert v["author_source_identity"]["original_author_MD5_exact"]=="6036f73c2f758ab3aeed6dcf4f74585b"
+          assert not v["source_mat_structure"]["values_of_source_actor_group_contribution_arrays_read"]
+          assert not v["source_mat_structure"]["source_actor_values_or_identifiers_exported"]
+          assert v["source_real_actor_contribution_scores_computed"]==0
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R092_AUTHOR_ORIGINAL_HDF5_SOURCE_ONLY_BYTES",len(b))
+          print("R092_AUTHOR_ORIGINAL_HDF5_SOURCE_ONLY_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r092-fixed-author-original-MAT-v73-HDF5-source-only
+          path: /tmp/r092_hdf_struct_privacy/anonymous_structure.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r092_hdf_struct_privacy
