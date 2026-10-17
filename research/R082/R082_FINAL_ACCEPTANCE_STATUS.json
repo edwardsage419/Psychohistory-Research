@@ -1,0 +1,101 @@
+{
+  "research_id": "R082",
+  "date": "2026-10-17",
+  "research_status": "CLOSED_BOUNDED",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "evidence_grade": "E2_REAL_FIRST_PARTY_64_NETWORK_ORIGINAL_HUMAN_ACTION_MISSINGNESS_AND_GRAPH_CODING_ASSOCIATION",
+  "A01_to_A06": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS_WITH_ALL_SOURCE_EXCEPTIONS_AND_PRIOR_R080_FAILURES",
+    "A05": "PASS_CAUSAL_SOURCE_INFERENCE_LEFT_UNIDENTIFIED",
+    "A06": "PASS"
+  },
+  "preresult_protocol": "protocols/R082_ORIGINAL64_HUMAN_NONRESPONSE_GRAPH_ISOLATION_AND_ALLOCATION_SOURCE_FREEZE_2026-10-17.md",
+  "protocol_original_commit": "aa7653ff0b81d62bb33fc1fc6efb2a1427e3e2cd",
+  "researcher_knew_R080_R081_original_treatment_results_before_freeze": true,
+  "original_source": "https://doi.org/10.17632/t963ktp6ft.1",
+  "original_SHA256_set_fingerprint": "555e2127ac21f4532c33a2e0a08f2e081b5f970891bd772c9bac3155d1d53571",
+  "original_source_networks_strict_sha_verified_twice": 64,
+  "first_synthetic_and_fulloriginal_CI": {
+    "run": 39000527926,
+    "synthetic_tests": 28,
+    "status": "success"
+  },
+  "second_fulloriginal_and_bitwise_archive_CI": {
+    "run": 39000654904,
+    "synthetic_tests": 28,
+    "status": "success"
+  },
+  "original64_anonymous_aggregate_result": "research/R082/R082_FIRST_PARTY_ORIGINAL64_HUMAN_NONRESPONSE_AND_NETWORK_ISOLATION_E2_RESULTS.json",
+  "original64_anonymous_result_bytes": 23743,
+  "original64_anonymous_result_sha256": "9ba6caeb25b0f2c8e024c4ce53ff7377567cef14f175c4fb0036d22c5f3b6999",
+  "original64_anonymous_result_blob": "5cddd7f3041ff67af1a214d4a26937d3b5a8b5c5",
+  "real_counts": {
+    "original_networks": 64,
+    "original_human_identity_slots": 1024,
+    "behavior_rounds_per_network": 30,
+    "observed_human_C_or_D": 27656,
+    "missing_human_actions": 3064,
+    "patterns": {
+      "full30_observed": 869,
+      "never_observed": 31,
+      "leading_only_missing": 0,
+      "trailing_only_missing": 120,
+      "both_ends_missing_contiguous_middle": 0,
+      "interior_gap_with_return": 4
+    },
+    "missing_from_never_observed": 930,
+    "missing_from_trailing_only": 2118,
+    "missing_from_interior_gap_with_return": 16
+  },
+  "real_degree_zero_and_missingness_all64": {
+    "snapshot_before_index": {
+      "degree_zero_missing": 2914,
+      "degree_zero_observed": 0,
+      "degree_nonzero_missing": 150,
+      "degree_nonzero_observed": 27656
+    },
+    "snapshot_after_index": {
+      "degree_zero_missing": 3060,
+      "degree_zero_observed": 5,
+      "degree_nonzero_missing": 4,
+      "degree_nonzero_observed": 27651
+    }
+  },
+  "original_single_bot_source_graph": {
+    "bot_marked_nodes_per_original_network": 5,
+    "number_of_source_networks": 8,
+    "snapshots": 248,
+    "HB_edge_histogram": {
+      "four": 1,
+      "five": 247
+    },
+    "bot_node_degree_histogram": {
+      "zero": 1,
+      "one": 1239
+    },
+    "logical_one_bot_to_five_source_node_mapping": "UNVERIFIED"
+  },
+  "scientific_inference_boundaries": {
+    "zero_degree_action_nonresponse_coincidence": "HIGH_BUT_POSSIBLY_MECHANICALLY_CODED",
+    "why_action_not_observed": "UNIDENTIFIED",
+    "network_snapshot_index_temporal_semantics": "BOTH_INDEX_ALIGNMENTS_PUBLISHED_CAUSAL_ORDER_UNVERIFIED",
+    "original_treatment_assignment_randomized": "NOT_INDEPENDENTLY_VERIFIED",
+    "experiment2_same_random_universe_as_experiment1": "UNVERIFIED_AND_DESIGN_DIFFERS",
+    "peer_causal_influence": "NOT_IDENTIFIED",
+    "robot_bot_treatment_causal_effect": "NOT_IDENTIFIED",
+    "long_horizon_psychological_history": "NOT_VALIDATED"
+  },
+  "source_privacy": {
+    "original_human_actor_ids_in_git": false,
+    "original_human_decisions_in_git": false,
+    "original_network_edges_in_git": false,
+    "raw_original_network_files_in_git": false,
+    "original_single_network_statistics_in_git": false
+  },
+  "scientific_report": "research/R082/R082_ORIGINAL64_HUMAN_NONRESPONSE_GRAPH_ASSOCIATION_AND_ALLOCATION_CAUSAL_GATE_FINAL_REPORT_2026-10-17.md",
+  "next_research": "Audit author-original platform actor response eligibility, missingness and bot assignment before independent causal design; otherwise pivot to another model family",
+  "PESEN_v0_1": "FROZEN"
+}
