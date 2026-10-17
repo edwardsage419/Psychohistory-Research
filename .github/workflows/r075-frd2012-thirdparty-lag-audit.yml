@@ -1,0 +1,62 @@
+name: R075 third-party FRD2012 genuine human lag schema source eligibility only
+on:
+  push:
+    paths:
+      - '.github/workflows/r075-frd2012-thirdparty-lag-audit.yml'
+      - 'research/R075/r075_frd2012_lag_schema_audit.R'
+      - 'research/R075/test_r075_frd2012_lag_schema_audit.R'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-integrity-and-synthetic-prior-history-conditions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check synthetic lag semantics, duplicate and missing history cases
+        working-directory: research/R075
+        run: Rscript test_r075_frd2012_lag_schema_audit.R
+      - name: Download exact pinned third-party published FRD2012 RData to temp, no human rows exported
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r075_private /tmp/r075_public
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          import hashlib
+          url="https://raw.githubusercontent.com/cran/stratEst/a6373b23d80dc816a63f18f973d372c9e8421914/data/FRD2012.rda"
+          with urlopen(Request(url,headers={"User-Agent":"Psychohistory-R075-fixed-third-party-source-audit/1.0"}),timeout=40) as r:
+              data=r.read(100001)
+          digest=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
+          if len(data)!=26923 or digest!="6b196ca1624081850b41dc2084c762257d59dd8f":
+              raise ValueError("R075_FIXED_THIRD_PARTY_GIT_BLOB_INVALID")
+          Path("/tmp/r075_private/FRD2012.rda").write_bytes(data)
+          print("R075 fixed FRD2012 third-party source binary SHA1 PASS")
+          PY
+      - name: Audit all real 13126 author-derived human choice rows and historical lags only
+        working-directory: research/R075
+        shell: bash
+        run: |
+          set -euo pipefail
+          Rscript r075_frd2012_lag_schema_audit.R \
+            /tmp/r075_private/FRD2012.rda \
+            /tmp/r075_public/r075_frd2012_anonymous_lag_audit.tsv
+      - name: Upload anonymous aggregate third party source admissibility only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r075-thirdparty-frd2012-anonymous-prior-choice-integrity
+          path: /tmp/r075_public/r075_frd2012_anonymous_lag_audit.tsv
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase third-party original individual source and transient anonymous audit
+        if: always()
+        run: rm -rf /tmp/r075_private /tmp/r075_public
