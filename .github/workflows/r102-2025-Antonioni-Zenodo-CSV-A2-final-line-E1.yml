@@ -1,0 +1,81 @@
+name: R102 A2 original Climate Clubs CSV no-final-newline source MD5 official verification
+on:
+  push:
+    paths:
+      - '.github/workflows/r102-2025-Antonioni-Zenodo-CSV-A2-final-line-E1.yml'
+      - 'research/R102/r102_2025_original_climateclubs_zenodo_publisher_md5_header_only.py'
+      - 'research/R102/test_r102_2025_original_climateclubs_zenodo_publisher_md5_header_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-original-source-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Thirteen pure source security and final-record tests
+        run: PYTHONPATH=research/R102 python -m unittest -v research/R102/test_r102_2025_original_climateclubs_zenodo_publisher_md5_header_only.py
+  official-original-2025-2700row-csv-identity-only:
+    needs: synthetic-original-source-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Real original Zenodo published MD5 27 header and 2700 row shape only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r102_source_E1
+          PYTHONPATH=research/R102 python research/R102/r102_2025_original_climateclubs_zenodo_publisher_md5_header_only.py --output /tmp/r102_source_E1/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r102_source_E1/receipt.json').read_text())
+          assert x["status"]=="R102_REAL_ZENODO_FIRST_PARTY_CSV_MD5_AND_HEADER_E1"
+          assert x["publisher_MD5"]=="56931608b717aea06105ad10a58ff937"
+          assert x["physical_source_data_rows"]==2700 and x["original_CSV_header_column_count"]==27
+          assert re.fullmatch(r"[a-f0-9]{64}",x["actual_original_full_SHA256"])
+          assert x["required_nonbehavior_roster_fields_present"] is True
+          assert x["any_original_human_decision_value_dereferenced"] is False
+          assert x["real_human_model_scores"]==0
+          print("R102_OFFICIAL_FIRSTPARTY_WHOLE_SOURCE_SHA",x["actual_original_full_SHA256"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r102-firstparty-original-Zenodo-2025-CSV-MD5-header-only
+          path: /tmp/r102_source_E1/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive allowlisted original source E1 or negative receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r102_source_E1/receipt.json
+          dst=research/R102/R102_PHASE_A2_LIVE_CI_FIRSTPARTY_CSV_MD5_HEADER_ONLY_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r102_source_E1/receipt.json').read_text())
+          assert x["research_id"]=="R102" and x["phase"]=="A"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["real_human_model_scores"]==0
+          assert x["status"] in ("R102_OFFICIAL_SOURCE_FAIL_CLOSED","R102_REAL_ZENODO_FIRST_PARTY_CSV_MD5_AND_HEADER_E1")
+          allow={"research_id","phase","status","safe_failure","publisher_dataset_DOI","official_original_filename","source_bytes","publisher_MD5","actual_original_full_SHA256","original_CSV_header_column_count","required_nonbehavior_roster_fields_present","physical_source_data_rows","any_original_human_decision_value_dereferenced","any_original_person_or_session_identifier_exported","real_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allow)
+          if "actual_original_full_SHA256" in x:
+            assert re.fullmatch(r"[a-f0-9]{64}",x["actual_original_full_SHA256"])
+            assert x["any_original_person_or_session_identifier_exported"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R102 A2): original publisher CSV source exact MD5 and allowed final-line format preserving first failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
