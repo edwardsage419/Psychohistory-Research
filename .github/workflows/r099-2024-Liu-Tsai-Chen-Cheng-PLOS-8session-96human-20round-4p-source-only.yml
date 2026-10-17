@@ -1,0 +1,58 @@
+name: R099 PLOS ONE original 2024 human 8 distinct lab sessions 96 people 20round 4P source only
+on:
+  push:
+    paths:
+      - '.github/workflows/r099-2024-Liu-Tsai-Chen-Cheng-PLOS-8session-96human-20round-4p-source-only.yml'
+      - 'research/R099/r099_liu_2024_plos_official_original_S1_CSV_publisher_metadata_only.py'
+      - 'research/R099/test_r099_liu_2024_plos_official_original_S1_CSV_publisher_metadata_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  twenty-five-synthetic-PLOS-original-source-and-privacy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original exact URL official publisher SHA and safe schema tests
+        run: |
+          PYTHONPATH=research/R099 python -m unittest -v             research/R099/test_r099_liu_2024_plos_official_original_S1_CSV_publisher_metadata_only.py
+  actual-publisher-PLOS-S1-data-original-CSV-SHA-columns-only:
+    needs: twenty-five-synthetic-PLOS-original-source-and-privacy-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: First-party 2024 PLOS supplement S1 source full bytes SHA, only CSV header and row-count no human actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r099_safe_source
+          PYTHONPATH=research/R099 python research/R099/r099_liu_2024_plos_official_original_S1_CSV_publisher_metadata_only.py             --output /tmp/r099_safe_source/original_publisher_S1_CSV_metadata_only.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r099_safe_source/original_publisher_S1_CSV_metadata_only.json').read_bytes()
+          v=json.loads(b)
+          assert v["status"]=="R099_PLOS_FIRST_PARTY_ORIGINAL_S1_CSV_SOURCE_IDENTITY_AND_COLUMNS_VERIFIED"
+          assert v["publisher_S1_data_DOI"]=="10.1371/journal.pone.0299196.s002"
+          assert v["original_source"]["exact_original_CSV_bytes"]>100
+          assert not v["anonymous_source_metadata"]["original_human_contribution_values_examined"]
+          assert not v["anonymous_source_metadata"]["original_player_session_group_ID_values_examined"]
+          assert v["first_party_original_real_human_contribution_models_scored"]==0
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R099_REAL_FIRST_PARTY_PLOS_CSV_METADATA_BYTES",len(b))
+          print("R099_REAL_FIRST_PARTY_PLOS_CSV_METADATA_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r099-original-PLOS-2024-4person-repeated-PGG-source-SHA-header-only
+          path: /tmp/r099_safe_source/original_publisher_S1_CSV_metadata_only.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r099_safe_source
