@@ -1,0 +1,17 @@
+# R090：独立原作者气候俱乐部群体合作15轮历史预测迁移，重要负面E2正式结题
+
+2026-10-17。**R090=CLOSED_BOUNDED，六项A01–A06限定PASS。真正另一实验团队原作者数据已全量复算并二次SHA严格复验；R089单独M1上一轮历史信号的跨实验迁移**未成立**。PESEN v0.1依旧FROZEN。**
+
+研究源：Antonioni、Sánchez、Cabrales *Climate clubs: An experimental study of Nordhaus' proposal to mitigate climate change*，原作者[Zenodo 17610157固定版本 v2](https://zenodo.org/records/17610157)，`Climate_Clubs_data.csv` 419189字节、**作者发表MD5 `56931608b717aea06105ad10a58ff937`**、实际本次全字节SHA256 `ebc8831011a1a3b4893a80ae158d5129ed0f35e57a8092eba36c6a7b0cbd4282`。原始27列，实际2700人轮观察、180人、8场次、30个稳定的六人群组、每组15轮（T1/T2各8组，T3/T4各7组），原作者真实data未上传本仓库。
+
+**预先冻结三阶段源码与失败审计：**[Phase A来源身份冻结](../../protocols/R090_INDEPENDENT_CLIMATE_CLUBS_REAL_GROUP_SOURCE_ELIGIBILITY_FREEZE_2026-10-17.md)后先在synthetic测试预期中出现早期失败[run39013457720](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39013457720)，测试修复后又在真人来源[run39013486584](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39013486584)严格发现oTree技术字段`participant._round_number`全=15、不是`subsession.round_number`的实际轮次。保持失败收据，再先冻结[Phase B双轮字段结构诊断](../../protocols/R090_PHASE_B_OTREE_TWO_ROUND_FIELDS_NONOUTCOME_AUDIT_FREEZE_2026-10-17.md)，[官方MD5第二次真实读取及47合成run39013629744](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39013629744)证明全部30个六人组不换成员、正确1..15轮、无任何真实合作分数先泄露。正式[Phase C六人组历史预测评分前冻结](../../protocols/R090_PHASE_C_CROSS_AUTHOR_30_GROUP_15_ROUND_HISTORY_TRANSFER_FROZEN_SCORING_2026-10-17.md)制定了标准化 `sum(player.contribution)/sum(player.endowment)` 真实结果。因比R089的二元global投资份额不同，只检验同样M0/M1/M2历史信息模型结构，不伪装为同一单位的完全一致复验。
+
+每一次完整留出一组六真人及其全部15轮，训练来自同条件其他6或7组六人群组，目标组上一轮信息用于下一轮；预测t=2..15，合计**420个真正留出群体轮次**。M0其他group同处理同轮平均，M1本group上一轮比例，M2固定二者各半。原始贡献/endowment数据通过全部有限非负、<=禀赋和禀赋>0有效性，失格便fail-closed。没有参数调优、人员群体ID/原行为行输出。
+
+**独立原作者实证复验出现有价值的负结果：**M0 MSE **0.04888197**、M1 **0.05719792**（相对M0恶化**0.00831595**）、M2 **0.04029091**（相对M0改善**0.00859106**）。M1在全30组中13组更好、17组更差；T1的M1比M0好+0.0199613，但T2/T3/T4分别 **−0.0022160、−0.0398700、−0.0160502**。M2总体优于M0，却在T3也是负向 **−0.00433275**。所以不能称“群体上一轮行为普遍胜过条件基线”已跨实验成立。原R089在不同类型的二元公共投资实验内阳性不变，完整保留新独立数据阴性。
+
+**自动行动的重要来源风险：**2700条真实实验记录包含**249次 `player.automatic_decision=1`**（T1=82、T2=38、T3=80、T4=49），贡献超时198次。不可声称2700次均为人类自由决定；当前统计属于真人参加实验中记录的群体行为（含系统代作），还没有冻结“仅手动决定”的独立敏感性处理，不能说本负结果来自人类心理学习失败或制度因果。30完整组也不等于420独立实验样本；未单独做session bootstrap抽样误差。新源在线已发布，E2不是新招募E3。
+
+[成功首次全部84项合成＋真人420预测run39013984019](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39013984019)，[第二次完整原始Zenodo再次MD5/SHA取回、84synthetic与匿名逐字节归档run39014046442](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39014046442) 都SUCCESS；永久[匿名420次跨作者M0/M1/M2评价结果](R090_INDEPENDENT_AUTHOR_30GROUP_15ROUND_HISTORY_TRANSFER_M1_NEGATIVE_E2_RESULTS.json) **7913字节、SHA256 `f7970b444588d0af7986a10056750400190d360d1533bb1d3dafffa9cce05182`、Git blob `c38d629ebe7f8b2709441eefa288a1a56ee92631`**。如对报告中数字有疑问，必须回到固定作者原始MD5来源代码运行，不能逆推个体资料。
+
+[正式科学结题报告和全部T1..T4负结果](R090_CLIMATE_CLUBS_CROSS_AUTHOR_GROUP_HISTORY_TRANSFER_NEGATIVE_E2_SCIENTIFIC_REPORT_2026-10-17.md) · [机读正式A01–A06验收](R090_FINAL_ACCEPTANCE_STATUS.json) · [实际420群体轮LOOG来源Python程序](r090_original30_stable_six_person_LOOG_cross_author_history_transfer_E2.py) · [37项真实评分合成](test_r090_original30_stable_six_person_LOOG_cross_author_history_transfer_E2.py)及前两阶段30+17项source合成。科学结论只指不同真实原作者的有限群体参与者行为、异质可比较的模型信息结构：跨实验M1阳性**失败**，M2在池化上**部分成功**。不声称真正心理因果、社会身份、政策平均处理效应或长期历史动力。下一独立R091优先相同投票型公共品实验、也应考虑自动代作这一预先可检验来源限制，不在已见30组结果上反复调整参数。
