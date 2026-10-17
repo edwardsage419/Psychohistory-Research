@@ -1,0 +1,65 @@
+name: R091 independent Jonsson 760 original humans 190 four-person groups 3610 next-round LOOG E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r091-original-760-human-190group-20round-disaster-loog-M012-E2.yml'
+      - 'research/R091/r091_original_190_fourperson_disaster_group_loog_M0_M1_M2_E2.py'
+      - 'research/R091/test_r091_original_190_fourperson_disaster_group_loog_M0_M1_M2_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-100-synthetic-strict-source-label-roster-4player-20rounds-and-LOOG:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check 'openpyxl>=3.1,<3.2'
+          PYTHONPATH=research/R091 python -m unittest -v             research/R091/test_r091_author_2025_disaster_xlsx_source_only_gate.py             research/R091/test_r091_phase_b_main_sheet_group_time_roster_only.py             research/R091/test_r091_phase_b2_author_original_categorical_only.py             research/R091/test_r091_original_190_fourperson_disaster_group_loog_M0_M1_M2_E2.py
+  original-source-760-person-190group-3610-real-next-round-forecast:
+    needs: all-100-synthetic-strict-source-label-roster-4player-20rounds-and-LOOG
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check 'openpyxl>=3.1,<3.2'
+      - name: Reacquire SHA-pinned original XLSX, validate all 15200 4-person numeric contribution choices then strictly score 3610 group-heldout next-round predictions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r091_real_private
+          PYTHONPATH=research/R091 python             research/R091/r091_original_190_fourperson_disaster_group_loog_M0_M1_M2_E2.py             --output /tmp/r091_real_private/anonymous_M012_E2.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r091_real_private/anonymous_M012_E2.json').read_bytes()
+          v=json.loads(b)
+          assert v["status"]=="R091_REAL_ORIGINAL_AUTHOR_190_FOURPERSON_GROUP_FULL_HOLDOUT_E2_EXECUTED"
+          z=v["original_full_190_group_20round_prediction_results"]
+          assert z["original_fourperson_groups_heldout"]==190
+          assert z["original_4player_20round_people"]==760
+          assert z["original_4player_actor_round_contribution_slots"]==15200
+          assert z["original_independent_group_next_round_test_targets"]==3610
+          assert len(z["by_original_country_and_treatment"])==10
+          assert not z["group_or_actor_IDs_or_hashed_source_features_in_output"]
+          assert not v["individual_original_source_contribution_or_group_IDs_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R091_TRUE_INDEPENDENT_AUTHOR_190_GROUP_E2_ANON_BYTES",len(b))
+          print("R091_TRUE_INDEPENDENT_AUTHOR_190_GROUP_E2_ANON_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r091-first-party-Jonsson-760-human-190-4person-group-3610-LOOG-M012-macro-E2
+          path: /tmp/r091_real_private/anonymous_M012_E2.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r091_real_private
