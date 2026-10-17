@@ -24,10 +24,11 @@ EXPERIMENTS=("fix.csv","rand.csv")
 def original_binary(x):
  v=str(x or "").strip()
  if v in ("0","0.0"):return 0
- if v in ("1","1.0"):return 1
- raise ValueError("R096D_AUTHORIGINAL_ACTION_NOT_EXACT_BINARY_0_1")
+ if v in ("1","1.0","C"):return 1
+ if v=="D":return 0
+ raise ValueError("R096D_AUTHORIGINAL_ACTION_NOT_EXACT_BINARY_0_1_OR_AUTHOR_C_D")
 
-def read_original_actions(blob,name,people_count=None,original_rows=None,require_opponent_consistency=True):
+def read_original_actions(blob,name,people_count=None,original_rows=None,require_opponent_consistency=True,enforce_literal_C_D=False):
  if name not in EXPERIMENTS:raise ValueError("R096D_UNFROZEN_ORIGINAL_TREATMENT")
  if people_count is None:people_count=EXPECTED_PEOPLE[name]
  if original_rows is None:original_rows=EXPECTED_ROWS[name]
@@ -45,6 +46,8 @@ def read_original_actions(blob,name,people_count=None,original_rows=None,require
   r=str(d["round"] or "").strip()
   if not ss or not actor or not peer or not r.isascii() or not r.isdigit() or not 1<=int(r)<=100:
    raise ValueError("R096D_REAL_ORIGINAL_SESSION_PLAYER_OR_ROUND_INVALID")
+  if enforce_literal_C_D and (d["action_player"] not in ("C","D") or d["action_opponent"] not in ("C","D")):
+   raise ValueError("R096D_AUTHOR_ORIGINAL_PINNED_C_D_CODEBOOK_CHANGED")
   t=int(r);a=original_binary(d["action_player"]);b=original_binary(d["action_opponent"])
   uid=(ss,actor);key=(ss,actor,t)
   if key in by_round:raise ValueError("R096D_REAL_ORIGINAL_DUPLICATE_ACTOR_ROUND")
@@ -147,7 +150,7 @@ def actual_original():
   nonbehavior=real_anon_session_universe(raw,name)
   if nonbehavior["true_original_source_experiment_sessions"]!=6:
    raise ValueError("R096D_ORIGINAL_LAB_SESSION_COHORT_WRONG")
-  cohort,eligibility=read_original_actions(raw,name)
+  cohort,eligibility=read_original_actions(raw,name,enforce_literal_C_D=True)
   scoring=complete_original_session_LOSO(cohort,EXPECTED_PEOPLE[name])
   outcomes[name]={"original_author_fixed_blob_sha1":ident["original_git_blob_SHA1"],
     "original_author_whole_source_SHA256":ident["full_original_whole_file_SHA256"],
