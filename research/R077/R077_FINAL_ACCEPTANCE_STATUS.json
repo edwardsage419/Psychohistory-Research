@@ -1,0 +1,265 @@
+{
+  "research_id": "R077",
+  "date": "2026-10-17",
+  "administrative_research_status": "CLOSED_BOUNDED",
+  "scientific_evidence_grade": "E3_BOUNDED_DIFFERENT_AUTHOR_HUMAN_EXPERIMENT_PRE_TARGET_MODEL_SCORE_PROTOCOL_BUT_NOT_PRE_EXPERIMENT_PREREGISTRATION",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS_WITH_PERMANENT_NEGATIVE_AND_FAILED_EARLIER_GATE_RECORD",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "important_subgate_failures_retained": [
+    "R077_REV001_SOURCE_ELIGIBILITY_PARTNER_PAIR_STABILITY_FAIL",
+    "R077_REV001_ALL_PERSON_GAMES_T1_COMPLETE_FAIL",
+    "R077_M4_LONGER_MEMORY_WORSENS_IN_SEVEN_OF_FIFTEEN_SESSIONS",
+    "R077_M6_WINS_ONLY_ONE_OF_FIFTEEN_AGAINST_M0"
+  ],
+  "source": {
+    "paper": "Drouvelis and Pearce 2025 European Economic Review 178 105075",
+    "doi": "10.1016/j.euroecorev.2025.105075",
+    "original_zenodo_v1": "https://zenodo.org/records/15462528",
+    "original_author_file": "https://zenodo.org/records/15462528/files/cleandata.dta?download=1",
+    "source_bytes": 1514315,
+    "original_source_publisher_md5": "4cce04ea68b7a0492c242b206efebe53",
+    "original_source_sha256": "1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985",
+    "independent_orig_experiment": "YES, fourth distinct author participant experiment",
+    "original_paper_publication_already_known": "YES",
+    "original_author_archive_does_not_include_prior_study_original_data": "YES; that is explicitly separate"
+  },
+  "protocol_history": {
+    "pre_external_results_R077_origin_gate": "protocols/R077_FOURTH_INDEPENDENT_HUMAN_DATA_SOURCE_AND_BLIND_SCORE_GATE_2026-10-17.md",
+    "pre_model_result_rev001": "protocols/R077_ZENODO_FOURTH_AUTHOR_TRUE_HUMAN_PROSPECTIVE_MODEL_SCORE_FREEZE_2026-10-17.md",
+    "rev001_fail_closed_runs": [
+      38994977281,
+      38995038132
+    ],
+    "post_failure_structure_gate_run": 38995148912,
+    "rev002_pre_first_target_model_score": "protocols/R077_PRE_FIRST_TARGET_MODEL_SCORE_SOURCE_SEMANTICS_AMENDMENT_REV002_2026-10-17.md",
+    "rev002_explicit_freeze_commit": "f79d59175098b4314c9c784394cfd5beb8083f2e",
+    "rev002_changes_only": "Source eligibility permits source-real prior opponent historical action across within-game Group change and requires exactly observed t/t-1/t-2",
+    "rev002_source_evidence": "130 adjacent Group changes within treatment1; 80 person-games not fully observed from t1; same-person+game contiguous two-lag eligibility still 1040",
+    "interim_non_scoring_synthetic_test_fail_run": 38995298362,
+    "first_real_7_model_success_run": 38995309336,
+    "independent_full_replay_success_run": 38995401729
+  },
+  "research_population": {
+    "source_scorable_training_events": 18424,
+    "source_training_sessions": 12,
+    "target_original_person_decisions": 3620,
+    "target_original_sessions": 15,
+    "participant_session_slots": 260,
+    "source_two_person_rounds": 1810,
+    "person_games": 1440,
+    "target_t3_complete_eligibility": 1040,
+    "treatment_sessions": {
+      "0": 7,
+      "1": 8
+    },
+    "target_label_rows_used_in_any_fit": 0
+  },
+  "model": {
+    "R073_exact_git_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a",
+    "source_donor": "R073_ALL_12_POOLED",
+    "alpha": 20,
+    "static_TFT_WSLS_reference_noise": 0.05,
+    "prediction_target": "Current human cooperation binary left_t (1=C 0=D)",
+    "prediction_lags": "Observed records left_(t-1), otherleft_(t-1), left_(t-2), otherleft_(t-2) same Session/Subject/game",
+    "metrics": "Each original source Session average Brier and log-loss; 15 source sessions equal weight; no target refitting",
+    "seven_model_results": {
+      "M0": {
+        "Brier": 0.2245797670284381,
+        "log_loss": 0.6419039979535796
+      },
+      "M1": {
+        "Brier": 0.15113955349473138,
+        "log_loss": 0.47551455553497274
+      },
+      "M2": {
+        "Brier": 0.15581730229513174,
+        "log_loss": 0.49132389664031445
+      },
+      "M3": {
+        "Brier": 0.12092879302400986,
+        "log_loss": 0.39264538227187457
+      },
+      "M4": {
+        "Brier": 0.11901009354754336,
+        "log_loss": 0.38431139091622973
+      },
+      "M5": {
+        "Brier": 0.17725000000000002,
+        "log_loss": 0.6230051961757007
+      },
+      "M6": {
+        "Brier": 0.5125000000000004,
+        "log_loss": 1.7198087159151991
+      }
+    }
+  },
+  "six_pairwise_comparisons": {
+    "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+      "Brier_delta": -0.07344021353370675,
+      "better": 12,
+      "equal": 0,
+      "worse": 3,
+      "per_treatment": {
+        "0": {
+          "Brier_delta": -0.08281571005108727,
+          "better": 6,
+          "equal": 0,
+          "sessions": 7,
+          "worse": 1
+        },
+        "1": {
+          "Brier_delta": -0.0652366540809988,
+          "better": 6,
+          "equal": 0,
+          "sessions": 8,
+          "worse": 2
+        }
+      }
+    },
+    "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+      "Brier_delta": -0.0687624647333064,
+      "better": 13,
+      "equal": 0,
+      "worse": 2,
+      "per_treatment": {
+        "0": {
+          "Brier_delta": -0.09440998178016377,
+          "better": 6,
+          "equal": 0,
+          "sessions": 7,
+          "worse": 1
+        },
+        "1": {
+          "Brier_delta": -0.04632088731730617,
+          "better": 7,
+          "equal": 0,
+          "sessions": 8,
+          "worse": 1
+        }
+      }
+    },
+    "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+      "Brier_delta": -0.030210760470721517,
+      "better": 14,
+      "equal": 0,
+      "worse": 1,
+      "per_treatment": {
+        "0": {
+          "Brier_delta": -0.03289293930592688,
+          "better": 7,
+          "equal": 0,
+          "sessions": 7,
+          "worse": 0
+        },
+        "1": {
+          "Brier_delta": -0.027863853989916823,
+          "better": 7,
+          "equal": 0,
+          "sessions": 8,
+          "worse": 1
+        }
+      }
+    },
+    "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+      "Brier_delta": -0.001918699476466503,
+      "better": 8,
+      "equal": 0,
+      "worse": 7,
+      "per_treatment": {
+        "0": {
+          "Brier_delta": -0.0036409730639195862,
+          "better": 5,
+          "equal": 0,
+          "sessions": 7,
+          "worse": 2
+        },
+        "1": {
+          "Brier_delta": -0.00041171008744505556,
+          "better": 3,
+          "equal": 0,
+          "sessions": 8,
+          "worse": 5
+        }
+      }
+    },
+    "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+      "Brier_delta": -0.04732976702843812,
+      "better": 10,
+      "equal": 0,
+      "worse": 5,
+      "per_treatment": {
+        "0": {
+          "Brier_delta": -0.0967547186960352,
+          "better": 6,
+          "equal": 0,
+          "sessions": 7,
+          "worse": 1
+        },
+        "1": {
+          "Brier_delta": -0.004082934319290663,
+          "better": 4,
+          "equal": 0,
+          "sessions": 8,
+          "worse": 4
+        }
+      }
+    },
+    "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+      "Brier_delta": 0.28792023297156216,
+      "better": 1,
+      "equal": 0,
+      "worse": 14,
+      "per_treatment": {
+        "0": {
+          "Brier_delta": 0.21985242416110787,
+          "better": 1,
+          "equal": 0,
+          "sessions": 7,
+          "worse": 6
+        },
+        "1": {
+          "Brier_delta": 0.3474795656807097,
+          "better": 0,
+          "equal": 0,
+          "sessions": 8,
+          "worse": 8
+        }
+      }
+    }
+  },
+  "permanent_archive": {
+    "path": "research/R077/R077_FOURTH_INDEPENDENT_HUMAN_SOURCE_ONLY_E3_RESULTS.json",
+    "sha256": "8d8b8413e3e55cb5d856f34b873ee20c2ba470e04190bb8577f931d25ba509a4",
+    "bytes": 9835,
+    "git_blob": "13946754afc06e529f2d3a2072a7bae297453fa9",
+    "actual_real_human_CI": 38995309336,
+    "replay_and_archive_CI": 38995401729,
+    "synthetic_tests": 24,
+    "source_archive_single_person_paths_committed": false,
+    "original_session_ids_exported": false,
+    "any_individual_session_score_published": false
+  },
+  "reports": {
+    "scientific": "research/R077/R077_FOURTH_REAL_HUMAN_ZERO_SHOT_E3_FINAL_SCIENTIFIC_REPORT_2026-10-17.md",
+    "index": "research/R077/README.md",
+    "main_index": "README.md"
+  },
+  "scientific_boundaries": {
+    "fully_prospectively_new_recruited_cohort": "NOT_TESTED",
+    "fourth_study_already_published": "YES",
+    "pre_real_result_semantic_revision": "YES, fully disclosed and frozen before actual M0-M6 human score",
+    "actual_knowledge_of_previous_counterpart_action_by_subject": "NOT_SEPARATELY_CONFIRMED_BY_EXPERIMENT_UI_LOGS",
+    "original_participant_reenrolment_across_sessions": "NOT_INDEPENDENTLY_AUDITED",
+    "causal_social_memory": "NOT_IDENTIFIED",
+    "institutional_transition_and_historical_prediction": "NOT_VALIDATED",
+    "model_PESEN_v0_1": "FROZEN"
+  },
+  "next_research": "R078 mechanistic competitor models and four-experiment heterogeneity pre-analysis without post-hoc parameter tuning"
+}
