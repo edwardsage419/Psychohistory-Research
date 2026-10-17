@@ -104,7 +104,7 @@ def parse_author_group_rounds(rows,expected_n=2700):
 
 def stats(values):return sum(values)/len(values) if values else 0.
 
-def score_loo(groups,expected_group_numbers=None):
+def score_loo(groups,expected_group_numbers=None,expected_total_forecasts=420):
  if expected_group_numbers is None:expected_group_numbers=AUTHOR_EXPECTED_GROUPS
  allrows=[]
  aggregated={}
@@ -145,7 +145,7 @@ def score_loo(groups,expected_group_numbers=None):
    "shared_target_m1_minus_m0_score_gain":stats([r[3] for r in scored]),
    "shared_target_m2_minus_m0_score_gain":stats([r[4] for r in scored]),
    "whole_heldout_group_M1_vs_M0_gain_signs":dict(per_group_signs)}
- if len(allrows)!=420:raise ValueError("R090C_TOTAL_HOLDOUT_GROUP_FORECASTS_NOT420")
+ if len(allrows)!=expected_total_forecasts:raise ValueError("R090C_TOTAL_HOLDOUT_GROUP_FORECASTS_NOT420")
  summary={
   "source_independent_groups_heldout":sum(v["independent_original_heldout_groups"] for v in aggregated.values()),
   "source_independent_author_heldout_forecast_targets":len(allrows),
