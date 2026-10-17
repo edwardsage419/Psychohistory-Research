@@ -47,12 +47,16 @@ def metadata_only(raw):
     if not isinstance(data,dict) or data.get("status") != "OK" or not isinstance(data.get("data"),dict):
         raise GateError("R101_OFFICIAL_API_STATUS_NOT_OK")
     obj=data["data"]
-    pid=obj.get("persistentId")
-    if not isinstance(pid,str) or pid.casefold() != DOI.casefold():
-        raise GateError("R101_OFFICIAL_DATASET_DOI_MISMATCH")
     ver=obj.get("latestVersion")
     if not isinstance(ver,dict) or not isinstance(ver.get("files"),list):
         raise GateError("R101_ORIGINAL_FILE_CATALOG_MISSING")
+    pid=obj.get("persistentId")
+    alt=ver.get("datasetPersistentId")
+    if pid is not None and alt is not None and (not isinstance(pid,str) or not isinstance(alt,str) or pid.casefold()!=alt.casefold()):
+        raise GateError("R101_OFFICIAL_DATASET_DOI_CONFLICT")
+    source_pid=pid if pid is not None else alt
+    if not isinstance(source_pid,str) or source_pid.casefold() != DOI.casefold():
+        raise GateError("R101_OFFICIAL_DATASET_DOI_MISMATCH")
     files=ver["files"]
     if not (1 <= len(files) <= 300):
         raise GateError("R101_FILE_CATALOG_SIZE_INVALID")
