@@ -44,6 +44,7 @@ def identity_only(raw):
         raise SourceError("R103_B_ORIGINAL_SOURCE_SHA_OR_LINES_DIFFER")
     reader=csv.DictReader(io.StringIO(raw.decode("utf-8-sig"),newline=""),strict=True)
     allrows={}
+    self_pointing_rows=set()
     games=Counter()
     payoff_rules=set()
     experiment_users=defaultdict(set)
@@ -60,8 +61,7 @@ def identity_only(raw):
         actor=positive_integer(row["User_ID"])
         t=positive_integer(row["Round_number"])
         opponent=positive_integer(row["Opponent_ID"])
-        if actor==opponent:
-            raise SourceError("R103_B_ORIGINAL_SELF_OPPONENT_NOT_DYAD")
+        self_pointing=(actor==opponent)
         game=row["Game"]
         if not isinstance(game,str) or PUBLIC_GAME.fullmatch(game) is None:
             raise SourceError("R103_B_ORIGINAL_GAME_CODE_UNSAFE")
@@ -71,6 +71,8 @@ def identity_only(raw):
         if key in allrows:
             raise SourceError("R103_B_DUPLICATE_ORIGINAL_PERSON_ROUND")
         allrows[key]=opponent
+        if self_pointing:
+            self_pointing_rows.add(key)
         experiment_users[experiment].add(actor)
         experiment_rounds[experiment].add(t)
         user_experiments[actor].add(experiment)
@@ -84,11 +86,14 @@ def identity_only(raw):
     nonreciprocal=0
     per_experiment=defaultdict(Counter)
     for (experiment,actor,t),opponent in allrows.items():
+        if (experiment,actor,t) in self_pointing_rows:
+            per_experiment[experiment]["self_pointing_source_actor_rounds"]+=1
+            continue
         opp=allrows.get((experiment,opponent,t))
         if opp is None:
             missing+=1
             per_experiment[experiment]["missing_opponent_row"]+=1
-        elif opp!=actor:
+        elif opp!=actor or (experiment,opponent,t) in self_pointing_rows:
             nonreciprocal+=1
             per_experiment[experiment]["opponent_nonreciprocal"]+=1
         else:
@@ -109,6 +114,7 @@ def identity_only(raw):
             "reciprocal_actor_rounds":per_experiment[ex]["reciprocal_actor_rounds"],
             "missing_opponent_source_row_count":per_experiment[ex]["missing_opponent_row"],
             "nonreciprocal_opponent_source_row_count":per_experiment[ex]["opponent_nonreciprocal"],
+            "self_pointing_source_actor_rounds":per_experiment[ex]["self_pointing_source_actor_rounds"],
         })
     return {
         "research_id":"R103","phase":"B",
@@ -124,6 +130,7 @@ def identity_only(raw):
         "unique_source_reciprocal_pair_rounds":reciprocal//2,
         "source_actor_rounds_with_missing_opponent":missing,
         "source_actor_rounds_with_nonreciprocal_opponent":nonreciprocal,
+        "source_actor_rounds_self_pointing_opponent":len(self_pointing_rows),
         "reciprocal_actor_round_fraction":reciprocal/observed,
         "source_experiments_with_reciprocal_pairs":eligible_experiments,
         "original_experiment_size_histogram":dict(sorted(Counter(map(len,experiment_users.values())).items())),
