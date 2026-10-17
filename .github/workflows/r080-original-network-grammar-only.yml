@@ -1,0 +1,36 @@
+name: R080 original author R-code and nested network event schema no-score audit
+on:
+  push:
+    paths:
+      - '.github/workflows/r080-original-network-grammar-only.yml'
+      - 'research/R080/r080_author_original_network_event_grammar_audit.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  author-v1-original-source-grammar-no-real-human-scores:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify publisher source SHA, read original authors R code, nested human network event schema only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r080_network_grammar_audit
+          PYTHONPATH=research/R080 python research/R080/r080_author_original_network_event_grammar_audit.py \
+            --output /tmp/r080_network_grammar_audit/official_author_R_and_event_schema_only.json
+      - name: Save safe metadata schema without original human behaviors or raw edges
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r080-real-network-human-bot-author-source-grammar-safe
+          path: /tmp/r080_network_grammar_audit/official_author_R_and_event_schema_only.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase runner artifact staging
+        if: always()
+        run: rm -rf /tmp/r080_network_grammar_audit
