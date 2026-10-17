@@ -24,6 +24,18 @@ class PureSyntheticTests(unittest.TestCase):
     def test_official_url(self): a.validate_url(a.URL)
     def test_external_host(self):
         with self.assertRaises(a.SourceError): a.validate_url(a.URL.replace("zenodo.org", "evil.example"))
+    def test_redirect_rejected_before_following_external_host(self):
+        handler = a.ExactOfficialOriginRedirect()
+        req = __import__("urllib.request", fromlist=["Request"]).Request(a.URL)
+        with self.assertRaises(a.SourceError):
+            handler.redirect_request(req, None, 302, "Moved", {}, "https://untrusted.example/secret")
+
+    def test_redirect_rejected_before_following_wrong_official_path(self):
+        handler = a.ExactOfficialOriginRedirect()
+        req = __import__("urllib.request", fromlist=["Request"]).Request(a.URL)
+        with self.assertRaises(a.SourceError):
+            handler.redirect_request(req, None, 302, "Moved", {}, "https://zenodo.org/other/path")
+
     def test_wrong_http(self):
         with self.assertRaises(a.SourceError): a.validate_url(a.URL.replace("https:", "http:"))
     def test_unapproved_query(self):
