@@ -45,16 +45,34 @@ def safe_original_csv_schema(data):
  try:txt=data.decode("utf-8-sig")
  except UnicodeError as e:raise ValueError("R096B_ORIGINAL_AUTHOR_SOURCE_CSV_NOT_UTF8") from e
  r=csv.reader(io.StringIO(txt,newline=""))
+ # The author's exported pandas CSV starts with an empty unnamed index field.
+ # The first nonempty logical CSV record is the literal source schema.
+ blank_before=0
  h=next(r,None)
- if (h is None or not 3<=len(h)<=80 or len(h)!=len(set(h)) or
-     any(not SAFE_HEADER.fullmatch(v) for v in h)):
+ while h is not None and (not h or all(not str(x).strip() for x in h)):
+  blank_before+=1
+  if blank_before>5:raise ValueError("R096B_TOO_MANY_EMPTY_SOURCE_HEADER_LINES")
+  h=next(r,None)
+ if h is None or not 3<=len(h)<=80:
   raise ValueError("R096B_AUTHOR_SUBMISSION_CSV_COLUMN_NAMES_UNSAFE_OR_UNEXPECTED")
+ safe_names=[];named=[]
+ for j,v in enumerate(h):
+  if v=="":
+   safe_names.append(f"__UNNAMED_INDEX_{j}__")
+  elif SAFE_HEADER.fullmatch(v):
+   safe_names.append(v)
+   named.append(v)
+  else:raise ValueError("R096B_AUTHOR_SUBMISSION_CSV_COLUMN_NAMES_UNSAFE_OR_UNEXPECTED")
+ if len(named)!=len(set(named)):
+  raise ValueError("R096B_AUTHOR_SUBMISSION_DUPLICATE_NAMED_CSV_COLUMNS")
  count=0
  for row in r:
   if len(row)!=len(h):raise ValueError("R096B_AUTHOR_SUBMISSION_CSV_WIDTH_INCONSISTENT")
   count+=1
  if count<1000:raise ValueError("R096B_AUTHOR_SUBMISSION_TOO_FEW_SOURCE_ROWS")
- return {"original_author_published_CSV_safe_headers_only":h,
+ return {"original_author_published_CSV_safe_headers_only":safe_names,
+  "unnamed_export_index_source_columns":len(h)-len(named),
+  "empty_csv_lines_before_header":blank_before,
   "original_author_source_actor_action_row_count_NOT_YET_VALIDATED":count,
   "original_author_source_csv_columns":len(h),
   "original_human_action_values_or_round_person_session_values_ever_examined":False,
