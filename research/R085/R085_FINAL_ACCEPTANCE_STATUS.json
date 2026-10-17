@@ -1,0 +1,56 @@
+{
+  "research_id": "R085",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "research_scope": "AUTHOR_ORIGINAL_FOUR_PERSON_MAT_SOURCE_ID_AND_SCHEMA_ELIGIBILITY",
+  "evidence_grade": "E0_PUBLISHED_AUTHOR_METADATA_E1_SYNTHETIC_WITH_REAL_SOURCE_MD5_AUTHENTICITY_ONLY",
+  "original_human_behavior_E2": "BLOCKED_ORIGINAL_MAT5_SCHEMA_UNREADABLE_SCI_PY_WHOSMAT",
+  "original_independent_E3": "NOT_ESTABLISHED",
+  "research_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "acceptance": {
+    "A01": "PASS_LIMITED_SOURCE_QUESTION",
+    "A02": "PASS_OFFICIAL_TWO_FILE_MD5_IDENTITY__OPEN_DECODABLE_HUMAN_SCHEMA",
+    "A03": "PASS_24_PLUS_10_SYNTHETIC_AND_TWO_REAL_SCHEMA_FAILURE_REPLAYS__OPEN_HUMAN_E2",
+    "A04": "PASS_PRIOR_ORIGINAL_PARSER_FAILURES_RETAINED_AND_REPLAYED",
+    "A05": "PASS_NO_HUMAN_OR_CAUSAL_EFFECT_INVENTED",
+    "A06": "PASS_PROTOCOL_RESULTS_REPORT_REPLAYED_NEGATIVE_SOURCE_AND_GIT"
+  },
+  "freeze_before_real_source": "protocols/R085_AUTHOR_ASYMMETRIC_FOUR_PERSON_PGG_SOURCE_AND_SCHEMAS_FREEZE_2026-10-17.md",
+  "first_freeze_commit": "d0598f2cb360175c5d5b8d80dacba70f4d1c8a13",
+  "second_freeze_before_new_source": "protocols/R085_PHASE_B_ORIGINAL_MAT_FORMAT_NONBEHAVIORAL_INSPECTION_FREEZE_2026-10-17.md",
+  "second_freeze_commit": "fe426cc63c0a2a5389877fc9e7a129e36c70219c",
+  "zenodo_official_DOI": "10.5281/zenodo.16918146",
+  "fixed_record": 16918146,
+  "two_official_original_source_files": [
+    {
+      "name": "LinearPGG_4P_ExperimentalData.mat",
+      "published_md5": "42153952f8e6614d09c2d903fd97af62",
+      "md5_matched_at_real_run": true,
+      "scipy_mat_5_parser": "FAILED"
+    },
+    {
+      "name": "ThresholdPGG_4P_ExperimentalData.mat",
+      "published_md5": "6036f73c2f758ab3aeed6dcf4f74585b",
+      "md5_matched_at_real_run": true,
+      "scipy_mat_5_parser": "FAILED"
+    }
+  ],
+  "CI": {
+    "initial_first_original_source_run": 39002422986,
+    "phaseB_second_pinned_original_source_run": 39002668337,
+    "independent_exact_byte_failure_archive_run": 39002819018,
+    "initial_synthetic_count": 24,
+    "new_phase_B_synthetic_count": 10,
+    "final_synthetic_per_second_and_third_run": 34
+  },
+  "archived_original_source_failure_receipt": "research/R085/R085_ORIGINAL_AUTHOR_TWO_MAT_VERIFIED_MD5_BUT_STRUCTURE_FAIL_SOURCE_RECEIPT.json",
+  "archived_receipt_bytes": 1123,
+  "receipt_SHA256": "282d3beb52b30ad938cf0e89247a2316a2c40d118a51712543a42c9fd6a3bae8",
+  "receipt_blob_sha": "c316956411f3523582944a9cd48e205186a084c7",
+  "number_of_original_subject_rows_scored": 0,
+  "number_of_original_behavioral_estimates": 0,
+  "no_raw_private_original_actor_records_committed": true,
+  "scientific_report": "research/R085/R085_ZENODO_ORIGINAL_FOUR_PERSON_PGG_AUTHOR_MD5_SCHEMA_SOURCE_GATE_REPORT_2026-10-17.md",
+  "next_task": "Fresh separate R number for two-player author XLSX source or new original human model, not unbounded repair of four-player binary",
+  "PESEN_v0_1": "FROZEN"
+}
