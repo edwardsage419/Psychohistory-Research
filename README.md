@@ -374,3 +374,12 @@ M0为其余11个同源反馈类别四人组在目标轮t的贡献均值，M1为�
 [首份官方源原作者真实模型90项synthetic和456组轮评分CI39027265753](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39027265753)SUCCESS、[第二次完全独立重新取回原始PLOS CSV源SHA/90synthetic/全部456组轮预测结果7,098字节 SHA相等，永久Git提交CI39027344527](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39027344527)SUCCESS，匿名JSON SHA256 `91338505fac057c0dbc24f63430f7453f77cf824a1ccb40a737c047fc0449306`。[真正原作者456组轮匿名结果](research/R099/R099_LIU_2024_PLOS_ORIGINAL_96_HUMAN_24_FOURPERSON_GROUP_456_LOOG_M012_E2_RESULTS.json)、[完整A01–A06科学报告](research/R099/R099_LIU_2024_ORIGINAL_PLOS_96_HUMAN_24_FOURPERSON_GROUP_456_TRUE_LOOG_E2_SCIENTIFIC_REPORT_2026-10-17.md)、[机读限定验收](research/R099/R099_FINAL_ACCEPTANCE_STATUS.json)、全部原始源身份/元数据及组预测代码、90合成测试和CI工作流正式同步main。
 
 **必要科学限制**：4人组上一轮平均值既包括本人的历史也包括所有组员历史，不能证明两者分别提供的新增预测信息；论文的8实验室session不能从此原CSV恢复；同期M0不是真正在线可知基线；只有24个原组而非456个独立实验；不等同R073冻结个人+对手历史完整模型，不是新真人前瞻E3或群体学习因果解释。R095的8真实实验室session全部M1负面、R096长100轮条件性正负、R097源E0、R098源E1均保持。**R099=CLOSED_BOUNDED；PESEN v0.1=FROZEN。R100优先单独观测本人和对手上一轮、原实验室真实session字段、另一独立人群的跨实验复验**。
+
+
+## R100：原作者双人阈值公共品新来源与个人/对手分离复验的第一手门控（2026-10-17，Phase A待审核）
+
+[R100研究入口](research/R100/README.md)和[跨实验正负证据矩阵](research/R100/R100_CROSS_EXPERIMENT_EVIDENCE_MATRIX_AND_SOURCE_CANDIDATES_2026-10-17.md)已归档。R099证明24个来源固定四人组中22个上一轮组总量改善预测，但不能分辨自己与他人历史；R095保留8/8完整原实验室场次自身历史负证，R096长期双人固定对手优势明显、换伴异质。
+
+新来源候选：[Wang/Hilbe/Zhang 2025 Zenodo v2](https://zenodo.org/records/16918146)原始双人阈值公共品 `ThresholdPGG_ExperimentalData.xlsx`，官方列出的MD5 `c40171abb172da8e16b0839db98a2cf2`。出版方报告每个真人跨两个先后固定配对20轮阶段，随后更换伙伴；**同一作者团队已在R098研究过另一文件，同一批真人跨阶段不能当两批独立实验室招募**。已先于行为读取冻结[来源Phase A](protocols/R100_PHASE_A_WANG_2025_TWO_PERSON_THRESHOLD_PGG_ORIGINAL_ZENODO_XLSX_PUBLISHER_SOURCE_ONLY_FREEZE_2026-10-17.md)，同步仅原始MD5/SHA/XLSX工作簿目录程序、18纯合成测试及[GitHub Actions](.github/workflows/r100-2025-threshold-PGG-Zenodo-XLSX-E1-source-only.yml)，禁止读取所有人类实际行为或评分。
+
+**截至这次目录更新，仅已核验GitHub归档，尚未取得本阶段真实发行字节的SHA或CI成功收据；R100=PHASE_A_SOURCE_VERIFICATION_PENDING，新真人预测=0，E2=NOT_ESTABLISHED，PESEN v0.1=FROZEN。** 待真实来源E1验证后再独立冻结真实配对身份与本人/对手上一轮独立增量预测，不把XLSX技术可读性等同于实证结果。
