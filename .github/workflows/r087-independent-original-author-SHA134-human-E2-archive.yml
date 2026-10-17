@@ -1,0 +1,63 @@
+name: R087 independent pinned original 134 human all10 source re-fetch byte-exact archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r087-independent-original-author-SHA134-human-E2-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-original-publisher-source-full134-human-byte-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reexecute 38 frozen source, 134 human session and switch-state synthetic contracts
+        run: |
+          PYTHONPATH=research/R087 python -m unittest -v             research/R087/test_r087_author_134_human_10_period_conditional_strategy_E2.py
+      - name: Independently reacquire author CSV and author processing script from original fixed commit, validate both exact Git blobs and require first real aggregate exact bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r087_again_source
+          PYTHONPATH=research/R087 python research/R087/r087_author_134_human_10_period_conditional_strategy_E2.py             --output /tmp/r087_again_source/anonymous.json
+          test "$(wc -c < /tmp/r087_again_source/anonymous.json | tr -d '[:space:]')" = 16647
+          printf '%s  %s\n'             e0663ea1d7829fb1c4ba51b134ca1276e9c16e6e0b3b3d321b343ee66c8e4bbe             /tmp/r087_again_source/anonymous.json | sha256sum --check --status
+          python - <<'PY'
+          import hashlib,json,pathlib
+          p=pathlib.Path('/tmp/r087_again_source/anonymous.json');b=p.read_bytes();r=json.loads(b)
+          assert r["status"]=="R087_ORIGINAL_AUTHOR_FULL_134_HUMAN_10_PERIOD_STRATEGY_E2_EXECUTED"
+          assert r["original_134_humans_with_10_periods_each"]==134
+          assert r["original_human_choice_period_rows"]==1340
+          assert r["original_6_sessions_count"]==6
+          a=r["original_human_aggregate"]["all134"]
+          assert a["initial_conditional_C_to_final_D"]==43
+          assert a["initial_unconditional_D_to_final_C"]==4
+          assert a["first_strategy_classes"]["C"]==87
+          assert a["last_strategy_classes"]["D"]==79
+          assert not r["original_person_decision_rows_exported"]
+          assert r["PESEN_v0.1"]=="FROZEN"
+          print("R087_SECOND_TRUE_AUTHOR_REAL_HUMAN_SOURCE_MACRO_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Permanently archive only first last strategy transitions and ten period anonymous time series after exact reexecution
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R087/R087_FIRST_PARTY_134_HUMAN_10_PERIOD_CONDITIONAL_STRATEGY_TRANSITIONS_E2_RESULTS.json
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r087_again_source/anonymous.json
+            exit 0
+          fi
+          cp /tmp/r087_again_source/anonymous.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R087): 134 original humans 10 periods E2 conditional cooperation transitions exact SHA archive"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r087_again_source
