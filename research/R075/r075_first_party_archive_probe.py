@@ -18,6 +18,7 @@ import zipfile
 
 LIMIT=30_000_000
 CANDIDATES=[
+  ("AUTHOR_RAND_PRIMARY_SOURCE_ZIP","https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip"),
   ("AEA_LEGACY_HTTPS","https://www.aeaweb.org/aer/data/april2012/20100629_data.zip"),
   ("AEA_LEGACY_FTP","https://ftp.aeaweb.org/aer/data/april2012/20100629_data.zip"),
   ("AEA_DATASET_PAGE","https://www.aeaweb.org/journals/dataset?id=10.1257%2Faer.102.2.720"),
