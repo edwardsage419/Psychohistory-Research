@@ -1,0 +1,64 @@
+name: R086 independent original 1104 human two-game five-arm Excel publisher SHA replay and archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r086-independent-author-XLSX-human-E2-exact-replay-and-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  author-original-source-independent-second-real-human-aggregate-and-byte-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install openpyxl==3.1.5
+      - name: Re-execute all 53 synthetic source and participant role block guards
+        run: |
+          PYTHONPATH=research/R086 python -m unittest -v             research/R086/test_r086_original_zenodo_two_player_xlsx_source_gate.py             research/R086/test_r086_original_two_person_full_human_contribution_E2.py
+      - name: Independent full original human Zenodo source re-fetch, verify both exact author MD5 and first source SHA and score same contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r086_independent_private_macro
+          PYTHONPATH=research/R086 python             research/R086/r086_original_two_person_full_human_contribution_E2.py             --output /tmp/r086_independent_private_macro/replay.json
+          test "$(wc -c < /tmp/r086_independent_private_macro/replay.json | tr -d '[:space:]')" = 85566
+          printf '%s  %s\n'             600104f42f2b896646abe543cc6d8ab10450f1d30ed823d9feeeaf6d20a1628c             /tmp/r086_independent_private_macro/replay.json | sha256sum --check --status
+          python - <<'PY'
+          import pathlib,hashlib,json
+          raw=pathlib.Path('/tmp/r086_independent_private_macro/replay.json').read_bytes()
+          r=json.loads(raw)
+          assert r["status"]=="R086_FULL_AUTHOR_ORIGINAL_TWO_GAME_FIVE_TREATMENT_HUMAN_BEHAVIOR_E2_EXECUTED"
+          assert r["original_total_distinct_human_focus_actors_across_two_games"]==1104
+          assert r["actual_original_behavioral_values_computed"]
+          assert not r["raw_human_behaviour_rows_exported"]
+          assert r["PESEN_v0.1"]=="FROZEN"
+          for game,v in r["author_original_two_games"].items():
+            assert v["author_publisher_MD5_strict_match"] and v["pinned_first_source_SHA256_match"]
+            assert len(v["original_focal_actor_treatment_session_scoring"])==5
+          assert r["author_original_two_games"]["two_person_linear"]["source_participants_reconstructed"]==550
+          assert r["author_original_two_games"]["two_person_threshold"]["source_participants_reconstructed"]==554
+          print("R086_INDEPENDENT_REAL_SOURCE_ANON_MACRO_SHA",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Permanently archive only the original two games × five treatment × two session anonymous mean-curves and role strata
+        shell: bash
+        run: |
+          set -euo pipefail
+          destination=research/R086/R086_ORIGINAL_1104_HUMAN_TWO_PERSON_LINEAR_THRESHOLD_FIVE_ARM_E2_RESULTS.json
+          if [ -f "$destination" ]; then
+            cmp "$destination" /tmp/r086_independent_private_macro/replay.json
+            exit 0
+          fi
+          cp /tmp/r086_independent_private_macro/replay.json "$destination"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$destination"
+          git commit -m "results(R086): independently Zenodo MD5+SHA verified 1104 real humans two games five arms E2 anonymous"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r086_independent_private_macro
