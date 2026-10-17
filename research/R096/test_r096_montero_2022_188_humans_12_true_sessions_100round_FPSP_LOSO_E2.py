@@ -40,8 +40,8 @@ class BinaryActionContract(unittest.TestCase):
  def test_numeric_float_0_1(self):
   self.assertEqual(original_binary("0.0"),0)
   self.assertEqual(original_binary("1.0"),1)
- def test_synthetic_C_unexpected_rejected(self):
-  with self.assertRaises(ValueError):original_binary("C")
+ def test_synthetic_unknown_action_unexpected_rejected(self):
+  with self.assertRaises(ValueError):original_binary("UNKNOWN")
  def test_synthetic_2_unsupported(self):
   with self.assertRaises(ValueError):original_binary("2")
  def test_synthetic_missing_denied(self):
