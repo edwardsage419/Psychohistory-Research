@@ -1,0 +1,80 @@
+name: R103 2016 original 45-experiment dyadic decisions Zenodo published MD5 source header only
+on:
+  push:
+    paths:
+      - '.github/workflows/r103-2016-drbrain-Zenodo-original-CSV-MD5-header-only.yml'
+      - 'research/R103/r103_phase_a_2016_drbrain_original_md5_header_only.py'
+      - 'research/R103/test_r103_phase_a_2016_drbrain_original_md5_header_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-before-any-original-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Sixteen synthetic source MD5 dyadic header and privacy checks
+        run: PYTHONPATH=research/R103 python -m unittest -v research/R103/test_r103_phase_a_2016_drbrain_original_md5_header_only.py
+  genuine-firstparty-original-dyadic-source:
+    needs: synthetic-before-any-original-action
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Official genuine source MD5 and CSV header only with no actions parsed
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r103_source
+          PYTHONPATH=research/R103 python research/R103/r103_phase_a_2016_drbrain_original_md5_header_only.py --output /tmp/r103_source/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r103_source/receipt.json').read_text())
+          assert x["status"]=="R103_TRUE_2016_ZENODO_DYADIC_CSV_MD5_AND_HEADER_AUTHENTICATED"
+          assert x["official_original_MD5"]=="712e3a4ae905af3e004b4a31a38b250d"
+          assert x["all_nine_publisher_declared_dyadic_header_fields_present"] is True
+          assert re.fullmatch(r"[a-f0-9]{64}",x["original_project_computed_SHA256"])
+          assert x["original_action_or_opponent_action_values_accessed"] is False
+          assert x["real_human_model_scores"]==0
+          print("R103_REAL_ORIGINAL_SOURCE_MD5_SHA_HEADER_PASS",x["source_physical_data_lines_without_parsing"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r103-2016-real-source-zenodo-header-only-or-negative
+          path: /tmp/r103_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Publish allowlisted original MD5 header receipt or safe real failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r103_source/receipt.json
+          dst=research/R103/R103_PHASE_A_LIVE_CI_ORIGINAL_DYADIC_CSV_MD5_HEADER_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r103_source/receipt.json').read_text())
+          assert x["research_id"]=="R103" and x["phase"]=="A"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["real_human_model_scores"]==0
+          assert x["status"] in ("R103_A_FIRSTPARTY_SOURCE_FAIL_CLOSED","R103_TRUE_2016_ZENODO_DYADIC_CSV_MD5_AND_HEADER_AUTHENTICATED")
+          allowed={"research_id","phase","status","safe_failure","source_DOI","official_original_filename","original_full_file_bytes","official_original_MD5","original_project_computed_SHA256","original_csv_header_count","all_nine_publisher_declared_dyadic_header_fields_present","original_additional_csv_columns_count","source_physical_data_lines_without_parsing","original_action_or_opponent_action_values_accessed","original_person_or_experiment_ID_values_accessed","real_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "original_project_computed_SHA256" in x:
+              assert re.fullmatch(r"[a-f0-9]{64}",x["original_project_computed_SHA256"])
+              assert x["original_person_or_experiment_ID_values_accessed"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R103 A): genuine original 2016 publisher MD5 SHA dyadic header E1 or source refusal"
+          git pull --rebase origin main
+          git push origin HEAD:main
