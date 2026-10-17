@@ -161,3 +161,9 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 **来源门失败并未被改写：** Rev-001要求同一 `game` 永不换配对，真实源的一个处理130次重新分组，另有80个个人局不从t1完整连续采样，导致[两个首次真实作业严格拒绝、未产生任何人类模型得分](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38995038132)。在首次真正真人评分之前，另行冻结[Rev-002 修订](protocols/R077_PRE_FIRST_TARGET_MODEL_SCORE_SOURCE_SEMANTICS_AMENDMENT_REV002_2026-10-17.md)，只用严格同局存在的t−1/t−2记录、保留所有重配对处理，不调参数；24项合成守卫和[首次成功真实评分](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38995309336)均通过，[再次从原作者重下载并逐字节SHA复算、永久Git归档](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38995401729)成功。[完整匿名结果9835字节](research/R077/R077_FOURTH_INDEPENDENT_HUMAN_SOURCE_ONLY_E3_RESULTS.json) SHA256 `8d8b8413e3e55cb5d856f34b873ee20c2ba470e04190bb8577f931d25ba509a4`，未存个人原始记录或逐场分数。
 
 **R077 `CLOSED_BOUNDED`；第四独立作者真实人类数值转移有界通过；R077 Rev-001 原始资格门FAIL永久保留；未证明人类认知记忆因果与长期制度演化；PESEN v0.1继续冻结。**
+
+## R078：个体预测相同与因果机制不同的数学反例、群体层差异（2026-10-17）
+
+[正式 R078 E1 数学研究包](research/R078/README.md)建立两个结构竞争模型，单个参与者 `(X,对手上一行动O,本人本轮选择Y)` 的完整观测联合分布和Bayes最优Brier/log loss **完全相同**：加入O后的人工 Brier `0.21`，不加入O `0.25`，两模型都改善 `0.04`；但强制改变O的因果作用分别是 `0.4` 与 `0`。在明确额外的“模型A的组员O彼此独立、模型B同组共享潜在U”假设下，10人群体合作率的方差分别为 `0.025` 和 `0.061`。这证明预测增益不识别社会影响因果，而组级共同冲击结构在某些设计下具有区分价值；**这些是纯数学假设数字，不是已被四项真人实验验证的群体机制**。
+
+[正式结构模型数学报告](research/R078/R078_EXACT_OBSERVATIONAL_CAUSAL_NONIDENTIFICATION_AND_CROSS_SCALE_REPORT_2026-10-17.md)、[独立结果执行前冻结的协议](protocols/R078_PREDICTION_CAUSALITY_CROSS_SCALE_EQUIVALENCE_FREEZE_2026-10-17.md)及[真实GitHub Actions 42项合成检查+精确两次运行归档](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38996053069)均可复核。[2,463字节纯E1 JSON](research/R078/R078_EXACT_SYNTHETIC_OBSERVATIONAL_EQUIVALENCE_E1_RESULTS.json) SHA256 `7d13d3f238552b19be689b9cf841acc04cb7b8a535fd8639bce2cf13f2edb680`，完全没有读取人类行为原始行。R078 `CLOSED_BOUNDED`、A01–A06 PASS、仅E1，不新增真人E2/E3，不构成制度/历史因果发现。PESEN v0.1保持冻结。
