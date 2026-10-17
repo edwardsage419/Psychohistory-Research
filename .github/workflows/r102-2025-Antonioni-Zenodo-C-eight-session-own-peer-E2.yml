@@ -1,0 +1,130 @@
+name: R102 C authentic eight original sessions 2520 own plus five peers frozen E2 independent replay
+on:
+  push:
+    paths:
+      - '.github/workflows/r102-2025-Antonioni-Zenodo-C-eight-session-own-peer-E2.yml'
+      - 'research/R102/r102_phase_c_2025_original_8sessions_2520_own_peers_M0123_LOSO.py'
+      - 'research/R102/test_r102_phase_c_2025_original_8sessions_2520_own_peers_M0123_LOSO.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-only-before-any-human-contribution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: 13 E1, 11 B2 and 13 C pure synthetic source and behavior tests
+        run: |
+          PYTHONPATH=research/R102 python -m unittest -v \
+            research/R102/test_r102_2025_original_climateclubs_zenodo_publisher_md5_header_only.py \
+            research/R102/test_r102_phase_b_original_climateclubs_person_session_round_group_roster_only.py \
+            research/R102/test_r102_phase_c_2025_original_8sessions_2520_own_peers_M0123_LOSO.py
+  genuine-publisher-source-twice-2520-LOSO-scores:
+    needs: synthetic-only-before-any-human-contribution
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: First real publisher MD5 SHA original 8-session 2520 target E2 score
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r102_C_original_e2
+          PYTHONPATH=research/R102 python research/R102/r102_phase_c_2025_original_8sessions_2520_own_peers_M0123_LOSO.py --output /tmp/r102_C_original_e2/first.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r102_C_original_e2/first.json').read_text())
+          assert x['status']=='R102_REAL_ORIGINAL_8SESSION_2520_HELDOUT_M0_M1_M2_M3_E2'
+          assert x['original_full_sha256']=='ebc8831011a1a3b4893a80ae158d5129ed0f35e57a8092eba36c6a7b0cbd4282'
+          assert x['actual_same_target_original_next_actor_rounds']==2520
+          assert x['verified_true_original_sessions']==8
+          assert x['verified_source_people']==180
+          assert len(x['anonymous_original_session_results'])==8
+          assert x['original_human_ID_or_action_rows_exported'] is False
+          assert x['not_R073_exact_dyadic_opponent_contract'] is True
+          assert x['PESEN_v0_1']=='FROZEN'
+          print('R102_E2_ACTUAL_ORIGINAL_SOURCE_TARGETS',x['all_recorded']['target_count'])
+          print('R102_E2_FIRST_ACTUAL_MSE_M0_M1_M2_M3',x['all_recorded']['MSE'])
+          print('R102_E2_FIRST_M3_VERSUS_M1',x['all_recorded']['gains']['M3_vs_M1'])
+          PY
+      - name: Independently re-fetch whole original and verify exact anonymized output SHA256
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R102 python research/R102/r102_phase_c_2025_original_8sessions_2520_own_peers_M0123_LOSO.py --output /tmp/r102_C_original_e2/second.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('/tmp/r102_C_original_e2')
+          a=(root/'first.json').read_bytes()
+          b=(root/'second.json').read_bytes()
+          assert a==b, 'R102_C_REAL_ORIGINAL_SECOND_FETCH_OUTPUT_BYTES_NOT_EQUAL'
+          first=json.loads(a)
+          assert first['status']=='R102_REAL_ORIGINAL_8SESSION_2520_HELDOUT_M0_M1_M2_M3_E2'
+          digest=hashlib.sha256(a).hexdigest()
+          receipt={
+            'research_id':'R102','phase':'C',
+            'status':'R102_C_REAL_2520_NEXT_RECORD_8SESSION_DOUBLE_REPLAY_EXACT_SHA',
+            'real_source_sha256':first['original_full_sha256'],
+            'score_output_bytes':len(a),
+            'score_output_sha256':digest,
+            'exact_independent_second_publisher_original_download_output_match':True,
+            'actual_original_human_target_count':first['actual_same_target_original_next_actor_rounds'],
+            'synthetic_test_gate_total':37,
+            'original_human_ID_or_action_rows_exported':False,
+            'PESEN_v0_1':'FROZEN',
+          }
+          (root/'double_replay_receipt.json').write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n')
+          print('R102_ORIGINAL_8SESSION_E2_DOUBLE_IDENTICAL_SCORE_SHA256',digest)
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r102-genuine-original-source-2520-eight-session-LOSO-own-peer-model-results
+          path: /tmp/r102_C_original_e2/*.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Permanently commit true original anonymous results or original fail-closed evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=/tmp/r102_C_original_e2
+          src=$root/first.json
+          dst=research/R102/R102_PHASE_C_ACTUAL_FIRSTPARTY_EIGHT_SESSION_E2_OR_SOURCE_FAILURE.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,hashlib
+          root=pathlib.Path('/tmp/r102_C_original_e2')
+          x=json.loads((root/'first.json').read_text())
+          assert x['research_id']=='R102' and x['phase']=='C' and x['PESEN_v0_1']=='FROZEN'
+          assert x['status'] in ('R102_C_ORIGINAL_ACTION_E2_FAIL_CLOSED','R102_REAL_ORIGINAL_8SESSION_2520_HELDOUT_M0_M1_M2_M3_E2')
+          if x['status']=='R102_REAL_ORIGINAL_8SESSION_2520_HELDOUT_M0_M1_M2_M3_E2':
+            allowed={'research_id','phase','status','original_full_sha256','actual_original_person_round_rows','verified_true_original_sessions','verified_source_people','source_group_size','source_target_round_range','actual_same_target_original_next_actor_rounds','models','loss','all_recorded','manual_target_only','early_t2_to_t5','later_t6_to_t15','original_automatic_target_count','session_effect_direction_counts','anonymous_original_session_results','original_treatment_session_direction_summaries','independent_holdout_unit','external_baseline_uses_other_publisher_session_same_round','original_human_ID_or_action_rows_exported','not_prospective_E3','not_R073_exact_dyadic_opponent_contract','PESEN_v0_1'}
+            assert set(x)==allowed
+            assert len(x['anonymous_original_session_results'])==8
+            assert x['actual_same_target_original_next_actor_rounds']==2520
+            assert x['original_human_ID_or_action_rows_exported'] is False
+          else:
+            assert set(x)=={'research_id','phase','status','safe_failure','actual_human_model_scores','PESEN_v0_1'}
+          if (root/'double_replay_receipt.json').exists():
+            r=json.loads((root/'double_replay_receipt.json').read_text())
+            assert r['status']=='R102_C_REAL_2520_NEXT_RECORD_8SESSION_DOUBLE_REPLAY_EXACT_SHA'
+            assert hashlib.sha256((root/'first.json').read_bytes()).hexdigest()==r['score_output_sha256']
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if [ -f "$root/double_replay_receipt.json" ]; then
+            cp "$root/double_replay_receipt.json" research/R102/R102_PHASE_C_DOUBLE_INDEPENDENT_FIRSTPARTY_E2_REPLAY_RECEIPT.json
+            git add research/R102/R102_PHASE_C_DOUBLE_INDEPENDENT_FIRSTPARTY_E2_REPLAY_RECEIPT.json
+          fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "results(R102 C): genuine 8-session own peer 2520 original E2 source plus independent exact SHA replay or honest bounded failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
