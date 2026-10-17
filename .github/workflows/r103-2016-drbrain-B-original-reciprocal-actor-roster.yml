@@ -1,0 +1,88 @@
+name: R103 B authentic 2016 dyadic 45-experiment actor opponent reciprocity source without actions
+on:
+  push:
+    paths:
+      - '.github/workflows/r103-2016-drbrain-B-original-reciprocal-actor-roster.yml'
+      - 'research/R103/r103_phase_b_2016_original_dyadic_actor_opponent_reciprocity_only.py'
+      - 'research/R103/test_r103_phase_b_2016_original_dyadic_actor_opponent_reciprocity_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-before-original-opponent-ids:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run 16 E1 and 11 reciprocal source synthetic privacy tests
+        run: |
+          PYTHONPATH=research/R103 python -m unittest -v \
+            research/R103/test_r103_phase_a_2016_drbrain_original_md5_header_only.py \
+            research/R103/test_r103_phase_b_2016_original_dyadic_actor_opponent_reciprocity_only.py
+  original-source-reciprocal-dyad-structural-only:
+    needs: synthetic-before-original-opponent-ids
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Genuine firstparty source 8477 rows actor counterpart round metadata no choices
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r103_B_roster
+          PYTHONPATH=research/R103 python research/R103/r103_phase_b_2016_original_dyadic_actor_opponent_reciprocity_only.py --output /tmp/r103_B_roster/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r103_B_roster/receipt.json').read_text())
+          assert x["status"]=="R103_B_ORIGINAL_DYADIC_SOURCE_RECIPROCITY_ELIGIBLE"
+          assert x["official_original_full_SHA256"]=="c63b99ba7554908e54393eb9f8267a98de1a3d9bdd123a77f60f2b2122236013"
+          assert x["original_actor_round_rows"]==8477
+          assert x["actor_rounds_with_exact_reciprocal_opponent"]>=8055
+          assert x["original_experiment_number_count"]>=30
+          assert x["actual_original_actions_or_opponent_actions_dereferenced"] is False
+          assert x["actual_human_model_scores"]==0
+          print("R103_REAL_SOURCE_DYAD_RECIPROCAL",x["actor_rounds_with_exact_reciprocal_opponent"],x["original_experiment_number_count"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r103-genuine-2016-original-reciprocal-identity-only-or-block
+          path: /tmp/r103_B_roster/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Preserve allowlisted original B identity and unmatched source pairs forever
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r103_B_roster/receipt.json
+          dst=research/R103/R103_PHASE_B_LIVE_CI_ORIGINAL_DYADIC_RECIPROCAL_ROSTER_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r103_B_roster/receipt.json').read_text())
+          assert x["research_id"]=="R103" and x["phase"]=="B"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["actual_human_model_scores"]==0
+          assert x["status"] in ("R103_B_SOURCE_ROSTER_FAIL_CLOSED","R103_B_ORIGINAL_DYADIC_SOURCE_RECIPROCITY_ELIGIBLE","R103_B_BOUNDED_ORIGINAL_DYADIC_RECIPROCITY_INELIGIBLE")
+          fields={"research_id","phase","status","safe_failure","official_original_full_SHA256","original_actor_round_rows","original_experiment_number_count","original_unique_global_actor_code_count","person_code_reuse_across_experiments_count","original_session_person_identity_count","actor_rounds_with_exact_reciprocal_opponent","unique_source_reciprocal_pair_rounds","source_actor_rounds_with_missing_opponent","source_actor_rounds_with_nonreciprocal_opponent","reciprocal_actor_round_fraction","source_experiments_with_reciprocal_pairs","original_experiment_size_histogram","original_experiment_rounds_histogram","source_distinct_game_code_counts","source_distinct_game_payoff_rule_count","source_original_experiment_anonymous_summaries","eligible_for_prescoring_after_B","actual_original_actions_or_opponent_actions_dereferenced","original_raw_person_opponent_experiment_IDs_exported","actual_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(fields)
+          if "source_original_experiment_anonymous_summaries" in x:
+            assert len(x["source_original_experiment_anonymous_summaries"])==x["original_experiment_number_count"]
+            detail={"anonymous_original_experiment_slot","distinct_original_actor_codes","distinct_original_round_numbers","reciprocal_actor_rounds","missing_opponent_source_row_count","nonreciprocal_opponent_source_row_count"}
+            for r in x["source_original_experiment_anonymous_summaries"]:
+                assert set(r)==detail
+                assert all(type(v)==int and v>=0 for v in r.values())
+            assert x["actual_original_actions_or_opponent_actions_dereferenced"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R103 B): real 2016 original reciprocal actor opponent source coverage and unmatched cases no actions"
+          git pull --rebase origin main
+          git push origin HEAD:main
