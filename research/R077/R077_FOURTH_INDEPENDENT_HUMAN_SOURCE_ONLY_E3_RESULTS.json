@@ -1,0 +1,298 @@
+{
+  "PESEN_v0.1": "FROZEN",
+  "causal_human_memory_effect": "NOT_IDENTIFIED",
+  "fourth_new_author_study_outcomes_not_previously_scored_with_our_seven_models": true,
+  "frozen_TFT_WSLS_noise": 0.05,
+  "frozen_alpha": 20.0,
+  "frozen_before_fourth_model_scoring_protocol": "protocols/R077_PRE_FIRST_TARGET_MODEL_SCORE_SOURCE_SEMANTICS_AMENDMENT_REV002_2026-10-17.md",
+  "frozen_r073_model_git_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a",
+  "human_records_or_session_scores_exported": false,
+  "not_a_new_preregistered_human_data_collection": true,
+  "observed_history": "within subject + game: own and counterpart already executed C/D at t-1,t-2",
+  "paper_historical_aggregate_effects_already_public": true,
+  "research_id": "R077",
+  "results": {
+    "all_raw_sessions_and_action_sequences_exported": false,
+    "models": {
+      "M0_TREATMENT_PREVALENCE": {
+        "all_original_sessions_equal_Brier": 0.2245797670284381,
+        "all_original_sessions_equal_log_loss": 0.6419039979535796,
+        "per_treatment_original_session_equal": {
+          "0": {
+            "Brier": 0.23987971869603517,
+            "log_loss": 0.6727835918655397,
+            "original_sessions": 7
+          },
+          "1": {
+            "Brier": 0.21119230931929067,
+            "log_loss": 0.6148843532806142,
+            "original_sessions": 8
+          }
+        }
+      },
+      "M1_OWN_LAST": {
+        "all_original_sessions_equal_Brier": 0.15113955349473138,
+        "all_original_sessions_equal_log_loss": 0.47551455553497274,
+        "per_treatment_original_session_equal": {
+          "0": {
+            "Brier": 0.1570640086449479,
+            "log_loss": 0.4922875667186724,
+            "original_sessions": 7
+          },
+          "1": {
+            "Brier": 0.14595565523829188,
+            "log_loss": 0.46083817074923555,
+            "original_sessions": 8
+          }
+        }
+      },
+      "M2_OPPONENT_LAST": {
+        "all_original_sessions_equal_Brier": 0.15581730229513174,
+        "all_original_sessions_equal_log_loss": 0.49132389664031445,
+        "per_treatment_original_session_equal": {
+          "0": {
+            "Brier": 0.14546973691587142,
+            "log_loss": 0.47051011443293284,
+            "original_sessions": 7
+          },
+          "1": {
+            "Brier": 0.1648714220019845,
+            "log_loss": 0.5095359560717735,
+            "original_sessions": 8
+          }
+        }
+      },
+      "M3_JOINT_LAST": {
+        "all_original_sessions_equal_Brier": 0.12092879302400986,
+        "all_original_sessions_equal_log_loss": 0.39264538227187457,
+        "per_treatment_original_session_equal": {
+          "0": {
+            "Brier": 0.12417106933902104,
+            "log_loss": 0.39874932038621613,
+            "original_sessions": 7
+          },
+          "1": {
+            "Brier": 0.11809180124837507,
+            "log_loss": 0.3873044364218259,
+            "original_sessions": 8
+          }
+        }
+      },
+      "M4_JOINT_TWO_LAGS": {
+        "all_original_sessions_equal_Brier": 0.11901009354754336,
+        "all_original_sessions_equal_log_loss": 0.38431139091622973,
+        "per_treatment_original_session_equal": {
+          "0": {
+            "Brier": 0.12053009627510144,
+            "log_loss": 0.387663904299009,
+            "original_sessions": 7
+          },
+          "1": {
+            "Brier": 0.11768009116092999,
+            "log_loss": 0.38137794170629785,
+            "original_sessions": 8
+          }
+        }
+      },
+      "M5_TFT_NOISY": {
+        "all_original_sessions_equal_Brier": 0.17725000000000002,
+        "all_original_sessions_equal_log_loss": 0.6230051961757007,
+        "per_treatment_original_session_equal": {
+          "0": {
+            "Brier": 0.14312499999999997,
+            "log_loss": 0.5113618848823064,
+            "original_sessions": 7
+          },
+          "1": {
+            "Brier": 0.20710937500000004,
+            "log_loss": 0.7206930935574206,
+            "original_sessions": 8
+          }
+        }
+      },
+      "M6_WSLS_NOISY": {
+        "all_original_sessions_equal_Brier": 0.5125000000000004,
+        "all_original_sessions_equal_log_loss": 1.7198087159151991,
+        "per_treatment_original_session_equal": {
+          "0": {
+            "Brier": 0.4597321428571431,
+            "log_loss": 1.547173454339072,
+            "original_sessions": 7
+          },
+          "1": {
+            "Brier": 0.5586718750000005,
+            "log_loss": 1.8708645697943105,
+            "original_sessions": 8
+          }
+        }
+      }
+    },
+    "original_session_count": 15,
+    "paired_differences": {
+      "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+        "Brier_delta_all_original_sessions_equal": -0.07344021353370675,
+        "per_treatment": {
+          "0": {
+            "Brier_delta": -0.08281571005108727,
+            "better": 6,
+            "equal": 0,
+            "sessions": 7,
+            "worse": 1
+          },
+          "1": {
+            "Brier_delta": -0.0652366540809988,
+            "better": 6,
+            "equal": 0,
+            "sessions": 8,
+            "worse": 2
+          }
+        },
+        "sessions": 15,
+        "sessions_better": 12,
+        "sessions_equal": 0,
+        "sessions_worse": 3
+      },
+      "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+        "Brier_delta_all_original_sessions_equal": -0.0687624647333064,
+        "per_treatment": {
+          "0": {
+            "Brier_delta": -0.09440998178016377,
+            "better": 6,
+            "equal": 0,
+            "sessions": 7,
+            "worse": 1
+          },
+          "1": {
+            "Brier_delta": -0.04632088731730617,
+            "better": 7,
+            "equal": 0,
+            "sessions": 8,
+            "worse": 1
+          }
+        },
+        "sessions": 15,
+        "sessions_better": 13,
+        "sessions_equal": 0,
+        "sessions_worse": 2
+      },
+      "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+        "Brier_delta_all_original_sessions_equal": -0.030210760470721517,
+        "per_treatment": {
+          "0": {
+            "Brier_delta": -0.03289293930592688,
+            "better": 7,
+            "equal": 0,
+            "sessions": 7,
+            "worse": 0
+          },
+          "1": {
+            "Brier_delta": -0.027863853989916823,
+            "better": 7,
+            "equal": 0,
+            "sessions": 8,
+            "worse": 1
+          }
+        },
+        "sessions": 15,
+        "sessions_better": 14,
+        "sessions_equal": 0,
+        "sessions_worse": 1
+      },
+      "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+        "Brier_delta_all_original_sessions_equal": -0.001918699476466503,
+        "per_treatment": {
+          "0": {
+            "Brier_delta": -0.0036409730639195862,
+            "better": 5,
+            "equal": 0,
+            "sessions": 7,
+            "worse": 2
+          },
+          "1": {
+            "Brier_delta": -0.00041171008744505556,
+            "better": 3,
+            "equal": 0,
+            "sessions": 8,
+            "worse": 5
+          }
+        },
+        "sessions": 15,
+        "sessions_better": 8,
+        "sessions_equal": 0,
+        "sessions_worse": 7
+      },
+      "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+        "Brier_delta_all_original_sessions_equal": -0.04732976702843812,
+        "per_treatment": {
+          "0": {
+            "Brier_delta": -0.0967547186960352,
+            "better": 6,
+            "equal": 0,
+            "sessions": 7,
+            "worse": 1
+          },
+          "1": {
+            "Brier_delta": -0.004082934319290663,
+            "better": 4,
+            "equal": 0,
+            "sessions": 8,
+            "worse": 4
+          }
+        },
+        "sessions": 15,
+        "sessions_better": 10,
+        "sessions_equal": 0,
+        "sessions_worse": 5
+      },
+      "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+        "Brier_delta_all_original_sessions_equal": 0.28792023297156216,
+        "per_treatment": {
+          "0": {
+            "Brier_delta": 0.21985242416110787,
+            "better": 1,
+            "equal": 0,
+            "sessions": 7,
+            "worse": 6
+          },
+          "1": {
+            "Brier_delta": 0.3474795656807097,
+            "better": 0,
+            "equal": 0,
+            "sessions": 8,
+            "worse": 8
+          }
+        },
+        "sessions": 15,
+        "sessions_better": 1,
+        "sessions_equal": 0,
+        "sessions_worse": 14
+      }
+    },
+    "scored_t3_human_events": 1040,
+    "target_labels_used_in_training": 0
+  },
+  "source_donor": "R073_ALL_12_POOLED",
+  "source_donor_fitted_on": "R073-original 12 complete sessions, 18424 original human events only",
+  "source_eligibility_protocol": "protocols/R077_FOURTH_INDEPENDENT_HUMAN_DATA_SOURCE_AND_BLIND_SCORE_GATE_2026-10-17.md",
+  "source_original_15_session_macro_scoring": "Each original Session mean then 15 sessions equal weight; no target model fit",
+  "source_universe": {
+    "distinct_session_person_keys": 260,
+    "genuine_two_person_game_rounds": 1810,
+    "individual_ids_or_actions_exported": false,
+    "original_source_person_decisions": 3620,
+    "person_supergames": 1440,
+    "t3_scorable_within_game_events": 1040,
+    "treatment_session_counts": {
+      "0": 7,
+      "1": 8
+    },
+    "true_independent_original_sessions": 15
+  },
+  "status": "R077_FOURTH_INDEPENDENT_AUTHOR_REAL_HUMAN_SOURCE_ONLY_NUMERICAL_E3_EXECUTED",
+  "target": "human real cooperation C=1 / defection D=0 in new author original part2 experiment",
+  "target_author_original_DOI": "10.1016/j.euroecorev.2025.105075",
+  "target_original_Stata_bytes": 1514315,
+  "target_original_Stata_md5": "4cce04ea68b7a0492c242b206efebe53",
+  "target_original_Stata_sha256": "1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985",
+  "target_original_archive_DOI": "10.5281/zenodo.15462528"
+}
