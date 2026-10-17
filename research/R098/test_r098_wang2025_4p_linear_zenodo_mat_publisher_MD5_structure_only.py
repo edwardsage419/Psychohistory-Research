@@ -45,4 +45,30 @@ class OriginalMatSourceOnly(unittest.TestCase):
  def test_MAT_names_distinct(self):
   a=mat_metadata(synt())["source_metadata_only_variables"]
   self.assertEqual(len({v["MAT_original_top_level_variable_name"] for v in a}),3)
+ def test_hdf5_mat_header_only_source(self):
+  import h5py
+  b=io.BytesIO()
+  with h5py.File(b,"w") as h:
+   h.create_dataset("FE",data=[[0,1],[1,0]])
+   h.create_group("AI")
+  m=mat_metadata(b.getvalue())
+  self.assertEqual(m["source_publisher_original_MAT_container_kind"],"MATLAB_7_3_OR_HDF5")
+  self.assertEqual({z["MAT_original_top_level_variable_name"] for z in m["source_metadata_only_variables"]},{"FE","AI"})
+ def test_hdf5_no_values_emitted(self):
+  import h5py
+  b=io.BytesIO()
+  with h5py.File(b,"w") as h:h.create_dataset("SYNTHETIC",data=[987654321,987654322])
+  self.assertNotIn("987654321",str(mat_metadata(b.getvalue())))
+ def test_hdf5_invalid_mat_structure_denied(self):
+  h=b"\x89HDF\r\n\x1a\n"+"NOT_ACTUALLY_AN_HDF5_FILE".encode()
+  with self.assertRaises(ValueError):mat_metadata(h)
+ def test_hdf5_matlab_refs_metadata_safe(self):
+  import h5py
+  b=io.BytesIO()
+  with h5py.File(b,"w") as h:h.create_group("#refs#")
+  m=mat_metadata(b.getvalue())
+  self.assertEqual(m["source_metadata_only_variables"][0]["MAT_original_top_level_variable_name"],"MATLAB_INTERNAL_REFS")
+ def test_source_container_static_enum(self):
+  from r098_wang2025_4p_linear_zenodo_mat_publisher_MD5_structure_only import mat_container_type
+  self.assertEqual(mat_container_type(synt()),"MATLAB_LEGACY_V5")
 if __name__=="__main__":unittest.main()
