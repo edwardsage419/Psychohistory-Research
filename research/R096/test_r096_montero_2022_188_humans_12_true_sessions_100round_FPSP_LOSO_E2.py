@@ -132,4 +132,25 @@ class ActualSixSessionBrier(unittest.TestCase):
   with self.assertRaises(ValueError):complete_original_session_LOSO(actor,24)
  def test_0_or_1_binary_is_not_human_cooperation_mapping(self):
   self.assertTrue(eval_gen()["source_action_1_not_assumed_to_mean_cooperation"])
+ def test_original_author_literal_C_maps_one(self):self.assertEqual(original_binary("C"),1)
+ def test_original_author_literal_D_maps_zero(self):self.assertEqual(original_binary("D"),0)
+ def test_original_author_lowercase_not_silently_accepted(self):
+  with self.assertRaises(ValueError):original_binary("c")
+ def test_source_exact_CD_code_only_when_frozen(self):
+  def labels(r,s,p,t):
+   r[5]="C" if r[5]=="1" else "D"
+   r[6]="C" if r[6]=="1" else "D"
+  cohort,q=read_original_actions(gen(change=labels),"fix.csv",24,2400,enforce_literal_C_D=True)
+  self.assertEqual(q["source_distinct_original_participants"],24)
+ def test_source_numeric0_1_requires_original_author_literality(self):
+  with self.assertRaises(ValueError):read_original_actions(gen(),"fix.csv",24,2400,enforce_literal_C_D=True)
+ def test_original_CD_recoding_same_Brier_as_synthetic_numeric(self):
+  def labels(r,s,p,t):
+   r[5]="C" if r[5]=="1" else "D"
+   r[6]="C" if r[6]=="1" else "D"
+  n,_=read_original_actions(gen(),"fix.csv",24,2400)
+  d,_=read_original_actions(gen(change=labels),"fix.csv",24,2400,enforce_literal_C_D=True)
+  x=complete_original_session_LOSO(n,24)["pooled_real_original_target_Brier_comparison"]
+  y=complete_original_session_LOSO(d,24)["pooled_real_original_target_Brier_comparison"]
+  self.assertAlmostEqual(x["M1_gain_M0_minus_M1"],y["M1_gain_M0_minus_M1"])
 if __name__=="__main__":unittest.main()
