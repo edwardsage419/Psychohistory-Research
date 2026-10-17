@@ -1,0 +1,70 @@
+name: R082 original64 nonresponse trajectories and graph isolation source audit E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r082-original64-human-missingness-graph-source-E2.yml'
+      - 'research/R082/r082_source_nonresponse_and_graph_isolation.py'
+      - 'research/R082/test_r082_source_nonresponse_and_graph_isolation.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-history-graph-and-privacy-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute at least 20 synthetic actor, source, 30-round observability and graph alignment guards
+        run: |
+          PYTHONPATH=research/R082 python -m unittest -v \
+            research/R082/test_r082_source_nonresponse_and_graph_isolation.py
+
+  complete-source-SHA-original64-human-nonresponse-and-graph-E2:
+    needs: synthetic-history-graph-and-privacy-contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 21
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read each of 64 original publisher SHA source networks and R080 observed outcome parity before computing strictly descriptive eight arm missingness patterns
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r082_private_ephemeral
+          PYTHONPATH=research/R080:research/R082 python \
+            research/R082/r082_source_nonresponse_and_graph_isolation.py \
+            --output /tmp/r082_private_ephemeral/original64_E2.json
+          python - <<'PY'
+          import pathlib,hashlib,json
+          raw=pathlib.Path("/tmp/r082_private_ephemeral/original64_E2.json").read_bytes()
+          r=json.loads(raw)
+          assert r["status"]=="R082_FULL64_SOURCE_VERIFIED_HUMAN_NONRESPONSE_GRAPH_ASSOCIATION_E2"
+          assert r["all64"]["original_networks"]==64
+          assert r["all64"]["human_slots"]==1024
+          assert r["all64"]["observed_human_CD"]==27656
+          assert r["all64"]["missing_human_slots"]==3064
+          assert len(r["all_eight_author_treatments"])==8
+          assert all(x["original_networks"]==8 for x in r["all_eight_author_treatments"].values())
+          assert r["source_fingerprint"]=="555e2127ac21f4532c33a2e0a08f2e081b5f970891bd772c9bac3155d1d53571"
+          assert r["single_logical_bot_vs_five_source_bot_nodes"]=="UNVERIFIED_IMPLEMENTATION_MAPPING"
+          assert r["PESEN_v0.1"]=="FROZEN"
+          assert "game_id" not in raw.decode() and '"H0"' not in raw.decode()
+          print("R082_64_ORIGINAL_NETWORK_ANON_RESULT_BYTES",len(raw))
+          print("R082_64_ORIGINAL_NETWORK_ANON_RESULT_SHA256",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Save only eight arm and all64 cumulative tables without individual trajectories
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r082-first-party-SHA64-anonymous-missingness-graph-audit
+          path: /tmp/r082_private_ephemeral/original64_E2.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Wipe ephemeral original source output
+        if: always()
+        run: rm -rf /tmp/r082_private_ephemeral
