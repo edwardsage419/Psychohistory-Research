@@ -1,0 +1,81 @@
+name: R104 2024 independent PLOS original repeated human public goods CSV firstparty double SHA header only
+on:
+  push:
+    paths:
+      - '.github/workflows/r104-2024-PLOS-original-public-goods-S1-data-A-double-SHA.yml'
+      - 'research/R104/r104_phase_a_2024_plos_original_supplementary_csv_double_sha_header_only.py'
+      - 'research/R104/test_r104_phase_a_2024_plos_original_supplementary_csv_double_sha_header_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-only-synthetic-before-publisher:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Twelve pure PLOS URL SHA CSV header and privacy checks
+        run: PYTHONPATH=research/R104 python -m unittest -v research/R104/test_r104_phase_a_2024_plos_original_supplementary_csv_double_sha_header_only.py
+  real-firstparty-plos-original-double-source:
+    needs: source-only-synthetic-before-publisher
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Two complete original publisher S1 data GETs double SHA only source header
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r104_plos
+          PYTHONPATH=research/R104 python research/R104/r104_phase_a_2024_plos_original_supplementary_csv_double_sha_header_only.py --output /tmp/r104_plos/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r104_plos/receipt.json').read_text())
+          assert x["status"]=="R104_ORIGINAL_PLOS_PUBLISHER_CSV_DOUBLE_SHA_HEADER_ONLY_E1"
+          assert x["original_publisher_supplementary_DOI"]=="10.1371/journal.pone.0299196.s002"
+          assert re.fullmatch(r"[0-9a-f]{64}",x["project_computed_wholefile_SHA256"])
+          assert x["two_independent_publisher_downloads_byte_for_byte_equal"] is True
+          assert x["any_original_human_behavior_or_identity_cells_accessed"] is False
+          assert x["actual_human_model_scores"]==0
+          print("R104_GENUINE_PLOS_ORIGINAL_SHA",x["project_computed_wholefile_SHA256"],x["original_source_bytes"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r104-2024-publisher-original-source-doubleSHA-header-only
+          path: /tmp/r104_plos/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive allowlisted authentic PLOS source header or real failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r104_plos/receipt.json
+          dst=research/R104/R104_PHASE_A_LIVE_CI_PLOS_2024_ORIGINAL_CSV_DOUBLE_SHA_HEADER_ONLY_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r104_plos/receipt.json').read_text())
+          assert x["research_id"]=="R104" and x["phase"]=="A"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["actual_human_model_scores"]==0
+          assert x["status"] in ("R104_PLOS_FIRSTPARTY_ORIGINAL_SOURCE_FAIL_CLOSED","R104_ORIGINAL_PLOS_PUBLISHER_CSV_DOUBLE_SHA_HEADER_ONLY_E1")
+          fields={"research_id","phase","status","safe_failure","original_publisher_supplementary_DOI","publisher_md5_published_and_verified","original_source_bytes","project_computed_wholefile_SHA256","original_csv_header_field_count","sanitized_public_original_header_names","original_physical_data_lines_unparsed","any_original_human_behavior_or_identity_cells_accessed","actual_human_model_scores","PESEN_v0_1","two_independent_publisher_downloads_byte_for_byte_equal"}
+          assert set(x).issubset(fields)
+          if "sanitized_public_original_header_names" in x:
+            assert all(re.fullmatch(r"[A-Za-z_][A-Za-z0-9_. -]{0,99}",name) for name in x["sanitized_public_original_header_names"])
+            assert x["publisher_md5_published_and_verified"] is False
+            assert x["any_original_human_behavior_or_identity_cells_accessed"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R104 A): 2024 independent publisher official PLOS original double SHA and header or safe source refusal"
+          git pull --rebase origin main
+          git push origin HEAD:main
