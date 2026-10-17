@@ -219,3 +219,12 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 [真实官方OSF元数据访问run 39001728447](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39001728447) 与[独立再次复验及永久归档run 39001798435](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39001798435) 均执行通过26项合成安全测试；每次对10个真实OSF官方元数据路径的访问均返回**HTTP 503（10/10）**。因此**0份原始真人文件、0条原始行为行、0次真人统计结果**。两轮安全HTTP状态收据确实逐字节一致，共4185字节、SHA256 `3ebccaca8f6b631afeaa927aeadc677d896b8aa358ab498c3309c2542028e1ac`，作为[永久反面证据归档](research/R084/R084_2023_SEVEN_LAB_ORIGINAL_OSF_OFFICIAL_SOURCE_GATE_FAIL_CLOSED_E0_RESULTS.json)。
 
 [科学报告](research/R084/R084_SEVEN_LAB_INSTITUTION_SELECTION_OSF_ORIGINAL_SOURCE_GATE_SCIENTIFIC_REPORT_2026-10-17.md)和[六门正式验收](research/R084/R084_FINAL_ACCEPTANCE_STATUS.json)完整区分行政性的 **R084=CLOSED_BOUNDED（仅来源资格失败审计）** 与科研的 **REAL_HUMAN_E2=OPEN / BLOCKED_OFFICIAL_OSF_SOURCE_503**；两个CI返回success只说明安全失败被准确记录，不证明OSF永久不可用、实验从未存在或本项目复算了已发表5/7结果。SI/SFI制度由个人自行选择，因果解释也未成立。后续优先换其他可获取的原作者真人制度/互动源，不让一个来源受阻无限延缓更多模型的独立研究；PESEN v0.1继续冻结。
+
+
+## R085：不对称四人公共品实验的Zenodo原作者身份通过、MAT内部格式失败有界结题（2026-10-17）
+
+[R085主报告入口](research/R085/README.md)、[原作者文件身份冻结协议](protocols/R085_AUTHOR_ASYMMETRIC_FOUR_PERSON_PGG_SOURCE_AND_SCHEMAS_FREEZE_2026-10-17.md)和[格式独立追加协议](protocols/R085_PHASE_B_ORIGINAL_MAT_FORMAT_NONBEHAVIORAL_INSPECTION_FREEZE_2026-10-17.md) 已按新真实证据出现前先行提交。固定原作者Wang/Hilbe/Zhang 2025 [Zenodo v2 16918146](https://zenodo.org/records/16918146)四人线性与阈值PGG两源文件，分别以原作者MD5原字节核验通过。**两文件MATLAB5结构经同一冻结SciPy读取器失败**，不据此伪造四人原始合作评价。
+
+[首次真实及24synthetic run 39002422986](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39002422986) → [第二次独立格式及34synthetic run 39002668337](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39002668337) → [第三次34synthetic与相同发布方二原始文件MD5独立重复、永久归档run 39002819018](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39002819018) 均顺利**执行来源失败收据**。第三次与第二次匿名来源失败收据字节严格相同： [1123字节安全结果](research/R085/R085_ORIGINAL_AUTHOR_TWO_MAT_VERIFIED_MD5_BUT_STRUCTURE_FAIL_SOURCE_RECEIPT.json) SHA256 `282d3beb52b30ad938cf0e89247a2316a2c40d118a51712543a42c9fd6a3bae8`。源码与全部24+10项纯合成有界检测均归档；没有原作者原始真人行入项目仓库。
+
+[正式负结果与边界报告](research/R085/R085_ZENODO_ORIGINAL_FOUR_PERSON_PGG_AUTHOR_MD5_SCHEMA_SOURCE_GATE_REPORT_2026-10-17.md)和[A01至A06验收](research/R085/R085_FINAL_ACCEPTANCE_STATUS.json) 明确 **R085=CLOSED_BOUNDED（仅来源/格式资格审计），真正四人真人贡献E2仍然BLOCKED / OPEN，PESEN v0.1=FROZEN**。下一独立R086可检查同一作者已公开MD5的两人Excel实验（线性+阈值）或转向另一真正可运行来源；不无限扩大失败数据格式子问题。
