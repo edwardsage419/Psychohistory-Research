@@ -167,3 +167,11 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 [正式 R078 E1 数学研究包](research/R078/README.md)建立两个结构竞争模型，单个参与者 `(X,对手上一行动O,本人本轮选择Y)` 的完整观测联合分布和Bayes最优Brier/log loss **完全相同**：加入O后的人工 Brier `0.21`，不加入O `0.25`，两模型都改善 `0.04`；但强制改变O的因果作用分别是 `0.4` 与 `0`。在明确额外的“模型A的组员O彼此独立、模型B同组共享潜在U”假设下，10人群体合作率的方差分别为 `0.025` 和 `0.061`。这证明预测增益不识别社会影响因果，而组级共同冲击结构在某些设计下具有区分价值；**这些是纯数学假设数字，不是已被四项真人实验验证的群体机制**。
 
 [正式结构模型数学报告](research/R078/R078_EXACT_OBSERVATIONAL_CAUSAL_NONIDENTIFICATION_AND_CROSS_SCALE_REPORT_2026-10-17.md)、[独立结果执行前冻结的协议](protocols/R078_PREDICTION_CAUSALITY_CROSS_SCALE_EQUIVALENCE_FREEZE_2026-10-17.md)及[真实GitHub Actions 42项合成检查+精确两次运行归档](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38996053069)均可复核。[2,463字节纯E1 JSON](research/R078/R078_EXACT_SYNTHETIC_OBSERVATIONAL_EQUIVALENCE_E1_RESULTS.json) SHA256 `7d13d3f238552b19be689b9cf841acc04cb7b8a535fd8639bce2cf13f2edb680`，完全没有读取人类行为原始行。R078 `CLOSED_BOUNDED`、A01–A06 PASS、仅E1，不新增真人E2/E3，不构成制度/历史因果发现。PESEN v0.1保持冻结。
+
+## R079：真实作者实验中的动态双人网络配对、群体合作方差及随机重配对数学参照（2026-10-17）
+
+[正式R079真人群体研究包](research/R079/README.md)在独立提交[冻结协议](protocols/R079_INDEPENDENT_HUMAN_DYAD_COVARIANCE_RANDOM_MATCHING_REFERENCE_FREEZE_2026-10-17.md)后，从 Andreozzi、Ploner、Saral (2020) [原作者GitHub实验资料](https://github.com/seyhunsaral/stabilitycondcoop)固定 Git blob `bd4c1550002621bee7dfb50e0d15d317764d1ea9` 的425701字节CSV中实际读取1340次人类正式行为、134个场次内参与者身份槽、6个独立原始实验session、10轮、670对真正双方动作镜像互证的动态配对；计算该研究特有的真实0/50/100已实现转移 `y=action/100`，不将本项当作R073二元重复PD同一模型的E3复验。
+
+按原始session等权，实际配对人类贡献的去均值交叉矩 `+0.033114`，数学上均匀随机重配对参考 `−0.006030`，**超额交叉矩 `+0.039144`（6/6真实场次都为正）**；双人组平均贡献的横截面方差实际 `0.080317`，重配对参考 `0.060745`。两处理各3场分层数值保留，前5轮平均贡献0.366692、后5轮0.290859，但所有结果均为**E2描述性组级二阶统计与固定个人选择的非因果匹配数学参考**，不能由此推断同伴因果效应、制度因果或百年历史动力学。
+
+34项纯合成检查、真实网络配对身份互证、独立[原作者SHA逐字节复算GitHub Actions](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38996643486)成功，首次合成测试误报失败仍保留；[3771字节匿名原始二阶矩结果](research/R079/R079_REAL_AUTHOR_HUMAN_DYAD_NETWORK_MOMENTS_E2_RESULTS.json) SHA256 `82efe8ad7bcc6c01ac10616676d84c5208ad9f6cc83670aa4c5b72f3860ff102` 已永久同步。[完整科研报告](research/R079/R079_REAL_HUMAN_NETWORK_DYAD_GROUP_MOMENT_REPORT_2026-10-17.md)与[结题验收](research/R079/R079_FINAL_ACCEPTANCE_STATUS.json)均可核验。R079 `CLOSED_BOUNDED`；未来64个真实网络的资料尚需原始文件、真人机器人角色和网络重连边界审计；PESEN v0.1继续冻结。
