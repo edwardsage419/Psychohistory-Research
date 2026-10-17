@@ -56,6 +56,28 @@ jobs:
           python research/R074/r074_dalbo_external_human_e3.py \
             --source /tmp/r074_firstparty_source/original.txt \
             --output /tmp/r074_public_metrics/r074_external_18_session_anonymous_e3.json
+      - name: Print privacy-safe result digest and anonymous primary comparison vote totals
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          p=Path("/tmp/r074_public_metrics/r074_external_18_session_anonymous_e3.json")
+          data=p.read_bytes()
+          j=json.loads(data)
+          print("R074_REPRODUCIBLE_PUBLIC_JSON_BYTES",len(data))
+          print("R074_REPRODUCIBLE_PUBLIC_JSON_SHA256",hashlib.sha256(data).hexdigest())
+          for key,val in j["results"]["paired_comparisons"].items():
+              if key.startswith(("M3_JOINT_LAST","M4_JOINT_TWO_LAGS")):
+                  print("R074_ANON_PRIMARY_VOTES",key,json.dumps({
+                      "all_delta":val["all_sessions_equal_weight_Brier_delta"],
+                      "better":val["all_sessions_better"],
+                      "equal":val["all_sessions_equal"],
+                      "worse":val["all_sessions_worse"],
+                      "per_treatment":val["per_treatment"],
+                  },sort_keys=True))
+          PY
       - name: Publish only anonymous treatment/session-equal model scores and paired counts
         if: always()
         uses: actions/upload-artifact@v4
