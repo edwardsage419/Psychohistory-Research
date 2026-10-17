@@ -6,7 +6,7 @@ M1 own last observed 0/1; M2 fixed half. NO session-level evaluation and
 never read secondary future feature 'decision_lead'. Only macro outputs.
 """
 from __future__ import annotations
-import argparse,collections,csv,io,json,math,pathlib,urllib.request,urllib.error
+import argparse,collections,csv,io,json,math,pathlib,traceback,urllib.request,urllib.error
 from collections import Counter,defaultdict
 from r094_zhu_nishi_2015_binary_network_original_sessions_secondary_source_gate import (
  URL,LIMIT,source_url_valid,full_publisher_source_identity,schema_without_any_values)
@@ -176,13 +176,17 @@ def main():
   msg=str(e)[:100] if isinstance(e,ValueError) and str(e).startswith("R094C_") else "R094C_ORIGINAL_2015_SECONDARY_BINARY_DATA_SOURCE_FAIL_CLOSED"
   errclass=type(e).__name__
   errclass=errclass if errclass in ("ValueError","KeyError","TypeError","OSError","IndexError","OverflowError","HTTPError","URLError") else "OTHER_ERROR_CLASS"
+  safe_frames=[{"line_number":f.lineno,"code_file":pathlib.Path(f.filename).name}
+               for f in traceback.extract_tb(e.__traceback__)
+               if pathlib.Path(f.filename).name.startswith("r094_")]
   r={"research_id":"R094","status":"R094C_PRESCORE_ORIGINAL_SECONDARY_SOURCE_BEHAVIOR_ELIGIBILITY_BLOCKED",
     "safe_failure":msg,"source_only_failure_class":errclass,
+    "source_only_safe_code_location":safe_frames[-5:],
     "actual_human_E2_predictions_scored":0,"PESEN_v0.1":"FROZEN"}
  a.output.parent.mkdir(parents=True,exist_ok=True)
  a.output.write_text(json.dumps(r,sort_keys=True,indent=2)+"\n",encoding="utf-8")
  brief=r.get("binary_individual_full_person_heldout_evaluation",{})
- print(json.dumps({"status":r["status"],"safe_failure":r.get("safe_failure"),"source_only_failure_class":r.get("source_only_failure_class"),
+ print(json.dumps({"status":r["status"],"safe_failure":r.get("safe_failure"),"source_only_failure_class":r.get("source_only_failure_class"),"source_only_safe_code_location":r.get("source_only_safe_code_location"),
   "original_source":r.get("source_metadata"),
   "scoring":brief.get("all_original_binary_target_records"),
   "by_visibility":brief.get("by_original_visible_or_invisible_condition"),
