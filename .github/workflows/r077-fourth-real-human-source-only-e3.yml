@@ -1,0 +1,94 @@
+name: R077 first unscored fourth true human IPD experiment source-only zero-shot R073 E3
+on:
+  push:
+    paths:
+      - '.github/workflows/r077-fourth-real-human-source-only-e3.yml'
+      - 'research/R077/r077_fourth_real_human_source_only_e3.py'
+      - 'research/R077/test_r077_fourth_real_human_source_only_e3.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-frozen-primitives-twenty-four-synthetic-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pandas only for synthetic import
+        run: python -m pip install --disable-pip-version-check --quiet pandas
+      - name: Run all 24 invented human cases, no true target data
+        working-directory: research/R077
+        run: python -m unittest -v test_r077_fourth_real_human_source_only_e3
+  fourth-author-authentic-cohort-first-model-E3-score:
+    needs: source-only-frozen-primitives-twenty-four-synthetic-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pandas to parse independently published original Stata
+        run: python -m pip install --disable-pip-version-check --quiet pandas
+      - name: Independently refetch SHA-pinned original R073 donor files and R077 Zenodo fourth author file
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r077_real_private/donor /tmp/r077_real_anonymous
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          import hashlib
+          def get(url):
+              req=Request(url,headers={"User-Agent":"Psychohistory-R077-first-fourth-experiment-real-human-E3/1.0"})
+              with urlopen(req,timeout=65) as body:return body.read(4_000_001)
+          source="4743f74d8a03a031b8f70aff64956f8ad5155182"
+          for name,size,git_sha in (
+              ("fix.csv",988279,"3bf78bf85f6642afee18d6f1965dca7272582f40"),
+              ("rand.csv",1112614,"f5a86cd033b739da45d3fc7c5019068f612146a2")
+          ):
+              raw=get(f"https://raw.githubusercontent.com/eladiomontero/PairwiseStrategies/{source}/{name}")
+              digest=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
+              if len(raw)!=size or digest!=git_sha:
+                  raise ValueError("R077_R073_SOURCE_GIT_BLOB_MISMATCH")
+              Path("/tmp/r077_real_private/donor",name).write_bytes(raw)
+          raw=get("https://zenodo.org/records/15462528/files/cleandata.dta?download=1")
+          if (len(raw)!=1514315
+              or hashlib.md5(raw).hexdigest()!="4cce04ea68b7a0492c242b206efebe53"
+              or hashlib.sha256(raw).hexdigest()!="1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985"):
+                  raise ValueError("R077_NEW_FOURTH_AUTHOR_ORIGINAL_DATA_SHA_MISMATCH")
+          Path("/tmp/r077_real_private/fourth_author.dta").write_bytes(raw)
+          print("R077 all three true exact original human source files have verified bytes")
+          PY
+      - name: Execute for first time frozen R073 exact probabilities on fourth original 15 session human actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R077/r077_fourth_real_human_source_only_e3.py \
+            --r073-source-dir /tmp/r077_real_private/donor \
+            --r077-source /tmp/r077_real_private/fourth_author.dta \
+            --output /tmp/r077_real_anonymous/first_fourth_author_human_E3_results.json
+          python - <<'PY'
+          import pathlib,hashlib,json
+          f=pathlib.Path("/tmp/r077_real_anonymous/first_fourth_author_human_E3_results.json")
+          b=f.read_bytes();a=json.loads(b)
+          assert a["results"]["target_labels_used_in_training"]==0
+          assert a["source_universe"]["true_independent_original_sessions"]==15
+          assert a["source_universe"]["t3_scorable_within_game_events"]==1040
+          print("R077_FOURTH_SOURCE_ONLY_SCORE_JSON_BYTES",len(b))
+          print("R077_FOURTH_SOURCE_ONLY_SCORE_JSON_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Upload only anonymous seven model score and paired session counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r077-first-genuine-fourth-author-human-source-only-frozen-score
+          path: /tmp/r077_real_anonymous/first_fourth_author_human_E3_results.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase all original human participant data from runner
+        if: always()
+        run: rm -rf /tmp/r077_real_private /tmp/r077_real_anonymous
