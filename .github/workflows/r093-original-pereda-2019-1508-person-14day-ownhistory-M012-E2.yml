@@ -1,0 +1,66 @@
+name: R093 real original Pereda 2019 100vs1000 14day personal history 1508-source-person E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r093-original-pereda-2019-1508-person-14day-ownhistory-M012-E2.yml'
+      - 'research/R093/r093_original_pereda_1508participant_14round_ownhistory_individual_holdout_E2.py'
+      - 'research/R093/test_r093_original_pereda_1508participant_14round_ownhistory_individual_holdout_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-82-original-source-and-individual-history-synthetic-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pure synthetic original MD5 actor/source missing flags and 14day person-heldout positive+negative M0 M1 M2
+        run: |
+          PYTHONPATH=research/R093 python -m unittest -v             research/R093/test_r093_2019_first_party_zenodo_14day_large_group_source_eligibility.py             research/R093/test_r093_phase_b_author_csv_nonbehavior_actor_missing_and_labels.py             research/R093/test_r093_original_pereda_1508participant_14round_ownhistory_individual_holdout_E2.py
+  original-real-2019-publisher-1508-person-source-14day-individual-heldout:
+    needs: all-82-original-source-and-individual-history-synthetic-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original official publisher MD5 and SHA source; read all 6 human experiment groups and score own history vs other-person same-round mean without actor IDs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r093_original_privacy
+          PYTHONPATH=research/R093 python             research/R093/r093_original_pereda_1508participant_14round_ownhistory_individual_holdout_E2.py             --output /tmp/r093_original_privacy/anonymous_person_M012_E2.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          p=pathlib.Path('/tmp/r093_original_privacy/anonymous_person_M012_E2.json')
+          b=p.read_bytes();z=json.loads(b)
+          assert z["status"]=="R093_TRUE_ORIGINAL_PEREDA_2019_1508_PERSON_14ROUND_INDIVIDUAL_HOLDOUT_E2_EXECUTED"
+          q=z["source_nonbehavioral_universe"]
+          r=z["real_author_original_individual_history_scores"]
+          assert q["original_csv_total_rows"]==21195
+          assert q["original_unassigned_nonactor_rows_not_scored"]==83
+          assert q["original_author_participant_codes_total"]==1508
+          assert r["all_original_source_person_codes"]==1508
+          assert len(r["by_original_publisher_experiment"])==6
+          assert r["total_original_source_qualified_next_round_individual_targets"]>0
+          assert r["all_source_person_IDs_excluded_from_same_round_M0_training"]
+          assert not z["source_original_auto_replacement_flag_present_in_CSV"]
+          assert not z["original_person_or_group_ID_or_actions_redistributed"]
+          assert z["PESEN_v0.1"]=="FROZEN"
+          print("R093_TRUE_2019_AUTHOR_INDIVIDUAL_HOLDOUT_E2_BYTES",len(b))
+          print("R093_TRUE_2019_AUTHOR_INDIVIDUAL_HOLDOUT_E2_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r093-2019-1508-person-sourcesix-14round-ownhistory-macro-only-E2
+          path: /tmp/r093_original_privacy/anonymous_person_M012_E2.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r093_original_privacy
