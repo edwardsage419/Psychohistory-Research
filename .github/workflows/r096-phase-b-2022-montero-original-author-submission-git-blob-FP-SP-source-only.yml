@@ -1,0 +1,57 @@
+name: R096 first-party original 2022 researcher git submission FP SP fixed 2 Git blobs source schema only
+on:
+  push:
+    paths:
+      - '.github/workflows/r096-phase-b-2022-montero-original-author-submission-git-blob-FP-SP-source-only.yml'
+      - 'research/R096/r096_phase_b_montero_author_git_tag_pinned_original_FP_SP_CSV_source.py'
+      - 'research/R096/test_r096_phase_b_montero_author_git_tag_pinned_original_FP_SP_CSV_source.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-author-fixed-git-blob-44-synthetic-and-privacy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          PYTHONPATH=research/R096 python -m unittest -v             research/R096/test_r096_montero_2022_original_dryad_100round_FP_SP_source_gate.py             research/R096/test_r096_phase_b_montero_author_git_tag_pinned_original_FP_SP_CSV_source.py
+  original-researcher-fixed-commit-fix-and-rand-git-blobs-real-metadata-only:
+    needs: original-author-fixed-git-blob-44-synthetic-and-privacy-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original researcher exact tagged commit Git blob source checksum, CSV column header and row count ONLY
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r096_researcher_source_only
+          PYTHONPATH=research/R096 python             research/R096/r096_phase_b_montero_author_git_tag_pinned_original_FP_SP_CSV_source.py             --output /tmp/r096_researcher_source_only/safe_author_git_metadata.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r096_researcher_source_only/safe_author_git_metadata.json').read_bytes()
+          x=json.loads(b)
+          assert x["both_original_author_source_CSVs_passed_full_fixed_Git_blob"]
+          assert x["original_Dryad_access_403_and_401_prior_failure_preserved"]
+          assert not x["full_session_loso_12_sessions_reconstructed"]
+          assert not x["original_repeated_game_real_human_behavior_model_scored"]
+          assert x["original_author_data_at_exact_commit"]["fix.csv"]["source_identity"]["original_git_blob_SHA1"]=="3bf78bf85f6642afee18d6f1965dca7272582f40"
+          assert x["original_author_data_at_exact_commit"]["rand.csv"]["source_identity"]["original_git_blob_SHA1"]=="f5a86cd033b739da45d3fc7c5019068f612146a2"
+          assert x["PESEN_v0.1"]=="FROZEN"
+          print("R096_TRUE_RESEARCHER_FIXED_GIT_SOURCE_METADATA_BYTES",len(b))
+          print("R096_TRUE_RESEARCHER_FIXED_GIT_SOURCE_METADATA_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r096-2022-original-researcher-fixed-git-commit-FP-SP-only-anon-schema
+          path: /tmp/r096_researcher_source_only/safe_author_git_metadata.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r096_researcher_source_only
