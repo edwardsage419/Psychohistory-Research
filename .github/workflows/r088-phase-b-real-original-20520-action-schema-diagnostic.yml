@@ -1,0 +1,58 @@
+name: R088 Phase B first-party 20520 real action-code source schema only after fail-closed
+on:
+  push:
+    paths:
+      - '.github/workflows/r088-phase-b-real-original-20520-action-schema-diagnostic.yml'
+      - 'research/R088/r088_phase_b_original_action_schema_only_audit.py'
+      - 'research/R088/test_r088_phase_b_original_action_schema_only_audit.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pure-synthetic-safety-and-original-frozen-group-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          PYTHONPATH=research/R088 python -m unittest -v             research/R088/test_r088_original_171_groups_multilevel_global_cooperation_E2.py             research/R088/test_r088_phase_b_original_action_schema_only_audit.py
+  original-author-20520-decision-label-types-only:
+    needs: pure-synthetic-safety-and-original-frozen-group-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original exact immutable source Git blob, show only safe action-label category frequencies never player traces or global rates
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r088_phaseB_safe
+          PYTHONPATH=research/R088 python             research/R088/r088_phase_b_original_action_schema_only_audit.py             --output /tmp/r088_phaseB_safe/action_labels.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r088_phaseB_safe/action_labels.json').read_bytes()
+          r=json.loads(b)
+          assert r["first_CI_R088_real_source_fail_retained"]
+          assert r["source_SHA_blob_verified"]
+          assert not r["person_level_records_exported"] and not r["source_group_IDs_exported"]
+          assert not r["actual_global_cooperation_rate_recomputed"]
+          assert not r["actual_group_thresholds_recomputed"]
+          assert r["schema_review"]["total_person_round_slots_seen"]==20520
+          print("R088_SAFE_LABEL_SCHEMA_RECEIPT_BYTES",len(b))
+          print("R088_SAFE_LABEL_SCHEMA_RECEIPT_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r088-original-fixed-author-SHA-only-action-schema-diagnostic
+          path: /tmp/r088_phaseB_safe/action_labels.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r088_phaseB_safe
