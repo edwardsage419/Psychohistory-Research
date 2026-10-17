@@ -1,0 +1,86 @@
+name: R100 B1c anonymous original workbook sheet naming metadata diagnosis
+on:
+  push:
+    paths:
+      - '.github/workflows/r100-2025-Zenodo-B1c-sheet-name-metadata-diagnosis.yml'
+      - 'research/R100/r100_phase_b1c_original_workbook_anonymized_sheet_name_diagnostic.py'
+      - 'research/R100/test_r100_phase_b1c_original_workbook_anonymized_sheet_name_diagnostic.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-scope-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: 12 pure synthetic name masks, candidate grammars, MD5 gate
+        run: PYTHONPATH=research/R100 python -m unittest -v research/R100/test_r100_phase_b1c_original_workbook_anonymized_sheet_name_diagnostic.py
+  original-author-actual-metadata-masked:
+    needs: synthetic-scope-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original official SHA exact source workbook and relationships only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r100_B1c_source
+          PYTHONPATH=research/R100 python research/R100/r100_phase_b1c_original_workbook_anonymized_sheet_name_diagnostic.py --output /tmp/r100_B1c_source/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path("/tmp/r100_B1c_source/receipt.json").read_text())
+          assert x["status"]=="B1C_ANONYMOUS_ORIGINAL_WORKBOOK_NAME_DIAGNOSTIC_ONLY"
+          assert x["original_SHA256"]=="825b1cd3226aeca7a19d76d9594f655114b12059648f9ca03b3291c3cf9ab200"
+          assert x["sheet_count"]==10 and len(x["prespecified_candidate_grammar_checks"])==8
+          assert x["raw_sheet_names_exported"] is False
+          assert x["A_B_or_C_Z_cell_values_read"] is False
+          assert x["original_human_model_scores"]==0
+          print("R100_B1c_ORIGINAL_METADATA_ANONYMOUS_ONLY",x["sheet_count"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r100-b1c-real-official-workbook-name-shape-or-fail
+          path: /tmp/r100_B1c_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive strictly anonymized B1c source metadata receipt or bounded failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r100_B1c_source/receipt.json
+          dst=research/R100/R100_PHASE_B1C_LIVE_CI_ANON_WORKBOOK_NAME_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r100_B1c_source/receipt.json').read_text())
+          assert x["research_id"]=="R100" and x["phase"]=="B1c"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["original_human_model_scores"]==0
+          assert x["status"] in ("B1C_BLOCKED_FAIL_CLOSED","B1C_ANONYMOUS_ORIGINAL_WORKBOOK_NAME_DIAGNOSTIC_ONLY")
+          allowed={"research_id","phase","status","safe_failure","original_bytes","publisher_MD5","original_SHA256","sheet_count","anonymous_name_structure","prespecified_candidate_grammar_checks","raw_sheet_names_exported","worksheets_read","A_B_or_C_Z_cell_values_read","original_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "anonymous_name_structure" in x:
+              assert len(x["anonymous_name_structure"])==10
+              for v in x["anonymous_name_structure"]:
+                  assert set(v)=={"sheet_slot","name_length","name_character_class_signature","has_word_type","ends_with_role_digit"}
+                  assert re.fullmatch(r"[Ul9s_hp]{1,64}",v["name_character_class_signature"])
+          if "prespecified_candidate_grammar_checks" in x:
+              assert len(x["prespecified_candidate_grammar_checks"])==8
+              for v in x["prespecified_candidate_grammar_checks"]:
+                  assert set(v)=={"candidate_rule_number","matched_sheets","all_ten_distinct_treatment_role_pairs"}
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R100 B1c): publisher workbook name masked metadata after strict B1b source fail"
+          git pull --rebase origin main
+          git push origin HEAD:main
