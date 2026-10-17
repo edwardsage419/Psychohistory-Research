@@ -44,7 +44,7 @@ class SyntaxOnly(unittest.TestCase):
     def test_source_invalid_MD5(self):
         self.assertRaises(a.SourceError,b.original_id_syntax_only,fixture())
     def test_uninspected_action_suffix_does_not_affect_ID_syntax(self):
-        raw=fixture()[:-3]
+        raw=fixture().replace(b"PRIVATE_D",b"PRIVATE_X")
         with patch.object(a,"OFFICIAL_MD5",hashlib.md5(raw).hexdigest()), \
              patch.object(b,"PINNED_SHA",hashlib.sha256(raw).hexdigest()), \
              patch.object(b,"PINNED_N",8):
