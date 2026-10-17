@@ -37,8 +37,14 @@ class SyntheticOnly(unittest.TestCase):
         b=fake_source(rows=2699)
         with patch.object(m,"PUBLISHER_MD5",hashlib.md5(b).hexdigest()):
             self.assertRaises(m.SourceError,m.source_identity_header_only,b)
-    def test_no_final_newline_fails(self):
+    def test_no_final_newline_passes_exact_2700_rows(self):
         b=fake_source()[:-1]
+        with patch.object(m,"PUBLISHER_MD5",hashlib.md5(b).hexdigest()):
+            r=m.source_identity_header_only(b)
+        self.assertEqual(r["physical_source_data_rows"],2700)
+        self.assertEqual(r["real_human_model_scores"],0)
+    def test_missing_last_row_still_rejected_without_newline(self):
+        b=fake_source(rows=2699)[:-1]
         with patch.object(m,"PUBLISHER_MD5",hashlib.md5(b).hexdigest()):
             self.assertRaises(m.SourceError,m.source_identity_header_only,b)
     def test_binary_zero_rejected(self):
