@@ -1,0 +1,81 @@
+name: R102 B2 original Climate Clubs source true subsession round roster only
+on:
+  push:
+    paths:
+      - '.github/workflows/r102-2025-Antonioni-Zenodo-B2-subsess-round-roster.yml'
+      - 'research/R102/r102_phase_b_original_climateclubs_person_session_round_group_roster_only.py'
+      - 'research/R102/test_r102_phase_b_original_climateclubs_person_session_round_group_roster_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  no-human-contribution-synthetic-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Eleven synthetic true round and technical round source checks
+        run: PYTHONPATH=research/R102 python -m unittest -v research/R102/test_r102_phase_b_original_climateclubs_person_session_round_group_roster_only.py
+  original-source-2700-session-roster-only:
+    needs: no-human-contribution-synthetic-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Genuine source MD5 SHA and nonbehavior actor group roster only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r102_B_roster
+          PYTHONPATH=research/R102 python research/R102/r102_phase_b_original_climateclubs_person_session_round_group_roster_only.py --output /tmp/r102_B_roster/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r102_B_roster/receipt.json').read_text())
+          assert x["status"]=="R102_FIRSTPARTY_REAL_SOURCE_SESSION_PERSON_GROUP_ROUND_ROSTER_AUDITED_ONLY"
+          assert x["official_whole_source_SHA256"]=="ebc8831011a1a3b4893a80ae158d5129ed0f35e57a8092eba36c6a7b0cbd4282"
+          assert x["original_actual_person_round_rows"]==2700
+          assert x["original_session_count"]>0 and x["all_source_groups_at_least_2_members"]
+          assert x["real_human_contribution_values_dereferenced"]==0
+          assert x["raw_person_group_session_IDs_exported"] is False
+          assert x["actual_human_model_scores"]==0
+          print("R102_FIRSTPARTY_SOURCE_SESSION_ROSTER_UNITS",x["original_session_count"],x["anonymous_source_person_per_session_count"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r102-firstparty-2025-source-nonbehavior-original-roster
+          path: /tmp/r102_B_roster/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Save only strict anonymous original source roster or failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r102_B_roster/receipt.json
+          dst=research/R102/R102_PHASE_B2_LIVE_CI_FIRSTPARTY_NONBEHAVIOR_ROSTER_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r102_B_roster/receipt.json').read_text())
+          assert x["research_id"]=="R102" and x["phase"]=="B"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["actual_human_model_scores"]==0
+          assert x["status"] in ("R102_B_ORIGINAL_ROSTER_SOURCE_FAIL_CLOSED","R102_FIRSTPARTY_REAL_SOURCE_SESSION_PERSON_GROUP_ROUND_ROSTER_AUDITED_ONLY")
+          allowed={"research_id","phase","status","safe_failure","official_whole_source_SHA256","original_actual_person_round_rows","original_session_count","anonymous_source_person_per_session_count","source_distinct_participant_code_count","original_participant_codes_reused_across_sessions_count","original_anonymous_treatment_session_counts","original_session_round_count_histogram","original_group_size_histogram","original_distinct_session_round_group_keys","technical_participant_round_disagrees_with_actual_subsession_round_rows","all_people_have_contiguous_1_to_last_round","number_people_with_contiguous_rounds","all_source_sessions_have_contiguous_rounds","all_source_groups_at_least_2_members","real_human_contribution_values_dereferenced","raw_person_group_session_IDs_exported","actual_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "original_group_size_histogram" in x:
+            assert all(str(k).isascii() and str(k).isdecimal() and type(v)==int and v>=0 for k,v in x["original_group_size_histogram"].items())
+            assert x["real_human_contribution_values_dereferenced"]==0
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R102 B2): original subsession round roster technical mismatch audited, no human contributions"
+          git pull --rebase origin main
+          git push origin HEAD:main
