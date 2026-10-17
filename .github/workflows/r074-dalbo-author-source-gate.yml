@@ -1,0 +1,65 @@
+name: R074 author first-party session and opponent source gate (no model scoring)
+on:
+  push:
+    paths:
+      - '.github/workflows/r074-dalbo-author-source-gate.yml'
+      - 'research/R074/r074_dalbo_author_source_gate.py'
+      - 'research/R074/test_r074_dalbo_author_source_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-source-and-session-integrity-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all synthetic human identities, pairings, and t3 source risk set
+        working-directory: research/R074
+        run: python -m unittest -v test_r074_dalbo_author_source_gate
+  real-author-source-first-party-gate:
+    needs: synthetic-source-and-session-integrity-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download first-party full experiment text to temporary runner, no Git human rows
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r074_author_data /tmp/r074_public
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import urlopen,Request
+          url="https://gfrechette.com/data/Dal_Bo_2011a_data.txt"
+          req=Request(url,headers={"User-Agent":"Psychohistory-Research-R074-Source-Evidence/1.0"})
+          with urlopen(req,timeout=60) as response:
+              blob=response.read(3_000_001)
+          if not (0<len(blob)<=3_000_000): raise ValueError("ORIGINAL_SOURCE_SIZE_NOT_IN_BOUNDS")
+          Path("/tmp/r074_author_data/original.txt").write_bytes(blob)
+          print("original_author_source_downloaded_to_private_runner_only")
+          PY
+      - name: Verify source dictionary, session group pairing and t3 risk without scoring models
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R074/r074_dalbo_author_source_gate.py \
+            --source /tmp/r074_author_data/original.txt \
+            --output /tmp/r074_public/r074_author_original_source_gate.json
+      - name: Publish ONLY aggregate source-eligibility results without original rows
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r074-dalbo-first-party-anonymous-source-eligibility
+          path: /tmp/r074_public/r074_author_original_source_gate.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase private actual human action records
+        if: always()
+        run: rm -rf /tmp/r074_author_data /tmp/r074_public
