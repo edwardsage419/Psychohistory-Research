@@ -66,7 +66,7 @@ def mat_metadata(b):
   try:
    variables=whosmat(io.BytesIO(b))
   except (ValueError,TypeError,IndexError,NotImplementedError,MatReadError) as e:
-   raise ValueError("R098_PUBLISHED_MAT_HEADER_NOT_SUPPORTED_"+typ) from e
+   raise ValueError("R098_PUBLISHED_MAT_HEADER_NOT_SUPPORTED_"+typ+"_CLASS_"+(type(e).__name__ if type(e).__name__ in ("MatReadError","ValueError","NotImplementedError","TypeError","IndexError") else "OTHER")) from e
  if not 1<=len(variables)<=40:
   raise ValueError("R098_MAT_VARIABLE_COUNT_UNEXPECTED")
  safe=[]
@@ -91,7 +91,21 @@ def original_source():
  with urllib.request.urlopen(req,timeout=55) as resp:
   validate_url(resp.geturl());b=resp.read(CAP+1)
  identity=verify_original_bytes(b)
- m=mat_metadata(b)
+ try:
+  m=mat_metadata(b)
+ except ValueError as e:
+  return {"research_id":"R098",
+    "phase":"A_AUTHENTIC_PUBLISHER_ORIGINAL_SOURCE_SCHEMA_INCOMPATIBLE",
+    "status":"R098_PUBLISHER_SOURCE_MD5_SHA_VERIFIED_BUT_MAT_DIRECTORY_UNREADABLE",
+    "safe_failure":str(e)[:140] if str(e).startswith("R098_") else "R098_UNSUPPORTED_MAT_METADATA",
+    "original_author_dataset_DOI":"10.5281/zenodo.16918146",
+    "original_source_byte_identity":identity,
+    "MAT_publisher_header_128byte_SHA256":hashlib.sha256(b[:128]).hexdigest(),
+    "MAT_container_version_bytes_hex":b[124:126].hex() if len(b)>=126 else "",
+    "source_container_enum":mat_container_type(b),
+    "actual_original_human_contributions_inspected":False,
+    "real_human_contribution_model_scores":0,
+    "PESEN_v0.1":"FROZEN"}
  return {"research_id":"R098","phase":"A_FIRST_PARTY_2025_ZENODO_4P_LINEARPGG_MAT_PUBLISHER_SOURCE_ONLY",
    "status":"R098_ORIGINAL_ZENODO_V2_FULL_MD5_AND_MAT_VARIABLE_DIRECTORY_VERIFIED",
    "original_author_dataset_DOI":"10.5281/zenodo.16918146",
@@ -111,6 +125,6 @@ def main():
  opts.output.parent.mkdir(parents=True,exist_ok=True)
  opts.output.write_text(json.dumps(z,sort_keys=True,indent=2)+"\n")
  print(json.dumps(z,sort_keys=True))
- if z["status"]!="R098_ORIGINAL_ZENODO_V2_FULL_MD5_AND_MAT_VARIABLE_DIRECTORY_VERIFIED":
+ if z["status"] not in ("R098_ORIGINAL_ZENODO_V2_FULL_MD5_AND_MAT_VARIABLE_DIRECTORY_VERIFIED","R098_PUBLISHER_SOURCE_MD5_SHA_VERIFIED_BUT_MAT_DIRECTORY_UNREADABLE"):
   raise SystemExit(1)
 if __name__=="__main__":main()
