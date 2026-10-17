@@ -1,0 +1,11 @@
+# R085 Phase B：MD5匹配但MAT文件格式读取失败的独立审计
+
+2026-10-17。第一次真实GitHub Actions run 39002422986 的24项合成通过，两份原作者Zenodo .mat从官方链接取得并各自通过出版方MD5比对。然而scipy.io.whosmat对两文件均抛出严格R085_SCIPY_MAT_SCHEMA_OR_VERSION_UNSUPPORTED，Phase A如实 FAIL_CLOSED_NO_REAL_HUMAN_SCORE，全部真实决策分数0。本次新协议在第二次源读取前冻结，保留首次失败不替换、不过度解释。
+
+Phase B研究仅是文件格式来源资格，绝不计算真人结果。安全复取相同两件固定原始Zenodo文件、相同完整官方MD5与整文件SHA256，检查前128字节MATLAB5或HDF5、ZIP或其他头魔数（不输出任何原始内容）、依其结果读取元数据：若HDF5，用h5py仅列顶层和其一层下数据成员名、类型、shape、dtype类别以及引用数组长度；若MATLAB 5则仍用scipy whosmat只列变量名、shape、kind。严禁输出任何矩阵行为元素、原始真人ID、group、player、round、survey值。仅导出全体两源文件size、SHA256、MD5匹配状态、类型及匿名键形状；单一来源失败则正式source合同 FAIL_CLOSED，不放宽MD5/源版本/文件名。
+
+只有两个文件模式完整确认后，才在下一独立Phase C新的冻结协议中声明如何映射真实4人 group/session/participant/round 原始字段，如何按照游戏FE/AI/MI、各20轮和两个重新分组session评价真实合作轨迹；不得直接推断两session是独立受试者，也不得把条件均值当随机制度因果。第一次MAT读取失败属于永久NEGATIVE_EVIDENCE。科学E2仍须在正确读取真实行动并独立重算后成立。若依然不能确定，R085有界结题真实行为E2 OPEN。PESEN v0.1 FROZEN。
+
+R085_PHASE_A_FIRST_MAT_PARSE_FAIL=RETAINED
+R085_PHASE_B=FORMAT_METADATA_ONLY_FROZEN_BEFORE_NEW_SOURCE_RUN
+R085_BEHAVIORAL_E2=NOT_ESTABLISHED
