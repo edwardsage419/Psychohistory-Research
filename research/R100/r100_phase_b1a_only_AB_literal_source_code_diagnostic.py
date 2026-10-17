@@ -28,7 +28,7 @@ CODE_RE = re.compile(r"[A-Za-z0-9 _.:;,/#=()+-]{1,64}")
 
 
 def sanitized_token(value):
-    if not isinstance(value, str) or not CODE_RE.fullmatch(value) or value != value.strip():
+    if not isinstance(value, str) or not CODE_RE.fullmatch(value) or value != value.strip() or "://" in value:
         raise SourceError("R100_B1A_AB_LITERAL_UNSUPPORTED")
     return value
 
