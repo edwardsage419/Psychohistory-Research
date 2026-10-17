@@ -2,8 +2,8 @@
   "research_id": "R100",
   "date": "2026-10-17",
   "stage": "A",
-  "administrative_status": "PHASE_A_SOURCE_VERIFICATION_PENDING",
-  "evidence_status": "E0_FIRST_PARTY_SOURCE_NOT_YET_AUDITED",
+  "administrative_status": "PHASE_A_E1_SOURCE_AUTHENTICATED_WORKBOOK_DIRECTORY_ONLY",
+  "evidence_status": "E1_REAL_AUTHOR_BYTES_PUBLISHER_MD5_SHA_AND_10SHEET_DIRECTORY_VERIFIED",
   "protocol_frozen_before_any_this_stage_human_behavior_source": true,
   "first_party_candidate": {
     "authors": "Wang; Hilbe; Zhang",
@@ -11,10 +11,10 @@
     "record": "https://zenodo.org/records/16918146",
     "filename": "ThresholdPGG_ExperimentalData.xlsx",
     "official_publisher_MD5": "c40171abb172da8e16b0839db98a2cf2",
-    "actual_download_complete_MD5_verified": false,
-    "actual_original_SHA256": null,
-    "actual_original_bytes": null,
-    "verified_sheet_count": null
+    "actual_download_complete_MD5_verified": true,
+    "actual_original_SHA256": "825b1cd3226aeca7a19d76d9594f655114b12059648f9ca03b3291c3cf9ab200",
+    "actual_original_bytes": 217396,
+    "verified_sheet_count": 10
   },
   "scientific_restrictions": [
     "same authors as R098 different source experiment",
@@ -33,10 +33,13 @@
   "verification": {
     "artifact_paths_fetched_from_main": true,
     "github_main_index_commit": "cacd662f57686a015973c0755b36d75046984a2c",
-    "github_workflow_run_success_confirmed": false,
-    "reason": "connector exposes no verifiable push workflow run in this turn; do not infer success from uploaded YAML",
-    "new_real_human_scores": 0
+    "github_workflow_run_success_confirmed": null,
+    "reason": "Actual GitHub Actions bot committed source receipt to main with official MD5 and source SHA; source receipt independently fetched and Git commit checked. Run-level conclusion was not separately fetched.",
+    "new_real_human_scores": 0,
+    "source_receipt_bot_commit": "2b26fa8d8459e2fdd6deae8914980a3bf23e9648",
+    "source_receipt_blob_sha": "89d1350d7dc2a3aa361ecedc8db9505627444172",
+    "source_receipt_path": "research/R100/R100_PHASE_A_LIVE_CI_SOURCE_RECEIPT.json"
   },
   "PESEN_v0_1": "FROZEN",
-  "next": "Verify official bytes in CI, archive verified E1 receipt. Freeze nonbehavior person/pair/two-stage roster before reading true contribution values."
+  "next": "Phase B metadata-only real participant/pair dedup, no human actions. Full R073 exact cross-experiment model score not established."
 }
