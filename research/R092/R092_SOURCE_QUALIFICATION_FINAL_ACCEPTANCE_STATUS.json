@@ -1,0 +1,72 @@
+{
+  "research_id": "R092",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_SOURCE_FORMAT_BLOCKED",
+  "evidence_grade": "E1_FIRST_PARTY_SOURCE_AUTHENTICITY_VERIFIED_ONLY_NOT_REAL_BEHAVIOR_E2",
+  "scientific_finding": "NO_EXTERNAL_REAL_HUMAN_HISTORY_PREDICTION_EVALUATED",
+  "source": {
+    "author_names": [
+      "Xiaomin Wang",
+      "Christian Hilbe",
+      "Boyu Zhang"
+    ],
+    "source_DOI": "10.5281/zenodo.16918146",
+    "fixed_Zenodo_record": 16918146,
+    "file": "ThresholdPGG_4P_ExperimentalData.mat",
+    "publisher_original_MD5": "6036f73c2f758ab3aeed6dcf4f74585b",
+    "source_actual_bytes": 17159,
+    "source_whole_file_SHA256": "76b02d921d02ad652cb952a71173e84b206135e4deb7bfc6235b9387738a6b05",
+    "original_reported_participants_FE_AI_MI": [
+      76,
+      100,
+      100
+    ],
+    "real_actor_rows_independently_read": 0,
+    "participant_session_reused_subjects_across_both_sessions": true
+  },
+  "original_source_format": {
+    "recognized_MATLAB5_header": true,
+    "recognized_MATLAB7_3_HDF5": false,
+    "scipy_io_whosmat_real_original_exception": "TypeError",
+    "original_dataset_fields_verified_from_source": false,
+    "source_binary_original_corrupt_proved": false,
+    "source_field_mapping_and_4person_roster_verified": false
+  },
+  "source_acceptance_A01_to_A06": {
+    "A01": "PASS_SOURCE_INDEPENDENT_AUTHOR_AND_PUBLISHED_DESIGN_ONLY",
+    "A02": "PASS_FIXED_ORIGINAL_SOURCE_PUBLISHER_MD5_AND_FULL_SHA256",
+    "A03": "BLOCKED_NO_USABLE_MATLAB_VARIABLE_SCHEMA_NO_ACTOR_ROUNDS_NO_REAL_PREDICTION",
+    "A04": "PASS_EACH_SYNTH_AND_REAL_SOURCE_FORMAT_NEGATIVE_RETAINED",
+    "A05": "PASS_STRICT_E1_SOURCE_VS_E2_E3_EMPIRICAL_DISTINCTION",
+    "A06": "PASS_SOURCE_PROTOCOLS_CODE_SYNTHETIC_CI_REPORT_GITHUB_INDEX"
+  },
+  "frozen_source_phases": [
+    {
+      "phase": "A",
+      "protocol": "protocols/R092_WANG_HILBE_ZHANG_2025_ASYMMETRIC_THRESHOLD_4P_ORIGINAL_ZENODO_MAT_SOURCE_FREEZE_2026-10-17.md",
+      "protocol_commit": "16aa141e3e28bf568dba06917542bd297f402f6c",
+      "source_format_failed_real_run": 39016888560,
+      "synthetic_tests": 19
+    },
+    {
+      "phase": "A2",
+      "protocol": "protocols/R092_PHASE_A2_ORIGINAL_PUBLISHER_MATLAB_V73_HDF5_METADATA_ONLY_FREEZE_2026-10-17.md",
+      "protocol_commit": "cf6eaca85a74ed70aaf291e5e1f8fae2520c3745",
+      "source_format_failed_real_run": 39017000035,
+      "synthetic_tests": 34
+    },
+    {
+      "phase": "A3",
+      "protocol": "protocols/R092_PHASE_A3_ORIGINAL_THRESHOLD_MAT_RESTRICTED_FILE_SIGNATURE_DIAGNOSTIC_FREEZE_2026-10-17.md",
+      "protocol_commit": "6b9a1741e4b80e3133b8fafcb617dc546a06e30a",
+      "real_source_only_successful_run": 39017117283,
+      "synthetic_tests": 47
+    }
+  ],
+  "formal_report": "research/R092/R092_ORIGINAL_THRESHOLD_4PERSON_PUBLISHED_SOURCE_FORMAT_ADMISSION_REPORT_2026-10-17.md",
+  "human_E2_model_prediction_run": false,
+  "human_E3_new_recruitment": false,
+  "R089_R090_R091_science_conclusions": "UNMODIFIED",
+  "PESEN_v0_1": "FROZEN",
+  "next": "Use separate frozen original-MATLAB5 specialized reader if justified; or independently source another original binary-global-pgg experiment, never invent forecast results"
+}
