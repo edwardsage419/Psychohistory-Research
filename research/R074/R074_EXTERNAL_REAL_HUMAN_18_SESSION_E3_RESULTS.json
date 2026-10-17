@@ -1,0 +1,603 @@
+{
+  "PESEN_v0.1": "FROZEN",
+  "R073_E2": "CLOSED_BOUNDED",
+  "causal_memory_effect": "NOT_IDENTIFIED",
+  "evidence_level": "INDEPENDENT_AUTHOR_EXPERIMENT_WITHIN_SOURCE_SESSION_LOSO",
+  "fixed_TFT_WSLS_noise": 0.05,
+  "fixed_alpha": 20.0,
+  "frozen_R073_code_git_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a",
+  "full_cross_session_physical_identity": "NOT_DOCUMENTED_BY_WITHIN_SESSION_IDS",
+  "individual_records_exported": false,
+  "individual_session_scores_exported": false,
+  "models": [
+    "M0_TREATMENT_PREVALENCE",
+    "M1_OWN_LAST",
+    "M2_OPPONENT_LAST",
+    "M3_JOINT_LAST",
+    "M4_JOINT_TWO_LAGS",
+    "M5_TFT_NOISY",
+    "M6_WSLS_NOISY"
+  ],
+  "original_author_source_bytes": 1140746,
+  "original_author_source_sha256": "357a12968546a8d9002c912c1f499e02e93d59113d2a0928de2dee48323a0ae6",
+  "original_author_url": "https://gfrechette.com/data/Dal_Bo_2011a_data.txt",
+  "original_human_actions": 37042,
+  "original_pair_match_rounds": 18521,
+  "original_publisher_DOI": "10.1257/aer.101.1.411",
+  "original_session_count": 18,
+  "original_session_person_slots": 266,
+  "protocol_frozen_before_scores": "protocols/R074_DALBO_AUTHOR_INDEPENDENT_HUMAN_E3_TRANSFER_FREEZE_2026-10-17.md",
+  "research_id": "R074",
+  "results": {
+    "model_macro": {
+      "M0_TREATMENT_PREVALENCE": {
+        "all_sessions_equal_weight_Brier": 0.18026245813139966,
+        "all_sessions_equal_weight_log_loss": 0.5488130410446733,
+        "per_treatment_session_equal": {
+          "R32_DELTA0p5": {
+            "Brier": 0.0939695778429438,
+            "log_loss": 0.37948902616620517,
+            "sessions": 3
+          },
+          "R32_DELTA0p75": {
+            "Brier": 0.1490771881005231,
+            "log_loss": 0.47745351964714083,
+            "sessions": 3
+          },
+          "R40_DELTA0p5": {
+            "Brier": 0.13968280767220606,
+            "log_loss": 0.4568722330699451,
+            "sessions": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier": 0.2767744847840185,
+            "log_loss": 0.7478200640740994,
+            "sessions": 3
+          },
+          "R48_DELTA0p5": {
+            "Brier": 0.20815465004542633,
+            "log_loss": 0.6080315340050374,
+            "sessions": 3
+          },
+          "R48_DELTA0p75": {
+            "Brier": 0.21391604034328013,
+            "log_loss": 0.6232118693056116,
+            "sessions": 3
+          }
+        }
+      },
+      "M1_OWN_LAST": {
+        "all_sessions_equal_weight_Brier": 0.09422480547913488,
+        "all_sessions_equal_weight_log_loss": 0.33427491179588775,
+        "per_treatment_session_equal": {
+          "R32_DELTA0p5": {
+            "Brier": 0.0723269593131171,
+            "log_loss": 0.26779574408190504,
+            "sessions": 3
+          },
+          "R32_DELTA0p75": {
+            "Brier": 0.09413877535090838,
+            "log_loss": 0.3253991055368956,
+            "sessions": 3
+          },
+          "R40_DELTA0p5": {
+            "Brier": 0.1035394435434438,
+            "log_loss": 0.3599519817131922,
+            "sessions": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier": 0.10677784405562878,
+            "log_loss": 0.37507696925445805,
+            "sessions": 3
+          },
+          "R48_DELTA0p5": {
+            "Brier": 0.08619213599562996,
+            "log_loss": 0.30874843645017774,
+            "sessions": 3
+          },
+          "R48_DELTA0p75": {
+            "Brier": 0.10237367461608123,
+            "log_loss": 0.36867723373869765,
+            "sessions": 3
+          }
+        }
+      },
+      "M2_OPPONENT_LAST": {
+        "all_sessions_equal_weight_Brier": 0.09453782064406442,
+        "all_sessions_equal_weight_log_loss": 0.3332408778822578,
+        "per_treatment_session_equal": {
+          "R32_DELTA0p5": {
+            "Brier": 0.08725779351779928,
+            "log_loss": 0.3036610019632094,
+            "sessions": 3
+          },
+          "R32_DELTA0p75": {
+            "Brier": 0.08015523994930909,
+            "log_loss": 0.28426071358204213,
+            "sessions": 3
+          },
+          "R40_DELTA0p5": {
+            "Brier": 0.10662588565831338,
+            "log_loss": 0.36313934243088725,
+            "sessions": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier": 0.0979827466622658,
+            "log_loss": 0.35294334313481307,
+            "sessions": 3
+          },
+          "R48_DELTA0p5": {
+            "Brier": 0.10528473442421478,
+            "log_loss": 0.36304136096260736,
+            "sessions": 3
+          },
+          "R48_DELTA0p75": {
+            "Brier": 0.08992052365248414,
+            "log_loss": 0.33239950521998773,
+            "sessions": 3
+          }
+        }
+      },
+      "M3_JOINT_LAST": {
+        "all_sessions_equal_weight_Brier": 0.07130947710579069,
+        "all_sessions_equal_weight_log_loss": 0.2508277780304094,
+        "per_treatment_session_equal": {
+          "R32_DELTA0p5": {
+            "Brier": 0.07648090945259851,
+            "log_loss": 0.25780209565005624,
+            "sessions": 3
+          },
+          "R32_DELTA0p75": {
+            "Brier": 0.06371852889550554,
+            "log_loss": 0.22954750431221904,
+            "sessions": 3
+          },
+          "R40_DELTA0p5": {
+            "Brier": 0.08749338208960665,
+            "log_loss": 0.29807876703378816,
+            "sessions": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier": 0.06892166393507564,
+            "log_loss": 0.24432714175803036,
+            "sessions": 3
+          },
+          "R48_DELTA0p5": {
+            "Brier": 0.06351624856014289,
+            "log_loss": 0.22998655638908058,
+            "sessions": 3
+          },
+          "R48_DELTA0p75": {
+            "Brier": 0.06772612970181492,
+            "log_loss": 0.24522460303928187,
+            "sessions": 3
+          }
+        }
+      },
+      "M4_JOINT_TWO_LAGS": {
+        "all_sessions_equal_weight_Brier": 0.0744799781462265,
+        "all_sessions_equal_weight_log_loss": 0.2609609695699111,
+        "per_treatment_session_equal": {
+          "R32_DELTA0p5": {
+            "Brier": 0.08138860136695364,
+            "log_loss": 0.29337215485045176,
+            "sessions": 3
+          },
+          "R32_DELTA0p75": {
+            "Brier": 0.06359828526303594,
+            "log_loss": 0.2287117373660883,
+            "sessions": 3
+          },
+          "R40_DELTA0p5": {
+            "Brier": 0.09540125543103085,
+            "log_loss": 0.3131717204483468,
+            "sessions": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier": 0.0704342866455777,
+            "log_loss": 0.24695779942598986,
+            "sessions": 3
+          },
+          "R48_DELTA0p5": {
+            "Brier": 0.06520347179511882,
+            "log_loss": 0.236059931569959,
+            "sessions": 3
+          },
+          "R48_DELTA0p75": {
+            "Brier": 0.07085396837564197,
+            "log_loss": 0.24749247375863037,
+            "sessions": 3
+          }
+        }
+      },
+      "M5_TFT_NOISY": {
+        "all_sessions_equal_weight_Brier": 0.09817113990253495,
+        "all_sessions_equal_weight_log_loss": 0.36429088717679114,
+        "per_treatment_session_equal": {
+          "R32_DELTA0p5": {
+            "Brier": 0.06867484526967295,
+            "log_loss": 0.267790843112365,
+            "sessions": 3
+          },
+          "R32_DELTA0p75": {
+            "Brier": 0.08846386800334023,
+            "log_loss": 0.33253258744195646,
+            "sessions": 3
+          },
+          "R40_DELTA0p5": {
+            "Brier": 0.13102025261323982,
+            "log_loss": 0.471760007061713,
+            "sessions": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier": 0.09796792243435859,
+            "log_loss": 0.36362604113840896,
+            "sessions": 3
+          },
+          "R48_DELTA0p5": {
+            "Brier": 0.11337719298245529,
+            "log_loss": 0.41403899318544823,
+            "sessions": 3
+          },
+          "R48_DELTA0p75": {
+            "Brier": 0.08952275811214282,
+            "log_loss": 0.3359968511208555,
+            "sessions": 3
+          }
+        }
+      },
+      "M6_WSLS_NOISY": {
+        "all_sessions_equal_weight_Brier": 0.561986830811632,
+        "all_sessions_equal_weight_log_loss": 1.8817097754676395,
+        "per_treatment_session_equal": {
+          "R32_DELTA0p5": {
+            "Brier": 0.7985720601237792,
+            "log_loss": 2.6557217433362386,
+            "sessions": 3
+          },
+          "R32_DELTA0p75": {
+            "Brier": 0.6964362830152401,
+            "log_loss": 2.3215744507963727,
+            "sessions": 3
+          },
+          "R40_DELTA0p5": {
+            "Brier": 0.7049859711912286,
+            "log_loss": 2.349545600935411,
+            "sessions": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier": 0.35685082303842647,
+            "log_loss": 1.2105870451142884,
+            "sessions": 3
+          },
+          "R48_DELTA0p5": {
+            "Brier": 0.5896345029239746,
+            "log_loss": 1.9721618681907465,
+            "sessions": 3
+          },
+          "R48_DELTA0p75": {
+            "Brier": 0.22544134457714318,
+            "log_loss": 0.7806679444327785,
+            "sessions": 3
+          }
+        }
+      }
+    },
+    "paired_comparisons": {
+      "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+        "all_sessions": 18,
+        "all_sessions_better": 18,
+        "all_sessions_equal": 0,
+        "all_sessions_equal_weight_Brier_delta": -0.08603765265226479,
+        "all_sessions_worse": 0,
+        "per_treatment": {
+          "R32_DELTA0p5": {
+            "Brier_delta": -0.021642618529826702,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R32_DELTA0p75": {
+            "Brier_delta": -0.054938412749614716,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R40_DELTA0p5": {
+            "Brier_delta": -0.036143364128762255,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R40_DELTA0p75": {
+            "Brier_delta": -0.16999664072838974,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R48_DELTA0p5": {
+            "Brier_delta": -0.12196251404979634,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R48_DELTA0p75": {
+            "Brier_delta": -0.11154236572719885,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          }
+        }
+      },
+      "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+        "all_sessions": 18,
+        "all_sessions_better": 17,
+        "all_sessions_equal": 0,
+        "all_sessions_equal_weight_Brier_delta": -0.08572463748733523,
+        "all_sessions_worse": 1,
+        "per_treatment": {
+          "R32_DELTA0p5": {
+            "Brier_delta": -0.0067117843251445096,
+            "sessions": 3,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 1
+          },
+          "R32_DELTA0p75": {
+            "Brier_delta": -0.068921948151214,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R40_DELTA0p5": {
+            "Brier_delta": -0.033056922013892674,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R40_DELTA0p75": {
+            "Brier_delta": -0.17879173812175275,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R48_DELTA0p5": {
+            "Brier_delta": -0.1028699156212115,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R48_DELTA0p75": {
+            "Brier_delta": -0.12399551669079596,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          }
+        }
+      },
+      "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+        "all_sessions": 18,
+        "all_sessions_better": 16,
+        "all_sessions_equal": 0,
+        "all_sessions_equal_weight_Brier_delta": -0.022915328373344184,
+        "all_sessions_worse": 2,
+        "per_treatment": {
+          "R32_DELTA0p5": {
+            "Brier_delta": 0.00415395013948142,
+            "sessions": 3,
+            "sessions_better": 1,
+            "sessions_equal": 0,
+            "sessions_worse": 2
+          },
+          "R32_DELTA0p75": {
+            "Brier_delta": -0.03042024645540284,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R40_DELTA0p5": {
+            "Brier_delta": -0.01604606145383716,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R40_DELTA0p75": {
+            "Brier_delta": -0.03785618012055313,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R48_DELTA0p5": {
+            "Brier_delta": -0.022675887435487065,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R48_DELTA0p75": {
+            "Brier_delta": -0.03464754491426631,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          }
+        }
+      },
+      "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+        "all_sessions": 18,
+        "all_sessions_better": 5,
+        "all_sessions_equal": 0,
+        "all_sessions_equal_weight_Brier_delta": 0.003170501040435799,
+        "all_sessions_worse": 13,
+        "per_treatment": {
+          "R32_DELTA0p5": {
+            "Brier_delta": 0.004907691914355128,
+            "sessions": 3,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 1
+          },
+          "R32_DELTA0p75": {
+            "Brier_delta": -0.00012024363246959657,
+            "sessions": 3,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 1
+          },
+          "R40_DELTA0p5": {
+            "Brier_delta": 0.00790787334142421,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier_delta": 0.0015126227105020696,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "R48_DELTA0p5": {
+            "Brier_delta": 0.001687223234975943,
+            "sessions": 3,
+            "sessions_better": 1,
+            "sessions_equal": 0,
+            "sessions_worse": 2
+          },
+          "R48_DELTA0p75": {
+            "Brier_delta": 0.0031278386738270414,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          }
+        }
+      },
+      "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+        "all_sessions": 18,
+        "all_sessions_better": 16,
+        "all_sessions_equal": 0,
+        "all_sessions_equal_weight_Brier_delta": -0.08209131822886469,
+        "all_sessions_worse": 2,
+        "per_treatment": {
+          "R32_DELTA0p5": {
+            "Brier_delta": -0.02529473257327085,
+            "sessions": 3,
+            "sessions_better": 1,
+            "sessions_equal": 0,
+            "sessions_worse": 2
+          },
+          "R32_DELTA0p75": {
+            "Brier_delta": -0.06061332009718285,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R40_DELTA0p5": {
+            "Brier_delta": -0.008662555058966228,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R40_DELTA0p75": {
+            "Brier_delta": -0.17880656234965994,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R48_DELTA0p5": {
+            "Brier_delta": -0.09477745706297101,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "R48_DELTA0p75": {
+            "Brier_delta": -0.12439328223113728,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          }
+        }
+      },
+      "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+        "all_sessions": 18,
+        "all_sessions_better": 2,
+        "all_sessions_equal": 0,
+        "all_sessions_equal_weight_Brier_delta": 0.3817243726802324,
+        "all_sessions_worse": 16,
+        "per_treatment": {
+          "R32_DELTA0p5": {
+            "Brier_delta": 0.7046024822808356,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "R32_DELTA0p75": {
+            "Brier_delta": 0.547359094914717,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "R40_DELTA0p5": {
+            "Brier_delta": 0.5653031635190225,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "R40_DELTA0p75": {
+            "Brier_delta": 0.08007633825440798,
+            "sessions": 3,
+            "sessions_better": 1,
+            "sessions_equal": 0,
+            "sessions_worse": 2
+          },
+          "R48_DELTA0p5": {
+            "Brier_delta": 0.3814798528785482,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "R48_DELTA0p75": {
+            "Brier_delta": 0.011525304233863073,
+            "sessions": 3,
+            "sessions_better": 1,
+            "sessions_equal": 0,
+            "sessions_worse": 2
+          }
+        }
+      }
+    },
+    "scored_decisions": 15338,
+    "sessions_equal_weighted": 18,
+    "treatment_count": 6
+  },
+  "risk_set": "all t>=3 with own and previous counterpart histories inside original match",
+  "scoring_rule": "teacher-forced one-step; each session then 18 sessions equal weight",
+  "status": "R074_INDEPENDENT_REAL_HUMAN_EXPERIMENT_SESSION_LOSO_EXECUTED",
+  "train_rule": "other two complete original sessions within same treatment",
+  "zero_shot_R073_parameter_transfer": "NOT_TESTED"
+}
