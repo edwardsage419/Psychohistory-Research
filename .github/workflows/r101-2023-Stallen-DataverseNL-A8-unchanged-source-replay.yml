@@ -1,0 +1,85 @@
+name: R101 A8 single unchanged A6 original ZIP double SHA replay after A7 HTTP200
+on:
+  push:
+    paths:
+      - '.github/workflows/r101-2023-Stallen-DataverseNL-A8-unchanged-source-replay.yml'
+      - 'research/R101/r101_phase_a6_dataverse_surf_signed_zip_sha_only.py'
+      - 'research/R101/test_r101_phase_a6_dataverse_surf_signed_zip_sha_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-signed-delivery-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run 13 SURF signed URL synthetic tests and 14 original ZIP format tests
+        run: |
+          PYTHONPATH=research/R101 python -m unittest -v \
+            research/R101/test_r101_phase_a6_dataverse_surf_signed_zip_sha_only.py \
+            research/R101/test_r101_phase_a4_real_original_zip_sha_directory_only.py
+  actual-source-signed-SURF-ZIP-2-full-SHA:
+    needs: synthetic-signed-delivery-security
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Verify double publisher raw ZIP 2247187 bytes source and anonymous directory only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r101_a6_private
+          PYTHONPATH=research/R101 python research/R101/r101_phase_a6_dataverse_surf_signed_zip_sha_only.py --output /tmp/r101_a6_private/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r101_a6_private/receipt.json').read_text())
+          assert x["status"]=="R101_A6_REAL_ORIGINAL_SURF_DELIVERED_RAW_ZIP_DOUBLE_SHA_DIRECTORY_ONLY"
+          assert x["official_datafile_ID"]==383977
+          assert x["official_reported_and_actual_byte_size"]==2247187
+          assert re.fullmatch(r"[a-f0-9]{64}",x["project_computed_full_original_SHA256"])
+          assert x["independent_source_download_SHA256_identical"] is True
+          assert x["any_archive_member_content_read"] is False
+          assert x["original_human_scores"]==0
+          print("R101_A6_ORIGINAL_SOURCE_SHA",x["project_computed_full_original_SHA256"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r101-a6-dataverse-surf-raw-original-zip-anon-receipt
+          path: /tmp/r101_a6_private/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Commit privacy allowlisted real original source E1 or negative result
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r101_a6_private/receipt.json
+          dst=research/R101/R101_PHASE_A8_LIVE_CI_UNMODIFIED_ORIGINAL_ZIP_DOUBLE_SHA_REPLAY_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r101_a6_private/receipt.json').read_text())
+          assert x["research_id"]=="R101" and x["phase"]=="A6"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["original_human_scores"]==0
+          assert x["status"] in ("R101_A6_DELIVERY_SOURCE_BLOCKED","R101_A6_REAL_ORIGINAL_SURF_DELIVERED_RAW_ZIP_DOUBLE_SHA_DIRECTORY_ONLY")
+          allowed={"research_id","phase","status","safe_failure","official_dataset_DOI","official_public_original_filename","official_datafile_ID","official_reported_and_actual_byte_size","project_computed_full_original_SHA256","independent_source_download_SHA256_identical","official_publisher_file_MD5_unavailable","zip_central_directory_members","anonymous_member_extension_counts","zip_declared_uncompressed_bytes","anonymous_top_level_segment_count","candidate_csv_tsv_txt_member_count","any_archive_member_content_read","original_human_actions_accessed","original_human_scores","PESEN_v0_1","publisher_delivery_verified","ephemeral_signed_URL_or_signature_saved"}
+          assert set(x).issubset(allowed)
+          if "anonymous_member_extension_counts" in x:
+            assert x["ephemeral_signed_URL_or_signature_saved"] is False
+            assert x["any_archive_member_content_read"] is False
+            assert all(re.fullmatch(r"[a-z]{1,8}",k) and type(v)==int for k,v in x["anonymous_member_extension_counts"].items())
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R101 A8): one strictly unchanged genuine ZIP double SHA replay after A7 success or bounded negative"
+          git pull --rebase origin main
+          git push origin HEAD:main
