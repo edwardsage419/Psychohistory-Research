@@ -1,0 +1,71 @@
+name: R075 permanently archive third independent real human experiment exact SHA E3 aggregate
+on:
+  push:
+    paths:
+      - '.github/workflows/r075-archive-original-third-human-e3.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  replay-original-coauthor-and-permanently-archive-only-macro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recheck all frozen-model synthetic guards and source dictionary invariants
+        working-directory: research/R075
+        run: |
+          python -m unittest -v test_r075_coauthor_original_session_structure
+          python -m unittest -v test_r075_coauthor_real_human_e3
+      - name: Redownload coauthor original source, fail closed if bytes drift
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r075_private
+          python - <<'PY'
+          import urllib.request,hashlib
+          from pathlib import Path
+          url="https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip"
+          with urllib.request.urlopen(urllib.request.Request(url,headers={
+            "User-Agent":"Psychohistory-R075-original-author-third-E3-independent-archive/1.0"}),timeout=60) as r:
+              data=r.read(4_000_001)
+          if len(data)!=1129409 or hashlib.sha256(data).hexdigest()!="328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef":
+            raise ValueError("AUTHOR_ORIGINAL_ZIP_SOURCE_DRIFT")
+          Path("/tmp/r075_private/coauthor.zip").write_bytes(data)
+          PY
+      - name: Third original experiment full human 18-session E3 replay and byte identity check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R075/r075_coauthor_real_human_e3.py \
+            --zip /tmp/r075_private/coauthor.zip \
+            --output /tmp/r075_anonymous_real_E3.json
+          test "$(wc -c < /tmp/r075_anonymous_real_E3.json | tr -d '[:space:]')" = 19692
+          printf '%s  %s\n' \
+            eb74129bfd9af62678e9cacf910477854be694317d7b5d875e5ca33dc0f76174 \
+            /tmp/r075_anonymous_real_E3.json | sha256sum --check --status
+          echo 'R075 original third party study complete human independent SHA replay PASS'
+      - name: Write only 19692-byte verified anonymous macro result permanently to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R075/R075_REAL_THIRD_HUMAN_18_SESSION_E3_RESULTS.json
+          if [ -f "$dest" ]; then
+            cmp -s "$dest" /tmp/r075_anonymous_real_E3.json
+            echo 'Original macro already committed, byte identical'
+            exit 0
+          fi
+          cp /tmp/r075_anonymous_real_E3.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R075): archive SHA-stable real third human experiment 18-session E3 scores"
+          git push origin HEAD:main
+      - name: Delete all raw participant source and transient aggregate files
+        if: always()
+        run: rm -rf /tmp/r075_private /tmp/r075_anonymous_real_E3.json
