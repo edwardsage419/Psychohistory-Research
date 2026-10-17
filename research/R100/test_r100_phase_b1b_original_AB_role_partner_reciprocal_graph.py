@@ -16,6 +16,13 @@ def five():
     return sum((cohort("T"+str(i)) for i in range(5)),[])
 
 class SyntheticB1b(unittest.TestCase):
+    def test_actual_publisher_type1_type2_name_grammar(self):
+        self.assertIsNotNone(m.ROLENAME.fullmatch("Full_equality_Type1"))
+        self.assertIsNotNone(m.ROLENAME.fullmatch("Full_equality_Type2"))
+
+    def test_initial_wrong_spaced_type_rejected(self):
+        self.assertIsNone(m.ROLENAME.fullmatch("FE_Type 1"))
+
     def test_five_cohorts_perfect_reciprocity(self):
         r=m.assess_blocks(five(),expected_sizes=[4]*5)
         self.assertEqual(r["status"],"B1B_STRICT_SOURCE_PAIR_RECIPROCITY_PASS")
