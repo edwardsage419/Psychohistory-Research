@@ -1,0 +1,71 @@
+name: R094 binary original 2015 Nishi human 1462 participants 12110 person lag score replay and safe archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r094-independent-secondary-2015-nishi-1462-human-binary-12110-person-SHA-E2-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  second-frozen-2026-curated-source-and-80synthetic-12110-binary-human-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently repeat all 80 source SHA, binary 0-1 model and negative/positive synthetic cases before real
+        run: |
+          PYTHONPATH=research/R094 python -m unittest -v             research/R094/test_r094_zhu_nishi_2015_binary_network_original_sessions_secondary_source_gate.py             research/R094/test_r094_phase_b_nishi_2015_2026_binary_network_person_round_visibility_only.py             research/R094/test_r094_zhu_nishi_2015_1462_binary_network_participant_holdout_E2.py
+      - name: Original publication re-download full MD5 SHA and independently recalc 12110 actual recorded human binary next-round choices
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r094_real_secondary_private
+          PYTHONPATH=research/R094 python             research/R094/r094_zhu_nishi_2015_1462_binary_network_participant_holdout_E2.py             --output /tmp/r094_real_secondary_private/anon_source_human_binary_E2.json
+          test "$(wc -c < /tmp/r094_real_secondary_private/anon_source_human_binary_E2.json | tr -d '[:space:]')" = 3685
+          printf '%s  %s\n'             2b68edc1efc87cf63df4eb915c09e19ac5fc5696bcbdd54874601393718045f0             /tmp/r094_real_secondary_private/anon_source_human_binary_E2.json | sha256sum --check --status
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r094_real_secondary_private/anon_source_human_binary_E2.json').read_bytes()
+          v=json.loads(b)
+          assert v["status"]=="R094_SECONDARY_CURATED_ORIGINAL_2015_HUMAN_BINARY_NETWORK_1462_PERSON_E2_EXECUTED"
+          assert v["source_secondary_MD5"]=="85db2536b5be1cd50266900e61590d5a"
+          assert v["source_secondary_fullfile_SHA256"]=="b37fa71434dd46249a0e7f43f9b9e798b1d3cafcffea3c80bc6997b99b6dd0a5"
+          s=v["source_metadata"];q=v["binary_individual_full_person_heldout_evaluation"]
+          assert s["source_original_secondary_rows"]==14620
+          assert s["source_unique_original_node_IDs"]==1462
+          assert s["source_observed_original_binary_decisions"]==13560
+          assert s["source_missing_binary_decision_codes"]==1060
+          assert q["next_round_current_and_previous_binary_source_action_targets"]==12110
+          assert q["true_independent_original_session_count_reconstructed"]==0
+          assert q["by_original_visible_or_invisible_condition"]["0"]["paired_gain_M0_minus_M1"]>0
+          assert q["by_original_visible_or_invisible_condition"]["1"]["paired_gain_M0_minus_M1"]<0
+          assert q["by_original_visible_or_invisible_condition"]["0"]["paired_gain_M0_minus_M2"]>0
+          assert q["by_original_visible_or_invisible_condition"]["1"]["paired_gain_M0_minus_M2"]>0
+          assert q["source_decision_lead_future_information_excluded"]
+          assert not q["participant_IDs_source_tenround_binary_traces_or_session_IDs_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R094_SECONDARY_ORIGINAL_2015_BINARY_INDEPENDENT_REPLAY_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Permanently archive anonymous dual visibility negative and positive history information, no original actor choices
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R094/R094_ZHU_NISHI_2015_BINARY_NETWORK_1462_ACTORS_12110_INDIVIDUAL_HOLDOUT_E2_RESULTS.json
+          mkdir -p research/R094
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r094_real_secondary_private/anon_source_human_binary_E2.json
+            exit 0
+          fi
+          cp /tmp/r094_real_secondary_private/anon_source_human_binary_E2.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R094): 2015 real binary Nishi 1462 actors 12110 personal next-round events, opposite M1 visibility effects E2"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r094_real_secondary_private
