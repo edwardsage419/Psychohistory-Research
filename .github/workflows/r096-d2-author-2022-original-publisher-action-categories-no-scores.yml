@@ -1,0 +1,56 @@
+name: R096 2022 original first party author 100round true session safe action code classes no score
+on:
+  push:
+    paths:
+      - '.github/workflows/r096-d2-author-2022-original-publisher-action-categories-no-scores.yml'
+      - 'research/R096/r096_phase_d2_original_author_action_codebook_classes_no_scores.py'
+      - 'research/R096/test_r096_phase_d2_original_author_action_codebook_classes_no_scores.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frozen-authenticated-source-categorical-codebook-11-synthetics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          PYTHONPATH=research/R096 python -m unittest -v             research/R096/test_r096_phase_d2_original_author_action_codebook_classes_no_scores.py
+  original-2022-author-git-blob-action-classes-no-original-session-scores:
+    needs: frozen-authenticated-source-categorical-codebook-11-synthetics
+    runs-on: ubuntu-latest
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original author fixed Git blobs verified before source label frequency only, no person or predicted actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r096_d2_codebook_private
+          PYTHONPATH=research/R096 python             research/R096/r096_phase_d2_original_author_action_codebook_classes_no_scores.py             --output /tmp/r096_d2_codebook_private/source_labels_safe_only.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r096_d2_codebook_private/source_labels_safe_only.json').read_bytes()
+          z=json.loads(b)
+          assert z["phase"]=="D2_ORIGINAL_AUTHOR_PRESCORE_ACTION_CODE_LITERAL_CLASSES_ONLY"
+          assert z["original_source_fix_rand_git_blob_and_whole_sha_verified"]
+          assert z["prior_original_real_E2_action_code_rejection_preserved"]
+          assert z["original_real_human_brier_prediction_scores"]==0
+          assert all(not c["original_human_binary_models_scored"] for c in z["source_safe_class_counts"].values())
+          assert z["PESEN_v0.1"]=="FROZEN"
+          print("R096_ORIGINAL_AUTHOR_CATEGORICAL_ACTION_LABELS_ONLY_BYTES",len(b))
+          print("R096_ORIGINAL_AUTHOR_CATEGORICAL_ACTION_LABELS_ONLY_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r096-2022-original-author-C-D-source-category-no-Brier
+          path: /tmp/r096_d2_codebook_private/source_labels_safe_only.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r096_d2_codebook_private
