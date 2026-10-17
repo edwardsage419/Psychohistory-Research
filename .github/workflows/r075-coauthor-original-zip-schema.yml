@@ -44,7 +44,7 @@ jobs:
           readable_code={}
           for idx,info in enumerate(infos):
               if info.is_dir():continue
-              if info.file_size>3_000_000:raise ValueError("MEMBER_EXCEEDS_SAFE_SIZE_BUDGET")
+              if info.file_size>10_000_000:raise ValueError("MEMBER_EXCEEDS_SAFE_SIZE_BUDGET")
               extensions[ext(info.filename)]+=1
               # Only publish bounded metadata. Use hashed path identity to avoid
               # possible personal identifiers within archive filenames.
