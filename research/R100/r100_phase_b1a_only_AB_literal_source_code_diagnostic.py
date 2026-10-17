@@ -44,7 +44,7 @@ def raw_ab_cells(sheet_bytes):
                 match = CELL_RE.fullmatch(address)
                 if match:
                     col, pos = match.group(1), int(match.group(2))
-                    if row_index and pos != row_index:
+                    if pos != len(rows) + 1:
                         raise SourceError("R100_B1A_WRONG_CELL_ROW")
                     if col in cells:
                         raise SourceError("R100_B1A_DUPLICATE_IDENTITY_CELL")
