@@ -1,0 +1,95 @@
+{
+  "research_id": "R102",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED_E2",
+  "evidence_grade": "E2_FIRSTPARTY_REAL_2025_180_HUMANS_EIGHT_GENUINE_LAB_SESSIONS_2520_NEXT_PERSON_ROUND_FROZEN_GROUP_PEER_LOSO",
+  "PESEN_v0_1": "FROZEN",
+  "original_source": {
+    "source_DOI": "10.5281/zenodo.17610157",
+    "original_filename": "Climate_Clubs_data.csv",
+    "original_bytes": 419189,
+    "official_publisher_MD5": "56931608b717aea06105ad10a58ff937",
+    "computed_complete_SHA256": "ebc8831011a1a3b4893a80ae158d5129ed0f35e57a8092eba36c6a7b0cbd4282",
+    "real_source_person_rounds": 2700,
+    "real_distinct_source_people": 180,
+    "real_source_sessions": 8,
+    "real_session_count_per_treatment": {
+      "T1": 2,
+      "T2": 2,
+      "T3": 2,
+      "T4": 2
+    },
+    "original_sixperson_group_rounds": 450,
+    "real_15round_persons": 180,
+    "technical_participant_round_mismatch_rows": 2520
+  },
+  "frozen_protocol": "protocols/R102_PHASE_C_TRUE_EIGHT_SESSION_LOSO_OWN_PEERS_FIXED_M0_M1_M2_M3_PRESCORE_FREEZE_2026-10-17.md",
+  "model_contract": {
+    "target": "original current-round contribution/current-endowment fraction",
+    "holdout": "one complete original session.code out of 8",
+    "round_range": "2..15",
+    "valid_target_count": 2520,
+    "external_baseline": "one other original same-treatment session contemporaneous t source mean",
+    "M1": "own normalized previous-round share",
+    "M2": "mean previous-round normalized shares of all five other original prior-group members",
+    "M3": "fixed .5 own + .5 prior peer average",
+    "score": "MSE smaller is better"
+  },
+  "real_scores": {
+    "M0": 0.15617212669018224,
+    "M1": 0.1693968253968254,
+    "M2": 0.1507593650793651,
+    "M3": 0.12987238095238093,
+    "M1_vs_M0": -0.013224698706643168,
+    "M2_vs_M0": 0.005412761610817135,
+    "M3_vs_M0": 0.026299745737801306,
+    "M3_vs_M1": 0.03952444444444447,
+    "M3_vs_M1_positive_source_sessions": 8,
+    "M3_vs_M1_negative_source_sessions": 0,
+    "M1_vs_M0_positive_source_sessions": 2,
+    "M1_vs_M0_negative_source_sessions": 6,
+    "M2_vs_M0_positive_source_sessions": 3,
+    "M2_vs_M0_negative_source_sessions": 5,
+    "M3_vs_M0_positive_source_sessions": 5,
+    "M3_vs_M0_negative_source_sessions": 3
+  },
+  "secondary": {
+    "current_target_automatic_source_actions": 219,
+    "current_target_manual_actions": 2301,
+    "manual_only_M3_vs_M1_gain": 0.03806953498478924,
+    "early_t2_t5_n": 720,
+    "early_M3_vs_M1_gain": 0.03751111111111112,
+    "late_t6_t15_n": 1800,
+    "late_M3_vs_M1_gain": 0.04032977777777777
+  },
+  "verification": {
+    "pure_synthetic_before_human_actions": 37,
+    "first_real_results_path": "research/R102/R102_PHASE_C_ACTUAL_FIRSTPARTY_EIGHT_SESSION_E2_OR_SOURCE_FAILURE.json",
+    "double_replay_receipt": "research/R102/R102_PHASE_C_DOUBLE_INDEPENDENT_FIRSTPARTY_E2_REPLAY_RECEIPT.json",
+    "replayed_result_bytes": 19451,
+    "replayed_result_SHA256": "c19f4e6e4d27650edc89c1586358d5338f9e60aae40b194db8d698b8691b1df9",
+    "actual_double_publisher_source_fetch_output_identical": true,
+    "original_anonymous_real_result_git_blob": "619c3ae8e55ff496ead44313b847fb023407e63f",
+    "original_double_replay_receipt_git_blob": "352a8d807722c23d646ed72db4b2218c00c8b487",
+    "bot_source_results_commit": "021342676fcce64a3434a337c195999e71d4f21c"
+  },
+  "limitations": {
+    "retrospective_same_round_external_reference_not_calendar_prospective": true,
+    "peer_mean_plus_fixed_shrinkage_cannot_isolate_peer_specific_information_beyond_regularization": true,
+    "system_automatic_source_decisions_in_primary": 219,
+    "no_independent_recruited_future_humans": true,
+    "not_R073_exact_dyadic_single_opponent_contract": true,
+    "no_causal_social_learning_or_historical_dynamics_evidence": true,
+    "no_2520_independent_sample_pvalues": true
+  },
+  "acceptance": {
+    "A01": "PASS_INDEPENDENT_AUTHOR_REAL_LAB_COHORT_OWN_AND_PRIOR_FIVE_PEERS_FROZEN_BEFORE_OUTCOMES",
+    "A02": "PASS_OFFICIAL_ZENODO_MD5_SHA_180_REAL_PEOPLE_EIGHT_SESSION_450_SIXPERSON_GROUPROUNDS",
+    "A03": "PASS_37_PURE_SYNTHETIC_TWO_SEPARATE_REAL_2520_E2_SOURCE_DOWNLOADS_BYTE_IDENTICAL_OUTPUT_SHA",
+    "A04": "PASS_PRESERVED_A_B_SAFETY_FAILURES_AND_ALL_EIGHT_TRUE_SESSIONS_NEGATIVE_M0_STRATA",
+    "A05": "PASS_BOUNDED_RETROSPECTIVE_SESSION_HELDOUT_GROUP_PEERS_PLUS_SHRINKAGE_NOT_R073_EXACT_E3_OR_CAUSAL",
+    "A06": "PASS_ALL_PROTOCOLS_TESTS_WORKFLOWS_SOURCE_RESULTS_REPORT_MACHINE_ACCEPTANCE_AND_ROOT_INDEX"
+  },
+  "scientific_report": "research/R102/R102_2025_180_HUMAN_8_TRUE_SESSIONS_2520_OWN_PEER_M0123_REAL_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "next": "R103 new independently authored original dataset with pre-frozen matched shrinkage / shuffled-peer negative controls before any outcome, and source actor opponent session labels"
+}
