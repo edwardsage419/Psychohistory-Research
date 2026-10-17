@@ -43,12 +43,14 @@ class SyntaxOnly(unittest.TestCase):
         self.assertNotIn("PRIVATE_D",str(r))
     def test_source_invalid_MD5(self):
         self.assertRaises(a.SourceError,b.original_id_syntax_only,fixture())
-    def test_incomplete_source_rows_rejected(self):
+    def test_uninspected_action_suffix_does_not_affect_ID_syntax(self):
         raw=fixture()[:-3]
         with patch.object(a,"OFFICIAL_MD5",hashlib.md5(raw).hexdigest()), \
              patch.object(b,"PINNED_SHA",hashlib.sha256(raw).hexdigest()), \
              patch.object(b,"PINNED_N",8):
-            self.assertRaises(b.SourceError,b.original_id_syntax_only,raw)
+            result=b.original_id_syntax_only(raw)
+        self.assertEqual(result["original_source_rows"],8)
+        self.assertFalse(result["any_original_Action_or_Opponent_Action_values_accessed"])
 
 if __name__=="__main__":
     unittest.main()
