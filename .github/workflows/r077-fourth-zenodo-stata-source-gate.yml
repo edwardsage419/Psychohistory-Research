@@ -1,0 +1,38 @@
+name: R077 original fourth author 2025 Zenodo clean Stata human source integrity gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r077-fourth-zenodo-stata-source-gate.yml'
+      - 'research/R077/r077_zenodo_drouvelis_pearce_author_stata_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  genuine-author-zenodo-source-structure-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install local Stata format reader (no human data leaves runner)
+        run: python -m pip install --disable-pip-version-check --quiet pandas
+      - name: Audit published official DOI, MD5 checksum and anonymous original human data columns
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R077/r077_zenodo_drouvelis_pearce_author_stata_gate.py \
+            --output /tmp/r077_source_public/zenodo_human_stata_schema.json \
+            --private-dir /tmp/r077_source_private
+      - name: Export only safe aggregate schema, no participant records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r077-fourth-drouvelis-pearce-zenodo-schema-no-scores
+          path: /tmp/r077_source_public/zenodo_human_stata_schema.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase all temporary fourth-study participant data and schema
+        if: always()
+        run: rm -rf /tmp/r077_source_private /tmp/r077_source_public
