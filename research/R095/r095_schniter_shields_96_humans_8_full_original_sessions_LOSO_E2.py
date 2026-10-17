@@ -52,7 +52,7 @@ def anonymous_real_actions(original,expected_sessions=8,persons_per_session=12,
   action=cooperation(choice)
   partner=partner_choice_bit(other)
   t=int(t)
-  if (ss,gr,t,actor) in bygroup[(ss,gr,t)]:
+  if actor in bygroup[(ss,gr,t)]:
    raise ValueError("R095C_DUPLICATE_SOURCE_ACTOR_GROUP_ROUND")
   persons[(ss,actor)][t]=action
   bygroup[(ss,gr,t)][actor]=(action,partner)
