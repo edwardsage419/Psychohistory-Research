@@ -405,3 +405,12 @@ M0为其余11个同源反馈类别四人组在目标轮t的贡献均值，M1为�
 ### R101正式有界结题与R102下阶段方向（2026-10-17）
 
 [独立2023年 Stallen 等人 R101正式科研来源结题](research/R101/R101_FINAL_BOUNDED_SOURCE_TRANSPORT_NOT_E1_E2_REPORT_2026-10-17.md)及[机读验收](research/R101/R101_FINAL_ACCEPTANCE_STATUS.json)已归档。DataverseNL真正第一手元数据已通过，确认论文对应的**9份原始ZIP公开目录**与 `3. Raw data files.zip` 官方dataFile ID 383977、登记2,247,187字节；首次严格A4原ZIP下载URL安全阻断。之后按阶段单独冻结并实际验证Dataverse原API **HTTP303到objectstore.surf.nl官方SURF存储**，A5仅无正文脱敏重定向、A7真正原响应 **HTTP200/最终SURF/Content-Length2,247,187/正文零读取**，但A6完整文件双重原SHA认证失败，在预先冻结的**唯一不改任何程序A8复验**再次失败。所有真实失败和合格HTTP元数据收据单独保存。**R101=CLOSED_BOUNDED_SOURCE_TRANSPORT：正式论文原来源目录E0真实核验，完整行为ZIP内容E1未建立，实际真人预测E2=0，PESEN v0.1保持冻结**。不得将来源传输失败当作模型阴性；下一阶段R102优先寻找独立实验团队直接发行的小型CSV，发布方自带MD5、真实session/person/group/round标识，在冻结前不读贡献与对手历史，不凭源标签擅自宣称二人对手唯一性。
+
+
+## R102 正式完成独立真人六人公共品 E2：八个原场次全留出，2520个相同下一轮贡献目标（2026-10-17）
+
+[R102研究入口与阶段证据](research/R102/README.md) · [正式E2科学报告](research/R102/R102_2025_180_HUMAN_8_TRUE_SESSIONS_2520_OWN_PEER_M0123_REAL_E2_SCIENTIFIC_REPORT_2026-10-17.md) · [六项机读验收](research/R102/R102_FINAL_ACCEPTANCE_STATUS.json)。Antonioni、Sánchez、Cabrales团队2025 Zenodo另一实验公共品CSV，**原作者公开MD5**与真实完整文件（**419,189字节**）吻合；SHA256 `ebc8831011a1a3b4893a80ae158d5129ed0f35e57a8092eba36c6a7b0cbd4282`，27列、2700个原人物轮。真正B2只读元身份审核证实**180人、8个实验session、每人15轮、六人组450个组轮、T1至T4各两个session**，参加者source代码跨session无重用；oTree技术participant round与真正subsession round有2520处差异，已经在读任何真人贡献值前冻结独立修订并保留首次失败。
+
+C阶段在人类行为评分前严格冻结M0为**同处理另一个实验session同目标轮平均占比**，M1为本人上轮投入占比，M2为原组六人中**其它五人**上一轮投入占比均值，M3为固定`0.5*M1+0.5*M2`，八个完整session整体留出，全部同一2520目标，以MSE评分。真原作者数据结果M0=**0.15617213**、M1=**0.16939683**、M2=**0.15075937**、M3=**0.12987238**；`MSE(M1)-MSE(M3)=+0.03952444`，全部**八场8正0负**。但M1对M0**2正6负**、M2对M0**3正5负**、M3对M0**5正3负**，所有来源阴性场次保留。当前轮原自动行为目标219条，限当前轮为manual的2301条M3相较M1增益仍+0.03806953。37项纯合成测试先于真人贡献读取，随后原出版方完整CSV独立重取两次，真正E2匿名结果**19,451字节/完整SHA256 `c19f4e6e4d27650edc89c1586358d5338f9e60aae40b194db8d698b8691b1df9`**逐字节一致。[真数据得分](research/R102/R102_PHASE_C_ACTUAL_FIRSTPARTY_EIGHT_SESSION_E2_OR_SOURCE_FAILURE.json)及[重演收据](research/R102/R102_PHASE_C_DOUBLE_INDEPENDENT_FIRSTPARTY_E2_REPLAY_RECEIPT.json)已永久main归档。
+
+**科学界限：R102=CLOSED_BOUNDED_E2、PESEN v0.1=FROZEN**。八个场次是单一实验的回顾性独立留出，外部M0用另外一场同期行为，因此无日历未来预测。M3将M1个人历史权重减半，**收缩效应仍可能解释全部或部分M3优势**；六人组其它五人并非R073单一双人对手。后续R103优先独立实验双人逐回合原始来源，先设等收缩安慰剂与真实对手身份负对照，随后再看结果，不能用现有180人调参后冒充独立复现。
