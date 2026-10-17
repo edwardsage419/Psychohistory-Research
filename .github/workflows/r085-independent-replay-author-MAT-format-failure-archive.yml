@@ -1,0 +1,55 @@
+name: R085 independent source matched MAT parser failure negative-evidence archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r085-independent-replay-author-MAT-format-failure-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-MAT-source-MD5-schema-negative-exact-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install scipy==1.14.1 h5py==3.12.1
+      - name: Re-run first frozen 24 and second 10 pure synthetic source checks
+        run: |
+          PYTHONPATH=research/R085 python -m unittest -v             research/R085/test_r085_zenodo_original_four_person_mat_source_gate.py             research/R085/test_r085_phase_b_original_mat_metadata_only.py
+      - name: Independently refetch two original publisher MD5 files, record exact matching fail-closed schema receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r085_independent
+          PYTHONPATH=research/R085 python research/R085/r085_phase_b_mat_real_source_type_only.py             --output /tmp/r085_independent/source.json
+          test "$(wc -c < /tmp/r085_independent/source.json | tr -d '[:space:]')" = 1123
+          printf '%s  %s\n'             282d3beb52b30ad938cf0e89247a2316a2c40d118a51712543a42c9fd6a3bae8             /tmp/r085_independent/source.json | sha256sum --check --status
+          python - <<'PY'
+          import json,pathlib
+          r=json.loads(pathlib.Path("/tmp/r085_independent/source.json").read_bytes())
+          assert r["status"]=="R085_PHASE_B_FORMAT_OR_AUTHORITY_FAIL_CLOSED"
+          assert r["original_subject_level_action_values_computed"]==0
+          assert r["original_real_human_cooperation_effects_computed"]==0
+          assert r["first_R085_phase_A_source_parser_failure_retained"]
+          assert all(v["safe_error_class"]=="R085_PUBLISHED_FILE_MAT5_WHOSMAT_FAILED"
+                     for v in r["two_source_format_inspections"].values())
+          assert r["PESEN_v0.1"]=="FROZEN"
+          PY
+      - name: Archive byte-identical safe original source structural parser failure to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R085/R085_ORIGINAL_AUTHOR_TWO_MAT_VERIFIED_MD5_BUT_STRUCTURE_FAIL_SOURCE_RECEIPT.json
+          cp /tmp/r085_independent/source.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R085): independently reproduce publisher MD5 two-MAT schema failure, no human metrics"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r085_independent
