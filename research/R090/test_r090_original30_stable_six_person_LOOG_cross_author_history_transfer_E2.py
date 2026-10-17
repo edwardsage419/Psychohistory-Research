@@ -106,13 +106,13 @@ class SixPlayerRoster(unittest.TestCase):
 class FrozenTransfer(unittest.TestCase):
  def test_three_frozen_model_names(self):self.assertEqual(len(TRAIN_MODELS),3)
  def test_small_all_arm_no_private_ids_exported(self):
-  results=score_loo(fake_groups(),{t:2 for t in TREATMENTS})
+  results=score_loo(fake_groups(),{t:2 for t in TREATMENTS},112)
   self.assertNotIn("private-",str(results))
  def test_small_all_arm_112_heldout_rounds(self):
-  results=score_loo(fake_groups(),{t:2 for t in TREATMENTS})
+  results=score_loo(fake_groups(),{t:2 for t in TREATMENTS},112)
   self.assertEqual(results["source_independent_author_heldout_forecast_targets"],112)
  def test_two_models_predictive_gain_can_be_negative(self):
-  scores=score_loo(fake_groups(),{t:2 for t in TREATMENTS})
+  scores=score_loo(fake_groups(),{t:2 for t in TREATMENTS},112)
   self.assertIsInstance(scores["M1_history_pooled_shared_target_gain_over_M0"],float)
  def test_frozen_30_full_group_dataset_420_targets(self):
   g,source=parse_author_group_rounds(fake_humans())
@@ -126,19 +126,19 @@ class FrozenTransfer(unittest.TestCase):
   self.assertEqual(scores["by_original_author_treatment"]["T3"]["heldout_original_group_round_scores"],98)
  def test_false_positive_fail_when_not_enough_train_groups(self):
   s={t:{"one":[0.5]*15} for t in TREATMENTS}
-  with self.assertRaises(ValueError):score_loo(s,{t:1 for t in TREATMENTS})
+  with self.assertRaises(ValueError):score_loo(s,{t:1 for t in TREATMENTS},56)
  def test_wrong_15_rounds_fails(self):
   s=fake_groups();s["T1"]["private-T1-g0"]=[0.1]*14
-  with self.assertRaises(ValueError):score_loo(s,{t:2 for t in TREATMENTS})
+  with self.assertRaises(ValueError):score_loo(s,{t:2 for t in TREATMENTS},112)
  def test_wrong_condition_count_rejected(self):
   with self.assertRaises(ValueError):score_loo(fake_groups())
  def test_group_by_round_true_prediction_improves_when_stable(self):
   s={t:{f"g{i}":[0.1 if i==0 else 0.9]*15 for i in range(2)} for t in TREATMENTS}
-  result=score_loo(s,{t:2 for t in TREATMENTS})
+  result=score_loo(s,{t:2 for t in TREATMENTS},112)
   self.assertGreater(result["M1_history_pooled_shared_target_gain_over_M0"],0)
  def test_group_by_round_history_worse_when_alternating(self):
   s={t:{f"g{i}":[0.1 if (t0+i)%2==0 else 0.9 for t0 in range(15)]
         for i in range(2)} for t in TREATMENTS}
-  result=score_loo(s,{t:2 for t in TREATMENTS})
+  result=score_loo(s,{t:2 for t in TREATMENTS},112)
   self.assertLess(result["M1_history_pooled_shared_target_gain_over_M0"],0)
 if __name__=="__main__":unittest.main()
