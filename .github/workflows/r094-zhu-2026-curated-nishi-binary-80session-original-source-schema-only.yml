@@ -1,0 +1,59 @@
+name: R094 2015 Nishi human binary network PGG 2026 Zhu curated Zenodo source metadata
+on:
+  push:
+    paths:
+      - '.github/workflows/r094-zhu-2026-curated-nishi-binary-80session-original-source-schema-only.yml'
+      - 'research/R094/r094_zhu_nishi_2015_binary_network_original_sessions_secondary_source_gate.py'
+      - 'research/R094/test_r094_zhu_nishi_2015_binary_network_original_sessions_secondary_source_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  safe-publisher-source-and-actor-nonexposure-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Publisher fixed MD5 synthetic source CSV headers no original human choice read
+        run: |
+          PYTHONPATH=research/R094 python -m unittest -v             research/R094/test_r094_zhu_nishi_2015_binary_network_original_sessions_secondary_source_gate.py
+  actual-publisher-Zhu-2026-secondary-original-Nishi-2015-network-source-shape:
+    needs: safe-publisher-source-and-actor-nonexposure-synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reacquire published 2026 Zenodo 19544006 actual 2015 secondary curated experiment fixed MD5, no outcome
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r094_safe_source
+          PYTHONPATH=research/R094 python             research/R094/r094_zhu_nishi_2015_binary_network_original_sessions_secondary_source_gate.py             --output /tmp/r094_safe_source/source_only.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r094_safe_source/source_only.json').read_bytes()
+          v=json.loads(b)
+          assert v["phase"]=="A_OFFICIAL_SECONDARY_AUTHOR_NETWORK_BINARY_PGG_CSV_SCHEMA_ONLY"
+          assert v["publisher_source_identity"]["fixed_publisher_MD5"]=="85db2536b5be1cd50266900e61590d5a"
+          assert v["source_schema_no_behavior"]["original_data_row_count"]>100
+          assert not v["source_schema_no_behavior"]["original_action_cooperation_time_network_values_examined"]
+          assert not v["source_schema_no_behavior"]["original_actor_group_session_ID_values_or_hashes_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R094_ORIGINAL_SECONDARY_PUBLISHED_SOURCE_BYTES",len(b))
+          print("R094_ORIGINAL_SECONDARY_PUBLISHED_SOURCE_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r094-2015-binary-network-original-2026-curated-source-only
+          path: /tmp/r094_safe_source/source_only.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r094_safe_source
