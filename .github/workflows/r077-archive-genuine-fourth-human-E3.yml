@@ -1,0 +1,96 @@
+name: R077 independent SHA replay and permanent anonymous fourth genuine human experiment E3 archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r077-archive-genuine-fourth-human-E3.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reobtain-fourth-independent-author-cohort-and-replay-no-target-fit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed original Stata binary reader
+        run: python -m pip install --disable-pip-version-check --quiet pandas
+      - name: Reprove 24 source numerical and no-target-leak synthetic contracts
+        working-directory: research/R077
+        run: python -m unittest -v test_r077_fourth_real_human_source_only_e3
+      - name: Independently redownload exact published fourth human cohort and immutable R073 donor
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r077_archive_private/donor
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          import hashlib
+          def get(url):
+              with urlopen(Request(url,headers={
+                  "User-Agent":"Psychohistory-R077-replay-fourth-human-original-publisher/1.0"}),timeout=65) as r:
+                  return r.read(4_000_001)
+          donor_commit="4743f74d8a03a031b8f70aff64956f8ad5155182"
+          for name,length,sha in (
+              ("fix.csv",988279,"3bf78bf85f6642afee18d6f1965dca7272582f40"),
+              ("rand.csv",1112614,"f5a86cd033b739da45d3fc7c5019068f612146a2")
+          ):
+              raw=get(f"https://raw.githubusercontent.com/eladiomontero/PairwiseStrategies/{donor_commit}/{name}")
+              actual=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
+              if len(raw)!=length or actual!=sha:raise ValueError("R077_SOURCE_DONOR_DRIFT")
+              Path("/tmp/r077_archive_private/donor",name).write_bytes(raw)
+          source=get("https://zenodo.org/records/15462528/files/cleandata.dta?download=1")
+          if (len(source)!=1514315
+              or hashlib.md5(source).hexdigest()!="4cce04ea68b7a0492c242b206efebe53"
+              or hashlib.sha256(source).hexdigest()!="1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985"):
+              raise ValueError("R077_TRUE_FOURTH_AUTHOR_DATA_CHANGED")
+          Path("/tmp/r077_archive_private/human4.dta").write_bytes(source)
+          print("R077 exact all three published raw human data bytes reverified")
+          PY
+      - name: Recompute every real human fourth experiment frozen source-only model and verify identical anonymous digest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R077/r077_fourth_real_human_source_only_e3.py \
+            --r073-source-dir /tmp/r077_archive_private/donor \
+            --r077-source /tmp/r077_archive_private/human4.dta \
+            --output /tmp/r077_private_aggregate.json
+          test "$(wc -c < /tmp/r077_private_aggregate.json | tr -d '[:space:]')" = 9835
+          printf '%s  %s\n' \
+            8d8b8413e3e55cb5d856f34b873ee20c2ba470e04190bb8577f931d25ba509a4 \
+            /tmp/r077_private_aggregate.json | sha256sum --check --status
+          python - <<'PY'
+          import pathlib,json
+          data=json.loads(pathlib.Path("/tmp/r077_private_aggregate.json").read_text())
+          assert data["results"]["target_labels_used_in_training"]==0
+          assert data["results"]["original_session_count"]==15
+          assert data["results"]["scored_t3_human_events"]==1040
+          assert data["source_universe"]["treatment_session_counts"]=={"0":7,"1":8}
+          assert data["results"]["paired_differences"]["M3_JOINT_LAST_VS_M1_OWN_LAST"]["sessions_better"]==14
+          assert data["results"]["paired_differences"]["M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST"]["sessions_worse"]==7
+          print("R077 independent two-job fourth-author true zero-target-fit complete replay digest PASS")
+          PY
+      - name: Archive verified aggregate only, preserve failed Rev001 evidence and source-gated Rev002 freeze
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R077/R077_FOURTH_INDEPENDENT_HUMAN_SOURCE_ONLY_E3_RESULTS.json
+          if [ -f "$dest" ]; then
+            cmp -s "$dest" /tmp/r077_private_aggregate.json
+            echo "R077 byte-identical existing archive"
+            exit 0
+          fi
+          cp /tmp/r077_private_aggregate.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R077): archive first verified fourth human 15-session real zero-target-fit E3 outcomes"
+          git push origin HEAD:main
+      - name: Erase all original person histories and uncommitted temporary scores
+        if: always()
+        run: rm -rf /tmp/r077_archive_private /tmp/r077_private_aggregate.json
