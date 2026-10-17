@@ -100,9 +100,13 @@ class FrozenBinaryPredictors(unittest.TestCase):
   self.assertEqual(r["next_round_current_and_previous_binary_source_action_targets"],53)
  def test_missing_current_choice_decreases_targets(self):
   x=fake();x[11]["decision"]="NA"
-  ids,vis,q=read_complete_source(x,60,6)
+  # Fourth unaffected peer in the same visibility stratum keeps the frozen
+  # 2-other-participant baseline requirement after one missing original choice.
+  x.extend({"node_id":"PRIVATE_EXTRA_VIS0","round":str(t),
+            "visibility":"0","decision":"1"} for t in range(1,11))
+  ids,vis,q=read_complete_source(x,70,7)
   r=score_LOO(ids,vis)
-  self.assertEqual(r["next_round_current_and_previous_binary_source_action_targets"],52)
+  self.assertEqual(r["next_round_current_and_previous_binary_source_action_targets"],61)
  def test_no_outgroup_other_people_wins_zero_out(self):
   x=fake();x=[z for z in x if not(z["node_id"]=="PRIVATE_ACTOR_1_1")]
   ids,vis,q=read_complete_source(x,len(x),5)
