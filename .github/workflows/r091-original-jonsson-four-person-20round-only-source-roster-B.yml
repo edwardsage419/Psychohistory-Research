@@ -1,0 +1,65 @@
+name: R091 Jonsson disaster PGG original 190 four-person 20-round complete group roster gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r091-original-jonsson-four-person-20round-only-source-roster-B.yml'
+      - 'research/R091/r091_phase_b_main_sheet_group_time_roster_only.py'
+      - 'research/R091/test_r091_phase_b_main_sheet_group_time_roster_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-source-plus-roster-synthetic-before-human-group-roster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check 'openpyxl>=3.1,<3.2'
+          PYTHONPATH=research/R091 python -m unittest -v             research/R091/test_r091_author_2025_disaster_xlsx_source_only_gate.py             research/R091/test_r091_phase_b_main_sheet_group_time_roster_only.py
+  first-party-author-original-SHA-no-contribution-four-person-roster:
+    needs: all-source-plus-roster-synthetic-before-human-group-roster
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check 'openpyxl>=3.1,<3.2'
+      - name: Strict author Git blob reread and group/time/actor roster count, no private actions or group IDs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r091_roster_private
+          PYTHONPATH=research/R091 python research/R091/r091_phase_b_main_sheet_group_time_roster_only.py             --output /tmp/r091_roster_private/anonymized_structure.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r091_roster_private/anonymized_structure.json').read_bytes()
+          v=json.loads(b)
+          assert v["phase"]=="B_ORIGINAL_2025_AUTHOR_4PERSON_GROUP_ROSTER_ONLY"
+          assert v["original_xlsx_source_identity"]["source_git_blob_sha1"]=="499787e08242c44c32a469b5d72b206ccf2c73f0"
+          a=v["original_roster_eligibility"]
+          assert a["verified_main_sheet_actor_round_entries"]==15200
+          assert a["verified_4_member_20_round_source_group_count"]==190
+          assert a["verified_complete_original_source_group_rounds"]==3800
+          assert a["all_original_4_actor_decisions_present_per_group_round"]
+          assert not a["source_actor_group_ids_or_hashes_exported"]
+          assert not v["original_behavioral_scores_computed"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R091_AUTHOR_190GROUP_NONBEHAVIOR_SOURCE_ROSTER_BYTES",len(b))
+          print("R091_AUTHOR_190GROUP_NONBEHAVIOR_SOURCE_ROSTER_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r091-original-2025-author-group-roster-15200-actor-round-source-only
+          path: /tmp/r091_roster_private/anonymized_structure.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r091_roster_private
