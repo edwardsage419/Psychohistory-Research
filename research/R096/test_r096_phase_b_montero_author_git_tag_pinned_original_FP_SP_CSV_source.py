@@ -57,8 +57,10 @@ class AuthorTagSynthetic(unittest.TestCase):
   self.assertEqual(m["original_author_published_CSV_safe_headers_only"][0],"__UNNAMED_INDEX_0__")
  def test_author_export_unnamed_named_pandas_columns(self):
   b=fake().replace(b"session,person,round,action",b",Unnamed: 0,round,action",1)
+  # Replaces two original source column names with two pandas index headers:
+  # retains the FOUR original data cells; synthetic shape remains well-formed.
   rows=b.decode().splitlines()
-  b=(rows[0]+"\n"+"\n".join(","+x for x in rows[1:])+"\n").encode()
+  b=(rows[0]+"\n"+"\n".join(rows[1:])+"\n").encode()
   m=safe_original_csv_schema(b)
   self.assertEqual(m["unnamed_export_index_source_columns"],1)
   self.assertIn("Unnamed: 0",m["original_author_published_CSV_safe_headers_only"])
