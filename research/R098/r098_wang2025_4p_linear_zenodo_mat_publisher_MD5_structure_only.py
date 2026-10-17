@@ -30,26 +30,56 @@ def verify_original_bytes(b,official=OFFICIAL_MD5):
          "full_original_source_bytes":len(b),
          "original_fullfile_computed_SHA256":hashlib.sha256(b).hexdigest()}
 
+def mat_container_type(b):
+ # Static fingerprint only, never expose user-supplied file header bytes.
+ h=b"\x89HDF\r\n\x1a\n"
+ if b.startswith(b"MATLAB 7.3 MAT-file") or any(b[k:k+8]==h for k in (0,512,1024)):
+  return "MATLAB_7_3_OR_HDF5"
+ if b.startswith(b"MATLAB "):return "MATLAB_LEGACY_V5"
+ if len(b)>=20 and (b[:4] in (b"\x00\x00\x00\x00",b"\x00\x00\x07\xe8")):
+  return "UNKNOWN_LEGACY_MAT"
+ return "UNKNOWN_CONTAINER"
+
 def mat_metadata(b):
- # whosmat reads MAT directory metadata, not any human contribution matrices.
- from scipy.io import whosmat
- from scipy.io.matlab import MatReadError
- try:
-  variables=whosmat(io.BytesIO(b))
- except (ValueError,TypeError,IndexError,NotImplementedError,MatReadError) as e:
-  raise ValueError("R098_PUBLISHED_MAT_HEADER_NOT_SUPPORTED") from e
+ typ=mat_container_type(b)
+ if typ=="MATLAB_7_3_OR_HDF5":
+  import h5py
+  try:
+   # HDF5 keys, group and dataset shapes ONLY. NEVER dereference data arrays.
+   with h5py.File(io.BytesIO(b),"r") as file:
+    variables=[]
+    for key in file.keys():
+     if key=="#refs#":
+      variables.append(("MATLAB_INTERNAL_REFS",(),"internal_group"))
+      continue
+     obj=file[key]
+     if isinstance(obj,h5py.Group):
+      variables.append((key,(),"group"))
+     else:
+      variables.append((key,tuple(int(x) for x in obj.shape),"hdf5_dataset_"+str(obj.dtype.kind)))
+  except (ValueError,TypeError,KeyError,OSError,RuntimeError) as e:
+   raise ValueError("R098_PUBLISHED_HDF5_MAT_DIRECTORY_NOT_SUPPORTED") from e
+ else:
+  # scipy whosmat enumerates MATLAB directories, not behavior matrices.
+  from scipy.io import whosmat
+  from scipy.io.matlab import MatReadError
+  try:
+   variables=whosmat(io.BytesIO(b))
+  except (ValueError,TypeError,IndexError,NotImplementedError,MatReadError) as e:
+   raise ValueError("R098_PUBLISHED_MAT_HEADER_NOT_SUPPORTED_"+typ) from e
  if not 1<=len(variables)<=40:
   raise ValueError("R098_MAT_VARIABLE_COUNT_UNEXPECTED")
  safe=[]
  for name,shape,clazz in variables:
-  if not SAFE_NAME.fullmatch(name) or not isinstance(shape,tuple) or len(shape)>4 or any((not isinstance(i,int) or i<0) for i in shape):
+  if not SAFE_NAME.fullmatch(name) or not isinstance(shape,tuple) or len(shape)>5 or any((not isinstance(i,int) or i<0) for i in shape):
    raise ValueError("R098_MAT_ORIGINAL_VARIABLE_METADATA_UNSAFE")
   if not SAFE_NAME.fullmatch(clazz):
    raise ValueError("R098_MAT_ORIGINAL_VARIABLE_CLASS_UNSAFE")
   safe.append({"MAT_original_top_level_variable_name":name,
                "shape_dimensions":list(shape),
                "MAT_variable_container_class":clazz})
- return {"source_metadata_only_variables":safe,
+ return {"source_publisher_original_MAT_container_kind":typ,
+         "source_metadata_only_variables":safe,
          "number_top_level_original_MAT_variables":len(safe),
          "actual_human_contribution_values_or_actor_group_codes_inspected":False,
          "individual_source_human_record_rows_republished":False,
