@@ -1,0 +1,60 @@
+name: R096 original 2022 12 true session 188 human 100round fixed vs shuffled binary historical LOSO E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r096-original-2022-Montero-188-human-12-real-session-100round-binary-FPSP-LOSO-E2.yml'
+      - 'research/R096/r096_montero_2022_188_humans_12_true_sessions_100round_FPSP_LOSO_E2.py'
+      - 'research/R096/test_r096_montero_2022_188_humans_12_true_sessions_100round_FPSP_LOSO_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-98-original-source-identity-12session-100round-binary-synthetics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Pure synthetic original 12-session 100-round ID/partner/privacy and source-code-invariant positive and negative Brier models
+        shell: bash
+        run: |
+          PYTHONPATH=research/R096 python -m unittest -v             research/R096/test_r096_montero_2022_original_dryad_100round_FP_SP_source_gate.py             research/R096/test_r096_phase_b_montero_author_git_tag_pinned_original_FP_SP_CSV_source.py             research/R096/test_r096_phase_c_original_2022_author_fp_sp_six_true_sessions_roster.py             research/R096/test_r096_montero_2022_188_humans_12_true_sessions_100round_FPSP_LOSO_E2.py
+  original-2022-author-Git-two-locked-blobs-12-real-sessions-18612-human-round-binary:
+    needs: all-98-original-source-identity-12session-100round-binary-synthetics
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Source authentic original author 12 real lab sessions, 188 subjects 100 rounds real individual binary Brier M0/M1/M2 no actor IDs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r096_original_real_privacy
+          PYTHONPATH=research/R096 python             research/R096/r096_montero_2022_188_humans_12_true_sessions_100round_FPSP_LOSO_E2.py             --output /tmp/r096_original_real_privacy/original_source_true_session_loso_E2.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          b=pathlib.Path('/tmp/r096_original_real_privacy/original_source_true_session_loso_E2.json').read_bytes()
+          z=json.loads(b)
+          assert z["status"]=="R096_FIRST_PARTY_AUTHOR_GIT_2022_12_REAL_SESSIONS_188_HUMANS_100ROUND_TRUE_SESSION_LOSO_E2_EXECUTED"
+          assert z["original_real_true_independent_sessions_total"]==12
+          assert z["original_real_participant_codes_total"]==188
+          assert z["original_real_actor_round_binary_source_rows"]==18800
+          assert z["original_real_next_round_binary_source_targets"]==18612
+          assert z["actual_real_treatment_sessions"]["fix.csv"]["true_original_session_loso"]["original_true_sessions_left_out_once"]==6
+          assert z["actual_real_treatment_sessions"]["rand.csv"]["true_original_session_loso"]["original_true_sessions_left_out_once"]==6
+          assert z["PESEN_v0.1"]=="FROZEN"
+          print("R096_AUTHOR_2022_12_TRUE_SESSIONS_100ROUND_REAL_E2_BYTES",len(b))
+          print("R096_AUTHOR_2022_12_TRUE_SESSIONS_100ROUND_REAL_E2_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r096-original-Montero-12-session-188-person-100round-FPSP-binary-E2
+          path: /tmp/r096_original_real_privacy/original_source_true_session_loso_E2.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r096_original_real_privacy
