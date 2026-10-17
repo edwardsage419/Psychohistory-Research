@@ -1,0 +1,92 @@
+name: R075 coauthor authentic ZIP internal session and data dictionary gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r075-coauthor-original-zip-schema.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-original-coauthor-source-and-safe-internal-file-type-manifest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read original published ZIP, independently verify SHA and inspect member roles
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r075_author_private /tmp/r075_anonymous_public
+          python - <<'PY'
+          import urllib.request,zipfile,io,hashlib,json,re
+          from collections import Counter
+          from pathlib import Path
+          url="https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip"
+          expected="328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef"
+          with urllib.request.urlopen(urllib.request.Request(url,headers={
+            "User-Agent":"Psychohistory-R075-first-party-original-zip-schema/1.0"}),
+            timeout=60) as resp:
+              blob=resp.read(4_000_001)
+          if len(blob)!=1129409 or hashlib.sha256(blob).hexdigest()!=expected:
+              raise ValueError("FIRST_PARTY_AUTHOR_ZIP_SHA_OR_LENGTH_CHANGED")
+          archive=zipfile.ZipFile(io.BytesIO(blob))
+          infos=archive.infolist()
+          if len(infos)!=27 or archive.testzip() is not None:
+              raise ValueError("ORIGINAL_AUTHOR_ZIP_MEMBER_UNIVERSE_CHANGED_OR_CRC_INVALID")
+          def ext(name):
+              lower=name.rsplit("/",1)[-1].lower()
+              return "."+lower.rsplit(".",1)[-1] if "." in lower else "no_extension"
+          safe_roles=[]
+          extensions=Counter()
+          readable_code={}
+          for idx,info in enumerate(infos):
+              if info.is_dir():continue
+              if info.file_size>3_000_000:raise ValueError("MEMBER_EXCEEDS_SAFE_SIZE_BUDGET")
+              extensions[ext(info.filename)]+=1
+              # Only publish bounded metadata. Use hashed path identity to avoid
+              # possible personal identifiers within archive filenames.
+              digest=hashlib.sha256(info.filename.encode()).hexdigest()[:12]
+              suffix=ext(info.filename)
+              item={"ordinal":idx,"path_sha_prefix":digest,
+                    "extension":suffix,"bytes":info.file_size}
+              safe_roles.append(item)
+              if suffix in (".do",".r",".m",".txt",".md",".csv") and info.file_size<1000000:
+                  data=archive.read(info)
+                  if suffix in (".do",".r",".m",".txt",".md"):
+                      decoded=data.decode("latin-1","replace")
+                      l=decoded.lower()
+                      readable_code[digest]={
+                          "has_session_text":("session" in l),
+                          "has_subject_text":("subject" in l or "clientid" in l),
+                          "has_payoff_text":("payoff" in l),
+                          "has_treatment_text":("treatment" in l),
+                          "has_noise_or_error_text":("noise" in l or "error" in l),
+                          "has_stata_use_command":bool(re.search(r"\buse\s+",l)),
+                          "has_stata_import_command":("import delimited" in l),
+                      }
+          result={"research_id":"R075","stage":"FIRST_PARTY_ZIP_MEMBER_SCHEMA_DISCOVERY_NO_MODEL_FIT",
+                  "original_coauthor_url":url,
+                  "source_bytes":len(blob),"source_sha256":expected,
+                  "members":len(infos),"extension_counts":dict(sorted(extensions.items())),
+                  "safe_member_file_types":safe_roles,
+                  "readable_code_safe_keyword_flags":readable_code,
+                  "session_and_person_rows_exported":False,"model_scoring_run":False,
+                  "E3":"OPEN_BEFORE_TRUE_SESSION_MAPPING","PESEN_v0.1":"FROZEN"}
+          out=Path("/tmp/r075_anonymous_public/first_party_zip_schema.json")
+          out.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(result,sort_keys=True))
+          PY
+      - name: Publish only hashed member paths and original archive format metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r075-first-party-coauthor-source-safe-zip-schema
+          path: /tmp/r075_anonymous_public/first_party_zip_schema.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase source and metadata from runner temp
+        if: always()
+        run: rm -rf /tmp/r075_author_private /tmp/r075_anonymous_public
