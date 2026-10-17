@@ -1,0 +1,114 @@
+{
+  "research_id": "R083",
+  "date": "2026-10-17",
+  "research_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_AUTHOR_ORIGINAL_HUMAN_PAIRED_MAIN_AND_REPLICATION_CONDITIONAL_PUNISHMENT",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "A01_to_A06": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS_SUBGROUP_SIGN_REVERSALS_RETAINED",
+    "A05": "PASS_CAUSAL_AND_PROSPECTIVE_CLAIMS_EXCLUDED",
+    "A06": "PASS"
+  },
+  "source_paper_DOI": "10.1038/s41562-019-0707-2",
+  "source_original_repository": "LucasMolleman/NHB_CoordinatedPunishment",
+  "original_fixed_commit": "42cba97300910988b7b7386379fa32492d35d8aa",
+  "source_Stata_dta_blob": "7989855cadae3dc70b83dd29bab572a1bc0d30fb",
+  "source_author_analysis_script_blob": "981ca799943b97e9b6216053135e86db806eb0b5",
+  "source_dataset_bytes": 537056,
+  "source_script_bytes": 31107,
+  "freeze_protocol": "protocols/R083_COORDINATED_PUNISHMENT_ORIGINAL_HUMAN_PAIRED_MAIN_REPLICATION_FREEZE_2026-10-17.md",
+  "freeze_commit_before_own_real_source_scoring": "2f9e6ddfb56bc1a83cd3c6484ca7efe307ae6ac0",
+  "original_human_main_risk": {
+    "original_records": 2004,
+    "punisher_eligible": 1336,
+    "nonpunishers_excluded": 668,
+    "paired_n00": 1054,
+    "paired_n01": 134,
+    "paired_n10": 75,
+    "paired_n11": 73,
+    "paired_diff": 0.04416167664670659,
+    "exact_two_sided_p": 0.000054187482035655506
+  },
+  "original_human_replication_risk": {
+    "original_records": 2316,
+    "punisher_eligible": 1544,
+    "nonpunishers_excluded": 772,
+    "paired_n00": 1242,
+    "paired_n01": 115,
+    "paired_n10": 72,
+    "paired_n11": 115,
+    "paired_diff": 0.027849740932642485,
+    "exact_two_sided_p": 0.0020485721433264174
+  },
+  "prespecified_direction_gate": "PASS_POSITIVE_IN_BOTH",
+  "subgroups_negative_evidence": {
+    "main_unconditional_yes": {
+      "n": 152,
+      "n01": 28,
+      "n10": 31,
+      "paired_diff": -0.019736842105263157,
+      "p": 0.7948436539828609
+    },
+    "replication_unconditional_yes": {
+      "n": 232,
+      "n01": 47,
+      "n10": 40,
+      "paired_diff": 0.03017241379310345,
+      "p": 0.5202915935750737
+    },
+    "main_unconditional_no": {
+      "n": 1184,
+      "n01": 106,
+      "n10": 44,
+      "paired_diff": 0.052364864864864864,
+      "p": 4.3994527618805686e-7
+    },
+    "replication_unconditional_no": {
+      "n": 1312,
+      "n01": 68,
+      "n10": 32,
+      "paired_diff": 0.027439024390243903,
+      "p": 0.00040877716742681523
+    }
+  },
+  "source_observed_universe": {
+    "original_rows": 4320,
+    "author_punisher_records": 2880,
+    "author_nonpunishers_excluded": 1440,
+    "source_cohort_codes": [
+      0,
+      1
+    ],
+    "risk_set_paired_missing_n": 0
+  },
+  "synthetic_tests": 35,
+  "first_real_original_source_ci_run": 39001261509,
+  "independent_second_original_source_replay_ci_run": 39001352142,
+  "anonymous_source_results": "research/R083/R083_ORIGINAL_HUMAN_COORDINATED_PUNISHMENT_MAIN_REPLICATION_E2_RESULTS.json",
+  "anonymous_result_bytes": 6019,
+  "anonymous_result_SHA256": "a75638fbb3619667a077e1fa640bc1b3ca97dce062b2538c779eeac053e216ae",
+  "anonymous_result_Git_blob": "9065d45f7ab4a78097d73c15094aa41c33424a67",
+  "code": "research/R083/r083_author_sha_coordinated_punishment_replication.py",
+  "tests": "research/R083/test_r083_author_sha_coordinated_punishment_replication.py",
+  "scientific_report": "research/R083/R083_REAL_AUTHOR_COORDINATED_PUNISHMENT_MAIN_REPLICATION_SCIENTIFIC_REPORT_2026-10-17.md",
+  "inference_limits": {
+    "authors_2019_findings_already_published": true,
+    "original_human_study_preregistered_by_R083": false,
+    "same_source_file_includes_two_author_labeled_cohorts": true,
+    "cross_cohort_identity_nonoverlap_independently_verified": false,
+    "actual_real_world_peer_sanction_causal_effect": "NOT_IDENTIFIED",
+    "endogenous_institution_causal_effect": "NOT_IDENTIFIED",
+    "historical_norm_evolution": "NOT_VALIDATED"
+  },
+  "source_ethics": {
+    "raw_author_human_decision_rows_in_git": false,
+    "original_source_stata_dataset_in_git": false,
+    "individual_actor_ids_in_git": false,
+    "source_original_analysis_script_in_git": false
+  },
+  "next_research": "Different original author repeated group sanctions and actual institution choice preferred over broadening original paired dataset",
+  "PESEN_v0_1": "FROZEN"
+}
