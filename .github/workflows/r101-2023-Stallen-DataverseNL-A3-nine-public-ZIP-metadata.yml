@@ -1,0 +1,84 @@
+name: R101 A3 official DataverseNL nine public ZIP names and file IDs metadata only
+on:
+  push:
+    paths:
+      - '.github/workflows/r101-2023-Stallen-DataverseNL-A3-nine-public-ZIP-metadata.yml'
+      - 'research/R101/r101_phase_a3_official_dataverse_nine_zip_public_catalog_only.py'
+      - 'research/R101/test_r101_phase_a3_official_dataverse_nine_zip_public_catalog_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-original-metadata-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Test twelve synthetic ZIP selection contracts
+        run: PYTHONPATH=research/R101 python -m unittest -v research/R101/test_r101_phase_a3_official_dataverse_nine_zip_public_catalog_only.py
+  actual-official-public-catalog:
+    needs: synthetic-original-metadata-contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Source-only 9 file IDs public names and descriptions, download no ZIPs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r101_a3_public_catalog
+          PYTHONPATH=research/R101 python research/R101/r101_phase_a3_official_dataverse_nine_zip_public_catalog_only.py --output /tmp/r101_a3_public_catalog/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r101_a3_public_catalog/receipt.json').read_text())
+          assert x["status"]=="R101_OFFICIAL_NINE_ZIP_PUBLIC_FILE_SELECTION_CATALOG_ONLY"
+          assert x["official_dataset_doi"]=="10.34894/EYFM5L"
+          assert x["official_file_count"]==9 and x["official_total_file_bytes"]==43631177
+          assert x["downloaded_original_file_payload_bytes"]==0
+          assert x["score_count_actual_human"]==0
+          print("R101_A3_OFFICIAL_PUBLIC_FILENAMES_AND_IDS_VERIFIED",x["official_file_count"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r101-a3-original-dataverse-public-file-inventory
+          path: /tmp/r101_a3_public_catalog/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive allowlisted public file catalog or fail closed
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r101_a3_public_catalog/receipt.json
+          dst=research/R101/R101_PHASE_A3_LIVE_CI_OFFICIAL_PUBLIC_ZIP_CATALOG_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r101_a3_public_catalog/receipt.json').read_text())
+          assert x["research_id"]=="R101" and x["phase"]=="A3"
+          assert x["score_count_actual_human"]==0 and x["PESEN_v0_1"]=="FROZEN"
+          assert x["status"] in ("R101_A3_CATALOG_FAIL_CLOSED","R101_OFFICIAL_NINE_ZIP_PUBLIC_FILE_SELECTION_CATALOG_ONLY")
+          allowed={"research_id","phase","status","safe_failure","official_dataset_doi","official_file_count","official_total_file_bytes","public_file_metadata","downloaded_original_file_payload_bytes","accessed_original_human_action_values","score_count_actual_human","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "public_file_metadata" in x:
+            assert len(x["public_file_metadata"])==9
+            keys={"official_public_filename","official_public_datafile_id","official_reported_file_bytes","official_md5_published","official_public_file_description_sanitized","description_withheld_due_to_safety","raw_archive_payload_downloaded"}
+            for f in x["public_file_metadata"]:
+              assert set(f)==keys
+              assert re.fullmatch(r"[A-Za-z0-9_.() -]{1,120}\.zip",f["official_public_filename"],re.I)
+              assert type(f["official_public_datafile_id"])==int and f["official_public_datafile_id"]>0
+              assert f["raw_archive_payload_downloaded"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R101 A3): original public nine ZIP file catalog or bounded source failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
