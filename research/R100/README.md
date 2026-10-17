@@ -16,3 +16,11 @@
 
 
 **后续 A2/B预冻结更新**：[严格源重定向拦截与可审计自动提交补充冻结](../../protocols/R100_PHASE_A2_OFFICIAL_ZENODO_XLSX_REDIRECT_PREFLIGHT_AND_AUDIT_RECEIPT_FREEZE_2026-10-17.md)增加两项纯合成负例，先验对齐20项。[Phase B真实身份及跨阶段重复配对审计冻结](../../protocols/R100_PHASE_B_CANDIDATE_ORIGINAL_PERSON_PAIR_TWOSESSION_NONBEHAVIOR_ROSTER_PRESCORE_ELIGIBILITY_2026-10-17.md)明确真正双人配对不能按四行焦点重复算两遍。出版方554真人、11,080原配对轮等数字迄今仅是原文推算，需B实际核实后方可使用。
+
+## 2026-10-17 · B0真实来源工作表A/B字段结构审核有界通过
+
+来源本身已全217396字节官方MD5/项目SHA精确验证后，先冻结[Phase B0 XML标签零值读取协议](../../protocols/R100_PHASE_B0_AUTHENTICATED_XLSX_SHEET_COLUMN_A_B_STRUCTURE_ONLY_PRESCORE_FREEZE_2026-10-17.md)，再在GitHub CI先运行20项A2+15项B0纯合成测试，后对原文件10张真正工作表XML仅计数行标签和A/B身份列标签，不访问任何单元格值。[机器人实际来源B0匿名收据](R100_PHASE_B0_LIVE_CI_SOURCE_AB_TAG_RECEIPT.json)已经[自动提交 main](https://github.com/edwardsage419/Psychohistory-Research/commit/3a71b97ffa731b9f54c7ac571ce5b34d87305872)。
+
+真实匿名工作表每张的行标签分别 **221、221、237、237、225、225、209、209、221、221**，A/B列标签逐张均同数量，合计**2226行含10行结构性表头，对应2216个候选数据行**，与原作者五处理554人×四行公布格式一致。**这仍未从原A列值认证554个不同人，未从B列值重建任意真实配对，也未读任何C:V的20轮动作。**
+
+[正式B0来源结构科学报告](R100_PHASE_B0_GENUINE_ORIGINAL_10SHEET_AB_TAG_ANONYMOUS_E1_STRUCTURE_REPORT_2026-10-17.md)和[机读边界状态](R100_PHASE_B0_CURRENT_STATUS.json)已归档。**R100 A=E1_PASS、B0=PASS_BOUNDED、B1真实人配对互证=PENDING、E2真人预测=0、PESEN v0.1 FROZEN**。后续只按[Phase B真正独立参与者及伙伴去重资格](../../protocols/R100_PHASE_B_CANDIDATE_ORIGINAL_PERSON_PAIR_TWOSESSION_NONBEHAVIOR_ROSTER_PRESCORE_ELIGIBILITY_2026-10-17.md)推进，不能把同一配对双方焦点重复记录当成新实验。
