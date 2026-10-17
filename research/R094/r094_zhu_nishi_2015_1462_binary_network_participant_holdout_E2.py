@@ -182,7 +182,7 @@ def main():
  a.output.parent.mkdir(parents=True,exist_ok=True)
  a.output.write_text(json.dumps(r,sort_keys=True,indent=2)+"\n",encoding="utf-8")
  brief=r.get("binary_individual_full_person_heldout_evaluation",{})
- print(json.dumps({"status":r["status"],"safe_failure":r.get("safe_failure"),
+ print(json.dumps({"status":r["status"],"safe_failure":r.get("safe_failure"),"source_only_failure_class":r.get("source_only_failure_class"),
   "original_source":r.get("source_metadata"),
   "scoring":brief.get("all_original_binary_target_records"),
   "by_visibility":brief.get("by_original_visible_or_invisible_condition"),
