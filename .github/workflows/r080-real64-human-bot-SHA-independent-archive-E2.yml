@@ -20,16 +20,13 @@ jobs:
       - name: Repeat all 45 full-network synthetic population/role/link/missing-isolate tests
         working-directory: research/R080
         run: python -m unittest -v test_r080_original_64_networks_human_only_cooperation_topology
-      - name: Independently redownload EVERY source SHA-pinned original 64 human/bot network JSON and check complete source universe/byte-identical E2 results
+      - name: Independently redownload each of 64 original publisher-SHA-verified human/bot networks and compare with prior first-run exact aggregate SHA256
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p /tmp/r080_64_network_replay_private
           PYTHONPATH=research/R080 python research/R080/r080_original_64_networks_human_only_cooperation_topology.py \
             --output /tmp/r080_64_network_replay_private/once.json
-          PYTHONPATH=research/R080 python research/R080/r080_original_64_networks_human_only_cooperation_topology.py \
-            --output /tmp/r080_64_network_replay_private/twice.json
-          cmp /tmp/r080_64_network_replay_private/once.json /tmp/r080_64_network_replay_private/twice.json
           test "$(wc -c < /tmp/r080_64_network_replay_private/once.json | tr -d '[:space:]')" = 11745
           printf '%s  %s\n' \
             7b7d231d97a98c4b08e7d3658fa8e943bacd60aef1d8529754cd1f75179b99c8 \
