@@ -57,4 +57,31 @@ class PublicationSource(unittest.TestCase):
   with self.assertRaises(ValueError):source_safe_columns(b"\xff\xfe")
  def test_shows_only_publisher_computed_SHA_not_fake_official_MD5(self):
   self.assertFalse(verify_bytes(b())["publisher_original_has_independent_reported_official_MD5"])
+ def test_actual_publisher_signed_corpus_bucket_permitted(self):
+  from urllib.parse import urlencode
+  q={"X-Goog-Algorithm":"GOOG4-RSA-SHA256",
+   "X-Goog-Credential":"wombat-sa@plos-prod.iam.gserviceaccount.com/20261017/auto/storage/goog4_request",
+   "X-Goog-Date":"20261017T000000Z","X-Goog-Expires":"86400",
+   "X-Goog-SignedHeaders":"host","X-Goog-Signature":"PURE_SYNTHETIC_NOT_REAL"}
+  u="https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pone.0299196/1/pone.0299196.s002.csv?"+urlencode(q)
+  self.assertTrue(check_publisher_url(u))
+ def test_other_plos_supplement_path_denied(self):
+  from urllib.parse import urlencode
+  q={"X-Goog-Algorithm":"GOOG4-RSA-SHA256",
+   "X-Goog-Credential":"wombat-sa@plos-prod.iam.gserviceaccount.com/x",
+   "X-Goog-Date":"20261017T000000Z","X-Goog-Expires":"86400",
+   "X-Goog-SignedHeaders":"host","X-Goog-Signature":"FAKE"}
+  u="https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pone.0299196/1/pone.0299196.s003.csv?"+urlencode(q)
+  with self.assertRaises(ValueError):check_publisher_url(u)
+ def test_forged_publisher_signer_denied(self):
+  from urllib.parse import urlencode
+  q={"X-Goog-Algorithm":"GOOG4-RSA-SHA256",
+   "X-Goog-Credential":"attacker@gmail.com/20261017/x",
+   "X-Goog-Date":"20261017T000000Z","X-Goog-Expires":"86400",
+   "X-Goog-SignedHeaders":"host","X-Goog-Signature":"FAKE"}
+  u="https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pone.0299196/1/pone.0299196.s002.csv?"+urlencode(q)
+  with self.assertRaises(ValueError):check_publisher_url(u)
+ def test_missing_publisher_signed_keys_denied(self):
+  u="https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pone.0299196/1/pone.0299196.s002.csv"
+  with self.assertRaises(ValueError):check_publisher_url(u)
 if __name__=="__main__":unittest.main()
