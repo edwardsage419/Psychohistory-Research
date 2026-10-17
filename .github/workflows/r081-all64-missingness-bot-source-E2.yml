@@ -1,0 +1,70 @@
+name: R081 first party 64 network missing human choices exact bounds and one-bot source interpretation
+on:
+  push:
+    paths:
+      - '.github/workflows/r081-all64-missingness-bot-source-E2.yml'
+      - 'research/R081/r081_original_all64_human_missingness_sharp_bounds.py'
+      - 'research/R081/test_r081_original_all64_human_missingness_sharp_bounds.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pure-synthetic-source-and-sharpness-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute 25 entirely artificial source, sharp binary-completion, and privacy controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R080:research/R081 python -m unittest -v \
+            research/R081/test_r081_original_all64_human_missingness_sharp_bounds.py
+
+  true-all64-original-publisher-SHA-network-sensitivity-E2:
+    needs: pure-synthetic-source-and-sharpness-gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Strictly redownload ALL original 64 author SHA-certified files, run R080 parity before R081 source audit and extreme binary slot bounds
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r081_full64_author_aggregate_only
+          PYTHONPATH=research/R080:research/R081 python \
+            research/R081/r081_original_all64_human_missingness_sharp_bounds.py \
+            --output /tmp/r081_full64_author_aggregate_only/all64_missingness_extreme_bounds.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          p=pathlib.Path("/tmp/r081_full64_author_aggregate_only/all64_missingness_extreme_bounds.json")
+          raw=p.read_bytes();r=json.loads(raw)
+          assert r["status"]=="R081_ALL64_ORIGINAL_SOURCE_RECHECKED_HUMAN_MISSINGNESS_SHARP_BOUNDS_E2"
+          assert r["original_source"]["verified_original_network_SHA256_count"]==64
+          assert r["original_source"]["observed_source_human_action_count_verified"]==27656
+          assert r["all_64_original_networks_equal_weight"]["original_networks"]==64
+          assert len(r["all_eight_source_treatments_equal_network"])==8
+          assert r["experiment1_arm_random_assignment_evidence"].startswith("UNVERIFIED")
+          assert r["robot_intervention_causal_effect"]=="NOT_IDENTIFIED"
+          assert r["PESEN_v0.1"]=="FROZEN"
+          assert "human0" not in raw.decode() and "game_id" not in raw.decode()
+          print("R081_REAL_ORIGINAL_AUTHOR_ANONYMOUS_RESULT_BYTES",len(raw))
+          print("R081_REAL_ORIGINAL_AUTHOR_ANONYMOUS_RESULT_SHA256",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Retain only source-verified eight-arm and full64 safe aggregate metrics for independent archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r081-author-SHA64-bounded-E2-anonymous-summary
+          path: /tmp/r081_full64_author_aggregate_only/all64_missingness_extreme_bounds.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete runner intermediate outcomes
+        if: always()
+        run: rm -rf /tmp/r081_full64_author_aggregate_only
