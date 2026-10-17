@@ -59,9 +59,15 @@ class RosterOnlySynthetic(unittest.TestCase):
         def corrupt(item,i):
             if i==2:item["participant.code"]="S1person1";item["participant.id_in_session"]="1"
         self.assertRaises(b.SourceError,audit,fake_csv(corrupt))
-    def test_mismatched_round_field_fails(self):
+    def test_participant_technical_round_mismatch_counted(self):
         def corrupt(item,i):
             if i==1:item["participant._round_number"]="2"
+        x=audit(fake_csv(corrupt))
+        self.assertEqual(x["technical_participant_round_disagrees_with_actual_subsession_round_rows"],1)
+        self.assertEqual(x["actual_human_model_scores"],0)
+    def test_invalid_participant_technical_round_still_rejected(self):
+        def corrupt(item,i):
+            if i==1:item["participant._round_number"]="BAD"
         self.assertRaises(b.SourceError,audit,fake_csv(corrupt))
     def test_position_reused_fails(self):
         def corrupt(item,i):
