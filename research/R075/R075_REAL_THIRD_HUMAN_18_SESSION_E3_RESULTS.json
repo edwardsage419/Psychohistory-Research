@@ -1,0 +1,605 @@
+{
+  "PESEN_v0.1": "FROZEN",
+  "R073_frozen_implementation_git_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a",
+  "cross_session_physical_reenrolment": "UNKNOWN; original within-session numeric subject codes repeat",
+  "frozen_TFT_WSLS_noise": 0.05,
+  "frozen_alpha": 20.0,
+  "frozen_models": [
+    "M0_TREATMENT_PREVALENCE",
+    "M1_OWN_LAST",
+    "M2_OPPONENT_LAST",
+    "M3_JOINT_LAST",
+    "M4_JOINT_TWO_LAGS",
+    "M5_TFT_NOISY",
+    "M6_WSLS_NOISY"
+  ],
+  "human_memory_causality": "NOT_IDENTIFIED",
+  "human_rows_or_session_ids_exported": false,
+  "human_session_person_slots": 384,
+  "not_equivalent_to_AEA_deposited_archive": "BYTE_PARITY_UNKNOWN",
+  "numerical_parameter_zero_shot_transfer": "NOT_TESTED",
+  "original_author_paper_DOI": "10.1257/aer.102.2.720",
+  "original_coauthor_source": "https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip",
+  "original_source_SHA256": "328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef",
+  "original_source_bytes": 1129409,
+  "original_text_SHA256": "ff552ba21a92c254e2d867670910f908f5ea8e3aa34b4fa6c05443a020fa56b7",
+  "protocol": "protocols/R075_COAUTHOR_ORIGINAL_HUMAN_18_SESSION_E3_TRANSFER_FREEZE_2026-10-17.md",
+  "research_id": "R075",
+  "results": {
+    "individual_test_targets": 26116,
+    "model_macro": {
+      "M0_TREATMENT_PREVALENCE": {
+        "all_18_sessions_equal_weight_Brier": 0.2268362351408542,
+        "all_18_sessions_equal_weight_log_loss": 0.6453196747551302,
+        "per_treatment_session_equal": {
+          "BC1p5_ERROR0p125": {
+            "Brier": 0.21015036121571742,
+            "log_loss": 0.6115038852098991,
+            "sessions": 3
+          },
+          "BC2_ERROR0p125": {
+            "Brier": 0.24963847556546076,
+            "log_loss": 0.6929363039759255,
+            "sessions": 2
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier": 0.251001137191403,
+            "log_loss": 0.6952072608640719,
+            "sessions": 3
+          },
+          "BC4_ERROR0": {
+            "Brier": 0.20270936882215498,
+            "log_loss": 0.595620453942451,
+            "sessions": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier": 0.1908560933093043,
+            "log_loss": 0.5702567732372725,
+            "sessions": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier": 0.2549060999471786,
+            "log_loss": 0.7030291044698526,
+            "sessions": 4
+          }
+        }
+      },
+      "M1_OWN_LAST": {
+        "all_18_sessions_equal_weight_Brier": 0.17008962586292692,
+        "all_18_sessions_equal_weight_log_loss": 0.517399613946041,
+        "per_treatment_session_equal": {
+          "BC1p5_ERROR0p125": {
+            "Brier": 0.17109328023710735,
+            "log_loss": 0.5188381657871554,
+            "sessions": 3
+          },
+          "BC2_ERROR0p125": {
+            "Brier": 0.19539675528961672,
+            "log_loss": 0.579665329364641,
+            "sessions": 2
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier": 0.20462951666846918,
+            "log_loss": 0.5998156664043863,
+            "sessions": 3
+          },
+          "BC4_ERROR0": {
+            "Brier": 0.08714743961818087,
+            "log_loss": 0.31616902659180846,
+            "sessions": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier": 0.1554156534722145,
+            "log_loss": 0.48465920570959775,
+            "sessions": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier": 0.20399052124138378,
+            "log_loss": 0.5988540497051531,
+            "sessions": 4
+          }
+        }
+      },
+      "M2_OPPONENT_LAST": {
+        "all_18_sessions_equal_weight_Brier": 0.16975086571591047,
+        "all_18_sessions_equal_weight_log_loss": 0.5171445535313993,
+        "per_treatment_session_equal": {
+          "BC1p5_ERROR0p125": {
+            "Brier": 0.15737007319710536,
+            "log_loss": 0.4852855000235717,
+            "sessions": 3
+          },
+          "BC2_ERROR0p125": {
+            "Brier": 0.19766880182111918,
+            "log_loss": 0.5833166736570723,
+            "sessions": 2
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier": 0.20224028295197458,
+            "log_loss": 0.5948245592032618,
+            "sessions": 3
+          },
+          "BC4_ERROR0": {
+            "Brier": 0.0965775249182896,
+            "log_loss": 0.3425637113250493,
+            "sessions": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier": 0.15996752216174462,
+            "log_loss": 0.4954559288216804,
+            "sessions": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier": 0.20292794238920203,
+            "log_loss": 0.5968948795325882,
+            "sessions": 4
+          }
+        }
+      },
+      "M3_JOINT_LAST": {
+        "all_18_sessions_equal_weight_Brier": 0.14097227005861615,
+        "all_18_sessions_equal_weight_log_loss": 0.4390892098258116,
+        "per_treatment_session_equal": {
+          "BC1p5_ERROR0p125": {
+            "Brier": 0.13242455458822103,
+            "log_loss": 0.42313781702015724,
+            "sessions": 3
+          },
+          "BC2_ERROR0p125": {
+            "Brier": 0.16187585409989969,
+            "log_loss": 0.4956122695726018,
+            "sessions": 2
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier": 0.1754179394703165,
+            "log_loss": 0.5276758435690108,
+            "sessions": 3
+          },
+          "BC4_ERROR0": {
+            "Brier": 0.06742314932044335,
+            "log_loss": 0.23956942742485096,
+            "sessions": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier": 0.1378601504084628,
+            "log_loss": 0.4312668035658587,
+            "sessions": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier": 0.16859294287323992,
+            "log_loss": 0.511857890744943,
+            "sessions": 4
+          }
+        }
+      },
+      "M4_JOINT_TWO_LAGS": {
+        "all_18_sessions_equal_weight_Brier": 0.1285554056107595,
+        "all_18_sessions_equal_weight_log_loss": 0.4092457690946315,
+        "per_treatment_session_equal": {
+          "BC1p5_ERROR0p125": {
+            "Brier": 0.1248341732262735,
+            "log_loss": 0.40152708002926496,
+            "sessions": 3
+          },
+          "BC2_ERROR0p125": {
+            "Brier": 0.14958434276969879,
+            "log_loss": 0.46702644569716684,
+            "sessions": 2
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier": 0.15495347276658442,
+            "log_loss": 0.4818454507622194,
+            "sessions": 3
+          },
+          "BC4_ERROR0": {
+            "Brier": 0.07199748836741561,
+            "log_loss": 0.2489972770978682,
+            "sessions": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier": 0.12248072955716045,
+            "log_loss": 0.3968528739130976,
+            "sessions": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier": 0.14800775592549284,
+            "log_loss": 0.4611757267254211,
+            "sessions": 4
+          }
+        }
+      },
+      "M5_TFT_NOISY": {
+        "all_18_sessions_equal_weight_Brier": 0.21126006834613753,
+        "all_18_sessions_equal_weight_log_loss": 0.7342724972006764,
+        "per_treatment_session_equal": {
+          "BC1p5_ERROR0p125": {
+            "Brier": 0.20383709171807082,
+            "log_loss": 0.7099874952838681,
+            "sessions": 3
+          },
+          "BC2_ERROR0p125": {
+            "Brier": 0.2502276375310107,
+            "log_loss": 0.8617587523465555,
+            "sessions": 2
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier": 0.251617692316414,
+            "log_loss": 0.8663064540058188,
+            "sessions": 3
+          },
+          "BC4_ERROR0": {
+            "Brier": 0.10015122265122174,
+            "log_loss": 0.37076892365146796,
+            "sessions": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier": 0.21073335340458468,
+            "log_loss": 0.7325492971953328,
+            "sessions": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier": 0.2508019687243951,
+            "log_loss": 0.8636377336273994,
+            "sessions": 4
+          }
+        }
+      },
+      "M6_WSLS_NOISY": {
+        "all_18_sessions_equal_weight_Brier": 0.37655857700473216,
+        "all_18_sessions_equal_weight_log_loss": 1.275062910636721,
+        "per_treatment_session_equal": {
+          "BC1p5_ERROR0p125": {
+            "Brier": 0.5154524387366487,
+            "log_loss": 1.7294679111371698,
+            "sessions": 3
+          },
+          "BC2_ERROR0p125": {
+            "Brier": 0.4456462498176053,
+            "log_loss": 1.5010900626479575,
+            "sessions": 2
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier": 0.39822318471249124,
+            "log_loss": 1.3459408166401357,
+            "sessions": 3
+          },
+          "BC4_ERROR0": {
+            "Brier": 0.24267857142857094,
+            "log_loss": 0.8370612362484285,
+            "sessions": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier": 0.2752693938481598,
+            "log_loss": 0.9436853339099107,
+            "sessions": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier": 0.39797278006808895,
+            "log_loss": 1.345121593089533,
+            "sessions": 4
+          }
+        }
+      }
+    },
+    "paired_comparisons": {
+      "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+        "Brier_delta_all_sessions_equal_weight": -0.05674660927792727,
+        "per_treatment": {
+          "BC1p5_ERROR0p125": {
+            "Brier_delta": -0.0390570809786101,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC2_ERROR0p125": {
+            "Brier_delta": -0.05424172027584402,
+            "sessions": 2,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier_delta": -0.04637162052293379,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0": {
+            "Brier_delta": -0.11556192920397411,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0p0625": {
+            "Brier_delta": -0.0354404398370898,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0p125": {
+            "Brier_delta": -0.05091557870579488,
+            "sessions": 4,
+            "sessions_better": 4,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          }
+        },
+        "sessions": 18,
+        "sessions_better": 18,
+        "sessions_equal": 0,
+        "sessions_worse": 0
+      },
+      "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+        "Brier_delta_all_sessions_equal_weight": -0.057085369424943674,
+        "per_treatment": {
+          "BC1p5_ERROR0p125": {
+            "Brier_delta": -0.052780288018612086,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC2_ERROR0p125": {
+            "Brier_delta": -0.05196967374434158,
+            "sessions": 2,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier_delta": -0.04876085423942839,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0": {
+            "Brier_delta": -0.10613184390386537,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0p0625": {
+            "Brier_delta": -0.03088857114755969,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0p125": {
+            "Brier_delta": -0.0519781575579766,
+            "sessions": 4,
+            "sessions_better": 4,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          }
+        },
+        "sessions": 18,
+        "sessions_better": 18,
+        "sessions_equal": 0,
+        "sessions_worse": 0
+      },
+      "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+        "Brier_delta_all_sessions_equal_weight": -0.029117355804310772,
+        "per_treatment": {
+          "BC1p5_ERROR0p125": {
+            "Brier_delta": -0.038668725648886314,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC2_ERROR0p125": {
+            "Brier_delta": -0.033520901189717026,
+            "sessions": 2,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier_delta": -0.02921157719815264,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0": {
+            "Brier_delta": -0.019724290297737517,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0p0625": {
+            "Brier_delta": -0.017555503063751674,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0p125": {
+            "Brier_delta": -0.03539757836814385,
+            "sessions": 4,
+            "sessions_better": 4,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          }
+        },
+        "sessions": 18,
+        "sessions_better": 18,
+        "sessions_equal": 0,
+        "sessions_worse": 0
+      },
+      "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+        "Brier_delta_all_sessions_equal_weight": -0.012416864447856633,
+        "per_treatment": {
+          "BC1p5_ERROR0p125": {
+            "Brier_delta": -0.0075903813619475164,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC2_ERROR0p125": {
+            "Brier_delta": -0.012291511330200913,
+            "sessions": 2,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier_delta": -0.020464466703732125,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0": {
+            "Brier_delta": 0.004574339046972259,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier_delta": -0.01537942085130238,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0p125": {
+            "Brier_delta": -0.02058518694774708,
+            "sessions": 4,
+            "sessions_better": 4,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          }
+        },
+        "sessions": 18,
+        "sessions_better": 15,
+        "sessions_equal": 0,
+        "sessions_worse": 3
+      },
+      "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+        "Brier_delta_all_sessions_equal_weight": -0.015576166794716621,
+        "per_treatment": {
+          "BC1p5_ERROR0p125": {
+            "Brier_delta": -0.006313269497646591,
+            "sessions": 3,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 1
+          },
+          "BC2_ERROR0p125": {
+            "Brier_delta": 0.0005891619655499503,
+            "sessions": 2,
+            "sessions_better": 1,
+            "sessions_equal": 0,
+            "sessions_worse": 1
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier_delta": 0.0006165551250110479,
+            "sessions": 3,
+            "sessions_better": 1,
+            "sessions_equal": 0,
+            "sessions_worse": 2
+          },
+          "BC4_ERROR0": {
+            "Brier_delta": -0.10255814617093323,
+            "sessions": 3,
+            "sessions_better": 3,
+            "sessions_equal": 0,
+            "sessions_worse": 0
+          },
+          "BC4_ERROR0p0625": {
+            "Brier_delta": 0.019877260095280402,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier_delta": -0.004104131222783518,
+            "sessions": 4,
+            "sessions_better": 2,
+            "sessions_equal": 0,
+            "sessions_worse": 2
+          }
+        },
+        "sessions": 18,
+        "sessions_better": 9,
+        "sessions_equal": 0,
+        "sessions_worse": 9
+      },
+      "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+        "Brier_delta_all_sessions_equal_weight": 0.14972234186387792,
+        "per_treatment": {
+          "BC1p5_ERROR0p125": {
+            "Brier_delta": 0.30530207752093125,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "BC2_ERROR0p125": {
+            "Brier_delta": 0.19600777425214455,
+            "sessions": 2,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 2
+          },
+          "BC2p5_ERROR0p125": {
+            "Brier_delta": 0.14722204752108822,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "BC4_ERROR0": {
+            "Brier_delta": 0.03996920260641593,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "BC4_ERROR0p0625": {
+            "Brier_delta": 0.08441330053885547,
+            "sessions": 3,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 3
+          },
+          "BC4_ERROR0p125": {
+            "Brier_delta": 0.14306668012091028,
+            "sessions": 4,
+            "sessions_better": 0,
+            "sessions_equal": 0,
+            "sessions_worse": 4
+          }
+        },
+        "sessions": 18,
+        "sessions_better": 0,
+        "sessions_equal": 0,
+        "sessions_worse": 18
+      }
+    },
+    "session_rows_exported": false,
+    "test_sessions": 18,
+    "treatments": 6
+  },
+  "scored_targets": 26116,
+  "scoring": "teacher-forced within interaction t>=3, test each original session then 18 equal-weight sessions",
+  "source_human_actions": 34446,
+  "source_paired_rounds": 17223,
+  "stage": "THIRD_INDEPENDENT_AUTHOR_HUMAN_NOISY_IPD_E3_SESSION_LOSO",
+  "status": "R075_TRUE_THIRD_HUMAN_EXPERIMENT_18_SESSION_FROZEN_E3_EXECUTED",
+  "target": "intended human cooperation C=1 D=0, conditional on own and partner's previously executed actual actions",
+  "training": "other real complete original file sessions of same bc and implementation-error treatment; 1/2/3 other sessions according to original treatment",
+  "true_source_sessions": 18
+}
