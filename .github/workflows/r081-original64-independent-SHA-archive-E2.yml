@@ -1,0 +1,68 @@
+name: R081 independent 64 original publisher SHA replay and permanently archive anonymous sharp bounds
+on:
+  push:
+    paths:
+      - '.github/workflows/r081-original64-independent-SHA-archive-E2.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-full64-original-publisher-replay-and-byte-locked-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Repeat all 25 synthetic checks
+        run: |
+          PYTHONPATH=research/R080:research/R081 python -m unittest -v \
+            research/R081/test_r081_original_all64_human_missingness_sharp_bounds.py
+      - name: Independently download all 64 original files and reproduce byte-exact 10714 byte first run with the same publisher SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r081_original64_replay
+          PYTHONPATH=research/R080:research/R081 python \
+            research/R081/r081_original_all64_human_missingness_sharp_bounds.py \
+            --output /tmp/r081_original64_replay/once.json
+          test "$(wc -c < /tmp/r081_original64_replay/once.json | tr -d '[:space:]')" = 10714
+          printf '%s  %s\n' \
+            a6d7f84924eabc5389dc9b82f6de62ed73ce79a455eb6dba873af33cb81d1998 \
+            /tmp/r081_original64_replay/once.json | sha256sum --check --status
+          python - <<'PY'
+          import json,hashlib,pathlib
+          p=pathlib.Path("/tmp/r081_original64_replay/once.json")
+          v=json.loads(p.read_text())
+          assert v["status"]=="R081_ALL64_ORIGINAL_SOURCE_RECHECKED_HUMAN_MISSINGNESS_SHARP_BOUNDS_E2"
+          assert v["original_source"]["original_network_file_sha256_set_fingerprint"]=="555e2127ac21f4532c33a2e0a08f2e081b5f970891bd772c9bac3155d1d53571"
+          assert v["original_source"]["observed_source_human_action_count_verified"]==27656
+          assert v["all_64_original_networks_equal_weight"]["all30_missing_human_slots"]==3064
+          assert v["all_64_original_networks_equal_weight"]["all16_hypothetical_delta_upper"]<0
+          assert v["robot_intervention_causal_effect"]=="NOT_IDENTIFIED"
+          assert v["PESEN_v0.1"]=="FROZEN"
+          assert len(v["all_eight_source_treatments_equal_network"])==8
+          print("R081_INDEPENDENT_ORIGINAL_AUTHOR_SHA_REPLAY",hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
+      - name: Permanently archive only anonymous arm-macro full64 E2 bounds, never original IPD
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R081/R081_FIRST_PARTY_ORIGINAL64_MISSING_HUMAN_ACTION_SHARP_BOUNDS_E2_RESULTS.json
+          if [ -e "$dest" ]; then
+            cmp "$dest" /tmp/r081_original64_replay/once.json
+            echo "R081 permanent archive already byte identical"
+            exit 0
+          fi
+          cp /tmp/r081_original64_replay/once.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R081): archive original all64 independently SHA-verified missing-action sharp intervals and bot-node summary"
+          git push origin HEAD:main
+      - name: Remove local source and ephemeral run outputs
+        if: always()
+        run: rm -rf /tmp/r081_original64_replay
