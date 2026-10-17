@@ -1,0 +1,104 @@
+name: R075 coauthor original text and 18 MATLAB source structural identity gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r075-coauthor-first-party-mat-text-schema.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-first-party-text-and-mat-structures-no-human-rows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ensure scientific Matlab v5 metadata reader for whosmat only
+        run: python -m pip install --disable-pip-version-check --quiet scipy
+      - name: Download hash-pinned coauthor ZIP and inspect only MATLAB shapes, text header and code field keywords
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r075_safe_summary
+          python - <<'PY'
+          import urllib.request,hashlib,io,zipfile,json,re
+          from pathlib import Path
+          from collections import Counter
+          from scipy.io import whosmat
+          url="https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip"
+          expected="328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef"
+          with urllib.request.urlopen(urllib.request.Request(url,headers={"User-Agent":"Psychohistory-R075-original-mat-metadata-only/1.0"}),timeout=60) as resp:
+              blob=resp.read(4_000_001)
+          if len(blob)!=1129409 or hashlib.sha256(blob).hexdigest()!=expected:
+              raise ValueError("AUTHOR_DATA_SOURCE_CONTENT_DRIFT")
+          with zipfile.ZipFile(io.BytesIO(blob)) as arc:
+              infos=arc.infolist()
+              if len(infos)!=27 or arc.testzip() is not None:
+                  raise ValueError("AUTHOR_DATA_MEMBER_CRC_OR_COUNT_CHANGED")
+              mat=[]
+              textsource=[]
+              code=[]
+              for i,inf in enumerate(infos):
+                  if inf.is_dir():continue
+                  if inf.file_size>4_500_000:raise ValueError("ZIP_UNCOMPRESSED_MEMBER_LIMIT")
+                  extension="."+inf.filename.rsplit(".",1)[-1].lower()
+                  data=arc.read(inf)
+                  if extension==".mat":
+                      try:
+                          vars=whosmat(io.BytesIO(data))
+                          item={"ordinal":i,"size":len(data),
+                                "dimensions_and_classes":[{
+                                    "variable_name":n if re.fullmatch(r"[A-Za-z][A-Za-z_]{0,35}",n) else "<suppressed>",
+                                    "dimensions":list(shape),
+                                    "class":cl} for n,shape,cl in vars],
+                                "readable":True}
+                      except (ValueError,TypeError,NotImplementedError, OSError) as e:
+                          item={"ordinal":i,"size":len(data),
+                                "readable":False,"bounded_error_type":type(e).__name__}
+                      mat.append(item)
+                  elif extension==".txt":
+                      rawlines=data.splitlines()
+                      first=rawlines[0].decode("latin-1","replace") if rawlines else ""
+                      tokens=first.strip().replace(","," ").replace("\t"," ").split()
+                      valid_header=(len(tokens)>=3 and len(tokens)<=80 and
+                          all(re.fullmatch(r"[A-Za-z_][A-Za-z_0-9]{0,32}",t) for t in tokens))
+                      textsource.append({"ordinal":i,"bytes":len(data),
+                        "line_count":len(rawlines),
+                        "first_line_valid_column_header":valid_header,
+                        "first_line_column_count":len(tokens),
+                        "safe_header_fields":tokens if valid_header else [],
+                        "first_line_tab_count":first.count("\t"),
+                        "first_line_comma_count":first.count(","),
+                        "first_line_whitespace_count":len(first.split())})
+                  elif extension in (".m",".do"):
+                      decoded=data.decode("latin-1","replace").lower()
+                      code.append({"ordinal":i,"extension":extension,"bytes":len(data),
+                        "mentions":{k:bool(re.search(r"\b"+re.escape(k)+r"\b",decoded))
+                            for k in ("session","date","id","subject","round","game","pair","group",
+                                      "treatment","error","noise","payoff","choice","action","coop",
+                                      "data","matrix","pavlov","stata","rand","intended","realized",
+                                      "moved","actual","mistake")},
+                        "lines":len(decoded.splitlines())})
+          output={"research_id":"R075","status":"ORIGINAL_COAUTHOR_ZIP_REAL_SCHEMAS_INSPECTED",
+                  "source_bytes":len(blob),"source_sha256":expected,
+                  "mat_files":len(mat),"mat_variable_shapes_only":mat,
+                  "text_files":textsource,"analysis_code_files":code,
+                  "raw_participant_rows_published":False,
+                  "model_scoring_run":False,"E3":"OPEN_PENDING_ORIGINAL_SESSION_RELATIONSHIP"}
+          p=Path("/tmp/r075_safe_summary/original_text_and_mat_shapes.json")
+          p.write_text(json.dumps(output,indent=2,sort_keys=True)+"\n")
+          print(json.dumps(output,sort_keys=True))
+          PY
+      - name: Upload only anonymous text headers and MATLAB variable dimensions
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r075-original-data-safe-mat-variable-shapes
+          path: /tmp/r075_safe_summary/original_text_and_mat_shapes.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase temporary source
+        if: always()
+        run: rm -rf /tmp/r075_safe_summary
