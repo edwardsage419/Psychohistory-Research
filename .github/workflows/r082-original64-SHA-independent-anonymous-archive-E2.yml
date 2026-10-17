@@ -1,0 +1,72 @@
+name: R082 independent first-party original64 SHA reexecution and anonymous archive E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r082-original64-SHA-independent-anonymous-archive-E2.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independently-redownload-every-publisher-original-and-archive-byte-locked:
+    runs-on: ubuntu-latest
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Repeat all 28 independent synthetic source/action/graph tests
+        run: |
+          PYTHONPATH=research/R082 python -m unittest -v \
+            research/R082/test_r082_source_nonresponse_and_graph_isolation.py
+      - name: Independently download every original source with publisher SHA256, validate full64 and require EXACT prior 23743 byte result hash
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r082_second_source_reexecution
+          PYTHONPATH=research/R080:research/R082 python \
+            research/R082/r082_source_nonresponse_and_graph_isolation.py \
+            --output /tmp/r082_second_source_reexecution/once.json
+          test "$(wc -c < /tmp/r082_second_source_reexecution/once.json | tr -d '[:space:]')" = 23743
+          printf '%s  %s\n' \
+            9ba6caeb25b0f2c8e024c4ce53ff7377567cef14f175c4fb0036d22c5f3b6999 \
+            /tmp/r082_second_source_reexecution/once.json | sha256sum --check --status
+          python - <<'PY'
+          import json,hashlib,pathlib
+          p=pathlib.Path('/tmp/r082_second_source_reexecution/once.json')
+          r=json.loads(p.read_bytes())
+          assert r["status"]=="R082_FULL64_SOURCE_VERIFIED_HUMAN_NONRESPONSE_GRAPH_ASSOCIATION_E2"
+          assert r["all64"]["observed_human_CD"]==27656
+          assert r["all64"]["missing_human_slots"]==3064
+          assert r["all64"]["six_disjoint_human_response_patterns"]["full30_observed"]==869
+          assert r["all64"]["six_disjoint_human_response_patterns"]["never_observed"]==31
+          assert r["all64"]["six_disjoint_human_response_patterns"]["trailing_only_missing"]==120
+          assert r["all64"]["six_disjoint_human_response_patterns"]["interior_gap_with_return"]==4
+          assert r["all64"]["bot_marked_node_structure"]["five_tie_or_singleton_exception_snapshots"]==1
+          assert len(r["all_eight_author_treatments"])==8
+          assert r["source_fingerprint"]=="555e2127ac21f4532c33a2e0a08f2e081b5f970891bd772c9bac3155d1d53571"
+          assert r["PESEN_v0.1"]=="FROZEN"
+          assert not r["raw_actor_ids_or_edges_exported"]
+          print("R082_TRUE_AUTHOR_ALL64_ANONYMOUS_SECOND_SHA256",hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
+      - name: Archive only the fully anonymized all64 and original eight-arm aggregates after byte exact independent match
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R082/R082_FIRST_PARTY_ORIGINAL64_HUMAN_NONRESPONSE_AND_NETWORK_ISOLATION_E2_RESULTS.json
+          if [ -e "$dest" ]; then
+            cmp "$dest" /tmp/r082_second_source_reexecution/once.json
+            echo "R082 already archived exact-byte anonymous macro results"
+            exit 0
+          fi
+          cp /tmp/r082_second_source_reexecution/once.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R082): independently publisher-SHA-verified original64 human missingness and graph isolation source E2"
+          git push origin HEAD:main
+      - name: Wipe all ephemeral source side data
+        if: always()
+        run: rm -rf /tmp/r082_second_source_reexecution
