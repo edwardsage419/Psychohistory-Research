@@ -16,8 +16,7 @@ BLOB="499787e08242c44c32a469b5d72b206ccf2c73f0"
 BYTES=571844
 SOURCE=f"https://raw.githubusercontent.com/{REPO}/{COMMIT}/{SRCFILE}"
 EXPECTED_SHEETS=("DiffTreatments","DiffProb")
-HEADER_WORDS=re.compile(r"group|round|session|treat|id|country|contrib|condition|player|subject|period|participant|number|decision|risk|prob|sweden|philippine|time|date|block|type|sample",re.IGNORECASE)
-HEADER_FORMAT=re.compile(r"^[A-Za-z_][A-Za-z_0-9 .\-\(\)/]{0,59}$")
+HEADER_ALLOWLIST=re.compile(r"^(?:group(?:[ _]?(?:id|no|number|code))?|round(?:[ _]?(?:id|no|number))?|contribution(?:[ _]?(?:amount|value))?|participant(?:[ _]?(?:code|id|number))?|player(?:[ _]?(?:id|number|code))?|subject(?:[ _]?(?:id|number))?|session(?:[ _]?(?:id|code|number))?|country|treatment|condition|period|probability|risk|control|block|sample|type|id)$",re.IGNORECASE)
 
 def git_blob(b):
  if not isinstance(b,bytes):raise ValueError("R091_SOURCE_GIT_HASH_REQUIRES_BYTES")
@@ -33,7 +32,7 @@ def source_identity(b,expected_blob=BLOB,expected_bytes=BYTES):
 def permitted_header(cell):
  if not isinstance(cell,str):return None
  s=cell.strip()
- if not (HEADER_FORMAT.fullmatch(s) and HEADER_WORDS.search(s)):return None
+ if not HEADER_ALLOWLIST.fullmatch(s):return None
  return s
 
 def shape_only(workbook):
@@ -43,10 +42,10 @@ def shape_only(workbook):
  for name in EXPECTED_SHEETS:
   ws=workbook[name]
   # Do not store any raw cells. Safely distinguish numeric layout and headers.
-  first_two=[]
-  for row in ws.iter_rows(min_row=1,max_row=min(2,ws.max_row),values_only=True):
-   first_two.append([{"col":k+1,"safe":permitted_header(v)} for k,v in enumerate(row)
-                     if permitted_header(v) is not None])
+  safe_first_header=[]
+  for row in ws.iter_rows(min_row=1,max_row=1,values_only=True):
+   safe_first_header.extend([{"col":k+1,"safe":permitted_header(v)} for k,v in enumerate(row)
+                              if permitted_header(v) is not None])
   coltypes=[]
   for c in range(1,ws.max_column+1):
    counts=Counter()
@@ -61,7 +60,7 @@ def shape_only(workbook):
    coltypes.append({"column_index":c,"cell_types":{k:counts[k] for k in
     ("numeric","string","boolean","formula","empty","other_typed")}})
   result[name]={"sheet_rows_including_headers":ws.max_row,"sheet_columns":ws.max_column,
-    "safe_column_name_candidates_in_first_two_rows":first_two,
+    "safe_column_name_candidates_in_first_two_rows":[safe_first_header],
     "strict_anonymous_per_column_cell_type_counts":coltypes}
  return result
 
