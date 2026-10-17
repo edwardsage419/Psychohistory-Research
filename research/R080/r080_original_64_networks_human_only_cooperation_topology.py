@@ -7,7 +7,7 @@ aggregate equal-weight across original independent networks, never publish
 game IDs, human IDs, node links, single-network scores or signed URLs.
 """
 from __future__ import annotations
-import argparse,hashlib,json,pathlib,statistics
+import argparse,hashlib,json,pathlib,statistics,time
 from collections import Counter,defaultdict
 from urllib.error import URLError,HTTPError
 from r080_official_dataset_per_file_content_and_role_schema import (
@@ -249,6 +249,39 @@ def aggregate_all_64_source_files(metadata,documents):
    "robot_intervention_causal_effect":"NOT_IDENTIFIED",
    "PESEN_v0.1":"FROZEN"}
 
+def exact_source_bytes_retry(original_file, expected_sha, expected_size, url):
+ """Operational-only retries: never lower author SHA gate or alter source cohort."""
+ for attempt in range(3):
+  try:
+   raw,_=get(url,min(MAX_ITEM,expected_size+4096))
+   if len(raw)==expected_size and hashlib.sha256(raw).hexdigest()==expected_sha.lower():
+    return raw
+  except (OSError,URLError,HTTPError,ValueError):
+   pass
+  if attempt<2:
+   # Refresh only the time-limited download address for the SAME publisher
+   # file id, same v1 DOI, same name, same size and exact published SHA256.
+   try:
+    b,_=get(BASE)
+    newer=json.loads(b)
+    metadata_overview(newer)
+    exact=[x for x in newer["files"] if x.get("id")==original_file.get("id")]
+    if len(exact)!=1:
+     raise ValueError("R080_SOURCE_REFRESH_FILE_ID_AMBIGUOUS")
+    file=exact[0]
+    if (file.get("filename")!=original_file.get("filename")
+        or int(file.get("size") or 0)!=expected_size
+        or (file.get("content_details") or {}).get("sha256_hash")!=expected_sha):
+     raise ValueError("R080_SOURCE_REFRESH_ORIGINAL_SHA_CHANGED")
+    newer_url=(file.get("content_details") or {}).get("download_url")
+    if not safe_official_download_url(newer_url):
+     raise ValueError("R080_SOURCE_REFRESH_LINK_NOT_OFFICIAL")
+    url=newer_url
+   except (OSError,URLError,HTTPError,ValueError):
+    pass
+   time.sleep(0.25*(attempt+1))
+ raise ValueError("R080_ONE_OR_MORE_REAL_ORIGINAL_JSON_SOURCE_SHA_MISMATCH_AFTER_THREE_RETRIES")
+
 def evaluate_official_all64():
  b,_=get(BASE)
  md=json.loads(b)
@@ -266,9 +299,9 @@ def evaluate_official_all64():
   sourcehash=c.get("sha256_hash")
   if not safe_official_download_url(url) or size<1 or size>MAX_ITEM or not isinstance(sourcehash,str) or not SHA256_RE.fullmatch(sourcehash):
    raise ValueError("R080_ORIGINAL_PUBLISHER_JSON_FILE_METADATA_SHA_MISSING")
-  raw,_=get(url,min(MAX_ITEM,size+4096))
-  if len(raw)!=size or hashlib.sha256(raw).hexdigest()!=sourcehash.lower():
-   raise ValueError("R080_ONE_OR_MORE_REAL_ORIGINAL_JSON_SOURCE_SHA_MISMATCH")
+  # Source hash strict and unchanged. If publisher CDN returns a stale,
+  # expired or non-identical response, reattempt ONLY the exact original file.
+  raw=exact_source_bytes_retry(f,sourcehash,size,url)
   try:records.append(json.loads(raw))
   except (ValueError,UnicodeError):
    raise ValueError("R080_ORIGINAL_NETWORK_JSON_BYTES_INVALID")
