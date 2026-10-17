@@ -1,0 +1,11 @@
+# R092 Phase A2: first-party original MATLAB format incompatibility — HDF5 metadata only
+
+2026-10-17, FROZEN **after** original Stage A source-only file parse strictly failed and **before** a NEW actual original read. Original Zenodo v2 fixed record 16918146 `ThresholdPGG_4P_ExperimentalData.mat`, publisher official MD5 **6036f73c2f758ab3aeed6dcf4f74585b**, same original immutable file URL. Stage A original scientific freeze and [GitHub Actions run 39016888560](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39016888560) must remain: all 19 synthetic tests passed, original real source `R092_UNSUPPORTED_ORIGINAL_MAT_STRUCTURE` -> real scientific behavior scores **ZERO**; do not claim it was a predictive failure.
+
+The MATLAB v7.3 MAT-file may use HDF5, which scipy.io.whosmat does not support. Freeze this **format-only** fallback: after exact publisher MD5 and length + SHA256, detect original leading 128-byte file metadata and HDF5 signature at one of two offsets 0 or 512. Use `h5py.File(BytesIO(...),'r')` in read-only in-memory mode. Enumerate only top-level HDF5 dataset or group names (redact source names not matching safe ASCII `[A-Za-z][A-Za-z0-9_]{0,45}`), group/dataset types, numerical shape dimensions, dtype.kind and dtype.itemsize only. Never dereference dataset data (no dataset[:], no attrs that could hold original human values), no person/group/source row IDs, no original contributions, no original source bytes in repo. Reject ambiguous MAT versions, size >=150000, unknown host redirect, source MD5 mismatch, nested traversal over 30 objects or shape dimension >5 million. If source is non-HDF5, report strict `UNSUPPORTED_FIXED_AUTHOR_FORMAT`, no fabricated output.
+
+Test 12+ purely synthetic HDF5 source layouts and malformed corpus, immutable digest gating before original. Success E1 source metadata only, later separately freeze Phase B exact source variable names/structure to allow group×session roster construction **before** reading behavioral contribution arrays. Keep R090 negative and R091 positive unchanged. Repeated original 276 individuals play both Session1 and Session2, do not misinterpret session groups as independent sampled humans.
+
+R092_PHASE_A2_HDF5_STRUCTURE=PRE_REAL_SOURCE_FROZEN
+R092_ORIGINAL_ACTOR_OUTCOME_SCORE=NOT_COMPUTED
+PESEN v0.1=FROZEN
