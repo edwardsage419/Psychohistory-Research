@@ -92,6 +92,7 @@ def summarize_official_json(data):
     if isinstance(v.get(nested),list):candidates.extend(v[nested])
  safe["file_descriptors"]=[safe_file_descriptor(x) for x in candidates[:120] if isinstance(x,dict)]
  safe["file_descriptors_total"]=len(candidates)
+ safe["first_file_metadata_field_keys"]=[k for k in candidates[0] if isinstance(k,str) and re.fullmatch(r"[a-zA-Z_]{1,45}",k)][:45] if candidates and isinstance(candidates[0],dict) else []
  return safe
 
 def metadata_gate_report(probes):
@@ -146,6 +147,13 @@ def main():
  a.output.write_text(json.dumps(report,indent=2,sort_keys=True)+"\n",encoding="utf-8")
  print(json.dumps({
   "research_id":"R080","metadata_access":report["official_json_metadata_success_labels"],
+  "metadata_source_structures":{k:{"keys":v.get("safe_official_json",{}).get("top_level_keys"),
+   "version":v.get("safe_official_json",{}).get("version_field"),
+   "DOI_matches":v.get("safe_official_json",{}).get("doi_exact_match"),
+   "file_count":v.get("safe_official_json",{}).get("file_descriptors_total"),
+   "file_fields":v.get("safe_official_json",{}).get("first_file_metadata_field_keys"),
+   "first_descriptors":v.get("safe_official_json",{}).get("file_descriptors",[])[:3]}
+   for k,v in report["official_access_checks"].items() if k in report["official_json_metadata_success_labels"]},
   "file_descriptors":report["metadata_file_descriptors_total"],
   "HTTP":{k:v.get("http_status") for k,v in report["official_access_checks"].items()},
   "R080_real_network_E2":report["R080_real_network_E2"],
