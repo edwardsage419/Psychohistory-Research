@@ -1,0 +1,66 @@
+name: R088 original 171 six-person full groups sharp 64-missing action bounds E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r088-original-171group-64missing-global-cooperation-sharp-E2.yml'
+      - 'research/R088/r088_phase_c_original171_missing_sharp_bounds_E2.py'
+      - 'research/R088/test_r088_phase_c_original171_missing_sharp_bounds_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-full-original-source-missing-and-group-level-bounds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run all 81 original source, format diagnostic and missingness bounds synthetic guards
+        run: |
+          PYTHONPATH=research/R088 python -m unittest -v             research/R088/test_r088_original_171_groups_multilevel_global_cooperation_E2.py             research/R088/test_r088_phase_b_original_action_schema_only_audit.py             research/R088/test_r088_phase_c_original171_missing_sharp_bounds_E2.py
+  original-171-groups-64-unknown-actions-source-sharp-real-E2:
+    needs: synthetic-full-original-source-missing-and-group-level-bounds
+    runs-on: ubuntu-latest
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch original author CSV and both original processing/analysis scripts exact Git blobs; sharply bound 171x20 group cooperation and thresholds
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r088_original_safe
+          PYTHONPATH=research/R088 python             research/R088/r088_phase_c_original171_missing_sharp_bounds_E2.py             --output /tmp/r088_original_safe/bounded.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          p=pathlib.Path('/tmp/r088_original_safe/bounded.json');b=p.read_bytes();v=json.loads(b)
+          assert v["status"]=="R088_ORIGINAL171_GROUP_MISSING_SHARP_INTERVAL_E2_EXECUTED"
+          a=v["original_author_real_human_sharp_bounds"]
+          assert a["original_complete_six_person_groups"]==171
+          assert a["original_human_participants_in_complete_groups"]==1026
+          assert a["original_20_round_group_rounds"]==3420
+          assert a["original_actor_round_action_opportunities"]==20520
+          assert a["original_missing_human_action_slots"]==64
+          assert a["original_observed_human_action_slots"]==20456
+          assert not v["original_human_action_rows_or_group_IDs_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          for group in a["original_three_treatments_sharp_source_bounded_group_results"].values():
+            assert group["original_complete_groups"]==57
+            assert group["global_threshold_success_over_all20_lower"]<=group["global_threshold_success_over_all20_upper"]
+            assert group["global_cooperation_over_all20_lower"]<=group["global_cooperation_over_all20_upper"]
+          print("R088_ORIGINAL_HUMAN_SHARP_E2_ANONYMOUS_BYTES",len(b))
+          print("R088_ORIGINAL_HUMAN_SHARP_E2_ANONYMOUS_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r088-original171-groups-missing64-global-cooperation-sharp-E2-only
+          path: /tmp/r088_original_safe/bounded.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r088_original_safe
