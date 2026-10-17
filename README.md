@@ -135,3 +135,11 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 [正式 R074 研究目录](research/R074/README.md)已完成真实原作者来源校验、[外部模型评分前独立冻结协议](protocols/R074_DALBO_AUTHOR_INDEPENDENT_HUMAN_E3_TRANSFER_FREEZE_2026-10-17.md)、29项完全合成反例测试及**另一独立作者实验**的18个场次、15,338次个人合作选择完整留场次预测。[第一份 R074 E3 报告](research/R074/R074_REAL_EXTERNAL_HUMAN_E3_RESULTS_AND_SCIENTIFIC_LIMITS_2026-10-17.md)记录了 M3(本人及对手上轮选择) 对 M1(本人上轮选择) 的场次等权 Brier 差 **−0.022915**，18场中16场更好、2场更差；而 M4(双方两轮) 对 M3 的差 **+0.003171**，仅5场更好、13场更差。因而上一轮对手行动的额外条件预测性在独立真人实验中获得支持，更长记忆总会增进预测的假设被真实反例限制。所有未改善场次保留，不能解释为因果记忆或制度因果。
 
 [19,308字节匿名原始宏评分归档](research/R074/R074_EXTERNAL_REAL_HUMAN_18_SESSION_E3_RESULTS.json)已由[独立 GitHub Actions SHA256 严格重算](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38988844437)确认；原始真人行与任何逐场ID均不存本仓库。R074 为有界 E3 结题（`CLOSED_BOUNDED`），当前拟合系数仍来自新实验自身其他场次，零样本数值参数迁移、心理因果机制与长时段历史外推均保持开放。PESEN v0.1 继续冻结。
+
+## R075：第三独立原作者真人重复博弈的外部 E3 复验（2026-10-17）
+
+[第三真人实验正式归档入口](research/R075/README.md)和[完整科学方法及负结果](research/R075/R075_REAL_THIRD_HUMAN_E3_RESULTS_AND_SCIENTIFIC_BOUNDARIES_2026-10-17.md)：恢复 Fudenberg、Rand、Dreber 2012 论文共同作者 David Rand 本人发布的可校验一手原始 ZIP（SHA256 `328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef`），完成18原始实验场次、384场次内参与者身份槽、34446原始人类决定的完整字节和字段核验。在独立提交[冻结 E3 协议](protocols/R075_COAUTHOR_ORIGINAL_HUMAN_18_SESSION_E3_TRANSFER_FREEZE_2026-10-17.md)后执行七个严格未改动 R073 模型，36项纯合成检查与**26116个真人意向行动目标、18场完整留出评分**均通过真实 GitHub Actions。
+
+第三实验结果：M3 双方上一轮相对 M1 本人上一轮场次等权 Brier `−0.029117`（**18/18场改善**）；M4 双方前两轮相对 M3 Brier `−0.012417`（**15/18场改善**），但零执行噪声处理的3场全部恶化。R074独立第二实验的 M4 净恶化继续保留，说明延长记忆的增量并不跨制度稳定。完整原始匿名数字结果 [R075 19,692字节 JSON](research/R075/R075_REAL_THIRD_HUMAN_18_SESSION_E3_RESULTS.json) SHA256 `eb74129bfd9af62678e9cacf910477854be694317d7b5d875e5ca33dc0f76174`，已由[独立第三次完整原作者数据重放CI](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38991027657)成功核验后永久Git归档，不保存任何原始人类决策行、真实场次标识或个体轨迹。
+
+**R075 `CLOSED_BOUNDED`、A01至A06 PASS，独立第三真人 E3 通过；跨实验零样本数值参数迁移、社会反馈心理因果作用和宏观历史演化仍未证实。PESEN v0.1 继续冻结。**
