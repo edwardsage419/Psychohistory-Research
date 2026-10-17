@@ -1,0 +1,153 @@
+{
+  "research_id": "R096",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_RETROSPECTIVE_PUBLISHED_2022_HUMAN_LONG_IPD_ORIGINAL_AUTHOR_CODE_GIT_TAG_CSV_TRUE_12_SESSION_HOLDOUT_NOT_IDENTICAL_VERIFIED_DRYAD",
+  "A01_to_A06": {
+    "A01": "PASS_BOUNDED_PRE_BEHAVIOR_FROZEN_2022_ORIGINAL_FP_SP_12SESSION100ROUND_TRUE_LOSO_M012_BINARY_BRIER",
+    "A02": "PASS_PINNED_ORIGINAL_AUTHOR_SUBMISSION_COMMIT_TWO_GIT_BLOBS_AND_SHA256_188_HUMANS_12_SESSIONS_18800_ROUNDS",
+    "A03": "PASS_110_SYNTHETIC_AND_TWO_COMPLETELY_INDEPENDENT_FULL_AUTHOR_SOURCE_DOWNLOADS_18612_GENUINE_BINARY_NEXT_ROUND_SCORES_EXACT_SHA",
+    "A04": "PASS_OFFICIAL_DRYAD_HTTP403_401_UNNAMED_HEADER_SOURCE_CODEBOOK_C_D_REJECTIONS_SYNTHETIC_FAILURES_AND_SHUFFLED_EARLY_NEGATIVES_PRESERVED",
+    "A05": "PASS_BOUNDED_REAL_AUTHOR_PROCESSED_CODE_CSV_E2_NOT_SAME_DRYAD_SOURCE_PROVEN_NOT_PREDICTIVE_E3_NOT_EXACT_R073_CONTRACT_OR_FP_SP_CAUSALITY",
+    "A06": "PASS_PHASE_A_B_B2_C_D_D2_D3_FROZEN_PROTOCOLS_SOURCE_SCRIPTS_TESTS_REAL_CI_RESULT_ANON_REPORT_ROOT_INDEX"
+  },
+  "sources": {
+    "original_article": "Montero-Porras et al. 2022 Inferring strategies from observations in long iterated Prisoner's dilemma experiments",
+    "article_DOI": "10.1038/s41598-022-11654-2",
+    "official_Dryad_DOI": "10.5061/dryad.37pvmcvmk",
+    "official_Dryad_file_stream_response": "HTTP 403",
+    "official_Dryad_API_response": "HTTP 401",
+    "original_author_repository": "eladiomontero/PairwiseStrategies",
+    "tag": "submission",
+    "exact_commit": "4743f74d8a03a031b8f70aff64956f8ad5155182",
+    "code_archive_DOI": "10.5281/zenodo.5765504",
+    "author_research_csv_verified_byteidentical_to_Dryad": false,
+    "FP": {
+      "file": "fix.csv",
+      "bytes": 988279,
+      "original_git_blob": "3bf78bf85f6642afee18d6f1965dca7272582f40",
+      "whole_sha256": "c2adc0d68dbc15c4f5ec5f0eb9a05a988cc049a9c086b82f796521a642b6eae9",
+      "true_sessions": 6,
+      "participants": 92,
+      "session_person_sizes_sorted": [
+        8,
+        14,
+        16,
+        18,
+        18,
+        18
+      ],
+      "source_actor_round_rows": 9200
+    },
+    "SP": {
+      "file": "rand.csv",
+      "bytes": 1112614,
+      "original_git_blob": "f5a86cd033b739da45d3fc7c5019068f612146a2",
+      "whole_sha256": "bc2999d6ad44c60f2b93361eb46b75614b1f600967ae061c76ae51184a80848a",
+      "true_sessions": 6,
+      "participants": 96,
+      "session_person_sizes_sorted": [
+        10,
+        16,
+        16,
+        18,
+        18,
+        18
+      ],
+      "source_actor_round_rows": 9600
+    }
+  },
+  "original_action_contract": {
+    "author_C_equals_cooperation_one": true,
+    "author_D_equals_defection_zero": true,
+    "independently_verified_original_literal_2022_source_C_D_counts": {
+      "FP_C": 5161,
+      "FP_D": 4039,
+      "SP_C": 2738,
+      "SP_D": 6862
+    },
+    "each_original_actor_100_complete_rounds": true,
+    "original_100round_opponent_and_player_0_1_action_consistency_verification": true,
+    "model_future_context_columns_unused": true
+  },
+  "true_session_LOSO_models": {
+    "original_true_independent_sessions": 12,
+    "real_people": 188,
+    "test_t_rounds": "2..100",
+    "FP_targets": 9108,
+    "SP_targets": 9504,
+    "all_real_next_round_targets": 18612,
+    "M0": "within treatment, round-t original action mean across five OTHER entire original sessions; exclude ALL target session human records",
+    "M1": "target person's prior original round action",
+    "M2": "fixed 0.5 M0 + 0.5 M1",
+    "score": "binary Brier squared error",
+    "early_period": "t2..25",
+    "later_period": "t26..100",
+    "fully_calendar_future_blind": false
+  },
+  "results": {
+    "overall": {
+      "M0": 0.22824976246948125,
+      "M1": 0.16784869976359337,
+      "M2": 0.1409460375091587,
+      "M1_gain": 0.060401062705881185,
+      "M2_gain": 0.08730372496031717
+    },
+    "FP": {
+      "M0": 0.252287936183764,
+      "M1": 0.13899868247694336,
+      "M2": 0.1325538527984056,
+      "M1_gain": 0.11328925370681109,
+      "M2_gain": 0.1197340833853526,
+      "original_session_M1_positive": 6,
+      "original_session_M1_negative": 0,
+      "original_session_M2_positive": 6,
+      "early_M1_gain": 0.0009861683119943992,
+      "later_M1_gain": 0.14922624103315274
+    },
+    "SP": {
+      "M0": 0.20521317932662703,
+      "M1": 0.195496632996633,
+      "M2": 0.14898854785696375,
+      "M1_gain": 0.009716546329990038,
+      "M2_gain": 0.05622463146965821,
+      "original_session_M1_positive": 3,
+      "original_session_M1_negative": 3,
+      "original_session_M2_positive": 6,
+      "early_M1_gain": -0.041938665606979786,
+      "later_M1_gain": 0.026246214149820035
+    }
+  },
+  "verification": {
+    "Dryad_access_fail_run": 39022157694,
+    "author_source_header_fail_run": 39022585556,
+    "author_source_identity_success_run": 39022889186,
+    "original_true_session_roster_success_run": 39023131299,
+    "original_first_action_binary_numeric_fail_run": 39023515492,
+    "source_C_D_class_only_prescore_run": 39023662426,
+    "obsolete_synthetic_C_rejection_run": 39023767024,
+    "first_real_E2_110_synthetic_success_run": 39023796827,
+    "second_independent_full_source_replay_and_permanent_git_archive_run": 39023880006,
+    "synthetic_tests": 110,
+    "anonymous_result_bytes": 11133,
+    "anonymous_result_full_SHA256": "3aae5d183a33cce37a16d0637b2b887fb106a2b7432d8c8151b9a2dfafe452c2",
+    "result_git_blob": "1d98ceadcca53d6c09754ff0d2207dd99e8ee2f3"
+  },
+  "files": {
+    "result": "research/R096/R096_MONTERO_2022_188_HUMANS_12_TRUE_SESSIONS_100ROUND_FPSP_BINARY_LOSO_E2_RESULTS.json",
+    "report": "research/R096/R096_MONTERO_2022_12_REAL_LAB_SESSIONS_188_HUMANS_100ROUND_FPSP_BINARY_LOSO_E2_SCIENTIFIC_REPORT_2026-10-17.md"
+  },
+  "limits": {
+    "primary_Dryad_full_bytes_accessible_verified": false,
+    "original_author_csv_contains_derived_fields_not_earliest_Dryad_proven": true,
+    "same_round_M0_not_real_calendar_forecast": true,
+    "only_six_independent_laboratory_sessions_per_FP_SP_treatment": true,
+    "individual_18612_game_records_not_independent_experimental_sessions": true,
+    "different_game_and_pair_condition_than_R095": true,
+    "no_causal_FP_SP_mechanism_inference": true,
+    "not_exact_R073_model_scorer_external_E3": true,
+    "no_history_level_macro_inference": true
+  },
+  "next": "R097 seek separate original human experiment with 20-100 rounds, independent session IDs and opponent lag, pre-freeze model and early/late evaluation; no adapting R096 scores",
+  "PESEN_v0_1": "FROZEN"
+}
