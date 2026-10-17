@@ -1,0 +1,68 @@
+name: R090 independent original climate club 180 humans 30 groups 420 leave-one-group-out negative E2 exact archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r090-independent-original-climate-clubs-cross-author-420-negative-E2-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-independent-new-lab-30group-source-and-outcomes-second-fullbyte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Repeat all 84 frozen source eligibility and model-transfer synthetic tests
+        run: |
+          PYTHONPATH=research/R090 python -m unittest -v             research/R090/test_r090_independent_climate_clubs_original_roster_source_gate.py             research/R090/test_r090_phase_b_independent_original_otree_round_metadata_only.py             research/R090/test_r090_original30_stable_six_person_LOOG_cross_author_history_transfer_E2.py
+      - name: Independently refetch official original Zenodo 419189 byte CSV with exact publisher MD5 and prior SHA, repeat all 420 LOOG predictions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r090_second_independent_private
+          PYTHONPATH=research/R090 python             research/R090/r090_original30_stable_six_person_LOOG_cross_author_history_transfer_E2.py             --output /tmp/r090_second_independent_private/real_420_group_scores.json
+          test "$(wc -c < /tmp/r090_second_independent_private/real_420_group_scores.json | tr -d '[:space:]')" = 7913
+          printf '%s  %s\n'             f7970b444588d0af7986a10056750400190d360d1533bb1d3dafffa9cce05182             /tmp/r090_second_independent_private/real_420_group_scores.json | sha256sum --check --status
+          python - <<'PY'
+          import json,pathlib,hashlib
+          b=pathlib.Path('/tmp/r090_second_independent_private/real_420_group_scores.json').read_bytes()
+          v=json.loads(b)
+          assert v["status"]=="R090_ORIGINAL_INDEPENDENT_AUTHOR_30GROUP_15ROUND_HISTORY_TRANSFER_E2_EXECUTED"
+          q=v["original_2700_row_real_human_behavior_source_eligibility"]
+          p=v["transfer_group_level_prediction_results"]
+          assert q["original_2700_actor_round_contributions_read"]==2700
+          assert p["source_independent_author_heldout_forecast_targets"]==420
+          assert p["source_independent_groups_heldout"]==30
+          assert p["M1_history_pooled_shared_target_gain_over_M0"]<0
+          assert p["M2_halfblend_pooled_shared_target_gain_over_M0"]>0
+          assert p["total_source_original_heldout_groups_M1_gain_negative"]==17
+          assert p["total_source_original_heldout_groups_M1_gain_positive"]==13
+          assert sum(x["one"] for x in q["auto_decision_observed_counts_by_treatment"].values())==249
+          assert v["scientific_scope_if_system_automatic_decisions"]=="MIXED_RECORDED_EXPERIMENT_ACTIONS_INCLUDES_AUTOMATIC"
+          assert not v["individual_actor_actions_or_group_ID_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R090_INDEPENDENT_ORIGINAL_NEGATIVE_E2_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Archive exactly source-verifiable negative cross-experiment original human group statistics; do not publish actor rows
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R090/R090_INDEPENDENT_AUTHOR_30GROUP_15ROUND_HISTORY_TRANSFER_M1_NEGATIVE_E2_RESULTS.json
+          mkdir -p research/R090
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r090_second_independent_private/real_420_group_scores.json
+            exit 0
+          fi
+          cp /tmp/r090_second_independent_private/real_420_group_scores.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R090): original independent 180-human 30-group negative M1 transfer; M2 robust, auto decisions disclosed"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r090_second_independent_private
