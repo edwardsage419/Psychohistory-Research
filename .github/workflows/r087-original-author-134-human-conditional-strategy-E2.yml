@@ -1,0 +1,63 @@
+name: R087 original 134 human conditional cooperation all10-period E2 strict source gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r087-original-author-134-human-conditional-strategy-E2.yml'
+      - 'research/R087/r087_author_134_human_10_period_conditional_strategy_E2.py'
+      - 'research/R087/test_r087_author_134_human_10_period_conditional_strategy_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-original-134-humans-source-and-strategy-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: First execute all 38 entirely synthetic original source, 134 player, condition choice and privacy tests
+        run: |
+          PYTHONPATH=research/R087 python -m unittest -v             research/R087/test_r087_author_134_human_10_period_conditional_strategy_E2.py
+  original-source-real-134-humans-10-period-choice-E2:
+    needs: synthetic-original-134-humans-source-and-strategy-safety
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download exact original Git blob CSV and author processing code and validate all134 6 sessions 1340 periods before computing original human strategy transitions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r087_private_aggregate
+          PYTHONPATH=research/R087 python             research/R087/r087_author_134_human_10_period_conditional_strategy_E2.py             --output /tmp/r087_private_aggregate/r087_anon_macro.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          path=pathlib.Path('/tmp/r087_private_aggregate/r087_anon_macro.json')
+          b=path.read_bytes();v=json.loads(b)
+          assert v["status"]=="R087_ORIGINAL_AUTHOR_FULL_134_HUMAN_10_PERIOD_STRATEGY_E2_EXECUTED"
+          assert v["original_6_sessions_count"]==6
+          assert v["original_134_humans_with_10_periods_each"]==134
+          assert v["original_human_choice_period_rows"]==1340
+          assert v["original_human_aggregate"]["all134"]["participants"]==134
+          assert v["original_human_aggregate"]["by_original_information_treatment"]["NoCondInfo"]["participants"]==68
+          assert v["original_human_aggregate"]["by_original_information_treatment"]["CondInfo"]["participants"]==66
+          assert not v["actor_session_and_row_identifiers_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R087_REAL_ORIGINAL_AUTHOR_134_HUMAN_ANONYMOUS_RESULTS_BYTES",len(b))
+          print("R087_REAL_ORIGINAL_AUTHOR_134_HUMAN_ANONYMOUS_RESULTS_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Upload only anonymous full134 and treatment-level original results, never author individual rows
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r087-original-author-full134-conditional-human-strategy-E2
+          path: /tmp/r087_private_aggregate/r087_anon_macro.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r087_private_aggregate
