@@ -1,0 +1,64 @@
+name: R094 Nishi 2015 real human binary network PGG 1462 actor 10round 2026 curated person LOO E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r094-nishi-2015-zhu-2026-curated-1462-binary-actor-history-E2.yml'
+      - 'research/R094/r094_zhu_nishi_2015_1462_binary_network_participant_holdout_E2.py'
+      - 'research/R094/test_r094_zhu_nishi_2015_1462_binary_network_participant_holdout_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-80-source-privacy-and-binary-person-history-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original source MD5 SHA/participant 10round/visibility and strictly binary 0/1 history positive+negative synthetic
+        run: |
+          PYTHONPATH=research/R094 python -m unittest -v             research/R094/test_r094_zhu_nishi_2015_binary_network_original_sessions_secondary_source_gate.py             research/R094/test_r094_phase_b_nishi_2015_2026_binary_network_person_round_visibility_only.py             research/R094/test_r094_zhu_nishi_2015_1462_binary_network_participant_holdout_E2.py
+  genuine-Nishi-original-secondary-curated-2015-human-binary-action-1462-source-id-E2:
+    needs: all-80-source-privacy-and-binary-person-history-synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 2026 secondary-curated 2015 Nishi human data Zenodo MD5 & SHA and score original binary 0/1 person LOO with no session claims
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r094_original_binary_privacy
+          PYTHONPATH=research/R094 python             research/R094/r094_zhu_nishi_2015_1462_binary_network_participant_holdout_E2.py             --output /tmp/r094_original_binary_privacy/anon_binary_person_E2.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          b=pathlib.Path('/tmp/r094_original_binary_privacy/anon_binary_person_E2.json').read_bytes()
+          v=json.loads(b)
+          assert v["status"]=="R094_SECONDARY_CURATED_ORIGINAL_2015_HUMAN_BINARY_NETWORK_1462_PERSON_E2_EXECUTED"
+          q=v["source_metadata"];z=v["binary_individual_full_person_heldout_evaluation"]
+          assert q["source_original_secondary_rows"]==14620
+          assert q["source_unique_original_node_IDs"]==1462
+          assert z["original_secondary_source_actors"]==1462
+          assert z["next_round_current_and_previous_binary_source_action_targets"]>0
+          assert z["true_independent_original_session_count_reconstructed"]==0
+          assert z["full_test_subject_excluded_from_same_visibility_round_M0"]
+          assert z["source_decision_lead_future_information_excluded"]
+          assert not z["participant_IDs_source_tenround_binary_traces_or_session_IDs_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R094_ACTUAL_2015_BINARY_HUMAN_PERSON_FORECAST_ANON_BYTES",len(b))
+          print("R094_ACTUAL_2015_BINARY_HUMAN_PERSON_FORECAST_ANON_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r094-original-2015-human-binary-network-2026-secondary-1462-actor-individual-E2
+          path: /tmp/r094_original_binary_privacy/anon_binary_person_E2.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r094_original_binary_privacy
