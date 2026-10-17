@@ -137,7 +137,7 @@ class FrozenTransfer(unittest.TestCase):
   result=score_loo(s,{t:2 for t in TREATMENTS},112)
   self.assertGreater(result["M1_history_pooled_shared_target_gain_over_M0"],0)
  def test_group_by_round_history_worse_when_alternating(self):
-  s={t:{f"g{i}":[0.1 if (t0+i)%2==0 else 0.9 for t0 in range(15)]
+  s={t:{f"g{i}":[0.1 if t0%2==0 else 0.9 for t0 in range(15)]
         for i in range(2)} for t in TREATMENTS}
   result=score_loo(s,{t:2 for t in TREATMENTS},112)
   self.assertLess(result["M1_history_pooled_shared_target_gain_over_M0"],0)
