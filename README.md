@@ -210,3 +210,12 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 [首次35项合成及真人SHA运行](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39001261509)与[第二次独立原始字节重取、35合成及结果全文件 SHA 完全一致的归档](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39001352142) 均SUCCESS。主实验1336配对在“他人惩罚”与“他人不惩罚”的自身惩罚选择差为**+4.416个百分点**，复验1544配对为**+2.785个百分点**，主实验四格1054/134/75/73与作者原始.do脚本既有值完全一致。结果符合两队列正向的先冻结机制方向门。关键负面分层：主实验原本无条件惩罚者差**−1.974个百分点**、复验该类为+3.017百分点，两个细分检验都未达到常见显著性标准，切勿扩大为任意个体都协调惩罚。
 
 [完整科学报告及因果边界](research/R083/R083_REAL_AUTHOR_COORDINATED_PUNISHMENT_MAIN_REPLICATION_SCIENTIFIC_REPORT_2026-10-17.md)、[原作者SHA二次全字节匿名数字](research/R083/R083_ORIGINAL_HUMAN_COORDINATED_PUNISHMENT_MAIN_REPLICATION_E2_RESULTS.json)（6019字节SHA256 `a75638fbb3619667a077e1fa640bc1b3ca97dce062b2538c779eeac053e216ae`）与[六项正式结题](research/R083/R083_FINAL_ACCEPTANCE_STATUS.json)均在Git main。项目未上传任何原作者个人记录、逐行选择或原始Stata数据。原作者 `rerun` 主/复验样本是否与其他外部作者实验彻底独立、真实他人惩罚的因果作用、处罚制度演化与历史社会发展仍未验证；本项为**已发表原作者数据回顾性E2**，不冒称新招募受试者的E3。**R083=CLOSED_BOUNDED，PESEN v0.1=FROZEN**。
+
+
+## R084：七实验室原作者OSF来源资格、二次失败复验及有界结题（2026-10-17）
+
+[R084原作者来源门入口](research/R084/README.md)与[新结果前冻结协议](protocols/R084_MULTILAB_INSTITUTIONAL_SELECTION_SOURCE_GATE_FREEZE_2026-10-17.md)研究2023年 Lo Iacono 等发表于 PNAS Nexus 的七实验室惩罚制度选择复验，论文报告1008真人、84组、30轮和五个实验室满足全部预注册复验准则，Oxford/Warsaw未全部满足。以上都是**原论文事先已发表结果**。另据OSF自身公开Trove元数据找到原作者 `Replication Data` component `r7y9n`及 `Utrecht_sbj.csv` 文件ID `fjyg3` 的索引SHA256线索，**但原始文件字节从未实取核验**。
+
+[真实官方OSF元数据访问run 39001728447](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39001728447) 与[独立再次复验及永久归档run 39001798435](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39001798435) 均执行通过26项合成安全测试；每次对10个真实OSF官方元数据路径的访问均返回**HTTP 503（10/10）**。因此**0份原始真人文件、0条原始行为行、0次真人统计结果**。两轮安全HTTP状态收据确实逐字节一致，共4185字节、SHA256 `3ebccaca8f6b631afeaa927aeadc677d896b8aa358ab498c3309c2542028e1ac`，作为[永久反面证据归档](research/R084/R084_2023_SEVEN_LAB_ORIGINAL_OSF_OFFICIAL_SOURCE_GATE_FAIL_CLOSED_E0_RESULTS.json)。
+
+[科学报告](research/R084/R084_SEVEN_LAB_INSTITUTION_SELECTION_OSF_ORIGINAL_SOURCE_GATE_SCIENTIFIC_REPORT_2026-10-17.md)和[六门正式验收](research/R084/R084_FINAL_ACCEPTANCE_STATUS.json)完整区分行政性的 **R084=CLOSED_BOUNDED（仅来源资格失败审计）** 与科研的 **REAL_HUMAN_E2=OPEN / BLOCKED_OFFICIAL_OSF_SOURCE_503**；两个CI返回success只说明安全失败被准确记录，不证明OSF永久不可用、实验从未存在或本项目复算了已发表5/7结果。SI/SFI制度由个人自行选择，因果解释也未成立。后续优先换其他可获取的原作者真人制度/互动源，不让一个来源受阻无限延缓更多模型的独立研究；PESEN v0.1继续冻结。
