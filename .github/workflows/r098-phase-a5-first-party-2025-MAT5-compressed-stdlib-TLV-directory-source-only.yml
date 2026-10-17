@@ -1,0 +1,63 @@
+name: R098 original 2025 Zenodo 4P LinearPGG custom MAT5 tag directory only verified publisher MD5 SHA
+on:
+  push:
+    paths:
+      - '.github/workflows/r098-phase-a5-first-party-2025-MAT5-compressed-stdlib-TLV-directory-source-only.yml'
+      - 'research/R098/r098_phase_a5_mat5_tlv_metadata_only_parser.py'
+      - 'research/R098/test_r098_phase_a5_mat5_tlv_metadata_only_parser.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-49-synthetic-MAT5-header-only-source-and-privacy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install --disable-pip-version-check --quiet 'scipy>=1.10,<2' 'h5py>=3.8,<5'
+      - name: 24 existing original published MD5 source and 25 custom compressed/legacy MAT5 privacy synthetic
+        run: |
+          PYTHONPATH=research/R098 python -m unittest -v             research/R098/test_r098_wang2025_4p_linear_zenodo_mat_publisher_MD5_structure_only.py             research/R098/test_r098_phase_a5_mat5_tlv_metadata_only_parser.py
+  original-publisher-author-MD5-SHA-real-MAT5-source-header-only:
+    needs: first-49-synthetic-MAT5-header-only-source-and-privacy-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Re-fetch exact 2025 Zenodo v2 author file SHA then read only flags/dimensions/top name metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r098_authentic_mat_source_safe
+          PYTHONPATH=research/R098 python             research/R098/r098_phase_a5_mat5_tlv_metadata_only_parser.py             --output /tmp/r098_authentic_mat_source_safe/author_mat5_directory_only.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r098_authentic_mat_source_safe/author_mat5_directory_only.json').read_bytes()
+          a=json.loads(b)
+          assert a["status"]=="R098_ORIGINAL_MAT5_DIRECTORY_METADATA_E1_VERIFIED"
+          q=a["first_party_source_verified_MD5_SHA"]
+          assert q["publisher_published_MD5"]=="42153952f8e6614d09c2d903fd97af62"
+          assert q["original_fullfile_computed_SHA256"]=="dcdd23e709ce1c17fadddffb84d07b9cf2f37a0a206e4665317aed31fd4e790b"
+          m=a["safe_MAT_original_source_directory"]
+          assert m["original_top_level_variables"]>0
+          assert not m["reader_decoded_any_original_real_human_contribution_or_actor_value"]
+          assert not m["reader_loaded_source_numeric_arrays"]
+          assert not m["publisher_original_bytes_redistributed"]
+          assert a["real_original_human_model_scores"]==0
+          assert a["PESEN_v0.1"]=="FROZEN"
+          print("R098_PUBLISHED_ORIGINAL_MAT5_DIRECTORY_ONLY_BYTES",len(b))
+          print("R098_PUBLISHED_ORIGINAL_MAT5_DIRECTORY_ONLY_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r098-original-2025-first-party-Zenodo-MAT5-MD5-SHA-49synthetic-source-directory
+          path: /tmp/r098_authentic_mat_source_safe/author_mat5_directory_only.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r098_authentic_mat_source_safe
