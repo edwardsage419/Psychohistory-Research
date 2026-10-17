@@ -1,0 +1,63 @@
+name: R075 coauthor original 18-session paired actor and feedback time semantics
+on:
+  push:
+    paths:
+      - '.github/workflows/r075-coauthor-original-feedback-gate.yml'
+      - 'research/R075/r075_coauthor_original_feedback_audit.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-data-source-and-history-synthetic-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test 12 invented source identities, pair and session isolation cases
+        working-directory: research/R075
+        run: python -m unittest -v test_r075_coauthor_original_session_structure
+  original-coauthor-session-paired-feedback-audit:
+    needs: original-data-source-and-history-synthetic-control
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download true coauthor original SHA-pinned source to temporary runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r075_private /tmp/r075_public
+          python - <<'PY'
+          import hashlib,urllib.request
+          from pathlib import Path
+          url="https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip"
+          with urllib.request.urlopen(urllib.request.Request(url,headers={"User-Agent":"Psychohistory-R075-actual-original-feedback-integrity/1.0"}),timeout=60) as r:
+            data=r.read(4_000_001)
+          if len(data)!=1129409 or hashlib.sha256(data).hexdigest()!="328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef":
+            raise ValueError("ORIGINAL_PUBLIC_AUTHOR_ARCHIVE_CHANGED")
+          Path("/tmp/r075_private/author.zip").write_bytes(data)
+          PY
+      - name: Audit 34446 original actions, within-session opponent pair, t-1 and t-2 historical observation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R075/r075_coauthor_original_feedback_audit.py \
+            --zip /tmp/r075_private/author.zip \
+            --output /tmp/r075_public/original_feedback_anonymous.json
+      - name: Upload only anonymous source counts, no session ID or participant data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r075-original-coauthor-real-feedback-session-integrity
+          path: /tmp/r075_public/original_feedback_anonymous.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase all temporary original human rows and anonymous outputs
+        if: always()
+        run: rm -rf /tmp/r075_private /tmp/r075_public
