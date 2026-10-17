@@ -81,7 +81,9 @@ def directory_only(b):
   if typ not in (14,15):
    raise ValueError("R098A5_ORIGINAL_UNEXPECTED_TOP_LEVEL_MAT_TAG")
   rows.append(parse_matrix_directory(compressed_block(b,typ,loc,n)))
-  pos=nxt
+  # MATLAB 5 miCOMPRESSED writer may omit outer 8-byte alignment.
+  # No information from individual data arrays is interpreted.
+  pos=loc+n if typ==15 else nxt
   if len(rows)>40:raise ValueError("R098A5_TOO_MANY_MAT_VARIABLES")
  if not rows or pos!=len(b) or len({x["original_MAT5_name_only"] for x in rows})!=len(rows):
   raise ValueError("R098A5_INVALID_OR_DUPLICATE_TOPLEVEL_MAT_VARIABLES")
