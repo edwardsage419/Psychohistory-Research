@@ -1,0 +1,66 @@
+name: R075 third original coauthor full 34446-row human session and action schema
+on:
+  push:
+    paths:
+      - '.github/workflows/r075-coauthor-full-original-text-session.yml'
+      - 'research/R075/r075_coauthor_original_session_structure.py'
+      - 'research/R075/test_r075_coauthor_original_session_structure.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-original-session-privacy-and-key-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prove 12 synthetic actor session and source guards
+        working-directory: research/R075
+        run: python -m unittest -v test_r075_coauthor_original_session_structure
+  independently-verify-original-author-full-human-text-schema:
+    needs: synthetic-original-session-privacy-and-key-controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve exact author ZIP temporarily, never publish participant rows
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r075_author_data_private /tmp/r075_anon_stats
+          python - <<'PY'
+          import urllib.request,hashlib
+          from pathlib import Path
+          url="https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip"
+          with urllib.request.urlopen(urllib.request.Request(url,headers={
+            "User-Agent":"Psychohistory-R075-original-humans-header-session-audit/1.0"}),timeout=60) as r:
+              body=r.read(3_000_001)
+          sha=hashlib.sha256(body).hexdigest()
+          if len(body)!=1129409 or sha!="328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef":
+            raise ValueError("ORIGINAL_COAUTHOR_BYTES_OR_SHA_CHANGED")
+          Path("/tmp/r075_author_data_private/author.zip").write_bytes(body)
+          PY
+      - name: Validate all true original session/person/treatment keys and report anonymized metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R075/r075_coauthor_original_session_structure.py \
+            --zip /tmp/r075_author_data_private/author.zip \
+            --output /tmp/r075_anon_stats/coauthor_source_sessions.json
+      - name: Save only anonymous field domains, counts and source SHA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r075-coauthor-true-original-human-34446-session-schema
+          path: /tmp/r075_anon_stats/coauthor_source_sessions.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase all transient raw coauthor human data and temporary metadata
+        if: always()
+        run: rm -rf /tmp/r075_author_data_private /tmp/r075_anon_stats
