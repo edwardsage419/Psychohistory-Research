@@ -163,7 +163,7 @@ def main():
   msg=str(e)[:96] if isinstance(e,ValueError) and str(e).startswith("R095C_") else "R095C_REAL_FIRST_PARTY_SOURCE_ELIGIBILITY_OR_SCORING_FAIL_CLOSED"
   r={"research_id":"R095","status":"R095C_ORIGINAL_HUMAN_LAB_SESSION_SCORE_FAIL_CLOSED",
     "safe_failure":msg,"verified_real_behavioral_scores":0,"PESEN_v0.1":"FROZEN"}
- pth=a.parse_args().output
+ pth=a.output
  pth.parent.mkdir(parents=True,exist_ok=True)
  pth.write_text(json.dumps(r,indent=2,sort_keys=True)+"\n",encoding="utf8")
  z=r.get("original_lab_session_full_holdout_human_binary_prediction",{})
