@@ -1,0 +1,73 @@
+name: R080 independent all64 original author official-SHA replay and permanent human-only network E2 archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r080-real64-human-bot-SHA-independent-archive-E2.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independently-refetch-all-original-64-certified-network-JSON-and-archive-byte-exact-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Repeat all 45 full-network synthetic population/role/link/missing-isolate tests
+        working-directory: research/R080
+        run: python -m unittest -v test_r080_original_64_networks_human_only_cooperation_topology
+      - name: Independently redownload EVERY source SHA-pinned original 64 human/bot network JSON and check complete source universe/byte-identical E2 results
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r080_64_network_replay_private
+          PYTHONPATH=research/R080 python research/R080/r080_original_64_networks_human_only_cooperation_topology.py \
+            --output /tmp/r080_64_network_replay_private/once.json
+          PYTHONPATH=research/R080 python research/R080/r080_original_64_networks_human_only_cooperation_topology.py \
+            --output /tmp/r080_64_network_replay_private/twice.json
+          cmp /tmp/r080_64_network_replay_private/once.json /tmp/r080_64_network_replay_private/twice.json
+          test "$(wc -c < /tmp/r080_64_network_replay_private/once.json | tr -d '[:space:]')" = 11745
+          printf '%s  %s\n' \
+            7b7d231d97a98c4b08e7d3658fa8e943bacd60aef1d8529754cd1f75179b99c8 \
+            /tmp/r080_64_network_replay_private/once.json | sha256sum --check --status
+          python - <<'PY'
+          import json,hashlib,pathlib
+          p=pathlib.Path("/tmp/r080_64_network_replay_private/once.json")
+          d=json.loads(p.read_text())
+          assert d["status"]=="R080_FIRST_PARTY_AUTHOR_64_NETWORK_HUMAN_ONLY_TOPOLOGY_E2_EXECUTED"
+          src=d["original_source"]
+          assert src["verified_networks"]==64
+          assert src["original_human_participant_network_slots"]==1024
+          assert src["publisher_file_count"]==70
+          assert src["original_behavior_rounds"]==1920
+          assert src["original_network_snapshots"]==1984
+          assert src["all_original_64_file_content_SHA256_verified"]
+          assert len(d["treatment_equal_network_aggregate"])==8
+          assert all(v["networks"]==8 for v in d["treatment_equal_network_aggregate"].values())
+          assert d["robot_intervention_causal_effect"]=="NOT_IDENTIFIED"
+          assert d["causal_human_social_effect"]=="NOT_IDENTIFIED"
+          print("R080_FULL_64_SOURCE_ACTUAL_SHA_REPLAY_MATCH",hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
+      - name: Archive anonymous eight-arm and overall real human network only JSON on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R080/R080_FIRST_PARTY_64_HUMAN_NETWORKS_TOPOLOGY_E2_RESULTS.json
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r080_64_network_replay_private/once.json
+            echo "R080 permanent existing archive byte-identical"
+            exit 0
+          fi
+          cp /tmp/r080_64_network_replay_private/once.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R080): archive original 64 human networks verified E2 bot-split cooperation and evolving network topology"
+          git push origin HEAD:main
+      - name: Erase all source and results held temporarily by runner
+        if: always()
+        run: rm -rf /tmp/r080_64_network_replay_private
