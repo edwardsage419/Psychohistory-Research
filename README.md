@@ -192,3 +192,12 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 全部64网络共30,720个每轮16人理论行动槽，真实可观察真人C/D为27,656，缺失3064。R080原观测首末合作下降11.07个百分点；如果每一缺失槽都可任意赋一项二元C/D，全部64网络等权完整名册合作变化**精确界限为下降20.2148至2.4414个百分点，始终为负**。原8类处理有4类严格下降、1类严格上升、3类在缺测极端补全下触零/跨零。首轮缺31槽、末轮缺151槽，覆盖率随时间减弱。单独网络中有21/64在自由补全下方向不定；第二实验248网络快照有一例机器人五节点各一真人连接结构的例外，均如实保留。
 
 [正式科学报告](research/R081/R081_ALL64_AUTHOR_MISSINGNESS_BOT_ENTITY_AND_CAUSAL_ASSIGNMENT_SCIENTIFIC_REPORT_2026-10-17.md)和[六项验收](research/R081/R081_FINAL_ACCEPTANCE_STATUS.json)现已同步。R081研究证据级别仍为**真实来源、回顾性E2缺测敏感性**；论文所谓单一逻辑机器人与原始记录五个bot节点的映射、实验处理随机分配、人类动作缺测机制及第一/第二实验可交换性均仍待独立核验，因果推断门未开。**R081=CLOSED_BOUNDED，PESEN v0.1=FROZEN**。
+
+
+## R082：原作者全部64真人网络的缺测轨迹与零度网络状态共现审计（2026-10-17）
+
+[正式R082科研入口](research/R082/README.md)和[结果前方法协议](protocols/R082_ORIGINAL64_HUMAN_NONRESPONSE_GRAPH_ISOLATION_AND_ALLOCATION_SOURCE_FREEZE_2026-10-17.md)固定了六类真人行动可观测性轨迹、两种网络快照索引时间对齐及两种网络孤立口径。[首次原作者SHA全64网络分析CI](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39000527926)与[独立第二次严格SHA全64网络重新下载及原字节永久归档CI](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39000654904)均成功，各执行**28项纯合成测试**；完整八处理/64网络[匿名23,743字节原始数字结果](research/R082/R082_FIRST_PARTY_ORIGINAL64_HUMAN_NONRESPONSE_AND_NETWORK_ISOLATION_E2_RESULTS.json) SHA256 `9ba6caeb25b0f2c8e024c4ce53ff7377567cef14f175c4fb0036d22c5f3b6999` 获逐字节一致性核验。
+
+全部1024原始真人名册身份槽中，**869**身份30轮均有C/D，**31**个30轮全无记录，**120**个有此前合作选择但末段持续缺测，**4**个间歇缺测后有返回；31个从无记录与120个持续末段缺测共解释3064个无C/D槽位中的**3048**个。原始网络快照第t+1索引对齐第t个行动列表项，缺测中的**3060/3064个**与真人图连接度0共现；另有5个真人行动虽图度0仍有C/D，以及4个有边却缺测，全部保留。采用另一快照索引、没有真人邻居但仍有机器人邻居的分层也同步保存。实验2来源五个机器人标记节点248个图快照中，有247个五条人机边，1个四条边（总机器人标记节点度数0的一次事件）。
+
+**这为数据完整性与记录机制建立了可复算的强关联证据，未识别人际或机器人因果：**缺测/图节点状态可能由原实验平台的同一状态规则编码；原初图随机化和每轮重连机会随机化不独立证明机器人实验处理在原始网络之间随机分配。正式[科学结题报告](research/R082/R082_ORIGINAL64_HUMAN_NONRESPONSE_GRAPH_ASSOCIATION_AND_ALLOCATION_CAUSAL_GATE_FINAL_REPORT_2026-10-17.md)、[A01至A06验收](research/R082/R082_FINAL_ACCEPTANCE_STATUS.json)已归档。**R082=CLOSED_BOUNDED、真人原始来源E2、因果资格OPEN、PESEN v0.1=FROZEN**。
