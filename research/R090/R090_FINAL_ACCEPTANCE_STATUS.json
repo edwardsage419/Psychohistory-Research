@@ -1,0 +1,173 @@
+{
+  "research_id": "R090",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_RETROSPECTIVE_INDEPENDENT_AUTHOR_RECORDED_SIXPERSON_GROUP_CONTRIBUTION_HISTORY_MODEL_FAMILY_TRANSFER",
+  "scientific_primary_verdict": "R089_M1_HISTORY_ONLY_AVERAGE_GAIN_NOT_REPLICATED_IN_INDEPENDENT_AUTHOR_DIFFERENT_PGG_OUTPUT_UNIT",
+  "scientific_secondary_verdict": "R089_M2_FIXED_HALF_BLEND_POOLED_GAIN_POSITIVE_BUT_T3_NEGATIVE",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "acceptance": {
+    "A01": "PASS_FROZEN_FROM_SOURCE_TO_LOOG_M0_CONDITION_ROUND_M1_OWN_LAST_M2_HALFMIX",
+    "A02": "PASS_INDEPENDENT_REAL_AUTHOR_OFFICIAL_MD5_AND_WHOLEFILE_SHA2700_ROWS_180_HUMANS_8_SESSIONS_30_STABLE_GROUPS",
+    "A03": "PASS_84_SYNTHETIC_TWO_FULL2700_AUTHOR_OUTCOME_REDOWNLOAD_AND_REPLAY_EXACT_7913BYTE_SHA",
+    "A04": "PASS_FIRST_SYNTH_FAILURE_TWO_ROUND_FIELD_SCHEMA_FAILURE_T3_NEGATIVE_17_GROUPS_AND_249_AUTO_DECISIONS_RETAINED",
+    "A05": "PASS_NEW_AUTHOR_DIFFERENT_OUTCOME_UNIT_AND_SYSTEM_AUTO_SCORES_DISCLOSED_NO_UNFOUNDED_E3_CAUSALITY",
+    "A06": "PASS_3_FROZEN_PHASES_SOURCE_CODE_TESTS_NEGATIVE_RESULTS_DOUBLE_REAL_CI_SCIENTIFIC_REPORT_MAIN_INDEX"
+  },
+  "original_author_dataset": {
+    "title": "Climate clubs: An experimental study of Nordhaus' proposal to mitigate climate change",
+    "authors": [
+      "Alberto Antonioni",
+      "Angel Sanchez",
+      "Antonio Cabrales"
+    ],
+    "DOI": "10.5281/zenodo.17610157",
+    "original_fixed_record": 17610157,
+    "file": "Climate_Clubs_data.csv",
+    "original_published_md5": "56931608b717aea06105ad10a58ff937",
+    "original_wholefile_sha256": "ebc8831011a1a3b4893a80ae158d5129ed0f35e57a8092eba36c6a7b0cbd4282",
+    "original_file_bytes": 419189,
+    "original_rows": 2700,
+    "columns": 27
+  },
+  "stage_freezes": [
+    {
+      "phase": "A original source",
+      "commit": "590d0b319b0a0a9c69bcd327e89696d308aa200c",
+      "protocol": "protocols/R090_INDEPENDENT_CLIMATE_CLUBS_REAL_GROUP_SOURCE_ELIGIBILITY_FREEZE_2026-10-17.md",
+      "ci_first_synthetic_failure": 39013457720,
+      "ci_real_metadata_reject": 39013486584
+    },
+    {
+      "phase": "B true oTree round",
+      "commit": "04fde85a0025ab4b9853620543a1b06e18157e81",
+      "protocol": "protocols/R090_PHASE_B_OTREE_TWO_ROUND_FIELDS_NONOUTCOME_AUDIT_FREEZE_2026-10-17.md",
+      "real_source_structure_ci": 39013629744
+    },
+    {
+      "phase": "C source objective and scoring",
+      "commit": "7acd2c693fb5b97a94b9b786cd5735a4f0e5a9e2",
+      "protocol": "protocols/R090_PHASE_C_CROSS_AUTHOR_30_GROUP_15_ROUND_HISTORY_TRANSFER_FROZEN_SCORING_2026-10-17.md",
+      "synthetic_fixture_failure_ci": 39013910375,
+      "first_real_score_ci": 39013984019,
+      "second_original_real_replay_archival_ci": 39014046442
+    }
+  ],
+  "original_real_source_group_contract": {
+    "sessions": 8,
+    "complete_stable_sixperson_groups": 30,
+    "original_people": 180,
+    "rounds_per_group": 15,
+    "original_group_rounds": 450,
+    "original_player_round_rows": 2700,
+    "treatment_original_groups": {
+      "T1": 8,
+      "T2": 8,
+      "T3": 7,
+      "T4": 7
+    },
+    "otree_technical_participant_round_always15": true,
+    "actual_experimental_subsession_round": "subsession.round_number 1..15",
+    "first_source_mismatch_strict_rejection_retained": true,
+    "source_automatic_decision_ones_by_treatment": {
+      "T1": 82,
+      "T2": 38,
+      "T3": 80,
+      "T4": 49
+    },
+    "total_automatic_decision_rows": 249,
+    "source_contribution_timeout_ones_by_treatment": {
+      "T1": 82,
+      "T2": 19,
+      "T3": 68,
+      "T4": 29
+    },
+    "total_contribution_timeout_rows": 198,
+    "source_has_system_automatic_generated_actions": true,
+    "all_human_choices_were_manually_made": false
+  },
+  "original_leave_one_whole_group_out_procedure": {
+    "test_heldout_whole_original_groups": 30,
+    "original_heldout_group_round_predictions": 420,
+    "target_rounds_per_group": "2..15",
+    "same_author_group_excluded_completely_from_other_group_training": true,
+    "target_unit": "sum recorded participant contribution / sum participant endowment (0..1)",
+    "M0": "mean other same-condition group contemporaneous training round fraction",
+    "M1": "target heldout group own fraction from prior round",
+    "M2": "fixed (M0+M1)/2",
+    "score": "mean squared group share forecast error",
+    "true_calendar_out_of_time_independent_test": false,
+    "original_unit_exactly_identical_to_R089_binary_global_contribution": false
+  },
+  "pooled_mse": {
+    "M0_other_group_condition_round": 0.04888196637782097,
+    "M1_target_group_last_round": 0.05719791666666664,
+    "M2_fixed_half_blend": 0.04029091038697225
+  },
+  "paired_mse_improvement_M0_minus_challenger": {
+    "M1": -0.008315950288845698,
+    "M2": 0.008591055990848716
+  },
+  "by_frozen_original_treatment": {
+    "T1": {
+      "groups": 8,
+      "test_group_rounds": 112,
+      "M1_gain": 0.019961279154518945,
+      "M2_gain": 0.019394189595481053,
+      "group_M1_positive": 7,
+      "group_M1_negative": 1
+    },
+    "T2": {
+      "groups": 8,
+      "test_group_rounds": 112,
+      "M1_gain": -0.00221597120991254,
+      "M2_gain": 0.011127004373177844,
+      "group_M1_positive": 4,
+      "group_M1_negative": 4
+    },
+    "T3": {
+      "groups": 7,
+      "test_group_rounds": 98,
+      "M1_gain": -0.03986996882086167,
+      "M2_gain": -0.004332748724489796,
+      "group_M1_positive": 0,
+      "group_M1_negative": 7
+    },
+    "T4": {
+      "groups": 7,
+      "test_group_rounds": 98,
+      "M1_gain": -0.016050170068027204,
+      "M2_gain": 0.006270195578231296,
+      "group_M1_positive": 2,
+      "group_M1_negative": 5
+    }
+  },
+  "all_30_groups_M1_better": 13,
+  "all_30_groups_M1_worse": 17,
+  "independent_full_replays": {
+    "initial_successful_real_fullsource_ci": 39013984019,
+    "secondary_full_independent_original_source_reacquisition_sha_and_permanent_archive_ci": 39014046442,
+    "synthetic_test_count": 84,
+    "full_anonymous_result_length_bytes": 7913,
+    "full_anonymous_result_sha256": "f7970b444588d0af7986a10056750400190d360d1533bb1d3dafffa9cce05182",
+    "git_permanent_anonymous_result_blob": "c38d629ebe7f8b2709441eefa288a1a56ee92631"
+  },
+  "result_json": "research/R090/R090_INDEPENDENT_AUTHOR_30GROUP_15ROUND_HISTORY_TRANSFER_M1_NEGATIVE_E2_RESULTS.json",
+  "scientific_report": "research/R090/R090_CLIMATE_CLUBS_CROSS_AUTHOR_GROUP_HISTORY_TRANSFER_NEGATIVE_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "scientific_limits": {
+    "negative_cross_author_model_family_transfer_mean_M1": true,
+    "conclusive_in_all_4_treatments": false,
+    "same_outcome_definition_as_R089": false,
+    "source_contains_automated_decision_rows": true,
+    "automatic_only_sensitivity_test_done": false,
+    "research_same_timestamp_real_calendrical_forecast": false,
+    "source_cluster_session_resampling_confidence_interval_evaluated": false,
+    "causal_climate_club_and_psychological_learning_identified": false,
+    "new_prospective_independent_external_lab_E3": false,
+    "group_or_person_ID_or_single_actor_trace_exported": false,
+    "original_source_redistributed_in_research_repo": false,
+    "long_term_history_validated": false
+  },
+  "next_research": "R091 locate another independent source with similar binary public investment choices; fixed method preregistration, preserve R090 negative and automatic decisions exposure; do not retune model after observed negative",
+  "PESEN_v0_1": "FROZEN"
+}
