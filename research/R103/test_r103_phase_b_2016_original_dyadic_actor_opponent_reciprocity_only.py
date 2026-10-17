@@ -73,10 +73,20 @@ class TrueDyadicRosterSynthetic(unittest.TestCase):
         def edit(row,line,ex,t,actor):
             if line==2:row["User_ID"]="1"
         self.assertRaises(b.SourceError,audit,synthetic_data(edit))
-    def test_self_partner_fail_closed(self):
+    def test_self_pointing_original_is_counted_and_not_valid_dyad(self):
         def edit(row,line,ex,t,actor):
             if line==1:row["Opponent_ID"]=row["User_ID"]
-        self.assertRaises(b.SourceError,audit,synthetic_data(edit))
+        out=audit(synthetic_data(edit))
+        self.assertEqual(out["source_actor_rounds_self_pointing_opponent"],1)
+        self.assertEqual(out["actor_rounds_with_exact_reciprocal_opponent"],298)
+        self.assertEqual(out["source_actor_rounds_with_nonreciprocal_opponent"],1)
+        self.assertEqual(out["actual_human_model_scores"],0)
+    def test_many_self_pointing_original_rows_fail_preset_95pct_gate(self):
+        def edit(row,line,ex,t,actor):
+            if int(row["User_ID"])%2==1:row["Opponent_ID"]=row["User_ID"]
+        out=audit(synthetic_data(edit))
+        self.assertEqual(out["status"],"R103_B_BOUNDED_ORIGINAL_DYADIC_RECIPROCITY_INELIGIBLE")
+        self.assertEqual(out["source_actor_rounds_self_pointing_opponent"],150)
     def test_invalid_original_game_payoff(self):
         def edit(row,line,ex,t,actor):
             if line==1:row["S"]="inf"
