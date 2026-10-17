@@ -55,8 +55,8 @@ def metadata_overview(md):
   fold=f.get("folder_id")
   folders[str(bool(fold))]+=1
   by_folder[str(fold or "ROOT")][e]+=1
-  if fn in names:raise ValueError("R080_DUPLICATE_AUTHOR_FILENAME_IN_METADATA")
-  names.add(fn)
+  if (fold,fn) in names:raise ValueError("R080_DUPLICATE_AUTHOR_FILENAME_IN_SAME_FOLDER")
+  names.add((fold,fn))
   c=f.get("content_details") or {}
   if not isinstance(c,dict):raise ValueError("R080_FILE_CONTENT_DETAILS_NOT_DICT")
   content_keys.update(k for k in c if isinstance(k,str) and re.fullmatch(r"[a-z_]{1,45}",k))
