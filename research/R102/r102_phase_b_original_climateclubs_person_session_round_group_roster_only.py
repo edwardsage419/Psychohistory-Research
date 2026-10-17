@@ -56,6 +56,7 @@ def parse_nonbehavior_roster(raw):
     group_positions=defaultdict(set)
     seen_person_round=set()
     session_rounds=defaultdict(set)
+    technical_round_mismatches=0
     for row in reader:
         records+=1
         if records>2700 or None in row:
@@ -69,8 +70,10 @@ def parse_nonbehavior_roster(raw):
         pos=natural_int(source["player.id_in_group"])
         session_id=natural_int(source["participant.id_in_session"])
         roundnum=natural_int(source["subsession.round_number"],maximum=100)
+        # oTree's participant._round_number may be a final participant snapshot.
+        # The source subsession.round_number is the only behavioral round key.
         if natural_int(source["participant._round_number"],maximum=100)!=roundnum:
-            raise SourceError("R102_B_SOURCE_TWO_ROUND_FIELDS_DIFFER")
+            technical_round_mismatches+=1
         if session in session_treatment and session_treatment[session]!=tr:
             raise SourceError("R102_B_TREATMENT_MIXED_WITHIN_ORIGINAL_SESSION")
         session_treatment[session]=tr
@@ -118,6 +121,7 @@ def parse_nonbehavior_roster(raw):
         "original_session_round_count_histogram":dict(sorted(Counter(len(x) for x in session_rounds.values()).items())),
         "original_group_size_histogram":dict(sorted(group_sizes.items())),
         "original_distinct_session_round_group_keys":len(group_members),
+        "technical_participant_round_disagrees_with_actual_subsession_round_rows":technical_round_mismatches,
         "all_people_have_contiguous_1_to_last_round":contiguous_person==actor_count,
         "number_people_with_contiguous_rounds":contiguous_person,
         "all_source_sessions_have_contiguous_rounds":contiguous_session==len(session_rounds),
