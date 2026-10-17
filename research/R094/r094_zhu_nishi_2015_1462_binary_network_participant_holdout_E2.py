@@ -174,8 +174,11 @@ def main():
  try:r=original_real()
  except (OSError,TypeError,ValueError,KeyError,urllib.error.HTTPError,urllib.error.URLError) as e:
   msg=str(e)[:100] if isinstance(e,ValueError) and str(e).startswith("R094C_") else "R094C_ORIGINAL_2015_SECONDARY_BINARY_DATA_SOURCE_FAIL_CLOSED"
+  errclass=type(e).__name__
+  errclass=errclass if errclass in ("ValueError","KeyError","TypeError","OSError","IndexError","OverflowError","HTTPError","URLError") else "OTHER_ERROR_CLASS"
   r={"research_id":"R094","status":"R094C_PRESCORE_ORIGINAL_SECONDARY_SOURCE_BEHAVIOR_ELIGIBILITY_BLOCKED",
-    "safe_failure":msg,"actual_human_E2_predictions_scored":0,"PESEN_v0.1":"FROZEN"}
+    "safe_failure":msg,"source_only_failure_class":errclass,
+    "actual_human_E2_predictions_scored":0,"PESEN_v0.1":"FROZEN"}
  a.output.parent.mkdir(parents=True,exist_ok=True)
  a.output.write_text(json.dumps(r,sort_keys=True,indent=2)+"\n",encoding="utf-8")
  brief=r.get("binary_individual_full_person_heldout_evaluation",{})
