@@ -1,0 +1,163 @@
+{
+  "research_id": "R088",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_RETROSPECTIVE_AUTHOR_ORIGINAL_COMPLETE_GROUPS_SHARP_MISSINGNESS_BOUNDS",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "A01_to_A06": {
+    "A01": "PASS_FROZEN_171_COMPLETE_6_PERSON_GROUPS_20_ROUNDS_AND_EXACT_THREE_TREATMENTS",
+    "A02": "PASS_FIRST_PARTY_CSV_AND_TWO_AUTHOR_SCRIPTS_FIXED_GIT_BLOBS_WITH_64_MISSING_RECORDS__RAW_RECRUITMENT_EXCLUSIONS_RECOMPUTATION_OPEN",
+    "A03": "PASS_81_SYNTHETIC_THREE_PHASES_TWO_REAL_171_GROUP_FULL_SOURCE_REPLAYS_EXACT_65424_SHA",
+    "A04": "PASS_FIRST_REAL_SOURCE_GATING_FAILURE_PRESERVED_SOURCE64_MISSING_NO_IMPUTATION_GROUP_NEGATIVES_RETAINED",
+    "A05": "PASS_E2_BOUNDED_OBSERVATIONAL_ONLY_NO_CAUSAL_HISTORICAL_OR_INDEPENDENT_E3_CLAIMS",
+    "A06": "PASS_FROZEN_PROTOCOL_REPORT_ANONYMOUS_NUMERICS_SOURCE_RECEIPT_CODE_CI_AND_GITHUB_ARCHIVE"
+  },
+  "paper_doi": "10.1038/s41598-025-30979-2",
+  "authors": "Pilgrim, Stewart, Raihani",
+  "original_repository": "chasmani/PUBLIC_social_identity_and_cooperation",
+  "original_fixed_commit": "8ce2c0cac4784485232aa96295f48ff147290b05",
+  "original_preprocessed_six_person_full_group_CSV_blob": "f902865203bdb465a505869b593eca432831b2fa",
+  "original_CSV_bytes": 2270643,
+  "author_exclusions_R_script_blob": "5d7f6e65523df55a1f05bd69f48d60b9306783a9",
+  "author_cooperation_rates_R_script_blob": "60793d82709a7807e86ceddd772fe2847733a6e2",
+  "protocol_phases": [
+    {
+      "phase": "A",
+      "frozen_before_run_commit": "1f84bf430e4bb3c4aff8bf25eb90ba54e008df24",
+      "run": 39011042473,
+      "synthetic_tests": 35,
+      "real_status": "FAIL_CLOSED_REAL_ACTIONS_NOT_ALL_NONMISSING"
+    },
+    {
+      "phase": "B",
+      "frozen_before_run_commit": "93008fb66516af9930c5a79d4a162fa744fa0a5b",
+      "run": 39011243425,
+      "synthetic_total": 52,
+      "real_status": "SAFE_ORIGINAL_64_EMPTY_LABELS_OBSERVED_NO_GLOBAL_OUTCOME"
+    },
+    {
+      "phase": "C",
+      "frozen_before_run_commit": "b8f819e806a5dc39c10f5c0de13c9f613145dae3",
+      "run": 39011509370,
+      "synthetic_total": 81,
+      "real_status": "REAL_171_GROUP_SHARP_INTERVAL_E2_SUCCESS"
+    },
+    {
+      "phase": "independent_2nd_C",
+      "run": 39011582787,
+      "synthetic_total": 81,
+      "real_status": "SUCCESS_TWO_ORIGINAL_SOURCE_REDOWNLOADS_AND_TWO_ARCHIVE_SHA_EXACT"
+    }
+  ],
+  "original_research_universe": {
+    "complete_original_groups": 171,
+    "groups_per_treatment": 57,
+    "original_players_per_group": 6,
+    "two_original_subgroups_per_group": 2,
+    "players_per_original_subgroup": 3,
+    "original_complete_participants": 1026,
+    "original_rounds": 20,
+    "original_group_rounds": 3420,
+    "original_actor_round_slots": 20520,
+    "observed_original_actions": 20456,
+    "missing_original_actions": 64,
+    "missing_by_treatment": {
+      "GlobalOnly": 19,
+      "Balanced": 26,
+      "GlobalBoost": 19
+    },
+    "missing_first_round": 29,
+    "missing_last_round": 0
+  },
+  "source_problem": "AUTHOR_COMPLETE_GROUPS_HAVE_MISSING_PRE_FINAL_ACTIONS_THUS_ALL_ACTIONS_OBSERVED_HYPOTHESIS_FALSIFIED",
+  "results_by_treatment": {
+    "GlobalOnly": {
+      "global_fraction": [
+        0.6795321637426901,
+        0.6823099415204679
+      ],
+      "global_threshold": [
+        0.7131578947368421,
+        0.7157894736842105
+      ],
+      "first_last_global_delta": [
+        -0.2719298245614035,
+        -0.24853801169590645
+      ],
+      "definitely_declining_groups": 41,
+      "definitely_increasing_groups": 1
+    },
+    "Balanced": {
+      "global_fraction": [
+        0.4461988304093566,
+        0.4499999999999999
+      ],
+      "global_threshold": [
+        0.4298245614035088,
+        0.43508771929824563
+      ],
+      "first_last_global_delta": [
+        -0.26608187134502914,
+        -0.24269005847953212
+      ],
+      "definitely_declining_groups": 37,
+      "definitely_increasing_groups": 11
+    },
+    "GlobalBoost": {
+      "global_fraction": [
+        0.6062865497076023,
+        0.6090643274853801
+      ],
+      "global_threshold": [
+        0.643859649122807,
+        0.6456140350877193
+      ],
+      "first_last_global_delta": [
+        -0.21052631578947364,
+        -0.17251461988304093
+      ],
+      "definitely_declining_groups": 35,
+      "definitely_increasing_groups": 9
+    }
+  },
+  "source_sharp_group_equal_pairwise_contrasts": {
+    "GlobalOnly_minus_Balanced": [
+      0.2295321637426902,
+      0.23611111111111127
+    ],
+    "GlobalBoost_minus_Balanced": [
+      0.15628654970760242,
+      0.1628654970760235
+    ],
+    "GlobalBoost_minus_GlobalOnly": [
+      -0.07602339181286555,
+      -0.07046783625731001
+    ]
+  },
+  "anonymized_real_sharp_results": "research/R088/R088_ORIGINAL171_GLOBAL_COOPERATION_64_MISSING_SHARP_BOUNDS_E2_RESULTS.json",
+  "real_result_file_bytes": 65424,
+  "real_result_SHA256": "2b0f76fa8f7d1a42d2f91508c4acf52c0a7c0fc9523801ec1d9759559d8fb67e",
+  "real_result_Git_blob": "1b97419451e6124d7d7449bdb87f743905f43789",
+  "source_action_schema_fail_receipt": "research/R088/R088_ORIGINAL20520_ACTION_LABEL_MISSINGNESS_E1_SOURCE_RECEIPT.json",
+  "schema_receipt_bytes": 2144,
+  "schema_receipt_SHA256": "b52f6313f40beecdb761c5bb9b6013b318700c2e1c2f8f4d0a7682efee5edf18",
+  "schema_receipt_Git_blob": "1ddd9097eddf8447861285eb37191dd1d6f9ab1f",
+  "formal_report": "research/R088/R088_ORIGINAL_171_MULTILEVEL_PUBLIC_GOODS_GLOBAL_SHARP_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "research_limitations": {
+    "original_data_are_author_filtered_complete_groups": true,
+    "all_recruited_humans_included": false,
+    "original_exclusion_pipeline_independently_run_by_project": false,
+    "missingness_extremal_bounds_are_confidence_intervals": false,
+    "identity_measurements_scored_in_current_work": false,
+    "global_threshold_not_local_threshold_only": true,
+    "original_human_individual_or_group_ids_exported": false,
+    "individual_20_round_action_traces_exported": false,
+    "source_original_full_CSV_republished_in_git": false,
+    "treatment_assignment_randomization_or_policy_ATE_identified_by_this_program": false,
+    "cross_group_sampling_uncertainty_quantified": false,
+    "out_of_sample_independent_E3_performed": false,
+    "long_run_historical_dynamics": "NOT_ESTABLISHED"
+  },
+  "next_research": "R089 new first-party original human model/dataset with independent cross-level generalization or frozen group-level holdout; do not extend same sample ad infinitum",
+  "PESEN_v0_1": "FROZEN"
+}
