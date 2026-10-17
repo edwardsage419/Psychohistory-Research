@@ -1,0 +1,117 @@
+{
+  "research_id": "R075",
+  "date": "2026-10-17",
+  "research_status": "CLOSED_BOUNDED",
+  "study_type": "THIRD_INDEPENDENT_REAL_HUMAN_AUTHOR_EXPERIMENT_WITHIN_STUDY_FULL_SESSION_LOSO_E3",
+  "standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "protocol": "protocols/R075_COAUTHOR_ORIGINAL_HUMAN_18_SESSION_E3_TRANSFER_FREEZE_2026-10-17.md",
+  "protocol_before_first_R075_real_model_score_commit": "c0ee924a8ca4ddfceaef2a0ca95914b4e7a0f991",
+  "report": "research/R075/R075_REAL_THIRD_HUMAN_E3_RESULTS_AND_SCIENTIFIC_BOUNDARIES_2026-10-17.md",
+  "archived_results": "research/R075/R075_REAL_THIRD_HUMAN_18_SESSION_E3_RESULTS.json",
+  "gate_status": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "source": {
+    "authors": "Fudenberg, Rand, Dreber 2012",
+    "DOI": "10.1257/aer.102.2.720",
+    "coauthor_original_url": "https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip",
+    "bytes": 1129409,
+    "SHA256": "328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef",
+    "raw_text_SHA256": "ff552ba21a92c254e2d867670910f908f5ea8e3aa34b4fa6c05443a020fa56b7",
+    "source_equals_openICPSR_or_AEA": "UNKNOWN"
+  },
+  "experiment": {
+    "original_full_sessions": 18,
+    "session_person_slots": 384,
+    "action_rows": 34446,
+    "original_two_player_rounds": 17223,
+    "scorable_t3_plus_intended_choices": 26116,
+    "source_treatment_session_counts": {
+      "bc1.5_error.125": 3,
+      "bc2_error.125": 2,
+      "bc2.5_error.125": 3,
+      "bc4_error0": 3,
+      "bc4_error.0625": 3,
+      "bc4_error.125": 4
+    },
+    "test": "leave one original file session out",
+    "training": "other 1/2/3 full source sessions of same benefit-cost ratio and execution error",
+    "target": "intended cooperation C=1, past feedback actual executed own/opponent actions in same interaction",
+    "scoring": "teacher-forced one-step Brier/log-loss, each full heldout session then 18 sessions equal weight"
+  },
+  "models": {
+    "source_R073_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a",
+    "names": [
+      "M0_TREATMENT_PREVALENCE",
+      "M1_OWN_LAST",
+      "M2_OPPONENT_LAST",
+      "M3_JOINT_LAST",
+      "M4_JOINT_TWO_LAGS",
+      "M5_TFT_NOISY",
+      "M6_WSLS_NOISY"
+    ],
+    "alpha": 20,
+    "static_TFT_WSLS_reference_noise": 0.05
+  },
+  "results": {
+    "Brier_equal_18": {
+      "M0": 0.2268362351408542,
+      "M1": 0.17008962586292692,
+      "M2": 0.16975086571591047,
+      "M3": 0.14097227005861615,
+      "M4": 0.1285554056107595,
+      "M5": 0.21126006834613753,
+      "M6": 0.37655857700473216
+    },
+    "main_M3_minus_M1": {
+      "delta": -0.029117355804310772,
+      "sessions_better": 18,
+      "sessions_worse": 0
+    },
+    "main_M4_minus_M3": {
+      "delta": -0.012416864447856633,
+      "sessions_better": 15,
+      "sessions_worse": 3
+    },
+    "M4_zero_noise_negative": {
+      "bc": 4,
+      "error": 0,
+      "sessions_better": 0,
+      "sessions_worse": 3,
+      "delta": 0.004574339046972259
+    }
+  },
+  "execution": {
+    "source_schema_run": 38990465782,
+    "source_feedback_run": 38990601050,
+    "first_real_E3_run": 38990907812,
+    "independent_second_E3_run": 38990975608,
+    "replay_SHA_archive_run": 38991027657,
+    "all_conclusions": "SUCCESS",
+    "synthetic_source_tests": 12,
+    "synthetic_model_tests": 24,
+    "published_anonymous_JSON_bytes": 19692,
+    "published_anonymous_JSON_SHA256": "eb74129bfd9af62678e9cacf910477854be694317d7b5d875e5ca33dc0f76174"
+  },
+  "negative_evidence": [
+    "R074 longer-lag increment worsened while R075 improved",
+    "R075 zero-execution-noise subgroup 3/3 sessions M4 worse than M3",
+    "Fixed WSLS 0.05 reference worse than treatment prevalence"
+  ],
+  "limitations": {
+    "physical_cross_session_reenrolment": "UNKNOWN; original numeric IDs reused between file sessions",
+    "action_noise": "current decision is intended, prior observed action is implemented, different from non-noise experiments",
+    "parameter_zero_shot_cross_experiment": "NOT_TESTED",
+    "causal_human_memory": "NOT_IDENTIFIED",
+    "long_historical_multiscale_prediction": "NOT_STUDIED",
+    "no_raw_person_records_exported": true,
+    "no_session_specific_scores_published": true
+  },
+  "Pesen_v01": "FROZEN",
+  "next_work": "R076 new source or prior-frozen zero-shot transfer design; do not tune on R075 observed data"
+}
