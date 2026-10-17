@@ -55,6 +55,22 @@ jobs:
           python research/R075/r075_coauthor_real_human_e3.py \
             --zip /tmp/r075_private/coauthor_original.zip \
             --output /tmp/r075_anonymous/r075_third_independent_true_human_18_session_results.json
+      - name: Print anonymous SHA256 and complete primary comparison treatment vote evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path("/tmp/r075_anonymous/r075_third_independent_true_human_18_session_results.json")
+          body=p.read_bytes()
+          v=json.loads(body)
+          print("R075_TRUE_EXTERNAL_PUBLIC_JSON_BYTES",len(body))
+          print("R075_TRUE_EXTERNAL_PUBLIC_JSON_SHA256",hashlib.sha256(body).hexdigest())
+          for name,comparison in v["results"]["paired_comparisons"].items():
+              if name.startswith(("M3_JOINT_LAST","M4_JOINT_TWO_LAGS")):
+                  print("R075_ANON_PRIMARY_VOTES",name,json.dumps(comparison,sort_keys=True))
+          PY
       - name: Publish exclusively anonymized full-session macro model and paired Brier statistics
         if: always()
         uses: actions/upload-artifact@v4
