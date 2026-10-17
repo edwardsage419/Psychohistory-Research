@@ -1,0 +1,53 @@
+{
+  "research_id": "R103",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_E1_DYADIC_SOURCE_ROSTER_NOT_ESTABLISHED",
+  "PESEN_v0_1": "FROZEN",
+  "evidence_grade": "E1_OFFICIAL_PUBLISHED_CSV_WHOLE_MD5_SHA_PASS_ORIGINAL_OPPONENT_IDS_INSUFFICIENT_STRICT_NO_E2",
+  "original_source": {
+    "doi": "10.5281/zenodo.1127154",
+    "filename": "drbrain_decisions.csv",
+    "published_MD5": "712e3a4ae905af3e004b4a31a38b250d",
+    "original_whole_sha256": "c63b99ba7554908e54393eb9f8267a98de1a3d9bdd123a77f60f2b2122236013",
+    "original_bytes": 319528,
+    "original_csv_columns": 9,
+    "physical_original_rows": 8477
+  },
+  "actual_source_syntax": {
+    "source_columns_Experiment_number_positive_ascii_int": 8477,
+    "source_columns_User_ID_positive_ascii_int": 8477,
+    "source_columns_Round_number_positive_ascii_int": 8477,
+    "source_Opponent_ID_positive_ascii_int": 7876,
+    "source_Opponent_ID_other_printable_ascii": 601,
+    "prescore_minimum_fraction_required": 0.95,
+    "maximum_possible_numeric_ID_recipient_coverage": 0.9291022767488498,
+    "strict_reciprocity_possible_from_source_numeric_ID_contract": false,
+    "actual_reciprocal_partner_pairs_verified": 0
+  },
+  "machine_evidence": {
+    "true_source_A_receipt": "research/R103/R103_PHASE_A_LIVE_CI_ORIGINAL_DYADIC_CSV_MD5_HEADER_RECEIPT.json",
+    "true_first_B_game_failure": "research/R103/R103_PHASE_B_LIVE_CI_ORIGINAL_DYADIC_RECIPROCAL_ROSTER_RECEIPT.json",
+    "true_B1_anonymous_game_class": "research/R103/R103_PHASE_B1_LIVE_CI_GAME_LABEL_CLASS_DIAGNOSTIC_RECEIPT.json",
+    "true_B2_self_opponent_failure": "research/R103/R103_PHASE_B2_LIVE_CI_ORIGINAL_DYADIC_RECIPROCAL_ROSTER_RECEIPT.json",
+    "true_B3_ID_grammar_failure": "research/R103/R103_PHASE_B3_LIVE_CI_ORIGINAL_DYADIC_RECIPROCITY_WITH_SELF_ROW_COUNTS.json",
+    "true_B4_final_ID_grammar_census": "research/R103/R103_PHASE_B4_LIVE_CI_NONBEHAVIOR_ID_SYNTAX_CLASS_RECEIPT.json"
+  },
+  "evidence_limits": {
+    "original_C_or_D_action_values_read": 0,
+    "original_opponent_action_values_read": 0,
+    "actual_human_model_predictions_scored": 0,
+    "no_claim_of_author_dataset_invalidity": true,
+    "no_exact_R073_external_replication": true,
+    "no_new_E2_social_history_effect": true
+  },
+  "acceptance": {
+    "A01": "PASS_FIRSTPARTY_ORIGINAL_DATASET_AUTHENTIC_PUBLISHER_MD5_COMPLETE_SHA",
+    "A02": "PASS_NINE_DECLARED_SOURCE_COLUMNS_8477_ROWS",
+    "A03": "BLOCKED_ORIGINAL_OPPONENT_ID_601_TEXT_CODES_NUMERIC_COVERAGE_UPPER_BOUND_BELOW_0_95",
+    "A04": "PASS_PRESERVED_ALL_B_B1_B2_B3_B4_GENUINE_NEGATIVE_AND_NONBEHAVIOR_RECEIPTS",
+    "A05": "PASS_NO_ORIGINAL_HUMAN_ACTION_ACCESS_OR_PSEUDOREPLICATION",
+    "A06": "PASS_ORIGINAL_CODE_TEST_PROTOCOL_REPORT_STATUS_ROOT_INDEX"
+  },
+  "formal_report": "research/R103/R103_FINAL_BOUNDED_REAL_SOURCE_OPPONENT_ID_NOT_ESTABLISHED_REPORT_2026-10-17.md",
+  "next": "R104 independent author actual original actor opponent game round session records; require codebook and freeze matched shrinkage placebo before actions"
+}
