@@ -31,7 +31,7 @@ EXPECTED_ORIGINAL_SESSIONS=15
 EXPECTED_PEOPLE=260
 EXPECTED_PAIR_ROUNDS=1810
 EXPECTED_RISK_EVENTS=1040
-FROZEN_PROTOCOL="protocols/R077_ZENODO_FOURTH_AUTHOR_TRUE_HUMAN_PROSPECTIVE_MODEL_SCORE_FREEZE_2026-10-17.md"
+FROZEN_PROTOCOL="protocols/R077_PRE_FIRST_TARGET_MODEL_SCORE_SOURCE_SEMANTICS_AMENDMENT_REV002_2026-10-17.md"
 PAIRS=(
  ("M3_JOINT_LAST","M1_OWN_LAST"),
  ("M4_JOINT_TWO_LAGS","M3_JOINT_LAST"),
@@ -78,8 +78,11 @@ def prepare_fourth_real_sessions(data):
     for (sess,subject,game),group in data.groupby(
         ["Session","Subject","game"],sort=False,dropna=False,observed=True):
         game_count+=1
-        if len(set(int(x) for x in group["Group"]))!=1:
-            raise ValueError("R077_PARTNER_PAIR_CHANGED_WITHIN_SAME_GAME")
+        # Rev-001 fail-closed identified genuine group reassignments (130
+        # row transitions in treatment 1). Rev-002 frozen BEFORE any true
+        # score uses previous realized counterpart behavior regardless of
+        # partner identity, as original author's lagged-other action analysis.
+        # The 1810 dyads themselves were all verified reciprocal above.
         if len(set(int(x) for x in group["treatment"]))!=1:
             raise ValueError("R077_TREATMENT_CHANGED_WITHIN_PERSON_GAME")
         tr=int(group["treatment"].iloc[0])
@@ -88,12 +91,20 @@ def prepare_fourth_real_sessions(data):
         session_treatment[sess]=tr
         series=group.sort_values("practiceperiod")
         timesteps=[int(t) for t in series["practiceperiod"]]
-        if timesteps!=list(range(1,len(timesteps)+1)):
-            raise ValueError("R077_NONCONTIGUOUS_SUPERGAME_LOCAL_HISTORY")
-        for i in range(2,len(series)):
-            row=series.iloc[i]
-            previous=series.iloc[i-1]
-            previous2=series.iloc[i-2]
+        if len(timesteps)!=len(set(timesteps)):
+            raise ValueError("R077_DUPLICATE_PERSON_GAME_LOCAL_PERIOD")
+        if any(t<1 for t in timesteps):
+            raise ValueError("R077_INVALID_LOCAL_GAME_PERIOD")
+        timeline={int(row["practiceperiod"]):row
+                  for _,row in series.iterrows()}
+        # Rev-002: 80 original person-games are not fully observed from
+        # t=1; refuse imputation and score only exact observed t,t-1,t-2.
+        for t in sorted(timeline):
+            if t<3 or t-1 not in timeline or t-2 not in timeline:
+                continue
+            row=timeline[t]
+            previous=timeline[t-1]
+            previous2=timeline[t-2]
             event=(int(previous["left"]),int(previous["otherleft"]),
                    int(previous2["left"]),int(previous2["otherleft"]),int(row["left"]))
             if any(z not in (0,1) for z in event):
