@@ -47,4 +47,34 @@ class AuthorTagSynthetic(unittest.TestCase):
   with self.assertRaises(ValueError):safe_original_csv_schema(fake(3))
  def test_broken_rowwidth(self):
   with self.assertRaises(ValueError):safe_original_csv_schema(fake()+b"broken,row\n")
+ def test_unnamed_pandas_export_first_column(self):
+  b=fake().replace(b"session,person,round,action",b",session,person,round,action",1)
+  # Keep the entire original source row width unchanged by adding empty index cell.
+  rows=b.decode().splitlines()
+  b=(rows[0]+"\n"+"\n".join(","+x for x in rows[1:])+"\n").encode()
+  m=safe_original_csv_schema(b)
+  self.assertEqual(m["unnamed_export_index_source_columns"],1)
+  self.assertEqual(m["original_author_published_CSV_safe_headers_only"][0],"__UNNAMED_INDEX_0__")
+ def test_author_export_unnamed_named_pandas_columns(self):
+  b=fake().replace(b"session,person,round,action",b",Unnamed: 0,round,action",1)
+  rows=b.decode().splitlines()
+  b=(rows[0]+"\n"+"\n".join(","+x for x in rows[1:])+"\n").encode()
+  m=safe_original_csv_schema(b)
+  self.assertEqual(m["unnamed_export_index_source_columns"],1)
+  self.assertIn("Unnamed: 0",m["original_author_published_CSV_safe_headers_only"])
+ def test_duplicate_unnamed_pandas_index_still_distinct_safe_names(self):
+  b=fake().replace(b"session,person,round,action",b",,round,action",1)
+  m=safe_original_csv_schema(b)
+  self.assertEqual(m["unnamed_export_index_source_columns"],2)
+  self.assertNotEqual(m["original_author_published_CSV_safe_headers_only"][0],m["original_author_published_CSV_safe_headers_only"][1])
+ def test_original_leading_blank_line_accepted(self):
+  m=safe_original_csv_schema(b"\n"+fake())
+  self.assertEqual(m["empty_csv_lines_before_header"],1)
+ def test_original_many_leading_blank_lines_denied(self):
+  with self.assertRaises(ValueError):safe_original_csv_schema(b"\n"*6+fake())
+ def test_after_unnamed_schema_no_secret_source_actor_value_leaks(self):
+  b=fake().replace(b"session,person,round,action",b",session,round,action",1)
+  s=str(safe_original_csv_schema(b))
+  self.assertNotIn("PRIVATE_ACTOR",s)
+  self.assertNotIn("VERY_SECRET_CHOICE",s)
 if __name__=="__main__":unittest.main()
