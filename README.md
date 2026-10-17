@@ -388,3 +388,8 @@ M0为其余11个同源反馈类别四人组在目标轮t的贡献均值，M1为�
 ### R100 Phase B0真实原Excel身份列结构，原值仍零读取（2026-10-17）
 
 继[E1完整第一手出版源认证](research/R100/R100_PHASE_A_FIRST_PARTY_ZENODO_THRESHOLD_PGG_XLSX_REAL_E1_ACCEPTANCE_SCIENTIFIC_REPORT_2026-10-17.md)后，另行事前冻结[Phase B0](protocols/R100_PHASE_B0_AUTHENTICATED_XLSX_SHEET_COLUMN_A_B_STRUCTURE_ONLY_PRESCORE_FREEZE_2026-10-17.md)，GitHub工作流通过35项纯合成前置闸门，再对真正SHA固定原XLSX只统计10份worksheet的XML行、A/B身份列**标签**，不提取任何实际单元格值。[真实CI机器人永久收据](research/R100/R100_PHASE_B0_LIVE_CI_SOURCE_AB_TAG_RECEIPT.json)与[Git提交3a71b97f](https://github.com/edwardsage419/Psychohistory-Research/commit/3a71b97ffa731b9f54c7ac571ce5b34d87305872)已核验：10张真实匿名sheet依次221/221/237/237/225/225/209/209/221/221行，各A/B标签与行同数，**共2226个行节点、排除十张候选表头后2216条候选数据行**，与原作者554名真人×四行的数据布局预测一致，但并**未实读或核验554个不同人ID**。[B0正式科学边界报告](research/R100/R100_PHASE_B0_GENUINE_ORIGINAL_10SHEET_AB_TAG_ANONYMOUS_E1_STRUCTURE_REPORT_2026-10-17.md)已归档。**B0结构有界PASS；真实B1原人配对互证仍待进行，E2真人评分零，PESEN v0.1 FROZEN。**
+
+
+### R100 正式限定结题：真实原来源E1保留，源双人配对身份不可严格互证（2026-10-17）
+
+[R100最终来源资格报告](research/R100/R100_FINAL_BOUNDED_E1_PAIR_IDENTITY_NOT_ESTABLISHED_SCIENTIFIC_REPORT_2026-10-17.md)、[R100机读验收](research/R100/R100_FINAL_ACCEPTANCE_STATUS.json)。Wang/Hilbe/Zhang 2025 Zenodo 第一手双人阈值Excel真实MD5/SHA和10张sheet均通过；B0行结构与B1a A/B源值审核确认**554个四行候选焦点记录块**，其中B原四行2种不同源文字码者12块、三种者542块，全部保留。首次真正B1b源校验因`Type 1`示意命名空格被安全阻断并**永久保留原失败收据**；单独先冻零来源单元值的B1c匿名工作簿名称确认实际为`Type1/Type2`，再B1d仅修复该单一文件名规则重新原源审核，**固定角色互指人物键未成立**。最终B1e事前冻结匿名基数检查证实两角色表A数字完全重叠，各角色来源B预设自己位置的字符串仅1个不同值，两表B全部码交集也仅1；不同原文字符串未获唯一可复核个人或对手映射。这个失败属于本研究源身份复原方法边界，绝不等同原作者数据不可信或人类行为预测阴性。**R100=CLOSED_E1_PAIR_IDENTITY_NOT_ESTABLISHED、原始本人/对手历史完整真人E2评价=0、PESEN v0.1=FROZEN。** 下一阶段R101优先另一原作者团队公开有独立来源session、actor、opponent、round标识的原CSV/TSV，先核对来源资格再评分。
