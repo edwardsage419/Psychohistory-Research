@@ -151,3 +151,13 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 主要固定来源全部12场时，R074的 M3−M1 Brier `−0.023302`、M4−M3 `−0.002442`；R075分别为 `−0.028524`、`−0.012907`。另两套预定来源对照并列保留：R073固定同伴6场的参数应用到 R074 时 M4 相对 M3 **变差 +0.000823**，不能把记忆深度的获益当成普适性质。[所有三套donor×两目标真实匿名评分](research/R076/R076_RETROSPECTIVE_R073_SOURCE_ONLY_TO_R074_R075_REAL_HUMAN_RESULTS.json)共129126字节SHA256 `ecee82cf3686d6c03cef56fb84c84118b252b7c184b46dc45413e34f876a52da`。
 
 **R076已`CLOSED_BOUNDED`、A01至A06 PASS，但两个目标此前已经被研究者查看过，所以本次属于回顾性跨研究数值迁移，尚不能声称是新的前瞻E3。** [冻结协议与局限](protocols/R076_RETROSPECTIVE_SOURCE_ONLY_ZERO_SHOT_CROSS_STUDY_TRANSFER_FREEZE_2026-10-17.md)及[科学结果报告](research/R076/R076_RETROSPECTIVE_SOURCE_ONLY_REAL_HUMAN_TRANSFER_RESULTS_2026-10-17.md)已同步。PESEN v0.1 继续冻结。
+
+## R077：第四独立原作者真人实验上的固定数值模型零目标拟合验证（2026-10-17）
+
+[正式R077研究包](research/R077/README.md)已完成另一作者 Drouvelis/Pearce 2025 公开 Zenodo [原始人类实验数据](https://zenodo.org/records/15462528) 的精确来源哈希验证：3,620次人类合作选择，260名场次内参与者、15个真实来源session、1,810次双人局轮，局内具有完整前两轮真实行动的1,040次共同下一步选择。唯一冻结 donor 为R073原作者12个session、18,424个训练目标；**不使用任何R077结果拟合或校准**，七模型、alpha=20和固定策略参照0.05均不变。第四研究论文在2025年已发表，此处只指我们七模型此前尚未对该真实人群评分，并非在真人参与前预注册的全新实验。
+
+按照原始15场等权Brier，M0=0.224580、M1=0.151140、M2=0.155817、M3=0.120929、M4=0.119010、M5=0.177250、M6=0.512500。两项主要比较：**M3−M1=−0.030211（14场好/1场差）**；**M4−M3=−0.001919（8场好/7场差）**。多一轮历史的增量非常有限且不稳定，不能忽略7场反例及固定WSLS明显较差的反例。[完整科研结题报告](research/R077/R077_FOURTH_REAL_HUMAN_ZERO_SHOT_E3_FINAL_SCIENTIFIC_REPORT_2026-10-17.md)保留全部处理分层和log loss。
+
+**来源门失败并未被改写：** Rev-001要求同一 `game` 永不换配对，真实源的一个处理130次重新分组，另有80个个人局不从t1完整连续采样，导致[两个首次真实作业严格拒绝、未产生任何人类模型得分](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38995038132)。在首次真正真人评分之前，另行冻结[Rev-002 修订](protocols/R077_PRE_FIRST_TARGET_MODEL_SCORE_SOURCE_SEMANTICS_AMENDMENT_REV002_2026-10-17.md)，只用严格同局存在的t−1/t−2记录、保留所有重配对处理，不调参数；24项合成守卫和[首次成功真实评分](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38995309336)均通过，[再次从原作者重下载并逐字节SHA复算、永久Git归档](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38995401729)成功。[完整匿名结果9835字节](research/R077/R077_FOURTH_INDEPENDENT_HUMAN_SOURCE_ONLY_E3_RESULTS.json) SHA256 `8d8b8413e3e55cb5d856f34b873ee20c2ba470e04190bb8577f931d25ba509a4`，未存个人原始记录或逐场分数。
+
+**R077 `CLOSED_BOUNDED`；第四独立作者真实人类数值转移有界通过；R077 Rev-001 原始资格门FAIL永久保留；未证明人类认知记忆因果与长期制度演化；PESEN v0.1继续冻结。**
