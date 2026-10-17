@@ -1,0 +1,62 @@
+name: R085 first-party Zenodo 4-human linear/threshold original MAT strict source gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r085-zenodo-author-four-person-MAT-source-gate.yml'
+      - 'research/R085/r085_zenodo_original_four_person_mat_source_gate.py'
+      - 'research/R085/test_r085_zenodo_original_four_person_mat_source_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frozen-synthetic-source-MD5-MAT-and-privacy-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install scipy==1.14.1
+      - name: Run 24 source and structure synthetic checks before original file download
+        run: |
+          PYTHONPATH=research/R085 python -m unittest -v             research/R085/test_r085_zenodo_original_four_person_mat_source_gate.py
+  exact-author-original-two-source-MAT-schema-inspection:
+    needs: frozen-synthetic-source-MD5-MAT-and-privacy-checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install scipy==1.14.1
+      - name: Fetch two official 2025 author Zenodo MAT real files, compare publisher MD5, output metadata shapes only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r085_source
+          PYTHONPATH=research/R085 python research/R085/r085_zenodo_original_four_person_mat_source_gate.py             --output /tmp/r085_source/original_MAT_source_gate.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          p=pathlib.Path('/tmp/r085_source/original_MAT_source_gate.json')
+          raw=p.read_bytes();data=json.loads(raw)
+          assert set(data["source_files"])=={"four_person_linear","four_person_threshold"}
+          assert data["original_behavior_row_values_computed"]==0
+          assert data["original_human_action_metrics_computed"]==0
+          assert data["raw_matlab_files_exported"] is False
+          assert data["PESEN_v0.1"]=="FROZEN"
+          print("R085_SAFE_TWO_MAT_SOURCE_RECEIPT_BYTES",len(raw))
+          print("R085_SAFE_TWO_MAT_SOURCE_RECEIPT_SHA256",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Save anonymized original two MAT byte-verified source gate receipt, not source files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r085-original-zenodo-four-person-PGG-two-MAT-structure-only
+          path: /tmp/r085_source/original_MAT_source_gate.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Clean safe temporary receipt
+        if: always()
+        run: rm -rf /tmp/r085_source
