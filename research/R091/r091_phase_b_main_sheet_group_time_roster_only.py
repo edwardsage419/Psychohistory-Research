@@ -77,7 +77,7 @@ def qualify_rows(rows,expected_people_rounds=15200,expected_groups=190):
   person_id_roster_evidence["first_column_stable_within_original_group" if stable
                              else "first_column_not_proven_stable_as_actor_ID"]+=1
  groups_by_condition={
-  c:{"number_of_groups":len(condition_groups.get((c,t),set())) for t in CONDITIONS}
+  c:{t:{"number_of_groups":len(condition_groups.get((c,t),set()))} for t in CONDITIONS}
   for c in ("Sweden","Philippines")}
  # Long group-period tables are anonymous; do not return group identity or label IDs.
  return {
