@@ -28,7 +28,7 @@ M = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 O = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
 P = "{http://schemas.openxmlformats.org/package/2006/relationships}"
 SHEETPATH = re.compile(r"xl/worksheets/sheet[1-9][0-9]*\.xml")
-ROLENAME = re.compile(r"(.{1,60})_Type ([12])")
+ROLENAME = re.compile(r"(.{1,60})_Type([12])")
 EXPECTED = sorted([104, 110, 110, 112, 118])
 
 
