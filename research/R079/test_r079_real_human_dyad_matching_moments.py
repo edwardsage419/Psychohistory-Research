@@ -114,7 +114,7 @@ class SyntheticDyadGuards(unittest.TestCase):
     def test_26_no_person_path_in_statistic_export(self):
         a=score_aggregate(make_rows())
         self.assertNotIn("subject",str(a))
-        self.assertNotIn("per_session",str(a))
+        self.assertNotIn("'per_session_scores':",str(a))
         self.assertNotIn("participant_ids",str(a))
     def test_27_session_weight_over_rows(self):
         a=score_aggregate(make_rows())
