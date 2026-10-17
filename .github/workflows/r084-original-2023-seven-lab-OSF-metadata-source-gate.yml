@@ -1,0 +1,62 @@
+name: R084 2023 seven-lab original OSF study metadata-only source gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r084-original-2023-seven-lab-OSF-metadata-source-gate.yml'
+      - 'research/R084/r084_original_osf_7lab_metadata_source_gate.py'
+      - 'research/R084/test_r084_original_osf_7lab_metadata_source_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-OSF-metadata-source-and-capability-privacy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 26 synthetic source identity and secret-free metadata only guards
+        run: |
+          PYTHONPATH=research/R084 python -m unittest -v             research/R084/test_r084_original_osf_7lab_metadata_source_gate.py
+  real-original-author-OSF-official-metadata-only-probe:
+    needs: synthetic-OSF-metadata-source-and-capability-privacy-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Official OSF metadata and file-hash inventory, no human row retrieval, never print view-only capability strings
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r084_source_metadata_only
+          PYTHONPATH=research/R084 python             research/R084/r084_original_osf_7lab_metadata_source_gate.py             --output /tmp/r084_source_metadata_only/safe_receipt.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('/tmp/r084_source_metadata_only/safe_receipt.json')
+          raw=p.read_bytes()
+          r=json.loads(raw)
+          assert len(r['safe_official_http_checks'])==10
+          assert r['original_human_row_files_downloaded']==0
+          assert r['original_human_outcomes_computed']==0
+          assert r['real_human_scientific_grade']=='NOT_E2'
+          assert r['original_paper_report_only']['not_currently_recomputed_by_R084']
+          assert r['PESEN_v0.1']=='FROZEN'
+          print('R084_OSF_SOURCE_SAFE_ANONYMOUS_RECEIPT_BYTES',len(raw))
+          print('R084_OSF_SOURCE_SAFE_ANONYMOUS_RECEIPT_SHA256',hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Retain only source HTTP status and safely whitelisted OSF file index metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r084-official-2023-original-OSF-metadata-only-source-eligibility
+          path: /tmp/r084_source_metadata_only/safe_receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Delete ephemeral safe receipt
+        if: always()
+        run: rm -rf /tmp/r084_source_metadata_only
