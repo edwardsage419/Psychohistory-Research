@@ -1,0 +1,57 @@
+name: R100 2025 original Zenodo threshold PGG XLSX publisher MD5 workbook metadata only
+on:
+  push:
+    paths:
+      - '.github/workflows/r100-2025-threshold-PGG-Zenodo-XLSX-E1-source-only.yml'
+      - 'research/R100/r100_2025_original_threshold_pgg_zenodo_xlsx_source_directory_only.py'
+      - 'research/R100/test_r100_2025_original_threshold_pgg_zenodo_xlsx_source_directory_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pure-synthetic-zip-md5-workbook-metadata-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run 18 synthetic tests before any original source
+        run: PYTHONPATH=research/R100 python -m unittest -v research/R100/test_r100_2025_original_threshold_pgg_zenodo_xlsx_source_directory_only.py
+  original-zenodo-source-publisher-md5-and-zero-action-directory:
+    needs: pure-synthetic-zip-md5-workbook-metadata-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact Zenodo v2 official MD5 SHA and workbook names count only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/psychohistory_r100_source
+          python research/R100/r100_2025_original_threshold_pgg_zenodo_xlsx_source_directory_only.py --output /tmp/psychohistory_r100_source/source_receipt.json
+          python - <<'PY'
+          import json, pathlib, hashlib
+          p=pathlib.Path('/tmp/psychohistory_r100_source/source_receipt.json')
+          x=json.loads(p.read_text())
+          assert x["status"] == "E1_SOURCE_AUTHENTICATED_WORKBOOK_DIRECTORY_ONLY"
+          assert x["source_identity"]["publisher_MD5"] == "c40171abb172da8e16b0839db98a2cf2"
+          assert x["nonbehavior_workbook_directory"]["original_workbook_sheet_count"] == 10
+          assert x["nonbehavior_workbook_directory"]["actor_pair_contributions_or_survey_values_read"] is False
+          assert x["actual_human_model_scores"] == 0
+          assert x["PESEN_v0_1"] == "FROZEN"
+          b=p.read_bytes()
+          print("R100_SOURCE_ONLY_RECEIPT_BYTES",len(b))
+          print("R100_SOURCE_ONLY_RECEIPT_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r100-2025-original-Zenodo-two-person-threshold-PGG-source-only
+          path: /tmp/psychohistory_r100_source/source_receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
