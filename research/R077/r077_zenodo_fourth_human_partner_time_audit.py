@@ -20,7 +20,7 @@ def summarize(data):
         raise ValueError("ORIGINAL_FOURTH_SOURCE_ROW_DRIFT")
     if any(col not in data for col in COLUMNS):
         raise ValueError("ORIGINAL_FOURTH_SOURCE_REQUIRED_FIELDS_MISSING")
-    d=data[COLUMNS].copy()
+    d=data[list(COLUMNS)].copy()
     def unique(cols):
         return int(len(d[list(cols)].drop_duplicates()))
     def distribution(values):
