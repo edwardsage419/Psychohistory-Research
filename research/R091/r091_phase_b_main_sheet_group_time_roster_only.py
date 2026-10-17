@@ -15,8 +15,9 @@ EXPECTED_SHA256="04d2ed5a59885cde2a1740f33b295a86bd374b80cd811d8ff84c88cded68a02
 CONDITIONS=("Control","10P","40P","Impact","Level")
 COUNTRY_ALIASES={
  "sweden":"Sweden","swe":"Sweden","se":"Sweden",
- "philippines":"Philippines","philippine":"Philippines","phi":"Philippines","ph":"Philippines"}
+ "philippines":"Philippines","philippine":"Philippines","phi":"Philippines","ph":"Philippines","phils":"Philippines"}
 CONDITION_ALIASES={k.lower():k for k in CONDITIONS}
+CONDITION_ALIASES.update({"10prob":"10P","40prob":"40P","40impact":"Impact","40level":"Level"})
 
 def source_string(value):
  if value is None or isinstance(value,bool):return ""
