@@ -1,0 +1,60 @@
+name: R098 first-party Wang Hilbe Zhang 2025 original Zenodo 4person linear PGG MAT publisher MD5 source only
+on:
+  push:
+    paths:
+      - '.github/workflows/r098-2025-Wang-Hilbe-Zhang-first-party-Zenodo-4P-linearPGG-MAT-source-only.yml'
+      - 'research/R098/r098_wang2025_4p_linear_zenodo_mat_publisher_MD5_structure_only.py'
+      - 'research/R098/test_r098_wang2025_4p_linear_zenodo_mat_publisher_MD5_structure_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publisher-original-2025-19-MAT-source-and-privacy-synthetics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install original MAT metadata reader, no human choice data dependencies
+        run: python -m pip install --disable-pip-version-check --quiet 'scipy>=1.10,<2'
+      - name: 19 pure synthetic first-party MD5 MAT header and no contribution value tests
+        run: |
+          PYTHONPATH=research/R098 python -m unittest -v             research/R098/test_r098_wang2025_4p_linear_zenodo_mat_publisher_MD5_structure_only.py
+  actual-2025-Zenodo-v2-author-original-MAT-full-md5-and-directory-only:
+    needs: publisher-original-2025-19-MAT-source-and-privacy-synthetics
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install --disable-pip-version-check --quiet 'scipy>=1.10,<2'
+      - name: Official publisher 2025 Zenodo source original MD5 and SHA, list MAT VARIABLES only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r098_4person_source_privacy
+          PYTHONPATH=research/R098 python             research/R098/r098_wang2025_4p_linear_zenodo_mat_publisher_MD5_structure_only.py             --output /tmp/r098_4person_source_privacy/source_only_original_MAT_structure.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          b=pathlib.Path('/tmp/r098_4person_source_privacy/source_only_original_MAT_structure.json').read_bytes()
+          x=json.loads(b)
+          assert x["status"]=="R098_ORIGINAL_ZENODO_V2_FULL_MD5_AND_MAT_VARIABLE_DIRECTORY_VERIFIED"
+          assert x["original_source_byte_identity"]["publisher_published_MD5"]=="42153952f8e6614d09c2d903fd97af62"
+          assert not x["original_nonbehavior_MAT_directory"]["actual_human_contribution_values_or_actor_group_codes_inspected"]
+          assert not x["original_nonbehavior_MAT_directory"]["MAT_full_data_arrays_loaded"]
+          assert x["first_party_human_contribution_values_scored"]==0
+          assert x["PESEN_v0.1"]=="FROZEN"
+          print("R098_PUBLISHER_ZENODO_REAL_ORIGINAL_MAT_SOURCE_ONLY_BYTES",len(b))
+          print("R098_PUBLISHER_ZENODO_REAL_ORIGINAL_MAT_SOURCE_ONLY_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r098-2025-original-Zenodo-four-person-linear-PGG-MAT-MD5-header-only
+          path: /tmp/r098_4person_source_privacy/source_only_original_MAT_structure.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r098_4person_source_privacy
