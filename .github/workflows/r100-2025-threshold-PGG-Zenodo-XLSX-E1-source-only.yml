@@ -7,7 +7,7 @@ on:
       - 'research/R100/test_r100_2025_original_threshold_pgg_zenodo_xlsx_source_directory_only.py'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   pure-synthetic-zip-md5-workbook-metadata-gate:
     runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Run 18 synthetic tests before any original source
+      - name: Run 20 synthetic tests before source verification
         run: PYTHONPATH=research/R100 python -m unittest -v research/R100/test_r100_2025_original_threshold_pgg_zenodo_xlsx_source_directory_only.py
   original-zenodo-source-publisher-md5-and-zero-action-directory:
     needs: pure-synthetic-zip-md5-workbook-metadata-gate
@@ -55,3 +55,34 @@ jobs:
           path: /tmp/psychohistory_r100_source/source_receipt.json
           retention-days: 30
           if-no-files-found: ignore
+      - name: Permanently archive only the sanitized source E1 or E0 receipt on main
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/psychohistory_r100_source/source_receipt.json
+          dst=research/R100/R100_PHASE_A_LIVE_CI_SOURCE_RECEIPT.json
+          if [ ! -f "$src" ]; then
+            echo "No machine source receipt was produced; fail closed."
+            exit 1
+          fi
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/psychohistory_r100_source/source_receipt.json').read_text())
+          assert x['research_id']=='R100' and x['phase']=='A'
+          assert x['actual_human_model_scores']==0
+          assert x['PESEN_v0_1']=='FROZEN'
+          assert x['status'] in ('E0_SOURCE_BLOCKED','E1_SOURCE_AUTHENTICATED_SCHEMA_BLOCKED','E1_SOURCE_AUTHENTICATED_WORKBOOK_DIRECTORY_ONLY')
+          assert 'source_raw_bytes' not in x and 'contribution' not in str(x).lower()
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then
+            echo "R100 source receipt already identical in Git."
+            exit 0
+          fi
+          git commit -m "receipt(R100): automatic sanitized original Zenodo source E0/E1 result, zero human behaviors"
+          git pull --rebase origin main
+          git push origin HEAD:main
