@@ -1,0 +1,69 @@
+name: R095 exact independent author 2020 8 real lab session 96 person binary Friend Foe LOSO negative evidence archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r095-independent-Schniter-Shields-2020-8true-session-96binary-person-exact-E2-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-original-author-Zenodo-md5-sha-8session-negative-M1-M2-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Second independent 52 synthetic full group/round, partner actions, safe raw source and negative paired Brier tests
+        shell: bash
+        run: |
+          PYTHONPATH=research/R095 python -m unittest -v             research/R095/test_r095_schniter_shields_2020_original_session_roster_no_actions.py             research/R095/test_r095_schniter_shields_96_humans_8_full_original_sessions_LOSO_E2.py
+      - name: Reacquire unchanged original Chapman Fields.csv file, recheck official MD5 SHA, 96 binary decisions in eight actual independent lab sessions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r095_second_real_private
+          PYTHONPATH=research/R095 python             research/R095/r095_schniter_shields_96_humans_8_full_original_sessions_LOSO_E2.py             --output /tmp/r095_second_real_private/true_8_session_LOSO_E2.json
+          test "$(wc -c < /tmp/r095_second_real_private/true_8_session_LOSO_E2.json | tr -d '[:space:]')" = 3021
+          printf '%s  %s\n'             f45182131e0ec364fdd34c3eb36cb96f92c14a6db8c35de287dcc6632aea1b63             /tmp/r095_second_real_private/true_8_session_LOSO_E2.json | sha256sum --check --status
+          python - <<'PY'
+          import pathlib,json,hashlib,math
+          b=pathlib.Path('/tmp/r095_second_real_private/true_8_session_LOSO_E2.json').read_bytes()
+          v=json.loads(b)
+          assert v["status"]=="R095_ORIGINAL_2020_CHAPMAN_8_TRUE_SESSIONS_96_BINARY_PEOPLE_LOSO_E2_EXECUTED"
+          assert v["verified_publisher_MD5"]=="4c30ac1861e12f46e0b9847c9d1857a7"
+          assert v["verified_original_full_source_SHA256"]=="0678cc3d565d3a02e4766fedff211cc37b2e0e9d373e41c391466c6f84a56f4c"
+          z=v["original_lab_session_full_holdout_human_binary_prediction"]
+          assert z["true_original_independent_lab_sessions"]==8
+          assert z["entire_source_sessions_left_out_exactly_once"]==8
+          assert z["original_binary_round_2_predictions_all_subjects"]==96
+          assert z["source_genuine_lab_session_signs_M1"]=={"M1_exact_equal":0,"M1_negative":8,"M1_positive":0}
+          assert z["paired_gain_M0_minus_M1"]<0
+          assert z["paired_gain_M0_minus_M2"]<0
+          assert all(g<0 for g in z["anonymous_sorted_per_session_M1_gains"])
+          assert z["training_all_12_holdout_people_excluded_from_M0"]
+          assert not z["raw_source_original_session_person_pair_group_labels_exported"]
+          assert v["publisher_web_preview_of_some_original_actions_prior_to_scoring_freeze"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R095_SECOND_INDEPENDENT_FIRST_HAND_8_SESSION_BINARY_E2_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Commit only reproducible original real lab 8-session macro group holdout negative scientific data to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R095/R095_SCHNITER_SHIELDS_2020_8_REAL_LAB_SESSIONS_96_BINARY_ROUND2_LOSO_E2_RESULTS.json
+          mkdir -p research/R095
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r095_second_real_private/true_8_session_LOSO_E2.json
+            exit 0
+          fi
+          cp /tmp/r095_second_real_private/true_8_session_LOSO_E2.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R095): true original 8 independent lab sessions 96 binary choices M1 loses all eight, E2 negative frozen LOSO"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r095_second_real_private
