@@ -1,0 +1,79 @@
+name: R103 B1 original 2016 first-party Game label anonymous char-class diagnosis only
+on:
+  push:
+    paths:
+      - '.github/workflows/r103-2016-drbrain-B1-only-game-label-codepoint-diagnostic.yml'
+      - 'research/R103/r103_phase_b1_original_game_label_character_classes_only.py'
+      - 'research/R103/test_r103_phase_b1_original_game_label_character_classes_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure-synthetic-before-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Eight synthetic original game label privacy and punctuation class tests
+        run: PYTHONPATH=research/R103 python -m unittest -v research/R103/test_r103_phase_b1_original_game_label_character_classes_only.py
+  actual-original-only-game-name-format:
+    needs: pure-synthetic-before-source
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Official complete original MD5 but only anonymized Game character classes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r103_B1_source
+          PYTHONPATH=research/R103 python research/R103/r103_phase_b1_original_game_label_character_classes_only.py --output /tmp/r103_B1_source/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r103_B1_source/receipt.json').read_text())
+          assert x["status"]=="R103_B1_AUTHENTIC_SOURCE_GAME_LABEL_CHARACTER_CLASSES_ONLY"
+          assert x["official_original_full_SHA256"]=="c63b99ba7554908e54393eb9f8267a98de1a3d9bdd123a77f60f2b2122236013"
+          assert x["original_source_rows"]==8477 and x["real_human_model_scores"]==0
+          assert x["any_original_Game_text_exported"] is False
+          assert x["any_original_Action_or_Opponent_Action_values_accessed"] is False
+          print("R103_B1_GAME_FORMAT_CLASS_DIAGNOSIS",x["ascii_punctuation_unicode_decimal_codepoints_only"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r103-b1-original-anonymous-game-code-classes-or-failure
+          path: /tmp/r103_B1_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Commit allowlisted nonbehavior source grammar evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r103_B1_source/receipt.json
+          dst=research/R103/R103_PHASE_B1_LIVE_CI_GAME_LABEL_CLASS_DIAGNOSTIC_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r103_B1_source/receipt.json').read_text())
+          assert x["research_id"]=="R103" and x["phase"]=="B1"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["real_human_model_scores"]==0
+          assert x["status"] in ("R103_B1_SOURCE_GAME_METADATA_FAIL_CLOSED","R103_B1_AUTHENTIC_SOURCE_GAME_LABEL_CHARACTER_CLASSES_ONLY")
+          allowed={"research_id","phase","status","safe_failure","official_original_full_SHA256","original_source_rows","distinct_original_game_labels_count","anonymous_original_game_label_lengths_histogram","anonymous_game_label_character_class_count","ascii_punctuation_unicode_decimal_codepoints_only","any_original_Game_text_exported","any_original_Action_or_Opponent_Action_values_accessed","any_original_person_or_experiment_ID_accessed","real_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "ascii_punctuation_unicode_decimal_codepoints_only" in x:
+            assert all(type(i)==int and 33<=i<=126 for i in x["ascii_punctuation_unicode_decimal_codepoints_only"])
+            assert x["any_original_Game_text_exported"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R103 B1): real source anonymous Game codepoint metadata diagnosis after first strict roster fail"
+          git pull --rebase origin main
+          git push origin HEAD:main
