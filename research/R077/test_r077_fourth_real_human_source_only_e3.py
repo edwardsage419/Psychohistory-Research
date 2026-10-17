@@ -91,7 +91,7 @@ class GuardTests(unittest.TestCase):
         self.assertNotIn("sum(e[-1]",body)
         self.assertNotIn("state_counts[",body)
     def test_23_frozen_prior_publication(self):
-        self.assertIn("FREEZE_2026-10-17",FROZEN_PROTOCOL)
+        self.assertIn("AMENDMENT_REV002_2026-10-17",FROZEN_PROTOCOL)
     def test_24_no_pre_result_human_original_scoring_here(self):
         # All test examples have fabricated alphabetic session IDs.
         self.assertEqual(sum(len(a["events"]) for a in cases().values()),8)
