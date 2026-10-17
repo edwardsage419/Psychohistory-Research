@@ -73,7 +73,15 @@ jobs:
           assert x['actual_human_model_scores']==0
           assert x['PESEN_v0_1']=='FROZEN'
           assert x['status'] in ('E0_SOURCE_BLOCKED','E1_SOURCE_AUTHENTICATED_SCHEMA_BLOCKED','E1_SOURCE_AUTHENTICATED_WORKBOOK_DIRECTORY_ONLY')
-          assert 'source_raw_bytes' not in x and 'contribution' not in str(x).lower()
+          allowed={'research_id','phase','status','safe_failure','source_identity','publisher_DOI','source_filename','nonbehavior_workbook_directory','publisher_reported_treatment_participant_counts_not_verified','same_humans_in_sequential_sessions','actual_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'nonbehavior_workbook_directory' in x:
+              d=x['nonbehavior_workbook_directory']
+              assert set(d)=={'original_workbook_sheet_count','worksheet_xml_read','shared_string_xml_read','actor_pair_contributions_or_survey_values_read','original_sheet_names_republished'}
+              assert d['original_workbook_sheet_count']==10
+              assert all(d[k] is False for k in d if k!='original_workbook_sheet_count')
+          if 'source_identity' in x:
+              assert set(x['source_identity'])=={'original_bytes','publisher_MD5','computed_original_SHA256','publisher_MD5_verified'}
           PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
