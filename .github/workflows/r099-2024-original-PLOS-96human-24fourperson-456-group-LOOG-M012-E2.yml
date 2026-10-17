@@ -1,0 +1,61 @@
+name: R099 original 2024 PLOS 96 humans 24 four-person groups 20round 456 real group heldout M012 E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r099-2024-original-PLOS-96human-24fourperson-456-group-LOOG-M012-E2.yml'
+      - 'research/R099/r099_plos_2024_24genuine_4person_groups_456_true_rounds_M012_LOOG_E2.py'
+      - 'research/R099/test_r099_plos_2024_24genuine_4person_groups_456_true_rounds_M012_LOOG_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-90-original-first-party-source-4p-score-synthetic-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Full original 2024 PLOS source SHA group-person 456 LOSO stable and negative synthetic
+        run: |
+          PYTHONPATH=research/R099 python -m unittest -v             research/R099/test_r099_liu_2024_plos_official_original_S1_CSV_publisher_metadata_only.py             research/R099/test_r099_phase_b_plos_2024_fixed4p_nonbehavior_group_roster_only.py             research/R099/test_r099_plos_2024_24genuine_4person_groups_456_true_rounds_M012_LOOG_E2.py
+  real-source-2024-PLOS-96humans-24-source-fixed-4p-groups-456-group-LOOG:
+    needs: full-90-original-first-party-source-4p-score-synthetic-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Real first-party original 2024 publisher SHA, 96 people 1920 source actions all real 456 target group shares and true original full-group heldout
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r099_real_human_privacy
+          PYTHONPATH=research/R099 python             research/R099/r099_plos_2024_24genuine_4person_groups_456_true_rounds_M012_LOOG_E2.py             --output /tmp/r099_real_human_privacy/2024_first_PLOS_24original4p_456_LOOG.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          b=pathlib.Path('/tmp/r099_real_human_privacy/2024_first_PLOS_24original4p_456_LOOG.json').read_bytes()
+          z=json.loads(b)
+          assert z["status"]=="R099_2024_PLOS_FIRST_PARTY_96_HUMAN_24_TRUE_GROUPS_20ROUND_LOOG_456_E2_SCORED"
+          assert z["source_full_SHA256"]=="75dc8ae8b63a6b3ea728df9acab9d27944b82ec4feb5c6055e26751ca9cc4a6e"
+          a=z["actual_real_20round_group_holdout_scores"]
+          assert a["original_actual_whole_source_fixed_groups"]==24
+          assert a["original_real_next_round_group_share_predictions"]==456
+          assert a["source_heldout_group_every_round_excluded_from_M0"]
+          assert not a["source_true_independent_lab_session_labels_recovered"]
+          assert z["source_qualification_group_actor_treatment"]["original_first_party_action_cells"]==1920
+          assert not z["source_qualification_group_actor_treatment"]["original_source_OtherContri_or_Type_fields_ever_read_or_used"]
+          assert z["PESEN_v0.1"]=="FROZEN"
+          print("R099_TRUE_PLOS_AUTHOR_96HUMAN_456_GROUP_E2_BYTES",len(b))
+          print("R099_TRUE_PLOS_AUTHOR_96HUMAN_456_GROUP_E2_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r099-genuine-first-party-PLOS-2024-24-fourperson-456-group-LOOG-E2
+          path: /tmp/r099_real_human_privacy/2024_first_PLOS_24original4p_456_LOOG.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r099_real_human_privacy
