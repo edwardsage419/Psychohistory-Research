@@ -1,0 +1,187 @@
+{
+  "research_id": "R091",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_RETROSPECTIVE_INDEPENDENT_AUTHOR_2025_JONSSON_PUBLISHED_4PLAYER_GROUP_COOPERATION_LOOG_HISTORY_TRANSFER",
+  "research_acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "A01_to_A06": {
+    "A01": "PASS_FROZEN_CROSS_AUTHOR_FOURPERSON_GROUP_LOOG_M0_M1_M2_SINGLE_SOURCE_SHEET_TEN_COUNTRY_TREATMENT_STRATA",
+    "A02": "PASS_FIRST_PARTY_FIXED_GIT_BLOB_SHA256_SAFE_CODEBOOK_SOURCE_760_ACTORS_190_STABLE_FOURPERSON_GROUPS_20_ROUNDS",
+    "A03": "PASS_100_SYNTHETIC_AND_TWO_TRUE_AUTHOR_SOURCE_FULL_REACQUISITION_3610_GROUP_HELDOUT_SCORE_BYTE_EQUALITY",
+    "A04": "PASS_INITIAL_SYNTHETIC_HEADER_PRIVACY_FAILURE_SOURCE_UNMAPPED_CODEBOOK_FAIL_AND_48_NEGATIVE_GROUPS_RETAINED",
+    "A05": "PASS_AUTHOR_PUBLISHED_REANALYSIS_E2_NOT_FRESH_E3_OR_CAUSAL_DISASTER_PSYCHOLOGY_AND_R090_NEGATIVE_RETAINED",
+    "A06": "PASS_ALL_PRE_SCORE_PROTOCOLS_CODE_TESTS_REAL_SOURCE_CI_TWO_EXACT_REPLAYS_ANONYMOUS_JSON_REPORT_MAIN_INDEX"
+  },
+  "original_article": {
+    "title": "Cooperation in the face of disaster",
+    "authors": [
+      "Marijane Luistro Jonsson",
+      "Markus Jonsson"
+    ],
+    "doi": "10.1371/journal.pone.0318891",
+    "publication_date": "2025-04-03",
+    "author_published_total_participants": 884,
+    "selected_source_author_workbook_sheet_subjects": 760,
+    "selected_original_sheet": "DiffTreatments",
+    "alternative_overlapping_or_extra_Sweden_sheet": "DiffProb",
+    "alternative_sheet_NOT_CONCATENATED": true
+  },
+  "original_first_party_Git": {
+    "repository": "markusrobertjonsson/condcoop",
+    "commit": "2a23fc3221e636c0119b1d1f1a9c4945bca83e85",
+    "source_path": "Data_Main.xlsx",
+    "original_source_bytes": 571844,
+    "original_source_Git_blob": "499787e08242c44c32a469b5d72b206ccf2c73f0",
+    "original_source_full_SHA256": "04d2ed5a59885cde2a1740f33b295a86bd374b80cd811d8ff84c88cded68a023",
+    "initial_synthetic_source_header_privacy_failure_CI": 39015518318,
+    "first_safe_true_original_workbook_A_CI": 39015557828,
+    "first_source_group_roster_synthetic_layout_failure_CI": 39015826372,
+    "first_true_original_group_roster_unmapped_condition_failure_CI": 39015866343,
+    "nonbehavioral_source_category_B2_CI": 39015992841,
+    "successful_true_original_190_group_source_roster_B3_CI": 39016070946
+  },
+  "pre_score_protocols": [
+    {
+      "phase": "A fixed source",
+      "file": "protocols/R091_JONSSON_DISASTER_PGG_ORIGINAL_XLSX_STRUCTURE_BEFORE_BEHAVIOR_2026-10-17.md",
+      "commit": "9dd2fdec6c0d18d48065ea3249d1aabb8ff758c4"
+    },
+    {
+      "phase": "B four-person roster",
+      "file": "protocols/R091_PHASE_B_JONSSON_2025_MAIN_SHEET_4PERSON_GROUP_ROSTER_BEFORE_CONTRIBUTION_2026-10-17.md",
+      "commit": "b059eee1a9de37038aa292a73e6492cfd4450b96"
+    },
+    {
+      "phase": "B2 source metadata categories",
+      "file": "protocols/R091_PHASE_B2_AUTHOR_COUNTRY_TREATMENT_SOURCE_LABELS_NONOUTCOME_FREEZE_2026-10-17.md",
+      "commit": "c7735f73b75685a2def6e985d081ec9defcb913d"
+    },
+    {
+      "phase": "B3 first party source exact label mapping",
+      "file": "protocols/R091_PHASE_B3_AUTHOR_ORIGINAL_FIXED_COUNTRY_TREATMENT_MAP_BEFORE_ROSTER_RERUN_2026-10-17.md",
+      "commit": "8fbd644e8a90692f54afaa9c0e807d6b1db73d6a"
+    },
+    {
+      "phase": "C full group historical LOOG before outcomes",
+      "file": "protocols/R091_PHASE_C_190_AUTHOR_4PLAYER_GROUP_COMPLETE_LOOG_M0_M1_M2_BEHAVIOR_SCORING_FREEZE_2026-10-17.md",
+      "commit": "2992a91e64530d2405e2dd05e9e6808f8171afe5"
+    }
+  ],
+  "frozen_original_source_labels": {
+    "countries": {
+      "Phils": "Philippines",
+      "Sweden": "Sweden"
+    },
+    "treatments": {
+      "Control": "Control",
+      "10Prob": "10P",
+      "40Prob": "40P",
+      "40Impact": "Impact",
+      "40Level": "Level"
+    }
+  },
+  "original_source_eligible_group_universe": {
+    "real_humans_in_selected_main_sheet": 760,
+    "full_groups": 190,
+    "humans_per_group": 4,
+    "rounds_per_group": 20,
+    "original_actor_round_contribution_rows": 15200,
+    "original_group_rounds": 3800,
+    "genuine_original_full_groups_by_country_treatment": {
+      "Philippines": {
+        "Control": 22,
+        "10P": 22,
+        "40P": 23,
+        "Impact": 22,
+        "Level": 22
+      },
+      "Sweden": {
+        "Control": 18,
+        "10P": 18,
+        "40P": 16,
+        "Impact": 15,
+        "Level": 12
+      }
+    },
+    "true_original_human_actor_ID_consistent_within_group_all20": true,
+    "no_real_individual_behavior_rows_uploaded": true
+  },
+  "frozen_predictive_scoring": {
+    "target": "original group sum of four 0-20 integer contributions / (4 * 20)",
+    "original_contribution_missing_or_illegal_count": 0,
+    "group_test_holdout_unit": "ALL_20_ROUNDS_OF_COMPLETE_ORIGINAL_FOUR_PERSON_GROUP",
+    "each_holdout_group_predicted_rounds": "2..20",
+    "source_complete_groups_heldout": 190,
+    "original_heldout_next_round_prediction_targets": 3610,
+    "M0": "other training groups same-country same-treatment same-round average",
+    "M1": "target group last-round contribution fraction",
+    "M2": "0.5*M0+0.5*M1",
+    "trained_group_same_round_source_available_for_M0": true,
+    "true_realtime_calendar_forward_validation": false,
+    "entire_heldout_group_excluded_from_M0_training": true,
+    "no_hyperparameters_selected_using_heldout_scores": true,
+    "loss": "mean squared normalized fourperson contribution share error"
+  },
+  "pooled_mean_squared_loss": {
+    "M0": 0.03849598403278819,
+    "M1": 0.0192001385041553,
+    "M2": 0.019328371218051792
+  },
+  "paired_improvement_over_M0": {
+    "M1": 0.01929584552863285,
+    "M2": 0.01916761281473621
+  },
+  "original_full_group_M1_vs_M0_sign_count": {
+    "positive": 142,
+    "negative": 48,
+    "zero": 0
+  },
+  "by_country_M1_gain": {
+    "Philippines": 0.022346565389595573,
+    "Sweden": 0.015009391040444851
+  },
+  "by_original_treatment_M1_gain": {
+    "Control": 0.04651176721172213,
+    "10P": 0.007853934123959188,
+    "40P": 0.007416273763118863,
+    "Impact": 0.021400869602819776,
+    "Level": 0.012073992498442017
+  },
+  "all_ten_country_treatment_average_M1_gain_positive": true,
+  "all_ten_country_treatment_average_M2_gain_positive": true,
+  "cross_author_previous_evidence_comparison": {
+    "R089_binary_global_sixplayer_group_171_groups_E2": "M1_MORE_PREDICTIVE_POSITIVE",
+    "R090_independent_sixplayer_climate_clubs_continuous_share_30_groups_E2": "M1_NOT_REPLICATED_NEGATIVE_WITH_249_AUTOMATIC_DECISIONS",
+    "R091_independent_fourplayer_disaster_continuous_contribution_190_groups_E2": "M1_POSITIVE_BUT_48_GROUPS_NEGATIVE",
+    "universal_historical_group_memory_model_across_experiments": "NOT_ESTABLISHED",
+    "outcome_definition_identical_across_three_author_papers": false
+  },
+  "original_source_executions": {
+    "first_real_original_190group_3610_predictive_CI": 39016300977,
+    "second_independent_real_source_reacquisition_and_fullbyte_git_archive_CI": 39016368841,
+    "synthetic_source_and_model_tests": 100,
+    "anonymous_real_E2_output_bytes": 18471,
+    "anonymous_real_E2_output_SHA256": "1657ee31c5df7640ea7a0943886900133e68f70c0f9c3ac900302d36191f723b",
+    "permanent_original_E2_anonymous_git_blob": "2f39bcda3560abbcda780051dedf9ee5e8b08863"
+  },
+  "permanent_aggregated_real_E2_result": "research/R091/R091_INDEPENDENT_JONSSON_190_FOURPERSON_GROUP_3610_LOOG_M0_M1_M2_E2_RESULTS.json",
+  "final_scientific_report": "research/R091/R091_JONSSON_2025_190_FOURPERSON_GROUP_CROSS_AUTHOR_HISTORY_TRANSFER_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "privacy": {
+    "source_workbook_republished": false,
+    "individual_original_contributions_exported": false,
+    "original_actor_ID_or_group_ID_exported": false,
+    "original_group_specific_20_round_traces_exported": false,
+    "anonymous_country_treatment_stratum_metrics_only": true
+  },
+  "limits": {
+    "retrospective_published_original_experiment_E2_not_independently_recruited_E3": true,
+    "unverified_CI_or_source_subsession_group_clustering_bootstrap": true,
+    "source_automatic_player_decision_flags_present": false,
+    "absence_of_automatic_actions_verified": false,
+    "causal_disaster_risk_or_psychological_mechanism_established": false,
+    "long_term_social_historical_change_established": false,
+    "R091_source_subset_equals_all_884_paper_participants": false
+  },
+  "PESEN_v0_1": "FROZEN",
+  "next_research": "R092 prioritize same binary global group action target independent first-party original data, or preregister cross-experiment structured heterogeneity baseline without retuning past R089-R091 outcomes"
+}
