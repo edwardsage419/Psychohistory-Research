@@ -1,0 +1,9 @@
+# R091 Phase B2: bounded categorical metadata label audit before new original reading
+
+2026-10-17. Phase B original source roster run `39015866343` after 43 synthetic PASS returned exactly `R091B_AUTHOR_COUNTRY_OR_TREATMENT_CODE_UNMAPPED` and real group evidence **0**, preserving true failure; no human contributions scored. The paper's English country/condition labels may differ from spreadsheet categoricals; do not guess.
+
+This amendment is FROZEN before next original byte reacquisition: from first-party Git fixed author `markusrobertjonsson/condcoop` commit `2a23fc3221e636c0119b1d1f1a9c4945bca83e85`, Excel Git blob `499787e08242c44c32a469b5d72b206ccf2c73f0`, SHA256 `04d2ed5a59885cde2a1740f33b295a86bd374b80cd811d8ff84c88cded68a023`, inspect ONLY the `DiffTreatments` source categorical columns 5 (Country) and 6 (Treatment) for 15200 original data rows; no source individual ID, group ID, exact original row, contribution or other personal result.
+
+The `Country` and `Treatment` fields are explicitly experiment-group categorical labels (not actor IDs). Safe declassification allow at most 32 unique source values per field, each only finite ASCII `[A-Za-z0-9._% -]` characters, 1..30 chars, no controls, email, URL, path separator, unicode, or long strings. For values failing this test output only `REDACTED_UNRECOGNIZED_LABEL` counts, never text. Record label distributions and columns metadata only; labels have no individual decisions. Source all 15200 rows expected; output no person/group/round identifiers or per-person trace, no target contributions.
+
+After seeing only labels, separately freeze Phase B3 canonical mapping and 4person roster gate **without accessing contributions**. If source labels too ambiguous for stable condition, R091 stops at bounded source eligibility; cannot coerce outcome after seeing values. R090 negative and R089 positive unaffected. PESEN v0.1=FROZEN.
