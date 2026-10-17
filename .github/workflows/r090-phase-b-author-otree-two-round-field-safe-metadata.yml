@@ -1,0 +1,58 @@
+name: R090 phase B official climate club oTree round-field source roster only audit
+on:
+  push:
+    paths:
+      - '.github/workflows/r090-phase-b-author-otree-two-round-field-safe-metadata.yml'
+      - 'research/R090/r090_phase_b_independent_original_otree_round_metadata_only.py'
+      - 'research/R090/test_r090_phase_b_independent_original_otree_round_metadata_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-47-original-source-and-technical-round-synthetic-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          PYTHONPATH=research/R090 python -m unittest -v             research/R090/test_r090_independent_climate_clubs_original_roster_source_gate.py             research/R090/test_r090_phase_b_independent_original_otree_round_metadata_only.py
+  first-party-zenodo-2700-otree-safe-two-round-column-audit:
+    needs: first-47-original-source-and-technical-round-synthetic-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reacquire official original author MD5 full CSV and only compute cohort time/roster metadata with zero contribution values
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r090_phase_b_safe
+          PYTHONPATH=research/R090 python             research/R090/r090_phase_b_independent_original_otree_round_metadata_only.py             --output /tmp/r090_phase_b_safe/roster_source.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          p=pathlib.Path('/tmp/r090_phase_b_safe/roster_source.json')
+          b=p.read_bytes();v=json.loads(b)
+          assert v["original_full_source"]["original_publisher_MD5_verified"]
+          assert v["round_and_roster_metadata"]["author_original_2700_rows"]==2700
+          assert v["first_true_source_round_field_mismatch_failure_retained"]
+          assert v["original_human_behavior_scored"]==0
+          assert not v["round_and_roster_metadata"]["actor_or_group_identifiers_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R090_OFFICIAL_SOURCE_ONLY_PHASEB_BYTES",len(b))
+          print("R090_OFFICIAL_SOURCE_ONLY_PHASEB_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r090-author-original-2700-otree-round-and-group-roster-only
+          path: /tmp/r090_phase_b_safe/roster_source.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r090_phase_b_safe
