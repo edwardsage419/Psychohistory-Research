@@ -1,0 +1,76 @@
+name: R101 A7 original signed source final HTTP response headers no body
+on:
+  push:
+    paths:
+      - '.github/workflows/r101-2023-Stallen-DataverseNL-A7-final-response-metadata.yml'
+      - 'research/R101/r101_phase_a7_original_final_http_headers_only.py'
+      - 'research/R101/test_r101_phase_a7_original_final_http_headers_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  first-no-body-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Eight synthetic final-host response and privacy checks
+        run: PYTHONPATH=research/R101 python -m unittest -v research/R101/test_r101_phase_a7_original_final_http_headers_only.py
+  real-first-party-final-http-only:
+    needs: first-no-body-synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Same exact A6 GET headers, classify final host HTTP status without reading body
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r101_A7_response
+          PYTHONPATH=research/R101 python research/R101/r101_phase_a7_original_final_http_headers_only.py --output /tmp/r101_A7_response/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r101_A7_response/receipt.json').read_text())
+          assert x["status"]=="R101_A7_FINAL_HTTP_RESPONSE_HEADER_DIAGNOSTIC_ONLY"
+          assert x["original_zip_body_bytes_read"]==0 and x["original_human_scores"]==0
+          print("R101_A7_ACTUAL_FINAL_HTTP_STATUS",x["final_http_status"],x["final_http_host_class"],x["publisher_303_follow_count"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r101-a7-source-final-header-only
+          path: /tmp/r101_A7_response/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive anonymized final original HTTP header diagnostic
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r101_A7_response/receipt.json
+          dst=research/R101/R101_PHASE_A7_LIVE_CI_FINAL_HTTP_HEADER_DIAGNOSTIC_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r101_A7_response/receipt.json').read_text())
+          assert x["research_id"]=="R101" and x["phase"]=="A7"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["original_human_scores"]==0
+          assert x["status"] in ("R101_A7_RESPONSE_FAIL_CLOSED","R101_A7_FINAL_HTTP_RESPONSE_HEADER_DIAGNOSTIC_ONLY")
+          fields={"research_id","phase","status","safe_failure","final_http_status","final_http_host_class","publisher_303_follow_count","final_content_type_class","final_content_length_if_safe","original_zip_body_bytes_read","original_human_scores","PESEN_v0_1"}
+          assert set(x).issubset(fields)
+          if "final_http_host_class" in x:
+            assert x["final_http_host_class"] in ("dataverse.nl","objectstore.surf.nl","OTHER")
+            assert x["original_zip_body_bytes_read"]==0
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R101 A7): real final HTTP status after publisher SURF redirect, zero entity bytes"
+          git pull --rebase origin main
+          git push origin HEAD:main
