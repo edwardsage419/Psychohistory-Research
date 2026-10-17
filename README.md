@@ -129,3 +129,9 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 已提交 [Phase J 研究报告](research/R065/R065_PHASE_J_SCREENED_24_AUDIT.md)、[匿名充分计数及来源哈希](research/R065/R065_PHASE_J_SCREENED_24_RESULTS.json)、[可复现的严格筛选与 24 折程序](research/R065/r065_phase_j_screened_replay.py)、[10 项已通过的本地测试](research/R065/test_r065_phase_j_screened_replay.py)及 [GitHub Actions 来源回放配置](.github/workflows/r065-phase-j.yml)。远端 CI 是否已运行成功，**仍未得到证据**。
 
 研究主控台更新至 [v5.0](docs/RESEARCH_CONTROL_v5.0_2026-10-16.md)。原作者七个认知模型的完整 native 拟合未完成，R065 科学验证门仍开放，PESEN v0.1 保持冻结。
+
+## R074 第二独立真人重复博弈外部复验（2026-10-17）
+
+[正式 R074 研究目录](research/R074/README.md)已完成真实原作者来源校验、[外部模型评分前独立冻结协议](protocols/R074_DALBO_AUTHOR_INDEPENDENT_HUMAN_E3_TRANSFER_FREEZE_2026-10-17.md)、29项完全合成反例测试及**另一独立作者实验**的18个场次、15,338次个人合作选择完整留场次预测。[第一份 R074 E3 报告](research/R074/R074_REAL_EXTERNAL_HUMAN_E3_RESULTS_AND_SCIENTIFIC_LIMITS_2026-10-17.md)记录了 M3(本人及对手上轮选择) 对 M1(本人上轮选择) 的场次等权 Brier 差 **−0.022915**，18场中16场更好、2场更差；而 M4(双方两轮) 对 M3 的差 **+0.003171**，仅5场更好、13场更差。因而上一轮对手行动的额外条件预测性在独立真人实验中获得支持，更长记忆总会增进预测的假设被真实反例限制。所有未改善场次保留，不能解释为因果记忆或制度因果。
+
+[19,308字节匿名原始宏评分归档](research/R074/R074_EXTERNAL_REAL_HUMAN_18_SESSION_E3_RESULTS.json)已由[独立 GitHub Actions SHA256 严格重算](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38988844437)确认；原始真人行与任何逐场ID均不存本仓库。R074 为有界 E3 结题（`CLOSED_BOUNDED`），当前拟合系数仍来自新实验自身其他场次，零样本数值参数迁移、心理因果机制与长时段历史外推均保持开放。PESEN v0.1 继续冻结。
