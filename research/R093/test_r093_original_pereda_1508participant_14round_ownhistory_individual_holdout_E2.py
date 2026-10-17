@@ -6,23 +6,23 @@ from r093_original_pereda_1508participant_14round_ownhistory_individual_holdout_
  EXPECTED_PERSONS,EXPECTED_BLANK_ROWS,FROZEN_SHA256,source_choice,load_original_cohort,
  group_individual_heldout_score)
 COLS=["participant_id","player_alive","group_avg_contribution","player_contribution","round_number","gender","age","treatment"]
-SMALL={k:3 for k in EXPECTED_PERSONS}
+SMALL={k:4 for k in EXPECTED_PERSONS}
 def fake_original(kind="stable",blank=1,modified=None):
  f=io.StringIO();w=csv.writer(f);w.writerow(COLS)
  for tr in SMALL:
-  for person in range(3):
+  for person in range(4):
    for t in range(1,15):
     amount=((0 if person==0 else 10) if kind=="stable"
          else (0 if t%2==1 else 10) if kind=="synchronous"
          else (person+t)%11)
     flag="1"
-    if kind=="attrition" and person==0 and t>=8:flag="0"
+    if kind=="attrition" and tr=="PGG100" and person==0 and t>=8:flag="0"
     row=[f"SECRET_ORIGINAL_{tr}_{person}",flag,999999,amount,t,"PRIVATE_GENDER","PRIVATE_AGE",tr]
     if modified and modified(row,tr,person,t):pass
     w.writerow(row)
  for j in range(blank):w.writerow([""]*8)
  return f.getvalue().encode()
-def sample(raw):return load_original_cohort(raw,SMALL,1,253)
+def sample(raw):return load_original_cohort(raw,SMALL,1,337)
 class ContributionContract(unittest.TestCase):
  def test_zero(self):self.assertEqual(source_choice("0"),0)
  def test_ten(self):self.assertEqual(source_choice("10"),10)
@@ -50,20 +50,20 @@ class OriginalUniverse(unittest.TestCase):
  def test_unassigned_source_83_preserved(self):self.assertEqual(EXPECTED_BLANK_ROWS,83)
  def test_synthetic_six_run_full14(self):
   g,q=sample(fake_original())
-  self.assertEqual(q["original_author_participant_codes_total"],18)
-  self.assertEqual(q["registered_alive_1_actor_round_rows"],252)
+  self.assertEqual(q["original_author_participant_codes_total"],24)
+  self.assertEqual(q["registered_alive_1_actor_round_rows"],336)
  def test_source_private_human_IDs_never_reported(self):
   g,q=sample(fake_original())
   self.assertNotIn("SECRET_ORIGINAL",str(q))
   self.assertTrue(q["original_actor_or_contribution_row_values_exported"] is False)
  def test_wrong_83_count_denied(self):
   with self.assertRaises(ValueError):
-   load_original_cohort(fake_original(blank=2),SMALL,1,254)
+   load_original_cohort(fake_original(blank=2),SMALL,1,338)
  def test_dropout_and_no_future_target(self):
   g,q=sample(fake_original("attrition"))
-  self.assertEqual(q["registered_alive_1_actor_round_rows"],245)
+  self.assertEqual(q["registered_alive_1_actor_round_rows"],329)
   r=group_individual_heldout_score(g)
-  self.assertLess(r["total_original_source_qualified_next_round_individual_targets"],234)
+  self.assertLess(r["total_original_source_qualified_next_round_individual_targets"],312)
  def test_source_missing_alive_action_denied(self):
   def replace(row,tr,person,t):
    if tr=="PGG100" and person==0 and t==1:row[3]=""
@@ -72,7 +72,7 @@ class OriginalUniverse(unittest.TestCase):
   def replace(row,tr,person,t):
    if tr=="PGG100" and person==0 and t>=8:row[3]=""
   g,q=sample(fake_original("attrition",modified=replace))
-  self.assertEqual(q["registered_alive_1_actor_round_rows"],245)
+  self.assertEqual(q["registered_alive_1_actor_round_rows"],329)
  def test_double_actor_round_denied(self):
   b=fake_original()
   rdr=list(csv.reader(io.StringIO(b.decode())))
@@ -97,14 +97,14 @@ class OriginalUniverse(unittest.TestCase):
   s=io.StringIO();csv.writer(s).writerows(r)
   with self.assertRaises(ValueError):sample(s.getvalue().encode())
 class IndividualHistoryFrozen(unittest.TestCase):
- def test_6x3x13_targets_234(self):
+ def test_6x3x13_targets_312(self):
   g,q=sample(fake_original())
   z=group_individual_heldout_score(g)
-  self.assertEqual(z["total_original_source_qualified_next_round_individual_targets"],234)
- def test_one_original_run39_targets(self):
+  self.assertEqual(z["total_original_source_qualified_next_round_individual_targets"],312)
+ def test_one_original_run52_targets(self):
   g,q=sample(fake_original())
   z=group_individual_heldout_score(g)
-  self.assertEqual(z["by_original_publisher_experiment"]["PGG100"]["qualified_individual_next_round_target_pairs"],39)
+  self.assertEqual(z["by_original_publisher_experiment"]["PGG100"]["qualified_individual_next_round_target_pairs"],52)
  def test_first_round_unscored(self):
   g,q=sample(fake_original())
   r=group_individual_heldout_score(g)
@@ -143,7 +143,7 @@ class IndividualHistoryFrozen(unittest.TestCase):
  def test_dropout_data_not_falsely_scored_as_human(self):
   g,q=sample(fake_original("attrition"))
   z=group_individual_heldout_score(g)
-  self.assertEqual(z["total_original_source_qualified_next_round_individual_targets"],227)
+  self.assertEqual(z["total_original_source_qualified_next_round_individual_targets"],305)
  def test_no_cluster_CI_fabricated(self):
   g,q=sample(fake_original())
   r=group_individual_heldout_score(g)
