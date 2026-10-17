@@ -1,0 +1,62 @@
+name: R080 first complete original 64 human networks 30 round human-only topology E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r080-original-all64-human-bot-topology-E2.yml'
+      - 'research/R080/r080_original_64_networks_human_only_cooperation_topology.py'
+      - 'research/R080/test_r080_original_64_networks_human_only_cooperation_topology.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-42-human-bot-roles-full-network-temporal-and-privacy-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run 42 all-64 network artificial tests before true original human data scoring
+        working-directory: research/R080
+        run: python -m unittest -v test_r080_original_64_networks_human_only_cooperation_topology
+  all-64-network-original-human-robot-split-E2-run:
+    needs: synthetic-42-human-bot-roles-full-network-temporal-and-privacy-controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently download ALL 64 publisher-SHA256-certified original human-bot JSON, verify 1024 human nodes, then score anonymous group aggregates only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r080_full_true_network_safe
+          PYTHONPATH=research/R080 python research/R080/r080_original_64_networks_human_only_cooperation_topology.py \
+            --output /tmp/r080_full_true_network_safe/all_64_real_author_networks_E2_results.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          f=pathlib.Path("/tmp/r080_full_true_network_safe/all_64_real_author_networks_E2_results.json")
+          raw=f.read_bytes();r=json.loads(raw)
+          assert r["status"]=="R080_FIRST_PARTY_AUTHOR_64_NETWORK_HUMAN_ONLY_TOPOLOGY_E2_EXECUTED"
+          assert r["original_source"]["original_human_participant_network_slots"]==1024
+          assert r["original_source"]["verified_networks"]==64
+          assert r["original_source"]["all_original_64_file_content_SHA256_verified"]
+          assert r["causal_human_social_effect"]=="NOT_IDENTIFIED"
+          assert r["robot_intervention_causal_effect"]=="NOT_IDENTIFIED"
+          print("R080_64_HUMAN_NETWORK_MACRO_JSON_BYTES",len(raw))
+          print("R080_64_HUMAN_NETWORK_MACRO_JSON_SHA256",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Save only aggregate by eight publisher treatments, no individual human/bot histories
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r080-author-64-network-human-only-real-cooperation-topology-E2
+          path: /tmp/r080_full_true_network_safe/all_64_real_author_networks_E2_results.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Wipe all ephemeral result output
+        if: always()
+        run: rm -rf /tmp/r080_full_true_network_safe
