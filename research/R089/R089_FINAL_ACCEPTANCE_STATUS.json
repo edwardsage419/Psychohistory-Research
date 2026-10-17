@@ -1,0 +1,138 @@
+{
+  "research_id": "R089",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_RETROSPECTIVE_SAME_AUTHOR_171_GROUP_COMPLETE_HOLDOUT_REAL_NEXT_ROUND_PREDICTION",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "acceptance": {
+    "A01": "PASS_FROZEN_M0_TIME_CONDITION_M1_PAST_GROUP_M2_FIXED_BLEND_M3_ONLY_PREGAME_GLOBAL_IDENTITY",
+    "A02": "PASS_ORIGINAL_FIXED_GIT_BLOB_COMPLETE_GROUP_CSV_R_EXCLUSIONS_COP_ANALYSIS_AND_TWO_IDENTITY_TIMELINE_SCRIPTS",
+    "A03": "PASS_FIVE_FOLDS_171_FULL_GROUPS_3249_GROUP_ROUNDS_40_SYNTHETIC_TWO_REAL_EXACT_BYTE_REPLAYS",
+    "A04": "PASS_FIRST_SYNTHETIC_SYNTAX_FAILURE_RETAINED_64_SOURCE_MISSING_54_GROUPS_REAL_NEGATIVE_COMPARISON",
+    "A05": "PASS_E2_SAME_AUTHOR_NOT_INDEPENDENT_E3_NO_CAUSAL_IDENTITY_OR_HISTORICAL_CLAIM",
+    "A06": "PASS_FROZEN_PROTOCOL_REAL_RESULTS_SHA_CODE_TESTS_CI_REPORT_MAIN_INDEX"
+  },
+  "source_paper": "Pilgrim Stewart Raihani 2025 online / 2026 Scientific Reports Social identity and cooperation co-evolve in a multilevel public goods game",
+  "paper_doi": "10.1038/s41598-025-30979-2",
+  "author_original_repo": "chasmani/PUBLIC_social_identity_and_cooperation",
+  "author_original_source_commit": "8ce2c0cac4784485232aa96295f48ff147290b05",
+  "source_data_original_Git_blob": "f902865203bdb465a505869b593eca432831b2fa",
+  "source_data_original_bytes": 2270643,
+  "author_initial_identity_R_script_blob": "c67bbdd50dbf4fe9efcfca8fe303ae418d0dd6a1",
+  "author_identity_time_trends_script_blob": "027fab69c27af7155d673469bdb32d6cbafa1080",
+  "author_exclusions_R_blob": "5d7f6e65523df55a1f05bd69f48d60b9306783a9",
+  "author_cooperation_rates_R_blob": "60793d82709a7807e86ceddd772fe2847733a6e2",
+  "frozen_new_evaluation_protocol": "protocols/R089_171_GROUP_COMPLETE_HOLDOUT_HISTORY_AND_BASELINE_IDENTITY_PREDICTION_FREEZE_2026-10-17.md",
+  "frozen_protocol_commit_pre_real_scores": "8f303a8e7b4e2275f177d3e50aa903dd199d48b7",
+  "original_group_source_universe": {
+    "complete_original_groups": 171,
+    "original_actors_per_group": 6,
+    "original_actors": 1026,
+    "original_rounds": 20,
+    "original_human_actor_round_slots": 20520,
+    "original_missing_action_slots": 64,
+    "all_six_actor_pregame_global_DIFI_present_and_valid": true,
+    "original_groups_lacking_complete_pregame_identity": 0,
+    "time_lag_history_input_missing_prediction_cases": 60,
+    "scored_next_round_target_missing_original_actor_action_slots": 35,
+    "original_full_group_id_or_raw_person_identity_exported": false
+  },
+  "predesign_prediction_rules": {
+    "folds": 5,
+    "group_folds_per_treatment": [
+      12,
+      12,
+      11,
+      11,
+      11
+    ],
+    "unique_heldout_groups": 171,
+    "heldout_next_round_group_rounds": 3249,
+    "train_in_other_original_groups_only": true,
+    "test_same_group_previous_round_allowed": true,
+    "model0": "CONDITION_ROUND_OTHER_GROUPS_MEAN",
+    "model1": "WITHHELD_GROUP_LAST_ROUND_MIDPOINT",
+    "model2": "FIXED_HALF_OF_M0_PLUS_HALF_OF_M1",
+    "model3": "M2_PLUS_PRE_GAME_GLOBAL_DIFI_ONLY_TRAINED_GROUP_RIDGE_PENALTY_1",
+    "all_source_missingness_used_as_sharp_discrete_integer_sixperson_outcome_bounds": true,
+    "no_post_game_or_future_social_identity_used": true,
+    "no_heldout_actor_actions_used_for_model_fit": true,
+    "group_and_session_sampling_uncertainty_quantified": false
+  },
+  "overall_mean_group_share_squared_loss_sharp_ranges": {
+    "M0": [
+      0.07892226778953057,
+      0.07949541990685903
+    ],
+    "M1": [
+      0.03369412810779313,
+      0.03413015970725962
+    ],
+    "M2": [
+      0.03730419803036808,
+      0.03765130718670951
+    ],
+    "M3": [
+      0.03731606443599554,
+      0.037662908544961876
+    ]
+  },
+  "shared_unknown_outcome_mean_model_improvement_over_M0": {
+    "M1": [
+      0.04491793233770402,
+      0.04567090360579471
+    ],
+    "M2": [
+      0.04153966295923339,
+      0.04191614859327873
+    ],
+    "M3": [
+      0.041527803105449256,
+      0.04190442826209921
+    ]
+  },
+  "group_signs_for_M1_improvement_over_M0": {
+    "Balanced": {
+      "guaranteed_positive": 52,
+      "guaranteed_negative": 5,
+      "ambiguous": 0
+    },
+    "GlobalBoost": {
+      "guaranteed_positive": 33,
+      "guaranteed_negative": 24,
+      "ambiguous": 0
+    },
+    "GlobalOnly": {
+      "guaranteed_positive": 31,
+      "guaranteed_negative": 25,
+      "ambiguous": 1
+    }
+  },
+  "science_conclusion": {
+    "real_group_history_mean_predictive_gain_missingness_robust": true,
+    "three_treatment_average_gain_missingness_robust": true,
+    "each_original_group_history_improves": false,
+    "pregame_identity_increment_to_existing_group_history": "NOT_ESTABLISHED",
+    "claim_of_future_identity_measurement_predictor_use": false,
+    "genuinely_new_external_human_recruitment_or_lab_E3": false,
+    "original_group_sample_post_exclusion_selection_limitation": true,
+    "causal_learning_or_identity_mechanism": "NOT_IDENTIFIED",
+    "outside_experiment_historical_transfer": "NOT_ESTABLISHED"
+  },
+  "ci_executions": {
+    "first_synthetic_failure_before_any_real_score": 39012760897,
+    "synthetic_function_name_typo_only_fix_commit": "50bb91a61b11274f94a2e4c9c3c79fec241bcba6",
+    "first_successful_real_171group_groupheldout_execution": 39012803376,
+    "second_independent_full_source_sha_real_score_archive": 39012889699,
+    "frozen_synthetic_test_count": 40,
+    "real_anon_macro_bytes": 20052,
+    "real_anon_macro_SHA256": "9dda5e5fbf4abe2a9d9e7d2fb029e03eb81202c63f0e0af576b7e69882aea266"
+  },
+  "permanent_E2_aggregate_result": "research/R089/R089_ORIGINAL171_GROUP_FIVEFOLD_HISTORY_VS_PREGAME_IDENTITY_SHARP_E2_RESULTS.json",
+  "permanent_result_Git_blob": "329f8d56026b0ae792e0e2ebd9fbe050c8a849c0",
+  "scientific_report": "research/R089/R089_171_SIXPERSON_GROUP_FIVEFOLD_HISTORY_PREGAME_IDENTITY_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "real_evaluation_program": "research/R089/r089_original171_group_heldout_identity_history_predict_E2.py",
+  "synthetic_tests": "research/R089/test_r089_original171_group_heldout_identity_history_predict_E2.py",
+  "next_research": "R090 locate a genuinely independent author experiment with six-person or comparable repeated groups, freeze transfer of original-source lag vs condition baseline method before new original outcome reading",
+  "PESEN_v0_1": "FROZEN"
+}
