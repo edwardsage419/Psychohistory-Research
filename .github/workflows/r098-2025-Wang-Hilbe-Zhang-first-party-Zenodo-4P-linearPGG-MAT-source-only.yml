@@ -17,8 +17,8 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
       - name: Install original MAT metadata reader, no human choice data dependencies
-        run: python -m pip install --disable-pip-version-check --quiet 'scipy>=1.10,<2'
-      - name: 19 pure synthetic first-party MD5 MAT header and no contribution value tests
+        run: python -m pip install --disable-pip-version-check --quiet 'scipy>=1.10,<2' 'h5py>=3.8,<5'
+      - name: 24 pure synthetic first-party MD5 MAT header and no contribution value tests
         run: |
           PYTHONPATH=research/R098 python -m unittest -v             research/R098/test_r098_wang2025_4p_linear_zenodo_mat_publisher_MD5_structure_only.py
   actual-2025-Zenodo-v2-author-original-MAT-full-md5-and-directory-only:
@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
-      - run: python -m pip install --disable-pip-version-check --quiet 'scipy>=1.10,<2'
+      - run: python -m pip install --disable-pip-version-check --quiet 'scipy>=1.10,<2' 'h5py>=3.8,<5'
       - name: Official publisher 2025 Zenodo source original MD5 and SHA, list MAT VARIABLES only
         shell: bash
         run: |
