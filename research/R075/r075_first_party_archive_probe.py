@@ -12,6 +12,7 @@ import io
 import json
 from pathlib import Path
 import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 
@@ -67,7 +68,7 @@ def probe_one(label,url,reader=None):
         result.update({"http_status":status,"content_type":content_type,
                        "response_bytes":len(body),
                        "sha256":hashlib.sha256(body).hexdigest(),
-                       "redirect_final_host":urllib.request.urlparse(target).hostname})
+                       "redirect_final_host":urllib.parse.urlparse(target).hostname})
         if len(body)>LIMIT:
             result.update({"status":"BLOCKED_RESPONSE_TOO_LARGE"})
         elif not body:
