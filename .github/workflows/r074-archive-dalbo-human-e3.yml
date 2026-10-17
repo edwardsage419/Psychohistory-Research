@@ -1,0 +1,71 @@
+name: R074 archive externally replicated author-human 18-session E3 aggregate with exact SHA
+on:
+  push:
+    paths:
+      - '.github/workflows/r074-archive-dalbo-human-e3.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  replay-original-author-and-archive-privacy-safe-fixed-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify nine source checks and twenty external frozen model synthetic controls
+        working-directory: research/R074
+        run: |
+          python -m unittest -v test_r074_dalbo_author_source_gate
+          python -m unittest -v test_r074_dalbo_external_human_e3
+      - name: Read first-party real data into temporary runner and enforce pinned bytes and SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r074_private
+          python - <<'PY'
+          from urllib.request import Request,urlopen
+          from pathlib import Path
+          from hashlib import sha256
+          req=Request("https://gfrechette.com/data/Dal_Bo_2011a_data.txt",
+                      headers={"User-Agent":"Psychohistory-Research-R074-E3-independent-archive/1.0"})
+          with urlopen(req,timeout=60) as r: body=r.read(3_000_001)
+          if len(body)!=1140746 or sha256(body).hexdigest()!="357a12968546a8d9002c912c1f499e02e93d59113d2a0928de2dee48323a0ae6":
+              raise ValueError("ORIGINAL_SOURCE_SHA_OR_BYTES_DRIFTED")
+          Path("/tmp/r074_private/original.txt").write_bytes(body)
+          PY
+      - name: Replay frozen R073 seven-model 18-session human external E3 and require exact public JSON digest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R074/r074_dalbo_external_human_e3.py \
+            --source /tmp/r074_private/original.txt \
+            --output /tmp/r074_anonymous_e3.json
+          test "$(wc -c </tmp/r074_anonymous_e3.json | tr -d '[:space:]')" = 19308
+          printf '%s  %s\n' \
+            '9946011d1d915c2cf4b29049f8d38d4e626106bd920d6b9b646b09bd3d56f448' \
+            /tmp/r074_anonymous_e3.json | sha256sum --check --status
+          echo 'R074 independent full replay JSON byte-identity PASS; no human data archived'
+      - name: Write only checksum-proven anonymous entire external results JSON to GitHub main
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R074/R074_EXTERNAL_REAL_HUMAN_18_SESSION_E3_RESULTS.json
+          if [ -f "$dest" ]; then
+              cmp -s "$dest" /tmp/r074_anonymous_e3.json
+              echo 'Previously archived identical byte-safe E3 aggregate verified'
+              exit 0
+          fi
+          cp /tmp/r074_anonymous_e3.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R074): SHA-verified independent real human 18-session frozen model E3 aggregate"
+          git push origin HEAD:main
+      - name: Remove original human histories and transient score JSON
+        if: always()
+        run: rm -rf /tmp/r074_private /tmp/r074_anonymous_e3.json
