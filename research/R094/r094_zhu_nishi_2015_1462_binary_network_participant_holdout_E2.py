@@ -149,7 +149,7 @@ def original_real():
  if (metadata["distinct_original_node_ID_codes"]!=EXPECTED_PERSONS or
      metadata["number_of_node_IDs_with_exactly_10_unique_rounds_1_to_10"]!=EXPECTED_PERSONS or
      metadata["duplicate_node_ID_round_combinations"]!=0 or
-     metadata["number_of_node_IDs_with_visibility_change_across_rounds"]!=0):
+     metadata["number_of_original_node_IDs_with_visibility_change_across_rounds"]!=0):
   raise ValueError("R094C_ORIGINAL_SOURCE_METADATA_1462_ACTOR_COHORT_FAILED")
  cohort,vis,quality=read_complete_source(rows)
  scores=score_LOO(cohort,vis)
