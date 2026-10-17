@@ -1,0 +1,142 @@
+{
+  "research_id": "R086",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_RETROSPECTIVE_ORIGINAL_AUTHOR_2025_REAL_TWO_PERSON_PGG_COOPERATION_SHORT_RUN",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "A01_to_A06": {
+    "A01": "PASS",
+    "A02": "PASS_TWO_ORIGINAL_ZENODO_2025_PUBLISHER_MD5_AND_PINNED_SHA256",
+    "A03": "PASS_53_SYNTHETIC_AND_TWO_REAL_AUTHOR_1104_HUMAN_FULLBYTE_IDENTICAL",
+    "A04": "PASS_SIGN_REVERSALS_AND_LARGE_ZERO_ACTION_DELTAS_RETAINED_WITH_R085_FORMAT_FAILURE_UNCHANGED",
+    "A05": "PASS_NO_CAUSAL_EFFECT_OR_INDEPENDENT_E3_CLAIM",
+    "A06": "PASS_RESEARCH_REPORT_ANONYMOUS_RESULTS_PROTOCOL_CODE_CI_GIT"
+  },
+  "official_source_DOI": "10.5281/zenodo.16918146",
+  "original_zenodo_record_version": 2,
+  "original_zenodo_record": 16918146,
+  "phaseA_pre_source_protocol": "protocols/R086_WANG_HILBE_ZHANG_TWO_PLAYER_PGG_ORIGINAL_XLSX_SOURCE_AND_OUTCOME_FREEZE_2026-10-17.md",
+  "phaseA_freeze_commit": "9384d806e85b18e50d8b30f0c531b0cc1203adc5",
+  "phaseB_pre_original_behavior_score_protocol": "protocols/R086_PHASE_B_TWO_PERSON_FULL_ORIGINAL_BEHAVIOUR_WITHIN_SESSION_FROZEN_SCORE_2026-10-17.md",
+  "phaseB_freeze_commit": "4a0475972655b8662a52f2b53f9d06585a9112d0",
+  "original_source_files": [
+    {
+      "name": "LinearPGG_ExperimentalData.xlsx",
+      "publisher_md5": "fc71d20de62c259629ceb56559d8a69e",
+      "source_size": 504163,
+      "sha256": "b423cda39bfd7d84f2edb7f56b4bccc0d03164743bb4df851d20f049725fb507",
+      "original_human_focal_actors": 550,
+      "original_personal_action_rounds_per_session": [
+        22,
+        21
+      ],
+      "actual_person_round_actions": 23650
+    },
+    {
+      "name": "ThresholdPGG_ExperimentalData.xlsx",
+      "publisher_md5": "c40171abb172da8e16b0839db98a2cf2",
+      "source_size": 217396,
+      "sha256": "825b1cd3226aeca7a19d76d9594f655114b12059648f9ca03b3291c3cf9ab200",
+      "original_human_focal_actors": 554,
+      "original_personal_action_rounds_per_session": [
+        20,
+        20
+      ],
+      "actual_person_round_actions": 22160
+    }
+  ],
+  "total_distinct_original_focus_actors_across_two_studies": 1104,
+  "total_original_actor_round_contribution_cells_evaluated": 45810,
+  "five_source_arms": [
+    "FE",
+    "EI",
+    "PI",
+    "AI",
+    "MI"
+  ],
+  "sessions_per_actor": 2,
+  "real_original_source_execution": {
+    "phaseA_first_publisher_intake_run": 39003094721,
+    "phaseB_first_true_original_human_evaluation": 39003367675,
+    "independent_second_full_human_replay_and_permanent_archive_run": 39003432643,
+    "synthetic_source_tests": 24,
+    "synthetic_full_behavior_tests": 29,
+    "real_E2_replayed_result_bytes": 85566,
+    "real_E2_replayed_result_SHA256": "600104f42f2b896646abe543cc6d8ab10450f1d30ed823d9feeeaf6d20a1628c"
+  },
+  "permanent_aggregated_E2_results": "research/R086/R086_ORIGINAL_1104_HUMAN_TWO_PERSON_LINEAR_THRESHOLD_FIVE_ARM_E2_RESULTS.json",
+  "permanent_E2_results_git_blob": "51c69cdd2c41cd8e688ddd9d8129167746552d83",
+  "primary_source_delta_by_arm": {
+    "linear": {
+      "FE": [
+        -0.17543859649122806,
+        -1.0614035087719298
+      ],
+      "EI": [
+        1.2727272727272727,
+        -0.5636363636363636
+      ],
+      "PI": [
+        1.2363636363636363,
+        1.8
+      ],
+      "AI": [
+        5.09433962264151,
+        2.2547169811320753
+      ],
+      "MI": [
+        0.43636363636363634,
+        -0.2727272727272727
+      ]
+    },
+    "threshold": {
+      "FE": [
+        -0.34545454545454546,
+        -0.5454545454545454
+      ],
+      "EI": [
+        -0.8135593220338984,
+        -0.5932203389830508
+      ],
+      "PI": [
+        0.05357142857142857,
+        -0.30357142857142855
+      ],
+      "AI": [
+        -0.8653846153846154,
+        -1.6442307692307692
+      ],
+      "MI": [
+        -0.22727272727272727,
+        -0.7
+      ]
+    }
+  },
+  "negative_inference_examples": {
+    "threshold_FE_session1_unchanged": "85/110",
+    "threshold_FE_session2_unchanged": "93/110",
+    "threshold_PI_session1_unchanged": "72/112",
+    "threshold_PI_session2_unchanged": "97/112",
+    "linear_FE_session2_more_increased_than_decreased_despite_negative_mean": "40 increased 37 decreased 37 unchanged",
+    "linear_EI_and_MI_session_signs": "OPPOSITE"
+  },
+  "privacy": {
+    "original_human_ids_exported": false,
+    "original_XLSX_republished_in_this_Git_repo": false,
+    "original_human_row_level_actions_exported": false,
+    "all_five_arm_by_game_session_and_role_statistics_anonymous": true
+  },
+  "scientific_boundaries": {
+    "E3_new_independent_lab": "OPEN",
+    "between_treatment_random_assignment_independently_verified": false,
+    "causal_effect_of_inequality": "NOT_IDENTIFIED",
+    "causal_effect_of_threshold_vs_linear": "NOT_IDENTIFIED",
+    "source_person_identity_across_both_games": "NOT_MATCHED_OR_ASSUMED",
+    "causal_social_influence": "NOT_IDENTIFIED",
+    "long_term_social_or_institutional_history": "NOT_VALIDATED"
+  },
+  "report": "research/R086/R086_ORIGINAL_TWO_PERSON_LINEAR_THRESHOLD_PGG_1104_HUMANS_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "program": "research/R086/r086_original_two_person_full_human_contribution_E2.py",
+  "next_research": "R087 use independently published author original human group/institution data and independent holdout or different mechanisms; R086 is bounded",
+  "PESEN_v0_1": "FROZEN"
+}
