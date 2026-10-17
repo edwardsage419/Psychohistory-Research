@@ -1,0 +1,61 @@
+name: R086 original Zenodo two-person linear threshold Excel first-party MD5 source admission
+on:
+  push:
+    paths:
+      - '.github/workflows/r086-first-party-original-two-person-XLSX-source-gate.yml'
+      - 'research/R086/r086_original_zenodo_two_player_xlsx_source_gate.py'
+      - 'research/R086/test_r086_original_zenodo_two_player_xlsx_source_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-ten-sheet-original-source-and-privacy-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install openpyxl==3.1.5
+      - name: Run 24 purely synthetic file identity and ten-sheet schema guards
+        run: |
+          PYTHONPATH=research/R086 python -m unittest -v             research/R086/test_r086_original_zenodo_two_player_xlsx_source_gate.py
+  original-author-real-XLSX-two-files-MD5-source-and-ten-sheet-structure:
+    needs: synthetic-ten-sheet-original-source-and-privacy-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install openpyxl==3.1.5
+      - name: Fetch both original Zenodo two-person Excel files, validate exact author MD5 and original workbook shapes only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r086_private_schema_only
+          PYTHONPATH=research/R086 python             research/R086/r086_original_zenodo_two_player_xlsx_source_gate.py             --output /tmp/r086_private_schema_only/safe.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          path=pathlib.Path('/tmp/r086_private_schema_only/safe.json')
+          raw=path.read_bytes()
+          r=json.loads(raw)
+          assert r["any_real_human_behavior_values_exported"] is False
+          assert r["original_behavioural_cooperation_effects_computed"]==0
+          assert r["PESEN_v0.1"]=="FROZEN"
+          assert set(r["source_gate_outputs"])=={"two_person_linear","two_person_threshold"}
+          print("R086_REAL_AUTHOR_EXCEL_SOURCE_SCHEMA_SAFE_BYTES",len(raw))
+          print("R086_REAL_AUTHOR_EXCEL_SOURCE_SCHEMA_SAFE_SHA256",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Ephemeral safe publisher-source schema receipt, no individual data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r086-original-publisher-two-person-PGG-XLSX-SHA-source-schema-only
+          path: /tmp/r086_private_schema_only/safe.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r086_private_schema_only
