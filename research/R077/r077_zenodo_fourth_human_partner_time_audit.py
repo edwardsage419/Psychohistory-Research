@@ -107,6 +107,30 @@ def summarize(data):
             "practiceperiod_contiguity":dict(contiguity),
             "potential_t>=3_rows":repeats["candidate_t_ge_3_within_group"]
         }
+
+    # Purely structural post-failed-gate diagnostic. Never compute a model
+    # probability or participant outcome aggregates. Preserve source failure.
+    shifted=Counter()
+    diff_by_treatment=defaultdict(Counter)
+    for _,part in d.groupby(["Session","treatment","Subject","game"],dropna=False,observed=True):
+        part=part.sort_values("practiceperiod")
+        t=int(part["treatment"].iloc[0])
+        diff_by_treatment[t]["person_game_count"]+=1
+        diff_by_treatment[t]["person_game_with_group_change"]+=int(part["Group"].nunique()>1)
+        diff_by_treatment[t]["person_game_with_clientnumber_change"]+=int(part["ClientNumber"].nunique()>1)
+        diff_by_treatment[t]["person_game_with_lastclientnumber_change"]+=int(part["LastClientNumber"].nunique()>1)
+        labels=[int(z) for z in part["practiceperiod"]]
+        if labels!=list(range(1,len(labels)+1)):
+            diff_by_treatment[t]["person_game_local_period_not_one_to_length"]+=1
+        if len(part)<2:continue
+        group=list(part["Group"])
+        cn=list(part["ClientNumber"])
+        diff_by_treatment[t]["adjacent_rows"]+=len(part)-1
+        diff_by_treatment[t]["adjacent_group_changed"]+=sum(group[i]!=group[i-1] for i in range(1,len(group)))
+        diff_by_treatment[t]["adjacent_clientnumber_changed"]+=sum(cn[i]!=cn[i-1] for i in range(1,len(cn)))
+    out["post_failure_group_stability_eligibility_diagnostics"]={
+        str(k):dict(sorted(v.items())) for k,v in sorted(diff_by_treatment.items())}
+    out["previous_frozen_gate_failure"]="R077_PARTNER_PAIR_CHANGED_WITHIN_SAME_GAME; no model scored"
     return out
 
 def main():
