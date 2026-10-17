@@ -1,0 +1,113 @@
+{
+  "research_id": "R076",
+  "date": "2026-10-17",
+  "research_status": "CLOSED_BOUNDED",
+  "evidence_level": "RETROSPECTIVE_CROSS_STUDY_REAL_HUMAN_NUMERICAL_TRANSFER_NOT_NEW_E3",
+  "scope_freeze_commit": "a8631257cb92c1e1756ca224b7a82bbd096234a6",
+  "protocol": "protocols/R076_RETROSPECTIVE_SOURCE_ONLY_ZERO_SHOT_CROSS_STUDY_TRANSFER_FREEZE_2026-10-17.md",
+  "scientific_report": "research/R076/R076_RETROSPECTIVE_SOURCE_ONLY_REAL_HUMAN_TRANSFER_RESULTS_2026-10-17.md",
+  "aggregate_json": "research/R076/R076_RETROSPECTIVE_R073_SOURCE_ONLY_TO_R074_R075_REAL_HUMAN_RESULTS.json",
+  "A01_to_A06": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "donor": {
+    "study": "R073 Montero-Porras 2022",
+    "source_sessions": 12,
+    "source_risk_events": 18424,
+    "model_git_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a",
+    "cooperation_rate_pooled": 0.41787885366912725,
+    "fixed_only": 0.5612244897959183,
+    "shuffled_only": 0.2805059523809524,
+    "alpha": 20,
+    "noise_reference": 0.05
+  },
+  "target_r074": {
+    "study": "Dal Bo/Frechette 2011",
+    "sessions": 18,
+    "scorable_events": 15338,
+    "source_zero_shot_pooled_Brier": {
+      "M0": 0.22958096054007587,
+      "M1": 0.09801169003341209,
+      "M2": 0.12149047873010546,
+      "M3": 0.07470978547844605,
+      "M4": 0.07226804459233294,
+      "M5": 0.09817113990253495,
+      "M6": 0.561986830811632
+    },
+    "M3_minus_M1": {
+      "Brier": -0.02330190455496605,
+      "sessions_better": 18,
+      "sessions_worse": 0
+    },
+    "M4_minus_M3": {
+      "Brier": -0.002441740886113112,
+      "sessions_better": 13,
+      "sessions_worse": 5
+    }
+  },
+  "target_r075": {
+    "study": "Fudenberg/Rand/Dreber 2012",
+    "sessions": 18,
+    "scorable_events": 26116,
+    "source_zero_shot_pooled_Brier": {
+      "M0": 0.2648390523808175,
+      "M1": 0.1846226549299342,
+      "M2": 0.18564069499800753,
+      "M3": 0.15609834538935438,
+      "M4": 0.14319150272617842,
+      "M5": 0.21126006834613753,
+      "M6": 0.37655857700473216
+    },
+    "M3_minus_M1": {
+      "Brier": -0.02852430954057981,
+      "sessions_better": 18,
+      "sessions_worse": 0
+    },
+    "M4_minus_M3": {
+      "Brier": -0.012906842663175945,
+      "sessions_better": 18,
+      "sessions_worse": 0
+    }
+  },
+  "negative_evidence": [
+    "R073_FIXED_6_ONLY donor to R074 M4-M3 Brier +0.0008231976960507809, only six better and twelve worse",
+    "R076 zero-shot R075 M3, M4 losses both worse than R075 target-internal LOSO (different fit design)",
+    "R073 source cooperation rate varies materially between fixed and shuffled donors"
+  ],
+  "method": {
+    "target_rows_used_in_training": 0,
+    "source_only_fit_models": "M0-M4",
+    "deterministic_reference_models": "M5 and M6",
+    "target_session_holdout": "Full target original sessions, no target training",
+    "target_event_past_feedback": "R074 realized C/D; R075 intended C/D with prior executed history",
+    "target_macro": "18 sessions equal weight each"
+  },
+  "runs": {
+    "original_cross_source": 38993686411,
+    "independent_sha_archive": 38993752496,
+    "both": "SUCCESS",
+    "synthetic_tests": 24,
+    "anonymous_json_bytes": 129126,
+    "anonymous_json_sha256": "ecee82cf3686d6c03cef56fb84c84118b252b7c184b46dc45413e34f876a52da"
+  },
+  "scientific_limits": {
+    "study_outcomes_were_previously_seen": true,
+    "true_prospectively_unseen_test": "NOT_PERFORMED",
+    "causal_memory": "NOT_IDENTIFIED",
+    "historical_extrapolation": "NOT_TESTED",
+    "parameter_recalibration": "FORBIDDEN_AND_NOT_PERFORMED",
+    "source_author_final_publication_byte_equivalence": "PARTIAL_OR_UNKNOWN"
+  },
+  "privacy": {
+    "raw_human_rows_committed": false,
+    "session_identifiers_exported": false,
+    "session_score_per_id_exported": false
+  },
+  "PESEN_v0_1": "FROZEN",
+  "next": "R077 independent not previously inspected fourth real human experiment or strict new prospective cohort"
+}
