@@ -1,0 +1,67 @@
+name: R088 171 original 6-person group multilevel 20-round cooperation first-party E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r088-first-party-171-six-person-multilevel-cooperation-E2.yml'
+      - 'research/R088/r088_original_171_groups_multilevel_global_cooperation_E2.py'
+      - 'research/R088/test_r088_original_171_groups_multilevel_global_cooperation_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-strict-original-Git-blob-six-player-group-and-no-identifiers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: First all 35 synthetic original SHA, six-player subgroup, thresholds and privacy
+        run: |
+          PYTHONPATH=research/R088 python -m unittest -v             research/R088/test_r088_original_171_groups_multilevel_global_cooperation_E2.py
+  original-human-171-independent-complete-groups-real-E2:
+    needs: synthetic-strict-original-Git-blob-six-player-group-and-no-identifiers
+    runs-on: ubuntu-latest
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Strictly download original source Git blob and author exclusion/rate scripts; compute global cooperation threshold only from all six human actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r088_private_anon
+          PYTHONPATH=research/R088 python             research/R088/r088_original_171_groups_multilevel_global_cooperation_E2.py             --output /tmp/r088_private_anon/three_conditions_group_macro.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          p=pathlib.Path('/tmp/r088_private_anon/three_conditions_group_macro.json')
+          b=p.read_bytes();x=json.loads(b)
+          assert x["status"]=="R088_TRUE_171_ORIGINAL_SIX_PERSON_GROUPS_ALL20_GROUP_LEVEL_E2_EXECUTED"
+          assert not x["human_row_or_group_ID_exported"] and not x["raw_original_group_or_player_rows_exported"]
+          a=x["original_group_behavior_results"]
+          assert a["number_of_source_groups"]==171
+          assert a["source_human_participant_rows"]==1026
+          assert a["group_rounds_scored"]==3420
+          assert a["subject_round_actions_scored"]==20520
+          assert set(a["condition_aggregate"])=={"GlobalOnly","Balanced","GlobalBoost"}
+          for q in a["condition_aggregate"].values():
+            assert q["original_complete_groups"]==57
+            assert q["original_players_in_complete_groups"]==342
+            assert q["groups_more_global_first_to_last"]+q["groups_less_global_first_to_last"]+q["groups_same_global_first_to_last"]==57
+          assert x["PESEN_v0.1"]=="FROZEN"
+          print("R088_ANONYMOUS_ORIGINAL_AUTHOR_GROUP_E2_BYTES",len(b))
+          print("R088_ANONYMOUS_ORIGINAL_AUTHOR_GROUP_E2_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Save only 3 treatments and 20-round anonymous 171-group aggregates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r088-first-party-original-171-six-person-20-round-global-threshold-E2
+          path: /tmp/r088_private_anon/three_conditions_group_macro.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r088_private_anon
