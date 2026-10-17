@@ -52,4 +52,4 @@ u<-rbind(u,transform(u,id="102"))
 stopifnot(audit_frd(u)$unique_treatment_id==2)
 stopifnot(audit_frd(u)$structurally_scorable_t3_events==4)
 
-cat("R075_SYNTHETIC_LAG_SOURCE_SCHEMA_TESTS_PASS=13\n")
+cat("R075_SYNTHETIC_LAG_SOURCE_SCHEMA_CONTROLS_PASS\n")
