@@ -26,6 +26,19 @@ class SourceMetadataGate(unittest.TestCase):
         self.assertEqual(x["real_file_bytes_downloaded"],0)
         self.assertEqual(x["original_human_model_scores"],0)
         self.assertNotIn("sample.csv",repr(x))
+    def test_only_official_version_level_doi_is_allowed(self):
+        x=json.loads(good())
+        del x["data"]["persistentId"]
+        x["data"]["latestVersion"]["datasetPersistentId"]="doi:10.34894/EYFM5L"
+        self.assertEqual(s.metadata_only(json.dumps(x).encode())["official_dataset_file_count"],2)
+    def test_conflicting_two_doi_fields_rejected(self):
+        x=json.loads(good())
+        x["data"]["latestVersion"]["datasetPersistentId"]="doi:10.34894/WRONG"
+        self.assertRaises(s.GateError,s.metadata_only,json.dumps(x).encode())
+    def test_equal_two_doi_fields_accepted(self):
+        x=json.loads(good())
+        x["data"]["latestVersion"]["datasetPersistentId"]="doi:10.34894/EYFM5L"
+        self.assertEqual(s.metadata_only(json.dumps(x).encode())["official_dataset_file_count"],2)
     def test_wrong_response_doi(self):
         self.assertRaises(s.GateError,s.metadata_only,good().replace(b"EYFM5L",b"INTRUDER"))
     def test_not_ok_status(self):
