@@ -6,7 +6,7 @@ import r100_phase_b1c_original_workbook_anonymized_sheet_name_diagnostic as m
 
 class B1cSynthetic(unittest.TestCase):
     def test_mask_nonrecoverable_short(self):
-        self.assertEqual(m.name_mask("FE-Type 1"), "UUhUlll s9")
+        self.assertEqual(m.name_mask("FE-Type 1"), "UUhUllls9")
     def test_type_1_author_illustration(self):
         self.assertIsNotNone(re.fullmatch(m.ROLE_RULES[0], "FE_Type 1"))
     def test_type1_no_space(self):
