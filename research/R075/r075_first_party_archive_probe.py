@@ -23,6 +23,8 @@ CANDIDATES=[
   ("AEA_DATASET_PAGE","https://www.aeaweb.org/journals/dataset?id=10.1257%2Faer.102.2.720"),
   ("OPENICPSR_ARCHIVE_VIEW","https://www.openicpsr.org/openicpsr/project/112512/version/V1/view"),
   ("OPENICPSR_STUDY_DOWNLOAD","https://www.openicpsr.org/openicpsr/project/112512/version/V1/download"),
+  ("MAO_2017_OSF_PUBLIC_FILES_API","https://api.osf.io/v2/nodes/64z8u/files/"),
+  ("MAO_2017_OSF_PROJECT","https://osf.io/64z8u/"),
 ]
 
 def summarize_archive(data):
