@@ -11,3 +11,12 @@
 [真实全64来源复算程序](r082_source_nonresponse_and_graph_isolation.py)使用R080既有全源校验和官方SHA逐文件复验；[28项纯合成单元测试](test_r082_source_nonresponse_and_graph_isolation.py)优先验证时间序列、节点和匿名汇总；[GitHub Actions工作流](../../.github/workflows/r082-original64-human-missingness-graph-source-E2.yml)先通过合成门，之后才执行真实下载和R082分析。结果需要经过成功真实运行和第二次独立结果字节一致校验，才能正式归档。
 
 **所有测量首先用于审计数据取得与使用条件**。不能从缺失和零度节点相关性直接证明孤立造成人类行为缺失，不能推论随机处理分配已经通过，也不能将实验两阶段当作已随机可交换。PESEN v0.1 继续冻结。
+
+
+## 正式R082来源复算、阴性发现与限定结题（2026-10-17）
+
+**R082=CLOSED_BOUNDED，A01至A06限定研究交付全部PASS。** 严格通过本次新结果前冻结的协议、28项合成测试和64份原作者Mendeley v1原始网络JSON的单文件发布方SHA256来源检查。[首次真实实验作业39000527926](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39000527926)和[独立第二次源文件全量下载并原字节归档39000654904](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39000654904)均SUCCESS，真实[23743字节匿名八处理/总体原始结果](R082_FIRST_PARTY_ORIGINAL64_HUMAN_NONRESPONSE_AND_NETWORK_ISOLATION_E2_RESULTS.json)SHA256 9ba6caeb25b0f2c8e024c4ce53ff7377567cef14f175c4fb0036d22c5f3b6999、Git blob 5cddd7f3041ff67af1a214d4a26937d3b5a8b5c5，经第二次完全独立64文件重算并逐字节一致才永久归档。
+
+1024个原始真人身份槽分为：**869个30轮均有真实C/D、31个30轮均无记录、120个某轮后持续无行动、4个间歇缺席后回来**，其余两类0。3064个缺测中930来自全无记录的31个源身份，2118来自持续末段缺席的120个源身份，另外16次来自4个间歇者。第t+1源快照索引对齐第t轮行动时，**3060/3064个缺测槽在图上没有任何邻居**；有5个源真人行动槽虽在该快照没有邻居却仍有记录，另4个缺测槽图上仍有连接。另一时间索引及零真人邻居口径均完整保留，不能择优解释。实验2的248个原始图快照中，**247个有5条人机边、1个4条**；1240个bot节点快照中1239度数为1，1度数为0。
+
+[正式完整科研报告、八处理表及因果界限](R082_ORIGINAL64_HUMAN_NONRESPONSE_GRAPH_ASSOCIATION_AND_ALLOCATION_CAUSAL_GATE_FINAL_REPORT_2026-10-17.md)与[机读六项正式验收](R082_FINAL_ACCEPTANCE_STATUS.json)已经归档。**缺测与零度节点接近决定性共现可能源于数据系统共同编码**，不能由此确定真实退出或孤立因果。论文主文的随机初始网络、随机重连机会不等于机器人策略按网络随机分配的独立证明；补充方法与原平台执行逻辑仍待查。此项有界E2结题，将未解设计门迁移至后续另立研究；PESEN v0.1 继续冻结。
