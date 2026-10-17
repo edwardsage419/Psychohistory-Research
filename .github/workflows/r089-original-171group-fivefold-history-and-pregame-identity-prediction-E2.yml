@@ -1,0 +1,63 @@
+name: R089 original 171 complete group 5-fold next-round prediction fixed-source E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r089-original-171group-fivefold-history-and-pregame-identity-prediction-E2.yml'
+      - 'research/R089/r089_original171_group_heldout_identity_history_predict_E2.py'
+      - 'research/R089/test_r089_original171_group_heldout_identity_history_predict_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  no-real-behavior-synthetic-source-history-identity-and-sharp-loss-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 40 pure synthetic group-heldout source, identity, discrete outcome and macro privacy tests
+        run: |
+          PYTHONPATH=research/R088:research/R089 python -m unittest -v             research/R089/test_r089_original171_group_heldout_identity_history_predict_E2.py
+  actual-171-independent-groups-fivefold-test-score:
+    needs: no-real-behavior-synthetic-source-history-identity-and-sharp-loss-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reacquire original author pinned SHA action and pregame identity original scripts, evaluate 5 folds no heldout group in fitting
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r089_original_heldout_private
+          PYTHONPATH=research/R088:research/R089 python             research/R089/r089_original171_group_heldout_identity_history_predict_E2.py             --output /tmp/r089_original_heldout_private/anonymous_E2.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('/tmp/r089_original_heldout_private/anonymous_E2.json');raw=p.read_bytes()
+          z=json.loads(raw)
+          assert z["status"]=="R089_REAL_ORIGINAL171_GROUP_COMPLETE_HOLDOUT_E2_PREDICTION_EXECUTED"
+          a=z["original_group_holdout_predictive_evaluation"]
+          assert a["heldout_171_groups_x_19_future_rounds"]==3249
+          assert a["overall"]["unique_heldout_groups"]==171
+          assert all(x["heldout_group_rounds"]==1083 for x in a["by_frozen_treatment"].values())
+          assert z["source_eligibility"]["original_missing_action_slots"]==64
+          assert not z["source_actor_group_identity_or_actions_exported"]
+          assert not z["future_round_identity_or_postsurvey_used_for_prediction"]
+          assert z["PESEN_v0.1"]=="FROZEN"
+          print("R089_REAL_ORIGINAL_GROUP_HELDOUT_PREDICTIVE_BYTES",len(raw))
+          print("R089_REAL_ORIGINAL_GROUP_HELDOUT_PREDICTIVE_SHA256",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Retain anonymous treatment and fold aggregate outcome sharp bounds, never person or group identities
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r089-original-171group-fivefold-next-round-sharp-score-aggregate-only
+          path: /tmp/r089_original_heldout_private/anonymous_E2.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r089_original_heldout_private
