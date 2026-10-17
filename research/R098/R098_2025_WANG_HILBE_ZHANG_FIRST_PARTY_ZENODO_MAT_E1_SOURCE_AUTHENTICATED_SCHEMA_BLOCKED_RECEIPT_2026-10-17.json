@@ -1,0 +1,74 @@
+{
+  "research_id": "R098",
+  "date": "2026-10-17",
+  "administrative_stage": "SOURCE_AUTHENTICATED_SCHEMA_BLOCKED_BOUNDED",
+  "scientific_evidence_grade": "E1_ORIGINAL_PUBLISHED_SOURCE_FILE_BYTES_AUTHENTICATED_METADATA_UNREADABLE_NO_REAL_BEHAVIOR",
+  "source": {
+    "authors": [
+      "Xiaomin Wang",
+      "Christian Hilbe",
+      "Boyu Zhang"
+    ],
+    "title": "The dynamics of cooperation in asymmetric public goods games",
+    "publisher": "Zenodo",
+    "official_record_ID": 16918146,
+    "published_version": "v2",
+    "DOI": "10.5281/zenodo.16918146",
+    "official_file": "LinearPGG_4P_ExperimentalData.mat",
+    "official_download": "https://zenodo.org/records/16918146/files/LinearPGG_4P_ExperimentalData.mat?download=1",
+    "official_publisher_MD5": "42153952f8e6614d09c2d903fd97af62",
+    "actual_original_file_bytes": 22347,
+    "verified_whole_original_SHA256": "dcdd23e709ce1c17fadddffb84d07b9cf2f37a0a206e4665317aed31fd4e790b",
+    "exact_SHA256_source_authenticated": true,
+    "source_original_human_actions_examined": false,
+    "original_MAT_container": "MATLAB_LEGACY_V5",
+    "MAT_version_bytes_at_offset124_hex": "0001",
+    "source_publisher_header_only_128byte_SHA256": "b994d95d2299919f8c069cb060d0d18868e58a6868d724766f7f1061191b54dc"
+  },
+  "reported_study_design_not_reverified_from_source_values": {
+    "treatment_cohorts": [
+      "FE (N=100)",
+      "AI (N=104)",
+      "MI (N=108)"
+    ],
+    "original_four_player_game_rounds_per_session": 20,
+    "sequential_sessions_per_treatment": 2,
+    "same_real_humans_participate_both_sessions": true,
+    "total_reported_unique_humans": 312,
+    "independent_separate_recruited_participant_cohorts_by_session": false
+  },
+  "actual_method_checks": {
+    "original_publisher_complete_file_MD5_and_SHA256": "PASS_E1",
+    "scipy_MAT_whosmat_standard_header": "FAIL_CLOSED_TypeError",
+    "h5py_MATv73_compatibility": "NOT_APPLICABLE_SOURCE_IS_LEGACY_MAT5",
+    "custom_stdlib_MAT5_TLV_directory": "FAIL_CLOSED_R098A5_MAT_DIMENSIONS_INVALID",
+    "first_synthetic_run_ID": 39025491235,
+    "first_synthetic_run": "FAIL_ONE_TEST_SCIPY_MatReadError",
+    "second_synthetic_run_ID": 39025545307,
+    "second_synthetic_19_pass": true,
+    "second_real_source": "FAIL_CLOSED_MAT_HEADER_UNSUPPORTED",
+    "third_synthetic_24_pass_run_ID": 39025710365,
+    "third_real_source": "FAIL_CLOSED_LEGACY_MAT_TYPEERROR",
+    "publisher_first_full_source_identity_safe_run_ID": 39025847448,
+    "source_full_sha_available_in_safe_source_receipt": true,
+    "first_custom_parser_49_test_run_ID": 39026065160,
+    "first_custom_parser_synthetic": "47_PASS_2_COMPRESSED_ALIGNMENT_ERRORS_NO_REAL_RUN",
+    "second_custom_parser_49_tests_all_pass_run_ID": 39026134815,
+    "second_custom_parser_actual_MAT": "FAIL_CLOSED_R098A5_MAT_DIMENSIONS_INVALID",
+    "all_original_numeric_contributions_scores": 0,
+    "real_independent_fourperson_group_LOOG_executed": false,
+    "formal_E2_model_reproduction": false,
+    "eventual_dataset_action_encoding_and_group_roster_verified": false,
+    "original_dataset_original_shas_and_failure_cases_all_retained": true
+  },
+  "frozen_source_protocols": [
+    "protocols/R098_WANG_HILBE_ZHANG_2025_ZENODO_LINEAR_PGG_4P_MAT_AUTHOR_SOURCE_E1_FREEZE_2026-10-17.md",
+    "protocols/R098_PHASE_A2_SCIPY_TRUNCATED_MAT_HEADER_EXCEPTION_GATE_AMENDMENT_2026-10-17.md",
+    "protocols/R098_PHASE_A3_VERIFIED_MD5_MAT_CONTAINER_V73_METADATA_COMPATIBILITY_GATE_2026-10-17.md",
+    "protocols/R098_PHASE_A4_ORIGINAL_AUTHENTIC_V5_MAT_SAFETY_EXCEPTION_CLASS_DIAGNOSTIC_FREEZE_2026-10-17.md",
+    "protocols/R098_PHASE_A5_WANG_ORIGINAL_MAT5_TAG_DIRECTORY_METADATA_PARSER_FREEZE_2026-10-17.md",
+    "protocols/R098_PHASE_A5B_COMPRESSED_MAT5_TAG_ALIGNMENT_SYNTHTEST_FIX_2026-10-17.md"
+  ],
+  "next": "R099 seek independently verified original human repeated decision CSV, session/player/opponent identifiers, stable source MD5/SHA and actual 20+ rounds; do not infer same subjects in separate sessions as novel cohorts.",
+  "PESEN_v0_1": "FROZEN"
+}
