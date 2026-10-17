@@ -393,3 +393,10 @@ M0为其余11个同源反馈类别四人组在目标轮t的贡献均值，M1为�
 ### R100 正式限定结题：真实原来源E1保留，源双人配对身份不可严格互证（2026-10-17）
 
 [R100最终来源资格报告](research/R100/R100_FINAL_BOUNDED_E1_PAIR_IDENTITY_NOT_ESTABLISHED_SCIENTIFIC_REPORT_2026-10-17.md)、[R100机读验收](research/R100/R100_FINAL_ACCEPTANCE_STATUS.json)。Wang/Hilbe/Zhang 2025 Zenodo 第一手双人阈值Excel真实MD5/SHA和10张sheet均通过；B0行结构与B1a A/B源值审核确认**554个四行候选焦点记录块**，其中B原四行2种不同源文字码者12块、三种者542块，全部保留。首次真正B1b源校验因`Type 1`示意命名空格被安全阻断并**永久保留原失败收据**；单独先冻零来源单元值的B1c匿名工作簿名称确认实际为`Type1/Type2`，再B1d仅修复该单一文件名规则重新原源审核，**固定角色互指人物键未成立**。最终B1e事前冻结匿名基数检查证实两角色表A数字完全重叠，各角色来源B预设自己位置的字符串仅1个不同值，两表B全部码交集也仅1；不同原文字符串未获唯一可复核个人或对手映射。这个失败属于本研究源身份复原方法边界，绝不等同原作者数据不可信或人类行为预测阴性。**R100=CLOSED_E1_PAIR_IDENTITY_NOT_ESTABLISHED、原始本人/对手历史完整真人E2评价=0、PESEN v0.1=FROZEN。** 下一阶段R101优先另一原作者团队公开有独立来源session、actor、opponent、round标识的原CSV/TSV，先核对来源资格再评分。
+
+
+## R101：2023年独立336人伙伴选择公共品实验作者原目录实际核验（2026-10-17）
+
+[R101研究入口](research/R101/README.md)。独立作者Stallen/Snijder/Gross/Hilbert/De Dreu的[Nature Communications论文](https://doi.org/10.1038/s41467-023-42128-2)报告336名真人、八人互动组和逐轮双人系统配对/自由选伴博弈，来源[OSF CASQZ](https://doi.org/10.17605/OSF.IO/CASQZ)。另从作者机构UvA获正式[DataverseNL DOI 10.34894/EYFM5L](https://doi.org/10.34894/EYFM5L)，不凭论文设计猜测真正原文件中的独立session、人、对手标签。
+
+已先冻结[官方DataverseNL目录元信息API](protocols/R101_PHASE_A_STALLEN_2023_DATAVERSENL_OFFICIAL_METADATA_ONLY_GATE_FREEZE_2026-10-17.md)，最初首次真API因`data.persistentId`不存在遭DOI字段安全拒绝（原失败永久留存）。官方Dataverse规范支持`data.latestVersion.datasetPersistentId`，故另冻[Phase A2只兼容此真正DOI字段](protocols/R101_PHASE_A2_DATAVERSENL_LATESTVERSION_DATASET_PERSISTENT_ID_ONLY_COMPATIBILITY_FREEZE_2026-10-17.md)，再执行真正GitHub Actions，永久写回[原独立官方目录元数据收据](research/R101/R101_PHASE_A2_LIVE_CI_OFFICIAL_METADATA_ONLY_RECEIPT.json)、[正式科研来源报告](research/R101/R101_PHASE_A2_GENUINE_DATAVERSENL_9_ZIP_METADATA_ONLY_SCIENTIFIC_REPORT_2026-10-17.md)：**9份ZIP目录记录、总公布43,631,177字节、0份平铺CSV/TSV/TXT、0项MD5公开目录字段**，后续需先确定唯一相关ZIP文件及正确真实原人物/对手/场次键。此次未实际下载任何ZIP原字节，也未读取真人行动。**R101 Phase A2官方源目录元数据=PASS_BOUNDED，完整原行为文件E1和真实预测E2均未成立，PESEN v0.1 FROZEN。**
