@@ -140,7 +140,7 @@ class TrueGroupContractSynthetic(unittest.TestCase):
   result=evaluate_holdout(g,True)
   for d in result["fold_heldout_group_sizes_by_condition"].values():
    self.assertEqual(sorted(d.values()),[11,11,11,12,12])
- def test_no_ex-post_selector_heldout_results(self):
+ def test_no_ex_post_selector_heldout_results(self):
   g,e=group_data(fake_source(),57,0)
   result=evaluate_holdout(g,True)
   self.assertTrue(result["model_not_hyperparameter_tuned_on_heldout_results"])
