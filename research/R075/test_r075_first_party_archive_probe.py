@@ -6,7 +6,7 @@ from r075_first_party_archive_probe import summarize_archive,probe_one,LIMIT,CAN
 
 def zipped(members):
     b=io.BytesIO()
-    with zipfile.ZipFile(b,"w") as z:
+    with zipfile.ZipFile(b,"w",compression=zipfile.ZIP_DEFLATED) as z:
         for name,data in members.items():z.writestr(name,data)
     return b.getvalue()
 
