@@ -1,0 +1,76 @@
+name: R096 independent 2022 original author 188 human 12 true 100round session LOSO exact result replay archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r096-independent-original-2022-12session-188human-100round-18612-true-LOSO-E2-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  all-synthetic-then-full-original-2022-author-12session-18612-brier-exact-replay-and-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Independently rerun full 110 source identity/6session FP SP/100round opponent and binary M012 positive-negative synthetics
+        run: |
+          PYTHONPATH=research/R096 python -m unittest -v             research/R096/test_r096_montero_2022_original_dryad_100round_FP_SP_source_gate.py             research/R096/test_r096_phase_b_montero_author_git_tag_pinned_original_FP_SP_CSV_source.py             research/R096/test_r096_phase_c_original_2022_author_fp_sp_six_true_sessions_roster.py             research/R096/test_r096_montero_2022_188_humans_12_true_sessions_100round_FPSP_LOSO_E2.py
+      - name: Independently re-download both fixed researcher author source full Git blobs and SHA, score all 18612 original binary actor next-round target predictions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r096_second_genuine_E2_private
+          PYTHONPATH=research/R096 python             research/R096/r096_montero_2022_188_humans_12_true_sessions_100round_FPSP_LOSO_E2.py             --output /tmp/r096_second_genuine_E2_private/anon_real_FP_SP_true_session.json
+          test "$(wc -c < /tmp/r096_second_genuine_E2_private/anon_real_FP_SP_true_session.json | tr -d '[:space:]')" = 11133
+          printf '%s  %s\n'             3aae5d183a33cce37a16d0637b2b887fb106a2b7432d8c8151b9a2dfafe452c2             /tmp/r096_second_genuine_E2_private/anon_real_FP_SP_true_session.json | sha256sum --check --status
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r096_second_genuine_E2_private/anon_real_FP_SP_true_session.json').read_bytes()
+          a=json.loads(b)
+          assert a["status"]=="R096_FIRST_PARTY_AUTHOR_GIT_2022_12_REAL_SESSIONS_188_HUMANS_100ROUND_TRUE_SESSION_LOSO_E2_EXECUTED"
+          assert a["original_real_true_independent_sessions_total"]==12
+          assert a["original_real_participant_codes_total"]==188
+          assert a["original_real_actor_round_binary_source_rows"]==18800
+          assert a["original_real_next_round_binary_source_targets"]==18612
+          assert not a["source_all_original_actor_IDs_and_human_action_rows_redistributed"]
+          assert not a["action_code_label_is_definitively_confirmed_cooperation"]
+          assert not a["full_12_original_session_time_forward_prospective_E3"]
+          assert a["PESEN_v0.1"]=="FROZEN"
+          for file,n,sha in (("fix.csv",9108,"c2adc0d68dbc15c4f5ec5f0eb9a05a988cc049a9c086b82f796521a642b6eae9"),("rand.csv",9504,"bc2999d6ad44c60f2b93361eb46b75614b1f600967ae061c76ae51184a80848a")):
+            q=a["actual_real_treatment_sessions"][file]
+            assert q["original_author_whole_source_SHA256"]==sha
+            assert q["true_original_session_loso"]["original_true_sessions_left_out_once"]==6
+            assert q["true_original_session_loso"]["original_actor_round_t2_to_t100_prediction_pairs"]==n
+            assert q["original_source_binary_partner_eligibility"]["original_source_partner_0_1_identity_and_action_consistency"]
+            assert q["true_original_session_loso"]["M0_excludes_all_original_heldout_session_humans_every_round"]
+            assert not q["true_original_session_loso"]["original_source_actor_round_or_original_session_labels_exported"]
+            vals=q["true_original_session_loso"]
+            print("R096_ANON_TREATMENT",file,"OVERALL",json.dumps(vals["pooled_real_original_target_Brier_comparison"],sort_keys=True))
+            print("R096_ANON_TREATMENT",file,"SESSION_M1",json.dumps(vals["original_six_session_gain_M1_signs"],sort_keys=True))
+            print("R096_ANON_TREATMENT",file,"SESSION_M2",json.dumps(vals["original_six_session_gain_M2_signs"],sort_keys=True))
+            print("R096_ANON_TREATMENT",file,"EARLY",json.dumps(vals["by_fixed_early_and_late_precommitted_periods"]["EARLY_2_25"],sort_keys=True))
+            print("R096_ANON_TREATMENT",file,"LATER",json.dumps(vals["by_fixed_early_and_late_precommitted_periods"]["LATER_26_100"],sort_keys=True))
+          print("R096_TRUE_ORIGINAL_188_HUMAN_18612_LOSO_SECOND_SOURCE_BYTES",len(b))
+          print("R096_TRUE_ORIGINAL_188_HUMAN_18612_LOSO_SECOND_SOURCE_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Permanently commit only anonymous original FP/SP 12-session real Brier aggregates to project main
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R096/R096_MONTERO_2022_188_HUMANS_12_TRUE_SESSIONS_100ROUND_FPSP_BINARY_LOSO_E2_RESULTS.json
+          mkdir -p research/R096
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r096_second_genuine_E2_private/anon_real_FP_SP_true_session.json
+            exit 0
+          fi
+          cp /tmp/r096_second_genuine_E2_private/anon_real_FP_SP_true_session.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R096): independent 2022 author exact Git source true 12-session 188 humans 18612 original FP SP binary action LOSO E2"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r096_second_genuine_E2_private
