@@ -18,7 +18,7 @@ from r103_phase_a_2016_drbrain_original_md5_header_only import (
 )
 PINNED_SOURCE_SHA="c63b99ba7554908e54393eb9f8267a98de1a3d9bdd123a77f60f2b2122236013"
 PINNED_LINES=8477
-PUBLIC_GAME=re.compile(r"[A-Za-z0-9_ -]{1,50}")
+PUBLIC_GAME=re.compile(r"[A-Za-z0-9_ '/\-]{1,50}")
 ID_COLUMNS=("Experiment_number","User_ID","Round_number","Opponent_ID","Game","S","T")
 
 def positive_integer(value):
