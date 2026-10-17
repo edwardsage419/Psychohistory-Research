@@ -1,0 +1,60 @@
+name: R090 original Antonioni climate clubs new human experiment fixed MD5 roster identity gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r090-independent-climate-clubs-publisher-source-group-roster-A.yml'
+      - 'research/R090/r090_independent_climate_clubs_original_roster_source_gate.py'
+      - 'research/R090/test_r090_independent_climate_clubs_original_roster_source_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pure-synthetic-md5-2700-source-group-and-privacy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute 30 synthetic source/roster privacy contracts before reading any human behavior
+        run: |
+          PYTHONPATH=research/R090 python -m unittest -v             research/R090/test_r090_independent_climate_clubs_original_roster_source_gate.py
+  first-party-zenodo-md5-2700-row-experiment-roster-only:
+    needs: pure-synthetic-md5-2700-source-group-and-privacy-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Strictly fetch author original CSV pinned Zenodo record, verify MD5 then only anonymous group/round roster
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r090_original_author_safe
+          PYTHONPATH=research/R090 python             research/R090/r090_independent_climate_clubs_original_roster_source_gate.py             --output /tmp/r090_original_author_safe/source_roster.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          p=pathlib.Path('/tmp/r090_original_author_safe/source_roster.json')
+          b=p.read_bytes();r=json.loads(b)
+          assert r["research_id"]=="R090"
+          assert r["identity"]["original_publisher_MD5_verified"] is True
+          assert r["identity"]["original_source_rows"]==2700
+          assert r["group_source_eligibility"]["original_participant_round_rows"]==2700
+          assert r["original_human_contribution_prediction_scores_computed"]==0
+          assert not r["any_source_person_or_group_keys_exported"]
+          assert r["PESEN_v0.1"]=="FROZEN"
+          print("R090_SAFE_SOURCE_ROSTER_ONLY_BYTES",len(b))
+          print("R090_SAFE_SOURCE_ROSTER_ONLY_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r090-original-independent-author-Zenodo-MD5-2700-real-roster-no-cooperation
+          path: /tmp/r090_original_author_safe/source_roster.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r090_original_author_safe
