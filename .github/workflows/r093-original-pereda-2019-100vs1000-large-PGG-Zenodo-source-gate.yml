@@ -1,0 +1,61 @@
+name: R093 original Pereda 2019 100vs1000 group online PGG first-party Zenodo MD5 source gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r093-original-pereda-2019-100vs1000-large-PGG-Zenodo-source-gate.yml'
+      - 'research/R093/r093_2019_first_party_zenodo_14day_large_group_source_eligibility.py'
+      - 'research/R093/test_r093_2019_first_party_zenodo_14day_large_group_source_eligibility.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  author-source-and-individual-participant-privacy-synthetic-26-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Strict source MD5 and personal history identity roster safety test
+        run: |
+          PYTHONPATH=research/R093 python -m unittest -v             research/R093/test_r093_2019_first_party_zenodo_14day_large_group_source_eligibility.py
+  official-original-2019-raw-100vs1000-experiment-nonbehavior-roster:
+    needs: author-source-and-individual-participant-privacy-synthetic-26-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original author fixed Zenodo MD5 fullfile SHA then only session/run actor count, rounds and alive
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r093_2019_safe
+          PYTHONPATH=research/R093 python             research/R093/r093_2019_first_party_zenodo_14day_large_group_source_eligibility.py             --output /tmp/r093_2019_safe/anonymous_first_party_source.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          b=pathlib.Path('/tmp/r093_2019_safe/anonymous_first_party_source.json').read_bytes()
+          a=json.loads(b)
+          assert a["phase"]=="A_PEREDA_2019_ZENODO_AUTHOR_MD5_SOURCE_STRUCTURE_ONLY"
+          assert a["first_party_identity"]["actual_first_party_MD5"]=="626c61c2c18a114a5b92a7d2b7e46558"
+          z=a["source_nonbehavioral_roster"]
+          assert z["original_source_actor_round_rows"]>0
+          assert not z["source_contribution_or_original_group_mean_values_examined"]
+          assert not z["source_individual_IDs_or_original_actor_rows_exported"]
+          assert not a["R089_R090_R091_group_holdout_direct_transfer_eligible"]
+          assert a["PESEN_v0.1"]=="FROZEN"
+          print("R093_REAL_ORIGINAL_AUTHOR_ANON_SOURCE_BYTES",len(b))
+          print("R093_REAL_ORIGINAL_AUTHOR_ANON_SOURCE_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r093-pereda-2019-original-14day-100vs1000-only-anon-roster
+          path: /tmp/r093_2019_safe/anonymous_first_party_source.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r093_2019_safe
