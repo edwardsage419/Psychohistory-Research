@@ -1,0 +1,72 @@
+name: R099 second independent full first-party 2024 PLOS 24 genuine four-person group 456 E2 exact SHA archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r099-independent-2024-PLOS-24real4p-96human-456group-LOOG-exact-E2-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  second-original-first-party-2024-CSV-real-96human-456-score-SHA-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: All 90 pure synthetic publisher signed redirect 96person 24source4P 20round group MSE including negative
+        run: |
+          PYTHONPATH=research/R099 python -m unittest -v             research/R099/test_r099_liu_2024_plos_official_original_S1_CSV_publisher_metadata_only.py             research/R099/test_r099_phase_b_plos_2024_fixed4p_nonbehavior_group_roster_only.py             research/R099/test_r099_plos_2024_24genuine_4person_groups_456_true_rounds_M012_LOOG_E2.py
+      - name: Independent full first-party PLOS supplement again SHA all 96human original 1920 contribution cells M012 group holdout 456 target scores
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r099_second_human_privacy
+          PYTHONPATH=research/R099 python             research/R099/r099_plos_2024_24genuine_4person_groups_456_true_rounds_M012_LOOG_E2.py             --output /tmp/r099_second_human_privacy/2024_publisher_true_group_E2.json
+          test "$(wc -c < /tmp/r099_second_human_privacy/2024_publisher_true_group_E2.json | tr -d '[:space:]')" = 7098
+          printf '%s  %s\n'             91338505fac057c0dbc24f63430f7453f77cf824a1ccb40a737c047fc0449306             /tmp/r099_second_human_privacy/2024_publisher_true_group_E2.json | sha256sum --check --status
+          python - <<'PY'
+          import json,pathlib,hashlib
+          b=pathlib.Path('/tmp/r099_second_human_privacy/2024_publisher_true_group_E2.json').read_bytes()
+          x=json.loads(b)
+          assert x["status"]=="R099_2024_PLOS_FIRST_PARTY_96_HUMAN_24_TRUE_GROUPS_20ROUND_LOOG_456_E2_SCORED"
+          assert x["source_full_SHA256"]=="75dc8ae8b63a6b3ea728df9acab9d27944b82ec4feb5c6055e26751ca9cc4a6e"
+          assert x["original_full_source_bytes"]==43467
+          q=x["actual_real_20round_group_holdout_scores"]
+          assert q["original_actual_whole_source_fixed_groups"]==24
+          assert q["original_real_next_round_group_share_predictions"]==456
+          assert q["source_heldout_group_every_round_excluded_from_M0"]
+          assert not q["source_true_independent_lab_session_labels_recovered"]
+          assert x["source_qualification_group_actor_treatment"]["original_real_human_actor_count"]==96
+          assert x["source_qualification_group_actor_treatment"]["original_first_party_action_cells"]==1920
+          assert not x["source_qualification_group_actor_treatment"]["original_source_OtherContri_or_Type_fields_ever_read_or_used"]
+          assert not x["original_eight_lab_session_IDs_observed_in_published_CSV"]
+          assert not x["real_original_new_human_E3_prospective_experiment"]
+          assert q["overall_same_target_original_group_share_MSE"]["paired_gain_M0_minus_M1"]>0
+          assert q["overall_same_target_original_group_share_MSE"]["paired_gain_M0_minus_M2"]>0
+          total_positive=sum(v["positive_vs_negative_12_real_group_M1_gain_counts"]["positive"] for v in q["by_original_FEEDBACK_treatment_hidden_literal_identity"].values())
+          total_negative=sum(v["positive_vs_negative_12_real_group_M1_gain_counts"]["negative"] for v in q["by_original_FEEDBACK_treatment_hidden_literal_identity"].values())
+          assert total_positive==22 and total_negative==2
+          assert x["PESEN_v0.1"]=="FROZEN"
+          print("R099_SECOND_INDEPENDENT_ORIGINAL_2024_REAL_E2_BYTES",len(b))
+          print("R099_SECOND_INDEPENDENT_ORIGINAL_2024_REAL_E2_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Commit only anonymized original 24group 456 true-E2 scores (not original participant rows)
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R099/R099_LIU_2024_PLOS_ORIGINAL_96_HUMAN_24_FOURPERSON_GROUP_456_LOOG_M012_E2_RESULTS.json
+          mkdir -p research/R099
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r099_second_human_privacy/2024_publisher_true_group_E2.json
+            exit 0
+          fi
+          cp /tmp/r099_second_human_privacy/2024_publisher_true_group_E2.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R099): independent PLOS 2024 exact 96human 24 original4p groups 456 true heldout E2 scores, 22/24 own-history positive"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r099_second_human_privacy
