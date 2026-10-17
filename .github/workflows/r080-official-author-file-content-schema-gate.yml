@@ -1,0 +1,49 @@
+name: R080 Mendeley official 70 file original source digests and safe human bot schema gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r080-official-author-file-content-schema-gate.yml'
+      - 'research/R080/r080_official_dataset_per_file_content_and_role_schema.py'
+      - 'research/R080/test_r080_official_dataset_per_file_content_and_role_schema.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-first-party-authentic-source-24-synthetic-safety-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify no secret/signed URL or human source row leakage through source manifest
+        working-directory: research/R080
+        run: python -m unittest -v test_r080_official_dataset_per_file_content_and_role_schema
+  official-publisher-metadata-and-selected-original-JSON-R-content-only:
+    needs: public-first-party-authentic-source-24-synthetic-safety-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate official v1 DOI and download selected SHA256 signed files without publishing links or human records
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r080_official_source_safe
+          python research/R080/r080_official_dataset_per_file_content_and_role_schema.py \
+            --output /tmp/r080_official_source_safe/author_original_file_content_schema.json
+      - name: Publish only safe source hash and structure metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r080-official-author-2020-network-v1-file-SHA-and-entity-shape-audit
+          path: /tmp/r080_official_source_safe/author_original_file_content_schema.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Delete all temporary downloaded human data source metadata
+        if: always()
+        run: rm -rf /tmp/r080_official_source_safe
