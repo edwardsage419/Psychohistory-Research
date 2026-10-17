@@ -1,0 +1,67 @@
+name: R086 source pinned original two-person PGG full five-arm human within-session E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r086-original-2025-two-person-linear-threshold-complete-human-E2.yml'
+      - 'research/R086/r086_original_two_person_full_human_contribution_E2.py'
+      - 'research/R086/test_r086_original_two_person_full_human_contribution_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-author-wholefile-SHA-and-four-row-role-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install openpyxl==3.1.5
+      - name: R086 source and real-score protocol full synthetic safety before real human decisions
+        run: |
+          PYTHONPATH=research/R086 python -m unittest -v             research/R086/test_r086_original_zenodo_two_player_xlsx_source_gate.py             research/R086/test_r086_original_two_person_full_human_contribution_E2.py
+  all-original-2025-zenodo-author-humans-two-games-five-arms-actual-contribution:
+    needs: source-author-wholefile-SHA-and-four-row-role-synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install openpyxl==3.1.5
+      - name: Every original actor 2-session timeline, MD5 and original SHA strict, FE EI PI AI MI, no personal output
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r086_private_full_real
+          PYTHONPATH=research/R086 python             research/R086/r086_original_two_person_full_human_contribution_E2.py             --output /tmp/r086_private_full_real/original_1104_human_two_game_safe_E2.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          p=pathlib.Path('/tmp/r086_private_full_real/original_1104_human_two_game_safe_E2.json')
+          b=p.read_bytes();v=json.loads(b)
+          assert v["status"]=="R086_FULL_AUTHOR_ORIGINAL_TWO_GAME_FIVE_TREATMENT_HUMAN_BEHAVIOR_E2_EXECUTED"
+          assert v["original_total_distinct_human_focus_actors_across_two_games"]==1104
+          assert v["actual_original_behavioral_values_computed"] is True
+          assert not v["individual_human_IDs_exported"] and not v["raw_human_behaviour_rows_exported"]
+          assert len(v["author_original_two_games"])==2
+          for name,x in v["author_original_two_games"].items():
+            assert set(x["original_focal_actor_treatment_session_scoring"])=={"FE","EI","PI","AI","MI"}
+            for arm,z in x["original_focal_actor_treatment_session_scoring"].items():
+              assert z["session1"]["original_focal_humans"]==z["session2"]["original_focal_humans"]
+              for s in ("session1","session2"):
+                item=z[s]
+                assert item["focal_humans_increased"]+item["focal_humans_decreased"]+item["focal_humans_unchanged"]==item["original_focal_humans"]
+          print("R086_TRUE_ORIGINAL_HUMAN_MACRO_RESULT_BYTES",len(b))
+          print("R086_TRUE_ORIGINAL_HUMAN_MACRO_RESULT_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r086-original-1104-humans-two-person-linear-threshold-five-arm-E2-anonymous
+          path: /tmp/r086_private_full_real/original_1104_human_two_game_safe_E2.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r086_private_full_real
