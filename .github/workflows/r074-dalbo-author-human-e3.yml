@@ -1,0 +1,69 @@
+name: R074 external independent author human IPD 18-session frozen R073 seven-model E3
+on:
+  push:
+    paths:
+      - '.github/workflows/r074-dalbo-author-human-e3.yml'
+      - 'research/R074/r074_dalbo_external_human_e3.py'
+      - 'research/R074/test_r074_dalbo_external_human_e3.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-frozen-transfer-and-no-leakage-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check synthetic external-source time/match/people invariants
+        working-directory: research/R074
+        run: python -m unittest -v test_r074_dalbo_author_source_gate
+      - name: Run twenty independent synthetic model transfer and LOSO fail-closed cases
+        working-directory: research/R074
+        run: python -m unittest -v test_r074_dalbo_external_human_e3
+  real-pinned-first-party-external-human-18-session-loso:
+    needs: synthetic-frozen-transfer-and-no-leakage-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download the first-party exact original source directly to temporary runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r074_firstparty_source /tmp/r074_public_metrics
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import urlopen,Request
+          from hashlib import sha256
+          url="https://gfrechette.com/data/Dal_Bo_2011a_data.txt"
+          req=Request(url,headers={"User-Agent":"Psychohistory-Research-R074-frozen-human-E3/1.0"})
+          with urlopen(req,timeout=60) as resp: source=resp.read(3_000_001)
+          if len(source)!=1140746 or sha256(source).hexdigest()!="357a12968546a8d9002c912c1f499e02e93d59113d2a0928de2dee48323a0ae6":
+              raise ValueError("EXTERNAL_REAL_HUMAN_ORIGINAL_SOURCE_PIN_FAIL_CLOSED")
+          Path("/tmp/r074_firstparty_source/original.txt").write_bytes(source)
+          print("original author data exact SHA pinned; retained solely in temporary runner")
+          PY
+      - name: Validate full real author pairs/sessions and score all frozen seven models
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R074/r074_dalbo_external_human_e3.py \
+            --source /tmp/r074_firstparty_source/original.txt \
+            --output /tmp/r074_public_metrics/r074_external_18_session_anonymous_e3.json
+      - name: Publish only anonymous treatment/session-equal model scores and paired counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r074-independent-real-human-session-loso-e3-anonymous
+          path: /tmp/r074_public_metrics/r074_external_18_session_anonymous_e3.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase private external human histories and scores from temporary runner
+        if: always()
+        run: rm -rf /tmp/r074_firstparty_source /tmp/r074_public_metrics
