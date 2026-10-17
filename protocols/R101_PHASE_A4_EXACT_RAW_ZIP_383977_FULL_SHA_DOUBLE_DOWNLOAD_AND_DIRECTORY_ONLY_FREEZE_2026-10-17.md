@@ -1,0 +1,20 @@
+# R101 Phase A4: original DataverseNL Raw data files.zip exact file source and nonbehavior ZIP directory gate
+
+Date: 2026-10-17. State: FROZEN_BEFORE_ORIGINAL_ZIP_FILE_BYTES. PESEN v0.1 FROZEN.
+
+## Independently grounded first party file selection
+
+R101's A2 official DOI catalog verified 9 ZIPs (43,631,177 metadata bytes total); the actual [A3 official file listing](../research/R101/R101_PHASE_A3_LIVE_CI_OFFICIAL_PUBLIC_ZIP_CATALOG_RECEIPT.json) verified the public filename "3. Raw data files.zip", Dataverse public numeric dataFile ID **383977**, and exact published source size **2,247,187 bytes**. The same official catalog separately lists "4. Computer code.zip" (383984) and "5. Processed data files.zip" (383978). These filename facts allow choosing the **raw** archive strictly before examining original data. Do not download any other archive in this phase. The public catalog does NOT publish a file MD5; never invent an official MD5.
+
+Freeze exact official Dataverse data access API route `https://dataverse.nl/api/access/datafile/383977`, `GET` with no credentials, no query, and no `format` transform. Per Dataverse Data Access API documentation, a numeric dataFile ID selects a single original file. Only HTTPS and exact `dataverse.nl` host/path. If this endpoint performs a redirect to another host/path, reject *before* following it and preserve a safe error code; any narrowly allowed publisher delivery host must be independently justified and separately frozen before retry. Never follow alternate human-directed web links or mirrors. No open proxy, API keys or automation secrets.
+
+## Exact original bytes and anonymous directory
+
+1. Fetch exactly 2,247,187 bytes in a bounded read, cap 2,247,188; reject any mismatch, HTML/JSON errors, non-ZIP, or changed DOI/dataFile assignment. Obtain two separate full GETs to the exact same official endpoint in distinct connections; require the complete SHA256 digest **byte-for-byte equal**, and report this *project-computed* SHA256 plus first copy size. These two requests do not constitute independently published MD5 and do not establish a prospective human replication.
+2. Parse only ZIP central-directory metadata using Python standard-library `zipfile`: max 300 members, expanded total <=64 MiB, maximum single member <=32 MiB, no duplicate or absolute/path traversal/backslash/null-byte names, no symlinks or encrypted entries, no compression method outside STORED/DEFLATED, no expansion ratio over 1000. Reject malformed central directory. Do not call `ZipFile.open`, `ZipFile.read`, `extract` or any dataframe parser on any contained member. Directory member names might encode personal details, so **do not publish individual filenames or raw path text** in this stage. Only anonymous extension classes, member count, total declared uncompressed bytes, count of top-level directory segments, and whether any CSV/TSV/TXT file entries exist.
+3. Never open any participant data, actor IDs, opponent IDs, game decisions, or survey. Log only exact file ID, public original archive name, size, two digests, anonymous extension counts, whether contents accessed=false, genuine model score count=0.
+4. Synthetic tests must pass before the first true datafile GET. CI archives a strictly allowlisted anonymous success/failure receipt to a *new* Git path. Failures including HTTP 302 to other hosts are evidence of **source access incompatibility**, not behavioral model performance. Do not rewrite A3 receipt.
+
+## Next gate
+
+After successful anonymous ZIP directory authentication, freeze a separate narrowly scoped original internal filename inventory that identifies eligible CSV/TSV/DTA and any coding documentation, after applying basename privacy constraints. Then freeze distinct human actor/opponent/session/round roster verification before reading real choice values. Full R073 frozen model mapping, proper out-of-session scoring, no after-score model tuning. E1 only source archive bytes and directory at this stage, E2 and E3 remain NOT_ESTABLISHED.
