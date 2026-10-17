@@ -1,0 +1,82 @@
+name: R101 A4 exact original Raw data ZIP double SHA and central directory only
+on:
+  push:
+    paths:
+      - '.github/workflows/r101-2023-Stallen-DataverseNL-A4-firstparty-rawzip-SHA.yml'
+      - 'research/R101/r101_phase_a4_real_original_zip_sha_directory_only.py'
+      - 'research/R101/test_r101_phase_a4_real_original_zip_sha_directory_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-archive-safety-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Test 14 source-only synthetic ZIP edge cases before real ZIP access
+        run: PYTHONPATH=research/R101 python -m unittest -v research/R101/test_r101_phase_a4_real_original_zip_sha_directory_only.py
+  real-official-source-zip-identity-only:
+    needs: synthetic-archive-safety-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Verify 383977 original 2247187 bytes twice and central directory only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r101_a4_source
+          PYTHONPATH=research/R101 python research/R101/r101_phase_a4_real_original_zip_sha_directory_only.py --output /tmp/r101_a4_source/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r101_a4_source/receipt.json').read_text())
+          assert x["status"]=="R101_ACTUAL_RAW_ZIP_FULL_BYTES_DOUBLE_SHA_AND_DIRECTORY_ONLY"
+          assert x["official_dataset_DOI"]=="10.34894/EYFM5L"
+          assert x["official_datafile_ID"]==383977
+          assert x["official_reported_and_actual_byte_size"]==2247187
+          assert x["independent_source_download_SHA256_identical"] is True
+          assert x["any_archive_member_content_read"] is False
+          assert x["original_human_scores"]==0
+          print("R101_ACTUAL_AUTHOR_ORIGINAL_SHA256",x["project_computed_full_original_SHA256"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r101-a4-firstparty-raw-zip-source-sha-directory-only
+          path: /tmp/r101_a4_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Permanently retain strictly anonymous source SHA or failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r101_a4_source/receipt.json
+          dst=research/R101/R101_PHASE_A4_LIVE_CI_FIRSTPARTY_RAW_ZIP_SHA_DIRECTORY_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r101_a4_source/receipt.json').read_text())
+          assert x["research_id"]=="R101" and x["phase"]=="A4"
+          assert x["original_human_scores"]==0 and x["PESEN_v0_1"]=="FROZEN"
+          assert x["status"] in ("R101_A4_OFFICIAL_ZIP_SOURCE_BLOCKED","R101_ACTUAL_RAW_ZIP_FULL_BYTES_DOUBLE_SHA_AND_DIRECTORY_ONLY")
+          fields={"research_id","phase","status","safe_failure","official_dataset_DOI","official_public_original_filename","official_datafile_ID","official_reported_and_actual_byte_size","project_computed_full_original_SHA256","independent_source_download_SHA256_identical","official_publisher_file_MD5_unavailable","zip_central_directory_members","anonymous_member_extension_counts","zip_declared_uncompressed_bytes","anonymous_top_level_segment_count","candidate_csv_tsv_txt_member_count","any_archive_member_content_read","original_human_actions_accessed","original_human_scores","PESEN_v0_1"}
+          assert set(x).issubset(fields)
+          if "anonymous_member_extension_counts" in x:
+            assert all(re.fullmatch(r"[a-z]{1,8}",k) for k in x["anonymous_member_extension_counts"])
+            assert all(type(v)==int and v>=0 for v in x["anonymous_member_extension_counts"].values())
+            assert x["any_archive_member_content_read"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R101 A4): exact official raw data ZIP double SHA and anonymous central directory or safe failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
