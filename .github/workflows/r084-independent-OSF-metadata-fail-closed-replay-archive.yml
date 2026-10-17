@@ -1,0 +1,59 @@
+name: R084 independent second OSF official metadata source replay exact receipt archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r084-independent-OSF-metadata-fail-closed-replay-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-original-OSF-metadata-status-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently check all 26 synthetic secure original OSF metadata guards again
+        run: |
+          PYTHONPATH=research/R084 python -m unittest -v research/R084/test_r084_original_osf_7lab_metadata_source_gate.py
+      - name: Re-run only original official public OSF metadata; require source receipt exact same bytes before archiving past failure
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r084_second_safe_metadata
+          PYTHONPATH=research/R084 python             research/R084/r084_original_osf_7lab_metadata_source_gate.py             --output /tmp/r084_second_safe_metadata/replay.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path("/tmp/r084_second_safe_metadata/replay.json")
+          raw=p.read_bytes()
+          d=json.loads(raw)
+          assert len(d["safe_official_http_checks"])==10
+          assert d["original_human_row_files_downloaded"]==0
+          assert d["original_human_outcomes_computed"]==0
+          assert d["real_human_scientific_grade"]=="NOT_E2"
+          assert d["PESEN_v0.1"]=="FROZEN"
+          print("R084_SECOND_OFFICIAL_SOURCE_ONLY_RECEIPT_BYTES",len(raw))
+          print("R084_SECOND_OFFICIAL_SOURCE_ONLY_RECEIPT_SHA",hashlib.sha256(raw).hexdigest())
+          PY
+      - name: Permanently archive only after exact-byte agreement with original first source receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=/tmp/r084_second_safe_metadata/replay.json
+          test "$(wc -c < "$p" | tr -d '[:space:]')" = 4185
+          printf '%s  %s\n'             3ebccaca8f6b631afeaa927aeadc677d896b8aa358ab498c3309c2542028e1ac             "$p" | sha256sum --check --status
+          dest=research/R084/R084_2023_SEVEN_LAB_ORIGINAL_OSF_OFFICIAL_SOURCE_GATE_FAIL_CLOSED_E0_RESULTS.json
+          if [ -e "$dest" ]; then cmp "$p" "$dest"; exit 0; fi
+          cp "$p" "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R084): independently repeat exact official OSF 503 source failures, archive only sanitized metadata E0"
+          git push origin HEAD:main
+      - name: Erase metadata receipt from ephemeral runner
+        if: always()
+        run: rm -rf /tmp/r084_second_safe_metadata
