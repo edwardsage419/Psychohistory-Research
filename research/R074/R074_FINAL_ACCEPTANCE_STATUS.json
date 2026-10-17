@@ -1,0 +1,104 @@
+{
+  "research_id": "R074",
+  "date": "2026-10-17",
+  "research_status": "CLOSED_BOUNDED",
+  "study_type": "INDEPENDENT_REAL_HUMAN_EXTERNAL_AUTHOR_EXPERIMENT_INTERNAL_SESSION_LOSO_E3",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "scoped_protocol": "protocols/R074_DALBO_AUTHOR_INDEPENDENT_HUMAN_E3_TRANSFER_FREEZE_2026-10-17.md",
+  "protocol_frozen_before_first_R074_real_model_scoring_commit": "706d62a0f740262e20fed7bdec5c80cd97c4edd1",
+  "report": "research/R074/R074_REAL_EXTERNAL_HUMAN_E3_RESULTS_AND_SCIENTIFIC_LIMITS_2026-10-17.md",
+  "aggregate_json": "research/R074/R074_EXTERNAL_REAL_HUMAN_18_SESSION_E3_RESULTS.json",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "source": {
+    "publisher_DOI": "10.1257/aer.101.1.411",
+    "author_original_url": "https://gfrechette.com/data/Dal_Bo_2011a_data.txt",
+    "original_source_sha256": "357a12968546a8d9002c912c1f499e02e93d59113d2a0928de2dee48323a0ae6",
+    "source_bytes": 1140746,
+    "author_data_equals_openICPSR_version": "UNKNOWN"
+  },
+  "universe": {
+    "sessions": 18,
+    "treatments": 6,
+    "sessions_each_treatment": 3,
+    "human_session_slots": 266,
+    "original_actions": 37042,
+    "scored_events": 15338,
+    "matched_pair_rounds": 18521,
+    "training": "two other original sessions within same treatment",
+    "heldout": "one entire original date session",
+    "scored_risk": "same match round>=3 and full prior two own and opponent observations"
+  },
+  "frozen_models": {
+    "models": [
+      "M0_TREATMENT_PREVALENCE",
+      "M1_OWN_LAST",
+      "M2_OPPONENT_LAST",
+      "M3_JOINT_LAST",
+      "M4_JOINT_TWO_LAGS",
+      "M5_TFT_NOISY",
+      "M6_WSLS_NOISY"
+    ],
+    "alpha": 20,
+    "TFT_WSLS_noise": 0.05,
+    "R073_code_git_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a"
+  },
+  "numerical": {
+    "Brier_all_18_equal": {
+      "M0": 0.18026245813139966,
+      "M1": 0.09422480547913488,
+      "M2": 0.09453782064406442,
+      "M3": 0.07130947710579069,
+      "M4": 0.0744799781462265,
+      "M5": 0.09817113990253495,
+      "M6": 0.561986830811632
+    },
+    "M3_vs_M1": {
+      "delta": -0.022915328373344184,
+      "sessions_better": 16,
+      "sessions_worse": 2
+    },
+    "M4_vs_M3": {
+      "delta": 0.003170501040435799,
+      "sessions_better": 5,
+      "sessions_worse": 13
+    }
+  },
+  "execution": {
+    "source_gate_run": 38988443861,
+    "first_true_E3_run": 38988704451,
+    "independent_second_E3_run": 38988785984,
+    "third_SHA_archive_run": 38988844437,
+    "all_conclusions": "SUCCESS",
+    "synthetic_source_tests": 9,
+    "synthetic_model_tests": 20,
+    "result_bytes": 19308,
+    "result_sha256": "9946011d1d915c2cf4b29049f8d38d4e626106bd920d6b9b646b09bd3d56f448"
+  },
+  "negative_evidence": [
+    "M3 worsened Brier in two of 18 heldout sessions and one treatment average",
+    "M4 worsened Brier in 13 of 18 sessions; overall mean worse than M3",
+    "R073 and R074 second-lag direction inconsistent"
+  ],
+  "limitations": {
+    "cross_experiment_real_people": "distinct source investigators and data; numeric IDs do not recur across original date sessions; physical re-enrolment cannot be independently ruled out",
+    "causal_memory_effect": "NOT_IDENTIFIED",
+    "training_parameter_zero_shot_transfer": "NOT_TESTED",
+    "risk_set_selective_survival": "T3_OR_LATER_ONLY_IN_LONG_MATCHES",
+    "historical_social_evolution": "NOT_STUDIED",
+    "original_person_rows_in_Git": false,
+    "session_id_or_fold_row_in_Git": false
+  },
+  "further_work": [
+    "third independent experimental context with frozen first-order model",
+    "zero-shot numerical parameter transfer preregistered on new unseen source",
+    "causal identification of feedback with new data"
+  ],
+  "PESEN_v0.1": "FROZEN"
+}
