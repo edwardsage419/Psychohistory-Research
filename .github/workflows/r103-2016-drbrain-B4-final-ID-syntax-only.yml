@@ -1,0 +1,84 @@
+name: R103 B4 final original four ID fields anonymous syntax census before human behavior
+on:
+  push:
+    paths:
+      - '.github/workflows/r103-2016-drbrain-B4-final-ID-syntax-only.yml'
+      - 'research/R103/r103_phase_b4_original_ID_field_syntax_class_only.py'
+      - 'research/R103/test_r103_phase_b4_original_ID_field_syntax_class_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Eleven synthetic ID value class masking and source SHA tests
+        run: PYTHONPATH=research/R103 python -m unittest -v research/R103/test_r103_phase_b4_original_ID_field_syntax_class_only.py
+  real-original-source-ID-syntax-only:
+    needs: synthetic-only
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: First party original 8477 ID column syntax counts without behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r103_B4_source
+          PYTHONPATH=research/R103 python research/R103/r103_phase_b4_original_ID_field_syntax_class_only.py --output /tmp/r103_B4_source/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r103_B4_source/receipt.json').read_text())
+          assert x["status"]=="R103_B4_ORIGINAL_IDENTIFIERS_SYNTAX_ANONYMOUS_COUNTS_ONLY"
+          assert x["original_source_rows"]==8477
+          assert x["original_full_SHA256"]=="c63b99ba7554908e54393eb9f8267a98de1a3d9bdd123a77f60f2b2122236013"
+          assert x["any_original_Action_or_Opponent_Action_values_accessed"] is False
+          assert x["actual_human_model_scores"]==0
+          print("R103_B4_TRUE_SOURCE_FOUR_ID_FORMAT_CLASSES",x["source_four_ID_field_syntax_counts"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r103-B4-official-original-four-ID-syntax-only
+          path: /tmp/r103_B4_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Preserve anonymous source B4 syntax or failure receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r103_B4_source/receipt.json
+          dst=research/R103/R103_PHASE_B4_LIVE_CI_NONBEHAVIOR_ID_SYNTAX_CLASS_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r103_B4_source/receipt.json').read_text())
+          assert x["research_id"]=="R103" and x["phase"]=="B4"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["actual_human_model_scores"]==0
+          assert x["status"] in ("R103_B4_FINAL_ID_SYNTAX_SOURCE_BLOCKED","R103_B4_ORIGINAL_IDENTIFIERS_SYNTAX_ANONYMOUS_COUNTS_ONLY")
+          allowed={"research_id","phase","status","safe_failure","original_full_SHA256","original_source_rows","source_four_ID_field_syntax_counts","raw_source_person_experiment_partner_round_values_exported","any_original_Action_or_Opponent_Action_values_accessed","actual_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "source_four_ID_field_syntax_counts" in x:
+            cols={"Experiment_number","User_ID","Round_number","Opponent_ID"}
+            assert set(x["source_four_ID_field_syntax_counts"])==cols
+            classes={"ascii_positive_unsigned_int","ascii_zero","ascii_signed_negative_int","ascii_finite_decimal_syntax","blank_or_NA_literal","other_printable_ascii_string","nonascii_or_control"}
+            for entry in x["source_four_ID_field_syntax_counts"].values():
+              assert set(entry)==classes
+              assert all(type(v)==int and v>=0 for v in entry.values())
+              assert sum(entry.values())==8477
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R103 B4): actual first party four identifier classes only and no original C D values"
+          git pull --rebase origin main
+          git push origin HEAD:main
