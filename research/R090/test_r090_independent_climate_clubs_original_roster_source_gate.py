@@ -84,7 +84,7 @@ class StructureChecks(unittest.TestCase):
   with self.assertRaisesRegex(ValueError,"DUPLICATE_PERSON"):original_source_roster(r,False)
  def test_group_treatment_conflict_denied(self):
   r=sample();r[0]["treatment"]="T2"
-  with self.assertRaisesRegex(ValueError,"MIXED_TREATMENT"):original_source_roster(r,False)
+  with self.assertRaisesRegex(ValueError,"PERSON_CHANGES_TREATMENT"):original_source_roster(r,False)
  def test_missing_person_denied(self):
   r=sample();r[0]["participant.code"]=""
   with self.assertRaisesRegex(ValueError,"EMPTY_PERSON"):original_source_roster(r,False)
