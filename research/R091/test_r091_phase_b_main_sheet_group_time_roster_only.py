@@ -15,6 +15,11 @@ def synthetic(groups=2):
  return out
 
 class SourceOnlyRosterTests(unittest.TestCase):
+ def test_real_original_Phils_code_to_Philippines(self):self.assertEqual(country_tag("Phils"),"Philippines")
+ def test_original_10Prob_to_10P(self):self.assertEqual(condition_tag("10Prob"),"10P")
+ def test_original_40Prob_to_40P(self):self.assertEqual(condition_tag("40Prob"),"40P")
+ def test_original_40Impact_to_Impact(self):self.assertEqual(condition_tag("40Impact"),"Impact")
+ def test_original_40Level_to_Level(self):self.assertEqual(condition_tag("40Level"),"Level")
  def test_valid_country_sweden(self):self.assertEqual(country_tag("Sweden"),"Sweden")
  def test_valid_country_philippines(self):self.assertEqual(country_tag("Philippines"),"Philippines")
  def test_valid_country_shortcode(self):self.assertEqual(country_tag("PH"),"Philippines")
