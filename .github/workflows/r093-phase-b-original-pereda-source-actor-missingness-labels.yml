@@ -9,7 +9,7 @@ on:
 permissions:
   contents: read
 jobs:
-  43-synthetic-source-hash-privacy-actor-missingness:
+  synthetic-43-source-hash-privacy-actor-missingness:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -20,7 +20,7 @@ jobs:
       - run: |
           PYTHONPATH=research/R093 python -m unittest -v             research/R093/test_r093_2019_first_party_zenodo_14day_large_group_source_eligibility.py             research/R093/test_r093_phase_b_author_csv_nonbehavior_actor_missing_and_labels.py
   original-2019-author-MD5-original-categories-anonymized:
-    needs: 43-synthetic-source-hash-privacy-actor-missingness
+    needs: synthetic-43-source-hash-privacy-actor-missingness
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
