@@ -1,0 +1,34 @@
+# R091 Phase C: fixed original 190 four-player 20-round group source: frozen leave-one-whole-group-out history transfer
+
+Frozen 2026-10-17 BEFORE reading original R091 Contribution values for behavioral scoring. Published Jonsson & Jonsson 2025 PLOS ONE https://doi.org/10.1371/journal.pone.0318891, two countries Philippines and Sweden, 20-round original four-person public goods. First-party source GitHub repo `markusrobertjonsson/condcoop`, pinned commit `2a23fc3221e636c0119b1d1f1a9c4945bca83e85`, original `Data_Main.xlsx` Git blob `499787e08242c44c32a469b5d72b206ccf2c73f0`, bytes 571844, full SHA256 `04d2ed5a59885cde2a1740f33b295a86bd374b80cd811d8ff84c88cded68a023`. Main sheet `DiffTreatments` only; no `DiffProb` append because overlap not independently disambiguated. Main sheet 15200 original person-round rows / **760 distinct stable four-person actors in 190 fixed four-person groups** /20 round each. Actual Phase B fixed-source roster CI `39016070946` independently verified 3800 group-rounds, four actor records and same first-column participant roster each round; source label codebook independently established in prior Phase B2 CI `39015992841`, before ANY original contribution score: Country `Phils→Philippines`, Sweden→Sweden; Treatment `Control→Control`, `10Prob→10P`, `40Prob→40P`, `40Impact→Impact`, `40Level→Level`. First attempts including source header privacy fail and unmapped labels retained as scientific negative QA, do not rewrite older CI.
+
+## Final original 10 analysis strata with actual group denominators (source-only)
+
+From the original source roster, Philippines: Control22,10P22,40P23,Impact22,Level22 = 111 groups; Sweden: Control18,10P18,40P16,Impact15,Level12 = 79 groups. Total190, 760 persons, 3800 group-rounds, 15200 recorded individual-round contribution opportunities, 10 strata. Experimental country and treatment remain separate in M0: do not pool into one treatment mean across country because country itself is relevant protocol variation. Do not treat 19 next-round target records from a group as 19 independent source groups.
+
+## Strict frozen original contribution eligibility before any modeling
+
+For each source row, original `Contribution` (author `DiffTreatments` sheet Excel column 3), require actual finite integer-like numeric (including 0.0) 0 ≤ c ≤ 20. It must NOT be missing, text with nonnumerical code, boolean, negative, fractional unit, >20, formula/unknown: if any of 15200 invalid, FAIL_CLOSED whole original source. Do not silently delete actors, amend denominator, impute, or combine second sheet. Original actor/group/round/condition must reproduce all Phase B cohort counts and stable identity. Each 4-person group-round target is `y_{g,t}=sum_{i=1}^{4} c_{i,g,t}/80`, 0..1. Endowment 20 per person per round is grounded in original paper, identical across authors' Control and threshold treatments; if original source contradicts this unit, stop. This outcome is continuous original contribution fraction. It is not R089's six-person binary global-investment rate; R090 also uses continuous contribution/endowment, but it has system automated decisions (249/2700), whereas R091 author workbook may or may not log any such flags. **Do not infer no automation without original source flag/experiment-level logs.**
+
+## Zero retuning: exact frozen three-model transfer and no group outcome leakage
+
+For EACH of the 190 heldout original four-person groups G in country×treatment stratum (country c, treatment z), score t=2..20 with 19 targets:
+- `M0(other independent source groups same-country, same-treatment, same-round)`: arithmetic mean of the other n_{c,z}-1 original stable groups' **target round t** y_{j,t}. All 11–22 other groups are training, target group G entirely excluded. This is reproducible leave-one-whole-group-out **cross-group** generalization, not real-time rolling across calendar sessions.
+- `M1(own group lag)`: prediction exactly y_{G,t-1}, known prior behavior of heldout group. No parameter learned from future target, no reference to target's t outcome.
+- `M2 fixed 0.5M0+0.5M1`: exactly the same half-blend as R089 and R090, no tuning.
+- No post-hoc threshold binary transformations, no try other weightings, no "best model" selected based on real R091 source outcomes.
+- Scoring group-share squared prediction error `(p−y_{G,t})²`, 0..1, with paired MSE gain `L(M0)−L(M1)` or `L(M0)−L(M2)` on exact same heldout G,t outcomes. All 190×19=**3610 real heldout group-round predictions** must be scored, with real per-stratum count `groups×19`.
+- Group-specific sign over its 19 scored rounds: positive gain, negative gain, exact zero. Summarize per country, per treatment, and country×treatment (10 arms); preserve all reversals. Separate first and last round mean normalized contribution by country/treatment and all 20 trajectories to describe context, no ex-post choosing "steady" rounds.
+
+## Predesign transfer accept/reject hypotheses
+
+H1 `M1 > M0` (in predictive quality): **overall pooled paired gain strictly positive**; if zero/negative, fails on this third author's original source. H2 `M2 > M0` similarly strict positivity. Stronger invariance across all 10 country×treatment strata may be reported ONLY if all 10 gains positive; otherwise write negative. Do not describe different metric/model family transfers as exact E3 experimental replication of sixperson binary target. No p-values, CI or causal behavior assertions without independently frozen cluster/session bootstrap. Groups are fixed four persons but may share sessions; never interpret 3610 targets as iid humans.
+
+Author published total 884 participants includes additional Swedish probability groups in second sheet. Our main sheet comprises 760 original people only; do not claim entire 884. Only original published recorded contributions, not fresh human recruitment. Individual identity, original group IDs, original group sorted hash, any individual's contribution values, original raw XLSX, group-level individual trajectories must not be serialized or printed. Output anonymous country×condition/round and pooled metrics only, no low n group rows; all 10 strata have >=12 groups.
+
+Synthetic tests ≥26 cover cohort and ID changes, all source code mapping, 0..20 integer and malformed/missing, 4×20, group per stratum LOOG, negative and positive data, 3610 test targets, original source SHA failure, no leakage original actor/group identifiers. First GitHub Actions synthetic PASS before first actual original score; independent second again fetch full pinned source Git blob and SHA, rerun synthetics and all source groups, verify entire anonymized JSON byte length and SHA256, archive Git permanent and formal report A01-A06. PESEN v0.1 FROZEN.
+
+R091_PHASE_C_BEFORE_ORIGINAL_CONTRIBUTION_EVALUATION=FROZEN
+R091_AUTHOR_SOURCE_GROUPS_ELIGIBLE=190
+R091_REAL_SOURCE_PREDICTIVE_GAIN=NOT_YET_EVALUATED
+R091_PROSPECTIVE_E3=NO
