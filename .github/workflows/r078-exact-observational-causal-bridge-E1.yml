@@ -1,0 +1,79 @@
+name: R078 exact rational social prediction and causal nonidentifiability E1 proof
+on:
+  push:
+    paths:
+      - '.github/workflows/r078-exact-observational-causal-bridge-E1.yml'
+      - 'research/R078/r078_exact_micro_causal_macro_bridge.py'
+      - 'research/R078/test_r078_exact_micro_causal_macro_bridge.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-42-synthetic-causal-and-cross-scale-proof-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run all exact rational observation versus intervention checks
+        working-directory: research/R078
+        run: python -m unittest -v test_r078_exact_micro_causal_macro_bridge
+  deterministic-Python-only-no-humans-E1-macro-archive:
+    needs: exact-42-synthetic-causal-and-cross-scale-proof-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recompute exact proof JSON twice and demand byte equality
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r078_exact_E1
+          python research/R078/r078_exact_micro_causal_macro_bridge.py \
+            --output /tmp/r078_exact_E1/first.json
+          python research/R078/r078_exact_micro_causal_macro_bridge.py \
+            --output /tmp/r078_exact_E1/second.json
+          cmp /tmp/r078_exact_E1/first.json /tmp/r078_exact_E1/second.json
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path("/tmp/r078_exact_E1/first.json")
+          raw=p.read_bytes()
+          r=json.loads(raw)
+          assert r["human_data_rows_consumed"]==0
+          assert r["same_person_joint_across_both_models"]
+          assert r["observational_prediction"]["Brier_improvement_shared_by_both_models"]=="1/25"
+          assert r["intervention_do_O"]["A_direct_effect"]=="2/5"
+          assert r["intervention_do_O"]["B_latent_effect"]=="0/1"
+          assert r["synthetic_group_variance"]["n10"]=={"A":"1/40","B":"61/1000"}
+          assert r["PESEN_v0.1"]=="FROZEN"
+          print("R078_E1_JSON_BYTES",len(raw))
+          print("R078_E1_JSON_SHA256",hashlib.sha256(raw).hexdigest())
+          print("R078_E1_EXACT_RATIONAL_CAUSAL_COUNTEREXAMPLE_VALIDATED")
+          PY
+      - name: Commit only exact E1 synthetic numerical result not prior human outcomes
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R078/R078_EXACT_SYNTHETIC_OBSERVATIONAL_EQUIVALENCE_E1_RESULTS.json
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r078_exact_E1/first.json
+            echo 'Prior R078 E1 archive is byte identical'
+            exit 0
+          fi
+          cp /tmp/r078_exact_E1/first.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R078): archive exact E1 causal versus latent observational equivalence and group variance"
+          git push origin HEAD:main
+      - name: Remove E1 temporary output
+        if: always()
+        run: rm -rf /tmp/r078_exact_E1
