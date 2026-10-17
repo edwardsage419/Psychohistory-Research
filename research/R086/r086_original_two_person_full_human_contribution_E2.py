@@ -4,7 +4,7 @@
 Four rows per focal human -> two own session trajectories. Never release actor IDs.
 """
 from __future__ import annotations
-import argparse,hashlib,io,json,math,pathlib,urllib.request,urllib.error
+import argparse,hashlib,io,json,math,pathlib,urllib.request,urllib.error,zipfile
 from collections import defaultdict
 from numbers import Real
 import openpyxl
@@ -63,7 +63,7 @@ def analyse_one_workbook(raw,game):
  if hashlib.sha256(raw).hexdigest()!=PINNED_AUTHOR_SHA256[game]:
   raise ValueError("R086_PRE_BEHAVIOR_SOURCE_SHA256_PARITY_FAILED")
  try:book=openpyxl.load_workbook(io.BytesIO(raw),read_only=True,data_only=True)
- except (OSError,ValueError,KeyError,EOFError) as e:
+ except (OSError,ValueError,KeyError,EOFError,zipfile.BadZipFile) as e:
   raise ValueError("R086_ORIGINAL_XLSX_REOPEN_NOT_POSSIBLE") from e
  prefix=SOURCE_PREFIXES[game]
  expected_sheets={f"{prefix[arm]}_Type{role}" for arm in prefix for role in (1,2)}
