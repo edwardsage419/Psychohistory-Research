@@ -237,3 +237,12 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 **独立于R085四人MAT来源失败，R086取得550名线性+554名阈值真实参与者，每人两session本人行为，共45810次原始本人贡献数值实算。** 二人原始每名焦点参与者四行中，排除伙伴重复行为行；线性第1场22轮、第2场21轮，阈值两场各20轮。已执行两实验×五处理×两session共20条主比较，每条本人一人一权；线性AI贡献末减初分别 +5.0943/+2.2547（原单位），阈值AI −0.8654/−1.6442，部分条件两场反向；阈值FE 85/110、93/110本人首末贡献完全不变，所有这些**科学阴性/零证据**均永久保存，避免凭均值宣称多数人向同方向变化。
 
 [全部20原始分层、逐轮匿名曲线与正式科学报告](research/R086/R086_ORIGINAL_TWO_PERSON_LINEAR_THRESHOLD_PGG_1104_HUMANS_E2_SCIENTIFIC_REPORT_2026-10-17.md)、[双来源SHA严格复验85,566字节永久JSON](research/R086/R086_ORIGINAL_1104_HUMAN_TWO_PERSON_LINEAR_THRESHOLD_FIVE_ARM_E2_RESULTS.json)（SHA256 `600104f42f2b896646abe543cc6d8ab10450f1d30ed823d9feeeaf6d20a1628c`）及[A01-A06正式验收](research/R086/R086_FINAL_ACCEPTANCE_STATUS.json)已经同步main。**科学证据级别E2原作者真实贡献再运行，不能基于不同禀赋与组内相互作用宣称条件因果、更不能宣称新的E3或历史演变预测；正式R086=CLOSED_BOUNDED，PESEN v0.1=FROZEN。**
+
+
+## R087：原作者134名真人十轮条件合作策略迁移实证E2（2026-10-17）
+
+[正式R087科学研究包入口](research/R087/README.md)、[首次134名真人数据评估前冻结协议](protocols/R087_AUTHOR_CONDITIONAL_COOPERATION_134_HUMANS_ORIGINAL_GIT_SOURCE_BEHAVIOR_FREEZE_2026-10-17.md)（提交 `551cbb044201ffb7e83798118455199d9af68c81`）基于 Andreozzi/Ploner/Saral (2020) *Scientific Reports* 一手原作者 GitHub固定commit `979abf87b5d3cfb7aa8be13b81ef233076c3bb75`，对原作者发布的完整 `subjects.csv`（Git blob `bd4c1550002621bee7dfb50e0d15d317764d1ea9`）和原作者生成脚本严格来源验证。6实验场次、134真人（NoCondInfo68；CondInfo66）、每人10次真实互动，共**1340人期行为**。原始z-Tree的六件文件到CSV的清洗链目前尚未独立重跑，不冒称完整源层复现。
+
+[首次真实原作者Git SHA复算CI run39003772753](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39003772753)与[第二次原始源完整重新下载、38项纯合成及真实人期精确重算永久归档39003815853](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39003815853)均成功，结果**16,647字节**、SHA256 `e0663ea1d7829fb1c4ba51b134ca1276e9c16e6e0b3b3d321b343ee66c8e4bbe`逐字节相等。所有隐私ID/原始真人行为行都未存本仓库。
+
+真人人类条件策略ccL、ccM、ccH的四分类中，**条件合作者C期1 87人→期10 46人；无条件完全不合作者D 35→79人**；首末**C→D 43人、D→C 4人**，全10期类别完全不变者仅50/134。实际行动均值**42.54→17.16**，条件策略高低合作响应跨度**54.10→24.25**。两信息处理均方向一致但仍属于同一项2020年已发表研究，不能据此断言信念无因果作用或2026年新增E3复验。[正式完整科研报告](research/R087/R087_ORIGINAL_134_HUMAN_CONDITIONAL_COOPERATION_STRATEGY_E2_SCIENTIFIC_REPORT_2026-10-17.md)、[全十期/两信息处理匿名数值](research/R087/R087_FIRST_PARTY_134_HUMAN_10_PERIOD_CONDITIONAL_STRATEGY_TRANSITIONS_E2_RESULTS.json)、[六门最终验收](research/R087/R087_FINAL_ACCEPTANCE_STATUS.json)已永久归档。**R087=CLOSED_BOUNDED，真人原始作者回顾性E2，因果E3与长时段历史演化OPEN；PESEN v0.1=FROZEN。**
