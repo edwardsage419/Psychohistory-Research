@@ -1,0 +1,49 @@
+name: R075 official AEA and openICPSR third human data source recovery gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r075-official-original-source-recovery.yml'
+      - 'research/R075/r075_first_party_archive_probe.py'
+      - 'research/R075/test_r075_first_party_archive_probe.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-original-archive-integrity-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify invented archives and no human identifiers in public metadata
+        working-directory: research/R075
+        run: python -m unittest -v test_r075_first_party_archive_probe
+  source-discovery-only-no-human-scoring:
+    needs: synthetic-original-archive-integrity-controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe official original author archive links and publish bounded HTTP/ZIP metadata only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r075_aggregate_source_check
+          python research/R075/r075_first_party_archive_probe.py \
+            --output /tmp/r075_aggregate_source_check/r075_source_access_metadata.json
+      - name: Upload only source metadata, never participant-level files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r075-official-source-access-bounded-audit
+          path: /tmp/r075_aggregate_source_check/r075_source_access_metadata.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase all temporary audit outputs
+        if: always()
+        run: rm -rf /tmp/r075_aggregate_source_check
