@@ -1,0 +1,77 @@
+name: R101 A5 original Dataverse file nofollow redirect preflight no payload
+on:
+  push:
+    paths:
+      - '.github/workflows/r101-2023-Stallen-DataverseNL-A5-nofollow-redirect.yml'
+      - 'research/R101/r101_phase_a5_no_follow_official_redirect_metadata.py'
+      - 'research/R101/test_r101_phase_a5_no_follow_official_redirect_metadata.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  preflight-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Eleven pure synthetic host and sensitive query redaction tests
+        run: PYTHONPATH=research/R101 python -m unittest -v research/R101/test_r101_phase_a5_no_follow_official_redirect_metadata.py
+  real-original-firstparty-no-follow:
+    needs: preflight-synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: GET official 383977 endpoint without following or reading body
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r101_a5_nofollow
+          PYTHONPATH=research/R101 python research/R101/r101_phase_a5_no_follow_official_redirect_metadata.py --output /tmp/r101_a5_nofollow/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r101_a5_nofollow/receipt.json').read_text())
+          assert x["status"] in ("R101_A5_OFFICIAL_REDIRECT_TARGET_CLASS_VERIFIED_ONLY","R101_A5_OFFICIAL_ENDPOINT_DIRECT_HTTP200_NO_BODY_READ")
+          assert x["original_response_body_bytes_read"]==0
+          assert x["original_human_scores"]==0
+          print("R101_A5_AUTHENTIC_OFFICIAL_RESPONSE_KIND",x["status"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r101-A5-no-follow-original-host-only
+          path: /tmp/r101_a5_nofollow/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Save anonymous publisher redirect class or failure permanently
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r101_a5_nofollow/receipt.json
+          dst=research/R101/R101_PHASE_A5_LIVE_CI_REDIRECT_PREFLIGHT_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r101_a5_nofollow/receipt.json').read_text())
+          assert x["research_id"]=="R101" and x["phase"]=="A5" and x["PESEN_v0_1"]=="FROZEN" and x["original_human_scores"]==0
+          allowed={"research_id","phase","status","safe_failure","firstparty_http_status","redirect_target_host","redirect_target_path_first_segment_class","redirect_target_path_segment_count","redirect_target_last_segment_zip_suffix","redirect_target_query_key_classes","full_redirect_URL_or_query_values_exported","redirect_followed","original_response_body_bytes_read","original_human_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "redirect_target_host" in x:
+            assert re.fullmatch(r"[A-Za-z0-9.-]{1,253}",x["redirect_target_host"])
+            assert x["full_redirect_URL_or_query_values_exported"] is False
+            assert x["redirect_followed"] is False
+            assert x["original_response_body_bytes_read"]==0
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R101 A5): first-party nofollow download target host class with all tokens redacted"
+          git pull --rebase origin main
+          git push origin HEAD:main
