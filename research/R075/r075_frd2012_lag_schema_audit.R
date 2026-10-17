@@ -28,6 +28,9 @@ audit_frd <- function(x, expected_rows=NULL) {
   checked <- mismatch <- lag_own_missing <- lag_other_missing <- 0L
   eligible <- 0L
   first_round_lag_nonmissing <- 0L
+  treatment_levels <- sort(unique(treatment))
+  lag_checked_by_treatment <- setNames(integer(length(treatment_levels)),treatment_levels)
+  lag_mismatch_by_treatment <- setNames(integer(length(treatment_levels)),treatment_levels)
   for(ix in groups) {
     ord <- order(as.numeric(x$period[ix]))
     ix <- ix[ord]
@@ -41,10 +44,12 @@ audit_frd <- function(x, expected_rows=NULL) {
     for(k in 2:length(ix)) {
       if(periods[k]!=periods[k-1]+1L)next
       checked <- checked+1L
+      lag_checked_by_treatment[treatment[ix[1]]] <- lag_checked_by_treatment[treatment[ix[1]]]+1L
       if(is.na(x$last.choice[ix[k]])) {
         lag_own_missing <- lag_own_missing+1L
       }else if(as.character(x$last.choice[ix[k]])!=as.character(x$choice[ix[k-1]])) {
         mismatch <- mismatch+1L
+        lag_mismatch_by_treatment[treatment[ix[1]]] <- lag_mismatch_by_treatment[treatment[ix[1]]]+1L
       }
       if(is.na(x$last.other[ix[k]]))lag_other_missing <- lag_other_missing+1L
       if(k>=3 && periods[k-1]==periods[k]-1 &&
@@ -60,7 +65,10 @@ audit_frd <- function(x, expected_rows=NULL) {
           persons=length(unique(as.character(x$id[ix]))),
           person_games=length(unique(paste(as.character(x$id[ix]),x$game[ix],sep=":"))),
           bc_categories=paste(sort(unique(as.character(x$bc[ix]))),collapse="|"),
-          error_categories=paste(sort(unique(as.character(x$error[ix]))),collapse="|"))
+          error_categories=paste(sort(unique(as.character(x$error[ix]))),collapse="|"),
+          adjacent_lag_checks=as.integer(lag_checked_by_treatment[tr]),
+          own_previous_vs_choice_mismatch=as.integer(lag_mismatch_by_treatment[tr]),
+          mismatch_rate=if(lag_checked_by_treatment[tr]>0) unname(lag_mismatch_by_treatment[tr]/lag_checked_by_treatment[tr]) else NA_real_)
   })
   list(
       total_rows=nrow(x),
@@ -106,6 +114,7 @@ if(sys.nframe()==0) {
   cat("per_treatment_aggregate_no_identifiers\n")
   for(tr in summary$per_treatment)cat(
       paste(tr$treatment,tr$original_rows,tr$persons,tr$person_games,
-            tr$bc_categories,tr$error_categories,sep="\t"),"\n",sep="")
+            tr$bc_categories,tr$error_categories,tr$adjacent_lag_checks,
+            tr$own_previous_vs_choice_mismatch,tr$mismatch_rate,sep="\t"),"\n",sep="")
   cat("R075_THIRD_PARTY_SCHEMA_AUDIT_ONLY; no model scored; original session absent\n")
 }
