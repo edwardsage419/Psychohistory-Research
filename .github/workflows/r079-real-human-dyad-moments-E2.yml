@@ -1,0 +1,80 @@
+name: R079 original-author 2020 real human dyad network-moment E2 frozen audit
+on:
+  push:
+    paths:
+      - '.github/workflows/r079-real-human-dyad-moments-E2.yml'
+      - 'research/R079/r079_real_human_dyad_matching_moments.py'
+      - 'research/R079/test_r079_real_human_dyad_matching_moments.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-34-exact-two-person-assignment-and-group-identity-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify 34 synthetic experiments and exact group variance formulas
+        working-directory: research/R079
+        run: python -m unittest -v test_r079_real_human_dyad_matching_moments
+  true-authors-CC-BY-real-humans-reciprocal-pairs-moments:
+    needs: synthetic-34-exact-two-person-assignment-and-group-identity-guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download fixed source CSV and recheck author Git blob
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r079_real_private /tmp/r079_aggregate_only
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          commit="979abf87b5d3cfb7aa8be13b81ef233076c3bb75"
+          url=f"https://raw.githubusercontent.com/seyhunsaral/stabilitycondcoop/{commit}/data/csv/subjects.csv"
+          with urlopen(Request(url,headers={
+             "User-Agent":"Psychohistory-R079-first-party-study-source-locked/1.0"}),timeout=70) as r:
+              raw=r.read(425702)
+          sha=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
+          if len(raw)!=425701 or sha!="bd4c1550002621bee7dfb50e0d15d317764d1ea9":
+              raise ValueError("R079_REAL_AUTHOR_ORIGINAL_CLEANED_DATA_BLOB_DRIFT")
+          Path("/tmp/r079_real_private/author_subjects.csv").write_bytes(raw)
+          print("R079_FIXED_FIRST_PARTY_GIT_BLOB_AND_SOURCE_BYTES_PASS")
+          PY
+      - name: Compute real human dynamic pair cross-moment and finite-population control, no causal effect
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R079/r079_real_human_dyad_matching_moments.py \
+            --source /tmp/r079_real_private/author_subjects.csv \
+            --output /tmp/r079_aggregate_only/real_human_dyad_moments_E2.json
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path("/tmp/r079_aggregate_only/real_human_dyad_moments_E2.json")
+          b=p.read_bytes();r=json.loads(b)
+          assert r["status"]=="R079_REAL_AUTHOR_HUMAN_DYAD_MOMENTS_COMPUTED_DESCRIPTIVE_E2"
+          assert r["causal_peer_influence"]=="NOT_IDENTIFIED"
+          assert r["source_universe"]["all_dyad_partner_and_action_reciprocals_verified"]
+          print("R079_REAL_HUMAN_DYAD_AGGREGATE_BYTES",len(b))
+          print("R079_REAL_HUMAN_DYAD_AGGREGATE_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Save anonymous descriptive aggregate only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r079-author-genuine-human-reciprocal-dyad-moment-E2-aggregate
+          path: /tmp/r079_aggregate_only/real_human_dyad_moments_E2.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase private original individual human action data
+        if: always()
+        run: rm -rf /tmp/r079_real_private /tmp/r079_aggregate_only
