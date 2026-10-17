@@ -1,0 +1,76 @@
+{
+  "research_id": "R100",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_E1_PAIR_IDENTITY_NOT_ESTABLISHED",
+  "evidence_grade": "E1_REAL_FIRST_PARTY_SOURCE_AUTHENTICATED_WITH_BOUNDED_PAIR_METADATA_FAILURE_NO_E2",
+  "PESEN_v0_1": "FROZEN",
+  "source": {
+    "doi": "10.5281/zenodo.16918146",
+    "original_file": "ThresholdPGG_ExperimentalData.xlsx",
+    "real_file_bytes": 217396,
+    "official_MD5": "c40171abb172da8e16b0839db98a2cf2",
+    "actual_SHA256": "825b1cd3226aeca7a19d76d9594f655114b12059648f9ca03b3291c3cf9ab200",
+    "original_sheet_count": 10
+  },
+  "authenticated_metadata": {
+    "B0_xml_rows": 2226,
+    "B0_candidate_data_rows": 2216,
+    "B1a_candidate_focal_4row_blocks": 554,
+    "B1a_B_with_3_distinct_codes": 542,
+    "B1a_B_with_2_distinct_codes": 12,
+    "B1c_exact_real_sheet_name_class": "_Type1 and _Type2",
+    "B1e_treatment_focus_counts": [
+      110,
+      118,
+      112,
+      104,
+      110
+    ],
+    "B1e_role_sheet_A_overlap": [
+      55,
+      59,
+      56,
+      52,
+      55
+    ],
+    "B1e_unique_focal_B_repeated_position_codes_each_treatment": 1,
+    "B1e_distinct_B_unions": [
+      111,
+      119,
+      113,
+      105,
+      111
+    ],
+    "B1e_shared_B_between_roles": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "result_limits": {
+    "first_real_b1b_failure": "R100_B1B_AUTHOR_ORIGINAL_TYPE_NAME_NOT_MATCHED",
+    "first_real_failure_receipt": "research/R100/R100_PHASE_B1B_LIVE_CI_PAIR_RECIPROCITY_SOURCE_RECEIPT.json",
+    "bounded_second_b1d_source_failure": "B1B_BLOCKED_BOUNDED",
+    "second_real_receipt": "research/R100/R100_PHASE_B1D_LIVE_CI_PAIR_RECIPROCITY_SOURCE_RECEIPT.json",
+    "B1e_final_anonymous_receipt": "research/R100/R100_PHASE_B1E_LIVE_CI_AB_KEY_CARDINALITY_RECEIPT.json",
+    "distinct_humans_verified": null,
+    "original_partner_reciprocity_verified": false,
+    "independent_person_graph_LOSO_enabled": false,
+    "read_actual_human_contribution_values": 0,
+    "scored_real_human_model_targets": 0,
+    "R073_exact_cross_experiment_replication": false,
+    "not_evidence_of_negative_model_predictive_effect": true
+  },
+  "acceptance": {
+    "A01": "PASS_FIRST_PARTY_OFFICIAL_MD5_AND_SHA",
+    "A02": "PASS_10_WORKBOOK_SHEETS_AND_SOURCE_AB_FORMAT_BOUNDED",
+    "A03": "BLOCKED_PAIR_IDENTITY_MAPPING_REQUIRED_FOR_INDEPENDENT_HOLDOUT",
+    "A04": "PASS_PRESERVED_FIRST_FAILURE_REAL_NAME_DIAGNOSTIC_AND_12_ANOMALOUS_FOCAL_BLOCKS",
+    "A05": "PASS_NO_HUMAN_ACTION_READ_NO_E2_OR_CAUSAL_CLAIMS",
+    "A06": "PASS_ARCHIVAL_REPRODUCIBLE_CODE_TESTS_AND_PERMANENT_ACTUAL_SOURCE_RECEIPTS"
+  },
+  "scientific_report": "research/R100/R100_FINAL_BOUNDED_E1_PAIR_IDENTITY_NOT_ESTABLISHED_SCIENTIFIC_REPORT_2026-10-17.md",
+  "next": "R101 another independent team dataset with verified source session actor opponent round IDs; freeze R073 model and scoring mapping before human outcomes"
+}
