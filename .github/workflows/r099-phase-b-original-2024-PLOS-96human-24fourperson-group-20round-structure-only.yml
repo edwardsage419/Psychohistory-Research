@@ -1,0 +1,60 @@
+name: R099 original PLOS 2024 24 genuine 4-person 20round source group roster metadata only
+on:
+  push:
+    paths:
+      - '.github/workflows/r099-phase-b-original-2024-PLOS-96human-24fourperson-group-20round-structure-only.yml'
+      - 'research/R099/r099_phase_b_plos_2024_fixed4p_nonbehavior_group_roster_only.py'
+      - 'research/R099/test_r099_phase_b_plos_2024_fixed4p_nonbehavior_group_roster_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-53-strict-source-group-and-privacy-synthetics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Source only 29+24 tests original SHA actors groups Periods no contribution reads
+        run: |
+          PYTHONPATH=research/R099 python -m unittest -v             research/R099/test_r099_liu_2024_plos_official_original_S1_CSV_publisher_metadata_only.py             research/R099/test_r099_phase_b_plos_2024_fixed4p_nonbehavior_group_roster_only.py
+  real-first-party-PLOS-full-SHA-8source-cols-group-candidate-no-contributions:
+    needs: all-53-strict-source-group-and-privacy-synthetics
+    runs-on: ubuntu-latest
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original official PLOS S1 complete refetch SHA, source only stage2 1920 original group and period identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r099_group_privacy
+          PYTHONPATH=research/R099 python             research/R099/r099_phase_b_plos_2024_fixed4p_nonbehavior_group_roster_only.py             --output /tmp/r099_group_privacy/real_group_roster_nonbehavior_only.json
+          python - <<'PY'
+          import hashlib,json,pathlib
+          b=pathlib.Path('/tmp/r099_group_privacy/real_group_roster_nonbehavior_only.json').read_bytes()
+          a=json.loads(b)
+          assert a["status"]=="R099_PLOS_ORIGINAL_METADATA_ROSTER_CANDIDATES_VERIFIED"
+          assert a["original_SHA256"]=="75dc8ae8b63a6b3ea728df9acab9d27944b82ec4feb5c6055e26751ca9cc4a6e"
+          z=a["source_cohort_safe_metadata_only"]
+          assert z["original_source_1920_rows"]==1920
+          assert not z["source_Contribution_or_OtherContri_action_values_accessed"]
+          assert not z["original_actors_groups_period_values_or_Type_category_labels_exported"]
+          assert not a["source_true_8_independent_laboratory_session_codes_proven"]
+          assert a["real_original_human_contribution_model_scores"]==0
+          assert a["PESEN_v0.1"]=="FROZEN"
+          print("R099_REAL_PLOS_ORIGINAL_COHORT_METADATA_BYTES",len(b))
+          print("R099_REAL_PLOS_ORIGINAL_COHORT_METADATA_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r099-2024-original-PLOS-24-fourperson-20round-privacy-metadata
+          path: /tmp/r099_group_privacy/real_group_roster_nonbehavior_only.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r099_group_privacy
