@@ -36,6 +36,13 @@ class TrueDyadicRosterSynthetic(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.data=synthetic_data()
+    def test_verified_source_apostrophe_slash_game_names_allowed(self):
+        self.assertIsNotNone(b.PUBLIC_GAME.fullmatch("Prisoner's Dilemma"))
+        self.assertIsNotNone(b.PUBLIC_GAME.fullmatch("Hawk/Dove"))
+        self.assertIsNotNone(b.PUBLIC_GAME.fullmatch("Coordination-Game"))
+    def test_unobserved_source_game_punctuation_still_rejected(self):
+        self.assertIsNone(b.PUBLIC_GAME.fullmatch("Private@Game"))
+        self.assertIsNone(b.PUBLIC_GAME.fullmatch("Résumé"))
     def test_true_reciprocal_30_experiments(self):
         r=audit(self.data)
         self.assertEqual(r["status"],"R103_B_ORIGINAL_DYADIC_SOURCE_RECIPROCITY_ELIGIBLE")
