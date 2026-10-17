@@ -1,0 +1,99 @@
+name: R076 SHA archive retrospective source-only numerical transfer between three genuine human experiments
+on:
+  push:
+    paths:
+      - '.github/workflows/r076-archive-zero-shot-cross-study.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  replay-and-archive-no-target-training-three-study-anonymous-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recheck source-only leak guards from synthetic fixtures
+        working-directory: research/R076
+        run: python -m unittest -v test_r076_source_only_cross_study_transfer
+      - name: Download exact first-party real human sources to runner only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r076_archive_private/donor
+          python - <<'PY'
+          from pathlib import Path
+          import urllib.request,hashlib
+          def fetch(url):
+              r=urllib.request.Request(url,headers={"User-Agent":"Psychohistory-R076-SHA-archive-source-only-cross-study/1.0"})
+              with urllib.request.urlopen(r,timeout=70) as body:return body.read(4_000_001)
+          commit="4743f74d8a03a031b8f70aff64956f8ad5155182"
+          sources={
+            "fix.csv":(988279,"3bf78bf85f6642afee18d6f1965dca7272582f40"),
+            "rand.csv":(1112614,"f5a86cd033b739da45d3fc7c5019068f612146a2"),
+          }
+          for filename,(size,expected) in sources.items():
+              data=fetch(f"https://raw.githubusercontent.com/eladiomontero/PairwiseStrategies/{commit}/{filename}")
+              sha=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
+              if len(data)!=size or sha!=expected:raise ValueError("DONOR_GIT_BLOB_FAIL_CLOSED")
+              Path("/tmp/r076_archive_private/donor",filename).write_bytes(data)
+          for filename,url,size,expected in (
+            ("r074.txt","https://gfrechette.com/data/Dal_Bo_2011a_data.txt",1140746,
+               "357a12968546a8d9002c912c1f499e02e93d59113d2a0928de2dee48323a0ae6"),
+            ("r075.zip","https://davidrand-cooperation.com/s/slow-to-anger-and-fast-to-forgive-data-and-code.zip",1129409,
+               "328346c3cf88a71a3d6cf574f7d6ba741dcea460f3926c16266f1784d3a699ef")
+          ):
+              data=fetch(url)
+              if len(data)!=size or hashlib.sha256(data).hexdigest()!=expected:
+                  raise ValueError("TARGET_SOURCE_SHA256_FAIL_CLOSED")
+              Path("/tmp/r076_archive_private",filename).write_bytes(data)
+          print("four exact source blobs independently confirmed; no raw humans committed")
+          PY
+      - name: Rerun both real human target studies using strictly R073 donor parameters and exact aggregate digest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R076/r076_source_only_cross_study_transfer.py \
+            --r073-source-dir /tmp/r076_archive_private/donor \
+            --r074-source /tmp/r076_archive_private/r074.txt \
+            --r075-source /tmp/r076_archive_private/r075.zip \
+            --output /tmp/r076_source_only_anonymous.json
+          test "$(wc -c < /tmp/r076_source_only_anonymous.json | tr -d '[:space:]')" = 129126
+          printf '%s  %s\n' \
+            ecee82cf3686d6c03cef56fb84c84118b252b7c184b46dc45413e34f876a52da \
+            /tmp/r076_source_only_anonymous.json | sha256sum --check --status
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          r=json.loads(Path("/tmp/r076_source_only_anonymous.json").read_text())
+          assert r["status"]=="RETROSPECTIVE_R073_SOURCE_ONLY_NUMERICAL_ZERO_SHOT_TRANSFER_COMPUTED"
+          assert r["target_label_records_used_for_any_fitting"]==0
+          assert r["source_12_session_scorable_events"]==18424
+          assert r["results"]["R074"]["scored_actions"]==15338
+          assert r["results"]["R075"]["scored_actions"]==26116
+          assert all(len(r["results"][tr]["donors"])==3 for tr in ("R074","R075"))
+          print("R076 independent live re-download and exact anonymous byte-identical aggregate replay PASS")
+          PY
+      - name: Commit only privacy-safe source-only transfer aggregates and verify immutable bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R076/R076_RETROSPECTIVE_R073_SOURCE_ONLY_TO_R074_R075_REAL_HUMAN_RESULTS.json
+          if [ -f "$dest" ]; then
+            cmp -s "$dest" /tmp/r076_source_only_anonymous.json
+            echo 'existing anonymous result exact-byte archive PASS'
+            exit 0
+          fi
+          cp /tmp/r076_source_only_anonymous.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R076): exact SHA retrospective source-only R073 numerical transfer to two human studies"
+          git push origin HEAD:main
+      - name: Remove all private original human data and transient outputs
+        if: always()
+        run: rm -rf /tmp/r076_archive_private /tmp/r076_source_only_anonymous.json
