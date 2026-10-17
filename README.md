@@ -183,3 +183,12 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 **来源/门槛失败全部保存**：[第一次网络源节点资格失败](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38998214433)因图快照会合法省略零度人类，后经全64源不评分校验、在**任何网络合作率结果出现前**独立冻结[Rev-002真实图零度节点规则](protocols/R080_PRE_FIRST_REAL_NETWORK_METRICS_GRAPH_ISOLATE_AMENDMENT_REV002_2026-10-17.md)，未改变人类人数、结果口径和八类处理；第一次独立CDN复查SHA不匹配亦拒绝存档并保留记录。45项合成[人机身份/整图保护测试与真正64网实数计算](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38998549613)均成功，之后[独立再次下载并核对原作者所有SHA、结果逐字节同一且永久Git归档](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38998839902)成功。
 
 [11,745字节匿名E2真实结果JSON](research/R080/R080_FIRST_PARTY_64_HUMAN_NETWORKS_TOPOLOGY_E2_RESULTS.json) SHA256 `7b7d231d97a98c4b08e7d3658fa8e943bacd60aef1d8529754cd1f75179b99c8`，[最终科学报告](research/R080/R080_FULL_64_HUMAN_BOT_NETWORK_E2_SCIENTIFIC_FINAL_REPORT_2026-10-17.md)与[A01–A06结题验收](research/R080/R080_FINAL_ACCEPTANCE_STATUS.json)已全部同步。R080 `CLOSED_BOUNDED`仅是真人网络E2条件性描述，**没有**新E3个体预测、机器人社会影响因果识别或长时期历史预测；`PESEN v0.1`继续冻结。下一阶段独立检查原作者网络级随机分配、机器人节点语义与真人动作缺测。
+
+
+## R081：64个原作者人机网络的全部真人缺测行动精确界限与实体语义审核（2026-10-17）
+
+[R081正式研究入口](research/R081/README.md)已按照[新真人界限结果前的独立冻结协议](protocols/R081_AUTHOR_64_NETWORK_ASSIGNMENT_BOT_ENTITY_AND_MISSINGNESS_BOUNDS_FREEZE_2026-10-17.md)完成64/64份作者Mendeley v1网络JSON发布方SHA256严格来源验证，并在**25项合成测试全部成功后**两次独立完整执行真正人类行为缺测极端敏感性分析。[首次真实CI](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38999664896)和[独立SHA逐字节复算永久归档CI](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38999829725)均success，10,714字节匿名[结果JSON](research/R081/R081_FIRST_PARTY_ORIGINAL64_MISSING_HUMAN_ACTION_SHARP_BOUNDS_E2_RESULTS.json) SHA256 a6d7f84924eabc5389dc9b82f6de62ed73ce79a455eb6dba873af33cb81d1998。
+
+全部64网络共30,720个每轮16人理论行动槽，真实可观察真人C/D为27,656，缺失3064。R080原观测首末合作下降11.07个百分点；如果每一缺失槽都可任意赋一项二元C/D，全部64网络等权完整名册合作变化**精确界限为下降20.2148至2.4414个百分点，始终为负**。原8类处理有4类严格下降、1类严格上升、3类在缺测极端补全下触零/跨零。首轮缺31槽、末轮缺151槽，覆盖率随时间减弱。单独网络中有21/64在自由补全下方向不定；第二实验248网络快照有一例机器人五节点各一真人连接结构的例外，均如实保留。
+
+[正式科学报告](research/R081/R081_ALL64_AUTHOR_MISSINGNESS_BOT_ENTITY_AND_CAUSAL_ASSIGNMENT_SCIENTIFIC_REPORT_2026-10-17.md)和[六项验收](research/R081/R081_FINAL_ACCEPTANCE_STATUS.json)现已同步。R081研究证据级别仍为**真实来源、回顾性E2缺测敏感性**；论文所谓单一逻辑机器人与原始记录五个bot节点的映射、实验处理随机分配、人类动作缺测机制及第一/第二实验可交换性均仍待独立核验，因果推断门未开。**R081=CLOSED_BOUNDED，PESEN v0.1=FROZEN**。
