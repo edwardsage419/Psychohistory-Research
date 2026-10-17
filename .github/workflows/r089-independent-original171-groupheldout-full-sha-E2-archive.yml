@@ -1,0 +1,65 @@
+name: R089 independent original 171 group fivefold sharp prediction exact E2 source replay archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r089-independent-original171-groupheldout-full-sha-E2-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-fivefold-original-data-and-pregame-identity-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently rerun the frozen 40 synthetic 6-person group, finite survey and exactly discrete source sharp loss checks
+        run: |
+          PYTHONPATH=research/R088:research/R089 python -m unittest -v             research/R089/test_r089_original171_group_heldout_identity_history_predict_E2.py
+      - name: Independently reacquire 5 original source scripts/CSV blobs, rerun all 5 group folds, require exact anonymous JSON sha and bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r089_second_sha_source
+          PYTHONPATH=research/R088:research/R089 python             research/R089/r089_original171_group_heldout_identity_history_predict_E2.py             --output /tmp/r089_second_sha_source/anonymous_E2.json
+          test "$(wc -c < /tmp/r089_second_sha_source/anonymous_E2.json | tr -d '[:space:]')" = 20052
+          printf '%s  %s\n'             9dda5e5fbf4abe2a9d9e7d2fb029e03eb81202c63f0e0af576b7e69882aea266             /tmp/r089_second_sha_source/anonymous_E2.json | sha256sum --check --status
+          python - <<'PY'
+          import hashlib,json,pathlib
+          p=pathlib.Path('/tmp/r089_second_sha_source/anonymous_E2.json')
+          b=p.read_bytes();v=json.loads(b)
+          assert v["status"]=="R089_REAL_ORIGINAL171_GROUP_COMPLETE_HOLDOUT_E2_PREDICTION_EXECUTED"
+          assert v["source_eligibility"]["all_pregame_identity_rows_in_three_arms_eligible"]
+          assert v["source_eligibility"]["original_missing_action_slots"]==64
+          r=v["original_group_holdout_predictive_evaluation"]
+          assert r["identity_source_eligible_for_M3"]
+          assert r["heldout_171_groups_x_19_future_rounds"]==3249
+          assert r["overall"]["unique_heldout_groups"]==171
+          assert r["overall"]["shared_unknown_target_paired_improvement_vs_M0"]["M1_LAST_GROUP_ROUND"]["score_gain_sharp_lower"]>0
+          assert not v["future_round_identity_or_postsurvey_used_for_prediction"]
+          assert not v["source_actor_group_identity_or_actions_exported"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R089_SECOND_FULL_ORIGINAL_REAL_GROUP_HELDOUT_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Permanently archive only pooled, arm and fold anonymized prediction metrics after exact E2-byte agreement
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R089/R089_ORIGINAL171_GROUP_FIVEFOLD_HISTORY_VS_PREGAME_IDENTITY_SHARP_E2_RESULTS.json
+          mkdir -p research/R089
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r089_second_sha_source/anonymous_E2.json
+            exit 0
+          fi
+          cp /tmp/r089_second_sha_source/anonymous_E2.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R089): original 171 sixperson groups all-5 heldout E2 pregame identity and action-history sharp replay"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r089_second_sha_source
