@@ -1,0 +1,58 @@
+name: R085 phase B independent first-party original MAT5 HDF5 type-only source metadata audit
+on:
+  push:
+    paths:
+      - '.github/workflows/r085-phase-b-original-MAT-HDF5-structural-reinspection.yml'
+      - 'research/R085/r085_phase_b_mat_real_source_type_only.py'
+      - 'research/R085/test_r085_phase_b_original_mat_metadata_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-MAT-format-and-no-action-values-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install scipy==1.14.1 h5py==3.12.1
+      - run: |
+          PYTHONPATH=research/R085 python -m unittest -v             research/R085/test_r085_zenodo_original_four_person_mat_source_gate.py             research/R085/test_r085_phase_b_original_mat_metadata_only.py
+  publisher-real-source-two-MAT-binary-formats-only:
+    needs: synthetic-MAT-format-and-no-action-values-gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install scipy==1.14.1 h5py==3.12.1
+      - name: Verify both official original MD5 and structural schema with no human matrix values
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r085b_metadata_only
+          PYTHONPATH=research/R085 python             research/R085/r085_phase_b_mat_real_source_type_only.py             --output /tmp/r085b_metadata_only/original_source_format.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('/tmp/r085b_metadata_only/original_source_format.json')
+          b=p.read_bytes();x=json.loads(b)
+          assert x["original_subject_level_action_values_computed"]==0
+          assert x["original_real_human_cooperation_effects_computed"]==0
+          assert not x["raw_author_files_exported"]
+          assert x["first_R085_phase_A_source_parser_failure_retained"]
+          print("R085_PHASE_B_ORIGINAL_SAFE_SOURCE_METADATA_BYTES",len(b))
+          print("R085_PHASE_B_ORIGINAL_SAFE_SOURCE_METADATA_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r085-two-official-Zenodo-MAT-MD5-structural-source-only
+          path: /tmp/r085b_metadata_only/original_source_format.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r085b_metadata_only
