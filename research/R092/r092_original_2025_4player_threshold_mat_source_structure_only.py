@@ -8,6 +8,7 @@ individual action, actor ID, group ID, session or contribution values output.
 from __future__ import annotations
 import argparse,hashlib,io,json,pathlib,re,urllib.request,urllib.parse,urllib.error
 from scipy.io import whosmat
+from scipy.io.matlab import MatReadError
 ZENODO="https://zenodo.org"
 RECORD="16918146"
 FILE="ThresholdPGG_4P_ExperimentalData.mat"
@@ -39,7 +40,7 @@ def source_identity(data,md5=MD5):
 
 def anonymous_whosmat(data):
  try:raw=whosmat(io.BytesIO(data))
- except (ValueError,TypeError,NotImplementedError,OverflowError,OSError,IndexError) as e:
+ except (ValueError,TypeError,NotImplementedError,OverflowError,OSError,IndexError,MatReadError) as e:
   raise ValueError("R092_UNSUPPORTED_ORIGINAL_MAT_STRUCTURE") from e
  if not raw or len(raw)>40:raise ValueError("R092_MAT_VARIABLE_COUNT_MISSING_OR_EXCESS")
  output=[]
