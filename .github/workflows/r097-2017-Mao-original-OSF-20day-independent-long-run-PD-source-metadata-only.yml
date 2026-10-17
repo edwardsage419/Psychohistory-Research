@@ -1,0 +1,56 @@
+name: R097 2017 Mao independent 20day 94 human long run Prisoners Dilemma original OSF catalog only
+on:
+  push:
+    paths:
+      - '.github/workflows/r097-2017-Mao-original-OSF-20day-independent-long-run-PD-source-metadata-only.yml'
+      - 'research/R097/r097_mao_2017_long_run_osf_original_20day_metadata_access_gate.py'
+      - 'research/R097/test_r097_mao_2017_long_run_osf_original_20day_metadata_access_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  twenty-three-original-2017-OSF-privacy-source-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Synthetic OSF project node and listing identity and absence of individual choices
+        run: |
+          PYTHONPATH=research/R097 python -m unittest -v             research/R097/test_r097_mao_2017_long_run_osf_original_20day_metadata_access_gate.py
+  original-2017-OSF-64z8u-metadata-only-original-Nature-study:
+    needs: twenty-three-original-2017-OSF-privacy-source-synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: First-party OSF original node public files name-extension-category count only, fail closed on API access
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r097_original_osf_2017_privacy
+          PYTHONPATH=research/R097 python             research/R097/r097_mao_2017_long_run_osf_original_20day_metadata_access_gate.py             --output /tmp/r097_original_osf_2017_privacy/source_only_catalog.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          b=pathlib.Path('/tmp/r097_original_osf_2017_privacy/source_only_catalog.json').read_bytes()
+          x=json.loads(b)
+          assert x["status"]=="R097_ORIGINAL_2017_OSF_METADATA_CATALOG_VERIFIED"
+          assert x["official_publisher_data_OSF_project"]=="64z8u"
+          assert x["original_human_action_records_read_or_scored"]==0
+          assert not x["true_independent_person_or_session_LOSO_established"]
+          assert x["PESEN_v0.1"]=="FROZEN"
+          print("R097_REAL_2017_MAO_ORIGINAL_OSF_SOURCE_CATALOG_BYTES",len(b))
+          print("R097_REAL_2017_MAO_ORIGINAL_OSF_SOURCE_CATALOG_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r097-original-2017-Mao-OSF-public-catalog-safe-receipt
+          path: /tmp/r097_original_osf_2017_privacy/source_only_catalog.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r097_original_osf_2017_privacy
