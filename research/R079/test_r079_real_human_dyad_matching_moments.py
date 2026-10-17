@@ -29,7 +29,7 @@ def csv_fixture(rows):
 def csv_author_fixture(rows):
     lines=["treatment,session,period,subject,group,opp,action,opp_action,first_player"]
     for r in rows:
-        vals=[r["tr"],r["sess"],r["period"],r["subj"],r["group"],r["opp"],r["action"],r["opp_action"],int(r["first_player"])]
+        vals=[r["tr"],r["sess"],r["period"],r["subj"],r["group"],r["opp"],r["action"],r["opp_action"],int(r["first_player"]) if isinstance(r["first_player"],bool) else r["first_player"]]
         lines.append(",".join(map(str,vals)))
     return ("\n".join(lines)+"\n").encode()
 class SyntheticDyadGuards(unittest.TestCase):
