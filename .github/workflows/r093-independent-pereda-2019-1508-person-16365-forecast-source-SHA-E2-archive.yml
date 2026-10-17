@@ -1,0 +1,74 @@
+name: R093 independent original 2019 Pereda 1508 person 16365 real ownhistory forecast SHA archive
+on:
+  push:
+    paths:
+      - '.github/workflows/r093-independent-pereda-2019-1508-person-16365-forecast-source-SHA-E2-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-real-PGG-six-run-14day-ownhistory-fullbyte-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently repeat 82 synthetic strict original MD5, actor/round privacy, attrition and ownhistory positive-negative cases
+        run: |
+          PYTHONPATH=research/R093 python -m unittest -v             research/R093/test_r093_2019_first_party_zenodo_14day_large_group_source_eligibility.py             research/R093/test_r093_phase_b_author_csv_nonbehavior_actor_missing_and_labels.py             research/R093/test_r093_original_pereda_1508participant_14round_ownhistory_individual_holdout_E2.py
+      - name: Independently refetch publisher original MD5+whole-file SHA and recompute all 16365 source person lag forecasts, require exact anonymous 9625 bytes SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r093_second_2019_private
+          PYTHONPATH=research/R093 python             research/R093/r093_original_pereda_1508participant_14round_ownhistory_individual_holdout_E2.py             --output /tmp/r093_second_2019_private/anon_sixrun_individual_M012.json
+          test "$(wc -c < /tmp/r093_second_2019_private/anon_sixrun_individual_M012.json | tr -d '[:space:]')" = 9625
+          printf '%s  %s\n'             b432375714d2393187a6baf52057d4b2c2cda22435da966b67f61e07c3581105             /tmp/r093_second_2019_private/anon_sixrun_individual_M012.json | sha256sum --check --status
+          python - <<'PY'
+          import json,pathlib,hashlib
+          b=pathlib.Path('/tmp/r093_second_2019_private/anon_sixrun_individual_M012.json').read_bytes()
+          v=json.loads(b)
+          assert v["status"]=="R093_TRUE_ORIGINAL_PEREDA_2019_1508_PERSON_14ROUND_INDIVIDUAL_HOLDOUT_E2_EXECUTED"
+          assert v["original_author_MD5"]=="626c61c2c18a114a5b92a7d2b7e46558"
+          assert v["original_author_full_csv_sha256"]=="4eb3380a5eacdef5466709b343af391b27b48a35b5b82f355a4d85d5172644bc"
+          q=v["source_nonbehavioral_universe"]
+          assert q["original_csv_total_rows"]==21195
+          assert q["original_unassigned_nonactor_rows_not_scored"]==83
+          assert q["original_author_participant_codes_total"]==1508
+          assert q["registered_alive_1_actor_round_rows"]==17736
+          s=v["real_author_original_individual_history_scores"]
+          assert s["total_original_source_qualified_next_round_individual_targets"]==16365
+          assert s["six_runs_in_which_M1_improves_M0"]==6
+          assert s["six_runs_in_which_M2_improves_M0"]==6
+          assert s["pooled_paired_gain_M0_minus_M1"]>0
+          assert s["pooled_paired_gain_M0_minus_M2"]>0
+          assert len(s["by_original_publisher_experiment"])==6
+          assert s["all_source_person_IDs_excluded_from_same_round_M0_training"]
+          assert not s["source_original_person_IDs_actor_traces_or_raw_actions_exported"]
+          assert not v["original_person_or_group_ID_or_actions_redistributed"]
+          assert not v["source_original_auto_replacement_flag_present_in_CSV"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R093_ORIGINAL_2019_REAL_PERSON_E2_SECOND_SHA",hashlib.sha256(b).hexdigest())
+          PY
+      - name: Permanently archive only six-run anonymized actor history aggregate after exact full source and output SHA replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest=research/R093/R093_PEREDA_2019_1508_PARTICIPANTS_16365_PERSON_HISTORY_HELDOUT_E2_RESULTS.json
+          mkdir -p research/R093
+          if [ -f "$dest" ]; then
+            cmp "$dest" /tmp/r093_second_2019_private/anon_sixrun_individual_M012.json
+            exit 0
+          fi
+          cp /tmp/r093_second_2019_private/anon_sixrun_individual_M012.json "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest"
+          git commit -m "results(R093): original 2019 1508 source people 16365 ownhistory individual holdout E2 all six experiment gains"
+          git push origin HEAD:main
+      - if: always()
+        run: rm -rf /tmp/r093_second_2019_private
