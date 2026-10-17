@@ -1,0 +1,62 @@
+name: R095 original 2020 Chapman 8 actual independent laboratory sessions 96 binary humans round2 full session LOO E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r095-original-2020-Chapman-8-full-session-96-human-binary-LOSO-E2.yml'
+      - 'research/R095/r095_schniter_shields_96_humans_8_full_original_sessions_LOSO_E2.py'
+      - 'research/R095/test_r095_schniter_shields_96_humans_8_full_original_sessions_LOSO_E2.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-session-and-model-52-synthetic-source-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          PYTHONPATH=research/R095 python -m unittest -v             research/R095/test_r095_schniter_shields_2020_original_session_roster_no_actions.py             research/R095/test_r095_schniter_shields_96_humans_8_full_original_sessions_LOSO_E2.py
+  actual-original-first-party-2020-human-round2-96-choices-8-real-lab-session-LOSO:
+    needs: original-session-and-model-52-synthetic-source-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Pinned original author Zenodo published MD5 SHA, 8 whole true original sessions holdout, 96 binary split vs take-all round2 targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r095_genuine_human_privacy
+          PYTHONPATH=research/R095 python             research/R095/r095_schniter_shields_96_humans_8_full_original_sessions_LOSO_E2.py             --output /tmp/r095_genuine_human_privacy/anon_original_session_96_E2.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          b=pathlib.Path('/tmp/r095_genuine_human_privacy/anon_original_session_96_E2.json').read_bytes()
+          v=json.loads(b)
+          assert v["status"]=="R095_ORIGINAL_2020_CHAPMAN_8_TRUE_SESSIONS_96_BINARY_PEOPLE_LOSO_E2_EXECUTED"
+          assert v["verified_publisher_MD5"]=="4c30ac1861e12f46e0b9847c9d1857a7"
+          assert v["verified_original_full_source_SHA256"]=="0678cc3d565d3a02e4766fedff211cc37b2e0e9d373e41c391466c6f84a56f4c"
+          z=v["original_lab_session_full_holdout_human_binary_prediction"]
+          assert z["true_original_independent_lab_sessions"]==8
+          assert z["entire_source_sessions_left_out_exactly_once"]==8
+          assert z["original_binary_round_2_predictions_all_subjects"]==96
+          assert z["training_all_12_holdout_people_excluded_from_M0"]
+          assert not z["raw_source_original_session_person_pair_group_labels_exported"]
+          assert not v["binary_Friend_or_Foe_is_identical_to_R089_global_PGG_vote"]
+          assert v["publisher_web_preview_of_some_original_actions_prior_to_scoring_freeze"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R095_TRUE_AUTHOR_8_SESSION_LOSO_96_HUMAN_E2_BYTES",len(b))
+          print("R095_TRUE_AUTHOR_8_SESSION_LOSO_96_HUMAN_E2_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r095-2020-schniter-shields-8-genuine-independent-lab-session-96-human-binary-LOSO
+          path: /tmp/r095_genuine_human_privacy/anon_original_session_96_E2.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r095_genuine_human_privacy
