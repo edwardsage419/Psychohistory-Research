@@ -1,0 +1,88 @@
+{
+  "research_id": "R093",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_RETROSPECTIVE_FIRST_PARTY_PUBLISHED_REAL_2019_HUMAN_INDIVIDUAL_HOLDOUT_RECORDED_PLAY",
+  "A01_to_A06": {
+    "A01": "PASS_SIX_EXPERIMENT_INDIVIDUAL_HELDOUT_M0_CONTEMPORANEOUS_OTHERS_M1_LAST_SELF_M2_FIXED_HALF_PRE_OUTCOME_FROZEN",
+    "A02": "PASS_FIRST_PARTY_ZENODO_MD5_SHA_21195_RAW_ROWS_83_UNASSIGNED_1508_EXPERIMENT_SOURCE_PEOPLE_14_ROUNDS",
+    "A03": "PASS_82_SYNTHETIC_TWO_ORIGINAL_SOURCE_DOWNLOADS_16365_TRUE_ACTOR_ROUND_PAIRED_SCORES_AND_EXACT_BYTES_SHA",
+    "A04": "PASS_INITIAL_MISSING_ID_SOURCE_REJECT_INVALID_CI_ID_SYNTHETIC_ATTRITION_FAILURE_583_NEGATIVE_PEOPLE_137_UNSCORABLE_AND_UNOBSERVABLE_AUTOMATION",
+    "A05": "PASS_PUBLISHED_HUMAN_GAME_RECORDED_CHOICES_E2_NOT_PROSPECTIVE_E3_OR_R089_GROUP_HELDOUT_OR_AUTONOMOUS_MEMORY_CAUSALITY",
+    "A06": "PASS_THREE_FROZEN_PROTOCOLS_REAL_SOURCE_CODE_SYNTHETIC_CI_ANONYMOUS_SHA_SCIENCE_REPORT_MAIN_INDEX"
+  },
+  "original_publication": {
+    "name": "Large scale and information effects on cooperation in public good games",
+    "article_DOI": "10.1038/s41598-019-50964-w",
+    "authors": "Pereda, Tamarit, Antonioni, Cuesta, Hernández, Sánchez",
+    "overlaps_R090_authors": "Antonioni and Sánchez"
+  },
+  "original_source": {
+    "zenodo_record": 2590686,
+    "DOI": "10.5281/zenodo.2590686",
+    "filename": "2017A2ECOCOOPANSA01ONL0000ESPMAD.csv",
+    "publisher_MD5": "626c61c2c18a114a5b92a7d2b7e46558",
+    "actual_bytes": 612196,
+    "whole_SHA256": "4eb3380a5eacdef5466709b343af391b27b48a35b5b82f355a4d85d5172644bc",
+    "total_source_rows": 21195,
+    "anonymous_unassigned_rows": 83,
+    "original_valid_person_round_rows": 21112,
+    "registered_alive1_rows": 17736,
+    "original_source_person_ids_within_run": 1508,
+    "original_number_of_experiment_runs": 6
+  },
+  "frozen_protocols": [
+    "protocols/R093_PEREDA_2019_LARGE_GROUP_14DAY_FIRST_PARTY_CSV_SOURCE_GATE_FREEZE_2026-10-17.md",
+    "protocols/R093_PHASE_B_PUBLISHED_2019_SOURCE_MISSING_PARTICIPANTS_TREATMENT_LABELS_PRE_BEHAVIOR_2026-10-17.md",
+    "protocols/R093_PHASE_C_PEREDA_2019_1508_HUMAN_14ROUND_INDIVIDUAL_HOLDOUT_M012_BEHAVIOR_FREEZE_2026-10-17.md"
+  ],
+  "score_contract": {
+    "unit": "individual person all 14 rounds held out from other-person same-run same-round M0 training",
+    "eligible": "current and previous actor-round player_alive=1 and recorded contribution integer 0..10",
+    "original_eligible_adjacent_round_targets": 16365,
+    "original_people_with_eligible_pairs": 1371,
+    "original_people_without_eligible_pairs": 137,
+    "M0": "mean contemporaneous registered players in same run and round excluding test person",
+    "M1": "target participant's prior recorded contribution / 10",
+    "M2": "fixed (M0+M1)/2",
+    "loss": "normalized contribution share squared error on same real target",
+    "group_heldout_E3_claim": false
+  },
+  "original_real_results": {
+    "M0_MSE": 0.10670834385174513,
+    "M1_MSE": 0.07309013137793667,
+    "M2_MSE": 0.06365796047154093,
+    "M1_gain_over_M0": 0.03361821247380626,
+    "M2_gain_over_M0": 0.04305038338020665,
+    "equally_weighted_six_experiments_M1_gain": 0.03501787434718909,
+    "equally_weighted_six_experiments_M2_gain": 0.04622221167280588,
+    "six_original_experiments_M1_positive": 6,
+    "original_people_M1_better": 788,
+    "original_people_M1_worse": 583,
+    "original_people_no_score": 137
+  },
+  "source_execution": {
+    "initial_source_missing_person_failure": 39017561811,
+    "initial_invalid_job_id_failure": 39017697592,
+    "source_missing_id_metadata_CI": 39017733091,
+    "original_first_synthetic_attrition_failure": 39018023442,
+    "first_82_synthetic_true_original_human_E2_run": 39018076790,
+    "second_independent_true_original_fullbyte_archive_run": 39018148784,
+    "result_bytes": 9625,
+    "result_SHA256": "b432375714d2393187a6baf52057d4b2c2cda22435da966b67f61e07c3581105",
+    "result_Git_blob": "86ed893856927af4d4bb6151145f30e4f86ad0b2"
+  },
+  "archival_results": "research/R093/R093_PEREDA_2019_1508_PARTICIPANTS_16365_PERSON_HISTORY_HELDOUT_E2_RESULTS.json",
+  "formal_report": "research/R093/R093_PEREDA_2019_LARGE_GROUP_1508_REAL_PEOPLE_INDIVIDUAL_HISTORY_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "limitations": {
+    "source_auto_imputation_80percent_last_choice_and_20percent_variation_per_paper": true,
+    "individual_manual_vs_automatic_source_action_flag_verified": false,
+    "mechanical_own_last_choice_predictivity_cannot_be_excluded": true,
+    "contemporaneous_M0_is_not_real_calendar_time_forecast": true,
+    "individual_score_count_not_independent_original_lab_groups": true,
+    "only_six_original_experiment_large_groups": true,
+    "group_heldout_R089_R090_R091_estimand_same": false,
+    "new_prospective_E3_or_causal_learning_identified": false
+  },
+  "PESEN_v0_1": "FROZEN"
+}
