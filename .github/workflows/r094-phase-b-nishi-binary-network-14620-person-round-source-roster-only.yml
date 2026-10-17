@@ -1,0 +1,62 @@
+name: R094 2015 binary Nishi 14620 secondary source node round visibility metadata no human choice
+on:
+  push:
+    paths:
+      - '.github/workflows/r094-phase-b-nishi-binary-network-14620-person-round-source-roster-only.yml'
+      - 'research/R094/r094_phase_b_nishi_2015_2026_binary_network_person_round_visibility_only.py'
+      - 'research/R094/test_r094_phase_b_nishi_2015_2026_binary_network_person_round_visibility_only.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  privacy-and-source-schema-42-synthetics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          PYTHONPATH=research/R094 python -m unittest -v             research/R094/test_r094_zhu_nishi_2015_binary_network_original_sessions_secondary_source_gate.py             research/R094/test_r094_phase_b_nishi_2015_2026_binary_network_person_round_visibility_only.py
+  secondary-publication-real-human-experiment-node-10round-roster:
+    needs: privacy-and-source-schema-42-synthetics
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original secondary-curated 2015 human network repeated 2026 author Zenodo MD5 SHA and source actor ID counts ONLY
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r094_b_privacy
+          PYTHONPATH=research/R094 python             research/R094/r094_phase_b_nishi_2015_2026_binary_network_person_round_visibility_only.py             --output /tmp/r094_b_privacy/no_choices.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          b=pathlib.Path('/tmp/r094_b_privacy/no_choices.json').read_bytes()
+          v=json.loads(b)
+          assert v["phase"]=="B_REAL_SECONDARY_NISHI_NETWORK_PERSON_ROUND_METADATA_ONLY"
+          assert v["original_secondary_publisher_MD5_verified"]=="85db2536b5be1cd50266900e61590d5a"
+          assert v["original_secondary_full_SHA256_verified"]=="b37fa71434dd46249a0e7f43f9b9e798b1d3cafcffea3c80bc6997b99b6dd0a5"
+          r=v["original_binary_network_source_roster"]
+          assert r["secondary_2026_original_binary_network_source_rows"]==14620
+          assert not r["any_human_decision_or_decision_time_or_neighbors_values_read"]
+          assert not r["raw_original_actor_node_IDs_or_hashes_exported"]
+          assert not r["original_experiment_session_ID_column_available"]
+          assert not v["human_history_model_predicted"]
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R094_REAL_NO_BEHAVIOR_ROSTER_BYTES",len(b))
+          print("R094_REAL_NO_BEHAVIOR_ROSTER_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r094-second-original-source-14620-human-player-round-10round-no-outcomes
+          path: /tmp/r094_b_privacy/no_choices.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r094_b_privacy
