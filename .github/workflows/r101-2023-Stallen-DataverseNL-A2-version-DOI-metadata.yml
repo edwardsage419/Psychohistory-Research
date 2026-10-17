@@ -1,0 +1,78 @@
+name: R101 A2 author DataverseNL exact version DOI metadata fallback only
+on:
+  push:
+    paths:
+      - '.github/workflows/r101-2023-Stallen-DataverseNL-A2-version-DOI-metadata.yml'
+      - 'research/R101/r101_stallen_2023_original_DataverseNL_official_metadata_only.py'
+      - 'research/R101/test_r101_stallen_2023_original_DataverseNL_official_metadata_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  metadata-synthetic-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original DataverseNL DOI exact metadata and privacy 18 pure synthetic
+        run: PYTHONPATH=research/R101 python -m unittest -v research/R101/test_r101_stallen_2023_original_DataverseNL_official_metadata_only.py
+  actual-official-dataverse-metadata-only:
+    needs: metadata-synthetic-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Verify official R101 DOI API file catalog metadata only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r101_official_metadata
+          python research/R101/r101_stallen_2023_original_DataverseNL_official_metadata_only.py --output /tmp/r101_official_metadata/receipt.json
+          python - <<'PY'
+          import pathlib,json
+          x=json.loads(pathlib.Path('/tmp/r101_official_metadata/receipt.json').read_text())
+          assert x["status"]=="R101_OFFICIAL_DATAVERSENL_CATALOG_METADATA_AUTHENTICATED_ONLY"
+          assert x["author_dataset_DOI"]=="10.34894/EYFM5L"
+          assert x["official_dataset_file_count"]>0
+          assert x["real_file_bytes_downloaded"]==0 and x["actual_original_human_behavior_values_read"]==0
+          assert x["original_human_model_scores"]==0
+          print("R101_PUBLISHER_METADATA_ONLY_FILECOUNT",x["official_dataset_file_count"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r101-dataversenl-author-doi-metadata-only-or-failure
+          path: /tmp/r101_official_metadata/receipt.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Archive anonymized metadata source success or safe failure to main
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r101_official_metadata/receipt.json
+          dst=research/R101/R101_PHASE_A2_LIVE_CI_OFFICIAL_METADATA_ONLY_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r101_official_metadata/receipt.json').read_text())
+          assert x["research_id"]=="R101" and x["phase"]=="A"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["original_human_model_scores"]==0
+          assert x["status"] in ("R101_E0_METADATA_SOURCE_BLOCKED","R101_OFFICIAL_DATAVERSENL_CATALOG_METADATA_AUTHENTICATED_ONLY")
+          allowed={"research_id","phase","status","safe_failure","author_dataset_DOI","official_dataset_file_count","anonymous_extension_counts","official_file_metadata_MD5_fields_count","official_file_catalog_total_reported_bytes","candidate_text_csv_tsv_count","real_file_bytes_downloaded","actual_original_human_behavior_values_read","original_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "anonymous_extension_counts" in x:
+              assert set(x["anonymous_extension_counts"]).issubset({"csv","tsv","txt","zip","xlsx","xls","r","rds","dta","sav","json","do","pdf","md","py","m","other","none"})
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R101 A2): official version DOI source metadata retry preserving initial real E0 failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
