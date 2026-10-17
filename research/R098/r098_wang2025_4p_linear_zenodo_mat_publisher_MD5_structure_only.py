@@ -33,9 +33,10 @@ def verify_original_bytes(b,official=OFFICIAL_MD5):
 def mat_metadata(b):
  # whosmat reads MAT directory metadata, not any human contribution matrices.
  from scipy.io import whosmat
+ from scipy.io.matlab import MatReadError
  try:
   variables=whosmat(io.BytesIO(b))
- except (ValueError,TypeError,IndexError,NotImplementedError) as e:
+ except (ValueError,TypeError,IndexError,NotImplementedError,MatReadError) as e:
   raise ValueError("R098_PUBLISHED_MAT_HEADER_NOT_SUPPORTED") from e
  if not 1<=len(variables)<=40:
   raise ValueError("R098_MAT_VARIABLE_COUNT_UNEXPECTED")
