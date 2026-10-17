@@ -1,0 +1,61 @@
+name: R095 original 2020 repeated PD true independent lab session IDs first-party Zenodo MD5 source gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r095-2020-Schniter-Shields-original-96human-explicit-session-source-only.yml'
+      - 'research/R095/r095_schniter_shields_2020_original_session_roster_no_actions.py'
+      - 'research/R095/test_r095_schniter_shields_2020_original_session_roster_no_actions.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-2020-Fields-25-synthetic-session-pair-round-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          PYTHONPATH=research/R095 python -m unittest -v             research/R095/test_r095_schniter_shields_2020_original_session_roster_no_actions.py
+  original-Schniter-Shields-real-file-md5-full-sha-true-session-identity-no-options:
+    needs: original-2020-Fields-25-synthetic-session-pair-round-source-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original Chapman true session group and 2-round stable matching only, no real decisions read
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r095_no_real_choices
+          PYTHONPATH=research/R095 python             research/R095/r095_schniter_shields_2020_original_session_roster_no_actions.py             --output /tmp/r095_no_real_choices/original_sessions_safe_only.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          b=pathlib.Path('/tmp/r095_no_real_choices/original_sessions_safe_only.json').read_bytes()
+          q=json.loads(b)
+          assert q["phase"]=="A_FIRST_PARTY_ORIGINAL_2020_SESSION_GROUP_ROSTER_NO_BEHAVIOR"
+          assert q["authentic_original_csv_byte_identity"]["publisher_MD5"]=="4c30ac1861e12f46e0b9847c9d1857a7"
+          v=q["safe_source_actual_original_session_roster"]
+          assert v["source_distinct_explicit_true_session_IDs"]>=3
+          assert v["source_unique_original_real_participants"]>=80
+          assert v["anonymous_original_round_1_2_3_actor_record_counts"]["1"]==v["source_unique_original_real_participants"]
+          assert v["anonymous_original_round_1_2_3_actor_record_counts"]["2"]==v["source_unique_original_real_participants"]
+          assert v["no_original_actor_option_or_partner_action_values_inspected"]
+          assert v["no_original_private_session_person_pair_IDs_or_hashes_exported"]
+          assert q["real_human_prediction_scores"]==0
+          assert q["PESEN_v0.1"]=="FROZEN"
+          print("R095_FIRST_HAND_ORIGINAL_LAB_SESSION_METADATA_BYTES",len(b))
+          print("R095_FIRST_HAND_ORIGINAL_LAB_SESSION_METADATA_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r095-first-party-2020-lab-session-pair-codebook-MD5-source-only
+          path: /tmp/r095_no_real_choices/original_sessions_safe_only.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r095_no_real_choices
