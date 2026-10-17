@@ -1,0 +1,60 @@
+name: R093 Pereda 2019 original published 100vs1000 source actor missingness metadata only
+on:
+  push:
+    paths:
+      - '.github/workflows/r093-phase-b-original-pereda-source-actor-missingness-labels.yml'
+      - 'research/R093/r093_phase_b_author_csv_nonbehavior_actor_missing_and_labels.py'
+      - 'research/R093/test_r093_phase_b_author_csv_nonbehavior_actor_missing_and_labels.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  43-synthetic-source-hash-privacy-actor-missingness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          PYTHONPATH=research/R093 python -m unittest -v             research/R093/test_r093_2019_first_party_zenodo_14day_large_group_source_eligibility.py             research/R093/test_r093_phase_b_author_csv_nonbehavior_actor_missing_and_labels.py
+  original-2019-author-MD5-original-categories-anonymized:
+    needs: 43-synthetic-source-hash-privacy-actor-missingness
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Refetch first-party Zenodo MD5 real experiment source; only treatment, round and empty identity frequencies, no behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r093_b_source_privacy
+          PYTHONPATH=research/R093 python             research/R093/r093_phase_b_author_csv_nonbehavior_actor_missing_and_labels.py             --output /tmp/r093_b_source_privacy/labels_missing.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          b=pathlib.Path('/tmp/r093_b_source_privacy/labels_missing.json').read_bytes()
+          v=json.loads(b)
+          assert v["phase"]=="B_ORIGINAL_PUBLISHED_NONBEHAVIOR_MISSING_IDS_AND_EXPERIMENT_CODES"
+          assert v["original_first_party_MD5_SHA_identity"]["actual_first_party_MD5"]=="626c61c2c18a114a5b92a7d2b7e46558"
+          z=v["anonymized_source_fields_and_missingness"]
+          assert z["source_original_person_round_rows"]>0
+          assert not z["contribution_column_numeric_values_examined"]
+          assert not z["original_person_source_ID_or_hashed_ID_exported"]
+          assert v["original_actor_contribution_values_computed"]==0
+          assert v["PESEN_v0.1"]=="FROZEN"
+          print("R093_ORIGINAL_SOURCE_LABELS_SAFEBYTE",len(b))
+          print("R093_ORIGINAL_SOURCE_LABELS_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r093-published-14round-100vs1000-original-missing-ids-safe-only
+          path: /tmp/r093_b_source_privacy/labels_missing.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r093_b_source_privacy
