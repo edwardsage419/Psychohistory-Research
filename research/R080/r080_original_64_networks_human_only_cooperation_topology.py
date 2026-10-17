@@ -117,14 +117,24 @@ def parse_network_source(doc:dict):
   if not isinstance(nodes,list) or not isinstance(links,list):
    raise ValueError("R080_NETWORK_NODES_LINKS_NOT_LIST")
   ids=[n.get("id") for n in nodes if isinstance(n,dict)]
-  if len(ids)!=len(nodes) or len(set(ids))!=len(ids) or set(ids)!=set(actor_types):
-   raise ValueError("R080_NETWORK_SNAPSHOT_NODES_NOT_EQUAL_REAL_ACTORS")
+  # Original Rev-001 failed before any 64-network result: source graph
+  # snapshots legitimately omit some zero-degree HUMAN nodes. Rev-002
+  # allows exactly those true no-link human isolates, never bots/unknowns.
+  # Complete network experiment population comes only from players[].
+  node_set=set(ids)
+  if len(ids)!=len(nodes) or len(node_set)!=len(ids) or not node_set.issubset(actor_types):
+   raise ValueError("R080_NETWORK_SNAPSHOT_DUPLICATE_OR_UNKNOWN_NODE")
+  missing_actors=set(actor_types)-node_set
+  if any(actor_types[p] for p in missing_actors):
+   raise ValueError("R080_NETWORK_SNAPSHOT_CANNOT_OMIT_BOT_ACTOR")
   edges=set();kinds=Counter()
   for link in links:
    if not isinstance(link,dict):raise ValueError("R080_EDGE_NOT_OBJECT")
    a=link.get("source");b=link.get("target")
    if a not in actor_types or b not in actor_types or a==b:
     raise ValueError("R080_EDGE_UNKNOWN_ACTOR_OR_SELF_LOOP")
+   if a not in node_set or b not in node_set:
+    raise ValueError("R080_EDGE_ENDPOINT_NOT_DECLARED_IN_REAL_SNAPSHOT")
    edge=frozenset((a,b))
    if edge in edges:raise ValueError("R080_DUPLICATE_UNDIRECTED_EDGE")
    edges.add(edge)
