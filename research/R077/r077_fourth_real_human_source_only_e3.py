@@ -249,6 +249,7 @@ def main():
     a.output.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps({
         "status":result["status"],
+        "failure_reason":result.get("bounded_failure"),
         "source":result.get("source_universe"),
         "model_Brier":{k:v["all_original_sessions_equal_Brier"]
                        for k,v in result.get("results",{}).get("models",{}).items()},
