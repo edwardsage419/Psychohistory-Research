@@ -62,9 +62,8 @@ def source_identity_header_only(raw):
     if tuple(header)!=EXPECTED_HEADER:
         raise SourceError("R102_OFFICIAL_27_COLUMN_HEADER_MISMATCH")
     # Count physical newline endings without parsing any real data cell value.
-    if not raw.endswith(b"\n"):
-        raise SourceError("R102_ORIGINAL_FINAL_LINE_TERMINATOR_UNEXPECTED")
-    rows=raw.count(b"\n")-1
+    # Official original may leave the final record unterminated. Preserve all bytes.
+    rows=raw.count(b"\n")-1 if raw.endswith(b"\n") else raw.count(b"\n")
     if rows!=2700:
         raise SourceError("R102_PUBLISHER_2700_ROW_SHAPE_NOT_MATCHED")
     return {
