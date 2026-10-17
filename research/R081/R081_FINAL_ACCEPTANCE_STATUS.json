@@ -1,0 +1,113 @@
+{
+  "research_id": "R081",
+  "date": "2026-10-17",
+  "research_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_REAL_FIRST_PARTY_ORIGINAL_NETWORK_MISSING_BINARY_ACTION_SHARP_BOUNDS",
+  "acceptance_standard": "protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md",
+  "A01_to_A06": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS_NEGATIVE_AND_AMBIGUOUS_CASES_RETAINED",
+    "A05": "PASS_CAUSAL_ASSUMPTIONS_EXPLICITLY_NOT_VERIFIED",
+    "A06": "PASS"
+  },
+  "protocol_commit_before_any_new_R081_real_bounds": "ff1ed84cd99d26c88d0b94c8f86bc2a5173645e3",
+  "protocol": "protocols/R081_AUTHOR_64_NETWORK_ASSIGNMENT_BOT_ENTITY_AND_MISSINGNESS_BOUNDS_FREEZE_2026-10-17.md",
+  "first_original_source_sha_verification_and_25_synthetic_success_run": 38999664896,
+  "independent_second_original_source_sha_byte_identical_archive_success_run": 38999829725,
+  "original_author_dataset": "https://doi.org/10.17632/t963ktp6ft.1",
+  "publisher_v1_original64_file_hash_set_fingerprint": "555e2127ac21f4532c33a2e0a08f2e081b5f970891bd772c9bac3155d1d53571",
+  "anonymous_result_path": "research/R081/R081_FIRST_PARTY_ORIGINAL64_MISSING_HUMAN_ACTION_SHARP_BOUNDS_E2_RESULTS.json",
+  "anonymous_result_file_bytes": 10714,
+  "anonymous_result_sha256": "a6d7f84924eabc5389dc9b82f6de62ed73ce79a455eb6dba873af33cb81d1998",
+  "anonymous_result_git_blob": "849b2cd527fdbb6553746e03c329a93661d6df91",
+  "universe": {
+    "original_networks": 64,
+    "experimental_arm_counts": {
+      "allc_bots": 8,
+      "disengaged_mgmt_bots": 8,
+      "disengaged_mgmt_visible_bots": 8,
+      "engaged_mgmt_bots": 8,
+      "no_bots": 8,
+      "random_mgmt_bots": 8,
+      "single_mgmt_bot": 8,
+      "tft_bots": 8
+    },
+    "human_network_slots": 1024,
+    "behaviour_network_rounds": 1920,
+    "observed_human_binary_actions": 27656,
+    "possible_human_action_slots": 30720,
+    "unobserved_human_action_slots": 3064
+  },
+  "bounds_for_hypothetical_16_person_roster_change": {
+    "equal_network_observed_R080_delta": -0.11073225819319567,
+    "arbitrary_binary_missing_action_lower": -0.2021484375,
+    "upper": -0.0244140625,
+    "strictly_negative_under_every_arbitrary_completion": true,
+    "individual_network_forced_decline": 31,
+    "individual_network_forced_increase": 12,
+    "individual_network_nondefinite": 21
+  },
+  "treatment_robustness": {
+    "strictly_decreasing": [
+      "no_bots",
+      "allc_bots",
+      "tft_bots",
+      "engaged_mgmt_bots"
+    ],
+    "strictly_increasing": [
+      "disengaged_mgmt_bots"
+    ],
+    "sign_nondefinite": [
+      "random_mgmt_bots",
+      "disengaged_mgmt_visible_bots",
+      "single_mgmt_bot"
+    ]
+  },
+  "experiment2_bot_node_semantics": {
+    "source_marked_bot_nodes_per_single_mgmt_network": 5,
+    "paper_logical_bot_entities_claim": 1,
+    "source_snapshots_total": 248,
+    "source_snapshots_each_bot_one_human_neighbor": 247,
+    "exceptional_snapshots": 1,
+    "mapping": "UNVERIFIED"
+  },
+  "descriptive_predeclared_group_change_contrasts": {
+    "disengaged_minus_no_bots": [
+      0.265625,
+      0.5546875
+    ],
+    "engaged_minus_no_bots": [
+      -0.25,
+      0.09375
+    ],
+    "single_minus_no_bots": [
+      0.1015625,
+      0.484375
+    ]
+  },
+  "known_negative_and_open_evidence": [
+    "R080 failed initial source node gate and independent CDN invalid bytes recorded",
+    "21 source networks ambiguous first-to-last cooperation sign under free completion",
+    "three of eight experimental treatments have sign nondefinite including zero-endpoint arm",
+    "one original experiment2 bot-marked network snapshot deviates from usual 5 human-bot edge pattern",
+    "original allocation randomization evidence not independently verified",
+    "experiment2 logical bot to 5 source nodes mapping unverified",
+    "missing response mechanism unknown",
+    "experiment1 and experiment2 cannot be presumed exchangeable"
+  ],
+  "open_causal_gates": {
+    "treatment_assignment": "OPEN",
+    "network_interference_unit": "OPEN",
+    "nonresponse_mechanism": "OPEN",
+    "bot_implementation_mapping": "OPEN",
+    "bot_treatment_causal_effect": "NOT_IDENTIFIED",
+    "peer_causal_effect": "NOT_IDENTIFIED",
+    "long_term_history": "NOT_VALIDATED"
+  },
+  "scientific_report": "research/R081/R081_ALL64_AUTHOR_MISSINGNESS_BOT_ENTITY_AND_CAUSAL_ASSIGNMENT_SCIENTIFIC_REPORT_2026-10-17.md",
+  "raw_human_actions_or_source_actor_ids_published": false,
+  "PESEN_v0_1": "FROZEN",
+  "next_research": "separately pre-freeze source investigation for treatment random allocation, anomaly and mechanism; do not retrospectively convert bounds into randomized causal effect"
+}
