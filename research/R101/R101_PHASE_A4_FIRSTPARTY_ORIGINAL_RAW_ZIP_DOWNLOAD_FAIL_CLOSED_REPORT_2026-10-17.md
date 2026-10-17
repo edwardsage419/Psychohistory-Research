@@ -1,0 +1,11 @@
+# R101 A4 original Raw Data ZIP first-byte attempt, source redirect fail-closed evidence
+
+Date: 2026-10-17. **A4 real original-file authentication status: BLOCKED_SOURCE_DELIVERY_URL**. The original official DataverseNL A3 catalog identified file `3. Raw data files.zip`, public numeric ID **383977**, published size **2,247,187 bytes**, with no independent published MD5 field. A4 independently froze only the exact Dataverse file API URL `https://dataverse.nl/api/access/datafile/383977`, a whole-file cap, double full-source SHA256, and ZIP central directory-only enumeration.
+
+After 14 pure synthetic security tests and the first first-party actual URL request, the strict origin whitelist returned `R101_A4_OFFICIAL_FILE_ENDPOINT_NOT_PINNED` and safely refused the source. The full and permanent genuine CI receipt is [A4 source blocker](R101_PHASE_A4_LIVE_CI_FIRSTPARTY_RAW_ZIP_SHA_DIRECTORY_RECEIPT.json), automatically committed at [Git commit 8f0d773a99b87e03887c4d6851121e2570c9d74d](https://github.com/edwardsage419/Psychohistory-Research/commit/8f0d773a99b87e03887c4d6851121e2570c9d74d).
+
+This blocker is caused by the original downloader seeing a URL outside the exact pinned endpoint. The actual alternative delivery host and its publisher relationship had not been established at that point, so the safe behavior was to refuse it. This failure cannot demonstrate the source ZIP content is corrupted, unavailable, nonexistent, or contains no original game data. No first-party archive bytes, full source SHA256, ZIP member names, CSV, actor IDs, opponent IDs, or actions were obtained. **No source E1 for this ZIP**, no E2 model prediction, and no behavioral model conclusion.
+
+A separate [A5 zero-download redirect classification freeze](../../protocols/R101_PHASE_A5_DATAVERSENL_ZIP_383977_NOFOLLOW_REDIRECT_METADATA_PREFLIGHT_FREEZE_2026-10-17.md) permits only sanitizing the HTTPS redirect target header without following it, disclosing tokens, or reading source bytes. A5 must produce its own positive or negative evidence; this report does not preclaim its outcome.
+
+Previous R101 A2 original DOI nine-file metadata and A3 exact public archive selection remain valid. R095, R096, and R099 earlier E2 evidence remains unchanged. R073 models and PESEN v0.1 continue frozen.
