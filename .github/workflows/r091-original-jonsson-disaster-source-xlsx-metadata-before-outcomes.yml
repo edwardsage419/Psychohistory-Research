@@ -1,0 +1,63 @@
+name: R091 independent Jonsson four-player disaster experimental XLSX exact Git source before outcomes
+on:
+  push:
+    paths:
+      - '.github/workflows/r091-original-jonsson-disaster-source-xlsx-metadata-before-outcomes.yml'
+      - 'research/R091/r091_author_2025_disaster_xlsx_source_only_gate.py'
+      - 'research/R091/test_r091_author_2025_disaster_xlsx_source_only_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-exact-author-git-sha-and-no-data-exposure-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check 'openpyxl>=3.1,<3.2'
+          PYTHONPATH=research/R091 python -m unittest -v             research/R091/test_r091_author_2025_disaster_xlsx_source_only_gate.py
+  author-original-fixed-Git-blob-workbook-nonbehavioral-schema:
+    needs: synthetic-exact-author-git-sha-and-no-data-exposure-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --disable-pip-version-check 'openpyxl>=3.1,<3.2'
+      - name: Verify pinned publisher original 571844 byte Git blob then only safe sheet dimensions and header data types
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r091_metadata_privacy
+          PYTHONPATH=research/R091 python             research/R091/r091_author_2025_disaster_xlsx_source_only_gate.py             --output /tmp/r091_metadata_privacy/source_only.json
+          python - <<'PY'
+          import pathlib,json,hashlib
+          b=pathlib.Path('/tmp/r091_metadata_privacy/source_only.json').read_bytes()
+          r=json.loads(b)
+          assert r["phase"]=="A_FIXED_FIRST_PARTY_XLSX_SOURCE_STRUCTURE_ONLY"
+          assert r["source_identity"]["source_git_blob_sha1"]=="499787e08242c44c32a469b5d72b206ccf2c73f0"
+          assert set(r["first_party_original_two_sheets"])=={"DiffTreatments","DiffProb"}
+          assert r["source_identity"]["original_source_bytes"]==571844
+          assert r["actual_human_cooperation_scored"] is False
+          assert not r["original_person_group_or_behavior_values_exported"]
+          assert not r["person_or_group_identifiers_or_hashes_exported"]
+          assert r["PESEN_v0.1"]=="FROZEN"
+          print("R091_ORIGINAL_XLSX_SOURCE_ONLY_METADATA_BYTES",len(b))
+          print("R091_ORIGINAL_XLSX_SOURCE_ONLY_METADATA_SHA256",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r091-original-jonsson-pinned-xlsx-2sheet-source-schema-no-actor-values
+          path: /tmp/r091_metadata_privacy/source_only.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - if: always()
+        run: rm -rf /tmp/r091_metadata_privacy
