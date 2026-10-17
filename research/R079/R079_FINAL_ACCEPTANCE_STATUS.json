@@ -1,0 +1,154 @@
+{
+  "research_id": "R079",
+  "date": "2026-10-17",
+  "scope": "Independent fifth original-author real human laboratory source with 2-person round-pair graph, exact conditional pair-moment and finite-population random-matching descriptive reference",
+  "final_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_ORIGINAL_AUTHOR_CLEANED_HUMAN_DATA_REAL_GROUP_DESCRIPTIVE_NOT_E3",
+  "gates": {
+    "A01": "PASS",
+    "A02": "PASS_WITH_RAW_ZTREE_REGENERATION_NOT_REPRODUCED",
+    "A03": "PASS",
+    "A04": "PASS_WITH_FIRST_SYNTHETIC_CI_FAILURE_RETAINED",
+    "A05": "PASS",
+    "A06": "PASS"
+  },
+  "source": {
+    "study": "Andreozzi, Ploner, Saral 2020 Stability of Conditional Cooperation",
+    "journal_DOI": "10.1038/s41598-020-70681-z",
+    "first_party_repository": "https://github.com/seyhunsaral/stabilitycondcoop",
+    "first_party_commit": "979abf87b5d3cfb7aa8be13b81ef233076c3bb75",
+    "author_cleaned_csv": "data/csv/subjects.csv",
+    "author_cleaned_CSV_git_blob": "bd4c1550002621bee7dfb50e0d15d317764d1ea9",
+    "author_cleaned_CSV_bytes": 425701,
+    "authors_R_cleaner_git_blob": "522efd459f574ccaef3d9ce1dd2b086ffb70370e",
+    "license": "CC BY 4.0",
+    "original_six_ztree_export_files_present": true,
+    "original_six_ztree_export_reprocessed": false
+  },
+  "method": {
+    "human_action_levels": [
+      0,
+      50,
+      100
+    ],
+    "normalized_action": "action/100",
+    "individual_risk": "all formal 10 rounds, first four raw zTree practice periods excluded by author cleaner",
+    "groups": "two actually paired humans at same original session+period+group",
+    "required_pair_identity_and_action_reciprocity": "All 670 exact original opponent reference/action pairs verified",
+    "macro_aggregation": "10 rounds equal inside each session; 6 original sessions equal; 3 sessions per treatment",
+    "random_reference": "fixed observed y per session-period and uniformly random perfect matching without replacement; E pair cross = - population variance/(N-1)",
+    "variance_exact_identity": "Var_actual_group_mean = (pop_var+observed_pair_cross)/2",
+    "this_randomization_is_real_experiment_intervention": false,
+    "causal_claim": "NOT_IDENTIFIED"
+  },
+  "observed_universe": {
+    "actual_realized_two_person_dyads": 670,
+    "all_dyad_partner_and_action_reciprocals_verified": true,
+    "original_experimental_periods": 10,
+    "original_source_sessions": 6,
+    "person_in_source_sessions": 134,
+    "raw_human_rows_exported": false,
+    "source_original_rows": 1340,
+    "source_session_period_cohorts": 60,
+    "treatment_original_session_counts": {
+      "CondInfo": 3,
+      "NoCondInfo": 3
+    },
+    "unique_session_period_group_keys": 670
+  },
+  "observed_six_session_macro": {
+    "early_mu": 0.3666919191919192,
+    "excess_cross": 0.03914395260219059,
+    "excess_equal_sessions": 0,
+    "excess_negative_sessions": 0,
+    "excess_positive_sessions": 6,
+    "late_minus_early": -0.07583333333333334,
+    "late_mu": 0.29085858585858587,
+    "mu": 0.3287752525252525,
+    "original_sessions": 6,
+    "pair_cross": 0.03311402854300582,
+    "pair_mean_var": 0.08031731137128864,
+    "pop_var": 0.12752059419957149,
+    "random_match_cross": -0.006029924059184772,
+    "random_match_pair_mean_var": 0.06074533507019335
+  },
+  "observed_treatment_aggregates": {
+    "CondInfo": {
+      "dyad_count_per_session_period_distribution": {
+        "10": 10,
+        "11": 10,
+        "12": 10
+      },
+      "early_mu": 0.38325757575757574,
+      "excess_cross": 0.048735784619651897,
+      "excess_equal_sessions": 0,
+      "excess_negative_sessions": 0,
+      "excess_positive_sessions": 3,
+      "late_minus_early": -0.08133838383838383,
+      "late_mu": 0.3019191919191919,
+      "mu": 0.34258838383838386,
+      "original_sessions": 3,
+      "pair_cross": 0.042004165710131616,
+      "pair_mean_var": 0.0912244939929599,
+      "pop_var": 0.1404448222757882,
+      "random_match_cross": -0.006731618909520278,
+      "random_match_pair_mean_var": 0.06685660168313395
+    },
+    "NoCondInfo": {
+      "dyad_count_per_session_period_distribution": {
+        "11": 20,
+        "12": 10
+      },
+      "early_mu": 0.3501262626262626,
+      "excess_cross": 0.02955212058472928,
+      "excess_equal_sessions": 0,
+      "excess_negative_sessions": 0,
+      "excess_positive_sessions": 3,
+      "late_minus_early": -0.07032828282828282,
+      "late_mu": 0.2797979797979798,
+      "mu": 0.3149621212121212,
+      "original_sessions": 3,
+      "pair_cross": 0.024223891375880012,
+      "pair_mean_var": 0.06941012874961738,
+      "pop_var": 0.11459636612335476,
+      "random_match_cross": -0.005328229208849268,
+      "random_match_pair_mean_var": 0.054634068457252744
+    }
+  },
+  "performance": {
+    "synthetic_tests": 34,
+    "first_failed_synthetic_run": 38996553953,
+    "first_failed_synthetic_reason": "privacy test falsely matched the harmless key 'dyad_count_per_session_period_distribution' as forbidden per_session output; no real human score created in failed run",
+    "synthetic_corrected_before_first_real_score": true,
+    "successful_real_and_synthetic_run": 38996579448,
+    "independent_source_redownload_exact_replay_archive_run": 38996643486,
+    "expected_CI_conclusions": [
+      "success",
+      "success"
+    ],
+    "anonymous_aggregate_json": "research/R079/R079_REAL_AUTHOR_HUMAN_DYAD_NETWORK_MOMENTS_E2_RESULTS.json",
+    "anonymous_aggregate_bytes": 3771,
+    "anonymous_aggregate_SHA256": "82efe8ad7bcc6c01ac10616676d84c5208ad9f6cc83670aa4c5b72f3860ff102",
+    "anonymous_aggregate_git_blob": "6c8f5f844f78d2cf288a26cd498e21572532ddc7",
+    "raw_human_rows_in_repo": 0,
+    "single_session_scores_in_repo": 0,
+    "pair_identifiers_in_repo": 0
+  },
+  "scientific_boundaries": {
+    "one_realized_dyad_is_not_one_independent_session": true,
+    "six_sessions_only": true,
+    "experimental_role_first_second_not_adjusted": true,
+    "possible_reenrolment_across_original_sessions_not_checked": true,
+    "random_matching_reference_not_actual_randomized_peer_intervention": true,
+    "direct_social_causality": "NOT_IDENTIFIED",
+    "R078_n10_shared_U_parameter_estimation": "NOT_PERFORMED",
+    "full_network_64_network_candidate": "NOT_RECOVERED_BYTES",
+    "institutional_causality": "NOT_ESTABLISHED",
+    "generational_historical_forecasts": "NOT_VALIDATED",
+    "source_cleaned_vs_raw_reproduction": "PARTIAL"
+  },
+  "report": "research/R079/R079_REAL_HUMAN_NETWORK_DYAD_GROUP_MOMENT_REPORT_2026-10-17.md",
+  "protocol": "protocols/R079_INDEPENDENT_HUMAN_DYAD_COVARIANCE_RANDOM_MATCHING_REFERENCE_FREEZE_2026-10-17.md",
+  "next": "R080 independently byte-verify Shirado/Christakis 1024-human 64-network raw JSON, reconstruct human and bot entities, network rewiring dynamics, no leakage",
+  "PESEN_v0_1": "FROZEN"
+}
