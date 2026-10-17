@@ -1,0 +1,38 @@
+name: R077 fourth original author Stata analysis source and human choice meaning gate
+on:
+  push:
+    paths:
+      - '.github/workflows/r077-fourth-zenodo-codebook-gate.yml'
+      - 'research/R077/r077_zenodo_author_strategy_codebook_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-fourth-study-author-codebook-before-any-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original Stata file reader
+        run: python -m pip install --disable-pip-version-check --quiet pandas
+      - name: Check four original Zenodo publisher MD5s and inspect author script mapping only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/R077/r077_zenodo_author_strategy_codebook_gate.py \
+            --private-dir /tmp/r077_do_private \
+            --output /tmp/r077_do_public/r077_author_semantics_audit.json
+      - name: Archive only original script-relevant statements and aggregate data domains
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r077-zenodo-author-do-semantic-dictionary-no-humans-no-model
+          path: /tmp/r077_do_public/r077_author_semantics_audit.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase original human Stata data and output from runner
+        if: always()
+        run: rm -rf /tmp/r077_do_private /tmp/r077_do_public
