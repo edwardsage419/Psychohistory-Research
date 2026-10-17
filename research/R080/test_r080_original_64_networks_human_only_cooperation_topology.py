@@ -92,7 +92,7 @@ class TestR080Original64(unittest.TestCase):
  def test_24_duplicate_snapshot_round_rejected(self):
   self.check_bad(lambda x:x["result_networks"][1].update({"round":0}),"NETWORK_ROUNDS_NOT_STRICT")
  def test_25_missing_node_rejected(self):
-  self.check_bad(lambda x:x["result_networks"][0]["network"]["nodes"].pop(),"NODES_NOT_EQUAL")
+  self.check_bad(lambda x:x["result_networks"][0]["network"]["nodes"].pop(),"EDGE_ENDPOINT_NOT_DECLARED")
  def test_26_directed_edge_graph_rejected(self):
   self.check_bad(lambda x:x["result_networks"][0]["network"].update({"directed":True}),"SIMPLE_UNDIRECTED")
  def test_27_multigraph_rejected(self):
@@ -147,4 +147,24 @@ class TestR080Original64(unittest.TestCase):
   x=aggregate_all_64_source_files(fake_metadata(),fake64())
   self.assertEqual(x["robot_intervention_causal_effect"],"NOT_IDENTIFIED")
   self.assertEqual(x["PESEN_v0.1"],"FROZEN")
+ def test_43_legitimate_zero_degree_human_isolate_omitted(self):
+  d=copy.deepcopy(self.d)
+  for snap in d["result_networks"]:
+   snap["network"]["nodes"]=[n for n in snap["network"]["nodes"] if n["id"]!="human_0"]
+   snap["network"]["links"]=[e for e in snap["network"]["links"] if "human_0" not in (e["source"],e["target"])]
+  val=parse_network_source(d)
+  self.assertEqual(val["human_nodes"],16)
+  self.assertEqual(len(val["snapshots_private"][0]),14)
+  self.assertAlmostEqual(val["human_rates_private"][0],parse_network_source(self.d)["human_rates_private"][0])
+ def test_44_omitted_bot_even_if_isolated_is_forbidden(self):
+  d=fake_network(n_bots=1)
+  d["result_networks"][0]["network"]["nodes"]=[n for n in d["result_networks"][0]["network"]["nodes"] if n["id"]!="agent_0"]
+  d["result_networks"][0]["network"]["links"]=[e for e in d["result_networks"][0]["network"]["links"] if "agent_0" not in (e["source"],e["target"])]
+  with self.assertRaisesRegex(ValueError,"CANNOT_OMIT_BOT"):
+   parse_network_source(d)
+ def test_45_unknown_node_even_without_edges_is_forbidden(self):
+  d=copy.deepcopy(self.d)
+  d["result_networks"][0]["network"]["nodes"].append({"id":"unknown_actor"})
+  with self.assertRaisesRegex(ValueError,"DUPLICATE_OR_UNKNOWN_NODE"):
+   parse_network_source(d)
 if __name__=="__main__":unittest.main()
