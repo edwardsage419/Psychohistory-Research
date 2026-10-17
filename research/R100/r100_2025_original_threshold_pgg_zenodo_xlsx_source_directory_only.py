@@ -28,6 +28,14 @@ def validate_url(url):
         raise SourceError("R100_NON_OFFICIAL_URL_REJECTED")
 
 
+class ExactOfficialOriginRedirect(urllib.request.HTTPRedirectHandler):
+    """Reject redirected URLs before a request is issued to another origin."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        validate_url(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def verify_bytes(raw, expected_md5=OFFICIAL_MD5):
     if type(raw) is not bytes or not (0 < len(raw) <= MAX_SOURCE):
         raise SourceError("R100_ORIGINAL_SOURCE_SIZE_INVALID")
@@ -85,7 +93,8 @@ def workbook_directory_only(raw):
 def actual_original_publisher_source():
     validate_url(URL)
     req = urllib.request.Request(URL, headers={"User-Agent": "Psychohistory-R100-2025-First-Party-Workbook-Metadata-Only/1.0"})
-    with urllib.request.urlopen(req, timeout=55) as res:
+    opener = urllib.request.build_opener(ExactOfficialOriginRedirect())
+    with opener.open(req, timeout=55) as res:
         validate_url(res.geturl())
         raw = res.read(MAX_SOURCE + 1)
     identity = verify_bytes(raw)
