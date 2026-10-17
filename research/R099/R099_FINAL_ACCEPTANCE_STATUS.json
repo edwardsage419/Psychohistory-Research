@@ -1,0 +1,92 @@
+{
+  "research_id": "R099",
+  "date": "2026-10-17",
+  "administrative_status": "CLOSED_BOUNDED",
+  "evidence_grade": "E2_ORIGINAL_2024_PLOS_96_HUMAN_24_FIXED_FOURPERSON_GROUP_HELDOUT_NOT_FULL_LAB_SESSION_LOSO",
+  "acceptance": {
+    "A01": "PASS_BOUNDED_INDEPENDENT_REAL_2024_PLOS_4PERSON_PUBLIC_GOOD_20ROUND_FROZEN_GROUP_LOOG",
+    "A02": "PASS_OFFICIAL_ORIGINAL_SOURCE_FULL_SHA_AND_96_HUMAN_1920_ACTIONS_24_SOURCE_GROUPS",
+    "A03": "PASS_90_PURE_SYNTHETIC_AND_TWO_REAL_FIRST_PARTY_456_TARGET_REPLAYS_EXACT_SHA",
+    "A04": "PASS_INITIAL_PUBLISHER_SIGNED_REDIRECT_REJECTION_AND_2_NEGATIVE_GROUPS_RETAINED",
+    "A05": "PASS_BOUNDED_RETROSPECTIVE_E2_GROUP_HOLDOUT_NOT_8_TRUE_SESSION_LOSO_NOT_R073_EXACT_PROSPECTIVE_OR_CAUSAL",
+    "A06": "PASS_PHASE_A_A2_B_C_PROTOCOLS_SOURCE_PROGRAM_90_TESTS_DOUBLE_REAL_CI_JSON_REPORT_ROOT_INDEX"
+  },
+  "publisher_source": {
+    "author_team": "Chi-Hsiang Liu; Shih-Feng Tsai; Ting-Cih Chen; Hsiu-Wen Cheng",
+    "paper_DOI": "10.1371/journal.pone.0299196",
+    "first_party_original_S1_CSV_DOI": "10.1371/journal.pone.0299196.s002",
+    "whole_source_bytes": 43467,
+    "whole_original_SHA256": "75dc8ae8b63a6b3ea728df9acab9d27944b82ec4feb5c6055e26751ca9cc4a6e",
+    "publisher_official_MD5_not_independently_published": true,
+    "verified_original_96_distinct_subjects": true,
+    "verified_original_24_fixed_source_groups": true,
+    "verified_original_1920_actor_round_rows": true,
+    "all_groups_have_4_people_and_exact_20_rounds": true,
+    "true_independent_8_lab_session_field_present": false,
+    "paper_reported_8_distinct_lab_sessions": true
+  },
+  "models": {
+    "frozen_scoring_protocol": "protocols/R099_PHASE_C_FIRST_PARTY_PLOS_24_TRUE_FIXED_4PERSON_GROUPS_20ROUND_LOOG_M0_M1_M2_PRESCORE_FREEZE_2026-10-17.md",
+    "original_target": "source heldout original fourperson group contribution sum /80 t2..20",
+    "M0": "same feedback treatment other 11 original group shares in contemporaneous target round",
+    "M1": "heldout original fourperson group previous source round share",
+    "M2": "fixed 0.5 M0 + 0.5 M1",
+    "score": "MSE on same 456 true group round targets",
+    "real_independent_holdout_unit": "one whole 4person fixed original group all 20 rounds",
+    "true_heldout_original_groups": 24,
+    "real_group_round_predictions": 456,
+    "original_real_session_LOSO": false,
+    "real_forward_calendar_prediction": false,
+    "source_Type_or_current_OtherContri_used_as_predictors": false
+  },
+  "actual_original_human_results": {
+    "M0": 0.02438019927142236,
+    "M1": 0.006952097039473685,
+    "M2": 0.009426007939366755,
+    "M1_gain": 0.01742810223194868,
+    "M2_gain": 0.014954191332055599,
+    "M1_group_positive": 22,
+    "M1_group_negative": 2,
+    "M1_group_equal": 0,
+    "M2_group_positive": 24,
+    "M2_group_negative": 0,
+    "anonymous_treatment_A": {
+      "original_groups": 12,
+      "target_group_rounds": 228,
+      "M1_gain": 0.018538053229665067,
+      "positive_groups": 11,
+      "negative_groups": 1
+    },
+    "anonymous_treatment_B": {
+      "original_groups": 12,
+      "target_group_rounds": 228,
+      "M1_gain": 0.01631815123423229,
+      "positive_groups": 11,
+      "negative_groups": 1
+    }
+  },
+  "replays": {
+    "initial_source_only_29synthetic_CI": 39026865693,
+    "original_cohort_nonbehavior_53synthetic_CI": 39027055517,
+    "first_real_author_score_90synthetic_CI": 39027265753,
+    "second_independent_original_publisher_source_sha_90synthetic_score_git_archive_CI": 39027344527,
+    "synthetic_total": 90,
+    "anonymous_result_bytes": 7098,
+    "anonymous_result_SHA256": "91338505fac057c0dbc24f63430f7453f77cf824a1ccb40a737c047fc0449306",
+    "anonymous_result_git_blob": "ef851d7a8bf46da2d8d85472135667ca8d2b15a0"
+  },
+  "limits": {
+    "original_lab_session_ID_not_in_CSV": true,
+    "original_feedback_SF_DF_source_code_mapping_not_independently_verified": true,
+    "group_own_mean_also_contains_previous_peers_actions": true,
+    "group_rows_not_456_independent_experiments": true,
+    "not_R073_exact_individual_own_vs_opponent_lag_model": true,
+    "source_M0_uses_other_source_groups_same_round": true,
+    "not_new_prospective_human_E3": true,
+    "not_direct_psychological_learning_or_signaling_causality": true
+  },
+  "results_path": "research/R099/R099_LIU_2024_PLOS_ORIGINAL_96_HUMAN_24_FOURPERSON_GROUP_456_LOOG_M012_E2_RESULTS.json",
+  "report_path": "research/R099/R099_LIU_2024_ORIGINAL_PLOS_96_HUMAN_24_FOURPERSON_GROUP_456_TRUE_LOOG_E2_SCIENTIFIC_REPORT_2026-10-17.md",
+  "next": "R100 independent original source with true session label and person previous vs opponent previous features frozen before outcome score.",
+  "PESEN_v0_1": "FROZEN"
+}
