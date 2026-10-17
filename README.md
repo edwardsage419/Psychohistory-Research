@@ -201,3 +201,12 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 全部1024原始真人名册身份槽中，**869**身份30轮均有C/D，**31**个30轮全无记录，**120**个有此前合作选择但末段持续缺测，**4**个间歇缺测后有返回；31个从无记录与120个持续末段缺测共解释3064个无C/D槽位中的**3048**个。原始网络快照第t+1索引对齐第t个行动列表项，缺测中的**3060/3064个**与真人图连接度0共现；另有5个真人行动虽图度0仍有C/D，以及4个有边却缺测，全部保留。采用另一快照索引、没有真人邻居但仍有机器人邻居的分层也同步保存。实验2来源五个机器人标记节点248个图快照中，有247个五条人机边，1个四条边（总机器人标记节点度数0的一次事件）。
 
 **这为数据完整性与记录机制建立了可复算的强关联证据，未识别人际或机器人因果：**缺测/图节点状态可能由原实验平台的同一状态规则编码；原初图随机化和每轮重连机会随机化不独立证明机器人实验处理在原始网络之间随机分配。正式[科学结题报告](research/R082/R082_ORIGINAL64_HUMAN_NONRESPONSE_GRAPH_ASSOCIATION_AND_ALLOCATION_CAUSAL_GATE_FINAL_REPORT_2026-10-17.md)、[A01至A06验收](research/R082/R082_FINAL_ACCEPTANCE_STATUS.json)已归档。**R082=CLOSED_BOUNDED、真人原始来源E2、因果资格OPEN、PESEN v0.1=FROZEN**。
+
+
+## R083：原作者真人“协调惩罚偏好”主实验与复验两队列的E2复算（2026-10-17）
+
+本项转向新的条件性惩罚微观机制家族。已经以[冻结协议](protocols/R083_COORDINATED_PUNISHMENT_ORIGINAL_HUMAN_PAIRED_MAIN_REPLICATION_FREEZE_2026-10-17.md)（首次新R083真人结果前提交 `2f9e6ddfb56bc1a83cd3c6484ca7efe307ae6ac0`）锁定 Molleman et al. (2019) *Nature Human Behaviour* 原作者公开 GitHub [固定提交](https://github.com/LucasMolleman/NHB_CoordinatedPunishment/commit/42cba97300910988b7b7386379fa32492d35d8aa)上的完整 Stata 真人原始数据及作者 .do 脚本，两份各自的 Git blob 已经验证。作者原始全4320行，其中2880人次配对拥有本研究定义的 `punisher==1` 完整0/1行为策略记录。
+
+[首次35项合成及真人SHA运行](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39001261509)与[第二次独立原始字节重取、35合成及结果全文件 SHA 完全一致的归档](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39001352142) 均SUCCESS。主实验1336配对在“他人惩罚”与“他人不惩罚”的自身惩罚选择差为**+4.416个百分点**，复验1544配对为**+2.785个百分点**，主实验四格1054/134/75/73与作者原始.do脚本既有值完全一致。结果符合两队列正向的先冻结机制方向门。关键负面分层：主实验原本无条件惩罚者差**−1.974个百分点**、复验该类为+3.017百分点，两个细分检验都未达到常见显著性标准，切勿扩大为任意个体都协调惩罚。
+
+[完整科学报告及因果边界](research/R083/R083_REAL_AUTHOR_COORDINATED_PUNISHMENT_MAIN_REPLICATION_SCIENTIFIC_REPORT_2026-10-17.md)、[原作者SHA二次全字节匿名数字](research/R083/R083_ORIGINAL_HUMAN_COORDINATED_PUNISHMENT_MAIN_REPLICATION_E2_RESULTS.json)（6019字节SHA256 `a75638fbb3619667a077e1fa640bc1b3ca97dce062b2538c779eeac053e216ae`）与[六项正式结题](research/R083/R083_FINAL_ACCEPTANCE_STATUS.json)均在Git main。项目未上传任何原作者个人记录、逐行选择或原始Stata数据。原作者 `rerun` 主/复验样本是否与其他外部作者实验彻底独立、真实他人惩罚的因果作用、处罚制度演化与历史社会发展仍未验证；本项为**已发表原作者数据回顾性E2**，不冒称新招募受试者的E3。**R083=CLOSED_BOUNDED，PESEN v0.1=FROZEN**。
