@@ -13,9 +13,22 @@ MAX_CSV=250000
 SAFE=re.compile(r"^[A-Za-z_][A-Za-z0-9_ .()/:#-]{0,90}$")
 def check_publisher_url(url):
  p=urllib.parse.urlsplit(url)
- if p.scheme!="https" or p.netloc!="journals.plos.org" or p.path!="/plosone/article/file" or p.query not in ("id=10.1371/journal.pone.0299196.s002&type=supplementary","type=supplementary&id=10.1371/journal.pone.0299196.s002"):
+ if p.scheme!="https" or p.username or p.password:
   raise ValueError("R099_PLOS_ORIGINAL_S1_CSV_PUBLISHER_FILE_URL_NOT_PINNED")
- return True
+ if p.netloc=="journals.plos.org" and p.path=="/plosone/article/file":
+  if p.query in ("id=10.1371/journal.pone.0299196.s002&type=supplementary",
+                 "type=supplementary&id=10.1371/journal.pone.0299196.s002"):
+   return True
+ if p.netloc=="storage.googleapis.com" and p.path=="/plos-corpus-prod/10.1371/journal.pone.0299196/1/pone.0299196.s002.csv":
+  q=urllib.parse.parse_qs(p.query,keep_blank_values=True)
+  fields=("X-Goog-Algorithm","X-Goog-Credential","X-Goog-Date",
+          "X-Goog-Expires","X-Goog-SignedHeaders","X-Goog-Signature")
+  if (set(q)==set(fields) and all(len(q[k])==1 and q[k][0] for k in fields)
+   and q["X-Goog-Algorithm"]==["GOOG4-RSA-SHA256"]
+   and q["X-Goog-SignedHeaders"]==["host"]
+   and q["X-Goog-Credential"][0].startswith("wombat-sa@plos-prod.iam.gserviceaccount.com/")):
+   return True
+ raise ValueError("R099_PLOS_ORIGINAL_S1_CSV_PUBLISHER_FILE_URL_NOT_PINNED")
 def verify_bytes(b):
  if not isinstance(b,bytes) or not 100<=len(b)<=MAX_CSV:
   raise ValueError("R099_ORIGINAL_PLOS_S1_CSV_SIZE_INVALID_OR_UNAVAILABLE")
