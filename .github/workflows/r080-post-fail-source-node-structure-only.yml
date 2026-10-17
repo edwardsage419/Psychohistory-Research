@@ -1,0 +1,36 @@
+name: R080 post-fail pure original human bot node missingness source structure diagnostic
+on:
+  push:
+    paths:
+      - '.github/workflows/r080-post-fail-source-node-structure-only.yml'
+      - 'research/R080/r080_post_frozen_gate_true_network_missing_actor_schema_audit.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publisher-sha64-complete-network-node-identity-missingness-no-outcome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Inspect real author full source 64 graphs node representation without cooperation or topology scores
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r080_node_structure_aggregate_only
+          PYTHONPATH=research/R080 python research/R080/r080_post_frozen_gate_true_network_missing_actor_schema_audit.py \
+            --output /tmp/r080_node_structure_aggregate_only/publisher_node_universe_missingness.json
+      - name: Upload only by-treatment human/bot node absence counts, no private node ids or edges
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r080-before-real-outcomes-failed-identity-gate-original-source-node-diagnostics
+          path: /tmp/r080_node_structure_aggregate_only/publisher_node_universe_missingness.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Clean no-score audit
+        if: always()
+        run: rm -rf /tmp/r080_node_structure_aggregate_only
