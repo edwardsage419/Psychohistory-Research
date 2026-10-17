@@ -1,0 +1,48 @@
+name: R077 fourth independent author human study original OSF source access gate only
+on:
+  push:
+    paths:
+      - '.github/workflows/r077-fourth-original-data-source-gate.yml'
+      - 'research/R077/r077_official_fourth_source_reachability.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-format-synthetic-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify mocked ZIP/HTML privacy and hostile archive safety
+        working-directory: research/R075
+        run: python -m unittest -v test_r075_first_party_archive_probe
+  fourth-study-source-reachability-no-human-scoring:
+    needs: original-source-format-synthetic-controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check three scientific primary sources and their 6 official OSF endpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r077_aggregate_only
+          python research/R077/r077_official_fourth_source_reachability.py \
+            --output /tmp/r077_aggregate_only/source_access.json
+      - name: Upload anonymous HTTP source-eligibility metadata only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r077-original-source-eligibility-not-model-scores
+          path: /tmp/r077_aggregate_only/source_access.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Erase temporary source metadata
+        if: always()
+        run: rm -rf /tmp/r077_aggregate_only
