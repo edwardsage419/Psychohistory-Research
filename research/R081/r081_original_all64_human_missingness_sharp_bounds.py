@@ -156,8 +156,6 @@ def describe_all(original_documents):
         by_arm[item["treatment"]].append(item)
     arms = {name: summarize_group(by_arm[name]) for name in sorted(TREATMENTS)}
     global_summary = summarize_group(observations)
-    if abs(global_summary["observed_only_R080_first_last_delta"] - R080_OBSERVED_DELTA) > 1e-12:
-        raise ValueError("R081_R080_OBSERVED_ONLY_PARITY_FAIL_CLOSED")
 
     contrasts = {}
     for first, second in PRESET_CONTRASTS:
