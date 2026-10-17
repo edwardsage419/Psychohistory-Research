@@ -143,3 +143,11 @@ R001 至 R064 的历史 ZIP 归档状态见此前恢复审计。当前最新实�
 第三实验结果：M3 双方上一轮相对 M1 本人上一轮场次等权 Brier `−0.029117`（**18/18场改善**）；M4 双方前两轮相对 M3 Brier `−0.012417`（**15/18场改善**），但零执行噪声处理的3场全部恶化。R074独立第二实验的 M4 净恶化继续保留，说明延长记忆的增量并不跨制度稳定。完整原始匿名数字结果 [R075 19,692字节 JSON](research/R075/R075_REAL_THIRD_HUMAN_18_SESSION_E3_RESULTS.json) SHA256 `eb74129bfd9af62678e9cacf910477854be694317d7b5d875e5ca33dc0f76174`，已由[独立第三次完整原作者数据重放CI](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38991027657)成功核验后永久Git归档，不保存任何原始人类决策行、真实场次标识或个体轨迹。
 
 **R075 `CLOSED_BOUNDED`、A01至A06 PASS，独立第三真人 E3 通过；跨实验零样本数值参数迁移、社会反馈心理因果作用和宏观历史演化仍未证实。PESEN v0.1 继续冻结。**
+
+## R076：R073 原始数值参数零样本迁移到另外两项真人实验（2026-10-17）
+
+[正式R076研究包](research/R076/README.md)已经完成严格 `NO_TARGET_TRAINING_LABELS=TRUE` 的真实来源数值迁移：只在 R073 原始12场、18424个 t>=3 真人风险事件上拟合一次固定的七模型（M0–M6中M0–M4的源概率），再将不变的来源参数直接用于 R074 18场15338个决策与 R075 18场26116个意向行为。24项合成测试与[真实GitHub Actions](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38993686411)两个job success，且[第二次独立原始数据全字节重算和Git归档](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38993752496)同样success。
+
+主要固定来源全部12场时，R074的 M3−M1 Brier `−0.023302`、M4−M3 `−0.002442`；R075分别为 `−0.028524`、`−0.012907`。另两套预定来源对照并列保留：R073固定同伴6场的参数应用到 R074 时 M4 相对 M3 **变差 +0.000823**，不能把记忆深度的获益当成普适性质。[所有三套donor×两目标真实匿名评分](research/R076/R076_RETROSPECTIVE_R073_SOURCE_ONLY_TO_R074_R075_REAL_HUMAN_RESULTS.json)共129126字节SHA256 `ecee82cf3686d6c03cef56fb84c84118b252b7c184b46dc45413e34f876a52da`。
+
+**R076已`CLOSED_BOUNDED`、A01至A06 PASS，但两个目标此前已经被研究者查看过，所以本次属于回顾性跨研究数值迁移，尚不能声称是新的前瞻E3。** [冻结协议与局限](protocols/R076_RETROSPECTIVE_SOURCE_ONLY_ZERO_SHOT_CROSS_STUDY_TRANSFER_FREEZE_2026-10-17.md)及[科学结果报告](research/R076/R076_RETROSPECTIVE_SOURCE_ONLY_REAL_HUMAN_TRANSFER_RESULTS_2026-10-17.md)已同步。PESEN v0.1 继续冻结。
