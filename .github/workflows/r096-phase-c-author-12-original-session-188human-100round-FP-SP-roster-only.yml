@@ -1,0 +1,56 @@
+name: R096 author original 2022 fixed tag 12 true session 188 human 100round FP SP metadata only
+on:
+  push:
+    paths:
+      - '.github/workflows/r096-phase-c-author-12-original-session-188human-100round-FP-SP-roster-only.yml'
+      - 'research/R096/r096_phase_c_original_2022_author_fp_sp_six_true_sessions_roster.py'
+      - 'research/R096/test_r096_phase_c_original_2022_author_fp_sp_six_true_sessions_roster.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-65-original-source-Git-identity-and-session-synthetic-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          PYTHONPATH=research/R096 python -m unittest -v             research/R096/test_r096_montero_2022_original_dryad_100round_FP_SP_source_gate.py             research/R096/test_r096_phase_b_montero_author_git_tag_pinned_original_FP_SP_CSV_source.py             research/R096/test_r096_phase_c_original_2022_author_fp_sp_six_true_sessions_roster.py
+  original-real-2022-researcher-6fixed-6random-188-human-session-nonaction-rosters:
+    needs: all-65-original-source-Git-identity-and-session-synthetic-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Verify author original 2 full pinned blobs SHA and real session participant/opponent identity metadata without reading choices
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r096_source_nonbehavior
+          PYTHONPATH=research/R096 python             research/R096/r096_phase_c_original_2022_author_fp_sp_six_true_sessions_roster.py             --output /tmp/r096_source_nonbehavior/original_group_roster.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          b=pathlib.Path('/tmp/r096_source_nonbehavior/original_group_roster.json').read_bytes()
+          r=json.loads(b)
+          assert r["phase"]=="C_REAL_ORIGINAL_2022_AUTHOR_12SESSION_188_PERSON_100ROUND_NONBEHAVIOR_METADATA_ONLY"
+          assert r["real_original_independent_sessions_total"]==12
+          assert r["real_original_player_ID_codes_total"]==188
+          assert not r["real_original_human_action_or_payoff_values_examined"]
+          assert not r["E2_real_original_session_loso_binary_actions_scored"]
+          assert r["PESEN_v0.1"]=="FROZEN"
+          print("R096_FIXED_AUTHOR_ORIGINAL_TRUE_SESSION_ROSTER_SOURCE_ONLY_BYTES",len(b))
+          print("R096_FIXED_AUTHOR_ORIGINAL_TRUE_SESSION_ROSTER_SOURCE_ONLY_SHA",hashlib.sha256(b).hexdigest())
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r096-true-2022-original-author-six-FP-six-SP-session-100round-source-only
+          path: /tmp/r096_source_nonbehavior/original_group_roster.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - if: always()
+        run: rm -rf /tmp/r096_source_nonbehavior
