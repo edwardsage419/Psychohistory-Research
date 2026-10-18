@@ -1,0 +1,81 @@
+name: R107 2020 original Dryad exact publisher MD5 API alternative firstparty CSV
+on:
+  push:
+    paths:
+      - '.github/workflows/r107-2020-original-Dryad-A3-publisher-MD5-API-download.yml'
+      - 'research/R107/r107_phase_a3_publisher_md5_official_Dryad_API_alternate_header_only.py'
+      - 'research/R107/test_r107_phase_a3_publisher_md5_official_Dryad_API_alternate_header_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure-synthetic-original-source-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Fourteen synthetic source MD5 and exact official API security tests
+        run: PYTHONPATH=research/R107 python -m unittest -v research/R107/test_r107_phase_a3_publisher_md5_official_Dryad_API_alternate_header_only.py
+  actual-published-firstparty-source:
+    needs: pure-synthetic-original-source-safety
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Try only pre-frozen exact publisher API original 296893 bytes and MD5 twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r107_A3_source
+          PYTHONPATH=research/R107 python research/R107/r107_phase_a3_publisher_md5_official_Dryad_API_alternate_header_only.py --output /tmp/r107_A3_source/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r107_A3_source/receipt.json').read_text())
+          assert x['status']=='R107_A3_GENUINE_OFFICIAL_DRYAD_296893_CSV_PUBLISHED_MD5_DOUBLE_SHA_E1'
+          assert x['published_official_MD5_matched']=='039b5cc661fb62210509ac9f8de388d7'
+          assert x['published_official_bytes_matched']==215221
+          assert x['two_separate_exact_official_API_downloads_match'] is True
+          assert x['any_original_human_action_or_person_or_session_value_accessed'] is False
+          assert x['human_model_scores']==0
+          print('R107_A3_TRUE_OFFICIAL_CSV_SHA',x['project_calculated_original_whole_SHA256'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r107-original-2020-dryad-215221-byte-official-MD5-or-auth-blocker
+          path: /tmp/r107_A3_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive immutable allowlisted exact MD5 source or genuine refusal
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r107_A3_source/receipt.json
+          dst=research/R107/R107_PHASE_A3_LIVE_CI_ORIGINAL_DRYAD_API_296893_MD5_DOUBLE_SHA_HEADER_ONLY_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r107_A3_source/receipt.json').read_text())
+          assert x['research_id']=='R107' and x['phase']=='A3'
+          assert x['PESEN_v0_1']=='FROZEN' and x['human_model_scores']==0
+          assert x['status'] in ('R107_A3_OFFICIAL_ALTERNATE_SOURCE_NOT_AUTHENTICATED','R107_A3_GENUINE_OFFICIAL_DRYAD_296893_CSV_PUBLISHED_MD5_DOUBLE_SHA_E1')
+          allowed={'research_id','phase','status','safe_failure','official_dataset_DOI','official_original_file_ID','publisher_origin','original_filename','actual_whole_file_bytes','project_calculated_original_whole_SHA256','publisher_independent_MD5_available_and_verified','original_csv_field_count','original_public_csv_header_names','original_physical_data_lines_without_parsing','any_original_human_action_or_person_or_session_value_accessed','human_model_scores','PESEN_v0_1','published_official_MD5_matched','published_official_bytes_matched','two_separate_exact_official_API_downloads_match'}
+          assert set(x).issubset(allowed)
+          if 'project_calculated_original_whole_SHA256' in x:
+            assert re.fullmatch('[a-f0-9]{64}',x['project_calculated_original_whole_SHA256'])
+            assert x['published_official_MD5_matched']=='039b5cc661fb62210509ac9f8de388d7'
+            assert x['any_original_human_action_or_person_or_session_value_accessed'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R107 A3): official Dryad 2020 CSV published MD5-bound API full source or final bounded refusal"
+          git pull --rebase origin main
+          git push origin HEAD:main
