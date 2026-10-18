@@ -438,3 +438,12 @@ C阶段在人类行为评分前严格冻结M0为**同处理另一个实验sessio
 #### R105 原作者完整MD5真实通过与匿名表头诊断（2026-10-18）
 
 [官方原2024年CPR数据第一手来源研究入口](research/R105/README.md) · [真正原官方MD5及匿名表头源诊断收据](research/R105/R105_PHASE_A2_LIVE_CI_ORIGINAL_CSV_HEADER_CHARACTER_CLASSES_RECEIPT.json)。Zenodo DOI `10.5281/zenodo.10818840` 的真正`data_long_format.csv`整源 **1,131,426字节**通过原出版方MD5 `a3afbb4e52179a0e1d8b1b533f076cc9`，计算整源SHA256 `a7d959361075ae88dc2fc4945b8a7ecd3c8fe3a234ff25dc53b28b9c2c5cdeae`。首次A表头严格拒绝原因经另冻仅看源header的A2审计确认：**37个原字段，其中1个原始空白列名，其他36个原列名符合ASCII字母/下划线的安全格式，唯一标点ASCII95下划线，0重复名**。既有真实失败永久保留；后续[Phase A3严格只允许恰一个无名列合同](protocols/R105_PHASE_A3_ONLY_ONE_EMPTY_ORIGINAL_HEADER_FIELD_COMPATIBILITY_FREEZE_2026-10-18.md)已在真实原行为值读取前冻结，实际来源完整A3是否成功仍以真正机器收据为准，不能凭提交CI流程断言已通过。独立真人历史评价新E2目前**0**，PESEN v0.1 FROZEN。[全库防重复来源资产登记](research/SOURCE_PROVENANCE_DOI_DEDUP_REGISTRY_2026-10-18.json)明确R104=R099真正重复DOI和R098/R100虽然共用Zenodo记录却各指不同文件，避免伪跨实验复现。
+
+
+## R106：跨实验真同伴信息与同权收缩负对照，独立2025原DTA来源新进度（2026-10-18）
+
+[跨R095—R105首个正式正负证据约束综合](research/R106/R106_R095_R105_CROSS_EXPERIMENT_PREDICTIVE_HISTORY_EVIDENCE_CONSTRAINTS_2026-10-18.md) · [R106新实验候选来源去重和研究预选](research/R106/R106_INDEPENDENT_REAL_HUMAN_DATASET_PRESCREEN_SOURCE_DEDUP_AND_EQUAL_SHRINK_FREEZE_2026-10-18.md) · [R106研究资料及实际E1核验](research/R106/README.md)。
+
+最新R105真原作者412人、103组、3708个相同下一轮行为目标，在事前同权收缩对照下**真伙伴历史M3 MSE 0.04770729，普通同权收缩M2 MSE 0.04330681，真伙伴劣于收缩对照83/103组，三制度处理皆同方向**。R102在另一独立实验中M3优于只用本人历史M1的8/8源场次仍成立，但本身未含同权收缩对照；不得由R102推断真人同伴特定信息或心理因果作用已证明。来源去重识别**R095与2020 Schniter/Shields的Zenodo 4321821同源、R096与2022 Montero-Porras的Dryad 37pvmcvmk同源、R099/R104同一PLOS资产**，禁止重新计独立样本。
+
+R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正式Zenodo 15462528下载原`cleandata.dta`，12项纯synthetic后，GitHub Actions真原字节**1,514,315**、出版方发表MD5 **`4cce04ea68b7a0492c242b206efebe53`**完全吻合，项目全文件SHA256 **`1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985`**，[原始一手机器E1收据](research/R106/R106_PHASE_A_LIVE_CI_PEARCE_DROUVELIS_2025_DTA_PUBLISHER_MD5_SOURCE_ONLY_RECEIPT.json)已归档。原2025论文是对Proto等2022研究的真人实验复制，但**这份Stata文件到底包含新招募实验、旧2022原数据还是混合队列仍需作者方法与源字段核验**，没有任何真实DTA行为记录应用读取或模型评分。**R106=SOURCE_E1_CONFIRMED_ONLY，独立新人群与实验场次资格尚未成立，E2=0，R073/PESEN v0.1=FROZEN。** 下一步优先确认真实新队列/同轮对手身份、原实验session和同权负对照，保持既有负证据。
