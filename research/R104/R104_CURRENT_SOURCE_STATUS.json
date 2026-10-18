@@ -1,9 +1,9 @@
 {
   "research_id": "R104",
-  "date": "2026-10-17",
-  "administrative_status": "IN_PROGRESS_ORIGINAL_PLOS_SOURCE_URL_REJECTED",
+  "date": "2026-10-18",
+  "administrative_status": "CLOSED_DUPLICATE_OF_R099_NO_NEW_EXPERIMENT",
   "PESEN_v0_1": "FROZEN",
-  "evidence_grade": "E0_ARTICLE_SUPPLEMENT_LINK_ONLY_WITH_AUTHENTIC_FIRST_SOURCE_URL_FAIL_CLOSED",
+  "evidence_grade": "DUPLICATE_CANDIDATE_NOT_NEW_FIRSTPARTY_SAMPLE",
   "paper_DOI": "10.1371/journal.pone.0299196",
   "author_data_DOI": "10.1371/journal.pone.0299196.s002",
   "paper_reported_human_subjects_unverified": 96,
@@ -22,6 +22,19 @@
     "original_action_values_read": 0,
     "original_human_model_scores": 0
   },
-  "next": "Freeze nofollow official first source endpoint 3xx metadata diagnosis before allowing any altered publisher redirect or body",
-  "no_prospective_or_causal_claims": true
+  "next": "Reject candidates sharing any already recorded source dataset DOI; select truly novel R105 original experiment.",
+  "no_prospective_or_causal_claims": true,
+  "scientific_conclusion": "Same paper DOI and exact official S1 data DOI as completed R099; no new independent experiment, no new E1 or E2.",
+  "duplicate_of": "R099",
+  "prior_validated_source": {
+    "research_id": "R099",
+    "paper_DOI": "10.1371/journal.pone.0299196",
+    "same_exact_original_supplement_DOI": "10.1371/journal.pone.0299196.s002",
+    "original_SHA256": "75dc8ae8b63a6b3ea728df9acab9d27944b82ec4feb5c6055e26751ca9cc4a6e",
+    "original_bytes": 43467,
+    "real_group_round_e2_covered_by_R099_only": 456
+  },
+  "R104_new_real_human_model_targets": 0,
+  "R104_new_independent_replication": false,
+  "formal_correction": "research/R104/R104_FINAL_DUPLICATE_OF_R099_CORRECTION_REPORT_2026-10-18.md"
 }
