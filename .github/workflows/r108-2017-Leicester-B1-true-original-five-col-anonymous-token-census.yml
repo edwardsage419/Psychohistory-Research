@@ -1,0 +1,84 @@
+name: R108 B1 original publisher 2017 human CSV five slot anonymous token syntax census
+on:
+  push:
+    paths:
+      - '.github/workflows/r108-2017-Leicester-B1-true-original-five-col-anonymous-token-census.yml'
+      - 'research/R108/r108_phase_b1_true_2017_CSV_five_col_token_classes_only.py'
+      - 'research/R108/test_r108_phase_b1_true_2017_CSV_five_col_token_classes_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure-synthetic-before-original-cell-value-types:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run eighteen synthetic source MD5 SHA privacy and row token syntax classes
+        run: PYTHONPATH=research/R108 python -m unittest -v research/R108/test_r108_phase_b1_true_2017_CSV_five_col_token_classes_only.py
+  genuine-original-bounded-cell-type-census:
+    needs: pure-synthetic-before-original-cell-value-types
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Genuine 2017 Leicester original publisher MD5 1804 row five anonymous slot syntax types only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r108_B1
+          PYTHONPATH=research/R108 python research/R108/r108_phase_b1_true_2017_CSV_five_col_token_classes_only.py --output /tmp/r108_B1/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r108_B1/receipt.json').read_text())
+          assert x['status']=='R108_B1_AUTHENTIC_2017_ORIGINAL_FIVE_COLUMN_ANONYMOUS_VALUE_TYPE_CENSUS_ONLY'
+          assert x['original_body_rows']==1804 and x['original_source_bytes']==36526
+          assert x['original_whole_SHA256']=='e7dbb6ddc96cc5c65368be0d1918c3ebc7a83c14addd03ab44eeb07790575c18'
+          assert x['original_data_cell_values_transiently_examined_for_syntax'] is True
+          assert x['raw_original_human_person_gender_game_partner_action_values_exported'] is False
+          assert x['original_human_model_scores']==0
+          print('R108_B1_FIRSTPARTY_2017_CSV_SYNTAX_AGGREGATE',x['original_anonymous_column_slot_type_histograms'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r108-2017-official-original-CSV-five-column-anonymous-token-classes
+          path: /tmp/r108_B1/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Permanently archive only anonymous categorical aggregate or source blocker
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r108_B1/receipt.json
+          dst=research/R108/R108_PHASE_B1_LIVE_CI_ORIGINAL_2017_FIVE_COLUMN_ANONYMOUS_CELL_TOKEN_TYPE_CENSUS.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r108_B1/receipt.json').read_text())
+          assert x['research_id']=='R108' and x['phase']=='B1' and x['PESEN_v0_1']=='FROZEN' and x['original_human_model_scores']==0
+          assert x['status'] in ('R108_B1_TRUE_ORIGINAL_TOKEN_CLASS_SOURCE_FAIL_CLOSED','R108_B1_AUTHENTIC_2017_ORIGINAL_FIVE_COLUMN_ANONYMOUS_VALUE_TYPE_CENSUS_ONLY')
+          allowed={'research_id','phase','status','safe_failure','publisher_original_MD5_verified','original_whole_SHA256','original_source_bytes','original_body_rows','original_anonymous_column_slot_type_histograms','first_eight_rows_TYPE_LABELS_ONLY','last_eight_rows_TYPE_LABELS_ONLY','source_row_type_pattern_transition_count','original_all_five_fields_empty_row_count','original_data_cell_values_transiently_examined_for_syntax','raw_original_human_person_gender_game_partner_action_values_exported','original_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'original_anonymous_column_slot_type_histograms' in x:
+            assert set(x['original_anonymous_column_slot_type_histograms'])==set('01234')
+            types={'EMPTY','BIT_0','BIT_1','UNSIGNED_INTEGER','SIGNED_INTEGER','DECIMAL','LETTER_ONLY','ALPHANUMERIC','OTHER_PRINTABLE','NONASCII_CONTROL_OR_LONG'}
+            for slot,d in x['original_anonymous_column_slot_type_histograms'].items():
+              assert set(d)==types and sum(d.values())==1804 and all(type(z)==int and z>=0 for z in d.values())
+            for key in ('first_eight_rows_TYPE_LABELS_ONLY','last_eight_rows_TYPE_LABELS_ONLY'):
+              assert len(x[key])==8 and all(len(row)==5 and all(t in types for t in row) for row in x[key])
+            assert x['raw_original_human_person_gender_game_partner_action_values_exported'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R108 B1): actual 2017 original 1804x5 source anonymous token type categories only, no source values or E2"
+          git pull --rebase origin main
+          git push origin HEAD:main
