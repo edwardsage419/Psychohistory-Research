@@ -1,0 +1,86 @@
+name: R108 A3 official 2017 Leicester original CSV verified S3 delegation full MD5 double SHA
+on:
+  push:
+    paths:
+      - '.github/workflows/r108-2017-Leicester-A3-exact-verified-Figshare-S3-MD5-source.yml'
+      - 'research/R108/r108_phase_a3_verified_Figshare_publisher_S3_delegate_MD5_double_source.py'
+      - 'research/R108/test_r108_phase_a3_verified_Figshare_publisher_S3_delegate_MD5_double_source.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-before-original-human-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Twenty-five synthetic genuine publisher and S3 host-only original source tests
+        run: |
+          PYTHONPATH=research/R108 python -m unittest -v \
+            research/R108/test_r108_phase_a1_original_2017_Leicester_fixed_pair_CSV_MD5_double_SHA_header_only.py \
+            research/R108/test_r108_phase_a3_verified_Figshare_publisher_S3_delegate_MD5_double_source.py
+  actual-two-original-publisher-s3-delegated-source:
+    needs: synthetic-before-original-human-source
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Official author Figshare 10194938 source 18370526 only exact observed delegated S3 MD5 and double SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r108_A3
+          PYTHONPATH=research/R108 python research/R108/r108_phase_a3_verified_Figshare_publisher_S3_delegate_MD5_double_source.py --output /tmp/r108_A3/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r108_A3/receipt.json').read_text())
+          assert x['status']=='R108_A3_TRUE_2017_LEICESTER_FIGSHARE_PUBLISHER_MD5_DOUBLE_S3_SOURCE_E1'
+          assert x['original_source_file_bytes']==36526
+          assert x['original_publisher_whole_MD5_verified']=='7afc755c293dc261d696d1b3f9ba796a'
+          assert x['two_independent_official_publisher_downloads_byte_identical'] is True
+          assert x['verified_publisher_file_delegated_storage_host_only']=='s3-eu-west-1.amazonaws.com'
+          assert x['original_participant_or_choice_cells_dereferenced'] is False
+          assert x['raw_signed_URL_or_original_human_behavior_exported'] is False
+          assert x['original_human_model_scores']==0
+          print("R108_GENUINE_2017_SOURCE_MD5_SHA",x["source_whole_file_SHA256"],x["original_csv_column_count"],x["original_CSV_physical_data_lines_unparsed"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r108-2017-leicester-figshare-official-s3-original-md5-source
+          path: /tmp/r108_A3/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Commit exact anonymous official MD5 header E1 or honest source failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r108_A3/receipt.json
+          dst=research/R108/R108_PHASE_A3_LIVE_CI_OFFICIAL_2017_LEICESTER_FIGSHARE_S3_MD5_DOUBLE_SHA_SOURCE.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r108_A3/receipt.json').read_text())
+          assert x['research_id']=='R108' and x['phase']=='A3' and x['PESEN_v0_1']=='FROZEN'
+          assert x['status'] in ('R108_A3_ORIGINAL_OFFICIAL_DELEGATED_SOURCE_FAIL_CLOSED','R108_A3_TRUE_2017_LEICESTER_FIGSHARE_PUBLISHER_MD5_DOUBLE_S3_SOURCE_E1')
+          fields={'research_id','phase','status','safe_failure','original_dataset_article_ID','original_file_ID','original_source_file_bytes','original_publisher_whole_MD5_verified','source_whole_file_SHA256','original_csv_header_columns','original_csv_column_count','original_CSV_physical_data_lines_unparsed','original_participant_or_choice_cells_dereferenced','original_human_model_scores','PESEN_v0_1','two_independent_official_publisher_downloads_byte_identical','verified_publisher_file_delegated_storage_host_only','raw_signed_URL_or_original_human_behavior_exported'}
+          assert set(x).issubset(fields)
+          if 'source_whole_file_SHA256' in x:
+            assert re.fullmatch(r'[a-f0-9]{64}',x['source_whole_file_SHA256'])
+            assert x['original_participant_or_choice_cells_dereferenced'] is False
+            assert x['raw_signed_URL_or_original_human_behavior_exported'] is False
+            assert len(x['original_csv_header_columns'])==x['original_csv_column_count']
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R108 A3): first-party 2017 300round Leicester original Figshare S3 verified publisher MD5 double SHA E1 or safe blocker"
+          git pull --rebase origin main
+          git push origin HEAD:main
