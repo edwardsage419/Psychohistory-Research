@@ -464,6 +464,16 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 **R106=CLOSED_BOUNDED_E2，R073与PESEN v0.1继续冻结。** 这仅证明另一新双人实验中真对手滞后行动在控制本人权重与外场普通收缩后额外预测收益；仍可能存在对手策略稳定性、博弈状态、历史波动特性等竞争解释，因果社会学习未证，原`left`0/1语义未擅自映射“合作”，完整留出仍是**回顾性而非前瞻E3**。后续R107应在新的独立真人来源评分前冻结*同分布/同波动的错误对手历史负对照*，同时保留R105的阴性和R103来源配对否定，避免单个成功模型演绎跨人类社会普遍规律。
 
 
-## R107研究候选：2020独立空间囚徒困境真实人类网络信息实验，尚无新原源E1或E2（2026-10-18）
+## R107正式E0限定结题：原Dryad数据目录与发行方MD5确立，但公开交付真实403和401（2026-10-18）
 
-[R107正式候选来源与负对照筛选报告](research/R107/R107_2020_Grujic_Lenaerts_SPATIAL_HUMAN_PD_DRYAD_SOURCE_INDEPENDENCE_AND_MATCHED_VARIANCE_PRESCREEN_2026-10-18.md) · [研究入口](research/R107/README.md)。Grujić/Lenaerts 2020《Royal Society Open Science》，DOI 10.1098/rsos.200618；第一手Dryad数据登记DOI **10.5061/dryad.7fq25s8**，公开列出`DataSet.csv`约215.22KB及README。原作者论文描述真人**4×4周期方格网络每场16人、50轮，四邻居，两个不同收益可见性处理**。该来源与R106新英国260人双人游戏是另一不同设计，作者网络与R096有交叉，受试者真正不重叠仍须来源核验。**R107仅E0研究候选**，原CSV未下载认证，网页文件接口曾报告403，不代表GitHub必然不能读；不能把论文16人×50轮设定计为本项目真人预测样本。拟先核验来源全文SHA/字段、source session/位置/邻居和真实信息可见性，之后再冻相同权重和相同前轮来源行为分布/方差的错误邻居安慰剂。此任务是多人网络，不是R106单一真实对手的原合同复验；R073/PESEN v0.1 FROZEN。
+[正式来源科研报告](research/R107/R107_FORMAL_BOUNDED_2020_OFFICIAL_DRYAD_SOURCE_METADATA_MD5_BUT_CSV_403_401_NO_E1_2026-10-18.md) · [机读来源验收](research/R107/R107_FINAL_ACCEPTANCE_STATUS.json)。Grujić/Lenaerts 2020年独立空间格点真人博弈原公开Dryad `DataSet.csv`，准确文件ID296893；已通过官方REST元数据接口实际认证正式**215,221字节**与发行方报告的MD5 `039b5cc661fb62210509ac9f8de388d7`，但**并未取得原CSV实际字节**。原公开文件流入口HTTP**403**，另冻结经官方REST的替代获取入口HTTP**401需授权**；16+12+14项纯synthetic通过，真实失败和来源元数据均原位留收据。**R107=CLOSED_E0_ORIGINAL_PUBLIC_DATA_ACCESS_BLOCKED；MD5未实算匹配，E1=NO、E2=0**。原作者论文的16人4×4网络、50轮四邻居描述不等于本项目可访问的真个体数据，也不能作为心理机制阴性。
+
+## R108正式E1限定结题：2017英国莱斯特作者CSV完整认证，却只有六条300轮匿名条件序列（2026-10-18）
+
+[正式R108科学结题](research/R108/R108_FINAL_BOUNDED_E1_2017_6_CONDITION_BY_300_AGGREGATE_CSV_NOT_ACTOR_DYAD_REPLICATION_REPORT_2026-10-18.md) · [R108 A01—A06机器验收](research/R108/R108_FINAL_ACCEPTANCE_STATUS.json) · [原完整来源E1收据](research/R108/R108_PHASE_A4_LIVE_CI_TRUE_PUBLISHER_MD5_DOUBLE_CSV_HEADER_CHARACTER_CLASS_SOURCE_E1.json) · [真实B2结构复核](research/R108/R108_PHASE_B2_LIVE_CI_TRUE_2017_ORIGINAL_SIX_300_BLOCK_CONDITION_SOURCE_ELIGIBILITY.json)。原作者Colman/Pulford/Krockow，2018年真实固定两人300轮PD，英国莱斯特Figshare文件ID18370526，原文件完整**36,526字节**、正式MD5 `7afc755c293dc261d696d1b3f9ba796a`**确实实算相等**，研究全原文件SHA256 `e7dbb6ddc96cc5c65368be0d1918c3ebc7a83c14addd03ab44eeb07790575c18`，两次原作者官方Figshare→经真实来源主机预审S3完整下载逐字一致。B0真实1804条全五列结构；B1先冻限于匿名单元格类型，不公开任何人/对手/性别/行动原值；B2真实确认**前4行来源注释、后1800数据行恰好6个完全连续1至300轮区块，两个条件槽位独立出现2类×3类，共六个不重复组内不变组合**，末两栏多为连续小数。**原附件没有经认证的本人×真实对手×实验室场次身份字段，不可把六条条件组时间序列冒充六人或六个独立场次。** `R108=CLOSED_E1_ORIGINAL_PUBLISHED_CONDITION_SERIES_NOT_ACTOR_DYAD_E2_ELIGIBLE`；真实逐人E2预测**0**，不代表原论文阴性或R106不能复现。
+
+## R109已获真实来源E1：2016另团队Guelph 156人可换伙伴双人博弈，原CSV场次/伙伴记录尚未建立（2026-10-18）
+
+[R109研究入口](research/R109/README.md) · [R109真实性及B0当前机器状态](research/R109/R109_CURRENT_SOURCE_E1_AND_B0_BOUNDED_STATUS.json) · [真实发布方双源MD5全文认证](research/R109/R109_PHASE_A1_LIVE_CI_2016_GUELPH_ORIGINAL_13127_CSV_PUBLISHED_MD5_DOUBLE_SHA_HEADER_SOURCE.json)。Barclay/Raihani 2016年在圭尔夫大学招募156真人、每场12人、双人重复博弈含惩罚/换伙伴/暂不参与制度。原作者Figshare 3545937附件 `Barclay_Raihani_data supplement.csv` 文件ID5611125，正式原**13,127字节**、官方MD5 `86970b375515176e299686b1b6f70310`与原字节**实算一致**、两次官方完整下载SHA256完全相等：`31c989e9a2a8c3228e37effa0b3a850bbe69e3a9b15cd36dc317a3696e604bb6`。来源表头18列、156条物理数据行，**不得只凭恰好156行推断一人一行或合法真实配对回合**。先冻结的B0仅原数据行宽、10项纯synthetic通过，两个真实官方下载重取尝试均被HTTP来源传输错误安全阻断，两个真失败收据原位保存；不无界重试，不从回合缺席推断背叛。**R109=ACTIVE_E1_PUBLISHER_ORIGINAL_FILE_VERIFIED_B0_SOURCE_REFETCH_TEMPORARILY_BLOCKED；E2=0，R073/PESEN v0.1继续FROZEN**。优先取得合法原作者逐人×对手×真实场次×回合身份码本，再按冻结同权收缩与匹配来源行为分布安慰剂筛选下一项独立真人数据。
+
+[最新滚动来源与重复数据去重登记](research/SOURCE_PROVENANCE_DOI_DEDUP_REGISTRY_2026-10-18.json)：明确R099/R104是同一精确原资产，不把R107元数据或R108六条条件曲线计入独立真人E2复验。
