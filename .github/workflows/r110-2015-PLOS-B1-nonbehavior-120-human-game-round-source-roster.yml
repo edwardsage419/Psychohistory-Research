@@ -1,0 +1,81 @@
+name: R110 B1 2015 UCL 120 human two games 50 round source only actor-game-round nonbehavior roster
+on:
+  push:
+    paths:
+      - '.github/workflows/r110-2015-PLOS-B1-nonbehavior-120-human-game-round-source-roster.yml'
+      - 'research/R110/r110_phase_b1_2015_PLOS_UCL_original_subject_game_round_NONBEHAVIOR_roster.py'
+      - 'research/R110/test_r110_phase_b1_2015_PLOS_UCL_original_subject_game_round_NONBEHAVIOR_roster.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  safe-synthetic-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Sixteen pure 120x2x50 source nonbehavior subject game round roster validation and private source refusal tests
+        run: PYTHONPATH=research/R110 python -m unittest -v research/R110/test_r110_phase_b1_2015_PLOS_UCL_original_subject_game_round_NONBEHAVIOR_roster.py
+  true-publisher-PLOS-UCL-roster-only:
+    needs: safe-synthetic-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Actual original 2015 PLOS S1 complete verified SHA 12000 row source actor game round only, no behavior cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r110_B1
+          PYTHONPATH=research/R110 python research/R110/r110_phase_b1_2015_PLOS_UCL_original_subject_game_round_NONBEHAVIOR_roster.py --output /tmp/r110_B1/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r110_B1/receipt.json').read_text())
+          assert x['status']=='R110_B1_REAL_2015_UCL_SOURCE_NONBEHAVIOR_ACTOR_GAME_ROUND_ROSTER_E1'
+          assert x['original_whole_source_SHA256']=='ea70b0f3d98075f9d3e4401becfcdec8f6bdb5cae00c4dad63a697f9b61d7b5f'
+          assert x['original_human_candidate_rows_from_true_original']==12000
+          assert x['original_cooperation_punishment_optout_demographic_or_partner_coop_prev_cells_read'] is False
+          assert x['original_private_actor_ID_game_tokens_or_raw_action_values_exported'] is False
+          assert x['real_human_next_action_model_scores']==0
+          print('R110_REAL_ORIGINAL_ID_GAME_ROUND_ANON_AGGREGATES',x['source_distinct_pseudonymous_Subject_ID_codes'],x['source_distinct_Subject_ID_by_Game_type_groups'],x['source_anonymous_rows_per_subject_game_histogram'],x['source_duplicate_subject_game_round_keys'],x['exact_paper_reported_120_people_two_games_50_each_source_structure'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r110-2015-ucl-120-human-firstparty-original-subject-game-round-roster-only
+          path: /tmp/r110_B1/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Permanently archive strictly anonymized original 12000 actor-game-round roster or bounded refusal
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r110_B1/receipt.json
+          dst=research/R110/R110_PHASE_B1_LIVE_CI_2015_PLOS_S1_NONBEHAVIOR_ORIGINAL_ACTOR_GAME_ROUND_ROSTER.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r110_B1/receipt.json').read_text())
+          assert x['research_id']=='R110' and x['phase']=='B1' and x['PESEN_v0_1']=='FROZEN'
+          assert x['real_human_next_action_model_scores']==0
+          assert x['status'] in ('R110_B1_REAL_SOURCE_NONBEHAVIOR_IDENTITY_FAIL_CLOSED','R110_B1_REAL_2015_UCL_SOURCE_NONBEHAVIOR_ACTOR_GAME_ROUND_ROSTER_E1')
+          allowed={'research_id','phase','status','safe_failure','source_publisher_DOI','original_whole_source_SHA256','original_human_candidate_rows_from_true_original','source_distinct_pseudonymous_Subject_ID_codes','source_anonymous_rows_per_subject_histogram','source_anonymous_game_type_count_per_subject_histogram','source_distinct_Subject_ID_by_Game_type_groups','source_anonymous_rows_per_subject_game_histogram','source_actor_game_groups_exactly_50_ordinal_rounds_1_to_50','source_duplicate_subject_game_round_keys','source_round_min','source_round_max','source_round_distinct_count','source_anonymous_distinct_game_type_code_count','source_anonymous_distinct_player_type_code_count','source_anonymous_distinct_partner_type_code_count','source_actor_game_groups_player_and_partner_type_stable','exact_paper_reported_120_people_two_games_50_each_source_structure','original_true_lab_session_key_present_in_published_CSV','original_actual_counterpart_Subject_ID_key_present_in_published_CSV','original_subject_ID_or_nonbehavior_condition_values_transiently_read','original_cooperation_punishment_optout_demographic_or_partner_coop_prev_cells_read','original_private_actor_ID_game_tokens_or_raw_action_values_exported','real_human_next_action_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'source_anonymous_rows_per_subject_game_histogram' in x:
+            assert sum(int(k)*v for k,v in x['source_anonymous_rows_per_subject_game_histogram'].items())==12000
+            assert x['original_cooperation_punishment_optout_demographic_or_partner_coop_prev_cells_read'] is False
+            assert x['original_private_actor_ID_game_tokens_or_raw_action_values_exported'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R110 B1): original 2015 UCL PLOS 12000 human source actor game round roster only no choice values or E2"
+          git pull --rebase origin main
+          git push origin HEAD:main
