@@ -46,8 +46,9 @@ def source_header_only(b):
         names=next(csv.reader([line.rstrip(b"\r").decode("utf-8-sig")],strict=True))
     except (UnicodeError,csv.Error,StopIteration) as exc:
         raise SourceGateError("R105_ORIGINAL_FIRST_CSV_HEADER_UNREADABLE") from exc
-    if not 3<=len(names)<=150 or len(names)!=len(set(names)) or any(HEADER_NAME.fullmatch(x) is None for x in names):
-        raise SourceGateError("R105_ORIGINAL_SOURCE_UNSAFE_OR_DUPLICATED_HEADER")
+    if len(names)!=37 or len(names)!=len(set(names)) or names.count("")!=1 or any(HEADER_NAME.fullmatch(x) is None for x in names if x):
+        raise SourceGateError("R105_A3_ORIGINAL_HEADER_ONE_EMPTY_EXACT_37_OTHERWISE_STRICT")
+    safe_names=[x if x else "__UNNAMED_ORIGINAL_SOURCE_COLUMN__" for x in names]
     physical=b.count(b"\n")-1 if b.endswith(b"\n") else b.count(b"\n")
     if not 1<=physical<=100000:
         raise SourceGateError("R105_ORIGINAL_SOURCE_PHYSICAL_ROW_COUNT_INVALID")
