@@ -1,0 +1,84 @@
+name: R105 B authentic 2024 CPR 4120 original people group round source roster, zero behavior
+on:
+  push:
+    paths:
+      - '.github/workflows/r105-2024-Zenodo-CPR-B-real-fixed4p-person-round-roster.yml'
+      - 'research/R105/r105_phase_b_2024_original_cpr_actor_group_round_nonbehavior_roster.py'
+      - 'research/R105/test_r105_phase_b_2024_original_cpr_actor_group_round_nonbehavior_roster.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-before-human-identity-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Eleven 4120-row source actor group round synthetic eligibility checks
+        run: PYTHONPATH=research/R105 python -m unittest -v research/R105/test_r105_phase_b_2024_original_cpr_actor_group_round_nonbehavior_roster.py
+  original-publisher-412-person-fixed-group-source:
+    needs: synthetic-before-human-identity-source
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Actual original published MD5 SHA, read ONLY four source identity columns
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r105_b_source
+          PYTHONPATH=research/R105 python research/R105/r105_phase_b_2024_original_cpr_actor_group_round_nonbehavior_roster.py --output /tmp/r105_b_source/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r105_b_source/receipt.json').read_text())
+          assert x['status']=='R105_ACTUAL_ORIGINAL_412_PERSON_103_FOURPERSON_FIXED_GROUP_TENROUND_ROSTER_ONLY'
+          assert x['whole_original_SHA256']=='a7d959361075ae88dc2fc4945b8a7ecd3c8fe3a234ff25dc53b28b9c2c5cdeae'
+          assert x['original_actor_round_rows']==4120
+          assert x['original_people_by_treatment_ID']==412
+          assert x['original_fixed_group_identity_count']==103
+          assert x['original_ten_round_group_combinations']==1030
+          assert x['any_original_extraction_payoff_or_demographic_cell_dereferenced'] is False
+          assert x['actual_human_model_scores']==0
+          print('R105_AUTHENTIC_ROSTER_SOURCE',x['original_people_by_treatment_ID'],x['original_fixed_group_identity_count'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r105-2024-original-CPR-person-group-round-roster-only
+          path: /tmp/r105_b_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Permanently preserve anonymous genuine source person group roster or fail-closed evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r105_b_source/receipt.json
+          dst=research/R105/R105_PHASE_B_LIVE_CI_ORIGINAL_2024_CPR_PERSON_GROUP_ROUND_ROSTER_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r105_b_source/receipt.json').read_text())
+          assert x['research_id']=='R105' and x['phase']=='B' and x['actual_human_model_scores']==0 and x['PESEN_v0_1']=='FROZEN'
+          assert x['status'] in ('R105_B_ORIGINAL_NONBEHAVIOR_ROSTER_FAIL_CLOSED','R105_ACTUAL_ORIGINAL_412_PERSON_103_FOURPERSON_FIXED_GROUP_TENROUND_ROSTER_ONLY')
+          allowed={'research_id','phase','status','safe_failure','full_original_publisher_md5_verified','whole_original_SHA256','original_actor_round_rows','original_people_by_treatment_ID','original_fixed_group_identity_count','original_ten_round_group_combinations','original_treatment_count','anonymized_original_treatment_counts','source_original_group_size_histogram','source_original_person_round_count_histogram','repeated_player_id_string_across_treatments_count','independent_original_lab_session_column_present','eligible_holdout_unit','raw_human_player_group_or_treatment_codes_exported','any_original_extraction_payoff_or_demographic_cell_dereferenced','actual_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'anonymized_original_treatment_counts' in x:
+            for item in x['anonymized_original_treatment_counts']:
+              assert set(item)=={'source_anonymous_condition','original_individuals','original_fixed_four_person_groups','source_actor_round_rows'}
+              assert re.fullmatch(r'condition_[1-9][0-9]*',item['source_anonymous_condition'])
+            assert x['raw_human_player_group_or_treatment_codes_exported'] is False
+            assert x['any_original_extraction_payoff_or_demographic_cell_dereferenced'] is False
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'receipt(R105 B): authentic 2024 full source 412 actor 103 fixed group 10round only or safe source identity blocker'
+          git pull --rebase origin main
+          git push origin HEAD:main
