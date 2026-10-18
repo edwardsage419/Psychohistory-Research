@@ -1,5 +1,7 @@
 # 心理史学 | Psychohistory Research
 
+**项目所有者最新研究顺序（2026-10-18）**：[优先完成既定R系列模型学习、随后统一分类、最后模型熔炼](docs/R_SERIES_LEARNING_FIRST_CLASSIFY_LATER_FUSION_LAST_OWNER_DECISION_2026-10-18.md)。下方此前“近期优先整理239项目录和关系图”属于旧审阅建议，已被后续决定覆盖执行优先级；这些文档作为历史与未来分类素材保留。模型PESEN v0.1继续冻结；当前R110来源资格失败仍为真实E2=0。个人辅助决策系统建设继续暂缓。
+
 **最新研究与知识状态（2026-10-18）**：[当前简明研究导航](docs/RESEARCH_CURRENT_STATUS_NAV_2026-10-18.md) · [239项目录和长期目标差距核对报告](research/PSYCHOHISTORY_RESEARCH_STATUS_CATALOG_239_AND_LONG_TERM_GOAL_GAP_REVIEW_2026-10-18.md) · [239项学习证据增量叠加表](research/KNOWLEDGE_239_CATALOG_EVIDENCE_OVERLAY_2026-10-18.json) · [跨学科模型关系图（文字版JSON）](research/KNOWLEDGE_CATALOG_RELATIONSHIPS_SCOPED_EVIDENCE_2026-10-18.json)。**原239项目录和历史结题文件保持不变，新增的是待核实的关联索引，不是宣布239项已掌握。** R110的C0首次真实样本资格门已FAIL_CLOSED，未产生真人模型Brier结果；R105真实负面与R106真实正面继续按不同任务保留。PESEN v0.1冻结，个人决策系统构建暂缓。
 
 
