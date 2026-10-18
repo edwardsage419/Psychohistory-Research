@@ -1,0 +1,135 @@
+name: R106 D genuine 2025 UK independent 26 session dyad matched shrinkage M0 to M4 E2
+on:
+  push:
+    paths:
+      - '.github/workflows/r106-2025-independent-UK-26session-D-dyad-equal-shrink-E2.yml'
+      - 'research/R106/r106_phase_d_2025_new_UK_26sessions_own_partner_equal_shrink_brier.py'
+      - 'research/R106/test_r106_phase_d_2025_new_UK_26sessions_own_partner_equal_shrink_brier.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-and-behavior-synthetic-before-any-real-choice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Pin tested Stata reader
+        run: python -m pip install 'pandas==2.2.3'
+      - name: All synthetic source, true person roster, and original dyad history controls before true behavior
+        run: |
+          PYTHONPATH=research/R106 python -m unittest -v \
+            research/R106/test_r106_phase_a_2025_drouvelis_pearce_zenodo_original_dta_md5_only.py \
+            research/R106/test_r106_phase_b_2025_publisher_dta_header_variables_nobs_only.py \
+            research/R106/test_r106_phase_c2_2025_original_sessionid_global_ID_person_partner_roster.py \
+            research/R106/test_r106_phase_d_2025_new_UK_26sessions_own_partner_equal_shrink_brier.py
+  first-party-real-source-and-identical-replay:
+    needs: source-and-behavior-synthetic-before-any-real-choice
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Pin tested Stata reader
+        run: python -m pip install 'pandas==2.2.3'
+      - name: Run first exact original source 26 lab session own true peer vs equal shrinkage E2
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r106_D_real
+          PYTHONPATH=research/R106 python research/R106/r106_phase_d_2025_new_UK_26sessions_own_partner_equal_shrink_brier.py --output /tmp/r106_D_real/first.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r106_D_real/first.json').read_text())
+          assert x["status"]=="R106_D_REAL_2025_UK_LAB_26SESSION_DYADIC_EQUAL_SHRINK_E2"
+          assert x["original_source_SHA256"]=="1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985"
+          assert x["source_true_original_lab_sessions"]==26 and x["source_true_distinct_session_persons"]==260
+          assert x["source_all_stage2_original_person_round_rows"]==3620
+          assert x["source_original_pair_rounds"]==1810
+          assert x["source_all_eligible_target_count"]>=800
+          assert x["source_sessions_with_at_least_one_eligible_target"]>=24
+          assert x["original_human_ID_or_action_rows_exported"] is False
+          assert x["PESEN_v0_1"]=="FROZEN"
+          print("R106_REAL_UK_LAB_NEW_SOURCE_TARGET_COUNT",x["source_all_eligible_target_count"])
+          print("R106_REAL_BRIER_M0_M4",x["overall_all_eligible"]["MSE"])
+          print("R106_REAL_PEER_MINUS_MATCHED_SHRINKAGE",x["overall_all_eligible"]["gains"]["M3_vs_M2_peer_specific"])
+          PY
+      - name: Independently retrieve publisher source and verify canonical E2 result bytes twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R106 python research/R106/r106_phase_d_2025_new_UK_26sessions_own_partner_equal_shrink_brier.py --output /tmp/r106_D_real/second.json
+          python - <<'PY'
+          import json,hashlib,pathlib
+          root=pathlib.Path('/tmp/r106_D_real')
+          first=(root/'first.json').read_bytes()
+          second=(root/'second.json').read_bytes()
+          assert first==second,"R106_D_REAL_ORIGINAL_SOURCE_REPLAY_NOT_BYTE_IDENTICAL"
+          original=json.loads(first)
+          assert original["status"]=="R106_D_REAL_2025_UK_LAB_26SESSION_DYADIC_EQUAL_SHRINK_E2"
+          rec={
+            "research_id":"R106","phase":"D",
+            "status":"R106_D_FIRSTPARTY_INDEPENDENT_26SESSION_2025_E2_DOUBLE_EXACT_REPLAY",
+            "publisher_original_whole_SHA256":original["original_source_SHA256"],
+            "canonical_genuine_score_output_SHA256":hashlib.sha256(first).hexdigest(),
+            "canonical_genuine_score_output_bytes":len(first),
+            "first_and_second_independent_full_original_publisher_downloads_equal_results":True,
+            "actual_original_eligible_human_next_actions":original["source_all_eligible_target_count"],
+            "original_lab_session_holdout_units":original["source_true_original_lab_sessions"],
+            "original_human_ID_or_action_rows_exported":False,
+            "PESEN_v0_1":"FROZEN",
+          }
+          (root/'double_replay_receipt.json').write_text(json.dumps(rec,indent=2,sort_keys=True)+'\n',encoding='utf8')
+          print("R106_D_TWO_GENUINE_E2_SCORE_OUTPUT_BYTES_SHA",len(first),rec["canonical_genuine_score_output_SHA256"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r106-D-real-2025-UK-26session-equal-shrinkage-dyad-source-results
+          path: /tmp/r106_D_real/*.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Permanently archive strict anonymous E2 score and replay or original fail-closed receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=/tmp/r106_D_real
+          src="$root/first.json"
+          dst=research/R106/R106_PHASE_D_LIVE_CI_TRUE_2025_26SESSION_DYADIC_E2_OR_BOUNDED_FAILURE.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,hashlib
+          root=pathlib.Path('/tmp/r106_D_real')
+          x=json.loads((root/'first.json').read_text())
+          assert x["research_id"]=="R106" and x["phase"]=="D" and x["PESEN_v0_1"]=="FROZEN"
+          assert x["status"] in ("R106_D_ORIGINAL_BEHAVIOR_GATE_FAIL_CLOSED","R106_D_REAL_2025_UK_LAB_26SESSION_DYADIC_EQUAL_SHRINK_E2")
+          if x["status"]=="R106_D_ORIGINAL_BEHAVIOR_GATE_FAIL_CLOSED":
+            assert set(x)=={"research_id","phase","status","safe_failure","real_human_model_scores","PESEN_v0_1"}
+            assert x["real_human_model_scores"]==0
+          else:
+            keys={"research_id","phase","status","original_source_SHA256","source_all_stage2_original_person_round_rows","source_true_original_lab_sessions","source_true_distinct_session_persons","source_original_pair_rounds","source_structurally_eligible_target_count","source_frozen_excluded_target_counts","source_all_eligible_target_count","source_sessions_with_at_least_one_eligible_target","true_otherleft_current_partner_action_disagreements","true_p2otherleft_previous_partner_action_disagreements","M0_M4_model_definitions","primary_target","primary_loss","overall_all_eligible","early_practiceperiod_k2_to_k3","late_practiceperiod_k4_plus","anonymous_original_lab_session_results","original_lab_session_contrast_directions","original_human_ID_or_action_rows_exported","not_R073_exact_frozen_dyadic_score_protocol","not_calendar_prospective","not_causal_opponent_social_learning","PESEN_v0_1"}
+            assert set(x)==keys
+            assert len(x["anonymous_original_lab_session_results"])==26
+            assert x["source_all_eligible_target_count"]>=800
+            assert x["original_human_ID_or_action_rows_exported"] is False
+          if (root/'double_replay_receipt.json').exists():
+            y=json.loads((root/'double_replay_receipt.json').read_text())
+            assert y["status"]=="R106_D_FIRSTPARTY_INDEPENDENT_26SESSION_2025_E2_DOUBLE_EXACT_REPLAY"
+            assert y["canonical_genuine_score_output_SHA256"]==hashlib.sha256((root/'first.json').read_bytes()).hexdigest()
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if [ -f "$root/double_replay_receipt.json" ]; then
+            cp "$root/double_replay_receipt.json" research/R106/R106_PHASE_D_LIVE_CI_INDEPENDENT_GENUINE_E2_DOUBLE_REPLAY_RECEIPT.json
+            git add research/R106/R106_PHASE_D_LIVE_CI_INDEPENDENT_GENUINE_E2_DOUBLE_REPLAY_RECEIPT.json
+          fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "results(R106 D): actual newly recruited 26-session dyadic original Brier M0-M4 matched shrink and exact replay or bounded failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
