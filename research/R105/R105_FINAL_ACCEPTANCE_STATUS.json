@@ -1,0 +1,90 @@
+{
+  "research_id": "R105",
+  "date": "2026-10-18",
+  "administrative_status": "CLOSED_BOUNDED_E2_TRUE_PEER_NOT_ABOVE_EQUAL_SHRINKAGE",
+  "evidence_grade": "E2_AUTHENTIC_2024_412_REAL_HUMANS_103_FIXED_4P_GROUPS_3708_NEXT_EXTRACTION_GROUP_LOOG_WITH_EQUAL_SHRINKAGE_NEGATIVE_CONTROL",
+  "PESEN_v0_1": "FROZEN",
+  "unique_original_source": {
+    "original_DOI": "10.5281/zenodo.10818840",
+    "original_filename": "data_long_format.csv",
+    "original_publisher_MD5": "a3afbb4e52179a0e1d8b1b533f076cc9",
+    "original_whole_source_bytes": 1131426,
+    "project_complete_original_SHA256": "a7d959361075ae88dc2fc4945b8a7ecd3c8fe3a234ff25dc53b28b9c2c5cdeae",
+    "original_header_fields": 37,
+    "original_unnamed_header_fields": 1,
+    "original_nonbehavior_verified_persons": 412,
+    "original_fixed_fourperson_groups": 103,
+    "original_person_rounds": 4120,
+    "original_group_rounds": 1030,
+    "source_conditions_anonymous_groups": [
+      25,
+      39,
+      39
+    ],
+    "source_has_independent_lab_session_field": false,
+    "author_overlaps_R096": true,
+    "same_original_cohort_as_R096_not_assumed": true
+  },
+  "prescore_contract": "protocols/R105_PHASE_C_2024_CPR_TRUE_PEER_VS_EQUAL_SHRINKAGE_AND_ROTATED_DONOR_LOOG_PRESCORE_FREEZE_2026-10-18.md",
+  "models": {
+    "target": "original participant extraction t divided by 30, t2..10",
+    "holdout": "whole original fixed fourperson group all 10 rounds",
+    "M0": "other same-condition groups contemporaneous target round mean",
+    "M1": "focal person t-1",
+    "M2": "0.5 M1+0.5 other training groups t-1 pooled mean",
+    "M3": "0.5 M1+0.5 real other three prior fixed-group members t-1",
+    "M4": "0.5 M1+0.5 one deterministic next cyclic same-condition group prior round",
+    "score": "same 3708 human next-round actor records, MSE lower better"
+  },
+  "actual_human_results": {
+    "n": 3708,
+    "MSE_M0": 0.048223721575568146,
+    "MSE_M1": 0.061114706939949665,
+    "MSE_M2": 0.04330681321947243,
+    "MSE_M3": 0.04770729287359996,
+    "MSE_M4": 0.04668966498861321,
+    "M3_improvement_vs_M1": 0.013407414066349703,
+    "M3_improvement_vs_M0": 0.0005164287019681843,
+    "primary_M3_improvement_vs_equal_shrinkage_M2": -0.004400479654127529,
+    "primary_true_group_improvement_over_equal_shrinkage_positive_groups": 20,
+    "primary_true_group_improvement_over_equal_shrinkage_negative_groups": 83,
+    "M3_improvement_vs_rotated_donor_M4": -0.0010176278849867507,
+    "rotated_donor_comparison_positive_groups": 53,
+    "rotated_donor_comparison_negative_groups": 50,
+    "condition_1_M3_vs_M2": -0.0036725265775034294,
+    "condition_2_M3_vs_M2": -0.004660231020141979,
+    "condition_3_M3_vs_M2": -0.004607364875692632,
+    "all_three_treatments_primary_negative": true,
+    "early_default_t2_to_t5_M3_vs_M2": -0.00314287813115232,
+    "transition_t6_M3_vs_M2": -0.005226303622449961,
+    "late_t7_to_t10_M3_vs_M2": -0.005451625185022131
+  },
+  "independent_replay": {
+    "pure_synthetic_gate_tests": 35,
+    "first_real_source_score": "research/R105/R105_PHASE_C_ACTUAL_FIRSTPARTY_3708_PEER_VS_SHRINK_E2_OR_SOURCE_FAILURE.json",
+    "independent_original_download_replay": "research/R105/R105_PHASE_C_DOUBLE_INDEPENDENT_ORIGINAL_E2_REPLAY_RECEIPT.json",
+    "anonymized_result_file_bytes": 9705,
+    "anonymized_result_complete_SHA256": "d35f4afb71033a4594e2326594754f9ac43ee1ae4c29492720581a81e6bba2e5",
+    "double_independent_real_publisher_original_score_byte_identical": true
+  },
+  "limits": {
+    "specific_real_peer_history_not_above_equal_shrinkage_for_this_frozen_model": true,
+    "no_claim_that_all_peer_social_learning_mechanisms_absent": true,
+    "source_online_cohort_not_103_independently_recruited_lab_sessions": true,
+    "M0_uses_contemporaneous_other_group_targets_for_retrospective_benchmark": true,
+    "no_R073_exact_dyadic_model_replication": true,
+    "no_E3_calendar_prospective_results": true,
+    "no_causal_social_learning_identification": true,
+    "group_level_not_3708_iid_pvalues": true
+  },
+  "acceptance": {
+    "A01": "PASS_NEW_REAL_SOURCE_DOI_DISTINCT_FROM_R099_R104_AND_PRIOR_SAMPLES_AUTHOR_OVERLAP_REPORTED",
+    "A02": "PASS_FULL_OFFICIAL_ZENODO_MD5_SOURCE_SHA_412_PPL_103_GROUPS_10_ROUNDS_NONBEHAVIOR_FIRST",
+    "A03": "PASS_35_SYNTHETIC_BEFORE_ACTIONS_TWO_INDEPENDENT_REAL_3708_SCORE_REPLAYS_BYTE_IDENTICAL_SHA",
+    "A04": "PASS_MAIN_NEGATIVE_20_POSITIVE_83_NEGATIVE_ORIGINAL_GROUPS_ALL_3_TREATMENTS_AND_STAGES",
+    "A05": "PASS_BOUNDED_EQUAL_SHRINKAGE_NEGATIVE_NOT_GENERAL_CAUSAL_NO_E3_NO_ORIGINAL_SESSION_LOSO",
+    "A06": "PASS_FROZEN_SOURCE_A_A2_A3_A3B_B_C_PROTOCOLS_CODE_TESTS_CI_GENUINE_JSON_DOUBLE_SHA_REPORT_README_ROOT"
+  },
+  "formal_report": "research/R105/R105_2024_412_REAL_HUMANS_103_GROUPS_3708_PEER_VS_SHRINK_E2_NEGATIVE_SCIENTIFIC_REPORT_2026-10-18.md",
+  "next": "R106 novel independently authenticated real human repeated game with original true session/person/opponent identities and prescored shrinkage matched negative control; keep negative and positive effects."
+}
