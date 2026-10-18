@@ -1,0 +1,91 @@
+name: R106 C 2025 original 3620 Stata nonbehavior 26session candidate dyad cohort roster only
+on:
+  push:
+    paths:
+      - '.github/workflows/r106-2025-pearce-drouvelis-Zenodo-C-nonbehavior-26sessions-dyad.yml'
+      - 'research/R106/r106_phase_c_2025_original_26session_dyadic_nonbehavior_roster_census.py'
+      - 'research/R106/test_r106_phase_c_2025_original_26session_dyadic_nonbehavior_roster_census.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-before-any-source-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin reviewed Stata reader
+        run: python -m pip install 'pandas==2.2.3'
+      - name: 12 original Stata header and 12 synthetic dyad cohort nonbehavior privacy checks
+        run: |
+          PYTHONPATH=research/R106 python -m unittest -v \
+            research/R106/test_r106_phase_b_2025_publisher_dta_header_variables_nobs_only.py \
+            research/R106/test_r106_phase_c_2025_original_26session_dyadic_nonbehavior_roster_census.py
+  real-original-2025-dyadic-roster-only:
+    needs: synthetic-before-any-source-identity
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin reviewed Stata reader
+        run: python -m pip install 'pandas==2.2.3'
+      - name: Authenticated first-party MD5 SHA 3620 real Stata only 12 nonbehavior identity source fields
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r106_c_nonbehavior
+          PYTHONPATH=research/R106 python research/R106/r106_phase_c_2025_original_26session_dyadic_nonbehavior_roster_census.py --output /tmp/r106_c_nonbehavior/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r106_c_nonbehavior/receipt.json').read_text())
+          assert x["status"]=="R106_C_ORIGINAL_STATA_NONBEHAVIOR_2025_SESSION_DYAD_ROSTER_CENSUS_ONLY"
+          assert x["original_full_source_SHA256"]=="1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985"
+          assert x["original_data_frame_rows_header_verified"]==3620
+          assert x["original_stata_column_count"]==148
+          assert x["original_choice_own_partner_or_prior_partner_columns_application_accessed"] is False
+          assert x["source_raw_person_session_group_identifiers_exported"] is False
+          assert x["original_human_model_scores"]==0
+          print("R106_C_FIRSTPARTY_2025_SOURCE_SESSION_PERSON_MATCH",x["original_source_distinct_session_labels"],x["original_distinct_source_session_subject_pairs"],x["part2_original_source_pair_eligible_actor_fraction"])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r106-2025-original-source-session-pair-nonbehavior-census
+          path: /tmp/r106_c_nonbehavior/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive strictly anonymous real author cohort pairs or fixed rejection
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r106_c_nonbehavior/receipt.json
+          dst=research/R106/R106_PHASE_C_LIVE_CI_ORIGINAL_SOURCE_NONBEHAVIOR_SESSION_DYAD_ROSTER_CENSUS.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r106_c_nonbehavior/receipt.json').read_text())
+          assert x["research_id"]=="R106" and x["phase"]=="C" and x["PESEN_v0_1"]=="FROZEN" and x["original_human_model_scores"]==0
+          assert x["status"] in ("R106_C_ORIGINAL_STATA_NONBEHAVIOR_ROSTER_FAIL_CLOSED","R106_C_ORIGINAL_STATA_NONBEHAVIOR_2025_SESSION_DYAD_ROSTER_CENSUS_ONLY")
+          allowed={"research_id","phase","status","safe_failure","original_source_DOI","original_full_source_SHA256","original_data_frame_rows_header_verified","original_stata_column_count","original_source_distinct_session_labels","original_distinct_source_session_subject_pairs","original_distinct_source_session_subject_pairs_part2","source_persons_per_session_histogram","source_session_person_pairs_with_multiple_rows","source_ID_codes_reused_across_source_sessions","source_part_category_row_counts","source_distinct_game_code_count_only","source_missing_session_or_subject_source_rows","source_rows_not_eligible_for_group_period_pair_key","source_technical_round_field_completeness_counts","all_part_source_pair_coverage","part2_only_source_pair_coverage","part2_source_actor_rows","part2_original_source_pair_eligible_actor_fraction","article_reported_26_lab_sessions_260_new_people_not_yet_source_reconciled","Stata_library_internally_decodes_rows_but_application_retrieves_only_whitelisted_nonbehavior_fields","original_choice_own_partner_or_prior_partner_columns_application_accessed","source_raw_person_session_group_identifiers_exported","original_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if 'source_persons_per_session_histogram' in x:
+            for field in ("source_persons_per_session_histogram","source_part_category_row_counts"):
+              assert all(re.fullmatch(r'[0-9]+|missing_or_other',str(k)) and type(v)==int for k,v in x[field].items())
+            assert x["source_raw_person_session_group_identifiers_exported"] is False
+            assert x["original_choice_own_partner_or_prior_partner_columns_application_accessed"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R106 C): genuine original 2025 session-subject-pair nonbehavior census or safety rejection, no actions"
+          git pull --rebase origin main
+          git push origin HEAD:main
