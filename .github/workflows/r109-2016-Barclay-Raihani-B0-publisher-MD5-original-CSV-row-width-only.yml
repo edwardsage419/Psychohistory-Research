@@ -1,0 +1,77 @@
+name: R109 B0 original 2016 Barclay Raihani official MD5 CSV rows widths only
+on:
+  push:
+    paths:
+      - '.github/workflows/r109-2016-Barclay-Raihani-B0-publisher-MD5-original-CSV-row-width-only.yml'
+      - 'research/R109/r109_phase_b0_2016_original_18col_CSV_row_width_no_cells.py'
+      - 'research/R109/test_r109_phase_b0_2016_original_18col_CSV_row_width_no_cells.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Ten pure published MD5 original CSV row widths and privacy checks
+        run: PYTHONPATH=research/R109 python -m unittest -v research/R109/test_r109_phase_b0_2016_original_18col_CSV_row_width_no_cells.py
+  genuine-original-2016-CSV-row-metadata-only:
+    needs: synthetic-source-only
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Actual original 2016 13127B publisher MD5 SHA 156 line CSV rows only no human cells
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r109_B0
+          PYTHONPATH=research/R109 python research/R109/r109_phase_b0_2016_original_18col_CSV_row_width_no_cells.py --output /tmp/r109_B0/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r109_B0/receipt.json').read_text())
+          assert x['status']=='R109_B0_GENUINE_2016_MD5_BOUND_ORIGINAL_CSV_ANONYMOUS_ROW_WIDTH_ONLY'
+          assert x['original_complete_SHA256']=='31c989e9a2a8c3228e37effa0b3a850bbe69e3a9b15cd36dc317a3696e604bb6'
+          assert x['original_publisher_md5_verified']=='86970b375515176e299686b1b6f70310'
+          assert x['actual_human_source_data_cell_values_accessed'] is False and x['actual_human_model_scores']==0
+          print('R109_B0_TRUE_SOURCE_ANONYMOUS_ROW_HISTOGRAM',x['anonymous_source_body_row_width_counts'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r109-genuine-2016-156-source-rows-no-original-human-cells
+          path: /tmp/r109_B0/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Preserve firstparty original row width aggregate or source blocker
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r109_B0/receipt.json
+          dst=research/R109/R109_PHASE_B0_LIVE_CI_2016_GUELPH_ORIGINAL_CSV_ROW_WIDTH_ONLY.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r109_B0/receipt.json').read_text())
+          assert x['research_id']=='R109' and x['phase']=='B0' and x['PESEN_v0_1']=='FROZEN' and x['actual_human_model_scores']==0
+          assert x['status'] in ('R109_B0_ORIGINAL_SOURCE_ROW_WIDTH_FAIL_CLOSED','R109_B0_GENUINE_2016_MD5_BOUND_ORIGINAL_CSV_ANONYMOUS_ROW_WIDTH_ONLY')
+          allowed={'research_id','phase','status','safe_failure','original_publisher_md5_verified','original_complete_SHA256','original_source_full_bytes','source_CSV_header_column_count','original_physical_data_line_count','original_CSV_logical_body_row_count','anonymous_source_body_row_width_counts','all_original_CSV_body_rows_width_18','source_anonymous_first_8_data_row_widths','source_anonymous_last_8_data_row_widths','original_body_row_width_transition_count','actual_human_source_data_cell_values_accessed','source_independent_original_lab_session_ID_verified','source_person_opponent_round_mapping_verified','actual_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'anonymous_source_body_row_width_counts' in x:
+            assert sum(x['anonymous_source_body_row_width_counts'].values())==x['original_CSV_logical_body_row_count']
+            assert x['actual_human_source_data_cell_values_accessed'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R109 B0): 2016 genuine Guelph original published MD5 156 source data row widths only, no behavior"
+          git pull --rebase origin main
+          git push origin HEAD:main
