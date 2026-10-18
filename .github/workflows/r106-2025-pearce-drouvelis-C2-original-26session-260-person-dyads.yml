@@ -1,0 +1,84 @@
+name: R106 C2 authentic 2025 sessionid ID cohort 26 sessions 260 people and two-person source keys
+on:
+  push:
+    paths:
+      - '.github/workflows/r106-2025-pearce-drouvelis-C2-original-26session-260-person-dyads.yml'
+      - 'research/R106/r106_phase_c2_2025_original_sessionid_global_ID_person_partner_roster.py'
+      - 'research/R106/test_r106_phase_c2_2025_original_sessionid_global_ID_person_partner_roster.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-before-original-person-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install 'pandas==2.2.3'
+      - name: Twelve pure synthetic 26 source sessions x 10 persons dyadic records and negative tests
+        run: PYTHONPATH=research/R106 python -m unittest -v research/R106/test_r106_phase_c2_2025_original_sessionid_global_ID_person_partner_roster.py
+  real-original-source-26session-ID-roster:
+    needs: synthetic-before-original-person-identity
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install 'pandas==2.2.3'
+      - name: Exact authentic publisher MD5 3620 original records source sessionid ID Group Period only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r106_c2
+          PYTHONPATH=research/R106 python research/R106/r106_phase_c2_2025_original_sessionid_global_ID_person_partner_roster.py --output /tmp/r106_c2/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r106_c2/receipt.json').read_text())
+          assert x['status']=='R106_C2_GENUINE_2025_RECRUITED_26SESSION_260_ID_SOURCE_DYADS_ELIGIBLE'
+          assert x['original_whole_study_SHA256']=='1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985'
+          assert x['original_full_source_rows']==3620
+          assert x['original_sessions_by_numeric_sessionid']==26
+          assert x['original_unique_global_ID_people']==260
+          assert x['source_identity_and_candidate_pair_gate_passed'] is True
+          assert x['original_human_source_action_columns_application_accessed'] is False
+          assert x['real_human_model_scores']==0
+          print('R106_C2_GENUINE_ORIGINAL_SESSION_PERSON_PAIR_COUNTS',x['original_sessions_by_numeric_sessionid'],x['original_unique_global_ID_people'],x['candidate_source_part2_row_pair_coverage'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r106-C2-true-source-26session-260person-structural-dyad-receipt
+          path: /tmp/r106_c2/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Commit true original cohort eligibility or bounded source refusal
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r106_c2/receipt.json
+          dst=research/R106/R106_PHASE_C2_LIVE_CI_AUTHENTIC_2025_26SESSION_260PERSON_DYAD_SOURCE_ROSTER.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r106_c2/receipt.json').read_text())
+          assert x["research_id"]=="R106" and x["phase"]=="C2" and x["PESEN_v0_1"]=="FROZEN" and x["real_human_model_scores"]==0
+          assert x["status"] in ("R106_C2_SOURCE_IDENTITY_FAIL_CLOSED","R106_C2_BOUNDED_2025_SOURCE_DYAD_ROSTER_INELIGIBLE","R106_C2_GENUINE_2025_RECRUITED_26SESSION_260_ID_SOURCE_DYADS_ELIGIBLE")
+          allowed={"research_id","phase","status","safe_failure","original_whole_study_SHA256","original_full_source_rows","original_sessions_by_numeric_sessionid","original_unique_global_ID_people","source_session_persons_count_histogram","source_part_task_record_counts","source_rows_with_missing_or_invalid_true_person_pair_fields","source_Session_string_alias_missing_or_unrecognized_rows","source_Session_string_aliases_shared_across_different_real_sessionid_count","source_real_sessionid_with_multiple_Session_string_alias_count","source_global_ID_codes_reused_between_sessions","source_session_person_Subject_mapping_conflict_count","original_person_period_key_duplicate_record_count","source_distinct_paired_group_period_candidates","source_group_period_row_size_histogram","source_group_period_keys_with_same_ID_repeated","candidate_true_two_distinct_person_group_period_events","source_part2_actor_rows_in_true_candidate_pairs","source_part2_all_actor_rows","candidate_source_part2_row_pair_coverage","source_sessions_with_any_exact_two_ID_candidate_pair","source_identity_and_candidate_pair_gate_passed","original_human_source_action_columns_application_accessed","Stata_reader_internally_decodes_source_rows","raw_person_session_pair_ID_values_exported","real_human_model_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if 'source_session_persons_count_histogram' in x:
+            assert all(re.fullmatch('[0-9]+',str(k)) and type(v)==int and v>=0 for k,v in x['source_session_persons_count_histogram'].items())
+            assert x['original_human_source_action_columns_application_accessed'] is False
+            assert x['raw_person_session_pair_ID_values_exported'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R106 C2): true new source 26-session 260-ID dyad pair eligibility or bounded source failure before actions"
+          git pull --rebase origin main
+          git push origin HEAD:main
