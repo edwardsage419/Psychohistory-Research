@@ -1,0 +1,126 @@
+name: R110 C0 genuine UCL 2015 120human 240 games source peer lag versus equal shrink and matched sham Brier
+on:
+  push:
+    paths:
+      - '.github/workflows/r110-2015-UCL-C0-publisher-peer-lag-Brier-equal-shrink-variance-sham-E2.yml'
+      - 'research/R110/r110_phase_c0_2015_UCL_120actor_peer_lag_vs_equal_shrink_variance_sham_brier.py'
+      - 'research/R110/test_r110_phase_c0_2015_UCL_120actor_peer_lag_vs_equal_shrink_variance_sham_brier.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-frozen-original-and-real-model-synthetics-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Full pure original source, actor roster, negative synthetic own-only and partner-only Brier and placebo tests
+        run: |
+          PYTHONPATH=research/R110 python -m unittest -v \
+            research/R110/test_r110_phase_a1_2015_PLOS_S1_verified_google_storage_original_doubleSHA_header_only.py \
+            research/R110/test_r110_phase_b1_2015_PLOS_UCL_original_subject_game_round_NONBEHAVIOR_roster.py \
+            research/R110/test_r110_phase_c0_2015_UCL_120actor_peer_lag_vs_equal_shrink_variance_sham_brier.py
+  actual-firstparty-2015-human-brier-real-double-replay:
+    needs: source-frozen-original-and-real-model-synthetics-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: First genuine original PLOS UCL 2015 binary cooperative next actions M0 M4 fixed Brier E2
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r110_C0
+          PYTHONPATH=research/R110 python research/R110/r110_phase_c0_2015_UCL_120actor_peer_lag_vs_equal_shrink_variance_sham_brier.py --output /tmp/r110_C0/first.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r110_C0/first.json').read_text())
+          assert x['status']=='R110_C0_TRUE_2015_UCL_120_SOURCE_PEER_LAG_BOUNDED_ACTOR_EXCLUDED_BRIER_E2'
+          assert x['original_full_source_SHA256']=='ea70b0f3d98075f9d3e4401becfcdec8f6bdb5cae00c4dad63a697f9b61d7b5f'
+          assert x['total_true_original_person_game_round_records']==12000
+          assert x['source_eligible_next_binary_actions']>=800
+          assert x['source_distinct_actors_with_eligible_targets']>=40
+          assert x['original_source_has_true_lab_session_ID'] is False
+          assert x['original_source_has_counterpart_person_ID'] is False
+          assert x['original_source_actor_ID_or_choice_values_exported'] is False
+          assert x['not_genuine_lab_session_LOSO'] is True
+          assert x['PESEN_v0_1']=='FROZEN'
+          print("R110_TRUE_UCL_2015_REAL_BEHAVIOR_TARGETS",x['source_eligible_next_binary_actions'])
+          print("R110_M0_M4_ALL_IDENTICAL_BRIER",x['overall_identical_source_next_action_targets']['brier'])
+          print("R110_M3_MINUS_EQUAL_SHRINK_MAIN",x['overall_identical_source_next_action_targets']['gains']['M3_vs_M2_equal_shrink'])
+          print("R110_M3_MINUS_MATCHED_VARIANCE_SHAM",x['overall_identical_source_next_action_targets']['gains']['M3_vs_M4_same_marginal_shuffled_peer'])
+          PY
+      - name: Fresh genuine original publisher source independently re-downloaded with exact byte-identical forecast output
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R110 python research/R110/r110_phase_c0_2015_UCL_120actor_peer_lag_vs_equal_shrink_variance_sham_brier.py --output /tmp/r110_C0/second.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          root=pathlib.Path('/tmp/r110_C0')
+          a=(root/'first.json').read_bytes();b=(root/'second.json').read_bytes()
+          assert a==b,"R110_C0_TWO_INDEPENDENT_PLOS_S1_DOWNLOAD_AND_BRIER_REPLAY_DIFFER"
+          x=json.loads(a)
+          assert x['status']=='R110_C0_TRUE_2015_UCL_120_SOURCE_PEER_LAG_BOUNDED_ACTOR_EXCLUDED_BRIER_E2'
+          out={
+            "research_id":"R110","phase":"C0",
+            "status":"R110_C0_TRUE_2015_UCL_PUBLISHER_TWO_INDEPENDENT_120HUMAN_BRIER_E2_BYTE_EXACT",
+            "official_original_S1_whole_SHA256":x['original_full_source_SHA256'],
+            "full_anonymous_original_real_Brier_output_SHA256":hashlib.sha256(a).hexdigest(),
+            "full_anonymous_original_real_Brier_output_bytes":len(a),
+            "two_separate_publisher_file_downloads_and_full_real_E2_outputs_identical":True,
+            "true_original_qualified_next_action_targets":x['source_eligible_next_binary_actions'],
+            "true_original_distinct_actors":x['source_distinct_actors_with_eligible_targets'],
+            "original_true_lab_session_LOSO":False,
+            "PESEN_v0_1":"FROZEN",
+          }
+          (root/'source_and_score_double_replay_receipt.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print("R110_TRUE_ORIGINAL_E2_EXACT_SHA",out['full_anonymous_original_real_Brier_output_SHA256'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r110-2015-UCL-genuine-120-human-source-bounded-matched-shrink-sham-Brier
+          path: /tmp/r110_C0/*.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Archive actual source E2 or bounded behavioral validation gate failure immutable
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r110_C0/first.json
+          dst=research/R110/R110_PHASE_C0_LIVE_CI_2015_UCL_ACTOR_PEER_SIGNAL_MATCHED_SHRINK_SHAM_E2_OR_BOUNDED_FAILURE.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r110_C0/first.json').read_text())
+          assert x['research_id']=='R110' and x['phase']=='C0' and x['PESEN_v0_1']=='FROZEN'
+          assert x['status'] in ('R110_C0_TRUE_SOURCE_BEHAVIOR_OR_PRESCORE_GATE_FAIL_CLOSED','R110_C0_TRUE_2015_UCL_120_SOURCE_PEER_LAG_BOUNDED_ACTOR_EXCLUDED_BRIER_E2')
+          if x['status']=='R110_C0_TRUE_SOURCE_BEHAVIOR_OR_PRESCORE_GATE_FAIL_CLOSED':
+            assert set(x)=={'research_id','phase','status','safe_failure','real_human_model_scores','PESEN_v0_1'} and x['real_human_model_scores']==0
+          else:
+            fields={'research_id','phase','status','published_original_source_DOI','original_full_source_SHA256','original_120_actor_two_50_game_roster_exact','total_true_original_person_game_round_records','source_eligible_next_binary_actions','source_distinct_actors_with_eligible_targets','source_game_categories_with_eligible_targets','source_legal_target_exclusion_reason_counts','model_definition','original_source_has_true_lab_session_ID','original_source_has_counterpart_person_ID','original_author_prior_partner_signal_not_independently_partner_ID_verified','same_marginal_sham_donor_might_be_actual_partner','target_original_Player_cooperated_binary_0_1','loss','overall_identical_source_next_action_targets','early_t2_to_t10','late_t11_to_t50','original_game_2_conditions_anonymous_results','anonymous_source_actor_level_results','source_actor_cluster_contrast_directions','fixed_source_actor_bootstrap_descriptive_only','original_source_actor_ID_or_choice_values_exported','not_genuine_lab_session_LOSO','not_exact_R073_model_reproduction','not_causal_social_learning','not_prospective_calendar_E3','PESEN_v0_1'}
+            assert set(x)==fields
+            assert x['source_eligible_next_binary_actions']>=800
+            assert 40<=x['source_distinct_actors_with_eligible_targets']<=120
+            assert len(x['anonymous_source_actor_level_results'])==x['source_distinct_actors_with_eligible_targets']
+            assert len(x['original_game_2_conditions_anonymous_results'])==2
+            assert x['original_source_actor_ID_or_choice_values_exported'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if [ -f /tmp/r110_C0/source_and_score_double_replay_receipt.json ]; then
+            cp /tmp/r110_C0/source_and_score_double_replay_receipt.json research/R110/R110_PHASE_C0_LIVE_CI_TRUE_2015_UCL_INDEPENDENT_DOUBLE_SOURCE_E2_REPLAY_SHA.json
+            git add research/R110/R110_PHASE_C0_LIVE_CI_TRUE_2015_UCL_INDEPENDENT_DOUBLE_SOURCE_E2_REPLAY_SHA.json
+          fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "results(R110 C0): true original 2015 120 UCL humans peer lag vs matched shrink and marginal sham Brier E2 or bounded failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
