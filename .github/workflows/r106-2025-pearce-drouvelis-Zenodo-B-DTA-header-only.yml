@@ -1,0 +1,89 @@
+name: R106 B authentic 2025 original Stata DTA schema types N header ONLY
+on:
+  push:
+    paths:
+      - '.github/workflows/r106-2025-pearce-drouvelis-Zenodo-B-DTA-header-only.yml'
+      - 'research/R106/r106_phase_b_2025_publisher_dta_header_variables_nobs_only.py'
+      - 'research/R106/test_r106_phase_b_2025_publisher_dta_header_variables_nobs_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-only-before-original-Stata-header:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: '.github/workflows/r106-2025-pearce-drouvelis-Zenodo-B-DTA-header-only.yml'
+      - name: Pin Stata header reader dependency version
+        run: python -m pip install 'pandas==2.2.3'
+      - name: Run twelve synthetic version 117/118 Stata header tests with row-read mocks forbidden
+        run: PYTHONPATH=research/R106 python -m unittest -v research/R106/test_r106_phase_b_2025_publisher_dta_header_variables_nobs_only.py
+  real-original-DTA-metadata-only:
+    needs: synthetic-only-before-original-Stata-header
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin reviewed Stata header reader
+        run: python -m pip install 'pandas==2.2.3'
+      - name: Genuine published DTA MD5 SHA and original variable names types and nobs only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r106_b_header
+          PYTHONPATH=research/R106 python research/R106/r106_phase_b_2025_publisher_dta_header_variables_nobs_only.py --output /tmp/r106_b_header/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r106_b_header/receipt.json').read_text())
+          assert x['status']=='R106_B_ORIGINAL_DTA_VERIFIED_HEADER_VARIABLE_TYPES_AND_NOBS_ONLY'
+          assert x['original_source_study_SHA256']=='1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985'
+          assert x['original_source_file_bytes']==1514315
+          assert x['actual_original_human_record_cells_read']==0
+          assert x['actual_dataset_contains_260_new_humans_verified'] is False
+          assert x['actual_human_model_scores']==0
+          print('R106_GENUINE_DTA_HEADER_ONLY',x['Stata_header_variable_count'],x['Stata_header_observation_count_unverified_human_rows'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r106-authentic-published-Stata-only-header
+          path: /tmp/r106_b_header/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive safe header-only variable names and numeric metadata or safe blocker
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r106_b_header/receipt.json
+          dst=research/R106/R106_PHASE_B_LIVE_CI_ORIGINAL_DTA_VARIABLE_SCHEMA_AND_NOBS_ONLY_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r106_b_header/receipt.json').read_text())
+          assert x['research_id']=='R106' and x['phase']=='B' and x['PESEN_v0_1']=='FROZEN' and x['actual_human_model_scores']==0
+          assert x['status'] in ('R106_B_ORIGINAL_STATA_METADATA_FAIL_CLOSED','R106_B_ORIGINAL_DTA_VERIFIED_HEADER_VARIABLE_TYPES_AND_NOBS_ONLY')
+          allowed={'research_id','phase','status','safe_failure','original_dataset_DOI','original_source_MD5_publisher_matched','original_source_study_SHA256','original_source_file_bytes','Stata_header_variable_count','Stata_header_observation_count_unverified_human_rows','Stata_header_allowlisted_variable_names','Stata_header_type_family_counts','original_human_cohort_recruited_independently_according_to_paper','actual_dataset_contains_260_new_humans_verified','original_paired_opponent_identity_verified','actual_original_human_record_cells_read','actual_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'Stata_header_allowlisted_variable_names' in x:
+            names=x['Stata_header_allowlisted_variable_names']
+            assert len(names)==x['Stata_header_variable_count'] and 1<=len(names)<=300
+            assert all(re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]{0,80}',n) for n in names)
+            assert x['actual_original_human_record_cells_read']==0
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R106 B): actual author DTA exact MD5 source schema and Stata N header only, never access actor actions"
+          git pull --rebase origin main
+          git push origin HEAD:main
