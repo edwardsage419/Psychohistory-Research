@@ -1,0 +1,80 @@
+name: R105 A2 original Zenodo CPR MD5 anonymous header character classes only
+on:
+  push:
+    paths:
+      - '.github/workflows/r105-2024-cpr-defaults-Zenodo-A2-header-diagnostic.yml'
+      - 'research/R105/r105_phase_a2_publisher_md5_header_char_classes_only.py'
+      - 'research/R105/test_r105_phase_a2_publisher_md5_header_char_classes_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure-synthetic-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Nine synthetic whole MD5 and anonymous original source header tests
+        run: PYTHONPATH=research/R105 python -m unittest -v research/R105/test_r105_phase_a2_publisher_md5_header_char_classes_only.py
+  actual-publisher-original-header-classes:
+    needs: pure-synthetic-only
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Source-first original 2024 full MD5 then column-character classes only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r105_a2_source
+          PYTHONPATH=research/R105 python research/R105/r105_phase_a2_publisher_md5_header_char_classes_only.py --output /tmp/r105_a2_source/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r105_a2_source/receipt.json').read_text())
+          assert x['status']=='R105_TRUE_ORIGINAL_PUBLISHER_MD5_HEADER_ANON_CHAR_DIAGNOSTIC_ONLY'
+          assert x['firstparty_whole_MD5_match'] is True
+          assert re.fullmatch(r'[0-9a-f]{64}',x['full_original_project_SHA256'])
+          assert x['exact_header_names_or_person_values_exported'] is False
+          assert x['any_original_human_behavior_or_identity_data_row_read'] is False
+          assert x['real_human_model_scores']==0
+          print('R105_ACTUAL_ORIGINAL_HEADER_PUNCTUATION',x['ASCII_header_punctuation_ordinal_list_only'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r105-a2-actual-anonymous-original-header-class-diagnostic
+          path: /tmp/r105_a2_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive safe header-only original source diagnostic or failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r105_a2_source/receipt.json
+          dst=research/R105/R105_PHASE_A2_LIVE_CI_ORIGINAL_CSV_HEADER_CHARACTER_CLASSES_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r105_a2_source/receipt.json').read_text())
+          assert x['research_id']=='R105' and x['phase']=='A2'
+          assert x['PESEN_v0_1']=='FROZEN' and x['real_human_model_scores']==0
+          assert x['status'] in ('R105_A2_HEADER_SOURCE_FAIL_CLOSED','R105_TRUE_ORIGINAL_PUBLISHER_MD5_HEADER_ANON_CHAR_DIAGNOSTIC_ONLY')
+          allowed={'research_id','phase','status','safe_failure','publisher_source_DOI','firstparty_whole_MD5_match','full_original_file_bytes','full_original_project_SHA256','actual_header_field_count','duplicate_source_column_names_count','header_names_starting_safe_ASCII_count','anonymous_header_name_length_histogram','anonymous_header_character_class_counts','ASCII_header_punctuation_ordinal_list_only','exact_header_names_or_person_values_exported','any_original_human_behavior_or_identity_data_row_read','real_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'ASCII_header_punctuation_ordinal_list_only' in x:
+            assert all(type(v)==int and 33<=v<=126 for v in x['ASCII_header_punctuation_ordinal_list_only'])
+            assert x['exact_header_names_or_person_values_exported'] is False
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'receipt(R105 A2): true source header punctuation grammar only preserving first original parser failure'
+          git pull --rebase origin main
+          git push origin HEAD:main
