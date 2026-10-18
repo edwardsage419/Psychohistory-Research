@@ -179,10 +179,15 @@ def evaluate_original_source(raw,enforce_real_source=True):
     gen=random.Random(PSEED)
     for contrast,alternative in PRIMARY.items():
         sample_gains=[]
+        per_actor_gain_sums=[
+            math.fsum(item["loss"][alternative]-item["loss"]["M3"] for item in block)
+            for block in actor_blocks
+        ]
+        per_actor_denominators=[len(block) for block in actor_blocks]
         for _ in range(BOOTSTRAP):
-            draw=[actor_blocks[gen.randrange(len(actor_blocks))] for i in range(len(actor_blocks))]
-            n=sum(len(block) for block in draw)
-            improvement=math.fsum(item["loss"][alternative]-item["loss"]["M3"] for block in draw for item in block)/n
+            sampled_indices=[gen.randrange(len(actor_blocks)) for i in range(len(actor_blocks))]
+            n=sum(per_actor_denominators[i] for i in sampled_indices)
+            improvement=math.fsum(per_actor_gain_sums[i] for i in sampled_indices)/n
             sample_gains.append(improvement)
         sample_gains.sort()
         bootstrap[contrast]={
@@ -214,7 +219,7 @@ def evaluate_original_source(raw,enforce_real_source=True):
         "original_source_has_counterpart_person_ID":False,
         "original_author_prior_partner_signal_not_independently_partner_ID_verified":True,
         "same_marginal_sham_donor_might_be_actual_partner":True,
-        "target_original_Player_cooperated_binary_0_1":"",
+        "target_original_Player_cooperated_binary_0_1":"Author Player cooperated 1/1.0=cooperated; 0/0.0=defected; opt-out/missing excluded, not relabeled",
         "loss":"Brier lower better",
         "overall_identical_source_next_action_targets":score_subset(eligible),
         "early_t2_to_t10":score_subset([r for r in eligible if r["t"]<=10]),
