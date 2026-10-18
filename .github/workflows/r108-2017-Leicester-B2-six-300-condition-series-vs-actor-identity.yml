@@ -1,0 +1,84 @@
+name: R108 B2 2017 Leicester original six 300 round series versus actor dyad eligibility
+on:
+  push:
+    paths:
+      - '.github/workflows/r108-2017-Leicester-B2-six-300-condition-series-vs-actor-identity.yml'
+      - 'research/R108/r108_phase_b2_2017_true_original_6x300_candidate_condition_block_source_only.py'
+      - 'research/R108/test_r108_phase_b2_2017_true_original_6x300_candidate_condition_block_source_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure-synthetic-source-before-original-structure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Twelve synthetic source 6x300 original grouping and no partner inference tests
+        run: PYTHONPATH=research/R108 python -m unittest -v research/R108/test_r108_phase_b2_2017_true_original_6x300_candidate_condition_block_source_only.py
+  genuine-firstparty-publisher-series-structure:
+    needs: pure-synthetic-source-before-original-structure
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Actual 2017 source official MD5 SHA, 6x300 block and anonymized condition code universes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r108_B2
+          PYTHONPATH=research/R108 python research/R108/r108_phase_b2_2017_true_original_6x300_candidate_condition_block_source_only.py --output /tmp/r108_B2/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r108_B2/receipt.json').read_text())
+          assert x['status'] in ('R108_B2_ORIGINAL_SIX_300_CONDITION_SOURCE_TRACES_E1_NOT_ACTOR_E2','R108_B2_ORIGINAL_SOURCE_BLOCK_SCHEMA_INCONCLUSIVE_E1_NOT_ACTOR_E2')
+          assert x['original_whole_SHA256']=='e7dbb6ddc96cc5c65368be0d1918c3ebc7a83c14addd03ab44eeb07790575c18'
+          assert x['original_publisher_MD5_matched']=='7afc755c293dc261d696d1b3f9ba796a'
+          assert x['candidate_numeric_source_rows']==1800
+          assert x['actor_round_E2_eligible_with_current_source_codebook'] is False
+          assert x['original_CSV_person_gender_partner_action_values_exported'] is False
+          assert x['original_human_model_scores']==0
+          print('R108_SOURCE_SIX300_STRUCTURAL',x['source_exact_two_by_three_condition_series_structure'],x['slot0_slot1_slot2_distinct_undecoded_numeric_code_counts'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r108-2017-publisher-original-six-300-conditional-traces-sources
+          path: /tmp/r108_B2/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Permanently archive original anonymous block source proof or safe reject
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r108_B2/receipt.json
+          dst=research/R108/R108_PHASE_B2_LIVE_CI_TRUE_2017_ORIGINAL_SIX_300_BLOCK_CONDITION_SOURCE_ELIGIBILITY.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r108_B2/receipt.json').read_text())
+          assert x['research_id']=='R108' and x['phase']=='B2' and x['PESEN_v0_1']=='FROZEN' and x['original_human_model_scores']==0
+          assert x['status'] in ('R108_B2_TRUE_ORIGINAL_SOURCE_COHORT_BLOCK_SCHEMA_FAIL_CLOSED','R108_B2_ORIGINAL_SIX_300_CONDITION_SOURCE_TRACES_E1_NOT_ACTOR_E2','R108_B2_ORIGINAL_SOURCE_BLOCK_SCHEMA_INCONCLUSIVE_E1_NOT_ACTOR_E2')
+          fields={'research_id','phase','status','safe_failure','original_whole_SHA256','original_publisher_MD5_matched','original_file_bytes','total_original_logical_data_rows','separately_excluded_first_four_source_annotation_rows','candidate_numeric_source_rows','six_300_sequential_first_slot_ordinal_blocks_exact','slot0_slot1_slot2_positive_integer_count','slot0_slot1_slot2_distinct_undecoded_numeric_code_counts','six_anonymous_original_block_aggregates','source_six_slot1_slot2_code_pairs_all_distinct','source_exact_two_by_three_condition_series_structure','slot3_4_numeric_value_range_class_aggregate','individual_human_identity_from_source_established','real_focal_partner_identity_from_source_established','real_independent_original_lab_session_from_source_established','actor_round_E2_eligible_with_current_source_codebook','original_CSV_person_gender_partner_action_values_exported','original_data_cells_accessed_for_bounded_structural_audit','original_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(fields)
+          if 'six_anonymous_original_block_aggregates' in x:
+            assert len(x['six_anonymous_original_block_aggregates'])==6
+            for z in x['six_anonymous_original_block_aggregates']:
+              assert set(z)=={'anonymous_block_slot','source_rows','slot1_distinct_undecoded_code_count','slot2_distinct_undecoded_code_count','slot1_invariant_within_block','slot2_invariant_within_block'}
+              assert z['source_rows']==300
+            assert x['actor_round_E2_eligible_with_current_source_codebook'] is False
+            assert x['original_CSV_person_gender_partner_action_values_exported'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R108 B2): true 2017 publisher MD5 1800 six 300 source traces condition vs dyad eligibility, no actor scores"
+          git pull --rebase origin main
+          git push origin HEAD:main
