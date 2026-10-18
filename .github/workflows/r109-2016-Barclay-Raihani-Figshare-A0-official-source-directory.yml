@@ -1,0 +1,80 @@
+name: R109 2016 independent 156-person repeated partner switching PD original Figshare files metadata
+on:
+  push:
+    paths:
+      - '.github/workflows/r109-2016-Barclay-Raihani-Figshare-A0-official-source-directory.yml'
+      - 'research/R109/r109_phase_a0_2016_Barclay_Raihani_official_Figshare_source_files_meta_only.py'
+      - 'research/R109/test_r109_phase_a0_2016_Barclay_Raihani_official_Figshare_source_files_meta_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-source-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Thirteen pure synthetic original official record metadata source tests
+        run: PYTHONPATH=research/R109 python -m unittest -v research/R109/test_r109_phase_a0_2016_Barclay_Raihani_official_Figshare_source_files_meta_only.py
+  genuine-public-publisher-directory-only:
+    needs: synthetic-source-security
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Genuine firstparty Figshare 3545937 file ID sizes and publisher MD5 metadata only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r109_A0
+          PYTHONPATH=research/R109 python research/R109/r109_phase_a0_2016_Barclay_Raihani_official_Figshare_source_files_meta_only.py --output /tmp/r109_A0/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r109_A0/receipt.json').read_text())
+          assert x['status']=='R109_A0_OFFICIAL_2016_FIGSHARE_ORIGINAL_SOURCE_FILES_METADATA_ONLY'
+          assert x['publisher_article_ID']==3545937
+          assert x['original_human_action_or_pair_rows_accessed'] is False and x['actual_human_model_scores']==0
+          print('R109_GENUINE_PUBLISHER_FILES_META_ONLY',[(f['original_publisher_file_ID'],f['file_extension'],f['published_original_source_bytes']) for f in x['allowlisted_publisher_source_files_meta_only']])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r109-2016-human-repeated-game-original-Figshare-files-publisher-metadata
+          path: /tmp/r109_A0/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive true firstparty file metadata or source bounded negative
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r109_A0/receipt.json
+          dst=research/R109/R109_PHASE_A0_LIVE_CI_2016_BARCLAY_RAIHANI_FIGSHARE_3545937_ORIGINAL_SOURCE_FILE_DIRECTORY.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r109_A0/receipt.json').read_text())
+          assert x['research_id']=='R109' and x['phase']=='A0' and x['PESEN_v0_1']=='FROZEN' and x['actual_human_model_scores']==0
+          assert x['status'] in ('R109_A0_ORIGINAL_PUBLISHER_CATALOG_FAIL_CLOSED','R109_A0_OFFICIAL_2016_FIGSHARE_ORIGINAL_SOURCE_FILES_METADATA_ONLY')
+          allow={'research_id','phase','status','safe_failure','publisher_article_ID','reported_study_original_humans_from_paper_unverified_in_file','official_record_file_count','allowlisted_publisher_source_files_meta_only','original_human_action_or_pair_rows_accessed','actual_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allow)
+          if 'allowlisted_publisher_source_files_meta_only' in x:
+            fkeys={'original_publisher_file_ID','original_public_filename','published_original_source_bytes','file_extension','published_original_MD5_field','published_original_MD5_unverified_against_source'}
+            for z in x['allowlisted_publisher_source_files_meta_only']:
+              assert set(z).issubset(fkeys)
+              assert re.fullmatch(r"[A-Za-z0-9_. ()'\-]{1,160}",z['original_public_filename'])
+              if 'published_original_MD5_unverified_against_source' in z:
+                assert re.fullmatch('[a-f0-9]{32}',z['published_original_MD5_unverified_against_source'])
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R109 A0): 2016 independent 156 human repeated PD Figshare published original source file directory metadata only"
+          git pull --rebase origin main
+          git push origin HEAD:main
