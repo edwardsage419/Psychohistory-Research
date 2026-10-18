@@ -1,0 +1,140 @@
+{
+  "research_id": "R106",
+  "date": "2026-10-18",
+  "administrative_status": "CLOSED_BOUNDED_E2",
+  "scientific_evidence_grade": "E2_2025_NEW_UK_COHORT_26_ORIGINAL_LAB_SESSION_LOSO_FIXED_MATCHED_SHRINK_ACTUAL_PARTNER_BRIER",
+  "PESEN_v0_1": "FROZEN",
+  "R073_exact_frozen_model_replication": false,
+  "original_source": {
+    "dataset_DOI": "10.5281/zenodo.15462528",
+    "publisher_original_filename": "cleandata.dta",
+    "publisher_MD5": "4cce04ea68b7a0492c242b206efebe53",
+    "verified_whole_SHA256": "1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985",
+    "source_bytes": 1514315,
+    "original_Stata_fields": 148,
+    "original_part2_human_rounds": 3620,
+    "original_independently_recruited_2025_UK_lab_sessions": 26,
+    "original_distinct_new_humans": 260,
+    "original_two_person_partner_rounds": 1810,
+    "published_methods_independent_old_2022_German_cohort": true
+  },
+  "fixed_protocol": "protocols/R106_PHASE_D_2025_26_TRUE_SESSION_LOSO_ACTUAL_PARTNER_VS_EQUAL_SHRINK_BRIER_PRESCORE_FREEZE_2026-10-18.md",
+  "evaluation": {
+    "original_true_complete_lab_session_holdout_units": 26,
+    "source_same_real_human_action_targets": 2022,
+    "source_sessions_with_eligible_targets": 26,
+    "original_excluded_first_stage": 1360,
+    "original_excluded_rematch_noncontiguous": 238,
+    "same_current_opponent_action_disagreements": 0,
+    "same_previous_opponent_action_disagreements": 0,
+    "score": "binary Brier lower better",
+    "MSE": {
+      "M0": 0.22845750232008222,
+      "M1": 0.18991097922848665,
+      "M2": 0.15236991101221953,
+      "M3": 0.13204747774480713,
+      "M4": 0.15911042618460097
+    },
+    "contrasts": {
+      "M2_vs_M1_shrink_only": 0.037541068216267126,
+      "M3_vs_M0_external": 0.09641002457527509,
+      "M3_vs_M1_own_only": 0.057863501483679525,
+      "M3_vs_M2_peer_specific": 0.0203224332674124,
+      "M3_vs_M4_donor_sham": 0.027062948439793844
+    },
+    "original_lab_session_effect_direction_counts": {
+      "M2_vs_M1_shrink_only": {
+        "negative_original_lab_sessions": 2,
+        "positive_original_lab_sessions": 24,
+        "zero_original_lab_sessions": 0
+      },
+      "M3_vs_M0_external": {
+        "negative_original_lab_sessions": 4,
+        "positive_original_lab_sessions": 22,
+        "zero_original_lab_sessions": 0
+      },
+      "M3_vs_M1_own_only": {
+        "negative_original_lab_sessions": 0,
+        "positive_original_lab_sessions": 25,
+        "zero_original_lab_sessions": 1
+      },
+      "M3_vs_M2_peer_specific": {
+        "negative_original_lab_sessions": 8,
+        "positive_original_lab_sessions": 18,
+        "zero_original_lab_sessions": 0
+      },
+      "M3_vs_M4_donor_sham": {
+        "negative_original_lab_sessions": 10,
+        "positive_original_lab_sessions": 16,
+        "zero_original_lab_sessions": 0
+      }
+    },
+    "early": {
+      "MSE": {
+        "M0": 0.2342269872322873,
+        "M1": 0.21530479896238652,
+        "M2": 0.16714684146325479,
+        "M3": 0.14915693904020752,
+        "M4": 0.1748507179679547
+      },
+      "gains": {
+        "M2_vs_M1_shrink_only": 0.04815795749913174,
+        "M3_vs_M0_external": 0.08507004819207978,
+        "M3_vs_M1_own_only": 0.066147859922179,
+        "M3_vs_M2_peer_specific": 0.017989902423047266,
+        "M3_vs_M4_donor_sham": 0.025693778927747185
+      },
+      "target_count": 1542
+    },
+    "late": {
+      "MSE": {
+        "M0": 0.20992303203962331,
+        "M1": 0.10833333333333334,
+        "M2": 0.10489902193826878,
+        "M3": 0.07708333333333334,
+        "M4": 0.10854473883057712
+      },
+      "gains": {
+        "M2_vs_M1_shrink_only": 0.00343431139506456,
+        "M3_vs_M0_external": 0.13283969870628998,
+        "M3_vs_M1_own_only": 0.03125,
+        "M3_vs_M2_peer_specific": 0.02781568860493544,
+        "M3_vs_M4_donor_sham": 0.031461405497243786
+      },
+      "target_count": 480
+    }
+  },
+  "verification": {
+    "initial_synthetic_failure_run": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39127264381",
+    "only_synthetic_assertion_call_corrected_before_human_access": true,
+    "successful_true_E2_run": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39127386064",
+    "synthetic_tests_passed_before_original_human_behavior": 49,
+    "real_E2_results": "research/R106/R106_PHASE_D_LIVE_CI_TRUE_2025_26SESSION_DYADIC_E2_OR_BOUNDED_FAILURE.json",
+    "real_results_Git_blob": "4f5b2cd5e35e34444c4b200bab7885e11a0c076e",
+    "second_independent_true_origin_download_exact_replay": "research/R106/R106_PHASE_D_LIVE_CI_INDEPENDENT_GENUINE_E2_DOUBLE_REPLAY_RECEIPT.json",
+    "replay_full_canonical_output_bytes": 47571,
+    "replay_full_canonical_SHA256": "989dbf57baf546c89de9799fea00b0d00774f47c1c41bd1d3e328d1c04f1b471",
+    "exact_output_bytes_equal": true,
+    "real_machine_commit": "0197d48ef3d797a4f96bbd5b506cf0279a020d4f"
+  },
+  "limitations": {
+    "not_literal_R073_model": true,
+    "only_predefined_part2_contiguous_same_dyad_targets": true,
+    "unknown_semantic_cooperation_mapping_left_1": true,
+    "different_competing_group_game_R105_negative_retained": true,
+    "retrospective_external_training_same_stage": true,
+    "not_calendar_prospective": true,
+    "not_causal_social_learning": true,
+    "no_pseudoindependent_person_round_pvalues": true
+  },
+  "acceptance": {
+    "A01": "PASS_INDEPENDENT_2025_BIRMINGHAM_260_NEW_HUMAN_COHORT_VS_2022_HEIDELBERG",
+    "A02": "PASS_PUBLISHER_OFFICIAL_MD5_SHA_26_TRUE_SESSIONID_260_PERSON_1810_DYADS_AND_CURRENT_PRIOR_PARTNER_ALIGNMENT",
+    "A03": "PASS_49_PURE_SYNTHETIC_BEFORE_TRUE_ACTIONS_2022_SAME_TARGET_BRIER_AND_TWO_INDEPENDENT_PUBLISHER_DOWNLOADS_EXACT_SHA",
+    "A04": "PASS_FIRST_SYNTHETIC_FAIL_PRESERVED_ONE_ASSERTION_CALL_ONLY_CORRECTED_8_OF_26_SOURCE_NEGATIVE_M3_VS_M2_AND_1360_238_EXCLUSIONS",
+    "A05": "PASS_BOUNDED_DYAD_PEER_SPECIFIC_M3_BEATS_EQUAL_SHRINK_M2_AND_FIXED_EXTERNAL_PLACEBO_M4_NOT_CAUSAL_OR_PROSPECTIVE",
+    "A06": "PASS_GITHUB_ARCHIVED_SOURCE_PROTOCOLS_PROGRAM_TESTS_RESULTS_SHA_FORMAL_REPORT_STATUS_INDEX"
+  },
+  "formal_report": "research/R106/R106_FINAL_2025_NEW_260_HUMAN_26_SESSION_2022_DYAD_BRIER_MATCHED_SHRINK_E2_SCIENTIFIC_REPORT_2026-10-18.md",
+  "next": "R107 independent genuine recruited dyadic repeated game with true counterparty vs equal-weight matched-variance / within-game-condition sham freeze before original choices"
+}
