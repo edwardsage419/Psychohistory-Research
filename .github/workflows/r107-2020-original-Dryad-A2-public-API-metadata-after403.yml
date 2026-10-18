@@ -1,0 +1,83 @@
+name: R107 A2 Dryad original 2020 public API metadata-only after 403
+on:
+  push:
+    paths:
+      - '.github/workflows/r107-2020-original-Dryad-A2-public-API-metadata-after403.yml'
+      - 'research/R107/r107_phase_a2_official_dryad_public_API_metadata_only_after403.py'
+      - 'research/R107/test_r107_phase_a2_official_dryad_public_API_metadata_only_after403.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run twelve source API metadata security synthetics
+        run: PYTHONPATH=research/R107 python -m unittest -v research/R107/test_r107_phase_a2_official_dryad_public_API_metadata_only_after403.py
+  original-public-API-metadata-only:
+    needs: synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Genuine publisher official JSON metadata API, no CSV file body
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r107_A2_meta
+          PYTHONPATH=research/R107 python research/R107/r107_phase_a2_official_dryad_public_API_metadata_only_after403.py --output /tmp/r107_A2_meta/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r107_A2_meta/receipt.json').read_text())
+          assert x["status"]=="R107_A2_DRYAD_PUBLIC_API_METADATA_ONLY_SOURCE_E1_UNESTABLISHED"
+          assert x["human_original_CSV_payload_bytes_downloaded_or_read"]==0
+          assert x["actual_human_model_scores"]==0
+          assert len(x["public_metadata_endpoint_results"])==2
+          print("R107_PUBLIC_OFFICIAL_API_ONLY_CODES",[(z["source_kind"],z["public_api_http_code"]) for z in x["public_metadata_endpoint_results"]])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r107-official-Dryad-publisher-API-metadata-after-403
+          path: /tmp/r107_A2_meta/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Commit bounded firstparty API metadata source receipt only
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r107_A2_meta/receipt.json
+          dst=research/R107/R107_PHASE_A2_LIVE_CI_DRYAD_OFFICIAL_PUBLIC_API_METADATA_DIAGNOSTIC.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r107_A2_meta/receipt.json').read_text())
+          assert x["research_id"]=="R107" and x["phase"]=="A2"
+          assert x["status"]=="R107_A2_DRYAD_PUBLIC_API_METADATA_ONLY_SOURCE_E1_UNESTABLISHED"
+          assert x["PESEN_v0_1"]=="FROZEN" and x["actual_human_model_scores"]==0
+          assert x["human_original_CSV_payload_bytes_downloaded_or_read"]==0
+          assert set(x)=={"research_id","phase","status","source_dataset_DOI","official_file_stream_initial_human_free_403","public_metadata_endpoint_results","human_original_CSV_payload_bytes_downloaded_or_read","actual_human_model_scores","PESEN_v0_1"}
+          keys={"source_kind","public_api_http_code","public_api_response_is_json_object","official_dataset_identifier_exact_match","official_file_name_exact_match","official_file_size_if_published","published_file_download_exact_official_link_metadata_present","published_digest_algorithm","publisher_reported_unverified_digest"}
+          for y in x["public_metadata_endpoint_results"]:
+            assert set(y).issubset(keys) and y["source_kind"] in ("dataset","file")
+            assert type(y["public_api_http_code"])==int
+            if "publisher_reported_unverified_digest" in y:
+              alg=y["published_digest_algorithm"]
+              assert alg in ("md5","sha256")
+              assert re.fullmatch("[a-f0-9]{32}" if alg=="md5" else "[a-f0-9]{64}",y["publisher_reported_unverified_digest"])
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R107 A2): official public Dryad API dataset and file metadata after source 403, no original behavior"
+          git pull --rebase origin main
+          git push origin HEAD:main
