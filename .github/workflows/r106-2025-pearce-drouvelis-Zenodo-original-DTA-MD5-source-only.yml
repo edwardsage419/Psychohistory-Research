@@ -1,0 +1,79 @@
+name: R106 2025 Pearce Drouvelis original Zenodo Stata DTA official MD5 source only
+on:
+  push:
+    paths:
+      - '.github/workflows/r106-2025-pearce-drouvelis-Zenodo-original-DTA-MD5-source-only.yml'
+      - 'research/R106/r106_phase_a_2025_drouvelis_pearce_zenodo_original_dta_md5_only.py'
+      - 'research/R106/test_r106_phase_a_2025_drouvelis_pearce_zenodo_original_dta_md5_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run twelve synthetic MD5 source and no-record-access tests
+        run: PYTHONPATH=research/R106 python -m unittest -v research/R106/test_r106_phase_a_2025_drouvelis_pearce_zenodo_original_dta_md5_only.py
+  true-original-source-only:
+    needs: synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Actual original source 2025 DTA publisher whole MD5 and project SHA only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r106_original_dta
+          PYTHONPATH=research/R106 python research/R106/r106_phase_a_2025_drouvelis_pearce_zenodo_original_dta_md5_only.py --output /tmp/r106_original_dta/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r106_original_dta/receipt.json').read_text())
+          assert x['status']=='R106_TRUE_ZENODO_PEARCE_DROUVELIS_DTA_MD5_SOURCE_E1_ONLY'
+          assert x['original_publisher_MD5']=='4cce04ea68b7a0492c242b206efebe53'
+          assert re.fullmatch('[a-f0-9]{64}',x['study_computed_original_SHA256'])
+          assert x['original_human_data_records_or_variables_parsed'] is False
+          assert x['new_independent_recruited_cohort_verified'] is False
+          assert x['real_human_scores']==0
+          print('R106_ORIGINAL_DTA_SOURCE_ONLY',x['original_full_file_bytes'],x['study_computed_original_SHA256'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r106-firstparty-original-2025-DTA-source-only
+          path: /tmp/r106_original_dta/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Preserve original source success or bounded failure permanently
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r106_original_dta/receipt.json
+          dst=research/R106/R106_PHASE_A_LIVE_CI_PEARCE_DROUVELIS_2025_DTA_PUBLISHER_MD5_SOURCE_ONLY_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r106_original_dta/receipt.json').read_text())
+          assert x['research_id']=='R106' and x['phase']=='A' and x['PESEN_v0_1']=='FROZEN' and x['real_human_scores']==0
+          assert x['status'] in ('R106_A_ORIGINAL_DTA_SOURCE_FAIL_CLOSED','R106_TRUE_ZENODO_PEARCE_DROUVELIS_DTA_MD5_SOURCE_E1_ONLY')
+          allowed={'research_id','phase','status','safe_failure','original_dataset_DOI','original_source_filename','original_publisher_MD5','original_full_file_bytes','study_computed_original_SHA256','original_first_bytes_stata_XML_header_class','original_person_session_opponent_cohort_verified','new_independent_recruited_cohort_verified','original_human_data_records_or_variables_parsed','real_human_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'study_computed_original_SHA256' in x:
+            assert re.fullmatch('[0-9a-f]{64}',x['study_computed_original_SHA256'])
+            assert x['original_human_data_records_or_variables_parsed'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R106 A): official 2025 original Stata whole MD5 SHA E1 source or safe bounded refusal, no cohort assumption"
+          git pull --rebase origin main
+          git push origin HEAD:main
