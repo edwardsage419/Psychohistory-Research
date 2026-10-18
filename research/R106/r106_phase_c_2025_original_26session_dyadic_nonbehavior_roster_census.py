@@ -52,6 +52,8 @@ def source_roster_only(raw):
         raise SourceError("R106_C_STATA_NONBEHAVIOR_IDENTITY_DECODER_FAILED") from exc
     if len(frame)!=EXPECTED_NOBS or set(frame.columns)!=set(WHITELIST):
         raise SourceError("R106_C_STATA_SELECTED_SOURCE_ROWS_OR_ID_COLUMN_MISMATCH")
+    # Avoid source-file-order or reader-specific column-order misbinding.
+    frame=frame.loc[:,list(WHITELIST)]
     sessions=defaultdict(set)
     part2_sessions=defaultdict(set)
     seen=Counter()
