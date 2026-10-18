@@ -424,3 +424,12 @@ C阶段在人类行为评分前严格冻结M0为**同处理另一个实验sessio
 ## R104启动：2024年另一独立团队重复公共品实验PLOS公开来源认证闸门（2026-10-17）
 
 [新的独立PLOS重复博弈研究R104状态与原始失败记录](research/R104/README.md) · [机器当前来源状态](research/R104/R104_CURRENT_SOURCE_STATUS.json)。Liu等2024英文PLOS ONE同行评审[论文 DOI 10.1371/journal.pone.0299196](https://doi.org/10.1371/journal.pone.0299196)公开[S1 Data原CSV DOI](https://doi.org/10.1371/journal.pone.0299196.s002)，论文描述96真人、8真正实验场次、每场12人、4人组、20轮，均属于**论文报告数字，尚未项目真实CSV验收**。Phase A已先冻[出版社精确源站双独立SHA及仅原CSV表头协议](protocols/R104_PHASE_A_2024_PLOS_ONE_PUBLIC_GOODS_ORIGINAL_SUPPLEMENTARY_CSV_DOUBLE_SHA_HEADER_FREEZE_2026-10-17.md)，12项来源纯synthetic测试先于真实源；首次GitHub Actions正式原源请求得到`R104_PLOS_ORIGINAL_URL_NOT_PINNED`且[永久保留真实拒绝收据](research/R104/R104_PHASE_A_LIVE_CI_PLOS_2024_ORIGINAL_CSV_DOUBLE_SHA_HEADER_ONLY_RECEIPT.json)，说明原文件交付URL不符合已冻源域路径规则。当前**R104=IN_PROGRESS_ORIGINAL_PLOS_SOURCE_URL_REJECTED、E1原文件SHA未建立、实际人行为E2=0、PESEN v0.1=FROZEN**。下一步仅允许零响应正文的原发布源重定向审计，不能以文章设定预言原CSV身份可用性，也不能将源传输拒绝当模型阴性。
+
+
+### 2026-10-18 R104正式科学勘误：候选与早已结题R099同源重复
+
+**[R104正式重复来源结题报告](research/R104/R104_FINAL_DUPLICATE_OF_R099_CORRECTION_REPORT_2026-10-18.md) · [机器更新状态](research/R104/R104_CURRENT_SOURCE_STATUS.json)**。原R104所拟2024 PLOS ONE Liu/Tsai/Chen/Cheng“新独立实验”的论文DOI、**S1原数据DOI `10.1371/journal.pone.0299196.s002`**与[R099已结题真原作者实验](research/R099/R099_FINAL_ACCEPTANCE_STATUS.json)完全相同。R099此前已真实核验**43,467字节官方原CSV、SHA256 `75dc8ae8b63a6b3ea728df9acab9d27944b82ec4feb5c6055e26751ca9cc4a6e`、96真人24固定四人组、456组轮LOOG预测**。不同研究编号不构成新原样本或独立跨实验复现，前段“R104另一独立团队/实验”的称述正式撤销。R104首个真实源URL阻断收据永久保留，已停止该重复源的CI自动重试；**R104=CLOSED_DUPLICATE_OF_R099_NO_NEW_EXPERIMENT、新E1/新E2均0、PESEN v0.1 FROZEN**。今后每次新研究候选建项前先全库去重论文DOI+数据DOI+原始哈希，避免同一批真人证据双重计数。
+
+### R105：另一个公开2024年真人公共资源困境数据来源预冻（2026-10-18）
+
+[Zenodo官方新原数据记录 10.5281/zenodo.10818840](https://doi.org/10.5281/zenodo.10818840)中，Montero-Porras等人的四人10轮共同资源提取实验采用Control、Pro-social、Self-serving三处理，完整逐人长表`data_long_format.csv`和官方MD5 `a3afbb4e52179a0e1d8b1b533f076cc9`公开。其DOI已与既有R047/R095/R096/R099/R100–R104候选查重，属于不同于R096所用2022年二人PD的实验来源，**但与R096存在共同作者，不能宣称研究团队完全独立**。[R105首源哈希/原列名只读冻结协议](protocols/R105_PHASE_A_MONTERO_PORRAS_2024_DEFAULTS_CPR_ZENODO_ORIGINAL_LONG_CSV_MD5_HEADER_FREEZE_2026-10-18.md)、程序、12项纯synthetic和GitHub Actions已提交；真实人源文件哈希与逐轮/分组身份需分别凭实际机器收据验收，绝不预报结果，不读取个体提取数值，PESEN v0.1 FROZEN。后续优先事前固定同权收缩负对照。
