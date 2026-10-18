@@ -1,0 +1,128 @@
+name: R105 C genuine 2024 CPR 103 fixed group LOOG 3708 real peers versus equal shrinkage negative controls
+on:
+  push:
+    paths:
+      - '.github/workflows/r105-2024-CPR-C-103groups-3708-peer-vs-shrink-E2.yml'
+      - 'research/R105/r105_phase_c_2024_original_103groups_3708_realpeer_equalshrink_rotated_LOOG.py'
+      - 'research/R105/test_r105_phase_c_2024_original_103groups_3708_realpeer_equalshrink_rotated_LOOG.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure-synthetic-before-any-human-extraction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: 35 synthetic original 2024 source MD5, group roster, five frozen controls
+        run: |
+          PYTHONPATH=research/R105 python -m unittest -v \
+            research/R105/test_r105_phase_a_original_2024_cpr_defaults_zenodo_md5_header_only.py \
+            research/R105/test_r105_phase_b_2024_original_cpr_actor_group_round_nonbehavior_roster.py \
+            research/R105/test_r105_phase_c_2024_original_103groups_3708_realpeer_equalshrink_rotated_LOOG.py
+  real-original-human-3708-next-extraction-five-models:
+    needs: pure-synthetic-before-any-human-extraction
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original official publisher whole MD5 SHA and true 3708 next actor-round group-heldout scores
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r105_c_real
+          PYTHONPATH=research/R105 python research/R105/r105_phase_c_2024_original_103groups_3708_realpeer_equalshrink_rotated_LOOG.py --output /tmp/r105_c_real/first.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r105_c_real/first.json').read_text())
+          assert x['status']=='R105_ACTUAL_HUMAN_103_ORIGINAL_FOURPERSON_GROUP_3708_LOOG_M01234_E2'
+          assert x['source_whole_publisher_MD5']=='a3afbb4e52179a0e1d8b1b533f076cc9'
+          assert x['source_full_SHA256']=='a7d959361075ae88dc2fc4945b8a7ecd3c8fe3a234ff25dc53b28b9c2c5cdeae'
+          assert x['original_source_complete_groups']==103
+          assert x['original_next_actor_round_targets_same_for_all_five_models']==3708
+          assert x['raw_original_person_group_treatment_or_action_rows_exported'] is False
+          assert x['no_after_outcome_model_selection'] is True
+          assert x['PESEN_v0_1']=='FROZEN'
+          print('R105_TRUE_HUMAN_3708_FROZEN_FIVE_MSE',x['all_recorded_t2_to_t10']['MSE'])
+          print('R105_TRUE_PEER_MINUS_MATCHED_SHRINK_GAINS',x['all_recorded_t2_to_t10']['gains'])
+          PY
+      - name: Second independent Zenodo original re-download and byte-identical score output SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R105 python research/R105/r105_phase_c_2024_original_103groups_3708_realpeer_equalshrink_rotated_LOOG.py --output /tmp/r105_c_real/second.json
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('/tmp/r105_c_real')
+          first=(p/'first.json').read_bytes()
+          second=(p/'second.json').read_bytes()
+          assert first==second,'R105_C_REAL_ORIGINAL_DOUBLE_SOURCE_SCORE_OUTPUT_NOT_IDENTICAL'
+          x=json.loads(first)
+          assert x['status']=='R105_ACTUAL_HUMAN_103_ORIGINAL_FOURPERSON_GROUP_3708_LOOG_M01234_E2'
+          report={
+            'research_id':'R105','phase':'C',
+            'status':'R105_ACTUAL_REAL_3708_E2_SECOND_INDEPENDENT_ZENODO_REPLAY_SHA_EXACT',
+            'original_full_source_SHA256':x['source_full_SHA256'],
+            'anonymous_result_file_bytes':len(first),
+            'anonymous_result_whole_SHA256':hashlib.sha256(first).hexdigest(),
+            'two_independent_complete_original_publisher_download_score_outputs_identical':True,
+            'original_human_scored_targets':3708,
+            'original_heldout_group_units':103,
+            'pure_synthetic_gate_count':35,
+            'raw_actor_action_data_exported':False,
+            'PESEN_v0_1':'FROZEN',
+          }
+          (p/'replay_receipt.json').write_text(json.dumps(report,sort_keys=True,indent=2)+'\n')
+          print('R105_3708_TRUE_HUMAN_2X_REPLAY_SHA',report['anonymous_result_whole_SHA256'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r105-genuine-2024-human-3708-truepeer-versus-same-shrinkage-E2
+          path: /tmp/r105_c_real/*.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive only anonymous official source results and double replay or all-source safe blocker
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=/tmp/r105_c_real
+          src=$root/first.json
+          dst=research/R105/R105_PHASE_C_ACTUAL_FIRSTPARTY_3708_PEER_VS_SHRINK_E2_OR_SOURCE_FAILURE.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('/tmp/r105_c_real')
+          x=json.loads((p/'first.json').read_text())
+          assert x['research_id']=='R105' and x['phase']=='C' and x['PESEN_v0_1']=='FROZEN'
+          assert x['status'] in ('R105_C_ACTUAL_HUMAN_E2_FAIL_CLOSED','R105_ACTUAL_HUMAN_103_ORIGINAL_FOURPERSON_GROUP_3708_LOOG_M01234_E2')
+          if x['status']=='R105_ACTUAL_HUMAN_103_ORIGINAL_FOURPERSON_GROUP_3708_LOOG_M01234_E2':
+            allowed={'research_id','phase','status','source_whole_publisher_MD5','source_full_SHA256','original_source_people','original_source_complete_groups','original_actor_round_source_rows','original_next_actor_round_targets_same_for_all_five_models','model_contract','MSE_smaller_is_better','all_recorded_t2_to_t10','early_target_t2_to_t5','transition_target_t6','late_target_t7_to_t10','anonymous_source_treatment_summaries','original_source_group_gain_directions','whole_original_group_held_out','independent_original_lab_session_column_present','raw_original_person_group_treatment_or_action_rows_exported','equal_shrinkage_weight_in_M2_and_M3','no_after_outcome_model_selection','not_prospective_E3_or_causal_social_learning','PESEN_v0_1'}
+            assert set(x)==allowed
+            assert x['original_next_actor_round_targets_same_for_all_five_models']==3708
+            assert x['raw_original_person_group_treatment_or_action_rows_exported'] is False
+            assert len(x['anonymous_source_treatment_summaries'])==3
+          else:
+            assert set(x)=={'research_id','phase','status','safe_failure','actual_human_model_scores','PESEN_v0_1'}
+          if (p/'replay_receipt.json').exists():
+            receipt=json.loads((p/'replay_receipt.json').read_text())
+            assert receipt['status']=='R105_ACTUAL_REAL_3708_E2_SECOND_INDEPENDENT_ZENODO_REPLAY_SHA_EXACT'
+            assert hashlib.sha256((p/'first.json').read_bytes()).hexdigest()==receipt['anonymous_result_whole_SHA256']
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          cp "$src" "$dst"
+          git add "$dst"
+          if [ -f "$root/replay_receipt.json" ]; then
+            cp "$root/replay_receipt.json" research/R105/R105_PHASE_C_DOUBLE_INDEPENDENT_ORIGINAL_E2_REPLAY_RECEIPT.json
+            git add research/R105/R105_PHASE_C_DOUBLE_INDEPENDENT_ORIGINAL_E2_REPLAY_RECEIPT.json
+          fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'results(R105 C): genuine new 412 person 103 group 3708 realpeer vs equal-shrink E2 double original source SHA or honest blocker'
+          git pull --rebase origin main
+          git push origin HEAD:main
