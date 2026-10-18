@@ -1,0 +1,76 @@
+name: R108 A2 exact original Leicester Figshare redirect host-only no CSV payload
+on:
+  push:
+    paths:
+      - '.github/workflows/r108-2017-Leicester-A2-Figshare-publisher-redirect-host-only.yml'
+      - 'research/R108/r108_phase_a2_official_figshare_downloader_redirect_HOST_only.py'
+      - 'research/R108/test_r108_phase_a2_official_figshare_downloader_redirect_HOST_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Eleven redirect host privacy and scheme pure synthetics
+        run: PYTHONPATH=research/R108 python -m unittest -v research/R108/test_r108_phase_a2_official_figshare_downloader_redirect_HOST_only.py
+  genuine-publisher-no-body-redirect:
+    needs: synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Inspect no-body firstparty Figshare downloader HTTP redirect host only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r108_A2
+          PYTHONPATH=research/R108 python research/R108/r108_phase_a2_official_figshare_downloader_redirect_HOST_only.py --output /tmp/r108_A2/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r108_A2/receipt.json').read_text())
+          assert x['status']=='R108_A2_FIRSTPARTY_FIGSHARE_DOWNLOADER_REDIRECT_HOST_ONLY'
+          assert x['source_original_body_bytes_read']==0 and x['human_model_scores']==0
+          assert x['PESEN_v0_1']=='FROZEN'
+          print('R108_FIGSHARE_ORIGINAL_DOWNLOADER_REDIRECT_HOST_ONLY',x.get('publisher_redirect_target_host_only'),x.get('redirect_target_host_family'))
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r108-official-publisher-redirect-host-only
+          path: /tmp/r108_A2/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Permanently archive no-body host-only source receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r108_A2/receipt.json
+          dst=research/R108/R108_PHASE_A2_LIVE_CI_FIGSHARE_OFFICIAL_DOWNLOADER_REDIRECT_HOST_ONLY.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r108_A2/receipt.json').read_text())
+          assert x['research_id']=='R108' and x['phase']=='A2' and x['PESEN_v0_1']=='FROZEN' and x['human_model_scores']==0
+          assert x['status'] in ('R108_A2_FIRSTPARTY_FIGSHARE_DOWNLOADER_REDIRECT_HOST_ONLY','R108_A2_OFFICIAL_REDIRECT_PRECHECK_FAIL_CLOSED')
+          allowed={'research_id','phase','status','safe_failure','original_official_file_ID','original_publisher_MD5_unverified_against_source','initial_official_downloader_HTTP_code','source_original_body_bytes_read','publisher_redirect_target_host_observed','publisher_redirect_target_host_only','redirect_target_host_family','redirect_target_scheme_HTTPS','download_target_full_URL_path_or_signed_query_exported','human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'publisher_redirect_target_host_only' in x:
+            assert re.fullmatch(r'[a-z0-9-]+(?:\.[a-z0-9-]+)+',x['publisher_redirect_target_host_only'])
+            assert x['download_target_full_URL_path_or_signed_query_exported'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R108 A2): genuine Figshare downloader delegated host only, zero source bytes or signed query"
+          git pull --rebase origin main
+          git push origin HEAD:main
