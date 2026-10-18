@@ -1,5 +1,5 @@
 {
-  "registry_version": "2026-10-18-rev001",
+  "registry_version": "2026-10-18-rev002",
   "purpose": "Avoid counting same original human cohort/artifact as independent cross-experiment replication.",
   "identity_rules": [
     "Exact original file DOI equality means same source asset, regardless of research ID.",
@@ -91,6 +91,56 @@
       "official_publisher_MD5_full_source_verified": true,
       "true_original_human_predictive_targets": 3708,
       "same_original_data_asset_as_R096": false
+    },
+    {
+      "research_id": "R106",
+      "source_dataset_DOI": "10.5281/zenodo.15462528",
+      "paper_DOI": "10.1016/j.euroecorev.2025.105075",
+      "origin": "Drouvelis Pearce 2025 newly recruited University of Birmingham iterated dyadic PD experiment",
+      "source_asset": "cleandata.dta",
+      "verified_whole_source_SHA256": "1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985",
+      "published_fullfile_MD5_matched": "4cce04ea68b7a0492c242b206efebe53",
+      "identity_status": "SEPARATELY_RECRUITED_2025_UK_260_HUMANS_26_TRUE_LAB_SESSIONS_2022_FIXED_DYAD_BEHAVIOR_TARGETS_BOUNDED_REAL_E2",
+      "distinct_from_2022_German_source_cohort_proven_by_publisher_methods": true
+    },
+    {
+      "research_id": "R107",
+      "source_dataset_DOI": "10.5061/dryad.7fq25s8",
+      "paper_DOI": "10.1098/rsos.200618",
+      "origin": "Grujic Lenaerts 2020 spatial lattice public original source",
+      "source_asset": "DataSet.csv",
+      "file_id": 296893,
+      "publisher_reported_fullfile_MD5_NOT_VERIFIED_ON_BYTES": "039b5cc661fb62210509ac9f8de388d7",
+      "publisher_reported_original_bytes": 215221,
+      "identity_status": "CLOSED_E0_SOURCE_DOWNLOAD_403_AND_OFFICIAL_API_ALTERNATE_401_NO_ORIGINAL_BYTES_OR_HUMAN_E2",
+      "source_SHA256": null
+    },
+    {
+      "research_id": "R108",
+      "figshare_article_id": 10194938,
+      "paper_DOI": "10.1016/j.actpsy.2018.04.014",
+      "origin": "Colman Pulford Krockow 2017 Leicester author fixed-dyad 300 round publication source",
+      "source_asset": "Repeated Prisoner's Dilemma_raw data-data.csv",
+      "figshare_file_id": 18370526,
+      "original_source_bytes": 36526,
+      "original_official_fullfile_MD5_matched": "7afc755c293dc261d696d1b3f9ba796a",
+      "verified_whole_source_SHA256": "e7dbb6ddc96cc5c65368be0d1918c3ebc7a83c14addd03ab44eeb07790575c18",
+      "identity_status": "CLOSED_REAL_E1_1800_SIX_BY_300_TWO_BY_THREE_CONDITION_SERIES_NO_SOURCE_ACTOR_OPPONENT_SESSION_E2",
+      "real_E2_score_count": 0
+    },
+    {
+      "research_id": "R109",
+      "figshare_article_id": 3545937,
+      "paper_DOI": "10.1016/j.evolhumbehav.2015.12.004",
+      "origin": "Barclay Raihani 2016 University of Guelph variable-partner human repeated dyadic PD",
+      "source_asset": "Barclay_Raihani_data supplement.csv",
+      "figshare_file_id": 5611125,
+      "original_source_bytes": 13127,
+      "original_official_fullfile_MD5_matched": "86970b375515176e299686b1b6f70310",
+      "verified_whole_source_SHA256": "31c989e9a2a8c3228e37effa0b3a850bbe69e3a9b15cd36dc317a3696e604bb6",
+      "source_physical_data_lines_header_only": 156,
+      "identity_status": "ACTIVE_E1_WHOLEFILE_AUTHENTICATED_B0_SOURCE_REFETCH_HTTP_ERROR_TWICE_NO_ACTOR_ROUND_E2",
+      "real_E2_score_count": 0
     }
   ],
   "known_duplicate_pairs": [
