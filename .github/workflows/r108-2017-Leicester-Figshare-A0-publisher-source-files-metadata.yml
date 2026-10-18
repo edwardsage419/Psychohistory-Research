@@ -1,0 +1,82 @@
+name: R108 2017 Leicester original fixed pair 300 round Figshare publisher file metadata only
+on:
+  push:
+    paths:
+      - '.github/workflows/r108-2017-Leicester-Figshare-A0-publisher-source-files-metadata.yml'
+      - 'research/R108/r108_phase_a0_2017_Leicester_Figshare_publisher_files_metadata_only.py'
+      - 'research/R108/test_r108_phase_a0_2017_Leicester_Figshare_publisher_files_metadata_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Thirteen pure synthetic official API files and privacy checks
+        run: PYTHONPATH=research/R108 python -m unittest -v research/R108/test_r108_phase_a0_2017_Leicester_Figshare_publisher_files_metadata_only.py
+  authentic-institutional-publisher-metadata:
+    needs: synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Firstparty University Leicester Figshare original article 10194938 file catalog only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r108_A0
+          PYTHONPATH=research/R108 python research/R108/r108_phase_a0_2017_Leicester_Figshare_publisher_files_metadata_only.py --output /tmp/r108_A0/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r108_A0/receipt.json').read_text())
+          assert x['status']=='R108_A0_TRUE_UK_FIGSHARE_2017_SOURCE_FILE_METADATA_ONLY'
+          assert x['publisher_article_ID']==10194938
+          assert x['original_csv_entire_bytes_downloaded'] is False
+          assert x['original_human_person_round_action_values_accessed'] is False
+          assert x['actual_human_model_scores']==0
+          print('R108_FIRSTPARTY_UK_CSV_SOURCE_FILES',[(f['original_file_ID'],f['source_kind'],f['publisher_file_bytes']) for f in x['source_publishable_sanitized_file_metadata']])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r108-2017-official-Leicester-Figshare-source-metadata
+          path: /tmp/r108_A0/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive firstparty source file metadata or official negative receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r108_A0/receipt.json
+          dst=research/R108/R108_PHASE_A0_LIVE_CI_UK_LEICESTER_FIGSHARE_2017_ORIGINAL_FILES_METADATA_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r108_A0/receipt.json').read_text())
+          assert x['research_id']=='R108' and x['phase']=='A0' and x['PESEN_v0_1']=='FROZEN' and x['actual_human_model_scores']==0
+          assert x['status'] in ('R108_A0_TRUE_UK_FIGSHARE_2017_SOURCE_FILE_METADATA_ONLY','R108_A0_FIRSTPARTY_FIGSHARE_METADATA_FAIL_CLOSED')
+          keys={'research_id','phase','status','safe_failure','publisher_article_ID','original_dataset_page','official_file_count','source_publishable_sanitized_file_metadata','original_csv_entire_bytes_downloaded','original_human_person_round_action_values_accessed','actual_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(keys)
+          if 'source_publishable_sanitized_file_metadata' in x:
+            fields={'original_file_ID','original_file_name','publisher_file_bytes','source_kind','original_publisher_MD5_field','original_publisher_reported_MD5_not_yet_verified'}
+            for item in x['source_publishable_sanitized_file_metadata']:
+              assert set(item).issubset(fields)
+              assert re.fullmatch(r"[A-Za-z0-9_. ()'\-]{1,120}",item['original_file_name'])
+              if 'original_publisher_reported_MD5_not_yet_verified' in item:
+                assert re.fullmatch('[a-f0-9]{32}',item['original_publisher_reported_MD5_not_yet_verified'])
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R108 A0): true original 2017 Leicester university Figshare 300 round dyadic CSV metadata or bounded failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
