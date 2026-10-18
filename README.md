@@ -433,3 +433,8 @@ C阶段在人类行为评分前严格冻结M0为**同处理另一个实验sessio
 ### R105：另一个公开2024年真人公共资源困境数据来源预冻（2026-10-18）
 
 [Zenodo官方新原数据记录 10.5281/zenodo.10818840](https://doi.org/10.5281/zenodo.10818840)中，Montero-Porras等人的四人10轮共同资源提取实验采用Control、Pro-social、Self-serving三处理，完整逐人长表`data_long_format.csv`和官方MD5 `a3afbb4e52179a0e1d8b1b533f076cc9`公开。其DOI已与既有R047/R095/R096/R099/R100–R104候选查重，属于不同于R096所用2022年二人PD的实验来源，**但与R096存在共同作者，不能宣称研究团队完全独立**。[R105首源哈希/原列名只读冻结协议](protocols/R105_PHASE_A_MONTERO_PORRAS_2024_DEFAULTS_CPR_ZENODO_ORIGINAL_LONG_CSV_MD5_HEADER_FREEZE_2026-10-18.md)、程序、12项纯synthetic和GitHub Actions已提交；真实人源文件哈希与逐轮/分组身份需分别凭实际机器收据验收，绝不预报结果，不读取个体提取数值，PESEN v0.1 FROZEN。后续优先事前固定同权收缩负对照。
+
+
+#### R105 原作者完整MD5真实通过与匿名表头诊断（2026-10-18）
+
+[官方原2024年CPR数据第一手来源研究入口](research/R105/README.md) · [真正原官方MD5及匿名表头源诊断收据](research/R105/R105_PHASE_A2_LIVE_CI_ORIGINAL_CSV_HEADER_CHARACTER_CLASSES_RECEIPT.json)。Zenodo DOI `10.5281/zenodo.10818840` 的真正`data_long_format.csv`整源 **1,131,426字节**通过原出版方MD5 `a3afbb4e52179a0e1d8b1b533f076cc9`，计算整源SHA256 `a7d959361075ae88dc2fc4945b8a7ecd3c8fe3a234ff25dc53b28b9c2c5cdeae`。首次A表头严格拒绝原因经另冻仅看源header的A2审计确认：**37个原字段，其中1个原始空白列名，其他36个原列名符合ASCII字母/下划线的安全格式，唯一标点ASCII95下划线，0重复名**。既有真实失败永久保留；后续[Phase A3严格只允许恰一个无名列合同](protocols/R105_PHASE_A3_ONLY_ONE_EMPTY_ORIGINAL_HEADER_FIELD_COMPATIBILITY_FREEZE_2026-10-18.md)已在真实原行为值读取前冻结，实际来源完整A3是否成功仍以真正机器收据为准，不能凭提交CI流程断言已通过。独立真人历史评价新E2目前**0**，PESEN v0.1 FROZEN。[全库防重复来源资产登记](research/SOURCE_PROVENANCE_DOI_DEDUP_REGISTRY_2026-10-18.json)明确R104=R099真正重复DOI和R098/R100虽然共用Zenodo记录却各指不同文件，避免伪跨实验复现。
