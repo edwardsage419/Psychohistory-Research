@@ -63,12 +63,18 @@ class R108TypeOnly(unittest.TestCase):
              patch.object(a,"EXPECTED_SIZE",len(raw)):
             self.assertRaisesRegex(a.SourceError,"FULL_SHA_NOT_PINNED",b.original_anonymous_token_classes,raw)
     def test_original_full_row_universe_enforced(self):
-        raw=synthetic_rows().replace(b"PRIVATE_PERSON","PRIVATE_PERSON",1)
+        raw=synthetic_rows()
         with patch.object(a,"EXPECTED_MD5",hashlib.md5(raw).hexdigest()),\
              patch.object(a,"EXPECTED_SIZE",len(raw)),\
              patch.object(b,"PINNED_ORIGINAL_SHA",hashlib.sha256(raw).hexdigest()),\
              patch.object(b,"PINNED_DATA_ROWS",1805):
             self.assertRaises(a.SourceError,b.original_anonymous_token_classes,raw)
+    def test_controlled_row_universe_safe_no_export(self):
+        original=synthetic_rows()
+        output=audited(original)
+        self.assertEqual(output["original_all_five_fields_empty_row_count"],0)
+        self.assertGreater(output["source_row_type_pattern_transition_count"],0)
+        self.assertNotIn("PRIVATE_HUMAN",repr(output))
     def test_untrusted_nonfive_col_fails(self):
         raw=synthetic_rows().replace(b"PRIVATE_PERSON,0,1,21,\n",b"PRIVATE_PERSON,0,1,21\n",1)
         with patch.object(a,"EXPECTED_MD5",hashlib.md5(raw).hexdigest()),\
