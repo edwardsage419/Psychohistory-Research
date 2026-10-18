@@ -447,3 +447,18 @@ C阶段在人类行为评分前严格冻结M0为**同处理另一个实验sessio
 最新R105真原作者412人、103组、3708个相同下一轮行为目标，在事前同权收缩对照下**真伙伴历史M3 MSE 0.04770729，普通同权收缩M2 MSE 0.04330681，真伙伴劣于收缩对照83/103组，三制度处理皆同方向**。R102在另一独立实验中M3优于只用本人历史M1的8/8源场次仍成立，但本身未含同权收缩对照；不得由R102推断真人同伴特定信息或心理因果作用已证明。来源去重识别**R095与2020 Schniter/Shields的Zenodo 4321821同源、R096与2022 Montero-Porras的Dryad 37pvmcvmk同源、R099/R104同一PLOS资产**，禁止重新计独立样本。
 
 R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正式Zenodo 15462528下载原`cleandata.dta`，12项纯synthetic后，GitHub Actions真原字节**1,514,315**、出版方发表MD5 **`4cce04ea68b7a0492c242b206efebe53`**完全吻合，项目全文件SHA256 **`1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985`**，[原始一手机器E1收据](research/R106/R106_PHASE_A_LIVE_CI_PEARCE_DROUVELIS_2025_DTA_PUBLISHER_MD5_SOURCE_ONLY_RECEIPT.json)已归档。原2025论文是对Proto等2022研究的真人实验复制，但**这份Stata文件到底包含新招募实验、旧2022原数据还是混合队列仍需作者方法与源字段核验**，没有任何真实DTA行为记录应用读取或模型评分。**R106=SOURCE_E1_CONFIRMED_ONLY，独立新人群与实验场次资格尚未成立，E2=0，R073/PESEN v0.1=FROZEN。** 下一步优先确认真实新队列/同轮对手身份、原实验session和同权负对照，保持既有负证据。
+
+
+## R106真实外部E2复验正式结题：260新真人、26完整实验室场次留出、2022下轮选择真对手同权历史增益（2026-10-18）
+
+[R106完整正式科研报告](research/R106/R106_FINAL_2025_NEW_260_HUMAN_26_SESSION_2022_DYAD_BRIER_MATCHED_SHRINK_E2_SCIENTIFIC_REPORT_2026-10-18.md) · [A01至A06统一机读验收](research/R106/R106_FINAL_ACCEPTANCE_STATUS.json) · [独立来源真结果](research/R106/R106_PHASE_D_LIVE_CI_TRUE_2025_26SESSION_DYADIC_E2_OR_BOUNDED_FAILURE.json) · [真双重原源哈希重演收据](research/R106/R106_PHASE_D_LIVE_CI_INDEPENDENT_GENUINE_E2_DOUBLE_REPLAY_RECEIPT.json)。
+
+2025 Drouvelis/Pearce 英国伯明翰新招募26×10=260真人（独立于旧德国106人），第一手Zenodo原`cleandata.dta` **1,514,315字节**通过出版社完整MD5`4cce04ea68b7a0492c242b206efebe53`及项目全SHA`1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985`。逐个阶段在原真人行为前完成B/C2真source身份：148列、3620人物轮、26数值`sessionid`真正实验室场次、260独立全局ID及1810个完整双人组轮；另先冻[D五模型真正完整场次留出与源历史互证](protocols/R106_PHASE_D_2025_26_TRUE_SESSION_LOSO_ACTUAL_PARTNER_VS_EQUAL_SHRINK_BRIER_PRESCORE_FREEZE_2026-10-18.md)。49项纯合成测试通过后首次真正源读行为，强制原作者`otherleft`与当轮真实配偶行动严格一致，`p2otherleft`与同一对手真正前轮行动一致，剔除**1360**各超博弈初期和**238**改配/时间不连续，26场共**2022**相同合法下轮0/1选择目标，二元Brier统一评价。
+
+| 原作者真0/1下轮行为Brier（越小越好） | M0外场同期 | M1本人前轮 | M2同权普通收缩 | **M3本人+真对手历史各半** | M4同权外场安慰剂 |
+|---|---:|---:|---:|---:|---:|
+| 2022相同目标 | 0.22845750 | 0.18991098 | 0.15236991 | **0.13204748** | 0.15911043 |
+
+**关键主指标`MSE(M2)-MSE(M3)=+0.02032243`：26真正独立实验场次18正8负；`MSE(M4)-MSE(M3)=+0.02706295`：16正10负。** 与R105在另一独立412人四人资源博弈中真组他人历史不胜同权收缩的阴性结果并存，显示伙伴结构/实验制度/预测信息显著异质。来源完整重新下载两次并独立对原2022个目标复算，匿名结果**47,571字节全SHA256 `989dbf57baf546c89de9799fea00b0d00774f47c1c41bd1d3e328d1c04f1b471`**完全一致，GitHub Actions [run 39127386064](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39127386064)成功。首次合成测试运行因断言调用漏括号安全失败（未进真人），仅修该测试并保留原失败run，不曾调整模型。
+
+**R106=CLOSED_BOUNDED_E2，R073与PESEN v0.1继续冻结。** 这仅证明另一新双人实验中真对手滞后行动在控制本人权重与外场普通收缩后额外预测收益；仍可能存在对手策略稳定性、博弈状态、历史波动特性等竞争解释，因果社会学习未证，原`left`0/1语义未擅自映射“合作”，完整留出仍是**回顾性而非前瞻E3**。后续R107应在新的独立真人来源评分前冻结*同分布/同波动的错误对手历史负对照*，同时保留R105的阴性和R103来源配对否定，避免单个成功模型演绎跨人类社会普遍规律。
