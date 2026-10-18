@@ -1,0 +1,85 @@
+name: R108 A4 official original 2017 Leicester 300round CSV MD5 double SHA header classes
+on:
+  push:
+    paths:
+      - '.github/workflows/r108-2017-Leicester-A4-original-full-MD5-anonymized-header-class.yml'
+      - 'research/R108/r108_phase_a4_verified_full_original_MD5_header_class_only.py'
+      - 'research/R108/test_r108_phase_a4_verified_full_original_MD5_header_class_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Original publisher source author/S3 plus ten new header-anomaly pure synthetics
+        run: |
+          PYTHONPATH=research/R108 python -m unittest -v \
+            research/R108/test_r108_phase_a1_original_2017_Leicester_fixed_pair_CSV_MD5_double_SHA_header_only.py \
+            research/R108/test_r108_phase_a3_verified_Figshare_publisher_S3_delegate_MD5_double_source.py \
+            research/R108/test_r108_phase_a4_verified_full_original_MD5_header_class_only.py
+  true-publisher-binary-source-header-only:
+    needs: source-synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Genuine 2017 original Leicester 36526 bytes official MD5 double SHA anonymous header classes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r108_A4
+          PYTHONPATH=research/R108 python research/R108/r108_phase_a4_verified_full_original_MD5_header_class_only.py --output /tmp/r108_A4/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r108_A4/receipt.json').read_text())
+          assert x['status']=='R108_A4_GENUINE_2017_LEICESTER_ORIGINAL_MD5_DOUBLE_SHA_HEADER_CLASS_E1'
+          assert x['genuine_original_whole_file_bytes']==36526
+          assert x['publisher_original_MD5_whole_file_matched']=='7afc755c293dc261d696d1b3f9ba796a'
+          assert re.fullmatch('[a-f0-9]{64}',x['project_original_complete_SHA256'])
+          assert x['two_independent_exact_official_publisher_sources_byte_identical'] is True
+          assert x['source_human_person_pair_action_body_cells_accessed'] is False
+          assert x['original_human_model_scores']==0
+          print('R108_E1_TRUE_ORIGINAL_SOURCE_SHA_HEADER_STRUCTURE',x['project_original_complete_SHA256'],x['source_csv_header_column_count'],x['anonymous_source_header_strict_ASCII_identifier_violation_count'],x['source_physical_data_lines_unparsed'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r108-2017-official-full-MD5-double-SHA-header-class-E1
+          path: /tmp/r108_A4/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Persist original verified publisher source or honest bounded failure receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r108_A4/receipt.json
+          dst=research/R108/R108_PHASE_A4_LIVE_CI_TRUE_PUBLISHER_MD5_DOUBLE_CSV_HEADER_CHARACTER_CLASS_SOURCE_E1.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r108_A4/receipt.json').read_text())
+          assert x['research_id']=='R108' and x['phase']=='A4' and x['PESEN_v0_1']=='FROZEN' and x['original_human_model_scores']==0
+          assert x['status'] in ('R108_A4_GENUINE_ORIGINAL_HEADER_CLASS_FAIL_CLOSED','R108_A4_GENUINE_2017_LEICESTER_ORIGINAL_MD5_DOUBLE_SHA_HEADER_CLASS_E1')
+          allowed={'research_id','phase','status','safe_failure','publisher_figshare_article_ID','publisher_original_file_ID','genuine_original_whole_file_bytes','publisher_original_MD5_whole_file_matched','project_original_complete_SHA256','source_csv_header_column_count','anonymous_source_header_duplicate_name_count','anonymous_source_header_empty_name_count','anonymous_source_header_nonASCII_or_control_field_count','anonymous_source_header_maximum_field_name_length','anonymous_source_header_strict_ASCII_identifier_violation_count','anonymous_header_ASCII_punctuation_decimal_codepoints_only','source_physical_data_lines_unparsed','source_human_person_pair_action_body_cells_accessed','original_human_model_scores','PESEN_v0_1','two_independent_exact_official_publisher_sources_byte_identical'}
+          assert set(x).issubset(allowed)
+          if 'project_original_complete_SHA256' in x:
+            assert re.fullmatch('[a-f0-9]{64}',x['project_original_complete_SHA256'])
+            assert x['source_human_person_pair_action_body_cells_accessed'] is False
+            assert all(type(k)==int and 33<=k<=126 for k in x['anonymous_header_ASCII_punctuation_decimal_codepoints_only'])
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R108 A4): actual full Leicester 2017 Figshare original 36526B publisher MD5 double SHA, metadata-safe header classes E1"
+          git pull --rebase origin main
+          git push origin HEAD:main
