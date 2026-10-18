@@ -1,0 +1,86 @@
+name: R106 C1 2025 original Stata 7 nonbehavior ID field syntax diagnosis only
+on:
+  push:
+    paths:
+      - '.github/workflows/r106-2025-pearce-drouvelis-Zenodo-C1-seven-IDs-anonymous-types.yml'
+      - 'research/R106/r106_phase_c1_2025_source_seven_identity_field_syntax_anonymous_only.py'
+      - 'research/R106/test_r106_phase_c1_2025_source_seven_identity_field_syntax_anonymous_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  synthetic-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install 'pandas==2.2.3'
+      - name: Run thirteen synthetic anonymous Stata ID syntax and zero action tests
+        run: PYTHONPATH=research/R106 python -m unittest -v research/R106/test_r106_phase_c1_2025_source_seven_identity_field_syntax_anonymous_only.py
+  real-original-seven-ID-types:
+    needs: synthetic-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install 'pandas==2.2.3'
+      - name: Genuine publisher MD5 SHA source 7 metadata ID columns only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r106_c1
+          PYTHONPATH=research/R106 python research/R106/r106_phase_c1_2025_source_seven_identity_field_syntax_anonymous_only.py --output /tmp/r106_c1/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r106_c1/receipt.json').read_text())
+          assert x['status']=='R106_C1_REAL_SOURCE_SEVEN_ID_FIELD_ANONYMOUS_TYPE_DIAGNOSTIC_ONLY'
+          assert x['original_source_SHA256']=='1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985'
+          assert x['original_source_row_count']==3620
+          assert x['original_ID_field_literal_values_exported'] is False
+          assert x['original_left_otherleft_p2otherleft_application_accessed'] is False
+          assert x['original_human_behavior_scores']==0
+          print('R106_C1_TRUE_SOURCE_ID_FORMAT_CLASSES',x['anonymous_seven_ID_source_field_type_classes'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r106-2025-publisher-seven-source-ID-syntax-only
+          path: /tmp/r106_c1/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Commit source-only anonymous seven field syntax or genuine blocker
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r106_c1/receipt.json
+          dst=research/R106/R106_PHASE_C1_LIVE_CI_ORIGINAL_SOURCE_ID_TYPES_ANONYMOUS_DIAGNOSTIC.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r106_c1/receipt.json').read_text())
+          assert x["research_id"]=="R106" and x["phase"]=="C1" and x["PESEN_v0_1"]=="FROZEN" and x["original_human_behavior_scores"]==0
+          assert x["status"] in ("R106_C1_ORIGINAL_ID_FIELD_SYNTAX_FAIL_CLOSED","R106_C1_REAL_SOURCE_SEVEN_ID_FIELD_ANONYMOUS_TYPE_DIAGNOSTIC_ONLY")
+          allowed={"research_id","phase","status","safe_failure","original_source_SHA256","original_source_row_count","original_Stata_header_variables","anonymous_seven_ID_source_field_type_classes","anonymous_source_ID_field_distinct_nonmissing_counts","anonymous_source_ID_field_declared_dtype_class","original_ID_field_literal_values_exported","application_requested_only_seven_nonbehavior_fields","pandas_decoder_internally_reads_records_but_no_behavior_column_requested","original_left_otherleft_p2otherleft_application_accessed","original_human_behavior_scores","PESEN_v0_1"}
+          assert set(x).issubset(allowed)
+          if "anonymous_seven_ID_source_field_type_classes" in x:
+            categories={"numeric_positive_integer_bounded","numeric_zero","numeric_negative_integer","numeric_positive_integer_above_original_1e9_ceiling","numeric_fractional","missing_nan_or_blank","ascii_numeric_string","ascii_nonnumeric_string","unicode_string","other"}
+            for col in ("Session","Subject","Group","Period","ID","sessionid","ClientNumber"):
+              d=x["anonymous_seven_ID_source_field_type_classes"][col]
+              assert set(d)==categories and sum(d.values())==3620
+              assert all(type(v)==int and v>=0 for v in d.values())
+            assert x["original_ID_field_literal_values_exported"] is False
+            assert x["original_left_otherleft_p2otherleft_application_accessed"] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R106 C1): real source seven anonymous Stata ID syntax classes only, no original decisions"
+          git pull --rebase origin main
+          git push origin HEAD:main
