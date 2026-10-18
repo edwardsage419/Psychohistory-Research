@@ -1,0 +1,117 @@
+{
+  "registry_version": "2026-10-18-rev001",
+  "purpose": "Avoid counting same original human cohort/artifact as independent cross-experiment replication.",
+  "identity_rules": [
+    "Exact original file DOI equality means same source asset, regardless of research ID.",
+    "Exact original dataset DOI equality requires checking filename, experiment assignment and cohort overlap: a dataset repository may contain different experimental cohorts.",
+    "Same researcher/coauthor does not alone mean same participants. Different source DOI does not alone prove disjoint participants.",
+    "Only verified actual source file SHA supports byte identity. Preserve E0/E1/E2 distinction."
+  ],
+  "entries": [
+    {
+      "research_id": "R095",
+      "source_dataset_DOI": "10.5281/zenodo.4321821",
+      "origin": "Zenodo Friend-or-Foe repeated dyadic experiment",
+      "source_asset": "Fields.csv",
+      "identity_status": "separate source record; check project receipts for real dataset details"
+    },
+    {
+      "research_id": "R096",
+      "source_dataset_DOI": "10.5061/dryad.37pvmcvmk",
+      "origin": "Montero-Porras et al. 2022 repeated dyadic experiment",
+      "source_asset": "author Dryad behavioral dataset",
+      "identity_status": "separate 2022 human experiment"
+    },
+    {
+      "research_id": "R098",
+      "source_dataset_DOI": "10.5281/zenodo.16918146",
+      "origin": "Wang Hilbe Zhang 2025 asymmetric PGG source set",
+      "source_asset": "linearPGG_4P_ExperimentalData.mat",
+      "identity_status": "same multi-file record as R100 but distinct candidate experiment/file"
+    },
+    {
+      "research_id": "R099",
+      "paper_DOI": "10.1371/journal.pone.0299196",
+      "source_dataset_DOI": "10.1371/journal.pone.0299196.s002",
+      "origin": "Liu Tsai Chen Cheng 2024 PLOS S1",
+      "source_asset": "pone.0299196.s002.csv",
+      "verified_whole_source_SHA256": "75dc8ae8b63a6b3ea728df9acab9d27944b82ec4feb5c6055e26751ca9cc4a6e",
+      "identity_status": "CANONICAL_COMPLETED_REAL_E2_456_GROUP_ROUND"
+    },
+    {
+      "research_id": "R100",
+      "source_dataset_DOI": "10.5281/zenodo.16918146",
+      "origin": "Wang Hilbe Zhang 2025 asymmetric PGG source set",
+      "source_asset": "ThresholdPGG_ExperimentalData.xlsx",
+      "identity_status": "same repository record as R098, different experiment file, participant linkage unresolved"
+    },
+    {
+      "research_id": "R101",
+      "source_dataset_DOI": "10.34894/EYFM5L",
+      "paper_DOI": "10.1038/s41467-023-42128-2",
+      "origin": "Stallen et al. 2023 DataverseNL source ZIPs",
+      "source_asset": "3. Raw data files.zip",
+      "identity_status": "E0 official catalog source transfer E1 blocked"
+    },
+    {
+      "research_id": "R102",
+      "source_dataset_DOI": "10.5281/zenodo.17610157",
+      "origin": "Antonioni Sánchez Cabrales Climate Clubs",
+      "source_asset": "Climate_Clubs_data.csv",
+      "verified_whole_source_SHA256": "ebc8831011a1a3b4893a80ae158d5129ed0f35e57a8092eba36c6a7b0cbd4282",
+      "identity_status": "separate source true E2 8 sessions and 2520 people-rounds"
+    },
+    {
+      "research_id": "R103",
+      "source_dataset_DOI": "10.5281/zenodo.1127154",
+      "paper_DOI": "10.1126/sciadv.1600451",
+      "origin": "Poncela-Casasnovas 2016 dyadic games",
+      "source_asset": "drbrain_decisions.csv",
+      "verified_whole_source_SHA256": "c63b99ba7554908e54393eb9f8267a98de1a3d9bdd123a77f60f2b2122236013",
+      "identity_status": "real E1, dyadic source roster incomplete"
+    },
+    {
+      "research_id": "R104",
+      "paper_DOI": "10.1371/journal.pone.0299196",
+      "source_dataset_DOI": "10.1371/journal.pone.0299196.s002",
+      "origin": "Liu Tsai Chen Cheng 2024 PLOS S1",
+      "source_asset": "pone.0299196.s002.csv",
+      "duplicate_of": "R099",
+      "identity_status": "EXACT_DUPLICATE_ASSET_NO_NEW_EXPERIMENT_NO_NEW_E2"
+    },
+    {
+      "research_id": "R105",
+      "source_dataset_DOI": "10.5281/zenodo.10818840",
+      "origin": "Montero-Porras 2024 Defaults CPR Prolific group experiment",
+      "source_asset": "data_long_format.csv",
+      "published_fullfile_MD5": "a3afbb4e52179a0e1d8b1b533f076cc9",
+      "project_fullfile_SHA256_from_source_header_only_A2": "a7d959361075ae88dc2fc4945b8a7ecd3c8fe3a234ff25dc53b28b9c2c5cdeae",
+      "identity_status": "new experiment source; A3 complete acceptance pending; shares author with R096"
+    }
+  ],
+  "known_duplicate_pairs": [
+    {
+      "ids": [
+        "R099",
+        "R104"
+      ],
+      "same_paper_DOI": "10.1371/journal.pone.0299196",
+      "same_original_asset_DOI": "10.1371/journal.pone.0299196.s002",
+      "distinct_original_human_experiments": 1,
+      "independent_replication_count_increment": 0
+    }
+  ],
+  "known_shared_multifile_dataset_requiring_cohort_audit": [
+    {
+      "ids": [
+        "R098",
+        "R100"
+      ],
+      "record_DOI": "10.5281/zenodo.16918146",
+      "asset_names_different": true,
+      "independence_not_assumed": true
+    }
+  ],
+  "non_exhaustive_note": "R047/R063/R065/R097 and other non-DOI archival evidence require separate normalization; omitted rather than guessed.",
+  "PESEN_v0_1": "FROZEN"
+}
