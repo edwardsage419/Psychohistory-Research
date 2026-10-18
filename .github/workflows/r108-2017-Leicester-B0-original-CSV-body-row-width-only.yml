@@ -1,0 +1,79 @@
+name: R108 B0 genuine 2017 publisher MD5 CSV structural row widths no human cells
+on:
+  push:
+    paths:
+      - '.github/workflows/r108-2017-Leicester-B0-original-CSV-body-row-width-only.yml'
+      - 'research/R108/r108_phase_b0_2017_original_CSV_body_row_WIDTH_only.py'
+      - 'research/R108/test_r108_phase_b0_2017_original_CSV_body_row_WIDTH_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Ten pure source row-width privacy and MD5 synthetics before any original records
+        run: PYTHONPATH=research/R108 python -m unittest -v research/R108/test_r108_phase_b0_2017_original_CSV_body_row_WIDTH_only.py
+  genuine-publisher-file-structural-only:
+    needs: pure-synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Full original publisher MD5 then anonymous CSV row widths only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r108_B0
+          PYTHONPATH=research/R108 python research/R108/r108_phase_b0_2017_original_CSV_body_row_WIDTH_only.py --output /tmp/r108_B0/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r108_B0/receipt.json').read_text())
+          assert x['status']=='R108_B0_GENUINE_2017_ORIGINAL_CSV_ANONYMOUS_ROW_WIDTH_ONLY_E1'
+          assert x['original_file_bytes']==36526
+          assert x['publisher_MD5_verified']=='7afc755c293dc261d696d1b3f9ba796a'
+          assert x['original_CSV_cell_values_application_dereferenced'] is False
+          assert x['original_human_model_scores']==0
+          print('R108_B0_ORIGINAL_ANONYMOUS_CSV_WIDTH_HISTOGRAM',x['source_body_row_width_histogram'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r108-original-2017-CSV-structure-no-actor-data
+          path: /tmp/r108_B0/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive strict aggregate original source CSV row-widths or bounded failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r108_B0/receipt.json
+          dst=research/R108/R108_PHASE_B0_LIVE_CI_2017_UK_ORIGINAL_CSV_ANONYMOUS_ROW_WIDTH_STRUCTURE_ONLY.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r108_B0/receipt.json').read_text())
+          assert x['research_id']=='R108' and x['phase']=='B0' and x['PESEN_v0_1']=='FROZEN' and x['original_human_model_scores']==0
+          assert x['status'] in ('R108_B0_ORIGINAL_CSV_ROW_WIDTH_FAIL_CLOSED','R108_B0_GENUINE_2017_ORIGINAL_CSV_ANONYMOUS_ROW_WIDTH_ONLY_E1')
+          allowed={'research_id','phase','status','safe_failure','original_source_SHA256','publisher_MD5_verified','original_file_bytes','true_original_csv_header_column_count','original_CSV_logical_data_row_count_no_cells_read','original_CSV_physical_data_line_count','source_body_row_width_histogram','anonymous_first_ten_data_row_widths_only','anonymous_last_ten_data_row_widths_only','original_row_width_transition_count','anonymous_first_thirty_row_width_transition_ordinals_only','original_CSV_cell_values_application_dereferenced','raw_person_round_partner_acts_exported','original_human_model_scores','PESEN_v0_1'}
+          assert set(x).issubset(allowed)
+          if 'source_body_row_width_histogram' in x:
+            assert sum(x['source_body_row_width_histogram'].values())==x['original_CSV_logical_data_row_count_no_cells_read']
+            assert all(str(k).isdecimal() and type(v)==int and v>0 for k,v in x['source_body_row_width_histogram'].items())
+            assert x['original_CSV_cell_values_application_dereferenced'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R108 B0): authenticated UK 2017 original CSV structural row widths only, zero individual decisions"
+          git pull --rebase origin main
+          git push origin HEAD:main
