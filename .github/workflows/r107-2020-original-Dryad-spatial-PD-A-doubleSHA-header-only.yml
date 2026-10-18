@@ -1,0 +1,80 @@
+name: R107 2020 independent human spatial PD firstparty Dryad CSV double SHA header only
+on:
+  push:
+    paths:
+      - '.github/workflows/r107-2020-original-Dryad-spatial-PD-A-doubleSHA-header-only.yml'
+      - 'research/R107/r107_phase_a_2020_original_dryad_CSV_double_SHA_header_only.py'
+      - 'research/R107/test_r107_phase_a_2020_original_dryad_CSV_double_SHA_header_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-synthetics-before-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Sixteen pure synthetic source, double complete SHA and privacy checks
+        run: PYTHONPATH=research/R107 python -m unittest -v research/R107/test_r107_phase_a_2020_original_dryad_CSV_double_SHA_header_only.py
+  original-2020-Dryad-source-only:
+    needs: source-synthetics-before-original
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: True official original Dryad 296893 CSV firstparty double whole SHA and header only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r107_A_source
+          PYTHONPATH=research/R107 python research/R107/r107_phase_a_2020_original_dryad_CSV_double_SHA_header_only.py --output /tmp/r107_A_source/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r107_A_source/receipt.json').read_text())
+          assert x['status']=='R107_A_GENUINE_2020_DRYAD_ORIGINAL_DATASET_CSV_DOUBLE_SHA_HEADER_E1'
+          assert x['official_original_file_ID']==296893
+          assert x['official_dataset_DOI']=='10.5061/dryad.7fq25s8'
+          assert re.fullmatch('[a-f0-9]{64}',x['project_calculated_original_whole_SHA256'])
+          assert x['two_independent_full_original_official_downloads_bytes_equal'] is True
+          assert x['any_original_human_action_or_person_or_session_value_accessed'] is False
+          assert x['human_model_scores']==0
+          print('R107_TRUE_ORIGINAL_DRYAD_FILE_SHA',x['actual_whole_file_bytes'],x['project_calculated_original_whole_SHA256'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r107-2020-original-dryad-spatial-CSV-firstparty-SHA-or-403
+          path: /tmp/r107_A_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Archive only allowlisted true success or HTTP source failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r107_A_source/receipt.json
+          dst=research/R107/R107_PHASE_A_LIVE_CI_DRYAD_2020_SPATIAL_ORIGINAL_CSV_DOUBLE_SHA_HEADER_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r107_A_source/receipt.json').read_text())
+          assert x['research_id']=='R107' and x['phase']=='A' and x['PESEN_v0_1']=='FROZEN' and x['human_model_scores']==0
+          assert x['status'] in ('R107_A_OFFICIAL_SOURCE_E1_FAIL_CLOSED','R107_A_GENUINE_2020_DRYAD_ORIGINAL_DATASET_CSV_DOUBLE_SHA_HEADER_E1')
+          allowed={'research_id','phase','status','safe_failure','official_dataset_DOI','official_original_file_ID','publisher_origin','original_filename','actual_whole_file_bytes','project_calculated_original_whole_SHA256','publisher_independent_MD5_available_and_verified','original_csv_field_count','original_public_csv_header_names','original_physical_data_lines_without_parsing','any_original_human_action_or_person_or_session_value_accessed','human_model_scores','PESEN_v0_1','two_independent_full_original_official_downloads_bytes_equal'}
+          assert set(x).issubset(allowed)
+          if 'original_public_csv_header_names' in x:
+            assert all(re.fullmatch(r'[A-Za-z_][A-Za-z0-9_. \-]{0,99}',n) for n in x['original_public_csv_header_names'])
+            assert x['any_original_human_action_or_person_or_session_value_accessed'] is False
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R107 A): real official 2020 Dryad 296893 CSV double SHA header or honest 403 before any human actions"
+          git pull --rebase origin main
+          git push origin HEAD:main
