@@ -6,7 +6,7 @@ import r110_phase_a1_2015_PLOS_S1_verified_google_storage_original_doubleSHA_hea
 
 def make_data(names=None,bad_row=False,rows=12000):
     head=",".join(names or ["field"+str(i) for i in range(18)])
-    one=",".join(["PRIVATE_ORIGINAL_HUMAN_ACTION"]*18)
+    one=",".join(["PRIVATE_ORIGINAL_HUMAN_ACTION"]+["x"]*17)
     lines=[head]+[one]*rows
     if bad_row and rows>=2:
         lines[8]=",".join(["PRIVATE_HUMAN_ACTION"]*17)
