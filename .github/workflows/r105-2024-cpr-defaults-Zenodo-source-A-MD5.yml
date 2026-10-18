@@ -1,0 +1,82 @@
+name: R105 independent 2024 online CPR Defaults Zenodo long CSV original MD5 source header only
+on:
+  push:
+    paths:
+      - '.github/workflows/r105-2024-cpr-defaults-Zenodo-source-A-MD5.yml'
+      - 'research/R105/r105_phase_a_original_2024_cpr_defaults_zenodo_md5_header_only.py'
+      - 'research/R105/test_r105_phase_a_original_2024_cpr_defaults_zenodo_md5_header_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  first-synthetic-only-original-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Twelve publisher-MD5-first CSV source pure synthetic tests
+        run: PYTHONPATH=research/R105 python -m unittest -v research/R105/test_r105_phase_a_original_2024_cpr_defaults_zenodo_md5_header_only.py
+  actual-original-publisher-source-header-only:
+    needs: first-synthetic-only-original-source
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: First-party official Zenodo 2024 published MD5 entire original and header only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r105_source
+          PYTHONPATH=research/R105 python research/R105/r105_phase_a_original_2024_cpr_defaults_zenodo_md5_header_only.py --output /tmp/r105_source/receipt.json
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r105_source/receipt.json').read_text())
+          assert x['status']=='R105_ACTUAL_FIRSTPARTY_2024_CPR_LONG_CSV_PUBLISHED_MD5_HEADER_E1'
+          assert x['official_original_publisher_MD5']=='a3afbb4e52179a0e1d8b1b533f076cc9'
+          assert re.fullmatch(r'[0-9a-f]{64}',x['project_original_complete_SHA256'])
+          assert x['original_full_source_bytes']<=2097152
+          assert x['any_original_human_choice_value_read'] is False
+          assert x['any_original_person_or_group_identifier_cell_read'] is False
+          assert x['actual_human_predictions_scored']==0
+          print('R105_NEW_FIRSTPARTY_ORIGINAL_CSV_MD5_SHA_HEADER',x['original_full_source_bytes'],x['original_csv_header_field_count'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r105-2024-new-original-zenodo-cpr-md5-or-failure
+          path: /tmp/r105_source/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Permanent only strict allowlisted original MD5 source receipt or authentic failure
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r105_source/receipt.json
+          dst=research/R105/R105_PHASE_A_LIVE_CI_FIRSTPARTY_2024_CPR_LONG_CSV_MD5_HEADER_RECEIPT.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r105_source/receipt.json').read_text())
+          assert x['research_id']=='R105' and x['phase']=='A'
+          assert x['PESEN_v0_1']=='FROZEN' and x['actual_human_predictions_scored']==0
+          assert x['status'] in ('R105_ORIGINAL_SOURCE_FAIL_CLOSED','R105_ACTUAL_FIRSTPARTY_2024_CPR_LONG_CSV_PUBLISHED_MD5_HEADER_E1')
+          fields={'research_id','phase','status','safe_failure','publisher_original_DOI','original_csv_filename','original_full_source_bytes','official_original_publisher_MD5','project_original_complete_SHA256','original_csv_header_field_count','public_sanitized_original_header_field_names','physical_original_data_row_lines_unparsed','any_original_human_choice_value_read','any_original_person_or_group_identifier_cell_read','actual_human_predictions_scored','PESEN_v0_1'}
+          assert set(x).issubset(fields)
+          if 'public_sanitized_original_header_field_names' in x:
+            assert all(re.fullmatch(r'[A-Za-z_][A-Za-z0-9_. -]{0,119}',v) for v in x['public_sanitized_original_header_field_names'])
+            assert x['any_original_human_choice_value_read'] is False
+            assert x['any_original_person_or_group_identifier_cell_read'] is False
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'receipt(R105 A): new 2024 CPR original Zenodo publisher MD5 exact SHA and header only or safe source failure'
+          git pull --rebase origin main
+          git push origin HEAD:main
