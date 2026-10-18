@@ -116,7 +116,7 @@ class D106FrozenOwnPartnerControls(unittest.TestCase):
     def test_nonbinary_source_action_rejected(self):
         self.assertRaises(d.SourceError,d.binary,2)
         self.assertRaises(d.SourceError,d.binary,float("nan"))
-        self.assertIsNone(d.optional_binary,float("nan"))
+        self.assertIsNone(d.optional_binary(float("nan")))
 
     def test_fixed_laplace_formula(self):
         self.assertEqual(d.estimate(0,0),0.5)
