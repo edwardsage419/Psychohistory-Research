@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**最新研究与知识状态（2026-10-18）**：[当前简明研究导航](docs/RESEARCH_CURRENT_STATUS_NAV_2026-10-18.md) · [239项目录和长期目标差距核对报告](research/PSYCHOHISTORY_RESEARCH_STATUS_CATALOG_239_AND_LONG_TERM_GOAL_GAP_REVIEW_2026-10-18.md) · [239项学习证据增量叠加表](research/KNOWLEDGE_239_CATALOG_EVIDENCE_OVERLAY_2026-10-18.json) · [跨学科模型关系图（文字版JSON）](research/KNOWLEDGE_CATALOG_RELATIONSHIPS_SCOPED_EVIDENCE_2026-10-18.json)。**原239项目录和历史结题文件保持不变，新增的是待核实的关联索引，不是宣布239项已掌握。** R110的C0首次真实样本资格门已FAIL_CLOSED，未产生真人模型Brier结果；R105真实负面与R106真实正面继续按不同任务保留。PESEN v0.1冻结，个人决策系统构建暂缓。
+
+
 可检验的跨尺度计算社会科学研究档案。研究主轴为个体认知与学习、群体互动、制度环境以及有条件的长期社会变化。
 
 ## 当前归档覆盖（2026-10-15）
