@@ -1,0 +1,81 @@
+name: R109 2016 Guelph human repeated dyad original Figshare 5611125 full MD5 double SHA
+on:
+  push:
+    paths:
+      - '.github/workflows/r109-2016-Barclay-Raihani-A1-5611125-publisher-MD5-doubleSHA.yml'
+      - 'research/R109/r109_phase_a1_2016_true_Guelph_Figshare_5611125_publisher_MD5_double_SHA_header_only.py'
+      - 'research/R109/test_r109_phase_a1_2016_true_Guelph_Figshare_5611125_publisher_MD5_double_SHA_header_only.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure-synthetic-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Fifteen pure published MD5 URL and no human cell reader synthetics
+        run: PYTHONPATH=research/R109 python -m unittest -v research/R109/test_r109_phase_a1_2016_true_Guelph_Figshare_5611125_publisher_MD5_double_SHA_header_only.py
+  genuine-original-publisher-file:
+    needs: pure-synthetic-source
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: True 2016 original author file 5611125 whole MD5/size + double SHA and anonymous CSV header
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r109_A1
+          PYTHONPATH=research/R109 python research/R109/r109_phase_a1_2016_true_Guelph_Figshare_5611125_publisher_MD5_double_SHA_header_only.py --output /tmp/r109_A1/receipt.json
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r109_A1/receipt.json').read_text())
+          assert x['status']=='R109_A1_TRUE_2016_FIGSHARE_ORIGINAL_PUBLISHED_MD5_DOUBLE_SHA_E1_HEADER_ONLY'
+          assert x['source_Figshare_article_ID']==3545937 and x['source_Figshare_file_ID']==5611125
+          assert x['publisher_MD5_full_original_verified']=='86970b375515176e299686b1b6f70310'
+          assert x['published_full_original_csv_bytes']==13127
+          assert x['two_official_full_original_downloads_identical'] is True
+          assert x['original_source_human_actor_partner_action_cells_accessed'] is False
+          assert x['real_human_model_scores']==0
+          print('R109_GENUINE_2016_ORIGINAL_SOURCE_SHA_HEADER_COUNTS',x['computed_complete_original_SHA256'],x['header_column_count_no_original_header_labels_exported'],x['CSV_physical_data_lines_unparsed'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r109-2016-original-Guelph-human-dyad-publisher-MD5-source-only
+          path: /tmp/r109_A1/receipt.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Preserve only verified original source or safe refusal
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r109_A1/receipt.json
+          dst=research/R109/R109_PHASE_A1_LIVE_CI_2016_GUELPH_ORIGINAL_13127_CSV_PUBLISHED_MD5_DOUBLE_SHA_HEADER_SOURCE.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib,re
+          x=json.loads(pathlib.Path('/tmp/r109_A1/receipt.json').read_text())
+          assert x['research_id']=='R109' and x['phase']=='A1' and x['PESEN_v0_1']=='FROZEN' and x['real_human_model_scores']==0
+          assert x['status'] in ('R109_A1_GENUINE_ORIGINAL_PUBLISHED_SOURCE_FAIL_CLOSED','R109_A1_TRUE_2016_FIGSHARE_ORIGINAL_PUBLISHED_MD5_DOUBLE_SHA_E1_HEADER_ONLY')
+          fields={'research_id','phase','status','safe_failure','source_Figshare_article_ID','source_Figshare_file_ID','publisher_MD5_full_original_verified','published_full_original_csv_bytes','computed_complete_original_SHA256','header_column_count_no_original_header_labels_exported','anonymous_header_empty_name_count','anonymous_header_duplicate_name_count','anonymous_header_nonASCII_or_control_name_count','CSV_physical_data_lines_unparsed','original_source_human_actor_partner_action_cells_accessed','real_human_model_scores','PESEN_v0_1','two_official_full_original_downloads_identical'}
+          assert set(x).issubset(fields)
+          if 'computed_complete_original_SHA256' in x:
+            assert re.fullmatch('[a-f0-9]{64}',x['computed_complete_original_SHA256'])
+            assert x['original_source_human_actor_partner_action_cells_accessed'] is False
+            assert x['publisher_MD5_full_original_verified']=='86970b375515176e299686b1b6f70310'
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp "$src" "$dst"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "receipt(R109 A1): true 2016 Guelph human experimental firstparty original 13127B CSV publisher MD5 and double SHA E1 or safe failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
