@@ -23,10 +23,13 @@ PINNED_BYTES=1514315
 SAFE_NAME=re.compile(r"[A-Za-z_][A-Za-z0-9_]{0,80}")
 
 def type_class(s):
+    # pandas StataReader._typlist uses b/h/l (byte/int/long),
+    # f/d (float/double), and integer fixed-string widths.
+    if type(s) is int and 1<=s<=2045:return "string"
     s=str(s).lower()
-    if s in ("byte","int","long","int8","int16","int32","int64"):return "numeric_integer"
-    if s in ("float","double","float32","float64"):return "numeric_float"
-    if s.startswith("str") or s.startswith("string"):return "string"
+    if s in ("b","h","l","byte","int","long","int8","int16","int32","int64"):return "numeric_integer"
+    if s in ("f","d","float","double","float32","float64"):return "numeric_float"
+    if s=="q" or s.startswith("str") or s.startswith("string"):return "string"
     return "other"
 
 def metadata_only(raw):
