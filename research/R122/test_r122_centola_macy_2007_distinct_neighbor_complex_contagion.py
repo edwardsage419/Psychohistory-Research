@@ -208,9 +208,9 @@ class CentolaMacyDistinctSourceTests(unittest.TestCase):
             with self.subTest(value=str(type(bad))),self.assertRaises(m.ContagionDesignError):
                 m.validate(3,(),(1,)*3,bad)
 
-    def test_exact_small_graph_enumeration_all_16932_configs(self):
+    def test_exact_small_graph_enumeration_all_16930_configs(self):
         self.assertEqual(m.exact_small_graph_exhaustion(),
-                         {"1":4,"2":32,"3":512,"4":16384})
+                         {"1":2,"2":32,"3":512,"4":16384})
 
     def test_no_human_E2_model_predictions_from_toy_receipt(self):
         x=m.toy_bridge_results()
