@@ -34,7 +34,7 @@ Centola, Damon & Macy, Michael (2007), *Complex Contagions and the Weakness of L
 
 代码使用Python标准库；n1..8的严格无向简单图、整数正门槛及合法外生种子。算法A为同步单调传播，保留每轮frozenset完整参与节点名单。算法B与A相互独立，枚举全部含种子的阈值闭合节点集合，取其交集以获得最小可达闭包；对终态**整套成员集合**而非仅人数做逐例比较。B没有调用A。验证非法类型、重复无向边、自环、布尔伪装及不可能阈值严格fail-closed。
 
-完整数学枚举：n=1..4所有有标签无向简单图（数量分别1、2、8、64），每节点整数门槛可取1或2，所有初始种子子集。合计4+32+512+16384=**16932种纯合成图—门槛—种子数学配置**，均须由两个独立算法复算最终参与集合并检查终态闭合。其大小不是人类实验样本量，不能提升证据等级。
+完整数学枚举：n=1..4所有有标签无向简单图（数量分别1、2、8、64），每节点整数门槛可取1或2，所有初始种子子集。合计4+32+512+16384=**16930种纯合成图—门槛—种子数学配置**，均须由两个独立算法复算最终参与集合并检查终态闭合。其大小不是人类实验样本量，不能提升证据等级。
 
 本轮不测量任何真实网络中的“社会强化”“关系强弱”或人类态度，也不估计真实因果、独立E2预测或前瞻历史E3。R073、PESEN v0.1继续冻结；全部既定R学习完成后才统一分类及熔炼。
 
@@ -44,3 +44,7 @@ Centola, Damon & Macy, Michael (2007), *Complex Contagions and the Weakness of L
 - 源码：research/R122/r122_centola_macy_2007_distinct_neighbor_complex_contagion.py
 - 单元测试：research/R122/test_r122_centola_macy_2007_distinct_neighbor_complex_contagion.py
 - 要以真实GitHub CI执行成功+三份源码文件SHA256机器收据回读为验收门，而不能因为源码已提交就声称通过。成功后阶段标签仅为 LEARNING_COMPLETE_BOUNDED_CENTOLA_MACY_COMPLEX_CONTAGION_AND_BRIDGE_ANALYTICS。
+
+## R122-CORR-001 CI真实失败及修正审计
+
+首次GitHub Actions run https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39258433825 为failure，51项中50通过，完全枚举测试因n=1生成门槛2而违反原[1,n]约束报错。研究团队据此修正穷举枚举域为每人门槛∈{1,2}∩[1,n]，保持算法和图反例不变。合规总量更正为16930、n=1为2例，未掩盖失败运行，不将最初16932宣称成实际成功计算数量。
