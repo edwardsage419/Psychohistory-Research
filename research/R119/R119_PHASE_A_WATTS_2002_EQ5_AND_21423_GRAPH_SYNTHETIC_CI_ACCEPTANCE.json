@@ -1,0 +1,168 @@
+{
+  "PESEN_v0_1": "FROZEN",
+  "R073": "FROZEN",
+  "actual_synthetic_unittests_executed": 43,
+  "catalogue_id": "04-002",
+  "causal_real_world_diffusion_established": false,
+  "finite_topology_counterexamples": {
+    "cycle_and_triangles_same_degree_multiset": true,
+    "degree_sequences": {
+      "cycle_seed_0": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "diamond_late_stable": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "path_seed_endpoint": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "star_seed_center": [
+        5,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "star_seed_leaf": [
+        5,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "two_triangles_seed_0": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    "diamond_node_3_not_one_neighbor_vulnerable": true,
+    "final_sizes": {
+      "cycle_seed_0": 6,
+      "diamond_late_stable": 4,
+      "path_seed_endpoint": 6,
+      "star_seed_center": 6,
+      "star_seed_leaf": 1,
+      "two_triangles_seed_0": 3
+    },
+    "finite_graph_not_random_ER_phase_diagram": true,
+    "path_and_star_same_edge_count": true
+  },
+  "infinite_random_graph_Eq5_analytic_cases": [
+    {
+      "degree_mass": [
+        "0",
+        "0",
+        "0",
+        "1"
+      ],
+      "ratio": "2",
+      "regime": "SUPERCRITICAL",
+      "vulnerability_conditional": [
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "degree_mass": [
+        "0",
+        "0",
+        "0",
+        "1"
+      ],
+      "ratio": "0",
+      "regime": "SUBCRITICAL",
+      "vulnerability_conditional": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "degree_mass": [
+        "0",
+        "0",
+        "1"
+      ],
+      "ratio": "1",
+      "regime": "CRITICAL_BOUNDARY",
+      "vulnerability_conditional": [
+        "0",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "degree_mass": [
+        "0",
+        "1"
+      ],
+      "ratio": "0",
+      "regime": "SUBCRITICAL",
+      "vulnerability_conditional": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "degree_mass": [
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "ratio": "3/2",
+      "regime": "SUPERCRITICAL",
+      "vulnerability_conditional": [
+        "0",
+        "1",
+        "0",
+        "1"
+      ]
+    }
+  ],
+  "original_Watts_2002_10000_node_ER_phase_diagram_reproduced": false,
+  "original_human_E2_prediction_score_count": 0,
+  "original_individual_human_network_data_loaded": false,
+  "original_model_exact_components": "neighbor fraction threshold, irreversible adoption, vulnerable degree and Eq(5)",
+  "phase": "A",
+  "primary_source_DOI": "10.1073/pnas.082090499",
+  "priority": "P0",
+  "research_id": "R119",
+  "small_graph_exhaustive_configuration_counts": {
+    "1": 3,
+    "2": 36,
+    "3": 648,
+    "4": 20736
+  },
+  "source_code_test_report_SHA256": {
+    "R119_WATTS_2002_PRIMARY_NETWORK_CASCADE_FINITE_GRAPH_AND_EQ5_BOUNDED_SCIENTIFIC_REPORT_2026-10-19.md": "c247db1bf613ab703167fd42f2488cca1ac5009449366fe91ac306e5a1ee54ca",
+    "r119_watts_2002_fraction_neighbor_cascade.py": "6556a157beb187a04917250bbeb31ff444845ffe9c039f4d0a5218effe3f89a3",
+    "test_r119_watts_2002_fraction_neighbor_cascade.py": "829c6c43c337cac5a9b8505e90c4af15be9acaee7da5e82e5dedff5e1fd4366d"
+  },
+  "source_firstparty_fulltext_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC122850/",
+  "status": "R119_WATTS_ORIGINAL_LOCAL_THRESHOLD_EQ5_43_TEST_21423_SYNTHETIC_PASS",
+  "synthetic_unittest_failures": 0,
+  "total_exhaustive_synthetic_graph_threshold_seed_configs": 21423
+}
