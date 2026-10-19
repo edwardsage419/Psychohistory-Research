@@ -1,0 +1,99 @@
+name: R118 Granovetter 1978 finite participation thresholds original 100-person counterexample
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r118-granovetter-original-threshold-finite-crowd-44-tests.yml'
+      - 'research/R118/r118_granovetter_1978_finite_threshold_participation.py'
+      - 'research/R118/test_r118_granovetter_1978_finite_threshold_participation.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  exact-source-threshold-closed-maths:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: R118 original 1978 100 crowd and exhaustive independent solvers tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R118 python -m unittest -v \
+            research/R118/test_r118_granovetter_1978_finite_threshold_participation.py \
+            2>&1 | tee /tmp/r118_tests_output.log
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r118_tests_output.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['44'],('R118_WRONG_OR_INCOMPLETE_TEST_COUNT',log[-1400:])
+          assert re.search(r'\nOK\s*$',log),'R118_UNIT_TESTS_NOT_SUCCESSFUL'
+          print('R118_44_EXACT_ORIGINAL_SOURCE_AND_SYNTHETIC_CHECKS_PASS')
+          PY
+      - name: Independently validate all 8476 finite cases and one-person threshold source flip
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R118 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r118_granovetter_1978_finite_threshold_participation as m
+          original=m.original_author_one_threshold_counterexample()
+          own=m.same_mean_different_collective_outcome()
+          count=m.exhaustive_small_groups(5)
+          assert original['chain_final']==100
+          assert original['broken_chain_final']==1
+          assert original['modified_people_count']==1
+          assert original['original_initial_to_terminal_count_trajectory']==list(range(101))
+          assert original['broken_initial_to_terminal_count_trajectory']==[0,1]
+          assert own['original_mean_exact']==own['compensated_mean_exact']=='99/2'
+          assert own['modified_people_count']==2
+          assert own['original_final_participants']==100
+          assert own['compensated_final_participants']==1
+          assert count=={'1':2,'2':9,'3':64,'4':625,'5':7776}
+          root=pathlib.Path('research/R118')
+          files=[
+            'r118_granovetter_1978_finite_threshold_participation.py',
+            'test_r118_granovetter_1978_finite_threshold_participation.py',
+            'R118_GRANOVETTER_1978_THRESHOLD_CROWD_EXACT_DISTRIBUTION_AND_SAME_MEAN_SCIENTIFIC_REPORT_2026-10-19.md'
+          ]
+          hashes={p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in files}
+          receipt={
+            'research_id':'R118','phase':'A',
+            'status':'R118_ORIGINAL_1978_ONE_THRESHOLD_FLIP_AND_44_CHECKS_EXHAUSTIVE_8476_PASS',
+            'knowledge_catalogue_item':'03-019',
+            'related_first_party_reference_catalogue':'04-001',
+            'primary_1978_original_paper_DOI':'10.1086/226707',
+            'actual_primary_original_pages_read':[1422,1424,1425,1426],
+            'original_author_100_person_one_threshold_counterexample':original,
+            'new_project_exact_same_mean_threshold_counterexample':own,
+            'independent_sorted_and_synchronous_algorithm_crosscheck':True,
+            'verified_small_n_complete_threshold_vector_counts':count,
+            'total_pure_mathematical_threshold_vectors_verified':sum(count.values()),
+            'unit_tests_actually_executed':44,
+            'unit_test_failures':0,
+            'source_code_test_report_SHA256':hashes,
+            'human_original_crowd_microdata_accessed':False,
+            'original_real_human_E2_prediction_score_records':0,
+            'real_historical_event_or_causal_effect_validated':False,
+            'no_network_adjacency_in_this_model':True,
+            'no_participant_withdrawal_in_this_model':True,
+            'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          output=root/'R118_PHASE_A_1978_THRESHOLD_44_TEST_EXHAUSTIVE_CI_ACCEPTANCE.json'
+          output.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R118_GENUINE_SOURCE_EXACT_TEST_RECEIPT_SHA256',hashlib.sha256(output.read_bytes()).hexdigest())
+          PY
+      - name: Commit actual bounded mathematical acceptance and source hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R118/R118_PHASE_A_1978_THRESHOLD_44_TEST_EXHAUSTIVE_CI_ACCEPTANCE.json
+          git commit -m "results(R118): original 100-agent threshold flip and 8476 tiny exhaustive configurations verified"
+          git pull --rebase origin main
+          git push origin HEAD:main
