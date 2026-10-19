@@ -1,0 +1,75 @@
+name: R112 Bayesian belief updating finite hypothesis and beta Bernoulli synthetic verification
+on:
+  push:
+    paths:
+      - '.github/workflows/r112-bayesian-belief-update-beta-bernoulli-synthetic.yml'
+      - 'research/R112/r112_bayesian_belief_updating.py'
+      - 'research/R112/test_r112_bayesian_belief_updating.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  r112-bayesian-mathematics-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: R112 conditional evidence and beta Bernoulli analytic fixtures
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R112 python -m unittest -v \
+            research/R112/test_r112_bayesian_belief_updating.py 2>&1 | tee /tmp/r112_test_output.txt
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r112_test_output.txt').read_text()
+          counts=re.findall(r'Ran (\d+) tests? in',log)
+          assert counts==['25'],('R112_WRONG_SYNTHETIC_TEST_COUNT',counts)
+          assert re.search(r'\nOK\s*$',log), 'R112_TEST_REPORT_NOT_OK'
+          print('R112_ACTUAL_25_TESTS_PASS')
+          PY
+      - name: Create accurate independent study and test SHA evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,pathlib
+          folder=pathlib.Path('research/R112')
+          names=[
+            'r112_bayesian_belief_updating.py',
+            'test_r112_bayesian_belief_updating.py',
+            'R112_BAYESIAN_BELIEF_UPDATING_SOURCE_MECHANISM_AUDIT_2026-10-19.md'
+          ]
+          hashes={name:hashlib.sha256((folder/name).read_bytes()).hexdigest() for name in names}
+          result={
+            "research_id":"R112","phase":"A",
+            "knowledge_catalogue_item":"02-006","priority":"P0",
+            "status":"R112_BAYESIAN_FINITE_AND_BETA_BERNOULLI_25_SYNTHETIC_TESTS_PASS",
+            "learning_scope":"DISCRETE_POSTERIOR_AND_CONJUGATE_MATHEMATICAL_MODELS",
+            "source_original_bayes_DOI":"10.1098/rstl.1763.0053",
+            "original_cognitive_model_chapter_DOI":"10.1017/CBO9780511816772.006",
+            "original_author_manuscript":"https://charleskemp.com/papers/bayeschapter.pdf",
+            "pure_synthetic_unittest_count":25,
+            "pure_synthetic_unittest_failures":0,
+            "file_SHA256":hashes,
+            "real_human_data_loaded":False,
+            "real_human_E2_prediction_scores":0,
+            "social_independence_not_inferred_from_probability_calculation":True,
+            "PESEN_v0_1":"FROZEN"
+          }
+          target=folder/'R112_PHASE_A_SYNTHETIC_BAYES_CI_ACCEPTANCE_STATUS.json'
+          target.write_text(json.dumps(result,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R112_SYNTHETIC_RECEIPT_READY',hashlib.sha256(target.read_bytes()).hexdigest())
+          PY
+      - name: Archive truthful synthetic mathematics success
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R112/R112_PHASE_A_SYNTHETIC_BAYES_CI_ACCEPTANCE_STATUS.json
+          git commit -m "results(R112): 25 independent synthetic Bayesian update and conjugacy checks pass"
+          git pull --rebase origin main
+          git push origin HEAD:main
