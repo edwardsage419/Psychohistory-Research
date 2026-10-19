@@ -1,0 +1,93 @@
+name: R114 conditional norm compliance discordant beliefs factorial synthetic audit
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r114-conditional-norm-compliance-discordant-expectations-30-synthetic.yml'
+      - 'research/R114/r114_conditional_norm_compliance_discordant_expectations.py'
+      - 'research/R114/test_r114_conditional_norm_compliance_discordant_expectations.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  exact-firstparty-scope-and-synthetic-math:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute strictly synthetic 30 mathematical and measurement-design tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R114 python -m unittest -v \
+            research/R114/test_r114_conditional_norm_compliance_discordant_expectations.py 2>&1 | tee /tmp/r114_unittests.txt
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r114_unittests.txt').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['30'], 'R114_30_TEST_COUNT_NOT_EXECUTED'
+          assert re.search(r'\nOK\s*$',log), 'R114_SYNTHETIC_MATH_TEST_FAILURE'
+          print('R114_ACTUAL_30_SYNTHETIC_TESTS_PASS')
+          PY
+      - name: Independently verify four prespecified models and exact mathematical recovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R114 python - <<'PY'
+          import hashlib,json,math,pathlib
+          import r114_conditional_norm_compliance_discordant_expectations as m
+          a=m.MODELS['DESCRIPTIVE'].grid()
+          b=m.MODELS['NORMATIVE_ONLY'].grid()
+          assert a['E0N0']==b['E0N0'] and a['E1N1']==b['E1N1']
+          assert a['E1N0']>b['E1N0'] and a['E0N1']<b['E0N1']
+          assert math.isclose(m.log_odds_interaction_contrast(m.MODELS['INTERACTION'].grid()),1,abs_tol=1e-12)
+          assert math.isclose(m.log_odds_interaction_contrast(m.MODELS['BOTH_ADDITIVE'].grid()),0,abs_tol=1e-12)
+          for original in m.MODELS.values():
+              recovered=m.exact_factorial_logit_coefficients(original.grid())
+              for key in ('intercept','empirical_effect','normative_effect','interaction_effect'):
+                  assert math.isclose(getattr(original,key),getattr(recovered,key),abs_tol=1e-12)
+          base=pathlib.Path('research/R114')
+          names=[
+            'r114_conditional_norm_compliance_discordant_expectations.py',
+            'test_r114_conditional_norm_compliance_discordant_expectations.py',
+            'R114_BICCHIERI_XIAO_CONDITIONAL_NORM_COMPLIANCE_AND_FACTORIAL_IDENTIFIABILITY_SCIENTIFIC_REPORT_2026-10-19.md'
+          ]
+          hashes={name:hashlib.sha256((base/name).read_bytes()).hexdigest() for name in names}
+          output=m.factorial_math_receipt()
+          receipt={
+            'research_id':'R114',
+            'phase':'A',
+            'status':'R114_30_SYNTHETIC_FACTORIAL_IDENTIFICATION_AND_PRIMARY_SCOPE_PASS',
+            'candidate_catalogue_id':'03-008',
+            'candidate_priority':'P0',
+            'source_2009_first_party_DOI':'10.1002/bdm.621',
+            'primary_2009_source_scope':'Wiley publisher public abstract and Penn author laboratory abstract only',
+            'source_2014_original_full_article_DOI':'10.3389/fpsyg.2014.01418',
+            'math_counterexamples':output,
+            'synthetic_unit_tests_executed':30,
+            'synthetic_unit_test_failures':0,
+            'source_code_report_SHA256':hashes,
+            'original_2009_individual_human_data_loaded':False,
+            'human_E2_model_performance_scores':0,
+            'original_article_fitted_parameter_values_estimated':False,
+            'causal_social_norm_mechanism_established':False,
+            'PESEN_v0_1':'FROZEN','R073':'FROZEN'
+          }
+          dest=base/'R114_PHASE_A_30_SYNTHETIC_NORM_EXPECTATION_CI_ACCEPTANCE.json'
+          dest.write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf8')
+          print('R114_SOURCE_HASHED_VERIFIED_SYNTHETIC_MATH',hashlib.sha256(dest.read_bytes()).hexdigest())
+          PY
+      - name: Commit bounded machine audit with SHA verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R114/R114_PHASE_A_30_SYNTHETIC_NORM_EXPECTATION_CI_ACCEPTANCE.json
+          git commit -m "results(R114): 30 synthetic norm-discordance and factorial-identification checks verified"
+          git pull --rebase origin main
+          git push origin HEAD:main
