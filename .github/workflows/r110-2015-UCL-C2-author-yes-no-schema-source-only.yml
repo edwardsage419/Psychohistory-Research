@@ -1,0 +1,94 @@
+name: R110 C2 original 2015 UCL author yes no schema source gate no behavioral scoring
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r110-2015-UCL-C2-author-yes-no-schema-source-only.yml'
+      - 'research/R110/r110_phase_c2_2015_UCL_publisher_yes_no_codebook_source_only.py'
+      - 'research/R110/test_r110_phase_c2_2015_UCL_publisher_yes_no_codebook_source_only.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  C2-synthetic-source-safe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: C2 prescore source word vocabulary and source integrity synthetic tests
+        run: |
+          PYTHONPATH=research/R110 python -m unittest -v \
+            research/R110/test_r110_phase_c2_2015_UCL_publisher_yes_no_codebook_source_only.py
+  C2-official-source-only:
+    needs: C2-synthetic-source-safe
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Audit precisely once one full pinned published source, no scoring
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/r110_C2
+          PYTHONPATH=research/R110 python research/R110/r110_phase_c2_2015_UCL_publisher_yes_no_codebook_source_only.py \
+            --output /tmp/r110_C2/firstparty_word_coverage.json || true
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r110_C2/firstparty_word_coverage.json').read_text())
+          assert x['research_id']=='R110' and x['phase']=='C2'
+          assert x['PESEN_v0_1']=='FROZEN' and x['real_human_model_score_count']==0
+          assert x['status'] in (
+              'C2_SCHEMA_MATCHED_AUTHOR_WORDS_BOUNDED',
+              'C2_UNMAPPED_SOURCE_TEXT_REQUIRES_CODEBOOK',
+              'C2_E0_ORIGINAL_SOURCE_BLOCKED')
+          if x['status']!='C2_E0_ORIGINAL_SOURCE_BLOCKED':
+              assert x['source_SHA256']=='ea70b0f3d98075f9d3e4401becfcdec8f6bdb5cae00c4dad63a697f9b61d7b5f'
+              assert x['original_records']==12000
+              assert all(sum(k.values())==12000 for k in x['behavior_anonymous_dictionary_counts'].values())
+              assert x['raw_tokens_person_IDs_and_actions_exported'] is False
+          print('R110_C2_REAL_SOURCE_DICTIONARY_STATUS',x['status'])
+          if 'behavior_anonymous_dictionary_counts' in x:
+              print('R110_C2_TRUE_SOURCE_WORD_CLASS_TOTALS',x['behavior_anonymous_dictionary_counts'])
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: R110-C2-firstparty-bounded-author-yes-no-coverage
+          path: /tmp/r110_C2/*.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Archive unchanged C0 and new C2 anonymous source-only receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/r110_C2/firstparty_word_coverage.json
+          dst=research/R110/R110_PHASE_C2_LIVE_CI_ORIGINAL_2015_UCL_AUTHOR_YES_NO_WORD_SCHEMA_OR_FAILURE.json
+          test -f "$src"
+          python - <<'PY'
+          import json,pathlib
+          x=json.loads(pathlib.Path('/tmp/r110_C2/firstparty_word_coverage.json').read_text())
+          assert x['phase']=='C2' and x['research_id']=='R110'
+          assert x['real_human_model_score_count']==0
+          assert x['PESEN_v0_1']=='FROZEN'
+          assert x['status'] in ('C2_SCHEMA_MATCHED_AUTHOR_WORDS_BOUNDED',
+                                 'C2_UNMAPPED_SOURCE_TEXT_REQUIRES_CODEBOOK',
+                                 'C2_E0_ORIGINAL_SOURCE_BLOCKED')
+          assert len(str(x))<20000
+          PY
+          cp "$src" "$dst"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$dst"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "results(R110 C2): publisher-authenticated original exact yes no token coverage or source failure"
+          git pull --rebase origin main
+          git push origin HEAD:main
