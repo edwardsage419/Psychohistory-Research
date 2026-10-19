@@ -51,3 +51,9 @@ n个匿名有标签节点，K=C(n,2)条潜在无向简单边。
 源码：research/R125/r125_erdos_renyi_gnm_gilbert_gnp_exact.py。
 测试：research/R125/test_r125_erdos_renyi_gnm_gilbert_gnp_exact.py。
 CI必须**真实**成功并机器归档代码/测试/科学报告SHA256后才能标记限定学习LEARNING_COMPLETE_BOUNDED_ERDOS_RENYI_1959_GNM_GILBERT_1959_GNP_EXACT_SMALL_GRAPH_MODELS。
+
+## R125-CORR-001：首次真实CI失败的记录与端点概率支持集修正（2026-10-20）
+
+GitHub Actions首次运行 https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39344720876 ，真实结果failure：54项测试，52项通过、2项失败。失败的两个测试发生在Gilbert G(n,p)的p=0和p=1：代码在完整枚举时，把权重严格为0的不可能最终最大分量状态也作为概率字典的键保存，例如p=1时包含{1:0,2:0,3:0,4:1}，而预置的**概率分布支持集**为{4:1}。两个结果在数学测度上等价，但要求精确、不含不可能状态的记录标准未满足。
+
+纠正：枚举仍计入每一张理论上可能存在的有标签图用于“共遍历1099图”覆盖计数，但在概率质量为0时跳过对最终分量/度数/连通等**概率分布支持集**的累计。其他固定边、独立成边、1959原始递推、n4解析结果及25个固定m分布桶不改。该问题不是随机图原论文的错误，也不是更改原始科研验收算术门；修复后须重新运行**全部54测试及全部1099图×4概率、25分布桶**，才可结题。必须保留首次失败来源，不得事后表述为首次即成功。
