@@ -1,0 +1,56 @@
+{
+  "research_id": "R121",
+  "date": "2026-10-19",
+  "original_candidate_catalogue_id": "04-004",
+  "original_catalogue_priority": "P0",
+  "candidate_name": "Independent Cascade Model",
+  "scientific_status": "CLOSED_BOUNDED_KKT_2003_ORIGINAL_ONE_CHANCE_INDEPENDENT_CASCADE_AND_LIVE_EDGES",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_KKT_2003_IC_ONE_CHANCE_INDEPENDENT_LIVE_EDGES",
+  "original_primary_theory_paper_DOI": "10.1145/956750.956769",
+  "original_author_pdf": "https://www.cs.cornell.edu/home/kleinber/kdd03-inf.pdf",
+  "primary_pdf_pages_zero_based_reviewed": [
+    1,
+    3
+  ],
+  "source_claim_2_3": "preflipped independently live directed edges yield identical final active node SET distribution as chronological IC one-chance random attempts",
+  "source_theorem_2_2": "IC expected activated set size sigma(A) monotone and submodular",
+  "older_marketing_source_DOI": "10.1023/A:1011122126881",
+  "older_marketing_source_review_scope": "Original authors university bibliographic entry and public abstract only, no original cellular automaton implementation or human data",
+  "model_specification": "one attempt by each newly active node on each still inactive neighbor; edges Bernoulli independent; targets join in next period; no repeated attempts, no dropout",
+  "computational_algorithms_independent": [
+    "exact chronological frontier Bernoulli joint-outcome event-tree",
+    "independent directed edge Bernoulli preflipping and path reachability"
+  ],
+  "full_probability_distribution_equality_over_final_frozenset_tested": true,
+  "test_probability_methods_use_Python_Fraction": true,
+  "source_mathematical_fixtures": {
+    "single_source0_expected": "3/2",
+    "single_source1_expected": "5/4",
+    "two_sources_target_activation": "5/8",
+    "two_sources_expected_total": "21/8",
+    "two_sources_both_edges_live": "1/8",
+    "four_node_chain_expected": "25/12",
+    "three_node_cycle_expected": "7/4"
+  },
+  "R120_LT_same_weight_two_sources_expected": "11/4",
+  "IC_vs_LT_same_single_edge_numbers_do_not_guarantee_full_model_equivalence": true,
+  "all_n_le3_labeled_directed_simple_graph_seed_sets_two_probability_schemes_tested": {
+    "1": 4,
+    "2": 32,
+    "3": 1024
+  },
+  "total_exact_graph_seed_full_distribution_cases": 1060,
+  "actual_CI_independent_unittest_count": 48,
+  "actual_CI_test_failures": 0,
+  "real_github_actions_run": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39256571643",
+  "genuine_source_code_test_sha_receipt": "research/R121/R121_PHASE_A_IC_48_TEST_1060_FULL_DISTRIBUTION_GITHUB_CI_ACCEPTANCE.json",
+  "original_author_large_collaboration_network_experiments_reproduced": false,
+  "real_original_human_social_behavior_records_read": false,
+  "new_human_E2_prediction_scores": 0,
+  "real_normative_vs_informational_psychological_identification": false,
+  "historical_event_forecasting_independently_verified": false,
+  "original_R_series_all_models_complete": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "owner_order": "complete originally planned R-series first, then comprehensively classify, then fuse"
+}
