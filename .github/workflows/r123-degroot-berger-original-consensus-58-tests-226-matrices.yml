@@ -1,0 +1,108 @@
+name: R123 DeGroot 1974 and Berger 1981 corrected consensus, exact stationary weights
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r123-degroot-berger-original-consensus-58-tests-226-matrices.yml'
+      - 'research/R123/r123_degroot_1974_berger_1981_exact_consensus.py'
+      - 'research/R123/test_r123_degroot_1974_berger_1981_exact_consensus.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  orig-1974-1981-correction-independent-maths:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute 58 primary DeGroot and Berger corrected mathematical tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R123 python -m unittest -v \
+            research/R123/test_r123_degroot_1974_berger_1981_exact_consensus.py \
+            2>&1 | tee /tmp/r123_actual_unittests.log
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r123_actual_unittests.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['58'],('R123_EXPECT_EXACT_58_TESTS',log[-1800:])
+          assert re.search(r'\nOK\s*$',log),'R123_58_TESTS_NOT_ALL_PASS'
+          print('R123_58_TRUE_FIRSTPARTY_EXACT_TESTS_ALL_PASS')
+          PY
+      - name: Independently rerun 226 exact stochastic matrices and two influence-weight algorithms
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R123 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r123_degroot_1974_berger_1981_exact_consensus as m
+
+          degroot=m.degroot_original_published_examples()
+          berger=m.special_initial_opinion_counterexamples()
+          audit=m.tiny_226_row_stochastic_matrix_audit()
+          assert degroot['two_person_stationary']==('1/3','2/3')
+          assert degroot['three_person_stationary']==('1/3','2/3','0')
+          assert degroot['two_person_consensus_x0_0_1']=='2/3'
+          assert degroot['three_person_consensus_x0_0_1_9']=='2/3'
+          assert berger['swap_structure']['closed_periods']==(2,)
+          assert not berger['swap_structure']['all_initial_consensus_guaranteed']
+          assert berger['swap_equal_opinion_stays_equal']==(('1/2','1/2'),)*3
+          assert berger['identity_structure']['all_initial_each_opinion_convergent']
+          assert not berger['identity_structure']['all_initial_consensus_guaranteed']
+          assert berger['leader_structure']['all_initial_consensus_guaranteed']
+          assert berger['leader_pi']==('1','0')
+          assert audit['tested_row_stochastic_matrices_by_n']=={'1':1,'2':9,'3':216}
+          assert audit['total_synthetic_matrices']==226
+          assert audit['gaussian_and_independent_in_trees_identical_for_each_universal']
+          assert audit['finite_positive_column_certificate_12_powers_checked']
+
+          root=pathlib.Path('research/R123')
+          artifacts=[
+            'r123_degroot_1974_berger_1981_exact_consensus.py',
+            'test_r123_degroot_1974_berger_1981_exact_consensus.py',
+            'R123_DEGROOT_1974_BERGER_1981_ORIGINAL_CONSENSUS_AND_INFLUENCE_SCIENTIFIC_REPORT_2026-10-19.md'
+          ]
+          sha={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in artifacts}
+          outcome={
+            'research_id':'R123','phase':'A',
+            'status':'R123_1974_ORIGINAL_1981_CORRECTION_58_UNIT_226_ROWSTOCHASTIC_MATH_PASS',
+            'catalogue_item':'04-009','priority':'P0',
+            'DeGroot_1974_DOI':'10.1080/01621459.1974.10480137',
+            'Berger_1981_original_publication':'JASA 76(374) 415-418',
+            'author_1974_original_print_pages_read':[118,119,120,121],
+            'Berger_1981_original_print_pages_read':[415,416,417],
+            'scientific_warning':'1974 P-power common-row convergence is a sufficient not necessary condition for consensus given PARTICULAR initial F; corrected by Berger 1981',
+            'source_p120_original_author_numerical_examples':degroot,
+            'Berger_conceptual_distinction_project_synthetic_counterexamples':berger,
+            'independent_algorithms':['direct Fraction finite-time opinion recursion','graph closed SCC and gcd period classification','exact stationary Gaussian elimination','independent directed Markov in-arborescence enumerator','positive-column Boolean powers certificate'],
+            'fully_exhaustive_n_le3_226_stochastic_matrices':audit,
+            'actually_executed_independent_unit_tests':58,
+            'unit_test_failures':0,
+            'code_test_report_SHA256':sha,
+            'Berger_full_arbitrary_initial_probability_distributions_theorem_implemented':False,
+            'original_real_individual_opinions_microdata_reanalyzed':False,
+            'new_real_human_E2_model_prediction_scores':0,
+            'real_independent_social_causal_effect_identified':False,
+            'historical_forecast_established':False,
+            'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          destination=root/'R123_PHASE_A_ORIGINAL_DEGROOT_BERGER_58_TEST_226_MATRIX_CI_ACCEPTANCE.json'
+          destination.write_text(json.dumps(outcome,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R123_REAL_CI_MACHINE_RECEIPT_SHA256',hashlib.sha256(destination.read_bytes()).hexdigest())
+          PY
+      - name: Archive genuine mathematical evidence and source hashes in main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R123/R123_PHASE_A_ORIGINAL_DEGROOT_BERGER_58_TEST_226_MATRIX_CI_ACCEPTANCE.json
+          git commit -m "results(R123): DeGroot original and Berger correction 58 tests and 226 row stochastic matrices success"
+          git pull --rebase origin main
+          git push origin HEAD:main
