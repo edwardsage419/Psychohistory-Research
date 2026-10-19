@@ -1,0 +1,114 @@
+name: R122 Centola Macy 2007 simple complex contagion bridge mathematics
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r122-centola-macy-simple-complex-contagion-bridge-51-tests.yml'
+      - 'research/R122/r122_centola_macy_2007_distinct_neighbor_complex_contagion.py'
+      - 'research/R122/test_r122_centola_macy_2007_distinct_neighbor_complex_contagion.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bounded-firstparty-source-graph-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute actual 51 Centola source and independent closure tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R122 python -m unittest -v \
+            research/R122/test_r122_centola_macy_2007_distinct_neighbor_complex_contagion.py \
+            2>&1 | tee /tmp/r122_test_execution.log
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r122_test_execution.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['51'],('R122_EXPECT_51_ACTUAL_TESTS',log[-1600:])
+          assert re.search(r'\nOK\s*$',log),'R122_TESTS_NOT_ALL_SUCCESS'
+          print('R122_51_SOURCE_AND_SYNTHETIC_MATHEMATICS_CASES_PASS')
+          PY
+      - name: Independent second replay of 16932 small graph threshold seed cases and primary ring math
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R122 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r122_centola_macy_2007_distinct_neighbor_complex_contagion as m
+          x=m.toy_bridge_results()
+          assert x['narrow_one']['cross_edges']==1
+          assert x['narrow_one']['simple_all_A_seeds_final_count']==6
+          assert x['narrow_one']['complex_all_A_seeds_final_count']==3
+          assert x['misallocated_three']['cross_edges']==3
+          assert x['misallocated_three']['complex_all_A_seeds_final_count']==3
+          assert x['functional_three']['cross_edges']==3
+          assert x['functional_three']['complex_all_A_seeds_final_count']==6
+          assert x['functional_three']['complex_all_A_seeds_round_counts']==[3,4,5,6]
+          for g in x.values():
+              assert g['simple_all_A_seeds_final_count']==6
+          ring={
+              'z4_a1':m.ring_bridge_condition(4,1),
+              'z4_a2':m.ring_bridge_condition(4,2),
+              'z4_a3':m.ring_bridge_condition(4,3),
+              'z6_a3':m.ring_bridge_condition(6,3),
+              'z8_a4':m.ring_bridge_condition(8,4),
+          }
+          assert ring['z4_a1']=={'max_width':F(3),'critical_width':F(1),'special_ring_width_sufficient':True}
+          assert ring['z4_a2']=={'max_width':F(3),'critical_width':F(3),'special_ring_width_sufficient':True}
+          assert ring['z4_a3']=={'max_width':F(3),'critical_width':F(6),'special_ring_width_sufficient':False}
+          assert ring['z6_a3']['max_width']==ring['z6_a3']['critical_width']==F(6)
+          assert ring['z8_a4']['max_width']==ring['z8_a4']['critical_width']==F(10)
+          exhaustive=m.exact_small_graph_exhaustion()
+          assert exhaustive=={'1':4,'2':32,'3':512,'4':16384}
+          assert sum(exhaustive.values())==16932
+          root=pathlib.Path('research/R122')
+          filenames=[
+            'r122_centola_macy_2007_distinct_neighbor_complex_contagion.py',
+            'test_r122_centola_macy_2007_distinct_neighbor_complex_contagion.py',
+            'R122_CENTOLA_MACY_2007_COMPLEX_CONTAGION_BRIDGE_SCIENTIFIC_REPORT_2026-10-19.md'
+          ]
+          hashes={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in filenames}
+          receipt={
+            'research_id':'R122','phase':'A',
+            'status':'R122_CENTOLA_MACY_2007_BRIDGE_51_TEST_16932_INDEPENDENT_CLOSED_SET_SYNTHETIC_PASS',
+            'original_catalogue_item':'04-005','priority':'P0',
+            'original_2007_firstparty_paper_DOI':'10.1086/521848',
+            'firstparty_author_original_journal_scanned_pages':[702,703,706,710,711,713,714,728],
+            'firstparty_paper_scope':'Original peer-reviewed theoretical and stochastic simulation study, not person-level human E2 reanalysis',
+            'exact_special_ring_Eq2_Eq4_results':{
+                k:{name:str(value) for name,value in v.items()}
+                for k,v in ring.items()
+            },
+            'toy_two_triangle_original_project_counterexamples':x,
+            'independent_solution_methods':['synchronous distinct-active-neighbor thresholds','intersection of all threshold-closed supersets of seeds'],
+            'small_graph_all_undirected_topologies_all_1_2_node_thresholds_and_all_seedsets':exhaustive,
+            'exhaustive_synthetic_case_total':sum(exhaustive.values()),
+            'actual_unit_test_count':51,'unit_test_failures':0,
+            'code_test_report_SHA256':hashes,
+            'original_2007_author_stochastic_rewiring_phase_diagram_reproduced':False,
+            'real_human_microdata_loaded':False,'real_human_E2_predictions_scored':0,
+            'causal_social_reinforcement_effect_identified':False,
+            'new_real_historical_forecast_evaluated':False,
+            'R073':'FROZEN','PESEN_v0_1':'FROZEN',
+          }
+          dest=root/'R122_PHASE_A_COMPLEX_CONTAGION_51_TEST_16932_GRAPH_CI_ACCEPTANCE.json'
+          dest.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R122_ACTUAL_MACHINE_SHA256_RECEIPT',hashlib.sha256(dest.read_bytes()).hexdigest())
+          PY
+      - name: Commit only genuine synthetic acceptance and source hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R122/R122_PHASE_A_COMPLEX_CONTAGION_51_TEST_16932_GRAPH_CI_ACCEPTANCE.json
+          git commit -m "results(R122): 51 exact complex contagion checks and 16932 threshold graph cases success"
+          git pull --rebase origin main
+          git push origin HEAD:main
