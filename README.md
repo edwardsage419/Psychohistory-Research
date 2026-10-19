@@ -1,6 +1,9 @@
 # 心理史学 | Psychohistory Research
 
 
+**2026-10-19 R112新增数学研究验收**：[R112贝叶斯信念更新](research/R112/README.md)对应原239模型目录P0 02-006，Griffiths/Kemp/Tenenbaum原作者论文手稿的后验公式核对、有限离散假设、Beta–Bernoulli后验与证据复制反例均形成可运行代码，GitHub Actions [39233410573](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39233410573)共25项纯合成测试全部成功；[来源SHA与机器收据](research/R112/R112_PHASE_A_SYNTHETIC_BAYES_CI_ACCEPTANCE_STATUS.json)已归档。**限定数学学习完成，真人E2仍为0；原239项目录学习尚未全部完成。** R073与PESEN v0.1保持冻结；后续仍优先R系列模型学习。
+
+
 **2026-10-19 R系列最新执行进展**：依10月18日项目所有者决策继续逐项模型学习，暂不开展全库分类与熔炼。[R110正式有界结题](research/R110/README.md)核实原2015 UCL第一手12,000人轮数据的行为文字编码：C1严格数值编码下0合格预测目标，C2源词典仅部分yes/no匹配，本人字段其它文字2390条、前伙伴信号240条，完整原作者码本缺失，真人E2仍为0；C0资格失败保留，R105等独立实验阴性结果继续保存。[R111 McFadden随机效用与条件Logit](research/R111/README.md)从原目录P0条目01-005开展第一手数学学习，18项纯合成测试CI success，限数学学习结题，未拟合真人。R073和PESEN v0.1继续冻结；下一轮继续既定候选模型的独立学习、来源及数学验收。
 
 **项目所有者最新研究顺序（2026-10-18）**：[优先完成既定R系列模型学习、随后统一分类、最后模型熔炼](docs/R_SERIES_LEARNING_FIRST_CLASSIFY_LATER_FUSION_LAST_OWNER_DECISION_2026-10-18.md)。下方此前“近期优先整理239项目录和关系图”属于旧审阅建议，已被后续决定覆盖执行优先级；这些文档作为历史与未来分类素材保留。模型PESEN v0.1继续冻结；当前R110来源资格失败仍为真实E2=0。个人辅助决策系统建设继续暂缓。
