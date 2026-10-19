@@ -1,5 +1,7 @@
 # 心理史学：当前研究状态导航（2026-10-18）
 
+**2026-10-19 R122限定增量（不改变原2026-10-18导航快照）**：[原目录P0 04-005复杂传播](../research/R122/README.md)。真实核阅Centola&Macy2007原文（AJS113(3)702–734）多源强化、长边/宽桥区别、原环形桥宽Eq(2)/(4)。项目自造双三角社区反例：simple a1一条或三条跨边终态皆6；complex a2三条跨边分散时终态3、形成连续双来源强化时终态6。最终[GitHub Actions 39258676907](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39258676907)51项真实CI测试及16,930项小图穷举全部通过；[首次失败39258433825](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39258433825)与n1非法门槛纠正R122-CORR-001均保留，不把失败隐藏。[正式有界验收](../research/R122/R122_FINAL_ACCEPTANCE_STATUS.json)。真人E2=0，未复原作者随机重连相图，R073与PESEN继续冻结，完成原R模型学习后才统一分类及融合。
+
 **2026-10-19 R121有界学习归档（原10月18日快照原样保留）**：[原P0 04-004独立级联模型、单次随机传播与独立有向活边](../research/R121/README.md)。原KKT2003论文作者自托管PDF第2、第4页真正核阅；单次尝试动态过程和每一边预掷独立Bernoulli的传播，在n≤3所有简单有向图×两种概率方案×全部初始种子**1,060组完整终态分布**逐状态Fraction相等，独立测试**48项CI success**，[正式验收](../research/R121/R121_FINAL_ACCEPTANCE_STATUS.json)已归档。两传播源(1/2,1/4)目标IC概率5/8而R120 LT目标3/4，不能混同模型的边独立与每目标入边互斥。未取得原社交网络真人数据，E2=0；R073/PESEN冻结，全库分类和熔炼仍后置。
 
 **2026-10-19 R120独立有界研究增量（保留本导航2026-10-18原快照）**：[原候选P0 04-003线性阈值扩散](../research/R120/README.md)。一手Kempe/Kleinberg/Tardos2003原文作者自托管PDF的随机Uniform门槛及活边等价Claim2.6、期望次模Theorem2.5经核阅；独立精确阈值区间积分和每节点最多一条入边的活边可达性算法完整比较，n≤3所有有向简单图×所有种子集合**530组逐终态概率严格一致**；固定门槛并不一定次模。GitHub Actions [39254086771](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39254086771)45项数学测试成功，[正式科研状态](../research/R120/R120_FINAL_ACCEPTANCE_STATUS.json)。不代表2003原作者大型网络实验的复现或真实人类E2预测，PESEN v0.1/R073继续冻结，既定R系列完成后才统一分类熔炼。
