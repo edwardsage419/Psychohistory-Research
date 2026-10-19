@@ -1,0 +1,75 @@
+{
+  "research_id": "R122",
+  "as_of": "2026-10-19",
+  "original_model_catalogue_id": "04-005",
+  "priority": "P0",
+  "science_status": "CLOSED_BOUNDED_PRIMARY_CENTOLA_MACY_2007_BRIDGE_AND_DISTINCT_NEIGHBOR_MATH",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_CENTOLA_MACY_COMPLEX_CONTAGION_AND_BRIDGE_ANALYTICS",
+  "primary_source": "Centola and Macy (2007), Complex Contagions and the Weakness of Long Ties, AJS 113(3):702-734",
+  "original_DOI": "10.1086/521848",
+  "primary_original_publication_fulltext": "https://ndg.asc.upenn.edu/wp-content/uploads/2016/04/Centola-Macy-2007-AJS.pdf",
+  "primary_publication_print_pages_reviewed": [
+    702,
+    703,
+    706,
+    710,
+    711,
+    713,
+    714,
+    728
+  ],
+  "source_ring_analytic_equations": [
+    "Eq 2 Wmax=z(z+2)/8 for original even-degree ring",
+    "Eq 4 Wc=a(a+1)/2 for original ring"
+  ],
+  "ring_z4_a2_max_critical_equal_3": true,
+  "source_ring_formula_generalized_to_arbitrary_graphs": false,
+  "researcher_owned_network_toy": "two separate triangle communities, integer distinct-neighbor count thresholds, irreversible adoption, initially three active left nodes",
+  "researcher_owned_narrow_one_crossedge_simple_complex_final_counts": [
+    6,
+    3
+  ],
+  "researcher_owned_three_misallocated_edges_simple_complex_final_counts": [
+    6,
+    3
+  ],
+  "researcher_owned_three_functional_edges_simple_complex_final_counts": [
+    6,
+    6
+  ],
+  "researcher_owned_effective_complex_three_edge_round_sizes": [
+    3,
+    4,
+    5,
+    6
+  ],
+  "three_cross_edges_alone_not_sufficient_for_arbitrary_complex_bridge": true,
+  "repeated_exposures_from_one_neighbor_count_as_only_one_distinct_source": true,
+  "independent_algorithms": [
+    "synchronous deterministic propagation of unique active neighbors",
+    "independent intersection of all closed supersets of initial seeds"
+  ],
+  "first_real_CI_failure": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39258433825",
+  "first_failure_reason": "Original exhaustive generator used threshold 2 for n=1, violating preregistered 1..n legal threshold range; test suite 50 passes 1 error",
+  "additional_intermediate_pre_fix_CI_failures_replaced_by_later_commits": true,
+  "methodology_correction": "R122-CORR-001 preserve original frozen [1,n] threshold domain, filter n1 to a=1; exact cases updated from 16932 to 16930",
+  "successful_real_CI_run": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39258676907",
+  "real_unit_tests_executed": 51,
+  "real_unit_test_failures": 0,
+  "tiny_complete_undirected_graph_threshold_seed_cases": {
+    "1": 2,
+    "2": 32,
+    "3": 512,
+    "4": 16384
+  },
+  "total_exact_graph_threshold_seed_math_configurations": 16930,
+  "source_code_test_scientific_report_sha_receipt": "research/R122/R122_PHASE_A_COMPLEX_CONTAGION_51_TEST_16930_GRAPH_CI_ACCEPTANCE.json",
+  "original_author_random_rewiring_phase_diagram_reproduced": false,
+  "original_actual_human_microdata_loaded": false,
+  "new_real_human_E2_model_prediction_scores": 0,
+  "new_real_world_behavioral_causal_identification": false,
+  "new_historical_event_probability_forecast_evaluation": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "owner_order": "Finish original planned R-series model learning, then unified classification, then fusion"
+}
