@@ -215,6 +215,11 @@ def full_exact_gnp_graph_distribution(n,p):
     graph_count=0
     for edges in all_labeled_graphs(n):
         prob=gnp_graph_mass(n,p,edges)
+        graph_count+=1
+        if prob==0:
+            # R125-CORR-001: mathematical support excludes impossible events.
+            # Still count ALL enumerated labeled graphs for coverage.
+            continue
         props=graph_properties(n,edges)
         total+=prob
         if props["connected"]:
@@ -223,7 +228,6 @@ def full_exact_gnp_graph_distribution(n,p):
         deg[props["degree_of_node_zero"]]+=prob
         largest[props["largest_component"]]+=prob
         edge_count[props["edges"]]+=prob
-        graph_count+=1
     if total!=1 or graph_count!=(1<<(n*(n-1)//2)):
         raise RandomGraphAuditError("R125_GNP_ENUMERATION_NORMALIZATION_FAILED")
     if connect!=independent_gilbert1959_connected_recurrence(n,p):
