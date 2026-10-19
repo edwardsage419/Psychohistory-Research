@@ -1,0 +1,96 @@
+name: R116 normative social influence public versus anonymous exact fraction source audit
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r116-normative-social-influence-public-anonymous-status-vs-information.yml'
+      - 'research/R116/r116_normative_public_status_vs_informational_cue_exact.py'
+      - 'research/R116/test_r116_normative_public_status_vs_informational_cue_exact.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  source-bounded-status-information-synthetics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Strict exact 48 synthetic belief status and visibility mathematical tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R116 python -m unittest -v \
+            research/R116/test_r116_normative_public_status_vs_informational_cue_exact.py 2>&1 | tee /tmp/r116_unittest.log
+          python - <<'PY'
+          import pathlib,re
+          result=pathlib.Path('/tmp/r116_unittest.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',result)==['48'],('R116_EXPECT_EXACTLY_48_ACTUAL_TESTS',result[-2000:])
+          assert re.search(r'\nOK\s*$',result),'R116_ACTUAL_TESTS_NOT_ALL_PASS'
+          print('R116_48_REAL_CI_SYNTHETIC_TESTS_PASS')
+          PY
+      - name: Independent frozen exact grid and status threshold replay with source file hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R116 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r116_normative_public_status_vs_informational_cue_exact as m
+          strong={name:m.factorial_choices(model) for name,model in m.MODELS.items()}
+          weak={name:m.factorial_choices(model,group_accuracy=F(11,20)) for name,model in m.MODELS.items()}
+          assert list(strong['NO_INFLUENCE'].values())==[0,0,0,0]
+          assert list(strong['NORMATIVE_ONLY'].values())==[0,0,0,1]
+          assert list(strong['INFORMATIONAL_ONLY'].values())==[0,0,1,1]
+          assert list(strong['BOTH'].values())==[0,0,1,1]
+          assert strong['BOTH']==strong['INFORMATIONAL_ONLY']
+          assert weak['BOTH']['C1_PUBLIC']==1 and weak['INFORMATIONAL_ONLY']['C1_PUBLIC']==0
+          assert m.single_independent_cue_update(F(2,5),1,F(3,4))==F(2,3)
+          assert m.single_independent_cue_update(F(2,5),1,F(11,20))==F(22,49)
+          assert m.public_conformity_threshold()==F(1,5)
+          receipt=m.study_receipt()
+          assert receipt['original_human_E2_evaluations']==0
+          assert receipt['PESEN_v0_1']=='FROZEN'
+          root=pathlib.Path('research/R116')
+          filenames=[
+            'r116_normative_public_status_vs_informational_cue_exact.py',
+            'test_r116_normative_public_status_vs_informational_cue_exact.py',
+            'R116_ASCH_BERNHEIM_PUBLIC_NORMATIVE_VS_INFORMATIONAL_MECHANISM_SCIENTIFIC_REPORT_2026-10-19.md']
+          sha={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in filenames}
+          outcome={
+            'research_id':'R116',
+            'phase':'A',
+            'status':'R116_48_EXACT_STATUS_INFORMATION_PUBLIC_ANON_SYNTHETIC_CHECKS_PASS',
+            'catalogue_id':'03-005','priority':'P0',
+            'source_Asch_1955_DOI':'10.1038/scientificamerican1155-31',
+            'source_Bernheim_1994_DOI':'10.1086/261957',
+            'source_Deutsch_Gerard_1955_DOI':'10.1037/h0046408',
+            'primary_Asch_full_article_study_level_checked':True,
+            'primary_Bernheim_original_full_article_checked':True,
+            'no_original_1955_subject_trial_rows_loaded':True,
+            'model_scope':'explicitly researcher-designed exogenous status cost toy, NOT Bernheim endogenous social reputation equilibrium',
+            'full_anonymous_fixed_synthetic_receipt':receipt,
+            'actual_synthetic_tests_executed':48,
+            'actual_synthetic_test_failures':0,
+            'source_code_test_report_SHA256':sha,
+            'new_human_E2_scores':0,
+            'causal_normative_informational_effect_identified':False,
+            'PESEN_v0_1':'FROZEN','R073':'FROZEN',
+          }
+          dest=root/'R116_PHASE_A_48_SYNTHETIC_PUBLIC_STATUS_INFO_CI_ACCEPTANCE.json'
+          dest.write_text(json.dumps(outcome,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R116_SYNTHETIC_SOURCE_HASH_VERIFIED',hashlib.sha256(dest.read_bytes()).hexdigest())
+          PY
+      - name: Archive genuine bounded source-only synthetic verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R116/R116_PHASE_A_48_SYNTHETIC_PUBLIC_STATUS_INFO_CI_ACCEPTANCE.json
+          git commit -m "results(R116): 48 synthetic normative public status and one source information cue tests success"
+          git pull --rebase origin main
+          git push origin HEAD:main
