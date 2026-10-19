@@ -204,7 +204,7 @@ def independent_gilbert1959_connected_recurrence(n,p):
 
 
 def full_exact_gnp_graph_distribution(n,p):
-    """Enumerate *every* labeled undirected graph and its whole graph statistics."""
+    """Enumerate all labeled graphs but report only positive-mass PMF support."""
     n=_n(n);p=_p(p)
     connect=F(0)
     expect_isolates=F(0)
