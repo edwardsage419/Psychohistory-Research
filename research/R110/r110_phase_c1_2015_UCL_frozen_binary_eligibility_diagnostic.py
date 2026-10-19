@@ -145,7 +145,7 @@ def diagnose(raw, *, enforce_real=True):
 
     if sum(missing.values())+qualified!=len(obs):
         raise a.SourceError("R110_C1_EXCLUSIVE_EXCLUSION_ACCOUNTING_NOT_CLOSED")
-    if qualified + sum(x["total"]-x["eligible"] for x in per_game.values())!=2*len(obs)-qualified:
+    if sum(x["total"] for x in per_game.values())!=len(obs) or sum(x["eligible"] for x in per_game.values())!=qualified:
         raise a.SourceError("R110_C1_GAME_DENOMINATOR_ACCOUNTING_NOT_CLOSED")
     game_out=[]
     for game in sorted(per_game):
