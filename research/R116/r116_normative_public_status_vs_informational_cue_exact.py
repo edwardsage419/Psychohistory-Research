@@ -23,7 +23,8 @@ class NormativeDesignError(ValueError):
 def _exact_probability(p, label, *, informative=False):
     if type(p) is not Fraction:
         raise NormativeDesignError("R116_EXACT_FRACTION_REQUIRED_" + label)
-    if not (HALF < p < ONE) if informative else not (ZERO <= p <= ONE):
+    valid = (HALF < p < ONE) if informative else (ZERO <= p <= ONE)
+    if not valid:
         raise NormativeDesignError("R116_PROBABILITY_BOUNDARY_INVALID_" + label)
     return p
 
