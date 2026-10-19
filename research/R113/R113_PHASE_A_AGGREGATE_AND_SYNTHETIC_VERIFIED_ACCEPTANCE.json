@@ -1,0 +1,110 @@
+{
+  "PESEN_v0_1": "FROZEN",
+  "R073": "FROZEN",
+  "author_behavioral_equations_fitted": false,
+  "candidate_catalog_id": "03-007",
+  "causal_norm_conclusion_from_this_analysis": false,
+  "cited_human_results_source": "2014 primary-author paper Table 2 quoting prior Bicchieri and Chavez 2013, only rounded public aggregates",
+  "new_individual_human_E2_reanalysis_scores": 0,
+  "original_individual_experiment_human_records_obtained": false,
+  "phase": "A",
+  "priority": "P0",
+  "published_aggregate_difference_arithmetic": {
+    "categories": [
+      "equal_split_5_5",
+      "unequal_split_8_2",
+      "coin_flip"
+    ],
+    "causal_effect_or_uncertainty_identified_from_aggregate_table": false,
+    "empirical_minus_behavior_percentage_points": [
+      0,
+      16,
+      -16
+    ],
+    "fairness_judgments_allow_multiple_options": true,
+    "normative_minus_personal_ought_percentage_points": [
+      0,
+      -12,
+      27
+    ],
+    "original_individual_human_experiment_data_read": false,
+    "published_actor_behavior_percent": [
+      44,
+      12,
+      44
+    ],
+    "published_proposer_normative_expectation_percent": [
+      100,
+      10,
+      79
+    ],
+    "published_responder_empirical_expectation_percent": [
+      44,
+      28,
+      28
+    ],
+    "published_responder_personal_normative_belief_percent": [
+      100,
+      22,
+      52
+    ],
+    "source": "10.3389/fpsyg.2014.01418",
+    "source_table": "Table 2",
+    "source_values_rounded_published_percentages_not_individual_rows": true,
+    "sum_actual_behavior_percent": 100,
+    "sum_empirical_expectation_percent": 100,
+    "sum_normative_expectation_judgment_percent": 189,
+    "sum_personal_normative_judgment_percent": 174
+  },
+  "published_primary_source_DOI": "10.3389/fpsyg.2014.01418",
+  "research_id": "R113",
+  "source_and_test_file_SHA256": {
+    "R113_FIRST_PARTY_BICCHIERI_SOCIAL_EXPECTATIONS_BOUNDED_MECHANISM_SCIENTIFIC_REPORT_2026-10-19.md": "8f5cfa24fe3bb36c1ef7db0c7595f842d2eb753097d93b830c52a70b97e62266",
+    "r113_social_norm_expectations_identifiability.py": "6e5f19594d6759b0b216eaad7ba816af439e6e3c40ed8cf7ac1a032af8adcdbc",
+    "test_r113_social_norm_expectations_identifiability.py": "315289fac639ece83c005026fb8ddd5b91a5da0bd84e4ea67d1301173cc81fb5"
+  },
+  "source_author_2009_Wiley_study_abstract_and_2014_own_review_only": true,
+  "source_author_2017_OUP_chapter_abstract_only": true,
+  "status": "R113_FIRSTPARTY_PUBLISHED_AGGREGATE_ARITHMETIC_AND_25_SYNTHETIC_CHECKS_PASS",
+  "synthetic_actual_ci_test_count": 25,
+  "synthetic_identification_counterexample": {
+    "baseline_empirical": 0.8,
+    "baseline_normative": 0.8,
+    "conditional_world": {
+      "intervened_action": 0,
+      "observed_action": 1,
+      "parameters": {
+        "baseline": -0.2,
+        "empirical_weight": 0.5,
+        "normative_weight": 0.5
+      }
+    },
+    "counterfactual_empirical": 0.2,
+    "counterfactual_normative": 0.2,
+    "models_are_synthetic_not_fitted": true,
+    "same_observed_choices_cannot_identify_social_norm_mechanism": true,
+    "unconditional_world": {
+      "intervened_action": 1,
+      "observed_action": 1,
+      "parameters": {
+        "baseline": 0.1,
+        "empirical_weight": 0,
+        "normative_weight": 0
+      }
+    }
+  },
+  "synthetic_separate_expectation_contrasts": {
+    "empirical_only": {
+      "original": 1,
+      "switch_empirical_only": 0,
+      "switch_normative_only": 1
+    },
+    "normative_only": {
+      "original": 1,
+      "switch_empirical_only": 1,
+      "switch_normative_only": 0
+    },
+    "synthetic_only": true
+  },
+  "synthetic_test_failures": 0
+}
