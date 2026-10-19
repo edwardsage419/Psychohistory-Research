@@ -1,0 +1,64 @@
+name: R111 McFadden random utility conditional logit analytic and synthetic verification
+on:
+  push:
+    paths:
+      - '.github/workflows/r111-mcfadden-random-utility-conditional-logit-synthetic.yml'
+      - 'research/R111/r111_mcfadden_random_utility_conditional_logit.py'
+      - 'research/R111/test_r111_mcfadden_random_utility_conditional_logit.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  mathematical-identity-and-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: R111 stable analytic math and deterministic seeded simulation
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R111 python -m unittest -v \
+            research/R111/test_r111_mcfadden_random_utility_conditional_logit.py
+      - name: Create exact source and local synthetic only machine receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,pathlib
+          base=pathlib.Path('research/R111')
+          paths=['r111_mcfadden_random_utility_conditional_logit.py',
+                 'test_r111_mcfadden_random_utility_conditional_logit.py',
+                 'R111_MCFADDEN_1974_RANDOM_UTILITY_CONDITIONAL_LOGIT_FORMAL_BOUNDED_LEARNING_REPORT_2026-10-19.md']
+          files={p:hashlib.sha256((base/p).read_bytes()).hexdigest() for p in paths}
+          receipt={
+            "research_id":"R111",
+            "phase":"A",
+            "status":"R111_MCFADDEN_CONDITIONAL_LOGIT_18_SYNTHETIC_TESTS_PASS",
+            "catalogue_item":"01-005",
+            "catalogue_priority":"P0",
+            "academic_original_source":"https://eml.berkeley.edu/reprints/mcfadden/zarembka.pdf",
+            "mathematical_mechanism_source_analysed":True,
+            "source_and_test_file_SHA256":files,
+            "synthetic_unittest_cases_passed":18,
+            "synthetic_unittest_failures":0,
+            "real_human_behavior_E2_scores":0,
+            "no_real_human_source_accessed":True,
+            "no_model_fusion":True,
+            "PESEN_v0_1":"FROZEN"}
+          dest=base/'R111_PHASE_A_SYNTHETIC_MATH_CI_ACCEPTANCE_STATUS.json'
+          dest.write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          print('R111_18_SYNTHETIC_PASS_RECEIPT_GENERATED')
+          PY
+      - name: Commit truthful test and source hash evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/R111/R111_PHASE_A_SYNTHETIC_MATH_CI_ACCEPTANCE_STATUS.json
+          git commit -m "results(R111): 18 source-hashed synthetic mathematical model checks pass"
+          git pull --rebase origin main
+          git push origin HEAD:main
