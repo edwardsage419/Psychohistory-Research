@@ -1,0 +1,97 @@
+name: R115 original BHW 1992 informational cascade exact Bayesian action tests
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r115-informational-social-influence-exact-bayesian-cascade-eq1.yml'
+      - 'research/R115/r115_bhw_1992_informational_action_cascade_exact.py'
+      - 'research/R115/test_r115_bhw_1992_informational_action_cascade_exact.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  exact-original-equation-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute 48 original formula exact Fraction math tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R115 python -m unittest -v \
+            research/R115/test_r115_bhw_1992_informational_action_cascade_exact.py 2>&1 | tee /tmp/r115_ci_tests.txt
+          python - <<'PY'
+          import pathlib,re
+          result=pathlib.Path('/tmp/r115_ci_tests.txt').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',result)==['48'],('R115_SYNTHETIC_TEST_COUNT_WRONG',result[-1000:])
+          assert re.search(r'\nOK\s*$',result),'R115_SYNTHETIC_CASES_NOT_ALL_PASS'
+          print('R115_ALL_48_SYNTHETIC_BHW_1992_TESTS_PASS')
+          PY
+      - name: Independently inspect exact first-party original equation one and no double-count
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R115 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r115_bhw_1992_informational_action_cascade_exact as m
+          p=F(7,10)
+          assert m.trace_public_actions([1,1,1],p)[0][-2:]==(F(119,158),F(119,158))
+          assert m.naive_two_actions_as_two_independent_high_signals(p)==F(49,58)
+          assert m.history_likelihood_given_state([1,1],0,p)==F(39,200)
+          for precision in (F(3,5),F(7,10),F(4,5)):
+              for n in (2,4,6):
+                  exact=m.ex_ante_cascade_masses_after_n(n,precision)
+                  published=m.author_equation_1_even_n(n,precision)
+                  assert exact==published,(precision,n,exact,published)
+          filenames=[
+            'r115_bhw_1992_informational_action_cascade_exact.py',
+            'test_r115_bhw_1992_informational_action_cascade_exact.py',
+            'R115_BHW_1992_EXACT_ACTION_INFORMATION_CASCADE_SCIENTIFIC_MECHANISM_REPORT_2026-10-19.md'
+          ]
+          root=pathlib.Path('research/R115')
+          source_hashes={n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in filenames}
+          receipt={
+            'research_id':'R115',
+            'phase':'A',
+            'status':'R115_BHW_1992_EXACT_BAYES_ACTION_CASCADE_48_UNIT_TESTS_AND_ORIGINAL_EQ1_PASS',
+            'candidate_catalogue_id':'03-006',
+            'priority':'P0',
+            'primary_1992_original_paper_DOI':'10.1086/261849',
+            'primary_1992_original_SectionIIA_Table1_equation1_reproduced':True,
+            'Deutsch_Gerard_1955_original_DOI':'10.1037/h0046408',
+            'Deutsch_Gerard_1955_source_scope':'bibliographic record and accessible original abstract only',
+            'actual_original_human_experiment_person_records_read':False,
+            'source_first_two_public_adoptions_posterior':'119/158',
+            'wrong_independent_action_as_signal_posterior':'49/58',
+            'third_identical_cascade_action_new_bayesian_information':False,
+            'source_given_false_state_wrong_up_cascade_probability':'39/200',
+            'source_eq1_even_n_verified':[2,4,6],
+            'source_eq1_precision_rationals_verified':['3/5','7/10','4/5'],
+            'actual_unit_tests_executed':48,
+            'unit_test_failures':0,
+            'original_human_E2_score_observations':0,
+            'causal_normative_vs_informational_mechanism_identified':False,
+            'underlying_study_source_SHA256':source_hashes,
+            'PESEN_v0_1':'FROZEN','R073':'FROZEN'
+          }
+          output=root/'R115_PHASE_A_BHW_1992_EXACT_FRACTION_SYNTHETIC_EQ1_CI_ACCEPTANCE.json'
+          output.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R115_BOUNDED_SOURCE_EQ1_VERIFIED',hashlib.sha256(output.read_bytes()).hexdigest())
+          PY
+      - name: GitHub immutable audited receipt for source-only mathematical validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R115/R115_PHASE_A_BHW_1992_EXACT_FRACTION_SYNTHETIC_EQ1_CI_ACCEPTANCE.json
+          git commit -m "results(R115): exact 1992 source Eq1 and 48 synthesized Bayesian action cascade tests verified"
+          git pull --rebase origin main
+          git push origin HEAD:main
