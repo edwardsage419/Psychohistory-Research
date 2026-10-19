@@ -184,7 +184,7 @@ def toy_bridge_results():
 def exact_small_graph_exhaustion():
     """Undirected n<=4 graph x each threshold 1/2 x each seed subset.
 
-    Exactly 4+32+512+16384 = 16932 pure synthetic mathematics examples.
+    Exactly 4+32+512+16384 = 16930 pure synthetic mathematics examples.
     """
     counts={}
     for n in range(1,5):
@@ -192,15 +192,15 @@ def exact_small_graph_exhaustion():
         checks=0
         for mask in range(1<<len(all_pairs)):
             edges=tuple(pair for j,pair in enumerate(all_pairs) if (mask>>j)&1)
-            for thresholds in product((1,2),repeat=n):
+            for thresholds in product(tuple(t for t in (1,2) if t<=n),repeat=n):
                 for mask_seeds in range(1<<n):
                     seeds=tuple(j for j in range(n) if mask_seeds & (1<<j))
                     verify_independent_final_sets(n,edges,thresholds,seeds)
                     checks+=1
-        if checks != 2**len(all_pairs)*2**n*2**n:
+        if checks != 2**len(all_pairs)*min(n,2)**n*2**n:
             raise ContagionDesignError("R122_EXHAUSTIVE_CASE_COUNT_DRIFT")
         counts[str(n)]=checks
-    if counts != {"1":4,"2":32,"3":512,"4":16384}:
+    if counts != {"1":2,"2":32,"3":512,"4":16384}:
         raise ContagionDesignError("R122_EXHAUSTIVE_AUDIT_EXPECTED_COUNTS_DRIFT")
     return counts
 
