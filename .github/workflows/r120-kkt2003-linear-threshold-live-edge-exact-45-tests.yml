@@ -1,0 +1,112 @@
+name: R120 KKT 2003 independent uniform threshold and live-edge exact distributions
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r120-kkt2003-linear-threshold-live-edge-exact-45-tests.yml'
+      - 'research/R120/r120_kkt_2003_uniform_linear_threshold_exact.py'
+      - 'research/R120/test_r120_kkt_2003_uniform_linear_threshold_exact.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  r120-exact-distribution-analytical-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute actual 45 distinct independent LT mechanism and analytic tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R120 python -m unittest -v \
+            research/R120/test_r120_kkt_2003_uniform_linear_threshold_exact.py \
+            2>&1 | tee /tmp/r120_45_real_tests.txt
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r120_45_real_tests.txt').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['45'],('R120_REAL_UNIT_TEST_COUNT_IS_NOT_45',log[-1600:])
+          assert re.search(r'\nOK\s*$',log),'R120_REAL_UNIT_TESTS_NOT_ALL_SUCCESSFUL'
+          print('R120_45_REAL_TESTS_SUCCESS')
+          PY
+      - name: Independently re-run full distributions for 530 graph-seed cases and original author contrast
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R120 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r120_kkt_2003_uniform_linear_threshold_exact as m
+
+          e=((0,2,F(1,2)),(1,2,F(1,4)))
+          for seed,expectation in [((0,),F(3,2)),((1,),F(5,4)),((0,1),F(11,4))]:
+              a=m.exact_threshold_distribution(3,e,seed)
+              b=m.exact_live_edge_distribution(3,e,seed)
+              assert a==b
+              assert m.expected_influence(a)==expectation,(seed,a,b,expectation)
+
+          four=((0,1,F(1,2)),(1,2,F(2,3)),(2,3,F(3,4)))
+          assert m.expected_influence(m.verify_distribution_equivalence(4,four,(0,)))==F(25,12)
+          cyclic=((0,1,F(1,2)),(1,2,F(1,2)),(2,0,F(1,2)))
+          assert m.expected_influence(m.verify_distribution_equivalence(3,cyclic,(0,)))==F(7,4)
+
+          counter=m.fixed_threshold_failure_of_submodularity()
+          assert (counter['fixed_empty'],counter['fixed_seed0'],counter['fixed_seed1'],counter['fixed_both'])==(0,1,1,3)
+          assert counter['fixed_marginal_seed0_without_seed1']<counter['fixed_marginal_seed0_with_seed1']
+          assert counter['expected_marginal_seed0_without_seed1']==counter['expected_marginal_seed0_with_seed1']=='3/2'
+
+          by_n=m.all_three_node_digraphs()
+          assert by_n=={'1':2,'2':16,'3':512},by_n
+          assert sum(by_n.values())==530
+
+          base=pathlib.Path('research/R120')
+          names=[
+            'r120_kkt_2003_uniform_linear_threshold_exact.py',
+            'test_r120_kkt_2003_uniform_linear_threshold_exact.py',
+            'R120_KKT_2003_LINEAR_THRESHOLD_LIVE_EDGE_DISTRIBUTION_EQUIVALENCE_SCIENTIFIC_REPORT_2026-10-19.md'
+          ]
+          hashes={name:hashlib.sha256((base/name).read_bytes()).hexdigest() for name in names}
+          receipt={
+            'research_id':'R120',
+            'phase':'A',
+            'status':'R120_KKT2003_UNIFORM_LT_LIVEEDGE_FULL_DISTRIBUTION_45_TEST_530_CASE_PASS',
+            'candidate_catalogue_item':'04-003','priority':'P0',
+            'original_primary_source_DOI':'10.1145/956750.956769',
+            'original_first_party_KKT_2003_author_pdf':'https://www.cs.cornell.edu/home/kleinber/kdd03-inf.pdf',
+            'first_party_original_pdf_pages_zero_based_checked':[1,3,4],
+            'verified_original_claim':'Claim 2.6 same law of complete final active node SET, not only expectation',
+            'independent_exact_algorithms':['Uniform threshold interval partition exact integration','per-node one live incoming edge or none directed reachability'],
+            'exact_special_source_based_case_expected_counts':{'single_target_seed0':'3/2','single_target_seed1':'5/4','single_target_both_seeds':'11/4','chain_seed0':'25/12','cycle_seed0':'7/4'},
+            'uniform_random_expected_influence_submodularity_tested':True,
+            'fixed_threshold_sample_can_violate_submodularity':True,
+            'fixed_threshold_counterexample_not_from_source_experiment':counter,
+            'exhaustive_all_simple_directed_graphs_n_le3_equal_in_degree_weights_seed_set_cases':by_n,
+            'total_graph_seed_full_distribution_comparisons':530,
+            'actual_unit_tests_executed':45,
+            'unit_test_failures':0,
+            'code_test_report_SHA256':hashes,
+            'source_original_real_human_microdata_read':False,
+            'original_author_social_network_greedy_results_reproduced':False,
+            'new_independent_real_human_E2_score_count':0,
+            'claimed_new_psychological_causal_mechanism':False,
+            'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          dest=base/'R120_PHASE_A_45_UNIT_530_FULL_DISTRIBUTION_CI_ACCEPTANCE.json'
+          dest.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R120_ACTUAL_SOURCE_AND_TEST_SHA_RECEIPT',hashlib.sha256(dest.read_bytes()).hexdigest())
+          PY
+      - name: Commit truthful independent mathematical evidence receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R120/R120_PHASE_A_45_UNIT_530_FULL_DISTRIBUTION_CI_ACCEPTANCE.json
+          git commit -m "results(R120): 45 tests and 530 exact linear-threshold/live-edge distributions verified"
+          git pull --rebase origin main
+          git push origin HEAD:main
