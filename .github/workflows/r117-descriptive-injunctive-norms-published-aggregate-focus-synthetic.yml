@@ -1,0 +1,106 @@
+name: R117 original Cialdini 1990 Schultz 2007 normative focus public aggregate maths
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r117-descriptive-injunctive-norms-published-aggregate-focus-synthetic.yml'
+      - 'research/R117/r117_descriptive_injunctive_norms_published_aggregate_focus.py'
+      - 'research/R117/test_r117_descriptive_injunctive_norms_published_aggregate_focus.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  authentic-published-rounding-and-synthetic-focus-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Execute exactly 39 independent source-published aggregate and toy unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R117 python -m unittest -v \
+            research/R117/test_r117_descriptive_injunctive_norms_published_aggregate_focus.py \
+            2>&1 | tee /tmp/r117_test_stdout.txt
+          python - <<'PY'
+          import pathlib,re
+          x=pathlib.Path('/tmp/r117_test_stdout.txt').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',x)==['39'],('R117_REAL_39_TEST_COUNT_FAILURE',x[-2000:])
+          assert re.search(r'\nOK\s*$',x),'R117_TEST_FAILURE'
+          print('R117_39_ACTUALLY_EXECUTED_UNIT_TESTS_PASS')
+          PY
+      - name: Independent actual author-published source aggregate arithmetic and toy contrasts with three source hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R117 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r117_descriptive_injunctive_norms_published_aggregate_focus as m
+
+          a=m.published_1990_figure1_arithmetic()
+          b=m.published_2007_short_term_arithmetic()
+          c=m.source_inspired_synthetic_competition()
+
+          assert a['total_published_study1_people']==139
+          assert [g['integer_litter_count_uniquely_inferred_from_printed_rounding'] for g in a['published_groups']]==[2,7,13,11]
+          assert a['clean_high_minus_low_focus_published_percentage_points']==-8
+          assert a['littered_high_minus_low_focus_published_percentage_points']==22
+          assert a['printed_rounded_interaction_difference_in_differences_percentage_points']==30
+          assert F(a['uniquely_inferred_integer_count_interaction_fraction_exact']) != F(3,10)
+          assert a['independent_SPSS_loglinear_significance_reproduced'] is False
+          assert b['analyzed_households_reported']==287
+          assert [g['simple_difference_of_published_rounded_means_kwh_day'] for g in b['source_short_term_4_cells']]==['-1.22','0.89','-1.72','0.24']
+          assert b['independent_statistical_uncertainty_computed'] is False
+          assert c['P0_no_focus']=='1/2'
+          assert c['P_descriptive_only_low_prosocial_frequency']=='7/20'
+          assert c['P_injunctive_only_high_approval']=='7/10'
+          assert c['P_both_foci_conflicting_cues']=='11/20'
+          assert c['same_descriptive_and_injunctive_signal_only_D']==c['same_descriptive_and_injunctive_signal_only_I']
+          assert c['conflict_D_low_I_high_only_D']!=c['conflict_D_low_I_high_only_I']
+
+          root=pathlib.Path('research/R117')
+          filenames=[
+              'r117_descriptive_injunctive_norms_published_aggregate_focus.py',
+              'test_r117_descriptive_injunctive_norms_published_aggregate_focus.py',
+              'R117_CIALDINI_1990_SCHULTZ_2007_FIRSTPARTY_NORM_FOCUS_BOOMERANG_SCIENTIFIC_REPORT_2026-10-19.md'
+          ]
+          shas={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in filenames}
+          result={
+             'research_id':'R117','phase':'A',
+             'status':'R117_ORIGINAL_1990_2007_ROUNDED_AGGREGATE_AND_39_FOCUS_TOY_TESTS_PASS',
+             'candidate_catalogue':'03-009','priority':'P0',
+             'first_party_original_1990_DOI':'10.1037/0022-3514.58.6.1015',
+             'first_party_original_2007_DOI':'10.1111/j.1467-9280.2007.01917.x',
+             'original_primary_paper_1990_1015_to_1017_read':True,
+             'original_primary_paper_2007_429_to_432_read':True,
+             'author_1990_figure1_rounded_published_aggregates':a,
+             'author_2007_short_term_published_group_mean_arithmetic':b,
+             'researcher_own_nonfitted_focus_counterexamples':c,
+             'synthetic_ci_tests_executed':39,
+             'synthetic_ci_test_failures':0,
+             'source_model_test_report_SHA256':shas,
+             'real_original_individual_participant_records_loaded':False,
+             'real_independent_human_E2_scores':0,
+             'new_causal_norm_effect_estimates':0,
+             'author_p_value_statistic_independently_reestimated':False,
+             'PESEN_v0_1':'FROZEN','R073':'FROZEN'
+          }
+          dst=root/'R117_PHASE_A_FIRSTPARTY_PUBLISHED_AGGREGATES_FOCUS_39_TEST_CI_RECEIPT.json'
+          dst.write_text(json.dumps(result,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R117_AGGREGATE_RECEIPT_SHA256',hashlib.sha256(dst.read_bytes()).hexdigest())
+          PY
+      - name: Commit genuine source-only aggregate receipt, never private subject data
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R117/R117_PHASE_A_FIRSTPARTY_PUBLISHED_AGGREGATES_FOCUS_39_TEST_CI_RECEIPT.json
+          git commit -m "results(R117): 39 pure unit tests and original 1990/2007 published group aggregate auditing"
+          git pull --rebase origin main
+          git push origin HEAD:main
