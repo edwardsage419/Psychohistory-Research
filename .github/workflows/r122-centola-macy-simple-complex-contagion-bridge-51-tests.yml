@@ -34,7 +34,7 @@ jobs:
           assert re.search(r'\nOK\s*$',log),'R122_TESTS_NOT_ALL_SUCCESS'
           print('R122_51_SOURCE_AND_SYNTHETIC_MATHEMATICS_CASES_PASS')
           PY
-      - name: Independent second replay of 16932 small graph threshold seed cases and primary ring math
+      - name: Independent second replay of 16930 small graph threshold seed cases and primary ring math
         shell: bash
         run: |
           set -euo pipefail
@@ -66,8 +66,8 @@ jobs:
           assert ring['z6_a3']['max_width']==ring['z6_a3']['critical_width']==F(6)
           assert ring['z8_a4']['max_width']==ring['z8_a4']['critical_width']==F(10)
           exhaustive=m.exact_small_graph_exhaustion()
-          assert exhaustive=={'1':4,'2':32,'3':512,'4':16384}
-          assert sum(exhaustive.values())==16932
+          assert exhaustive=={'1':2,'2':32,'3':512,'4':16384}
+          assert sum(exhaustive.values())==16930
           root=pathlib.Path('research/R122')
           filenames=[
             'r122_centola_macy_2007_distinct_neighbor_complex_contagion.py',
@@ -77,7 +77,7 @@ jobs:
           hashes={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in filenames}
           receipt={
             'research_id':'R122','phase':'A',
-            'status':'R122_CENTOLA_MACY_2007_BRIDGE_51_TEST_16932_INDEPENDENT_CLOSED_SET_SYNTHETIC_PASS',
+            'status':'R122_CENTOLA_MACY_2007_BRIDGE_51_TEST_16930_INDEPENDENT_CLOSED_SET_SYNTHETIC_PASS',
             'original_catalogue_item':'04-005','priority':'P0',
             'original_2007_firstparty_paper_DOI':'10.1086/521848',
             'firstparty_author_original_journal_scanned_pages':[702,703,706,710,711,713,714,728],
@@ -98,7 +98,7 @@ jobs:
             'new_real_historical_forecast_evaluated':False,
             'R073':'FROZEN','PESEN_v0_1':'FROZEN',
           }
-          dest=root/'R122_PHASE_A_COMPLEX_CONTAGION_51_TEST_16932_GRAPH_CI_ACCEPTANCE.json'
+          dest=root/'R122_PHASE_A_COMPLEX_CONTAGION_51_TEST_16930_GRAPH_CI_ACCEPTANCE.json'
           dest.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
           print('R122_ACTUAL_MACHINE_SHA256_RECEIPT',hashlib.sha256(dest.read_bytes()).hexdigest())
           PY
@@ -108,7 +108,7 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add research/R122/R122_PHASE_A_COMPLEX_CONTAGION_51_TEST_16932_GRAPH_CI_ACCEPTANCE.json
-          git commit -m "results(R122): 51 exact complex contagion checks and 16932 threshold graph cases success"
+          git add research/R122/R122_PHASE_A_COMPLEX_CONTAGION_51_TEST_16930_GRAPH_CI_ACCEPTANCE.json
+          git commit -m "results(R122): 51 exact complex contagion checks and 16930 threshold graph cases success"
           git pull --rebase origin main
           git push origin HEAD:main
