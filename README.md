@@ -1,6 +1,9 @@
 # 心理史学 | Psychohistory Research
 
 
+**2026-10-19 R113独立学习增量**：[社会规范经验与规范预期](research/R113/README.md)，对应原239候选目录P0 03-007。公开作者2014年一手论文Table 1信念分类与Table 2以前真人实验已发表群体汇总得到有限算术复核：经验预期减行为0/+16/−16百分点、规范预期减个人规范信念0/−12/+27百分点。多项公平判断可同时成立，不将174%、189%总和当单选概率；纯构造两个相同行为/不同依赖机制反例正式通过。GitHub Actions [39234703188](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39234703188)共25项真实CI单测全通过，[机器验收](research/R113/R113_FINAL_ACCEPTANCE_STATUS.json)。这不是原2013/2009个体实验重算，新真人E2=0。继续R系列学习；原239候选目录不被本轮改写，模型熔炼与个人决策系统继续暂缓，R073/PESEN v0.1冻结。
+
+
 **2026-10-19 R112新增数学研究验收**：[R112贝叶斯信念更新](research/R112/README.md)对应原239模型目录P0 02-006，Griffiths/Kemp/Tenenbaum原作者论文手稿的后验公式核对、有限离散假设、Beta–Bernoulli后验与证据复制反例均形成可运行代码，GitHub Actions [39233410573](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39233410573)共25项纯合成测试全部成功；[来源SHA与机器收据](research/R112/R112_PHASE_A_SYNTHETIC_BAYES_CI_ACCEPTANCE_STATUS.json)已归档。**限定数学学习完成，真人E2仍为0；原239项目录学习尚未全部完成。** R073与PESEN v0.1保持冻结；后续仍优先R系列模型学习。
 
 
