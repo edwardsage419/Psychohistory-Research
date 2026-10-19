@@ -55,10 +55,18 @@ def negative_log_likelihood(rows,theta,scale=1.0):
     nll=0.0
     n=0
     for features,choice,available in rows:
-        p=conditional_logit(features,theta,scale,available)
-        if type(choice) is not int or not 0<=choice<len(p) or p[choice]<=0:
+        t=tuple(float(x) for x in theta)
+        feats=tuple(tuple(float(x) for x in item) for item in features)
+        p=conditional_logit(feats,t,scale,available)  # strict common validation
+        mask=(True,)*len(p) if available is None else tuple(available)
+        if type(choice) is not int or not 0<=choice<len(p) or not mask[choice]:
             raise ValueError("R111_OBSERVED_CHOICE_UNAVAILABLE_OR_UNSUPPORTED")
-        nll-=math.log(p[choice])
+        v=[math.fsum(a*b for a,b in zip(f,t)) for f in feats]
+        pivot=max(v[j] for j,yes in enumerate(mask) if yes)
+        logdenom=math.log(math.fsum(math.exp((v[j]-pivot)/scale)
+                                   for j,yes in enumerate(mask) if yes))
+        # Stable even when an extremely unlikely available choice has p rounded to 0.
+        nll += (pivot-v[choice])/scale+logdenom
         n+=1
     if n==0:
         raise ValueError("R111_NO_OBSERVATIONS")
