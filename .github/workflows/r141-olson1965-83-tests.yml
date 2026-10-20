@@ -1,0 +1,55 @@
+name: R141 Olson 1965 collective action 83 exact tests
+on:
+  push:
+    paths:
+      - 'research/R141/R141_Olson1965_83_Tests_Original_Source.zip'
+      - '.github/workflows/r141-olson1965-83-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  genuine-full-domain-olson-math:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify ZIP plus 3 contained files SHA256
+        run: |
+          echo '6bd4817b8689b0255be91e1f05369d076f2fb6de7fe1b81d983022a247786eb2  research/R141/R141_Olson1965_83_Tests_Original_Source.zip' | sha256sum -c -
+          mkdir -p /tmp/r141
+          unzip -q research/R141/R141_Olson1965_83_Tests_Original_Source.zip -d /tmp/r141
+          cd /tmp/r141
+          echo 'daf2e9a326c74642687fb6b01a099f93ac38cfb722df7a756232dc3b5d6d3dfe  r141_olson1965_collective_action_exact.py' | sha256sum -c -
+          echo '5d6383e4afa417d55f8710f9ab0750df7214849152ca2fd6464ad408b9ac734a  test_r141_olson1965_collective_action_exact.py' | sha256sum -c -
+          echo 'a54ad762dd5ae6b5d6eed6f9e3deb0ec3812e2714bd6d6b4bc18d9d76f19e25a  R141_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run 83 authentic Python unittest scenarios
+        run: |
+          cd /tmp/r141
+          python -m unittest -q test_r141_olson1965_collective_action_exact.py
+      - name: Independently replay 48 game scenarios 213096 profiles and byte-compare all results
+        run: |
+          cd /tmp/r141
+          python r141_olson1965_collective_action_exact.py > replay.json
+          cmp replay.json R141_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          d=json.load(open('replay.json'))
+          assert d['continuous_cases']==24 and d['binary_scenarios']==24
+          assert d['binary_all_profiles']==213096
+          assert d['binary_all_possible_single_flip_comparisons']==3331944
+          assert d['all_payoff_functions_project_constructed']
+          i={(e['n'],e['reward']):e for e in d['binary']}
+          assert i[8,'0']['equilibria']==57
+          assert i[16,'0']['equilibria']==1 and i[16,'1/2']['equilibria']==561
+          assert i[16,'2']['equilibria']==1 and i[16,'2']['all_contribute_NE']
+          assert d['heterogeneous_16']['Nash_efforts']==['2']+['0']*15
+          assert d['heterogeneous_16']['equal_shares_Nash_total']=='0'
+          assert (d['new_E2_real_human_scores'],d['new_E3_real_historical_scores'])==(0,0)
+          print('PASS R141 24 continuous + 24 binary scenarios, 213096 action profiles and all SHA256 authenticated')
+          PY
