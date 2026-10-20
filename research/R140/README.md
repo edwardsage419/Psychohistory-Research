@@ -25,3 +25,5 @@
 解压研究包，在相同目录运行：`python -m unittest -q test_r140_ostrom2011_iad_exact.py` 和 `python r140_ostrom2011_iad_exact.py`；标准库，无联网、无外部依赖。ZIP内部是唯一完整机器计算结果，仓库有相应摘要JSON，SHA256防篡改。
 
 数据与科学局限：没有研究七类规则在真实社会中的实施成本、内生接受程度、学习过程、规则变迁、私人估值、完整SES嵌套模型或真实社会因果识别。R073与PESEN v0.1维持冻结，全部R模型学习完成后再统一归纳分类，最后进行熔炼。
+
+**最终真实CI验收完成**：[GitHub Actions run39388651752](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39388651752) completed success，首发来源commit `a8ff37af99e79baceef4b0e1c1571c969ce9237f`。Python3.12 job118514552385实际179 tests in 36.877s；Python3.11 job118514552676实际179 tests in 22.821s，总计358测试执行，0失败。两环境每任务4份 SHA256 原样通过，并真正运行全部128配置数学重算、重算JSON同归档文件逐字节一致，日志均打印来源模型独立Replay PASS。见[机器验收收据](R140_PHASE_A_358_REAL_TESTS_128_INSTITUTIONS_4584_DEVIATIONS_CI_RECEIPT.json)。正式有界结题，非真人因果论证。

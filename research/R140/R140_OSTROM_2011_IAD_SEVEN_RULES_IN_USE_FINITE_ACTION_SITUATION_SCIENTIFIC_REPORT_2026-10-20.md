@@ -35,3 +35,7 @@ IAD原作者并未提供这套(8−E)定价、3名参与者、处罚2的数值�
 
 ## 程序和验收
 事前协议位于`protocols/R140_OSTROM_2011_IAD_SEVEN_RULES_SYNTHETIC_CPR_EXACT_FREEZE_2026-10-20.md`，原程序、179项真实测试、逐制度计算全结果JSON的ZIP归档在同级目录。51项手工理论/反例/边界测试+128项冻结制度独立场景测试=179项。每套配置均验证两条NE路径等价，检测了回归、非法输入类型、财政转移守恒和所有制度128/1136/4584/6/2272/124计数。只有经实际GitHub Actions双环境执行、ZIP和原生三文件SHA256校验、重新生成完整JSON字节完全匹配后才能登记远端CLOSED_BOUNDED。R073和PESEN v0.1继续冻结。下一个既定模型 05-017 Logic of Collective Action，暂定R141。
+
+## 远端机器日志实际验收（先完成运行后写入）
+
+[run39388651752](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39388651752) 是由原研究源码归档commit `a8ff37af99e79baceef4b0e1c1571c969ce9237f` 真正触发的独立GitHub Actions运行，状态completed、结论success。Python3.12 job118514552385 实际179 tests in 36.877s；Python3.11 job118514552676实际179 tests in 22.821s，共计358次、0失败。每个job按源ZIP SHA256 `2de3edc4b351f69939c822cc3936085c2bc47bada953a772f27c7788ae21e8d5`、计算源码 SHA256 `76d69bc6c57b93bb714860ab16d9ca000c62b356dcab7ad1eff78c71d3836f46`、unittest SHA256 `57af74eca1186a433bd72e03fe504556b6a11d3c503c6173bcb7653587a5a1ae`、机器结果JSON SHA256 `419e85c49741c632369a946e3669c305d5fc7933c076d042b4b999f55493fb44` 顺序校验4项均OK；随后重放全部128配置、4584可行单侧偏离、完整JSON与研究文件字节相等，两个日志均输出“PASS R140 128 seven-rule IAD configurations, 4584 deviations, 6 signatures, 2272 exact equivalences”。这证明**同一个人工模型在两环境独立可重现**，不意味着七类规则在真实世界的效力被测量或原作者IAD唯一模型已复现。机器收据： [R140_PHASE_A_358_REAL_TESTS_128_INSTITUTIONS_4584_DEVIATIONS_CI_RECEIPT.json](R140_PHASE_A_358_REAL_TESTS_128_INSTITUTIONS_4584_DEVIATIONS_CI_RECEIPT.json)。
