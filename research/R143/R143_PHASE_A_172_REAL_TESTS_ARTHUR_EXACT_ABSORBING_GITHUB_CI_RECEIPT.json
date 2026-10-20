@@ -1,0 +1,77 @@
+{
+  "research_id": "R143",
+  "date": "2026-10-20",
+  "catalogue": "P1/06-001 Institutional Path Dependence",
+  "original_source": {
+    "author": "W. Brian Arthur",
+    "year": 1989,
+    "title": "Competing Technologies, Increasing Returns, and Lock-In by Historical Events",
+    "doi": "10.2307/2234208",
+    "real_scanned_pages_read": [
+      118,
+      119,
+      120,
+      121,
+      122
+    ],
+    "original_research_technology_adoption_not_institutional_empirics": true
+  },
+  "protocol_commit_before_code": "79c3d777223dc5f14bfda4b4c79922eaf49b377c",
+  "CI": {
+    "run_id": 39395394113,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39395394113",
+    "source_head_sha": "3b0ff26f9997af474d303fc3edb9f2c29ab6c150",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118536757583,
+        "python": "3.11",
+        "real_unittest_executions": 86,
+        "seconds": 0.077,
+        "sha256_checks": 4,
+        "complete_machine_JSON_byte_exact": true,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118536757840,
+        "python": "3.12",
+        "real_unittest_executions": 86,
+        "seconds": 0.1,
+        "sha256_checks": 4,
+        "complete_machine_JSON_byte_exact": true,
+        "conclusion": "success"
+      }
+    ],
+    "total_unittests": 172,
+    "failures": 0
+  },
+  "archive_git_blob": "d9c670ebe4a20101c5ec3811f1e86c15269d26fb",
+  "sha256": {
+    "ZIP": "cc0005409d20b86f4a40df3d5b9fa0e208a834719f48fd7ddea4145d17579af6",
+    "r143_arthur1989_exact.py": "250428ec84367ae1260e460730faccf5ad897044592911aaff9b75b0b987dae5",
+    "test_r143_arthur1989_exact.py": "751bcaab6597d4bda7f323b7de2b5204f5d485939f92062d0baf5c01664b544a",
+    "R143_EXACT_RESULTS.json": "201bba8040cbaa946289f1e25aec6a481d7dc3dba2806a927285e9a343239693"
+  },
+  "model": {
+    "synthetic_type_arrival_probability_R": "1/2",
+    "synthetic_type_arrival_probability_S": "1/2",
+    "tie_probability": "1/2",
+    "absorption_A_and_B_from_origin_each": "1/2",
+    "expected_first_lock_time": "19/3",
+    "first_lock_time_probability": "P(tau=3+2j)=(3/8)*(5/8)^j",
+    "six_arrival_conditioned_three_R_three_S_orderings": 20,
+    "RRRSSS_tech_A_adoptions": 6,
+    "SSSRRR_tech_B_adoptions": 6,
+    "alternating_A_B_each": 3,
+    "all_constant_return_fixed_arrivals_A_B_each": 3,
+    "tech_specific_slope_extension_separate_from_original": true
+  },
+  "original_author_simulation_code_rerun": false,
+  "human_E2_newly_verified": 0,
+  "historical_E3_newly_verified": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_candidate": "R144 P1/06-002 Historical Institutionalism",
+  "sequence": "finish R before classification and fusion"
+}

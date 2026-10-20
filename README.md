@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R143 Arthur1989路径依赖/历史锁定有界结题**：[原一手论文Table1、Eq1–3、Fig1的吸收随机游走精确研究](research/R143/README.md)。R/S两型各半、技术选择正反馈模型在初始d0下最终锁A/B各1/2，首达锁定分布P(τ=3+2j)=(3/8)(5/8)^j，平均首次锁定等待19/3次。条件于3R/3S的20种六步到达顺序，RRRSSS→6A、SSSRRR→6B、RSRSRS→3A3B；去掉反馈后全部20种次序得到3A3B。非原Table1的技术间斜率差异反事实已清晰单列。[真实GitHub Actions 39395394113](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39395394113)双Python环境各86项原生测试，共172次真实执行、0失败；每环境校验ZIP及3源文件SHA256并重算全部机器JSON。新增真人E2=0、历史E3=0；R073/PESEN v0.1冻结。下一候选R144 P1/06-002 Historical Institutionalism。坚持学完全部既定R再统一分类归纳和熔炼。
+
+
 **2026-10-20 R142 全球博弈正式有界结题**：[R142 Carlsson–van Damme 1993、Morris–Shin 1998一手原版核验及独立离散私人信号贝叶斯协调博弈](research/R142/README.md)。冻结后按9组噪声/风险成本枚举**838,656对**纯策略，纯Bayesian Nash均衡数在h0为[4,8,4]、h1为[2,2,2]、h2为[8,10,8]；正噪声不保证这个**项目离散**模型唯一纯均衡，不能据此推翻原连续全球博弈定理。真实[GitHub Actions run39393180597](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39393180597)在Python3.11/3.12各55项单测共110次、0失败；每任务4项ZIP/源码/测试/原结果SHA256及全部模型机器JSON独立复算通过。人工E1研究，新增E2真人0、E3历史0；R073/PESEN v0.1冻结。下一候选为原目录P1 06-001 Institutional Path Dependence（拟R143）。先完成全部既定R，再统一归纳分类，最后熔炼。
 
 

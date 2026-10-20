@@ -3,7 +3,7 @@
   "catalogue_id": "06-001",
   "priority": "P1",
   "date": "2026-10-20",
-  "scientific_status": "LOCAL_86_TESTS_EXACT_ARTHUR1989_PENDING_REMOTE_CI",
+  "scientific_status": "CLOSED_BOUNDED_ARTHUR1989_FIRSTHAND_20_ORDERS_86_REAL_TESTS_19_OVER_3_FIRST_LOCK",
   "source_protocol_commit": "79c3d777223dc5f14bfda4b4c79922eaf49b377c",
   "all_results_E1_constructed": true,
   "model": "Arthur Table1 R/S technology adoptions and constructed separate extension",
@@ -40,10 +40,42 @@
   "R073": "FROZEN",
   "PESEN_v0_1": "FROZEN",
   "next_candidate": {
-    "id": "06-002",
+    "catalogue": "06-002",
     "priority": "P1",
-    "en": "Historical Institutionalism",
-    "next_R": "R144"
+    "name": "Historical Institutionalism",
+    "next_research_id": "R144"
   },
-  "sequence": "Finish all R candidates; classification second; fusion last"
+  "sequence": "Finish all R candidates; classification second; fusion last",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_ARTHUR1989_INCREASING_RETURNS_NONERGODIC_ADOPTION",
+  "actual_ci": {
+    "run_id": 39395394113,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39395394113",
+    "source_head_commit": "3b0ff26f9997af474d303fc3edb9f2c29ab6c150",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 118536757583,
+        "python": "3.11",
+        "tests": 86,
+        "seconds": 0.077,
+        "source_hashes_verified": 4,
+        "full_exact_result_replay": true,
+        "conclusion": "success"
+      },
+      {
+        "id": 118536757840,
+        "python": "3.12",
+        "tests": 86,
+        "seconds": 0.1,
+        "source_hashes_verified": 4,
+        "full_exact_result_replay": true,
+        "conclusion": "success"
+      }
+    ],
+    "total_executions": 172,
+    "failures": 0
+  },
+  "machine_receipt": "research/R143/R143_PHASE_A_172_REAL_TESTS_ARTHUR_EXACT_ABSORBING_GITHUB_CI_RECEIPT.json",
+  "archive_source_exact_sha_verified": true
 }
