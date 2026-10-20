@@ -18,3 +18,5 @@
 ZIP标准Python zipfile可解压：`python -m zipfile -e R150_Thompson_Davis_Lee_Demographic_111_Tests_243_Models.zip out`；out下 `python -m unittest -q test_r150_demographic_transition_exact.py`，`python r150_demographic_transition_exact.py > replay.json`。LZMA压缩但无需第三方依赖。R151才是Age Structured Population Models，**年龄结构与实际人口惯性不能从R150一项单一总人口状态获得**。
 
 新增E2真人独立预测=0，E3真实历史预测=0，R073/PESEN v0.1继续冻结。研究顺序维持先结束全部既定R，再统一归纳分类，最后熔炼。
+
+**GitHub正式双环境独立机器验收已通过**：[run39421399520](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39421399520)，源ZIP正式commit `ed03b758a04ecb32a14f4bec64b578aca1bb51c2`。Python3.11 job118622961922真实运行111 tests in 0.592s；Python3.12 job118622962278真实111 tests in 0.933s。222次实际测试、0失败；两任务各4个源文件SHA256全部OK、精确复算243条完整人口账本并与归档原JSON字节相同。详见[正式GitHub机器验收收据](R150_PHASE_A_222_TESTS_243_EXACT_DEMOGRAPHIC_CI_RECEIPT.json)。**CLOSED_BOUNDED仅适用于本项目人工理论E1，不是原作者数据复制或现实人口预测成功。**

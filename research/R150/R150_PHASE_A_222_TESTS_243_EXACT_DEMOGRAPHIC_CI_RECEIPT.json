@@ -1,0 +1,88 @@
+{
+  "id": "R150",
+  "date": "2026-10-20",
+  "catalogue": "P1 06-008 Demographic Transition Models",
+  "original_primary_source_limits": [
+    {
+      "author": "Warren S. Thompson",
+      "year": 1929,
+      "doi": "10.1086/214874",
+      "publisher_original_abstract_read": true,
+      "original_full_article_pages_read": false
+    },
+    {
+      "author": "Kingsley Davis",
+      "year": 1945,
+      "doi": "10.1177/000271624523700102",
+      "publisher_original_bibliography_verified": true,
+      "full_article_read": false
+    },
+    {
+      "author": "Ronald Lee",
+      "year": 2003,
+      "doi": "10.1257/089533003772034943",
+      "publisher_original_abstract_read": true,
+      "full_article_page_by_page_reviewed": false
+    }
+  ],
+  "prescore_protocol_commit": "795ceea8646e475a4683d2a656c9dc7828d5a804",
+  "github_CI": {
+    "run_id": 39421399520,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39421399520",
+    "source_commit": "ed03b758a04ecb32a14f4bec64b578aca1bb51c2",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118622961922,
+        "python": "3.11",
+        "real_unit_tests": 111,
+        "seconds": 0.592,
+        "source_sha256_checks": 4,
+        "full_results_json_byte_replay": true,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118622962278,
+        "python": "3.12",
+        "real_unit_tests": 111,
+        "seconds": 0.933,
+        "source_sha256_checks": 4,
+        "full_results_json_byte_replay": true,
+        "conclusion": "success"
+      }
+    ],
+    "actual_tests_executed": 222,
+    "failures": 0
+  },
+  "archive_git_blob_sha1": "a6945bf90fb4b1b994c4acc85f7fe8209d7ff228",
+  "sha256": {
+    "R150_Thompson_Davis_Lee_Demographic_111_Tests_243_Models.zip": "ba57c704811788b1457f763927671d5f5c9a193d30fdb34f84eec897d3cb5566",
+    "r150_demographic_transition_exact.py": "e8c02cc3d75a928ec576eeca21e3c24ad7cd3dab7efb481b358d596a97af03a0",
+    "test_r150_demographic_transition_exact.py": "f0faeaac216d829ca21b9a4d5277da8929b3a29f7b9018d83c2339974899e0fc",
+    "R150_EXACT_RESULTS.json": "94f6ef9a966be108c131df5b79b7cda3a85cc3b1e75aa9b1a205a2036785ced7"
+  },
+  "math": {
+    "all_cases_project_synthetic": true,
+    "all_historical_original_author_cases_replayed": false,
+    "birth_reduction_times": 9,
+    "death_reduction_times": 9,
+    "external_shock_designs": 3,
+    "exact_scenarios": 243,
+    "horizon_years": 12,
+    "none_shock_mortality_first_increase": 36,
+    "none_shock_fertility_first_decrease": 36,
+    "none_shock_simultaneous_stable": 9,
+    "td2_tb6_P12": "279841/160",
+    "td6_tb2_P12": "83521/160",
+    "pure_stock_trajectories_not_identify_vital_flows": true,
+    "year4_shock_always_artificial": true,
+    "demographic_momentum_cannot_be_established_without_cohorts": true
+  },
+  "E2_new_real_human_predictive_evidence": 0,
+  "E3_new_external_historical_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": "R151 P1 06-009 Age Structured Population Models",
+  "work_sequence": "complete all R first, then consolidate/classify, then fuse"
+}
