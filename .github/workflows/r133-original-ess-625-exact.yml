@@ -1,0 +1,40 @@
+name: R133 original 1973 strict ESS exact 625 models
+on:
+  push:
+    paths:
+      - 'research/R133/**'
+      - 'protocols/R133_*'
+      - '.github/workflows/r133-original-ess-625-exact.yml'
+  workflow_dispatch:
+jobs:
+  exact-ess-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify immutable source archive provenance
+        run: |
+          echo 'e5ffa574bcbc0cdd2013cbc5312e5fea2ce4e49263e6abc57e65102f88195007  research/R133/R133_exact_source_and_tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r133-study
+          unzip -q research/R133/R133_exact_source_and_tests.zip -d /tmp/r133-study
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p = Path('/tmp/r133-study')
+          expected = {
+              'r133_ess_1973_exact.py': '161aae1cbfc609494798ee5c6921c3a091a93b0dabcef70f24bf038870160e3f',
+              'test_r133_ess_1973_exact.py': '56e7e4801a592ee3bcba35d135bdc25bc5141cb9225a39acab13bcca253c6957',
+          }
+          for name, digest in expected.items():
+              assert hashlib.sha256((p/name).read_bytes()).hexdigest() == digest
+          print('R133 archive and two source SHA256 hashes verified')
+          PY
+      - name: Run all 36 real rational unittest cases
+        run: python -m unittest discover -s /tmp/r133-study -p 'test_r133_ess_1973_exact.py' -v
+      - name: Independently print 625-game and mixed-mutant results
+        run: python /tmp/r133-study/r133_ess_1973_exact.py
