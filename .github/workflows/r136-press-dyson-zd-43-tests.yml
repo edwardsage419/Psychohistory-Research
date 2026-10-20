@@ -1,0 +1,49 @@
+name: R136 Press Dyson ZD source real 43 tests
+on:
+  push:
+    paths:
+      - 'research/R136/R136_ZD_Code_43_Tests.zip'
+      - '.github/workflows/r136-press-dyson-zd-43-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-press-dyson:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: SHA256 enforce immutable source ZIP and both scripts
+        run: |
+          echo '8681308ed6445491330cd40bd31bc8b1eb64e6c9d17bdc64d115f990d6591ee2  research/R136/R136_ZD_Code_43_Tests.zip' | sha256sum -c -
+          mkdir /tmp/r136_study
+          unzip -q research/R136/R136_ZD_Code_43_Tests.zip -d /tmp/r136_study
+          cd /tmp/r136_study
+          echo '0e0eca8c1a40aa071528464c29dc9757ac610c20a8b04dadb8664bbfc83424da  r136_press_dyson_2012_zd_exact.py' | sha256sum -c -
+          echo '7e0865565519da75f7ef8ce371be5967031da113b649a4831b6da5da7fafd956  test_r136_press_dyson_2012_zd_exact.py' | sha256sum -c -
+      - name: Run 43 real Python unittest cases
+        run: |
+          cd /tmp/r136_study
+          python -m unittest -v test_r136_press_dyson_2012_zd_exact.py
+      - name: Independently rerun 1134 ZD cases, 81 equalizers and noise boundary
+        run: |
+          cd /tmp/r136_study
+          python r136_press_dyson_2012_zd_exact.py > result.json
+          python - <<'PY'
+          import json
+          x=json.load(open('result.json'))
+          assert x['extortion']['ZD_payoff_pairs']==1134
+          assert x['extortion']['ZD_strategies']==14
+          assert x['equalizer']['opponents']==81
+          assert x['equalizer']['equalized_Y_score']=='5/3'
+          assert x['deterministic_boundary']['singular_or_multi_stationary']==2
+          assert x['execution_error']['trembled_residual']=='-25/64'
+          assert x['real_human_E2']==0 and x['external_historical_E3']==0
+          print('R136 real replay PASS: 1134, 81, 2, -25/64')
+          PY

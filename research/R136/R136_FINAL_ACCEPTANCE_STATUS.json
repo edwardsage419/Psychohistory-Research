@@ -1,0 +1,50 @@
+{
+  "research_id": "R136",
+  "date": "2026-10-20",
+  "catalogue_id": "05-012",
+  "priority": "P1",
+  "name": "Direct Reciprocity",
+  "source": "Press Dyson 2012 PNAS 109 10409-10413",
+  "source_DOI": "10.1073/pnas.1206569109",
+  "science_status": "LOCAL_43_TESTS_COMPLETE_PENDING_GITHUB_CI",
+  "learning_status": "BOUNDED_PRESS_DYSON_2012_MEMORY_ONE_ZD_PENDING_CI",
+  "grid": {
+    "chi": 4,
+    "phi": 5,
+    "valid_extortion_strategies": 14,
+    "opponent_configs": 81,
+    "exact_payoff_pairs": 1134
+  },
+  "equalizer": {
+    "p": [
+      "9/10",
+      "3/4",
+      "1/8",
+      "1/20"
+    ],
+    "opponents": 81,
+    "forced_Y_payoff": "5/3"
+  },
+  "deterministic": {
+    "opponents": 16,
+    "non_unique_stationary": 2
+  },
+  "execution_error": {
+    "error": "1/20",
+    "residual_original": "0",
+    "residual_after": "-25/64"
+  },
+  "archive_git_blob_sha1": "5a64556860a1dbab68a76b3edfe98efe6ff8a84e",
+  "archive_SHA256": "8681308ed6445491330cd40bd31bc8b1eb64e6c9d17bdc64d115f990d6591ee2",
+  "source_SHA256": "0e0eca8c1a40aa071528464c29dc9757ac610c20a8b04dadb8664bbfc83424da",
+  "test_SHA256": "7e0865565519da75f7ef8ce371be5967031da113b649a4831b6da5da7fafd956",
+  "local_tests": 43,
+  "local_failed": 0,
+  "actual_ci_run": null,
+  "new_real_human_E2": 0,
+  "new_external_history_E3": 0,
+  "prior_R130_not_duplicate": true,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "sequence": "Finish all R studies, then classify, then fuse"
+}
