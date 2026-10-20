@@ -54,7 +54,7 @@ Van Huyck、Battalio、Beil (1990), [*Tacit Coordination Games, Strategic Uncert
 
 ## 阶段全部档案
 
-- [计算前冻结协议、原作者197?不使用，1990本人理论与风险来源范围](../../protocols/R127_VAN_HUYCK_1990_MINIMUM_EFFORT_ORIGINAL_TABLE2_AND_2X2_RISK_SELECTION_FREEZE_2026-10-20.md)
+- [计算前冻结协议、1990原文最低努力规则及二人风险判据来源边界](../../protocols/R127_VAN_HUYCK_1990_MINIMUM_EFFORT_ORIGINAL_TABLE2_AND_2X2_RISK_SELECTION_FREEZE_2026-10-20.md)
 - [一手原1990理论与聚合频数、二人风险选择的科学报告](R127_VAN_HUYCK_1990_MIN_EFFORT_ORIGINAL_AER_TABLE2_AND_2X2_RISK_SCIENTIFIC_REPORT_2026-10-20.md)
 - [标准库可复算程序](r127_van_huyck_1990_min_effort_coordination_selection_exact.py)
 - [60项真实数值/范围单元测试](test_r127_van_huyck_1990_min_effort_coordination_selection_exact.py)
