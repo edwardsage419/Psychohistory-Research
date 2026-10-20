@@ -1,0 +1,83 @@
+{
+  "research_id": "R146",
+  "date": "2026-10-20",
+  "catalogue": "P2 06-004 Political Economy Equilibrium",
+  "source_original": {
+    "authors": "Allan H. Meltzer and Scott F. Richard",
+    "year": 1981,
+    "doi": "10.1086/261013",
+    "pdf": "https://www.haverford.edu/sites/default/files/MeltzerRichard-RationalTheory.pdf",
+    "pages": [
+      914,
+      916,
+      917,
+      918,
+      920,
+      921,
+      922
+    ]
+  },
+  "protocol_frozen_before_source": "78cfb354a817ce29b2fdd5593c38a6b3897e91d7",
+  "CI": {
+    "run_id": 39406616875,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39406616875",
+    "source_sha": "7f4e243aff3482c57100a48581ad5679b297d35d",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 118573983808,
+        "python": "3.11",
+        "real_tests": 113,
+        "time_seconds": 0.268,
+        "hashes_passed": 4,
+        "full_result_replayed": true,
+        "success": true
+      },
+      {
+        "id": 118573984050,
+        "python": "3.12",
+        "real_tests": 113,
+        "time_seconds": 0.218,
+        "hashes_passed": 4,
+        "full_result_replayed": true,
+        "success": true
+      }
+    ],
+    "test_executions": 226,
+    "failures": 0
+  },
+  "archive_git_blob_sha1": "28fb508bfef574de4ddc3ed8301bac4d272ba160",
+  "sha256": {
+    "R146_MeltzerRichard1981_113_Tests_1171_Economies.zip": "08f695d220b120b39e2b81a08e7fc38e383f3ccedbef477293f6211f3b2cf733",
+    "r146_meltzer_richard_exact.py": "13e7954faf849f0c3b58d13d5882ddfa6b038378588f5124e93269a82e09c531",
+    "test_r146_meltzer_richard_exact.py": "62f09e8ad1fac9b84c8c8be8f464b9489cdbf866da7793797a9dd11284af8e98",
+    "R146_EXACT_RESULTS.json": "c091abe71dd4341a506a3f8c0856875150fdf93419f92e3c63257e8a7155f0c1"
+  },
+  "synthetic_n_counts": {
+    "5": 126,
+    "7": 330,
+    "9": 715
+  },
+  "synthetic_economies": 1171,
+  "zero_tax_cases": 420,
+  "positive_tax_cases": 751,
+  "all_zero_tax_indifference_cases": 3,
+  "grid_ties": 16,
+  "mean_up_fixed_median_tax_from_to": [
+    "7/23",
+    "35/106"
+  ],
+  "mean_up_changed_median_tax_down": [
+    "13/33",
+    "1/9"
+  ],
+  "finite_residents_treat_transfer_parametric": true,
+  "original_strictly_concave_consumption_leisure_assumptions_not_reproduced": true,
+  "real_E2_new": 0,
+  "historical_E3_new": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": "R147 P1 06-005 Institutional Diffusion Models",
+  "sequence": "finish remaining R first, then classify and finally fuse"
+}
