@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'research/R149/R149_Giddens_Sewell_Exact_41_Tests.zip'
+      - '.github/workflows/r149-structuration-41-tests.yml'
   workflow_dispatch:
 jobs:
   tests:
@@ -16,9 +17,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: |
+          echo '2db8c52eb2bb064d3df21e1f43c6bae78fab58d09037919ebdad36e61872de1e  research/R149/R149_Giddens_Sewell_Exact_41_Tests.zip' | sha256sum -c -
           mkdir -p /tmp/r149a
           python -m zipfile -e research/R149/R149_Giddens_Sewell_Exact_41_Tests.zip /tmp/r149a
           cd /tmp/r149a
-          python -m unittest -q test_r149_exact.py
+          echo '250d720876d5a1b13c49da147fbc1af4647eb37bbb67ca12c055e343f6d055a9  r149_exact.py' | sha256sum -c -
+          echo '58c9f2ec7eb4cef4f6158aa7e097374ae643730364fec8ce8a8f91df3d13940a  test_r149_exact.py' | sha256sum -c -
+          echo 'c822e76a3424303dbb362cffeab29cc728d400475d01909181678a7c182960f9  R149_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r149_exact.py
           python r149_exact.py > replay.json
           cmp replay.json R149_EXACT_RESULTS.json
