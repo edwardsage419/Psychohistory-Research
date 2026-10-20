@@ -1,7 +1,7 @@
 # R133 科学报告：1973原刊ESS双条件、625种二策略博弈、三策略漏判反例
 
-日期：2026-10-20，原始239候选目录 P1 / 05-009 Evolutionarily Stable Strategy。
-状态：本地已精确完成，远程GitHub Actions待核验。
+日期：2026-10-20，原始239候选目录 P2 / 05-009 Evolutionarily Stable Strategy。
+状态：有界完成，远程GitHub Actions双Python版本实际成功。
 
 ## 源头与证据分层
 
@@ -56,6 +56,10 @@ A=[[-1,−3,4],[-3,−1,4],[4,4,−8]]
 
 ## 重现与证据资格
 
-交付包 research/R133/R133_exact_source_and_tests.zip 包含完整独立 .py 源码和标准库unittest文件；ZIP是明确的研究归档，SHA256=e5ffa574bcbc0cdd2013cbc5312e5fea2ce4e49263e6abc57e65102f88195007。解压后运行 `python -m unittest -v test_r133_ess_1973_exact.py` 与 `python r133_ess_1973_exact.py`。36项独立测试在本地执行全部通过；远端工作流须再验证后才能填写真实GitHub Actions运行收据。源脚本SHA256=161aae1cbfc609494798ee5c6921c3a091a93b0dabcef70f24bf038870160e3f，测试脚本SHA256=56e7e4801a592ee3bcba35d135bdc25bc5141cb9225a39acab13bcca253c6957。
+交付包 research/R133/R133_exact_source_and_tests.zip 包含完整独立 .py 源码和标准库unittest文件；ZIP是明确的研究归档，SHA256=e5ffa574bcbc0cdd2013cbc5312e5fea2ce4e49263e6abc57e65102f88195007。解压后运行 `python -m unittest -v test_r133_ess_1973_exact.py` 与 `python r133_ess_1973_exact.py`。36项独立测试本地全部通过。远端GitHub Actions run https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39368129476 completed success；Python3.11和3.12两独立任务各运行36项真实unittest均通过，合计72次成功、0失败。实际日志另重算625种矩阵分类、1973五策略见证和三策略反例。完整ZIP及两份Python解压源码的三份SHA256均作为CI执行前置核验。源脚本SHA256=161aae1cbfc609494798ee5c6921c3a091a93b0dabcef70f24bf038870160e3f，测试脚本SHA256=56e7e4801a592ee3bcba35d135bdc25bc5141cb9225a39acab13bcca253c6957。
 
 新真实人类/动物原始记录=0；新增真人E2=0；历史事件E3=0。没有外推真实社会将形成何种均衡、转变时间或因果。R073及PESEN v0.1原样冻结。完成R系列后再统一分类，最后熔炼。
+
+## 元数据勘误与下个R候选
+
+最初冻结协议误写原05-009优先级P1。直接重新读取未修改的2026-10-14目录 docs/MODEL_CANDIDATE_CATALOG_v0.1.json 后确认该条目为**P2**；此为目录事实更正，对先前冻结的公式、格点范围、原文和代码结果无变更。保留原冻结协议的原始字节供审计，登记勘误 ../../docs/R133_CATALOG_PRIORITY_ERRATUM_2026-10-20.md（实际归档于docs目录）。下一个目录条目05-010 Multi Population Evolutionary Games也是P2，预定R134继续。

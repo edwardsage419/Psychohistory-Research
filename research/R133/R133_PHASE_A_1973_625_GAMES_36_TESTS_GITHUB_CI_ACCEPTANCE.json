@@ -1,0 +1,59 @@
+{
+  "research_id": "R133",
+  "phase": "A",
+  "catalogue_id": "05-009",
+  "catalogue_priority": "P2",
+  "source": "Maynard Smith & Price 1973 Nature 246:15-18 p16 Table1 p17 ESS",
+  "github_actions_run_id": 39368129476,
+  "github_actions_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39368129476",
+  "ci_head_commit_sha": "a2c0ee1f5953de0fdce3b4fd0e62afa85a02d5bd",
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "jobs": [
+    {
+      "id": 118449550882,
+      "python": "3.11",
+      "conclusion": "success",
+      "real_unittest_count": 36
+    },
+    {
+      "id": 118449550662,
+      "python": "3.12",
+      "conclusion": "success",
+      "real_unittest_count": 36
+    }
+  ],
+  "total_test_executions": 72,
+  "failed_test_executions": 0,
+  "git_blob_sha1_archive": "31b97e35f1eee5513d7aabae1fa2e8e1d4096e68",
+  "sha256": {
+    "R133_exact_source_and_tests.zip": "e5ffa574bcbc0cdd2013cbc5312e5fea2ce4e49263e6abc57e65102f88195007",
+    "r133_ess_1973_exact.py": "161aae1cbfc609494798ee5c6921c3a091a93b0dabcef70f24bf038870160e3f",
+    "test_r133_ess_1973_exact.py": "56e7e4801a592ee3bcba35d135bdc25bc5141cb9225a39acab13bcca253c6957"
+  },
+  "sha256_all_three_real_ci_checked": true,
+  "results": {
+    "exact_integer_matrices": 625,
+    "pure_A_ess": 300,
+    "pure_B_ess": 300,
+    "both_pure_ess": 100,
+    "interior_nash": 200,
+    "interior_mixed_ess": 100,
+    "no_strict_ess": 25,
+    "source_1973_rounded_retaliator_vs_mouse": {
+      "d0": "0",
+      "d1": "0"
+    },
+    "project_three_type_pure_mutant_d1": [
+      "1",
+      "1",
+      "8"
+    ],
+    "project_three_type_mixed_mutant_d1": "-1/9"
+  },
+  "new_real_human_e2": 0,
+  "new_real_history_e3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "provenance_boundary": "1973 printed rounded 25 payoff cells only; toy games are project mathematical constructs"
+}
