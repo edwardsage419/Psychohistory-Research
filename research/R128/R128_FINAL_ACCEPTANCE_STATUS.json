@@ -1,0 +1,118 @@
+{
+  "research_id": "R128",
+  "as_of": "2026-10-20",
+  "original_catalogue_id": "05-004",
+  "priority": "P1",
+  "candidate_name": "Stag Hunt Game",
+  "science_status": "CLOSED_BOUNDED_ORIGINAL_SKYRMS_2004_STAG_HUNT_GROUP_BELIEFS_REPEATED_PD",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_SKYRMS_2004_STAG_HUNT_GROUP_TRUST_CORRELATION_AND_REPEATED_PD",
+  "primary_1755_source": "Jean-Jacques Rousseau, Discourse on Inequality, original French stag/deer hare hunting vignette",
+  "primary_1755_original_text_url": "https://athena.unige.ch/athena/rousseau/rousseau-discours-sur-l-inegalite.html",
+  "Rousseau_1755_original_payoff_4_3_0_not_present": true,
+  "primary_mathematical_source": "Brian Skyrms (2004), The Stag Hunt and the Evolution of Social Structure, Cambridge UP, first full accessible chapter pages1-13",
+  "primary_original_chapter_official_pdf": "https://assets.cambridge.org/052182/6519/sample/0521826519ws.pdf",
+  "original_primary_chapter_print_pages_visually_checked": [
+    3,
+    5,
+    10,
+    11,
+    12
+  ],
+  "Skyrms_original_two_person_row_payoffs": [
+    [
+      "4",
+      "0"
+    ],
+    [
+      "3",
+      "3"
+    ]
+  ],
+  "Skyrms_original_single_stag_success_payoff": 4,
+  "Skyrms_original_lone_stag_failure_payoff": 0,
+  "Skyrms_original_hare_guaranteed_payoff": 3,
+  "skyrms_exact_belief_threshold": "3/4",
+  "project_n_person_all_or_nothing_extension_not_original_author_empirical_rule": true,
+  "group_independence_formula": "Expected stag payoff 4*p^(n-1); compare with hare payoff 3; other n-1 actions iid only under explicit additional assumption",
+  "group_sizes_calculated": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "number_independent_marginal_grid_points": 6,
+  "mathematical_group_probability_combinations": 42,
+  "mathematical_independent_group_outcome_profiles_weighted": 1524,
+  "p4_over5_group_n2_expect_stag": "16/5",
+  "p4_over5_group_n3_expect_stag": "64/25",
+  "p4_over5_group_n2_best": "S",
+  "p4_over5_group_n3_best": "H",
+  "joint_trust_same_marginal_each": "4/5",
+  "project_three_joint_other_action_laws": {
+    "independent_SS": "16/25",
+    "independent_best": "H",
+    "fully_correlated_SS": "4/5",
+    "fully_correlated_best": "S",
+    "maximally_disjoint_SS": "3/5",
+    "maximally_disjoint_best": "H"
+  },
+  "unobserved_joint_action_dependence_not_inferred_from_individual_marginals": true,
+  "original_Skyrms_p5_stage_pd_row_payoffs": [
+    [
+      "2",
+      "0"
+    ],
+    [
+      "3",
+      "1"
+    ]
+  ],
+  "original_Skyrms_p5_continuation_discount": "3/5",
+  "original_Skyrms_p5_trigger_foole_infinite_repeated_row_payoffs": [
+    [
+      "5",
+      "3/2"
+    ],
+    [
+      "9/2",
+      "5/2"
+    ]
+  ],
+  "project_independent_closed_form": {
+    "TT": "2/(1-delta)",
+    "TF": "delta/(1-delta)",
+    "FT": "3+delta/(1-delta)",
+    "FF": "1/(1-delta)"
+  },
+  "project_discounted_payoff_identity_tests": 140,
+  "project_delta_two_strict_coordination_threshold": "delta strictly greater than 1/2",
+  "project_delta_risk_tie": "2/3",
+  "project_delta_three_fifths_trigger_opponent_belief_threshold": "2/3",
+  "project_delta_risk_dominance_stated_only_for_two_restricted_strategies": true,
+  "project_discrete_population_payoff_proportional_update": "x_next=x*(4*x)/(x*(4*x)+(1-x)*3)",
+  "project_discrete_population_map_is_not_original_source_formula": true,
+  "project_discrete_population_fixed_points": [
+    "0",
+    "3/4",
+    "1"
+  ],
+  "empirical_Battalio_Samuelson_Van_Huyck_2001_original_DOI": "10.1111/1468-0262.00212",
+  "empirical_Battalio_2001_publisher_or_working_abstract_review_only": true,
+  "Battalio_2001_original_experiment_rows_reanalyzed": false,
+  "original_full_Skyrms2004_book_entire_contents_read": false,
+  "true_github_actions_success": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39350466421",
+  "true_standard_library_unittests": 70,
+  "true_unittest_failures": 0,
+  "machine_sha_receipt": "research/R128/R128_PHASE_A_SKYRMS_70_TEST_1524_GROUP_140_DISCOUNT_CI_ACCEPTANCE.json",
+  "code_test_report_sha256_count": 3,
+  "new_independent_real_human_E2_predicted_records": 0,
+  "real_group_cooperation_rate_estimated_from_humans": false,
+  "historical_external_event_predictive_validation": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "all_R_series_learning_finished": false,
+  "owner_sequence": "Complete all originally planned R-series, then comprehensively categorize, then fuse"
+}
