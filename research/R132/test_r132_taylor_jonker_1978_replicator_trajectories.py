@@ -14,7 +14,7 @@ def logistic(): return m.PROJECT_GAMES["Logistic-control"]
 class Primary1978ReplicatorEquations(unittest.TestCase):
     def test_001_source_1978_original_doi_and_pdf(self):
         self.assertIn("10.1016/0025-5564(78)90077-9",m.__doc__)
-        self.assertIn("p149",m.__doc__)
+        self.assertIn("page149",m.__doc__)
 
     def test_002_project_hawk_primary_2x2_params_explicit(self):
         self.assertEqual(hawk(),((F(-2),F(2)),(F(0),F(1))))
