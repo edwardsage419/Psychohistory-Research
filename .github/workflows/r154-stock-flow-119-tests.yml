@@ -1,0 +1,92 @@
+name: R154 Fraction Stock Flow 100 Worlds 119 Tests
+on:
+  push:
+    paths:
+      - 'research/R154/r154_stock_flow_exact.py'
+      - 'research/R154/test_r154_stock_flow_exact.py'
+      - '.github/workflows/r154-stock-flow-119-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-stock-flow:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify immutable code and test SHA1 and SHA256
+        run: |
+          cd research/R154
+          test "$(git hash-object r154_stock_flow_exact.py)" = "7d6ab03423d21721f5198e411dee4205ee4f6e4f"
+          test "$(git hash-object test_r154_stock_flow_exact.py)" = "6abee10a6e767fb2d5eed4392ac85302875b8df5"
+          echo '2c5e0ade08f6221124c0790d83b1fa94976d9c1c8fa6d85b583a6bfdba139757  r154_stock_flow_exact.py' | sha256sum -c -
+          echo '7818731ac70159157261de1f8721cfe06ec0e9772201dedb0ee3b69ffdeef59c  test_r154_stock_flow_exact.py' | sha256sum -c -
+      - name: Replay all 100 exact 13-period histories
+        run: |
+          cd research/R154
+          python r154_stock_flow_exact.py > R154_EXACT_RESULTS.json
+          echo '5df956c879f1183606292827a5827470a0c2adaa06833d766823949b05a1f7a6  R154_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Execute all 119 distinct unit tests
+        run: |
+          cd research/R154
+          python -m unittest -v test_r154_stock_flow_exact.py
+      - name: Make pinned full Fraction source-data research ZIP
+        run: |
+          cd research/R154
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R154_Stock_Flow_100_Histories_119_Tests.zip','w') as z:
+              for name in ('r154_stock_flow_exact.py','test_r154_stock_flow_exact.py','R154_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,20,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo 'e25f045de436f9aa5fed1bf6be061cd536a3544ba932ceef236330e302e269b5  R154_Stock_Flow_100_Histories_119_Tests.zip' | sha256sum -c -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R154-complete-100-stock-flow-fraction-${{ matrix.python-version }}
+          path: research/R154/R154_Stock_Flow_100_Histories_119_Tests.zip
+          retention-days: 90
+  publish-pinned-ledger:
+    needs: exact-stock-flow
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recompute and verify four frozen SHA256 and all 119 tests
+        run: |
+          cd research/R154
+          echo '2c5e0ade08f6221124c0790d83b1fa94976d9c1c8fa6d85b583a6bfdba139757  r154_stock_flow_exact.py' | sha256sum -c -
+          echo '7818731ac70159157261de1f8721cfe06ec0e9772201dedb0ee3b69ffdeef59c  test_r154_stock_flow_exact.py' | sha256sum -c -
+          python r154_stock_flow_exact.py > R154_EXACT_RESULTS.json
+          echo '5df956c879f1183606292827a5827470a0c2adaa06833d766823949b05a1f7a6  R154_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r154_stock_flow_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R154_Stock_Flow_100_Histories_119_Tests.zip','w') as z:
+              for name in ('r154_stock_flow_exact.py','test_r154_stock_flow_exact.py','R154_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,20,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo 'e25f045de436f9aa5fed1bf6be061cd536a3544ba932ceef236330e302e269b5  R154_Stock_Flow_100_Histories_119_Tests.zip' | sha256sum -c -
+      - name: Permanently submit canonical JSON and original source ZIP
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R154/R154_EXACT_RESULTS.json research/R154/R154_Stock_Flow_100_Histories_119_Tests.zip
+          if ! git diff --cached --quiet; then
+              git commit -m 'archive(R154): pin 100 Fraction stock-flow trajectories and 119-test source ZIP'
+              git push origin HEAD:main
+          fi
