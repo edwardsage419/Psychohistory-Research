@@ -1,0 +1,107 @@
+{
+  "research_id": "R130",
+  "date": "2026-10-20",
+  "original_catalogue_id": "05-006",
+  "priority": "P1",
+  "candidate": "Repeated Games",
+  "science_status": "CLOSED_BOUNDED_AXELROD_HAMILTON_1981_TWO_TFT_NONINVASION_PAYOFF_CONSTRAINTS_AND_NOWAK_1993_PAVLOV",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_AXELROD_HAMILTON_1981_TFT_TWO_INVADERS_AND_NOWAK_SIGMUND_1993_PAVLOV",
+  "firstparty_source_1981": "Robert Axelrod and William D Hamilton (1981), The Evolution of Cooperation, Science 211:1390-1396",
+  "firstparty_source_1981_DOI": "10.1126/science.7466396",
+  "firstparty_1981_fulltext_author_hosted": "https://public.websites.umich.edu/~axe/research/Axelrod%20and%20Hamilton%20EC%201981.pdf",
+  "original_1981_print_pages_visually_read": [
+    1392,
+    1393,
+    1394
+  ],
+  "source_1981_original_pd_payoffs_R_S_T_P": [
+    3,
+    0,
+    5,
+    1
+  ],
+  "source_1981_original_w_interaction_continuation_and_discount_factor": "w in [0,1), weight w^t for round t+1",
+  "original_1981_TFT_against_ALLD_non_invasion_discount_boundary": "1/2",
+  "original_1981_TFT_against_alternating_DC_non_invasion_discount_boundary": "2/3",
+  "both_boundaries_simultaneously_required": "yes under printed source payoff comparisons",
+  "w_three_fifths_TFT_self": "15/2",
+  "w_three_fifths_ALLD_vs_TFT": "13/2",
+  "w_three_fifths_ALTERNATING_DC_vs_TFT": "125/16",
+  "w_three_fifths_only_ALLD_cannot_increase_TFT_self_score": true,
+  "w_three_fifths_alternating_DC_strictly_above_TFT_self_score": true,
+  "w_two_thirds_TFT_self_and_ALTERNATING_DC_each": "9",
+  "exact_non_invasion_at_equality_not_reclassified_as_strict_ESS": true,
+  "original_full_tournament_or_unbounded_strategy_ESS_theorem_not_fully_reproved": true,
+  "firstparty_source_1993": "Martin Nowak and Karl Sigmund (1993), A strategy of win-stay lose-shift that outperforms tit-for-tat, Nature 364:56-58",
+  "firstparty_source_1993_DOI": "10.1038/364056a0",
+  "firstparty_source_1993_pdf": "https://abel.math.harvard.edu/archive/153_fall_04/Additional_reading_material/A_strategy_of_winstay_loseshift_that_out_performs_titfortat_in_the_Prisoners_Dilemma_game.pdf",
+  "original_1993_print_pages_visually_read": [
+    56,
+    57
+  ],
+  "original_1993_wsls_memory_vector_R_S_T_P": [
+    1,
+    0,
+    0,
+    1
+  ],
+  "source_based_pavlov_action_map_from_prev_realized_pair": {
+    "CC": "C",
+    "CD": "D",
+    "DC": "D",
+    "DD": "C"
+  },
+  "project_single_first_round_one_sided_forced_D_TFT_path": [
+    "DC",
+    "CD",
+    "DC",
+    "CD",
+    "DC",
+    "CD",
+    "DC",
+    "CD"
+  ],
+  "project_single_first_round_one_sided_forced_D_WSLS_path": [
+    "DC",
+    "DD",
+    "CC",
+    "CC",
+    "CC",
+    "CC",
+    "CC",
+    "CC"
+  ],
+  "single_execution_error_toy_has_no_future_noise_or_human_estimation": true,
+  "project_strategy_subset": [
+    "TFT",
+    "ALLD",
+    "ALLC",
+    "ALT_DC",
+    "WSLS"
+  ],
+  "project_exact_finite_state_cycle_pairings": 25,
+  "project_discount_parameters": 7,
+  "project_finite_round_prefix_lengths": 6,
+  "independent_finite_prefix_plus_periodic_tail_identities": 1050,
+  "analysis_paths": [
+    "direct round-by-round memory one strategy execution and exact finite discounted payoffs",
+    "independent finite-state cycle detection plus exact geometric infinite sum and shifted loop tail"
+  ],
+  "finite_known_terminal_allD_backward_induction_only_under_complete_info_unique_stage_strict_dominance": true,
+  "source_Friedman1971_whole_paper_firsthand_reproduced": false,
+  "source_1980_Axelrod_complete_tournament_rerun": false,
+  "source_1993_Nowak_Stochastic_Pavlov_mutation_selection_population_run_reproduced": false,
+  "github_actions_verified_success": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39354120663",
+  "true_unit_tests": 65,
+  "true_unit_test_failures": 0,
+  "machine_acceptance_receipt": "research/R130/R130_PHASE_A_1981_1993_65_TEST_1050_CYCLES_TWO_INVADERS_CI_ACCEPTANCE.json",
+  "source_code_tests_science_sha256_count": 3,
+  "duplicate_R128_original_source_or_new_E2_counted": false,
+  "new_real_human_individual_records_loaded": 0,
+  "new_independent_human_E2_prediction_scores": 0,
+  "real_historical_cooperation_external_prediction_validated": false,
+  "all_planned_R_model_learning_completed": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "owner_sequence": "Complete all scheduled R models before unifying categorization, then and only then fuse"
+}
