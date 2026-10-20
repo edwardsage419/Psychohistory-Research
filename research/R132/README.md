@@ -1,5 +1,7 @@
 # R132 复制子动力学（Replicator Dynamics）：原始1978方程、完整轨迹及数值伪演化
 
+**补充 Phase B（2026-10-20）**：在此前已经成功归档的 Phase A（三策略84组原方程核验、RPS乘积不变量与Euler/RK4比较、[CI 39365994655](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39365994655) 70/70项测试）基础上，独立增加**216个二维连续复制子轨迹端点**对照——路径一严格步长RK4，路径二从Taylor–Jonker原Eq2分离变量，以对数原函数反求真连续ODE值，最大双精度绝对误差**8.593809691648246×10⁻¹¹**；另有**75个**完整Fraction向量场交叉检验及**69个**合法的原Eq3/Eq4生育增量精确核验。最明显的**数值伪灭绝**：项目Hawk-Dove在x(0)=1/2、h=4的Euler更新一步得到x=0，但真连续方程t=4仍为**0.343202279538**并朝1/3吸引；原1978 Eq3非Euler，同x0=1/2原生育更新一步x=2/5，四格共同加3则变8/17，尽管连续Eq2丝毫不变。[第二条实际GitHub CI 39366251090](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39366251090) **70/70真实测试成功、0失败**，[Phase B机器程序/测试/报告三份SHA256验收](R132_PHASE_B_70_TEST_216_TRAJECTORIES_CI_ACCEPTANCE.json)已提交main且回读；[更新后的正式有界验收](R132_FINAL_ACCEPTANCE_STATUS.json)同时链接Phase A/B。两批均为数学复算而非真实人类/动物轨迹，**E2=0、E3=0**，R073/PESEN v0.1继续冻结。
+
 日期：2026-10-20，原239目录P1 05-008。**正式科学状态**：CLOSED_BOUNDED_TAYLOR_JONKER_1978_REPLICATOR_EQ2_EQ3_EQ4_TRAJECTORIES_AND_NUMERIC_ARTIFACTS。
 **限定学习完成状态**：LEARNING_COMPLETE_BOUNDED_TAYLOR_JONKER_1978_REPLICATOR_TRAJECTORIES_AND_NUMERICAL_ARTIFACTS。
 **实际新真人E2=0、外部历史E3=0；R073及PESEN v0.1均冻结。** 用户规定的239候选R系列必须先完整逐项学习，再统一归类，最后熔炼；此前R131已完成局部雅可比与ESS不等价，R132研究不同问题：**非平衡状态的完整时间轨迹、吸引域和数值积分算法是否制造虚假长期趋势**。
