@@ -1,0 +1,110 @@
+{
+  "research_id": "R148",
+  "date": "2026-10-20",
+  "original_catalogue": "P1/06-006 Social Ecological Systems",
+  "primary_firsthand": [
+    {
+      "authors": "Elinor Ostrom",
+      "year": 2009,
+      "doi": "10.1126/science.1172133",
+      "print_pages_visually_checked": [
+        419,
+        420
+      ],
+      "figure1_checked": true
+    },
+    {
+      "authors": "John M. Anderies, Marco A. Janssen, Elinor Ostrom",
+      "year": 2004,
+      "doi": "10.5751/ES-00610-090118",
+      "author_manuscript_pages_checked": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "author": "Elinor Ostrom",
+      "year": 2007,
+      "doi": "10.1073/pnas.0702288104",
+      "original_fulltext_available": true
+    }
+  ],
+  "precode_prescore_commit": "e609e811ad00bad331029cd5e3b08d266e42a8b8",
+  "scientific_status": "LOCAL_98_UNITTESTS_AND_18_EXACT_SES_MODELS_COMPLETE_PENDING_GITHUB_CI",
+  "author_original_numeric_equations_reproduced": false,
+  "self_constructed_finite_ecosystem": true,
+  "initial_stock": 6,
+  "carrying_capacity": 8,
+  "years": 8,
+  "governance_policies": [
+    "OPEN",
+    "QUOTA",
+    "ADAPT"
+  ],
+  "climate_q": [
+    "0",
+    "1/4",
+    "1/2"
+  ],
+  "infrastructure_failure_f": [
+    "0",
+    "1/4"
+  ],
+  "scenarios": 18,
+  "exact_independent_forward_backward_agree": true,
+  "weather_histories_each_policy": 256,
+  "full_9_state_yearly_pmfs_saved_inside_archive": true,
+  "key_results": {
+    "no_weather_no_failure": {
+      "open_stock_path": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "open_total_harvest": "10",
+      "open_survival": "0",
+      "quota_total_harvest": "8",
+      "quota_survival": "1",
+      "adapt_total_harvest": "8",
+      "adapt_survival": "1"
+    },
+    "moderate_weather_and_failure": {
+      "q": "1/4",
+      "f": "1/4",
+      "open_survival": "0",
+      "quota_survival": "1330196823/4294967296",
+      "adapt_survival": "1499549355/4294967296",
+      "quota_net": "7303425831/1073741824",
+      "adapt_net": "5942594879/1073741824"
+    }
+  },
+  "original_first_unittest_failure_one_incorrect_test_expected_stock_fixed": true,
+  "production_state_equations_not_modified_after_test_failure": true,
+  "local_test_executions": 98,
+  "failures_after_fix": 0,
+  "zip_git_blob_sha1": "647029c7c5500a65f9715c02d7907401c7b24122",
+  "sha256": {
+    "R148_Ostrom_Anderies_SES_98_Tests.zip": "b5e812a7c3d027b82f9734251cdc98938958a525372cd387014318a62e52abb3",
+    "r148_ostrom_ses_exact.py": "5ffde38e946471e2488923f22fdbca05be071efc543f54bcc6505ecf6db8000d",
+    "test_r148_ostrom_ses_exact.py": "0d6ba134a0660c776f1ddbfb6821e0101bd324105f7b64f97e5cc583f03be82b",
+    "R148_EXACT_RESULTS.json": "6968b0e6906b51bfdb6589fbfb20c2be841d6d154e87db875c816737ba9b48ab"
+  },
+  "E2_new_real_human_predictions": 0,
+  "E3_new_real_historical_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_candidate": {
+    "id": "06-007",
+    "name_en": "Structuration Accounts",
+    "priority": "P2",
+    "proposed_research_id": "R149"
+  },
+  "sequence": "first finish all R candidates, then classify, then fuse"
+}

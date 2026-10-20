@@ -1,0 +1,69 @@
+name: R148 Ostrom Anderies SES 98 exact tests
+on:
+  push:
+    paths:
+      - 'research/R148/R148_Ostrom_Anderies_SES_98_Tests.zip'
+      - '.github/workflows/r148-ostrom-ses-98-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-coupled-SES-robustness:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Confirm original archive and three member SHA256 hashes
+        run: |
+          echo 'b5e812a7c3d027b82f9734251cdc98938958a525372cd387014318a62e52abb3  research/R148/R148_Ostrom_Anderies_SES_98_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r148
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('research/R148/R148_Ostrom_Anderies_SES_98_Tests.zip') as archive:
+              assert sorted(archive.namelist())==sorted(['r148_ostrom_ses_exact.py','test_r148_ostrom_ses_exact.py','R148_EXACT_RESULTS.json'])
+              archive.extractall('/tmp/r148')
+          PY
+          cd /tmp/r148
+          echo '5ffde38e946471e2488923f22fdbca05be071efc543f54bcc6505ecf6db8000d  r148_ostrom_ses_exact.py' | sha256sum -c -
+          echo '0d6ba134a0660c776f1ddbfb6821e0101bd324105f7b64f97e5cc583f03be82b  test_r148_ostrom_ses_exact.py' | sha256sum -c -
+          echo '6968b0e6906b51bfdb6589fbfb20c2be841d6d154e87db875c816737ba9b48ab  R148_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Execute 98 actual ecology governance independent tests
+        run: |
+          cd /tmp/r148
+          python -m unittest -v test_r148_ostrom_ses_exact.py
+      - name: Recompute 18 exact SES scenarios plus 3 times 256 weather paths
+        run: |
+          cd /tmp/r148
+          python r148_ostrom_ses_exact.py > replay.json
+          cmp replay.json R148_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('replay.json'))
+          assert d['cases_count']==18 and d['all_18_forward_backward_exact']
+          assert d['exogenous_weather_sequences_each_policy']==256
+          assert d['governance_fees_paid_through_horizon_even_after_collapse']
+          assert d['open_failure_invariance']
+          assert d['no_climate_deterministic_paths']['OPEN']==[6,5,4,3,2,0,0,0,0]
+          rows=d['full_cases']
+          assert len(rows)==18
+          for v in rows:
+              assert len(v['yearly_stock_pmf'])==9
+              assert len(v['terminal_stock_pmf'])==9
+              assert all(sum(map(F,yr.values()))==1 for yr in v['yearly_stock_pmf'])
+              assert v['independent_backward_equals_forward']
+          get=lambda p,q,f:next(x for x in rows if x['policy']==p and x['climate_probability']==q and x['failure_probability']==f)
+          assert get('OPEN','0','0')['survival_probability']=='0'
+          assert get('QUOTA','0','0')['survival_probability']=='1'
+          assert get('ADAPT','0','0')['survival_probability']=='1'
+          assert get('QUOTA','1/4','1/4')['survival_probability']=='1330196823/4294967296'
+          assert get('ADAPT','1/4','1/4')['survival_probability']=='1499549355/4294967296'
+          assert (d['new_E2_real_human_predictive_scores'],d['new_E3_real_history_forecasts'])==(0,0)
+          print('R148 PASS 98 real tests, 18 exact SES models, 256 weather paths per policy, 4 SHA256 fingerprints')
+          PY
