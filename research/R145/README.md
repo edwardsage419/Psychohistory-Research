@@ -20,3 +20,5 @@
 - [远端CI](../../.github/workflows/r145-holmstrom-grossman-hart-88-tests.yml)
 
 ZIP解压同目录后：`python -m unittest -q test_r145_principal_agent_exact.py`；`python r145_principal_agent_exact.py > replay.json`。整数和Fraction精确KKT证书、24次状态置换求解，全部依赖Python标准库。本期为**自行构造E1数学检验**，不属于1983作者原模型完整重演，新增真人E2=0、历史E3=0。R073/PESEN v0.1冻结，按先全部R完成、再归纳分类、最后熔炼的顺序。
+
+**已完成双环境真实CI**：[GitHub Actions run 39400383682](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39400383682)。初始源码commit `8381e2740df592523f26546b69f8475dd2ebb910`；Python3.11 job118553322996执行88 tests in 0.388s；Python3.12 job118553323410执行88 tests in 0.216s，实际合计176次，0失败。两环境分别完成ZIP与原程序、原测试、原结果4份SHA256校验，全部合同优化和KKT测试通过，并逐字节重算原始JSON。归档独立收据：[R145_PHASE_A_176_TESTS_4_KKT_CONTRACTS_GITHUB_CI_RECEIPT.json](R145_PHASE_A_176_TESTS_4_KKT_CONTRACTS_GITHUB_CI_RECEIPT.json)，正式科学状态已更新为CLOSED_BOUNDED。所有计算均为人工E1，没有实地合同因果证据。

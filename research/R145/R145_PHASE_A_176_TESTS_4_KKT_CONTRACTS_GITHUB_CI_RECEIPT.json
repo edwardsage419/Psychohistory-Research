@@ -1,0 +1,90 @@
+{
+  "id": "R145",
+  "date": "2026-10-20",
+  "catalogue": "P2/06-003 Principal Agent Models",
+  "source": {
+    "Bengt_Holmstrom_1979": {
+      "doi": "10.2307/3003320",
+      "original_print_pages_visually_read": [
+        74,
+        76,
+        81,
+        82,
+        83,
+        84
+      ],
+      "direct_pdf": "https://personal.utdallas.edu/~nina.baranchuk/Fin7310/papers/Holmstrom1979.pdf"
+    },
+    "Grossman_Hart_1983": {
+      "doi": "10.2307/1912246",
+      "original_full_pages_read": false,
+      "author_publication_record_verified": true
+    }
+  },
+  "prescore_protocol_commit": "21f6fa7c78cfb0cbcd31a68ec880e851c67dc997",
+  "github_actions": {
+    "run_id": 39400383682,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39400383682",
+    "source_commit": "8381e2740df592523f26546b69f8475dd2ebb910",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118553322996,
+        "python": "3.11",
+        "unit_tests": 88,
+        "seconds": 0.388,
+        "sha256_checks": 4,
+        "replay_equal_original_json": true,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118553323410,
+        "python": "3.12",
+        "unit_tests": 88,
+        "seconds": 0.216,
+        "sha256_checks": 4,
+        "replay_equal_original_json": true,
+        "conclusion": "success"
+      }
+    ],
+    "total_real_test_executions": 176,
+    "total_failures": 0
+  },
+  "hash_provenance": {
+    "git_zip_blob_sha1": "7f338e9713588392b679764f6bd4decc6b6faf1e",
+    "sha256": {
+      "R145_Holmstrom_GrossmanHart_88_Tests.zip": "144ed08376f957ba697dc02587d741a689662e3f516602f8b02248de1e97fec5",
+      "r145_principal_agent_exact.py": "043f233ae5a4fc93acffe88fb374e20eafe2b75f960a541aa02177958496f45a",
+      "test_r145_principal_agent_exact.py": "8e9f94d54560973a8671cd2cf46260c3fd90486aed80b65779117243e5d2d223",
+      "R145_EXACT_RESULTS.json": "09fa8909fb18b53e3d17e8700bad9e8e725e45edef4288f69b50891857f9f467"
+    }
+  },
+  "math": {
+    "population": "One principal one agent, study synthetic",
+    "agent_effort_hidden": true,
+    "probabilities_high_and_low_success": [
+      "3/4",
+      "1/4"
+    ],
+    "reservation": "1/2",
+    "effort_cost": "1/4",
+    "high_IC_equality_and_tie_break_assumption": true,
+    "optimal_H_expected_wage_no_extra_signal": "39/64",
+    "redundant_signal": "39/64",
+    "informative_signal": "5505/9104",
+    "exact_saving": "171/36416",
+    "all_positive_frozen_monitor_fees_exceed_saving": true,
+    "global_KKT_certificate_verified": true,
+    "signal_label_permutations_all_tested": 24,
+    "effort_cost_values_tested": 4,
+    "monitor_fee_values_tested": 6,
+    "noninformative_output_high_effort_infeasible": true
+  },
+  "new_subject_level_E2": 0,
+  "new_external_history_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": "R146 P2/06-004 Political Economy Equilibrium Models",
+  "sequence": "complete all R models; consolidate/classify; fuse last"
+}

@@ -50,3 +50,7 @@ IR与IC均是原著框架允许的一项项目特例；$v_i^2$为凸目标，**�
 归档哈希：ZIP SHA256 `144ed08376f957ba697dc02587d741a689662e3f516602f8b02248de1e97fec5`，ZIP原生Git blob `7f338e9713588392b679764f6bd4decc6b6faf1e`。源码SHA256 `043f233ae5a4fc93acffe88fb374e20eafe2b75f960a541aa02177958496f45a`；测试SHA256 `8e9f94d54560973a8671cd2cf46260c3fd90486aed80b65779117243e5d2d223`；结果SHA256 `09fa8909fb18b53e3d17e8700bad9e8e725e45edef4288f69b50891857f9f467`。远端CI需要在Python3.11/3.12独立各运行88测试和全源结果字节校验才能正式CLOSED_BOUNDED。
 
 **没有新增实地雇佣契约、实验真人行为、社会制度效果数据；E2新证据0、E3新证据0。** R073与PESEN v0.1保持冻结，既定R全部完成后分类汇总、最后模型熔炼。
+
+## 真实GitHub独立机器验收（先完成后记录）
+
+源码提交`8381e2740df592523f26546b69f8475dd2ebb910`实际触发[GitHub Actions run39400383682](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39400383682)，completed/success。Python3.11 job118553322996 **实际88 tests in 0.388s**，Python3.12 job118553323410 **实际88 tests in 0.216s**；两任务均success，总计176次真实测试执行、0失败。各任务先分别通过研究ZIP SHA256 `144ed08376f957ba697dc02587d741a689662e3f516602f8b02248de1e97fec5`，原计算.py `043f233ae5a4fc93acffe88fb374e20eafe2b75f960a541aa02177958496f45a`，原测试.py `8e9f94d54560973a8671cd2cf46260c3fd90486aed80b65779117243e5d2d223`，原结果JSON `09fa8909fb18b53e3d17e8700bad9e8e725e45edef4288f69b50891857f9f467` 共4项源身份哈希；再实际执行全部88项单测，并独立运行有限契约主程序重算全部JSON、与归档字节完全相等，两份真实日志均输出`R145 PASS exact moral hazard contracts, KKT, 24 signal permutations, 88 unit tests and 4 source hashes`。[独立机器收据](R145_PHASE_A_176_TESTS_4_KKT_CONTRACTS_GITHUB_CI_RECEIPT.json)已固定。程序复验只是人工委托代理E1，非真实雇佣契约E2，非机构历史E3。
