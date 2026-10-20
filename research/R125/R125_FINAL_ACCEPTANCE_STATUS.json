@@ -1,0 +1,87 @@
+{
+  "research_id": "R125",
+  "date": "2026-10-20",
+  "original_catalogue_id": "04-018",
+  "priority": "P0",
+  "candidate_name": "Erdos Renyi Random Graph",
+  "science_status": "CLOSED_BOUNDED_ORIGINAL_ERDOS_RENYI_1959_GNM_AND_GILBERT_1959_GNP_FINITE_EXACT",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_ERDOS_RENYI_1959_GNM_GILBERT_1959_GNP_EXACT_SMALL_GRAPH_MODELS",
+  "primary_1959_fixed_edge_source": "Erdos and Renyi (1959) On Random Graphs I, Publ Math Debrecen 6:290-297",
+  "primary_1959_fixed_edge_fulltext": "https://www.cse.cuhk.edu.hk/~cslui/CMSC5734/erdos-1959-11.pdf",
+  "primary_1959_fixed_edge_print_pages_directly_read": [
+    290,
+    291
+  ],
+  "primary_1959_independent_edge_source": "E N Gilbert (1959) Random Graphs, Annals of Mathematical Statistics 30(4):1141-1144",
+  "primary_1959_independent_edge_DOI": "10.1214/aoms/1177706098",
+  "primary_1959_independent_edge_print_pages_directly_read": [
+    1141,
+    1142
+  ],
+  "primary_1959_gilbert_original_recursion": "P1=1; Pn=1-sum_{k=1}^{n-1} choose(n-1,k-1)*Pk*(1-p)^(k(n-k))",
+  "original_1960_erdos_renyi_evolution_publication": "On the Evolution of Random Graphs, Magyar Tud Akad Mat Kutato Int Kozl 5:17-61 (1960)",
+  "original_1960_full_large_n_giant_component_theorem_independently_proved_or_simulated": false,
+  "theoretical_distinctions": {
+    "Gnm": "uniformly sampled simple undirected labeled graph with exactly m edges",
+    "Gnp": "each of choose(n,2) potential undirected edges independently appears with probability p",
+    "conditional_equivalence": "If P_Gnp(|E|=m)>0, the distribution Gnp conditioned on exactly m edges is Gnm",
+    "asymptotic_giant": "1960 largest component of order n in the m=cn regime, threshold around c=1/2, not an n<=5 result",
+    "asymptotic_all_vertices_connected": "1959 fixed-edge threshold m≈n log n /2, distinct event from giant emergence"
+  },
+  "two_independent_connectivity_methods": [
+    "explicit labeled graph enumeration and connected-component DFS weighted by exact Fraction",
+    "Gilbert original 1959 Eq4 probability recurrence without enumerating individual graphs"
+  ],
+  "additional_independent_formulas": [
+    "Binomial edge count and fixed vertex degree for Gnp",
+    "Hypergeometric fixed vertex degree for Gnm",
+    "Gnp expected isolates n*(1-p)^(n-1)"
+  ],
+  "project_frozen_four_person_math_case": {
+    "number_of_possible_edges": 6,
+    "Gnm_fixed_edges": 3,
+    "Gnp_independent_probability": "1/2",
+    "same_expected_number_edges": 3,
+    "Gnm_connected": 16,
+    "Gnm_possible": 20,
+    "Gnm_connectivity": "4/5",
+    "Gnp_connected": 38,
+    "Gnp_possible": 64,
+    "Gnp_connectivity": "19/32",
+    "Gnp_probability_exactly_three_edges": "5/16",
+    "Gnp_given_three_edges_each_three_edge_graph_mass": "1/20",
+    "Gnm_edges_variance": "0",
+    "Gnp_edges_variance": "3/2",
+    "Gnm_isolates_expectation": "1/5",
+    "Gnp_isolates_expectation": "1/2"
+  },
+  "exhaustive_exact_labeled_graph_counts": {
+    "1": 1,
+    "2": 2,
+    "3": 8,
+    "4": 64,
+    "5": 1024
+  },
+  "total_unique_labeled_simple_graphs_enumerated": 1099,
+  "total_Gnp_weighted_graph_probability_configurations": 4396,
+  "total_Gnm_exact_edge_count_distribution_buckets": 25,
+  "true_CI_first_failure": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39344720876",
+  "first_failure_reason": "54 tests, 52 pass, two fail due to retaining zero-mass impossible states in probability distributions at p=0,1",
+  "true_CI_subsequent_receipt_failures": [
+    "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39344789785",
+    "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39344898582"
+  ],
+  "subsequent_failure_reason": "54 unit tests passed but workflow JSON acceptance receipt could not serialize Fraction-valued integral graph counts; corrected to built-in integers",
+  "genuine_final_CI_success": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39345096433",
+  "genuine_completed_unit_tests": 54,
+  "unit_test_failures": 0,
+  "machine_SHA256_and_verification_file": "research/R125/R125_PHASE_A_GNM_GNP_54_TEST_1099_GRAPH_25_BUCKET_CI_ACCEPTANCE.json",
+  "original_real_human_social_network_records_loaded": false,
+  "new_real_human_E2_predictive_scores": 0,
+  "real_social_graph_external_prediction_validated": false,
+  "historical_or_psychological_causal_forecast_validated": false,
+  "original_R_series_all_studies_complete": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "owner_research_sequence": "Complete earlier established R series model learning before comprehensive categorization, and only then fusion"
+}
