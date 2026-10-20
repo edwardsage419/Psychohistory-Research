@@ -1,0 +1,160 @@
+{
+  "id": "R152",
+  "date": "2026-10-20",
+  "original_catalogue": "P1 06-010 Gravity Models of Migration",
+  "scientific_status": "CLOSED_BOUNDED_E1_54_GRAVITY_CASES_126_TESTS_OD_NONIDENTIFIABILITY",
+  "source_author_scope": [
+    {
+      "author": "G. K. Zipf",
+      "year": 1946,
+      "doi": "10.2307/2087063",
+      "original_journal_issue_toc_checked": true,
+      "full_text_read": false,
+      "data_reproduced": false
+    },
+    {
+      "author": "Samuel A. Stouffer",
+      "year": 1940,
+      "doi": "10.2307/2084520",
+      "original_journal_issue_toc_checked": true,
+      "full_text_read": false,
+      "data_reproduced": false
+    },
+    {
+      "author": "A. G. Wilson",
+      "year": 1967,
+      "doi": "10.1016/0041-1647(67)90035-4",
+      "original_publisher_article_record_checked": true,
+      "full_text_read": false,
+      "data_reproduced": false
+    }
+  ],
+  "prescore_protocol_commit": "373b058fb3e8a2db0c0a14eb121b23d2d9cebca5",
+  "project_constructed_four_city_cases": 54,
+  "all_cases_exact_fraction": true,
+  "distinct_actual_unittests": 126,
+  "independent_routes": [
+    "direct Fraction origin row normalization",
+    "common integer denominator row normalization"
+  ],
+  "three_city_OD": {
+    "margins": [
+      2,
+      3,
+      4
+    ],
+    "feasible_integer_matrices": 2,
+    "A": [
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        1,
+        3,
+        0
+      ]
+    ],
+    "B": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        3
+      ],
+      [
+        2,
+        2,
+        0
+      ]
+    ],
+    "undirected_pair_totals": [
+      1,
+      3,
+      5
+    ],
+    "gravity_scores_for_both": {
+      "0": "764411904",
+      "1": "884736",
+      "2": "1024"
+    },
+    "artificial_directed_reward": [
+      16,
+      32
+    ],
+    "caveat": "not full individual-level sample likelihood"
+  },
+  "distance_mean_by_alpha_near_flat_population_budget": {
+    "0": "8571/2380",
+    "1": "845906/273819",
+    "2": "47951146/17768961"
+  },
+  "source_zip_and_all_data_permanent_in_main": true,
+  "source_archive_commit": "0e1643c67428b895afe08e716cceb46dbcdae02e",
+  "github_ci": {
+    "initial_run": 39429952167,
+    "initial_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39429952167",
+    "final_run": 39430207335,
+    "final_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39430207335",
+    "final_conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118652976321,
+        "python": "3.12",
+        "test_executions": 126,
+        "seconds": 0.321,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118652976704,
+        "python": "3.11",
+        "test_executions": 126,
+        "seconds": 0.374,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118653088472,
+        "role": "pinned-archive-publication",
+        "sha256_checks": 4,
+        "full_JSON_and_ZIP_persisted": true,
+        "conclusion": "success"
+      }
+    ],
+    "final_run_real_test_executions": 252,
+    "two_runs_actual_test_executions": 504,
+    "failed_tests": 0
+  },
+  "sha256": {
+    "r152_gravity_od_exact.py": "016c5fe7c5b99dae98d8b626f638f6c95fe0046bf5db08732d583b6f2b506c99",
+    "test_r152_gravity_od_exact.py": "22868b380826c061b6e2a5d5e973f242340d361208a838b9ffdb9009c00b5dee",
+    "R152_EXACT_RESULTS.json": "1f79b445cb14a25d1101aaec4eff9c9a3b127b7ec829f3ef7f553c16331fb23a",
+    "R152_Gravity_Migration_54_Cases_126_Tests.zip": "1a421b359602a4c2a3e1aca995e325c264d16b166c0d92616a00a92adbbc5442"
+  },
+  "git_blob_sha1": {
+    "r152_gravity_od_exact.py": "951d02724aa8a63ff922546495e8c448a2027397",
+    "test_r152_gravity_od_exact.py": "a1ae77b92769ed853bdb70f3eebf00106e6ff041",
+    "R152_EXACT_RESULTS.json": "fc89bb1da6dbd87dea6819f87da845d0f08aa3c1",
+    "R152_Gravity_Migration_54_Cases_126_Tests.zip": "90f9c4fd28499511f00da7d9d7543070521bc519"
+  },
+  "new_E2_independent_human_predictions": 0,
+  "new_E3_external_historical_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R153",
+    "original_catalogue_id": "06-011",
+    "priority": "P2",
+    "title": "Spatial Interaction Models"
+  },
+  "sequence": "complete original R catalogue first -> classify/synthesize second -> fusion third"
+}
