@@ -1,0 +1,54 @@
+name: R137 graph cooperation finite 40 exact tests
+on:
+  push:
+    paths:
+      - 'research/R137/R137_Ohtsuki_2006_Finite_Exact_40_Tests.zip'
+      - '.github/workflows/r137-graph-cooperation-finite-40-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-verified-finite-cooperation:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: SHA256 verify immutable zip plus three archive files
+        run: |
+          echo 'bde80c64cbd5863fe24de7dc5bf93e3d28b7f693dd8706680d6cd96b98d6b62b  research/R137/R137_Ohtsuki_2006_Finite_Exact_40_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r137
+          unzip -q research/R137/R137_Ohtsuki_2006_Finite_Exact_40_Tests.zip -d /tmp/r137
+          cd /tmp/r137
+          echo '88eb7d1c80a97aaa55334c56e1f6b9530b68a51244611018118a5e3bde1114b8  r137_network_reciprocity_exact.py' | sha256sum -c -
+          echo 'c64747962cfd5743ad46138980c23c92fd7bb7f7f50d3c56c8246325246822c5  test_r137_network_reciprocity_exact.py' | sha256sum -c -
+          echo 'd0376823931548a58dd2b3fd5295947be35c3fa219eb2c1eefd17ac582833c06  exact_results.json' | sha256sum -c -
+      - name: Execute 40 authentic Fraction unittest scenarios
+        run: |
+          cd /tmp/r137
+          python -m unittest -v test_r137_network_reciprocity_exact.py
+      - name: Recompute 18 finite graph threshold cases and cross-check archived results
+        run: |
+          cd /tmp/r137
+          python r137_network_reciprocity_exact.py > /tmp/r137_out.json
+          python - <<'PY'
+          import json
+          actual=json.load(open('/tmp/r137_out.json'))
+          archive=json.load(open('exact_results.json'))
+          assert actual==archive, 'exact replay must match archived results byte-semantically'
+          rows={(x['graph'],x['update']):x for x in actual['results']}
+          assert len(rows)==18
+          for n in (5,6,7,8,9):
+              from fractions import Fraction
+              assert Fraction(rows[(f'cycle{n}','DB')]['threshold'])==Fraction(2*(n-2),n-4)
+              assert rows[(f'cycle{n}','BD')]['threshold'] is None
+          assert rows[('cycle8','IM')]['threshold']=='13'
+          assert all(rows[('complete4',u)]['threshold'] is None for u in ('DB','BD','IM'))
+          assert actual['E2_real_human']==0 and actual['E3_historical_event']==0
+          print('PASS 18 finite-graph exact selection gradient cases; five finite-N theory predictions')
+          PY
