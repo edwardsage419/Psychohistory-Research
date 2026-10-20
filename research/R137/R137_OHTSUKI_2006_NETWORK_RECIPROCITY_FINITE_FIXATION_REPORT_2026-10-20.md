@@ -48,3 +48,7 @@ DB：每步均匀抽死亡顶点，然后其邻居按事件前fitness比例竞�
 - 完整源码/40项本地unittest、原始JSON结果和SHA256 ZIP归档。Github Actions真实执行前不称其远端通过；运行凭据待CI成功后补充。
 - 这里检验的是“单个稀有突变者的固定概率是否高于中性基线”，不直接等于多群体ESS、社群稳态、合作率均值或人类社会的历史预测。
 - 新真人逐行E2=0，外部历史E3=0；R073/PESEN v0.1冻结。继续先完成既定所有R，之后统一分类，最后熔炼。
+
+## 远端CI的最终真实验收凭证
+
+[GitHub Actions run39382234524](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39382234524)，源码基线commit `bf5441f478fa4c1906dcef7e80fa2e89fb2520b3`，status completed、conclusion success。job 118493723161（Python3.11）实际运行40 tests in 2.562s；job 118493723433（Python3.12）运行40 tests in 2.280s，总计80次、0失败。每个job先独立校验ZIP及两份.py、一份计算JSON的4项SHA256，再重新执行全18组有限图×更新机制的程序，验证完整JSON结果与归档逐字段相等，并在五种环图确认DB临界2(N−2)/(N−4)。分别在job日志真正输出PASS；这已完成远端数学计算可信验证，绝不意味着作者原始模拟或真人合作E2已运行。收据：[R137_PHASE_A_18_MODELS_80_TESTS_VERIFIED_CI_ACCEPTANCE.json](R137_PHASE_A_18_MODELS_80_TESTS_VERIFIED_CI_ACCEPTANCE.json)。

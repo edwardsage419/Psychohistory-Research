@@ -11,8 +11,8 @@
     "doi": "10.1038/srep39181",
     "scope": "finite vertex-transitive graph threshold referenced, BD boundary"
   },
-  "scientific_status": "PHASE_A_LOCAL_40_TESTS_EXACT_FINITE_W_SELECTION_COMPLETE_CI_PENDING",
-  "study_status": "BOUNDED_NETWORK_RECIPROCITY_THEORY_PENDING_CI",
+  "scientific_status": "CLOSED_BOUNDED_OHTSUKI_2006_FINITE_GRAPH_SELECTION_GRADIENT_AND_CHEN_2016_FIVE_FINITE_CORRECTIONS",
+  "study_status": "LEARNING_COMPLETE_BOUNDED_NETWORK_RECIPROCITY_DB_BD_IM_FINITE_EXACT",
   "graph_study": [
     "C5",
     "C6",
@@ -63,5 +63,31 @@
   "R073": "FROZEN",
   "PESEN_v0_1": "FROZEN",
   "next_candidate": "R138 P2 05-014 Mechanism Design",
-  "sequence": "All R models first, classification second, fusion third"
+  "sequence": "All R models first, classification second, fusion third",
+  "remote_ci_run": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39382234524",
+  "remote_ci_run_id": 39382234524,
+  "remote_ci_original_head_sha": "bf5441f478fa4c1906dcef7e80fa2e89fb2520b3",
+  "remote_ci_status": "completed",
+  "remote_ci_conclusion": "success",
+  "remote_ci_jobs": [
+    {
+      "id": 118493723161,
+      "python": "3.11",
+      "tests": 40,
+      "seconds": 2.562,
+      "result": "success"
+    },
+    {
+      "id": 118493723433,
+      "python": "3.12",
+      "tests": 40,
+      "seconds": 2.28,
+      "result": "success"
+    }
+  ],
+  "actual_ci_test_executions": 80,
+  "actual_ci_failures": 0,
+  "CI_archive_sha256_checks_per_job": 4,
+  "CI_recomputed_total_cases_per_job": 18,
+  "receipt": "research/R137/R137_PHASE_A_18_MODELS_80_TESTS_VERIFIED_CI_ACCEPTANCE.json"
 }

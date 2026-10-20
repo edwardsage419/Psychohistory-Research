@@ -19,3 +19,5 @@
 解压ZIP后在同一目录运行：`python -m unittest -v test_r137_network_reciprocity_exact.py`，`python r137_network_reciprocity_exact.py`。Python标准库Fraction精确计算，不需要第三方依赖。
 
 范围：没有原作者2006年数值全尺度大随机图复算；没有从人类或动物行为中估计真实b、c或网络；E2新增0、E3新增0。R073和PESEN v0.1继续冻结，既定R全部学习后再分类和熔炼。
+
+**正式真实CI验收**：[GitHub Actions 39382234524](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39382234524) status completed，conclusion success。每个Python3.11/3.12任务均完成原档ZIP、两个源文件和JSON原输出的全部4项SHA256，分别实际运行40项unittest（2.562s、2.280s），以及18项图/更新规则全量精确复算与归档JSON对照。80次单测执行、0失败。机器证据单独存档于[R137_PHASE_A_18_MODELS_80_TESTS_VERIFIED_CI_ACCEPTANCE.json](R137_PHASE_A_18_MODELS_80_TESTS_VERIFIED_CI_ACCEPTANCE.json)。**本阶段科研有界结题。**

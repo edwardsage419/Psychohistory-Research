@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R137网络互惠有限规模精确学习有界结题**：[R137 Ohtsuki2006大N图合作规则与Chen2016有限图修正](research/R137/README.md)。本期在环C5/C6/C7/C8/C9以及K4上，按DB/BD/IM三种更新机制独立精确计算18个弱选择固定概率梯度与有限人口临界值；五个环的DB阈值6、4、10/3、3、14/5均满足2007/2016文献的有限公式，反对把b/c>k的大N近似当小N精确理论。GitHub Actions [run39382234524](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39382234524)真实Python3.11/3.12双job各40项测试全通过，共80次、0失败；每job执行ZIP及三个内部原始文件共4次SHA256验证并完整重算18组结果。E2新增0、E3新增0，R073/PESEN v0.1继续冻结，全部R学习完成后再分类与熔炼。
+
+
 **2026-10-20 R136有界结题**：[Press–Dyson 2012直接互惠记忆一阶ZD模型](research/R136/README.md)，对14种敲诈策略×81种对手作1,134次Fraction严格长期收益/原行列式双路线交叉检验，又验证81组Equalizer和2组非唯一平稳边界；5%单边执行翻转造成原固定χ=3的收益线性关系残差−25/64。[真实GitHub Actions run39380956698](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39380956698)，Python3.11与3.12各43项真单测全通过，共86次成功、0失败；程序/测试/ZIP分别校验SHA256。新增真人E2=0、历史事件E3=0；R073和PESEN v0.1保持冻结；原239目录中下一项为05-013 Network Reciprocity（拟R137），全R学习完成后统一分类再熔炼。
 
 
