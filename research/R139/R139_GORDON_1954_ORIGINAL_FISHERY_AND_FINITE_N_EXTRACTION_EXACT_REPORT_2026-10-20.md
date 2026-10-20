@@ -34,3 +34,7 @@ R047原始De Geest/Kingsley实验研究文件位于archives/library-originals/�
 
 ## 数学代码、单测、来源和机器验收
 [计算前冻结协议](../../protocols/R139_GORDON_1954_FISHERY_OPEN_ACCESS_FINITE_PLAYERS_EXACT_PRESCORE_FREEZE_2026-10-20.md)。[ZIP代码/70项unittest/完整96＋729结果](R139_Gordon1954_70_Tests_Exact_Source.zip) Python标准库没有第三方依赖。只有真实GitHub Actions验证了70个测试、源ZIP／两份Python／机读JSON分别核验SHA256及完整结果字节重算，才可以提升验收为CLOSED_BOUNDED。论文1945/1954原图理论与新博弈内推需要区别记录。
+
+## 远端实际GitHub Actions验收完成（后补机器证据）
+
+[run39386412139](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39386412139)于源码提交`303a88137b6a155b1cd92b0bcd6cb5509e14fec3`触发；status completed、conclusion success。Python3.11 job118507201489真实运行70项unittest in 5.327s；Python3.12 job118507201862运行70项in 4.449s，共计140项、0失败。每环境先SHA256核验ZIP、主程序、70项测试和完整原JSON共4项，随后Python真实逐项运行所有单测、96参数和17496行动比较，并将重新生成的JSON文件同原压缩包结果进行字节一致校验；每环境均真正打印“PASS R139 Gordon 1954 source equations + 96 certified intervals + 17496 discrete deviations”。机器收据[R139_PHASE_A_140_REAL_TESTS_96_ROOT_BRACKETS_17496_NE_CI_RECEIPT.json](R139_PHASE_A_140_REAL_TESTS_96_ROOT_BRACKETS_17496_NE_CI_RECEIPT.json)。这些是理论代数计算的远端可复验性，不构成原始真人实验样本的新增E2评分，也不更新冻结R073/PESEN模型。

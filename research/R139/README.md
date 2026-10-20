@@ -24,3 +24,5 @@
 - [原生GitHub Actions CI](../../.github/workflows/r139-gordon1954-cpr-70-tests.yml)
 
 ZIP解压后 `python -m unittest -v test_r139_gordon1954_exact.py` 与 `python r139_gordon1954_exact.py`；仅依赖Python标准库。完成既定全部R后再统一分类、归纳，最后熔炼。
+
+**远端结题验收完成**：[GitHub Actions run39386412139](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39386412139) completed/success，运行源码commit `303a88137b6a155b1cd92b0bcd6cb5509e14fec3`。Python3.11 job118507201489执行70项单测5.327s，Python3.12 job118507201862执行70项4.449s。每任务4个SHA256均OK、全96组区间及17496项离散比较重新执行且JSON字节完全对照，累计140次实际单测、0失败。[远端机器验收收据](R139_PHASE_A_140_REAL_TESTS_96_ROOT_BRACKETS_17496_NE_CI_RECEIPT.json)。有界结题并非实际渔业或群体历史预测。

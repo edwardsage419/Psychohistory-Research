@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R139共同资源困境有界结题**：[Gordon1954原渔业模型＋本项目新增有限n提取者博弈](research/R139/README.md)。真正可视核读原论文130、131、141、142页，验证经济最优E8与自由进入E32的项目参数示例（租金16与0）。另外新构96组Fraction精确均衡根区间及三人729档案、17496单侧行动偏离，得到离散三人纯NE(6,8,8)及排列，租金110/13。真人R047原128人、32组与本期数学模型严格去重。[真实GitHub Actions run39386412139](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39386412139) 两套Python环境每环境70项真单测，140项执行0失败、4种ZIP/源码/结果SHA256各双任务全部核验，独立复算通过。R073/PESEN v0.1冻结；E2新证据0、E3新证据0。下一项P1/05-016 IAD Ostrom制度分析与发展框架（拟R140）。既定R全部完成后再统一归纳与熔炼。
+
+
 **2026-10-20 R138机制设计P2/05-014正式有界结题**：[Vickrey1961、Clarke1971、Groves1973三篇一手研究与三类有界VCG](research/R138/README.md)。实现单物品次价拍卖、单位需求异质双物品VCG与成本5的公共项目pivot，在1,875+19,683+3,888=**25,446次真实完整有界效用比较**中无真报弱占优违反；公共项目216组中建造181组、赤字160组，说明激励相容不保障自筹资金。第一次61项单测抓到输入校验与Python缓存先后顺序错误，修复后远端[GitHub Actions 39384500172](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39384500172) Python3.11及3.12各61项全通过，合计122项、0失败；每个任务真实验证ZIP和三项内部文件SHA256，精确回放全部数学档案。新增真人E2=0、历史E3=0；R073/PESEN v0.1冻结。下一既定候选P1/05-015 Common Pool Resource Dilemma（R139），全部既定R完成后再归纳分类、最后熔炼。
 
 

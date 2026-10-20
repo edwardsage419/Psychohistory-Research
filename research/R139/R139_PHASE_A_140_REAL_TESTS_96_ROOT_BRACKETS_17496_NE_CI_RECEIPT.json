@@ -1,0 +1,85 @@
+{
+  "id": "R139",
+  "date": "2026-10-20",
+  "catalogue": "P1 05-015 Common Pool Resource Dilemma",
+  "primary_doi": "10.1086/257497",
+  "source_visually_read_original_print_pages": [
+    130,
+    131,
+    141,
+    142
+  ],
+  "protocol": "protocols/R139_GORDON_1954_FISHERY_OPEN_ACCESS_FINITE_PLAYERS_EXACT_PRESCORE_FREEZE_2026-10-20.md",
+  "workflow_run_id": 39386412139,
+  "workflow_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39386412139",
+  "source_commit": "303a88137b6a155b1cd92b0bcd6cb5509e14fec3",
+  "run_status": "completed",
+  "run_conclusion": "success",
+  "jobs": [
+    {
+      "id": 118507201489,
+      "python": "3.11",
+      "source_zip_and_three_files_sha256_checks": 4,
+      "actual_unittest_count": 70,
+      "seconds": 5.327,
+      "independent_replay": "success",
+      "conclusion": "success"
+    },
+    {
+      "id": 118507201862,
+      "python": "3.12",
+      "source_zip_and_three_files_sha256_checks": 4,
+      "actual_unittest_count": 70,
+      "seconds": 4.449,
+      "independent_replay": "success",
+      "conclusion": "success"
+    }
+  ],
+  "total_real_unittest_executions": 140,
+  "failures": 0,
+  "exact_original_eqs": [
+    "P=a-beta*L",
+    "L=gamma*E*P",
+    "R=L-qE",
+    "dR/dE=0"
+  ],
+  "source_example": {
+    "a": 9,
+    "beta": "1/4",
+    "gamma": 1,
+    "q": 1,
+    "social_effort": "8",
+    "open_effort": "32",
+    "social_rent": "16",
+    "open_rent": "0"
+  },
+  "new_project_extensions": {
+    "continuous_synthetic_parameter_cases": 96,
+    "exact_fraction_root_intervals": 96,
+    "three_person_discrete_profiles": 729,
+    "distinct_deviation_comparisons": 17496,
+    "pure_NE": [
+      "6,8,8",
+      "8,6,8",
+      "8,8,6"
+    ],
+    "NE_rent": "110/13",
+    "social_optimum_rent": "16"
+  },
+  "git_zip_blob_SHA1": "95028de0e47f29bf99a2089c243d6efd6004a16c",
+  "sha256": {
+    "R139_Gordon1954_70_Tests_Exact_Source.zip": "ea53e392503dfab87803416e6dd6a935222fc2c6bf9539198db595b52b15eaa1",
+    "r139_gordon1954_exact.py": "162b5ff611b08723b29843fd0053d0214dead34babb23238ca083a8b357bdbd4",
+    "test_r139_gordon1954_exact.py": "7cd4cc9548214a43eebbb4d8d773dba340d85e98540bd947f18d65f917637c26",
+    "R139_EXACT_RESULTS.json": "28bdaf32dcca7875d905879ef90aef87b1b2e18d67a3add0052d31c09add6ee6"
+  },
+  "first_party_original_author_code_executed": false,
+  "prior_R047_source": "lrdegeest/InequalityCPR; 128 persons, 32 independent groups, 1920 nonpractice rows",
+  "prior_real_R047_data_not_loaded_newly": true,
+  "new_real_human_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": "R140 05-016 Institutional Analysis and Development",
+  "sequence": "finish R candidates -> unified classification -> model fusion"
+}
