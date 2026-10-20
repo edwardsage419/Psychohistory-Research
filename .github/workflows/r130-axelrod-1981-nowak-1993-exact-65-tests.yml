@@ -1,0 +1,130 @@
+name: R130 Axelrod Hamilton 1981 dual TFT invasion and Nowak Sigmund 1993 Pavlov first-party exact
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r130-axelrod-1981-nowak-1993-exact-65-tests.yml'
+      - 'research/R130/r130_axelrod1981_tft_nowak1993_pavlov_repeated_exact.py'
+      - 'research/R130/test_r130_axelrod1981_tft_nowak1993_pavlov_repeated_exact.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  original-1981-two-invaders-and-1993-pavlov-finite-infinite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Execute genuine 65 source and repeated-game unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R130 python -m unittest -v \
+            research/R130/test_r130_axelrod1981_tft_nowak1993_pavlov_repeated_exact.py \
+            2>&1 | tee /tmp/r130_genuine_source_math_tests.log
+          python - <<'PY'
+          import pathlib,re
+          s=pathlib.Path('/tmp/r130_genuine_source_math_tests.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',s)==['65'],('R130_WRONG_65_REAL_TEST_COUNT',s[-2400:])
+          assert re.search(r'\nOK\s*$',s),'R130_TRUE_TESTS_NOT_ALL_PASS'
+          print('R130_65_GENUINE_UNIT_TESTS_PASS')
+          PY
+      - name: Independent 1050 exact finite-prefix and periodic-tail reconciliation and source formulas
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R130 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r130_axelrod1981_tft_nowak1993_pavlov_repeated_exact as m
+
+          assert (m.REWARD,m.SUCKER,m.TEMPTATION,m.PUNISHMENT)==(F(3),F(0),F(5),F(1))
+          original=m.audit_original_1981_double_constraint()
+          assert original['original_source_1981_TFT_ALLD_payoff_boundary']=='1/2'
+          assert original['original_source_1981_TFT_ALT_DC_payoff_boundary']=='2/3'
+          assert not original['original_full_strategy_evolutionary_stability_theorem_newly_reproved']
+          mid=original['w_grid_exact_independent_closed_forms_against_state_cycles']['3/5']
+          assert mid['TFT_self']=='15/2'
+          assert mid['ALLD_vs_TFT']=='13/2'
+          assert mid['ALT_DC_vs_TFT']=='125/16'
+          assert mid['only_ALLD_defense_satisfied']
+          assert not mid['both_noninvasion_comparisons_satisfied']
+          high=original['w_grid_exact_independent_closed_forms_against_state_cycles']['2/3']
+          assert high['TFT_self']==high['ALT_DC_vs_TFT']=='9'
+          assert high['both_noninvasion_comparisons_satisfied']
+
+          memory=m.pavlov_original_1993_realized_action_mapping()
+          assert memory=={'CC':'C','CD':'D','DC':'D','DD':'C'}
+          error_TFT=m.single_first_round_implementation_error('TFT',8)
+          error_WSLS=m.single_first_round_implementation_error('WSLS',8)
+          assert error_TFT==('DC','CD','DC','CD','DC','CD','DC','CD')
+          assert error_WSLS==('DC','DD','CC','CC','CC','CC','CC','CC')
+
+          full=m.exhaustive_true_finite_vs_infinite_checks()
+          assert full['all_ordered_two_strategy_profiles']==25
+          assert full['exact_finite_prefix_plus_independent_periodic_tail_checks']==1050
+          assert full['featured_1981_source']=={
+              'TFT_TFT_delta':'3/5',
+              'TFT_TFT_infinite_first_player':'15/2',
+              'TFT_TFT_detected_period':2
+          }
+          assert not full['original_1980_Axelrod_computer_tournament_rerun']
+          assert not full['original_1993_Nowak_population_mutation_selection_simulation_rerun']
+
+          root=pathlib.Path('research/R130')
+          names=[
+              'r130_axelrod1981_tft_nowak1993_pavlov_repeated_exact.py',
+              'test_r130_axelrod1981_tft_nowak1993_pavlov_repeated_exact.py',
+              'R130_AXELROD_1981_DUAL_TFT_THRESHOLD_NOWAK_1993_PAVLOV_EXACT_SCIENTIFIC_REPORT_2026-10-20.md'
+          ]
+          sha={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names}
+          receipt={
+              'research_id':'R130','catalogue_id':'05-006','priority':'P1','phase':'A',
+              'status':'R130_ORIGINAL_AXELROD1981_TFT_TWO_INVADERS_NOWAK1993_PAVLOV_65_TEST_1050_EXACT_PASS',
+              'source_original_Axelrod_Hamilton1981_DOI':'10.1126/science.7466396',
+              'source_original_Axelrod_Hamilton1981_pdf':'https://public.websites.umich.edu/~axe/research/Axelrod%20and%20Hamilton%20EC%201981.pdf',
+              'source_original_1981_eyeball_print_pages':[1392,1393,1394],
+              'source_original_Nowak_Sigmund1993_DOI':'10.1038/364056a0',
+              'source_original_Nowak_Sigmund1993_pdf':'https://abel.math.harvard.edu/archive/153_fall_04/Additional_reading_material/A_strategy_of_winstay_loseshift_that_out_performs_titfortat_in_the_Prisoners_Dilemma_game.pdf',
+              'source_original_1993_eyeball_print_pages':[56,57],
+              'primary_1981_fig1_R_S_T_P':[3,0,5,1],
+              'true_original_1981_printed_eq1_two_payoff_boundaries':original,
+              'independent_Nature1993_Pavlov_R_S_T_P_response_memory':memory,
+              'project_single_first_round_exogenous_TFT_error_path':list(error_TFT),
+              'project_single_first_round_exogenous_WSLS_error_path':list(error_WSLS),
+              'source_constrained_5_policy_cross_cycle_test':full,
+              'finite_known_horizon_PD_backward_induction_path_N5':list(
+                  m.audited_finite_known_horizon_backward_induction(5)['inductively_unique_SPNE_action_path']),
+              'two_independent_repeated_payoff_algorithms':[
+                  'direct exact history state machine finite-round explicit simulation',
+                  'finite-state detected cycles, full geometric limit and independent rotated periodic future-tail'
+              ],
+              'true_independent_unittests_executed':65,'actual_failures':0,
+              'code_test_scientific_report_SHA256':sha,
+              'Axelrod_1980_original_tournament_reexecuted':False,
+              'Nowak1993_original_1e7_generation_evolution_reexecuted':False,
+              'Friedman1971_full_published_original_study_directly_read':False,
+              'arbitrary_strategy_set_ESS_full_original_theorem_independently_reproved':False,
+              'new_original_human_individual_behavior_rows_loaded':0,
+              'new_real_human_E2_prediction_scores':0,
+              'historical_cooperation_prediction_newly_validated':False,
+              'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          out=root/'R130_PHASE_A_1981_1993_65_TEST_1050_CYCLES_TWO_INVADERS_CI_ACCEPTANCE.json'
+          out.write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print('R130_REAL_MACHINE_ACCEPTANCE_SHA',hashlib.sha256(out.read_bytes()).hexdigest())
+          PY
+      - name: Archive actual machine evidence as bot commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R130/R130_PHASE_A_1981_1993_65_TEST_1050_CYCLES_TWO_INVADERS_CI_ACCEPTANCE.json
+          git commit -m "results(R130): source 1981 double invasion and 1993 Pavlov 65 tests 1050 exact histories verified"
+          git pull --rebase origin main
+          git push origin HEAD:main
