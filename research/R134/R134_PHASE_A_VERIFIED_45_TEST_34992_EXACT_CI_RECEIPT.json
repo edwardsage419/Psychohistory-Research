@@ -1,0 +1,63 @@
+{
+  "research_id": "R134",
+  "date": "2026-10-20",
+  "phase": "A",
+  "source": "Taylor 1979 Journal of Applied Probability 16 pp76-83, original equations on printed pp77-78",
+  "github_workflow": "R134 Taylor 1979 two-population ESS 45 tests",
+  "github_actions_run_id": 39371915556,
+  "github_actions_browser_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39371915556",
+  "run_head_sha": "4bfcfb17b58536f508098e59ca9d2dd4f0a6ffd6",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "python": "3.12",
+      "job_id": 118461452739,
+      "status": "completed",
+      "conclusion": "success",
+      "real_unittests": 45,
+      "seconds": 5.153,
+      "sha256_all_three_checks": "success",
+      "exact_comparisons_printed": 34992
+    },
+    {
+      "python": "3.11",
+      "job_id": 118461453142,
+      "status": "completed",
+      "conclusion": "success",
+      "real_unittests": 45,
+      "seconds": 6.972,
+      "sha256_all_three_checks": "success",
+      "exact_comparisons_printed": 34992
+    }
+  ],
+  "total_real_unittest_executions": 90,
+  "total_unit_failures": 0,
+  "bundle_git_blob_sha1": "3088d345881c53726eb0c193f87334dc426f3211",
+  "sha256_checked_in_each_job": {
+    "R134_Taylor1979_source_and_45_tests.zip": "302b05c9a6ffebe69063eabedb949ca6ef91ef17eb4c71d1b2a1f42c02d4e64b",
+    "r134_taylor1979_two_population_exact.py": "ddf3cca2a168641344b405a05212af46a6bce5c30f5badae766874cd9896e434",
+    "test_r134_taylor1979_two_population_exact.py": "c72f68d34ce03e189ba814829f783c421e0e97e5961fa408f65d373386fce5dd"
+  },
+  "exact_constructed_matrix_configurations": 81,
+  "exact_checks_per_job": 34992,
+  "joint_single_mutant_Q": "-1/8",
+  "joint_simultaneous_mutant_Q": "1/4",
+  "joint_simultaneous_resident_advantage_at_epsilon_quarter": "-1/16",
+  "jacobian_eigenvalues": [
+    "1/2",
+    "-3/2"
+  ],
+  "matching_pennies_same_pooled_z": "1/2",
+  "different_pooled_derivatives": [
+    "+24/125",
+    "-24/125",
+    "0"
+  ],
+  "actual_human_or_animal_raw_record_count": 0,
+  "new_real_individual_E2_scores": 0,
+  "new_real_historical_E3_scores": 0,
+  "primary_non_linear_mate_desertion_reproduced": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}

@@ -4,8 +4,8 @@
   "original_catalogue_id": "05-010",
   "priority": "P2",
   "candidate": "Multi Population Evolutionary Games",
-  "scientific_status": "PHASE_A_LOCAL_MATH_COMPLETE_REMOTE_CI_PENDING",
-  "learning_status": "LEARNING_COMPLETE_BOUNDED_PENDING_REMOTE_CI_TAYLOR_1979_TWO_TYPE_LINEAR_ESS",
+  "scientific_status": "CLOSED_BOUNDED_TAYLOR_1979_FIRSTHAND_TWO_TYPE_EQ1_EQ2_EQ3_EQ4_EQ5_34992_EXACT_AND_JOINT_INVASION",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_ORIGINAL_1979_MULTIPOP_ESS_AND_REPLICATOR_EQUATIONS",
   "source": "Peter D. Taylor 1979 Evolutionarily Stable Strategies with Two Types of Player, Journal of Applied Probability 16(1):76-83",
   "source_DOI": "10.2307/3213376",
   "source_author_direct_pdf": "https://static1.squarespace.com/static/5dc9917c4cdb1467e1e54c4c/t/6526a06fa3fe7456d63dd68d/1697030256664/1979%2Bevolutionarily%2Bstable%2Bstrategies%2Bwith%2Btwo%2Btypes%2Bof%2Bplayer.pdf",
@@ -20,7 +20,7 @@
   "original_formula_vs_independent_exact_checks": 34992,
   "local_unittest_actual_passed": 45,
   "local_unittest_failures": 0,
-  "remote_workflow_run": null,
+  "remote_workflow_run": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39371915556",
   "archive_zip_blob_git_sha1": "3088d345881c53726eb0c193f87334dc426f3211",
   "archive_zip_sha256": "302b05c9a6ffebe69063eabedb949ca6ef91ef17eb4c71d1b2a1f42c02d4e64b",
   "source_python_sha256": "ddf3cca2a168641344b405a05212af46a6bce5c30f5badae766874cd9896e434",
@@ -71,5 +71,27 @@
   "original_239_candidate_completed_all": false,
   "R073": "FROZEN",
   "PESEN_v0_1": "FROZEN",
-  "owner_sequence": "Finish existing R series, classify once all studies complete, then fuse"
+  "owner_sequence": "Finish existing R series, classify once all studies complete, then fuse",
+  "remote_workflow_run_id": 39371915556,
+  "remote_workflow_head_sha": "4bfcfb17b58536f508098e59ca9d2dd4f0a6ffd6",
+  "remote_workflow_status": "completed",
+  "remote_workflow_conclusion": "success",
+  "python_311_job": {
+    "job_id": 118461453142,
+    "tests": 45,
+    "conclusion": "success",
+    "time_seconds": 6.972
+  },
+  "python_312_job": {
+    "job_id": 118461452739,
+    "tests": 45,
+    "conclusion": "success",
+    "time_seconds": 5.153
+  },
+  "total_ci_test_executions": 90,
+  "ci_failures": 0,
+  "remote_job_independent_SHA256_zip_source_test_checks": 6,
+  "remote_exact_replay_per_job": 34992,
+  "ci_receipt_file": "research/R134/R134_PHASE_A_VERIFIED_45_TEST_34992_EXACT_CI_RECEIPT.json",
+  "next_candidate_needs_overlap_review": "05-011 Indirect Reciprocity already appears in R072; determine genuinely uncovered scope before assigning R135"
 }

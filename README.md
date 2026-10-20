@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R134完整有界验收**：[两类群体ESS和分群复制子动力学研究包](research/R134/README.md)，逐页核对Taylor 1979原刊第77至79页，34,992项独立原式与严格Fraction展开数值一致，45项真正测试在Python3.11及3.12两任务均成功，共90次执行。[真实GitHub Actions CI 39371915556](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39371915556) completed success。人工多群体联合扰动及合并比例不可辨识反例为数学结果，真人E2=0、历史E3=0，R073/PESEN v0.1保持冻结。后续继续R系列顺序，全部学习完毕后再统一分类及熔炼。
+
+
 **2026-10-20 R133新完成（原目录P2/05-009）**：[ESS严格入侵、625个二策略完整枚举、三策略混合入侵漏检反例](research/R133/README.md)；Python3.11/3.12两任务[真实GitHub Actions 39368129476](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39368129476)均成功，每任务36项真实单测，共72次测试执行；完整源码与测试及SHA256已归档。1973源五策略舍入表仅支持有界数学结论，不证明原模拟真实未舍入ESS；真实新人E2=0、历史E3=0。下一R134原目录P2/05-010多群体演化博弈。R073/PESEN冻结，全部R完成后才分类、熔炼。
 
 

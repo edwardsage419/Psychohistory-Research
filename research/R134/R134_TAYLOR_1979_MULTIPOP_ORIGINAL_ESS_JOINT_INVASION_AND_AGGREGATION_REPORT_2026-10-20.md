@@ -1,6 +1,6 @@
 # R134 科学报告：Taylor 1979 双群体原始ESS判据、联合入侵和聚合信息丢失
 
-日期：2026-10-20。原目录 **P2 / 05-010 Multi Population Evolutionary Games**。状态：数学结果与45项本地真实测试完成，GitHub Actions将在后续独立运行。
+日期：2026-10-20。原目录 **P2 / 05-010 Multi Population Evolutionary Games**。状态：**有界科研结题，远端GitHub Actions两种Python环境实际完成全部测试。**
 
 ## 一手文献与审计范围
 
@@ -69,3 +69,7 @@ dx/dt=2x(1−x)(2y−1)，dy/dt=−2y(1−y)(2x−1)。
 代码直接调用：`python -m unittest discover -s . -p 'test_r134_taylor1979_two_population_exact.py' -v` 和 `python r134_taylor1979_two_population_exact.py`。
 
 所有计算的科学证据资格限于真实阅读1979作者一手原式及自行构造理论反例。不会修改R073/PESEN v0.1，完整R系列学完后再归类和熔炼。
+
+## 完成后的真实远端机器验收
+
+[GitHub Actions 39371915556](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39371915556) 对原提交4bfcfb17b58536f508098e59ca9d2dd4f0a6ffd6执行完毕，conclusion success。job 118461452739（Python 3.12）与118461453142（Python 3.11）各实际运行**45项unittest全部通过，0失败，共90次独立执行**，源日志分别记录Ran 45 tests in 5.153s和6.972s。每一job均在执行前严格校验ZIP SHA256=302b05c9a6ffebe69063eabedb949ca6ef91ef17eb4c71d1b2a1f42c02d4e64b、项目源码SHA256=ddf3cca2a168641344b405a05212af46a6bce5c30f5badae766874cd9896e434、单元测试SHA256=c72f68d34ce03e189ba814829f783c421e0e97e5961fa408f65d373386fce5dd；两个job均再打印完整81组/34,992精确复算结果。详细结构化收据保存在[R134_PHASE_A_VERIFIED_45_TEST_34992_EXACT_CI_RECEIPT.json](R134_PHASE_A_VERIFIED_45_TEST_34992_EXACT_CI_RECEIPT.json)。科研证据仍然只有原论文理论重构与人工数学实验，无新增真人E2与历史E3。
