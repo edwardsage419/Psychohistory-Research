@@ -1,0 +1,74 @@
+{
+  "research_id": "R150",
+  "date": "2026-10-20",
+  "catalogue_id": "06-008",
+  "priority": "P1",
+  "topic": "Demographic Transition Models",
+  "scientific_status": "LOCAL_111_TESTS_243_E1_HISTORIES_PASS_PENDING_REAL_GITHUB_CI",
+  "primary_source_authority": [
+    {
+      "author": "Warren S. Thompson",
+      "year": 1929,
+      "doi": "10.1086/214874",
+      "publisher_abstract_read": true,
+      "entire_original_print_pdf_visually_read": false
+    },
+    {
+      "author": "Kingsley Davis",
+      "year": 1945,
+      "doi": "10.1177/000271624523700102",
+      "publisher_article_record_verified": true,
+      "original_full_article_read": false
+    },
+    {
+      "author": "Ronald Lee",
+      "year": 2003,
+      "doi": "10.1257/089533003772034943",
+      "publisher_original_abstract_read": true,
+      "full_paper_visually_read": false
+    }
+  ],
+  "source_author_original_numerical_model_reproduced": false,
+  "project_created_aggregate_crude_rates": true,
+  "prescore_commit": "795ceea8646e475a4683d2a656c9dc7828d5a804",
+  "years": 12,
+  "initial_aggregate_population": 1000,
+  "mortality_transition_times": 9,
+  "fertility_transition_times": 9,
+  "exogenous_shocks": 3,
+  "synthetic_scenarios": 243,
+  "synthetic_scenarios_per_shock": 81,
+  "no_shock_counts": {
+    "mortality_first_increase": 36,
+    "fertility_first_decrease": 36,
+    "simultaneous_unchanged": 9
+  },
+  "exact_example_no_shock": {
+    "mortality_first_td2_tb6": "279841/160",
+    "fertility_first_td6_tb2": "83521/160",
+    "simultaneous": "1000"
+  },
+  "actual_local_tests": 111,
+  "actual_local_failures": 0,
+  "exact_rational_3_ways_agree": true,
+  "fully_observed_real_birth_death_records_used": false,
+  "age_structured_demographic_momentum_estimated": false,
+  "full_archive_git_blob_sha1": "a6945bf90fb4b1b994c4acc85f7fe8209d7ff228",
+  "sha256": {
+    "R150_Thompson_Davis_Lee_Demographic_111_Tests_243_Models.zip": "ba57c704811788b1457f763927671d5f5c9a193d30fdb34f84eec897d3cb5566",
+    "r150_demographic_transition_exact.py": "e8c02cc3d75a928ec576eeca21e3c24ad7cd3dab7efb481b358d596a97af03a0",
+    "test_r150_demographic_transition_exact.py": "f0faeaac216d829ca21b9a4d5277da8929b3a29f7b9018d83c2339974899e0fc",
+    "R150_EXACT_RESULTS.json": "94f6ef9a966be108c131df5b79b7cda3a85cc3b1e75aa9b1a205a2036785ced7"
+  },
+  "new_E2_real_people_predictions": 0,
+  "new_E3_real_history_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_candidate": {
+    "catalogue_id": "06-009",
+    "priority": "P1",
+    "name_en": "Age Structured Population Models",
+    "research_id": "R151"
+  },
+  "work_sequence": "finish all R -> consolidate and classify -> fuse"
+}

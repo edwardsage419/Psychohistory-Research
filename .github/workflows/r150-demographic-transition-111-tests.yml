@@ -1,0 +1,56 @@
+name: R150 demographic transition 111 genuine exact tests
+on:
+  push:
+    paths:
+      - 'research/R150/R150_Thompson_Davis_Lee_Demographic_111_Tests_243_Models.zip'
+      - '.github/workflows/r150-demographic-transition-111-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-rate-timing-stock-vital:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate actual exact source ZIP SHA256 and internal files
+        run: |
+          echo 'ba57c704811788b1457f763927671d5f5c9a193d30fdb34f84eec897d3cb5566  research/R150/R150_Thompson_Davis_Lee_Demographic_111_Tests_243_Models.zip' | sha256sum -c -
+          mkdir -p /tmp/r150
+          python -m zipfile -e research/R150/R150_Thompson_Davis_Lee_Demographic_111_Tests_243_Models.zip /tmp/r150
+          cd /tmp/r150
+          echo 'e8c02cc3d75a928ec576eeca21e3c24ad7cd3dab7efb481b358d596a97af03a0  r150_demographic_transition_exact.py' | sha256sum -c -
+          echo 'f0faeaac216d829ca21b9a4d5277da8929b3a29f7b9018d83c2339974899e0fc  test_r150_demographic_transition_exact.py' | sha256sum -c -
+          echo '94f6ef9a966be108c131df5b79b7cda3a85cc3b1e75aa9b1a205a2036785ced7  R150_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run all 111 actual demographic accounting unittest cases
+        run: |
+          cd /tmp/r150
+          python -m unittest -v test_r150_demographic_transition_exact.py
+      - name: Independently regenerate all 243 full twelve-step histories and assert source JSON
+        run: |
+          cd /tmp/r150
+          python r150_demographic_transition_exact.py > replay.json
+          cmp replay.json R150_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('replay.json'))
+          assert d['cases_count']==243 and len(d['all_synthetic_cases'])==243
+          assert d['none_shock_order_counts']=={'mortality_first':36,'fertility_first':36,'simultaneous':9}
+          assert d['reversed_timing_example']=={'mortality_first':'279841/160','fertility_first':'83521/160'}
+          assert not d['demographic_momentum_tested'] and d['no_age_structure']
+          for x in d['all_synthetic_cases']:
+              assert len(x['ledger'])==12 and len(x['trajectory'])==13
+              assert x['final']==x['endpoint_product']==x['endpoint_reverse_product']
+              assert F(x['final'])==F(1000)+F(x['total_births'])-F(x['total_deaths'])+F(x['total_immigration'])
+              assert x['trajectory'][0]=='1000'
+          assert (d['new_E2'],d['new_E3'])==(0,0)
+          assert d['authors_original_numeric_data_replayed'] is False
+          print('R150 PASS 111 genuine tests, 243 twelve-step exact demographic ledgers, 4 SHA256 fingerprints')
+          PY
