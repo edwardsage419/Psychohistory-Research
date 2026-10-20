@@ -1,0 +1,124 @@
+{
+  "research_id": "R131",
+  "date": "2026-10-20",
+  "catalogue_id": "05-007",
+  "priority": "P1",
+  "candidate": "Evolutionary Game Theory",
+  "scientific_status": "CLOSED_BOUNDED_TAYLOR_JONKER_1978_ORIGINAL_ESS_DYNAMIC_NON_EQUIVALENCE_AND_PROJECT_FINITE_DRIFT",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_TAYLOR_JONKER_1978_EVOLUTIONARY_ESS_VS_DYNAMICS_AND_FINITE_DRIFT",
+  "first_party_original_source": "Peter D. Taylor and Leo B. Jonker (1978), Evolutionarily Stable Strategies and Game Dynamics, Mathematical Biosciences 40:145-156",
+  "first_party_DOI": "10.1016/0025-5564(78)90077-9",
+  "original_full_pdf_linked_from_author_publications": "https://static1.squarespace.com/static/5dc9917c4cdb1467e1e54c4c/t/6526a5647942e33b89ab7af1/1697031525653/1978%2Bevolutionarily%2Bstable%2Bstrategies%2Band%2Bgame%2Bdynamics.pdf",
+  "source_pages_visually_read": [
+    147,
+    149,
+    150,
+    151
+  ],
+  "source_1978_ESS_mixture_condition": "F(p|r)>F(q|r) for sufficiently small rare-mutant fraction mu>0, r=(1-mu)p+mu*q, any q!=p",
+  "source_1978_continuous_population_equation": "d x_i/dt = x_i(F_i-F_bar)",
+  "source_1978_discrete_generation_equation": "x_i_next=x_i(1+F_i)/(1+F_bar) with nonnegative reproduction multipliers",
+  "source_1978_example1_matrix_parameter_epsilon": "1/2",
+  "source_1978_example1_original_matrix": [
+    [
+      "-1/2",
+      "1",
+      "-1"
+    ],
+    [
+      "-1",
+      "-1/2",
+      "1"
+    ],
+    [
+      "1",
+      "-1",
+      "-1/2"
+    ]
+  ],
+  "source_1978_example1_equilibrium": [
+    "1/3",
+    "1/3",
+    "1/3"
+  ],
+  "source_1978_example1_ESS_analytic_proven_for_all_mutants": true,
+  "source_1978_example1_continuous_J_trace": "-1/3",
+  "source_1978_example1_continuous_J_det": "13/36",
+  "source_1978_example1_continuous_local_stability": true,
+  "source_1978_example1_discrete_J_trace": "8/5",
+  "source_1978_example1_discrete_J_det": "28/25",
+  "source_1978_example1_discrete_local_stability": false,
+  "source_1978_example2_original_alpha_matrix": [
+    [
+      "2",
+      "1",
+      "5"
+    ],
+    [
+      "5",
+      "alpha",
+      "0"
+    ],
+    [
+      "1",
+      "4",
+      "3"
+    ]
+  ],
+  "source_1978_example2_alpha": "1",
+  "source_1978_example2_exact_equilibrium": [
+    "3/7",
+    "11/35",
+    "9/35"
+  ],
+  "source_1978_example2_each_pure_fitness": "86/35",
+  "source_1978_example2_continuous_J_trace": "-18/35",
+  "source_1978_example2_continuous_J_det": "297/245",
+  "source_1978_example2_continuous_local_stability": true,
+  "source_1978_example2_mutant_q": [
+    "0",
+    "0",
+    "1"
+  ],
+  "source_1978_example2_mutant_fraction": "1/10",
+  "source_1978_example2_exact_positive_invasion_advantage": "3/350",
+  "source_1978_example2_ESS": false,
+  "independent_linear_invasion_payoff_direct_vs_p147_expansion_checks": 504,
+  "independent_jacobian_algorithms": [
+    "explicit exact symbolic differentiating 2D simplex field",
+    "independent exact Richardson extrapolated central differences of cubic field"
+  ],
+  "finite_original_1978_matrix_simplex_lattice_states": 28,
+  "finite_project_moran_birth_death_model_added_not_original_1978": true,
+  "finite_project_Moran_N": 5,
+  "finite_project_Moran_selection_fitness_A": "3",
+  "finite_project_Moran_selection_fitness_B": "2",
+  "finite_project_Moran_unfavorable_B_single_mutant_fixation": "16/211",
+  "finite_project_Moran_neutral_single_mutant_fixation": "1/5",
+  "finite_project_Moran_population_grids_checked": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "original_Maynard_Smith_1974_full_primary_article_directly_read": false,
+  "original_Maynard_Smith_1974_publisher_abstract_only": true,
+  "original_Taylor_Jonker_1978_entire_population_trajectory_and_non_linear_global_stability_reconstructed": false,
+  "future_R132_Replicator_Dynamics_distinct_scope": true,
+  "future_R133_ESS_generic_classification_distinct_scope": true,
+  "real_github_actions_success": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39360828291",
+  "true_unittest_count": 63,
+  "true_unit_test_failures": 0,
+  "three_core_file_sha256_machine_receipt": "research/R131/R131_PHASE_A_1978_63_TEST_504_INVASION_SOURCE_FINITE_DRIFT_CI_ACCEPTANCE.json",
+  "synthetic_case_count_not_empirical_observations": true,
+  "new_real_human_E2_prediction_scores": 0,
+  "real_human_or_animal_original_microdata_rows_read": 0,
+  "real_history_E3_probability_predictions_newly_validated": 0,
+  "entire_R_series_completed": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "owner_sequence": "Finish all originally scheduled R studies, then unifying classification, then original model fusion"
+}
