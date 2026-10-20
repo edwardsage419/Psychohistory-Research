@@ -1,0 +1,128 @@
+{
+  "id": "R154",
+  "date": "2026-10-20",
+  "original_catalogue": "P1 06-012 Stock and Flow System Dynamics",
+  "scientific_status": "CLOSED_BOUNDED_E1_100_EXACT_FRACTION_HISTORIES_119_TESTS",
+  "source_scope": [
+    {
+      "author": "Jay W. Forrester",
+      "year": 1961,
+      "work": "Industrial Dynamics",
+      "bibliographic_public_record_checked": true,
+      "full_book_read": false,
+      "original_data_reproduced": false
+    },
+    {
+      "author": "John D. Sterman",
+      "year": 2000,
+      "work": "Business Dynamics",
+      "publisher_and_author_records_checked": true,
+      "full_book_read": false,
+      "original_data_reproduced": false
+    }
+  ],
+  "prescore_freeze_commit": "e0257e03417ee431ce08ab670156587de4dd3fb0",
+  "parameter_cases": 100,
+  "compartments": 2,
+  "periods_per_case": 13,
+  "transitions_per_case": 12,
+  "exact_stocks_replayed": 2600,
+  "exact_fraction_direct_matches_independent_analytic_for_all_cases": true,
+  "conserved_total": "10",
+  "all_closed_cases_exact_conservation": true,
+  "all_closed_cases_nonnegative": true,
+  "aggregate_total_does_not_identify_internal_flow_shares": true,
+  "eigenvalue": "lambda=1-p-q",
+  "oscillatory_two_cycle_when_p_equals_q_equals_one_and_unequal_initial_stocks": true,
+  "numerics_negative_control": {
+    "continuous_rate": "3/4",
+    "Euler_dt_1": [
+      "5/2",
+      "15/2"
+    ],
+    "Euler_dt_2": [
+      "-5",
+      "15"
+    ]
+  },
+  "lagged_withdrawal_negative_control": {
+    "unbounded_result": [
+      "-10",
+      "20"
+    ],
+    "physical_guard_rejects": true
+  },
+  "open_system_control": {
+    "initial": [
+      "5",
+      "5"
+    ],
+    "inflow": "2",
+    "outflow": "1",
+    "final": [
+      "7",
+      "4"
+    ],
+    "total_new": "11",
+    "overdraw_rejected": true
+  },
+  "code_commit": "aa3adb3a60f3d2862c09f2a1808761a50c36a1df",
+  "test_commit": "0b7b8b8e2aa9c33dfc9197d341eda69d36044268",
+  "workflow_commit": "5efcfde2f44cfc2b02f059733e215922847f6e71",
+  "archive_commit": "4a792b717c03702f1709c9f17e843ff1f94f3a53",
+  "archive_paths": [
+    "research/R154/R154_EXACT_RESULTS.json",
+    "research/R154/R154_Stock_Flow_100_Histories_119_Tests.zip"
+  ],
+  "github_ci": {
+    "run": 39435566160,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39435566160",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118671535060,
+        "python": "3.11",
+        "test_executions": 119,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118671535573,
+        "python": "3.12",
+        "test_executions": 119,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118671661811,
+        "role": "four pinned SHA256 and archive publish",
+        "test_executions": 119,
+        "conclusion": "success"
+      }
+    ],
+    "different_unittest_methods": 119,
+    "executions_total": 357,
+    "failures": 0
+  },
+  "sha256": {
+    "r154_stock_flow_exact.py": "2c5e0ade08f6221124c0790d83b1fa94976d9c1c8fa6d85b583a6bfdba139757",
+    "test_r154_stock_flow_exact.py": "7818731ac70159157261de1f8721cfe06ec0e9772201dedb0ee3b69ffdeef59c",
+    "R154_EXACT_RESULTS.json": "5df956c879f1183606292827a5827470a0c2adaa06833d766823949b05a1f7a6",
+    "R154_Stock_Flow_100_Histories_119_Tests.zip": "e25f045de436f9aa5fed1bf6be061cd536a3544ba932ceef236330e302e269b5"
+  },
+  "git_blob_sha1": {
+    "r154_stock_flow_exact.py": "7d6ab03423d21721f5198e411dee4205ee4f6e4f",
+    "test_r154_stock_flow_exact.py": "6abee10a6e767fb2d5eed4392ac85302875b8df5",
+    "R154_EXACT_RESULTS.json": "b9e9084fe40bf4dc4963fcb50b7eb306c9e495e3",
+    "R154_Stock_Flow_100_Histories_119_Tests.zip": "4e9f1f1822bb53f09fa195407b045098b0050a57"
+  },
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R155",
+    "catalogue_id": "06-013",
+    "priority": "P1",
+    "title": "Bass Diffusion Model"
+  },
+  "sequence": "complete existing R catalog before classification and model fusion"
+}
