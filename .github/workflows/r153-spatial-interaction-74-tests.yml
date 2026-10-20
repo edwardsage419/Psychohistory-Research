@@ -1,0 +1,92 @@
+name: R153 Spatial Interaction 60 Cases 74 Tests and Pinned Archive
+on:
+  push:
+    paths:
+      - 'research/R153/r153_spatial_od.py'
+      - 'research/R153/test_r153_spatial_od.py'
+      - '.github/workflows/r153-spatial-interaction-74-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-two-solver-check:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Pin source and test Git blob identities
+        run: |
+          cd research/R153
+          test "$(git hash-object r153_spatial_od.py)" = "59f63e5989671caf72224bfc2ad622780658c985"
+          test "$(git hash-object test_r153_spatial_od.py)" = "723819ad83b08e50d1bb7df10e657c92f0f1937e"
+          echo 'ed60ed3952c3e75efd046456e238f260082a839739e81b5cf87deec4c9185d97  r153_spatial_od.py' | sha256sum -c -
+          echo '3b9f0d49d5930fd4c353fc4b72ec1781c42695a084f49edd623391323c379ca7  test_r153_spatial_od.py' | sha256sum -c -
+      - name: Recompute all 60 OD cases before archive replay tests
+        run: |
+          cd research/R153
+          python r153_spatial_od.py > R153_EXACT_RESULTS.json
+          echo '9b2002c0aea89401660bd4b117b4dfcdec9c844479c7cd61e9e32b8fb5bc0f24  R153_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run all real 74 named unit tests
+        run: |
+          cd research/R153
+          python -m unittest -v test_r153_spatial_od.py
+      - name: Build full reproducible research ZIP with source tests and ledger
+        run: |
+          cd research/R153
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R153_Spatial_Interaction_60_Cases_74_Tests.zip','w') as z:
+              for name in ('r153_spatial_od.py','test_r153_spatial_od.py','R153_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,20,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo 'd7f5284aeabf3cc6e67317e3e38c67722c2b4d143197b235867401756252dd57  R153_Spatial_Interaction_60_Cases_74_Tests.zip' | sha256sum -c -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R153-full-synthetic-spatial-${{ matrix.python-version }}
+          path: research/R153/R153_Spatial_Interaction_60_Cases_74_Tests.zip
+          retention-days: 90
+  pin-and-publish-results:
+    needs: independent-two-solver-check
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify source/ledger/ZIP and run all 74 checks again
+        run: |
+          cd research/R153
+          echo 'ed60ed3952c3e75efd046456e238f260082a839739e81b5cf87deec4c9185d97  r153_spatial_od.py' | sha256sum -c -
+          echo '3b9f0d49d5930fd4c353fc4b72ec1781c42695a084f49edd623391323c379ca7  test_r153_spatial_od.py' | sha256sum -c -
+          python r153_spatial_od.py > R153_EXACT_RESULTS.json
+          echo '9b2002c0aea89401660bd4b117b4dfcdec9c844479c7cd61e9e32b8fb5bc0f24  R153_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r153_spatial_od.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R153_Spatial_Interaction_60_Cases_74_Tests.zip','w') as z:
+              for name in ('r153_spatial_od.py','test_r153_spatial_od.py','R153_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,20,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo 'd7f5284aeabf3cc6e67317e3e38c67722c2b4d143197b235867401756252dd57  R153_Spatial_Interaction_60_Cases_74_Tests.zip' | sha256sum -c -
+      - name: Permanently publish the complete results and source ZIP on main
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R153/R153_EXACT_RESULTS.json research/R153/R153_Spatial_Interaction_60_Cases_74_Tests.zip
+          if ! git diff --cached --quiet; then
+              git commit -m 'archive(R153): pinned 60 spatial OD synthetic cases and full 74-test source ZIP'
+              git push origin HEAD:main
+          fi
