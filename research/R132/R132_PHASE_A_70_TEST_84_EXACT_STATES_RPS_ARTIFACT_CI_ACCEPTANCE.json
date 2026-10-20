@@ -1,0 +1,124 @@
+{
+  "Chicken_two_person_payoffs_previous_R129_numerical_trajectory_project_created": true,
+  "PESEN_v0_1": "FROZEN",
+  "R073": "FROZEN",
+  "RPS_zero_sum_matrix_and_ODE_integrator_new_project_math_not_original_1978_game": true,
+  "Stag_Hare_source_two_person_payoffs_previous_R128_numerical_trajectory_project_created": true,
+  "actual_finite_non_equilibrium_numerical_trajectories_and_error_comparisons": {
+    "chicken_t8_initial_four_fifths_final": 0.33521615709422425,
+    "chicken_t8_initial_one_tenth_final": 0.3310666200015575,
+    "constant_advantage_exact_logistic_t2": 0.7112345942275939,
+    "logistic_RK4_absolute_errors": [
+      2.4402773135534517e-09,
+      1.5268908359900024e-10,
+      9.547918011776346e-12,
+      5.972999872483342e-13
+    ],
+    "logistic_euler_absolute_errors": [
+      0.0005060229491842261,
+      0.00024337661577422676,
+      0.00011929665114629451,
+      5.905250770732451e-05
+    ],
+    "numeric_T12_RPS_comparison": {
+      "160": {
+        "euler_final_product": 0.028019510136624733,
+        "euler_product_error": -0.0019804898633752656,
+        "rk4_final_product": 0.03000000019291522,
+        "rk4_product_error": 1.9291522199149647e-10
+      },
+      "320": {
+        "euler_final_product": 0.02905838113715747,
+        "euler_product_error": -0.0009416188628425283,
+        "rk4_final_product": 0.0300000000099139,
+        "rk4_product_error": 9.913899562397077e-12
+      },
+      "40": {
+        "euler_final_product": 0.01988654382675213,
+        "euler_product_error": -0.010113456173247867,
+        "rk4_final_product": 0.030000102097436053,
+        "rk4_product_error": 1.0209743605410493e-07
+      },
+      "80": {
+        "euler_final_product": 0.025648051866509987,
+        "euler_product_error": -0.004351948133490012,
+        "rk4_final_product": 0.03000000418474815,
+        "rk4_product_error": 4.184748152169515e-09
+      }
+    },
+    "project_RPS_exact_continuous_product_invariant": "3/100",
+    "project_zero_sum_RPS_initial_product": 0.03,
+    "stag_hare_t8_initial_four_fifths_final": 0.9994689000538777,
+    "stag_hare_t8_initial_half_final": 1.9111723191657823e-10,
+    "this_numerical_drift_is_not_original_Taylor_Jonker_discrete_Eq3": true
+  },
+  "actual_independent_unittests_executed": 70,
+  "author_Eq2_via_independent_pairwise_fraction_and_source_Eq3_4_invariants": {
+    "absence_boundary_preservation_checks": 84,
+    "constant_payoff_shift_invariance_checks": 252,
+    "exact_field_vs_independent_pairwise_comparisons": 84,
+    "payoff_matrices_checked": 3,
+    "positive_payoff_time_scale_checks": 252,
+    "source_1978_original_eq3_vs_eq4_increment_checks": 84,
+    "three_strategy_simplex_states_per_matrix": 28
+  },
+  "core_code_test_science_report_SHA256": {
+    "R132_TAYLOR_JONKER_1978_REPLICATOR_TRAJECTORIES_AND_NUMERICAL_ARTIFACTS_SCIENTIFIC_REPORT_2026-10-20.md": "29e9379071b749ee6230f96ee8683c5296556c6cb96e4561e81949256ae3f47f",
+    "r132_replicator_1978_exact_invariants_and_trajectories.py": "5dbb96ecfe19d9689b900369364f453b6311bf0cde87a3c2eeec263b37ad7e15",
+    "test_r132_replicator_1978_exact_invariants_and_trajectories.py": "12438b38055ad51709493f48a130316bb54bbfb7ec5ea3f3c69a840af4ab5696"
+  },
+  "double_precision_numerics_not_confused_with_exact_Fraction_proofs": true,
+  "new_historical_E3_event_probability_scores": 0,
+  "new_real_human_E2_prediction_scores": 0,
+  "num_explicit_numerical_RPS_step_grids": 4,
+  "numeric_RK4_not_strict_geometrically_conservative_integrator": true,
+  "original_author_hosted_fulltext_pdf": "https://static1.squarespace.com/static/5dc9917c4cdb1467e1e54c4c/t/6526a5647942e33b89ab7af1/1697031525653/1978%2Bevolutionarily%2Bstable%2Bstrategies%2Band%2Bgame%2Bdynamics.pdf",
+  "original_catalogue_id": "05-008",
+  "phase": "A",
+  "primary_author_DOI": "10.1016/0025-5564(78)90077-9",
+  "primary_author_research_source": "Taylor and Jonker 1978 Mathematical Biosciences 40:145-156, original Eq2, Eq3 and Eq4 p149",
+  "printed_original_pages_visually_read": [
+    149,
+    150,
+    151
+  ],
+  "priority": "P1",
+  "research_id": "R132",
+  "source_1978_discrete_generation_not_forward_Euler_or_RK4": true,
+  "source_based_independent_log_product_RPS_mathematical_identity": {
+    "continuous_zero_sum_product_invariant_not_claimed_for_Euler": true,
+    "identity": "d(log(x0*x1*x2))/dt=sum_i (Ax)_i-3*x^T*A*x=0",
+    "interior_exact_simplex_state_checks": 10
+  },
+  "source_original_1978_full_nonlinear_phase_portraits_not_reproduced": true,
+  "source_original_1983_Schuster_Sigmund_full_text_read": false,
+  "source_original_continuous_Eq2": "dx_i/dt=x_i(F_i-Fbar)",
+  "source_original_discrete_Eq3": "x_i_next=x_i(1+F_i)/(1+Fbar)",
+  "source_original_discrete_Eq4": "x_i_next-x_i=x_i(F_i-Fbar)/(1+Fbar)",
+  "status": "R132_TAYLOR_JONKER_1978_SOURCE_EQ2_EQ3_EQ4_70_TEST_84_STATE_RPS_NUMERICAL_ARTIFACT_SUCCESS",
+  "true_original_real_animal_or_human_trajectory_rows_loaded": 0,
+  "two_strategy_basin_signs_and_39_exact_math_comparisons": {
+    "two_type_13_grid_cross_checks": 39,
+    "two_type_models": {
+      "chicken": {
+        "exact_interior_fixed_point": "1/3",
+        "four_fifths_derivative": "-28/125",
+        "half_derivative": "-1/8",
+        "quarter_derivative": "3/64"
+      },
+      "constant_advantage": {
+        "exact_interior_fixed_point": null,
+        "four_fifths_derivative": "4/25",
+        "half_derivative": "1/4",
+        "quarter_derivative": "3/16"
+      },
+      "stag_hare": {
+        "exact_interior_fixed_point": "3/4",
+        "four_fifths_derivative": "4/125",
+        "half_derivative": "-1/4",
+        "quarter_derivative": "-3/8"
+      }
+    }
+  },
+  "unittest_failures": 0
+}
