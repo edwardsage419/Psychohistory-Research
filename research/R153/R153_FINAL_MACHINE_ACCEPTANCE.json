@@ -1,0 +1,126 @@
+{
+  "id": "R153",
+  "date": "2026-10-20",
+  "original_catalogue": "P2 06-011 Spatial Interaction Models",
+  "scientific_status": "CLOSED_BOUNDED_E1_60_TWO_BY_TWO_SPATIAL_INTERACTION_MODELS_74_TESTS",
+  "precode_protocol_commit": "99183f26cd5ef25677f27ea6fd4078044591aa04",
+  "primary_sources": [
+    {
+      "author": "A. G. Wilson",
+      "year": 1970,
+      "work": "Entropy in Urban and Regional Modelling",
+      "publisher_record_checked": true,
+      "complete_book_read": false,
+      "empirical_data_reproduced": false
+    },
+    {
+      "author": "David L. Huff",
+      "year": 1964,
+      "doi": "10.1177/002224296402800307",
+      "publisher_abstract_checked": true,
+      "complete_paper_read": false,
+      "empirical_data_reproduced": false
+    },
+    {
+      "author": "A. S. Fotheringham",
+      "year": 1983,
+      "doi": "10.1177/0308518X8301500103",
+      "publisher_abstract_checked": true,
+      "complete_paper_read": false,
+      "empirical_data_reproduced": false
+    }
+  ],
+  "frozen_positive_support_scenarios": 60,
+  "independent_algorithms": [
+    "iterative proportional fitting",
+    "monotone scalar cross-product root by bisection",
+    "exact Fraction uniform-kernel check"
+  ],
+  "exact_uniform_benchmark": [
+    [
+      "3/4",
+      "9/4"
+    ],
+    [
+      "5/4",
+      "15/4"
+    ]
+  ],
+  "singly_constrained_destination_budget_mismatch_scenarios": 54,
+  "doubly_constrained_correct_destination_budget_scenarios": 60,
+  "max_ipf_scalar_cell_abs_discrepancy": 7.417e-11,
+  "max_abs_row_or_column_marginal_error": 9.395e-11,
+  "max_single_vs_double_cell_abs_difference": 2.324555320337,
+  "structural_zero_unique_solution": [
+    [
+      0,
+      3
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "structurally_infeasible_diagonal_only_weights_rejected": true,
+  "model_weight_row_column_scaling_invariance_tested": true,
+  "source_and_results_persisted_in_main": true,
+  "code_commit": "bb29d9a4ab22ca1833939da989e87947b382cc2a",
+  "tests_commit": "cdf816c0a30d1c2e748d7ebc8fa4c323760380fa",
+  "ci_workflow_commit": "304be32b0fbdca06b695066edc10044ac27899c4",
+  "archive_commit": "9aaeccf4290eb6b2d0badda85292cc7a199c57d4",
+  "github_ci": {
+    "run": 39434054859,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39434054859",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 118666298383,
+        "python": "3.11",
+        "distinct_tests": 74,
+        "executions": 74,
+        "conclusion": "success"
+      },
+      {
+        "id": 118666298827,
+        "python": "3.12",
+        "distinct_tests": 74,
+        "executions": 74,
+        "conclusion": "success"
+      },
+      {
+        "id": 118666389772,
+        "role": "pinned archive publication",
+        "distinct_tests": 74,
+        "executions": 74,
+        "sha256_verified": 4,
+        "conclusion": "success"
+      }
+    ],
+    "actual_unittest_executions": 222,
+    "distinct_tests": 74,
+    "failures": 0
+  },
+  "sha256": {
+    "r153_spatial_od.py": "ed60ed3952c3e75efd046456e238f260082a839739e81b5cf87deec4c9185d97",
+    "test_r153_spatial_od.py": "3b9f0d49d5930fd4c353fc4b72ec1781c42695a084f49edd623391323c379ca7",
+    "R153_EXACT_RESULTS.json": "9b2002c0aea89401660bd4b117b4dfcdec9c844479c7cd61e9e32b8fb5bc0f24",
+    "R153_Spatial_Interaction_60_Cases_74_Tests.zip": "d7f5284aeabf3cc6e67317e3e38c67722c2b4d143197b235867401756252dd57"
+  },
+  "git_blob_sha1": {
+    "r153_spatial_od.py": "59f63e5989671caf72224bfc2ad622780658c985",
+    "test_r153_spatial_od.py": "723819ad83b08e50d1bb7df10e657c92f0f1937e",
+    "R153_EXACT_RESULTS.json": "ea1e43aa468b1fdd0f91f3ad9aa916dcc629044e",
+    "R153_Spatial_Interaction_60_Cases_74_Tests.zip": "d277a0bdde86084e4862c51d8a759c77ef683f5e"
+  },
+  "new_E2_human_independent_predictions": 0,
+  "new_E3_historical_external_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R154",
+    "original_catalogue_id": "06-012",
+    "priority": "P1",
+    "title": "Stock and Flow System Dynamics"
+  },
+  "research_sequence": "complete original R candidate catalog first, then classify, then fuse"
+}
