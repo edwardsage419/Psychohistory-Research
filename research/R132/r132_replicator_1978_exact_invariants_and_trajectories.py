@@ -313,6 +313,33 @@ def exact_two_type_source_based_sign_audit():
     return {"two_type_models":out,"two_type_13_grid_cross_checks":39}
 
 
+
+def zero_sum_rps_exact_log_product_invariant_grid():
+    """Independent exact proof over all 10 full-support 1/6 lattice states.
+
+    Since A^T=-A, x^T A x=0 and every column of cyclic A sums to
+    zero. Thus d/dt log(prod_i x_i) = sum_i xdot_i/x_i = 0.
+    """
+    A=zero_sum_rps_project()
+    count=0
+    for i in range(1,5):
+        for j in range(1,6-i):
+            x=(F(i,6),F(j,6),F(6-i-j,6))
+            fitness=exact_payoff_each(A,x)
+            if sum(fitness,F(0))!=0:
+                raise ReplicatorDomainError("R132_RPS_FITNESS_SUM_NOT_ZERO")
+            if sum((x[k]*fitness[k] for k in range(3)),F(0))!=0:
+                raise ReplicatorDomainError("R132_RPS_ANTISYMMETRIC_MEAN_NOT_ZERO")
+            field=source_original_eq2_exact_field(A,x)
+            if sum((field[k]/x[k] for k in range(3)),F(0))!=0:
+                raise ReplicatorDomainError("R132_RPS_PRODUCT_EXACT_CONTINUOUS_NOT_CONSERVED")
+            count+=1
+    if count!=10:
+        raise ReplicatorDomainError("R132_RPS_FULL_SUPPORT_10_STATES_COVERAGE")
+    return {"interior_exact_simplex_state_checks":count,
+            "identity":"d(log(x0*x1*x2))/dt=sum_i (Ax)_i-3*x^T*A*x=0",
+            "continuous_zero_sum_product_invariant_not_claimed_for_Euler":True}
+
 def numerical_replicator_audit():
     constant=constant_advantage_project()
     true=logistic_constant_advantage_closed(0.25,2.0)
@@ -382,6 +409,7 @@ def phase_receipt():
     return {
         "research_id":"R132","catalogue_id":"05-008",
         "original_source_1978_84_three_strategy_exact_audits":exact_replicator_invariant_grid(),
+        "zero_sum_RPS_exact_interior_product_proof":zero_sum_rps_exact_log_product_invariant_grid(),
         "two_strategy_exact_field_and_basin_signs":exact_two_type_source_based_sign_audit(),
         "complete_finite_trajectories_with_independent_logistic_and_RPS_checks":numerical_replicator_audit(),
         "original_1978_full_population_nonlinear_phase_portraits_recreated":False,
