@@ -4,11 +4,13 @@ on:
   push:
     paths:
       - '.github/workflows/r132-replicator-1978-216-paths-70-tests.yml'
-      - 'research/R132/**'
+      - 'research/R132/r132_taylor_jonker_1978_replicator_trajectories.py'
+      - 'research/R132/test_r132_taylor_jonker_1978_replicator_trajectories.py'
+      - 'research/R132/r132_phase_b_ci_attest.py'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verification:
@@ -25,3 +27,14 @@ jobs:
       - name: Independent source equation and trajectory replay
         run: |
           PYTHONPATH=research/R132 python research/R132/r132_taylor_jonker_1978_replicator_trajectories.py
+      - name: Generate strict Phase B source SHA256 acceptance receipt
+        run: |
+          PYTHONPATH=research/R132 python research/R132/r132_phase_b_ci_attest.py
+      - name: Preserve actual Phase B evidence on main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R132/R132_PHASE_B_70_TEST_216_TRAJECTORIES_CI_ACCEPTANCE.json
+          git commit -m "results(R132 phase B): 70 tests and 216 analytic RK4 paths verified"
+          git pull --rebase origin main
+          git push origin HEAD:main
