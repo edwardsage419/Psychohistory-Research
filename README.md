@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R144 历史制度主义 P1/06-002 正式有界结题**：[Mahoney2000反应性历史序列与Capoccia–Kelemen2007关键转折方法论的一手源核验及本项目独立反事实状态机](research/R144/README.md)。确切枚举6⁵=7776人工五步历史、五事件120全排列及38880个单事件替换反事实；373项配对改变最终制度，69项改变巩固，388项改变至少一种。存在两种同样表象改革但遇到同样后续反对时一个撤销、一个延续的人工机制，强调不可从单个制度终点推断完整形成史。**[GitHub Actions run39397216634](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39397216634)** Python3.11/3.12各171项单测共342项真实执行、0失败；各任务4项ZIP及原始文件SHA256、完整7776序列和38880反事实及全部JSON回放成功。本期原著是历史解释框架，不是程序原作者的代码复现，新增真人E2=0、历史E3=0，R073/PESEN v0.1冻结。下一目录P2/06-003 Principal Agent Models（R145）。全R学习完毕以后再统一分类归纳与熔炼。
+
+
 **2026-10-20 R143 Arthur1989路径依赖/历史锁定有界结题**：[原一手论文Table1、Eq1–3、Fig1的吸收随机游走精确研究](research/R143/README.md)。R/S两型各半、技术选择正反馈模型在初始d0下最终锁A/B各1/2，首达锁定分布P(τ=3+2j)=(3/8)(5/8)^j，平均首次锁定等待19/3次。条件于3R/3S的20种六步到达顺序，RRRSSS→6A、SSSRRR→6B、RSRSRS→3A3B；去掉反馈后全部20种次序得到3A3B。非原Table1的技术间斜率差异反事实已清晰单列。[真实GitHub Actions 39395394113](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39395394113)双Python环境各86项原生测试，共172次真实执行、0失败；每环境校验ZIP及3源文件SHA256并重算全部机器JSON。新增真人E2=0、历史E3=0；R073/PESEN v0.1冻结。下一候选R144 P1/06-002 Historical Institutionalism。坚持学完全部既定R再统一分类归纳和熔炼。
 
 

@@ -17,3 +17,5 @@
 解压后使用`python -m unittest -q test_r144_historical_institutionalism_exact.py`和`python r144_historical_institutionalism_exact.py > replay.json`。全部仅依赖Python标准库，不发布原论文的版权PDF。
 
 **新真人E2=0、外部历史E3=0**；R073、PESEN v0.1继续冻结。遵循全部R学习结束后再整体归纳分类，最后熔炼。
+
+**GitHub Actions 正式通过**：[run39397216634](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39397216634)。运行源码快照commit `21ee3ac9d2d4eba705304573ebe072ae5ed645d4`；Python3.11 job118542806511实际171 tests in 3.016s；Python3.12 job118542806818实际171 tests in 3.464s，共342项、0失败。两个环境每任务四份SHA256均校验OK且确实重新执行完整序列/反事实全结果JSON逐字节一致。[独立验收收据](R144_PHASE_A_342_REAL_TESTS_7776_HISTORIES_38880_COUNTERFACTUAL_CI_RECEIPT.json)与正式科研状态文件均已归档。**有界结题不等于实际历史制度因果识别。**
