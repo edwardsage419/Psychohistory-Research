@@ -1,0 +1,24 @@
+name: R149 41 exact tests
+on:
+  push:
+    paths:
+      - 'research/R149/R149_Giddens_Sewell_Exact_41_Tests.zip'
+  workflow_dispatch:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: |
+          mkdir -p /tmp/r149a
+          python -m zipfile -e research/R149/R149_Giddens_Sewell_Exact_41_Tests.zip /tmp/r149a
+          cd /tmp/r149a
+          python -m unittest -q test_r149_exact.py
+          python r149_exact.py > replay.json
+          cmp replay.json R149_EXACT_RESULTS.json
