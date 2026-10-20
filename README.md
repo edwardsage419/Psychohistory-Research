@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R148 SES社会—生态系统P1/06-006正式有界结题**：[Ostrom2009原刊Science 419–420页/420页Fig1与Anderies–Janssen–Ostrom2004稳健性框架的一手核验、18组项目自建动态资源—治理反馈模型](research/R148/README.md)。两名遵规的对称资源使用者、初态6容量8、开放采集/固定配额/按存量自适应规则、气候冲击及治理基础设施年故障；每组八期精确Fraction转移，独立后向动态规划与每规则256条确定气候路径重算。无气候/故障时OPEN累计取10但第五期资源枯竭；QUOTA/ADAPT取8且维持资源存量6。在气候q1/4、设施失效f1/4时，QUOTA/ADAPT八期资源存续率约0.30971/0.34914，但扣治理费的净采集量约6.80185/5.53447；单一“最好”策略因目标不同而变。[真实GitHub Actions run39412337646](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39412337646) Python3.11/3.12各98项unittest共196次真实执行、0失败；每任务4项源SHA256和全部18情景原JSON字节复验成功。所有公式和数字是项目新建的E1人工机制，不是Ostrom/Anderies原作者的数值实验，没有新增E2真人或E3历史证据。R073和PESEN v0.1冻结。原目录下一候选P2/06-007 Structuration Accounts（R149），按先完成全部R，后统一分类，最后熔炼的顺序推进。
+
+
 **2026-10-20 R147制度扩散P1/06-005正式有界结题**：[Shipan–Volden2008政策扩散四机制原刊源核对与Berry–Berry1990出版方原摘要，以及原创“同样观察不同干预”数学反例](research/R147/README.md)。两个因果世界的8种全部可观察联合政策采纳分布完全相同，观察条件风险差均1/2，但\`do(A)\`干预时真正地区扩散的因果差1/2、共同隐藏冲击模型的因果差0。本反例人为设A=U、缺乏层内重叠性，不意味着所有原始政策样本必不可识别。另在路径/星形/环形四区、两档邻居影响及年度共同冲击下**12个**四期合成分布全部Fraction独立双算法逐值复验，无邻居因果传播时共同冲击仍可制造区域采纳关联。[真实GitHub Actions run39409725920](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39409725920) Python3.11/3.12各86项单测共172次真实执行、0失败；各环境4项源SHA256、两条独立算法及完整JSON字节重算通过。未重跑原著真实美国675城数据；E2新增0、E3新增0；R073/PESEN v0.1冻结。下一研究 P1 06-006 Social Ecological Systems（R148）。既定全部R学完后再统一归纳分类，最后熔炼。
 
 

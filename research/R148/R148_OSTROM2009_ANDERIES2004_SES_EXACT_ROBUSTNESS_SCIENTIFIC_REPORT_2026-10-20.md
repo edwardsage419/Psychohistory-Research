@@ -55,3 +55,7 @@
 SHA256: ZIP `b5e812a7c3d027b82f9734251cdc98938958a525372cd387014318a62e52abb3`；源码 `5ffde38e946471e2488923f22fdbca05be071efc543f54bcc6505ecf6db8000d`；测试 `0d6ba134a0660c776f1ddbfb6821e0101bd324105f7b64f97e5cc583f03be82b`；源JSON `6968b0e6906b51bfdb6589fbfb20c2be841d6d154e87db875c816737ba9b48ab`。远端Git blob SHA1 `647029c7c5500a65f9715c02d7907401c7b24122` 与本地字节计算相同，先校验后运行。
 
 科研分级：**E1人工模型复验完成**，没有原作者发表的数值回归可直接重现；E2真人人级预测=0、E3现实历史事件预测=0。R073、PESEN v0.1不动。继续原全部R模型学习，不先分类熔炼。
+
+## GitHub远端真实验收（运行完成后记录）
+
+来源快照commit `29940cbfdac051e138b0b85160e5aadc296a275a` 实际触发[GitHub Actions run39412337646](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39412337646)，任务全部completed、conclusion success。Python3.12 job118592910040真实98 tests in 0.287s；Python3.11 job118592910469真实98 tests in 0.211s，合计**196次真实单元测试、0失败**。两个环境分别验证ZIP SHA256 `b5e812a7c3d027b82f9734251cdc98938958a525372cd387014318a62e52abb3`、源程序 `5ffde38e946471e2488923f22fdbca05be071efc543f54bcc6505ecf6db8000d`、测试 `0d6ba134a0660c776f1ddbfb6821e0101bd324105f7b64f97e5cc583f03be82b`、完整结果 `6968b0e6906b51bfdb6589fbfb20c2be841d6d154e87db875c816737ba9b48ab`，每组四份全部OK；运行全部98单测、所有18组模型，包含两套独立确定性状态转移及每策略256条气候路径，原机器JSON重新生成后与ZIP中的原件字节完全一致。真实job日志打印`R148 PASS 98 real tests, 18 exact SES models, 256 weather paths per policy, 4 SHA256 fingerprints`。正式收据见[R148_PHASE_A_196_REAL_TESTS_18_EXACT_SES_GITHUB_CI_RECEIPT.json](R148_PHASE_A_196_REAL_TESTS_18_EXACT_SES_GITHUB_CI_RECEIPT.json)。再次强调，该CI是自建方程正确再执行的E1证据，未构成原框架中任何真实资源治理策略的实证预测E2/E3。

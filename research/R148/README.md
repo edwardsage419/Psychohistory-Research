@@ -9,3 +9,5 @@
 归档：[事前冻结协议](../../protocols/R148_OSTROM2009_ANDERIES_JANSSEN_OSTROM2004_SES_STOCK_GOVERNANCE_ROBUSTNESS_PRESCORE_FREEZE_2026-10-20.md)｜[科学报告](R148_OSTROM2009_ANDERIES2004_SES_EXACT_ROBUSTNESS_SCIENTIFIC_REPORT_2026-10-20.md)｜[原Python程序、98项unittest及18场景原JSON完整ZIP](R148_Ostrom_Anderies_SES_98_Tests.zip)｜[状态收据](R148_FINAL_ACCEPTANCE_STATUS.json)｜[GitHub CI](../../.github/workflows/r148-ostrom-ses-98-tests.yml)。
 
 ZIP采用LZMA，使用Python标准库`python -m zipfile -e R148_Ostrom_Anderies_SES_98_Tests.zip out`解压；在out目录`python -m unittest -q test_r148_ostrom_ses_exact.py`，`python r148_ostrom_ses_exact.py > replay.json`。无第三方依赖。严格区分**E1人工理论验证**与新真人E2=0、历史E3=0。R073/PESEN v0.1冻结；全部R完结后再统一分类和熔炼。
+
+**真实双环境GitHub验收通过：** [run39412337646](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39412337646)，最初源码commit`29940cbfdac051e138b0b85160e5aadc296a275a`，completed/success。Python3.12 job118592910040实际98 tests in 0.287s；Python3.11 job118592910469实际98 tests in 0.211s；196次真实测试、0失败。两环境各4项ZIP与内部原件SHA256通过，18组全部9状态逐期概率与256×3个气候世界精确复算通过，并与归档JSON字节一致。[机器验收收据](R148_PHASE_A_196_REAL_TESTS_18_EXACT_SES_GITHUB_CI_RECEIPT.json)。数学有界结题，新增真人E2/真实历史E3均0。
