@@ -1,0 +1,27 @@
+name: R132 Taylor Jonker 1978 Replicator Verification
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r132-replicator-1978-216-paths-70-tests.yml'
+      - 'research/R132/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run all original paper and trajectory tests
+        run: |
+          PYTHONPATH=research/R132 python -m unittest -v research/R132/test_r132_taylor_jonker_1978_replicator_trajectories.py
+      - name: Independent source equation and trajectory replay
+        run: |
+          PYTHONPATH=research/R132 python research/R132/r132_taylor_jonker_1978_replicator_trajectories.py
