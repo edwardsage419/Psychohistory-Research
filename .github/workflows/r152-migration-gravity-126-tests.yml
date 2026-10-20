@@ -1,0 +1,83 @@
+name: R152 Zipf Stouffer Wilson 126 tests and 54 exact migration tables
+on:
+  push:
+    paths:
+      - 'research/R152/r152_gravity_od_exact.py'
+      - 'research/R152/test_r152_gravity_od_exact.py'
+      - '.github/workflows/r152-migration-gravity-126-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-origin-constrained-gravity:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate source and test immutable Git blob SHA1
+        run: |
+          cd research/R152
+          test "$(git hash-object r152_gravity_od_exact.py)" = "951d02724aa8a63ff922546495e8c448a2027397"
+          test "$(git hash-object test_r152_gravity_od_exact.py)" = "a1ae77b92769ed853bdb70f3eebf00106e6ff041"
+          sha256sum r152_gravity_od_exact.py test_r152_gravity_od_exact.py
+      - name: Execute all real 126 independent tests
+        run: |
+          cd research/R152
+          python -m unittest -v test_r152_gravity_od_exact.py
+      - name: Independently regenerate all 54 gravity models and OD tables
+        run: |
+          cd research/R152
+          python r152_gravity_od_exact.py > R152_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R152_EXACT_RESULTS.json'))
+          assert d['scenarios_count']==54 and len(d['scenarios'])==54
+          assert d['three_city_integer_od_count']==2
+          assert d['all_od_analytical_and_bruteforce_agree']
+          assert d['all_scenario_direct_and_integer_algorithms_agree']
+          assert len(set(tuple(x) for x in d['od_undirected_pair_counts']))==1
+          assert all(len(set(s))==1 for s in d['three_city_gravity_scores'].values())
+          assert d['od_direction_reward']==['16','32']
+          assert d['all_project_synthetic'] and not d['historical_migration_data_replayed']
+          assert (d['new_E2'],d['new_E3'])==(0,0)
+          assert d['caveat_od_gravity_score_not_full_individual_likelihood']
+          for model in d['scenarios']:
+              assert len(model['flow_matrix'])==4
+              assert all(len(row)==4 for row in model['flow_matrix'])
+              assert all(F(model['flow_matrix'][i][i])==0 for i in range(4))
+              assert all(sum(map(F,p))==1 for p in model['route_probabilities'])
+              assert sum(map(F,model['row_outflow']))==sum(map(F,model['destination_inflow']))
+          print('R152 PASS 126 genuine unittests, 54 Fraction migration systems and all exact OD marginal tables')
+          PY
+          sha256sum R152_EXACT_RESULTS.json
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          for name in ('r152_gravity_od_exact.py','test_r152_gravity_od_exact.py','R152_EXACT_RESULTS.json'):
+              print('R152_SHA256',name,hashlib.sha256(Path(name).read_bytes()).hexdigest())
+          PY
+      - name: Produce reproducible ZIP archive of exact program tests and output
+        run: |
+          cd research/R152
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R152_Gravity_Migration_54_Cases_126_Tests.zip','w') as z:
+              for name in ('r152_gravity_od_exact.py','test_r152_gravity_od_exact.py','R152_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,20,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R152_Gravity_Migration_54_Cases_126_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R152-54-exact-migration-python-${{ matrix.python-version }}
+          path: research/R152/R152_Gravity_Migration_54_Cases_126_Tests.zip
+          retention-days: 90
