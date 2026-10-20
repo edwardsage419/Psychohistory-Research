@@ -1,0 +1,52 @@
+name: R140 Ostrom IAD 128 institutional profiles 179 tests
+on:
+  push:
+    paths:
+      - 'research/R140/R140_Ostrom2011_IAD_Seven_Rules_179_Tests.zip'
+      - '.github/workflows/r140-ostrom-iad-179-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-verified-iad-math:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: SHA256 audit ZIP and 3 original source data files
+        run: |
+          echo '2de3edc4b351f69939c822cc3936085c2bc47bada953a772f27c7788ae21e8d5  research/R140/R140_Ostrom2011_IAD_Seven_Rules_179_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r140
+          unzip -q research/R140/R140_Ostrom2011_IAD_Seven_Rules_179_Tests.zip -d /tmp/r140
+          cd /tmp/r140
+          echo '76d69bc6c57b93bb714860ab16d9ca000c62b356dcab7ad1eff78c71d3836f46  r140_ostrom2011_iad_exact.py' | sha256sum -c -
+          echo '57af74eca1186a433bd72e03fe504556b6a11d3c503c6173bcb7653587a5a1ae  test_r140_ostrom2011_iad_exact.py' | sha256sum -c -
+          echo '419e85c49741c632369a946e3669c305d5fc7933c076d042b4b999f55493fb44  R140_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Execute 179 distinct genuine unittest cases
+        run: |
+          cd /tmp/r140
+          python -m unittest -q test_r140_ostrom2011_iad_exact.py
+      - name: Replay 128 institutional settings, 4584 deviations and full JSON provenance
+        run: |
+          cd /tmp/r140
+          python r140_ostrom2011_iad_exact.py > replay.json
+          cmp replay.json R140_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          a=json.load(open('replay.json'))
+          assert (a['total_configs'],a['total_feasible_profiles_across_configs'],a['total_unilateral_feasible_comparisons'])==(128,1136,4584)
+          assert (a['unique_full_game_signatures'],a['observational_equivalent_unordered_pairs'],a['configs_with_resource_optimal_pure_NE'])==(6,2272,124)
+          assert a['equivalences']['quota4_vs_scope4_exact'] and a['equivalences']['fine_without_monitor_vs_baseline_exact']
+          assert a['contexts']['baseline']['pure_NE']==[[2,2,2]]
+          assert a['contexts']['baseline']['NE_resource_welfare_min']==12
+          assert a['contexts']['collective_quota4']['NE_count']==6 and a['contexts']['collective_quota4']['NE_resource_welfare_min']==16
+          assert (a['new_E2_predictive_scores'],a['new_E3_historical_forecasts'])==(0,0)
+          assert not a['source_model_ostrom_simulated']
+          print('PASS R140 128 seven-rule IAD configurations, 4584 deviations, 6 signatures, 2272 exact equivalences')
+          PY

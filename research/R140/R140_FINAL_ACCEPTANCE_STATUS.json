@@ -1,0 +1,68 @@
+{
+  "research_id": "R140",
+  "date": "2026-10-20",
+  "catalogue_id": "05-016",
+  "priority": "P1",
+  "name": "Institutional Analysis and Development",
+  "primary_source": {
+    "author": "Elinor Ostrom",
+    "year": 2011,
+    "title": "Background on the Institutional Analysis and Development Framework",
+    "doi": "10.1111/j.1541-0072.2010.00394.x",
+    "original_print_pages_visually_examined": [
+      8,
+      10,
+      11,
+      15,
+      16,
+      19,
+      20,
+      21
+    ],
+    "publisher_full_pdf": "https://gpde.direito.ufmg.br/wp-content/uploads/2019/03/Ostrom-2011-Policy_Studies_Journal.pdf"
+  },
+  "secondary_primary_source": {
+    "author": "Elinor Ostrom",
+    "year": 2005,
+    "title": "Understanding Institutional Diversity",
+    "doi": "10.1515/9781400831739",
+    "scope": "Chapter7 pp186-216 publication/contents verified, NOT whole book read"
+  },
+  "source_author_numerical_behavior_model_rerun": false,
+  "original_author_model_includes_frozen_payoff_function": false,
+  "scientific_status": "LOCAL_179_REAL_TESTS_AND_128_INSTITUTIONS_PASS_REMOTE_CI_PENDING",
+  "learning_status": "PHASE_A_BOUNDED_IAD_SOURCE_AND_PROJECT_SYNTHETIC_INSTITUTIONS",
+  "rules": [
+    "boundary",
+    "position",
+    "choice",
+    "aggregation",
+    "information",
+    "payoff",
+    "scope"
+  ],
+  "institutional_configs": 128,
+  "feasible_action_profiles_across_configs": 1136,
+  "feasible_distinct_unilateral_comparisons": 4584,
+  "distinct_complete_game_signatures": 6,
+  "exactly_equivalent_unordered_institution_pairs": 2272,
+  "institutions_with_at_least_one_welfare_optimal_pure_NE": 124,
+  "source_verified_precompute_protocol_commit": "371cbfd18160a56cb18061224b0718841d6789be",
+  "source_zip_git_blob_sha1": "e259f2525145ce0af7e532bc567a6248e0005172",
+  "sha256": {
+    "R140_Ostrom2011_IAD_Seven_Rules_179_Tests.zip": "2de3edc4b351f69939c822cc3936085c2bc47bada953a772f27c7788ae21e8d5",
+    "r140_ostrom2011_iad_exact.py": "76d69bc6c57b93bb714860ab16d9ca000c62b356dcab7ad1eff78c71d3836f46",
+    "test_r140_ostrom2011_iad_exact.py": "57af74eca1186a433bd72e03fe504556b6a11d3c503c6173bcb7653587a5a1ae",
+    "R140_EXACT_RESULTS.json": "419e85c49741c632369a946e3669c305d5fc7933c076d042b4b999f55493fb44"
+  },
+  "local_real_unittests": 179,
+  "local_test_failures": 0,
+  "remote_ci_run": null,
+  "new_E2_person_out_of_sample": 0,
+  "new_E3_historical_out_of_sample": 0,
+  "real_instutional_causal_claims": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": "R141 05-017 Logic of Collective Action",
+  "sequence": "Finish all R, then classify and synthesize, then fuse"
+}
