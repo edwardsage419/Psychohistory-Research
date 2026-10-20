@@ -1,0 +1,78 @@
+{
+  "research_id": "R146",
+  "as_of": "2026-10-20",
+  "catalogue_id": "06-004",
+  "priority": "P2",
+  "candidate": "Political Economy Equilibrium Models",
+  "original_primary": {
+    "authors": "Allan H. Meltzer, Scott F. Richard",
+    "year": 1981,
+    "title": "A Rational Theory of the Size of Government",
+    "journal": "Journal of Political Economy 89(5):914-927",
+    "doi": "10.1086/261013",
+    "url": "https://www.haverford.edu/sites/default/files/MeltzerRichard-RationalTheory.pdf",
+    "verified_print_pages": [
+      914,
+      916,
+      917,
+      918,
+      920,
+      921,
+      922
+    ]
+  },
+  "scientific_status": "PHASE_A_LOCAL_113_TESTS_1171_ECONOMIES_PENDING_REAL_REMOTE_CI",
+  "source_paper_full_general_utility_model_reproduced": false,
+  "study_uses_quasilinear_project_special_case": true,
+  "finite_size_citizens_treat_r_given_when_choosing_labor": true,
+  "precode_protocol_commit": "78cfb354a817ce29b2fdd5593c38a6b3897e91d7",
+  "economies_total": 1171,
+  "economies_by_n": {
+    "5": 126,
+    "7": 330,
+    "9": 715
+  },
+  "tax_continuous_positive": 751,
+  "tax_continuous_zero": 420,
+  "all_zero_tax_indifference_cases": 3,
+  "discrete_grid_tied_preferred_cases": 16,
+  "grid_size": 21,
+  "fixed_median_example": {
+    "baseline_meanq": "4/9",
+    "baseline_medianq": "1/4",
+    "baseline_tax": "7/23",
+    "higher_meanq": "71/144",
+    "higher_medianq": "1/4",
+    "higher_tax": "35/106"
+  },
+  "counterexample_changing_median": {
+    "lower_meanq": "5/28",
+    "higher_meanq": "2/7",
+    "lower_tax": "13/33",
+    "higher_tax": "1/9"
+  },
+  "franchise_same_taxbase_example": {
+    "all9_tax": "7/23",
+    "five_richest_tax": "0"
+  },
+  "source_git_blob_sha1": "28fb508bfef574de4ddc3ed8301bac4d272ba160",
+  "sha256": {
+    "R146_MeltzerRichard1981_113_Tests_1171_Economies.zip": "08f695d220b120b39e2b81a08e7fc38e383f3ccedbef477293f6211f3b2cf733",
+    "r146_meltzer_richard_exact.py": "13e7954faf849f0c3b58d13d5882ddfa6b038378588f5124e93269a82e09c531",
+    "test_r146_meltzer_richard_exact.py": "62f09e8ad1fac9b84c8c8be8f464b9489cdbf866da7793797a9dd11284af8e98",
+    "R146_EXACT_RESULTS.json": "c091abe71dd4341a506a3f8c0856875150fdf93419f92e3c63257e8a7155f0c1"
+  },
+  "local_real_unittests": 113,
+  "local_failures": 0,
+  "new_E2_human_out_of_sample": 0,
+  "new_E3_external_historical_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "catalogue_id": "06-005",
+    "priority": "P1",
+    "model": "Institutional Diffusion Models",
+    "research_id": "R147"
+  },
+  "sequence": "Finish all originally selected R -> unified classification -> model fusion"
+}

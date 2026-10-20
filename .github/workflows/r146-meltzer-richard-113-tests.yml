@@ -1,0 +1,61 @@
+name: R146 Meltzer Richard exact median voter 113 tests
+on:
+  push:
+    paths:
+      - 'research/R146/R146_MeltzerRichard1981_113_Tests_1171_Economies.zip'
+      - '.github/workflows/r146-meltzer-richard-113-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-median-voter-budget-balanced:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: SHA256 verify ZIP original source tests and full data
+        run: |
+          echo '08f695d220b120b39e2b81a08e7fc38e383f3ccedbef477293f6211f3b2cf733  research/R146/R146_MeltzerRichard1981_113_Tests_1171_Economies.zip' | sha256sum -c -
+          mkdir -p /tmp/r146
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('research/R146/R146_MeltzerRichard1981_113_Tests_1171_Economies.zip') as a:
+              assert sorted(a.namelist())==sorted(['r146_meltzer_richard_exact.py','test_r146_meltzer_richard_exact.py','R146_EXACT_RESULTS.json'])
+              a.extractall('/tmp/r146')
+          PY
+          cd /tmp/r146
+          echo '13e7954faf849f0c3b58d13d5882ddfa6b038378588f5124e93269a82e09c531  r146_meltzer_richard_exact.py' | sha256sum -c -
+          echo '62f09e8ad1fac9b84c8c8be8f464b9489cdbf866da7793797a9dd11284af8e98  test_r146_meltzer_richard_exact.py' | sha256sum -c -
+          echo 'c091abe71dd4341a506a3f8c0856875150fdf93419f92e3c63257e8a7155f0c1  R146_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run 113 real Python exact fiscal and voting tests
+        run: |
+          cd /tmp/r146
+          python -m unittest -q test_r146_meltzer_richard_exact.py
+      - name: Independently rerun all 1171 voting economies exact JSON
+        run: |
+          cd /tmp/r146
+          python r146_meltzer_richard_exact.py > replay.json
+          cmp replay.json R146_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          x=json.load(open('replay.json'))
+          assert x['all_synthetic_economies']==1171 and x['family_counts']=={'5':126,'7':330,'9':715}
+          assert (x['number_no_tax_continuous'],x['number_positive_tax_continuous'])==(420,751)
+          assert x['number_all_zero']==3 and x['number_multiple_grid_median_winners']==16
+          assert x['mean_only_comparison']['original_tax']=='7/23'
+          assert x['mean_only_comparison']['changed_tax']=='35/106'
+          assert F(x['cochanging_median_comparison']['higher_mean_sq'])>F(x['cochanging_median_comparison']['low_mean_sq'])
+          assert F(x['cochanging_median_comparison']['higher_tax'])<F(x['cochanging_median_comparison']['low_tax'])
+          assert x['franchise_same_resident_population']['richest_five']['continuous_decisive_tax']=='0'
+          assert sum(len(v) for v in x['all_economy_details'].values())==1171
+          assert x['full_original_utility_assumptions_reproduced'] is False
+          assert (x['new_E2_real_person_predictions'],x['new_E3_historical_event_forecasts'])==(0,0)
+          print('PASS R146 exact 1171 median-voter economies, 113 source tests, fiscal budgets and full machine JSON')
+          PY
