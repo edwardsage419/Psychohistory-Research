@@ -1,0 +1,46 @@
+name: R135 original 2004 4096 indirect reciprocity ESS 50 tests
+on:
+  push:
+    paths:
+      - 'research/R135/R135_Ohtsuki_Iwasa2004_full_4096_50_tests.zip'
+      - '.github/workflows/r135-indirect-reciprocity-50-tests.yml'
+  workflow_dispatch:
+jobs:
+  genuine-source-math-audit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify SHA256 zip before unpack
+        run: |
+          echo '6752b270cbe022fbb2357eeab4186d4e393dbdeb348db67d69b0db30fe94c28f  research/R135/R135_Ohtsuki_Iwasa2004_full_4096_50_tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r135
+          unzip -q research/R135/R135_Ohtsuki_Iwasa2004_full_4096_50_tests.zip -d /tmp/r135
+          cd /tmp/r135
+          echo '4e102561f97d5b01f540e053f2c50f64015a2fb94696fb732ec4ab4b247cd609  r135_ohtsuki_iwasa_2004_exact_norms.py' | sha256sum -c -
+          echo '118771ccd9332158aa338b7d159ae990364841d1068f9cff42e302cd82fd1545  test_r135_ohtsuki_iwasa_2004_exact_norms.py' | sha256sum -c -
+      - name: Execute 50 true unittest cases
+        run: |
+          cd /tmp/r135
+          python -m unittest -v test_r135_ohtsuki_iwasa_2004_exact_norms.py
+      - name: Independently replay 4096 models and 5 published b benefits
+        run: |
+          cd /tmp/r135
+          python r135_ohtsuki_iwasa_2004_exact_norms.py > /tmp/r135_outputs.json
+          python - <<'PY'
+          import json
+          a=json.load(open('/tmp/r135_outputs.json'))
+          assert a['structure']['mirror_orbits']==2080
+          assert a['b2']['ess_mirror_orbits']==161
+          assert a['b2']['allD_ess_mirror_orbits']==136
+          assert a['b2']['nontrivial_ess_mirror_orbits']==25
+          assert a['b2']['mutant_challenges']==61440
+          assert {b:int(a['sensitivity'][b]['nontrivial_ess_mirror_orbits']) for b in ('4','3','1.2','1.1')}=={'4':73,'3':59,'1.2':15,'1.1':13}
+          print('PASS independent original published 2004 4096x15 scan and five benefit counts')
+          PY
