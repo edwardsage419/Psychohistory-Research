@@ -26,7 +26,7 @@
       "original_source": "https://economics.mit.edu/sites/default/files/publications/morris-uniqueequilibriuminamodelofselffulfillingat.pdf"
     }
   ],
-  "scientific_status": "LOCAL_EXACT_55_TESTS_9_MODELS_PENDING_REMOTE_CI",
+  "scientific_status": "CLOSED_BOUNDED_CARLSSON_VANDAMME1993_MORRIS_SHIN1998_FIRSTHAND_838656_FINITE_DISCRETE_BAYES_NE",
   "precode_frozen_protocol_commit": "4440f6046cf019d7628c1c8b5f509ea1d13d3adf",
   "exact_model_count": 9,
   "pure_policy_pairs_checked": 838656,
@@ -78,5 +78,38 @@
     "priority": "P1",
     "expected_research_id": "R143"
   },
-  "sequence": "Finish all R -> unified classification -> fuse"
+  "sequence": "Finish all R -> unified classification -> fuse",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_GLOBAL_GAMES_PRIVATE_SIGNALS_AND_DISCRETE_EQUILIBRIUM_SELECTION_LIMIT",
+  "actual_ci": {
+    "run_id": 39393180597,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39393180597",
+    "head_sha": "0f5d2d29586dce0d4225ad66b44b1ee28109e835",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118529382161,
+        "python": "3.11",
+        "unittests": 55,
+        "seconds": 0.326,
+        "sha256_verified": 4,
+        "complete_replay_pass": true,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118529382571,
+        "python": "3.12",
+        "unittests": 55,
+        "seconds": 0.337,
+        "sha256_verified": 4,
+        "complete_replay_pass": true,
+        "conclusion": "success"
+      }
+    ],
+    "actual_test_executions": 110,
+    "actual_test_failures": 0,
+    "full_838656_strategy_pairs_recomputed_in_each_job": true,
+    "raw_source_JSON_byte_identical_in_both_jobs": true
+  },
+  "acceptance_receipt": "research/R142/R142_PHASE_A_110_REAL_TESTS_838656_FINITE_PURE_BNE_CI_RECEIPT.json"
 }

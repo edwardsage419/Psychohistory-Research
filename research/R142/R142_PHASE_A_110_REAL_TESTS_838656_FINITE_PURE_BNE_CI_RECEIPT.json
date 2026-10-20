@@ -1,0 +1,101 @@
+{
+  "research": "R142",
+  "as_of": "2026-10-20",
+  "catalogue_id": "05-018",
+  "original_firsthand_sources": [
+    {
+      "authors": "Carlsson van Damme",
+      "year": 1993,
+      "doi": "10.2307/2951491",
+      "print_pages_checked": [
+        989,
+        993,
+        994
+      ]
+    },
+    {
+      "authors": "Morris Shin",
+      "year": 1998,
+      "doi": "10.2307/116850",
+      "print_pages_checked": [
+        588,
+        590,
+        591
+      ]
+    }
+  ],
+  "protocol_commit_before_code": "4440f6046cf019d7628c1c8b5f509ea1d13d3adf",
+  "original_full_theorem_reproduced": false,
+  "all_numbers_from_project_synthetic_model": true,
+  "CI": {
+    "run_id": 39393180597,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39393180597",
+    "source_head_sha": "0f5d2d29586dce0d4225ad66b44b1ee28109e835",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118529382161,
+        "python": "3.11",
+        "actual_unittests": 55,
+        "seconds": 0.326,
+        "hash_checks": 4,
+        "all_model_replay": true,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118529382571,
+        "python": "3.12",
+        "actual_unittests": 55,
+        "seconds": 0.337,
+        "hash_checks": 4,
+        "all_model_replay": true,
+        "conclusion": "success"
+      }
+    ],
+    "actual_unit_test_executions": 110,
+    "failed": 0,
+    "exact_JSON_full_replay_in_both_jobs": true
+  },
+  "model": {
+    "num_settings": 9,
+    "two_player_pure_policy_pairs_examined": 838656,
+    "noise_h0_equilibria": [
+      4,
+      8,
+      4
+    ],
+    "noise_h1_equilibria": [
+      2,
+      2,
+      2
+    ],
+    "noise_h2_equilibria": [
+      8,
+      10,
+      8
+    ],
+    "pure_bayesian_only": true,
+    "Blackwell_nesting_of_h1_h2_not_established": true,
+    "conditional_posteriors_fraction_exact": true
+  },
+  "source": {
+    "git_zip_blob_sha1": "5035a75b0c441f9bf830ac65d501428d7f55d4f0",
+    "sha256": {
+      "R142_Finite_Global_Games_55_Tests.zip": "8cfa1ff3b015f984411d821ecc79b9672a1a8dc26e30716d589dd61ddd83e832",
+      "r142_finite_private_signals.py": "e4da562dc6a81d56cb655729937d08f0eec6cb27368ec6b4043e4c55a4d338e7",
+      "test_r142_finite_private_signals.py": "069c766a8956757dadd7430ec4ff4f66070b9f4e0b0cbdf6ef888dc8bd64c84d",
+      "R142_EXACT_RESULTS.json": "0d376c2ac57ea152c2e38ac4d16013214d07660f311885be45b52af39561a5d4"
+    }
+  },
+  "new_real_human_E2": 0,
+  "new_historical_event_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "catalogue": "06-001",
+    "name": "Institutional Path Dependence",
+    "planned_id": "R143"
+  },
+  "sequence": "finish all R first -> unified classification -> model fusion"
+}

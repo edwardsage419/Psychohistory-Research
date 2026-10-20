@@ -21,3 +21,5 @@
 - [GitHub Actions](../../.github/workflows/r142-finite-global-games-55-tests.yml)
 
 解压ZIP并执行：`python -m unittest -q test_r142_finite_private_signals.py`、`python r142_finite_private_signals.py > replay.json`。依赖仅Python标准库。
+
+**真实GitHub CI已完成**：[run 39393180597](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39393180597)，初始源码commit`0f5d2d29586dce0d4225ad66b44b1ee28109e835`，completed success。3.11 job118529382161真实55 tests in 0.326s；3.12 job118529382571真实55 tests in 0.337s。总计110项、0失败；各环境对ZIP、计算文件、测试文件、原始JSON都完成SHA256，然后运行55个真实测试以及全部9组838656双人策略和归档原JSON字节完全一致。机器收据：[R142_PHASE_A_110_REAL_TESTS_838656_FINITE_PURE_BNE_CI_RECEIPT.json](R142_PHASE_A_110_REAL_TESTS_838656_FINITE_PURE_BNE_CI_RECEIPT.json)。有界结题，未取得现实金融或历史事件预测证据。

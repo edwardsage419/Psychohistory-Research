@@ -35,3 +35,7 @@ h1各成本均有2种纯均衡，均按信号大小单调，κ3/4时采取A的�
 本期55项unittest首次运行发现3个输入类型拒收测试失败，缘于Python lru_cache按数值哈希把整数1、浮点1.0及True视作等价键，绕过内部校验；修复为**外层在缓存前验证输入**，之后55项测试全通过，结果重新生成。机器研究原件ZIP内含两个.py与`R142_EXACT_RESULTS.json`，GitHub Actions必须校验ZIP及三内部文件SHA256，重新跑55项测试与完整JSON字节完全相等方可验收。
 
 研究不包含2011/1998的国家汇率实证、私人信号实际校准、政策识别、跨地区历史事件概率验证，E2=0、E3=0；R073与PESEN v0.1冻结。坚持研究完全部既定R候选后统一归纳，再熔炼。
+
+## 最终GitHub机器验收
+
+由来源提交 `0f5d2d29586dce0d4225ad66b44b1ee28109e835` 触发的 [GitHub Actions run39393180597](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39393180597) 已完成，conclusion success。job118529382161 Python3.11真实55 tests in 0.326s；job118529382571 Python3.12真实55 tests in 0.337s，总计110次单测0失败。各任务在运行前分别验证ZIP SHA256 `8cfa1ff3b015f984411d821ecc79b9672a1a8dc26e30716d589dd61ddd83e832`、原计算程序 `e4da562dc6a81d56cb655729937d08f0eec6cb27368ec6b4043e4c55a4d338e7`、测试 `069c766a8956757dadd7430ec4ff4f66070b9f4e0b0cbdf6ef888dc8bd64c84d`、JSON `0d376c2ac57ea152c2e38ac4d16013214d07660f311885be45b52af39561a5d4`，各4项OK；之后各跑独立55单元测试及完整838656两人纯策略计算，重算JSON逐字节匹配，日志确实输出`R142 PASS exact 838656 strategy pairs, all 9 private signal games, all sources SHA256`。结题凭据见[R142_PHASE_A_110_REAL_TESTS_838656_FINITE_PURE_BNE_CI_RECEIPT.json](R142_PHASE_A_110_REAL_TESTS_838656_FINITE_PURE_BNE_CI_RECEIPT.json)。这仅是有限人工博弈E1代码远端计算身份与严格复验，不是1993/1998连续理论全文证明的重现，也非真人或事件E2/E3实证。

@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R142 全球博弈正式有界结题**：[R142 Carlsson–van Damme 1993、Morris–Shin 1998一手原版核验及独立离散私人信号贝叶斯协调博弈](research/R142/README.md)。冻结后按9组噪声/风险成本枚举**838,656对**纯策略，纯Bayesian Nash均衡数在h0为[4,8,4]、h1为[2,2,2]、h2为[8,10,8]；正噪声不保证这个**项目离散**模型唯一纯均衡，不能据此推翻原连续全球博弈定理。真实[GitHub Actions run39393180597](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39393180597)在Python3.11/3.12各55项单测共110次、0失败；每任务4项ZIP/源码/测试/原结果SHA256及全部模型机器JSON独立复算通过。人工E1研究，新增E2真人0、E3历史0；R073/PESEN v0.1冻结。下一候选为原目录P1 06-001 Institutional Path Dependence（拟R143）。先完成全部既定R，再统一归纳分类，最后熔炼。
+
+
 **2026-10-20 R141 Olson1965《集体行动逻辑》P1/05-017有界结题**：[原版第一章扫描p6–52研究及两个原创合成公益模型](research/R141/README.md)，连续公共品24种规模/选择激励场景，离散q=3门槛公共品24种场景、合成行动状态累计213096个、可选择单侧翻转机会3331944个（程序逐案发现盈利偏离即提前停止）。n8无奖门槛博弈有57个纯NE，n16无奖只剩零供给1个，小额奖1/2使n16增加561个NE但零供给仍存在，奖2可导致全员贡献与财政过度支出。n16受益份额异质时一个人单独贡献2，均分下零供给。真实[GitHub Actions run39390938992](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39390938992)双Python环境各83项真实unittest共166次、0失败；每job四项SHA256及全部模型源结果JSON原样重算成功。无新增人级E2、历史E3；R073/PESEN v0.1冻结，既定R系列全部学习结束后统一归纳分类并开始熔炼。下一候选P2/05-018 Global Games（R142）。
 
 
