@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R138机制设计P2/05-014正式有界结题**：[Vickrey1961、Clarke1971、Groves1973三篇一手研究与三类有界VCG](research/R138/README.md)。实现单物品次价拍卖、单位需求异质双物品VCG与成本5的公共项目pivot，在1,875+19,683+3,888=**25,446次真实完整有界效用比较**中无真报弱占优违反；公共项目216组中建造181组、赤字160组，说明激励相容不保障自筹资金。第一次61项单测抓到输入校验与Python缓存先后顺序错误，修复后远端[GitHub Actions 39384500172](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39384500172) Python3.11及3.12各61项全通过，合计122项、0失败；每个任务真实验证ZIP和三项内部文件SHA256，精确回放全部数学档案。新增真人E2=0、历史E3=0；R073/PESEN v0.1冻结。下一既定候选P1/05-015 Common Pool Resource Dilemma（R139），全部既定R完成后再归纳分类、最后熔炼。
+
+
 **2026-10-20 R137网络互惠有限规模精确学习有界结题**：[R137 Ohtsuki2006大N图合作规则与Chen2016有限图修正](research/R137/README.md)。本期在环C5/C6/C7/C8/C9以及K4上，按DB/BD/IM三种更新机制独立精确计算18个弱选择固定概率梯度与有限人口临界值；五个环的DB阈值6、4、10/3、3、14/5均满足2007/2016文献的有限公式，反对把b/c>k的大N近似当小N精确理论。GitHub Actions [run39382234524](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39382234524)真实Python3.11/3.12双job各40项测试全通过，共80次、0失败；每job执行ZIP及三个内部原始文件共4次SHA256验证并完整重算18组结果。E2新增0、E3新增0，R073/PESEN v0.1继续冻结，全部R学习完成后再分类与熔炼。
 
 

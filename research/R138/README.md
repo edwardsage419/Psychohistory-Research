@@ -18,3 +18,5 @@
 解压ZIP后同目录运行 `python -m unittest -v test_r138_vickrey_clarke_groves_exact.py` 和 `python r138_vickrey_clarke_groves_exact.py`。全部依赖是Python标准库，整数精确计算。
 
 没有新真人E2或外部历史事件E3。R073与PESEN v0.1冻结；按用户顺序完成全部R，之后统一分类最后熔炼。
+
+**真实远端CI验收：** [GitHub Actions 39384500172](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39384500172) completed success。Python3.11 job118500981938执行61 tests in 1.777s；Python3.12 job118500982157执行61 tests in 1.909s。各job完成全部4个SHA256验证和25,446次完整报告偏离结果重算，实际两任务共122项成功、0失败。[独立机器证据收据](R138_PHASE_A_122_REAL_TESTS_25446_DSIC_GITHUB_CI_RECEIPT.json)已经固定归档，研究状态CLOSED_BOUNDED。

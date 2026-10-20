@@ -25,3 +25,7 @@
 - 完整计算结果和三个SHA256均保存在ZIP中；CI必须先校验压缩包和代码，再独立重算数学JSON并按完全相等比较。
 - 新真人行为级记录0，独立E2=0，历史真实事件E3=0。不能声称原1971完整连续多部定价、原1973随机团队问题或所有现实预算解决方案已得到复证。
 - R073与PESEN v0.1维持冻结；遵循全部预定R完成后才统一分类、归纳，最后熔炼。
+
+## 完整远端机器回读和验收
+
+[run 39384500172](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39384500172) 独立编译/测试源的基线commit `a985b1663f2bf8d35e5127e5360470a17fdb26bd`，GitHub工作流completed success。Python3.11 job118500981938 **实际61 tests in 1.777s**，Python3.12 job118500982157 **实际61 tests in 1.909s**，全部OK，累计122项单测执行，0失败。每任务各验证GitHub ZIP、Python主程序、独立测试文件、机读数学结果的4个SHA256及完整结果JSON字节重算相等，校验主报告1,875+19,683+3,888=25,446个单侧偏报0个可盈利，160个公共预算赤字。在各原始CI日志实际出现“PASS source-exact 25446 deviations, zero DSIC violations, 160 public deficits”。机器收据[R138_PHASE_A_122_REAL_TESTS_25446_DSIC_GITHUB_CI_RECEIPT.json](R138_PHASE_A_122_REAL_TESTS_25446_DSIC_GITHUB_CI_RECEIPT.json)记录每环境job ID及各SHA256，**科学资格仅为原创静态数学机制复算，并无现实E2或E3**。

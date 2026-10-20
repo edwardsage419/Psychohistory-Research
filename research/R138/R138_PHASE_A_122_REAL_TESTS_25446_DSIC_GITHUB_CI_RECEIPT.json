@@ -1,0 +1,86 @@
+{
+  "research_id": "R138",
+  "date": "2026-10-20",
+  "catalogue_id": "05-014",
+  "priority": "P2",
+  "primary_firsthand_read": [
+    {
+      "doi": "10.1111/j.1540-6261.1961.tb02789.x",
+      "pages": [
+        20,
+        21
+      ]
+    },
+    {
+      "doi": "10.1007/BF01726210",
+      "pages": [
+        17
+      ]
+    },
+    {
+      "doi": "10.2307/1914085",
+      "pages": [
+        624
+      ]
+    }
+  ],
+  "origin_commit": "a985b1663f2bf8d35e5127e5360470a17fdb26bd",
+  "run_id": 39384500172,
+  "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39384500172",
+  "status": "completed",
+  "conclusion": "success",
+  "real_jobs": [
+    {
+      "job_id": 118500981938,
+      "python": "3.11",
+      "tests": 61,
+      "seconds": 1.777,
+      "verified_four_SHA256": true,
+      "full_25446_replay_and_archived_json_exact": true,
+      "conclusion": "success"
+    },
+    {
+      "job_id": 118500982157,
+      "python": "3.12",
+      "tests": 61,
+      "seconds": 1.909,
+      "verified_four_SHA256": true,
+      "full_25446_replay_and_archived_json_exact": true,
+      "conclusion": "success"
+    }
+  ],
+  "total_real_test_executions": 122,
+  "failures": 0,
+  "zip_blob_sha1": "c65ae756b7b43567d5c44ce9fcd5ec3c90f388d9",
+  "sha256": {
+    "R138_Code_61_Tests.zip": "0c6a43d7e9044338316ecb16f15686952576e5de2e3cfcbfcc88aec5ddb586f7",
+    "r138_vickrey_clarke_groves_exact.py": "acaaf77d3aadc53f10bf22a3cecaedb4c5c5c658007c0d91eee5505a83e50022",
+    "test_r138_vickrey_clarke_groves_exact.py": "69b41133da589e68efa3d96cc7c411156a7356207988713ac100defbbbd5f8d9",
+    "R138_EXACT_RESULTS.json": "fa31224ab64cbf421227d1a67c53653bf04d0be2774ff6681bfac855a102a500"
+  },
+  "source_exact_comparisons": {
+    "vickrey": 1875,
+    "unit_demand_vcg": 19683,
+    "public_pivot": 3888,
+    "total": 25446,
+    "profitable_report_deviations": 0
+  },
+  "public_budget": {
+    "enumerated_profiles": 216,
+    "built": 181,
+    "built_deficits": 160,
+    "built_zero_tax": 69,
+    "case_555_balance": -5,
+    "case_222_balance": -2
+  },
+  "unit_demand_profiles": 729,
+  "single_auction_profiles": 125,
+  "recorded_true_program_bug": "lru_cache masked invalid floating-point input by numeric key aliasing, fixed via validation before cache",
+  "source_original_author_code_rerun": false,
+  "real_human_subject_rows": 0,
+  "E2_real_person_prediction": 0,
+  "E3_real_historical_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "plan": "Finish original R series, then classify, then fuse"
+}
