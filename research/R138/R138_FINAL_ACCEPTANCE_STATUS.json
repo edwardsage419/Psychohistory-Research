@@ -1,0 +1,62 @@
+{
+  "research_id": "R138",
+  "date": "2026-10-20",
+  "catalogue_id": "05-014",
+  "priority": "P2",
+  "candidate": "Mechanism Design",
+  "firsthand_primary_sources": [
+    {
+      "authors": "Vickrey",
+      "year": 1961,
+      "doi": "10.1111/j.1540-6261.1961.tb02789.x",
+      "original_pages_visually_read": [
+        20,
+        21
+      ]
+    },
+    {
+      "authors": "Clarke",
+      "year": 1971,
+      "doi": "10.1007/BF01726210",
+      "original_pages_visually_read": [
+        17
+      ]
+    },
+    {
+      "authors": "Groves",
+      "year": 1973,
+      "doi": "10.2307/1914085",
+      "original_pages_visually_read": [
+        624
+      ]
+    }
+  ],
+  "source_model_full_original_reproduced": false,
+  "scientific_status": "PHASE_A_LOCAL_EXACT_61_TESTS_REMOTE_CI_PENDING",
+  "archive_zip_path": "research/R138/R138_Code_61_Tests.zip",
+  "archive_zip_SHA256": "0c6a43d7e9044338316ecb16f15686952576e5de2e3cfcbfcc88aec5ddb586f7",
+  "archive_zip_git_blob_sha1": "c65ae756b7b43567d5c44ce9fcd5ec3c90f388d9",
+  "archive_inner_SHA256": {
+    "r138_vickrey_clarke_groves_exact.py": "acaaf77d3aadc53f10bf22a3cecaedb4c5c5c658007c0d91eee5505a83e50022",
+    "test_r138_vickrey_clarke_groves_exact.py": "69b41133da589e68efa3d96cc7c411156a7356207988713ac100defbbbd5f8d9",
+    "R138_EXACT_RESULTS.json": "fa31224ab64cbf421227d1a67c53653bf04d0be2774ff6681bfac855a102a500"
+  },
+  "real_test_count_per_environment": 61,
+  "test_failure_original_before_fix": 1,
+  "test_failures_after_fix": 0,
+  "independent_single_report_comparisons": 1875,
+  "independent_unit_demand_report_comparisons": 19683,
+  "independent_public_report_comparisons": 3888,
+  "total_unilateral_report_comparisons": 25446,
+  "DSIC_violations": 0,
+  "public_profiles": 216,
+  "public_build": 181,
+  "public_deficits": 160,
+  "public_built_zero_tax": 69,
+  "first_price_counterexample": "(4,1,0) truth bid4 util0; misreport bid2 util2",
+  "nonpivot_counterexample": "(5,5,5) bid5 util0; misreport0 util5",
+  "new_real_human_E2": 0,
+  "new_historical_event_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}

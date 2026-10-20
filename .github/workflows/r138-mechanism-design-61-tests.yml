@@ -1,0 +1,50 @@
+name: R138 1961-1973 mechanism design 61 tests
+on:
+  push:
+    paths:
+      - 'research/R138/R138_Code_61_Tests.zip'
+      - '.github/workflows/r138-mechanism-design-61-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exhaustive-DSIC-replay:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate archive and exact source and test SHA256 before execution
+        run: |
+          echo '0c6a43d7e9044338316ecb16f15686952576e5de2e3cfcbfcc88aec5ddb586f7  research/R138/R138_Code_61_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r138_study
+          unzip -q research/R138/R138_Code_61_Tests.zip -d /tmp/r138_study
+          cd /tmp/r138_study
+          echo 'acaaf77d3aadc53f10bf22a3cecaedb4c5c5c658007c0d91eee5505a83e50022  r138_vickrey_clarke_groves_exact.py' | sha256sum -c -
+          echo '69b41133da589e68efa3d96cc7c411156a7356207988713ac100defbbbd5f8d9  test_r138_vickrey_clarke_groves_exact.py' | sha256sum -c -
+          echo 'fa31224ab64cbf421227d1a67c53653bf04d0be2774ff6681bfac855a102a500  R138_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run 61 actual independent unittest cases
+        run: |
+          cd /tmp/r138_study
+          python -m unittest -v test_r138_vickrey_clarke_groves_exact.py
+      - name: Recompute all 25446 unilateral deviations and verify complete machine results
+        run: |
+          cd /tmp/r138_study
+          python r138_vickrey_clarke_groves_exact.py > replay.json
+          cmp -s replay.json R138_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          d=json.load(open('replay.json'))
+          assert d['total_unilateral_report_comparisons']==25446
+          assert (d['auction']['deviation_comparisons'],d['unit_demand_vcg']['deviation_comparisons'],d['public_project_pivot']['deviation_comparisons'])==(1875,19683,3888)
+          assert all(d[x]['DSIC_violations']==0 for x in ('auction','unit_demand_vcg','public_project_pivot'))
+          assert (d['public_project_pivot']['project_built_profiles'],d['public_project_pivot']['budget_deficit_profiles'])==(181,160)
+          assert (d['public_project_pivot']['constructed_budget_cases']['555']['budget_balance'],d['public_project_pivot']['constructed_budget_cases']['222']['budget_balance'])==(-5,-2)
+          assert d['new_real_human_E2']==0 and d['new_real_history_E3']==0
+          print('PASS source-exact 25446 deviations, zero DSIC violations, 160 public deficits')
+          PY
