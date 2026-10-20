@@ -16,3 +16,5 @@
 解压源码ZIP，运行 `python -m unittest discover -s . -p 'test_r135_ohtsuki_iwasa_2004_exact_norms.py' -v`，然后运行 `python r135_ohtsuki_iwasa_2004_exact_norms.py`。只使用Python3标准库。
 
 新真人/动物原始记录为0，独立人级预测E2=0，外部历史E3=0；R073/PESEN v0.1继续冻结。目录既定R研究完成之前不进行跨目录分类或模型熔炼。
+
+**远端CI验收完成**： [GitHub Actions run 39374890111](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39374890111) completed success。Python3.11/3.12每任务50项真实unittest全通过，累计100项执行，0失败；严格SHA256 ZIP/源码/测试三项分别成功；两环境还执行完整4096居民×15入侵者及全部五组收益配置的独立脚本重算。本项目机器收据见 [R135_PHASE_A_100_TESTS_61440_COMPARISONS_VERIFIED_CI_RECEIPT.json](R135_PHASE_A_100_TESTS_61440_COMPARISONS_VERIFIED_CI_RECEIPT.json)。R135有界完成。下一R136应先核对05-012 Direct Reciprocity与此前R130的既有研究范围以避免机械重复。

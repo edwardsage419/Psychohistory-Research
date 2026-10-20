@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R135原创理论有界结题**：[Ohtsuki & Iwasa 2004 间接互惠原始4096候选完整入侵复算](research/R135/README.md)，真实原刊p109–116核阅；256规范×16策略×15种不同入侵行为，61440项入侵比较。镜像ESS重现作者161类（136 AllD与25非平凡）以及四组成本收益敏感性73/59/15/13。[真实GitHub Actions run39374890111](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39374890111) Python3.11/3.12两任务各50项真实unittest共100次，均通过；ZIP及两个Python文件SHA256各任务均核验成功。新真人E2=0、历史E3=0，R073/PESEN v0.1保持冻结。R系列研究未全部结束，统一分类与熔炼推迟。
+
+
 **2026-10-20 R134完整有界验收**：[两类群体ESS和分群复制子动力学研究包](research/R134/README.md)，逐页核对Taylor 1979原刊第77至79页，34,992项独立原式与严格Fraction展开数值一致，45项真正测试在Python3.11及3.12两任务均成功，共90次执行。[真实GitHub Actions CI 39371915556](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39371915556) completed success。人工多群体联合扰动及合并比例不可辨识反例为数学结果，真人E2=0、历史E3=0，R073/PESEN v0.1保持冻结。后续继续R系列顺序，全部学习完毕后再统一分类及熔炼。
 
 

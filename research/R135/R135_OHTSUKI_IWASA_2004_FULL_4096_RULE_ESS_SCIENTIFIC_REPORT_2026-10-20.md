@@ -20,3 +20,7 @@ R072已经做了四个人工代理与3种社会规范/公告条件的11,664状�
 [计算前原文冻结](../../protocols/R135_OHTSUKI_IWASA_2004_FULL_4096_NORMS_MUTANT_INVASION_PRESCORE_FREEZE_2026-10-20.md)，[包含Python标准库完整源码及50项unittest的ZIP](R135_Ohtsuki_Iwasa2004_full_4096_50_tests.zip)，[参数与结构化结果](R135_PHASE_A_4096_CANDIDATES_FIVE_BENEFITS_RESULTS.json)。测试以Fraction确切校验作者Eq3的误差加权转移，用独立45位Decimal在选定作者规则上重求居民稳态；重新检查原Fig2五种b收益情景、镜像不变性、近零挑战和非法输入。获得远端CI并确认后，在[R135_FINAL_ACCEPTANCE_STATUS.json](R135_FINAL_ACCEPTANCE_STATUS.json)记录正式科研闭合资格。
 
 研究仍没有真人/动物逐行原始行为数据、真人独立E2、外部历史E3，也不支持用合成256种声誉规范的ESS直接预测现实组织历史。R073和PESEN v0.1继续冻结，先完成既定所有R项再分类、熔炼。
+
+## 最终机器验证记录
+
+[run 39374890111](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39374890111) 由第一次独立归档提交689ca7ae7c1ff7a3deb1bf9cce291dfd8df1a4c4触发，status completed，conclusion success。job 118470710128 Python 3.12 实际50 tests in 1.994s，job 118470710295 Python 3.11 实际50 tests in 1.955s；均显示OK，重放日志均显示“PASS independent original published 2004 4096x15 scan and five benefit counts”。每个任务强制核对ZIP SHA256=6752b270cbe022fbb2357eeab4186d4e393dbdeb348db67d69b0db30fe94c28f、源码 SHA256=4e102561f97d5b01f540e053f2c50f64015a2fb94696fb732ec4ab4b247cd609、测试 SHA256=118771ccd9332158aa338b7d159ae990364841d1068f9cff42e302cd82fd1545。这证实远端真实测试与可回溯版本一致，不意味着真人实验或外部历史事件预测已验证。完整结构化机器收据见[R135_PHASE_A_100_TESTS_61440_COMPARISONS_VERIFIED_CI_RECEIPT.json](R135_PHASE_A_100_TESTS_61440_COMPARISONS_VERIFIED_CI_RECEIPT.json)。

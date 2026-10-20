@@ -4,8 +4,8 @@
   "catalogue_id": "05-011",
   "priority": "P1",
   "candidate": "Indirect Reciprocity",
-  "scientific_status": "PHASE_A_FULL_4096_AND_FIVE_BENEFITS_LOCAL_COMPLETE_REMOTE_CI_PENDING",
-  "learning_status": "BOUNDED_ORIGINAL_OHTSUKI_IWASA_2004_PENDING_REMOTE_CI",
+  "scientific_status": "CLOSED_BOUNDED_ORIGINAL_2004_INDIRECT_RECIPROCITY_4096_NORMS_61440_INVASIONS_FIVE_BENEFITS",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_OHTSUKI_IWASA_2004_FULL_BINARY_NORM_ESS",
   "source": "Ohtsuki and Iwasa 2004 JTB 231 pp107–120",
   "source_doi": "10.1016/j.jtbi.2004.06.005",
   "original_fulltext_url": "https://brainmind.umin.jp/public/Ohtsuki%26Iwasa%20JTB04.pdf",
@@ -38,11 +38,37 @@
   "source_zip_git_blob_sha1": "a1ad3fb5a44e868119336e1d8be3de93b2b166b5",
   "local_unittests_passed": 50,
   "local_unittests_failed": 0,
-  "remote_ci_run": null,
+  "remote_ci_run": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39374890111",
   "new_real_human_or_animal_rows": 0,
   "new_person_E2_scores": 0,
   "new_history_E3_scores": 0,
   "R073": "FROZEN",
   "PESEN_v0_1": "FROZEN",
-  "owner_sequence": "Finish original R series, then classify, then fuse"
+  "owner_sequence": "Finish original R series, then classify, then fuse",
+  "remote_ci_run_id": 39374890111,
+  "ci_head_commit_sha": "689ca7ae7c1ff7a3deb1bf9cce291dfd8df1a4c4",
+  "remote_ci_status": "completed",
+  "remote_ci_conclusion": "success",
+  "github_ci_jobs": [
+    {
+      "id": 118470710128,
+      "python": "3.12",
+      "result": "success",
+      "real_unittests": 50,
+      "test_seconds": 1.994
+    },
+    {
+      "id": 118470710295,
+      "python": "3.11",
+      "result": "success",
+      "real_unittests": 50,
+      "test_seconds": 1.955
+    }
+  ],
+  "actual_ci_test_executions": 100,
+  "actual_ci_test_failures": 0,
+  "archive_python_two_files_SHA256_each_ci_job": true,
+  "independent_4096_and_all_five_b_replay_each_job": true,
+  "receipt": "research/R135/R135_PHASE_A_100_TESTS_61440_COMPARISONS_VERIFIED_CI_RECEIPT.json",
+  "next_study": "R136 review 05-012 Direct Reciprocity: explicitly segregate previous R130 Axelrod TFT/Nowak Pavlov results"
 }
