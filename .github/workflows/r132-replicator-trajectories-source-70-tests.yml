@@ -1,0 +1,131 @@
+name: R132 original replicator Eq2 Eq3 Eq4 and full trajectory numerical artifact audit
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r132-replicator-trajectories-source-70-tests.yml'
+      - 'research/R132/r132_replicator_1978_exact_invariants_and_trajectories.py'
+      - 'research/R132/test_r132_replicator_1978_exact_invariants_and_trajectories.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  original-1978-Eq2-3-4-and-independent-ODE-solvers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Execute all 70 actual first-party exact and numerical tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R132 python -m unittest -v \
+            research/R132/test_r132_replicator_1978_exact_invariants_and_trajectories.py \
+            2>&1 | tee /tmp/r132_true_tests.log
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r132_true_tests.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['70'],('R132_EXPECT_70_ACTUAL_TESTS',log[-2600:])
+          assert re.search(r'\nOK\s*$',log),'R132_TESTS_FAILED'
+          print('R132_70_ACTUAL_UNITTTESTS_SUCCESS')
+          PY
+      - name: Independently check original 1978 equations, 84 simplex states, 252 shifts, 252 scalings, and RPS Euler-vs-RK4
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R132 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r132_replicator_1978_exact_invariants_and_trajectories as m
+
+          invariant=m.exact_replicator_invariant_grid()
+          assert invariant['exact_field_vs_independent_pairwise_comparisons']==84
+          assert invariant['source_1978_original_eq3_vs_eq4_increment_checks']==84
+          assert invariant['constant_payoff_shift_invariance_checks']==252
+          assert invariant['positive_payoff_time_scale_checks']==252
+          assert invariant['absence_boundary_preservation_checks']==84
+          rps=m.zero_sum_rps_exact_log_product_invariant_grid()
+          assert rps['interior_exact_simplex_state_checks']==10
+          assert 'd(log(x0*x1*x2))/dt' in rps['identity']
+
+          twotypes=m.exact_two_type_source_based_sign_audit()
+          assert twotypes['two_type_13_grid_cross_checks']==39
+          models=twotypes['two_type_models']
+          assert models['stag_hare']['exact_interior_fixed_point']=='3/4'
+          assert models['chicken']['exact_interior_fixed_point']=='1/3'
+          assert models['constant_advantage']['exact_interior_fixed_point'] is None
+          assert models['stag_hare']['half_derivative']=='-1/4'
+          assert models['chicken']['quarter_derivative']=='3/64'
+
+          result=m.numerical_replicator_audit()
+          assert result['logistic_RK4_absolute_errors'][-1]<1e-11
+          assert result['logistic_euler_absolute_errors'][-1]>result['logistic_RK4_absolute_errors'][-1]*100
+          assert result['stag_hare_t8_initial_half_final']<0.5
+          assert result['stag_hare_t8_initial_four_fifths_final']>0.8
+          assert 0.1<result['chicken_t8_initial_one_tenth_final']<1/3
+          assert 1/3<result['chicken_t8_initial_four_fifths_final']<0.8
+          assert result['project_RPS_exact_continuous_product_invariant']=='3/100'
+          assert result['this_numerical_drift_is_not_original_Taylor_Jonker_discrete_Eq3']
+          rps_error=result['numeric_T12_RPS_comparison']
+          assert set(rps_error)=={'40','80','160','320'}
+          assert rps_error['40']['euler_product_error']<-.01
+          assert abs(rps_error['40']['rk4_product_error'])<2e-7
+          assert abs(rps_error['320']['euler_product_error'])>1e-4
+          assert abs(rps_error['320']['rk4_product_error'])<1e-9
+
+          root=pathlib.Path('research/R132')
+          files=[
+            'r132_replicator_1978_exact_invariants_and_trajectories.py',
+            'test_r132_replicator_1978_exact_invariants_and_trajectories.py',
+            'R132_TAYLOR_JONKER_1978_REPLICATOR_TRAJECTORIES_AND_NUMERICAL_ARTIFACTS_SCIENTIFIC_REPORT_2026-10-20.md',
+          ]
+          checksums={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in files}
+          receipt={
+            'research_id':'R132','original_catalogue_id':'05-008','priority':'P1','phase':'A',
+            'status':'R132_TAYLOR_JONKER_1978_SOURCE_EQ2_EQ3_EQ4_70_TEST_84_STATE_RPS_NUMERICAL_ARTIFACT_SUCCESS',
+            'primary_author_research_source':'Taylor and Jonker 1978 Mathematical Biosciences 40:145-156, original Eq2, Eq3 and Eq4 p149',
+            'primary_author_DOI':'10.1016/0025-5564(78)90077-9',
+            'original_author_hosted_fulltext_pdf':'https://static1.squarespace.com/static/5dc9917c4cdb1467e1e54c4c/t/6526a5647942e33b89ab7af1/1697031525653/1978%2Bevolutionarily%2Bstable%2Bstrategies%2Band%2Bgame%2Bdynamics.pdf',
+            'printed_original_pages_visually_read':[149,150,151],
+            'source_original_continuous_Eq2':"dx_i/dt=x_i(F_i-Fbar)",
+            'source_original_discrete_Eq3':"x_i_next=x_i(1+F_i)/(1+Fbar)",
+            'source_original_discrete_Eq4':"x_i_next-x_i=x_i(F_i-Fbar)/(1+Fbar)",
+            'source_1978_discrete_generation_not_forward_Euler_or_RK4':True,
+            'source_original_1978_full_nonlinear_phase_portraits_not_reproduced':True,
+            'source_original_1983_Schuster_Sigmund_full_text_read':False,
+            'author_Eq2_via_independent_pairwise_fraction_and_source_Eq3_4_invariants':invariant,
+            'source_based_independent_log_product_RPS_mathematical_identity':rps,
+            'two_strategy_basin_signs_and_39_exact_math_comparisons':twotypes,
+            'actual_finite_non_equilibrium_numerical_trajectories_and_error_comparisons':result,
+            'Stag_Hare_source_two_person_payoffs_previous_R128_numerical_trajectory_project_created':True,
+            'Chicken_two_person_payoffs_previous_R129_numerical_trajectory_project_created':True,
+            'RPS_zero_sum_matrix_and_ODE_integrator_new_project_math_not_original_1978_game':True,
+            'num_explicit_numerical_RPS_step_grids':4,
+            'numeric_RK4_not_strict_geometrically_conservative_integrator':True,
+            'double_precision_numerics_not_confused_with_exact_Fraction_proofs':True,
+            'actual_independent_unittests_executed':70,
+            'unittest_failures':0,
+            'core_code_test_science_report_SHA256':checksums,
+            'true_original_real_animal_or_human_trajectory_rows_loaded':0,
+            'new_real_human_E2_prediction_scores':0,
+            'new_historical_E3_event_probability_scores':0,
+            'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          out=root/'R132_PHASE_A_70_TEST_84_EXACT_STATES_RPS_ARTIFACT_CI_ACCEPTANCE.json'
+          out.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R132_REAL_SOURCE_SHA256_RECEIPT',hashlib.sha256(out.read_bytes()).hexdigest())
+          PY
+      - name: Commit genuine CI machine evidence and all three source file hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R132/R132_PHASE_A_70_TEST_84_EXACT_STATES_RPS_ARTIFACT_CI_ACCEPTANCE.json
+          git commit -m "results(R132): 70 true tests, 84 exact replicator states and bounded Euler numerical artifacts"
+          git pull --rebase origin main
+          git push origin HEAD:main
