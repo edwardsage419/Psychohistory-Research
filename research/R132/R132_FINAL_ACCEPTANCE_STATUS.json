@@ -1,0 +1,115 @@
+{
+  "research_id": "R132",
+  "date": "2026-10-20",
+  "original_catalogue_id": "05-008",
+  "priority": "P1",
+  "candidate_name": "Replicator Dynamics",
+  "scientific_status": "CLOSED_BOUNDED_TAYLOR_JONKER_1978_REPLICATOR_EQ2_EQ3_EQ4_TRAJECTORIES_AND_NUMERIC_ARTIFACTS",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_TAYLOR_JONKER_1978_REPLICATOR_TRAJECTORIES_AND_NUMERICAL_ARTIFACTS",
+  "primary_source": "Peter D. Taylor & Leo B. Jonker (1978), Evolutionarily Stable Strategies and Game Dynamics, Mathematical Biosciences 40:145-156",
+  "primary_source_DOI": "10.1016/0025-5564(78)90077-9",
+  "primary_original_fulltext": "https://static1.squarespace.com/static/5dc9917c4cdb1467e1e54c4c/t/6526a5647942e33b89ab7af1/1697031525653/1978%2Bevolutionarily%2Bstable%2Bstrategies%2Band%2Bgame%2Bdynamics.pdf",
+  "primary_printed_pages_directly_visually_checked": [
+    149,
+    150,
+    151
+  ],
+  "original_continuous_formula": "dx_i/dt=x_i[(Ax)_i - x^TAx], Eq2 p149",
+  "original_discrete_generation_formula": "x_i_next=x_i[1+(Ax)_i]/[1+x^TAx], Eq3 p149",
+  "original_discrete_increment_formula": "x_i_next-x_i=x_i[(Ax)_i-x^TAx]/[1+x^TAx], Eq4 p149",
+  "difference_Euler_RK4_vs_original_discrete_generation_explicitly_separated": true,
+  "exact_original_3_strategy_equation_states": 84,
+  "exact_independent_pairwise_field_comparisons": 84,
+  "exact_original_discrete_eq3_eq4_comparisons": 84,
+  "exact_nonspontaneous_creation_boundary_checks": 84,
+  "exact_payoff_constant_shift_field_invariance_checks": 252,
+  "exact_positive_payoff_scale_time_rescale_checks": 252,
+  "project_full_support_RPS_log_product_invariance_exact_states": 10,
+  "project_zero_sum_RPS_matrix": [
+    [
+      "0",
+      "-1",
+      "1"
+    ],
+    [
+      "1",
+      "0",
+      "-1"
+    ],
+    [
+      "-1",
+      "1",
+      "0"
+    ]
+  ],
+  "project_RPS_initial_state": [
+    "1/2",
+    "3/10",
+    "1/5"
+  ],
+  "project_RPS_exact_continuous_product_invariant": "3/100",
+  "project_euler_vs_RK4_numeric_time_final": 12,
+  "project_euler_vs_RK4_grids": [
+    40,
+    80,
+    160,
+    320
+  ],
+  "project_RPS_40_step_Euler_product_error": -0.010113456173247867,
+  "project_RPS_40_step_RK4_product_error": 1.0209743605410493e-7,
+  "project_RPS_320_step_Euler_product_error": -0.0009416188628425283,
+  "project_RPS_320_step_RK4_product_error": 9.913899562397077e-12,
+  "project_stag_hare_two_player_payoffs_from_R128": [
+    [
+      "4",
+      "0"
+    ],
+    [
+      "3",
+      "3"
+    ]
+  ],
+  "project_stag_hare_replicator_interior_separatrix": "3/4",
+  "project_chicken_two_player_payoffs_from_R129": [
+    [
+      "-2",
+      "2"
+    ],
+    [
+      "0",
+      "1"
+    ]
+  ],
+  "project_chicken_replicator_interior_attractor": "1/3",
+  "project_new_constant_advantage_payoffs": [
+    [
+      "2",
+      "2"
+    ],
+    [
+      "1",
+      "1"
+    ]
+  ],
+  "analytic_logistic_closed_solution_initial_x_quarter_time_t2": "1/(1+3*exp(-2))",
+  "numerical_4_grid_RK4_logistic_reference_abs_error_at_320_steps": 5.972999872483342e-13,
+  "bounded_two_type_exact_reduction_checks": 39,
+  "source_1983_Schuster_Sigmund_DOI": "10.1016/0022-5193(83)90445-9",
+  "original_1983_Schuster_Sigmund_article_full_text_directly_read": false,
+  "original_1978_entire_phase_portrait_and_all_trajectory_quantitative_results_reproduced": false,
+  "RK4_not_exact_symplectic_or_product_preserving_method": true,
+  "actual_github_actions_success": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39365994655",
+  "actual_unittest_count": 70,
+  "actual_test_failures": 0,
+  "machine_receipt_with_core_source_SHA256": "research/R132/R132_PHASE_A_70_TEST_84_EXACT_STATES_RPS_ARTIFACT_CI_ACCEPTANCE.json",
+  "machine_hash_core_file_count": 3,
+  "source_equations_Fraction_numerical_trajectory_float_with_error_comparisons": true,
+  "real_human_or_animal_behaviors_reanalyzed": 0,
+  "real_individual_behavior_E2_prediction_scores": 0,
+  "real_history_E3_event_forecast_scores": 0,
+  "complete_R_series_all_models_studied": false,
+  "next_original_catalogue_candidate": "05-009 Evolutionarily Stable Strategy",
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "owner_sequence": "Complete original R-series, then unify classification, then fuse"
+}
