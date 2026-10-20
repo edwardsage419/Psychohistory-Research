@@ -1,0 +1,12 @@
+# R140 计算前冻结 | Ostrom (2011) IAD 七类规则与项目自设公共资源博弈
+日期：2026-10-20。239 模型目录 P1/05-016 Institutional Analysis and Development Framework。此文件须先于本期代码和自动验收。研究不改变R073或PESEN v0.1。
+## 一手来源及真实核读范围
+Elinor Ostrom, 2011, *Background on the Institutional Analysis and Development Framework*, Policy Studies Journal 39(1):7–27, DOI 10.1111/j.1541-0072.2010.00394.x，全文 https://gpde.direito.ufmg.br/wp-content/uploads/2019/03/Ostrom-2011-Policy_Studies_Journal.pdf ，已经实际读取并可视核阅原刊10页Fig1–2、11页行动情境的七个核心构件、19–21页Fig3七种rules-in-use以及从资源管理场景提取规则的具体问句。对照Elinor Ostrom (2005), Understanding Institutional Diversity, Princeton UP, DOI 10.1515/9781400831739, 第7章 pp186–216分类七规则；仅确认原书第7章目录与出版身份，不宣称逐页完整验证。原作者区分 framework、theory、model；IAD本身不提供可直接复算的唯一行为收益或均衡。任何后续数字均是项目独立构造的示范实例，不能写作Ostrom实证复验。
+## 冻结的七个具名规则及实验映射
+有3个可定义位置的合成参与者。boundary:参与的准入名额2或3；position:全部都是开采者，或编号最后一人的位置为固定steward（不能开采但可使公布的监察罚款生效）；choice:开采者个体动作允许e_i∈{0,1}或{0,1,2}；aggregation:independent 或 collective_quota4（如果全体取量总和>4则行动组合不可行，行动偏离时也必须可行；这是一项有其他人行为约束的广义纳什型示范，不是任意行动组合均可执行的常规正规形游戏）；information:public 或 private，其中public使固定steward可观察单人超额开采，private不能确定超额因而处罚不起作用（这是项目新假设，非IAD定律）；payoff:每名e_i>1的超额取量按单位支付0或2费用，只有steward、public和fee=2三条件同时具备才可征缴，手续费作为外部财政转移单列，不在纯资源产值里重复损耗；scope:资源物理总上限4或6，超上限不可行。角色未准入不得行动，steward不能取量。七字段在JSON原样编码；其他条件不动时修改任一字段的行动集、纳什集、收益或登记身份，必须可以从机器输出追溯，若规则不起作用应准确报告等价而非声称必然改变行为。
+## 主收益与检验设计
+项目自构资源价格为每单位 8−E，E为全部实际取量之和，开采者私人资源收益 u_i=e_i(8−E)。真实费额 extra_i=max(0,e_i−1)× fee_eff，若处罚有效；净私人u_i−extra_i，罚款归外部财政账户。固定steward行动/净私人收益0。目标之一为G=Σe_i(8−E)=E(8−E)，与财政收入单列，最优总体E=4。上述不是R139 Gordon1954 的连续可微收益函数或其参数延伸；不能将本期与R139直接数值拼接。固定制度共2^7=128个：准入名额2/3、角色全开采者/最后一人steward、choice_cap1/2、aggregation independent/quota4、information public/private、payoff fee0/2、scope ceiling4/6。
+各制度计算完整可行行动组合（最多3^3=27）及所有可行单侧行为偏离，精确找纯策略广义NE集合，计算其G最大/最小、政府收入与资源状态，同时计算最大资源产值之可行档案。独立实现两条NE判定路线：逐个计算偏离收益，以及以固定他人行动预先求所有可行最佳反应，再交叉。所有规则场景必须存在至少一个可行档案；若某模型无NE，明确标记不得取空集平均。公平评价使用个体资源收益分布和有/无steward分类，不能把总G当作参与者福利唯一指标。
+预注册三组可证伪反例：(i) 空规则3开采者cap2、6物理上限、independent,fee0 的(2,2,2)候选均衡，E6，G12，对比资源最优E4 G16（需程序严算）；(ii) collective_quota4 和 scope4 在同一其他规则下应有完全相同行动/收益/NE，表明不同制度标签可发生观察等价，不能靠行动结果唯一识别规则；(iii) 罚款只在steward+public+fee2同时具备时实际改变收益，不能将private的信息规则本身冒充有实际惩罚。优先保留与预注册矛盾的结果并报失败，不得为了故事强改预注册命题。
+## 证据边界/CI
+标准库Python、Fraction或整数，无随机合成真人。至少40项unittest，含跨128制度完整枚举、非法字段/类型、两个数学路径完全一致、制度对照和上述反例。将源.py、tests.py、results.json与SHA256一同归档，在GitHub Actions Python3.11/3.12两个独立job重跑前不可宣称CLOSED_BOUNDED。真人E2新记录0，历史E3新预测0，机制真实因果识别为0，不声称Ostrom完整书籍、SES多层或长期制度变迁动态已被复验。研究顺序：完成R系列全部既定项后统一归纳分类，最后开始熔炼。
