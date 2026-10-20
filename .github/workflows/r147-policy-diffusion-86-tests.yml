@@ -1,0 +1,61 @@
+name: R147 original policy diffusion exact 86 tests
+on:
+  push:
+    paths:
+      - 'research/R147/R147_ShipanVolden2008_PolicyDiffusion_86_Tests.zip'
+      - '.github/workflows/r147-policy-diffusion-86-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-structural-identification-and-4-node-shock:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify four frozen archive source identities SHA256
+        run: |
+          echo '11e740a3bfbc93bb9dca1da84358c68030b8bc6be7e0e84be9f3a03f7e22cd9e  research/R147/R147_ShipanVolden2008_PolicyDiffusion_86_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r147
+          unzip -q research/R147/R147_ShipanVolden2008_PolicyDiffusion_86_Tests.zip -d /tmp/r147
+          cd /tmp/r147
+          echo '71b9ed151c47e9e73cd24aa347774072128d6c4f6122df74f7f59643d5e2b99a  r147_shipan_volden_policy_diffusion_exact.py' | sha256sum -c -
+          echo 'd77e43f52c9dba4e331d02b4b237edd638a3f85a85feb9fd8dec5181e64e01ae  test_r147_shipan_volden_policy_diffusion_exact.py' | sha256sum -c -
+          echo '877f2a8dbcb58b7a11d96fc6ef130f39a37093dc9aed3d1d2b9a82cf1387edb2  R147_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run all 86 real causal and policy distribution tests
+        run: |
+          cd /tmp/r147
+          python -m unittest -q test_r147_shipan_volden_policy_diffusion_exact.py
+      - name: Independently regenerate all 12 full adoption state distributions
+        run: |
+          cd /tmp/r147
+          python r147_shipan_volden_policy_diffusion_exact.py > replay.json
+          cmp replay.json R147_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('replay.json'))
+          assert d['worlds']==32 and d['observable_histories']==8
+          assert d['observational_joint_diffusion']==d['observational_joint_shared_shock']
+          assert d['causal_effect_under_do']=={'diffusion':'1/2','shared_shock':'0'}
+          assert d['observational_conditional_peer_risk_difference']=='1/2'
+          assert d['follower_pair_both_adopt']=='5/16'
+          assert len(d['graph_results'])==12
+          for r in d['graph_results']:
+              assert len(r['final_mask_probabilities'])==16
+              assert sum(map(F,r['final_mask_probabilities'].values()),F(0))==1
+              assert r['two_independent_dynamics_agree']
+          assert d['no_peer_graph_invariance_when_beta_zero']
+          v=[r for r in d['graph_results'] if r['graph']=='star' and r['beta']=='1/2' and r['yearly_shared_shock_prob']=='0'][0]
+          assert v['expected_final_adopters']=='16141/4096'
+          assert not d['source_historical_675_cities_dataset_rerun']
+          assert not d['four_original_political_diffusion_mechanisms_distinguished_empirically']
+          assert (d['new_E2_real_human_predictions'],d['new_E3_historical_event_predictions'])==(0,0)
+          print('R147 PASS authentic original 86 tests, 8 equivalent histories, 12 exact 4-step worlds, 4 sha256 fingerprints')
+          PY
