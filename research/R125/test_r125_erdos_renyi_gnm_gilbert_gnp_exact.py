@@ -231,6 +231,9 @@ class Primary1959FixedVsIndependentRandomGraphs(unittest.TestCase):
         self.assertEqual(v["Gnm_m3_number_of_possible_graphs"],20)
         self.assertEqual(v["Gnm_m3_connected_graphs"],16)
         self.assertEqual(v["Gnp_p_half_connected_graphs"],38)
+        # R125-CORR-002: successful math must still serialize machine receipts.
+        self.assertIs(type(v["Gnm_m3_connected_graphs"]),int)
+        self.assertIs(type(v["Gnp_p_half_connected_graphs"]),int)
         self.assertEqual(v["Gnm_m3_connectivity"],"4/5")
         self.assertEqual(v["Gnp_p_half_connectivity"],"19/32")
 
