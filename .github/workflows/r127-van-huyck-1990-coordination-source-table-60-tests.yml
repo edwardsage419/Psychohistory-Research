@@ -1,0 +1,129 @@
+name: R127 Van Huyck 1990 original minimum-effort and exact 2x2 coordination selection
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r127-van-huyck-1990-coordination-source-table-60-tests.yml'
+      - 'research/R127/r127_van_huyck_1990_min_effort_coordination_selection_exact.py'
+      - 'research/R127/test_r127_van_huyck_1990_min_effort_coordination_selection_exact.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  firstparty-1990-minimum-effort-and-2x2-risk-selection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run actual 60 source aggregation and exact best-response mathematical tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R127 python -m unittest -v \
+            research/R127/test_r127_van_huyck_1990_min_effort_coordination_selection_exact.py \
+            2>&1 | tee /tmp/r127_real_unittests.log
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r127_real_unittests.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['60'],('R127_REQUIRE_ALL_60_TRUE_TESTS',log[-2400:])
+          assert re.search(r'\nOK\s*$',log),'R127_TRUE_TESTS_NOT_ALL_PASS'
+          print('R127_60_REAL_TESTS_SUCCESS')
+          PY
+      - name: Independently replay original human published aggregates and 75117 source payoff deviations
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R127 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r127_van_huyck_1990_min_effort_coordination_selection_exact as m
+
+          original=m.published_1990_table2_verification()
+          assert original['experiment_sizes']==[16,16,14,15,16,16,14]
+          assert original['source_reported_human_participants_not_reanalyzed']==107
+          assert original['original_published_aggregate_first_period_choice_7']==33
+          assert original['original_published_aggregate_first_period_choice_1']==2
+          assert original['original_published_aggregate_final_period_choice_1']==77
+          assert set(original['period10_group_minimums'].values())=={1}
+          assert original['new_real_human_E2_prediction_scores']==0
+          eq=m.min_effort_security_and_payoff_rank()
+          assert eq['all_equal_profiles_are_strict_Nash']
+          assert eq['source_payoff_dominant_effort']==7
+          assert eq['unique_maximin_security_effort']==1
+          assert eq['source_payoff_A_all7']=='13/10'
+          assert eq['source_payoff_A_all1']=='7/10'
+          assert m.original_payoff_table_A()['7']['1']=='1/10'
+          assert m.original_payoff_table_A()['1']['7'] is None
+
+          audit=m.exhaustive_original_min_effort_payoff_audit()
+          assert audit['exact_profiles_by_group_size']=={'2':49,'3':343,'4':2401}
+          assert audit['all_original_payoff_profiles']==2793
+          assert audit['all_exact_individual_candidate_deviations']==75117
+          assert audit['strict_diagonal_Nash_by_group_size']=={'2':7,'3':7,'4':7}
+
+          toy=m.frozen_two_person_examples()
+          assert toy['conflict_payoff_dominant']=='A'
+          assert toy['conflict_risk_dominant']=='B'
+          assert toy['conflict_loss_products']==['1','16']
+          assert toy['conflict_belief_opponent_A_indifference']=='4/5'
+          assert toy['conflict_when_belief_A_three_quarters']=='B'
+          assert toy['conflict_when_belief_A_nine_tenths']=='A'
+          assert toy['equal_risk_selection']=='TIE'
+          assert toy['equal_risk_payoff_dominant']=='A'
+          assert toy['not_the_Van_Huyck_1990_n_agent_original_game']
+          grid=m.exhaustive_two_player_symmetric_payoff_grid()
+          assert grid['all_two_by_two_symmetric_integer_payoff_games']==1296
+          assert grid['two_strict_diagonal_Nash_games']>0
+          assert grid['payoff_vs_risk_strict_conflict_games']>0
+          assert grid['two_equilibria_risk_tie_games']>0
+
+          root=pathlib.Path('research/R127')
+          files=[
+              'r127_van_huyck_1990_min_effort_coordination_selection_exact.py',
+              'test_r127_van_huyck_1990_min_effort_coordination_selection_exact.py',
+              'R127_VAN_HUYCK_1990_MIN_EFFORT_ORIGINAL_AER_TABLE2_AND_2X2_RISK_SCIENTIFIC_REPORT_2026-10-20.md'
+          ]
+          hashes={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in files}
+          receipt={
+              'research_id':'R127','phase':'A',
+              'status':'R127_1990_ORIGINAL_MINIMUM_EFFORT_60_TEST_75117_DEVIATION_1296_2X2_PASS',
+              'original_catalogue_P0':'05-003',
+              'original_1990_AER_publisher_primary':'Van Huyck, Battalio and Beil AER 80(1)234-248',
+              'original_1990_fulltext_scanned_url':'https://econweb.ucsd.edu/~jandreoni/Econ264/papers/Van%20Huyck%20et%20al%20AER%201990.pdf',
+              'original_print_pages_directly_eyeball_reviewed':[234,235,236,237,238,239,240,241,242,245],
+              'source_eq1_original_with_experimental_offset_0point60':True,
+              'original_source_A_payoff_table_rows':m.original_payoff_table_A(),
+              'published_source_A_treatment_seven_experiments_p1_p10_only':original,
+              'source_A_seven_strict_common_effort_Nash_security_and_payoff_rank':eq,
+              'independent_real_experimental_person_rows_loaded':0,
+              'original_Cooper1990_full_paper_or_original_actions_loaded':False,
+              'original_Harsanyi_Selten1988_book_directly_read':False,
+              'n2to4_original_source_payoff_complete_synthetic_profiles_and_deviations':audit,
+              'two_player_symmetric_coordination_project_created_conflict_and_risk_tie':toy,
+              'synthetic_all_six_level_symmetric_2x2_payoffs':grid,
+              'actual_independent_unittests_executed':60,
+              'actual_unittest_failures':0,
+              'code_test_science_SHA256':hashes,
+              'new_real_person_level_E2_prediction_scores':0,
+              'original_individual_level_learning_effects_reestimated':False,
+              'historical_forecasting_evidence_established':False,
+              'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          receipt_path=root/'R127_PHASE_A_1990_ORIGINAL_MIN_EFFORT_60_TEST_75117_DEVIATIONS_1296_2X2_CI_ACCEPTANCE.json'
+          receipt_path.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R127_INDEPENDENT_MACHINE_RECEIPT_SHA256',hashlib.sha256(receipt_path.read_bytes()).hexdigest())
+          PY
+      - name: Publish actual 60 test run with three reproducible source hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R127/R127_PHASE_A_1990_ORIGINAL_MIN_EFFORT_60_TEST_75117_DEVIATIONS_1296_2X2_CI_ACCEPTANCE.json
+          git commit -m "results(R127): original 1990 published 107-person aggregates, 60 tests and 75117 math deviations verified"
+          git pull --rebase origin main
+          git push origin HEAD:main
