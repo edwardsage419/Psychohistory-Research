@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r152-migration-gravity-126-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   exact-origin-constrained-gravity:
     runs-on: ubuntu-latest
@@ -81,3 +81,39 @@ jobs:
           name: R152-54-exact-migration-python-${{ matrix.python-version }}
           path: research/R152/R152_Gravity_Migration_54_Cases_126_Tests.zip
           retention-days: 90
+
+  pin-and-publish-canonical-results:
+    needs: exact-origin-constrained-gravity
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Regenerate exact 54 worlds and verify four fixed SHA256 identities
+        run: |
+          cd research/R152
+          echo '016c5fe7c5b99dae98d8b626f638f6c95fe0046bf5db08732d583b6f2b506c99  r152_gravity_od_exact.py' | sha256sum -c -
+          echo '22868b380826c061b6e2a5d5e973f242340d361208a838b9ffdb9009c00b5dee  test_r152_gravity_od_exact.py' | sha256sum -c -
+          python r152_gravity_od_exact.py > R152_EXACT_RESULTS.json
+          echo '1f79b445cb14a25d1101aaec4eff9c9a3b127b7ec829f3ef7f553c16331fb23a  R152_EXACT_RESULTS.json' | sha256sum -c -
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R152_Gravity_Migration_54_Cases_126_Tests.zip','w') as z:
+              for name in ('r152_gravity_od_exact.py','test_r152_gravity_od_exact.py','R152_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,20,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo '1a421b359602a4c2a3e1aca995e325c264d16b166c0d92616a00a92adbbc5442  R152_Gravity_Migration_54_Cases_126_Tests.zip' | sha256sum -c -
+      - name: Commit all canonical data and original source tests archive to GitHub main
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R152/R152_EXACT_RESULTS.json research/R152/R152_Gravity_Migration_54_Cases_126_Tests.zip
+          if ! git diff --cached --quiet; then
+              git commit -m 'archive(R152): pinned 54 Fraction migration worlds and complete 126-test research ZIP'
+              git push origin HEAD:main
+          fi
