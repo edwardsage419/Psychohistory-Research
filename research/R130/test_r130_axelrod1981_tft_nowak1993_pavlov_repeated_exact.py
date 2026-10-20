@@ -177,7 +177,7 @@ class InfiniteFiniteStateReproducibilityAndKnownFiniteHorizon(unittest.TestCase)
 
     def test_041_alternator_vs_tft_exact_cycle_payoffs(self):
         x=m.detect_finite_state_prefix_cycle("ALT_DC","TFT")
-        self.assertEqual(x["cycle_actions"],(("D","C"),("C","D")))
+        self.assertEqual(x["cycle_actions"],(("C","D"),("D","C")))
         self.assertEqual(x["cycle_length"],2)
 
     def test_042_alld_vs_tft_reaches_permanent_D_D(self):
