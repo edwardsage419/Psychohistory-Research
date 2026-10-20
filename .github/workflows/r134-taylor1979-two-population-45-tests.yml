@@ -1,0 +1,36 @@
+name: R134 Taylor 1979 two-population ESS 45 tests
+on:
+  push:
+    paths:
+      - 'research/R134/R134_Taylor1979_source_and_45_tests.zip'
+      - '.github/workflows/r134-taylor1979-two-population-45-tests.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-two-type-evolution:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify immutable zip and both full source Python SHA256 before execution
+        run: |
+          echo '302b05c9a6ffebe69063eabedb949ca6ef91ef17eb4c71d1b2a1f42c02d4e64b  research/R134/R134_Taylor1979_source_and_45_tests.zip' | sha256sum --check
+          mkdir -p /tmp/r134_exact
+          unzip -q research/R134/R134_Taylor1979_source_and_45_tests.zip -d /tmp/r134_exact
+          cd /tmp/r134_exact
+          echo 'ddf3cca2a168641344b405a05212af46a6bce5c30f5badae766874cd9896e434  r134_taylor1979_two_population_exact.py' | sha256sum --check
+          echo 'c72f68d34ce03e189ba814829f783c421e0e97e5961fa408f65d373386fce5dd  test_r134_taylor1979_two_population_exact.py' | sha256sum --check
+      - name: Execute all 45 actual tests
+        run: |
+          cd /tmp/r134_exact
+          python -m unittest -v test_r134_taylor1979_two_population_exact.py
+      - name: Independent mathematical replay printout of 34992 exact source comparisons
+        run: |
+          cd /tmp/r134_exact
+          python r134_taylor1979_two_population_exact.py

@@ -1,0 +1,75 @@
+{
+  "research_id": "R134",
+  "as_of": "2026-10-20",
+  "original_catalogue_id": "05-010",
+  "priority": "P2",
+  "candidate": "Multi Population Evolutionary Games",
+  "scientific_status": "PHASE_A_LOCAL_MATH_COMPLETE_REMOTE_CI_PENDING",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_PENDING_REMOTE_CI_TAYLOR_1979_TWO_TYPE_LINEAR_ESS",
+  "source": "Peter D. Taylor 1979 Evolutionarily Stable Strategies with Two Types of Player, Journal of Applied Probability 16(1):76-83",
+  "source_DOI": "10.2307/3213376",
+  "source_author_direct_pdf": "https://static1.squarespace.com/static/5dc9917c4cdb1467e1e54c4c/t/6526a06fa3fe7456d63dd68d/1697030256664/1979%2Bevolutionarily%2Bstable%2Bstrategies%2Bwith%2Btwo%2Btypes%2Bof%2Bplayer.pdf",
+  "original_printed_pages_visually_checked": [
+    77,
+    78,
+    79
+  ],
+  "original_Eq1_2_3_4_5_studied": true,
+  "original_non_linear_parental_care_Eq6_reproduced": false,
+  "constructed_model_parameter_configs": 81,
+  "original_formula_vs_independent_exact_checks": 34992,
+  "local_unittest_actual_passed": 45,
+  "local_unittest_failures": 0,
+  "remote_workflow_run": null,
+  "archive_zip_blob_git_sha1": "3088d345881c53726eb0c193f87334dc426f3211",
+  "archive_zip_sha256": "302b05c9a6ffebe69063eabedb949ca6ef91ef17eb4c71d1b2a1f42c02d4e64b",
+  "source_python_sha256": "ddf3cca2a168641344b405a05212af46a6bce5c30f5badae766874cd9896e434",
+  "unittest_python_sha256": "c72f68d34ce03e189ba814829f783c421e0e97e5961fa408f65d373386fce5dd",
+  "numerical_artifact": {
+    "40": {
+      "initial_H": "16/625",
+      "x_T": 0.7123424601663905,
+      "y_T": 0.1464020638870984,
+      "H_numeric_minus_theoretical": 0.0000073801781634401376
+    },
+    "80": {
+      "initial_H": "16/625",
+      "x_T": 0.7123090069907367,
+      "y_T": 0.14634064770912364,
+      "H_numeric_minus_theoretical": 2.541428377189625e-7
+    },
+    "160": {
+      "initial_H": "16/625",
+      "x_T": 0.7123027554654028,
+      "y_T": 0.1463366705290539,
+      "H_numeric_minus_theoretical": 9.260974990349391e-9
+    },
+    "320": {
+      "initial_H": "16/625",
+      "x_T": 0.7123022357580676,
+      "y_T": 0.1463364190174172,
+      "H_numeric_minus_theoretical": 3.7076570633121086e-10
+    }
+  },
+  "joint_invasion_resident_loss_epsilon_quarter": "-1/16",
+  "joint_jacobian_eigenvalues": [
+    "1/2",
+    "-3/2"
+  ],
+  "matching_pennies_aggregation_counterexample": {
+    "pooled_share": "1/2",
+    "three_possible_pooled_derivatives": [
+      "+24/125",
+      "-24/125",
+      "0"
+    ],
+    "continuous_exact_invariant": "x(1-x)y(1-y)"
+  },
+  "real_animals_or_humans_reanalyzed": 0,
+  "new_individual_E2_prediction_scores": 0,
+  "new_history_E3_probability_scores": 0,
+  "original_239_candidate_completed_all": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "owner_sequence": "Finish existing R series, classify once all studies complete, then fuse"
+}
