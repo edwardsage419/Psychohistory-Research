@@ -1,0 +1,126 @@
+name: R128 Skyrms 2004 Stag Hunt source trust correlation and repeated PD exact math
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r128-skyrms2004-stag-hunt-trust-70-tests.yml'
+      - 'research/R128/r128_skyrms2004_stag_hunt_exact.py'
+      - 'research/R128/test_r128_skyrms2004_stag_hunt_exact.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  source-first-2004-stag-hunt-and-group-joint-trust:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run 70 actual original-book and independent exact mathematics tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R128 python -m unittest -v \
+            research/R128/test_r128_skyrms2004_stag_hunt_exact.py \
+            2>&1 | tee /tmp/r128_unit_tests.log
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r128_unit_tests.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['70'],('R128_EXACT_TEST_COUNT_DRIFT',log[-2000:])
+          assert re.search(r'\nOK\s*$',log),'R128_UNIT_TEST_FAILURE_OR_PARTIAL'
+          print('R128_70_SOURCE_FIRST_MATH_TESTS_PASS')
+          PY
+      - name: Independent full 1524 group profile probability and repeated-PD source payout replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R128 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r128_skyrms2004_stag_hunt_exact as m
+
+          original=m.skyrms_original_two_person_payoff()
+          assert original==((F(4),F(0)),(F(3),F(3)))
+          assert m.best_action_given_success_probability(F(3,4))['best']=='TIE'
+          n2=m.independence_prediction(2,F(4,5))
+          n3=m.independence_prediction(3,F(4,5))
+          assert (n2['expected_stag'],n2['best'])==(F(16,5),'S')
+          assert (n3['expected_stag'],n3['best'])==(F(64,25),'H')
+          groups=m.independent_group_full_audit()
+          assert groups['independent_n_probability_combinations']==42
+          assert groups['complete_independent_agent_profile_mass_computations']==1524
+          assert groups['all_analytic_vs_independent_enumeration_agreed']
+
+          couplings=m.frozen_correlated_trust_counterexample()
+          assert couplings['same_individual_marginal_each']=='4/5'
+          dists=couplings['distributions']
+          assert dists['independent']['probability_SS']=='16/25'
+          assert dists['perfect_positive_correlation']['probability_SS']=='4/5'
+          assert dists['minimum_possible_joint']['probability_SS']=='3/5'
+          assert [dists[k]['best'] for k in ('independent','perfect_positive_correlation','minimum_possible_joint')]==['H','S','H']
+
+          book=m.original_skyrms_printed_transformation()
+          assert book['original_printed_book_p5_row_matrix']==[['5','3/2'],['9/2','5/2']]
+          assert book['independent_twelve_round_prefix_plus_exact_tail_reconciled']
+          assert book['project_derived_Trigger_probability_threshold']=='2/3'
+          assert book['project_derived_risk_dominant_given_two_strategies']=='F'
+
+          d_half=m.true_repeated_coordination_selection(F(1,2))
+          assert not d_half['two_strict_diagonal_Nash']
+          assert m.true_repeated_coordination_selection(F(2,3))['risk_dominant']=='TIE'
+          assert m.true_repeated_coordination_selection(F(3,4))['risk_dominant']=='T'
+          horizons=m.independent_longrun_source_test_audit()
+          assert horizons['mathematically_exact_prefix_plus_tail_checks']==140
+          dynamics=m.small_source_inspired_dynamics_audit()
+          assert dynamics['source_book_p11_basin_boundary']=='3/4'
+          assert dynamics['discrete_map_project_not_book_formula']
+          assert dynamics['cases']['1/2']['next_share']=='2/5'
+          assert dynamics['cases']['4/5']['next_share']=='64/79'
+
+          root=pathlib.Path('research/R128')
+          files=[
+            'r128_skyrms2004_stag_hunt_exact.py',
+            'test_r128_skyrms2004_stag_hunt_exact.py',
+            'R128_SKYRMS_2004_ORIGINAL_STAG_TRUST_GROUP_CORRELATION_AND_SHADOW_FUTURE_SCIENTIFIC_REPORT_2026-10-20.md'
+          ]
+          source_sha={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in files}
+          receipt={
+            'research_id':'R128','catalogue':'05-004','phase':'A',
+            'status':'R128_ORIGINAL_SKYRMS_2004_70_TEST_1524_GROUP_PROFILE_140_PD_DISCOUNT_PASS',
+            'primary_author_book':'Brian Skyrms, The Stag Hunt and the Evolution of Social Structure, Cambridge University Press 2004, Chapter1 pp1-13',
+            'primary_official_first_chapter_PDF':'https://assets.cambridge.org/052182/6519/sample/0521826519ws.pdf',
+            'original_print_pages_visually_checked':[3,5,10,11,12],
+            'Rousseau_1755_original_story_not_historical_4_3_0_payoff_source':True,
+            'Battalio_Samuelson_VanHuyck_2001_experimental_paper_DOI':'10.1111/1468-0262.00212',
+            'Battalio_2001_original_individual_experiment_reanalyzed':False,
+            'primary_Skyrms_p3_stag_hare_payoffs':[[str(v) for v in row] for row in original],
+            'source_2004_p5_original_PD_repeated_strategy_payoff_transformation':book,
+            'project_created_group_all_stag_requires_every_member_cooperate_independent_formula':'4 * p^(n-1) versus Hare 3',
+            'source_based_all_group_independent_profiles_enumerated':groups,
+            'project_created_joint_correlations_same_marginals':couplings,
+            'project_own_finite_prefix_plus_exact_geometric_tail_checks':horizons,
+            'project_created_discrete_payoff_proportional_map_not_exact_Skyrms_original_dynamics':dynamics,
+            'genuine_unittests_executed':70,'unit_test_failures':0,
+            'code_test_scientific_report_SHA256':source_sha,
+            'new_real_human_individual_actions_fitted':0,
+            'new_real_human_E2_prediction_scores':0,
+            'new_historical_external_event_probability_validation':False,
+            'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          file=root/'R128_PHASE_A_SKYRMS_70_TEST_1524_GROUP_140_DISCOUNT_CI_ACCEPTANCE.json'
+          file.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R128_ACTUAL_MACHINE_RECEIPT_SHA256',hashlib.sha256(file.read_bytes()).hexdigest())
+          PY
+      - name: Archive actual exact original book checks and three source hashes on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R128/R128_PHASE_A_SKYRMS_70_TEST_1524_GROUP_140_DISCOUNT_CI_ACCEPTANCE.json
+          git commit -m "results(R128): original Skyrms payoffs, 70 tests, 1524 group profiles and 140 discounted identities"
+          git pull --rebase origin main
+          git push origin HEAD:main
