@@ -1,0 +1,55 @@
+name: R143 Arthur 1989 path dependence 86 real tests
+on:
+  push:
+    paths:
+      - 'research/R143/R143_Arthur1989_Path_Dependence_86_Tests.zip'
+      - '.github/workflows/r143-arthur1989-path-dependence-86-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-Arthur-random-walk:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify source archive and both programs plus JSON SHA256
+        run: |
+          echo 'cc0005409d20b86f4a40df3d5b9fa0e208a834719f48fd7ddea4145d17579af6  research/R143/R143_Arthur1989_Path_Dependence_86_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r143
+          unzip -q research/R143/R143_Arthur1989_Path_Dependence_86_Tests.zip -d /tmp/r143
+          cd /tmp/r143
+          echo '250428ec84367ae1260e460730faccf5ad897044592911aaff9b75b0b987dae5  r143_arthur1989_exact.py' | sha256sum -c -
+          echo '751bcaab6597d4bda7f323b7de2b5204f5d485939f92062d0baf5c01664b544a  test_r143_arthur1989_exact.py' | sha256sum -c -
+          echo '201bba8040cbaa946289f1e25aec6a481d7dc3dba2806a927285e9a343239693  R143_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run all 86 actual Fraction unittest scenarios
+        run: |
+          cd /tmp/r143
+          python -m unittest -v test_r143_arthur1989_exact.py
+      - name: Independently replay exact absorption and all 20 historical orderings
+        run: |
+          cd /tmp/r143
+          python r143_arthur1989_exact.py > replay.json
+          cmp replay.json R143_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          x=json.load(open('replay.json'))
+          assert len(x['six_arrival_fixed_three_R_three_S_orders'])==20
+          assert x['absorbing_markov']['0']['prob_A_lock']=='1/2'
+          assert x['absorbing_markov']['0']['expected_steps_to_first_lock']=='19/3'
+          assert x['exact_first_lock_time_closed_form']['mass_at_odd_t_3_plus_2j']=='(3/8)*(5/8)^j, j>=0'
+          r=x['six_arrival_fixed_three_R_three_S_orders']
+          assert r['RRRSSS']['locked_A']=='1' and r['SSSRRR']['locked_B']=='1'
+          assert r['RSRSRS']['not_locked']=='1'
+          assert x['iid_horizon_exact'][-1]['unlocked']=='3125/32768'
+          assert x['constant_return_order_independent']
+          assert x['constructed_separate_tech_slopes_not_arthur_table1']['subsidy_B_2_at_6_A_adopters_both_choose_A']
+          assert (x['new_E2_person_level_scoring'],x['new_E3_historical_event_forecasts'])==(0,0)
+          print('R143 PASS first-hand Arthur Table1 86 tests exact 20 paths and 19/3 lock time')
+          PY
