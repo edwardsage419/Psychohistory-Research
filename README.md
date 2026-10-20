@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R136有界结题**：[Press–Dyson 2012直接互惠记忆一阶ZD模型](research/R136/README.md)，对14种敲诈策略×81种对手作1,134次Fraction严格长期收益/原行列式双路线交叉检验，又验证81组Equalizer和2组非唯一平稳边界；5%单边执行翻转造成原固定χ=3的收益线性关系残差−25/64。[真实GitHub Actions run39380956698](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39380956698)，Python3.11与3.12各43项真单测全通过，共86次成功、0失败；程序/测试/ZIP分别校验SHA256。新增真人E2=0、历史事件E3=0；R073和PESEN v0.1保持冻结；原239目录中下一项为05-013 Network Reciprocity（拟R137），全R学习完成后统一分类再熔炼。
+
+
 **2026-10-20 R135原创理论有界结题**：[Ohtsuki & Iwasa 2004 间接互惠原始4096候选完整入侵复算](research/R135/README.md)，真实原刊p109–116核阅；256规范×16策略×15种不同入侵行为，61440项入侵比较。镜像ESS重现作者161类（136 AllD与25非平凡）以及四组成本收益敏感性73/59/15/13。[真实GitHub Actions run39374890111](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39374890111) Python3.11/3.12两任务各50项真实unittest共100次，均通过；ZIP及两个Python文件SHA256各任务均核验成功。新真人E2=0、历史E3=0，R073/PESEN v0.1保持冻结。R系列研究未全部结束，统一分类与熔炼推迟。
 
 

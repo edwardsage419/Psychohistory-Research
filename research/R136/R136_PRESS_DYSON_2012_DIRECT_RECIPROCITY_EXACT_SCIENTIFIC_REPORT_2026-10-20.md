@@ -27,3 +27,7 @@ Equalizer原Eq8选p1=9/10、p4=1/20并推导p2=3/4、p3=1/8，原Eq9承诺Y得�
 ## 科研资格与复算文件
 
 本阶段没有从真实受试者、实际历史或原作者演化程序读取新数据；未复现论文Figure3完整自适应对手最优化、未证明一般现实种群中敲诈长期占优、未复现Hilbe2013有限群体演化。完整原生Python源码与43项单元测试在研究ZIP中保存，另有机器JSON输出与事前冻结协议。项目规则要求先逐项完成R系列，再统一分类，最后熔炼；R073与PESEN v0.1继续冻结。
+
+## 远端实际CI与源身份验收（完成后登记）
+
+[GitHub Actions run 39380956698](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39380956698)，head SHA `1e71d433186c20c9ee1fa19a1036e22046f5a55e`，**completed success**。Python 3.12 job 118489713598 真正执行43 tests in 1.192s；Python 3.11 job 118489713947 真正执行43 tests in 1.450s；均OK，总共**86项单测执行、0失败**。各job在计算前强制逐项核验ZIP SHA256 `8681308ed6445491330cd40bd31bc8b1eb64e6c9d17bdc64d115f990d6591ee2`、程序 SHA256 `0e0eca8c1a40aa071528464c29dc9757ac610c20a8b04dadb8664bbfc83424da`、测试 SHA256 `7e0865565519da75f7ef8ce371be5967031da113b649a4831b6da5da7fafd956`；各job重新打印并通过来源主张1134个ZD等式、81个Equalizer、2个非唯一平稳、−25/64失误残差。结构化验收见[R136_PHASE_A_43_TESTS_1134_ZD_GITHUB_CI_ACCEPTANCE.json](R136_PHASE_A_43_TESTS_1134_ZD_GITHUB_CI_ACCEPTANCE.json)。这一验收不改变真实人类数据及E2/E3均为0的资格边界。

@@ -6,8 +6,8 @@
   "name": "Direct Reciprocity",
   "source": "Press Dyson 2012 PNAS 109 10409-10413",
   "source_DOI": "10.1073/pnas.1206569109",
-  "science_status": "LOCAL_43_TESTS_COMPLETE_PENDING_GITHUB_CI",
-  "learning_status": "BOUNDED_PRESS_DYSON_2012_MEMORY_ONE_ZD_PENDING_CI",
+  "science_status": "CLOSED_BOUNDED_ORIGINAL_PRESS_DYSON_2012_1134_EXACT_MEMORY_ONE_ZD_43_TESTS",
+  "learning_status": "LEARNING_COMPLETE_BOUNDED_PRESS_DYSON_2012_DIRECT_RECIPROCITY_ZD_AND_NOISE",
   "grid": {
     "chi": 4,
     "phi": 5,
@@ -40,11 +40,37 @@
   "test_SHA256": "7e0865565519da75f7ef8ce371be5967031da113b649a4831b6da5da7fafd956",
   "local_tests": 43,
   "local_failed": 0,
-  "actual_ci_run": null,
+  "actual_ci_run": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39380956698",
   "new_real_human_E2": 0,
   "new_external_history_E3": 0,
   "prior_R130_not_duplicate": true,
   "R073": "FROZEN",
   "PESEN_v0_1": "FROZEN",
-  "sequence": "Finish all R studies, then classify, then fuse"
+  "sequence": "Finish all R studies, then classify, then fuse",
+  "actual_ci_run_id": 39380956698,
+  "actual_ci_head_sha": "1e71d433186c20c9ee1fa19a1036e22046f5a55e",
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "ci_jobs": [
+    {
+      "python": "3.12",
+      "id": 118489713598,
+      "tests": 43,
+      "seconds": 1.192,
+      "conclusion": "success"
+    },
+    {
+      "python": "3.11",
+      "id": 118489713947,
+      "tests": 43,
+      "seconds": 1.45,
+      "conclusion": "success"
+    }
+  ],
+  "actual_ci_test_executions": 86,
+  "actual_ci_failures": 0,
+  "all_three_sha256_each_job_verified": true,
+  "full_1134_ZD_81_equalizer_2_nonunique_replay_each_job": true,
+  "machine_receipt": "research/R136/R136_PHASE_A_43_TESTS_1134_ZD_GITHUB_CI_ACCEPTANCE.json",
+  "next_original_candidate": "P1 05-013 Network Reciprocity, candidate R137"
 }

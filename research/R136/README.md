@@ -10,7 +10,7 @@
 - Equalizer策略 `(9/10,3/4,1/8,1/20)` 对全部81种随机对手给出 `s_Y=5/3`。
 - 16种确定性对手中有2种使上述具体敲诈策略的稳态分布不唯一；这些条件下不输出凭空选定的唯一长期平均收益。
 - 对χ=3,φ=1/20 的原设计，额外加入项目设定的5%独立执行翻转后，原线性收益约束残差从0变为 `−25/64`。此测试不声称所有噪声下ZD策略均不可能重新设计。
-- 共43项本地标准库unittest通过，远端GitHub Actions另行核验后更新正式状态。
+- 共43项本地标准库unittest通过，真实[GitHub Actions 39380956698](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39380956698)已在Python 3.11/3.12各43项、共86次真实执行成功且0失败。每环境独立验ZIP及两Python文件SHA256、重新运行完整1134个ZD案例。
 
 ## 一手来源与复算
 
@@ -31,3 +31,5 @@ python r136_press_dyson_2012_zd_exact.py
 - [GitHub Actions工作流](../../.github/workflows/r136-press-dyson-zd-43-tests.yml)
 
 R073与PESEN v0.1继续冻结。遵循全部R系列模型学完后再统一分类与归纳，最后熔炼。
+
+**机器接收凭据**：[R136_PHASE_A_43_TESTS_1134_ZD_GITHUB_CI_ACCEPTANCE.json](R136_PHASE_A_43_TESTS_1134_ZD_GITHUB_CI_ACCEPTANCE.json)。完成有界学习；仍是数学模型复算，没有新真人样本、E2或E3预测。下一R137预计原目录05-013网络互惠。
