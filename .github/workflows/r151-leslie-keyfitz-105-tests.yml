@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r151-leslie-keyfitz-105-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   exact-age-structure:
     runs-on: ubuntu-latest
@@ -82,3 +82,39 @@ jobs:
           name: R151-complete-research-python-${{ matrix.python-version }}
           path: research/R151/R151_Leslie_Keyfitz_1092_Cohorts_105_Tests.zip
           retention-days: 90
+
+  publish-frozen-exact-results:
+    needs: exact-age-structure
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconstruct and verify pinned canonical 1092-case results and zip
+        run: |
+          cd research/R151
+          python r151_leslie_age_exact.py > R151_EXACT_RESULTS.json
+          echo 'a0310f8f5352d623c7c76f8b7aded64839788d45329af750b7404aa669bcaf86  R151_EXACT_RESULTS.json' | sha256sum -c -
+          echo '429102f53ffa282adaaf93237ded08b9dd07ffdf638a454798fa30b51908c870  r151_leslie_age_exact.py' | sha256sum -c -
+          echo '7f5f8dc8bcedd3a5c6471983baa6ad843274ae2eafdfb97932a6740578d1677b  test_r151_leslie_age_exact.py' | sha256sum -c -
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R151_Leslie_Keyfitz_1092_Cohorts_105_Tests.zip','w') as z:
+              for name in ('r151_leslie_age_exact.py','test_r151_leslie_age_exact.py','R151_EXACT_RESULTS.json'):
+                  entry=zipfile.ZipInfo(name,date_time=(2026,10,20,0,0,0))
+                  entry.compress_type=zipfile.ZIP_LZMA
+                  entry.external_attr=0o644<<16
+                  z.writestr(entry,open(name,'rb').read())
+          PY
+          echo '38d992ca797c6be8d69eb728e03c772fcfc6fe1f0e2ee63cd037980809d37a68  R151_Leslie_Keyfitz_1092_Cohorts_105_Tests.zip' | sha256sum -c -
+      - name: Publish exact full research archive and original JSON into main
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R151/R151_EXACT_RESULTS.json research/R151/R151_Leslie_Keyfitz_1092_Cohorts_105_Tests.zip
+          if ! git diff --cached --quiet; then
+              git commit -m 'archive(R151): pinned 1092 exact age histories and permanent source test ZIP'
+              git push origin HEAD:main
+          fi
