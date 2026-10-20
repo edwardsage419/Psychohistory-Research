@@ -1,0 +1,144 @@
+{
+  "research_id": "R151",
+  "as_of": "2026-10-20",
+  "catalogue_id": "06-009",
+  "priority": "P1",
+  "model": "Age Structured Population Models",
+  "protocol_commit_before_code": "adb7319a1b8b3acbad6cecea3c9f62ab83fe4722",
+  "source_scope": {
+    "Leslie_1945": {
+      "doi": "10.1093/biomet/33.3.183",
+      "official_journal_record_verified": true,
+      "full_original_read": false
+    },
+    "Leslie_1948": {
+      "doi": "10.1093/biomet/35.3-4.213",
+      "official_journal_record_verified": true,
+      "full_original_read": false
+    },
+    "Keyfitz_1971": {
+      "doi": "10.2307/2060339",
+      "bibliographic_record_verified": true,
+      "full_original_read": false
+    }
+  },
+  "source_author_numerical_results_reproduced": false,
+  "scientific_status": "CLOSED_BOUNDED_E1_AGE_COHORT_PROJECT_SYNTHETIC_EXACT_1092_105_TESTS",
+  "independent_scenarios": 1092,
+  "cohort_initials": 91,
+  "synthetic_horizon_steps": 12,
+  "trace_points_per_scenario": 13,
+  "actual_distinct_unittest_methods": 105,
+  "unique_cohort_test_parameter_examples": 50,
+  "github_ci": {
+    "initial_run": 39423248522,
+    "initial_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39423248522",
+    "pinned_final_run": 39423735601,
+    "final_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39423735601",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 118630900111,
+        "python": "3.11",
+        "tests": 105,
+        "seconds": 15.944,
+        "conclusion": "success",
+        "full_1092_replay": true
+      },
+      {
+        "id": 118630900554,
+        "python": "3.12",
+        "tests": 105,
+        "seconds": 9.88,
+        "conclusion": "success",
+        "full_1092_replay": true
+      },
+      {
+        "id": 118631099379,
+        "job": "publish-frozen-exact-results",
+        "conclusion": "success",
+        "source_result_archive_sha256_passes": 4,
+        "git_push_complete": true
+      }
+    ],
+    "per_final_run_actual_unittest_executions": 210,
+    "both_runs_total_test_executions": 420,
+    "unit_test_failures": 0,
+    "full_result_json_reconstructed_equally_in_python_3_11_and_3_12": true,
+    "full_zip_reconstructed_equally_in_python_3_11_and_3_12": true,
+    "complete_file_objects_in_main": true,
+    "permanent_archive_commit": "7701e9d2ee787eb7b344286c740c1d468ed99be7"
+  },
+  "source_git_sha1": {
+    "python": "7a14789ae08af850aad26c4ad2d89455b74f9343",
+    "tests": "f897d69518257ae656c8293d3bd6cce5f02c8266",
+    "json": "7b18a5826c66a21397a263792521969528e9da3d",
+    "zip": "e5eccb09306688ccfda1f79163f990e9d3e817f0"
+  },
+  "sha256": {
+    "r151_leslie_age_exact.py": "429102f53ffa282adaaf93237ded08b9dd07ffdf638a454798fa30b51908c870",
+    "test_r151_leslie_age_exact.py": "7f5f8dc8bcedd3a5c6471983baa6ad843274ae2eafdfb97932a6740578d1677b",
+    "R151_EXACT_RESULTS.json": "a0310f8f5352d623c7c76f8b7aded64839788d45329af750b7404aa669bcaf86",
+    "R151_Leslie_Keyfitz_1092_Cohorts_105_Tests.zip": "38d992ca797c6be8d69eb728e03c772fcfc6fe1f0e2ee63cd037980809d37a68"
+  },
+  "key_finite_exact_findings": {
+    "stationary_share": [
+      "4/9",
+      "1/3",
+      "2/9"
+    ],
+    "left_reproductive_value": [
+      "1",
+      "4/3",
+      "1/2"
+    ],
+    "baseline_eigenvalues": [
+      "1",
+      "-1/2",
+      "-1/2"
+    ],
+    "same_initial_N900_distinct_limits": [
+      "900",
+      "1200",
+      "450"
+    ],
+    "same_N0_N1_age_vectors": [
+      [
+        400,
+        300,
+        200
+      ],
+      [
+        120,
+        360,
+        420
+      ]
+    ],
+    "same_N0_N1_trajectory_prefix": [
+      [
+        "900",
+        "900",
+        "900"
+      ],
+      [
+        "900",
+        "900",
+        "1395/2"
+      ]
+    ],
+    "different_limits_hidden_initials": [
+      "900",
+      "810"
+    ],
+    "two_same_amount_migrant_age_long_run_increments": [
+      "2",
+      "8/3"
+    ]
+  },
+  "new_external_human_E2_predictions": 0,
+  "new_external_historical_E3_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": "R152 P1 06-010 Gravity Models of Migration",
+  "sequence": "Finish fixed R catalogue before unified classification and model fusion"
+}
