@@ -1,0 +1,68 @@
+{
+  "research_id": "R149-A",
+  "date": "2026-10-20",
+  "research_model": "5-state 2-actor duality feedback/constant practice/frozen structure",
+  "catalogue": "P2/06-007",
+  "prescore_commit": "3ddf839aaac22445a03a14739b5e11eba155a56f",
+  "CI": {
+    "run_id": 39418405229,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39418405229",
+    "source_head": "7fade86a479351632c0bf0a6dd8b3cf72136eb90",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118612971599,
+        "python": "3.11",
+        "tests": 41,
+        "seconds": 0.098,
+        "sha256_verified": 4,
+        "exact_original_result_json_replay": true,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118612971611,
+        "python": "3.12",
+        "tests": 41,
+        "seconds": 0.151,
+        "sha256_verified": 4,
+        "exact_original_result_json_replay": true,
+        "conclusion": "success"
+      }
+    ],
+    "actual_test_executions": 82,
+    "failures": 0
+  },
+  "original_zip_git_blob_SHA1": "22f1cc4a84d4d2c434d68bebf8fa718764c0af54",
+  "sha256": {
+    "ZIP": "2db8c52eb2bb064d3df21e1f43c6bae78fab58d09037919ebdad36e61872de1e",
+    "source": "250d720876d5a1b13c49da147fbc1af4647eb37bbb67ca12c055e343f6d055a9",
+    "tests": "58c9f2ec7eb4cef4f6158aa7e097374ae643730364fec8ce8a8f91df3d13940a",
+    "results": "c822e76a3424303dbb362cffeab29cc728d400475d01909181678a7c182960f9"
+  },
+  "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "modes": [
+    "feedback",
+    "fixed",
+    "frozen"
+  ],
+  "results_stage8": {
+    "feedback_endpoint_probability": "16624456774/19591041024",
+    "fixed_endpoint_probability": "24786/65536",
+    "frozen_endpoint_probability": "0",
+    "feedback_do_k2_vs_k0_expected_structure_difference": "2500240439/816293376"
+  },
+  "source_authors_numerical_model_reproduced": false,
+  "original_full_print_pages_reviewed": false,
+  "evidence_level": "project synthetic theoretical E1",
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}

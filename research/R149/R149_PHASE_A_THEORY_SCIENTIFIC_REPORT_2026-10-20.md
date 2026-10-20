@@ -10,4 +10,10 @@
 
 本地原生Python标准库主程序、41项真实unittest、确定性机器JSON已产生并验证：ZIP SHA256 `2db8c52eb2bb064d3df21e1f43c6bae78fab58d09037919ebdad36e61872de1e`，主程序 `250d720876d5a1b13c49da147fbc1af4647eb37bbb67ca12c055e343f6d055a9`，测试 `58c9f2ec7eb4cef4f6158aa7e097374ae643730364fec8ce8a8f91df3d13940a`，原JSON `c822e76a3424303dbb362cffeab29cc728d400475d01909181678a7c182960f9`。
 
-**验收状态仅 LOCAL_VALIDATED_NOT_REMOTE_CI**：尚未将完整源码ZIP上传GitHub，也没有真实GitHub Actions双环境检查及remote验收收据；因此严禁写CLOSED_BOUNDED，暂时只保存先行协议和本地阶段报告。本地完整文件随对话交付，可用于下阶段上传远端持续复验。新真人E2=0，历史E3=0，R073及PESEN v0.1冻结。
+**归档后的远端验收修订**：以上文字原样记录当时尚未上传和未验收的阶段事实；后续已上传原字节ZIP并完成双Python GitHub CI，本项目R149-A现为CLOSED_BOUNDED，见以下验收收据。新真人E2=0，历史E3=0，R073及PESEN v0.1冻结。
+
+## 后续远端验收（冻结主模型内容未改）
+
+[GitHub Actions 39418405229](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39418405229) 以源码提交 `7fade86a479351632c0bf0a6dd8b3cf72136eb90` 实际运行。Python3.11 job118612971599 41 tests in 0.098s；Python3.12 job118612971611 41 tests in 0.151s。共82次真实单元测试，0失败。两环境各自校验ZIP和内部源程序/测试/完整机器结果4项 SHA256 后，原Python计算程序重算全部结果JSON并逐字节一致。机器日志确实包含四项“OK”，原Git blob SHA1与本地ZIP对象一致。见[正式R149-A收据](R149_A_82_REAL_TESTS_TWO_PYTHON_GITHUB_CI_RECEIPT.json)。
+
+另有**独立事先冻结的R149-B补充模型**，采用不同的六期24场景概率方程，详细见[R149-B补充报告](R149_SUPPLEMENTARY_24_SCENARIOS_77_TESTS_README.md)；GitHub Actions 39417431417两环境各77项测试，共154项真实单测，原结果JSON完整回放。二者不合并数值、不可当作同一形式理论的118项测试。完整初始来源仍限于Giddens出版社书目、Sewell原文/摘要核读，原作者并无本研究方程；E2/E3均为0。

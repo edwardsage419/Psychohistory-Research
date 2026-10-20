@@ -1,5 +1,8 @@
 # 心理史学 | Psychohistory Research
 
+**2026-10-20 R149结构化理论P2/06-007两独立事前冻结模型正式有界结题**：[完整科研档案与两条模型边界](research/R149/README.md)。R149-A社会结构—个人实践双向反馈与固定/冻结负对照，用Fraction精算五结构状态、1/2/4/8/16期概率：第8期结构极端状态频率在反馈模型约0.849、固定行动模型约0.378，三个模型平均结构仍都为2；R149-B另以不同预注册数学定义研究资源支持、年度共享冲击、六年24情景，条件独立的行动者仍可因共同冲击产生1/256行动协方差。**并非作者Giddens/Sewell原数学模型复现，也未读取原著全部内文，E2/E3新增0。** GitHub Actions [A41测试双Python run39418405229](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39418405229)及[B77测试双Python run39417431417](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39417431417)，共236次原生单元测试、零失败；两研究包分别验4项SHA256且全部原始结果JSON重算字节完全相同。保留两份预先冻结协议、独立ZIP、独立收据，禁止将不同模型合并为一套未经冻结的方程。R073/PESEN v0.1冻结；继续既定全部R后统一分类归纳，最后熔炼。
+
+
 **2026-10-20 R148 SES社会—生态系统P1/06-006正式有界结题**：[Ostrom2009原刊Science 419–420页/420页Fig1与Anderies–Janssen–Ostrom2004稳健性框架的一手核验、18组项目自建动态资源—治理反馈模型](research/R148/README.md)。两名遵规的对称资源使用者、初态6容量8、开放采集/固定配额/按存量自适应规则、气候冲击及治理基础设施年故障；每组八期精确Fraction转移，独立后向动态规划与每规则256条确定气候路径重算。无气候/故障时OPEN累计取10但第五期资源枯竭；QUOTA/ADAPT取8且维持资源存量6。在气候q1/4、设施失效f1/4时，QUOTA/ADAPT八期资源存续率约0.30971/0.34914，但扣治理费的净采集量约6.80185/5.53447；单一“最好”策略因目标不同而变。[真实GitHub Actions run39412337646](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39412337646) Python3.11/3.12各98项unittest共196次真实执行、0失败；每任务4项源SHA256和全部18情景原JSON字节复验成功。所有公式和数字是项目新建的E1人工机制，不是Ostrom/Anderies原作者的数值实验，没有新增E2真人或E3历史证据。R073和PESEN v0.1冻结。原目录下一候选P2/06-007 Structuration Accounts（R149），按先完成全部R，后统一分类，最后熔炼的顺序推进。
 
 
