@@ -1,0 +1,142 @@
+name: R129 genuine 1973 five strategy and exact Chicken collision risk tests
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r129-chicken-original1973-68-tests.yml'
+      - 'research/R129/r129_chicken_original_table_and_exact_conflict.py'
+      - 'research/R129/test_r129_chicken_original_table_and_exact_conflict.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  original-1973-five-strategy-and-independent-chicken-math:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Execute 68 original Table1 and exact Chicken antikoordination unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R129 python -m unittest -v \
+            research/R129/test_r129_chicken_original_table_and_exact_conflict.py \
+            2>&1 | tee /tmp/r129_true_tests.log
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r129_true_tests.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['68'],('R129_NEED_68_GENUINE_TESTS',log[-2400:])
+          assert re.search(r'\nOK\s*$',log),'R129_UNIT_TEST_NOT_SUCCESS'
+          print('R129_68_ACTUAL_UNITTEST_SUCCESS')
+          PY
+      - name: Rerun entire original Table 1 source numbers and all 51x13 independent belief audits
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R129 python - <<'PY'
+          import hashlib,json,pathlib
+          from fractions import Fraction as F
+          import r129_chicken_original_table_and_exact_conflict as m
+
+          source=m.original_published_table_audit()
+          assert source['published_table_payoff_cells']==25
+          assert source['original_simulated_unordered_strategy_pairs']==15
+          assert source['source_reported_stochastic_contests_per_pair']==2000
+          assert source['source_simulated_contests_replayed_by_R129']==0
+          assert source['pure_symmetric_Nash_from_rounded_table']==['Retaliator']
+          assert source['best_replies_to_published_rounded_columns']=={
+            'Mouse':['Hawk','Bully'],
+            'Hawk':['Mouse'],
+            'Bully':['Hawk'],
+            'Retaliator':['Mouse','Retaliator'],
+            'Prober-Retaliator':['Retaliator'],
+          }
+          assert source['author_1973_claimed_Retaliator_ESS_but_rounded_table_cannot_verify_strict_refinement']
+          assert not source['strict_second_order_ESS_Retaliator_proven_from_rounded_table']
+
+          toy=m.frozen_chicken_math()
+          assert toy['project_row_payoffs']==[['-2','2'],['0','1']]
+          assert toy['two_asymmetric_strict_pure_Nash']==[['H','D'],['D','H']]
+          assert toy['project_mixed_hawk_probability']=='1/3'
+          assert toy['project_independent_both_hawk']=='1/9'
+          assert toy['project_each_player_mixed_expected']=='2/3'
+          assert toy['project_two_player_total_mixed_expected']=='4/3'
+          grid=toy['full_theory_cost_and_belief_grid']
+          assert grid['exact_value_cost_games']==51
+          assert grid['exact_opponent_belief_and_payoff_cross_checks']==663
+          assert grid['representative_cost_sensitivity']==[
+            {'V':2,'C':6,'mixed_hawk_probability':'1/3','independent_mixed_both_escalate':'1/9'},
+            {'V':2,'C':12,'mixed_hawk_probability':'1/6','independent_mixed_both_escalate':'1/36'},
+          ]
+
+          risk=toy['joint_conflict_risk_same_marginals']
+          assert risk['same_individual_hawk_marginal']=='1/3'
+          laws=risk['joint_hawk_dependence_models']
+          assert laws['independent']['collision_probability']=='1/9'
+          assert laws['anti_correlated_role_allocation']['collision_probability']=='0'
+          assert laws['perfect_positive_correlation']['collision_probability']=='1/3'
+          assert [laws[k]['joint_total_expected'] for k in (
+            'independent','anti_correlated_role_allocation','perfect_positive_correlation')]==['4/3','2','0']
+          assert risk['these_joint_laws_are_not_all_claimed_correlated_equilibria']
+          flip=toy['error_in_assigned_roles']
+          assert flip['exact_flip_probabilities_checked']==13
+          assert flip['max_collisions_probability']=='1/4'
+          assert flip['max_collisions_at_independent_flip']=='1/2'
+          assert flip['original_1973_stochastic_simulation_replayed'] is False
+
+          root=pathlib.Path('research/R129')
+          names=[
+            'r129_chicken_original_table_and_exact_conflict.py',
+            'test_r129_chicken_original_table_and_exact_conflict.py',
+            'R129_CHICKEN_1973_ORIGINAL_FIVE_STRATEGY_TABLE_AND_CORRELATED_CONFLICT_SCIENTIFIC_REPORT_2026-10-20.md',
+          ]
+          source_hashes={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names}
+          receipt={
+            'research_id':'R129','catalogue_id':'05-005','priority':'P2','phase':'A',
+            'status':'R129_FIRSTHAND_NATURE_1973_TABLE1_68_TEST_51_VC_663_BELIEF_FULL_PASS',
+            'source_primary_publisher_DOI':'10.1038/246015a0',
+            'source_original_Nature_1973_pdf':'https://public.ek-cer.hu/~szabo/EGT20/library/maynard_n73.pdf',
+            'source_direct_visually_read_published_pages':[15,16,17],
+            'source_table1_original_five_strategies_one_decimal_25_cells':source,
+            'original_1973_15_pairings_2000_simulated_contests_reexecuted':False,
+            'strict_1973_retaliator_ESS_not_proven_from_published_rounded_values':True,
+            'original_1973_symmetric_pure_Nash_necessary_condition_only':['Retaliator'],
+            'source_2x2_Hawk_Dove_standard_not_original_1973_five_strategy_published_table':True,
+            'simplified_V_C_exact_2x2_synthetic_game':toy,
+            'two_independent_welfare_algorithms':[
+              'weighted two-person four-cell exact payoffs',
+              'direct V-C*Pr(HH) total welfare identity',
+            ],
+            'two_independent_noise_mechanisms':[
+              'closed-form assigned-role independent flips',
+              'explicit full four-event Boolean flip enumeration',
+            ],
+            'synthetic_legal_VC_games_audited':51,
+            'synthetic_legal_VC_q_belief_payoff_comparisons':663,
+            'synthetic_implementation_noise_epsilon_cases':13,
+            'actual_independent_unit_tests_executed':68,
+            'unit_test_failures':0,
+            'source_test_scientific_report_sha256':source_hashes,
+            'real_original_animal_or_person_behavior_rows_loaded':0,
+            'new_independent_real_person_E2_prediction_scores':0,
+            'historical_political_conflict_event_predictions_tested':False,
+            'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          dest=root/'R129_PHASE_A_ORIGINAL_1973_68_TEST_51_GAMES_663_BELIEFS_CI_ACCEPTANCE.json'
+          dest.write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print('R129_TRUE_GITHUB_RUN_SOURCE_HASH',hashlib.sha256(dest.read_bytes()).hexdigest())
+          PY
+      - name: Commit independent real CI results source test science hash receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R129/R129_PHASE_A_ORIGINAL_1973_68_TEST_51_GAMES_663_BELIEFS_CI_ACCEPTANCE.json
+          git commit -m "results(R129): verify 1973 five strategies, 68 tests, 51 conflict games and 663 exact beliefs"
+          git pull --rebase origin main
+          git push origin HEAD:main
