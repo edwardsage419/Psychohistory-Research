@@ -62,3 +62,7 @@ Git blob SHA1 `8d1dde3024db192a67b2f4923ed86fb4af752b46`；SHA256：
 本地实测86项单元测试成功，机器接受需要GitHub Actions Python3.11/3.12分别四项SHA256并重跑测试与原JSON逐字节一致之后才正式CLOSED_BOUNDED。
 
 科研限定：无任何新真人或州/市政策真实面板，不能凭合成世界证明1990/2008实证结论真假，亦不对现实地区做可用的采纳时序预测；新增E2=0，E3=0。R073与PESEN v0.1继续冻结，沿既定顺序先完成全部R研究，再统一分类，最后模型熔炼。
+
+## 正式远端机器验收（来源冻结计算之后写入）
+
+最初source commit `60d9c973a9e09ec50c3e4355dc69a9a02f67f30a` [GitHub Actions run39409725920](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39409725920) completed/success。Python3.11 job118584229500真实执行86 tests in 0.669s；Python3.12 job118584229806真实执行86 tests in 0.534s，合计172个实际unittest、0失败。各任务在运行前验证固定ZIP SHA256 `11e740a3bfbc93bb9dca1da84358c68030b8bc6be7e0e84be9f3a03f7e22cd9e`、主源 `71b9ed151c47e9e73cd24aa347774072128d6c4f6122df74f7f59643d5e2b99a`、测试 `d77e43f52c9dba4e331d02b4b237edd638a3f85a85feb9fd8dec5181e64e01ae`、全JSON `877f2a8dbcb58b7a11d96fc6ef130f39a37093dc9aed3d1d2b9a82cf1387edb2`，两个job每项均OK。然后逐项运行真实测试，分别执行完整原程序，对全部八种观察结果及12个四区年度冲击模型逐值重算，与原JSON字节一致。两份任务真实日志输出`R147 PASS authentic original 86 tests, 8 equivalent histories, 12 exact 4-step worlds, 4 sha256 fingerprints`。验收收据[R147_PHASE_A_172_REAL_TESTS_12_EXACT_DIFFUSION_GITHUB_CI_RECEIPT.json](R147_PHASE_A_172_REAL_TESTS_12_EXACT_DIFFUSION_GITHUB_CI_RECEIPT.json)。该认证说明自定义E1数学代码两Python环境可复验，不能把模型生成器的政策因果假设当作原作者2008真实政策估计数据证据或一般现实历史因果证据。
