@@ -1,0 +1,69 @@
+{
+  "research_id": "R139",
+  "date": "2026-10-20",
+  "catalogue_id": "05-015",
+  "priority": "P1",
+  "candidate": "Common Pool Resource Dilemma",
+  "primary_original": "H. Scott Gordon (1954), The Economic Theory of a Common-Property Resource: The Fishery, JPE 62(2):124–142",
+  "doi": "10.1086/257497",
+  "primary_pdf": "https://faculty.econ.ucsb.edu/~tedb/Courses/Ec100C/Readings/ScottGordonFisheries.pdf",
+  "original_print_pages_visually_inspected": [
+    130,
+    131,
+    141,
+    142
+  ],
+  "primary_equations_original": "P=a-bL; L=cEP; R=L-E; dR/dE=0",
+  "original_full_historical_empirical_reanalysis": false,
+  "scientific_status": "LOCAL_EXACT_70_PASS_PENDING_REMOTE_CI",
+  "study_status": "PHASE_A_LOCAL_SOURCE_MATH_AND_FINITE_N_NEW_GAME",
+  "source_math_case": {
+    "a": "9",
+    "beta": "1/4",
+    "gamma": "1",
+    "q": "1",
+    "optimum_effort": "8",
+    "open_access_effort": "32",
+    "optimum_rent": "16",
+    "open_access_rent": "0",
+    "optimum_stock": "3",
+    "open_access_stock": "1"
+  },
+  "new_finite_n_player_game_not_original_author_model": true,
+  "new_96_parameter_sweep": {
+    "parameters": 12,
+    "population_sizes": 8,
+    "exact_fraction_brackets": 96
+  },
+  "new_three_player_discrete": {
+    "profiles": 729,
+    "distinct_unilateral_deviation_compares": 17496,
+    "pure_NE": [
+      "6,8,8",
+      "8,6,8",
+      "8,8,6"
+    ],
+    "equilibrium_total_effort": "22",
+    "equilibrium_rent": "110/13",
+    "planner_optimum_rent": "16"
+  },
+  "local_unittest_count": 70,
+  "local_failures": 0,
+  "zip": "research/R139/R139_Gordon1954_70_Tests_Exact_Source.zip",
+  "sha256": {
+    "ZIP": "ea53e392503dfab87803416e6dd6a935222fc2c6bf9539198db595b52b15eaa1",
+    "source.py": "162b5ff611b08723b29843fd0053d0214dead34babb23238ca083a8b357bdbd4",
+    "test.py": "7cd4cc9548214a43eebbb4d8d773dba340d85e98540bd947f18d65f917637c26",
+    "R139_EXACT_RESULTS.json": "28bdaf32dcca7875d905879ef90aef87b1b2e18d67a3add0052d31c09add6ee6"
+  },
+  "zip_git_blob_sha1": "95028de0e47f29bf99a2089c243d6efd6004a16c",
+  "real_subjects_newly_loaded": 0,
+  "new_independent_human_E2_scores": 0,
+  "new_real_history_E3_predictions": 0,
+  "past_R047_original_data_not_duplicated": true,
+  "prior_R047_R067_128_people_32_groups_1920_nonpractice_rows": true,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_candidate": "R140 05-016 Institutional Analysis and Development",
+  "planned_sequence": "Complete existing R, then classify and unify, then fuse"
+}

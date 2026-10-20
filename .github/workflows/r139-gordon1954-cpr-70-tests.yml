@@ -1,0 +1,52 @@
+name: R139 Gordon 1954 CPR 70 tests exact math
+on:
+  push:
+    paths:
+      - 'research/R139/R139_Gordon1954_70_Tests_Exact_Source.zip'
+      - '.github/workflows/r139-gordon1954-cpr-70-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-original-and-discrete-game:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check archive ZIP and all original Python and JSON SHA256
+        run: |
+          echo 'ea53e392503dfab87803416e6dd6a935222fc2c6bf9539198db595b52b15eaa1  research/R139/R139_Gordon1954_70_Tests_Exact_Source.zip' | sha256sum -c -
+          mkdir -p /tmp/r139
+          unzip -q research/R139/R139_Gordon1954_70_Tests_Exact_Source.zip -d /tmp/r139
+          cd /tmp/r139
+          echo '162b5ff611b08723b29843fd0053d0214dead34babb23238ca083a8b357bdbd4  r139_gordon1954_exact.py' | sha256sum -c -
+          echo '7cd4cc9548214a43eebbb4d8d773dba340d85e98540bd947f18d65f917637c26  test_r139_gordon1954_exact.py' | sha256sum -c -
+          echo '28bdaf32dcca7875d905879ef90aef87b1b2e18d67a3add0052d31c09add6ee6  R139_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run all 70 real scientific unittest cases
+        run: |
+          cd /tmp/r139
+          python -m unittest -v test_r139_gordon1954_exact.py
+      - name: Independently replay 96 finite-player intervals and 17496 unilateral deviations
+        run: |
+          cd /tmp/r139
+          python r139_gordon1954_exact.py > /tmp/r139_replayed.json
+          cmp -s /tmp/r139_replayed.json R139_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          a=json.load(open('/tmp/r139_replayed.json'))
+          o=a['original_case'];d=a['discrete_three_player']
+          assert (o['optimum_effort'],o['open_access_effort'],o['optimum_rent'],o['open_access_rent'])==('8','32','16','0')
+          assert (a['parameter_sweep_count'],d['profiles'],d['unilateral_deviation_checks'])==(96,729,17496)
+          assert d['equilibria_count']==3 and set(tuple(x) for x in d['equilibria'])=={('6','8','8'),('8','6','8'),('8','8','6')}
+          assert (d['social_optimal_rent'],d['equilibrium_rents'])==('16',['110/13'])
+          assert all(F(x['effort_hi'])-F(x['effort_lo'])<F(1,10**20) for x in a['numerical_fraction_intervals'])
+          assert (a['E2_new_person_level_predictions'],a['E3_new_historical_probabilistic_predictions'])==(0,0)
+          print('PASS R139 Gordon 1954 source equations + 96 certified intervals + 17496 discrete deviations')
+          PY
