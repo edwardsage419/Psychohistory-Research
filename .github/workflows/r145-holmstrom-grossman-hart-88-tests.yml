@@ -1,0 +1,56 @@
+name: R145 Holmstrom 1979 principal agent 88 exact tests
+on:
+  push:
+    paths:
+      - 'research/R145/R145_Holmstrom_GrossmanHart_88_Tests.zip'
+      - '.github/workflows/r145-holmstrom-grossman-hart-88-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-4-state-hidden-action-contract:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check original ZIP and original 3 files SHA256
+        run: |
+          echo '144ed08376f957ba697dc02587d741a689662e3f516602f8b02248de1e97fec5  research/R145/R145_Holmstrom_GrossmanHart_88_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r145
+          unzip -q research/R145/R145_Holmstrom_GrossmanHart_88_Tests.zip -d /tmp/r145
+          cd /tmp/r145
+          echo '043f233ae5a4fc93acffe88fb374e20eafe2b75f960a541aa02177958496f45a  r145_principal_agent_exact.py' | sha256sum -c -
+          echo '8e9f94d54560973a8671cd2cf46260c3fd90486aed80b65779117243e5d2d223  test_r145_principal_agent_exact.py' | sha256sum -c -
+          echo '09fa8909fb18b53e3d17e8700bad9e8e725e45edef4288f69b50891857f9f467  R145_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run genuine 88 KKT and probabilistic source tests
+        run: |
+          cd /tmp/r145
+          python -m unittest -v test_r145_principal_agent_exact.py
+      - name: Independently rerun all exact contracts and compare original JSON bytes
+        run: |
+          cd /tmp/r145
+          python r145_principal_agent_exact.py > replay.json
+          cmp replay.json R145_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('replay.json'))
+          assert d['source_contract_output_only']['expected_wage']=='39/64'
+          assert d['source_contract_redundant_monitor']['expected_wage']=='39/64'
+          assert d['source_contract_informative_monitor']['expected_wage']=='5505/9104'
+          assert F(d['monitor_saving'])==F(171,36416)
+          assert all(not x['better_than_no_monitor'] for x in d['monitor_fee_sensitivity'] if x['monitor_fee']!='0')
+          assert len(d['cost_sensitivity'])==4
+          assert d['uninformative_output_high_effort_feasible'] is False
+          assert d['weak_IC_high_effort_tie_break_assumed'] is True
+          assert d['strict_IC_guaranteed'] is False
+          assert d['source_original_authors_numerical_cases_reproduced'] is False
+          assert (d['new_E2_real_person_predictions'],d['new_E3_historical_event_predictions'])==(0,0)
+          print('R145 PASS exact moral hazard contracts, KKT, 24 signal permutations, 88 unit tests and 4 source hashes')
+          PY
