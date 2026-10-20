@@ -1,0 +1,55 @@
+name: R144 historical institutionalism 171 genuine exact tests
+on:
+  push:
+    paths:
+      - 'research/R144/R144_Mahoney_Capoccia_Kelemen_171_Tests.zip'
+      - '.github/workflows/r144-historical-institutionalism-171-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-sequence-counterfactual:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate ZIP source tests and JSON exact SHA256
+        run: |
+          echo '34d8d5cbf20aac09dcb0f3438d635eab6fef013bc75381e83b7d8be85811d0a9  research/R144/R144_Mahoney_Capoccia_Kelemen_171_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r144
+          unzip -q research/R144/R144_Mahoney_Capoccia_Kelemen_171_Tests.zip -d /tmp/r144
+          cd /tmp/r144
+          echo '5abf5a76ead93d073703e0cf7bba3d1a45692250654f68a2a4045e81be5bd573  r144_historical_institutionalism_exact.py' | sha256sum -c -
+          echo '782ae3958c1b60ad047c73e306cf0d1e1b3c96280f99ab5c2b6756a97748aaeb  test_r144_historical_institutionalism_exact.py' | sha256sum -c -
+          echo '9de14efba003219420451ea3191bc67d1c8e9fb4dc8121186c228754ca2b734e  R144_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Run all 171 real finite institutionalism unittest cases
+        run: |
+          cd /tmp/r144
+          python -m unittest -v test_r144_historical_institutionalism_exact.py
+      - name: Recalculate 7776 histories 38880 paired do checks and compare full JSON
+        run: |
+          cd /tmp/r144
+          python r144_historical_institutionalism_exact.py > replay.json
+          cmp replay.json R144_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          d=json.load(open('replay.json'))
+          assert d['total_sequences']==7776
+          assert d['total_paired_do_wait_comparisons']==38880
+          assert d['regime_entrenchment_histogram']=={'00':7663,'01':0,'10':96,'11':17}
+          assert (d['paired_counterfactual_regime_changed'],d['paired_counterfactual_lock_changed'],d['paired_counterfactual_either_changed'])==(373,69,388)
+          assert d['five_distinct_orderings_regime_histogram']=={'0':116,'1':4}
+          assert d['number_distinct_five_event_final_full_states']==7
+          assert d['two_independent_transition_implementations_exact_agreement']
+          assert d['backlash_after_unfortified'][0]==0 and d['backlash_after_fortified'][0]==1
+          assert d['source_author_numerical_model_rerun'] is False
+          assert d['external_historical_counterfactual_identified'] is False
+          assert (d['new_real_person_E2'],d['new_historical_event_E3'])==(0,0)
+          print('PASS R144 source-bounded 171 tests 7776 histories 38880 paired event substitutions')
+          PY

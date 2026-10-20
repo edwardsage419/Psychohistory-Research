@@ -1,0 +1,88 @@
+{
+  "research_id": "R144",
+  "date": "2026-10-20",
+  "catalogue_id": "06-002",
+  "priority": "P1",
+  "candidate": "Historical Institutionalism",
+  "firsthand_sources": [
+    {
+      "authors": "James Mahoney",
+      "year": 2000,
+      "doi": "10.1023/A:1007113830879",
+      "pages_visually_verified": [
+        507,
+        508,
+        509
+      ],
+      "url": "https://archiv.soms.ethz.ch/teaching/OppFall09/MahoneyPathDependence.pdf"
+    },
+    {
+      "authors": "Giovanni Capoccia, R. Daniel Kelemen",
+      "year": 2007,
+      "doi": "10.1017/S0043887100020852",
+      "pages_visually_verified": [
+        341,
+        342,
+        343
+      ],
+      "url": "https://users.ox.ac.uk/~ssfc0073/Writings%20pdf/Capoccia%20and%20Kelemen%20WP%202007.pdf"
+    }
+  ],
+  "source_primary_papers_math_model_rerun": false,
+  "source_causal_claims_empirically_validated": false,
+  "protocol_committed_before_code": "33f57f4ff24918f0bfeb9cf0221e9a9a4b9ece7a",
+  "scientific_status": "PHASE_A_LOCAL_171_TESTS_COMPLETE_PENDING_REMOTE_CI",
+  "self_constructed_states": [
+    "reformed",
+    "coalition",
+    "window",
+    "entrenched"
+  ],
+  "event_vocabulary": [
+    "O",
+    "M",
+    "A",
+    "E",
+    "B",
+    "W"
+  ],
+  "full_history_sequences": 7776,
+  "paired_intervention_counterfactuals": 38880,
+  "terminal_histogram": {
+    "not_reformed": 7663,
+    "reformed_unentrenched": 96,
+    "reformed_entrenched": 17
+  },
+  "pair_effects": {
+    "regime": 373,
+    "lock": 69,
+    "either": 388,
+    "both": 54
+  },
+  "five_distinct_events_permutations": 120,
+  "five_events_reform": 4,
+  "five_events_no_reform": 116,
+  "distinct_full_terminal_states_in_permutations": 7,
+  "all_7776_exact_two_code_paths_agree": true,
+  "actual_local_unittests": 171,
+  "local_failures_after_test_correction": 0,
+  "initial_invalid_test_input_fixed_not_production_logic": true,
+  "zip_git_blob_sha1": "442bfbd29a55d22a848a4bada6c83e6784cd1806",
+  "sha256": {
+    "R144_Mahoney_Capoccia_Kelemen_171_Tests.zip": "34d8d5cbf20aac09dcb0f3438d635eab6fef013bc75381e83b7d8be85811d0a9",
+    "r144_historical_institutionalism_exact.py": "5abf5a76ead93d073703e0cf7bba3d1a45692250654f68a2a4045e81be5bd573",
+    "test_r144_historical_institutionalism_exact.py": "782ae3958c1b60ad047c73e306cf0d1e1b3c96280f99ab5c2b6756a97748aaeb",
+    "R144_EXACT_RESULTS.json": "9de14efba003219420451ea3191bc67d1c8e9fb4dc8121186c228754ca2b734e"
+  },
+  "real_human_E2_new": 0,
+  "external_historical_E3_new": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_candidate": {
+    "catalogue_id": "06-003",
+    "priority": "P2",
+    "name_en": "Principal Agent Models",
+    "research_id": "R145"
+  },
+  "research_order": "complete remaining R -> classify -> fuse"
+}
