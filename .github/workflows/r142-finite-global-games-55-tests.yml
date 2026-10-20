@@ -1,0 +1,52 @@
+name: R142 finite global game 55 exact Bayesian tests
+on:
+  push:
+    paths:
+      - 'research/R142/R142_Finite_Global_Games_55_Tests.zip'
+      - '.github/workflows/r142-finite-global-games-55-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-Bayes-signal-replay:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: ZIP plus all 3 original contents source SHA256
+        run: |
+          echo '8cfa1ff3b015f984411d821ecc79b9672a1a8dc26e30716d589dd61ddd83e832  research/R142/R142_Finite_Global_Games_55_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r142
+          unzip -q research/R142/R142_Finite_Global_Games_55_Tests.zip -d /tmp/r142
+          cd /tmp/r142
+          echo 'e4da562dc6a81d56cb655729937d08f0eec6cb27368ec6b4043e4c55a4d338e7  r142_finite_private_signals.py' | sha256sum -c -
+          echo '069c766a8956757dadd7430ec4ff4f66070b9f4e0b0cbdf6ef888dc8bd64c84d  test_r142_finite_private_signals.py' | sha256sum -c -
+          echo '0d376c2ac57ea152c2e38ac4d16013214d07660f311885be45b52af39561a5d4  R142_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Execute 55 real tests including independent full Bayes NE enumeration
+        run: |
+          cd /tmp/r142
+          python -m unittest -v test_r142_finite_private_signals.py
+      - name: Independently rerun all 838656 strategy pairs and exact original JSON
+        run: |
+          cd /tmp/r142
+          python r142_finite_private_signals.py > replay.json
+          cmp replay.json R142_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          a=json.load(open('replay.json'))
+          assert a['sum_strategy_pairs_examined']==838656
+          counts={r['h']:[] for r in a['cases']}
+          for r in a['cases']:
+              counts[r['h']].append(r['pure_bayesian_NE_count'])
+              assert r['asymmetric_BNE_count']==0
+          assert counts=={0:[4,8,4],1:[2,2,2],2:[8,10,8]},counts
+          assert not a['full_game_author_theorem_reproduced']
+          assert (a['new_E2_real_human_predictive_scores'],a['new_E3_historical_predictive_scores'])==(0,0)
+          print('R142 PASS exact 838656 strategy pairs, all 9 private signal games, all sources SHA256')
+          PY
