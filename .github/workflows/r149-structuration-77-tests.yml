@@ -1,0 +1,56 @@
+name: R149 B six-year Giddens Sewell 77 exact tests
+on:
+  push:
+    paths:
+      - 'research/R149/R149_Giddens_Sewell_Structuration_77_Tests.zip'
+      - '.github/workflows/r149-structuration-77-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-six-year-structure-action:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify immutable ZIP source test and result SHA256
+        run: |
+          echo 'f1c042fd39182326a09be53f74f7b295fe83cad27b5c8cff8df7d1126695aee6  research/R149/R149_Giddens_Sewell_Structuration_77_Tests.zip' | sha256sum -c -
+          mkdir -p /tmp/r149b
+          python -m zipfile -e research/R149/R149_Giddens_Sewell_Structuration_77_Tests.zip /tmp/r149b
+          cd /tmp/r149b
+          echo '60a79eff858ae8299557cdf467d73c05e15e257f3ec62b9129e5e11d6e3a2f36  r149_structuration_exact.py' | sha256sum -c -
+          echo '4f5dcb5e24825d893a73de5fcf671868f1d38de9392dc61750891fc69bc1ec52  test_r149_structuration_exact.py' | sha256sum -c -
+          echo '50477e084b04a2b72422d73f7ce1fda535cad9819ffc6456f818ef5219c62cdb  R149_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Real 77 independent code tests
+        run: |
+          cd /tmp/r149b
+          python -m unittest -v test_r149_structuration_exact.py
+      - name: Independently reconstruct all 24 models and exact archived result
+        run: |
+          cd /tmp/r149b
+          python r149_structuration_exact.py > replay.json
+          cmp replay.json R149_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('replay.json'))
+          assert d['exact_scenarios']==24 and len(d['scenario_results'])==24
+          assert d['common_shock_action_covariance']=='1/256'
+          assert d['direct_order_witness']['up_then_down']==[0,1,0]
+          assert d['direct_order_witness']['down_then_up']==[0,0,1]
+          assert d['direct_order_witness']['frozen_up_then_down']==[0,0,0]
+          assert d['source_authors_numerical_models_reproduced'] is False
+          assert (d['new_E2_human_scores'],d['new_E3_historical_forecasts'])==(0,0)
+          for c in d['scenario_results']:
+              assert len(c['yearly_states'])==7
+              assert all(sum(map(F,row))==1 for row in c['yearly_states'])
+              assert c['independent_exact_match']
+          print('R149-B PASS 77 unit tests, 24 six-step structure-action models, exact replay')
+          PY
