@@ -1,0 +1,138 @@
+name: R131 Taylor Jonker 1978 original ESS vs continuous discrete stability and finite drift
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r131-taylor-jonker-1978-ess-dynamics-63-tests.yml'
+      - 'research/R131/r131_taylor_jonker_1978_evolutionary_game_exact.py'
+      - 'research/R131/test_r131_taylor_jonker_1978_evolutionary_game_exact.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  original-1978-ESS-stability-contradictions-and-finite-Moran:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run actual 63 firsthand 1978 and independent finite mathematical tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R131 python -m unittest -v \
+            research/R131/test_r131_taylor_jonker_1978_evolutionary_game_exact.py \
+            2>&1 | tee /tmp/r131_genuine_unittests.log
+          python - <<'PY'
+          import pathlib,re
+          log=pathlib.Path('/tmp/r131_genuine_unittests.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',log)==['63'],('R131_TRUE_63_TEST_COUNT_NOT_MET',log[-2800:])
+          assert re.search(r'\nOK\s*$',log),'R131_UNITTEST_FAILURES'
+          print('R131_GENUINE_63_TESTS_PASS')
+          PY
+      - name: Independently replay original paper p150 p151 two exact stability counterexamples and 504 invasion equalities
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R131 python - <<'PY'
+          from fractions import Fraction as F
+          import hashlib,json,pathlib
+          import r131_taylor_jonker_1978_evolutionary_game_exact as m
+
+          cyc=m.original_cyclic_counterexample_audit()
+          assert cyc['primary_exact_payoff_matrix']==[
+              ['-1/2','1','-1'],['-1','-1/2','1'],['1','-1','-1/2']
+          ]
+          assert cyc['equilibrium_p']==['1/3','1/3','1/3']
+          assert cyc['mean_fitness']=='-1/6'
+          assert cyc['continuous_trace']=='-1/3'
+          assert cyc['continuous_determinant']=='13/36'
+          assert cyc['continuous_locally_strictly_stable']
+          assert cyc['discrete_trace']=='8/5'
+          assert cyc['discrete_determinant']=='28/25'
+          assert cyc['discrete_locally_unstable']
+          assert 'for any q!=p' in cyc['universal_linear_game_ESS_proof']
+          assert F(cyc['mutant_e0_at_share_one_tenth_advantage'])==F(-1,30)
+
+          alpha=m.original_alpha_counterexample_audit()
+          assert alpha['primary_exact_payoff_matrix']==[
+              ['2','1','5'],['5','1','0'],['1','4','3']
+          ]
+          assert alpha['alpha']=='1'
+          assert alpha['full_support_exact_equilibrium_p']==['3/7','11/35','9/35']
+          assert alpha['each_present_pure_type_fitness']=='86/35'
+          assert alpha['continuous_trace']=='-18/35'
+          assert alpha['continuous_determinant']=='297/245'
+          assert alpha['continuous_locally_strictly_stable']
+          assert alpha['exact_invader_e3']==['0','0','1']
+          assert alpha['mutant_e3_at_share_one_tenth_advantage']=='3/350'
+          assert not alpha['evolutionarily_stable_strategy']
+
+          inv=m.original_p147_invasion_grid()
+          assert inv['simplex_states_1_over_6_lattice']==28
+          assert inv['mutant_pure_types_each']==3
+          assert inv['original_matrix_examples']==2
+          assert inv['exact_direct_vs_expansion_comparisons']==504
+
+          moran=m.project_finite_stochastic_drift_counterexample()
+          assert moran['project_created_not_a_1978_source_theorem_or_simulation']
+          assert moran['population_N']==5
+          assert moran['project_single_mutant_risk_of_eventual_fixation']=='16/211'
+          assert moran['project_neutral_single_mutant_fixation']=='1/5'
+          assert moran['N2_to_8_neutral_and_disadvantaged_selection_checks']==7
+          assert moran['selection_disadvantage_does_not_imply_zero_finite_fixation']
+          assert moran['real_population_size_or_behavior_frequency_estimated'] is False
+
+          root=pathlib.Path('research/R131')
+          source_names=[
+              'r131_taylor_jonker_1978_evolutionary_game_exact.py',
+              'test_r131_taylor_jonker_1978_evolutionary_game_exact.py',
+              'R131_TAYLOR_JONKER_1978_ORIGINAL_ESS_DYNAMIC_COUNTEREXAMPLES_AND_FINITE_DRIFT_SCIENTIFIC_REPORT_2026-10-20.md'
+          ]
+          hashes={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in source_names}
+          receipt={
+              'research_id':'R131','original_catalogue_id':'05-007','priority':'P1','phase':'A',
+              'status':'R131_TAYLOR_JONKER_1978_63_TEST_504_INVASION_2_ORIGINAL_NON_EQUIVALENCE_PASS',
+              'primary_original_authors':'Peter D Taylor and Leo B Jonker, 1978, Mathematical Biosciences 40:145-156',
+              'primary_original_DOI':'10.1016/0025-5564(78)90077-9',
+              'primary_PDF_linked_from_author_publications':'https://static1.squarespace.com/static/5dc9917c4cdb1467e1e54c4c/t/6526a5647942e33b89ab7af1/1697031525653/1978%2Bevolutionarily%2Bstable%2Bstrategies%2Band%2Bgame%2Bdynamics.pdf',
+              'original_printed_pages_visually_reviewed':[147,149,150,151],
+              'original_taylor_1978_source_p147_direct_vs_expanded_invasion_exact':inv,
+              'original_taylor_1978_p150_regular_ESS_continuous_stable_discrete_unstable':cyc,
+              'original_taylor_1978_p151_continuous_stable_but_not_ESS':alpha,
+              'independent_exact_jacobian_programs':[
+                  'symbolic differentiation of finite three-strategy simplex payoff polynomial',
+                  'independent exact cubic-polynomial Richardson central differences'
+              ],
+              'actual_original_1978_linear_ESS_formula_vs_direct_math_checks':504,
+              'pure_project_no_original_published_finite_stochastic_Moran_example':moran,
+              'new_human_or_animal_individual_observations_read':0,
+              'original_1974_Maynard_Smith_full_article_read':False,
+              'full_original_1978_nonlinear_population_trajectories_reproduced':False,
+              'finite_project_Moran_rates_causally_estimated_from_real_groups':False,
+              'original_full_ESS_evolutionary_stability_multistrategy_classification_reserved_R133':True,
+              'original_1978_full_replicator_trajectory_theory_reserved_R132':True,
+              'actual_independent_unittests_executed':63,
+              'unit_test_failures':0,
+              'code_test_scientific_report_SHA256':hashes,
+              'new_independent_real_human_E2_prediction_scores':0,
+              'new_historical_external_forecast_E3_scores':0,
+              'R073':'FROZEN','PESEN_v0_1':'FROZEN'
+          }
+          out=root/'R131_PHASE_A_1978_63_TEST_504_INVASION_SOURCE_FINITE_DRIFT_CI_ACCEPTANCE.json'
+          out.write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print('R131_TRUE_SHA256_GITHUB_MACHINE_RECEIPT',hashlib.sha256(out.read_bytes()).hexdigest())
+          PY
+      - name: Commit real CI run receipt and three first-party evidence hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R131/R131_PHASE_A_1978_63_TEST_504_INVASION_SOURCE_FINITE_DRIFT_CI_ACCEPTANCE.json
+          git commit -m "results(R131): original 1978 ESS vs dynamics 63 tests 504 exact invasion checks verified"
+          git pull --rebase origin main
+          git push origin HEAD:main
