@@ -1,0 +1,81 @@
+name: R187 Ordinal 12 Exact Proportional Odds Worlds
+on:
+  push:
+    paths:
+      - 'research/R187/r187_exact_ordinal_logit.py'
+      - '.github/workflows/r187-exact-ordinal-logit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-ordinal-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate independent ordinal probabilities and likelihoods and frozen crossing effects
+        run: |
+          cd research/R187
+          python r187_exact_ordinal_logit.py --test
+  complete-1950-table-source-prediction-and-archive:
+    needs: two-python-exact-ordinal-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact evaluate all 12 three-level ordinal source worlds
+        run: |
+          cd research/R187
+          python r187_exact_ordinal_logit.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          r=json.loads(Path('R187_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R187_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          lib=json.loads(Path('R187_ALL_325_ORDINAL_FIT_PROFILES.json').read_text())
+          assert r['world_count']==12 and len(r['source_world_results'])==12
+          assert r['all_source_training_tables']==1950
+          assert len(r['locked_opposite_threshold_sign_counterexample'])==2
+          assert r['unique_fitted_count_tables']==325
+          assert lib['unique_training_tables']==325 and len(lib['profiles'])==325
+          assert all(x['both_independent_ordinal_probability_and_likelihood_routes_pass'] for x in lib['profiles'])
+          with Path('R187_ALL_1950_ORDINAL_TRAINING_TABLES.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==1950
+          assert a['result_sha256']==sha256(Path('R187_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['source_csv_sha256']==sha256(Path('R187_ALL_1950_ORDINAL_TRAINING_TABLES.csv').read_bytes()).hexdigest()
+          assert a['full_fit_library_sha256']==sha256(Path('R187_ALL_325_ORDINAL_FIT_PROFILES.json').read_bytes()).hexdigest()
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R187_Exact_Ordinal_PO_12_Worlds_Archive.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R187_EXACT_ORDINAL_COMMON_SLOPE_VS_THRESHOLD_CROSSING_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R187-12-exact-ordinal-proportional-odds-worlds
+          path: |
+            research/R187/R187_EXACT_RESULTS.json
+            research/R187/R187_ALL_1950_ORDINAL_TRAINING_TABLES.csv
+            research/R187/R187_ALL_325_ORDINAL_FIT_PROFILES.json
+            research/R187/R187_FINAL_MACHINE_ACCEPTANCE.json
+            research/R187/R187_Exact_Ordinal_PO_12_Worlds_Archive.zip
+          retention-days: 90
+      - name: Permanently commit artificial E1 ordinal results to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R187/R187_EXACT_RESULTS.json research/R187/R187_ALL_1950_ORDINAL_TRAINING_TABLES.csv research/R187/R187_ALL_325_ORDINAL_FIT_PROFILES.json research/R187/R187_FINAL_MACHINE_ACCEPTANCE.json research/R187/R187_Exact_Ordinal_PO_12_Worlds_Archive.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R187): 1950 exact ordinal source tables and threshold-effect model comparisons'
+            git push origin HEAD:main
+          fi
