@@ -1,0 +1,76 @@
+name: R163 Success Bias 72 Exact Payoff Worlds 102 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R163/r163_success_bias_payoff_exact.py'
+      - 'research/R163/test_r163_success_bias_payoff_exact.py'
+      - '.github/workflows/r163-success-bias-102-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-payoff-strategy-oracles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Pin original Git blob identities
+        run: |
+          cd research/R163
+          test "$(git hash-object r163_success_bias_payoff_exact.py)" = "2d8a0bab6bf29f4139111219d19391404c6ff6f3"
+          test "$(git hash-object test_r163_success_bias_payoff_exact.py)" = "d36e6f5876dcb6b2ec2ada1a0203924be311f5b4"
+          sha256sum r163_success_bias_payoff_exact.py test_r163_success_bias_payoff_exact.py
+      - name: Generate 72 frozen Compare Means and Imitate Best cases
+        run: |
+          cd research/R163
+          python r163_success_bias_payoff_exact.py > R163_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          data=json.load(open('R163_EXACT_RESULTS.json'))
+          assert data['world_count']==72 and len(data['worlds'])==72
+          assert len({x['id'] for x in data['worlds']})==72
+          assert all(x['independent_exact_oracles_equal'] for x in data['worlds'])
+          assert not data['Mesoudi_human_behavior_data_reused']
+          assert not data['original_Baldini_dynamics_recreated']
+          for x in data['worlds']:
+            p=F(x['probability_copy_A'])
+            baseline=F(x['random_person_baseline_copy_A'])
+            correct=x['synthetic_correct_action']
+            accuracy=p if correct==1 else 1-p
+            reference=baseline if correct==1 else 1-baseline
+            assert F(x['synthetic_accuracy'])==accuracy
+            assert F(x['synthetic_baseline_accuracy'])==reference
+            assert F(x['advantage_over_random_person'])==accuracy-reference
+          print('R163 PASS 72 registered artificial success strategy conditions, independent oracles and tie controls')
+          PY
+          sha256sum R163_EXACT_RESULTS.json
+      - name: Run 102 genuine unittest methods
+        run: |
+          cd research/R163
+          python -m unittest -v test_r163_success_bias_payoff_exact.py
+      - name: Archive exact source tests and full artificial JSON
+        run: |
+          cd research/R163
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R163_Success_Bias_72_Worlds_102_Tests.zip','w') as z:
+              for name in ('r163_success_bias_payoff_exact.py','test_r163_success_bias_payoff_exact.py','R163_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R163_Success_Bias_72_Worlds_102_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R163-complete-synthetic-success-bias-${{ matrix.python-version }}
+          path: research/R163/R163_Success_Bias_72_Worlds_102_Tests.zip
+          retention-days: 90
