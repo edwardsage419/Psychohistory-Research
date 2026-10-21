@@ -1,0 +1,126 @@
+{
+  "id": "R163",
+  "date": "2026-10-21",
+  "original_catalogue": "P1 / 07-005 Success Biased Transmission",
+  "scientific_status": "CLOSED_BOUNDED_E1_72_SYNTHETIC_OBSERVED_PAYOFF_WORLDS_102_DISTINCT_TEST_METHODS",
+  "preregistered_protocol_commit": "a7cc84b1bb1025f7af3e182e4957d6556cb063b2",
+  "source_records": [
+    {
+      "author": "Ryan Baldini",
+      "year": 2013,
+      "title": "Two success-biased social learning strategies",
+      "journal": "Theoretical Population Biology 86:43-49",
+      "doi": "10.1016/j.tpb.2013.03.005",
+      "publisher_extended_abstract_and_PubMed_checked": true,
+      "original_complete_evolutionary_equations_reproduced": false
+    },
+    {
+      "author": "Ryan Baldini",
+      "year": 2012,
+      "title": "Success-biased social learning: Cultural and evolutionary dynamics",
+      "doi": "10.1016/j.tpb.2012.06.005",
+      "original_publisher_and_PubMed_abstract_checked": true,
+      "original_stochastic_process_reproduced": false
+    },
+    {
+      "author": "Alex Mesoudi",
+      "year": 2011,
+      "title": "An experimental comparison of human social learning strategies: payoff-biased social learning is adaptive but underused",
+      "doi": "10.1016/j.evolhumbehav.2010.12.001",
+      "original_publisher_article_sections_checked": true,
+      "author_PDF_located": true,
+      "person_level_data_acquired": false
+    },
+    {
+      "authors": "Kendal et al.",
+      "year": 2018,
+      "title": "Social Learning Strategies: Bridge-Building between Fields",
+      "doi": "10.1016/j.tics.2018.04.003",
+      "original_publisher_abstract_checked": true
+    }
+  ],
+  "model_scope": "six synthetic three-demonstrator observed payoff tables with external correct-token labels and one-round choices; no observed human subjects",
+  "frozen_factorial": {
+    "profiles": 6,
+    "score_display_transforms": 3,
+    "strategies": [
+      "Imitate the Best",
+      "Compare Means"
+    ],
+    "externally_assigned_correct_tokens": 2,
+    "total": 72
+  },
+  "strict_independent_Fraction_oracles": [
+    "direct winner and within-variant mean ranking",
+    "enumerated highest-scoring demonstrators and independent cross-product comparisons for group means"
+  ],
+  "all_72_independent_Fraction_outputs_equal": true,
+  "prespecified_counterexamples": {
+    "raw_A_outlier_best_probability_A": "1",
+    "raw_A_outlier_means_probability_A": "0",
+    "raw_B_outlier_best_probability_A": "0",
+    "raw_B_outlier_means_probability_A": "1",
+    "raw_best_tie_best_probability_A": "1/2",
+    "raw_best_tie_means_probability_A": "1",
+    "raw_means_tie_best_probability_A": "1",
+    "raw_means_tie_means_probability_A": "1/2",
+    "flat_A_outlier_best_probability_A": "2/3",
+    "flat_A_outlier_means_probability_A": "1/2",
+    "observed_A_outlier_best_when_A_correct_advantage": "1/3",
+    "observed_A_outlier_best_when_B_correct_disadvantage": "-1/3"
+  },
+  "CI": {
+    "first_run": 39528469903,
+    "sha256_checked_run": 39528566826,
+    "archival_run": 39528599475,
+    "archival_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39528599475",
+    "archival_conclusion": "success",
+    "archival_jobs": [
+      {
+        "id": 118988992380,
+        "python": "3.11",
+        "tests": 102,
+        "conclusion": "success"
+      },
+      {
+        "id": 118988992593,
+        "python": "3.12",
+        "tests": 102,
+        "conclusion": "success"
+      },
+      {
+        "id": 118989052734,
+        "role": "permanent source data publisher",
+        "tests": 102,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_test_methods": 102,
+    "total_real_test_executions_three_runs": 714,
+    "test_failures": 0
+  },
+  "archive_commit": "310acadf9b16124b0df5a386620aa6aa851db964",
+  "sha256": {
+    "r163_success_bias_payoff_exact.py": "c680c53cbbcbc52200ffdd3c7b40b37a32ea6736c0011a64a9c21107271e7262",
+    "test_r163_success_bias_payoff_exact.py": "c2349e512b8c1fc1c23dd905109f1416e58940b56eee41ac45f5bc8aaa5f611c",
+    "R163_EXACT_RESULTS.json": "23979510af73c9b92e9cadb85ee86a9223401c4d13a00240f832938f046dde22",
+    "R163_Success_Bias_72_Worlds_102_Tests.zip": "a3313a85ab0d5aa4865f28747ec05a7c3bcdc36716a12fddf6fa54d286e279cf"
+  },
+  "git_blob_sha1": {
+    "r163_success_bias_payoff_exact.py": "2d8a0bab6bf29f4139111219d19391404c6ff6f3",
+    "test_r163_success_bias_payoff_exact.py": "d36e6f5876dcb6b2ec2ada1a0203924be311f5b4",
+    "R163_EXACT_RESULTS.json": "1f1dba0e64d8540695544bcde50e3df5ebcbf5e6",
+    "R163_Success_Bias_72_Worlds_102_Tests.zip": "cf93d942b3a77f095c50f7ea449a9f51c8b5fb30"
+  },
+  "new_E2_out_of_sample_human_predictions": 0,
+  "new_E3_external_historical_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R164",
+    "original_catalogue_id": "07-006",
+    "priority": "P1",
+    "name": "Content Biased Transmission"
+  },
+  "sequence": "all original R models, then unified classification, then fusion"
+}
