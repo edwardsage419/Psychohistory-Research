@@ -1,4 +1,4 @@
-name: R164 Content Salience 72 Exact Worlds 102 Tests Preliminary
+name: R164 Content Salience 72 Exact Worlds 102 Tests SHA256 Pinned
 on:
   push:
     paths:
@@ -26,7 +26,8 @@ jobs:
           cd research/R164
           test "$(git hash-object r164_content_salience_exact.py)" = "b5ab1235bd7355fd2de55431c889580092085312"
           test "$(git hash-object test_r164_content_salience_exact.py)" = "f0b0a9b7e7d2540029a3766b5403d11b7e2db976"
-          sha256sum r164_content_salience_exact.py test_r164_content_salience_exact.py
+          echo '27252e908413335780e43f8bb4bb089d2abb0cd4ba31cc2967d63480f6f89133  r164_content_salience_exact.py' | sha256sum -c -
+          echo 'a5dc28d23e8ed11f3c3b6b4ec3b8bd3e8d5d8ff3d6ef1e7ccc85f4666b84b013  test_r164_content_salience_exact.py' | sha256sum -c -
       - name: Regenerate all 72 full 5-point artificial content-frequency trajectories
         run: |
           cd research/R164
@@ -54,7 +55,7 @@ jobs:
                 assert F(point['next_A'])==(1-e)*q+e/2
           print('R164 72 exact content worlds fully checked by independent Fraction recurrence')
           PY
-          sha256sum R164_EXACT_RESULTS.json
+          echo 'ce27a70aee6ee82ca360efc93b12632c44f6bbd7a73b32bf1aaafc602df69f52  R164_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run 102 genuine full-world and mechanism unittest methods
         run: |
           cd research/R164
@@ -71,7 +72,7 @@ jobs:
                   i.external_attr=0o644<<16
                   z.writestr(i,open(name,'rb').read())
           PY
-          sha256sum R164_Content_Salience_72_Worlds_102_Tests.zip
+          echo '271beda59c738310a608b7e65eb88f9144159d40441aef180ddf7aa11b4f3e55  R164_Content_Salience_72_Worlds_102_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R164-original-content-worlds-${{ matrix.python-version }}
