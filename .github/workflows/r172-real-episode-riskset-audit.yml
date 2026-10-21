@@ -6,7 +6,7 @@ on:
       - '.github/workflows/r172-real-episode-riskset-audit.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   inspect-authentic-CC0-historical-episodes:
     runs-on: ubuntu-latest
@@ -57,3 +57,33 @@ jobs:
             research/R172/R172_ORIGINAL_EVENT_DATA_BYTE_AUDIT.json
             research/R172/R172_REAL_HISTORICAL_EPISODE_STRUCTURE_AUDIT.json
           retention-days: 90
+
+  independently-archive-original-CC0-historical-event-bytes:
+    needs: inspect-authentic-CC0-historical-episodes
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Re-acquire immutable original data and check three separate source byte identities
+        run: |
+          cd research/R172
+          python r172_original_event_source_bytes_audit.py
+          python r172_real_episode_risk_set_gate.py
+          echo 'ed8e29368d06d0fa6d597df567eb21e7ac27fa849e1cdfd90b76167c8b5778ba  source/Original_Replication_dataset.tab' | sha256sum -c -
+          echo 'ddca691b25a664ce13ef2471184e3d5ae3ed62cb72521e0593bff770efb0e4e6  source/Original_Replication_dataset_as_uploaded.bin' | sha256sum -c -
+          echo '664cf425684b97b8a7bf835ed748955e2e34426e8a14c0db8abbf98a4fb2e3ad  source/Original_Replication_code_Stata.do' | sha256sum -c -
+          echo '96874989900a9b542b2701ec1110e81ce923d7d0fa452059ac546beffa7ffef2  R172_ORIGINAL_EVENT_DATA_BYTE_AUDIT.json' | sha256sum -c -
+          echo '20ffe5c87416cbf5f9479907e26b5bc256d5c57638f689a1baa0ff4cffb92926  R172_REAL_HISTORICAL_EPISODE_STRUCTURE_AUDIT.json' | sha256sum -c -
+      - name: Permanently archive CC0 source original-format bytes, converted table, code and risk-set audits
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R172/source/Original_Replication_dataset.tab research/R172/source/Original_Replication_dataset_as_uploaded.bin research/R172/source/Original_Replication_code_Stata.do research/R172/R172_ORIGINAL_EVENT_DATA_BYTE_AUDIT.json research/R172/R172_REAL_HISTORICAL_EPISODE_STRUCTURE_AUDIT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R172): CC0 original 1731 historical regime years and dataset/file-level source audit'
+            git push origin HEAD:main
+          fi
