@@ -1,0 +1,81 @@
+name: R192 Latent Class 8 Exact Binary Indicator Worlds
+on:
+  push:
+    paths:
+      - 'research/R192/r192_exact_two_class_latent_structure.py'
+      - '.github/workflows/r192-exact-latent-class.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-latent-class-identity-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check A/B observational aliases, label swaps and exact source Brier
+        run: |
+          cd research/R192
+          python r192_exact_two_class_latent_structure.py --test
+  full-eight-worlds-manifest-only-fit-and-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-exact-latent-class-identity-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate 1312 independent training datasets and 186 identifiable manifest fits
+        run: |
+          cd research/R192
+          python r192_exact_two_class_latent_structure.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          d=json.loads(Path('R192_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R192_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          profiles=json.loads(Path('R192_ALL_186_LATENT_CLASS_FIT_PROFILES.json').read_text())
+          assert d['world_count']==8 and len(d['worlds'])==8
+          assert d['complete_ordered_training_datasets']==1312
+          assert len(d['fixed_full_manifest_aliases'])==4
+          assert profiles['unique_training_profiles']==186 and len(profiles['profiles'])==186
+          assert all(w['full_source_probability_and_independent_numeric_loss_agree'] for w in d['worlds'])
+          assert all(x['two_independent_PMF_and_likelihood_methods_equal'] for x in profiles['profiles'])
+          with Path('R192_ALL_1312_OBSERVABLE_TRAINING_DATASETS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==1312
+          assert a['result_sha256']==sha256(Path('R192_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['source_CSV_sha256']==sha256(Path('R192_ALL_1312_OBSERVABLE_TRAINING_DATASETS.csv').read_bytes()).hexdigest()
+          assert a['manifest_profile_SHA256']==sha256(Path('R192_ALL_186_LATENT_CLASS_FIT_PROFILES.json').read_bytes()).hexdigest()
+          assert d['new_E2']==d['new_E3']==0
+          with zipfile.ZipFile('R192_Exact_8_Latent_Class_Worlds.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R192_EXACT_LATENT_MANIFEST_ALIAS_VS_CLASS_POSTERIOR_IDENTIFICATION_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R192-8-exact-latent-class-manifest-worlds
+          path: |
+            research/R192/R192_EXACT_RESULTS.json
+            research/R192/R192_ALL_1312_OBSERVABLE_TRAINING_DATASETS.csv
+            research/R192/R192_ALL_186_LATENT_CLASS_FIT_PROFILES.json
+            research/R192/R192_FINAL_MACHINE_ACCEPTANCE.json
+            research/R192/R192_Exact_8_Latent_Class_Worlds.zip
+          retention-days: 90
+      - name: Permanently archive complete bounded E1 latent classes to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R192/R192_EXACT_RESULTS.json research/R192/R192_ALL_1312_OBSERVABLE_TRAINING_DATASETS.csv research/R192/R192_ALL_186_LATENT_CLASS_FIT_PROFILES.json research/R192/R192_FINAL_MACHINE_ACCEPTANCE.json research/R192/R192_Exact_8_Latent_Class_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R192): full eight exact latent class worlds and manifestation versus hidden-label alias'
+            git push origin HEAD:main
+          fi
