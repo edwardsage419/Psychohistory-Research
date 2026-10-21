@@ -15,3 +15,15 @@
 SHA256：源码 `ed60ed3952c3e75efd046456e238f260082a839739e81b5cf87deec4c9185d97`；单测 `3b9f0d49d5930fd4c353fc4b72ec1781c42695a084f49edd623391323c379ca7`；JSON `9b2002c0aea89401660bd4b117b4dfcdec9c844479c7cd61e9e32b8fb5bc0f24`；ZIP `d7f5284aeabf3cc6e67317e3e38c67722c2b4d143197b235867401756252dd57`。在 `research/R153` 执行 `python r153_spatial_od.py > R153_EXACT_RESULTS.json`、`python -m unittest -q test_r153_spatial_od.py` 可完整复验；无第三方包依赖，ZIP使用标准库ZIP_LZMA。
 
 下一原始目录：**R154 P1 / 06-012 Stock and Flow System Dynamics（系统动力学存量流量）**。先全部R系列，再归纳分类，最后熔炼。
+
+## R153-B 附加验证：三地区双边约束及列乘吸引力不可识别（2026-10-21）
+
+**这是原R153-A的独立补充，不替代上文60个2×2人工场景和74项原生测试。** 本补充另有计算前冻结协议 [2026-10-21先行版](../../protocols/R153_WILSON1971_SINKHORN_KNOPP1967_DOUBLE_CONSTRAINED_SPATIAL_IPF_PRESCORE_FREEZE_2026-10-21.md)（commit `26d713ef`）、[如实记录150次初次未收敛的协议修订001](../../protocols/R153_AMENDMENT001_IPF_150_TO_450_KEEP_STRICT_1E25_2026-10-21.md)（commit `6bf830c8`）。初轮24个预注册三地区配置中有4个150轮以内未达到原定余额残差1e-25；修订只把最大迭代次数提高为450，**没有放宽精度、数据集或两独立算法要求**。后续所有24项最高263轮达到同一1e-25门槛，且双算法单格差值保持≤1e-24。
+
+新增的一手证据为 Alan G. Wilson (1971), *A Family of Spatial Interaction Models, and Associated Developments*，*Environment and Planning A* 3(1):1–32，DOI [10.1068/a030001](https://doi.org/10.1068/a030001)（核读出版方原刊摘要；**未核读完整论文扫描**）；R. Sinkhorn & P. Knopp (1967), *Concerning Nonnegative Matrices and Doubly Stochastic Matrices*，*Pacific Journal of Mathematics* 21(2):343–348，DOI [10.2140/pjm.1967.21.343](https://doi.org/10.2140/pjm.1967.21.343)（直接视觉核读原刊343–344页）。本研究的三地区人工矩阵不是作者原始经验样本，也不将1967的双随机方阵定理原封不动套用至任意非单位边际。
+
+新增原创数学机制：**24个3×3矩阵**＝2地区坐标×3距离指数×2目的地列吸引力×2组合边际，源/目的总量均60，全部9条OD边为正且包括区域内活动，与R152不允许自环的迁移设定区别。每个情景的目的地预算和来源预算均严格匹配。列乘吸引力因子 `K_ij' = K_ij A_j` 在列总额C固定时可吸收进列缩放系数v，导致即使A变化，平衡T也相同；而仅固定起点流量时A通常会改变目的地比例，故是**约束结构下的具体不可识别性**，不等于真实地区吸引力无影响。另精确Fraction复核2×2正核交叉乘积比3的解析示例，并对含结构零的可行/不可行预算做行子集容量约束反例。
+
+**真实远端验收**：[GitHub Actions run39619651934](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39619651934)：Python 3.11、3.12 各116项单测，共232次真实运行、0失败；两环境重生成24个结果 JSON并逐字节相同、ZIP与内部三个文件各4份SHA256均验证通过；第三独立归档任务额外再次核对5项固定哈希。前一次研究测试运行 [run39618843001](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39618843001) 同样全绿，但中途发现原R153-A与本补充使用同一结果JSON文件路径，已从旧固定Git提交 `9aaeccf` **恢复原版结果文件**并将新补充结果迁移到独立文件名，随后修订重跑工作流避免今后再次覆盖。原R153-A资料和收据内容均保留、两个ZIP独立可复算。科研资格 E1人工模型，E2新增0、E3新增0。
+
+补充研究永久文件：[完整研究包（116单测、24案例JSON、源码）](R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip)｜[独立补充结果JSON](R153_WILSON_SINKHORN_24_CASES_EXACT_RESULTS.json)｜[补充科学报告](R153_B_DOUBLE_CONSTRAINED_24_MODELS_SCIENTIFIC_REPORT_2026-10-21.md)｜[补充机器验收收据](R153_B_232_REAL_TESTS_GITHUB_CI_ACCEPTANCE.json)。本补充结果不会覆盖本目录原有的 [R153-A 60组JSON](R153_EXACT_RESULTS.json)。

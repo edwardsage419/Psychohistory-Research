@@ -1,0 +1,117 @@
+{
+  "research_id": "R153-B",
+  "date": "2026-10-21",
+  "catalogue_id": "06-011",
+  "priority": "P2",
+  "parent_research": "R153-A preexisting 60 exact 2x2 OD models / 74 test suite",
+  "scientific_status": "CLOSED_BOUNDED_E1_SUPPLEMENTARY_24_DOUBLE_CONSTRAINED_SPATIAL_MATRICES_116_TESTS",
+  "separate_formalism_from_previous_R153_A": true,
+  "primary_sources": [
+    {
+      "author": "A. G. Wilson",
+      "year": 1971,
+      "doi": "10.1068/a030001",
+      "publisher_original_abstract_read": true,
+      "full_original_article_pdf_visually_read": false
+    },
+    {
+      "authors": "Richard Sinkhorn and Paul Knopp",
+      "year": 1967,
+      "doi": "10.2140/pjm.1967.21.343",
+      "original_print_pages_visually_read": [
+        343,
+        344
+      ],
+      "source_original_double_stochastic_matrix_theorem_not_identical_to_all_project_general_margins": true
+    }
+  ],
+  "prescore_protocol_commit": "26d713ef35ed0420fce3b47dad999fc7f24cacca5",
+  "transparent_amendment": {
+    "commit": "6bf830c8bf98c745ec24f379d975ea9d9fe125b7",
+    "original_iteration_cap": 150,
+    "initial_local_scenarios_passing_frozen_precision": 20,
+    "initial_local_scenarios_not_converged": 4,
+    "only_amended_parameter": "MAX_ITERATIONS",
+    "amended_iteration_cap": 450,
+    "residual_tolerance_unchanged": "1e-25",
+    "algorithm_disagreement_tolerance_unchanged": "1e-24",
+    "slowest_iterations_final": 263,
+    "not_entirely_result_blind": true
+  },
+  "mathematical_scope": {
+    "origin_destination_zones": 3,
+    "positive_kernel_including_intrazonal": true,
+    "scenarios": 24,
+    "origin_margin_schemes": 2,
+    "destination_margin_schemes": 2,
+    "layout_schemes": 2,
+    "distance_exponents": 3,
+    "attraction_vectors": 2,
+    "independent_iteration_algorithms": 2,
+    "all_pass_residual_threshold": true,
+    "column_factor_unidentifiability_under_both_constraints": true,
+    "alpha_zero_closed_form": "T_ij = R_i*C_j/60",
+    "separate_exact_Fraction_two_by_two_crossratio": "3",
+    "Hall_support_feasibility_audits": true,
+    "all_project_synthetic": true
+  },
+  "CI": {
+    "canonical_run_id": 39619651934,
+    "canonical_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39619651934",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 119289374391,
+        "python": "3.12",
+        "tests": 116,
+        "seconds": 1.277,
+        "sha256_passes": 8,
+        "all_json_replayed_byte_equal": true,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 119289374779,
+        "python": "3.11",
+        "tests": 116,
+        "seconds": 1.211,
+        "sha256_passes": 8,
+        "all_json_replayed_byte_equal": true,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 119289475417,
+        "role": "independent_permanent_publisher",
+        "sha256_passes": 5,
+        "conclusion": "success"
+      }
+    ],
+    "real_test_executions_in_canonical_run": 232,
+    "unique_test_methods": 116,
+    "failures": 0,
+    "initial_completed_run_id": 39618843001,
+    "initial_completed_run_had_232_tests_passed": true
+  },
+  "sha256": {
+    "r153_spatial_double_constraint.py": "7f27797739074f2504dfe10b9e3442441dd72d682c896c4cecdde732157516b1",
+    "test_r153_spatial_double_constraint.py": "3a92a292d6e43bb35e13e416751889aa718d5fc40b0f89b9046a332031f56afd",
+    "R153_WILSON_SINKHORN_24_CASES_EXACT_RESULTS.json": "5e66403d0011e02e8a5575403b6408d33aff2a8c2b0aa5727cfcac894648f9b7",
+    "R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip": "86857ec889b25950778e5a16434bd3710970e25717a008861bd7196d7726e05c",
+    "R153_PRECISE_SOURCE_STAGING.tar.xz": "e02af282981b9cb281019f0f1c06dfb56831f1d11117a594f7928908ad8e5a0b"
+  },
+  "archival_identity": {
+    "previous_original_60_case_result_blob_restored": "ea1e43aa468b1fdd0f91f3ad9aa916dcc629044e",
+    "supplementary_24_case_json_blob": "6491aaa9b05571fbae7dee243906144a6f1a916d",
+    "archive_name_collision_discovered_and_fixed": true,
+    "restore_commit": "0f533a8eb46825ab4c7d5e3aabb23137142b7731",
+    "repeat_workflow_publish_path_amended_commit": "8f1df6beb30adfbc8e6f77008a5d15777ae6ce3b"
+  },
+  "E2_new_external_human_predictions": 0,
+  "E3_new_real_history_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "series_decision": "complete original R catalogue before unified classification and eventual fusion",
+  "reference_next_catalogue_id": "06-012",
+  "next_item_name": "Stock and Flow System Dynamics",
+  "parallel_repository_work_may_already_be_ahead": true
+}
