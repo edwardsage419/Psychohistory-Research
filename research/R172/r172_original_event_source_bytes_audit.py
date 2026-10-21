@@ -22,8 +22,8 @@ SOURCE=Path(__file__).resolve().parent/"source"
 RESULT=Path(__file__).resolve().parent/"R172_ORIGINAL_EVENT_DATA_BYTE_AUDIT.json"
 
 
-def get_file(fileid,maxsize):
-    url=f"https://dataverse.harvard.edu/api/access/datafile/{fileid}"
+def get_file(fileid,maxsize,format_arg=""):
+    url=f"https://dataverse.harvard.edu/api/access/datafile/{fileid}"+("?format="+format_arg if format_arg else "")
     req=Request(url,headers={"User-Agent":"Psychohistory-R172-original-source-audit/1.0",
                              "Accept":"application/octet-stream,text/tab-separated-values,*/*"})
     with urlopen(req,timeout=45) as r:
@@ -35,7 +35,7 @@ def get_file(fileid,maxsize):
             raise ValueError("unexpected external original data redirection: "+final)
         content=r.read(maxsize+1)
     if len(content)>maxsize:raise ValueError("official file exceeds predeclared byte limit")
-    return content,final
+    return content,urlparse(final).hostname,urlparse(final).path
 
 
 def inspect_tab(raw):
@@ -77,22 +77,45 @@ def audit():
              "expected_source_MD5":expected_md5,
              "local_filename":localname}
         try:
-            raw,final=get_file(fid,expected_size+1024)
+            raw,host,resource_path=get_file(fid,expected_size+1024)
             rec.update({"actual_bytes":len(raw),"actual_MD5":md5(raw).hexdigest(),
-                        "actual_SHA256":sha256(raw).hexdigest(),"resolved_URL":final})
-            if len(raw)!=expected_size or md5(raw).hexdigest()!=expected_md5:
-                raise ValueError("downloaded bytes do not match official original file metadata")
-            (SOURCE/localname).write_bytes(raw)
-            rec["status"]="ORIGINAL_FILE_BYTES_VERIFIED"
+                        "actual_SHA256":sha256(raw).hexdigest(),
+                        "resolved_host":host,"resolved_path":resource_path,
+                        "MD5_matches_dataset_metadata":md5(raw).hexdigest()==expected_md5})
+            if len(raw)!=expected_size:
+                raise ValueError("downloaded bytes do not match metadata byte length")
+            # Dataverse's native table ingest may expose tabular conversion
+            # with different checksum than the originally uploaded file.
             if fid==10875177:
                 rec["structural_tab_audit"]=inspect_tab(raw)
+                (SOURCE/localname).write_bytes(raw)
+                rec["status"]="DATAVERSE_PUBLISHED_TAB_DOWNLOADED_MD5_DISTINCT" if not rec["MD5_matches_dataset_metadata"] else "TAB_BYTE_MD5_MATCHED"
+                try:
+                    original,h,p=get_file(fid,3000000,"original")
+                    original_id={"bytes":len(original),
+                        "md5":md5(original).hexdigest(),
+                        "sha256":sha256(original).hexdigest(),
+                        "matches_metadata_MD5":md5(original).hexdigest()==expected_md5,
+                        "resolved_host":h,"resolved_path":p}
+                    if original_id["matches_metadata_MD5"]:
+                        original_file="Original_Replication_dataset_as_uploaded.bin"
+                        (SOURCE/original_file).write_bytes(original)
+                        original_id["local_filename"]=original_file
+                    rec["separate_original_upload_format"]=original_id
+                except Exception as original_err:
+                    rec["separate_original_upload_access_error"]=type(original_err).__name__+": "+str(original_err)
+            else:
+                if not rec["MD5_matches_dataset_metadata"]:
+                    raise ValueError("original Stata script bytes fail official source MD5")
+                (SOURCE/localname).write_bytes(raw)
+                rec["status"]="ORIGINAL_FILE_BYTES_VERIFIED"
         except Exception as exc:
             rec["status"]="SOURCE_BYTES_UNAVAILABLE_OR_MISMATCH"
             rec["failure"]=type(exc).__name__+": "+str(exc)
             success=False
         print("R172_ORIGINAL_SOURCE_FILE",json.dumps(rec,ensure_ascii=False))
         report["file_records"].append(rec)
-    report["status"]="SOURCE_BYTES_AUTHENTIC_COMPLETE_NOT_EVENT_MODELED" if success else "SOURCE_BYTE_ACCESS_OR_INTEGRITY_BLOCKED"
+    report["status"]="OFFICIAL_PUBLISHED_TAB_AND_CODE_AVAILABLE_WITH_PROVENANCE_CAVEAT" if success else "SOURCE_BYTE_ACCESS_OR_INTEGRITY_BLOCKED"
     RESULT.write_text(json.dumps(report,ensure_ascii=False,sort_keys=True,indent=2)+"\n")
     print("R172_ORIGINAL_AUDIT_STATUS",report["status"])
     print("R172_ORIGINAL_AUDIT_SHA256",sha256(RESULT.read_bytes()).hexdigest())
