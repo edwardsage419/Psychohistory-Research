@@ -1,0 +1,179 @@
+{
+  "research_id": "R171",
+  "date": "2026-10-21",
+  "original_catalogue": {
+    "id": "07-013",
+    "title": "Cultural Phylogenetics",
+    "priority": "P2"
+  },
+  "final_status": "CLOSED_BOUNDED_E1_SOURCE_DESCRIPTIVE_REAL_TREE",
+  "scientific_limit": "Computations describe a previously fitted real 2009 linguistic phylogeny; they neither infer the original Bayesian tree nor provide independent historical forecasts.",
+  "source_paper": {
+    "authors": [
+      "Russell D. Gray",
+      "Alexei J. Drummond",
+      "Simon J. Greenhill"
+    ],
+    "year": 2009,
+    "doi": "10.1126/science.1166858",
+    "pubmed": 19164742
+  },
+  "source_derived_repository": "phlorest/gray_et_al2009",
+  "source_license": "CC-BY-4.0",
+  "source_exact_commit": "a2e535f07c05d214fe7d36fe03747f4cfd5f9ca5",
+  "source_version_specific_release_DOI_verified": false,
+  "precode_protocol_commit": "ecdfbd7b5530b20b92fd2ce7b31c4d0ea2844da8",
+  "source_raw_files": [
+    {
+      "file": "summary.trees",
+      "bytes": 10954,
+      "blob_sha1": "89139751991c9f5753d249baeb9230061db93a4d",
+      "sha256": "d25f5f72e62ec480f196b84b7c17b838f4e253287a9cfbc588a8a27605f078e2"
+    },
+    {
+      "file": "languages.csv",
+      "bytes": 23461,
+      "blob_sha1": "3e48ef314a10d9684af6a47279e7a8df54b45f5a",
+      "sha256": "8736b406918f3d4fcac2077e73c0da0096e1983cba20ec2aa26c8cdea69a4db7"
+    },
+    {
+      "file": "trees.csv",
+      "bytes": 65932,
+      "blob_sha1": "b4626d14b127b8197fb68c569016f53d033969e3",
+      "sha256": "840b28101a915dfae4483e3738dc9a07cac365914ad91938ebad1d84306175cf"
+    },
+    {
+      "file": "Generic-metadata.json",
+      "bytes": 15415,
+      "blob_sha1": "4be59bc5d99841796c04ba20bc98538d9c8e06f4",
+      "sha256": "53f11dbaff8cb16b45c6010f21c30a8e3e138de5d96aa8a1718ab8a8b9886f76"
+    }
+  ],
+  "source_structure": {
+    "original_tip_count": 400,
+    "language_table_rows": 400,
+    "exact_tip_ID_matches": 400,
+    "orphan_tree_tips": 0,
+    "unmapped_language_rows": 0,
+    "total_nodes": 756,
+    "branches": 755,
+    "internal_nodes": 356,
+    "polytomies": 26,
+    "maximum_polytomy_degree": 8,
+    "zero_length_branches": 52,
+    "root_nexus_marker": "[&R]",
+    "rooted_CLDF_Tree_Is_Rooted_cell": "",
+    "branch_length_unit": "millennia",
+    "minimum_root_to_tip": "1.733214",
+    "median_root_to_tip": "4.633214",
+    "maximum_root_to_tip": "4.633215",
+    "total_original_branch_length": "525.658981"
+  },
+  "independent_calculation": {
+    "tree_oracles": [
+      "recursive punctuation-tokenized Newick parser",
+      "independent character scanned iterative stack parser"
+    ],
+    "parser_topology_and_lengths_exactly_equal": true,
+    "distance_oracles": [
+      "parent pointers plus exact lowest common ancestor Decimal lengths",
+      "undirected adjacency traversal with exact independent path lengths"
+    ],
+    "all_79800_unordered_pairs_exactly_equal": true,
+    "distance_unit": "millennia summed branch lengths of already fitted tree",
+    "pair_count": 79800,
+    "minimum_pairwise_distance": "0.000000",
+    "mean_pairwise_distance": "7.4006352335087719298245614035087719298245614035088",
+    "maximum_pairwise_distance": "9.266429",
+    "one_maximum_pair": [
+      "ArakiSouthwestSanto",
+      "Buyang"
+    ],
+    "original_full_CSV_bytes": 2292699,
+    "original_full_CSV_sha256": "66ab2bb5645fcf86dfc91287c0886d2987470e2d65e457ce570106c02edf21ee",
+    "selected_prescored_nine_pair_distances": {
+      "SquliqAtayal/CiuliAtayal": "2.644574",
+      "SquliqAtayal/Sediq": "5.947138",
+      "Saisiat/Pazeh": "5.992084",
+      "Pazeh/Thao": "5.992084",
+      "Bali/Sasak": "3.795798",
+      "MalayBahasaIndonesia/Melayu": "0.344650",
+      "Kanakanabu/Saaroa": "0.010696",
+      "Rukai/Tsou": "3.471426",
+      "OldChinese/Buyang": "6.345432"
+    }
+  },
+  "CI": {
+    "initial_run": 39542653422,
+    "final_pinned_and_archive_run": 39542768099,
+    "final_ci_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39542768099",
+    "final_conclusion": "success",
+    "initial_jobs": [
+      {
+        "id": 119033668991,
+        "python": "3.11",
+        "tests": 103,
+        "conclusion": "success"
+      },
+      {
+        "id": 119033669095,
+        "python": "3.12",
+        "tests": 103,
+        "conclusion": "success"
+      }
+    ],
+    "final_jobs": [
+      {
+        "id": 119034025961,
+        "python": "3.11",
+        "tests": 103,
+        "conclusion": "success"
+      },
+      {
+        "id": 119034026292,
+        "python": "3.12",
+        "tests": 103,
+        "conclusion": "success"
+      },
+      {
+        "id": 119034091747,
+        "role": "independent original source downloader and complete archive publisher",
+        "tests": 103,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_unittest_methods": 103,
+    "total_actual_unittest_method_executions": 515,
+    "failed_unittest_methods": 0,
+    "nonfatal_warning": "One ResourceWarning for an unclosed test harness CSV iterator in final archive job; no result mismatch or failed method."
+  },
+  "archive_commit": "c181afddf9863da320ed0ef7ec348234ca9a7b2d",
+  "git_blob_sha1": {
+    "r171_real_phylogeny_exact.py": "7cfdc995786820fb8c65586d4919ff60f485536d",
+    "test_r171_real_phylogeny_exact.py": "5c7c5ca1a1c29a41f4b092d6b0cf6dec3858cd03",
+    "R171_EXACT_RESULTS.json": "01f749cc27da15fb74886b32baf62d742a9dbef7",
+    "R171_ALL_PAIR_PATRISTIC_DISTANCES.csv": "5640a8ecb4f99cf42d2ea539018f28665d1463fc",
+    "R171_Real_Austronesian_Full_Tree_103_Tests.zip": "793e95efadb4ecae6ef723770f9f9274b51810eb"
+  },
+  "sha256": {
+    "r171_real_phylogeny_exact.py": "04c204fb99e3ecd6a2a920fb1938a760c53c199111255bcfc44c3746f30a0183",
+    "test_r171_real_phylogeny_exact.py": "4b6b36c5bb561a6be198399e93f735d0380ff411e61366a8095525595445eadb",
+    "R171_EXACT_RESULTS.json": "65c18ba18eb50d4a977fbfdd02b29ba6b81e72f0b4578374f3cbb61899052f11",
+    "R171_ALL_PAIR_PATRISTIC_DISTANCES.csv": "66ab2bb5645fcf86dfc91287c0886d2987470e2d65e457ce570106c02edf21ee",
+    "R171_Real_Austronesian_Full_Tree_103_Tests.zip": "f96399cd16915d7a6e90cefcb995692bd0c91beaa6b7cfb7b0250db0cd8a4765"
+  },
+  "source_data_actual_read": true,
+  "original_author_Bayesian_posterior_reproduced": false,
+  "independent_historical_origin_or_migration_recovery": false,
+  "new_E2_independent_human_heldout_predictions": 0,
+  "new_E3_external_historical_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": {
+    "id": "R172",
+    "catalogue_id": "07-014",
+    "priority": "P1",
+    "title": "Historical Event History Models"
+  },
+  "sequence": "finish all original R-series; only then classify; finally fuse"
+}
