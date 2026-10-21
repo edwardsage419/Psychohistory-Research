@@ -1,0 +1,50 @@
+name: R173 Actual D-PLACE Ethnographic Atlas Source Audit
+on:
+  push:
+    paths:
+      - 'research/R173/r173_original_dplace_source_audit.py'
+      - '.github/workflows/r173-original-dplace-real-source-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  authentic-CCBY-ethnographic-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source-audit Python blob identity
+        run: |
+          cd research/R173
+          test "$(git hash-object r173_original_dplace_source_audit.py)" = "d0b546c458ff1448b84d5cee3c1f586ad339dd6d"
+          sha256sum r173_original_dplace_source_audit.py
+      - name: Fetch and verify 6 CC-BY original D-PLACE EA/SCCS files from pinned Git commit
+        run: |
+          cd research/R173
+          python r173_original_dplace_source_audit.py --fetch
+          python r173_original_dplace_source_audit.py --audit-and-archive
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('R173_ORIGINAL_DPLACE_EA_SCCS_SOURCE_AUDIT.json').read_text())
+          assert d['source_pinned_commit']=='9bfed2c8c206be00f55f71516f262bbca2234e5a'
+          assert len(d['raw_authenticated_sources'])==6
+          assert d['EA_society_distinct_IDs']>1200
+          assert d['EA_data_rows']>10000
+          assert d['EA_mapping_entries_explicitly_referencing_SCCS']==186
+          assert not d['original_real_cross_societal_association_scored']
+          assert not d['independent_historical_or_behavioral_prediction_scored']
+          assert d['new_E2_predictions']==0 and d['new_E3_predictions']==0
+          print('R173_SOURCE_AUTHENTICATED_NO_CORRELATION_CLAIMS')
+          PY
+          sha256sum R173_ORIGINAL_DPLACE_EA_SCCS_SOURCE_AUDIT.json R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R173-authentic-original-CCBY-EA-SCCS-source
+          path: |
+            research/R173/R173_ORIGINAL_DPLACE_EA_SCCS_SOURCE_AUDIT.json
+            research/R173/R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip
+          retention-days: 90
