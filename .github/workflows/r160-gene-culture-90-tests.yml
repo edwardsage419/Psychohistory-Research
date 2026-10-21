@@ -1,0 +1,77 @@
+name: R160 Gene Culture 60 Exact Worlds 90 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R160/r160_joint_gene_culture_exact.py'
+      - 'research/R160/test_r160_joint_gene_culture_exact.py'
+      - '.github/workflows/r160-gene-culture-90-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-fraction-joint-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Pin original source and tests by Git blob
+        run: |
+          cd research/R160
+          test "$(git hash-object r160_joint_gene_culture_exact.py)" = "591f3c96a143e98806f174c53de6f0dec3b1ffc2"
+          test "$(git hash-object test_r160_joint_gene_culture_exact.py)" = "c3d44b507d255357062386769e8d8d5e58f9447c"
+          sha256sum r160_joint_gene_culture_exact.py test_r160_joint_gene_culture_exact.py
+      - name: Compute 60 complete synthetic two-trait worlds from both independent oracles
+        run: |
+          cd research/R160
+          python r160_joint_gene_culture_exact.py > R160_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction
+          d=json.load(open('R160_EXACT_RESULTS.json'))
+          assert d['main_worlds']==60 and len(d['worlds'])==60
+          assert len({w['id'] for w in d['worlds']})==60
+          assert all(len(w['points'])==5 for w in d['worlds'])
+          assert all(w['two_independent_exact_methods_equal'] for w in d['worlds'])
+          assert d['frozen_controls']['genetic_G1_after_selection_positive_association']=='11/19'
+          assert d['frozen_controls']['genetic_G1_after_selection_negative_association']=='9/17'
+          assert not d['real_genetic_or_cultural_data_used']
+          for w in d['worlds']:
+            for row in w['points']:
+              vals=[Fraction(x) for x in row['joint_00_01_10_11']]
+              assert sum(vals)==1
+              g=vals[2]+vals[3];c=vals[1]+vals[3]
+              assert Fraction(row['G1_fraction'])==g
+              assert Fraction(row['C1_fraction'])==c
+              assert Fraction(row['gene_culture_association_D'])==vals[3]-g*c
+          print('R160 complete 60 exact histories x 5 times x 4 cells, all independent oracle identities pass')
+          PY
+          sha256sum R160_EXACT_RESULTS.json
+      - name: Run all 90 real unittest methods
+        run: |
+          cd research/R160
+          python -m unittest -v test_r160_joint_gene_culture_exact.py
+      - name: Generate deterministic complete source test and JSON ZIP
+        run: |
+          cd research/R160
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R160_Gene_Culture_60_Worlds_90_Tests.zip','w') as z:
+              for name in ('r160_joint_gene_culture_exact.py','test_r160_joint_gene_culture_exact.py','R160_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R160_Gene_Culture_60_Worlds_90_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R160-60-full-synthetic-gene-culture-${{ matrix.python-version }}
+          path: research/R160/R160_Gene_Culture_60_Worlds_90_Tests.zip
+          retention-days: 90
