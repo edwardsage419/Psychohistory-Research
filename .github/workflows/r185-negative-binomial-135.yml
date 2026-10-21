@@ -1,0 +1,77 @@
+name: R185 Negative Binomial 135 Exact Source Worlds
+on:
+  push:
+    paths:
+      - 'research/R185/r185_negative_binomial_exact.py'
+      - '.github/workflows/r185-negative-binomial-135.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-negative-binomial-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify fixed sources and exact NB closed PMF versus recurrence
+        run: |
+          cd research/R185
+          python r185_negative_binomial_exact.py --test
+  full-135-worlds-exact-source-score-and-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-exact-negative-binomial-tests
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Evaluate all 135 NB source worlds and 12375 weighted training count pairs
+        run: |
+          cd research/R185
+          python r185_negative_binomial_exact.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from hashlib import sha256
+          from pathlib import Path
+          r=json.loads(Path('R185_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R185_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['worlds']==135 and len(r['full_results'])==135
+          assert r['complete_original_training_pairs']==12375
+          assert len(r['fixed_n8_equal_true_rates_15_worlds'])==15
+          assert len(r['same_moments_different_zero_source_alias'])==2
+          assert all(x['all_exact_PMF_methods_and_numeric_scores_agreed'] for x in r['full_results'])
+          with Path('R185_ALL_12375_SOURCE_WEIGHTED_TRAINING_PAIRS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==12375
+          assert a['exact_world_result_sha256']==sha256(Path('R185_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['source_pairs_CSV_sha256']==sha256(Path('R185_ALL_12375_SOURCE_WEIGHTED_TRAINING_PAIRS.csv').read_bytes()).hexdigest()
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R185_135_Negative_Binomial_Exact_Count_Worlds.zip') as z:
+            assert len(z.namelist())==5 and z.testzip() is None
+          print('R185_135_NB_SOURCE_AUTHENTIC_EXACT_PREDICTIONS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R185-135-exact-negative-binomial-worlds
+          path: |
+            research/R185/R185_EXACT_RESULTS.json
+            research/R185/R185_ALL_12375_SOURCE_WEIGHTED_TRAINING_PAIRS.csv
+            research/R185/R185_FINAL_MACHINE_ACCEPTANCE.json
+            research/R185/R185_135_Negative_Binomial_Exact_Count_Worlds.zip
+          retention-days: 90
+      - name: Commit source-authenticated E1 NB results
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R185/R185_EXACT_RESULTS.json research/R185/R185_ALL_12375_SOURCE_WEIGHTED_TRAINING_PAIRS.csv research/R185/R185_FINAL_MACHINE_ACCEPTANCE.json research/R185/R185_135_Negative_Binomial_Exact_Count_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R185): 135 exact negative binomial worlds and moment alias probability evidence'
+            git push origin HEAD:main
+          fi
