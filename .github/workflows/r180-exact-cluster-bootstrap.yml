@@ -1,0 +1,80 @@
+name: R180 Exact Cluster Bootstrap 30 Worlds 7750 Samples
+on:
+  push:
+    paths:
+      - 'research/R180/r180_exact_cluster_bootstrap_finite.py'
+      - '.github/workflows/r180-exact-cluster-bootstrap.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-bootstrap-unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify R177 fixed source and independent conditional resampling enumerations
+        run: |
+          cd research/R180
+          python r180_exact_cluster_bootstrap_finite.py --test
+  complete-enumeration-and-permanent-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: dual-python-bootstrap-unit-tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate 7750 complete ordered data samples and two exact bootstrap laws
+        run: |
+          cd research/R180
+          python r180_exact_cluster_bootstrap_finite.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from hashlib import sha256
+          from pathlib import Path
+          r=json.loads(Path("R180_EXACT_RESULTS.json").read_text())
+          a=json.loads(Path("R180_FINAL_MACHINE_ACCEPTANCE.json").read_text())
+          lib=json.loads(Path("R180_ALL_CONDITIONAL_BOOTSTRAP_PMF_LIBRARY.json").read_text())
+          assert r["world_count"]==30 and len(r["all_worlds"])==30
+          assert r["complete_ordered_sample_count"]==7750
+          assert lib["unique_unordered_sample_profiles"]==120
+          assert len(lib["profiles"])==120
+          assert all(x["independent_enumeration_and_DP_fraction_equal"] for x in lib["profiles"])
+          with Path("R180_ALL_7750_ORDERED_SAMPLES.csv").open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==7750
+          assert a["result_sha256"]==sha256(Path("R180_EXACT_RESULTS.json").read_bytes()).hexdigest()
+          assert a["ordered_sample_csv_sha256"]==sha256(Path("R180_ALL_7750_ORDERED_SAMPLES.csv").read_bytes()).hexdigest()
+          assert a["conditional_PMF_library_sha256"]==sha256(Path("R180_ALL_CONDITIONAL_BOOTSTRAP_PMF_LIBRARY.json").read_bytes()).hexdigest()
+          assert r["new_E2"]==r["new_E3"]==0
+          with zipfile.ZipFile("R180_Exact_Bootstrap_30_Worlds_7750_Samples.zip") as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print("R180_EXACT_BOOTSTRAP_FULL_FINITE_SPACE_ACCEPTED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R180-exact-bootstrap-thirty-worlds-all-samples
+          path: |
+            research/R180/R180_EXACT_RESULTS.json
+            research/R180/R180_ALL_7750_ORDERED_SAMPLES.csv
+            research/R180/R180_ALL_CONDITIONAL_BOOTSTRAP_PMF_LIBRARY.json
+            research/R180/R180_FINAL_MACHINE_ACCEPTANCE.json
+            research/R180/R180_Exact_Bootstrap_30_Worlds_7750_Samples.zip
+          retention-days: 90
+      - name: Permanently commit exact source-only E1 resampling outputs to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R180/R180_EXACT_RESULTS.json research/R180/R180_ALL_7750_ORDERED_SAMPLES.csv research/R180/R180_ALL_CONDITIONAL_BOOTSTRAP_PMF_LIBRARY.json research/R180/R180_FINAL_MACHINE_ACCEPTANCE.json research/R180/R180_Exact_Bootstrap_30_Worlds_7750_Samples.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R180): exact 7750 samples, cluster resampling distributions and coverage'
+            git push origin HEAD:main
+          fi
