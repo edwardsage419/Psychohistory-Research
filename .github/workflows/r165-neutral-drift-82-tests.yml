@@ -1,4 +1,4 @@
-name: R165 Neutral Drift 48 Exact Worlds 82 Tests Preliminary
+name: R165 Neutral Drift 48 Exact Worlds 82 Tests SHA256 Pinned
 on:
   push:
     paths:
@@ -26,7 +26,8 @@ jobs:
           cd research/R165
           test "$(git hash-object r165_neutral_drift_exact.py)" = "b6baec8fd6f6bbfae2df8945b7aaefaaf565ce7f"
           test "$(git hash-object test_r165_neutral_drift_exact.py)" = "7e4ec5d701fa38f1efc111a79a154b41fd8673e2"
-          sha256sum r165_neutral_drift_exact.py test_r165_neutral_drift_exact.py
+          echo '33e480abee890329bc93d59877697df97dac577e766452caea63c617cddeea09  r165_neutral_drift_exact.py' | sha256sum -c -
+          echo '214e0583fc1fff08b69869c3d3883c90322518710c6bb66a5cfd0b4f52d3250b  test_r165_neutral_drift_exact.py' | sha256sum -c -
       - name: Generate 48 full cultural drift and innovation finite distributions
         run: |
           cd research/R165
@@ -50,7 +51,7 @@ jobs:
                   assert k['absorption_time'] is not None
           print('R165 48 finite neutral drift worlds, 12 exact kernels and absorption/stationarity certificates PASS')
           PY
-          sha256sum R165_EXACT_RESULTS.json
+          echo '826576f87f5c586e64d3d70861e876e665da90beac5fbd49948a8839639018b8  R165_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run all 82 exact unit tests
         run: |
           cd research/R165
@@ -67,7 +68,7 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R165_Neutral_Drift_48_Worlds_82_Tests.zip
+          echo '771d60b9a01ad39851bef77382f1d8d7d4b380779d24c5cbaecf74565565b724  R165_Neutral_Drift_48_Worlds_82_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R165-finite-neutral-drift-original-${{ matrix.python-version }}
