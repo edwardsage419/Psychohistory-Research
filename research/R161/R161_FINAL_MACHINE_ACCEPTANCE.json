@@ -1,0 +1,151 @@
+{
+  "id": "R161",
+  "date": "2026-10-21",
+  "original_catalogue": "P1 07-003 Conformist Transmission",
+  "scientific_status": "CLOSED_BOUNDED_E1_FINITE_BINOMIAL_CONFORMIST_48_MARKOV_WORLDS_78_METHODS",
+  "sources": [
+    {
+      "authors": [
+        "Robert Boyd",
+        "Peter J. Richerson"
+      ],
+      "year": 1985,
+      "book": "Culture and the Evolutionary Process",
+      "publisher": "University of Chicago Press",
+      "original_publisher_contents_checked": true,
+      "original_book_full_model_recreated": false
+    },
+    {
+      "authors": [
+        "Joseph Henrich",
+        "Robert Boyd"
+      ],
+      "year": 1998,
+      "doi": "10.1016/S1090-5138(98)00018-X",
+      "publisher_original_abstract_and_section_snippets_checked": true,
+      "author_data_reproduced": false
+    },
+    {
+      "authors": [
+        "Charles Efferson",
+        "Rafael Lalive",
+        "Peter J. Richerson",
+        "Richard McElreath",
+        "Mark Lubell"
+      ],
+      "year": 2008,
+      "doi": "10.1016/j.evolhumbehav.2007.08.003",
+      "publisher_original_abstract_checked": true,
+      "heterogeneity_and_conformist_majority_distinction_recorded": true,
+      "source_person_level_data_acquired": false
+    }
+  ],
+  "frozen_protocol_commit": "e0d590fc3946847a588d9b111808612ae0384d79",
+  "model": "K(t+1) | K(t)=k Binomial(N, q), q=(1-h)*k/N+h*(3(k/N)^2-2(k/N)^3)",
+  "N_choices": [
+    5,
+    7
+  ],
+  "N5_initial_k": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "N7_initial_k": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    7
+  ],
+  "h_choices": [
+    "0",
+    "1/4",
+    "1/2",
+    "1"
+  ],
+  "timepoints": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "frozen_cases": 48,
+  "independent_oracles": [
+    "exact Fraction binomial coefficients and row-vector Markov propagation",
+    "exhaustive 2^N offspring outcome enumeration and independent distribution propagation"
+  ],
+  "exact_transition_kernels": 8,
+  "transition_rows_sum_to_one": true,
+  "complete_48_full_paths_exactly_equal": true,
+  "absorption_probability_oracle": "Fraction Gaussian elimination (I-Q)u=R_N plus independent exact harmonic residual",
+  "critical_examples": {
+    "neutral_fixation_equals_initial_frequency": true,
+    "N5_h1_k1_all_A_fixation": "41690187205771/928107300091355",
+    "N5_h1_k4_all_A_fixation": "886417112885584/928107300091355",
+    "N5_h1_k2_conditional_next_expected": "44/125",
+    "N5_h1_k3_conditional_next_expected": "81/125",
+    "N5_h1_k2_finite_t2_expectation": "15605084/48828125",
+    "N5_h1_k2_deterministic_second": "555632/1953125",
+    "N5_h1_k2_Jensen_difference": "1714284/48828125",
+    "boundary_zero_and_N_absorbing": true
+  },
+  "code_sha1": "a2bf01087f9e6f8fb473e3612396c25da93ec2dc",
+  "tests_sha1": "05af399e0673347e90a2a0a5f202eb7eba0fced0",
+  "pinned_archive_commit": "e13324aa0f82bbd39f8370b1b4a4e55f9cf8edcf",
+  "git_blob_sha1": {
+    "R161_EXACT_RESULTS.json": "0def18bac443d47b7bd77be536536c8c816bed1d",
+    "R161_Conformity_48_Finite_Worlds_78_Tests.zip": "99431d3909835715352064d975bb758e3cfb1bba"
+  },
+  "ci": {
+    "first_run": 39525830737,
+    "pinned_run": 39525915174,
+    "pinned_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39525915174",
+    "conclusion": "success",
+    "final_jobs": [
+      {
+        "id": 118980391777,
+        "python": "3.11",
+        "tests": 78,
+        "conclusion": "success"
+      },
+      {
+        "id": 118980392093,
+        "python": "3.12",
+        "tests": 78,
+        "conclusion": "success"
+      },
+      {
+        "id": 118980461164,
+        "role": "full SHA256 and permanent archive publisher",
+        "tests": 78,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_tests": 78,
+    "actual_test_executions_across_two_runs": 390,
+    "failures": 0
+  },
+  "sha256": {
+    "r161_finite_conformist_markov.py": "744026427340efd9addba636d36fdefd65e94604f40678563e5b9995eccb2f21",
+    "test_r161_finite_conformist_markov.py": "ee6b29e5bd404fde7cdd692ce2b348f0fe056cdaf839f24b9a0740c39971f699",
+    "R161_EXACT_RESULTS.json": "8cba0edf39013a0bb8dd694e00b00f38cae20fd5473e46c7f0b0a6474232d5af",
+    "R161_Conformity_48_Finite_Worlds_78_Tests.zip": "dfd9483ca9f98f9fd07f671918b2074a846642d13e8dc17e4366fd35397ee766"
+  },
+  "new_E2_person_level_independent_predictions": 0,
+  "new_E3_historical_real_world_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R162",
+    "original_catalogue_id": "07-004",
+    "priority": "P2",
+    "name": "Prestige Biased Social Learning"
+  },
+  "sequence": "complete all original R series, then classification, then model fusion"
+}
