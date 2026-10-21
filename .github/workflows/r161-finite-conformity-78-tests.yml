@@ -1,4 +1,4 @@
-name: R161 Conformity 48 Finite Markov Worlds 78 Tests Preliminary
+name: R161 Finite Conformity 48 Worlds 78 Pinned Tests and Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r161-finite-conformity-78-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-binomial-enumeration:
     runs-on: ubuntu-latest
@@ -26,7 +26,8 @@ jobs:
           cd research/R161
           test "$(git hash-object r161_finite_conformist_markov.py)" = "a2bf01087f9e6f8fb473e3612396c25da93ec2dc"
           test "$(git hash-object test_r161_finite_conformist_markov.py)" = "05af399e0673347e90a2a0a5f202eb7eba0fced0"
-          sha256sum r161_finite_conformist_markov.py test_r161_finite_conformist_markov.py
+          echo '744026427340efd9addba636d36fdefd65e94604f40678563e5b9995eccb2f21  r161_finite_conformist_markov.py' | sha256sum -c -
+          echo 'ee6b29e5bd404fde7cdd692ce2b348f0fe056cdaf839f24b9a0740c39971f699  test_r161_finite_conformist_markov.py' | sha256sum -c -
       - name: Generate all 48 exact stochastic cultural worlds and harmonic fixation oracles
         run: |
           cd research/R161
@@ -52,7 +53,7 @@ jobs:
               if 0<i<n: assert fx[i]==sum(row[j]*fx[j] for j in range(n+1))
           print('R161 48 exact finite Markov paths, independent binomial/configuration kernels and harmonic fixation OK')
           PY
-          sha256sum R161_EXACT_RESULTS.json
+          echo '8cba0edf39013a0bb8dd694e00b00f38cae20fd5473e46c7f0b0a6474232d5af  R161_EXACT_RESULTS.json' | sha256sum -c -
       - name: Execute 78 individually discoverable unittest methods
         run: |
           cd research/R161
@@ -69,9 +70,46 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R161_Conformity_48_Finite_Worlds_78_Tests.zip
+          echo 'dfd9483ca9f98f9fd07f671918b2074a846642d13e8dc17e4366fd35397ee766  R161_Conformity_48_Finite_Worlds_78_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R161-finite-conformity-exact-${{ matrix.python-version }}
           path: research/R161/R161_Conformity_48_Finite_Worlds_78_Tests.zip
           retention-days: 90
+  pin-and-publish-complete-artifacts:
+    needs: independent-binomial-enumeration
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently replay complete 48 cases confirm four SHA256 and 78 tests
+        run: |
+          cd research/R161
+          echo '744026427340efd9addba636d36fdefd65e94604f40678563e5b9995eccb2f21  r161_finite_conformist_markov.py' | sha256sum -c -
+          echo 'ee6b29e5bd404fde7cdd692ce2b348f0fe056cdaf839f24b9a0740c39971f699  test_r161_finite_conformist_markov.py' | sha256sum -c -
+          python r161_finite_conformist_markov.py > R161_EXACT_RESULTS.json
+          echo '8cba0edf39013a0bb8dd694e00b00f38cae20fd5473e46c7f0b0a6474232d5af  R161_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r161_finite_conformist_markov.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R161_Conformity_48_Finite_Worlds_78_Tests.zip','w') as z:
+              for name in ('r161_finite_conformist_markov.py','test_r161_finite_conformist_markov.py','R161_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo 'dfd9483ca9f98f9fd07f671918b2074a846642d13e8dc17e4366fd35397ee766  R161_Conformity_48_Finite_Worlds_78_Tests.zip' | sha256sum -c -
+      - name: Permanently publish exact finite Markov JSON and source test ZIP on main
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R161/R161_EXACT_RESULTS.json research/R161/R161_Conformity_48_Finite_Worlds_78_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R161): 48 exact finite cultural Markov worlds and 78-test source ZIP'
+            git push origin HEAD:main
+          fi
