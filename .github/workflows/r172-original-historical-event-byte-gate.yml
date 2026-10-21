@@ -31,12 +31,19 @@ jobs:
           assert not j['original_historical_regime_hazard_fitted']
           assert not j['out_of_sample_predictions_scored']
           for f in j['file_records']:
-              if f['status']=='ORIGINAL_FILE_BYTES_VERIFIED':
+              if f['status'] in ('ORIGINAL_FILE_BYTES_VERIFIED','DATAVERSE_PUBLISHED_TAB_DOWNLOADED_MD5_DISTINCT','TAB_BYTE_MD5_MATCHED'):
                   path=pathlib.Path('source')/f['local_filename']
                   raw=path.read_bytes()
                   assert len(raw)==f['expected_original_bytes']
-                  assert hashlib.md5(raw).hexdigest()==f['expected_source_MD5']
+                  assert hashlib.md5(raw).hexdigest()==f['actual_MD5']
                   assert hashlib.sha256(raw).hexdigest()==f['actual_SHA256']
+                  if f['status']=='ORIGINAL_FILE_BYTES_VERIFIED':
+                      assert hashlib.md5(raw).hexdigest()==f['expected_source_MD5']
+                  original=f.get('separate_original_upload_format',{})
+                  if original.get('local_filename'):
+                      original_raw=(pathlib.Path('source')/original['local_filename']).read_bytes()
+                      assert hashlib.md5(original_raw).hexdigest()==f['expected_source_MD5']
+                      assert hashlib.sha256(original_raw).hexdigest()==original['sha256']
           print('R172_RISK_SET_NOT_YET_VERIFIED',j['status'])
           PY
       - uses: actions/upload-artifact@v4
