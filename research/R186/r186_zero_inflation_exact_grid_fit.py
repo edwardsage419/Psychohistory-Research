@@ -308,7 +308,7 @@ def run():
     for m in M_VALUES:
         bb=by[m,"CLUSTERED_BB_C2"]
         zi=by[m,"INACTIVE_ZIB_Z1_4"]
-        if bb["source_full_count_PMF"]!=zi["source_full_count_PMF"]!=["1/3"]*3:
+        if bb["source_full_count_PMF"]!=zi["source_full_count_PMF"] or bb["source_full_count_PMF"]!=["1/3"]*3:
             raise AssertionError("source observational alias full PMF no longer identical")
         for key in (
             "expected_independent_heldout_BIN_logloss",
@@ -389,7 +389,7 @@ class TestZeroInflation(unittest.TestCase):
         self.assertEqual(sum((n+1)**m for n,m,*rest in worlds()),1860)
     def test_66_sorted_fitted_profiles(self):
         self.assertEqual(len(fit_library()),66)
-    def test_65_nested_candidates_per_n(self):
+    def test_55_nested_candidates_per_n(self):
         self.assertEqual(len(Z_VALUES)*len(Q_VALUES),55)
     def test_source_SHA_and_independent_count_methods(self):
         a,b=original_source()
