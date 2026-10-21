@@ -1,0 +1,383 @@
+{
+  "complete_source_worlds": 12,
+  "diagnostics": {
+    "IID_zero_correlation_between_disjoint_train_and_test": true,
+    "all_kernels_generated_by_explicit_finite_features": true,
+    "observational_noise_variance_fixed": 1,
+    "source_latent_factors_real_distribution": "Rademacher ±1 independent, finite non-Gaussian",
+    "true_kernels_linear_oracle_is_not_exact_discrete_Bayes_posterior": true,
+    "working_training_marginal_likelihood": "Gaussian kernel model, misspecified for true discrete sources"
+  },
+  "full_original_observed_and_heldout_records": 912,
+  "new_real_historical_E3": 0,
+  "new_real_human_E2": 0,
+  "research_id": "R204",
+  "splits": {
+    "EXTRAPOLATION": {
+      "heldout": [
+        3,
+        4
+      ],
+      "train": [
+        0,
+        1,
+        2
+      ]
+    },
+    "GAP": {
+      "heldout": [
+        2,
+        3
+      ],
+      "train": [
+        0,
+        1,
+        4
+      ]
+    },
+    "INTERPOLATION": {
+      "heldout": [
+        1,
+        3
+      ],
+      "train": [
+        0,
+        2,
+        4
+      ]
+    }
+  },
+  "status": "ARTIFICIAL_E1_AWAIT_CI_ACCEPTANCE",
+  "true_sources_and_working_candidates": [
+    "IID",
+    "CONSTANT",
+    "ALTERNATING",
+    "LINEAR"
+  ],
+  "worlds": [
+    {
+      "all_ordered_original_source_records": 256,
+      "best_fixed_candidate_linear_MSE_exact": "1",
+      "heldout_site_ids": [
+        3,
+        4
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 1.763888888889,
+      "selected_kernel_heldout_latent_MSE_exact": "127/72",
+      "selected_kernel_probability": {
+        "ALTERNATING": "5/32",
+        "CONSTANT": "9/32",
+        "IID": "11/32",
+        "LINEAR": "7/32"
+      },
+      "selected_true_kernel_probability": "11/32",
+      "source_probability_sum": "1",
+      "split": "EXTRAPOLATION",
+      "train_site_ids": [
+        0,
+        1,
+        2
+      ],
+      "true_kernel": "IID",
+      "true_kernel_optimal_linear_MSE_exact": "1"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "1/4",
+      "heldout_site_ids": [
+        3,
+        4
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 1.732638888889,
+      "selected_kernel_heldout_latent_MSE_exact": "499/288",
+      "selected_kernel_probability": {
+        "ALTERNATING": "0",
+        "CONSTANT": "1/2",
+        "IID": "1/4",
+        "LINEAR": "1/4"
+      },
+      "selected_true_kernel_probability": "1/2",
+      "source_probability_sum": "1",
+      "split": "EXTRAPOLATION",
+      "train_site_ids": [
+        0,
+        1,
+        2
+      ],
+      "true_kernel": "CONSTANT",
+      "true_kernel_optimal_linear_MSE_exact": "1/4"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "1/4",
+      "heldout_site_ids": [
+        3,
+        4
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 1.003472222222,
+      "selected_kernel_heldout_latent_MSE_exact": "289/288",
+      "selected_kernel_probability": {
+        "ALTERNATING": "3/8",
+        "CONSTANT": "1/4",
+        "IID": "1/4",
+        "LINEAR": "1/8"
+      },
+      "selected_true_kernel_probability": "3/8",
+      "source_probability_sum": "1",
+      "split": "EXTRAPOLATION",
+      "train_site_ids": [
+        0,
+        1,
+        2
+      ],
+      "true_kernel": "ALTERNATING",
+      "true_kernel_optimal_linear_MSE_exact": "1/4"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "5/12",
+      "heldout_site_ids": [
+        3,
+        4
+      ],
+      "precommitted_zero_prediction_MSE_exact": "5/2",
+      "selected_kernel_heldout_latent_MSE": 2.038194444444,
+      "selected_kernel_heldout_latent_MSE_exact": "587/288",
+      "selected_kernel_probability": {
+        "ALTERNATING": "0",
+        "CONSTANT": "1/4",
+        "IID": "1/4",
+        "LINEAR": "1/2"
+      },
+      "selected_true_kernel_probability": "1/2",
+      "source_probability_sum": "1",
+      "split": "EXTRAPOLATION",
+      "train_site_ids": [
+        0,
+        1,
+        2
+      ],
+      "true_kernel": "LINEAR",
+      "true_kernel_optimal_linear_MSE_exact": "5/12"
+    },
+    {
+      "all_ordered_original_source_records": 256,
+      "best_fixed_candidate_linear_MSE_exact": "1",
+      "heldout_site_ids": [
+        1,
+        3
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 1.356577932099,
+      "selected_kernel_heldout_latent_MSE_exact": "14065/10368",
+      "selected_kernel_probability": {
+        "ALTERNATING": "0",
+        "CONSTANT": "11/32",
+        "IID": "17/32",
+        "LINEAR": "1/8"
+      },
+      "selected_true_kernel_probability": "17/32",
+      "source_probability_sum": "1",
+      "split": "INTERPOLATION",
+      "train_site_ids": [
+        0,
+        2,
+        4
+      ],
+      "true_kernel": "IID",
+      "true_kernel_optimal_linear_MSE_exact": "1"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "1/4",
+      "heldout_site_ids": [
+        1,
+        3
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 0.53125,
+      "selected_kernel_heldout_latent_MSE_exact": "17/32",
+      "selected_kernel_probability": {
+        "ALTERNATING": "0",
+        "CONSTANT": "5/8",
+        "IID": "3/8",
+        "LINEAR": "0"
+      },
+      "selected_true_kernel_probability": "5/8",
+      "source_probability_sum": "1",
+      "split": "INTERPOLATION",
+      "train_site_ids": [
+        0,
+        2,
+        4
+      ],
+      "true_kernel": "CONSTANT",
+      "true_kernel_optimal_linear_MSE_exact": "1/4"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "1/4",
+      "heldout_site_ids": [
+        1,
+        3
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 2.78125,
+      "selected_kernel_heldout_latent_MSE_exact": "89/32",
+      "selected_kernel_probability": {
+        "ALTERNATING": "0",
+        "CONSTANT": "5/8",
+        "IID": "3/8",
+        "LINEAR": "0"
+      },
+      "selected_true_kernel_probability": "0",
+      "source_probability_sum": "1",
+      "split": "INTERPOLATION",
+      "train_site_ids": [
+        0,
+        2,
+        4
+      ],
+      "true_kernel": "ALTERNATING",
+      "true_kernel_optimal_linear_MSE_exact": "1/4"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "1/9",
+      "heldout_site_ids": [
+        1,
+        3
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 0.111111111111,
+      "selected_kernel_heldout_latent_MSE_exact": "1/9",
+      "selected_kernel_probability": {
+        "ALTERNATING": "0",
+        "CONSTANT": "0",
+        "IID": "0",
+        "LINEAR": "1"
+      },
+      "selected_true_kernel_probability": "1",
+      "source_probability_sum": "1",
+      "split": "INTERPOLATION",
+      "train_site_ids": [
+        0,
+        2,
+        4
+      ],
+      "true_kernel": "LINEAR",
+      "true_kernel_optimal_linear_MSE_exact": "1/9"
+    },
+    {
+      "all_ordered_original_source_records": 256,
+      "best_fixed_candidate_linear_MSE_exact": "1",
+      "heldout_site_ids": [
+        2,
+        3
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 1.48875,
+      "selected_kernel_heldout_latent_MSE_exact": "1191/800",
+      "selected_kernel_probability": {
+        "ALTERNATING": "5/32",
+        "CONSTANT": "11/32",
+        "IID": "13/32",
+        "LINEAR": "3/32"
+      },
+      "selected_true_kernel_probability": "13/32",
+      "source_probability_sum": "1",
+      "split": "GAP",
+      "train_site_ids": [
+        0,
+        1,
+        4
+      ],
+      "true_kernel": "IID",
+      "true_kernel_optimal_linear_MSE_exact": "1"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "1/4",
+      "heldout_site_ids": [
+        2,
+        3
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 0.53125,
+      "selected_kernel_heldout_latent_MSE_exact": "17/32",
+      "selected_kernel_probability": {
+        "ALTERNATING": "0",
+        "CONSTANT": "5/8",
+        "IID": "3/8",
+        "LINEAR": "0"
+      },
+      "selected_true_kernel_probability": "5/8",
+      "source_probability_sum": "1",
+      "split": "GAP",
+      "train_site_ids": [
+        0,
+        1,
+        4
+      ],
+      "true_kernel": "CONSTANT",
+      "true_kernel_optimal_linear_MSE_exact": "1/4"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "1/4",
+      "heldout_site_ids": [
+        2,
+        3
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1",
+      "selected_kernel_heldout_latent_MSE": 0.78125,
+      "selected_kernel_heldout_latent_MSE_exact": "25/32",
+      "selected_kernel_probability": {
+        "ALTERNATING": "3/8",
+        "CONSTANT": "1/4",
+        "IID": "3/8",
+        "LINEAR": "0"
+      },
+      "selected_true_kernel_probability": "3/8",
+      "source_probability_sum": "1",
+      "split": "GAP",
+      "train_site_ids": [
+        0,
+        1,
+        4
+      ],
+      "true_kernel": "ALTERNATING",
+      "true_kernel_optimal_linear_MSE_exact": "1/4"
+    },
+    {
+      "all_ordered_original_source_records": 16,
+      "best_fixed_candidate_linear_MSE_exact": "1/20",
+      "heldout_site_ids": [
+        2,
+        3
+      ],
+      "precommitted_zero_prediction_MSE_exact": "1/2",
+      "selected_kernel_heldout_latent_MSE": 0.05,
+      "selected_kernel_heldout_latent_MSE_exact": "1/20",
+      "selected_kernel_probability": {
+        "ALTERNATING": "0",
+        "CONSTANT": "0",
+        "IID": "0",
+        "LINEAR": "1"
+      },
+      "selected_true_kernel_probability": "1",
+      "source_probability_sum": "1",
+      "split": "GAP",
+      "train_site_ids": [
+        0,
+        1,
+        4
+      ],
+      "true_kernel": "LINEAR",
+      "true_kernel_optimal_linear_MSE_exact": "1/20"
+    }
+  ]
+}
