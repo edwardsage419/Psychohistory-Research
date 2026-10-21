@@ -1,0 +1,84 @@
+{
+  "EA005": "ordinal_0_9_used_as_nominal_strata",
+  "EA006": "nominal_1_7",
+  "all_samples_overlap": true,
+  "causal_or_phylogenetic_adjustment_established": false,
+  "heldout_predictions_csv_sha256": "f65271786d0a1c6f58fa43c316db62d60d8064f64356088cc163b549c6996b2e",
+  "historical_focal_years_synchronized": false,
+  "independent_external_history_prediction": false,
+  "metrics": {
+    "EA_1271": {
+      "bootstrap_draws": 2048,
+      "bootstrap_seed": 173,
+      "delta_M0_minus_M1": 0.03895126838462337,
+      "mean_log_loss_M0": 1.4348676568770877,
+      "mean_log_loss_M1": 1.3959163884924644,
+      "naive_society_paired_bootstrap_95percent": [
+        0.016656446016041552,
+        0.06054835552657322
+      ],
+      "sample_size": 1271,
+      "two_independent_fold_methods_agreed": true
+    },
+    "EA_COMPLETE_SOURCE_YEARS": {
+      "bootstrap_draws": 2048,
+      "bootstrap_seed": 173,
+      "delta_M0_minus_M1": 0.03781396039638363,
+      "mean_log_loss_M0": 1.4324387547728878,
+      "mean_log_loss_M1": 1.3946247943765042,
+      "naive_society_paired_bootstrap_95percent": [
+        0.01581258718142438,
+        0.06048631354022408
+      ],
+      "sample_size": 1259,
+      "two_independent_fold_methods_agreed": true
+    },
+    "SCCS_186": {
+      "bootstrap_draws": 2048,
+      "bootstrap_seed": 173,
+      "delta_M0_minus_M1": 0.014241271629137797,
+      "mean_log_loss_M0": 1.706753962723442,
+      "mean_log_loss_M1": 1.6925126910943042,
+      "naive_label_shuffle": {
+        "fraction_permuted_delta_below_observed": 0.9949748743718593,
+        "permuted_delta_max": 0.014775746604371802,
+        "permuted_delta_median": -0.05840683277769799,
+        "permuted_delta_min": -0.12183716308754224,
+        "replicates": 199,
+        "seed": 173,
+        "upper_tail_empirical_benchmark": 0.01,
+        "valid_inference_under_shared_ancestry_or_spatial_dependence": false
+      },
+      "naive_society_paired_bootstrap_95percent": [
+        -0.06438922191951105,
+        0.08822515979679718
+      ],
+      "sample_size": 186,
+      "two_independent_fold_methods_agreed": true
+    },
+    "SCCS_COMPLETE_SOURCE_YEARS": {
+      "bootstrap_draws": 2048,
+      "bootstrap_seed": 173,
+      "delta_M0_minus_M1": 0.02839602376056738,
+      "mean_log_loss_M0": 1.6991123571239142,
+      "mean_log_loss_M1": 1.6707163333633468,
+      "naive_society_paired_bootstrap_95percent": [
+        -0.05182886397603929,
+        0.10063607183235039
+      ],
+      "sample_size": 183,
+      "two_independent_fold_methods_agreed": true
+    }
+  },
+  "models": {
+    "M0_alpha_each": 1,
+    "M1_shrinkage": 10
+  },
+  "new_E2": 0,
+  "new_E3": 0,
+  "pinned_source_commit": "9bfed2c8c206be00f55f71516f262bbca2234e5a",
+  "prediction_rows": 2899,
+  "prescoring_protocol": "protocols/R173_REAL_EA_SCCS_EA005_EA006_LOSO_ASSOCIATION_PRESCORE_FREEZE_2026-10-21.md",
+  "research_id": "R173",
+  "stage": "BOUNDED_REAL_OBSERVATIONAL_CROSS_SOCIAL_LOSO"
+}
