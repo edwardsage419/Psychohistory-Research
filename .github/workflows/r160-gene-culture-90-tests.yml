@@ -1,4 +1,4 @@
-name: R160 Gene Culture 60 Exact Worlds 90 Tests Preliminary
+name: R160 Gene Culture 60 Exact Worlds 90 Pinned Tests and Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r160-gene-culture-90-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-fraction-joint-model:
     runs-on: ubuntu-latest
@@ -26,7 +26,8 @@ jobs:
           cd research/R160
           test "$(git hash-object r160_joint_gene_culture_exact.py)" = "591f3c96a143e98806f174c53de6f0dec3b1ffc2"
           test "$(git hash-object test_r160_joint_gene_culture_exact.py)" = "c3d44b507d255357062386769e8d8d5e58f9447c"
-          sha256sum r160_joint_gene_culture_exact.py test_r160_joint_gene_culture_exact.py
+          echo 'a267dccfab5801533a48dc50e0f0ea89af02ff2792a7f9494425a1b0f1a4c59e  r160_joint_gene_culture_exact.py' | sha256sum -c -
+          echo 'b0a976cf9516569214139c676312c9034e57ac16569c51114cb1724008975673  test_r160_joint_gene_culture_exact.py' | sha256sum -c -
       - name: Compute 60 complete synthetic two-trait worlds from both independent oracles
         run: |
           cd research/R160
@@ -52,7 +53,7 @@ jobs:
               assert Fraction(row['gene_culture_association_D'])==vals[3]-g*c
           print('R160 complete 60 exact histories x 5 times x 4 cells, all independent oracle identities pass')
           PY
-          sha256sum R160_EXACT_RESULTS.json
+          echo '7073cfd2aa3cad37955065c619d9ad9da16ba5b63ad768c0ae226597e64536bc  R160_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run all 90 real unittest methods
         run: |
           cd research/R160
@@ -69,9 +70,46 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R160_Gene_Culture_60_Worlds_90_Tests.zip
+          echo 'aa68cc231970b2957bc7967d4e0538b8903a654b995ec9e635fc5c3afd8e07c1  R160_Gene_Culture_60_Worlds_90_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R160-60-full-synthetic-gene-culture-${{ matrix.python-version }}
           path: research/R160/R160_Gene_Culture_60_Worlds_90_Tests.zip
           retention-days: 90
+  pinned-full-data-publisher:
+    needs: independent-fraction-joint-model
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recreate full results verify 4 pinned SHA256 and run all 90 genuine tests
+        run: |
+          cd research/R160
+          echo 'a267dccfab5801533a48dc50e0f0ea89af02ff2792a7f9494425a1b0f1a4c59e  r160_joint_gene_culture_exact.py' | sha256sum -c -
+          echo 'b0a976cf9516569214139c676312c9034e57ac16569c51114cb1724008975673  test_r160_joint_gene_culture_exact.py' | sha256sum -c -
+          python r160_joint_gene_culture_exact.py > R160_EXACT_RESULTS.json
+          echo '7073cfd2aa3cad37955065c619d9ad9da16ba5b63ad768c0ae226597e64536bc  R160_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r160_joint_gene_culture_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R160_Gene_Culture_60_Worlds_90_Tests.zip','w') as z:
+              for name in ('r160_joint_gene_culture_exact.py','test_r160_joint_gene_culture_exact.py','R160_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo 'aa68cc231970b2957bc7967d4e0538b8903a654b995ec9e635fc5c3afd8e07c1  R160_Gene_Culture_60_Worlds_90_Tests.zip' | sha256sum -c -
+      - name: Publish reproducible full joint state JSON and source test ZIP to main
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R160/R160_EXACT_RESULTS.json research/R160/R160_Gene_Culture_60_Worlds_90_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R160): 60 exact synthetic gene-culture joint worlds and 90 tests'
+            git push origin HEAD:main
+          fi
