@@ -1,0 +1,88 @@
+name: R167 Two Group Cultural Selection 72 Worlds 103 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R167/r167_cultural_group_covariance_exact.py'
+      - 'research/R167/test_r167_cultural_group_covariance_exact.py'
+      - '.github/workflows/r167-culture-group-covariance-103-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-price-factorization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify original code and test blob identities
+        run: |
+          cd research/R167
+          test "$(git hash-object r167_cultural_group_covariance_exact.py)" = "48bb2c625ed2c7c70e8e54984be75f7499b78a1e"
+          test "$(git hash-object test_r167_cultural_group_covariance_exact.py)" = "e7dbd446626e8801cfd8cc8cc6307d5d29d0e183"
+          sha256sum r167_cultural_group_covariance_exact.py test_r167_cultural_group_covariance_exact.py
+      - name: Generate 72 exact two-group cultural frequency and decomposition paths
+        run: |
+          cd research/R167
+          python r167_cultural_group_covariance_exact.py > R167_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R167_EXACT_RESULTS.json'))
+          assert d['world_count']==72 and len(d['worlds'])==72
+          assert len({x['id'] for x in d['worlds']})==72
+          assert not d['real_group_data_used']
+          assert not d['original_structured_imitation_paper_reproduced']
+          reversal=d['prespecified_reversal']
+          assert reversal['both_local_frequencies_decrease']
+          assert reversal['within_delta_component']=='-3/64'
+          assert reversal['between_delta_component']=='1/16'
+          assert reversal['total_delta']=='1/64'
+          assert reversal['new_overall_A']=='33/64'
+          for world in d['worlds']:
+            assert len(world['points'])==4
+            assert world['independent_covariance_oracles_equal']
+            for t,row in enumerate(world['points']):
+              p0=F(row['A_in_lower_group'])
+              p1=F(row['A_in_higher_group'])
+              w0=F(row['group_low_weight'])
+              w1=F(row['group_high_weight'])
+              assert w0+w1==1 and 0<=p0<=p1<=1
+              assert F(row['overall_A'])==w0*p0+w1*p1
+              if t>0:
+                W=F(row['within_component'])
+                B=F(row['between_component'])
+                T=F(row['total_change'])
+                assert W+B==T
+                assert T==F(row['overall_A'])-F(world['points'][t-1]['overall_A'])
+          print('R167 all 72 frozen two-group cultural paths and independent covariance identities verified')
+          PY
+          sha256sum R167_EXACT_RESULTS.json
+      - name: Run 103 authentic unittest methods
+        run: |
+          cd research/R167
+          python -m unittest -v test_r167_cultural_group_covariance_exact.py
+      - name: Produce deterministic full source test result ZIP
+        run: |
+          cd research/R167
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R167_Cultural_Group_72_Worlds_103_Tests.zip','w') as z:
+              for name in ('r167_cultural_group_covariance_exact.py','test_r167_cultural_group_covariance_exact.py','R167_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R167_Cultural_Group_72_Worlds_103_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R167-two-group-covariance-exact-${{ matrix.python-version }}
+          path: research/R167/R167_Cultural_Group_72_Worlds_103_Tests.zip
+          retention-days: 90
