@@ -1,0 +1,59 @@
+name: R172 Real Event History Episode Risk Set and Censoring Source Gate
+on:
+  push:
+    paths:
+      - 'research/R172/r172_real_episode_risk_set_gate.py'
+      - '.github/workflows/r172-real-episode-riskset-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect-authentic-CC0-historical-episodes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Re-fetch original-upload Stata file, ingested 1731-row tab and author code
+        run: |
+          cd research/R172
+          python r172_original_event_source_bytes_audit.py
+      - name: Reject provenance break and audit real episode risk-set fields
+        run: |
+          cd research/R172
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          doc=json.loads(Path('R172_ORIGINAL_EVENT_DATA_BYTE_AUDIT.json').read_text())
+          assert doc['status']=='OFFICIAL_PUBLISHED_TAB_AND_CODE_AVAILABLE_WITH_PROVENANCE_CAVEAT'
+          data=doc['file_records'][0]
+          script=doc['file_records'][1]
+          assert data['actual_bytes']==428013
+          assert data['actual_SHA256']=='ed8e29368d06d0fa6d597df567eb21e7ac27fa849e1cdfd90b76167c8b5778ba'
+          assert data['separate_original_upload_format']['matches_metadata_MD5']
+          assert data['separate_original_upload_format']['sha256']=='ddca691b25a664ce13ef2471184e3d5ae3ed62cb72521e0593bff770efb0e4e6'
+          assert script['actual_SHA256']=='664cf425684b97b8a7bf835ed748955e2e34426e8a14c0db8abbf98a4fb2e3ad'
+          print('R172_ORIGINAL_DATA_INTEGRITY_AND_UPLOAD_MD5_VERIFIED')
+          PY
+          python r172_real_episode_risk_set_gate.py
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          d=json.loads(Path('R172_REAL_HISTORICAL_EPISODE_STRUCTURE_AUDIT.json').read_text())
+          assert d['rows']==1731
+          assert d['episode_id_count']>0
+          assert not d['historical_hazard_model_fitted']
+          assert not d['person_or_country_event_prediction_scored']
+          assert not d['train_and_holdout_protocol_frozen']
+          print('R172_RISK_SET_STRUCTURE_INSPECTED_NO_MODEL_SCORED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R172-real-CC0-original-episodes-and-riskset-gate
+          path: |
+            research/R172/source/
+            research/R172/R172_ORIGINAL_EVENT_DATA_BYTE_AUDIT.json
+            research/R172/R172_REAL_HISTORICAL_EPISODE_STRUCTURE_AUDIT.json
+          retention-days: 90
