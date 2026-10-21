@@ -1,0 +1,173 @@
+{
+  "research_id": "R169",
+  "date": "2026-10-21",
+  "catalogue": {
+    "id": "07-011",
+    "name_en": "Coevolving Networks",
+    "name_zh": "共演化网络模型",
+    "priority": "P2",
+    "first_hand_source_id": null
+  },
+  "status": "CLOSED_BOUNDED_E1_72_LABELED_FOUR_NODE_ADAPTIVE_NETWORK_WORLDS_111_DISTINCT_TESTS",
+  "prescore_protocol_commit": "e991aecee0def3adb051d9e4f9590a9a74ad545c",
+  "sources": [
+    {
+      "authors": [
+        "Petter Holme",
+        "M. E. J. Newman"
+      ],
+      "year": 2006,
+      "doi": "10.1103/PhysRevE.74.056108",
+      "original_APS_abstract_checked": true,
+      "arxiv_id": "physics/0603023",
+      "author_event_clock_reproduced": false
+    },
+    {
+      "authors": [
+        "Federico Vázquez",
+        "Víctor M. Eguíluz",
+        "Maxi San Miguel"
+      ],
+      "year": 2008,
+      "doi": "10.1103/PhysRevLett.100.108702",
+      "original_APS_abstract_checked": true,
+      "arxiv_id": "0710.4910",
+      "original_large_population_phase_transition_reproduced": false
+    },
+    {
+      "authors": [
+        "Thilo Gross",
+        "Bernd Blasius"
+      ],
+      "year": 2008,
+      "doi": "10.1098/rsif.2007.1229",
+      "original_open_review_checked": true
+    }
+  ],
+  "project_created_model": {
+    "nodes": 4,
+    "graph_templates": [
+      "path",
+      "star",
+      "cycle",
+      "chord"
+    ],
+    "opinion_templates": [
+      "block",
+      "alternate",
+      "singleton"
+    ],
+    "rewiring_alpha": [
+      "0",
+      "1/2",
+      "1"
+    ],
+    "rewiring_target_modes": [
+      "same",
+      "any"
+    ],
+    "full_worlds": 72,
+    "timepoints_per_world": 4,
+    "event_clock": "uniform discordant undirected edge, uniform anchor endpoint, adoption with 1-alpha else rewiring; no eligible target yields literal no-op",
+    "individual_opinion_adoption_changes_graph": false,
+    "successful_rewire_preserves_opinions": true,
+    "successful_rewire_preserves_number_of_edges": true,
+    "zero_active_edges_absorbing": true,
+    "no_floating_point": true
+  },
+  "independent_exact_methods": [
+    "direct separate active undirected edge and anchored conditional event aggregation",
+    "independent oriented-edge categorical enumeration with rebuilt eligible target graph states and nested-loop propagation"
+  ],
+  "all_full_joint_distributions_match_exactly": true,
+  "key_mechanism_certificates": {
+    "alpha0_graph_unchanged_under_all_paths": true,
+    "alpha1_individual_opinions_unchanged_under_all_paths": true,
+    "same_target_success_decreases_discordant_edges_by_one": true,
+    "all_12_frozen_initial_graph_opinion_pairs_show_same_vs_any_path_difference_at_alpha1": true,
+    "selected_counterexample": {
+      "graph": "path",
+      "opinions": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "alpha": "1",
+      "period": 2,
+      "total_variation_full_labeled_state_distribution": "1/2",
+      "expected_discordant_edges_same_mode": "1",
+      "expected_discordant_edges_any_mode": "1",
+      "interpretation": "different full state distributions may have exactly equal mean discordant edge count"
+    }
+  },
+  "CI": {
+    "first_run": 39540425684,
+    "final_SHA256_pinned_archive_run": 39540516277,
+    "final_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39540516277",
+    "final_conclusion": "success",
+    "first_jobs": [
+      {
+        "id": 119026638900,
+        "python": "3.11",
+        "methods": 111,
+        "conclusion": "success"
+      },
+      {
+        "id": 119026639237,
+        "python": "3.12",
+        "methods": 111,
+        "conclusion": "success"
+      }
+    ],
+    "final_jobs": [
+      {
+        "id": 119026934047,
+        "python": "3.11",
+        "methods": 111,
+        "conclusion": "success"
+      },
+      {
+        "id": 119026934343,
+        "python": "3.12",
+        "methods": 111,
+        "conclusion": "success"
+      },
+      {
+        "id": 119026989146,
+        "role": "independent deterministic publisher and exact counterexample auditor",
+        "methods": 111,
+        "conclusion": "success"
+      }
+    ],
+    "genuinely_distinct_test_methods": 111,
+    "actual_executions_five_jobs": 555,
+    "failed_tests": 0
+  },
+  "permanent_archive_commit": "c27bb0329bbfa8daecf142846719086840287e0c",
+  "git_blob_sha1": {
+    "r169_adaptive_network_exact.py": "6398172b242d3a2653cad904f6cff7c074289a62",
+    "test_r169_adaptive_network_exact.py": "6d7fbb71b108161e2d56ce7d2a2380f9de36946d",
+    "R169_EXACT_RESULTS.json": "d507af6d37b5146478b457e887b525a4c62b8607",
+    "R169_Adaptive_Network_72_Worlds_111_Tests.zip": "9ae84f96689f81ee35ab2ea282b544099f9e3055"
+  },
+  "sha256": {
+    "r169_adaptive_network_exact.py": "6f60b15ebbde33502ec660f4c7602960368eb6bbd8243d94483d7243f4005a3a",
+    "test_r169_adaptive_network_exact.py": "2f40e938e9b90c2099f7545707ae205c7ff130477d4e7d9d769b8c2f2368ba74",
+    "R169_EXACT_RESULTS.json": "171c529917d8cdd3443b13883681cf4b020522f6ba0a807d1cb685c70cfd31e1",
+    "R169_Adaptive_Network_72_Worlds_111_Tests.zip": "64b02b3ccd90f31548fde255ca2e9da14fa2d949fb92b0b7e73d0dbd7119a518"
+  },
+  "original_human_opinion_network_data_used": false,
+  "author_thermodynamic_phase_transition_replicated": false,
+  "new_E2_real_human_independent_predictions": 0,
+  "new_E3_real_historical_external_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "id": "R170",
+    "catalogue_id": "07-012",
+    "priority": "P2",
+    "name": "Language Evolution Models"
+  },
+  "research_sequence": "finish original R series, then classify, then model fusion"
+}
