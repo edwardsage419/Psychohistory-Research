@@ -1,0 +1,221 @@
+{
+  "EA_code_rows": 756,
+  "EA_data_column_names": [
+    "soc_id",
+    "sub_case",
+    "year",
+    "var_id",
+    "code",
+    "comment",
+    "references",
+    "source_coded_data",
+    "admin_comment"
+  ],
+  "EA_data_rows": 121354,
+  "EA_mapping_distinct_IDs_explicitly_referencing_SCCS": 186,
+  "EA_mapping_entries_explicitly_referencing_SCCS": 186,
+  "EA_mapping_rows": 1291,
+  "EA_society_column_names": [
+    "id",
+    "xd_id",
+    "pref_name_for_society",
+    "glottocode",
+    "ORIG_name_and_ID_in_this_dataset",
+    "alt_names_by_society",
+    "main_focal_year",
+    "HRAF_name_ID",
+    "HRAF_link",
+    "origLat",
+    "origLong",
+    "Lat",
+    "Long",
+    "Comment",
+    "glottocode_comment"
+  ],
+  "EA_society_distinct_IDs": 1291,
+  "EA_society_rows": 1291,
+  "EA_variable_rows": 94,
+  "SCCS_mapping_rows": 186,
+  "independent_historical_or_behavioral_prediction_scored": false,
+  "license": "CC-BY-4.0 - cite original ethnographic sources and Kirby et al 2016",
+  "new_E2_predictions": 0,
+  "new_E3_predictions": 0,
+  "original_SCCS_to_EA_mapping_uniquely_validated": false,
+  "original_real_cross_societal_association_scored": false,
+  "raw_authenticated_sources": {
+    "datasets/EA/codes.csv": {
+      "bytes": 76781,
+      "git_blob_sha1": "0ac9eb7863f90f8e3c0ed33ea506ca491cd212d1",
+      "sha256": "a6779c38e956ef3b3ca797f862fe7b220e07fe765af69f2bdc1235076c3e6b34"
+    },
+    "datasets/EA/data.csv": {
+      "bytes": 11274445,
+      "git_blob_sha1": "ca16bd039a0b0bc0b430e257b0f47cec53c05e8c",
+      "sha256": "56f7acc2e2466f067a2a0829d94b7875aaf15a0c7b3918c3e3f3cfd0257935f8"
+    },
+    "datasets/EA/societies.csv": {
+      "bytes": 162348,
+      "git_blob_sha1": "9a7e3ff625c7c9e2fb879cd914747c98cfc75888",
+      "sha256": "bef986250860c102f48c4275242aaef5c975d3cda721253f433ef67f49a49d64"
+    },
+    "datasets/EA/societies_mapping.csv": {
+      "bytes": 22352,
+      "git_blob_sha1": "31d34ee88fae59789a3cff6bf9625d09daef9555",
+      "sha256": "59f6f1e75f49098c46e163c9f9d5a8207a2bddf10866844fb25c4d4cda1f3b9a"
+    },
+    "datasets/EA/variables.csv": {
+      "bytes": 29887,
+      "git_blob_sha1": "badeb7299525b51190f740e1ce0bcbeba6c20856",
+      "sha256": "b71b7cd854a1bf3d8d26d5b7e1ef147a2af8a885539fb61869fbedbab4bf4419"
+    },
+    "datasets/SCCS/societies_mapping.csv": {
+      "bytes": 7725,
+      "git_blob_sha1": "21281b89a015911c9d1dd1198b6618b82cc6bc8c",
+      "sha256": "bc5e99d70bab02af47b22933cc88da1411b0f71683bf12d2037f3f1a28c3276e"
+    }
+  },
+  "research_id": "R173",
+  "source_EA_selected_definition_and_eligible_codes": {
+    "EA003": {
+      "kind": "Ordinal",
+      "source_codes": [
+        {
+          "code": "0",
+          "name": "0-5%"
+        },
+        {
+          "code": "1",
+          "name": "6-15%"
+        },
+        {
+          "code": "2",
+          "name": "16-25%"
+        },
+        {
+          "code": "3",
+          "name": "26-35%"
+        },
+        {
+          "code": "4",
+          "name": "36-45%"
+        },
+        {
+          "code": "5",
+          "name": "46-55%"
+        },
+        {
+          "code": "6",
+          "name": "56-65%"
+        },
+        {
+          "code": "7",
+          "name": "66-75%"
+        },
+        {
+          "code": "8",
+          "name": "76-85%"
+        },
+        {
+          "code": "9",
+          "name": "86-100%"
+        },
+        {
+          "code": "NA",
+          "name": "Missing data"
+        }
+      ],
+      "title": "Subsistence economy: fishing"
+    },
+    "EA005": {
+      "kind": "Ordinal",
+      "source_codes": [
+        {
+          "code": "0",
+          "name": "0-5%"
+        },
+        {
+          "code": "1",
+          "name": "6-15%"
+        },
+        {
+          "code": "2",
+          "name": "16-25%"
+        },
+        {
+          "code": "3",
+          "name": "26-35%"
+        },
+        {
+          "code": "4",
+          "name": "36-45%"
+        },
+        {
+          "code": "5",
+          "name": "46-55%"
+        },
+        {
+          "code": "6",
+          "name": "56-65%"
+        },
+        {
+          "code": "7",
+          "name": "66-75%"
+        },
+        {
+          "code": "8",
+          "name": "76-85%"
+        },
+        {
+          "code": "9",
+          "name": "86-100%"
+        },
+        {
+          "code": "NA",
+          "name": "Missing data"
+        }
+      ],
+      "title": "Subsistence economy: agriculture"
+    },
+    "EA006": {
+      "kind": "Categorical",
+      "source_codes": [
+        {
+          "code": "NA",
+          "name": "Missing data"
+        },
+        {
+          "code": "1",
+          "name": "Bride-wealth"
+        },
+        {
+          "code": "2",
+          "name": "Bride-service"
+        },
+        {
+          "code": "3",
+          "name": "Token bride-wealth"
+        },
+        {
+          "code": "4",
+          "name": "Gift exchange"
+        },
+        {
+          "code": "5",
+          "name": "Woman exchange"
+        },
+        {
+          "code": "6",
+          "name": "Insignificant"
+        },
+        {
+          "code": "7",
+          "name": "Dowry"
+        }
+      ],
+      "title": "Transactions at marriage: prevailing type"
+    }
+  },
+  "source_pinned_commit": "9bfed2c8c206be00f55f71516f262bbca2234e5a",
+  "source_repository": "D-PLACE/dplace-data",
+  "status": "FIRST_HAND_REAL_CROSS_CULTURAL_SOURCE_AUTHENTICITY_AND_SCHEMA_ONLY"
+}
