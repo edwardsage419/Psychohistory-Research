@@ -22,4 +22,4 @@
 
 进入 `research/R161`，执行 `python r161_finite_conformist_markov.py > R161_EXACT_RESULTS.json`，以及 `python -m unittest -q test_r161_finite_conformist_markov.py`，仅需Python标准库。
 
-**本阶段新增E2=0、E3=0**。R073/PESEN v0.1不变。下一原目录 **R162 P2/07-004 Prestige Biased Social Learning（声望偏向学习）**；全R系列完成后再统一分类，最后进行模型熔炼。
+**本阶段新增E2=0、E3=0**。R073/PESEN v0.1不变。下一原目录 **R162 P1/07-004 Prestige Biased Transmission（声望偏向学习）**；全R系列完成后再统一分类，最后进行模型熔炼。
