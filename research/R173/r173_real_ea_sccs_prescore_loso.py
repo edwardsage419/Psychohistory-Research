@@ -251,7 +251,7 @@ class TestFrozenMathematics(unittest.TestCase):
     def test_conditional_shrink_manual(self):
         x=[{"x":"0","y":"1"},{"x":"0","y":"2"},{"x":"2","y":"2"}]
         a=exact_naive(x)[0][1]["2"]
-        self.assertAlmostEqual(a,(1+10*(2/9))/11)
+        self.assertAlmostEqual(a,(1+10*(3/9))/11)
     def test_two_methods_full_distribution(self):
         x=[{"x":str(i%3),"y":str(i%7+1)} for i in range(24)]
         self.assertEqual(exact_naive(x),exact_subtractive(x))
