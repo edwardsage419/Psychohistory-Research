@@ -1,0 +1,82 @@
+name: R189 Exact Discrete Random Intercept Logistic 24 Worlds
+on:
+  push:
+    paths:
+      - 'research/R189/r189_exact_discrete_logit_glmm.py'
+      - '.github/workflows/r189-discrete-logit-glmm.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-discrete-glmm-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify integrated random intercept, condition group counts, likelihood and heldout scores
+        run: |
+          cd research/R189
+          python r189_exact_discrete_logit_glmm.py --test
+  complete-24-worlds-independent-cluster-scoring-and-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-discrete-glmm-tests
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate all 8472 training count tables with 261 profile fits and new-cluster test loss
+        run: |
+          cd research/R189
+          python r189_exact_discrete_logit_glmm.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          j=json.loads(Path('R189_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R189_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          lib=json.loads(Path('R189_ALL_261_CLUSTER_FIT_PROFILES.json').read_text())
+          assert j['world_count']==24 and len(j['all_worlds'])==24
+          assert j['complete_ordered_training_tables']==8472
+          assert j['unique_exact_profile_fits']==261
+          assert len(j['prelocked_marginal_vs_conditional_odds_ratio_anchor'])==2
+          assert lib['unique_training_profiles']==261 and len(lib['profiles'])==261
+          assert all(v['two_probability_and_likelihood_routes_verified'] for v in lib['profiles'])
+          assert all(v['independent_source_fraction_moments_and_heldout_log_scores_verified'] for v in j['all_worlds'])
+          with Path('R189_ALL_8472_ORDERED_CLUSTER_TRAINING_TABLES.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==8472
+          assert a['result_sha256']==sha256(Path('R189_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['complete_training_CSV_sha256']==sha256(Path('R189_ALL_8472_ORDERED_CLUSTER_TRAINING_TABLES.csv').read_bytes()).hexdigest()
+          assert a['fit_profile_library_sha256']==sha256(Path('R189_ALL_261_CLUSTER_FIT_PROFILES.json').read_bytes()).hexdigest()
+          assert j['new_E2']==j['new_E3']==0
+          with zipfile.ZipFile('R189_Exact_Two_Point_GLMM_24_Worlds.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R189_EXACT_TWO_POINT_CLUSTER_LOGIT_24_WORLDS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R189-24-exact-discrete-logit-cluster-worlds
+          path: |
+            research/R189/R189_EXACT_RESULTS.json
+            research/R189/R189_ALL_8472_ORDERED_CLUSTER_TRAINING_TABLES.csv
+            research/R189/R189_ALL_261_CLUSTER_FIT_PROFILES.json
+            research/R189/R189_FINAL_MACHINE_ACCEPTANCE.json
+            research/R189/R189_Exact_Two_Point_GLMM_24_Worlds.zip
+          retention-days: 90
+      - name: Permanently publish R189 bounded E1 synthetic artifacts
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R189/R189_EXACT_RESULTS.json research/R189/R189_ALL_8472_ORDERED_CLUSTER_TRAINING_TABLES.csv research/R189/R189_ALL_261_CLUSTER_FIT_PROFILES.json research/R189/R189_FINAL_MACHINE_ACCEPTANCE.json research/R189/R189_Exact_Two_Point_GLMM_24_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R189): 24 exact two-point logistic random intercept worlds and independent group scoring'
+            git push origin HEAD:main
+          fi
