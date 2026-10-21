@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r163-success-bias-102-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-payoff-strategy-oracles:
     runs-on: ubuntu-latest
@@ -75,3 +75,36 @@ jobs:
           name: R163-complete-synthetic-success-bias-${{ matrix.python-version }}
           path: research/R163/R163_Success_Bias_72_Worlds_102_Tests.zip
           retention-days: 90
+
+  publish-verified-results:
+    needs: independent-payoff-strategy-oracles
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce and check hashes
+        run: |
+          cd research/R163
+          python r163_success_bias_payoff_exact.py > R163_EXACT_RESULTS.json
+          echo '23979510af73c9b92e9cadb85ee86a9223401c4d13a00240f832938f046dde22  R163_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -q test_r163_success_bias_payoff_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R163_Success_Bias_72_Worlds_102_Tests.zip','w') as z:
+              for name in ('r163_success_bias_payoff_exact.py','test_r163_success_bias_payoff_exact.py','R163_EXACT_RESULTS.json'):
+                  i=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  i.compress_type=zipfile.ZIP_LZMA
+                  i.external_attr=0o644<<16
+                  z.writestr(i,open(name,'rb').read())
+          PY
+          echo 'a3313a85ab0d5aa4865f28747ec05a7c3bcdc36716a12fddf6fa54d286e279cf  R163_Success_Bias_72_Worlds_102_Tests.zip' | sha256sum -c -
+      - name: Commit complete verified research data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R163/R163_EXACT_RESULTS.json research/R163/R163_Success_Bias_72_Worlds_102_Tests.zip
+          git commit -m 'archive(R163): 72 exact payoff-strategy cases and test sources'
+          git push origin HEAD:main
