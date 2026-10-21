@@ -78,7 +78,7 @@ def parse_rows(raw):
         if not r0["episode_id"] or not r0["country_id"]:raise ValueError("missing episode identity")
         if r0["year"]-r0["t0"]!=r0["age"] or r0["year"]<r0["t0"]:
             raise ValueError("invalid observed event-history time")
-        if r0["year"]<r0["transition"]+1:
+        if r0["year"]<r0["transition"]:
             raise ValueError("regime event observation precedes recorded transition")
         result.append(r0)
     return result
@@ -304,6 +304,8 @@ def score(test,model):
 def run():
     episodes,identities=load_validated_episodes()
     train,test,withheld=cohorts(episodes)
+    if sum(r["year"]==r["transition"] for group in episodes.values() for r in group)!=19:
+        raise ValueError("nineteen source same-year transition events audit discrepancy")
     model=fit_models(train)
     scores,intervals,file_meta,ep_samples=score(test,model)
     country_train={r["country_id"] for r in train}
@@ -325,6 +327,9 @@ def run():
      "source_original_episodes":103,
      "excluded_missing_outcome_episode":"NGA2011",
      "excluded_missing_outcome_rows":6,
+     "source_same_year_observation_addendum_commit":"a83088fd20a64175c6d25a99b40f4cec6afc11c4",
+     "source_same_calendar_transition_rows":sum(
+        r["year"]==r["transition"] for group in episodes.values() for r in group),
      "eligible_source_rows":1725,
      "eligible_source_episodes":102,
      "split":{
