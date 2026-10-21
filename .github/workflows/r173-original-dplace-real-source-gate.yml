@@ -6,7 +6,7 @@ on:
       - '.github/workflows/r173-original-dplace-real-source-gate.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   authentic-CCBY-ethnographic-source:
     runs-on: ubuntu-latest
@@ -40,7 +40,8 @@ jobs:
           assert d['new_E2_predictions']==0 and d['new_E3_predictions']==0
           print('R173_SOURCE_AUTHENTICATED_NO_CORRELATION_CLAIMS')
           PY
-          sha256sum R173_ORIGINAL_DPLACE_EA_SCCS_SOURCE_AUDIT.json R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip
+          echo '040869341f1865f088a6776c5e676ea3ea26b1231b0ed2283f701a40fb967536  R173_ORIGINAL_DPLACE_EA_SCCS_SOURCE_AUDIT.json' | sha256sum -c -
+          echo 'ff83a0229b4903a246319718a3dfb73f5416dc6e568e42c9f18be3b4ad5c2a03  R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R173-authentic-original-CCBY-EA-SCCS-source
@@ -48,3 +49,30 @@ jobs:
             research/R173/R173_ORIGINAL_DPLACE_EA_SCCS_SOURCE_AUDIT.json
             research/R173/R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip
           retention-days: 90
+
+  independently-publish-immutable-CCBY-source-audit:
+    needs: authentic-CCBY-ethnographic-source
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently refetch raw six original D-PLACE files and verify all Git source IDs
+        run: |
+          cd research/R173
+          python r173_original_dplace_source_audit.py --fetch
+          python r173_original_dplace_source_audit.py --audit-and-archive
+          echo '040869341f1865f088a6776c5e676ea3ea26b1231b0ed2283f701a40fb967536  R173_ORIGINAL_DPLACE_EA_SCCS_SOURCE_AUDIT.json' | sha256sum -c -
+          echo 'ff83a0229b4903a246319718a3dfb73f5416dc6e568e42c9f18be3b4ad5c2a03  R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip' | sha256sum -c -
+      - name: Permanently archive original research sources and structured metadata only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R173/R173_ORIGINAL_DPLACE_EA_SCCS_SOURCE_AUDIT.json research/R173/R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R173): authenticate original 121354 EA cultural rows and 186 SCCS mappings, no model score'
+            git push origin HEAD:main
+          fi
