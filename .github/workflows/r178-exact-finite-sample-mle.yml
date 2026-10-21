@@ -1,0 +1,74 @@
+name: R178 Exact Finite Sample MLE Bias Variance and Risk
+on:
+  push:
+    paths:
+      - 'research/R178/r178_finite_sample_mle_exact_risk.py'
+      - '.github/workflows/r178-exact-finite-sample-mle.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-estimation-unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify R177 pinned source and 25 finite estimation unit tests
+        run: |
+          cd research/R178
+          python r178_finite_sample_mle_exact_risk.py --test
+  evaluate-30-worlds-and-publish:
+    needs: two-python-exact-estimation-unit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compute all frozen finite-sample likelihood worlds
+        run: |
+          cd research/R178
+          python r178_finite_sample_mle_exact_risk.py --run-and-archive
+          python - <<'PY'
+          from pathlib import Path
+          from hashlib import sha256
+          import json,zipfile
+          r=json.loads(Path('R178_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R178_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['world_count']==30 and len(r['source_worlds'])==30
+          assert sum(len(x['full_training_count_pmf']) for x in r['source_worlds'])==270
+          assert r['all_30_positive_probability_MLE_boundary_infinite_expected_test_logloss']
+          assert len(r['fixed_n8_p_quarter_comparison'])==5
+          assert all(x['unsmoothed_mle_independent_test_expected_logloss']=='INF'
+                     for x in r['source_worlds'])
+          assert a['result_sha256']==sha256(Path('R178_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R178_MLE_30_Finite_Count_Sample_Worlds_Exact_Audit.zip') as z:
+            assert len(z.namelist())==4 and z.testzip() is None
+          print('R178_EXACT_MLE_30_WORLDS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R178-finite-sample-30-exact-mle-worlds
+          path: |
+            research/R178/R178_EXACT_RESULTS.json
+            research/R178/R178_FINAL_MACHINE_ACCEPTANCE.json
+            research/R178/R178_MLE_30_Finite_Count_Sample_Worlds_Exact_Audit.zip
+          retention-days: 90
+      - name: Publish finite E1 exact results to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R178/R178_EXACT_RESULTS.json research/R178/R178_FINAL_MACHINE_ACCEPTANCE.json research/R178/R178_MLE_30_Finite_Count_Sample_Worlds_Exact_Audit.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R178): finite-sample exact MLE risk and independent prediction loss controls'
+            git push origin HEAD:main
+          fi
