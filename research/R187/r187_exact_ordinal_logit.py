@@ -112,9 +112,6 @@ def multinomial_mass(counts,pmf):
     m=sum(counts)
     if len(counts)!=3 or any(not isinstance(x,int) or x<0 for x in counts) or m not in M_VALUES:
         raise ValueError("invalid three-level multinomial data")
-    coefficient=factorial(m)
-    for count in counts:
-        coefficient//=1  # Preserve exact arithmetic; factorial denominator applied below.
     coefficient=F(factorial(m),factorial(counts[0])*factorial(counts[1])*factorial(counts[2]))
     return coefficient*pmf[0]**counts[0]*pmf[1]**counts[1]*pmf[2]**counts[2]
 
@@ -243,7 +240,7 @@ def world_eval(name,m,o0,o1,t0,t1,is_po,fits,rows):
     cdf_shift_low=source_pmfs[1][0]-source_pmfs[0][0]
     cdf_shift_upper=(source_pmfs[1][0]+source_pmfs[1][1])-(source_pmfs[0][0]+source_pmfs[0][1])
     signs_cross=cdf_shift_low*cdf_shift_upper<0
-    if (name=="CROSSED_THRESHOLDS")!=signs_cross:
+    if (name in ("DIVERGENT","CROSSED_THRESHOLDS"))!=signs_cross:
         raise AssertionError("frozen true crossing or noncrossing classification inconsistent")
     return {
         "source_world":name,"group_sample_size_m":m,
