@@ -1,0 +1,66 @@
+name: R155 Bass Diffusion 75 Worlds 96 Tests preliminary validation
+on:
+  push:
+    paths:
+      - 'research/R155/r155_bass_continuous.py'
+      - 'research/R155/test_r155_bass_continuous.py'
+      - '.github/workflows/r155-bass-96-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-bass-model-arithmetic:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify predeclared source/test Git blob identities
+        run: |
+          cd research/R155
+          test "$(git hash-object r155_bass_continuous.py)" = "60a296dfdb870c2a49994217d155d0a0387e7e20"
+          test "$(git hash-object test_r155_bass_continuous.py)" = "9e9efeaa338e86ccede48701cf35fbdcdbbaa0bb"
+          sha256sum r155_bass_continuous.py test_r155_bass_continuous.py
+      - name: Regenerate 75 model trajectories, numerical solver comparisons and three published table calculations
+        run: |
+          cd research/R155
+          python r155_bass_continuous.py > R155_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          d=json.load(open('R155_EXACT_RESULTS.json'))
+          assert d['scenario_count']==75 and len(d['cases'])==75
+          assert len(set(x['scenario_id'] for x in d['cases']))==75
+          assert d['max_RK4_closed_form_error']<2e-11
+          assert len(d['published_table_I_arithmetic'])==3
+          assert not d['original_author_data_refit']
+          assert not d['historical_heldout_prediction']
+          print('R155 PASS 75 frozen worlds, independent RK4 and source arithmetic')
+          PY
+          sha256sum R155_EXACT_RESULTS.json
+      - name: Run all 96 genuine unit tests
+        run: |
+          cd research/R155
+          python -m unittest -v test_r155_bass_continuous.py
+      - name: Create reproducible source test JSON ZIP
+        run: |
+          cd research/R155
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R155_Bass_75_Worlds_96_Tests.zip','w') as z:
+              for name in ('r155_bass_continuous.py','test_r155_bass_continuous.py','R155_EXACT_RESULTS.json'):
+                  x=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  x.compress_type=zipfile.ZIP_LZMA
+                  x.external_attr=0o644<<16
+                  z.writestr(x,open(name,'rb').read())
+          PY
+          sha256sum R155_Bass_75_Worlds_96_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R155-75-original-Bass-E1-Python-${{ matrix.python-version }}
+          path: research/R155/R155_Bass_75_Worlds_96_Tests.zip
+          retention-days: 90
