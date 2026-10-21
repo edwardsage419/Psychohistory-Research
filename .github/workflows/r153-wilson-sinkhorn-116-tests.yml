@@ -121,11 +121,12 @@ jobs:
           echo '7f27797739074f2504dfe10b9e3442441dd72d682c896c4cecdde732157516b1  r153_spatial_double_constraint.py' | sha256sum -c -
           echo '3a92a292d6e43bb35e13e416751889aa718d5fc40b0f89b9046a332031f56afd  test_r153_spatial_double_constraint.py' | sha256sum -c -
           echo '5e66403d0011e02e8a5575403b6408d33aff2a8c2b0aa5727cfcac894648f9b7  R153_EXACT_RESULTS.json' | sha256sum -c -
+          mv R153_EXACT_RESULTS.json R153_WILSON_SINKHORN_24_CASES_EXACT_RESULTS.json
       - name: Publish original source, genuine tests, full JSON, and ZIP to main
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add research/R153/r153_spatial_double_constraint.py research/R153/test_r153_spatial_double_constraint.py research/R153/R153_EXACT_RESULTS.json research/R153/R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip
+          git add research/R153/r153_spatial_double_constraint.py research/R153/test_r153_spatial_double_constraint.py research/R153/R153_WILSON_SINKHORN_24_CASES_EXACT_RESULTS.json research/R153/R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip
           if ! git diff --cached --quiet; then
               git commit -m 'archive(R153): permanent 24 doubly constrained exact-margin spatial interaction worlds and 116 test ZIP'
               git push origin HEAD:main
