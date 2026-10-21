@@ -1,0 +1,91 @@
+name: R200 Exact Change Point vs Pulse 36 Worlds
+on:
+  push:
+    paths:
+      - 'research/R200/r200_exact_bernoulli_changepoint.py'
+      - '.github/workflows/r200-exact-bernoulli-changepoint.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-complete-change-scan-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify full original sources, exact fixed scan false-alarm and true independent future loss
+        run: |
+          cd research/R200
+          python r200_exact_bernoulli_changepoint.py --test
+  full-36-worlds-and-source-scan-permanent-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-complete-change-scan-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate 11952 training histories, 712 fits, 432 exact scans and heldout predictions
+        run: |
+          cd research/R200
+          python r200_exact_bernoulli_changepoint.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          d=json.loads(Path('R200_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R200_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          fits=json.loads(Path('R200_ALL_712_EXACT_CHANGEPONT_FIT_PROFILES.json').read_text())
+          assert d['complete_source_worlds']==36 and len(d['all_full_source_worlds'])==36
+          assert d['full_ordered_original_training_datasets']==11952
+          assert d['unique_exact_training_fit_profiles']==712
+          assert d['complete_source_weighted_single_sequence_scan_records']==432
+          assert d['separate_source_T_scan_worlds']==18
+          assert len(fits['profiles'])==712
+          assert all(w['all_original_training_likelihood_and_new_test_oracle_identity_exact'] for w in d['all_full_source_worlds'])
+          for path,count in [
+            ('R200_ALL_11952_ORDERED_TRAINING_DATASETS.csv',11952),
+            ('R200_ALL_432_SOURCE_WEIGHTED_SCAN_PROFILES.csv',432)
+          ]:
+            with Path(path).open() as f:
+              assert sum(1 for _ in csv.DictReader(f))==count
+          for path,key in [
+            ('R200_EXACT_RESULTS.json','complete_result_SHA256'),
+            ('R200_ALL_11952_ORDERED_TRAINING_DATASETS.csv','original_source_training_CSV_SHA256'),
+            ('R200_ALL_712_EXACT_CHANGEPONT_FIT_PROFILES.json','fitted_profiles_SHA256'),
+            ('R200_ALL_432_SOURCE_WEIGHTED_SCAN_PROFILES.csv','scan_original_CSV_SHA256')
+          ]:
+            assert a[key]==sha256(Path(path).read_bytes()).hexdigest()
+          assert a['new_E2']==a['new_E3']==0
+          with zipfile.ZipFile('R200_Exact_36_Bernoulli_ChangePoint_Worlds.zip') as z:
+            assert len(z.namelist())==7 and z.testzip() is None
+          print('R200_CHANGE_SCAN_PERMANENT_SHIFT_VS_SINGLE_PULSE_EXACT_E1_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R200-36-Exact-Bernoulli-ChangePoint-Worlds
+          path: |
+            research/R200/R200_EXACT_RESULTS.json
+            research/R200/R200_ALL_11952_ORDERED_TRAINING_DATASETS.csv
+            research/R200/R200_ALL_712_EXACT_CHANGEPONT_FIT_PROFILES.json
+            research/R200/R200_ALL_432_SOURCE_WEIGHTED_SCAN_PROFILES.csv
+            research/R200/R200_FINAL_MACHINE_ACCEPTANCE.json
+            research/R200/R200_Exact_36_Bernoulli_ChangePoint_Worlds.zip
+          retention-days: 90
+      - name: Permanently archive full exact artificial change-point data on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R200/R200_EXACT_RESULTS.json research/R200/R200_ALL_11952_ORDERED_TRAINING_DATASETS.csv research/R200/R200_ALL_712_EXACT_CHANGEPONT_FIT_PROFILES.json research/R200/R200_ALL_432_SOURCE_WEIGHTED_SCAN_PROFILES.csv research/R200/R200_FINAL_MACHINE_ACCEPTANCE.json research/R200/R200_Exact_36_Bernoulli_ChangePoint_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R200): exact shift-vs-spike scanning, all original training and independent next observation evidence'
+            git push origin HEAD:main
+          fi
