@@ -49,7 +49,7 @@ def get(url):
 
 def identity(data):
     if data.startswith(bytes.fromhex("D0CF11E0A1B11AE1")):return "OLE_CFB_XLS_OR_OFFICE"
-    if data.startswith(b"PK\\x03\\x04"):return "ZIP_XLSX_OR_OTHER"
+    if data.startswith(b"PK\x03\x04"):return "ZIP_XLSX_OR_OTHER"
     if data.startswith(b"%PDF"):return "PDF"
     if b"<html" in data[:400].lower():return "HTML_PAGE"
     return "UNKNOWN_BINARY"
@@ -60,7 +60,7 @@ def main():
         raw,article_final,mime=get(ARTICLE)
         page=raw.decode("utf-8","replace")
         parser=LinkParser();parser.feed(page)
-        print("ARTICLE_ACCESS",json.dumps({"url":article_final,"bytes":len(raw),"mime":mime,
+        print("ARTICLE_ACCESS",json.dumps({"html_head":page[:500],"url":article_final,"bytes":len(raw),"mime":mime,
             "sha256":hashlib.sha256(raw).hexdigest(),"links":len(parser.links)}))
     except Exception as exc:
         print("ARTICLE_ERROR",type(exc).__name__,str(exc))
@@ -101,7 +101,7 @@ def main():
       "2014_critique_and_reply_required":True
     }
     pathlib.Path("R168_PUBLISHER_DOWNLOAD_AUDIT.json").write_text(
-        json.dumps(summary,indent=2,ensure_ascii=False)+"\\n",encoding="utf-8"
+        json.dumps(summary,indent=2,ensure_ascii=False)+"\n",encoding="utf-8"
     )
     print("AUDIT_SUMMARY",json.dumps({
        "links":summary["candidate_links"],"downloaded":summary["downloaded"],
