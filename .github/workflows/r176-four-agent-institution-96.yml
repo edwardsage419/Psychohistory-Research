@@ -1,0 +1,72 @@
+name: R176 Long Run 96 Four Agent Institutional Micro Macro E1
+on:
+  push:
+    paths:
+      - 'research/R176/r176_four_agent_institution_micro_macro_exact.py'
+      - '.github/workflows/r176-four-agent-institution-96.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-transition-unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run micro and macro independent unit tests
+        run: |
+          cd research/R176
+          python r176_four_agent_institution_micro_macro_exact.py --test
+  exact-frozen-96-world-evaluation-and-permanent-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: independent-transition-unit-tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute 96 x 13 x 10 exact independent long-run Markov world comparisons
+        run: |
+          cd research/R176
+          python r176_four_agent_institution_micro_macro_exact.py --run
+          python - <<'PY'
+          from hashlib import sha256
+          from pathlib import Path
+          import json,zipfile
+          a=json.loads(Path("R176_FINAL_MACHINE_ACCEPTANCE.json").read_text())
+          r=json.loads(Path("R176_EXACT_RESULTS.json").read_text())
+          assert r["worlds"]==96 and r["periods"]==13 and r["aggregate_probability_cells"]==12480
+          assert len(r["rows"])==96
+          assert all(t["micro_32_state_equals_macro_10_state_all_t"] for t in r["rows"])
+          assert a["hidden_institution_positive_control_diff"]=="95/128"
+          assert a["exact_results_sha256"]==sha256(Path("R176_EXACT_RESULTS.json").read_bytes()).hexdigest()
+          assert r["new_E2"]==r["new_E3"]==0
+          with zipfile.ZipFile("R176_96_FourAgent_Institution_MicroMacro_Exact_Worlds.zip") as z:
+            assert len(z.namelist())==4 and z.testzip() is None
+          print("R176_96_FINITE_LONGRUN_INSTITUTIONAL_EXACT_E1_ACCEPTED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R176-96-exact-micro-macro-worlds
+          path: |
+            research/R176/R176_EXACT_RESULTS.json
+            research/R176/R176_FINAL_MACHINE_ACCEPTANCE.json
+            research/R176/R176_96_FourAgent_Institution_MicroMacro_Exact_Worlds.zip
+          retention-days: 90
+      - name: Permanently publish exact E1 without empirical claims
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R176/R176_EXACT_RESULTS.json research/R176/R176_FINAL_MACHINE_ACCEPTANCE.json research/R176/R176_96_FourAgent_Institution_MicroMacro_Exact_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R176): full 96 artificial institution worlds micro macro exact proofs'
+            git push origin HEAD:main
+          fi
