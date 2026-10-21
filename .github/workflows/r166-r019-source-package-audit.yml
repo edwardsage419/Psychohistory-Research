@@ -1,0 +1,45 @@
+name: R166 Inspect R019 Original Research Package
+on:
+  push:
+    paths:
+      - '.github/workflows/r166-r019-source-package-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect-previous-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record original R019 ZIP identity and audit texts without executing archived code
+        run: |
+          python - <<'PY'
+          import zipfile,hashlib,pathlib,json
+          matches=list(pathlib.Path('archives/library-originals').glob('*R019*.zip'))
+          assert len(matches)==1, matches
+          target=matches[0]
+          b=target.read_bytes()
+          print('ARCHIVE_PATH',str(target))
+          print('ARCHIVE_BYTES',len(b))
+          print('ARCHIVE_SHA256',hashlib.sha256(b).hexdigest())
+          with zipfile.ZipFile(target) as archive:
+              infos=archive.infolist()
+              print('MEMBER_COUNT',len(infos))
+              print('MEMBERS',json.dumps([{'name':i.filename,'bytes':i.file_size,
+                  'compressed_bytes':i.compress_size} for i in infos],ensure_ascii=False))
+              for i in infos:
+                  if i.is_dir():continue
+                  data=archive.read(i)
+                  print('BEGIN_MEMBER',i.filename)
+                  print('MEMBER_SHA256',hashlib.sha256(data).hexdigest())
+                  if i.filename.lower().endswith(('.txt','.md','.json','.csv','.py','.yml','.yaml','.bib','.html','.rst')):
+                      try:txt=data.decode('utf-8-sig')
+                      except UnicodeDecodeError:txt=data.decode('utf-8','replace')
+                      print('TEXT_FIRST_9000_BEGIN')
+                      print(txt[:9000])
+                      print('TEXT_FIRST_9000_END')
+                  else:
+                      print('BINARY_MEMBER_NOT_EXECUTED_OR_DECODED')
+                  print('END_MEMBER',i.filename)
+          PY
