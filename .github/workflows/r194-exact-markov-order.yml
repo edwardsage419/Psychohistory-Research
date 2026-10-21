@@ -1,0 +1,83 @@
+name: R194 Exact First vs Second Order Markov 24 Worlds
+on:
+  push:
+    paths:
+      - 'research/R194/r194_exact_binary_markov_order.py'
+      - '.github/workflows/r194-exact-markov-order.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-rational-markov-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Independently verify Markov order, stationary marginals and full path source likelihood
+        run: |
+          cd research/R194
+          python r194_exact_binary_markov_order.py --test
+  complete-24-worlds-new-session-prediction-and-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-rational-markov-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate 2064 complete ordered trajectory trainings and 196 fit profiles
+        run: |
+          cd research/R194
+          python r194_exact_binary_markov_order.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          r=json.loads(Path('R194_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R194_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          lib=json.loads(Path('R194_ALL_196_MARKOV_FIT_PROFILES.json').read_text())
+          assert r['worlds']==24 and len(r['all_worlds'])==24
+          assert r['full_ordered_original_training_sets']==2064
+          assert r['unique_fitted_trajectory_profiles']==196
+          assert len(lib['full_fitted_profiles'])==196
+          assert all(w['all_full_original_sessions_and_double_scored_new_paths'] for w in r['all_worlds'])
+          assert all(p['independent_full_path_and_transition_count_algorithms'] for p in lib['full_fitted_profiles'])
+          assert r['IID_one_step_predictor_Brier_lag_two_source']=='1/4'
+          assert r['true_second_order_predictor_Brier_lag_two_source']=='3/16'
+          with Path('R194_ALL_2064_ORDERED_TRAINING_TRAJECTORY_SETS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==2064
+          assert a['result_sha256']==sha256(Path('R194_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['original_CSV_sha256']==sha256(Path('R194_ALL_2064_ORDERED_TRAINING_TRAJECTORY_SETS.csv').read_bytes()).hexdigest()
+          assert a['complete_profile_library_sha256']==sha256(Path('R194_ALL_196_MARKOV_FIT_PROFILES.json').read_bytes()).hexdigest()
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R194_24_Exact_Markov_Trajectory_Worlds.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R194_MARKOV_FIRST_VS_SECOND_ORDER_NEW_SESSION_TESTS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R194-24-exact-Markov-order-worlds
+          path: |
+            research/R194/R194_EXACT_RESULTS.json
+            research/R194/R194_ALL_2064_ORDERED_TRAINING_TRAJECTORY_SETS.csv
+            research/R194/R194_ALL_196_MARKOV_FIT_PROFILES.json
+            research/R194/R194_FINAL_MACHINE_ACCEPTANCE.json
+            research/R194/R194_24_Exact_Markov_Trajectory_Worlds.zip
+          retention-days: 90
+      - name: Permanently commit audited Markov source data to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R194/R194_EXACT_RESULTS.json research/R194/R194_ALL_2064_ORDERED_TRAINING_TRAJECTORY_SETS.csv research/R194/R194_ALL_196_MARKOV_FIT_PROFILES.json research/R194/R194_FINAL_MACHINE_ACCEPTANCE.json research/R194/R194_24_Exact_Markov_Trajectory_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R194): full first versus second order Markov trajectory identification and independent last-state prediction'
+            git push origin HEAD:main
+          fi
