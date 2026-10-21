@@ -80,7 +80,7 @@ def poisson_mle_check(k,n):
         if not all(k-q<=0 for q in (F(0),F(1,2),F(1))):
             raise AssertionError("Poisson zero boundary score wrong")
     else:
-        if k-winner!=0 or k-F(k,2)<=0 or k-F(2*k)<=0:
+        if k-winner!=0 or k-F(k,2)<=0 or k-F(2*k)>=0:
             raise AssertionError("Poisson score signs wrong")
     return winner
 
