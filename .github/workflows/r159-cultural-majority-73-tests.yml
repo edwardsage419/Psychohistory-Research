@@ -1,0 +1,75 @@
+name: R159 Exact Cultural Majority 48 Worlds 73 Tests
+on:
+  push:
+    paths:
+      - 'research/R159/r159_cultural_transmission_exact.py'
+      - 'research/R159/test_r159_cultural_transmission_exact.py'
+      - '.github/workflows/r159-cultural-majority-73-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independently-enumerated-cultural-majority:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify immutable source and test blob identity
+        run: |
+          cd research/R159
+          test "$(git hash-object r159_cultural_transmission_exact.py)" = "440b2aa3a1b8f46248af31252b0ba60b0a0fe77e"
+          test "$(git hash-object test_r159_cultural_transmission_exact.py)" = "4c0e1c233da1635fb68a1368fef55ca7958c470e"
+          sha256sum r159_cultural_transmission_exact.py test_r159_cultural_transmission_exact.py
+      - name: Generate complete 48 fully Fraction cultural frequency paths
+        run: |
+          cd research/R159
+          python r159_cultural_transmission_exact.py > R159_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R159_EXACT_RESULTS.json'))
+          assert d['scenario_count']==48 and len(d['worlds'])==48
+          assert len(set(w['case_id'] for w in d['worlds']))==48
+          assert d['predeclared_controls']['equilibrium_half_maintained_for_all_h_u']
+          assert d['predeclared_controls']['no_conformism_no_reset_remains_constant']
+          assert not d['historical_cultural_data_used']
+          assert d['not_a_gene_culture_coevolution_model']
+          for w in d['worlds']:
+              assert len(w['points'])==7
+              assert w['two_independent_Fraction_routes_identical']
+              for point in w['points']:
+                  p=F(point['trait_A_frequency'])
+                  c=F(point['independent_three_demo_majority'])
+                  assert c==3*p*p-2*p*p*p
+                  assert 0<=p<=1 and 0<=c<=1
+          print('R159 PASS all 48 fixed cultural worlds, two exact Fraction oracle methods')
+          PY
+          sha256sum R159_EXACT_RESULTS.json
+      - name: Run all 73 distinct authentic tests
+        run: |
+          cd research/R159
+          python -m unittest -v test_r159_cultural_transmission_exact.py
+      - name: Create canonical standard library source test data ZIP
+        run: |
+          cd research/R159
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R159_Cultural_Majority_48_Worlds_73_Tests.zip','w') as z:
+              for name in ('r159_cultural_transmission_exact.py','test_r159_cultural_transmission_exact.py','R159_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R159_Cultural_Majority_48_Worlds_73_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R159-48-synthetic-cultural-fraction-${{ matrix.python-version }}
+          path: research/R159/R159_Cultural_Majority_48_Worlds_73_Tests.zip
+          retention-days: 90
