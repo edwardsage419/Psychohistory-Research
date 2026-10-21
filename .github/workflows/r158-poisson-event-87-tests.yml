@@ -1,4 +1,4 @@
-name: R158 Poisson Event Count 60 Worlds 87 Tests
+name: R158 60 Poisson Count Worlds 87 Tests Pinned Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r158-poisson-event-87-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   synthetic-poisson-count-likelihood:
     runs-on: ubuntu-latest
@@ -25,7 +25,8 @@ jobs:
           cd research/R158
           test "$(git hash-object r158_poisson_count_process.py)" = "2f417b95bf7ace68d51ff6d96e74b2dcb0f676ee"
           test "$(git hash-object test_r158_poisson_count_process.py)" = "d50181add4585e5fcad83fe58bb1174387fa92bf"
-          sha256sum r158_poisson_count_process.py test_r158_poisson_count_process.py
+          echo '43890ab779c71d134a713f47c71d40e740f4a224553d5bd6e5d7913d967a94e9  r158_poisson_count_process.py' | sha256sum -c -
+          echo '0f7ddeaade1b842924c9ad4e3e4c30444be5f30a28bf2031954a4c0c9a555d82  test_r158_poisson_count_process.py' | sha256sum -c -
       - name: Independently regenerate 60 frozen Poisson count models
         run: |
           cd research/R158
@@ -48,7 +49,7 @@ jobs:
               assert w['factorial_score_matches_gamma']
           print('R158 PASS 60 frozen artificial Poisson conditional sequences and exact expectations')
           PY
-          sha256sum R158_EXACT_RESULTS.json
+          echo 'c3708c476d0d9b8344433b9008197b5622390d82ea52f11896d1cbc08f185635  R158_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run all 87 actual unit tests
         run: |
           cd research/R158
@@ -65,9 +66,45 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R158_Poisson_Event_60_Worlds_87_Tests.zip
+          echo '34aaa668e4cde991a2bc806df48a476bef978b4c305fd247ca573f04966914e4  R158_Poisson_Event_60_Worlds_87_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R158-complete-60-artificial-count-process-${{ matrix.python-version }}
           path: research/R158/R158_Poisson_Event_60_Worlds_87_Tests.zip
           retention-days: 90
+  pin-and-publish-permanent-results:
+    needs: synthetic-poisson-count-likelihood
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Confirm source tests full JSON archive SHA256 and rerun 87 methods
+        run: |
+          cd research/R158
+          echo '43890ab779c71d134a713f47c71d40e740f4a224553d5bd6e5d7913d967a94e9  r158_poisson_count_process.py' | sha256sum -c -
+          echo '0f7ddeaade1b842924c9ad4e3e4c30444be5f30a28bf2031954a4c0c9a555d82  test_r158_poisson_count_process.py' | sha256sum -c -
+          python r158_poisson_count_process.py > R158_EXACT_RESULTS.json
+          echo 'c3708c476d0d9b8344433b9008197b5622390d82ea52f11896d1cbc08f185635  R158_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r158_poisson_count_process.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R158_Poisson_Event_60_Worlds_87_Tests.zip','w') as z:
+              for name in ('r158_poisson_count_process.py','test_r158_poisson_count_process.py','R158_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo '34aaa668e4cde991a2bc806df48a476bef978b4c305fd247ca573f04966914e4  R158_Poisson_Event_60_Worlds_87_Tests.zip' | sha256sum -c -
+      - name: Publish complete 60-model JSON and original source ZIP on main
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R158/R158_EXACT_RESULTS.json research/R158/R158_Poisson_Event_60_Worlds_87_Tests.zip
+          if ! git diff --cached --quiet; then
+              git commit -m 'archive(R158): pinned 60 Poisson count worlds and 87-test source ZIP'
+              git push origin HEAD:main
+          fi
