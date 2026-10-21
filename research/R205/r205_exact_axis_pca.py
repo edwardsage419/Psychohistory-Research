@@ -410,7 +410,7 @@ class Tests(unittest.TestCase):
                     self.assertGreater(model["training_covariance_trace_exact"], ZERO)
 
     def test_first_eigen_direction_tie_e1(self):
-        self.assertEqual(fit_rank_one_pca((1, 2, 1, 2), 1, 1)["chosen_axis"], 1)
+        self.assertEqual(fit_rank_one_pca((1, 2, 2, 2, 2), 2, 1)["chosen_axis"], 1)
 
     def test_axis1_strict_variance(self):
         self.assertEqual(fit_rank_one_pca((1, 1, 1), 3, 1)["chosen_axis"], 1)
