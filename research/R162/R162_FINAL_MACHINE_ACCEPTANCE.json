@@ -1,0 +1,145 @@
+{
+  "id": "R162",
+  "date": "2026-10-21",
+  "original_catalogue": "P1 07-004 Prestige Biased Transmission",
+  "status": "CLOSED_BOUNDED_E1_72_ARTIFICIAL_ATTENTION_CUE_WORLDS_99_DISTINCT_TESTS",
+  "sources": [
+    {
+      "authors": [
+        "Joseph Henrich",
+        "Francisco J. Gil-White"
+      ],
+      "year": 2001,
+      "doi": "10.1016/S1090-5138(00)00071-4",
+      "publisher_abstract_introduction_checked": true,
+      "coercion_vs_voluntary_prestige_distinguished": true,
+      "source_own_equations_reproduced": false,
+      "empirical_deference_evidence_reproduced": false
+    },
+    {
+      "authors": [
+        "Chudek and colleagues"
+      ],
+      "year": 2012,
+      "doi": "10.1016/j.evolhumbehav.2011.05.005",
+      "original_children_prestige_cue_experiment_publisher_abstract_checked": true,
+      "children_choice_data_reused": false
+    },
+    {
+      "authors": [
+        "Ángel V. Jiménez",
+        "Alex Mesoudi"
+      ],
+      "year": 2019,
+      "doi": "10.1057/s41599-019-0228-7",
+      "original_critical_review_checked": true,
+      "full_empirical_cue_validity_meta_analysis_reproduced": false
+    }
+  ],
+  "precode_freeze_commit": "67c6805792bb71d09afc9f2f1e8e0a9d7383a928",
+  "toy_model": "Three fixed demonstrator symbols, one favored index extra attention lottery tickets, synthetic external correct token, exact Fraction probability arithmetic",
+  "patterns": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ]
+  ],
+  "favored_indices": [
+    0,
+    1,
+    2
+  ],
+  "extra_tickets": [
+    0,
+    1,
+    3
+  ],
+  "synthetic_correct_actions": [
+    0,
+    1
+  ],
+  "frozen_world_count": 72,
+  "two_independent_methods": [
+    "direct exact integer weighted social model selection",
+    "independent physical attention ticket enumeration"
+  ],
+  "all_72_case_Fraction_scores_equal": true,
+  "mathematical_controls": {
+    "minority_A_prestige_j0_extra3_copy_A": "2/3",
+    "neutral_copy_A": "1/3",
+    "A_correct_expected_advantage": "1/3",
+    "B_correct_expected_disadvantage": "-1/3",
+    "favored_B_copy_A": "1/6",
+    "all_identical_actions_make_attention_cue_nonidentifiable": true,
+    "zero_extra_tickets_make_favored_index_nonidentifiable": true
+  },
+  "ci": {
+    "first_run": 39526761194,
+    "pinned_final_run": 39526844299,
+    "final_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39526844299",
+    "conclusion": "success",
+    "distinct_tests": 99,
+    "actual_test_executions": 495,
+    "failures": 0,
+    "final_jobs": [
+      {
+        "id": 118983396710,
+        "python": "3.11",
+        "tests": 99,
+        "conclusion": "success"
+      },
+      {
+        "id": 118983396950,
+        "python": "3.12",
+        "tests": 99,
+        "conclusion": "success"
+      },
+      {
+        "id": 118983462445,
+        "role": "4 SHA256 and permanently published full source archive",
+        "tests": 99,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "archive_commit": "6600e6829a707310281e678928edb55f737aec39",
+  "git_blob_sha1": {
+    "r162_prestige_attention_exact.py": "998df96d973c2e01a46eb440f55dd3a310df9a76",
+    "test_r162_prestige_attention_exact.py": "241bd660cdcb180179c349ab82251e7511bfa6e4",
+    "R162_EXACT_RESULTS.json": "aa6fd210a803d0914b5d18692f9a49c86f9b3009",
+    "R162_Prestige_Cue_72_Worlds_99_Tests.zip": "60af613d1909912f577823d18cc5e062d9059cbc"
+  },
+  "sha256": {
+    "r162_prestige_attention_exact.py": "261738a8d2a53f649157d04f79ae198b6d96553cca5daabbbe32727b350382ff",
+    "test_r162_prestige_attention_exact.py": "fb83f7d68f2ce3d34083f81543153ac8617c1bd77c20c1f30ad5fee083f364ea",
+    "R162_EXACT_RESULTS.json": "405ee44d302da5ba79ea31a8df2c364a6bd7712eed85d120d48a42c4860cd264",
+    "R162_Prestige_Cue_72_Worlds_99_Tests.zip": "d9b39445b6b632a7fd86d120a7a7cd18f2a665572109f777e9031dfdf1d0c660"
+  },
+  "new_E2_independent_human_predictions": 0,
+  "new_E3_external_historical_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R163",
+    "original_catalogue_id": "07-005",
+    "priority": "P1",
+    "name": "Success Biased Transmission"
+  },
+  "sequence": "all original R-models, then catalogue taxonomy, then model fusion"
+}
