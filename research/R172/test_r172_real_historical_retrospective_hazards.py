@@ -48,6 +48,15 @@ class TestR172(unittest.TestCase):
     def test_exclusion_leaves_1725_real_years(self):
         self.assertEqual(sum(map(len,self.episodes.values())),1725)
 
+    def test_19_authentic_source_same_transition_calendar_year_rows(self):
+        rows=parse_rows(DATA.read_bytes())
+        current=[r for r in rows if r["year"]==r["transition"]]
+        self.assertEqual(len(current),19)
+        self.assertEqual(self.d["source_same_calendar_transition_rows"],19)
+        self.assertTrue(all(r["age"]==0 and r["event"]==0 for r in current))
+        self.assertEqual(self.d["source_same_year_observation_addendum_commit"],
+                         "a83088fd20a64175c6d25a99b40f4cec6afc11c4")
+
     def test_source_has_103_original_episodes(self):
         self.assertEqual(self.d["source_original_episodes"],103)
 
