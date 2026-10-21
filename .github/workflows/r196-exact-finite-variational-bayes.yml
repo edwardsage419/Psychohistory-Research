@@ -55,7 +55,7 @@ jobs:
           assert a['exact_truth_sources_sha256']==sha256(Path('R196_ALL_12_EXACT_POSTERIOR_SOURCES.json').read_bytes()).hexdigest()
           assert d['new_E2']==d['new_E3']==0
           with zipfile.ZipFile('R196_24_Exact_Finite_Variational_Bayes_Worlds.zip') as z:
-            assert len(z.namelist())==6 and z.testzip() is None
+            assert len(z.namelist())==7 and z.testzip() is None
           print('R196_EXACT_FINITE_MEANFIELD_ELBO_KL_BAYES_POSTERIOR_ACCEPTED')
           PY
       - uses: actions/upload-artifact@v4
