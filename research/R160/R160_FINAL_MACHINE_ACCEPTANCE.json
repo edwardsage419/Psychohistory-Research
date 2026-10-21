@@ -1,0 +1,130 @@
+{
+  "id": "R160",
+  "date": "2026-10-21",
+  "original_catalogue": "P2 / 07-002 Gene Culture Coevolution",
+  "status": "CLOSED_BOUNDED_E1_PROJECT_AUTHORED_60_JOINT_FREQUENCY_WORLDS_90_UNITTEST_METHODS",
+  "precode_freeze_commit": "f9557ed2596ba343047766854e8684b4f894417a",
+  "original_scientific_sources": [
+    {
+      "authors": [
+        "Marcus W. Feldman",
+        "Kevin N. Laland"
+      ],
+      "year": 1996,
+      "doi": "10.1016/0169-5347(96)10052-5",
+      "journal": "Trends in Ecology & Evolution",
+      "publisher_abstract_read": true,
+      "original_full_model_recreated": false
+    },
+    {
+      "authors": [
+        "Marcus W. Feldman",
+        "Lev A. Zhivotovsky"
+      ],
+      "year": 1992,
+      "doi": "10.1073/pnas.89.24.11935",
+      "journal": "PNAS",
+      "author_paper_abstract_and_fulltext_record_checked": true,
+      "original_vertical_multi_locus_model_recreated": false
+    },
+    {
+      "authors": [
+        "Kevin N. Laland",
+        "John Odling-Smee",
+        "Sean Myles"
+      ],
+      "year": 2010,
+      "doi": "10.1038/nrg2734",
+      "journal": "Nature Reviews Genetics",
+      "publisher_review_key_points_checked": true,
+      "original_human_selection_data_reproduced": false
+    }
+  ],
+  "artificial_model_scope": "single 2x2 synthetic gene-tag and culture-tag frequency state, project-defined selection and population-level copying, no biology/behavior samples",
+  "main_worlds": 60,
+  "individual_parameter_axes": {
+    "initial_distributions": 5,
+    "selection_weights": 2,
+    "majority_copying_weights": 3,
+    "horizontal_updates": 2
+  },
+  "observations_per_world": 5,
+  "total_joint_cell_Fraction_observations": 1200,
+  "methods": [
+    "exact Fraction polynomial direct selection and cultural update",
+    "independently enumerated four genotype-culture selected classes, eight cultural majority configurations, and retained/replaced mass"
+  ],
+  "all_case_full_joint_tables_exact_equal": true,
+  "prespecified_counterexamples": {
+    "common_initial_marginals": [
+      "1/2",
+      "1/2"
+    ],
+    "positive_and_negative_associations": [
+      "1/8",
+      "-1/8"
+    ],
+    "gene_next_positive_association": "11/19",
+    "gene_next_negative_association": "9/17",
+    "when_s_zero_initial_association_contraction_u_quarter": [
+      "3/32",
+      "-3/32"
+    ],
+    "culture_C1_zero_and_one_absorbing_without_innovation": true,
+    "s_zero_gene_marginal_invariant": true,
+    "u_zero_makes_h_unidentifiable": true
+  },
+  "github_ci": {
+    "first_run": 39524857411,
+    "pinned_final_run": 39524960129,
+    "pinned_final_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39524960129",
+    "conclusion": "success",
+    "distinct_test_methods": 90,
+    "total_real_test_executions": 450,
+    "failures": 0,
+    "final_jobs": [
+      {
+        "id": 118977319315,
+        "python": "3.12",
+        "tests": 90,
+        "conclusion": "success"
+      },
+      {
+        "id": 118977319503,
+        "python": "3.11",
+        "tests": 90,
+        "conclusion": "success"
+      },
+      {
+        "id": 118977378163,
+        "role": "canonical four SHA256 and permanent archive publication",
+        "tests": 90,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "archive_commit": "7eab7567e16fd1fdd89edfcb241eb40e9a3d6053",
+  "sha256": {
+    "r160_joint_gene_culture_exact.py": "a267dccfab5801533a48dc50e0f0ea89af02ff2792a7f9494425a1b0f1a4c59e",
+    "test_r160_joint_gene_culture_exact.py": "b0a976cf9516569214139c676312c9034e57ac16569c51114cb1724008975673",
+    "R160_EXACT_RESULTS.json": "7073cfd2aa3cad37955065c619d9ad9da16ba5b63ad768c0ae226597e64536bc",
+    "R160_Gene_Culture_60_Worlds_90_Tests.zip": "aa68cc231970b2957bc7967d4e0538b8903a654b995ec9e635fc5c3afd8e07c1"
+  },
+  "git_blob_sha1": {
+    "r160_joint_gene_culture_exact.py": "591f3c96a143e98806f174c53de6f0dec3b1ffc2",
+    "test_r160_joint_gene_culture_exact.py": "c3d44b507d255357062386769e8d8d5e58f9447c",
+    "R160_EXACT_RESULTS.json": "684b0852cb606e713f3cf128fefff95a5325952a",
+    "R160_Gene_Culture_60_Worlds_90_Tests.zip": "578f6e430161b2ef80ad0540294b1683e4074043"
+  },
+  "new_E2_human_independent_genetic_cultural_prediction": 0,
+  "new_E3_history_external_prediction": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R161",
+    "original_catalogue_id": "07-003",
+    "priority": "P1",
+    "title": "Conformist Transmission"
+  },
+  "sequence": "complete all original R models, then classify, then fuse"
+}
