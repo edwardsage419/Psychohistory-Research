@@ -252,9 +252,10 @@ def document():
       "frozen_controls":{
         "edge_count_templates":[len(x[1]) for x in GRAPHS],
         "target_mode_different_at_alpha1_worlds":mode_distinguishes,
-        "alpha0_graph_fixed":all(all(len({tuple(tuple(edge) for edge in item["edges"])
-                                     for snap in w["snapshots"] for item in snap["distribution"]})==1
-                            for w in worlds if w["alpha"]=="0"),
+        "alpha0_graph_fixed":all(
+          len({tuple(tuple(edge) for edge in item["edges"])
+               for snap in w["snapshots"] for item in snap["distribution"]})==1
+          for w in worlds if w["alpha"]=="0"),
         "alpha1_A_count_fixed":all(len({sum(item["opinions"])
                                       for snap in w["snapshots"] for item in snap["distribution"]})==1
                                    for w in worlds if w["alpha"]=="1"),
