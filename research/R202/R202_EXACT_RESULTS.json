@@ -1,0 +1,160 @@
+{
+  "all_source_worlds": 6,
+  "candidate_a_tie_preference": [
+    "1",
+    "1/2",
+    "2"
+  ],
+  "diagnostics": {
+    "a2_discrete_hazard_ratio_at_time2": "3/4",
+    "a2_discrete_hazard_ratio_at_time4": "2/3",
+    "censor_at_cutoff_is_distinct_from_event_at_cutoff": [
+      {
+        "observation": [
+          "2",
+          1
+        ],
+        "source_a2_x1_probability": "1/4"
+      },
+      {
+        "observation": [
+          "2",
+          0
+        ],
+        "source_a2_x1_probability": "3/4"
+      }
+    ],
+    "scope": "Discrete four-point artificial base time; PH comparison conditional on discrete risk interpretation",
+    "true_AFT_target_probabilities": {
+      "1": "1/2",
+      "1/2": "3/4",
+      "2": "1/4"
+    },
+    "x0_observation_likelihood_identical_across_all_time_scales": true
+  },
+  "full_original_training_records": 96,
+  "independent_heldout_event_threshold": "3",
+  "independent_heldout_new_person_exposure": 1,
+  "literature_doi": "10.1002/sim.4780111409",
+  "new_real_historical_E3": 0,
+  "new_real_human_E2": 0,
+  "research_id": "R202",
+  "status": "ARTIFICIAL_E1_PENDING_EXTERNAL_CI_ACCEPTANCE",
+  "training_base_pairs_per_world": 16,
+  "worlds": [
+    {
+      "censor_cutoff": "2",
+      "fixed_a_1_Brier_exact": "1/4",
+      "known_true_a_oracle_Brier_exact": "3/16",
+      "model_selection_probabilities": {
+        "1": "1/2",
+        "1/2": "1/4",
+        "2": "1/4"
+      },
+      "new_independent_person_Brier": 0.28125,
+      "new_independent_person_Brier_exact": "9/32",
+      "new_independent_person_logloss": 0.76506769867289,
+      "new_independent_person_true_target_probability": "3/4",
+      "oracle_gap_exact": "3/32",
+      "original_training_records": 16,
+      "selected_true_a_probability": "1/4",
+      "training_source_probability_sum": "1",
+      "true_time_scale_a": "1/2"
+    },
+    {
+      "censor_cutoff": "4",
+      "fixed_a_1_Brier_exact": "1/4",
+      "known_true_a_oracle_Brier_exact": "3/16",
+      "model_selection_probabilities": {
+        "1": "3/4",
+        "1/2": "1/4",
+        "2": "0"
+      },
+      "new_independent_person_Brier": 0.234375,
+      "new_independent_person_Brier_exact": "15/64",
+      "new_independent_person_logloss": 0.66044417157466,
+      "new_independent_person_true_target_probability": "3/4",
+      "oracle_gap_exact": "3/64",
+      "original_training_records": 16,
+      "selected_true_a_probability": "1/4",
+      "training_source_probability_sum": "1",
+      "true_time_scale_a": "1/2"
+    },
+    {
+      "censor_cutoff": "2",
+      "fixed_a_1_Brier_exact": "1/4",
+      "known_true_a_oracle_Brier_exact": "1/4",
+      "model_selection_probabilities": {
+        "1": "1/2",
+        "1/2": "0",
+        "2": "1/2"
+      },
+      "new_independent_person_Brier": 0.28125,
+      "new_independent_person_Brier_exact": "9/32",
+      "new_independent_person_logloss": 0.76506769867289,
+      "new_independent_person_true_target_probability": "1/2",
+      "oracle_gap_exact": "1/32",
+      "original_training_records": 16,
+      "selected_true_a_probability": "1/2",
+      "training_source_probability_sum": "1",
+      "true_time_scale_a": "1"
+    },
+    {
+      "censor_cutoff": "4",
+      "fixed_a_1_Brier_exact": "1/4",
+      "known_true_a_oracle_Brier_exact": "1/4",
+      "model_selection_probabilities": {
+        "1": "3/4",
+        "1/2": "0",
+        "2": "1/4"
+      },
+      "new_independent_person_Brier": 0.265625,
+      "new_independent_person_Brier_exact": "17/64",
+      "new_independent_person_logloss": 0.72910743961642,
+      "new_independent_person_true_target_probability": "1/2",
+      "oracle_gap_exact": "1/64",
+      "original_training_records": 16,
+      "selected_true_a_probability": "3/4",
+      "training_source_probability_sum": "1",
+      "true_time_scale_a": "1"
+    },
+    {
+      "censor_cutoff": "2",
+      "fixed_a_1_Brier_exact": "1/4",
+      "known_true_a_oracle_Brier_exact": "3/16",
+      "model_selection_probabilities": {
+        "1": "1/4",
+        "1/2": "0",
+        "2": "3/4"
+      },
+      "new_independent_person_Brier": 0.203125,
+      "new_independent_person_Brier_exact": "13/64",
+      "new_independent_person_logloss": 0.59503815360409,
+      "new_independent_person_true_target_probability": "1/4",
+      "oracle_gap_exact": "1/64",
+      "original_training_records": 16,
+      "selected_true_a_probability": "3/4",
+      "training_source_probability_sum": "1",
+      "true_time_scale_a": "2"
+    },
+    {
+      "censor_cutoff": "4",
+      "fixed_a_1_Brier_exact": "1/4",
+      "known_true_a_oracle_Brier_exact": "3/16",
+      "model_selection_probabilities": {
+        "1": "1/2",
+        "1/2": "0",
+        "2": "1/2"
+      },
+      "new_independent_person_Brier": 0.21875,
+      "new_independent_person_Brier_exact": "7/32",
+      "new_independent_person_logloss": 0.62774116258938,
+      "new_independent_person_true_target_probability": "1/4",
+      "oracle_gap_exact": "1/32",
+      "original_training_records": 16,
+      "selected_true_a_probability": "1/2",
+      "training_source_probability_sum": "1",
+      "true_time_scale_a": "2"
+    }
+  ]
+}
