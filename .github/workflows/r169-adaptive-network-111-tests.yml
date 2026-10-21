@@ -1,4 +1,4 @@
-name: R169 Adaptive Networks 72 Full-State Worlds 111 Tests
+name: R169 Adaptive Networks 72 Full-State Worlds 111 SHA256 Pinned Tests
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r169-adaptive-network-111-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   compare-two-independent-state-markov-oracles:
     runs-on: ubuntu-latest
@@ -26,7 +26,8 @@ jobs:
           cd research/R169
           test "$(git hash-object r169_adaptive_network_exact.py)" = "6398172b242d3a2653cad904f6cff7c074289a62"
           test "$(git hash-object test_r169_adaptive_network_exact.py)" = "6d7fbb71b108161e2d56ce7d2a2380f9de36946d"
-          sha256sum r169_adaptive_network_exact.py test_r169_adaptive_network_exact.py
+          echo '6f60b15ebbde33502ec660f4c7602960368eb6bbd8243d94483d7243f4005a3a  r169_adaptive_network_exact.py' | sha256sum -c -
+          echo '2f40e938e9b90c2099f7545707ae205c7ff130477d4e7d9d769b8c2f2368ba74  test_r169_adaptive_network_exact.py' | sha256sum -c -
       - name: Generate all 72 exact full joint graph-opinion distributions
         run: |
           cd research/R169
@@ -58,7 +59,7 @@ jobs:
                       for i,j in x['edges']) for x in D),F(0))
           print('R169 72 full four-node Markov worlds, all two-oracle paths and exact graph invariants verified')
           PY
-          sha256sum R169_EXACT_RESULTS.json
+          echo '171c529917d8cdd3443b13883681cf4b020522f6ba0a807d1cb685c70cfd31e1  R169_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run 111 genuinely distinct exact unittest methods
         run: |
           cd research/R169
@@ -75,9 +76,71 @@ jobs:
                   info.external_attr=0o644<<16
                   z.writestr(info,open(name,'rb').read())
           PY
-          sha256sum R169_Adaptive_Network_72_Worlds_111_Tests.zip
+          echo '64b02b3ccd90f31548fde255ca2e9da14fa2d949fb92b0b7e73d0dbd7119a518  R169_Adaptive_Network_72_Worlds_111_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R169-complete-four-node-network-${{ matrix.python-version }}
           path: research/R169/R169_Adaptive_Network_72_Worlds_111_Tests.zip
           retention-days: 90
+
+  independent-immutable-source-publisher:
+    needs: compare-two-independent-state-markov-oracles
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay 72 full original worlds and 111 tests against four SHA256
+        run: |
+          cd research/R169
+          echo '6f60b15ebbde33502ec660f4c7602960368eb6bbd8243d94483d7243f4005a3a  r169_adaptive_network_exact.py' | sha256sum -c -
+          echo '2f40e938e9b90c2099f7545707ae205c7ff130477d4e7d9d769b8c2f2368ba74  test_r169_adaptive_network_exact.py' | sha256sum -c -
+          python r169_adaptive_network_exact.py > R169_EXACT_RESULTS.json
+          echo '171c529917d8cdd3443b13883681cf4b020522f6ba0a807d1cb685c70cfd31e1  R169_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -q test_r169_adaptive_network_exact.py
+          python - <<'PY'
+          from fractions import Fraction as F
+          from r169_adaptive_network_exact import *
+          import json
+          d=json.load(open("R169_EXACT_RESULTS.json"))
+          different=d["frozen_controls"]["target_mode_different_at_alpha1_worlds"]
+          print("R169_MODE_DIFFERENCES",different)
+          for label,edges in GRAPHS:
+              for opinion_label,op in OPINIONS:
+                  state=normalized_state(edges,op)
+                  same=direct_path(state,F(1),"same")
+                  any_=direct_path(state,F(1),"any")
+                  if same!=any_:
+                      s2=dict(same[2])
+                      a2=dict(any_[2])
+                      keys=set(s2)|set(a2)
+                      tv=sum((abs(s2.get(k,F(0))-a2.get(k,F(0))) for k in keys),F(0))/2
+                      print("R169_EXAMPLE_TWO_STEP_TOTAL_VARIATION",label,opinion_label,str(tv))
+                      print("R169_EXAMPLE_TWO_STEP_EXPECTED_DISCORDANT",summary(same[2])["expected_discordant_edges"],summary(any_[2])["expected_discordant_edges"])
+                      break
+              else:
+                  continue
+              break
+          PY
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R169_Adaptive_Network_72_Worlds_111_Tests.zip','w') as z:
+              for name in ('r169_adaptive_network_exact.py','test_r169_adaptive_network_exact.py','R169_EXACT_RESULTS.json'):
+                  info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  info.compress_type=zipfile.ZIP_LZMA
+                  info.external_attr=0o644<<16
+                  z.writestr(info,open(name,'rb').read())
+          PY
+          echo '64b02b3ccd90f31548fde255ca2e9da14fa2d949fb92b0b7e73d0dbd7119a518  R169_Adaptive_Network_72_Worlds_111_Tests.zip' | sha256sum -c -
+      - name: Permanently commit complete canonical network data and exact source test ZIP
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R169/R169_EXACT_RESULTS.json research/R169/R169_Adaptive_Network_72_Worlds_111_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R169): 72 exact adaptive network worlds and 111 test sources'
+            git push origin HEAD:main
+          fi
