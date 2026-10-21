@@ -58,7 +58,7 @@ jobs:
           assert a['original_rows_sha256']==sha256(Path('R188_ALL_8640_HIERARCHICAL_ARTIFICIAL_ROWS.csv').read_bytes()).hexdigest()
           assert r['new_E2']==r['new_E3']==0
           with zipfile.ZipFile('R188_180_Exact_Multilevel_Linear_Worlds.zip') as z:
-            assert len(z.namelist())==5 and z.testzip() is None
+            assert len(z.namelist())==6 and z.testzip() is None
           print('R188_180_HIERARCHICAL_WORLD_720_PROJECTIONS_ACCEPTED')
           PY
       - uses: actions/upload-artifact@v4
@@ -69,7 +69,7 @@ jobs:
             research/R188/R188_ALL_8640_HIERARCHICAL_ARTIFICIAL_ROWS.csv
             research/R188/R188_FINAL_MACHINE_ACCEPTANCE.json
             research/R188/R188_180_Exact_Multilevel_Linear_Worlds.zip
-          retention-days: 180
+          retention-days: 90
       - name: Permanently archive complete bounded E1 hierarchical results
         if: github.ref == 'refs/heads/main'
         run: |
