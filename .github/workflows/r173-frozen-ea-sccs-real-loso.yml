@@ -1,0 +1,77 @@
+name: R173 Frozen Real EA SCCS Observational LOSO Two Algorithms
+on:
+  push:
+    paths:
+      - 'research/R173/r173_real_ea_sccs_prescore_loso.py'
+      - '.github/workflows/r173-frozen-ea-sccs-real-loso.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  prescoring-math-unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify both independent mathematical constructions and source mapping invariants
+        run: |
+          cd research/R173
+          python r173_real_ea_coverage_mapping_gate.py --self-test
+          python r173_real_ea_sccs_prescore_loso.py --self-test
+  original-real-ea-sccs-loso:
+    needs: prescoring-math-unit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch original immutable D-PLACE data and validate source blobs
+        run: |
+          cd research/R173
+          python r173_original_dplace_source_audit.py --fetch
+          python r173_real_ea_coverage_mapping_gate.py --audit
+          git diff --exit-code -- R173_REAL_EA005_EA006_COVERAGE_AND_RECIPROCAL_MAPPING.json
+      - name: Run frozen LOSO over original authentic social units and prepare full archive
+        run: |
+          cd research/R173
+          python r173_real_ea_sccs_prescore_loso.py --score-and-archive
+          python - <<'PY'
+          import csv,json,hashlib
+          from pathlib import Path
+          j=json.loads(Path('R173_REAL_EA_SCCS_LOSO_EXACT_RESULTS.json').read_text())
+          r=j['metrics']
+          assert r['SCCS_186']['sample_size']==186
+          assert r['EA_1271']['sample_size']==1271
+          assert all(r[s]['two_independent_fold_methods_agreed'] for s in r)
+          assert j['new_E2']==j['new_E3']==0
+          assert j['prediction_rows']==sum(v['sample_size'] for v in r.values())
+          with open('R173_REAL_EA_SCCS_LOSO_HELDOUT_PREDICTIONS.csv') as f:
+            assert sum(1 for _ in csv.DictReader(f))==j['prediction_rows']
+          assert hashlib.sha256(Path('R173_REAL_EA_SCCS_LOSO_HELDOUT_PREDICTIONS.csv').read_bytes()).hexdigest()==j['heldout_predictions_csv_sha256']
+          print('R173_AUTHENTIC_LOSO_E1_SOURCE_OBSERVATIONAL_ONLY_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R173-frozen-real-EA-SCCS-prescored-LOSO-full
+          path: |
+            research/R173/R173_REAL_EA_SCCS_LOSO_EXACT_RESULTS.json
+            research/R173/R173_REAL_EA_SCCS_LOSO_HELDOUT_PREDICTIONS.csv
+            research/R173/R173_Real_EA_SCCS_Observational_LOSO_Archive.zip
+          retention-days: 90
+      - name: Permanently archive full independently verified result into main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R173/R173_REAL_EA_SCCS_LOSO_EXACT_RESULTS.json research/R173/R173_REAL_EA_SCCS_LOSO_HELDOUT_PREDICTIONS.csv research/R173/R173_Real_EA_SCCS_Observational_LOSO_Archive.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R173): preserve prescore-frozen original real EA SCCS LOSO losses and complete predictions'
+            git push origin HEAD:main
+          fi
