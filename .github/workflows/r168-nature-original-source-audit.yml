@@ -1,0 +1,46 @@
+name: R168 Nature Original Figure Source Access Audit
+on:
+  push:
+    paths:
+      - 'research/R168/r168_fetch_nature_source_figures.py'
+      - '.github/workflows/r168-nature-original-source-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publisher-source-hash:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve original Nature source data and report exact byte provenance
+        run: |
+          cd research/R168
+          python r168_fetch_nature_source_figures.py
+      - name: Validate audit report with explicit evidence exclusions
+        run: |
+          cd research/R168
+          python - <<'PY'
+          import json, pathlib, hashlib
+          f=pathlib.Path('R168_PUBLISHER_DOWNLOAD_AUDIT.json')
+          x=json.loads(f.read_text())
+          assert x['research_id']=='R168'
+          assert not x['original_participant_level_data_verified']
+          assert not x['figures_reconstructed']
+          for rec in x['records']:
+              if rec.get('status')=='downloaded':
+                  b=(pathlib.Path('publisher_source_files')/rec['local_filename']).read_bytes()
+                  assert len(b)==rec['size']
+                  assert hashlib.sha256(b).hexdigest()==rec['sha256']
+          print('AUDIT_VERIFICATION',x['candidate_links'],x['downloaded'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R168-original-publisher-source-audit
+          path: |
+            research/R168/R168_PUBLISHER_DOWNLOAD_AUDIT.json
+            research/R168/publisher_source_files/
+          retention-days: 90
