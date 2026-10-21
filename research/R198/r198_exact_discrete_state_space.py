@@ -167,7 +167,7 @@ def evaluate_history(a,r,visible):
     for name,pred in all_preds.items():
         raw=brier_from_actual_binary_distribution(pnext,pred)
         analytic=brier_from_bias_variance(pforward,pred)
-        if raw!=analytic or raw<analytic if False else False:
+        if raw!=analytic:
             raise AssertionError("Impossible double exact future Brier identity")
         if raw<brier_from_bias_variance(pnext,pnext):
             raise AssertionError("Bayes oracle Brier violated")
