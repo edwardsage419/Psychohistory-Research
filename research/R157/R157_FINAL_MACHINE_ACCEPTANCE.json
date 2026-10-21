@@ -1,0 +1,161 @@
+{
+  "id": "R157",
+  "date": "2026-10-21",
+  "original_catalogue": "P2 06-015 Structural Demographic Theory",
+  "scientific_status": "CLOSED_BOUNDED_E1_72_PROJECT_CONSTRUCTED_THREE_PRESSURE_WORLDS_102_TESTS",
+  "original_source": [
+    {
+      "author": "Peter Turchin",
+      "year": 2013,
+      "title": "Modeling Social Pressures Toward Political Instability",
+      "doi": "10.21237/C7clio4221333",
+      "original_source_pdf_inspected": true,
+      "printed_pages_checked": [
+        "241-247",
+        "259-260",
+        "274-276"
+      ],
+      "source_product_identity": "Psi = MMP * EMP * SFD",
+      "author_full_historical_dataset_replayed": false,
+      "author_dynamic_equations_recreated": false
+    },
+    {
+      "author": "Jack A. Goldstone",
+      "year": 1991,
+      "title": "Revolution and Rebellion in the Early Modern World",
+      "publisher_record_checked": true,
+      "full_book_read": false,
+      "author_empirical_data_recomputed": false
+    },
+    {
+      "author": "Peter Turchin",
+      "year": 2003,
+      "title": "Historical Dynamics: Why States Rise and Fall",
+      "publisher_and_chapter_contents_checked": true,
+      "full_book_read": false
+    }
+  ],
+  "competing_source": {
+    "author": "Oana-Maria Georgescu",
+    "year": 2023,
+    "doi": "10.1371/journal.pone.0287912",
+    "journal": "PLOS ONE",
+    "original_article_abstract_methods_read": true,
+    "conclusion": "reviewed empirical evidence fails to support three specified SDT predictions in recent industrialized US data",
+    "recomputed_empirical_results": false
+  },
+  "precode_freeze_commit": "94f7552aba14d10bd7dafcedf9716e41fa1a4254",
+  "artificial_model": "M(t+1)=(1-a)M+aH; E(t+1)=(1-b)E+bM; F(t+1)=(1-c)F+c(1-r)E",
+  "synthetic_component_scale": "Fractions in [0,1] that are not original wage/elite/debt measures",
+  "component_aggregate": "Psi=M*E*F is source-inspired schematic only; Q=(M+E+F)/3 is new alternative diagnostic",
+  "scenario_count": 72,
+  "years_or_steps": 13,
+  "three_state_observations_exact": 2808,
+  "independent_algorithms": [
+    "direct Fraction simultaneous recurrence",
+    "independently coded Fraction affine matrix-power sum"
+  ],
+  "all_scenarios_strict_rational_equal": true,
+  "controls": {
+    "sequential_lag": {
+      "t1": [
+        "1/4",
+        "0",
+        "0"
+      ],
+      "t2": [
+        "7/16",
+        "1/16",
+        "0"
+      ],
+      "t3": [
+        "37/64",
+        "5/32",
+        "1/64"
+      ],
+      "fiscal_first_positive_t": 3
+    },
+    "one_snapshot_same_t1": [
+      "1/4",
+      "0",
+      "0"
+    ],
+    "differing_t2_mass": [
+      "7/16",
+      "3/8"
+    ],
+    "aggregation_rank_reversal": {
+      "vector_a": [
+        "1",
+        "1",
+        "0"
+      ],
+      "A_mean": "2/3",
+      "A_product": "0",
+      "vector_b": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "B_mean": "1/2",
+      "B_product": "1/8"
+    },
+    "perfect_fiscal_buffer_forces_zero_index": true
+  },
+  "source_commit": "99b59a1d9ed2ab1067c84c94e79bec38dacd0f11",
+  "test_commit": "d02a31f6ec9a03d868e498ddedac4cf40f9264c3",
+  "pinned_CI_commit": "bd53aefc90096c34829f7793a3ceb5766860dbc7",
+  "archive_commit": "b1a19d47c9dc0f5d9ed608e15adca8dc2cba2825",
+  "CI": {
+    "first_run": 39521661742,
+    "pinned_run": 39521779601,
+    "pinned_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39521779601",
+    "status": "success",
+    "jobs": [
+      {
+        "job_id": 118967067143,
+        "python": "3.12",
+        "tests": 102,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118967067375,
+        "python": "3.11",
+        "tests": 102,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118967134727,
+        "role": "four pinned SHA256 replay and archive publish",
+        "tests": 102,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_tests": 102,
+    "actual_test_executions_two_runs": 510,
+    "failed": 0
+  },
+  "sha256": {
+    "r157_structural_pressure_exact.py": "78795ada49b623a188c6fb3042817d35803120145cd2cc97f7d1e361e00888e3",
+    "test_r157_structural_pressure_exact.py": "6b47799fd0cf92998d0468c05886785c03db537fbec56e4cdfe624936c85fd85",
+    "R157_EXACT_RESULTS.json": "a62c20840815cd6bfcfd30c13e41b79d5745c6bd508e7ee3bfdf234eb4230e78",
+    "R157_Structural_Pressure_72_Worlds_102_Tests.zip": "b40bd070cea916c3f5479049fdfda87763bf3592d1bb716a54d357b9928f856d"
+  },
+  "git_blob_sha1": {
+    "r157_structural_pressure_exact.py": "3563526a63553e91b86d9b9df390315f0005a316",
+    "test_r157_structural_pressure_exact.py": "d3114e3801414ea4e9dea4de103986790cdbd3bf",
+    "R157_EXACT_RESULTS.json": "27621615444dcb76489232236dfa528fabd2d3c6",
+    "R157_Structural_Pressure_72_Worlds_102_Tests.zip": "f1cfa664a9138627dc974553f6d8bf59d77ed580"
+  },
+  "new_E2_human_out_of_sample": 0,
+  "new_E3_external_historical_event_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R158",
+    "catalogue_id": "06-016",
+    "priority": "P2",
+    "name": "Conflict Event Process Models"
+  },
+  "sequence": "complete all original R candidates before classification or fusion"
+}
