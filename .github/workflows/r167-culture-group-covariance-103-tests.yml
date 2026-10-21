@@ -1,4 +1,4 @@
-name: R167 Two Group Cultural Selection 72 Worlds 103 Tests Preliminary
+name: R167 Two Group Cultural Selection 72 Worlds 103 Tests SHA256 Pinned and Permanent Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r167-culture-group-covariance-103-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-price-factorization:
     runs-on: ubuntu-latest
@@ -26,7 +26,8 @@ jobs:
           cd research/R167
           test "$(git hash-object r167_cultural_group_covariance_exact.py)" = "48bb2c625ed2c7c70e8e54984be75f7499b78a1e"
           test "$(git hash-object test_r167_cultural_group_covariance_exact.py)" = "e7dbd446626e8801cfd8cc8cc6307d5d29d0e183"
-          sha256sum r167_cultural_group_covariance_exact.py test_r167_cultural_group_covariance_exact.py
+          echo 'bf005a409c97045c0beb2ca88ee652ca08978ac01d32a8e004b22805cfad8ae6  r167_cultural_group_covariance_exact.py' | sha256sum -c -
+          echo '88394c087e33ebd816b39077814b39ec78f403a2f7004ec45fca3e3a0e902561  test_r167_cultural_group_covariance_exact.py' | sha256sum -c -
       - name: Generate 72 exact two-group cultural frequency and decomposition paths
         run: |
           cd research/R167
@@ -63,7 +64,7 @@ jobs:
                 assert T==F(row['overall_A'])-F(world['points'][t-1]['overall_A'])
           print('R167 all 72 frozen two-group cultural paths and independent covariance identities verified')
           PY
-          sha256sum R167_EXACT_RESULTS.json
+          echo '118d8f8d37832777e265205af3f4d05811bf543656c46f2e24873c9ae93a839a  R167_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run 103 authentic unittest methods
         run: |
           cd research/R167
@@ -80,9 +81,46 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R167_Cultural_Group_72_Worlds_103_Tests.zip
+          echo '71209080b55f1fbcb9e4d0365635d6ec5af2c2ceb2633097ef4e6ab7ce5116f6  R167_Cultural_Group_72_Worlds_103_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R167-two-group-covariance-exact-${{ matrix.python-version }}
           path: research/R167/R167_Cultural_Group_72_Worlds_103_Tests.zip
           retention-days: 90
+  verify-and-archive-permanent-source-results:
+    needs: independent-price-factorization
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rerun all exact group decomposition tests and pin four identities
+        run: |
+          cd research/R167
+          echo 'bf005a409c97045c0beb2ca88ee652ca08978ac01d32a8e004b22805cfad8ae6  r167_cultural_group_covariance_exact.py' | sha256sum -c -
+          echo '88394c087e33ebd816b39077814b39ec78f403a2f7004ec45fca3e3a0e902561  test_r167_cultural_group_covariance_exact.py' | sha256sum -c -
+          python r167_cultural_group_covariance_exact.py > R167_EXACT_RESULTS.json
+          echo '118d8f8d37832777e265205af3f4d05811bf543656c46f2e24873c9ae93a839a  R167_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -q test_r167_cultural_group_covariance_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R167_Cultural_Group_72_Worlds_103_Tests.zip','w') as z:
+              for name in ('r167_cultural_group_covariance_exact.py','test_r167_cultural_group_covariance_exact.py','R167_EXACT_RESULTS.json'):
+                  i=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  i.compress_type=zipfile.ZIP_LZMA
+                  i.external_attr=0o644<<16
+                  z.writestr(i,open(name,'rb').read())
+          PY
+          echo '71209080b55f1fbcb9e4d0365635d6ec5af2c2ceb2633097ef4e6ab7ce5116f6  R167_Cultural_Group_72_Worlds_103_Tests.zip' | sha256sum -c -
+      - name: Archive verified full culture-group results and source ZIP to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R167/R167_EXACT_RESULTS.json research/R167/R167_Cultural_Group_72_Worlds_103_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R167): full 72 group covariance paths and 103 exact tests'
+            git push origin HEAD:main
+          fi
