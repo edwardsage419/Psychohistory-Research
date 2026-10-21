@@ -1,4 +1,4 @@
-name: R166 Cultural Selection 48 Binary Worlds 84 Tests Preliminary
+name: R166 Cultural Selection 48 Binary Worlds 84 Tests SHA256 Pinned and Permanent Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r166-selection-transformation-84-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-enumerated-markov:
     runs-on: ubuntu-latest
@@ -26,7 +26,8 @@ jobs:
           cd research/R166
           test "$(git hash-object r166_cultural_selection_transformation_exact.py)" = "47f8c5e842b2d65288804aace201dfe5a629292a"
           test "$(git hash-object test_r166_cultural_selection_transformation_exact.py)" = "c9404314a00b236f08b222660cc1a13edf85b6b3"
-          sha256sum r166_cultural_selection_transformation_exact.py test_r166_cultural_selection_transformation_exact.py
+          echo '37874e66c0b68c96d3e97f7dfb1e907dc7b9596c963b1471000668517b5148f3  r166_cultural_selection_transformation_exact.py' | sha256sum -c -
+          echo '1744b160f6af1583ea086da2f8c982bad5a304d03c709dfaa6cbafb7dca0008d  test_r166_cultural_selection_transformation_exact.py' | sha256sum -c -
       - name: Generate every exact two-mechanism probability distribution
         run: |
           cd research/R166
@@ -54,7 +55,7 @@ jobs:
           assert F(c['N4_half_A_t2_total_variation'])>0
           print('R166 48 exact finite cultural-selection-vs-transformation worlds and 12 probability kernels verified')
           PY
-          sha256sum R166_EXACT_RESULTS.json
+          echo 'ff50f5555841bac54db308c517543158ed3efc004cf4be42de4c6f3a3299e3a8  R166_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run all 84 genuine unittest methods including R165 exact neutral cross-stage test
         run: |
           cd research/R166
@@ -71,9 +72,46 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R166_Selection_Transformation_48_Worlds_84_Tests.zip
+          echo '831a2bac01b992ac1943e4e213db3ebdca2d4bec067ad317ee53ef92e32dea30  R166_Selection_Transformation_48_Worlds_84_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R166-complete-frozen-selection-vs-transformation-${{ matrix.python-version }}
           path: research/R166/R166_Selection_Transformation_48_Worlds_84_Tests.zip
           retention-days: 90
+  pinned-full-data-archive:
+    needs: independent-enumerated-markov
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently recheck 84 tests and recreate full result archives
+        run: |
+          cd research/R166
+          echo '37874e66c0b68c96d3e97f7dfb1e907dc7b9596c963b1471000668517b5148f3  r166_cultural_selection_transformation_exact.py' | sha256sum -c -
+          echo '1744b160f6af1583ea086da2f8c982bad5a304d03c709dfaa6cbafb7dca0008d  test_r166_cultural_selection_transformation_exact.py' | sha256sum -c -
+          python r166_cultural_selection_transformation_exact.py > R166_EXACT_RESULTS.json
+          echo 'ff50f5555841bac54db308c517543158ed3efc004cf4be42de4c6f3a3299e3a8  R166_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -q test_r166_cultural_selection_transformation_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R166_Selection_Transformation_48_Worlds_84_Tests.zip','w') as z:
+              for name in ('r166_cultural_selection_transformation_exact.py','test_r166_cultural_selection_transformation_exact.py','R166_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo '831a2bac01b992ac1943e4e213db3ebdca2d4bec067ad317ee53ef92e32dea30  R166_Selection_Transformation_48_Worlds_84_Tests.zip' | sha256sum -c -
+      - name: Publish independently verified original JSON and complete tests ZIP
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R166/R166_EXACT_RESULTS.json research/R166/R166_Selection_Transformation_48_Worlds_84_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R166): 48 exact cultural selection vs transformation worlds and 84 tests'
+            git push origin HEAD:main
+          fi
