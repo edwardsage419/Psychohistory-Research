@@ -1,0 +1,82 @@
+name: R191 Exact Known Variance Mixed Effects 24 Worlds
+on:
+  push:
+    paths:
+      - 'research/R191/r191_exact_finite_mixed_effects.py'
+      - '.github/workflows/r191-mixed-effects-24-exact.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-mixed-effect-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact source/visible Bayes posterior, linear projection and new group risk tests
+        run: |
+          cd research/R191
+          python r191_exact_finite_mixed_effects.py --test
+  complete-24-worlds-exact-hidden-observation-and-permanent-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-exact-mixed-effect-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate all 1440 latent training source paths and posterior profiles
+        run: |
+          cd research/R191
+          python r191_exact_finite_mixed_effects.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          j=json.loads(Path('R191_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R191_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          p=json.loads(Path('R191_ALL_OBSERVABLE_POSTERIOR_PROFILES.json').read_text())
+          assert j['world_count']==24 and len(j['worlds'])==24
+          assert j['full_labeled_source_training_paths']==1440
+          assert p['observable_profile_count']==j['unique_observable_posterior_profiles']
+          assert len(p['profiles'])==p['observable_profile_count']
+          assert len(j['frozen_nonGaussian_discrete_posterior_vs_linear_examples'])==2
+          assert all(x['all_original_probability_and_independent_moment_risks_exact'] for x in j['worlds'])
+          assert all(x['posterior_exact_sequence_and_histogram_agree'] for x in p['profiles'])
+          with Path('R191_ALL_1440_LATENT_TRAINING_PATHS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==1440
+          assert a['result_sha256']==sha256(Path('R191_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['source_training_CSV_sha256']==sha256(Path('R191_ALL_1440_LATENT_TRAINING_PATHS.csv').read_bytes()).hexdigest()
+          assert a['posterior_profile_SHA256']==sha256(Path('R191_ALL_OBSERVABLE_POSTERIOR_PROFILES.json').read_bytes()).hexdigest()
+          assert j['new_E2']==j['new_E3']==0
+          with zipfile.ZipFile('R191_Exact_24_Mixed_Effect_Worlds.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R191_EXACT_BAYES_BLUP_NEW_VS_OLD_GROUP_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R191-24-exact-discrete-mixed-effect-worlds
+          path: |
+            research/R191/R191_EXACT_RESULTS.json
+            research/R191/R191_ALL_1440_LATENT_TRAINING_PATHS.csv
+            research/R191/R191_ALL_OBSERVABLE_POSTERIOR_PROFILES.json
+            research/R191/R191_FINAL_MACHINE_ACCEPTANCE.json
+            research/R191/R191_Exact_24_Mixed_Effect_Worlds.zip
+          retention-days: 90
+      - name: Commit complete bounded E1 source and posterior results on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R191/R191_EXACT_RESULTS.json research/R191/R191_ALL_1440_LATENT_TRAINING_PATHS.csv research/R191/R191_ALL_OBSERVABLE_POSTERIOR_PROFILES.json research/R191/R191_FINAL_MACHINE_ACCEPTANCE.json research/R191/R191_Exact_24_Mixed_Effect_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R191): 24 mixed-effect exact Bayes BLUP worlds and unseen group transfer limits'
+            git push origin HEAD:main
+          fi
