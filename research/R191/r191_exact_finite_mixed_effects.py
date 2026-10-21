@@ -411,7 +411,7 @@ class TestFiniteMixedEffects(unittest.TestCase):
         with self.assertRaises(ValueError):
             blup_coefficient(F(1),F(1),5)
     def test_posterior_observation_marginal_positive(self):
-        result=posterior((F(0),),F(1),F(1))
+        result=posterior((F(1),),F(1),F(1))
         self.assertGreater(result[1],0)
     def test_source_truth_hidden_U_is_exact(self):
         for tau,sigma,n in worlds():
