@@ -1,0 +1,93 @@
+name: R171 Real Original Austronesian Tree 103 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R171/r171_real_phylogeny_exact.py'
+      - 'research/R171/test_r171_real_phylogeny_exact.py'
+      - '.github/workflows/r171-real-phlorest-103-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-parsers-and-two-complete-real-distance-routes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify source and unit tests are original precomputed Git blob identities
+        run: |
+          cd research/R171
+          test "$(git hash-object r171_real_phylogeny_exact.py)" = "7cfdc995786820fb8c65586d4919ff60f485536d"
+          test "$(git hash-object test_r171_real_phylogeny_exact.py)" = "5c7c5ca1a1c29a41f4b092d6b0cf6dec3858cd03"
+          sha256sum r171_real_phylogeny_exact.py test_r171_real_phylogeny_exact.py
+      - name: Download original licensed CLDF files pinned to Phlorest commit and verify SHA1 blobs
+        run: |
+          cd research/R171
+          python r171_real_phylogeny_exact.py --fetch-sources
+      - name: Independently parse original tree twice and calculate every exact tip distance twice
+        run: |
+          cd research/R171
+          python r171_real_phylogeny_exact.py > R171_EXACT_RESULTS.json
+          python - <<'PY'
+          import json,hashlib,csv
+          from pathlib import Path
+          d=json.loads(Path('R171_EXACT_RESULTS.json').read_text())
+          assert d['source_GitHub_commit']=='a2e535f07c05d214fe7d36fe03747f4cfd5f9ca5'
+          assert d['tree_summary']['independent_parsers_exact_same_full_tree']
+          assert d['complete_pairwise_distances']['independent_all_pairs_ancestry_and_graph_walk_equal']
+          n=d['tree_summary']['leaf_count']
+          assert n>350
+          assert d['complete_pairwise_distances']['number_of_unordered_pairs']==n*(n-1)//2
+          assert d['metadata_audit']['CLDF_branch_length_unit']=='millennia'
+          assert d['metadata_audit']['CLDF_rooted_field']==''
+          assert d['metadata_audit']['rooted_NEXUS_marker']=='[&R]'
+          assert not d['original_Bayesian_posterior_inference_reproduced']
+          assert not d['original_population_migration_hypotheses_tested']
+          assert d['new_external_historical_predictions']==0
+          for name,meta in d['source_identities'].items():
+              raw=(Path('source')/name).read_bytes()
+              assert hashlib.sha256(raw).hexdigest()==meta['sha256']
+          matrix=Path('R171_ALL_PAIR_PATRISTIC_DISTANCES.csv').read_bytes()
+          assert hashlib.sha256(matrix).hexdigest()==d['complete_pairwise_distances']['original_full_matrix_csv_sha256']
+          with Path('R171_ALL_PAIR_PATRISTIC_DISTANCES.csv').open() as f:
+              count=sum(1 for _ in csv.DictReader(f))
+          assert count==n*(n-1)//2
+          print('REAL_PHYLOGENY_TIPS',n)
+          print('REAL_PHYLOGENY_JOIN',json.dumps(d['crosswalk'],ensure_ascii=False))
+          print('REAL_PHYLOGENY_STRUCTURE',json.dumps(d['tree_summary'],ensure_ascii=False))
+          print('REAL_PHYLOGENY_MATRIX',json.dumps(d['complete_pairwise_distances'],ensure_ascii=False))
+          print('REAL_PHYLOGENY_SELECTED_PAIRS',json.dumps(d['preregistered_original_language_tip_pairs'],ensure_ascii=False))
+          PY
+          sha256sum R171_EXACT_RESULTS.json R171_ALL_PAIR_PATRISTIC_DISTANCES.csv
+      - name: Run 103 distinct tests against actual original 2009 Phlorest source files
+        run: |
+          cd research/R171
+          python -m unittest -v test_r171_real_phylogeny_exact.py
+      - name: Pack original four source bytes and all source tests distances JSON as deterministic ZIP
+        run: |
+          cd research/R171
+          python - <<'PY'
+          import zipfile
+          files=['r171_real_phylogeny_exact.py','test_r171_real_phylogeny_exact.py',
+                 'R171_EXACT_RESULTS.json','R171_ALL_PAIR_PATRISTIC_DISTANCES.csv']
+          files+=['source/'+n for n in ['summary.trees','languages.csv','trees.csv','Generic-metadata.json']]
+          with zipfile.ZipFile('R171_Real_Austronesian_Full_Tree_103_Tests.zip','w') as z:
+              for name in files:
+                  info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  info.compress_type=zipfile.ZIP_LZMA
+                  info.external_attr=0o644<<16
+                  z.writestr(info,open(name,'rb').read())
+          PY
+          sha256sum R171_Real_Austronesian_Full_Tree_103_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R171-original-real-language-tree-${{ matrix.python-version }}
+          path: research/R171/R171_Real_Austronesian_Full_Tree_103_Tests.zip
+          retention-days: 90
