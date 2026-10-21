@@ -1,0 +1,71 @@
+name: R162 Prestige Cue 72 Worlds 99 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R162/r162_prestige_attention_exact.py'
+      - 'research/R162/test_r162_prestige_attention_exact.py'
+      - '.github/workflows/r162-prestige-cue-99-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-cultural-copying-tickets:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify original source/test Git hashes and SHA256
+        run: |
+          cd research/R162
+          test "$(git hash-object r162_prestige_attention_exact.py)" = "998df96d973c2e01a46eb440f55dd3a310df9a76"
+          test "$(git hash-object test_r162_prestige_attention_exact.py)" = "241bd660cdcb180179c349ab82251e7511bfa6e4"
+          sha256sum r162_prestige_attention_exact.py test_r162_prestige_attention_exact.py
+      - name: Generate 72 exact synthetic attention lotteries and independent enumerations
+        run: |
+          cd research/R162
+          python r162_prestige_attention_exact.py > R162_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R162_EXACT_RESULTS.json'))
+          assert len(d['worlds'])==72 and d['case_count']==72
+          assert len({w['id'] for w in d['worlds']})==72
+          assert not d['prestige_validity_or_competence_measured']
+          assert not d['real_demonstrators_or_cue_observations_used']
+          for w in d['worlds']:
+            actions=w['demonstrator_actions']; extra=w['additional_attention_tickets'];fav=w['favored_demonstrator']
+            pA=sum((1+extra if i==fav else 1)*x for i,x in enumerate(actions))
+            assert F(w['probability_copy_A'])==F(pA,3+extra)
+            assert F(w['neutral_probability_copy_A'])==F(sum(actions),3)
+            assert F(w['advantage_over_neutral'])==F(w['artificial_expected_accuracy'])-F(w['neutral_expected_accuracy'])
+          print('R162 72 frozen social-cue lottery and correctness worlds validated with exact Fraction')
+          PY
+          sha256sum R162_EXACT_RESULTS.json
+      - name: Run all 99 genuine unittest methods
+        run: |
+          cd research/R162
+          python -m unittest -v test_r162_prestige_attention_exact.py
+      - name: Archive full source test JSON with reproducible ZIP
+        run: |
+          cd research/R162
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R162_Prestige_Cue_72_Worlds_99_Tests.zip','w') as z:
+              for name in ('r162_prestige_attention_exact.py','test_r162_prestige_attention_exact.py','R162_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R162_Prestige_Cue_72_Worlds_99_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R162-72-artificial-attention-lotteries-${{ matrix.python-version }}
+          path: research/R162/R162_Prestige_Cue_72_Worlds_99_Tests.zip
+          retention-days: 90
