@@ -15,7 +15,8 @@ from pathlib import Path
 import csv,json,sys,unittest,zipfile
 
 HERE=Path(__file__).resolve().parent
-PROTO=HERE.parent.parent/"protocols/R188_MULTILEVEL_180_WORLDS_8640_ROWS_PRESCORE_FREEZE_2026-10-21.md"
+PROTO=HERE.parent.parent/"protocols/R188_MULTILEVEL_90_WORLDS_4320_ROWS_PRESCORE_FREEZE_2026-10-21.md"
+ERRATUM=HERE.parent.parent/"protocols/R188_PRE_SCORE_FACTORIAL_ARITHMETIC_ERRATUM_2026-10-21.md"
 RESULT=HERE/"R188_EXACT_RESULTS.json"
 RAW=HERE/"R188_ALL_8640_HIERARCHICAL_ARTIFICIAL_ROWS.csv"
 ACCEPT=HERE/"R188_FINAL_MACHINE_ACCEPTANCE.json"
@@ -353,10 +354,11 @@ def archive():
             info.compress_type=zipfile.ZIP_DEFLATED
             info.external_attr=0o644<<16
             z.writestr(info,(HERE/name).read_bytes())
-        info=zipfile.ZipInfo(PROTO.name,date_time=(2026,10,21,0,0,0))
-        info.compress_type=zipfile.ZIP_DEFLATED
-        info.external_attr=0o644<<16
-        z.writestr(info,PROTO.read_bytes())
+        for document in (PROTO,ERRATUM):
+            info=zipfile.ZipInfo(document.name,date_time=(2026,10,21,0,0,0))
+            info.compress_type=zipfile.ZIP_DEFLATED
+            info.external_attr=0o644<<16
+            z.writestr(info,document.read_bytes())
     print("R188_ARCHIVE_SHA256",sha256(ARCH.read_bytes()).hexdigest())
 
 
