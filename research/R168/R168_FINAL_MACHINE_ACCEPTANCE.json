@@ -1,0 +1,166 @@
+{
+  "id": "R168",
+  "date": "2026-10-21",
+  "catalogue_id": "07-010",
+  "priority": "P1",
+  "catalogue_title": "Cumulative Cultural Evolution",
+  "scientific_status": "CLOSED_BOUNDED_E1_64_SYNTHETIC_THREE_LEVEL_GROUP_MAXIMUM_WORLDS_109_UNIQUE_TESTS",
+  "empirical_human_original_study_status": "BLOCKED_SOURCE_ACCESS",
+  "preregistered_protocol_commit": "b949ff711ccb4a8ccbc43b6788461ebb011845b2",
+  "first_hand_study_records": [
+    {
+      "study": "Derex et al. 2013",
+      "doi": "10.1038/nature12774",
+      "nature_publisher_source_data_links_advertised": 3,
+      "original_figures_downloaded": 0,
+      "original_participant_trials_accessed": 0
+    },
+    {
+      "study": "Andersson and Read 2014",
+      "doi": "10.1038/nature13411",
+      "publisher_original_reanalysis_abstract_checked": true,
+      "conclusion": "published challenge of group-size inference due to group-level sample-size effect"
+    },
+    {
+      "study": "Derex et al. 2014 reply",
+      "doi": "10.1038/nature13412",
+      "publisher_original_reply_abstract_checked": true,
+      "individual_linear_p_reported": "0.11",
+      "individual_quadratic_p_reported": "0.14",
+      "scientific_dispute_resolved_by_current_project": false
+    },
+    {
+      "study": "Derex et al. 2015",
+      "doi": "10.1098/rspb.2015.0719",
+      "different_experiment_from_2013": true,
+      "dryad_doi": "10.5061/dryad.1425c",
+      "dryad_version": 3512,
+      "api_metadata_licensed_CC0": true,
+      "original_xlsx_bytes_declared": 687002,
+      "original_xlsx_md5_from_api": "9514d3a33e933466dcec92079e5ea897",
+      "original_xlsx_bytes_acquired": false
+    },
+    {
+      "study": "SSRP Ho Wu plan on Derex 2013",
+      "nature_study_2013": true,
+      "document_kind": "PREREGISTRATION_ONLY",
+      "result_rows": "TO_BE_ADDED",
+      "no_completed_replication_established": true
+    }
+  ],
+  "source_access_CI": {
+    "initial_failed_bug_run": 39538008605,
+    "corrected_nature_download_audit_run": 39538185600,
+    "corrected_nature_audit_conclusion": "success",
+    "nature_returned_HTML_challenge_bytes": 3038,
+    "nature_returned_HTML_SHA256": "32ed63159c77e21ee19ca1b9aa3213ccf0218eb59539560b132a8e68ef0e18ea",
+    "nature_verified_downloaded_XLS": 0,
+    "dryad_metadata_audit_runs": [
+      39538251137,
+      39538387867,
+      39538465056
+    ],
+    "dryad_metadata_access": "success",
+    "dryad_file_stream": "403_FORBIDDEN",
+    "dryad_official_dataset_package_api": "401_UNAUTHORIZED",
+    "dryad_official_file_download_api": "401_UNAUTHORIZED",
+    "scientific_note": "Successful access-audit job does not mean original data are available or original empirical results reproduced"
+  },
+  "toy_scope": "three artificial cumulative skill frontier states group-level maximum of effective independent copying trials, entirely project-authored",
+  "population_sizes": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "fidelity": [
+    "1/2",
+    "3/4"
+  ],
+  "innovation": [
+    "0",
+    "1/8"
+  ],
+  "access_modes": [
+    "full_pool",
+    "single_channel"
+  ],
+  "initial_skill_levels": [
+    0,
+    2
+  ],
+  "frozen_worlds": 64,
+  "timepoints_per_world": 5,
+  "full_Markov_kernel_count": 32,
+  "independent_exact_algorithms": [
+    "exact rational CDF power of group maximum and matrix propagation",
+    "independent maximum sequential dynamic-programming recursion and separate nested-loop propagation"
+  ],
+  "all_64_world_paths_exactly_agree": true,
+  "predeclared_counterexamples": {
+    "N2_full_pool_f_half_group_top_retention": "3/4",
+    "N16_full_pool_f_half_group_top_retention": "65535/65536",
+    "N16_single_channel_f_three_quarters_group_top_retention": "3/4",
+    "individual_fidelity_from_group_max_alone_identifiable": false,
+    "zero_innovation_start_skill0_absorbing": true,
+    "level0_to_level2_in_one_transition_under_positive_innovation": false,
+    "level0_to_level2_in_two_transitions_under_positive_innovation": true,
+    "mean_absorption_time_level2_N2_full_pool_f_half_u_zero": "8",
+    "mean_absorption_time_level2_N16_full_pool_f_half_u_zero": "131072",
+    "positive_innovation_fixed_params_unique_stationary_distribution": true,
+    "single_observation_channel_group_size_invariant": true
+  },
+  "CI": {
+    "first_run": 39539043139,
+    "final_pinned_and_archive_run": 39539126007,
+    "final_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39539126007",
+    "final_conclusion": "success",
+    "final_jobs": [
+      {
+        "id": 119022561603,
+        "python": "3.11",
+        "tests": 109,
+        "conclusion": "success"
+      },
+      {
+        "id": 119022561925,
+        "python": "3.12",
+        "tests": 109,
+        "conclusion": "success"
+      },
+      {
+        "id": 119022621002,
+        "role": "independent original source ZIP publisher and 4 pinned SHA256 checks",
+        "tests": 109,
+        "conclusion": "success"
+      }
+    ],
+    "different_unit_test_methods": 109,
+    "executed_unit_test_method_calls_both_runs": 545,
+    "failed_tests": 0
+  },
+  "archive_commit": "1c4f1a777e79c9afc67c8750dd39295644a8e3a8",
+  "git_blob_sha1": {
+    "r168_cumulative_cultural_frontier_exact.py": "d81684830be360e223111654527d4f8c19800318",
+    "test_r168_cumulative_cultural_frontier_exact.py": "a194f55d7964a9d0a5be72871a644cee4c748b78",
+    "R168_EXACT_RESULTS.json": "053c7fb851638e4ec4f0838afff7ee78603d2818",
+    "R168_Cumulative_Culture_64_Worlds_109_Tests.zip": "6af19606e826917e3f5bde2b83ab4864b3ac4e4c"
+  },
+  "sha256": {
+    "r168_cumulative_cultural_frontier_exact.py": "f203de0c441fc9d2111899ff8517170697dad3e940ba84b5b99f5a58705efe80",
+    "test_r168_cumulative_cultural_frontier_exact.py": "8411ed9df0e0d8a5c6e9f5a70aa9dd352314129898c7fdaf5abac4cd0ee4c215",
+    "R168_EXACT_RESULTS.json": "ce460cd0c591b399d86b61671548a75daf68b86b1827f0d8b3274cb376302019",
+    "R168_Cumulative_Culture_64_Worlds_109_Tests.zip": "4da18ba2bd77320d3802a0eb2be38a414efdd3030f1459a375cd4fd0ed9cd7d6"
+  },
+  "new_E2_independent_real_human_predictions": 0,
+  "new_E3_external_historical_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "id": "R169",
+    "catalogue_id": "07-011",
+    "priority": "P2",
+    "title": "Coevolving Networks"
+  },
+  "sequence": "finish all original R series, then classify, then model fusion"
+}
