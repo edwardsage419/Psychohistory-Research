@@ -1,0 +1,76 @@
+name: R157 Structural Demographic Synthetic 72 Worlds 102 Tests
+on:
+  push:
+    paths:
+      - 'research/R157/r157_structural_pressure_exact.py'
+      - 'research/R157/test_r157_structural_pressure_exact.py'
+      - '.github/workflows/r157-structural-pressure-102-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-fraction-check:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify fixed source and test Git blob identity
+        run: |
+          cd research/R157
+          test "$(git hash-object r157_structural_pressure_exact.py)" = "3563526a63553e91b86d9b9df390315f0005a316"
+          test "$(git hash-object test_r157_structural_pressure_exact.py)" = "d3114e3801414ea4e9dea4de103986790cdbd3bf"
+          sha256sum r157_structural_pressure_exact.py test_r157_structural_pressure_exact.py
+      - name: Generate all 72 Fraction histories and verify sample semantics
+        run: |
+          cd research/R157
+          python r157_structural_pressure_exact.py > R157_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=json.loads(Path('R157_EXACT_RESULTS.json').read_text())
+          assert d['scenario_count']==72 and len(d['worlds'])==72
+          assert len({w['id'] for w in d['worlds']})==72
+          assert all(len(w['points'])==13 for w in d['worlds'])
+          assert all(w['direct_equals_independent_affine'] for w in d['worlds'])
+          assert d['predeclared_counterexamples']['first_nonzero_fiscal_t']==3
+          assert d['predeclared_counterexamples']['perfect_buffer_psi_all_zero']
+          assert not d['author_original_dynamics_recreated']
+          assert not d['historical_instability_outcomes_used']
+          assert not d['real_event_probabilities_estimated']
+          for world in d['worlds']:
+              for point in world['points']:
+                  m,e,s=[F(point[x]) for x in ('mass','elite','fiscal')]
+                  assert F(point['psi_product'])==m*e*s
+                  assert F(point['alternative_mean'])==(m+e+s)/3
+          print('R157 all 72 frozen complete paths, 936 observation vectors and exact pressure indexes OK')
+          PY
+          sha256sum R157_EXACT_RESULTS.json
+      - name: Execute all 102 actual unittest methods
+        run: |
+          cd research/R157
+          python -m unittest -v test_r157_structural_pressure_exact.py
+      - name: Build reproducible complete source and exact data ZIP
+        run: |
+          cd research/R157
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R157_Structural_Pressure_72_Worlds_102_Tests.zip','w') as z:
+              for name in ('r157_structural_pressure_exact.py','test_r157_structural_pressure_exact.py','R157_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R157_Structural_Pressure_72_Worlds_102_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R157-complete-72-synthetic-pressure-${{ matrix.python-version }}
+          path: research/R157/R157_Structural_Pressure_72_Worlds_102_Tests.zip
+          retention-days: 90
