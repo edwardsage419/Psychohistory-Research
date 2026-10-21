@@ -1,0 +1,43 @@
+name: R172 Official Historical Event Dataset Metadata Audit
+on:
+  push:
+    paths:
+      - 'research/R172/r172_original_dataverse_metadata_audit.py'
+      - '.github/workflows/r172-original-event-source-metadata-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  harvard-dataverse-official-dataset-identities:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect official accessible historical episode data metadata, not data rows
+        run: |
+          cd research/R172
+          python r172_original_dataverse_metadata_audit.py
+      - name: Explicitly enforce no empirical event inference from metadata
+        run: |
+          cd research/R172
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('R172_ORIGINAL_HARVARD_DATAVERSE_METADATA_AUDIT.json').read_text())
+          assert d['research_id']=='R172'
+          assert d['query_PID']=='doi:10.7910/DVN/WFO1N1'
+          assert not d['raw_historical_data_acquired']
+          assert d['original_country_year_rows_inspected']==0
+          assert not d['event_risk_sets_verified']
+          assert not d['real_event_models_fitted']
+          assert not d['heldout_historical_prediction_scored']
+          print('R172_DATA_ELIGIBILITY',d['status'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R172-original-event-source-metadata-only
+          path: research/R172/R172_ORIGINAL_HARVARD_DATAVERSE_METADATA_AUDIT.json
+          retention-days: 90
