@@ -490,9 +490,10 @@ class TestMarkovChainOrder(unittest.TestCase):
         with self.assertRaises(ValueError):
             fit_profile(3,(0,0,0))
     def test_state_transition_not_linked_across_sessions(self):
-        a=path_probability_direct("PERSIST",3,(0,0,1))
-        b=path_probability_direct("PERSIST",3,(1,1,0))
-        self.assertEqual(dataset_likelihood_direct((0,7),(a,b)),a*b)
+        pmf=source_distribution("PERSIST",3)
+        # Two independent complete sessions: never add a cross-session edge.
+        self.assertEqual(dataset_likelihood_direct((0,7),pmf),pmf[0]*pmf[7])
+        self.assertEqual(dataset_likelihood_counts((0,7),pmf),pmf[0]*pmf[7])
 
 
 if __name__=="__main__":
