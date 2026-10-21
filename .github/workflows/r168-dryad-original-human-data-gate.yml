@@ -1,0 +1,43 @@
+name: R168 Independent Dryad Original Human Data Access Check
+on:
+  push:
+    paths:
+      - 'research/R168/r168_dryad_alternate_data_audit.py'
+      - '.github/workflows/r168-dryad-original-human-data-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  direct-original-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Request licensed Dryad metadata and original independent 2015 XLSX
+        run: |
+          cd research/R168
+          python r168_dryad_alternate_data_audit.py
+      - name: Verify provenance and preserve empirical-status boundary
+        run: |
+          cd research/R168
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('dryad_source_audit/R168_DRYAD_ALTERNATE_DATA_ACCESS.json')
+          d=json.loads(p.read_text())
+          assert d['not_derex_2013_nature_group_size_experiment']
+          assert d['original_rows_scored']==0
+          assert d['independent_predictions']==0
+          if d['download_status']=='XLSX_AUTHENTIC_RAW_BYTES':
+            x=pathlib.Path('dryad_source_audit/Social_Learning_and_the_Replication_Process_ORIGINAL.xlsx').read_bytes()
+            assert len(x)==d['data_bytes']
+            assert hashlib.sha256(x).hexdigest()==d['data_sha256']
+          print('DRYAD_VERIFIED',d['download_status'],d.get('data_sha256'),d.get('api_license'))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R168-independent-Dryad-original-2015-raw-and-provenance
+          path: research/R168/dryad_source_audit/
+          retention-days: 90
