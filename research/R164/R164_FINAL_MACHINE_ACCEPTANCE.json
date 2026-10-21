@@ -1,0 +1,118 @@
+{
+  "id": "R164",
+  "date": "2026-10-21",
+  "original_catalogue": "P1 / 07-006 Content Biased Transmission",
+  "status": "CLOSED_BOUNDED_E1_72_SYNTHETIC_CONTENT_SELECTION_WORLDS_102_DISTINCT_TESTS",
+  "preregistered_protocol_commit": "5c403e61c2d0cdfb8dbdd8982e3c3e621df51b95",
+  "source_records": [
+    {
+      "authors": [
+        "Justin L. Barrett",
+        "Melanie A. Nyhof"
+      ],
+      "year": 2001,
+      "doi": "10.1163/156853701300063589",
+      "university_publisher_record_and_abstract_checked": true,
+      "original_trial_level_recall_data_used": false
+    },
+    {
+      "authors": [
+        "Pascal Boyer",
+        "Charles Ramble"
+      ],
+      "year": 2001,
+      "doi": "10.1016/S0364-0213(01)00045-3",
+      "publisher_original_abstract_checked": true,
+      "source_cross_cultural_studies_reestimated": false
+    },
+    {
+      "authors": [
+        "J. M. Stubbersfield",
+        "J. J. Tehrani",
+        "E. G. Flynn"
+      ],
+      "year": 2015,
+      "doi": "10.1111/bjop.12073",
+      "publisher_original_abstract_checked": true,
+      "original_story_transmission_data_used": false
+    }
+  ],
+  "model_scope": "project-authored two neutral artificial content tokens with normalized synthetic attraction r and social copying fraction h plus symmetric reset e; zero empirical parameter identification",
+  "synthetic_formula": "S(p,r)=r*p/(r*p+1-p); q=(1-h)*p+h*S; p(t+1)=(1-e)*q+e/2",
+  "factorial": {
+    "initial_frequencies": 4,
+    "salience_multipliers": 3,
+    "copying_strengths": 3,
+    "replacement_strengths": 2,
+    "total_worlds": 72
+  },
+  "timepoints_per_world": 5,
+  "independent_math_oracles": [
+    "direct exact Fraction salience normalization and update",
+    "independent two-content weighted urn probability and three channel copy/replacement update"
+  ],
+  "all_72_full_paths_strict_Fraction_equal": true,
+  "controls": {
+    "r4_p_one_fifth_weighted_A": "1/2",
+    "r2_p_four_fifths_h1_reset_quarter_next": "19/24",
+    "r2_p_four_fifths_h1_reset_quarter_decreases_prevalence": true,
+    "r1_any_h_content_neutral": true,
+    "h0_any_r_salience_parameter_unidentified": true,
+    "h0_reset_exact_linear_closed_form": true,
+    "full_copy_no_reset_odds_r_per_generation_exact": true
+  },
+  "CI": {
+    "first_run": 39529224497,
+    "pinned_run": 39529293414,
+    "archival_run": 39529323641,
+    "archival_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39529323641",
+    "conclusion": "success",
+    "archival_jobs": [
+      {
+        "id": 118991323830,
+        "python": "3.11",
+        "tests": 102,
+        "conclusion": "success"
+      },
+      {
+        "id": 118991323961,
+        "python": "3.12",
+        "tests": 102,
+        "conclusion": "success"
+      },
+      {
+        "id": 118991385446,
+        "role": "hash proof and original JSON/ZIP archive publisher",
+        "tests": 102,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_test_methods": 102,
+    "actual_unit_test_executions_all_three_runs": 714,
+    "failures": 0
+  },
+  "archive_commit": "ccb1f2fa8be0075a43d1e47a8d85708b8901a9ee",
+  "git_blob_sha1": {
+    "r164_content_salience_exact.py": "b5ab1235bd7355fd2de55431c889580092085312",
+    "test_r164_content_salience_exact.py": "f0b0a9b7e7d2540029a3766b5403d11b7e2db976",
+    "R164_EXACT_RESULTS.json": "087686b629cba4d0b94492d360893a47e334ecb2",
+    "R164_Content_Salience_72_Worlds_102_Tests.zip": "0f76279dea865400efe1220a61a4ae2cc0764d72"
+  },
+  "sha256": {
+    "r164_content_salience_exact.py": "27252e908413335780e43f8bb4bb089d2abb0cd4ba31cc2967d63480f6f89133",
+    "test_r164_content_salience_exact.py": "a5dc28d23e8ed11f3c3b6b4ec3b8bd3e8d5d8ff3d6ef1e7ccc85f4666b84b013",
+    "R164_EXACT_RESULTS.json": "ce27a70aee6ee82ca360efc93b12632c44f6bbd7a73b32bf1aaafc602df69f52",
+    "R164_Content_Salience_72_Worlds_102_Tests.zip": "271beda59c738310a608b7e65eb88f9144159d40441aef180ddf7aa11b4f3e55"
+  },
+  "new_E2_original_subject_out_of_sample_accuracy_tests": 0,
+  "new_E3_external_historical_forecast_replications": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R165",
+    "original_catalogue_id": "07-007",
+    "priority": "P1",
+    "name": "Neutral Cultural Drift"
+  },
+  "sequence": "finish originally specified R series, then categorize, then model fusion"
+}
