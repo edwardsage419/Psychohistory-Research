@@ -16,6 +16,7 @@ from pathlib import Path
 
 HERE=Path(__file__).resolve().parent
 PROTOCOL=HERE.parent.parent/"protocols/R196_FINITE_VB_24_WORLDS_408_CANDIDATES_PRESCORE_FREEZE_2026-10-21.md"
+ERRATUM=HERE.parent.parent/"protocols/R196_ELBO_DECIMAL_COMPARISON_PRECISION_ERRATUM_2026-10-21.md"
 RESULT=HERE/"R196_EXACT_RESULTS.json"
 CANDIDATES=HERE/"R196_ALL_408_MEAN_FIELD_ELBO_CANDIDATES.csv"
 TRUTHS=HERE/"R196_ALL_12_EXACT_POSTERIOR_SOURCES.json"
@@ -218,9 +219,11 @@ def run():
             x=optimize_world(name,w,m,label,grid,cand)
             worlds_out.append(x)
             outcomes[label]=x
-        if (Decimal(outcomes["FINE"]["selected_mean_field_reverse_KL_gap_70digit"])>
-            Decimal(outcomes["COARSE"]["selected_mean_field_reverse_KL_gap_70digit"])+Decimal("1e-50")):
-            raise AssertionError("Nested fine grid is worse than coarse")
+        with localcontext() as ctx:
+            ctx.prec=80
+            if (Decimal(outcomes["FINE"]["selected_mean_field_reverse_KL_gap_70digit"])>
+                Decimal(outcomes["COARSE"]["selected_mean_field_reverse_KL_gap_70digit"])+Decimal("1e-50")):
+                raise AssertionError("Nested fine grid is worse than coarse")
     if len(worlds_out)!=24 or len(cand)!=408 or len(truth_sources)!=12:
         raise AssertionError("Frozen 24/408/12 universe changed")
     for n,m in product(("UNIFORM","INDEPENDENT_SKEW"),COUNTS):
@@ -290,10 +293,11 @@ def archive():
             info.compress_type=zipfile.ZIP_DEFLATED
             info.external_attr=0o644<<16
             z.writestr(info,(HERE/name).read_bytes())
-        info=zipfile.ZipInfo(PROTOCOL.name,date_time=(2026,10,21,0,0,0))
-        info.compress_type=zipfile.ZIP_DEFLATED
-        info.external_attr=0o644<<16
-        z.writestr(info,PROTOCOL.read_bytes())
+        for document in (PROTOCOL,ERRATUM):
+            info=zipfile.ZipInfo(document.name,date_time=(2026,10,21,0,0,0))
+            info.compress_type=zipfile.ZIP_DEFLATED
+            info.external_attr=0o644<<16
+            z.writestr(info,document.read_bytes())
     print("R196_ZIP_SHA256",sha256(ZIP.read_bytes()).hexdigest())
 
 class TestFiniteVariationalBayes(unittest.TestCase):
@@ -355,8 +359,10 @@ class TestFiniteVariationalBayes(unittest.TestCase):
         for name,w,m in source_worlds():
             short=optimize_world(name,w,m,"COARSE",GRID_COARSE,[])
             fine=optimize_world(name,w,m,"FINE",GRID_FINE,[])
-            self.assertLessEqual(Decimal(fine["selected_mean_field_reverse_KL_gap_70digit"]),
-                                 Decimal(short["selected_mean_field_reverse_KL_gap_70digit"])+Decimal("1e-50"))
+            with localcontext() as ctx:
+                ctx.prec=80
+                self.assertLessEqual(Decimal(fine["selected_mean_field_reverse_KL_gap_70digit"]),
+                                     Decimal(short["selected_mean_field_reverse_KL_gap_70digit"])+Decimal("1e-50"))
     def test_uniform_true_exact_zero_KL(self):
         for m in COUNTS:
             for label,grid in GRIDS:
