@@ -1,4 +1,4 @@
-name: R188 Multilevel Linear 90 Exact Group Worlds
+name: R188 Multilevel Linear 180 Exact Group Worlds
 on:
   push:
     paths:
@@ -23,7 +23,7 @@ jobs:
         run: |
           cd research/R188
           python r188_exact_multilevel_linear.py --test
-  full-90-hierarchical-worlds-and-permanent-archive:
+  full-180-hierarchical-worlds-and-permanent-archive:
     runs-on: ubuntu-latest
     needs: two-python-exact-within-between-tests
     timeout-minutes: 20
@@ -32,7 +32,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Score all 90 artificial hierarchies and 360 within-between projections
+      - name: Score all 180 artificial hierarchies and 720 within-between projections
         run: |
           cd research/R188
           python r188_exact_multilevel_linear.py --run-and-archive
@@ -42,9 +42,9 @@ jobs:
           from hashlib import sha256
           r=json.loads(Path('R188_EXACT_RESULTS.json').read_text())
           a=json.loads(Path('R188_FINAL_MACHINE_ACCEPTANCE.json').read_text())
-          assert r['world_count']==90 and len(r['all_worlds'])==90
-          assert r['original_artificial_rows']==4320
-          assert r['direct_quasi_demeaning_sensitivity_fits']==360
+          assert r['world_count']==180 and len(r['all_worlds'])==180
+          assert r['original_artificial_rows']==8640
+          assert r['direct_quasi_demeaning_sensitivity_fits']==720
           anchor=r['fixed_strong_confounded_intercept_alias']
           assert anchor['pooled_x_slope']=='-3/4'
           assert anchor['within_FE_x_slope']=='1/4'
@@ -52,31 +52,31 @@ jobs:
           assert anchor['quasi_demeaning_theta_to_slope']=={
             '0':'-3/4','1/2':'-3/52','3/4':'33/196','1':'1/4'}
           assert all(x['unrestricted_group_intercept_and_contextual_observational_alias'] for x in r['all_worlds'])
-          with Path('R188_ALL_4320_HIERARCHICAL_ARTIFICIAL_ROWS.csv').open() as f:
-            assert sum(1 for _ in csv.DictReader(f))==4320
+          with Path('R188_ALL_8640_HIERARCHICAL_ARTIFICIAL_ROWS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==8640
           assert a['result_sha256']==sha256(Path('R188_EXACT_RESULTS.json').read_bytes()).hexdigest()
-          assert a['original_rows_sha256']==sha256(Path('R188_ALL_4320_HIERARCHICAL_ARTIFICIAL_ROWS.csv').read_bytes()).hexdigest()
+          assert a['original_rows_sha256']==sha256(Path('R188_ALL_8640_HIERARCHICAL_ARTIFICIAL_ROWS.csv').read_bytes()).hexdigest()
           assert r['new_E2']==r['new_E3']==0
-          with zipfile.ZipFile('R188_90_Exact_Multilevel_Linear_Worlds.zip') as z:
+          with zipfile.ZipFile('R188_180_Exact_Multilevel_Linear_Worlds.zip') as z:
             assert len(z.namelist())==5 and z.testzip() is None
-          print('R188_90_HIERARCHICAL_WORLD_360_PROJECTIONS_ACCEPTED')
+          print('R188_180_HIERARCHICAL_WORLD_720_PROJECTIONS_ACCEPTED')
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: R188-90-exact-multilevel-linear-worlds
+          name: R188-180-exact-multilevel-linear-worlds
           path: |
             research/R188/R188_EXACT_RESULTS.json
-            research/R188/R188_ALL_4320_HIERARCHICAL_ARTIFICIAL_ROWS.csv
+            research/R188/R188_ALL_8640_HIERARCHICAL_ARTIFICIAL_ROWS.csv
             research/R188/R188_FINAL_MACHINE_ACCEPTANCE.json
-            research/R188/R188_90_Exact_Multilevel_Linear_Worlds.zip
-          retention-days: 90
+            research/R188/R188_180_Exact_Multilevel_Linear_Worlds.zip
+          retention-days: 180
       - name: Permanently archive complete bounded E1 hierarchical results
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add research/R188/R188_EXACT_RESULTS.json research/R188/R188_ALL_4320_HIERARCHICAL_ARTIFICIAL_ROWS.csv research/R188/R188_FINAL_MACHINE_ACCEPTANCE.json research/R188/R188_90_Exact_Multilevel_Linear_Worlds.zip
+          git add research/R188/R188_EXACT_RESULTS.json research/R188/R188_ALL_8640_HIERARCHICAL_ARTIFICIAL_ROWS.csv research/R188/R188_FINAL_MACHINE_ACCEPTANCE.json research/R188/R188_180_Exact_Multilevel_Linear_Worlds.zip
           if ! git diff --cached --quiet; then
-            git commit -m 'archive(R188): 90 exact hierarchical worlds and 360 within-between projections'
+            git commit -m 'archive(R188): 180 exact hierarchical worlds and 720 within-between projections'
             git push origin HEAD:main
           fi
