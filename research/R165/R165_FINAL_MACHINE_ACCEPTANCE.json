@@ -1,0 +1,140 @@
+{
+  "id": "R165",
+  "date": "2026-10-21",
+  "original_catalogue": "P1 / 07-007 Neutral Cultural Drift",
+  "status": "CLOSED_BOUNDED_E1_48_TWO_TOKEN_NEUTRAL_DRIFT_AND_SYMMETRIC_INNOVATION_WORLDS_82_TESTS",
+  "preregistered_protocol_commit": "5963e3aa7141c84372636c01be56803b85141c93",
+  "source_records": [
+    {
+      "authors": [
+        "Matthew W. Hahn",
+        "R. Alexander Bentley"
+      ],
+      "year": 2003,
+      "title": "Drift as a mechanism for cultural change: an example from baby names",
+      "doi": "10.1098/rsbl.2003.0045",
+      "original_PMC_and_PubMed_article_records_checked": true,
+      "original_multi_allele_simulation_recreated": false
+    },
+    {
+      "authors": [
+        "R. Alexander Bentley",
+        "Matthew W. Hahn",
+        "Stephen J. Shennan"
+      ],
+      "year": 2004,
+      "title": "Random drift and culture change",
+      "doi": "10.1098/rspb.2004.2746",
+      "original_PubMed_and_university_publisher_records_checked": true,
+      "original_name_pottery_patent_data_replayed": false
+    }
+  ],
+  "model_scope": "synthetic two-token cultural count Markov chain with uniform copying and symmetric innovation; no multi-category power-law model or human data",
+  "population_sizes": [
+    4,
+    6,
+    8
+  ],
+  "initial_count_options_for_each_population": [
+    [
+      0,
+      1,
+      2,
+      4
+    ],
+    [
+      0,
+      1,
+      3,
+      6
+    ],
+    [
+      0,
+      1,
+      4,
+      8
+    ]
+  ],
+  "innovation_mu": [
+    "0",
+    "1/16",
+    "1/8",
+    "1/4"
+  ],
+  "frozen_worlds": 48,
+  "timepoints_per_world": 5,
+  "independent_oracles": [
+    "exact Fraction binomial combinations and matrix-vector updating",
+    "all 2^N ordered binary next-generation configurations and independent probability propagation"
+  ],
+  "identical_full_distributions": true,
+  "full_transition_kernels": 12,
+  "exact_stationary_laws_for_positive_mu": 9,
+  "exact_mean_absorption_time_solutions_for_zero_mu": 3,
+  "mathematical_controls": {
+    "mu0_ends_absorbing": true,
+    "mu0_E_frequency_martingale": true,
+    "mu0_diversity_decay_factor": "1-1/N",
+    "mu_positive_unique_stationary_mean": "1/2",
+    "mu0_stationary_nonunique": true,
+    "N4_half_next_frequency_variance": "1/16",
+    "N8_half_next_frequency_variance": "1/32",
+    "N4_half_expected_absorption_time": "132/29",
+    "N8_half_expected_absorption_time": "738222218968/74653224767"
+  },
+  "CI": {
+    "first_run": 39530110643,
+    "pinned_run": 39530175910,
+    "archival_run": 39530202133,
+    "archival_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39530202133",
+    "conclusion": "success",
+    "final_jobs": [
+      {
+        "id": 118994095333,
+        "python": "3.11",
+        "tests": 82,
+        "conclusion": "success"
+      },
+      {
+        "id": 118994095547,
+        "python": "3.12",
+        "tests": 82,
+        "conclusion": "success"
+      },
+      {
+        "id": 118994150188,
+        "role": "four fixed SHA256 and permanent original archive publisher",
+        "tests": 82,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_unittest_methods": 82,
+    "total_test_executions_across_three_runs": 574,
+    "failures": 0
+  },
+  "archive_commit": "9b3d1dd56a91affa30cebfa825fd2e9352bd5a9b",
+  "sha256": {
+    "r165_neutral_drift_exact.py": "33e480abee890329bc93d59877697df97dac577e766452caea63c617cddeea09",
+    "test_r165_neutral_drift_exact.py": "214e0583fc1fff08b69869c3d3883c90322518710c6bb66a5cfd0b4f52d3250b",
+    "R165_EXACT_RESULTS.json": "826576f87f5c586e64d3d70861e876e665da90beac5fbd49948a8839639018b8",
+    "R165_Neutral_Drift_48_Worlds_82_Tests.zip": "771d60b9a01ad39851bef77382f1d8d7d4b380779d24c5cbaecf74565565b724"
+  },
+  "git_blob_sha1": {
+    "r165_neutral_drift_exact.py": "b6baec8fd6f6bbfae2df8945b7aaefaaf565ce7f",
+    "test_r165_neutral_drift_exact.py": "7e4ec5d701fa38f1efc111a79a154b41fd8673e2",
+    "R165_EXACT_RESULTS.json": "8b8a7ca5b6a1d75b3f8464e0eeb1b7b180e4ccf3",
+    "R165_Neutral_Drift_48_Worlds_82_Tests.zip": "0f76279dea865400efe1220a61a4ae2cc0764d72"
+  },
+  "new_E2_independent_human_cultural_studies": 0,
+  "new_E3_external_historical_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R166",
+    "original_catalogue_id": "07-008",
+    "priority": "P1",
+    "name": "Cultural Selection Models",
+    "previous_catalogue_first_hand_source_id": "R19"
+  },
+  "sequence": "complete all original R-series first, then classify and fuse"
+}
