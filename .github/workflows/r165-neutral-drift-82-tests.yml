@@ -1,0 +1,75 @@
+name: R165 Neutral Drift 48 Exact Worlds 82 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R165/r165_neutral_drift_exact.py'
+      - 'research/R165/test_r165_neutral_drift_exact.py'
+      - '.github/workflows/r165-neutral-drift-82-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-exact-neutral-chain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify original source and test Git hashes
+        run: |
+          cd research/R165
+          test "$(git hash-object r165_neutral_drift_exact.py)" = "b6baec8fd6f6bbfae2df8945b7aaefaaf565ce7f"
+          test "$(git hash-object test_r165_neutral_drift_exact.py)" = "7e4ec5d701fa38f1efc111a79a154b41fd8673e2"
+          sha256sum r165_neutral_drift_exact.py test_r165_neutral_drift_exact.py
+      - name: Generate 48 full cultural drift and innovation finite distributions
+        run: |
+          cd research/R165
+          python r165_neutral_drift_exact.py > R165_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R165_EXACT_RESULTS.json'))
+          assert d['world_count']==48 and len(d['worlds'])==48
+          assert len({x['id'] for x in d['worlds']})==48
+          assert len(d['kernels'])==12
+          assert not d['empirical_name_pottery_patent_data_used']
+          for k in d['kernels']:
+              n=k['N'];rows=[[F(x) for x in row] for row in k['rows']]
+              assert all(len(row)==n+1 and sum(row)==1 for row in rows)
+              if k['stationary'] is not None:
+                  pi=[F(x) for x in k['stationary']]
+                  assert sum(pi)==1
+                  assert all(pi[j]==sum(pi[i]*rows[i][j] for i in range(n+1)) for j in range(n+1))
+              else:
+                  assert k['absorption_time'] is not None
+          print('R165 48 finite neutral drift worlds, 12 exact kernels and absorption/stationarity certificates PASS')
+          PY
+          sha256sum R165_EXACT_RESULTS.json
+      - name: Run all 82 exact unit tests
+        run: |
+          cd research/R165
+          python -m unittest -v test_r165_neutral_drift_exact.py
+      - name: Construct deterministic standard-library source test result ZIP
+        run: |
+          cd research/R165
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R165_Neutral_Drift_48_Worlds_82_Tests.zip','w') as z:
+              for name in ('r165_neutral_drift_exact.py','test_r165_neutral_drift_exact.py','R165_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R165_Neutral_Drift_48_Worlds_82_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R165-finite-neutral-drift-original-${{ matrix.python-version }}
+          path: research/R165/R165_Neutral_Drift_48_Worlds_82_Tests.zip
+          retention-days: 90
