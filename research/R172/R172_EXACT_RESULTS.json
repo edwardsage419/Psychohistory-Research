@@ -1,0 +1,344 @@
+{
+  "CC0_license": true,
+  "PESEN_v0_1": "FROZEN",
+  "R073": "FROZEN",
+  "author_original_Cox_model_reproduced": false,
+  "author_original_regime_study_reproduced": false,
+  "checks": {
+    "all_3_predictions_strict_probabilities": true,
+    "all_episode_risk_sets_event_ended": true,
+    "never_use_t0_baseline_in_M2": true,
+    "no_after_1999_outcome_fitted": true,
+    "no_heldout_episode_used_in_fit": true,
+    "observed_test_contains_events": true,
+    "observed_train_contains_events": true,
+    "original_NGA2011_excluded": true
+  },
+  "eligible_source_episodes": 102,
+  "eligible_source_rows": 1725,
+  "episode_cluster_resample_CI": {
+    "cluster_key": "episode_id",
+    "intervals": {
+      "annual_brier": {
+        "M1_vs_M0": {
+          "lower_2p5": "-0.000115867879",
+          "point": "0.000259914659",
+          "upper_97p5": "0.000681027130"
+        },
+        "M2_vs_M0": {
+          "lower_2p5": "-0.000926727569",
+          "point": "-0.000301841643",
+          "upper_97p5": "0.000277502808"
+        }
+      },
+      "annual_logloss": {
+        "M1_vs_M0": {
+          "lower_2p5": "-0.001352511758",
+          "point": "0.009354201794",
+          "upper_97p5": "0.021774991993"
+        },
+        "M2_vs_M0": {
+          "lower_2p5": "-0.016429154960",
+          "point": "-0.001350711495",
+          "upper_97p5": "0.017785036532"
+        }
+      }
+    },
+    "iterations": 512,
+    "limit": "same countries may contribute multiple episodes; episode bootstrap is not country-clustered inference",
+    "percentile_algorithm": "linear_interpolate_sorted_samples_at_(n-1)*q",
+    "seed": 20261021
+  },
+  "excluded_missing_outcome_episode": "NGA2011",
+  "excluded_missing_outcome_rows": 6,
+  "full_heldout_predictions_original_rows": {
+    "bytes": 21636,
+    "file": "R172_REAL_HELDOUT_PREDICTIONS.csv",
+    "rows": 319,
+    "sha256": "e7f81816d5d7ffc4c50e864dfd534db00477fd8bec81e04d306dbf479e5eee1d"
+  },
+  "independent_real_time_historical_event_prediction": false,
+  "models_train_only_counts_and_exact_Fraction_parameters": {
+    "M0": {
+      "E": 12,
+      "N": 581,
+      "p": "13/583"
+    },
+    "M1": [
+      {
+        "E": 6,
+        "N": 193,
+        "age_bucket": 0,
+        "p": "3758/124179",
+        "range": "(0, 2)"
+      },
+      {
+        "E": 4,
+        "N": 225,
+        "age_bucket": 1,
+        "p": "2592/142835",
+        "range": "(3, 7)"
+      },
+      {
+        "E": 1,
+        "N": 120,
+        "age_bucket": 2,
+        "p": "843/81620",
+        "range": "(8, 15)"
+      },
+      {
+        "E": 1,
+        "N": 43,
+        "age_bucket": 3,
+        "p": "281/12243",
+        "range": "(16, None)"
+      }
+    ],
+    "M2": [
+      {
+        "E": 1,
+        "N": 49,
+        "age_bucket": 0,
+        "baseline_group": "high",
+        "p": "199339/8568351"
+      },
+      {
+        "E": 3,
+        "N": 77,
+        "age_bucket": 0,
+        "baseline_group": "low",
+        "p": "447697/12045363"
+      },
+      {
+        "E": 0,
+        "N": 102,
+        "age_bucket": 1,
+        "baseline_group": "high",
+        "p": "5184/1742587"
+      },
+      {
+        "E": 4,
+        "N": 123,
+        "age_bucket": 1,
+        "baseline_group": "low",
+        "p": "124636/4085081"
+      },
+      {
+        "E": 0,
+        "N": 48,
+        "age_bucket": 2,
+        "baseline_group": "high",
+        "p": "843/277508"
+      },
+      {
+        "E": 1,
+        "N": 72,
+        "age_bucket": 2,
+        "baseline_group": "low",
+        "p": "1231/93863"
+      },
+      {
+        "E": 0,
+        "N": 20,
+        "age_bucket": 3,
+        "baseline_group": "high",
+        "p": "281/24486"
+      },
+      {
+        "E": 1,
+        "N": 23,
+        "age_bucket": 3,
+        "baseline_group": "low",
+        "p": "17863/526449"
+      }
+    ]
+  },
+  "new_E2_repeated_game_human_predictions": 0,
+  "new_E3_genuinely_external_historical_forecasts": 0,
+  "original_dataset_doi": "10.7910/DVN/WFO1N1",
+  "original_dataset_version": "1.1",
+  "original_source_SHA256_and_bytes": {
+    "Original_Replication_code_Stata.do": {
+      "bytes": 17387,
+      "sha256": "664cf425684b97b8a7bf835ed748955e2e34426e8a14c0db8abbf98a4fb2e3ad"
+    },
+    "Original_Replication_dataset.tab": {
+      "bytes": 428013,
+      "sha256": "ed8e29368d06d0fa6d597df567eb21e7ac27fa849e1cdfd90b76167c8b5778ba"
+    },
+    "Original_Replication_dataset_as_uploaded.bin": {
+      "bytes": 265851,
+      "sha256": "ddca691b25a664ce13ef2471184e3d5ae3ed62cb72521e0593bff770efb0e4e6"
+    }
+  },
+  "preregistered_protocol_commit": "099b7a50924c86fdaecb6254eca2748836ae0c64",
+  "research_id": "R172",
+  "scientific_level": "RETROSPECTIVE_HISTORICAL_DATA_BENCHMARK_NOT_INDEPENDENT_PROSPECTIVE_E3",
+  "score_summary": {
+    "annual_brier": {
+      "M0": "0.054407113235",
+      "M1": "0.054667027894",
+      "M1_vs_M0_difference": "0.000259914659",
+      "M2": "0.054105271593",
+      "M2_vs_M0_difference": "-0.000301841643"
+    },
+    "annual_logloss": {
+      "M0": "0.235881126652",
+      "M1": "0.245235328446",
+      "M1_vs_M0_difference": "0.009354201794",
+      "M2": "0.234530415157",
+      "M2_vs_M0_difference": "-0.001350711495"
+    },
+    "mean_episode_total_logloss": {
+      "M0": "2.149887982917",
+      "M1": "2.235144850695",
+      "M1_vs_M0_difference": "0.085256867778",
+      "M2": "2.137577212435",
+      "M2_vs_M0_difference": "-0.012310770482"
+    }
+  },
+  "source_original_episodes": 103,
+  "source_original_total_rows": 1731,
+  "source_same_calendar_transition_rows": 19,
+  "source_same_year_observation_addendum_commit": "a83088fd20a64175c6d25a99b40f4cec6afc11c4",
+  "split": {
+    "countries_present_in_both_cohorts": [
+      "BGD",
+      "FJI",
+      "LSO",
+      "MDA",
+      "MKD",
+      "MWI",
+      "NER",
+      "PER",
+      "PHL",
+      "SLB",
+      "THA",
+      "TZA",
+      "UKR"
+    ],
+    "old_episode_future_followup_withheld_rows": 825,
+    "right_censored_training_episodes_under_cutoff": 55,
+    "test_breakdown_events": 18,
+    "test_calendar_year_min": 2000,
+    "test_complete_event_episodes": 18,
+    "test_country_count": 32,
+    "test_episode_identities": [
+      "ALB2001",
+      "BGD2009",
+      "BTN2008",
+      "COM2006",
+      "FJI2002",
+      "GEO2004",
+      "HRV2000",
+      "HTI2007",
+      "IDN1999",
+      "IRQ2006",
+      "LBN2009",
+      "LBR2006",
+      "LBY2012",
+      "LSO2002",
+      "MDA2009",
+      "MDV2008",
+      "MKD2002",
+      "MRT2007",
+      "MRT2009",
+      "MWI2009",
+      "NER2000",
+      "NER2011",
+      "NPL2008",
+      "PER2001",
+      "PHL2008",
+      "SLB2001",
+      "SLB2006",
+      "SLE2003",
+      "SRB2000",
+      "THA2011",
+      "TLS2002",
+      "TUN2011",
+      "TZA2005",
+      "UKR2006",
+      "ZMB2000"
+    ],
+    "test_episodes": 35,
+    "test_right_censored_episodes": 17,
+    "test_rows": 319,
+    "test_transition_year_min": 1999,
+    "train_breakdown_events": 12,
+    "train_calendar_year_max": 1999,
+    "train_country_count": 63,
+    "train_episode_identities": [
+      "ARG1984",
+      "ARM1990",
+      "BEN1991",
+      "BFA1993",
+      "BGD1991",
+      "BGR1990",
+      "BLR1992",
+      "BOL1985",
+      "BRA1986",
+      "CHL1990",
+      "COL1991",
+      "CPV1991",
+      "CZE1990",
+      "DOM1982",
+      "DOM1996",
+      "ECU1979",
+      "ESP1977",
+      "EST1992",
+      "FJI1992",
+      "GHA1979",
+      "GHA1996",
+      "GRC1975",
+      "GTM1996",
+      "GUY1997",
+      "HND1990",
+      "HUN1990",
+      "IND1977",
+      "KOR1988",
+      "LKA1994",
+      "LSO1993",
+      "LTU1990",
+      "LVA1990",
+      "MDA1994",
+      "MDG1993",
+      "MEX1996",
+      "MKD1998",
+      "MLI1992",
+      "MNG1991",
+      "MWI1994",
+      "NAM1990",
+      "NER1993",
+      "NIC1990",
+      "PAN1991",
+      "PER1980",
+      "PHL1987",
+      "POL1990",
+      "PRT1976",
+      "PRY1993",
+      "ROU1990",
+      "RUS1992",
+      "RUS1994",
+      "SEN1983",
+      "SLB1978",
+      "SLV1994",
+      "STP1991",
+      "SUR1988",
+      "SUR1991",
+      "SVK1994",
+      "SVN1990",
+      "THA1997",
+      "TUR1987",
+      "TWN1997",
+      "TZA1995",
+      "UKR1994",
+      "URY1985",
+      "VUT1980",
+      "ZAF1995"
+    ],
+    "train_episodes": 67,
+    "train_rows": 581,
+    "train_transition_year_max": 1998
+  },
+  "status": "REAL_HISTORICAL_RETROSPECTIVE_EPISODE_HELDOUT_EXPERIMENT"
+}
