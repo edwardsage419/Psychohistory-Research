@@ -1,0 +1,934 @@
+{
+  "EA_social_units": 1291,
+  "cautions": [
+    "No covariances, significance values, causal claims or fitted coefficients computed.",
+    "EA005 is ordinal; EA006 is nominal and cannot be treated as ordered.",
+    "Glottocode is a language identifier, not a valid language-family cluster without an audited classification.",
+    "SCCS mapped societies cannot be assumed historically, phylogenetically or spatially independent.",
+    "Year is a field in the data observations, and focal year is a potentially different field in the society table.",
+    "Any duplicate society-variable row remains excluded from unique-row eligibility."
+  ],
+  "estimated_associations": 0,
+  "fitted_models": 0,
+  "full_EA_coverage": {
+    "join_is_descriptive_only": true,
+    "joint_available_metadata": {
+      "coordinates": {
+        "coordinate_pair_present": 1271
+      },
+      "glottocode_only_not_language_family": {
+        "glottocode_present": 1271
+      },
+      "main_focal_year": {
+        "focal_year_missing": 12,
+        "focal_year_present": 1259
+      }
+    },
+    "joint_usable_EA005_EA006_societies": 1271,
+    "per_variable": {
+      "EA005": {
+        "classification": {
+          "single_row_missing_or_illegal_code": 1,
+          "source_rows": 1291,
+          "usable_unambiguous": 1290
+        },
+        "example_multirow_conflicts": [],
+        "focal_vs_observation_year_on_usable_rows": {
+          "both_years": 1277
+        },
+        "single_row_code_frequency": {
+          "0": 257,
+          "1": 50,
+          "2": 34,
+          "3": 38,
+          "4": 93,
+          "5": 209,
+          "6": 295,
+          "7": 206,
+          "8": 87,
+          "9": 21,
+          "NA": 1
+        },
+        "societies_considered": 1291,
+        "year_availability_for_usable_rows": {
+          "focal_year_missing": 13,
+          "focal_year_present": 1277,
+          "observation_year_missing": 13,
+          "observation_year_present": 1277
+        }
+      },
+      "EA006": {
+        "classification": {
+          "single_row_missing_or_illegal_code": 19,
+          "source_rows": 1291,
+          "usable_unambiguous": 1272
+        },
+        "example_multirow_conflicts": [],
+        "focal_vs_observation_year_on_usable_rows": {
+          "both_years": 1260
+        },
+        "single_row_code_frequency": {
+          "1": 657,
+          "2": 125,
+          "3": 68,
+          "4": 65,
+          "5": 39,
+          "6": 275,
+          "7": 43,
+          "NA": 19
+        },
+        "societies_considered": 1291,
+        "year_availability_for_usable_rows": {
+          "focal_year_missing": 12,
+          "focal_year_present": 1260,
+          "observation_year_missing": 12,
+          "observation_year_present": 1260
+        }
+      }
+    },
+    "unique_societies_considered": 1291
+  },
+  "independent_predictions": 0,
+  "mapping": {
+    "EA_forward_ref_rows": 186,
+    "EA_forward_unique_pairs": 186,
+    "EA_only_pairs": [],
+    "SCCS_only_pairs": [],
+    "SCCS_reverse_ref_rows": 186,
+    "SCCS_reverse_unique_pairs": 186,
+    "accepted_exact_reciprocal_bijective_pairs": 186,
+    "accepted_pairs": [
+      {
+        "EA_id": "Aa1",
+        "SCCS_id": "SCCS2"
+      },
+      {
+        "EA_id": "Aa3",
+        "SCCS_id": "SCCS1"
+      },
+      {
+        "EA_id": "Aa5",
+        "SCCS_id": "SCCS13"
+      },
+      {
+        "EA_id": "Aa9",
+        "SCCS_id": "SCCS9"
+      },
+      {
+        "EA_id": "Ab3",
+        "SCCS_id": "SCCS4"
+      },
+      {
+        "EA_id": "Ab4",
+        "SCCS_id": "SCCS3"
+      },
+      {
+        "EA_id": "Ab5",
+        "SCCS_id": "SCCS5"
+      },
+      {
+        "EA_id": "Ac17",
+        "SCCS_id": "SCCS6"
+      },
+      {
+        "EA_id": "Ac3",
+        "SCCS_id": "SCCS7"
+      },
+      {
+        "EA_id": "Ad14",
+        "SCCS_id": "SCCS10"
+      },
+      {
+        "EA_id": "Ad4",
+        "SCCS_id": "SCCS11"
+      },
+      {
+        "EA_id": "Ad6",
+        "SCCS_id": "SCCS8"
+      },
+      {
+        "EA_id": "Ad7",
+        "SCCS_id": "SCCS12"
+      },
+      {
+        "EA_id": "Ae4",
+        "SCCS_id": "SCCS14"
+      },
+      {
+        "EA_id": "Ae51",
+        "SCCS_id": "SCCS15"
+      },
+      {
+        "EA_id": "Af1",
+        "SCCS_id": "SCCS18"
+      },
+      {
+        "EA_id": "Af10",
+        "SCCS_id": "SCCS17"
+      },
+      {
+        "EA_id": "Af3",
+        "SCCS_id": "SCCS19"
+      },
+      {
+        "EA_id": "Af5",
+        "SCCS_id": "SCCS20"
+      },
+      {
+        "EA_id": "Ag1",
+        "SCCS_id": "SCCS22"
+      },
+      {
+        "EA_id": "Ag4",
+        "SCCS_id": "SCCS23"
+      },
+      {
+        "EA_id": "Ah3",
+        "SCCS_id": "SCCS16"
+      },
+      {
+        "EA_id": "Ai10",
+        "SCCS_id": "SCCS30"
+      },
+      {
+        "EA_id": "Ai3",
+        "SCCS_id": "SCCS28"
+      },
+      {
+        "EA_id": "Ai47",
+        "SCCS_id": "SCCS32"
+      },
+      {
+        "EA_id": "Ai6",
+        "SCCS_id": "SCCS31"
+      },
+      {
+        "EA_id": "Ai9",
+        "SCCS_id": "SCCS27"
+      },
+      {
+        "EA_id": "Aj2",
+        "SCCS_id": "SCCS34"
+      },
+      {
+        "EA_id": "Ca1",
+        "SCCS_id": "SCCS35"
+      },
+      {
+        "EA_id": "Ca2",
+        "SCCS_id": "SCCS36"
+      },
+      {
+        "EA_id": "Ca30",
+        "SCCS_id": "SCCS33"
+      },
+      {
+        "EA_id": "Ca37",
+        "SCCS_id": "SCCS38"
+      },
+      {
+        "EA_id": "Ca7",
+        "SCCS_id": "SCCS37"
+      },
+      {
+        "EA_id": "Cb17",
+        "SCCS_id": "SCCS29"
+      },
+      {
+        "EA_id": "Cb2",
+        "SCCS_id": "SCCS21"
+      },
+      {
+        "EA_id": "Cb24",
+        "SCCS_id": "SCCS25"
+      },
+      {
+        "EA_id": "Cb26",
+        "SCCS_id": "SCCS26"
+      },
+      {
+        "EA_id": "Cb3",
+        "SCCS_id": "SCCS24"
+      },
+      {
+        "EA_id": "Cc2",
+        "SCCS_id": "SCCS40"
+      },
+      {
+        "EA_id": "Cc9",
+        "SCCS_id": "SCCS41"
+      },
+      {
+        "EA_id": "Cd1",
+        "SCCS_id": "SCCS39"
+      },
+      {
+        "EA_id": "Cd2",
+        "SCCS_id": "SCCS43"
+      },
+      {
+        "EA_id": "Cd3",
+        "SCCS_id": "SCCS42"
+      },
+      {
+        "EA_id": "Ce1",
+        "SCCS_id": "SCCS48"
+      },
+      {
+        "EA_id": "Ce3",
+        "SCCS_id": "SCCS49"
+      },
+      {
+        "EA_id": "Ce8",
+        "SCCS_id": "SCCS50"
+      },
+      {
+        "EA_id": "Cg3",
+        "SCCS_id": "SCCS51"
+      },
+      {
+        "EA_id": "Cg4",
+        "SCCS_id": "SCCS52"
+      },
+      {
+        "EA_id": "Ch11",
+        "SCCS_id": "SCCS54"
+      },
+      {
+        "EA_id": "Ci10",
+        "SCCS_id": "SCCS56"
+      },
+      {
+        "EA_id": "Ci11",
+        "SCCS_id": "SCCS57"
+      },
+      {
+        "EA_id": "Ci12",
+        "SCCS_id": "SCCS55"
+      },
+      {
+        "EA_id": "Ci5",
+        "SCCS_id": "SCCS47"
+      },
+      {
+        "EA_id": "Cj2",
+        "SCCS_id": "SCCS46"
+      },
+      {
+        "EA_id": "Cj3",
+        "SCCS_id": "SCCS44"
+      },
+      {
+        "EA_id": "Cj4",
+        "SCCS_id": "SCCS45"
+      },
+      {
+        "EA_id": "Ea13",
+        "SCCS_id": "SCCS59"
+      },
+      {
+        "EA_id": "Ea6",
+        "SCCS_id": "SCCS58"
+      },
+      {
+        "EA_id": "Eb1",
+        "SCCS_id": "SCCS65"
+      },
+      {
+        "EA_id": "Eb3",
+        "SCCS_id": "SCCS66"
+      },
+      {
+        "EA_id": "Ec1",
+        "SCCS_id": "SCCS119"
+      },
+      {
+        "EA_id": "Ec3",
+        "SCCS_id": "SCCS121"
+      },
+      {
+        "EA_id": "Ec4",
+        "SCCS_id": "SCCS53"
+      },
+      {
+        "EA_id": "Ec6",
+        "SCCS_id": "SCCS120"
+      },
+      {
+        "EA_id": "Ec7",
+        "SCCS_id": "SCCS118"
+      },
+      {
+        "EA_id": "Ed1",
+        "SCCS_id": "SCCS116"
+      },
+      {
+        "EA_id": "Ed15b",
+        "SCCS_id": "SCCS114"
+      },
+      {
+        "EA_id": "Ed2",
+        "SCCS_id": "SCCS67"
+      },
+      {
+        "EA_id": "Ed3",
+        "SCCS_id": "SCCS115"
+      },
+      {
+        "EA_id": "Ed5",
+        "SCCS_id": "SCCS117"
+      },
+      {
+        "EA_id": "Ee2",
+        "SCCS_id": "SCCS64"
+      },
+      {
+        "EA_id": "Ee3",
+        "SCCS_id": "SCCS68"
+      },
+      {
+        "EA_id": "Ef1",
+        "SCCS_id": "SCCS62"
+      },
+      {
+        "EA_id": "Ef11",
+        "SCCS_id": "SCCS63"
+      },
+      {
+        "EA_id": "Eg3",
+        "SCCS_id": "SCCS60"
+      },
+      {
+        "EA_id": "Eg4",
+        "SCCS_id": "SCCS61"
+      },
+      {
+        "EA_id": "Eh1",
+        "SCCS_id": "SCCS79"
+      },
+      {
+        "EA_id": "Eh3",
+        "SCCS_id": "SCCS81"
+      },
+      {
+        "EA_id": "Eh4",
+        "SCCS_id": "SCCS80"
+      },
+      {
+        "EA_id": "Eh5",
+        "SCCS_id": "SCCS78"
+      },
+      {
+        "EA_id": "Ei1",
+        "SCCS_id": "SCCS69"
+      },
+      {
+        "EA_id": "Ei3",
+        "SCCS_id": "SCCS71"
+      },
+      {
+        "EA_id": "Ei4",
+        "SCCS_id": "SCCS70"
+      },
+      {
+        "EA_id": "Ej1",
+        "SCCS_id": "SCCS72"
+      },
+      {
+        "EA_id": "Ej10",
+        "SCCS_id": "SCCS74"
+      },
+      {
+        "EA_id": "Ej15",
+        "SCCS_id": "SCCS75"
+      },
+      {
+        "EA_id": "Ej16",
+        "SCCS_id": "SCCS82"
+      },
+      {
+        "EA_id": "Ej3",
+        "SCCS_id": "SCCS77"
+      },
+      {
+        "EA_id": "Ej4",
+        "SCCS_id": "SCCS73"
+      },
+      {
+        "EA_id": "Ej9",
+        "SCCS_id": "SCCS76"
+      },
+      {
+        "EA_id": "Ia1",
+        "SCCS_id": "SCCS113"
+      },
+      {
+        "EA_id": "Ia13",
+        "SCCS_id": "SCCS86"
+      },
+      {
+        "EA_id": "Ia3",
+        "SCCS_id": "SCCS112"
+      },
+      {
+        "EA_id": "Ib1",
+        "SCCS_id": "SCCS85"
+      },
+      {
+        "EA_id": "Ib2",
+        "SCCS_id": "SCCS83"
+      },
+      {
+        "EA_id": "Ib3",
+        "SCCS_id": "SCCS84"
+      },
+      {
+        "EA_id": "Ic10",
+        "SCCS_id": "SCCS88"
+      },
+      {
+        "EA_id": "Ic2",
+        "SCCS_id": "SCCS89"
+      },
+      {
+        "EA_id": "Ic5",
+        "SCCS_id": "SCCS87"
+      },
+      {
+        "EA_id": "Id1",
+        "SCCS_id": "SCCS91"
+      },
+      {
+        "EA_id": "Id3",
+        "SCCS_id": "SCCS90"
+      },
+      {
+        "EA_id": "Ie1",
+        "SCCS_id": "SCCS94"
+      },
+      {
+        "EA_id": "Ie12",
+        "SCCS_id": "SCCS95"
+      },
+      {
+        "EA_id": "Ie18",
+        "SCCS_id": "SCCS93"
+      },
+      {
+        "EA_id": "Ie9",
+        "SCCS_id": "SCCS92"
+      },
+      {
+        "EA_id": "If1",
+        "SCCS_id": "SCCS111"
+      },
+      {
+        "EA_id": "If14",
+        "SCCS_id": "SCCS107"
+      },
+      {
+        "EA_id": "If17",
+        "SCCS_id": "SCCS108"
+      },
+      {
+        "EA_id": "If2",
+        "SCCS_id": "SCCS109"
+      },
+      {
+        "EA_id": "If6",
+        "SCCS_id": "SCCS110"
+      },
+      {
+        "EA_id": "Ig1",
+        "SCCS_id": "SCCS99"
+      },
+      {
+        "EA_id": "Ig2",
+        "SCCS_id": "SCCS98"
+      },
+      {
+        "EA_id": "Ig4",
+        "SCCS_id": "SCCS97"
+      },
+      {
+        "EA_id": "Ig9",
+        "SCCS_id": "SCCS96"
+      },
+      {
+        "EA_id": "Ih14",
+        "SCCS_id": "SCCS102"
+      },
+      {
+        "EA_id": "Ih3",
+        "SCCS_id": "SCCS101"
+      },
+      {
+        "EA_id": "Ih5",
+        "SCCS_id": "SCCS103"
+      },
+      {
+        "EA_id": "Ii14",
+        "SCCS_id": "SCCS106"
+      },
+      {
+        "EA_id": "Ii2",
+        "SCCS_id": "SCCS100"
+      },
+      {
+        "EA_id": "Ij2",
+        "SCCS_id": "SCCS104"
+      },
+      {
+        "EA_id": "Ij3",
+        "SCCS_id": "SCCS105"
+      },
+      {
+        "EA_id": "Na17",
+        "SCCS_id": "SCCS128"
+      },
+      {
+        "EA_id": "Na3",
+        "SCCS_id": "SCCS124"
+      },
+      {
+        "EA_id": "Na32",
+        "SCCS_id": "SCCS125"
+      },
+      {
+        "EA_id": "Na33",
+        "SCCS_id": "SCCS127"
+      },
+      {
+        "EA_id": "Na4",
+        "SCCS_id": "SCCS129"
+      },
+      {
+        "EA_id": "Na41",
+        "SCCS_id": "SCCS126"
+      },
+      {
+        "EA_id": "Na8",
+        "SCCS_id": "SCCS122"
+      },
+      {
+        "EA_id": "Na9",
+        "SCCS_id": "SCCS123"
+      },
+      {
+        "EA_id": "Nb1",
+        "SCCS_id": "SCCS131"
+      },
+      {
+        "EA_id": "Nb2",
+        "SCCS_id": "SCCS133"
+      },
+      {
+        "EA_id": "Nb4",
+        "SCCS_id": "SCCS134"
+      },
+      {
+        "EA_id": "Nb5",
+        "SCCS_id": "SCCS130"
+      },
+      {
+        "EA_id": "Nb9",
+        "SCCS_id": "SCCS132"
+      },
+      {
+        "EA_id": "Nc18",
+        "SCCS_id": "SCCS135"
+      },
+      {
+        "EA_id": "Nc24",
+        "SCCS_id": "SCCS136"
+      },
+      {
+        "EA_id": "Nc8",
+        "SCCS_id": "SCCS138"
+      },
+      {
+        "EA_id": "Nd22",
+        "SCCS_id": "SCCS137"
+      },
+      {
+        "EA_id": "Nd3",
+        "SCCS_id": "SCCS150"
+      },
+      {
+        "EA_id": "Nd7",
+        "SCCS_id": "SCCS139"
+      },
+      {
+        "EA_id": "Ne1",
+        "SCCS_id": "SCCS140"
+      },
+      {
+        "EA_id": "Ne15",
+        "SCCS_id": "SCCS141"
+      },
+      {
+        "EA_id": "Ne3",
+        "SCCS_id": "SCCS147"
+      },
+      {
+        "EA_id": "Nf3",
+        "SCCS_id": "SCCS143"
+      },
+      {
+        "EA_id": "Nf6",
+        "SCCS_id": "SCCS142"
+      },
+      {
+        "EA_id": "Ng1",
+        "SCCS_id": "SCCS144"
+      },
+      {
+        "EA_id": "Ng3",
+        "SCCS_id": "SCCS145"
+      },
+      {
+        "EA_id": "Ng7",
+        "SCCS_id": "SCCS146"
+      },
+      {
+        "EA_id": "Nh1",
+        "SCCS_id": "SCCS148"
+      },
+      {
+        "EA_id": "Nh4",
+        "SCCS_id": "SCCS149"
+      },
+      {
+        "EA_id": "Ni2",
+        "SCCS_id": "SCCS151"
+      },
+      {
+        "EA_id": "Ni3",
+        "SCCS_id": "SCCS152"
+      },
+      {
+        "EA_id": "Nj2",
+        "SCCS_id": "SCCS153"
+      },
+      {
+        "EA_id": "Nj3",
+        "SCCS_id": "SCCS154"
+      },
+      {
+        "EA_id": "Sa1",
+        "SCCS_id": "SCCS158"
+      },
+      {
+        "EA_id": "Sa13",
+        "SCCS_id": "SCCS155"
+      },
+      {
+        "EA_id": "Sa5",
+        "SCCS_id": "SCCS157"
+      },
+      {
+        "EA_id": "Sa9",
+        "SCCS_id": "SCCS156"
+      },
+      {
+        "EA_id": "Sb1",
+        "SCCS_id": "SCCS161"
+      },
+      {
+        "EA_id": "Sb6",
+        "SCCS_id": "SCCS159"
+      },
+      {
+        "EA_id": "Sb9",
+        "SCCS_id": "SCCS160"
+      },
+      {
+        "EA_id": "Sc1",
+        "SCCS_id": "SCCS162"
+      },
+      {
+        "EA_id": "Sc3",
+        "SCCS_id": "SCCS164"
+      },
+      {
+        "EA_id": "Sc6",
+        "SCCS_id": "SCCS165"
+      },
+      {
+        "EA_id": "Sd1",
+        "SCCS_id": "SCCS166"
+      },
+      {
+        "EA_id": "Sd9",
+        "SCCS_id": "SCCS163"
+      },
+      {
+        "EA_id": "Se1",
+        "SCCS_id": "SCCS173"
+      },
+      {
+        "EA_id": "Se3",
+        "SCCS_id": "SCCS169"
+      },
+      {
+        "EA_id": "Se5",
+        "SCCS_id": "SCCS167"
+      },
+      {
+        "EA_id": "Se8",
+        "SCCS_id": "SCCS170"
+      },
+      {
+        "EA_id": "Sf1",
+        "SCCS_id": "SCCS171"
+      },
+      {
+        "EA_id": "Sf2",
+        "SCCS_id": "SCCS172"
+      },
+      {
+        "EA_id": "Sf3",
+        "SCCS_id": "SCCS168"
+      },
+      {
+        "EA_id": "Sg1",
+        "SCCS_id": "SCCS186"
+      },
+      {
+        "EA_id": "Sg2",
+        "SCCS_id": "SCCS184"
+      },
+      {
+        "EA_id": "Sg4",
+        "SCCS_id": "SCCS185"
+      },
+      {
+        "EA_id": "Sh3",
+        "SCCS_id": "SCCS183"
+      },
+      {
+        "EA_id": "Sh9",
+        "SCCS_id": "SCCS182"
+      },
+      {
+        "EA_id": "Si2",
+        "SCCS_id": "SCCS175"
+      },
+      {
+        "EA_id": "Si4",
+        "SCCS_id": "SCCS174"
+      },
+      {
+        "EA_id": "Sj10",
+        "SCCS_id": "SCCS181"
+      },
+      {
+        "EA_id": "Sj11",
+        "SCCS_id": "SCCS179"
+      },
+      {
+        "EA_id": "Sj3",
+        "SCCS_id": "SCCS180"
+      },
+      {
+        "EA_id": "Sj4",
+        "SCCS_id": "SCCS176"
+      },
+      {
+        "EA_id": "Sj5",
+        "SCCS_id": "SCCS178"
+      },
+      {
+        "EA_id": "Sj8",
+        "SCCS_id": "SCCS177"
+      }
+    ],
+    "ambiguous_agreed_EA_ids": [],
+    "ambiguous_agreed_SCCS_ids": [],
+    "missing_EA_society_ids": [],
+    "reciprocal_EA_ids": 186,
+    "reciprocal_SCCS_ids": 186,
+    "reciprocal_unique_pairs": 186
+  },
+  "new_E2": 0,
+  "new_E3": 0,
+  "pinned_commit": "9bfed2c8c206be00f55f71516f262bbca2234e5a",
+  "pinned_repository": "D-PLACE/dplace-data",
+  "research_id": "R173",
+  "source_rows": 121354,
+  "stage": "PRE_SCORE_SOURCE_MAPPING_AND_MISSINGNESS_AUDIT",
+  "strict_reciprocal_SCCS_coverage": {
+    "join_is_descriptive_only": true,
+    "joint_available_metadata": {
+      "coordinates": {
+        "coordinate_pair_present": 186
+      },
+      "glottocode_only_not_language_family": {
+        "glottocode_present": 186
+      },
+      "main_focal_year": {
+        "focal_year_missing": 3,
+        "focal_year_present": 183
+      }
+    },
+    "joint_usable_EA005_EA006_societies": 186,
+    "per_variable": {
+      "EA005": {
+        "classification": {
+          "source_rows": 186,
+          "usable_unambiguous": 186
+        },
+        "example_multirow_conflicts": [],
+        "focal_vs_observation_year_on_usable_rows": {
+          "both_years": 183
+        },
+        "single_row_code_frequency": {
+          "0": 44,
+          "1": 11,
+          "2": 4,
+          "3": 2,
+          "4": 16,
+          "5": 37,
+          "6": 38,
+          "7": 17,
+          "8": 13,
+          "9": 4
+        },
+        "societies_considered": 186,
+        "year_availability_for_usable_rows": {
+          "focal_year_missing": 3,
+          "focal_year_present": 183,
+          "observation_year_missing": 3,
+          "observation_year_present": 183
+        }
+      },
+      "EA006": {
+        "classification": {
+          "source_rows": 186,
+          "usable_unambiguous": 186
+        },
+        "example_multirow_conflicts": [],
+        "focal_vs_observation_year_on_usable_rows": {
+          "both_years": 183
+        },
+        "single_row_code_frequency": {
+          "1": 71,
+          "2": 24,
+          "3": 16,
+          "4": 15,
+          "5": 9,
+          "6": 42,
+          "7": 9
+        },
+        "societies_considered": 186,
+        "year_availability_for_usable_rows": {
+          "focal_year_missing": 3,
+          "focal_year_present": 183,
+          "observation_year_missing": 3,
+          "observation_year_present": 183
+        }
+      }
+    },
+    "unique_societies_considered": 186
+  }
+}
