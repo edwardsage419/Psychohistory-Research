@@ -1,0 +1,81 @@
+name: R197 Exact Prequential ARIMA 24 Worlds
+on:
+  push:
+    paths:
+      - 'research/R197/r197_exact_prequential_arima.py'
+      - '.github/workflows/r197-exact-prequential-arima.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-independent-ARIMA-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test full prequential candidate fit and independent future risk
+        run: |
+          cd research/R197
+          python r197_exact_prequential_arima.py --test
+  full-1944-original-train-paths-and-23328-conditional-risks:
+    runs-on: ubuntu-latest
+    needs: two-python-independent-ARIMA-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run original 24 full worlds with exact future-innovation and analytic checks
+        run: |
+          cd research/R197
+          python r197_exact_prequential_arima.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          r=json.loads(Path('R197_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R197_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['worlds']==24 and len(r['all_24_original_worlds'])==24
+          assert r['full_original_training_paths']==1944
+          assert r['raw_training_and_horizon_risk_profiles']==3888
+          assert r['full_independent_future_conditional_candidate_risks']==23328
+          assert all(x['all_source_forecast_moments_and_independent_future_enumeration_exact'] for x in r['all_24_original_worlds'])
+          with Path('R197_ALL_1944_ORDERED_TRAINING_PATHS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==1944
+          with Path('R197_ALL_3888_INDEPENDENT_HELDOUT_RISK_PROFILES.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==3888
+          assert a['full_results_sha256']==sha256(Path('R197_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['original_training_CSV_sha256']==sha256(Path('R197_ALL_1944_ORDERED_TRAINING_PATHS.csv').read_bytes()).hexdigest()
+          assert a['all_heldout_profile_CSV_sha256']==sha256(Path('R197_ALL_3888_INDEPENDENT_HELDOUT_RISK_PROFILES.csv').read_bytes()).hexdigest()
+          assert a['new_E2']==a['new_E3']==0
+          with zipfile.ZipFile('R197_Exact_24_Prequential_ARIMA_Worlds.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R197_24_ARIMA_PREQUENTIAL_WORLDS_ALL_HELDOUT_MSE_EXACT_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R197-24-exact-prequential-ARIMA-worlds
+          path: |
+            research/R197/R197_EXACT_RESULTS.json
+            research/R197/R197_ALL_1944_ORDERED_TRAINING_PATHS.csv
+            research/R197/R197_ALL_3888_INDEPENDENT_HELDOUT_RISK_PROFILES.csv
+            research/R197/R197_FINAL_MACHINE_ACCEPTANCE.json
+            research/R197/R197_Exact_24_Prequential_ARIMA_Worlds.zip
+          retention-days: 90
+      - name: Permanently archive bounded E1 original source and future profiles
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R197/R197_EXACT_RESULTS.json research/R197/R197_ALL_1944_ORDERED_TRAINING_PATHS.csv research/R197/R197_ALL_3888_INDEPENDENT_HELDOUT_RISK_PROFILES.csv research/R197/R197_FINAL_MACHINE_ACCEPTANCE.json research/R197/R197_Exact_24_Prequential_ARIMA_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R197): all prequential discrete ARIMA sources and truly independent future innovations'
+            git push origin HEAD:main
+          fi
