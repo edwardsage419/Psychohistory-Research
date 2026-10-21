@@ -17,6 +17,7 @@ import csv,json,sys,unittest,zipfile
 
 HERE=Path(__file__).resolve().parent
 PROTO=HERE.parent.parent/"protocols/R191_MIXED_EFFECTS_24_WORLDS_1440_PATHS_PRESCORE_FREEZE_2026-10-21.md"
+ERRATUM=HERE.parent.parent/"protocols/R191_N1_BAYES_BLUP_TEST_ASSERTION_ERRATUM_2026-10-21.md"
 RESULT=HERE/"R191_EXACT_RESULTS.json"
 RAW=HERE/"R191_ALL_1440_LATENT_TRAINING_PATHS.csv"
 PROFILES=HERE/"R191_ALL_OBSERVABLE_POSTERIOR_PROFILES.json"
@@ -287,10 +288,11 @@ def archive():
             info.compress_type=zipfile.ZIP_DEFLATED
             info.external_attr=0o644<<16
             z.writestr(info,(HERE/name).read_bytes())
-        info=zipfile.ZipInfo(PROTO.name,date_time=(2026,10,21,0,0,0))
-        info.compress_type=zipfile.ZIP_DEFLATED
-        info.external_attr=0o644<<16
-        z.writestr(info,PROTO.read_bytes())
+        for document in (PROTO,ERRATUM):
+            info=zipfile.ZipInfo(document.name,date_time=(2026,10,21,0,0,0))
+            info.compress_type=zipfile.ZIP_DEFLATED
+            info.external_attr=0o644<<16
+            z.writestr(info,document.read_bytes())
     print("R191_ARCHIVE_SHA256",sha256(ARCH.read_bytes()).hexdigest())
 
 
@@ -378,9 +380,10 @@ class TestFiniteMixedEffects(unittest.TestCase):
                 self.assertGreater(F(w["fully_new_group_incorrect_old_BLUP_future_MSE"]),
                                    F(w["fully_new_group_correct_GLOBAL_future_MSE"]))
     def test_prescored_tau_half_sigma_half_discrete_posterior(self):
-        for n in (1,2):
-            world=analyze_world(F(1,2),F(1,2),n,[],[])
-            self.assertLess(F(world["Bayes_minus_linear_BLUP_future_MSE"]),0)
+        first=analyze_world(F(1,2),F(1,2),1,[],[])
+        second=analyze_world(F(1,2),F(1,2),2,[],[])
+        self.assertEqual(F(first["Bayes_minus_linear_BLUP_future_MSE"]),0)
+        self.assertLess(F(second["Bayes_minus_linear_BLUP_future_MSE"]),0)
     def test_observable_posterior_exact_when_unique_to_U(self):
         p,_mass,_like=posterior((F(-3,2),),F(1,2),F(1,2))
         self.assertEqual(p,F(-1,2))
