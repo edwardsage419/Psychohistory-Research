@@ -1,0 +1,79 @@
+name: R166 Cultural Selection 48 Binary Worlds 84 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R166/r166_cultural_selection_transformation_exact.py'
+      - 'research/R166/test_r166_cultural_selection_transformation_exact.py'
+      - '.github/workflows/r166-selection-transformation-84-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-enumerated-markov:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate original source Git blob identity
+        run: |
+          cd research/R166
+          test "$(git hash-object r166_cultural_selection_transformation_exact.py)" = "47f8c5e842b2d65288804aace201dfe5a629292a"
+          test "$(git hash-object test_r166_cultural_selection_transformation_exact.py)" = "c9404314a00b236f08b222660cc1a13edf85b6b3"
+          sha256sum r166_cultural_selection_transformation_exact.py test_r166_cultural_selection_transformation_exact.py
+      - name: Generate every exact two-mechanism probability distribution
+        run: |
+          cd research/R166
+          python r166_cultural_selection_transformation_exact.py > R166_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R166_EXACT_RESULTS.json'))
+          assert d['number_of_worlds']==48 and len(d['worlds'])==48
+          assert d['total_kernel_count']==12 and len(d['kernels'])==12
+          assert len(set(w['id'] for w in d['worlds']))==48
+          assert d['R019_is_not_selection_theory']
+          assert not d['original_Mesoudi_2021_EMG_model_reproduced']
+          assert not d['original_human_cultural_data_used']
+          for w in d['worlds']:
+            n=w['N']
+            assert len(w['points'])==5
+            assert w['independent_exact_oracles_equal']
+            for step in w['points']:
+              v=[F(x) for x in step['count_probabilities']]
+              assert len(v)==n+1 and sum(v)==1
+              assert F(step['expected_A_fraction'])==sum(F(j,n)*v[j] for j in range(n+1))
+          c=d['counterexamples']
+          assert c['N4_half_A_t1_complete_kernel_equal']
+          assert F(c['N4_half_A_t2_total_variation'])>0
+          print('R166 48 exact finite cultural-selection-vs-transformation worlds and 12 probability kernels verified')
+          PY
+          sha256sum R166_EXACT_RESULTS.json
+      - name: Run all 84 genuine unittest methods including R165 exact neutral cross-stage test
+        run: |
+          cd research/R166
+          python -m unittest -v test_r166_cultural_selection_transformation_exact.py
+      - name: Assemble immutable source and original data ZIP
+        run: |
+          cd research/R166
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R166_Selection_Transformation_48_Worlds_84_Tests.zip','w') as z:
+              for name in ('r166_cultural_selection_transformation_exact.py','test_r166_cultural_selection_transformation_exact.py','R166_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R166_Selection_Transformation_48_Worlds_84_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R166-complete-frozen-selection-vs-transformation-${{ matrix.python-version }}
+          path: research/R166/R166_Selection_Transformation_48_Worlds_84_Tests.zip
+          retention-days: 90
