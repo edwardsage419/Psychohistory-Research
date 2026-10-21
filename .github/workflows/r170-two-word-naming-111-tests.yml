@@ -1,4 +1,4 @@
-name: R170 Two Word Naming Game 72 Worlds 111 Tests Preliminary
+name: R170 Two Word Naming Game 72 Worlds 111 Tests SHA256 Pinned and Permanent Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r170-two-word-naming-111-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-exact-inventory-oracles:
     runs-on: ubuntu-latest
@@ -26,7 +26,8 @@ jobs:
           cd research/R170
           test "$(git hash-object r170_two_word_naming_game_exact.py)" = "0649fa0c5daf0d6777e232bda8e5ab22ea2b3907"
           test "$(git hash-object test_r170_two_word_naming_game_exact.py)" = "eda9b4c92d7f74052a4e4d0cff630dc1e77875e5"
-          sha256sum r170_two_word_naming_game_exact.py test_r170_two_word_naming_game_exact.py
+          echo '6587ad073fbc34adc5029c81521ed73f05da319b2c46c1f86361f0a4d31d67ac  r170_two_word_naming_game_exact.py' | sha256sum -c -
+          echo '54fc5b8322fd54432c3a619355e54942e4d4fc780dc431c56f28204e492acd97  test_r170_two_word_naming_game_exact.py' | sha256sum -c -
       - name: Produce all 72 complete four-lexical-inventory Markov distributions
         run: |
           cd research/R170
@@ -56,7 +57,7 @@ jobs:
                    if item['inventories'] in ([1,1,1,1],[2,2,2,2])),F(0))
           print('R170 72 complete exact naming inventories and 2 independent Markov oracles VERIFIED')
           PY
-          sha256sum R170_EXACT_RESULTS.json
+          echo '2e63390bfbb6e0ddbf1622767e94d59b2b1db1a286c8f79caac1d333d61277ce  R170_EXACT_RESULTS.json' | sha256sum -c -
       - name: Execute all 111 distinct named unittest methods
         run: |
           cd research/R170
@@ -73,9 +74,64 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R170_Naming_Game_72_Worlds_111_Tests.zip
+          echo '1b8cf39c0afec2a90fd5aed661b04ac13dbfd9215910abd27fb7dd2d40f7c0f1  R170_Naming_Game_72_Worlds_111_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R170-two-word-exact-naming-original-${{ matrix.python-version }}
           path: research/R170/R170_Naming_Game_72_Worlds_111_Tests.zip
           retention-days: 90
+
+  publish-permanent-exact-original-results:
+    needs: independent-exact-inventory-oracles
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent re-evaluation of naming inventories and full SHA256 set
+        run: |
+          cd research/R170
+          echo '6587ad073fbc34adc5029c81521ed73f05da319b2c46c1f86361f0a4d31d67ac  r170_two_word_naming_game_exact.py' | sha256sum -c -
+          echo '54fc5b8322fd54432c3a619355e54942e4d4fc780dc431c56f28204e492acd97  test_r170_two_word_naming_game_exact.py' | sha256sum -c -
+          python r170_two_word_naming_game_exact.py > R170_EXACT_RESULTS.json
+          echo '2e63390bfbb6e0ddbf1622767e94d59b2b1db1a286c8f79caac1d333d61277ce  R170_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -q test_r170_two_word_naming_game_exact.py
+          python - <<'PY'
+          from r170_two_word_naming_game_exact import *
+          from fractions import Fraction as F
+          import json
+          d=json.load(open('R170_EXACT_RESULTS.json'))
+          for graph_name,edges in CONTACTS:
+              initial=INVENTORIES[2][1]
+              a=exact_path(edges,initial,0,'both_confirm')[1]
+              b=exact_path(edges,initial,0,'listener_only')[1]
+              tv=sum((abs(dict(a).get(k,F(0))-dict(b).get(k,F(0)))
+                  for k in set(dict(a))|set(dict(b))),F(0))/2
+              print('R170_BILINGUAL_FEEDBACK_T1_TV',graph_name,str(tv))
+          allA=(1,1,1,1)
+          for nu in NOISE:
+              p=F(dict(direct_kernel(CONTACTS[0][1],allA,nu,'both_confirm')).get(allA,F(0)))
+              print('R170_ALL_A_STAYS_ALL_A_ONE_STEP',str(nu),str(p))
+          PY
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R170_Naming_Game_72_Worlds_111_Tests.zip','w') as z:
+              for name in ('r170_two_word_naming_game_exact.py','test_r170_two_word_naming_game_exact.py','R170_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo '1b8cf39c0afec2a90fd5aed661b04ac13dbfd9215910abd27fb7dd2d40f7c0f1  R170_Naming_Game_72_Worlds_111_Tests.zip' | sha256sum -c -
+      - name: Commit exact full original naming world JSON and ZIP to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R170/R170_EXACT_RESULTS.json research/R170/R170_Naming_Game_72_Worlds_111_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R170): 72 exact language naming worlds and 111 test source bundle'
+            git push origin HEAD:main
+          fi
