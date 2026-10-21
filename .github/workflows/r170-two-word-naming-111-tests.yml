@@ -1,0 +1,81 @@
+name: R170 Two Word Naming Game 72 Worlds 111 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R170/r170_two_word_naming_game_exact.py'
+      - 'research/R170/test_r170_two_word_naming_game_exact.py'
+      - '.github/workflows/r170-two-word-naming-111-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-exact-inventory-oracles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Original immutable Git blob check
+        run: |
+          cd research/R170
+          test "$(git hash-object r170_two_word_naming_game_exact.py)" = "0649fa0c5daf0d6777e232bda8e5ab22ea2b3907"
+          test "$(git hash-object test_r170_two_word_naming_game_exact.py)" = "eda9b4c92d7f74052a4e4d0cff630dc1e77875e5"
+          sha256sum r170_two_word_naming_game_exact.py test_r170_two_word_naming_game_exact.py
+      - name: Produce all 72 complete four-lexical-inventory Markov distributions
+        run: |
+          cd research/R170
+          python r170_two_word_naming_game_exact.py > R170_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          j=json.load(open('R170_EXACT_RESULTS.json'))
+          assert j['frozen_world_count']==72 and len(j['worlds'])==72
+          assert len({w['id'] for w in j['worlds']})==72
+          assert not j['original_Baronchelli_unbounded_vocabulary_model_reproduced']
+          assert not j['original_human_utterance_data_used']
+          c=j['prespecified_controls']
+          assert all(c.values())
+          for w in j['worlds']:
+            assert w['independent_exact_oracles_equal']
+            assert len(w['snapshots'])==4
+            for snapshot in w['snapshots']:
+              D=snapshot['distribution']
+              assert sum((F(x['probability']) for x in D),F(0))==1
+              assert len(D)==snapshot['supported_inventory_vectors']
+              assert all(all(v in (1,2,3) for v in item['inventories']) for item in D)
+              assert F(snapshot['expected_bilingual_speakers'])==sum(
+                  (F(item['probability'])*sum(v==3 for v in item['inventories']) for item in D),F(0))
+              assert F(snapshot['probability_unanimous_single_word'])==sum(
+                  (F(item['probability']) for item in D
+                   if item['inventories'] in ([1,1,1,1],[2,2,2,2])),F(0))
+          print('R170 72 complete exact naming inventories and 2 independent Markov oracles VERIFIED')
+          PY
+          sha256sum R170_EXACT_RESULTS.json
+      - name: Execute all 111 distinct named unittest methods
+        run: |
+          cd research/R170
+          python -m unittest -v test_r170_two_word_naming_game_exact.py
+      - name: Construct deterministic canonical original ZIP
+        run: |
+          cd research/R170
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R170_Naming_Game_72_Worlds_111_Tests.zip','w') as z:
+              for name in ('r170_two_word_naming_game_exact.py','test_r170_two_word_naming_game_exact.py','R170_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R170_Naming_Game_72_Worlds_111_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R170-two-word-exact-naming-original-${{ matrix.python-version }}
+          path: research/R170/R170_Naming_Game_72_Worlds_111_Tests.zip
+          retention-days: 90
