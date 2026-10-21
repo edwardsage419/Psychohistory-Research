@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r164-content-salience-102-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-content-weighted-urn:
     runs-on: ubuntu-latest
@@ -78,3 +78,39 @@ jobs:
           name: R164-original-content-worlds-${{ matrix.python-version }}
           path: research/R164/R164_Content_Salience_72_Worlds_102_Tests.zip
           retention-days: 90
+
+  permanent-original-results:
+    needs: independent-content-weighted-urn
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay tests and recreate all original research outputs
+        run: |
+          cd research/R164
+          echo '27252e908413335780e43f8bb4bb089d2abb0cd4ba31cc2967d63480f6f89133  r164_content_salience_exact.py' | sha256sum -c -
+          echo 'a5dc28d23e8ed11f3c3b6b4ec3b8bd3e8d5d8ff3d6ef1e7ccc85f4666b84b013  test_r164_content_salience_exact.py' | sha256sum -c -
+          python r164_content_salience_exact.py > R164_EXACT_RESULTS.json
+          echo 'ce27a70aee6ee82ca360efc93b12632c44f6bbd7a73b32bf1aaafc602df69f52  R164_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -q test_r164_content_salience_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R164_Content_Salience_72_Worlds_102_Tests.zip','w') as z:
+              for name in ('r164_content_salience_exact.py','test_r164_content_salience_exact.py','R164_EXACT_RESULTS.json'):
+                  i=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  i.compress_type=zipfile.ZIP_LZMA
+                  i.external_attr=0o644<<16
+                  z.writestr(i,open(name,'rb').read())
+          PY
+          echo '271beda59c738310a608b7e65eb88f9144159d40441aef180ddf7aa11b4f3e55  R164_Content_Salience_72_Worlds_102_Tests.zip' | sha256sum -c -
+      - name: Commit complete source and exact result ZIP archive
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R164/R164_EXACT_RESULTS.json research/R164/R164_Content_Salience_72_Worlds_102_Tests.zip
+          git commit -m 'archive(R164): 72 content salience paths and 102 source tests'
+          git push origin HEAD:main
