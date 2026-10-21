@@ -1,0 +1,78 @@
+name: R182 Exact 240 OLS FWL Omitted Variable Worlds
+on:
+  push:
+    paths:
+      - 'research/R182/r182_exact_ols_fwl_omitted_variable.py'
+      - '.github/workflows/r182-exact-ols-fwl.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-OLS-algebra-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify exact OLS normal equations, independent FWL, rank failures and identities
+        run: |
+          cd research/R182
+          python r182_exact_ols_fwl_omitted_variable.py --test
+  evaluate-full-240-worlds-and-permanently-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: two-python-OLS-algebra-tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compute 240 complete artificial regressions and 2880 source observations
+        run: |
+          cd research/R182
+          python r182_exact_ols_fwl_omitted_variable.py --run-and-archive
+          python - <<'PY'
+          from pathlib import Path
+          from hashlib import sha256
+          import json,csv,zipfile
+          r=json.loads(Path('R182_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R182_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['worlds']==240 and len(r['all_worlds'])==240
+          assert r['original_observations']==2880
+          assert all(x['independent_FWL_and_normal_equation_coefficients_equal']
+                     for x in r['all_worlds'])
+          assert r['fixed_aggregate_sign_reversal']['simple_x_coefficient']=='-3/4'
+          assert r['fixed_aggregate_sign_reversal']['adjusted_x_coefficient']=='1/4'
+          with Path('R182_ALL_2880_ARTIFICIAL_OBSERVATIONS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==2880
+          assert a['result_sha256']==sha256(Path('R182_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['source_rows_sha256']==sha256(Path('R182_ALL_2880_ARTIFICIAL_OBSERVATIONS.csv').read_bytes()).hexdigest()
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R182_Exact_240_OLS_FWL_Worlds.zip') as z:
+            assert len(z.namelist())==5 and z.testzip() is None
+          print('R182_EXACT_ARTIFICIAL_OLS_FWL_240_WORLDS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R182-240-exact-OLS-FWL-worlds
+          path: |
+            research/R182/R182_EXACT_RESULTS.json
+            research/R182/R182_ALL_2880_ARTIFICIAL_OBSERVATIONS.csv
+            research/R182/R182_FINAL_MACHINE_ACCEPTANCE.json
+            research/R182/R182_Exact_240_OLS_FWL_Worlds.zip
+          retention-days: 90
+      - name: Publish complete bounded E1 results to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R182/R182_EXACT_RESULTS.json research/R182/R182_ALL_2880_ARTIFICIAL_OBSERVATIONS.csv research/R182/R182_FINAL_MACHINE_ACCEPTANCE.json research/R182/R182_Exact_240_OLS_FWL_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R182): 240 exact FWL normal equation regressions and aggregate coefficient reversal'
+            git push origin HEAD:main
+          fi
