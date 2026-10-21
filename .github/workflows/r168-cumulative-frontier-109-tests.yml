@@ -1,0 +1,88 @@
+name: R168 Cumulative Cultural Frontier 64 Worlds 109 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R168/r168_cumulative_cultural_frontier_exact.py'
+      - 'research/R168/test_r168_cumulative_cultural_frontier_exact.py'
+      - '.github/workflows/r168-cumulative-frontier-109-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-three-state-cultural-frontier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify original pre-audit code and test blob identities
+        run: |
+          cd research/R168
+          test "$(git hash-object r168_cumulative_cultural_frontier_exact.py)" = "d81684830be360e223111654527d4f8c19800318"
+          test "$(git hash-object test_r168_cumulative_cultural_frontier_exact.py)" = "a194f55d7964a9d0a5be72871a644cee4c748b78"
+          sha256sum r168_cumulative_cultural_frontier_exact.py test_r168_cumulative_cultural_frontier_exact.py
+      - name: Calculate all 64 entire Markov distributions with independent dynamic programming
+        run: |
+          cd research/R168
+          python r168_cumulative_cultural_frontier_exact.py > R168_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R168_EXACT_RESULTS.json'))
+          assert d['world_count']==64 and len(d['worlds'])==64
+          assert d['kernel_count']==32 and len(d['kernels'])==32
+          assert len({w['id'] for w in d['worlds']})==64
+          assert d['external_real_human_rows_scored']==0
+          assert not d['source_nature2013_original_XLS_acquired']
+          assert not d['derex2015_original_XLSX_acquired']
+          assert not d['2014_criticism_resolved']
+          for world in d['worlds']:
+            assert len(world['points'])==5
+            assert world['exact_independent_paths_equal']
+            for row in world['points']:
+              v=[F(x) for x in row['frontier_0_1_2_probabilities']]
+              assert len(v)==3 and sum(v)==1 and all(z>=0 for z in v)
+              assert F(row['expected_group_max_skill_level'])==v[1]+2*v[2]
+          for model in d['kernels']:
+            k=[[F(v) for v in row] for row in model['kernel']]
+            assert all(len(row)==3 and sum(row)==1 for row in k)
+            if model['stationary'] is not None:
+              pi=[F(x) for x in model['stationary']]
+              assert sum(pi)==1
+              for j in range(3):
+                assert pi[j]==sum(pi[i]*k[i][j] for i in range(3))
+          controls=d['predeclared_controls']
+          assert controls['N2_full_pool_fhalf_top_retention']=='3/4'
+          assert controls['N16_single_channel_fthreequarters_top_retention']=='3/4'
+          assert controls['full_pool_fhalf_level2_absorption_N16']=='131072'
+          print('R168 64 complete synthetic three-state cultural histories and 32 exact kernels verified')
+          PY
+          sha256sum R168_EXACT_RESULTS.json
+      - name: Run 109 original exact unittest methods
+        run: |
+          cd research/R168
+          python -m unittest -v test_r168_cumulative_cultural_frontier_exact.py
+      - name: Deterministic source test full JSON ZIP
+        run: |
+          cd research/R168
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R168_Cumulative_Culture_64_Worlds_109_Tests.zip','w') as z:
+              for name in ('r168_cumulative_cultural_frontier_exact.py','test_r168_cumulative_cultural_frontier_exact.py','R168_EXACT_RESULTS.json'):
+                  info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  info.compress_type=zipfile.ZIP_LZMA
+                  info.external_attr=0o644<<16
+                  z.writestr(info,open(name,'rb').read())
+          PY
+          sha256sum R168_Cumulative_Culture_64_Worlds_109_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R168-64-frozen-artificial-ratchet-models-${{ matrix.python-version }}
+          path: research/R168/R168_Cumulative_Culture_64_Worlds_109_Tests.zip
+          retention-days: 90
