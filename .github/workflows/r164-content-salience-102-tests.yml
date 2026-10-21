@@ -1,0 +1,79 @@
+name: R164 Content Salience 72 Exact Worlds 102 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R164/r164_content_salience_exact.py'
+      - 'research/R164/test_r164_content_salience_exact.py'
+      - '.github/workflows/r164-content-salience-102-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-content-weighted-urn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Pin pre-archive program and tests to original Git blobs
+        run: |
+          cd research/R164
+          test "$(git hash-object r164_content_salience_exact.py)" = "b5ab1235bd7355fd2de55431c889580092085312"
+          test "$(git hash-object test_r164_content_salience_exact.py)" = "f0b0a9b7e7d2540029a3766b5403d11b7e2db976"
+          sha256sum r164_content_salience_exact.py test_r164_content_salience_exact.py
+      - name: Regenerate all 72 full 5-point artificial content-frequency trajectories
+        run: |
+          cd research/R164
+          python r164_content_salience_exact.py > R164_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R164_EXACT_RESULTS.json'))
+          assert d['frozen_world_count']==72 and len(d['worlds'])==72
+          assert len({w['id'] for w in d['worlds']})==72
+          assert all(w['two_exact_independent_routes_equal'] for w in d['worlds'])
+          assert not d['human_recall_or_transmission_data_used']
+          assert d['controls']['r4_p_one_fifth_weighted_A']=='1/2'
+          assert d['controls']['r2_p_four_fifths_h1_reset_quarter_next']=='19/24'
+          for world in d['worlds']:
+            assert len(world['points'])==5
+            e=F(world['symmetric_reset']);h=F(world['content_copy_strength'])
+            for point in world['points']:
+              p=F(point['A_frequency'])
+              weighted=F(point['content_weighted_A'])
+              q=F(point['before_symmetric_reset_A'])
+              assert q==(1-h)*p+h*weighted
+              assert 0<=p<=1 and 0<=weighted<=1
+              if 'next_A' in point:
+                assert F(point['next_A'])==(1-e)*q+e/2
+          print('R164 72 exact content worlds fully checked by independent Fraction recurrence')
+          PY
+          sha256sum R164_EXACT_RESULTS.json
+      - name: Run 102 genuine full-world and mechanism unittest methods
+        run: |
+          cd research/R164
+          python -m unittest -v test_r164_content_salience_exact.py
+      - name: Make deterministic complete research ZIP using standard library
+        run: |
+          cd research/R164
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R164_Content_Salience_72_Worlds_102_Tests.zip','w') as z:
+              for name in ('r164_content_salience_exact.py','test_r164_content_salience_exact.py','R164_EXACT_RESULTS.json'):
+                  i=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  i.compress_type=zipfile.ZIP_LZMA
+                  i.external_attr=0o644<<16
+                  z.writestr(i,open(name,'rb').read())
+          PY
+          sha256sum R164_Content_Salience_72_Worlds_102_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R164-original-content-worlds-${{ matrix.python-version }}
+          path: research/R164/R164_Content_Salience_72_Worlds_102_Tests.zip
+          retention-days: 90
