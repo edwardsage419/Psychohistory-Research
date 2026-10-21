@@ -386,7 +386,7 @@ def run():
 
 def archive():
     files=[Path(__file__).name,RESULT.name,LIBRARY.name,SAMPLES.name,ACCEPT.name]
-    with zipfile.ZipFile(ARCH,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+    with zipfile.ZipFile(ARCHIVE,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for name in files:
             info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
             info.compress_type=zipfile.ZIP_DEFLATED
@@ -396,7 +396,7 @@ def archive():
         info.compress_type=zipfile.ZIP_DEFLATED
         info.external_attr=0o644<<16
         z.writestr(info,PROTO.read_bytes())
-    print("R180_ARCHIVE_SHA256",sha256(ARCH.read_bytes()).hexdigest())
+    print("R180_ARCHIVE_SHA256",sha256(ARCHIVE.read_bytes()).hexdigest())
 
 
 class TestExactBootstrap(unittest.TestCase):
