@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r165-neutral-drift-82-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-exact-neutral-chain:
     runs-on: ubuntu-latest
@@ -74,3 +74,39 @@ jobs:
           name: R165-finite-neutral-drift-original-${{ matrix.python-version }}
           path: research/R165/R165_Neutral_Drift_48_Worlds_82_Tests.zip
           retention-days: 90
+
+  archive-exact-full-results:
+    needs: independent-exact-neutral-chain
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay and verify four canonical artifact identities
+        run: |
+          cd research/R165
+          echo '33e480abee890329bc93d59877697df97dac577e766452caea63c617cddeea09  r165_neutral_drift_exact.py' | sha256sum -c -
+          echo '214e0583fc1fff08b69869c3d3883c90322518710c6bb66a5cfd0b4f52d3250b  test_r165_neutral_drift_exact.py' | sha256sum -c -
+          python r165_neutral_drift_exact.py > R165_EXACT_RESULTS.json
+          echo '826576f87f5c586e64d3d70861e876e665da90beac5fbd49948a8839639018b8  R165_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -q test_r165_neutral_drift_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R165_Neutral_Drift_48_Worlds_82_Tests.zip','w') as z:
+              for name in ('r165_neutral_drift_exact.py','test_r165_neutral_drift_exact.py','R165_EXACT_RESULTS.json'):
+                  i=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  i.compress_type=zipfile.ZIP_LZMA
+                  i.external_attr=0o644<<16
+                  z.writestr(i,open(name,'rb').read())
+          PY
+          echo '771d60b9a01ad39851bef77382f1d8d7d4b380779d24c5cbaecf74565565b724  R165_Neutral_Drift_48_Worlds_82_Tests.zip' | sha256sum -c -
+      - name: Permanently commit original JSON and source test archive
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R165/R165_EXACT_RESULTS.json research/R165/R165_Neutral_Drift_48_Worlds_82_Tests.zip
+          git commit -m 'archive(R165): 48 exact neutral cultural drift models and 82 tests'
+          git push origin HEAD:main
