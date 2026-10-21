@@ -1,0 +1,118 @@
+{
+  "id": "R159",
+  "date": "2026-10-21",
+  "original_catalogue": "P1 07-001 Dual Inheritance Theory",
+  "scientific_status": "CLOSED_BOUNDED_E1_48_SYNTHETIC_CULTURAL_MAJORITY_WORLDS_73_TESTS",
+  "source_records": [
+    {
+      "authors": [
+        "Luigi Luca Cavalli-Sforza",
+        "Marcus W. Feldman"
+      ],
+      "year": 1981,
+      "work": "Cultural Transmission and Evolution",
+      "publisher": "Princeton University Press",
+      "publisher_book_description_checked": true,
+      "full_book_read": false,
+      "original_equations_reproduced": false
+    },
+    {
+      "authors": [
+        "Robert Boyd",
+        "Peter J. Richerson"
+      ],
+      "year": 1985,
+      "work": "Culture and the Evolutionary Process",
+      "publisher": "University of Chicago Press",
+      "publisher_book_contents_checked": true,
+      "full_book_read": false,
+      "original_equations_reproduced": false
+    },
+    {
+      "authors": [
+        "Joseph Henrich",
+        "Robert Boyd"
+      ],
+      "year": 1998,
+      "work": "The Evolution of Conformist Transmission and the Emergence of Between-Group Differences",
+      "doi": "10.1016/S1090-5138(98)00018-X",
+      "original_publisher_abstract_checked": true,
+      "original_empirical_data_reused": false
+    }
+  ],
+  "precode_freeze_commit": "ddb4d36216df0c71fe19caf0db988b8cae555900",
+  "model_scope": "project-authored symmetric two-trait single cultural frequency without genotype/payoffs/empirical samples",
+  "majority_rule": "C(p)=3p^2-2p^3 via iid independent 3-demonstrator draws",
+  "synthetic_update": "p(t+1)=(1-u)*((1-h)*p+h*C(p))+u/2",
+  "scenario_count": 48,
+  "observations_per_case": 7,
+  "exact_Fraction_frequency_observations": 336,
+  "independent_routes": [
+    "direct exact majority polynomial recurrence",
+    "independently enumerated 8 trivariate Bernoulli exemplars and recurrence"
+  ],
+  "all_48_scenarios_strictly_equal": true,
+  "controls": {
+    "majority_quarter": "5/32",
+    "majority_half": "1/2",
+    "majority_three_quarters": "27/32",
+    "conformity_direction_below_above_half_tested": true,
+    "neutral_reset_closed_form_exact": true,
+    "constant_half_path_nonidentification_of_h_u": true,
+    "positive_reset_breaks_absorbing_boundaries": true,
+    "mirror_complement_symmetry_exact": true
+  },
+  "ci": {
+    "first_run": 39523466288,
+    "pinned_run": 39523555967,
+    "pinned_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39523555967",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 118972857528,
+        "python": "3.11",
+        "test_executions": 73,
+        "conclusion": "success"
+      },
+      {
+        "id": 118972857873,
+        "python": "3.12",
+        "test_executions": 73,
+        "conclusion": "success"
+      },
+      {
+        "id": 118972908769,
+        "role": "four immutable hashes and archive publication",
+        "test_executions": 73,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_methods": 73,
+    "actual_unittest_executions_across_both_runs": 365,
+    "failures": 0
+  },
+  "archive_commit": "df5dcfc7a0f86b0ce46eeb7068ab94688bb2f384",
+  "sha256": {
+    "r159_cultural_transmission_exact.py": "06e79227a73b802806fbd7a0bb3bd6dc33e3f994a8403c14fd8a06c58fdc8aeb",
+    "test_r159_cultural_transmission_exact.py": "e3c9318dc0194d0e2c7f96a8f8e34c7c116797885ca0c6a9371b72873b5d6216",
+    "R159_EXACT_RESULTS.json": "618d975c379eefcc0929efbf20218a78832684abd5772ac5decf2e61415fdb7e",
+    "R159_Cultural_Majority_48_Worlds_73_Tests.zip": "504ac3f978fee5b93f17af3fbacf0e0360d54dd6bb2518303794529295934363"
+  },
+  "git_blob_sha1": {
+    "r159_cultural_transmission_exact.py": "440b2aa3a1b8f46248af31252b0ba60b0a0fe77e",
+    "test_r159_cultural_transmission_exact.py": "4c0e1c233da1635fb68a1368fef55ca7958c470e",
+    "R159_EXACT_RESULTS.json": "c5c38f2a8f6991aac1f7156cb3e9cc6b0baa081d",
+    "R159_Cultural_Majority_48_Worlds_73_Tests.zip": "15ac88592001216f3a25603a99a2a992466db9fe"
+  },
+  "new_E2_independent_real_cultural_behavior_prediction": 0,
+  "new_E3_independent_historical_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R160",
+    "catalogue_id": "07-002",
+    "priority": "P2",
+    "title": "Gene Culture Coevolution"
+  },
+  "sequence": "all previously established R series, then classify, then fuse"
+}
