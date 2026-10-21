@@ -1,0 +1,129 @@
+{
+  "id": "R156",
+  "date": "2026-10-21",
+  "catalogue": "P2 06-014 Endogenous Growth Models",
+  "scientific_status": "CLOSED_BOUNDED_E1_REDUCED_AK_CONCAVE_96_WORLDS_118_TESTS",
+  "source_records": [
+    {
+      "author": "Paul M. Romer",
+      "year": 1986,
+      "doi": "10.1086/261420",
+      "publisher_abstract_checked": true,
+      "full_original_article_read": false,
+      "empirical_data_reproduced": false
+    },
+    {
+      "author": "Paul M. Romer",
+      "year": 1990,
+      "doi": "10.1086/261725",
+      "publisher_abstract_checked": true,
+      "full_original_article_read": false,
+      "empirical_data_reproduced": false
+    },
+    {
+      "author": "Sergio Rebelo",
+      "year": 1991,
+      "doi": "10.1086/261764",
+      "publisher_abstract_checked": true,
+      "full_original_article_read": false,
+      "empirical_data_reproduced": false
+    }
+  ],
+  "freeze_commit": "ed806d199bc7753513608bf78545ed680b862d2e",
+  "mathematical_models": [
+    "AK constant marginal product alpha=1",
+    "diminishing alpha=1/2"
+  ],
+  "scenario_count": 96,
+  "times": [
+    0,
+    1,
+    5,
+    10
+  ],
+  "RK4_steps_per_unit": 1024,
+  "max_absolute_independent_numeric_vs_analytic_error": 3.3651e-11,
+  "acceptance_tolerance": 1e-7,
+  "all_96_positive": true,
+  "all_96_agree_with_independent_closed_form": true,
+  "identification_counterexample": {
+    "AK_parameter_pairs": [
+      {
+        "s": 0.2,
+        "delta": 0.1
+      },
+      {
+        "s": 0.4,
+        "delta": 0.3
+      }
+    ],
+    "same_gross_capital_trajectory_for_fixed_initial_stock": true,
+    "concave_alpha_half_same_initial_slope": 0.1,
+    "concave_t5_capital_pair": [
+      1.491327527427,
+      1.38268863758
+    ]
+  },
+  "numerics_negative_control": {
+    "method": "single forward Euler step",
+    "k0": 1,
+    "s": 0.1,
+    "delta": 0.4,
+    "dt": 20,
+    "Euler_k_after": -5.000000000000001,
+    "continuous_exact_k_after": 0.002478752176666
+  },
+  "new_E2_individual_human_independent_predictions": 0,
+  "new_E3_external_historical_forecasts": 0,
+  "preliminary_CI_run": 39520340288,
+  "final_CI_run": 39520425232,
+  "ci": {
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39520425232",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 118962653708,
+        "python": "3.12",
+        "tests": 118,
+        "conclusion": "success"
+      },
+      {
+        "id": 118962653949,
+        "python": "3.11",
+        "tests": 118,
+        "conclusion": "success"
+      },
+      {
+        "id": 118962724021,
+        "role": "pinned four-hash verifier and permanent archive",
+        "tests": 118,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_tests": 118,
+    "real_test_executions_both_runs": 590,
+    "failures": 0
+  },
+  "archive_commit": "4862754b16894fbbc7e4f5e0bdb629875fdb4358",
+  "sha256": {
+    "r156_growth_pair.py": "4980bbaad13d2162503aa05ac05829035a6d891144913f7db100e33abc1eda0d",
+    "test_r156_growth_pair.py": "87ff03e0d15fe1c2edcddc5081488f58f3730fb0fc9df5039984721d32d7cd6a",
+    "R156_EXACT_RESULTS.json": "bc80a9bac0b7c6d26c6e5c829c761f482a2ba1a9803a097bccd3735aeaf0db88",
+    "R156_Growth_96_Worlds_118_Tests.zip": "f7b7ddb26215b76cd5b60a4734e4b492206928141356e35768c7eb7ab4366a45"
+  },
+  "git_blob_sha1": {
+    "r156_growth_pair.py": "96ecbc18053cd2f3fcea59a68a753975a471ef66",
+    "test_r156_growth_pair.py": "5c33d72f08084d0bb5073f4f52ed05ea66e8cda3",
+    "R156_EXACT_RESULTS.json": "89cddea4e5833e52c13318ed4bdcf3cb86f726d5",
+    "R156_Growth_96_Worlds_118_Tests.zip": "5ac2da2b6e6a579247ed60bfebc7e8a1f2349d92"
+  },
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R157",
+    "original_catalogue_id": "06-015",
+    "priority": "P2",
+    "name": "Structural Demographic Theory"
+  },
+  "sequence": "all original R-series models first, then categorize, then synthesize/fuse"
+}
