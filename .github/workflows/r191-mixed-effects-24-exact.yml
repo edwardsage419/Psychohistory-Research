@@ -57,7 +57,7 @@ jobs:
           assert a['posterior_profile_SHA256']==sha256(Path('R191_ALL_OBSERVABLE_POSTERIOR_PROFILES.json').read_bytes()).hexdigest()
           assert j['new_E2']==j['new_E3']==0
           with zipfile.ZipFile('R191_Exact_24_Mixed_Effect_Worlds.zip') as z:
-            assert len(z.namelist())==6 and z.testzip() is None
+            assert len(z.namelist())==7 and z.testzip() is None
           print('R191_EXACT_BAYES_BLUP_NEW_VS_OLD_GROUP_ACCEPTED')
           PY
       - uses: actions/upload-artifact@v4
