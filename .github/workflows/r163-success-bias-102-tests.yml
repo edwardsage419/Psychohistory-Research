@@ -1,4 +1,4 @@
-name: R163 Success Bias 72 Exact Payoff Worlds 102 Tests Preliminary
+name: R163 Success Bias 72 Exact Payoff Worlds 102 Tests SHA256 Checked
 on:
   push:
     paths:
@@ -26,7 +26,8 @@ jobs:
           cd research/R163
           test "$(git hash-object r163_success_bias_payoff_exact.py)" = "2d8a0bab6bf29f4139111219d19391404c6ff6f3"
           test "$(git hash-object test_r163_success_bias_payoff_exact.py)" = "d36e6f5876dcb6b2ec2ada1a0203924be311f5b4"
-          sha256sum r163_success_bias_payoff_exact.py test_r163_success_bias_payoff_exact.py
+          echo 'c680c53cbbcbc52200ffdd3c7b40b37a32ea6736c0011a64a9c21107271e7262  r163_success_bias_payoff_exact.py' | sha256sum -c -
+          echo 'c2349e512b8c1fc1c23dd905109f1416e58940b56eee41ac45f5bc8aaa5f611c  test_r163_success_bias_payoff_exact.py' | sha256sum -c -
       - name: Generate 72 frozen Compare Means and Imitate Best cases
         run: |
           cd research/R163
@@ -51,7 +52,7 @@ jobs:
             assert F(x['advantage_over_random_person'])==accuracy-reference
           print('R163 PASS 72 registered artificial success strategy conditions, independent oracles and tie controls')
           PY
-          sha256sum R163_EXACT_RESULTS.json
+          echo '23979510af73c9b92e9cadb85ee86a9223401c4d13a00240f832938f046dde22  R163_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run 102 genuine unittest methods
         run: |
           cd research/R163
@@ -68,7 +69,7 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R163_Success_Bias_72_Worlds_102_Tests.zip
+          echo 'a3313a85ab0d5aa4865f28747ec05a7c3bcdc36716a12fddf6fa54d286e279cf  R163_Success_Bias_72_Worlds_102_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R163-complete-synthetic-success-bias-${{ matrix.python-version }}
