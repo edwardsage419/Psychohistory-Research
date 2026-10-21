@@ -47,7 +47,7 @@ UPPER = F(39, 40)
 
 def original_source():
     py = (R177 / "r177_four_finite_count_families_exact.py").read_bytes()
-    blob = sha1(b"blob " + str(len(py)).encode() + b"\\x00" + py).hexdigest()
+    blob = sha1(b"blob " + str(len(py)).encode() + b"\x00" + py).hexdigest()
     if blob != R177_BLOB:
         raise ValueError("pinned R177 program Git blob changed")
     if sha256((R177 / "R177_EXACT_RESULTS.json").read_bytes()).hexdigest() != R177_RESULT_SHA256:
@@ -296,7 +296,7 @@ def emit_csv(rows):
         raise AssertionError("ordered dataset output count drifted")
     names=list(rows[0])
     with SAMPLES.open("w",newline="",encoding="utf-8") as f:
-        writer=csv.DictWriter(f,fieldnames=names,lineterminator="\\n")
+        writer=csv.DictWriter(f,fieldnames=names,lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -323,7 +323,7 @@ def emit_library():
         "research_id":"R180","unique_unordered_sample_profiles":len(profiles),
         "profiles":profiles,
         "full_distributions_exact_and_conditional":True
-    },sort_keys=True,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    },sort_keys=True,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     return len(profiles)
 
 
@@ -362,7 +362,7 @@ def run():
         "conditional_full_PMF_library_sha256":sha256(LIBRARY.read_bytes()).hexdigest(),
         "human_or_historical_data_scored":False,"new_E2":0,"new_E3":0,
     }
-    RESULT.write_text(json.dumps(main,sort_keys=True,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    RESULT.write_text(json.dumps(main,sort_keys=True,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     acceptance={
         "research_id":"R180",
         "state":"CLOSED_BOUNDED_E1_ARTIFICIAL_EXACT_BOOTSTRAP",
@@ -378,7 +378,7 @@ def run():
         "conditional_PMF_library_sha256":main["conditional_full_PMF_library_sha256"],
         "no_real_human_or_historical_scoring":True,"new_E2":0,"new_E3":0,
     }
-    ACCEPT.write_text(json.dumps(acceptance,sort_keys=True,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    ACCEPT.write_text(json.dumps(acceptance,sort_keys=True,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("R180_MACHINE_ACCEPTANCE",json.dumps(acceptance,sort_keys=True))
     print("R180_LOCKED_MAIN_COMPARISON",json.dumps(selected,sort_keys=True))
     return main
