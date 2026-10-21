@@ -145,6 +145,12 @@ class TestR159(unittest.TestCase):
         self.assertFalse(d["historical_cultural_data_used"])
         self.assertFalse(d["author_original_equations_reproduced"])
 
+    def test_exact_majority_advantage_factorization(self):
+        for denominator in (2,3,4,5,7,11):
+            for numerator in range(denominator+1):
+                p=F(numerator,denominator)
+                self.assertEqual(majority_polynomial(p)-p,p*(1-p)*(2*p-1))
+
     def test_full_world_ledger(self):
         d=result_document()
         self.assertEqual(d['scenario_count'],48)
