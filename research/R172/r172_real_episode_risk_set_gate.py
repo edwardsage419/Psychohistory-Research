@@ -117,7 +117,15 @@ def audit_structure():
        "rows":len(rows),
        "columns":columns,
        "country_code_count":len(country_freq),
+       "country_name_count":len(set(r["country_name"] for r in rows)),
        "episode_id_count":len(episode),
+       "unlabeled_breakdown_rows":[{
+            "episode_id":r["id"],"country":r["country_name"],
+            "year":r["year"],"t":r["t"],"transition":r["transition"],
+            "is_last_year_of_episode":r==episode[r["id"]][-1]}
+            for r in rows if numeric(r["breakdown"]) is None],
+       "country_name_to_code_map":sorted(
+            { (r["country_name"],r["country_text_id"]) for r in rows}),
        "minimum_year":min(int(r["year"]) for r in rows if numeric(r["year"]) is not None),
        "maximum_year":max(int(r["year"]) for r in rows if numeric(r["year"]) is not None),
        "breakdown_literal_categories":dict(sorted(events.items())),
@@ -145,6 +153,8 @@ def audit_structure():
          "episodes_with_last_year_event","episodes_without_breakdown",
          "episodes_with_anomalies","missing_required_values")},ensure_ascii=False))
     print("R172_REAL_EPISODE_ANOMALIES",json.dumps(selected["episode_anomalies"][:15],ensure_ascii=False))
+    print("R172_UNLABELED_BREAKDOWN_ROWS",json.dumps(selected["unlabeled_breakdown_rows"],ensure_ascii=False))
+    print("R172_COUNTRY_COUNTS",selected["country_code_count"],selected["country_name_count"])
     print("R172_SOURCE_STATA_RELEVANT_LINES",json.dumps(evidence_lines[:28],ensure_ascii=False))
     print("R172_REAL_EPISODE_AUDIT_SHA256",hashlib.sha256(OUTPUT.read_bytes()).hexdigest())
     return selected
