@@ -1,4 +1,4 @@
-name: R172 Real Historical Temporal Holdout 92 Tests Preliminary
+name: R172 Real Historical Temporal Holdout 92 Tests SHA256 Pinned and Permanent Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r172-real-event-retrospective-91-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   source-pinned-real-historical-cohort-predictions:
     runs-on: ubuntu-latest
@@ -26,7 +26,8 @@ jobs:
           cd research/R172
           test "$(git hash-object r172_real_historical_retrospective_hazards.py)" = "e6c3d744295e9c131cb966fd2b8e057c32ec7a4b"
           test "$(git hash-object test_r172_real_historical_retrospective_hazards.py)" = "d27b2685a11fa1cab24d63d9b85fb1f52e71fd19"
-          sha256sum r172_real_historical_retrospective_hazards.py test_r172_real_historical_retrospective_hazards.py
+          echo '633a4b65b9e9ffe31442f814f878bc6347444c435c830c9394e2780478150cd6  r172_real_historical_retrospective_hazards.py' | sha256sum -c -
+          echo 'e88020b3f87a1c3f538aab9aea84c87f0fde883f224e6df4647b87e1d134eadb  test_r172_real_historical_retrospective_hazards.py' | sha256sum -c -
           sha256sum source/Original_Replication_dataset.tab source/Original_Replication_code_Stata.do source/Original_Replication_dataset_as_uploaded.bin
       - name: Independently score prespecified three hazard models on actual country-year holdout
         run: |
@@ -55,7 +56,8 @@ jobs:
           print('R172_COMPLETE_FROZEN_HISTORICAL_SCORES',d['score_summary'])
           print('R172_FROZEN_EPISODE_RESAMPLING_INTERVALS',d['episode_cluster_resample_CI']['intervals'])
           PY
-          sha256sum R172_EXACT_RESULTS.json R172_REAL_HELDOUT_PREDICTIONS.csv
+          echo '0cb8adfbe92cf32b27731f47068bd94cad9346e8545444a684a0c63040a10857  R172_EXACT_RESULTS.json' | sha256sum -c -
+          echo 'e7f81816d5d7ffc4c50e864dfd534db00477fd8bec81e04d306dbf479e5eee1d  R172_REAL_HELDOUT_PREDICTIONS.csv' | sha256sum -c -
       - name: Run 91 genuinely distinct original risk-set/model/scores tests
         run: |
           cd research/R172
@@ -78,9 +80,69 @@ jobs:
                   info.external_attr=0o644<<16
                   z.writestr(info,open(name,'rb').read())
           PY
-          sha256sum R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip
+          echo '3d352c1014fc36db74a8c14587be7503ad7758bc7cbbf76d7066a1910db293bf  R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R172-real-episode-heldout-source-and-predictions-${{ matrix.python-version }}
           path: research/R172/R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip
           retention-days: 90
+
+  independent-historical-source-prediction-archive:
+    needs: source-pinned-real-historical-cohort-predictions
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reverify original CC0 source and all five SHA256 original artifacts
+        run: |
+          cd research/R172
+          echo '633a4b65b9e9ffe31442f814f878bc6347444c435c830c9394e2780478150cd6  r172_real_historical_retrospective_hazards.py' | sha256sum -c -
+          echo 'e88020b3f87a1c3f538aab9aea84c87f0fde883f224e6df4647b87e1d134eadb  test_r172_real_historical_retrospective_hazards.py' | sha256sum -c -
+          echo 'ed8e29368d06d0fa6d597df567eb21e7ac27fa849e1cdfd90b76167c8b5778ba  source/Original_Replication_dataset.tab' | sha256sum -c -
+          echo 'ddca691b25a664ce13ef2471184e3d5ae3ed62cb72521e0593bff770efb0e4e6  source/Original_Replication_dataset_as_uploaded.bin' | sha256sum -c -
+          echo '664cf425684b97b8a7bf835ed748955e2e34426e8a14c0db8abbf98a4fb2e3ad  source/Original_Replication_code_Stata.do' | sha256sum -c -
+          python r172_real_historical_retrospective_hazards.py
+          echo '0cb8adfbe92cf32b27731f47068bd94cad9346e8545444a684a0c63040a10857  R172_EXACT_RESULTS.json' | sha256sum -c -
+          echo 'e7f81816d5d7ffc4c50e864dfd534db00477fd8bec81e04d306dbf479e5eee1d  R172_REAL_HELDOUT_PREDICTIONS.csv' | sha256sum -c -
+          python -m unittest -q test_r172_real_historical_retrospective_hazards.py
+          python - <<'PY'
+          import json
+          d=json.load(open('R172_EXACT_RESULTS.json'))
+          assert d['source_same_calendar_transition_rows']==19
+          assert d['split']['test_rows']==319
+          assert d['split']['test_breakdown_events']==18
+          assert d['split']['train_rows']==581
+          assert d['split']['train_breakdown_events']==12
+          assert d['new_E3_genuinely_external_historical_forecasts']==0
+          print('R172_PRESCORED_HISTORICAL_TEMPORAL_EVALUATION',json.dumps(d['score_summary'],sort_keys=True))
+          print('R172_HELDOUT_EPISODE_INTERVALS',json.dumps(d['episode_cluster_resample_CI']['intervals'],sort_keys=True))
+          PY
+          python - <<'PY'
+          import zipfile
+          files=['r172_real_historical_retrospective_hazards.py',
+           'test_r172_real_historical_retrospective_hazards.py',
+           'R172_EXACT_RESULTS.json','R172_REAL_HELDOUT_PREDICTIONS.csv']
+          files+=['source/Original_Replication_dataset.tab',
+            'source/Original_Replication_code_Stata.do',
+            'source/Original_Replication_dataset_as_uploaded.bin']
+          with zipfile.ZipFile('R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip','w') as z:
+              for name in files:
+                  info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  info.compress_type=zipfile.ZIP_LZMA
+                  info.external_attr=0o644<<16
+                  z.writestr(info,open(name,'rb').read())
+          PY
+          echo '3d352c1014fc36db74a8c14587be7503ad7758bc7cbbf76d7066a1910db293bf  R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip' | sha256sum -c -
+      - name: Permanently publish original historical heldout predictions and complete reproducibility ZIP
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R172/R172_EXACT_RESULTS.json research/R172/R172_REAL_HELDOUT_PREDICTIONS.csv research/R172/R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R172): genuine CC0 historical event-time 1999/2000 cohort holdout, three prescored hazards and complete 92-test bundle'
+            git push origin HEAD:main
+          fi
