@@ -1,3 +1,15 @@
+# R173 跨社会比较模型：限定 E1 真实观察性预测结题（2026-10-21）
+
+**研究状态：CLOSED_BOUNDED_E1_REAL_OBSERVATIONAL_PREDICTIVE_ASSOCIATION。** 原始一手D-PLACE民族志EA 121354条文化编码、1291社会及SCCS 186社会原始ID双向一对一无歧义映射已严格核验。计算前[正式冻结协议](../../protocols/R173_REAL_EA_SCCS_EA005_EA006_LOSO_ASSOCIATION_PRESCORE_FREEZE_2026-10-21.md)，其后执行实际社会EA005农业依赖与EA006婚姻交易类别的项目自建M0/M1留一社会概率评分；[正式科学报告](R173_SCIENTIFIC_REPORT_2026-10-21.md)。
+
+**最重要结果：** 全EA 1271个社会的M0/M1平均对数损失 1.434867657/1.395916388，差值+0.038951268；严格SCCS 186社会为1.706753963/1.692512691，差值+0.014241272，**186社会配对重抽样95%区间跨零（负0.064389222至正0.088225160）**。SCCS完整年份183社会也区间跨零。不能推断因果、独立文化扩散效应、稳健外推或历史独立预测。全EA与SCCS样本重叠，E2/E3新增0。
+
+**证据归档：** [全部四组真实评分 JSON](R173_REAL_EA_SCCS_LOSO_EXACT_RESULTS.json)、[2899行逐社会预测 CSV](R173_REAL_EA_SCCS_LOSO_HELDOUT_PREDICTIONS.csv)、[完整评分源码/协议/结果 ZIP](R173_Real_EA_SCCS_Observational_LOSO_Archive.zip)、[计算前映射及缺失审计](R173_REAL_EA005_EA006_COVERAGE_AND_RECIPROCAL_MAPPING.json)、[原始一手资料 ZIP](R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip)。[最终GitHub Actions 39549084819](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39549084819) 全部成功，Python 3.11/3.12合计44项实际单测执行，数据预测为2899行，两个独立训练折计算逐项一致；[正式归档提交586e7eb](https://github.com/edwardsage419/Psychohistory-Research/commit/586e7eb54b0004e7c839b95c50909edb1b57ee0a)。
+
+下一项R174：P1/07-016 Diffusion versus Independent Invention，先独立确认一手文献与可识别性。R073/PESEN v0.1维持冻结；先完成全部R系列，然后统一分类，最后模型熔炼。
+
+---
+
 # R173 跨社会比较模型：真实来源档案入口，尚未正式科研结题
 
 2026-10-21。原目录 **P1 / 07-015 Cross Societal Comparison Models（跨社会比较）**。状态 **ORIGINAL_SOURCE_AUTHENTICATED_MODEL_NOT_YET_SCORED**。尚无文化变量间关联结果、因果论断或真实社会独立预测，也未冻结或执行R173正式比较模型。
