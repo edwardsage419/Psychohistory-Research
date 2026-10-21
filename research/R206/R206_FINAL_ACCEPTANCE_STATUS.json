@@ -1,0 +1,43 @@
+{
+  "model_id": "R206",
+  "catalog_id": "08-030",
+  "method": "Clustering Methods / exact globally optimal 2-means",
+  "scientific_status": "CLOSED_BOUNDED_E1_ARTIFICIAL_KMEANS",
+  "date_local": "2026-10-21",
+  "protocol_frozen_commit": "8b2aec615aab5a7a16e7dc2783b88e146bb40f44",
+  "full_original_evidence_commit": "a97a2d133dbc46b861c7806eddac84ad5ff01525",
+  "github_actions_run_id": 39612382763,
+  "github_actions_run_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39612382763",
+  "python311_passed_tests": 38,
+  "python312_passed_tests": 38,
+  "total_passed_tests": 76,
+  "github_actions_success_jobs": 3,
+  "source_worlds": 12,
+  "full_ordered_training_histories": 1920,
+  "full_joint_training_independent_test_source_events": 7680,
+  "training_true_G_used_by_unsupervised_fit": false,
+  "training_true_G_used_in_postfit_majority_map": true,
+  "heldout_true_G_used_in_training_or_postfit_map": false,
+  "posthoc_permutation_oracle_uses_heldout_labels_only_as_evaluation_diagnostic": true,
+  "negative_findings": [
+    "G-scale3,nuisance1,n4: independent two-cluster quantization353/96 and heldout G error1/16",
+    "G-scale1,nuisance3,n4: identical independent quantization353/96 yet heldout G error57/128",
+    "G-scale1,nuisance3,n3 to n4: independent quantization95/16 to353/96 improves while independent G error13/32 to57/128 worsens",
+    "n3 5/8 histories have fitted K2 training SSE zero without guaranteeing independent source classification"
+  ],
+  "limitations": [
+    "All G,H artificially independent Rademacher, G deterministically revealed by first coordinate",
+    "n3/4 only, K2 fixed and all disjoint nonempty partitions enumerated",
+    "no real population identity or real environment E2, no historical E3",
+    "heldout 7680 rows are an enumerated joint sample space, not 7680 independent observed experiments"
+  ],
+  "full_result_sha256": "43f17d6f8f95b822858c00c4d02a03659a4ddd4e45129c4e81ff3d3aa7d4afa1",
+  "full_training_sha256": "18c41a7b3554641a5c0f8076f4746b5a01303dd1fcf7e5ed8168a27140dea9dc",
+  "full_future_sha256": "c8962f3b8fe9e27fc71f7c39a045ad044fc5aba19114428b2bf24a6a34e451cd",
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": "R207 P2/08-031 Matrix Completion",
+  "owner_order": "Finish all R, classify, then fuse"
+}
