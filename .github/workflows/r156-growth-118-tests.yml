@@ -1,0 +1,66 @@
+name: R156 AK vs Concave 96 Worlds 118 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R156/r156_growth_pair.py'
+      - 'research/R156/test_r156_growth_pair.py'
+      - '.github/workflows/r156-growth-118-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-analytic-numeric-growth:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify pinned original Git blob SHA1 for research and tests
+        run: |
+          cd research/R156
+          test "$(git hash-object r156_growth_pair.py)" = "96ecbc18053cd2f3fcea59a68a753975a471ef66"
+          test "$(git hash-object test_r156_growth_pair.py)" = "5c33d72f08084d0bb5073f4f52ed05ea66e8cda3"
+          sha256sum r156_growth_pair.py test_r156_growth_pair.py
+      - name: Generate full 96 growth systems and compare direct-stock RK4 to closed forms
+        run: |
+          cd research/R156
+          python r156_growth_pair.py > R156_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          d=json.load(open('R156_EXACT_RESULTS.json'))
+          assert d['scenario_count']==96 and len(d['worlds'])==96
+          assert len(set(x['scenario_id'] for x in d['worlds']))==96
+          assert d['max_absolute_RK4_error']<1e-7
+          assert not d['historical_data_forecasting']
+          assert not d['author_original_full_model_reproduction']
+          assert d['mechanism_controls']['AK_same_growth_path_a']==d['mechanism_controls']['AK_same_growth_path_b']
+          print('R156 PASS 96 registered paired growth paths, distinct AK parameter vectors can identify same stock series')
+          PY
+          sha256sum R156_EXACT_RESULTS.json
+      - name: Execute 118 genuine unit tests
+        run: |
+          cd research/R156
+          python -m unittest -v test_r156_growth_pair.py
+      - name: Generate deterministic complete source, test and JSON ZIP archive
+        run: |
+          cd research/R156
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R156_Growth_96_Worlds_118_Tests.zip','w') as z:
+              for name in ('r156_growth_pair.py','test_r156_growth_pair.py','R156_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R156_Growth_96_Worlds_118_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R156-96-original-growth-synthetic-${{ matrix.python-version }}
+          path: research/R156/R156_Growth_96_Worlds_118_Tests.zip
+          retention-days: 90
