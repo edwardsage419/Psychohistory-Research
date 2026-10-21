@@ -1,4 +1,4 @@
-name: R172 Real Historical Temporal Holdout 91 Tests Preliminary
+name: R172 Real Historical Temporal Holdout 92 Tests Preliminary
 on:
   push:
     paths:
@@ -24,8 +24,8 @@ jobs:
       - name: Verify prescored original source and unit tests Git blob IDs
         run: |
           cd research/R172
-          test "$(git hash-object r172_real_historical_retrospective_hazards.py)" = "e15c4d3afb881a8ea8c5e29620a83b0962280a46"
-          test "$(git hash-object test_r172_real_historical_retrospective_hazards.py)" = "6f06d37897de61e84fdfeec1e203530b4212e1ce"
+          test "$(git hash-object r172_real_historical_retrospective_hazards.py)" = "e6c3d744295e9c131cb966fd2b8e057c32ec7a4b"
+          test "$(git hash-object test_r172_real_historical_retrospective_hazards.py)" = "d27b2685a11fa1cab24d63d9b85fb1f52e71fd19"
           sha256sum r172_real_historical_retrospective_hazards.py test_r172_real_historical_retrospective_hazards.py
           sha256sum source/Original_Replication_dataset.tab source/Original_Replication_code_Stata.do source/Original_Replication_dataset_as_uploaded.bin
       - name: Independently score prespecified three hazard models on actual country-year holdout
@@ -39,6 +39,7 @@ jobs:
           assert d['preregistered_protocol_commit']=='099b7a50924c86fdaecb6254eca2748836ae0c64'
           assert d['eligible_source_rows']==1725
           assert d['eligible_source_episodes']==102
+          assert d['source_same_calendar_transition_rows']==19
           assert d['checks']['no_heldout_episode_used_in_fit']
           assert d['checks']['no_after_1999_outcome_fitted']
           assert d['checks']['never_use_t0_baseline_in_M2']
@@ -70,16 +71,16 @@ jobs:
           files+=['source/Original_Replication_dataset.tab',
             'source/Original_Replication_code_Stata.do',
             'source/Original_Replication_dataset_as_uploaded.bin']
-          with zipfile.ZipFile('R172_Real_Historical_Holdout_3_Hazards_91_Tests.zip','w') as z:
+          with zipfile.ZipFile('R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip','w') as z:
               for name in files:
                   info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
                   info.compress_type=zipfile.ZIP_LZMA
                   info.external_attr=0o644<<16
                   z.writestr(info,open(name,'rb').read())
           PY
-          sha256sum R172_Real_Historical_Holdout_3_Hazards_91_Tests.zip
+          sha256sum R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip
       - uses: actions/upload-artifact@v4
         with:
           name: R172-real-episode-heldout-source-and-predictions-${{ matrix.python-version }}
-          path: research/R172/R172_Real_Historical_Holdout_3_Hazards_91_Tests.zip
+          path: research/R172/R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip
           retention-days: 90
