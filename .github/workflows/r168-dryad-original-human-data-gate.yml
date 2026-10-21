@@ -30,7 +30,7 @@ jobs:
           assert d['not_derex_2013_nature_group_size_experiment']
           assert d['original_rows_scored']==0
           assert d['independent_predictions']==0
-          if d['download_status']=='XLSX_AUTHENTIC_RAW_BYTES':
+          if d['download_status'].startswith('XLSX_AUTHENTIC_RAW_BYTES'):
             x=pathlib.Path('dryad_source_audit/Social_Learning_and_the_Replication_Process_ORIGINAL.xlsx').read_bytes()
             assert len(x)==d['data_bytes']
             assert hashlib.sha256(x).hexdigest()==d['data_sha256']
