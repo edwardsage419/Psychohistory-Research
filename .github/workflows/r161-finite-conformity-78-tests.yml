@@ -1,0 +1,77 @@
+name: R161 Conformity 48 Finite Markov Worlds 78 Tests Preliminary
+on:
+  push:
+    paths:
+      - 'research/R161/r161_finite_conformist_markov.py'
+      - 'research/R161/test_r161_finite_conformist_markov.py'
+      - '.github/workflows/r161-finite-conformity-78-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-binomial-enumeration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Lock original code and tests by Git SHA1
+        run: |
+          cd research/R161
+          test "$(git hash-object r161_finite_conformist_markov.py)" = "a2bf01087f9e6f8fb473e3612396c25da93ec2dc"
+          test "$(git hash-object test_r161_finite_conformist_markov.py)" = "05af399e0673347e90a2a0a5f202eb7eba0fced0"
+          sha256sum r161_finite_conformist_markov.py test_r161_finite_conformist_markov.py
+      - name: Generate all 48 exact stochastic cultural worlds and harmonic fixation oracles
+        run: |
+          cd research/R161
+          python r161_finite_conformist_markov.py > R161_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R161_EXACT_RESULTS.json'))
+          assert d['number_of_frozen_worlds']==48 and len(d['worlds'])==48
+          assert len({w['id'] for w in d['worlds']})==48
+          assert len(d['kernel_receipts'])==8
+          assert all(len(w['probability_distributions'])==5 for w in d['worlds'])
+          assert all(w['two_independent_paths_equal'] for w in d['worlds'])
+          assert not d['original_behavioral_data_used']
+          for kernel in d['kernel_receipts']:
+            n=kernel['N']
+            rows=[[F(x) for x in row] for row in kernel['kernel_rows']]
+            fx=[F(x) for x in kernel['all_A_fixation_by_initial_count']]
+            assert len(rows)==n+1 and len(fx)==n+1
+            for i,row in enumerate(rows):
+              assert len(row)==n+1 and sum(row)==1
+              assert all(x>=0 for x in row)
+              if 0<i<n: assert fx[i]==sum(row[j]*fx[j] for j in range(n+1))
+          print('R161 48 exact finite Markov paths, independent binomial/configuration kernels and harmonic fixation OK')
+          PY
+          sha256sum R161_EXACT_RESULTS.json
+      - name: Execute 78 individually discoverable unittest methods
+        run: |
+          cd research/R161
+          python -m unittest -v test_r161_finite_conformist_markov.py
+      - name: Produce standard library fixed-entry ZIP archive
+        run: |
+          cd research/R161
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R161_Conformity_48_Finite_Worlds_78_Tests.zip','w') as z:
+              for name in ('r161_finite_conformist_markov.py','test_r161_finite_conformist_markov.py','R161_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R161_Conformity_48_Finite_Worlds_78_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R161-finite-conformity-exact-${{ matrix.python-version }}
+          path: research/R161/R161_Conformity_48_Finite_Worlds_78_Tests.zip
+          retention-days: 90
