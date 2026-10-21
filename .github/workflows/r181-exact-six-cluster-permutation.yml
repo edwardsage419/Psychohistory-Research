@@ -1,0 +1,79 @@
+name: R181 Six Cluster Exact Randomization and Invalid Event Permutation
+on:
+  push:
+    paths:
+      - 'research/R181/r181_six_cluster_exact_randomization.py'
+      - '.github/workflows/r181-exact-six-cluster-permutation.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-randomization-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify independent group and event assignment distributions
+        run: |
+          cd research/R181
+          python r181_six_cluster_exact_randomization.py --test
+  exact-42000-source-weighted-assignments-and-archive:
+    needs: two-python-randomization-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exhaustively evaluate ten fixed sharp-null worlds and exact p values
+        run: |
+          cd research/R181
+          python r181_six_cluster_exact_randomization.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          d=json.loads(Path('R181_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R181_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          l=json.loads(Path('R181_ALL_210_RANDOMIZATION_PROFILES.json').read_text())
+          assert d['source_worlds']==10 and len(d['all_source_worlds'])==10
+          assert d['total_source_weighted_assignment_rows']==42000
+          assert len(l['profiles'])==210
+          assert all(x['full_two_independent_null_algorithms_agreed'] for x in l['profiles'])
+          with Path('R181_ALL_42000_SOURCE_WEIGHTED_ASSIGNMENTS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==42000
+          assert a['result_sha256']==sha256(Path('R181_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['sample_csv_sha256']==sha256(Path('R181_ALL_42000_SOURCE_WEIGHTED_ASSIGNMENTS.csv').read_bytes()).hexdigest()
+          assert a['profile_library_sha256']==sha256(Path('R181_ALL_210_RANDOMIZATION_PROFILES.json').read_bytes()).hexdigest()
+          assert d['new_E2']==d['new_E3']==0
+          with zipfile.ZipFile('R181_Six_Cluster_Exact_Randomization_42000_Assignments.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R181_EXACT_42000_SHARP_NULL_CLUSTER_ASSIGNMENTS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R181-exact-42000-sharp-null-source-assignments
+          path: |
+            research/R181/R181_EXACT_RESULTS.json
+            research/R181/R181_ALL_210_RANDOMIZATION_PROFILES.json
+            research/R181/R181_ALL_42000_SOURCE_WEIGHTED_ASSIGNMENTS.csv
+            research/R181/R181_FINAL_MACHINE_ACCEPTANCE.json
+            research/R181/R181_Six_Cluster_Exact_Randomization_42000_Assignments.zip
+          retention-days: 90
+      - name: Permanently archive exact E1 randomization results on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R181/R181_EXACT_RESULTS.json research/R181/R181_ALL_210_RANDOMIZATION_PROFILES.json research/R181/R181_ALL_42000_SOURCE_WEIGHTED_ASSIGNMENTS.csv research/R181/R181_FINAL_MACHINE_ACCEPTANCE.json research/R181/R181_Six_Cluster_Exact_Randomization_42000_Assignments.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R181): 42000 weighted sharp-null cluster assignments and invalid event permutation risks'
+            git push origin HEAD:main
+          fi
