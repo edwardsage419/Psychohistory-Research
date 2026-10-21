@@ -122,11 +122,10 @@ def run():
 def archive():
     files=["r173_original_dplace_source_audit.py",RESULT.name]
     files+=["source/"+path.split("datasets/",1)[1] for path in ORIGINAL_FILES]
-    with zipfile.ZipFile(HERE/"R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip","w") as z:
+    with zipfile.ZipFile(HERE/"R173_First_Hand_DPLACE_Original_EA_SCCS_Source_Audit.zip","w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for name in files:
             item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
             item.compress_type=zipfile.ZIP_DEFLATED
-            item.compresslevel=9
             item.external_attr=0o644<<16
             z.writestr(item,(HERE/name).read_bytes())
     print("R173_SOURCE_ARCHIVE_SHA256",
