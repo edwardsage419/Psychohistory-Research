@@ -1,4 +1,4 @@
-name: R155 Bass Diffusion 75 Worlds 96 Tests preliminary validation
+name: R155 Bass 75 Worlds 96 Tests with SHA256 Pinned Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r155-bass-96-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   original-bass-model-arithmetic:
     runs-on: ubuntu-latest
@@ -25,7 +25,8 @@ jobs:
           cd research/R155
           test "$(git hash-object r155_bass_continuous.py)" = "60a296dfdb870c2a49994217d155d0a0387e7e20"
           test "$(git hash-object test_r155_bass_continuous.py)" = "9e9efeaa338e86ccede48701cf35fbdcdbbaa0bb"
-          sha256sum r155_bass_continuous.py test_r155_bass_continuous.py
+          echo '5f7fe3a8b539f449906669468f39f401fa62a74e45250271589f61715c7dc5c2  r155_bass_continuous.py' | sha256sum -c -
+          echo '8f61e0635f124c05f91003c8d1f2e240824548a5cb4986d360a2b0aeb25ca9c6  test_r155_bass_continuous.py' | sha256sum -c -
       - name: Regenerate 75 model trajectories, numerical solver comparisons and three published table calculations
         run: |
           cd research/R155
@@ -41,7 +42,7 @@ jobs:
           assert not d['historical_heldout_prediction']
           print('R155 PASS 75 frozen worlds, independent RK4 and source arithmetic')
           PY
-          sha256sum R155_EXACT_RESULTS.json
+          echo '0b0be2d0edd4ed0564504d97e4dddd417a42f17674e25717649cac672b88949a  R155_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run all 96 genuine unit tests
         run: |
           cd research/R155
@@ -58,9 +59,45 @@ jobs:
                   x.external_attr=0o644<<16
                   z.writestr(x,open(name,'rb').read())
           PY
-          sha256sum R155_Bass_75_Worlds_96_Tests.zip
+          echo '03bea5d262c63b687ba10a097a3465c584841901adcb5fe47bd7b95daf0fdec1  R155_Bass_75_Worlds_96_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R155-75-original-Bass-E1-Python-${{ matrix.python-version }}
           path: research/R155/R155_Bass_75_Worlds_96_Tests.zip
           retention-days: 90
+  pin-and-publish-complete-results:
+    needs: original-bass-model-arithmetic
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Regenerate all worlds, verify all four fixed hashes and execute 96 tests
+        run: |
+          cd research/R155
+          echo '5f7fe3a8b539f449906669468f39f401fa62a74e45250271589f61715c7dc5c2  r155_bass_continuous.py' | sha256sum -c -
+          echo '8f61e0635f124c05f91003c8d1f2e240824548a5cb4986d360a2b0aeb25ca9c6  test_r155_bass_continuous.py' | sha256sum -c -
+          python r155_bass_continuous.py > R155_EXACT_RESULTS.json
+          echo '0b0be2d0edd4ed0564504d97e4dddd417a42f17674e25717649cac672b88949a  R155_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r155_bass_continuous.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R155_Bass_75_Worlds_96_Tests.zip','w') as z:
+              for name in ('r155_bass_continuous.py','test_r155_bass_continuous.py','R155_EXACT_RESULTS.json'):
+                  x=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  x.compress_type=zipfile.ZIP_LZMA
+                  x.external_attr=0o644<<16
+                  z.writestr(x,open(name,'rb').read())
+          PY
+          echo '03bea5d262c63b687ba10a097a3465c584841901adcb5fe47bd7b95daf0fdec1  R155_Bass_75_Worlds_96_Tests.zip' | sha256sum -c -
+      - name: Permanently archive full original results and source/test ZIP on GitHub main
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R155/R155_EXACT_RESULTS.json research/R155/R155_Bass_75_Worlds_96_Tests.zip
+          if ! git diff --cached --quiet; then
+              git commit -m 'archive(R155): pin complete Bass 75 world JSON and 96-test source ZIP'
+              git push origin HEAD:main
+          fi
