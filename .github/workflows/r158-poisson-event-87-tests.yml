@@ -1,0 +1,73 @@
+name: R158 Poisson Event Count 60 Worlds 87 Tests
+on:
+  push:
+    paths:
+      - 'research/R158/r158_poisson_count_process.py'
+      - 'research/R158/test_r158_poisson_count_process.py'
+      - '.github/workflows/r158-poisson-event-87-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-poisson-count-likelihood:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Source and test Git blob SHA1 validation
+        run: |
+          cd research/R158
+          test "$(git hash-object r158_poisson_count_process.py)" = "2f417b95bf7ace68d51ff6d96e74b2dcb0f676ee"
+          test "$(git hash-object test_r158_poisson_count_process.py)" = "d50181add4585e5fcad83fe58bb1174387fa92bf"
+          sha256sum r158_poisson_count_process.py test_r158_poisson_count_process.py
+      - name: Independently regenerate 60 frozen Poisson count models
+        run: |
+          cd research/R158
+          python r158_poisson_count_process.py > R158_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('R158_EXACT_RESULTS.json'))
+          assert d['world_count']==60 and len(d['worlds'])==60
+          assert len(set(x['case_id'] for x in d['worlds']))==60
+          assert len(d['independent_expectation_paths'])==15
+          assert not d['historical_conflict_data_used']
+          assert not d['real_event_predictive_accuracy_tested']
+          assert not d['causal_self_excitation_established']
+          for w in d['worlds']:
+              h=w['observed_artificial_counts']; a=F(w['alpha']); mu=F(w['mu'])
+              assert len(h)==len(w['conditional_lambdas'])==8
+              assert all(F(x)==mu+(a*h[t-1] if t else 0)
+                         for t,x in enumerate(w['conditional_lambdas']))
+              assert w['factorial_score_matches_gamma']
+          print('R158 PASS 60 frozen artificial Poisson conditional sequences and exact expectations')
+          PY
+          sha256sum R158_EXACT_RESULTS.json
+      - name: Run all 87 actual unit tests
+        run: |
+          cd research/R158
+          python -m unittest -v test_r158_poisson_count_process.py
+      - name: Create canonical source tests data standard library ZIP
+        run: |
+          cd research/R158
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R158_Poisson_Event_60_Worlds_87_Tests.zip','w') as z:
+              for name in ('r158_poisson_count_process.py','test_r158_poisson_count_process.py','R158_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          sha256sum R158_Poisson_Event_60_Worlds_87_Tests.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R158-complete-60-artificial-count-process-${{ matrix.python-version }}
+          path: research/R158/R158_Poisson_Event_60_Worlds_87_Tests.zip
+          retention-days: 90
