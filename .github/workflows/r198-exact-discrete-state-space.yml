@@ -1,0 +1,80 @@
+name: R198 Exact Discrete Noisy State Space 32 Worlds
+on:
+  push:
+    paths:
+      - 'research/R198/r198_exact_discrete_state_space.py'
+      - '.github/workflows/r198-exact-discrete-state-space.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-state-space-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate exact filter, smoothing, missing observation and lag covariance aliases
+        run: |
+          cd research/R198
+          python r198_exact_discrete_state_space.py --test
+  complete-32-state-space-worlds-source-and-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-state-space-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Score all 576 visible histories and 2304 independent future measurement risks
+        run: |
+          cd research/R198
+          python r198_exact_discrete_state_space.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          r=json.loads(Path('R198_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R198_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          d=json.loads(Path('R198_ALL_8_LATENT_OBSERVATION_MOMENT_DIAGNOSTICS.json').read_text())
+          assert r['world_count']==32 and len(r['all_original_worlds'])==32
+          assert r['ordered_visible_training_histories']==576
+          assert r['four_candidate_independent_future_Brier_risk_profiles']==2304
+          assert d['kernel_diagnostics_count']==8 and len(d['moment_and_alias_diagnostics'])==8
+          assert all(w['all_original_forward_backward_and_latent_bruteforce_algorithms_Fraction_equal'] for w in r['all_original_worlds'])
+          with Path('R198_ALL_576_EXACT_VISIBLE_HISTORIES.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==576
+          assert a['result_sha256']==sha256(Path('R198_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['visible_original_CSV_sha256']==sha256(Path('R198_ALL_576_EXACT_VISIBLE_HISTORIES.csv').read_bytes()).hexdigest()
+          assert a['all_diagnostics_json_sha256']==sha256(Path('R198_ALL_8_LATENT_OBSERVATION_MOMENT_DIAGNOSTICS.json').read_bytes()).hexdigest()
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R198_32_Exact_Discrete_State_Space_Worlds.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R198_EXACT_DISCRETE_STATE_SPACE_FILTER_SMOOTHER_AND_MISSINGNESS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R198-32-discrete-noisy-state-space-worlds
+          path: |
+            research/R198/R198_EXACT_RESULTS.json
+            research/R198/R198_ALL_576_EXACT_VISIBLE_HISTORIES.csv
+            research/R198/R198_ALL_8_LATENT_OBSERVATION_MOMENT_DIAGNOSTICS.json
+            research/R198/R198_FINAL_MACHINE_ACCEPTANCE.json
+            research/R198/R198_32_Exact_Discrete_State_Space_Worlds.zip
+          retention-days: 90
+      - name: Archive full exact state-space evidence on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R198/R198_EXACT_RESULTS.json research/R198/R198_ALL_576_EXACT_VISIBLE_HISTORIES.csv research/R198/R198_ALL_8_LATENT_OBSERVATION_MOMENT_DIAGNOSTICS.json research/R198/R198_FINAL_MACHINE_ACCEPTANCE.json research/R198/R198_32_Exact_Discrete_State_Space_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R198): exact hidden state-space filters and last-sensor missingness plus full independent Brier'
+            git push origin HEAD:main
+          fi
