@@ -1,0 +1,85 @@
+name: R206 Exact KMeans 12 Worlds Full Independent Forecast Audit
+on:
+  push:
+    paths:
+      - 'research/R206/r206_exact_kmeans.py'
+      - '.github/workflows/r206-exact-kmeans.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-kmeans-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test global two-means partition minimum and genuine heldout source scoring
+        run: python research/R206/r206_exact_kmeans.py --test
+  complete-kmeans-1920-training-7680-independent-source-archive:
+    needs: two-python-exact-kmeans-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and validate 12-world exhaustive exact clustering original data
+        run: |
+          python research/R206/r206_exact_kmeans.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction
+          from pathlib import Path
+          p=Path('research/R206')
+          r=json.loads((p/'R206_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R206_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(r['worlds'])==a['total_worlds']==12
+          assert r['full_original_training_source_histories']==a['full_original_training_histories']==1920
+          assert r['full_joint_train_independent_test_source_events']==a['full_joint_train_independent_test_events']==7680
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert r['training_true_G_used_in_cluster_fit'] is False
+          assert r['posthoc_permutation_oracle_uses_future_labels_for_diagnostic_only'] is True
+          for file,count in [
+            ('R206_ALL_1920_ORIGINAL_KMEANS_TRAINING_HISTORIES.csv',1920),
+            ('R206_ALL_7680_INDEPENDENT_NEW_SAMPLE_PAIRS.csv',7680),
+          ]:
+            with (p/file).open(newline='') as f:
+              assert sum(1 for _ in csv.DictReader(f)) == count
+          for world in r['worlds']:
+            assert world['source_original_probability_sum']=='1'
+            assert Fraction(world['expected_training_k2_sse_per_row_exact'])<=Fraction(world['expected_training_k1_sse_per_row_exact'])
+            assert world['fixed_constant_G_plus_baseline_error_exact']=='1/2'
+          for file,key in [
+            ('R206_EXACT_RESULTS.json','result_sha256'),
+            ('R206_ALL_1920_ORIGINAL_KMEANS_TRAINING_HISTORIES.csv','training_sha256'),
+            ('R206_ALL_7680_INDEPENDENT_NEW_SAMPLE_PAIRS.csv','future_sha256'),
+          ]:
+            assert a[key]==hashlib.sha256((p/file).read_bytes()).hexdigest()
+          print('R206_EXACT_KMEANS_12_WORLDS_1920_TRAIN_7680_FUTURE_E1_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R206-Full-12-Kmeans-1920-Training-7680-Future-Sources
+          path: |
+            research/R206/R206_EXACT_RESULTS.json
+            research/R206/R206_ALL_1920_ORIGINAL_KMEANS_TRAINING_HISTORIES.csv
+            research/R206/R206_ALL_7680_INDEPENDENT_NEW_SAMPLE_PAIRS.csv
+            research/R206/R206_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all genuine artificial kmeans source evidence on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R206/R206_EXACT_RESULTS.json research/R206/R206_ALL_1920_ORIGINAL_KMEANS_TRAINING_HISTORIES.csv research/R206/R206_ALL_7680_INDEPENDENT_NEW_SAMPLE_PAIRS.csv research/R206/R206_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R206): exact global clustering training and full independent external group scoring'
+            git push origin HEAD:main
+          fi
