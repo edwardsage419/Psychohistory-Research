@@ -1,4 +1,4 @@
-"""R188 exact hierarchical linear decomposition, 90 complete artificial worlds.
+"""R188 exact hierarchical linear decomposition, 180 complete artificial worlds.
 
 Groups are identified explicitly: six groups of eight individuals each. The
 independent pooled/group-within/between/contextual and fixed quasi-demeaning
@@ -15,11 +15,11 @@ from pathlib import Path
 import csv,json,sys,unittest,zipfile
 
 HERE=Path(__file__).resolve().parent
-PROTO=HERE.parent.parent/"protocols/R188_MULTILEVEL_90_WORLDS_4320_ROWS_PRESCORE_FREEZE_2026-10-21.md"
+PROTO=HERE.parent.parent/"protocols/R188_MULTILEVEL_180_WORLDS_8640_ROWS_PRESCORE_FREEZE_2026-10-21.md"
 RESULT=HERE/"R188_EXACT_RESULTS.json"
-RAW=HERE/"R188_ALL_4320_HIERARCHICAL_ARTIFICIAL_ROWS.csv"
+RAW=HERE/"R188_ALL_8640_HIERARCHICAL_ARTIFICIAL_ROWS.csv"
 ACCEPT=HERE/"R188_FINAL_MACHINE_ACCEPTANCE.json"
-ARCH=HERE/"R188_90_Exact_Multilevel_Linear_Worlds.zip"
+ARCH=HERE/"R188_180_Exact_Multilevel_Linear_Worlds.zip"
 
 N_GROUPS=6
 N_PER_GROUP=8
@@ -289,8 +289,8 @@ def run():
     original=[]
     for params in worlds():
         world_rows.append(evaluate_world(*params,original))
-    if len(world_rows)!=90 or len(original)!=4320:
-        raise AssertionError("frozen full 90-world hierarchy universe changed")
+    if len(world_rows)!=180 or len(original)!=8640:
+        raise AssertionError("frozen full 180-world hierarchy universe changed")
     anchors=[v for v in world_rows if v["design"]=="STRONG_BETWEEN"
              and v["true_a"]=="0" and v["true_within_b"]=="1/4"
              and v["true_context_c"]=="-4" and v["original_error_magnitude"]=="1/4"]
@@ -310,11 +310,11 @@ def run():
     out={
         "research_id":"R188",
         "stage":"E1_ARTIFICIAL_EXACT_MULTILEVEL_LINEAR_WITHIN_BETWEEN",
-        "world_count":90,"original_artificial_rows":4320,
+        "world_count":180,"original_artificial_rows":8640,
         "actual_group_count_each_world":N_GROUPS,
         "within_group_rows_each_world":N_PER_GROUP,
         "quasi_demeaning_theta":[str(x) for x in THETAS],
-        "direct_quasi_demeaning_sensitivity_fits":90*len(THETAS),
+        "direct_quasi_demeaning_sensitivity_fits":180*len(THETAS),
         "pooled_negative_within_true_positive_worlds":neg,
         "fixed_strong_confounded_intercept_alias":t,
         "all_fe_and_groupmeans_independent_fraction_routes_equal":True,
@@ -329,7 +329,7 @@ def run():
     a={
         "research_id":"R188",
         "state":"CLOSED_BOUNDED_E1_ARTIFICIAL_EXACT_MULTILEVEL_LINEAR",
-        "worlds":90,"raw_artificial_rows":4320,"hierarchical_slope_sensitivity_fits":360,
+        "worlds":180,"raw_artificial_rows":8640,"hierarchical_slope_sensitivity_fits":720,
         "pooled_and_group_fixed_effect_two_exact_routes":True,
         "between_and_contextual_singular_inputs_fail_closed":True,
         "quasi_demeaning_closed_analytic_identity_exact":True,
@@ -361,10 +361,10 @@ def archive():
 
 
 class TestMultilevelExact(unittest.TestCase):
-    def test_full_90_worlds(self):
-        self.assertEqual(len(list(worlds())),90)
-    def test_4320_original_rows(self):
-        self.assertEqual(sum(N_GROUPS*N_PER_GROUP for _ in worlds()),4320)
+    def test_full_180_worlds(self):
+        self.assertEqual(len(list(worlds())),180)
+    def test_8640_original_rows(self):
+        self.assertEqual(sum(N_GROUPS*N_PER_GROUP for _ in worlds()),8640)
     def test_group_count_six(self):
         self.assertEqual(N_GROUPS,6)
     def test_group_size_eight(self):
