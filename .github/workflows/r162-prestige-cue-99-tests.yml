@@ -1,4 +1,4 @@
-name: R162 Prestige Cue 72 Worlds 99 Tests Preliminary
+name: R162 Prestige Cue 72 Worlds 99 Pinned Tests and Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r162-prestige-cue-99-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-cultural-copying-tickets:
     runs-on: ubuntu-latest
@@ -25,7 +25,8 @@ jobs:
           cd research/R162
           test "$(git hash-object r162_prestige_attention_exact.py)" = "998df96d973c2e01a46eb440f55dd3a310df9a76"
           test "$(git hash-object test_r162_prestige_attention_exact.py)" = "241bd660cdcb180179c349ab82251e7511bfa6e4"
-          sha256sum r162_prestige_attention_exact.py test_r162_prestige_attention_exact.py
+          echo '261738a8d2a53f649157d04f79ae198b6d96553cca5daabbbe32727b350382ff  r162_prestige_attention_exact.py' | sha256sum -c -
+          echo 'fb83f7d68f2ce3d34083f81543153ac8617c1bd77c20c1f30ad5fee083f364ea  test_r162_prestige_attention_exact.py' | sha256sum -c -
       - name: Generate 72 exact synthetic attention lotteries and independent enumerations
         run: |
           cd research/R162
@@ -46,7 +47,7 @@ jobs:
             assert F(w['advantage_over_neutral'])==F(w['artificial_expected_accuracy'])-F(w['neutral_expected_accuracy'])
           print('R162 72 frozen social-cue lottery and correctness worlds validated with exact Fraction')
           PY
-          sha256sum R162_EXACT_RESULTS.json
+          echo '405ee44d302da5ba79ea31a8df2c364a6bd7712eed85d120d48a42c4860cd264  R162_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run all 99 genuine unittest methods
         run: |
           cd research/R162
@@ -63,9 +64,45 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R162_Prestige_Cue_72_Worlds_99_Tests.zip
+          echo 'd9b39445b6b632a7fd86d120a7a7cd18f2a665572109f777e9031dfdf1d0c660  R162_Prestige_Cue_72_Worlds_99_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R162-72-artificial-attention-lotteries-${{ matrix.python-version }}
           path: research/R162/R162_Prestige_Cue_72_Worlds_99_Tests.zip
           retention-days: 90
+  pinned-full-artifact-publisher:
+    needs: independent-cultural-copying-tickets
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify four fixed hashes and rerun 72 worlds plus 99 actual tests
+        run: |
+          cd research/R162
+          echo '261738a8d2a53f649157d04f79ae198b6d96553cca5daabbbe32727b350382ff  r162_prestige_attention_exact.py' | sha256sum -c -
+          echo 'fb83f7d68f2ce3d34083f81543153ac8617c1bd77c20c1f30ad5fee083f364ea  test_r162_prestige_attention_exact.py' | sha256sum -c -
+          python r162_prestige_attention_exact.py > R162_EXACT_RESULTS.json
+          echo '405ee44d302da5ba79ea31a8df2c364a6bd7712eed85d120d48a42c4860cd264  R162_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r162_prestige_attention_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R162_Prestige_Cue_72_Worlds_99_Tests.zip','w') as z:
+              for name in ('r162_prestige_attention_exact.py','test_r162_prestige_attention_exact.py','R162_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo 'd9b39445b6b632a7fd86d120a7a7cd18f2a665572109f777e9031dfdf1d0c660  R162_Prestige_Cue_72_Worlds_99_Tests.zip' | sha256sum -c -
+      - name: Permanently publish original 72-case JSON and complete source ZIP
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R162/R162_EXACT_RESULTS.json research/R162/R162_Prestige_Cue_72_Worlds_99_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R162): pinned 72 exact prestige cue copying worlds and 99 tests'
+            git push origin HEAD:main
+          fi
