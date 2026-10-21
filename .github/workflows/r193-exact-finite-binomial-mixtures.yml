@@ -1,0 +1,83 @@
+name: R193 Exact Finite Binomial Mixtures 24 Worlds
+on:
+  push:
+    paths:
+      - 'research/R193/r193_exact_finite_binomial_mixture.py'
+      - '.github/workflows/r193-exact-finite-binomial-mixtures.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-fraction-model-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify complete binomial PMFs, latent moments, oracle and count-distribution aliases
+        run: |
+          cd research/R193
+          python r193_exact_finite_binomial_mixture.py --test
+  complete-24-worlds-independent-cluster-risk-and-permanent-archive:
+    runs-on: ubuntu-latest
+    needs: independent-fraction-model-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate all 512 source training tables with 53 exact fitted profiles
+        run: |
+          cd research/R193
+          python r193_exact_finite_binomial_mixture.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          r=json.loads(Path('R193_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R193_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          l=json.loads(Path('R193_ALL_53_EXACT_MIXTURE_FITS.json').read_text())
+          assert r['world_count']==24 and len(r['worlds'])==24
+          assert r['all_ordered_training_datasets']==512
+          assert r['unique_unordered_training_profiles']==53
+          assert len(r['locked_identifiability_worlds'])==8
+          assert len(l['profiles'])==53 and l['unique_finite_likelihood_profiles']==53
+          assert all(x['independent_PMF_and_likelihood_checks_passed'] for x in l['profiles'])
+          assert all(x['all_independent_PMF_and_predictive_scores_double_verified'] for x in r['worlds'])
+          assert r['n2_K1_identical_visible_counts_opposing_high_class_posterior']=={'S':'1/2','A':'7/39'}
+          with Path('R193_ALL_512_ORDERED_TRAINING_TABLES.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==512
+          assert a['result_sha256']==sha256(Path('R193_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['full_training_CSV_sha256']==sha256(Path('R193_ALL_512_ORDERED_TRAINING_TABLES.csv').read_bytes()).hexdigest()
+          assert a['fitted_library_sha256']==sha256(Path('R193_ALL_53_EXACT_MIXTURE_FITS.json').read_bytes()).hexdigest()
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R193_Exact_Finite_Mixtures_24_Worlds.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R193_FINITE_MIXTURE_24_SOURCE_WORLDS_THIRD_MOMENT_IDENTIFICATION_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R193-24-exact-finite-binomial-mixture-worlds
+          path: |
+            research/R193/R193_EXACT_RESULTS.json
+            research/R193/R193_ALL_512_ORDERED_TRAINING_TABLES.csv
+            research/R193/R193_ALL_53_EXACT_MIXTURE_FITS.json
+            research/R193/R193_FINAL_MACHINE_ACCEPTANCE.json
+            research/R193/R193_Exact_Finite_Mixtures_24_Worlds.zip
+          retention-days: 90
+      - name: Archive complete prescored bounded E1 results to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R193/R193_EXACT_RESULTS.json research/R193/R193_ALL_512_ORDERED_TRAINING_TABLES.csv research/R193/R193_ALL_53_EXACT_MIXTURE_FITS.json research/R193/R193_FINAL_MACHINE_ACCEPTANCE.json research/R193/R193_Exact_Finite_Mixtures_24_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R193): exact finite mixture moment aliases and independent new cluster prediction'
+            git push origin HEAD:main
+          fi
