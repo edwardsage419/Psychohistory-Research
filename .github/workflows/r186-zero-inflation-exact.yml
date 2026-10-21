@@ -1,0 +1,82 @@
+name: R186 Zero Inflation 40 Exact Finite Source Worlds
+on:
+  push:
+    paths:
+      - 'research/R186/r186_zero_inflation_exact_grid_fit.py'
+      - '.github/workflows/r186-zero-inflation-exact.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-zero-inflation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify source SHA, ZIB event dynamics, grid likelihood and structural alias
+        run: |
+          cd research/R186
+          python r186_zero_inflation_exact_grid_fit.py --test
+  full-40-worlds-exact-grid-prediction-and-permanent-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-exact-zero-inflation-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate 1860 training datasets and two heldout exact grid models
+        run: |
+          cd research/R186
+          python r186_zero_inflation_exact_grid_fit.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          j=json.loads(Path('R186_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R186_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          lib=json.loads(Path('R186_ALL_66_FIT_PROFILES.json').read_text())
+          assert j['worlds']==40 and len(j['all_worlds'])==40
+          assert j['complete_ordered_training_datasets']==1860
+          assert len(j['alias_source_comparisons_both_m'])==4
+          assert lib['unique_unordered_profiles']==66 and len(lib['profiles'])==66
+          assert all(x['exact_two_likelihood_and_two_probability_methods_agree'] for x in lib['profiles'])
+          assert all(x['independent_full_sample_and_decimal_score_consistency'] for x in j['all_worlds'])
+          assert j['BB_C2_and_ZIB_z_quarter_n2_full_observation_alias']
+          assert a['result_sha256']==sha256(Path('R186_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['ordered_training_CSV_sha256']==sha256(Path('R186_ALL_1860_ORDERED_TRAINING_SAMPLES.csv').read_bytes()).hexdigest()
+          assert a['profile_library_sha256']==sha256(Path('R186_ALL_66_FIT_PROFILES.json').read_bytes()).hexdigest()
+          with Path('R186_ALL_1860_ORDERED_TRAINING_SAMPLES.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==1860
+          assert j['new_E2']==j['new_E3']==0
+          with zipfile.ZipFile('R186_Zero_Inflation_40_Worlds_Exact_Archive.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R186_EXACT_BB_VS_ZIB_LATENT_MECHANISM_ALIAS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R186-exact-zero-inflation-40-worlds
+          path: |
+            research/R186/R186_EXACT_RESULTS.json
+            research/R186/R186_ALL_1860_ORDERED_TRAINING_SAMPLES.csv
+            research/R186/R186_ALL_66_FIT_PROFILES.json
+            research/R186/R186_FINAL_MACHINE_ACCEPTANCE.json
+            research/R186/R186_Zero_Inflation_40_Worlds_Exact_Archive.zip
+          retention-days: 90
+      - name: Permanently archive complete E1 zero-inflation results on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R186/R186_EXACT_RESULTS.json research/R186/R186_ALL_1860_ORDERED_TRAINING_SAMPLES.csv research/R186/R186_ALL_66_FIT_PROFILES.json research/R186/R186_FINAL_MACHINE_ACCEPTANCE.json research/R186/R186_Zero_Inflation_40_Worlds_Exact_Archive.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R186): forty exact zero-inflation fits and hidden structural attribution nonidentifiability'
+            git push origin HEAD:main
+          fi
