@@ -56,6 +56,9 @@ def run():
             elif vj.get("id"):
                 fj=json.loads(fetch(BASE+"/api/v2/versions/"+str(vj["id"])+"/files")[0])
                 out["file_descriptors"]=fj.get("_embedded",{}).get("stash:files",[])
+            print("DRYAD_FILE_DESCRIPTOR_KEYS",json.dumps([
+                {k:item.get(k) for k in ("id","path","size","mimeType","digest","digestType","_links")}
+                for item in out.get("file_descriptors",[])],ensure_ascii=False))
     except Exception as exc:
         out["metadata_error"]=type(exc).__name__+": "+str(exc)
         print("DRYAD_METADATA_FAILED",out["metadata_error"])
@@ -87,6 +90,43 @@ def run():
     except Exception as exc:
         out["download_error"]=type(exc).__name__+": "+str(exc)
         print("DRYAD_DOWNLOAD_FAILED",out["download_error"])
+    # Second route uses the documented public dataset-package API; preserve
+    # a separate status if the site blocks the browser download route.
+    if out["download_status"]!="XLSX_AUTHENTIC_RAW_BYTES":
+        package_api=api+"/download"
+        try:
+            bundle,final,typ=fetch(package_api)
+            out["official_api_bundle_sha256"]=hashlib.sha256(bundle).hexdigest()
+            out["official_api_bundle_size"]=len(bundle)
+            out["official_api_bundle_url"]=final
+            out["official_api_bundle_mime"]=typ
+            if not bundle.startswith(b"PK"+bytes([3,4])):
+                raise ValueError("Official public package is not a ZIP signature")
+            z=zipfile.ZipFile(io.BytesIO(bundle))
+            out["bundle_members"]=z.namelist()
+            found=[n for n in z.namelist() if n.lower().endswith(".xlsx")]
+            if not found:raise ValueError("Official package lacks referenced XLSX")
+            if len(found)!=1:raise ValueError("Ambiguous multiple XLSX source files")
+            raw=z.read(found[0])
+            if raw[:4]!=b"PK"+bytes([3,4]):
+                raise ValueError("Nested XLSX has unexpected signature")
+            sheet=zipfile.ZipFile(io.BytesIO(raw))
+            if "xl/workbook.xml" not in sheet.namelist():
+                raise ValueError("Nested XLSX lacks workbook XML")
+            original=ROOT/"Social_Learning_and_the_Replication_Process_ORIGINAL.xlsx"
+            original.write_bytes(raw)
+            out["download_status"]="XLSX_AUTHENTIC_RAW_BYTES_FROM_OFFICIAL_DATASET_ZIP"
+            out["data_bytes"]=len(raw)
+            out["data_sha256"]=hashlib.sha256(raw).hexdigest()
+            out["data_signature"]="OOXML_ZIP"
+            out["spreadsheet_xml_members"]=[n for n in sheet.namelist()
+                                            if n.startswith("xl/worksheets/sheet") and n.endswith(".xml")]
+            print("DRYAD_PACKAGE_SUCCESS",json.dumps({
+                "zip_bytes":len(bundle),"xlsx_bytes":len(raw),
+                "xlsx_sha256":out["data_sha256"],"member":found[0]},ensure_ascii=False))
+        except Exception as exc:
+            out["official_api_error"]=type(exc).__name__+": "+str(exc)
+            print("DRYAD_PUBLIC_PACKAGE_FAILED",out["official_api_error"])
     (ROOT/"R168_DRYAD_ALTERNATE_DATA_ACCESS.json").write_text(
         json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     return out
