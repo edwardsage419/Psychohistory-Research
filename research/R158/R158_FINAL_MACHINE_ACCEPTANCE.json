@@ -1,0 +1,108 @@
+{
+  "id": "R158",
+  "date": "2026-10-21",
+  "original_catalogue": "P2 06-016 Conflict Event Process Models",
+  "scientific_status": "CLOSED_BOUNDED_E1_60_SYNTHETIC_POISSON_EVENT_COUNT_WORLDS_87_TESTS",
+  "sources": [
+    {
+      "author": "Alan G. Hawkes",
+      "year": 1971,
+      "doi": "10.1093/biomet/58.1.83",
+      "publisher_original_abstract_and_issue_contents_read": true,
+      "author_full_text_read": false,
+      "source_second_order_non_identification_caveat": true,
+      "original_event_times_recreated": false
+    },
+    {
+      "authors": [
+        "René Ferland",
+        "Alain Latour",
+        "Driss Oraichi"
+      ],
+      "year": 2006,
+      "doi": "10.1111/j.1467-9892.2006.00496.x",
+      "original_publisher_abstract_checked": true,
+      "author_full_equations_reproduced": false,
+      "author_empirical_data_used": false
+    }
+  ],
+  "precomputation_freeze_commit": "e03fd09293e4573fdd6bb42fa701460c7a7713c5",
+  "hypothetical_conditional_law": "N[t] | N[t-1] ~ Poisson(mu + alpha*N[t-1]); previous[-1]=0",
+  "is_author_original_hawkes_model": false,
+  "is_author_complete_INGARCH_model": false,
+  "histories_count": 4,
+  "baseline_mu_choices": 3,
+  "alpha_choices": 5,
+  "worlds": 60,
+  "time_steps_per_world": 8,
+  "exact_conditional_lambdas": 480,
+  "independent_poisson_logscore_implementations": [
+    "lgamma(n+1)",
+    "factorial(n) then log"
+  ],
+  "max_per_case_score_disagreement_tolerance": 1e-12,
+  "expectation_grid": 15,
+  "expectation_times": 13,
+  "exact_Fraction_expectation_recurrence_equals_geometric": true,
+  "critical_alpha_one_has_no_finite_stationary_mean": true,
+  "negative_controls": {
+    "H0_alpha_unidentified_given_all_zero_history": true,
+    "H1_mu1_alpha_half_minus_alpha_zero_logscore": -3.30685281944,
+    "H2_mu_half_alpha_half_minus_alpha_zero_logscore": 2.124618986159,
+    "alpha_one_mu_one_t12_mean": "13",
+    "alpha_three_quarters_mu_one_stationary_mean": "4"
+  },
+  "CI": {
+    "initial_run": 39522593818,
+    "final_pinned_run": 39522688331,
+    "final_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39522688331",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "job_id": 118970032915,
+        "python": "3.11",
+        "methods": 87,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118970033227,
+        "python": "3.12",
+        "methods": 87,
+        "conclusion": "success"
+      },
+      {
+        "job_id": 118970104991,
+        "role": "pinned source/ZIP publisher",
+        "methods": 87,
+        "conclusion": "success"
+      }
+    ],
+    "genuine_test_executions_across_two_runs": 435,
+    "distinct_unittest_methods": 87,
+    "failures": 0
+  },
+  "archive_commit": "ff041f579861599433fede037a16962fc35938f0",
+  "sha256": {
+    "r158_poisson_count_process.py": "43890ab779c71d134a713f47c71d40e740f4a224553d5bd6e5d7913d967a94e9",
+    "test_r158_poisson_count_process.py": "0f7ddeaade1b842924c9ad4e3e4c30444be5f30a28bf2031954a4c0c9a555d82",
+    "R158_EXACT_RESULTS.json": "c3708c476d0d9b8344433b9008197b5622390d82ea52f11896d1cbc08f185635",
+    "R158_Poisson_Event_60_Worlds_87_Tests.zip": "34aaa668e4cde991a2bc806df48a476bef978b4c305fd247ca573f04966914e4"
+  },
+  "git_blob_sha1": {
+    "r158_poisson_count_process.py": "2f417b95bf7ace68d51ff6d96e74b2dcb0f676ee",
+    "test_r158_poisson_count_process.py": "d50181add4585e5fcad83fe58bb1174387fa92bf",
+    "R158_EXACT_RESULTS.json": "356ecbc5808cf13d4511f1c79ace8104e103262b",
+    "R158_Poisson_Event_60_Worlds_87_Tests.zip": "10a8f6e823369a635773916f4e77279cc3161af3"
+  },
+  "new_E2_independent_human_or_real_conflict_predictions": 0,
+  "new_E3_historical_event_holdout_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R159",
+    "catalogue_id": "07-001",
+    "priority": "P1",
+    "title": "Dual Inheritance Theory"
+  },
+  "sequence": "complete all original R candidates, then classify, then fuse"
+}
