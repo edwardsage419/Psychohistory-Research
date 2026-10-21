@@ -1,0 +1,74 @@
+name: R177 Exact Four Count Distribution Families 108 Worlds
+on:
+  push:
+    paths:
+      - 'research/R177/r177_four_finite_count_families_exact.py'
+      - '.github/workflows/r177-four-finite-count-distributions.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-formula-sequential-dp-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run exact tests against independent combinatorial and sequential trial methods
+        run: |
+          cd research/R177
+          python r177_four_finite_count_families_exact.py --test
+  exact-evaluation-and-permanent-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-formula-sequential-dp-tests
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run all prescored 108 full distributions and archive exact results
+        run: |
+          cd research/R177
+          python r177_four_finite_count_families_exact.py --run-and-archive
+          python - <<'PY'
+          from hashlib import sha256
+          from pathlib import Path
+          import json, zipfile
+          r=json.loads(Path('R177_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R177_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['worlds']==108 and len(r['world_data'])==108
+          assert r['full_PMF_probability_cells']==972
+          assert sum(len(w['full_PMF']) for w in r['world_data'])==972
+          assert all(w['independent_formula_and_sequential_event_algorithms_exact'] for w in r['world_data'])
+          assert len(r['selected_illustration_n8_p_quarter_regime0'])==4
+          assert a['n2_BB_and_ZIB_full_count_distribution_equivalence']
+          assert a['exact_results_sha256']==sha256(Path('R177_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R177_Four_Count_Distribution_Families_108_Exact_Worlds.zip') as z:
+            assert len(z.namelist())==4 and z.testzip() is None
+          print('R177_E1_FOUR_COUNT_FAMILIES_108_FRACTION_PMF_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R177-four-count-families-108-frozen-exact-worlds
+          path: |
+            research/R177/R177_EXACT_RESULTS.json
+            research/R177/R177_FINAL_MACHINE_ACCEPTANCE.json
+            research/R177/R177_Four_Count_Distribution_Families_108_Exact_Worlds.zip
+          retention-days: 90
+      - name: Permanently commit complete synthetic E1 outputs to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R177/R177_EXACT_RESULTS.json research/R177/R177_FINAL_MACHINE_ACCEPTANCE.json research/R177/R177_Four_Count_Distribution_Families_108_Exact_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R177): exact 108 count-family PMFs and full-distribution structural zero alias'
+            git push origin HEAD:main
+          fi
