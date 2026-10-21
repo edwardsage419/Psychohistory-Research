@@ -1,0 +1,176 @@
+{
+  "id": "R170",
+  "date": "2026-10-21",
+  "catalogue_id": "07-012",
+  "priority": "P2",
+  "catalogue_name": "Language Evolution Models",
+  "scientific_status": "CLOSED_BOUNDED_E1_72_TWO_WORD_FOUR_AGENT_NAMING_WORLDS_111_DISTINCT_TESTS",
+  "precode_protocol_commit": "1853b17f26dfd90298fe1543215d4b809ba777fb",
+  "source_records": [
+    {
+      "authors": [
+        "Andrea Baronchelli",
+        "Maddalena Felici",
+        "Vittorio Loreto",
+        "Emanuele Caglioti",
+        "Luc Steels"
+      ],
+      "year": 2006,
+      "doi": "10.1088/1742-5468/2006/06/P06014",
+      "original_university_archive_and_author_preprint_checked": true,
+      "original_unbounded_vocabulary_source_simulation_reproduced": false
+    },
+    {
+      "authors": [
+        "Andrea Baronchelli",
+        "Luca Dall'Asta",
+        "Alain Barrat",
+        "Vittorio Loreto"
+      ],
+      "year": 2006,
+      "doi": "10.1103/PhysRevE.73.015102",
+      "publisher_original_abstract_checked": true,
+      "large_network_coarsening_reproduced": false
+    },
+    {
+      "authors": [
+        "Martin A. Nowak",
+        "Natalia Komarova",
+        "Partha Niyogi"
+      ],
+      "year": 2001,
+      "doi": "10.1126/science.291.5501.114",
+      "original_PubMed_study_abstract_checked": true,
+      "grammar_threshold_reproduced": false
+    },
+    {
+      "authors": [
+        "Daniel M. Abrams",
+        "Steven H. Strogatz"
+      ],
+      "year": 2003,
+      "doi": "10.1038/424900a",
+      "original_Nature_page_checked": true,
+      "real_language_death_data_reanalyzed": false
+    }
+  ],
+  "project_model": {
+    "nodes": 4,
+    "fixed_contact_graphs": [
+      "path",
+      "star",
+      "cycle",
+      "complete"
+    ],
+    "inventories": [
+      "split",
+      "alternate",
+      "bilingual"
+    ],
+    "word_states": [
+      "A",
+      "B",
+      "AB"
+    ],
+    "message_noise": [
+      "0",
+      "1/4",
+      "1/2"
+    ],
+    "recognition_feedback": [
+      "both_confirm",
+      "listener_only"
+    ],
+    "worlds": 72,
+    "timepoints_per_world": 4,
+    "direct_oracle": "undirected edge and uniform orientation x speaker word x channel-flip branches",
+    "independent_oracle": "oriented pair and conditional delivered-token mixture with separately programmed hearer/speaker update",
+    "full_distribution_fraction_equality_all_worlds": true
+  },
+  "frozen_contrasts": {
+    "noise0_single_word_unanimity_absorbing": true,
+    "noise_quarter_unanimity_nonabsorbing": true,
+    "noiseless_initial_monolingual_feedback_rules_same_first_step": true,
+    "bilingual_initial_feedback_rules_different_first_step": true,
+    "nu_half_delivered_A_uniform_for_all_speaker_inventories": true,
+    "bilingual_noiseless_initial_one_step_feedback_tv": {
+      "path": "1/4",
+      "star": "1/6",
+      "cycle": "1/4",
+      "complete": "1/6"
+    },
+    "all_A_unanimity_one_step_stay_probability": {
+      "nu0": "1",
+      "nu1/4": "3/4",
+      "nu1/2": "1/2"
+    }
+  },
+  "CI": {
+    "first_run": 39541240078,
+    "sha256_locked_archive_run": 39541318811,
+    "archive_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39541318811",
+    "final_conclusion": "success",
+    "initial_jobs": [
+      {
+        "id": 119029223987,
+        "python": "3.11",
+        "tests": 111,
+        "conclusion": "success"
+      },
+      {
+        "id": 119029224161,
+        "python": "3.12",
+        "tests": 111,
+        "conclusion": "success"
+      }
+    ],
+    "final_jobs": [
+      {
+        "id": 119029473027,
+        "python": "3.11",
+        "tests": 111,
+        "conclusion": "success"
+      },
+      {
+        "id": 119029473253,
+        "python": "3.12",
+        "tests": 111,
+        "conclusion": "success"
+      },
+      {
+        "id": 119029519760,
+        "role": "original JSON and ZIP independent SHA256 publisher",
+        "tests": 111,
+        "conclusion": "success"
+      }
+    ],
+    "different_unittest_methods": 111,
+    "total_actual_unittest_executions": 555,
+    "failures": 0
+  },
+  "archive_commit": "17bead42dc93481e4358928dc30ba742e63c3b07",
+  "git_blob_sha1": {
+    "r170_two_word_naming_game_exact.py": "0649fa0c5daf0d6777e232bda8e5ab22ea2b3907",
+    "test_r170_two_word_naming_game_exact.py": "eda9b4c92d7f74052a4e4d0cff630dc1e77875e5",
+    "R170_EXACT_RESULTS.json": "9c429f396d75b9edc4311db5917f794d70b575f3",
+    "R170_Naming_Game_72_Worlds_111_Tests.zip": "39e1e35ab2b77071dd75c88b8c8451ae0c1cfcff"
+  },
+  "sha256": {
+    "r170_two_word_naming_game_exact.py": "6587ad073fbc34adc5029c81521ed73f05da319b2c46c1f86361f0a4d31d67ac",
+    "test_r170_two_word_naming_game_exact.py": "54fc5b8322fd54432c3a619355e54942e4d4fc780dc431c56f28204e492acd97",
+    "R170_EXACT_RESULTS.json": "2e63390bfbb6e0ddbf1622767e94d59b2b1db1a286c8f79caac1d333d61277ce",
+    "R170_Naming_Game_72_Worlds_111_Tests.zip": "1b8cf39c0afec2a90fd5aed661b04ac13dbfd9215910abd27fb7dd2d40f7c0f1"
+  },
+  "real_human_utterance_data_used": false,
+  "new_E2_real_human_independent_predictions": 0,
+  "new_E3_real_history_external_predictions": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "id": "R171",
+    "catalogue": "07-013",
+    "priority": "P2",
+    "name": "Cultural Phylogenetics"
+  },
+  "sequence": "complete all originally specified R studies then classify then fuse"
+}
