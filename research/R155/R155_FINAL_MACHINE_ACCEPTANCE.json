@@ -1,0 +1,114 @@
+{
+  "id": "R155",
+  "date": "2026-10-21",
+  "catalogue": "P1 06-013 Bass Diffusion Model",
+  "scientific_status": "CLOSED_BOUNDED_E1_ORIGINAL_EQUATION_75_SYNTHETIC_WORLDS_3_PRINTED_TABLE_ROWS",
+  "source": {
+    "author": "Frank M. Bass",
+    "year": 1969,
+    "original_published_title": "A New Product Growth for Model Consumer Durables",
+    "journal": "Management Science 15(5):215–227",
+    "doi": "10.1287/mnsc.15.5.215",
+    "printed_pages_inspected": [
+      216,
+      217,
+      218,
+      219
+    ],
+    "source_scan": "https://pdodds.w3.uvm.edu/files/papers/others/1969/bass1969a.pdf",
+    "publisher_record_checked": true,
+    "published_table_I_rows_transcribed": 3,
+    "original_annual_sales_data_acquired": false,
+    "author_regressions_reestimated": false,
+    "independent_historical_prediction": false
+  },
+  "precomputation_freeze_commit": "ff1c9eae493eb8929b1224cd62f9b2e68bc409ea",
+  "positive_rate_and_zero_seed_boundary_checked": true,
+  "closed_form_Bass_diffusion_reproduced": true,
+  "frozen_scenarios": 75,
+  "sample_times": [
+    0,
+    0.25,
+    1,
+    3,
+    5,
+    10
+  ],
+  "independent_RK4_steps_per_time_unit": 2048,
+  "maximum_absolute_closed_form_RK4_error": 2.4e-15,
+  "acceptance_tolerance": 2e-11,
+  "published_table_I_products": [
+    {
+      "product": "electric_refrigerators",
+      "p": 0.0026167,
+      "q": 0.21566,
+      "m_thousands": 40001,
+      "formula_t_peak": 20.211910440076,
+      "formula_peak_sales_thousands": 2209.306727295
+    },
+    {
+      "product": "home_freezers",
+      "p": 0.018119,
+      "q": 0.1711,
+      "m_thousands": 21973,
+      "formula_t_peak": 11.866076183915,
+      "formula_peak_sales_thousands": 1149.499643093
+    },
+    {
+      "product": "black_white_television",
+      "p": 0.027877,
+      "q": 0.25105,
+      "m_thousands": 96717,
+      "formula_t_peak": 7.879660794385,
+      "formula_peak_sales_thousands": 7493.137663938
+    }
+  ],
+  "identification_limit": "one observed initial adoption rate S(0)=mp cannot uniquely recover both m and p; future adoption paths differ",
+  "boundary_examples": {
+    "p_zero_q_positive_F_t10": 0,
+    "Euler_dt10_p_point2": 2,
+    "continuous_F_t10_p_point2_q_point8": 0.99977304156678
+  },
+  "code_commit": "0c62fcfd72fbf2f6c14c306155a688fb39dab473",
+  "tests_latest_commit": "d4c6bf986642c8592314d45759f4238925b73004",
+  "pinned_workflow_commit": "cc516369884c9450fea703cb2bd735789909f927",
+  "archive_commit": "b7891cb30ef47d07a3bd3a6ed2b4709e6ceb9ae0",
+  "ci": {
+    "initial_run": 39519390119,
+    "initial_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39519390119",
+    "pinned_run": 39519534803,
+    "pinned_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39519534803",
+    "pinned_conclusion": "success",
+    "distinct_test_methods": 96,
+    "test_executions_across_both_runs": 480,
+    "failed_tests": 0,
+    "pinned_run_jobs": [
+      118959704609,
+      118959704981,
+      118959784748
+    ]
+  },
+  "sha256": {
+    "r155_bass_continuous.py": "5f7fe3a8b539f449906669468f39f401fa62a74e45250271589f61715c7dc5c2",
+    "test_r155_bass_continuous.py": "8f61e0635f124c05f91003c8d1f2e240824548a5cb4986d360a2b0aeb25ca9c6",
+    "R155_EXACT_RESULTS.json": "0b0be2d0edd4ed0564504d97e4dddd417a42f17674e25717649cac672b88949a",
+    "R155_Bass_75_Worlds_96_Tests.zip": "03bea5d262c63b687ba10a097a3465c584841901adcb5fe47bd7b95daf0fdec1"
+  },
+  "git_blob_sha1": {
+    "r155_bass_continuous.py": "60a296dfdb870c2a49994217d155d0a0387e7e20",
+    "test_r155_bass_continuous.py": "9e9efeaa338e86ccede48701cf35fbdcdbbaa0bb",
+    "R155_EXACT_RESULTS.json": "fb0891cdea7b0016fe2a871210ebf5f1fdad96d1",
+    "R155_Bass_75_Worlds_96_Tests.zip": "0dc556b058f85e92bc7f5a59464b56cf4dd53001"
+  },
+  "new_E2_human_independent_predictions": 0,
+  "new_E3_historical_external_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R156",
+    "catalogue_id": "06-014",
+    "priority": "P2",
+    "title": "Endogenous Growth Models"
+  },
+  "sequence": "all original R candidates -> classification -> fusion"
+}
