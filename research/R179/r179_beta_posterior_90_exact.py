@@ -148,7 +148,7 @@ def evaluate(pmf,n,p,a,b):
             "truth_inside_central_95_credible_interval":accepted,
             "independent_posterior_integral_parity":True,
         })
-    if mean_predictive!=F(a+n*p,a+b+n):
+    if mean_predictive!=(a+n*p)/F(a+b+n):
         raise AssertionError("prior and true marginal expected posterior mean mismatch")
     floating=posterior_predictive_loss_float(pmf,n,p,a,b)
     decimal=posterior_predictive_loss_decimal(pmf,n,p,a,b)
@@ -262,7 +262,7 @@ class TestExactBetaPosterior(unittest.TestCase):
         self.assertEqual(posterior_formula(1,1,4,0,F(1,4))[2],
                          1-(1-F(1,4))**5)
     def test_beta_1_1_identity_CDF(self):
-        self.assertEqual(posterior_integral(1,1,0,0,F(1,2))[2],F(1,2))
+        self.assertEqual(posterior_integral(1,1,1,0,F(1,2))[2],F(3,4))
     def test_beta_posterior_symmetric_integrals(self):
         self.assertEqual(posterior_formula(2,2,4,2,F(1,2)),
                          posterior_integral(2,2,4,2,F(1,2)))
