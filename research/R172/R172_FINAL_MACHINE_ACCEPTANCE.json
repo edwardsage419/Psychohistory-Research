@@ -1,0 +1,160 @@
+{
+  "id": "R172",
+  "date": "2026-10-21",
+  "catalogue": {
+    "id": "07-014",
+    "priority": "P1",
+    "title": "Historical Event History Models"
+  },
+  "scientific_status": "CLOSED_BOUNDED_REAL_HISTORICAL_RETROSPECTIVE_HOLDOUT",
+  "not_prospective_prediction": true,
+  "source_original_study": {
+    "authors": [
+      "Aníbal Pérez-Liñán",
+      "Scott Mainwaring"
+    ],
+    "year": 2025,
+    "title": "Democratic Trajectories in the Third Wave: Aligning Theory and Methods",
+    "dataset_doi": "10.7910/DVN/WFO1N1",
+    "version": "1.1",
+    "license": "CC0-1.0"
+  },
+  "source_original_file_provenance": {
+    "Original_Replication_dataset.tab": {
+      "bytes": 428013,
+      "sha256": "ed8e29368d06d0fa6d597df567eb21e7ac27fa849e1cdfd90b76167c8b5778ba",
+      "format": "Dataverse converted"
+    },
+    "Original_Replication_dataset_as_uploaded.bin": {
+      "bytes": 265851,
+      "sha256": "ddca691b25a664ce13ef2471184e3d5ae3ed62cb72521e0593bff770efb0e4e6",
+      "md5_original_upload": "4343114d56124f88bce9d9cc3ce81523"
+    },
+    "Original_Replication_code_Stata.do": {
+      "bytes": 17387,
+      "sha256": "664cf425684b97b8a7bf835ed748955e2e34426e8a14c0db8abbf98a4fb2e3ad",
+      "md5": "2dd571e5f94bd1f79158dcd2b53b0b94"
+    }
+  },
+  "data_integrity": {
+    "original_annual_rows": 1731,
+    "original_episodes": 103,
+    "original_unique_country_IDs": 83,
+    "source_descriptive_country_count": 84,
+    "descriptive_country_count_difference_unresolved": true,
+    "source_year_min": 1975,
+    "source_year_max": 2017,
+    "source_event_rows": 45,
+    "source_non_event_rows": 1680,
+    "source_missing_outcome_rows": 6,
+    "excluded_episode": "NGA2011",
+    "source_same_transition_calendar_year_rows": 19,
+    "eligible_labeled_rows": 1725,
+    "eligible_labeled_episodes": 102
+  },
+  "precode_protocol_commit": "099b7a50924c86fdaecb6254eca2748836ae0c64",
+  "pre_score_source_eligibility_addendum_commit": "a83088fd20a64175c6d25a99b40f4cec6afc11c4",
+  "failed_initial_validator_ci_run": 39545470112,
+  "first_success_ci_run": 39545672065,
+  "final_locked_archive_ci_run": 39545815533,
+  "final_locked_archive_ci_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39545815533",
+  "all_final_jobs_conclusion": "success",
+  "final_job_ids": [
+    119043619071,
+    119043619506,
+    119043669106
+  ],
+  "different_test_methods": 92,
+  "actual_successful_test_method_executions": 460,
+  "failed_methods_in_successful_runs": 0,
+  "archive_commit": "e88784bc28b5fbd45f85c9c7cf0ced8e7e503c14",
+  "temporal_cohort_split": {
+    "train_transition_year_max": 1998,
+    "train_observation_year_max": 1999,
+    "test_transition_year_min": 1999,
+    "test_observation_year_min": 2000,
+    "train_rows": 581,
+    "train_episodes": 67,
+    "train_events": 12,
+    "train_unique_countries": 63,
+    "test_rows": 319,
+    "test_episodes": 35,
+    "test_events": 18,
+    "test_right_censored_episodes": 17,
+    "test_unique_countries": 32,
+    "older_episode_future_rows_withheld": 825,
+    "older_episode_future_breakdowns_withheld": 15,
+    "train_test_episode_identifiers_overlap": 0,
+    "train_test_countries_may_overlap": true,
+    "baseline_t0_unavailable_for_M2": true
+  },
+  "frozen_models": {
+    "M0": "(E_train+1)/(N_train+2)=13/583",
+    "M1": "age buckets 0-2,3-7,8-15,16+, smoothed 20*M0",
+    "M2": "M1 plus fixed baseline libdem0 group <50 versus >=50, smoothed 20*M1, t0/missing fallback to M1",
+    "fractions_exact": true
+  },
+  "scores_lower_better": {
+    "annual_logloss": {
+      "M0": "0.235881126652",
+      "M1": "0.245235328446",
+      "M2": "0.234530415157",
+      "M1_minus_M0": "+0.009354201794",
+      "M2_minus_M0": "-0.001350711495"
+    },
+    "annual_brier": {
+      "M0": "0.054407113235",
+      "M1": "0.054667027894",
+      "M2": "0.054105271593",
+      "M1_minus_M0": "+0.000259914659",
+      "M2_minus_M0": "-0.000301841643"
+    },
+    "mean_episode_total_logloss": {
+      "M0": "2.149887982917",
+      "M1": "2.235144850695",
+      "M2": "2.137577212435"
+    }
+  },
+  "bootstrap": {
+    "replications": 512,
+    "unit": "heldout episode",
+    "seed": 20261021,
+    "quantile": "linear interpolation sorted draws at (n-1)*q",
+    "annual_logloss_differences": {
+      "M1_minus_M0": [
+        "-0.001352511758",
+        "+0.021774991993"
+      ],
+      "M2_minus_M0": [
+        "-0.016429154960",
+        "+0.017785036532"
+      ]
+    },
+    "annual_brier_differences": {
+      "M1_minus_M0": [
+        "-0.000115867879",
+        "+0.000681027130"
+      ],
+      "M2_minus_M0": [
+        "-0.000926727569",
+        "+0.000277502808"
+      ]
+    },
+    "all_intervals_include_zero": true,
+    "country_clustered_inference": false
+  },
+  "interpretation": "Duration alone M1 worse than M0; M2 tiny gain in heldout point estimate, interval includes no effect; no robust performance improvement established.",
+  "artifact_SHA256": {
+    "r172_real_historical_retrospective_hazards.py": "633a4b65b9e9ffe31442f814f878bc6347444c435c830c9394e2780478150cd6",
+    "test_r172_real_historical_retrospective_hazards.py": "e88020b3f87a1c3f538aab9aea84c87f0fde883f224e6df4647b87e1d134eadb",
+    "R172_EXACT_RESULTS.json": "0cb8adfbe92cf32b27731f47068bd94cad9346e8545444a684a0c63040a10857",
+    "R172_REAL_HELDOUT_PREDICTIONS.csv": "e7f81816d5d7ffc4c50e864dfd534db00477fd8bec81e04d306dbf479e5eee1d",
+    "R172_Real_Historical_Holdout_3_Hazards_92_Tests.zip": "3d352c1014fc36db74a8c14587be7503ad7758bc7cbbf76d7066a1910db293bf"
+  },
+  "new_E2_independent_human_repeated_game": 0,
+  "new_E3_genuine_external_historical_forecasting": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": "R173 P1/07-015 Cross Societal Comparative Models — confirm exact catalogue record before modeling",
+  "sequence": "original R series then uniform classification then model fusion"
+}
