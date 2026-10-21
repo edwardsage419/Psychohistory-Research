@@ -1,0 +1,3876 @@
+{
+  "author_original_full_model_reproduction": false,
+  "evidence_level": "E1_REDUCED_FORM_ARTIFICIAL",
+  "historical_data_forecasting": false,
+  "independent_RK4_steps_per_time_unit": 1024,
+  "max_absolute_RK4_error": 3.3651e-11,
+  "mechanism_controls": {
+    "AK_exact_large_time_positive": 0.002478752176666,
+    "AK_same_growth_path_a": [
+      1.0,
+      1.105170918076,
+      1.6487212707,
+      2.718281828459
+    ],
+    "AK_same_growth_path_b": [
+      1.0,
+      1.105170918076,
+      1.6487212707,
+      2.718281828459
+    ],
+    "Euler_large_step_negative": -5.000000000000001,
+    "concave_future_path_a": 1.491327527427,
+    "concave_future_path_b": 1.38268863758,
+    "concave_initial_slope_same": 0.1
+  },
+  "research_id": "R156",
+  "scenario_count": 96,
+  "time_grid": [
+    0.0,
+    1.0,
+    5.0,
+    10.0
+  ],
+  "worlds": [
+    {
+      "AK_implied_growth": 0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 8e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.1,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.105170918076,
+          "flow_at_closed_stock": 0.110517091808,
+          "output_at_closed_stock": 1.105170918076,
+          "rk4_stock": 1.105170918076,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.6487212707,
+          "flow_at_closed_stock": 0.16487212707,
+          "output_at_closed_stock": 1.6487212707,
+          "rk4_stock": 1.6487212707,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.718281828459,
+          "flow_at_closed_stock": 0.271828182846,
+          "output_at_closed_stock": 2.718281828459,
+          "rk4_stock": 2.718281828459,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k0_s0_d0"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k0_s0_d1"
+    },
+    {
+      "AK_implied_growth": -0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 1e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": -0.1,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 0.904837418036,
+          "flow_at_closed_stock": -0.090483741804,
+          "output_at_closed_stock": 0.904837418036,
+          "rk4_stock": 0.904837418036,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 0.606530659713,
+          "flow_at_closed_stock": -0.060653065971,
+          "output_at_closed_stock": 0.606530659713,
+          "rk4_stock": 0.606530659713,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.367879441171,
+          "flow_at_closed_stock": -0.036787944117,
+          "output_at_closed_stock": 0.367879441171,
+          "rk4_stock": 0.367879441171,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k0_s0_d2"
+    },
+    {
+      "AK_implied_growth": -0.3,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": -0.3,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 0.740818220682,
+          "flow_at_closed_stock": -0.222245466205,
+          "output_at_closed_stock": 0.740818220682,
+          "rk4_stock": 0.740818220682,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 0.223130160148,
+          "flow_at_closed_stock": -0.066939048045,
+          "output_at_closed_stock": 0.223130160148,
+          "rk4_stock": 0.223130160148,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.049787068368,
+          "flow_at_closed_stock": -0.01493612051,
+          "output_at_closed_stock": 0.049787068368,
+          "rk4_stock": 0.049787068368,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k0_s0_d3"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 5.2e-14,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.2,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.22140275816,
+          "flow_at_closed_stock": 0.244280551632,
+          "output_at_closed_stock": 1.22140275816,
+          "rk4_stock": 1.22140275816,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.718281828459,
+          "flow_at_closed_stock": 0.543656365692,
+          "output_at_closed_stock": 2.718281828459,
+          "rk4_stock": 2.718281828459,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 7.389056098931,
+          "flow_at_closed_stock": 1.477811219786,
+          "output_at_closed_stock": 7.389056098931,
+          "rk4_stock": 7.389056098931,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k0_s1_d0"
+    },
+    {
+      "AK_implied_growth": 0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 8e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.1,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.105170918076,
+          "flow_at_closed_stock": 0.110517091808,
+          "output_at_closed_stock": 1.105170918076,
+          "rk4_stock": 1.105170918076,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.6487212707,
+          "flow_at_closed_stock": 0.16487212707,
+          "output_at_closed_stock": 1.6487212707,
+          "rk4_stock": 1.6487212707,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.718281828459,
+          "flow_at_closed_stock": 0.271828182846,
+          "output_at_closed_stock": 2.718281828459,
+          "rk4_stock": 2.718281828459,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k0_s1_d1"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k0_s1_d2"
+    },
+    {
+      "AK_implied_growth": -0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 1e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": -0.2,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 0.818730753078,
+          "flow_at_closed_stock": -0.163746150616,
+          "output_at_closed_stock": 0.818730753078,
+          "rk4_stock": 0.818730753078,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 0.367879441171,
+          "flow_at_closed_stock": -0.073575888234,
+          "output_at_closed_stock": 0.367879441171,
+          "rk4_stock": 0.367879441171,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.135335283237,
+          "flow_at_closed_stock": -0.027067056647,
+          "output_at_closed_stock": 0.135335283237,
+          "rk4_stock": 0.135335283237,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k0_s1_d3"
+    },
+    {
+      "AK_implied_growth": 0.4,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 2.98e-13,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.491824697641,
+          "flow_at_closed_stock": 0.596729879057,
+          "output_at_closed_stock": 1.491824697641,
+          "rk4_stock": 1.491824697641,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 7.389056098931,
+          "flow_at_closed_stock": 2.955622439572,
+          "output_at_closed_stock": 7.389056098931,
+          "rk4_stock": 7.389056098931,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 54.598150033144,
+          "flow_at_closed_stock": 21.839260013258,
+          "output_at_closed_stock": 54.598150033144,
+          "rk4_stock": 54.598150033144,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k0_s2_d0"
+    },
+    {
+      "AK_implied_growth": 0.3,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 8.5e-14,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.3,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.349858807576,
+          "flow_at_closed_stock": 0.404957642273,
+          "output_at_closed_stock": 1.349858807576,
+          "rk4_stock": 1.349858807576,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.481689070338,
+          "flow_at_closed_stock": 1.344506721101,
+          "output_at_closed_stock": 4.481689070338,
+          "rk4_stock": 4.481689070338,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 20.085536923188,
+          "flow_at_closed_stock": 6.025661076956,
+          "output_at_closed_stock": 20.085536923188,
+          "rk4_stock": 20.085536923188,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k0_s2_d1"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 5.2e-14,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.2,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.22140275816,
+          "flow_at_closed_stock": 0.244280551632,
+          "output_at_closed_stock": 1.22140275816,
+          "rk4_stock": 1.22140275816,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.718281828459,
+          "flow_at_closed_stock": 0.543656365692,
+          "output_at_closed_stock": 2.718281828459,
+          "rk4_stock": 2.718281828459,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 7.389056098931,
+          "flow_at_closed_stock": 1.477811219786,
+          "output_at_closed_stock": 7.389056098931,
+          "rk4_stock": 7.389056098931,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k0_s2_d2"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k0_s2_d3"
+    },
+    {
+      "AK_implied_growth": 0.6,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 5.173e-12,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.6,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.822118800391,
+          "flow_at_closed_stock": 1.093271280234,
+          "output_at_closed_stock": 1.822118800391,
+          "rk4_stock": 1.822118800391,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 20.085536923188,
+          "flow_at_closed_stock": 12.051322153913,
+          "output_at_closed_stock": 20.085536923188,
+          "rk4_stock": 20.085536923188,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 403.428793492735,
+          "flow_at_closed_stock": 242.057276095641,
+          "output_at_closed_stock": 403.428793492735,
+          "rk4_stock": 403.42879349273,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k0_s3_d0"
+    },
+    {
+      "AK_implied_growth": 0.5,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 4.26e-13,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.5,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.6487212707,
+          "flow_at_closed_stock": 0.82436063535,
+          "output_at_closed_stock": 1.6487212707,
+          "rk4_stock": 1.6487212707,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 12.182493960703,
+          "flow_at_closed_stock": 6.091246980352,
+          "output_at_closed_stock": 12.182493960703,
+          "rk4_stock": 12.182493960703,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 148.413159102577,
+          "flow_at_closed_stock": 74.206579551288,
+          "output_at_closed_stock": 148.413159102577,
+          "rk4_stock": 148.413159102576,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k0_s3_d1"
+    },
+    {
+      "AK_implied_growth": 0.4,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 3.2e-13,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.491824697641,
+          "flow_at_closed_stock": 0.596729879057,
+          "output_at_closed_stock": 1.491824697641,
+          "rk4_stock": 1.491824697641,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 7.389056098931,
+          "flow_at_closed_stock": 2.955622439572,
+          "output_at_closed_stock": 7.389056098931,
+          "rk4_stock": 7.389056098931,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 54.598150033144,
+          "flow_at_closed_stock": 21.839260013258,
+          "output_at_closed_stock": 54.598150033144,
+          "rk4_stock": 54.598150033144,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k0_s3_d2"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 5.2e-14,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.2,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.22140275816,
+          "flow_at_closed_stock": 0.244280551632,
+          "output_at_closed_stock": 1.22140275816,
+          "rk4_stock": 1.22140275816,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.718281828459,
+          "flow_at_closed_stock": 0.543656365692,
+          "output_at_closed_stock": 2.718281828459,
+          "rk4_stock": 2.718281828459,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 7.389056098931,
+          "flow_at_closed_stock": 1.477811219786,
+          "output_at_closed_stock": 7.389056098931,
+          "rk4_stock": 7.389056098931,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k0_s3_d3"
+    },
+    {
+      "AK_implied_growth": 0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 3.2e-14,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.420683672303,
+          "flow_at_closed_stock": 0.44206836723,
+          "output_at_closed_stock": 4.420683672303,
+          "rk4_stock": 4.420683672303,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 6.594885082801,
+          "flow_at_closed_stock": 0.65948850828,
+          "output_at_closed_stock": 6.594885082801,
+          "rk4_stock": 6.594885082801,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 10.873127313836,
+          "flow_at_closed_stock": 1.087312731384,
+          "output_at_closed_stock": 10.873127313836,
+          "rk4_stock": 10.873127313836,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k1_s0_d0"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k1_s0_d1"
+    },
+    {
+      "AK_implied_growth": -0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 5e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -0.4,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 3.619349672144,
+          "flow_at_closed_stock": -0.361934967214,
+          "output_at_closed_stock": 3.619349672144,
+          "rk4_stock": 3.619349672144,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.426122638851,
+          "flow_at_closed_stock": -0.242612263885,
+          "output_at_closed_stock": 2.426122638851,
+          "rk4_stock": 2.426122638851,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.471517764686,
+          "flow_at_closed_stock": -0.147151776469,
+          "output_at_closed_stock": 1.471517764686,
+          "rk4_stock": 1.471517764686,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k1_s0_d2"
+    },
+    {
+      "AK_implied_growth": -0.3,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 2e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -1.2,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 2.963272882727,
+          "flow_at_closed_stock": -0.888981864818,
+          "output_at_closed_stock": 2.963272882727,
+          "rk4_stock": 2.963272882727,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 0.892520640594,
+          "flow_at_closed_stock": -0.267756192178,
+          "output_at_closed_stock": 0.892520640594,
+          "rk4_stock": 0.892520640594,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.199148273471,
+          "flow_at_closed_stock": -0.059744482041,
+          "output_at_closed_stock": 0.199148273471,
+          "rk4_stock": 0.199148273471,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k1_s0_d3"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 2.06e-13,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.8,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.885611032641,
+          "flow_at_closed_stock": 0.977122206528,
+          "output_at_closed_stock": 4.885611032641,
+          "rk4_stock": 4.885611032641,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 10.873127313836,
+          "flow_at_closed_stock": 2.174625462767,
+          "output_at_closed_stock": 10.873127313836,
+          "rk4_stock": 10.873127313836,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 29.556224395723,
+          "flow_at_closed_stock": 5.911244879145,
+          "output_at_closed_stock": 29.556224395723,
+          "rk4_stock": 29.556224395722,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k1_s1_d0"
+    },
+    {
+      "AK_implied_growth": 0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 3.2e-14,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.420683672303,
+          "flow_at_closed_stock": 0.44206836723,
+          "output_at_closed_stock": 4.420683672303,
+          "rk4_stock": 4.420683672303,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 6.594885082801,
+          "flow_at_closed_stock": 0.65948850828,
+          "output_at_closed_stock": 6.594885082801,
+          "rk4_stock": 6.594885082801,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 10.873127313836,
+          "flow_at_closed_stock": 1.087312731384,
+          "output_at_closed_stock": 10.873127313836,
+          "rk4_stock": 10.873127313836,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k1_s1_d1"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k1_s1_d2"
+    },
+    {
+      "AK_implied_growth": -0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 2e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -0.8,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 3.274923012312,
+          "flow_at_closed_stock": -0.654984602462,
+          "output_at_closed_stock": 3.274923012312,
+          "rk4_stock": 3.274923012312,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.471517764686,
+          "flow_at_closed_stock": -0.294303552937,
+          "output_at_closed_stock": 1.471517764686,
+          "rk4_stock": 1.471517764686,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.541341132946,
+          "flow_at_closed_stock": -0.108268226589,
+          "output_at_closed_stock": 0.541341132946,
+          "rk4_stock": 0.541341132946,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k1_s1_d3"
+    },
+    {
+      "AK_implied_growth": 0.4,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 1.194e-12,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 1.6,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 5.967298790565,
+          "flow_at_closed_stock": 2.386919516226,
+          "output_at_closed_stock": 5.967298790565,
+          "rk4_stock": 5.967298790565,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 29.556224395723,
+          "flow_at_closed_stock": 11.822489758289,
+          "output_at_closed_stock": 29.556224395723,
+          "rk4_stock": 29.556224395723,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 218.392600132577,
+          "flow_at_closed_stock": 87.357040053031,
+          "output_at_closed_stock": 218.392600132577,
+          "rk4_stock": 218.392600132576,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k1_s2_d0"
+    },
+    {
+      "AK_implied_growth": 0.3,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 3.41e-13,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 1.2,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 5.399435230304,
+          "flow_at_closed_stock": 1.619830569091,
+          "output_at_closed_stock": 5.399435230304,
+          "rk4_stock": 5.399435230304,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 17.926756281352,
+          "flow_at_closed_stock": 5.378026884406,
+          "output_at_closed_stock": 17.926756281352,
+          "rk4_stock": 17.926756281352,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 80.342147692751,
+          "flow_at_closed_stock": 24.102644307825,
+          "output_at_closed_stock": 80.342147692751,
+          "rk4_stock": 80.342147692751,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k1_s2_d1"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 2.06e-13,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.8,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.885611032641,
+          "flow_at_closed_stock": 0.977122206528,
+          "output_at_closed_stock": 4.885611032641,
+          "rk4_stock": 4.885611032641,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 10.873127313836,
+          "flow_at_closed_stock": 2.174625462767,
+          "output_at_closed_stock": 10.873127313836,
+          "rk4_stock": 10.873127313836,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 29.556224395723,
+          "flow_at_closed_stock": 5.911244879145,
+          "output_at_closed_stock": 29.556224395723,
+          "rk4_stock": 29.556224395722,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k1_s2_d2"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k1_s2_d3"
+    },
+    {
+      "AK_implied_growth": 0.6,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 2.0691e-11,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 2.4,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 7.288475201562,
+          "flow_at_closed_stock": 4.373085120937,
+          "output_at_closed_stock": 7.288475201562,
+          "rk4_stock": 7.288475201562,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 80.342147692751,
+          "flow_at_closed_stock": 48.20528861565,
+          "output_at_closed_stock": 80.342147692751,
+          "rk4_stock": 80.34214769275,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1613.71517397094,
+          "flow_at_closed_stock": 968.229104382564,
+          "output_at_closed_stock": 1613.71517397094,
+          "rk4_stock": 1613.71517397092,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k1_s3_d0"
+    },
+    {
+      "AK_implied_growth": 0.5,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 1.705e-12,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 2.0,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 6.594885082801,
+          "flow_at_closed_stock": 3.2974425414,
+          "output_at_closed_stock": 6.594885082801,
+          "rk4_stock": 6.594885082801,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 48.729975842814,
+          "flow_at_closed_stock": 24.364987921407,
+          "output_at_closed_stock": 48.729975842814,
+          "rk4_stock": 48.729975842814,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 593.652636410306,
+          "flow_at_closed_stock": 296.826318205153,
+          "output_at_closed_stock": 593.652636410306,
+          "rk4_stock": 593.652636410305,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k1_s3_d1"
+    },
+    {
+      "AK_implied_growth": 0.4,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 1.279e-12,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 1.6,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 5.967298790565,
+          "flow_at_closed_stock": 2.386919516226,
+          "output_at_closed_stock": 5.967298790565,
+          "rk4_stock": 5.967298790565,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 29.556224395723,
+          "flow_at_closed_stock": 11.822489758289,
+          "output_at_closed_stock": 29.556224395723,
+          "rk4_stock": 29.556224395723,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 218.392600132577,
+          "flow_at_closed_stock": 87.357040053031,
+          "output_at_closed_stock": 218.392600132577,
+          "rk4_stock": 218.392600132576,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k1_s3_d2"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 2.1e-13,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.8,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.885611032641,
+          "flow_at_closed_stock": 0.977122206528,
+          "output_at_closed_stock": 4.885611032641,
+          "rk4_stock": 4.885611032641,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 10.873127313836,
+          "flow_at_closed_stock": 2.174625462767,
+          "output_at_closed_stock": 10.873127313836,
+          "rk4_stock": 10.873127313836,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 29.556224395723,
+          "flow_at_closed_stock": 5.911244879145,
+          "output_at_closed_stock": 29.556224395723,
+          "rk4_stock": 29.556224395722,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k1_s3_d3"
+    },
+    {
+      "AK_implied_growth": 0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 1.1e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.9,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.946538262681,
+          "flow_at_closed_stock": 0.994653826268,
+          "output_at_closed_stock": 9.946538262681,
+          "rk4_stock": 9.946538262681,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 14.838491436301,
+          "flow_at_closed_stock": 1.48384914363,
+          "output_at_closed_stock": 14.838491436301,
+          "rk4_stock": 14.838491436301,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 24.464536456131,
+          "flow_at_closed_stock": 2.446453645613,
+          "output_at_closed_stock": 24.464536456131,
+          "rk4_stock": 24.464536456131,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k2_s0_d0"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k2_s0_d1"
+    },
+    {
+      "AK_implied_growth": -0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 3.8e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -0.9,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 8.143536762324,
+          "flow_at_closed_stock": -0.814353676232,
+          "output_at_closed_stock": 8.143536762324,
+          "rk4_stock": 8.143536762324,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 5.458775937414,
+          "flow_at_closed_stock": -0.545877593741,
+          "output_at_closed_stock": 5.458775937414,
+          "rk4_stock": 5.458775937414,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 3.310914970543,
+          "flow_at_closed_stock": -0.331091497054,
+          "output_at_closed_stock": 3.310914970543,
+          "rk4_stock": 3.310914970543,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k2_s0_d2"
+    },
+    {
+      "AK_implied_growth": -0.3,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2.3e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -2.7,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 6.667363986135,
+          "flow_at_closed_stock": -2.000209195841,
+          "output_at_closed_stock": 6.667363986135,
+          "rk4_stock": 6.667363986135,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.008171441336,
+          "flow_at_closed_stock": -0.602451432401,
+          "output_at_closed_stock": 2.008171441336,
+          "rk4_stock": 2.008171441336,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.448083615311,
+          "flow_at_closed_stock": -0.134425084593,
+          "output_at_closed_stock": 0.448083615311,
+          "rk4_stock": 0.448083615311,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a0_k2_s0_d3"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 5.68e-13,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 1.8,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 10.992624823442,
+          "flow_at_closed_stock": 2.198524964688,
+          "output_at_closed_stock": 10.992624823442,
+          "rk4_stock": 10.992624823442,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 24.464536456131,
+          "flow_at_closed_stock": 4.892907291226,
+          "output_at_closed_stock": 24.464536456131,
+          "rk4_stock": 24.464536456131,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 66.501504890376,
+          "flow_at_closed_stock": 13.300300978075,
+          "output_at_closed_stock": 66.501504890376,
+          "rk4_stock": 66.501504890376,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k2_s1_d0"
+    },
+    {
+      "AK_implied_growth": 0.1,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 1.1e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.9,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.946538262681,
+          "flow_at_closed_stock": 0.994653826268,
+          "output_at_closed_stock": 9.946538262681,
+          "rk4_stock": 9.946538262681,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 14.838491436301,
+          "flow_at_closed_stock": 1.48384914363,
+          "output_at_closed_stock": 14.838491436301,
+          "rk4_stock": 14.838491436301,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 24.464536456131,
+          "flow_at_closed_stock": 2.446453645613,
+          "output_at_closed_stock": 24.464536456131,
+          "rk4_stock": 24.464536456131,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k2_s1_d1"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k2_s1_d2"
+    },
+    {
+      "AK_implied_growth": -0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 1.1e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -1.8,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 7.368576777702,
+          "flow_at_closed_stock": -1.47371535554,
+          "output_at_closed_stock": 7.368576777702,
+          "rk4_stock": 7.368576777702,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 3.310914970543,
+          "flow_at_closed_stock": -0.662182994109,
+          "output_at_closed_stock": 3.310914970543,
+          "rk4_stock": 3.310914970543,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.21801754913,
+          "flow_at_closed_stock": -0.243603509826,
+          "output_at_closed_stock": 1.21801754913,
+          "rk4_stock": 1.21801754913,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a0_k2_s1_d3"
+    },
+    {
+      "AK_implied_growth": 0.4,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2.672e-12,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 3.6,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 13.426422278771,
+          "flow_at_closed_stock": 5.370568911509,
+          "output_at_closed_stock": 13.426422278771,
+          "rk4_stock": 13.426422278771,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 66.501504890376,
+          "flow_at_closed_stock": 26.60060195615,
+          "output_at_closed_stock": 66.501504890376,
+          "rk4_stock": 66.501504890376,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 491.383350298298,
+          "flow_at_closed_stock": 196.553340119319,
+          "output_at_closed_stock": 491.383350298298,
+          "rk4_stock": 491.383350298295,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k2_s2_d0"
+    },
+    {
+      "AK_implied_growth": 0.3,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2.27e-13,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 2.7,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 12.148729268184,
+          "flow_at_closed_stock": 3.644618780455,
+          "output_at_closed_stock": 12.148729268184,
+          "rk4_stock": 12.148729268184,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 40.335201633043,
+          "flow_at_closed_stock": 12.100560489913,
+          "output_at_closed_stock": 40.335201633043,
+          "rk4_stock": 40.335201633043,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 180.769832308689,
+          "flow_at_closed_stock": 54.230949692607,
+          "output_at_closed_stock": 180.769832308689,
+          "rk4_stock": 180.769832308689,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k2_s2_d1"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 5.68e-13,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 1.8,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 10.992624823442,
+          "flow_at_closed_stock": 2.198524964688,
+          "output_at_closed_stock": 10.992624823442,
+          "rk4_stock": 10.992624823442,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 24.464536456131,
+          "flow_at_closed_stock": 4.892907291226,
+          "output_at_closed_stock": 24.464536456131,
+          "rk4_stock": 24.464536456131,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 66.501504890376,
+          "flow_at_closed_stock": 13.300300978075,
+          "output_at_closed_stock": 66.501504890376,
+          "rk4_stock": 66.501504890376,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k2_s2_d2"
+    },
+    {
+      "AK_implied_growth": 0.0,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a0_k2_s2_d3"
+    },
+    {
+      "AK_implied_growth": 0.6,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 3.3651e-11,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 5.4,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 16.399069203515,
+          "flow_at_closed_stock": 9.839441522109,
+          "output_at_closed_stock": 16.399069203515,
+          "rk4_stock": 16.399069203515,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 180.769832308689,
+          "flow_at_closed_stock": 108.461899385213,
+          "output_at_closed_stock": 180.769832308689,
+          "rk4_stock": 180.769832308688,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 3630.859141434616,
+          "flow_at_closed_stock": 2178.515484860769,
+          "output_at_closed_stock": 3630.859141434616,
+          "rk4_stock": 3630.859141434582,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k2_s3_d0"
+    },
+    {
+      "AK_implied_growth": 0.5,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.1,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2.501e-12,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 4.5,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 14.838491436301,
+          "flow_at_closed_stock": 7.419245718151,
+          "output_at_closed_stock": 14.838491436301,
+          "rk4_stock": 14.838491436301,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 109.642445646331,
+          "flow_at_closed_stock": 54.821222823166,
+          "output_at_closed_stock": 109.642445646331,
+          "rk4_stock": 109.642445646331,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1335.718431923189,
+          "flow_at_closed_stock": 667.859215961595,
+          "output_at_closed_stock": 1335.718431923189,
+          "rk4_stock": 1335.718431923192,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k2_s3_d1"
+    },
+    {
+      "AK_implied_growth": 0.4,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.2,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2.558e-12,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 3.6,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 13.426422278771,
+          "flow_at_closed_stock": 5.370568911509,
+          "output_at_closed_stock": 13.426422278771,
+          "rk4_stock": 13.426422278771,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 66.501504890376,
+          "flow_at_closed_stock": 26.60060195615,
+          "output_at_closed_stock": 66.501504890376,
+          "rk4_stock": 66.501504890376,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 491.383350298298,
+          "flow_at_closed_stock": 196.553340119319,
+          "output_at_closed_stock": 491.383350298298,
+          "rk4_stock": 491.383350298295,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k2_s3_d2"
+    },
+    {
+      "AK_implied_growth": 0.2,
+      "alpha": 1.0,
+      "concave_steady_state": null,
+      "delta": 0.4,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 5.83e-13,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 1.8,
+          "output_at_closed_stock": 9.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 10.992624823442,
+          "flow_at_closed_stock": 2.198524964688,
+          "output_at_closed_stock": 10.992624823442,
+          "rk4_stock": 10.992624823442,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 24.464536456131,
+          "flow_at_closed_stock": 4.892907291226,
+          "output_at_closed_stock": 24.464536456131,
+          "rk4_stock": 24.464536456131,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 66.501504890376,
+          "flow_at_closed_stock": 13.300300978075,
+          "output_at_closed_stock": 66.501504890376,
+          "rk4_stock": 66.501504890376,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a0_k2_s3_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.1,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.1025,
+          "flow_at_closed_stock": 0.105,
+          "output_at_closed_stock": 1.05,
+          "rk4_stock": 1.1025,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.5625,
+          "flow_at_closed_stock": 0.125,
+          "output_at_closed_stock": 1.25,
+          "rk4_stock": 1.5625,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.25,
+          "flow_at_closed_stock": 0.15,
+          "output_at_closed_stock": 1.5,
+          "rk4_stock": 2.25,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k0_s0_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.1,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k0_s0_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.25,
+      "delta": 0.2,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 3e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": -0.1,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 0.907101397287,
+          "flow_at_closed_stock": -0.086178408556,
+          "output_at_closed_stock": 0.952418709018,
+          "rk4_stock": 0.907101397287,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 0.645235190149,
+          "flow_at_closed_stock": -0.048720505044,
+          "output_at_closed_stock": 0.803265329856,
+          "rk4_stock": 0.645235190149,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.467773541395,
+          "flow_at_closed_stock": -0.02516073622,
+          "output_at_closed_stock": 0.683939720586,
+          "rk4_stock": 0.467773541395,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k0_s0_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.0625,
+      "delta": 0.4,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 2e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": -0.3,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 0.746579058299,
+          "flow_at_closed_stock": -0.212226816839,
+          "output_at_closed_stock": 0.864048064808,
+          "rk4_stock": 0.746579058299,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 0.27658088726,
+          "flow_at_closed_stock": -0.058041396816,
+          "output_at_closed_stock": 0.525909580879,
+          "rk4_stock": 0.27658088726,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.123553278089,
+          "flow_at_closed_stock": -0.014271164993,
+          "output_at_closed_stock": 0.351501462427,
+          "rk4_stock": 0.123553278089,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k0_s0_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 1e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.2,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.21,
+          "flow_at_closed_stock": 0.22,
+          "output_at_closed_stock": 1.1,
+          "rk4_stock": 1.21,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.25,
+          "flow_at_closed_stock": 0.3,
+          "output_at_closed_stock": 1.5,
+          "rk4_stock": 2.25,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k0_s1_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 4.0,
+      "delta": 0.1,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 9e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.1,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.099919720033,
+          "flow_at_closed_stock": 0.099762143097,
+          "output_at_closed_stock": 1.048770575499,
+          "rk4_stock": 1.099919720033,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.491327527427,
+          "flow_at_closed_stock": 0.095107090643,
+          "output_at_closed_stock": 1.221199216929,
+          "rk4_stock": 1.491327527427,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.941756802321,
+          "flow_at_closed_stock": 0.084518187825,
+          "output_at_closed_stock": 1.393469340287,
+          "rk4_stock": 1.941756802321,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k0_s1_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.2,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k0_s1_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.25,
+      "delta": 0.4,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 1e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": -0.2,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 0.826945388048,
+          "flow_at_closed_stock": -0.148905079911,
+          "output_at_closed_stock": 0.909365376539,
+          "rk4_stock": 0.826945388048,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 0.467773541395,
+          "flow_at_closed_stock": -0.050321472441,
+          "output_at_closed_stock": 0.683939720586,
+          "rk4_stock": 0.467773541395,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.32224655134,
+          "flow_at_closed_stock": -0.015365092213,
+          "output_at_closed_stock": 0.567667641618,
+          "rk4_stock": 0.32224655134,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k0_s1_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.44,
+          "flow_at_closed_stock": 0.48,
+          "output_at_closed_stock": 1.2,
+          "rk4_stock": 1.44,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.8,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 1.2,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k0_s2_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 16.0,
+      "delta": 0.1,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 1.2e-14,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.3,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.314030574307,
+          "flow_at_closed_stock": 0.327121633168,
+          "output_at_closed_stock": 1.146311726498,
+          "rk4_stock": 1.314030574306,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.7675571437,
+          "flow_at_closed_stock": 0.388683345944,
+          "output_at_closed_stock": 1.663597650786,
+          "rk4_stock": 2.7675571437,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 4.75417913744,
+          "flow_at_closed_stock": 0.396745294601,
+          "output_at_closed_stock": 2.180408020862,
+          "rk4_stock": 4.75417913744,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k0_s2_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 4.0,
+      "delta": 0.2,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 1e-14,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.2,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.199381080934,
+          "flow_at_closed_stock": 0.198188816599,
+          "output_at_closed_stock": 1.095162581964,
+          "rk4_stock": 1.199381080934,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.941756802321,
+          "flow_at_closed_stock": 0.169036375651,
+          "output_at_closed_stock": 1.393469340287,
+          "rk4_stock": 1.941756802321,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.663817518551,
+          "flow_at_closed_stock": 0.120084719821,
+          "output_at_closed_stock": 1.632120558829,
+          "rk4_stock": 2.663817518551,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k0_s2_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.4,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k0_s2_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.6,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.69,
+          "flow_at_closed_stock": 0.78,
+          "output_at_closed_stock": 1.3,
+          "rk4_stock": 1.69,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 6.25,
+          "flow_at_closed_stock": 1.5,
+          "output_at_closed_stock": 2.5,
+          "rk4_stock": 6.25,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 16.0,
+          "flow_at_closed_stock": 2.4,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 16.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k0_s3_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 36.0,
+      "delta": 0.1,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 9e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.5,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.547169980856,
+          "flow_at_closed_stock": 0.591594728412,
+          "output_at_closed_stock": 1.243852877496,
+          "rk4_stock": 1.547169980856,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.435219508532,
+          "flow_at_closed_stock": 0.820075699933,
+          "output_at_closed_stock": 2.105996084643,
+          "rk4_stock": 4.435219508532,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 8.805146446528,
+          "flow_at_closed_stock": 0.899893376209,
+          "output_at_closed_stock": 2.967346701437,
+          "rk4_stock": 8.805146446528,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k0_s3_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 9.0,
+      "delta": 0.2,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 1.2e-14,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.41687399588,
+          "flow_at_closed_stock": 0.430820299181,
+          "output_at_closed_stock": 1.190325163928,
+          "rk4_stock": 1.41687399588,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 3.193149848134,
+          "flow_at_closed_stock": 0.433533238718,
+          "output_at_closed_stock": 1.786938680575,
+          "rk4_stock": 3.193149848134,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 5.126787838889,
+          "flow_at_closed_stock": 0.333187102816,
+          "output_at_closed_stock": 2.264241117657,
+          "rk4_stock": 5.126787838889,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k0_s3_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 2.25,
+      "delta": 0.4,
+      "k0": 1.0,
+      "max_abs_closed_vs_RK4": 4e-15,
+      "points": [
+        {
+          "closed_stock": 1.0,
+          "flow_at_closed_stock": 0.2,
+          "output_at_closed_stock": 1.0,
+          "rk4_stock": 1.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 1.189483881892,
+          "flow_at_closed_stock": 0.17858722132,
+          "output_at_closed_stock": 1.090634623461,
+          "rk4_stock": 1.189483881892,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.732014659052,
+          "flow_at_closed_stock": 0.096830304028,
+          "output_at_closed_stock": 1.316060279414,
+          "rk4_stock": 1.732014659052,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.051575984867,
+          "flow_at_closed_stock": 0.038769021082,
+          "output_at_closed_stock": 1.432332358382,
+          "rk4_stock": 2.051575984867,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k0_s3_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 1e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.2,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.2025,
+          "flow_at_closed_stock": 0.205,
+          "output_at_closed_stock": 2.05,
+          "rk4_stock": 4.2025,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 5.0625,
+          "flow_at_closed_stock": 0.225,
+          "output_at_closed_stock": 2.25,
+          "rk4_stock": 5.0625,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 6.25,
+          "flow_at_closed_stock": 0.25,
+          "output_at_closed_stock": 2.5,
+          "rk4_stock": 6.25,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k1_s0_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.1,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 7e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -0.2,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 3.807296267037,
+          "flow_at_closed_stock": -0.185606684254,
+          "output_at_closed_stock": 1.951229424501,
+          "rk4_stock": 3.807296267037,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 3.164132225855,
+          "flow_at_closed_stock": -0.138533144278,
+          "output_at_closed_stock": 1.778800783071,
+          "rk4_stock": 3.164132225855,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.580940760597,
+          "flow_at_closed_stock": -0.097441010088,
+          "output_at_closed_stock": 1.606530659713,
+          "rk4_stock": 2.580940760597,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k1_s0_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.25,
+      "delta": 0.2,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 5e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -0.6,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 3.449400321479,
+          "flow_at_closed_stock": -0.50415445159,
+          "output_at_closed_stock": 1.857256127054,
+          "rk4_stock": 3.449400321479,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.987524732205,
+          "flow_at_closed_stock": -0.256525347484,
+          "output_at_closed_stock": 1.409795989569,
+          "rk4_stock": 1.987524732205,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.10632354904,
+          "flow_at_closed_stock": -0.116082793632,
+          "output_at_closed_stock": 1.051819161757,
+          "rk4_stock": 1.10632354904,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k1_s0_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.0625,
+      "delta": 0.4,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 6e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -1.4,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 2.831744549927,
+          "flow_at_closed_stock": -0.964419938182,
+          "output_at_closed_stock": 1.682778817886,
+          "rk4_stock": 2.831744549927,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 0.798858815937,
+          "flow_at_closed_stock": -0.23016462417,
+          "output_at_closed_stock": 0.89378902205,
+          "rk4_stock": 0.798858815937,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.237010016929,
+          "flow_at_closed_stock": -0.046120332205,
+          "output_at_closed_stock": 0.486836745664,
+          "rk4_stock": 0.237010016929,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k1_s0_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.41,
+          "flow_at_closed_stock": 0.42,
+          "output_at_closed_stock": 2.1,
+          "rk4_stock": 4.41,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 6.25,
+          "flow_at_closed_stock": 0.5,
+          "output_at_closed_stock": 2.5,
+          "rk4_stock": 6.25,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.6,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k1_s1_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 4.0,
+      "delta": 0.1,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k1_s1_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.2,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 1.1e-14,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -0.4,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 3.62840558915,
+          "flow_at_closed_stock": -0.344713634223,
+          "output_at_closed_stock": 1.904837418036,
+          "rk4_stock": 3.62840558915,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.580940760597,
+          "flow_at_closed_stock": -0.194882020177,
+          "output_at_closed_stock": 1.606530659713,
+          "rk4_stock": 2.580940760597,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.871094165579,
+          "flow_at_closed_stock": -0.100642944882,
+          "output_at_closed_stock": 1.367879441171,
+          "rk4_stock": 1.871094165579,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k1_s1_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.25,
+      "delta": 0.4,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 7e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -1.2,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 2.986316233197,
+          "flow_at_closed_stock": -0.848907267355,
+          "output_at_closed_stock": 1.728096129617,
+          "rk4_stock": 2.986316233197,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.10632354904,
+          "flow_at_closed_stock": -0.232165587264,
+          "output_at_closed_stock": 1.051819161757,
+          "rk4_stock": 1.10632354904,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.494213112355,
+          "flow_at_closed_stock": -0.057084659971,
+          "output_at_closed_stock": 0.703002924855,
+          "rk4_stock": 0.494213112355,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k1_s1_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 4e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.8,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.84,
+          "flow_at_closed_stock": 0.88,
+          "output_at_closed_stock": 2.2,
+          "rk4_stock": 4.84,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 1.2,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 16.0,
+          "flow_at_closed_stock": 1.6,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 16.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k1_s2_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 16.0,
+      "delta": 0.1,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 3.7e-14,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.399678880132,
+          "flow_at_closed_stock": 0.399048572386,
+          "output_at_closed_stock": 2.097541150999,
+          "rk4_stock": 4.399678880132,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 5.965310109708,
+          "flow_at_closed_stock": 0.380428362572,
+          "output_at_closed_stock": 2.442398433857,
+          "rk4_stock": 5.965310109708,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 7.767027209284,
+          "flow_at_closed_stock": 0.338072751302,
+          "output_at_closed_stock": 2.786938680575,
+          "rk4_stock": 7.767027209284,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k1_s2_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 4.0,
+      "delta": 0.2,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 0.0,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.0,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k1_s2_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.4,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 2e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -0.8,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 3.307781552192,
+          "flow_at_closed_stock": -0.595620319645,
+          "output_at_closed_stock": 1.818730753078,
+          "rk4_stock": 3.307781552192,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.871094165579,
+          "flow_at_closed_stock": -0.201285889763,
+          "output_at_closed_stock": 1.367879441171,
+          "rk4_stock": 1.871094165579,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.288986205362,
+          "flow_at_closed_stock": -0.06146036885,
+          "output_at_closed_stock": 1.135335283237,
+          "rk4_stock": 1.288986205362,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k1_s2_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 1e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 1.2,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 5.29,
+          "flow_at_closed_stock": 1.38,
+          "output_at_closed_stock": 2.3,
+          "rk4_stock": 5.29,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 12.25,
+          "flow_at_closed_stock": 2.1,
+          "output_at_closed_stock": 3.5,
+          "rk4_stock": 12.25,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 25.0,
+          "flow_at_closed_stock": 3.0,
+          "output_at_closed_stock": 5.0,
+          "rk4_stock": 25.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k1_s3_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 36.0,
+      "delta": 0.1,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 3.2e-14,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.8,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.818386312541,
+          "flow_at_closed_stock": 0.835210749944,
+          "output_at_closed_stock": 2.195082301997,
+          "rk4_stock": 4.818386312541,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 8.322052967975,
+          "flow_at_closed_stock": 0.898672823831,
+          "output_at_closed_stock": 2.884796867714,
+          "rk4_stock": 8.322052967975,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 12.772599392537,
+          "flow_at_closed_stock": 0.867066477436,
+          "output_at_closed_stock": 3.573877361149,
+          "rk4_stock": 12.772599392537,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k1_s3_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 9.0,
+      "delta": 0.2,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 1.2e-14,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": 0.4,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 4.389706244862,
+          "flow_at_closed_stock": 0.379156300206,
+          "output_at_closed_stock": 2.095162581964,
+          "rk4_stock": 4.389706244862,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 5.728695482896,
+          "flow_at_closed_stock": 0.290342507593,
+          "output_at_closed_stock": 2.393469340287,
+          "rk4_stock": 5.728695482896,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 6.928058636208,
+          "flow_at_closed_stock": 0.193660608056,
+          "output_at_closed_stock": 2.632120558829,
+          "rk4_stock": 6.928058636208,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k1_s3_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 2.25,
+      "delta": 0.4,
+      "k0": 4.0,
+      "max_abs_closed_vs_RK4": 7e-15,
+      "points": [
+        {
+          "closed_stock": 4.0,
+          "flow_at_closed_stock": -0.4,
+          "output_at_closed_stock": 2.0,
+          "rk4_stock": 4.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 3.645676141126,
+          "flow_at_closed_stock": -0.312651230527,
+          "output_at_closed_stock": 1.909365376539,
+          "rk4_stock": 3.645676141126,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.835652982566,
+          "flow_at_closed_stock": -0.123897360675,
+          "output_at_closed_stock": 1.683939720586,
+          "rk4_stock": 2.835652982566,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.457581834577,
+          "flow_at_closed_stock": -0.04243214886,
+          "output_at_closed_stock": 1.567667641618,
+          "rk4_stock": 2.457581834577,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k1_s3_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.3,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.3025,
+          "flow_at_closed_stock": 0.305,
+          "output_at_closed_stock": 3.05,
+          "rk4_stock": 9.3025,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 10.5625,
+          "flow_at_closed_stock": 0.325,
+          "output_at_closed_stock": 3.25,
+          "rk4_stock": 10.5625,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 12.25,
+          "flow_at_closed_stock": 0.35,
+          "output_at_closed_stock": 3.5,
+          "rk4_stock": 12.25,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k2_s0_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.1,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 1.3e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -0.6,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 8.424267370147,
+          "flow_at_closed_stock": -0.552180852115,
+          "output_at_closed_stock": 2.902458849001,
+          "rk4_stock": 8.424267370147,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 6.541325771136,
+          "flow_at_closed_stock": -0.398372420499,
+          "output_at_closed_stock": 2.557601566143,
+          "rk4_stock": 6.541325771136,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 4.897640403536,
+          "flow_at_closed_stock": -0.268457908411,
+          "output_at_closed_stock": 2.213061319425,
+          "rk4_stock": 4.897640403536,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k2_s0_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.25,
+      "delta": 0.2,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 5e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -1.5,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 7.629160751827,
+          "flow_at_closed_stock": -1.249622795856,
+          "output_at_closed_stock": 2.76209354509,
+          "rk4_stock": 7.629160751827,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.065573156603,
+          "flow_at_closed_stock": -0.611481966392,
+          "output_at_closed_stock": 2.016326649282,
+          "rk4_stock": 4.065573156603,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.015544123157,
+          "flow_at_closed_stock": -0.261138964339,
+          "output_at_closed_stock": 1.419698602929,
+          "rk4_stock": 2.015544123157,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k2_s0_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.0625,
+      "delta": 0.4,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 4e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -3.3,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 6.257550133627,
+          "flow_at_closed_stock": -2.252869096354,
+          "output_at_closed_stock": 2.501509570964,
+          "rk4_stock": 6.257550133627,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 1.591807311088,
+          "flow_at_closed_stock": -0.510556078113,
+          "output_at_closed_stock": 1.261668463221,
+          "rk4_stock": 1.591807311088,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.387098033546,
+          "flow_at_closed_stock": -0.092622010528,
+          "output_at_closed_stock": 0.622172028901,
+          "rk4_stock": 0.387098033546,
+          "t": 10.0
+        }
+      ],
+      "s": 0.1,
+      "scenario_id": "a1_k2_s0_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.6,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.61,
+          "flow_at_closed_stock": 0.62,
+          "output_at_closed_stock": 3.1,
+          "rk4_stock": 9.61,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 12.25,
+          "flow_at_closed_stock": 0.7,
+          "output_at_closed_stock": 3.5,
+          "rk4_stock": 12.25,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 16.0,
+          "flow_at_closed_stock": 0.8,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 16.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k2_s1_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 4.0,
+      "delta": 0.1,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -0.3,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 8.709755116039,
+          "flow_at_closed_stock": -0.280729626704,
+          "output_at_closed_stock": 2.951229424501,
+          "rk4_stock": 8.709755116039,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 7.721733791998,
+          "flow_at_closed_stock": -0.216413222586,
+          "output_at_closed_stock": 2.778800783071,
+          "rk4_stock": 7.721733791998,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 6.794002080022,
+          "flow_at_closed_stock": -0.15809407606,
+          "output_at_closed_stock": 2.606530659713,
+          "rk4_stock": 6.794002080022,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k2_s1_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.2,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -1.2,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 7.894272684456,
+          "flow_at_closed_stock": -1.016919569677,
+          "output_at_closed_stock": 2.809674836072,
+          "rk4_stock": 7.894272684456,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.897640403536,
+          "flow_at_closed_stock": -0.536915816822,
+          "output_at_closed_stock": 2.213061319425,
+          "rk4_stock": 4.897640403536,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 3.012858897632,
+          "flow_at_closed_stock": -0.255420003058,
+          "output_at_closed_stock": 1.735758882343,
+          "rk4_stock": 3.012858897632,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k2_s1_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 0.25,
+      "delta": 0.4,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 1e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -3.0,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 6.486327170418,
+          "flow_at_closed_stock": -2.085165491628,
+          "output_at_closed_stock": 2.546826882695,
+          "rk4_stock": 6.486327170418,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 2.015544123157,
+          "flow_at_closed_stock": -0.522277928677,
+          "output_at_closed_stock": 1.419698602929,
+          "rk4_stock": 2.015544123157,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 0.702810951146,
+          "flow_at_closed_stock": -0.11345673884,
+          "output_at_closed_stock": 0.838338208092,
+          "rk4_stock": 0.702810951146,
+          "t": 10.0
+        }
+      ],
+      "s": 0.2,
+      "scenario_id": "a1_k2_s1_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 4e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 1.2,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 10.24,
+          "flow_at_closed_stock": 1.28,
+          "output_at_closed_stock": 3.2,
+          "rk4_stock": 10.24,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 16.0,
+          "flow_at_closed_stock": 1.6,
+          "output_at_closed_stock": 4.0,
+          "rk4_stock": 16.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 25.0,
+          "flow_at_closed_stock": 2.0,
+          "output_at_closed_stock": 5.0,
+          "rk4_stock": 25.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k2_s2_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 16.0,
+      "delta": 0.1,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2.1e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.3,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.29500202203,
+          "flow_at_closed_stock": 0.290008027997,
+          "output_at_closed_stock": 3.048770575499,
+          "rk4_stock": 9.29500202203,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 10.376124395141,
+          "flow_at_closed_stock": 0.250867247257,
+          "output_at_closed_stock": 3.221199216929,
+          "rk4_stock": 10.376124395141,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 11.51563416347,
+          "flow_at_closed_stock": 0.205824319768,
+          "output_at_closed_stock": 3.393469340287,
+          "rk4_stock": 11.51563416347,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k2_s2_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 4.0,
+      "delta": 0.2,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2.2e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -0.6,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 8.438080425222,
+          "flow_at_closed_stock": -0.52568111783,
+          "output_at_closed_stock": 2.904837418036,
+          "rk4_stock": 8.438080425222,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 6.794002080022,
+          "flow_at_closed_stock": -0.316188152119,
+          "output_at_closed_stock": 2.606530659713,
+          "rk4_stock": 6.794002080022,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 5.606853047922,
+          "flow_at_closed_stock": -0.174218833116,
+          "output_at_closed_stock": 2.367879441171,
+          "rk4_stock": 5.606853047922,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k2_s2_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 1.0,
+      "delta": 0.4,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 5e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -2.4,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 6.956203196454,
+          "flow_at_closed_stock": -1.727496676119,
+          "output_at_closed_stock": 2.637461506156,
+          "rk4_stock": 6.956203196454,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 3.012858897632,
+          "flow_at_closed_stock": -0.510840006116,
+          "output_at_closed_stock": 1.735758882343,
+          "rk4_stock": 3.012858897632,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 1.614603688501,
+          "flow_at_closed_stock": -0.137573248811,
+          "output_at_closed_stock": 1.270670566473,
+          "rk4_stock": 1.614603688501,
+          "t": 10.0
+        }
+      ],
+      "s": 0.4,
+      "scenario_id": "a1_k2_s2_d3"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": null,
+      "delta": 0.0,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 7e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 1.8,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 10.89,
+          "flow_at_closed_stock": 1.98,
+          "output_at_closed_stock": 3.3,
+          "rk4_stock": 10.89,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 20.25,
+          "flow_at_closed_stock": 2.7,
+          "output_at_closed_stock": 4.5,
+          "rk4_stock": 20.25,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 36.0,
+          "flow_at_closed_stock": 3.6,
+          "output_at_closed_stock": 6.0,
+          "rk4_stock": 36.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k2_s3_d0"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 36.0,
+      "delta": 0.1,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 5.7e-14,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": 0.9,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.899277480298,
+          "flow_at_closed_stock": 0.897859287869,
+          "output_at_closed_stock": 3.146311726498,
+          "rk4_stock": 9.899277480298,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 13.421947746843,
+          "flow_at_closed_stock": 0.855963815787,
+          "output_at_closed_stock": 3.663597650786,
+          "rk4_stock": 13.421947746843,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 17.475811220888,
+          "flow_at_closed_stock": 0.760663690428,
+          "output_at_closed_stock": 4.180408020862,
+          "rk4_stock": 17.475811220888,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k2_s3_d1"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 9.0,
+      "delta": 0.2,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 2e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -0.0,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -0.0,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -0.0,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -0.0,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k2_s3_d2"
+    },
+    {
+      "AK_implied_growth": null,
+      "alpha": 0.5,
+      "concave_steady_state": 2.25,
+      "delta": 0.4,
+      "k0": 9.0,
+      "max_abs_closed_vs_RK4": 8e-15,
+      "points": [
+        {
+          "closed_stock": 9.0,
+          "flow_at_closed_stock": -1.8,
+          "output_at_closed_stock": 3.0,
+          "rk4_stock": 9.0,
+          "t": 0.0
+        },
+        {
+          "closed_stock": 7.442508492431,
+          "flow_at_closed_stock": -1.340145719202,
+          "output_at_closed_stock": 2.728096129617,
+          "rk4_stock": 7.442508492431,
+          "t": 1.0
+        },
+        {
+          "closed_stock": 4.209961872554,
+          "flow_at_closed_stock": -0.452893251967,
+          "output_at_closed_stock": 2.051819161757,
+          "rk4_stock": 4.209961872554,
+          "t": 5.0
+        },
+        {
+          "closed_stock": 2.900218962064,
+          "flow_at_closed_stock": -0.138285829913,
+          "output_at_closed_stock": 1.703002924855,
+          "rk4_stock": 2.900218962064,
+          "t": 10.0
+        }
+      ],
+      "s": 0.6,
+      "scenario_id": "a1_k2_s3_d3"
+    }
+  ]
+}
