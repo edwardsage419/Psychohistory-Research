@@ -136,6 +136,14 @@ def audit_structure():
        "episode_anomalies":[x for x in episode_summaries if x["code_issues"]],
        "missing_required_values":dict(sorted(missing.items())),
        "source_episode_structures":episode_summaries,
+       "baseline_libdem0_missing":sum(numeric(r.get("libdem0")) is None for r in rows),
+       "baseline_libdem0_episode_variation_count":sum(
+          len({r.get("libdem0") for r in rs})>1 for rs in episode.values()),
+       "baseline_libdem0_min":str(min(numeric(r["libdem0"]) for r in rows if numeric(r.get("libdem0")) is not None)),
+       "baseline_libdem0_max":str(max(numeric(r["libdem0"]) for r in rows if numeric(r.get("libdem0")) is not None)),
+       "t_missing":sum(numeric(r.get("t")) is None for r in rows),
+       "t_min":str(min(numeric(r["t"]) for r in rows if numeric(r.get("t")) is not None)),
+       "t_max":str(max(numeric(r["t"]) for r in rows if numeric(r.get("t")) is not None)),
        "source_author_Stata_survival_or_breakdown_commands":evidence_lines[:110],
        "original_uploaded_binary_first_24_bytes_hex":raw[ORIGINAL.name][:24].hex(),
        "original_uploaded_binary_byte_length":len(raw[ORIGINAL.name]),
@@ -155,6 +163,10 @@ def audit_structure():
     print("R172_REAL_EPISODE_ANOMALIES",json.dumps(selected["episode_anomalies"][:15],ensure_ascii=False))
     print("R172_UNLABELED_BREAKDOWN_ROWS",json.dumps(selected["unlabeled_breakdown_rows"],ensure_ascii=False))
     print("R172_COUNTRY_COUNTS",selected["country_code_count"],selected["country_name_count"])
+    print("R172_HISTORICAL_BASELINE_COVARIATE",json.dumps({
+        k:selected[k] for k in ("baseline_libdem0_missing",
+        "baseline_libdem0_episode_variation_count","baseline_libdem0_min",
+        "baseline_libdem0_max","t_missing","t_min","t_max")},ensure_ascii=False))
     print("R172_SOURCE_STATA_RELEVANT_LINES",json.dumps(evidence_lines[:28],ensure_ascii=False))
     print("R172_REAL_EPISODE_AUDIT_SHA256",hashlib.sha256(OUTPUT.read_bytes()).hexdigest())
     return selected
