@@ -1,0 +1,132 @@
+name: R153 Wilson Sinkhorn double-constrained 116 tests 24 exact spatial cases
+on:
+  push:
+    paths:
+      - 'research/R153/R153_PRECISE_SOURCE_STAGING.tar.xz'
+      - '.github/workflows/r153-wilson-sinkhorn-116-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  double-constrained-ipf:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify immutable transport and extract original three files
+        run: |
+          echo 'e02af282981b9cb281019f0f1c06dfb56831f1d11117a594f7928908ad8e5a0b  research/R153/R153_PRECISE_SOURCE_STAGING.tar.xz' | sha256sum -c -
+          mkdir -p /tmp/r153
+          python - <<'PY'
+          import tarfile
+          t=tarfile.open('research/R153/R153_PRECISE_SOURCE_STAGING.tar.xz','r:xz')
+          assert sorted(t.getnames())==sorted(['r153_spatial_double_constraint.py','test_r153_spatial_double_constraint.py','R153_EXACT_RESULTS.json'])
+          t.extractall('/tmp/r153')
+          PY
+          cd /tmp/r153
+          echo '7f27797739074f2504dfe10b9e3442441dd72d682c896c4cecdde732157516b1  r153_spatial_double_constraint.py' | sha256sum -c -
+          echo '3a92a292d6e43bb35e13e416751889aa718d5fc40b0f89b9046a332031f56afd  test_r153_spatial_double_constraint.py' | sha256sum -c -
+          echo '5e66403d0011e02e8a5575403b6408d33aff2a8c2b0aa5727cfcac894648f9b7  R153_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Actually run all 116 genuine double-constraint tests
+        run: |
+          cd /tmp/r153
+          python -m unittest -v test_r153_spatial_double_constraint.py
+      - name: Regenerate 24 exact-numbered scenarios and byte-compare entire archived JSON
+        run: |
+          cd /tmp/r153
+          python r153_spatial_double_constraint.py > replay.json
+          cmp replay.json R153_EXACT_RESULTS.json
+          python - <<'PY'
+          import json
+          from decimal import Decimal as D
+          d=json.load(open('replay.json'))
+          assert d['scenarios_count']==24 and len(d['scenarios'])==24
+          assert d['decimal_precision']>=65
+          assert d['residual_tolerance']=='1E-25'
+          assert d['agreement_tolerance']=='1E-24'
+          assert d['all_column_multiplier_effects_absorbed_by_destination_constraint']
+          assert d['structural_zeros_equal_margins_feasible']
+          assert d['structural_zeros_mismatched_margins_infeasible']
+          assert d['exact_2x2_rational_witness']['cross_product_ratio']=='3'
+          assert (d['new_E2'],d['new_E3'])==(0,0)
+          assert not d['original_author_historical_data_reproduced']
+          for s in d['scenarios']:
+              assert s['two_implementations_agree_to_frozen_tolerance']
+              assert max(s['direct_iterations'],s['independent_scaler_iterations'])<=450
+              assert D(s['direct_max_balance_residual'])<=D('1e-25')
+              assert D(s['independent_max_balance_residual'])<=D('1e-25')
+              for i in range(3):
+                  assert abs(sum(D(x) for x in s['balanced_flow_28dp'][i])-D(s['origin_budgets'][i]))<=D('1e-25')
+              for j in range(3):
+                  assert abs(sum(D(s['balanced_flow_28dp'][i][j]) for i in range(3))-D(s['destination_budgets'][j]))<=D('1e-25')
+          assert max(s['direct_iterations'] for s in d['scenarios'])>150
+          print('R153 PASS 116 distinct tests, 24 spatial models, 2 independent algorithms, original fixed 1e-25 precision')
+          PY
+      - name: Construct original deterministic ZIP and confirm source result ZIP identities
+        run: |
+          cd /tmp/r153
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          with zipfile.ZipFile('R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip','w') as z:
+              for name in ('r153_spatial_double_constraint.py','test_r153_spatial_double_constraint.py','R153_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,Path(name).read_bytes())
+          PY
+          echo '86857ec889b25950778e5a16434bd3710970e25717a008861bd7196d7726e05c  R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip' | sha256sum -c -
+          echo '7f27797739074f2504dfe10b9e3442441dd72d682c896c4cecdde732157516b1  r153_spatial_double_constraint.py' | sha256sum -c -
+          echo '3a92a292d6e43bb35e13e416751889aa718d5fc40b0f89b9046a332031f56afd  test_r153_spatial_double_constraint.py' | sha256sum -c -
+          echo '5e66403d0011e02e8a5575403b6408d33aff2a8c2b0aa5727cfcac894648f9b7  R153_EXACT_RESULTS.json' | sha256sum -c -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R153-complete-original-python-${{ matrix.python-version }}
+          path: /tmp/r153/R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip
+          retention-days: 90
+  permanently-publish-full-research:
+    needs: double-constrained-ipf
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce frozen archive again in independent archival job
+        run: |
+          cd research/R153
+          echo 'e02af282981b9cb281019f0f1c06dfb56831f1d11117a594f7928908ad8e5a0b  R153_PRECISE_SOURCE_STAGING.tar.xz' | sha256sum -c -
+          python - <<'PY'
+          import tarfile
+          from pathlib import Path
+          t=tarfile.open('R153_PRECISE_SOURCE_STAGING.tar.xz','r:xz')
+          assert sorted(t.getnames())==sorted(['r153_spatial_double_constraint.py','test_r153_spatial_double_constraint.py','R153_EXACT_RESULTS.json'])
+          t.extractall('.')
+          import zipfile
+          with zipfile.ZipFile('R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip','w') as z:
+              for name in ('r153_spatial_double_constraint.py','test_r153_spatial_double_constraint.py','R153_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,Path(name).read_bytes())
+          PY
+          echo '86857ec889b25950778e5a16434bd3710970e25717a008861bd7196d7726e05c  R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip' | sha256sum -c -
+          echo '7f27797739074f2504dfe10b9e3442441dd72d682c896c4cecdde732157516b1  r153_spatial_double_constraint.py' | sha256sum -c -
+          echo '3a92a292d6e43bb35e13e416751889aa718d5fc40b0f89b9046a332031f56afd  test_r153_spatial_double_constraint.py' | sha256sum -c -
+          echo '5e66403d0011e02e8a5575403b6408d33aff2a8c2b0aa5727cfcac894648f9b7  R153_EXACT_RESULTS.json' | sha256sum -c -
+      - name: Publish original source, genuine tests, full JSON, and ZIP to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R153/r153_spatial_double_constraint.py research/R153/test_r153_spatial_double_constraint.py research/R153/R153_EXACT_RESULTS.json research/R153/R153_Wilson_Sinkhorn_DoublyConstrained_24_Cases_116_Tests.zip
+          if ! git diff --cached --quiet; then
+              git commit -m 'archive(R153): permanent 24 doubly constrained exact-margin spatial interaction worlds and 116 test ZIP'
+              git push origin HEAD:main
+          fi
