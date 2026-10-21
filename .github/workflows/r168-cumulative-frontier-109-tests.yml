@@ -1,4 +1,4 @@
-name: R168 Cumulative Cultural Frontier 64 Worlds 109 Tests Preliminary
+name: R168 Cumulative Cultural Frontier 64 Worlds 109 Tests SHA256 Pinned and Archive
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r168-cumulative-frontier-109-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   exact-three-state-cultural-frontier:
     runs-on: ubuntu-latest
@@ -26,7 +26,8 @@ jobs:
           cd research/R168
           test "$(git hash-object r168_cumulative_cultural_frontier_exact.py)" = "d81684830be360e223111654527d4f8c19800318"
           test "$(git hash-object test_r168_cumulative_cultural_frontier_exact.py)" = "a194f55d7964a9d0a5be72871a644cee4c748b78"
-          sha256sum r168_cumulative_cultural_frontier_exact.py test_r168_cumulative_cultural_frontier_exact.py
+          echo 'f203de0c441fc9d2111899ff8517170697dad3e940ba84b5b99f5a58705efe80  r168_cumulative_cultural_frontier_exact.py' | sha256sum -c -
+          echo '8411ed9df0e0d8a5c6e9f5a70aa9dd352314129898c7fdaf5abac4cd0ee4c215  test_r168_cumulative_cultural_frontier_exact.py' | sha256sum -c -
       - name: Calculate all 64 entire Markov distributions with independent dynamic programming
         run: |
           cd research/R168
@@ -63,7 +64,7 @@ jobs:
           assert controls['full_pool_fhalf_level2_absorption_N16']=='131072'
           print('R168 64 complete synthetic three-state cultural histories and 32 exact kernels verified')
           PY
-          sha256sum R168_EXACT_RESULTS.json
+          echo 'ce460cd0c591b399d86b61671548a75daf68b86b1827f0d8b3274cb376302019  R168_EXACT_RESULTS.json' | sha256sum -c -
       - name: Run 109 original exact unittest methods
         run: |
           cd research/R168
@@ -80,9 +81,46 @@ jobs:
                   info.external_attr=0o644<<16
                   z.writestr(info,open(name,'rb').read())
           PY
-          sha256sum R168_Cumulative_Culture_64_Worlds_109_Tests.zip
+          echo '4da18ba2bd77320d3802a0eb2be38a414efdd3030f1459a375cd4fd0ed9cd7d6  R168_Cumulative_Culture_64_Worlds_109_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R168-64-frozen-artificial-ratchet-models-${{ matrix.python-version }}
           path: research/R168/R168_Cumulative_Culture_64_Worlds_109_Tests.zip
           retention-days: 90
+  publish-permanent-original-results:
+    needs: exact-three-state-cultural-frontier
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce and pin all four complete original source and data artifacts
+        run: |
+          cd research/R168
+          echo 'f203de0c441fc9d2111899ff8517170697dad3e940ba84b5b99f5a58705efe80  r168_cumulative_cultural_frontier_exact.py' | sha256sum -c -
+          echo '8411ed9df0e0d8a5c6e9f5a70aa9dd352314129898c7fdaf5abac4cd0ee4c215  test_r168_cumulative_cultural_frontier_exact.py' | sha256sum -c -
+          python r168_cumulative_cultural_frontier_exact.py > R168_EXACT_RESULTS.json
+          echo 'ce460cd0c591b399d86b61671548a75daf68b86b1827f0d8b3274cb376302019  R168_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -q test_r168_cumulative_cultural_frontier_exact.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R168_Cumulative_Culture_64_Worlds_109_Tests.zip','w') as z:
+              for name in ('r168_cumulative_cultural_frontier_exact.py','test_r168_cumulative_cultural_frontier_exact.py','R168_EXACT_RESULTS.json'):
+                  info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  info.compress_type=zipfile.ZIP_LZMA
+                  info.external_attr=0o644<<16
+                  z.writestr(info,open(name,'rb').read())
+          PY
+          echo '4da18ba2bd77320d3802a0eb2be38a414efdd3030f1459a375cd4fd0ed9cd7d6  R168_Cumulative_Culture_64_Worlds_109_Tests.zip' | sha256sum -c -
+      - name: Archive pinned original JSON and whole source test ZIP on main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R168/R168_EXACT_RESULTS.json research/R168/R168_Cumulative_Culture_64_Worlds_109_Tests.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R168): 64 exact three-level cultural knowledge and group sampling worlds with 109 tests'
+            git push origin HEAD:main
+          fi
