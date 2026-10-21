@@ -1,0 +1,1705 @@
+{
+  "E2_new_independent_human_prediction": 0,
+  "E3_new_external_historical_predictions": 0,
+  "baseline_libdem0_episode_variation_count": 0,
+  "baseline_libdem0_max": "83.00418",
+  "baseline_libdem0_min": "24.485476",
+  "baseline_libdem0_missing": 1,
+  "breakdown_literal_categories": {
+    "": 6,
+    "0": 1680,
+    "1": 45
+  },
+  "columns": [
+    "country_name",
+    "year",
+    "cowcode",
+    "country_text_id",
+    "spell_id",
+    "id",
+    "id2",
+    "t",
+    "transition",
+    "t0",
+    "libdem_index",
+    "libdem",
+    "libdem0",
+    "region",
+    "dregion",
+    "dregM",
+    "dregC",
+    "gdpt",
+    "gdptM",
+    "gdptC",
+    "gdpg",
+    "gdpgM",
+    "gdpgC",
+    "gini",
+    "giniM",
+    "giniC",
+    "scapacity",
+    "scapM",
+    "scapC",
+    "breakdown"
+  ],
+  "country_code_count": 83,
+  "country_name_count": 83,
+  "country_name_to_code_map": [
+    [
+      "Albania",
+      "ALB"
+    ],
+    [
+      "Argentina",
+      "ARG"
+    ],
+    [
+      "Armenia",
+      "ARM"
+    ],
+    [
+      "Bangladesh",
+      "BGD"
+    ],
+    [
+      "Belarus",
+      "BLR"
+    ],
+    [
+      "Benin",
+      "BEN"
+    ],
+    [
+      "Bhutan",
+      "BTN"
+    ],
+    [
+      "Bolivia",
+      "BOL"
+    ],
+    [
+      "Brazil",
+      "BRA"
+    ],
+    [
+      "Bulgaria",
+      "BGR"
+    ],
+    [
+      "Burkina Faso",
+      "BFA"
+    ],
+    [
+      "Cape Verde",
+      "CPV"
+    ],
+    [
+      "Chile",
+      "CHL"
+    ],
+    [
+      "Colombia",
+      "COL"
+    ],
+    [
+      "Comoros",
+      "COM"
+    ],
+    [
+      "Croatia",
+      "HRV"
+    ],
+    [
+      "Czech Republic",
+      "CZE"
+    ],
+    [
+      "Dominican Republic",
+      "DOM"
+    ],
+    [
+      "Ecuador",
+      "ECU"
+    ],
+    [
+      "El Salvador",
+      "SLV"
+    ],
+    [
+      "Estonia",
+      "EST"
+    ],
+    [
+      "Fiji",
+      "FJI"
+    ],
+    [
+      "Georgia",
+      "GEO"
+    ],
+    [
+      "Ghana",
+      "GHA"
+    ],
+    [
+      "Greece",
+      "GRC"
+    ],
+    [
+      "Guatemala",
+      "GTM"
+    ],
+    [
+      "Guyana",
+      "GUY"
+    ],
+    [
+      "Haiti",
+      "HTI"
+    ],
+    [
+      "Honduras",
+      "HND"
+    ],
+    [
+      "Hungary",
+      "HUN"
+    ],
+    [
+      "India",
+      "IND"
+    ],
+    [
+      "Indonesia",
+      "IDN"
+    ],
+    [
+      "Iraq",
+      "IRQ"
+    ],
+    [
+      "Latvia",
+      "LVA"
+    ],
+    [
+      "Lebanon",
+      "LBN"
+    ],
+    [
+      "Lesotho",
+      "LSO"
+    ],
+    [
+      "Liberia",
+      "LBR"
+    ],
+    [
+      "Libya",
+      "LBY"
+    ],
+    [
+      "Lithuania",
+      "LTU"
+    ],
+    [
+      "Macedonia",
+      "MKD"
+    ],
+    [
+      "Madagascar",
+      "MDG"
+    ],
+    [
+      "Malawi",
+      "MWI"
+    ],
+    [
+      "Maldives",
+      "MDV"
+    ],
+    [
+      "Mali",
+      "MLI"
+    ],
+    [
+      "Mauritania",
+      "MRT"
+    ],
+    [
+      "Mexico",
+      "MEX"
+    ],
+    [
+      "Moldova",
+      "MDA"
+    ],
+    [
+      "Mongolia",
+      "MNG"
+    ],
+    [
+      "Namibia",
+      "NAM"
+    ],
+    [
+      "Nepal",
+      "NPL"
+    ],
+    [
+      "Nicaragua",
+      "NIC"
+    ],
+    [
+      "Niger",
+      "NER"
+    ],
+    [
+      "Nigeria",
+      "NGA"
+    ],
+    [
+      "Panama",
+      "PAN"
+    ],
+    [
+      "Paraguay",
+      "PRY"
+    ],
+    [
+      "Peru",
+      "PER"
+    ],
+    [
+      "Philippines",
+      "PHL"
+    ],
+    [
+      "Poland",
+      "POL"
+    ],
+    [
+      "Portugal",
+      "PRT"
+    ],
+    [
+      "Romania",
+      "ROU"
+    ],
+    [
+      "Russia",
+      "RUS"
+    ],
+    [
+      "Senegal",
+      "SEN"
+    ],
+    [
+      "Serbia",
+      "SRB"
+    ],
+    [
+      "Sierra Leone",
+      "SLE"
+    ],
+    [
+      "Slovakia",
+      "SVK"
+    ],
+    [
+      "Slovenia",
+      "SVN"
+    ],
+    [
+      "Solomon Islands",
+      "SLB"
+    ],
+    [
+      "South Africa",
+      "ZAF"
+    ],
+    [
+      "South Korea",
+      "KOR"
+    ],
+    [
+      "Spain",
+      "ESP"
+    ],
+    [
+      "Sri Lanka",
+      "LKA"
+    ],
+    [
+      "Suriname",
+      "SUR"
+    ],
+    [
+      "S����o Tom���� and Pr����ncipe",
+      "STP"
+    ],
+    [
+      "Taiwan",
+      "TWN"
+    ],
+    [
+      "Tanzania",
+      "TZA"
+    ],
+    [
+      "Thailand",
+      "THA"
+    ],
+    [
+      "Timor-Leste",
+      "TLS"
+    ],
+    [
+      "Tunisia",
+      "TUN"
+    ],
+    [
+      "Turkey",
+      "TUR"
+    ],
+    [
+      "Ukraine",
+      "UKR"
+    ],
+    [
+      "Uruguay",
+      "URY"
+    ],
+    [
+      "Vanuatu",
+      "VUT"
+    ],
+    [
+      "Zambia",
+      "ZMB"
+    ]
+  ],
+  "episode_anomalies": [],
+  "episode_id_count": 103,
+  "episodes_with_anomalies": 0,
+  "episodes_with_last_year_event": 45,
+  "episodes_without_breakdown": 58,
+  "event_rows_count_if_breakdown_1": 45,
+  "historical_hazard_model_fitted": false,
+  "license": "CC0-1.0",
+  "maximum_year": 2017,
+  "minimum_year": 1975,
+  "missing_required_values": {
+    "breakdown": 6
+  },
+  "original_uploaded_binary_byte_length": 265851,
+  "original_uploaded_binary_first_24_bytes_hex": "3c73746174615f6474613e3c6865616465723e3c72656c65",
+  "person_or_country_event_prediction_scored": false,
+  "phase": "REAL_DATA_RISK_SET_AND_ORIGINAL_CODE_ELIGIBILITY_ONLY",
+  "research_id": "R172",
+  "rows": 1731,
+  "source_SHA256": {
+    "Original_Replication_code_Stata.do": "664cf425684b97b8a7bf835ed748955e2e34426e8a14c0db8abbf98a4fb2e3ad",
+    "Original_Replication_dataset.tab": "ed8e29368d06d0fa6d597df567eb21e7ac27fa849e1cdfd90b76167c8b5778ba",
+    "Original_Replication_dataset_as_uploaded.bin": "ddca691b25a664ce13ef2471184e3d5ae3ed62cb72521e0593bff770efb0e4e6"
+  },
+  "source_author_Stata_survival_or_breakdown_commands": [
+    {
+      "line_number": 10,
+      "text": "gen brmark = libdem if breakdown==1 // labels for figures"
+    }
+  ],
+  "source_dataset": "doi:10.7910/DVN/WFO1N1",
+  "source_dataset_version": "1.1",
+  "source_episode_structures": [
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "ALB",
+      "first_calendar_year": 2002,
+      "id": "ALB2001",
+      "last_calendar_year": 2017,
+      "n_observed_years": 16,
+      "possible_right_censoring": true,
+      "transition_reported": "2001"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "ARG",
+      "first_calendar_year": 1984,
+      "id": "ARG1984",
+      "last_calendar_year": 2017,
+      "n_observed_years": 34,
+      "possible_right_censoring": true,
+      "transition_reported": "1984"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "ARM",
+      "first_calendar_year": 1991,
+      "id": "ARM1990",
+      "last_calendar_year": 1995,
+      "n_observed_years": 5,
+      "possible_right_censoring": false,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "BEN",
+      "first_calendar_year": 1992,
+      "id": "BEN1991",
+      "last_calendar_year": 2017,
+      "n_observed_years": 26,
+      "possible_right_censoring": true,
+      "transition_reported": "1991"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "BFA",
+      "first_calendar_year": 1994,
+      "id": "BFA1993",
+      "last_calendar_year": 2014,
+      "n_observed_years": 21,
+      "possible_right_censoring": false,
+      "transition_reported": "1993"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "BGD",
+      "first_calendar_year": 1992,
+      "id": "BGD1991",
+      "last_calendar_year": 2006,
+      "n_observed_years": 15,
+      "possible_right_censoring": false,
+      "transition_reported": "1991"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "BGD",
+      "first_calendar_year": 2010,
+      "id": "BGD2009",
+      "last_calendar_year": 2011,
+      "n_observed_years": 2,
+      "possible_right_censoring": false,
+      "transition_reported": "2009"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "BGR",
+      "first_calendar_year": 1991,
+      "id": "BGR1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "BLR",
+      "first_calendar_year": 1993,
+      "id": "BLR1992",
+      "last_calendar_year": 1996,
+      "n_observed_years": 4,
+      "possible_right_censoring": false,
+      "transition_reported": "1992"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "BOL",
+      "first_calendar_year": 1986,
+      "id": "BOL1985",
+      "last_calendar_year": 2017,
+      "n_observed_years": 32,
+      "possible_right_censoring": true,
+      "transition_reported": "1985"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "BRA",
+      "first_calendar_year": 1987,
+      "id": "BRA1986",
+      "last_calendar_year": 2017,
+      "n_observed_years": 31,
+      "possible_right_censoring": true,
+      "transition_reported": "1986"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "BTN",
+      "first_calendar_year": 2009,
+      "id": "BTN2008",
+      "last_calendar_year": 2017,
+      "n_observed_years": 9,
+      "possible_right_censoring": true,
+      "transition_reported": "2008"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "CHL",
+      "first_calendar_year": 1990,
+      "id": "CHL1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 28,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "COL",
+      "first_calendar_year": 1992,
+      "id": "COL1991",
+      "last_calendar_year": 2017,
+      "n_observed_years": 26,
+      "possible_right_censoring": true,
+      "transition_reported": "1991"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "COM",
+      "first_calendar_year": 2007,
+      "id": "COM2006",
+      "last_calendar_year": 2015,
+      "n_observed_years": 9,
+      "possible_right_censoring": false,
+      "transition_reported": "2006"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "CPV",
+      "first_calendar_year": 1992,
+      "id": "CPV1991",
+      "last_calendar_year": 2017,
+      "n_observed_years": 26,
+      "possible_right_censoring": true,
+      "transition_reported": "1991"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "CZE",
+      "first_calendar_year": 1991,
+      "id": "CZE1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "DOM",
+      "first_calendar_year": 1983,
+      "id": "DOM1982",
+      "last_calendar_year": 1990,
+      "n_observed_years": 8,
+      "possible_right_censoring": false,
+      "transition_reported": "1982"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "DOM",
+      "first_calendar_year": 1997,
+      "id": "DOM1996",
+      "last_calendar_year": 2017,
+      "n_observed_years": 21,
+      "possible_right_censoring": true,
+      "transition_reported": "1996"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "ECU",
+      "first_calendar_year": 1980,
+      "id": "ECU1979",
+      "last_calendar_year": 2017,
+      "n_observed_years": 38,
+      "possible_right_censoring": true,
+      "transition_reported": "1979"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "ESP",
+      "first_calendar_year": 1978,
+      "id": "ESP1977",
+      "last_calendar_year": 2017,
+      "n_observed_years": 40,
+      "possible_right_censoring": true,
+      "transition_reported": "1977"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "EST",
+      "first_calendar_year": 1993,
+      "id": "EST1992",
+      "last_calendar_year": 2017,
+      "n_observed_years": 25,
+      "possible_right_censoring": true,
+      "transition_reported": "1992"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "FJI",
+      "first_calendar_year": 1993,
+      "id": "FJI1992",
+      "last_calendar_year": 2000,
+      "n_observed_years": 8,
+      "possible_right_censoring": false,
+      "transition_reported": "1992"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "FJI",
+      "first_calendar_year": 2002,
+      "id": "FJI2002",
+      "last_calendar_year": 2006,
+      "n_observed_years": 5,
+      "possible_right_censoring": false,
+      "transition_reported": "2002"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "GEO",
+      "first_calendar_year": 2005,
+      "id": "GEO2004",
+      "last_calendar_year": 2017,
+      "n_observed_years": 13,
+      "possible_right_censoring": true,
+      "transition_reported": "2004"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "GHA",
+      "first_calendar_year": 1980,
+      "id": "GHA1979",
+      "last_calendar_year": 1981,
+      "n_observed_years": 2,
+      "possible_right_censoring": false,
+      "transition_reported": "1979"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "GHA",
+      "first_calendar_year": 1997,
+      "id": "GHA1996",
+      "last_calendar_year": 2017,
+      "n_observed_years": 21,
+      "possible_right_censoring": true,
+      "transition_reported": "1996"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "GRC",
+      "first_calendar_year": 1975,
+      "id": "GRC1975",
+      "last_calendar_year": 2017,
+      "n_observed_years": 43,
+      "possible_right_censoring": true,
+      "transition_reported": "1975"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "GTM",
+      "first_calendar_year": 1997,
+      "id": "GTM1996",
+      "last_calendar_year": 2017,
+      "n_observed_years": 21,
+      "possible_right_censoring": true,
+      "transition_reported": "1996"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "GUY",
+      "first_calendar_year": 1998,
+      "id": "GUY1997",
+      "last_calendar_year": 2017,
+      "n_observed_years": 20,
+      "possible_right_censoring": true,
+      "transition_reported": "1997"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "HND",
+      "first_calendar_year": 1990,
+      "id": "HND1990",
+      "last_calendar_year": 2009,
+      "n_observed_years": 20,
+      "possible_right_censoring": false,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "HRV",
+      "first_calendar_year": 2000,
+      "id": "HRV2000",
+      "last_calendar_year": 2017,
+      "n_observed_years": 18,
+      "possible_right_censoring": true,
+      "transition_reported": "2000"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "HTI",
+      "first_calendar_year": 2008,
+      "id": "HTI2007",
+      "last_calendar_year": 2010,
+      "n_observed_years": 3,
+      "possible_right_censoring": false,
+      "transition_reported": "2007"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "HUN",
+      "first_calendar_year": 1991,
+      "id": "HUN1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "IDN",
+      "first_calendar_year": 2000,
+      "id": "IDN1999",
+      "last_calendar_year": 2017,
+      "n_observed_years": 18,
+      "possible_right_censoring": true,
+      "transition_reported": "1999"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "IND",
+      "first_calendar_year": 1977,
+      "id": "IND1977",
+      "last_calendar_year": 2017,
+      "n_observed_years": 41,
+      "possible_right_censoring": true,
+      "transition_reported": "1977"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "IRQ",
+      "first_calendar_year": 2007,
+      "id": "IRQ2006",
+      "last_calendar_year": 2010,
+      "n_observed_years": 4,
+      "possible_right_censoring": false,
+      "transition_reported": "2006"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "KOR",
+      "first_calendar_year": 1988,
+      "id": "KOR1988",
+      "last_calendar_year": 2017,
+      "n_observed_years": 30,
+      "possible_right_censoring": true,
+      "transition_reported": "1988"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "LBN",
+      "first_calendar_year": 2009,
+      "id": "LBN2009",
+      "last_calendar_year": 2017,
+      "n_observed_years": 9,
+      "possible_right_censoring": true,
+      "transition_reported": "2009"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "LBR",
+      "first_calendar_year": 2007,
+      "id": "LBR2006",
+      "last_calendar_year": 2017,
+      "n_observed_years": 11,
+      "possible_right_censoring": true,
+      "transition_reported": "2006"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "LBY",
+      "first_calendar_year": 2013,
+      "id": "LBY2012",
+      "last_calendar_year": 2014,
+      "n_observed_years": 2,
+      "possible_right_censoring": false,
+      "transition_reported": "2012"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "LKA",
+      "first_calendar_year": 1995,
+      "id": "LKA1994",
+      "last_calendar_year": 2005,
+      "n_observed_years": 11,
+      "possible_right_censoring": false,
+      "transition_reported": "1994"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "LSO",
+      "first_calendar_year": 1994,
+      "id": "LSO1993",
+      "last_calendar_year": 1994,
+      "n_observed_years": 1,
+      "possible_right_censoring": false,
+      "transition_reported": "1993"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "LSO",
+      "first_calendar_year": 2003,
+      "id": "LSO2002",
+      "last_calendar_year": 2017,
+      "n_observed_years": 15,
+      "possible_right_censoring": true,
+      "transition_reported": "2002"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "LTU",
+      "first_calendar_year": 1991,
+      "id": "LTU1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "LVA",
+      "first_calendar_year": 1991,
+      "id": "LVA1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MDA",
+      "first_calendar_year": 1995,
+      "id": "MDA1994",
+      "last_calendar_year": 2005,
+      "n_observed_years": 11,
+      "possible_right_censoring": false,
+      "transition_reported": "1994"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "MDA",
+      "first_calendar_year": 2010,
+      "id": "MDA2009",
+      "last_calendar_year": 2017,
+      "n_observed_years": 8,
+      "possible_right_censoring": true,
+      "transition_reported": "2009"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MDG",
+      "first_calendar_year": 1994,
+      "id": "MDG1993",
+      "last_calendar_year": 2001,
+      "n_observed_years": 8,
+      "possible_right_censoring": false,
+      "transition_reported": "1993"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MDV",
+      "first_calendar_year": 2009,
+      "id": "MDV2008",
+      "last_calendar_year": 2013,
+      "n_observed_years": 5,
+      "possible_right_censoring": false,
+      "transition_reported": "2008"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "MEX",
+      "first_calendar_year": 1997,
+      "id": "MEX1996",
+      "last_calendar_year": 2017,
+      "n_observed_years": 21,
+      "possible_right_censoring": true,
+      "transition_reported": "1996"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MKD",
+      "first_calendar_year": 1999,
+      "id": "MKD1998",
+      "last_calendar_year": 1999,
+      "n_observed_years": 1,
+      "possible_right_censoring": false,
+      "transition_reported": "1998"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MKD",
+      "first_calendar_year": 2003,
+      "id": "MKD2002",
+      "last_calendar_year": 2012,
+      "n_observed_years": 10,
+      "possible_right_censoring": false,
+      "transition_reported": "2002"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MLI",
+      "first_calendar_year": 1993,
+      "id": "MLI1992",
+      "last_calendar_year": 2012,
+      "n_observed_years": 20,
+      "possible_right_censoring": false,
+      "transition_reported": "1992"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "MNG",
+      "first_calendar_year": 1991,
+      "id": "MNG1991",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1991"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MRT",
+      "first_calendar_year": 2008,
+      "id": "MRT2007",
+      "last_calendar_year": 2008,
+      "n_observed_years": 1,
+      "possible_right_censoring": false,
+      "transition_reported": "2007"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MRT",
+      "first_calendar_year": 2010,
+      "id": "MRT2009",
+      "last_calendar_year": 2013,
+      "n_observed_years": 4,
+      "possible_right_censoring": false,
+      "transition_reported": "2009"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "MWI",
+      "first_calendar_year": 1995,
+      "id": "MWI1994",
+      "last_calendar_year": 2004,
+      "n_observed_years": 10,
+      "possible_right_censoring": false,
+      "transition_reported": "1994"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "MWI",
+      "first_calendar_year": 2010,
+      "id": "MWI2009",
+      "last_calendar_year": 2017,
+      "n_observed_years": 8,
+      "possible_right_censoring": true,
+      "transition_reported": "2009"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "NAM",
+      "first_calendar_year": 1991,
+      "id": "NAM1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "NER",
+      "first_calendar_year": 1994,
+      "id": "NER1993",
+      "last_calendar_year": 1996,
+      "n_observed_years": 3,
+      "possible_right_censoring": false,
+      "transition_reported": "1993"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "NER",
+      "first_calendar_year": 2000,
+      "id": "NER2000",
+      "last_calendar_year": 2009,
+      "n_observed_years": 10,
+      "possible_right_censoring": false,
+      "transition_reported": "2000"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "NER",
+      "first_calendar_year": 2012,
+      "id": "NER2011",
+      "last_calendar_year": 2017,
+      "n_observed_years": 6,
+      "possible_right_censoring": true,
+      "transition_reported": "2011"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "NGA",
+      "first_calendar_year": 2012,
+      "id": "NGA2011",
+      "last_calendar_year": 2017,
+      "n_observed_years": 6,
+      "possible_right_censoring": true,
+      "transition_reported": "2011"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "NIC",
+      "first_calendar_year": 1991,
+      "id": "NIC1990",
+      "last_calendar_year": 2010,
+      "n_observed_years": 20,
+      "possible_right_censoring": false,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "NPL",
+      "first_calendar_year": 2009,
+      "id": "NPL2008",
+      "last_calendar_year": 2012,
+      "n_observed_years": 4,
+      "possible_right_censoring": false,
+      "transition_reported": "2008"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "PAN",
+      "first_calendar_year": 1992,
+      "id": "PAN1991",
+      "last_calendar_year": 2017,
+      "n_observed_years": 26,
+      "possible_right_censoring": true,
+      "transition_reported": "1991"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "PER",
+      "first_calendar_year": 1981,
+      "id": "PER1980",
+      "last_calendar_year": 1992,
+      "n_observed_years": 12,
+      "possible_right_censoring": false,
+      "transition_reported": "1980"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "PER",
+      "first_calendar_year": 2002,
+      "id": "PER2001",
+      "last_calendar_year": 2017,
+      "n_observed_years": 16,
+      "possible_right_censoring": true,
+      "transition_reported": "2001"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "PHL",
+      "first_calendar_year": 1988,
+      "id": "PHL1987",
+      "last_calendar_year": 2004,
+      "n_observed_years": 17,
+      "possible_right_censoring": false,
+      "transition_reported": "1987"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "PHL",
+      "first_calendar_year": 2009,
+      "id": "PHL2008",
+      "last_calendar_year": 2017,
+      "n_observed_years": 9,
+      "possible_right_censoring": true,
+      "transition_reported": "2008"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "POL",
+      "first_calendar_year": 1991,
+      "id": "POL1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "PRT",
+      "first_calendar_year": 1977,
+      "id": "PRT1976",
+      "last_calendar_year": 2017,
+      "n_observed_years": 41,
+      "possible_right_censoring": true,
+      "transition_reported": "1976"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "PRY",
+      "first_calendar_year": 1993,
+      "id": "PRY1993",
+      "last_calendar_year": 2017,
+      "n_observed_years": 25,
+      "possible_right_censoring": true,
+      "transition_reported": "1993"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "ROU",
+      "first_calendar_year": 1991,
+      "id": "ROU1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "RUS",
+      "first_calendar_year": 1992,
+      "id": "RUS1992",
+      "last_calendar_year": 1993,
+      "n_observed_years": 2,
+      "possible_right_censoring": false,
+      "transition_reported": "1992"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "RUS",
+      "first_calendar_year": 1995,
+      "id": "RUS1994",
+      "last_calendar_year": 2000,
+      "n_observed_years": 6,
+      "possible_right_censoring": false,
+      "transition_reported": "1994"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "SEN",
+      "first_calendar_year": 1984,
+      "id": "SEN1983",
+      "last_calendar_year": 2017,
+      "n_observed_years": 34,
+      "possible_right_censoring": true,
+      "transition_reported": "1983"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "SLB",
+      "first_calendar_year": 1978,
+      "id": "SLB1978",
+      "last_calendar_year": 1999,
+      "n_observed_years": 22,
+      "possible_right_censoring": false,
+      "transition_reported": "1978"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "SLB",
+      "first_calendar_year": 2002,
+      "id": "SLB2001",
+      "last_calendar_year": 2005,
+      "n_observed_years": 4,
+      "possible_right_censoring": false,
+      "transition_reported": "2001"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "SLB",
+      "first_calendar_year": 2007,
+      "id": "SLB2006",
+      "last_calendar_year": 2017,
+      "n_observed_years": 11,
+      "possible_right_censoring": true,
+      "transition_reported": "2006"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "SLE",
+      "first_calendar_year": 2003,
+      "id": "SLE2003",
+      "last_calendar_year": 2017,
+      "n_observed_years": 15,
+      "possible_right_censoring": true,
+      "transition_reported": "2003"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "SLV",
+      "first_calendar_year": 1995,
+      "id": "SLV1994",
+      "last_calendar_year": 2017,
+      "n_observed_years": 23,
+      "possible_right_censoring": true,
+      "transition_reported": "1994"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "SRB",
+      "first_calendar_year": 2001,
+      "id": "SRB2000",
+      "last_calendar_year": 2017,
+      "n_observed_years": 17,
+      "possible_right_censoring": false,
+      "transition_reported": "2000"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "STP",
+      "first_calendar_year": 1992,
+      "id": "STP1991",
+      "last_calendar_year": 2017,
+      "n_observed_years": 26,
+      "possible_right_censoring": true,
+      "transition_reported": "1991"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "SUR",
+      "first_calendar_year": 1989,
+      "id": "SUR1988",
+      "last_calendar_year": 1990,
+      "n_observed_years": 2,
+      "possible_right_censoring": false,
+      "transition_reported": "1988"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "SUR",
+      "first_calendar_year": 1992,
+      "id": "SUR1991",
+      "last_calendar_year": 2017,
+      "n_observed_years": 26,
+      "possible_right_censoring": true,
+      "transition_reported": "1991"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "SVK",
+      "first_calendar_year": 1995,
+      "id": "SVK1994",
+      "last_calendar_year": 2017,
+      "n_observed_years": 23,
+      "possible_right_censoring": true,
+      "transition_reported": "1994"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "SVN",
+      "first_calendar_year": 1991,
+      "id": "SVN1990",
+      "last_calendar_year": 2017,
+      "n_observed_years": 27,
+      "possible_right_censoring": true,
+      "transition_reported": "1990"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "THA",
+      "first_calendar_year": 1997,
+      "id": "THA1997",
+      "last_calendar_year": 2006,
+      "n_observed_years": 10,
+      "possible_right_censoring": false,
+      "transition_reported": "1997"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "THA",
+      "first_calendar_year": 2012,
+      "id": "THA2011",
+      "last_calendar_year": 2013,
+      "n_observed_years": 2,
+      "possible_right_censoring": false,
+      "transition_reported": "2011"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "TLS",
+      "first_calendar_year": 2002,
+      "id": "TLS2002",
+      "last_calendar_year": 2017,
+      "n_observed_years": 16,
+      "possible_right_censoring": true,
+      "transition_reported": "2002"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "TUN",
+      "first_calendar_year": 2012,
+      "id": "TUN2011",
+      "last_calendar_year": 2017,
+      "n_observed_years": 6,
+      "possible_right_censoring": true,
+      "transition_reported": "2011"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "TUR",
+      "first_calendar_year": 1988,
+      "id": "TUR1987",
+      "last_calendar_year": 2014,
+      "n_observed_years": 27,
+      "possible_right_censoring": false,
+      "transition_reported": "1987"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "TWN",
+      "first_calendar_year": 1997,
+      "id": "TWN1997",
+      "last_calendar_year": 2017,
+      "n_observed_years": 21,
+      "possible_right_censoring": true,
+      "transition_reported": "1997"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "TZA",
+      "first_calendar_year": 1996,
+      "id": "TZA1995",
+      "last_calendar_year": 2000,
+      "n_observed_years": 5,
+      "possible_right_censoring": false,
+      "transition_reported": "1995"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "TZA",
+      "first_calendar_year": 2006,
+      "id": "TZA2005",
+      "last_calendar_year": 2016,
+      "n_observed_years": 11,
+      "possible_right_censoring": false,
+      "transition_reported": "2005"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "UKR",
+      "first_calendar_year": 1995,
+      "id": "UKR1994",
+      "last_calendar_year": 1998,
+      "n_observed_years": 4,
+      "possible_right_censoring": false,
+      "transition_reported": "1994"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "UKR",
+      "first_calendar_year": 2007,
+      "id": "UKR2006",
+      "last_calendar_year": 2014,
+      "n_observed_years": 8,
+      "possible_right_censoring": false,
+      "transition_reported": "2006"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "URY",
+      "first_calendar_year": 1986,
+      "id": "URY1985",
+      "last_calendar_year": 2017,
+      "n_observed_years": 32,
+      "possible_right_censoring": true,
+      "transition_reported": "1985"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "VUT",
+      "first_calendar_year": 1980,
+      "id": "VUT1980",
+      "last_calendar_year": 2017,
+      "n_observed_years": 38,
+      "possible_right_censoring": true,
+      "transition_reported": "1980"
+    },
+    {
+      "breakdown_events": 0,
+      "breakdown_last_observed_year": false,
+      "code_issues": [],
+      "country_id": "ZAF",
+      "first_calendar_year": 1996,
+      "id": "ZAF1995",
+      "last_calendar_year": 2017,
+      "n_observed_years": 22,
+      "possible_right_censoring": true,
+      "transition_reported": "1995"
+    },
+    {
+      "breakdown_events": 1,
+      "breakdown_last_observed_year": true,
+      "code_issues": [],
+      "country_id": "ZMB",
+      "first_calendar_year": 2001,
+      "id": "ZMB2000",
+      "last_calendar_year": 2014,
+      "n_observed_years": 14,
+      "possible_right_censoring": false,
+      "transition_reported": "2000"
+    }
+  ],
+  "t_max": "42.0",
+  "t_min": "0.0",
+  "t_missing": 0,
+  "train_and_holdout_protocol_frozen": false,
+  "unlabeled_breakdown_rows": [
+    {
+      "country": "Nigeria",
+      "episode_id": "NGA2011",
+      "is_last_year_of_episode": false,
+      "t": "0.0",
+      "transition": "2011",
+      "year": "2012"
+    },
+    {
+      "country": "Nigeria",
+      "episode_id": "NGA2011",
+      "is_last_year_of_episode": false,
+      "t": "1.0",
+      "transition": "2011",
+      "year": "2013"
+    },
+    {
+      "country": "Nigeria",
+      "episode_id": "NGA2011",
+      "is_last_year_of_episode": false,
+      "t": "2.0",
+      "transition": "2011",
+      "year": "2014"
+    },
+    {
+      "country": "Nigeria",
+      "episode_id": "NGA2011",
+      "is_last_year_of_episode": false,
+      "t": "3.0",
+      "transition": "2011",
+      "year": "2015"
+    },
+    {
+      "country": "Nigeria",
+      "episode_id": "NGA2011",
+      "is_last_year_of_episode": false,
+      "t": "4.0",
+      "transition": "2011",
+      "year": "2016"
+    },
+    {
+      "country": "Nigeria",
+      "episode_id": "NGA2011",
+      "is_last_year_of_episode": true,
+      "t": "5.0",
+      "transition": "2011",
+      "year": "2017"
+    }
+  ]
+}
