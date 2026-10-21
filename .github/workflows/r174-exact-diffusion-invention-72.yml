@@ -1,0 +1,71 @@
+name: R174 Diffusion vs Invention 72 Exact 4 Node Worlds
+on:
+  push:
+    paths:
+      - 'research/R174/r174_diffusion_invention_exact.py'
+      - '.github/workflows/r174-exact-diffusion-invention-72.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-independent-math-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 16 source-distinct synthetic algebra test cases
+        run: |
+          cd research/R174
+          python r174_diffusion_invention_exact.py --self-test
+  run-frozen-exact-72-worlds-and-archive:
+    needs: two-python-independent-math-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Evaluate complete probabilities under the two independent Fraction transition methods
+        run: |
+          cd research/R174
+          python r174_diffusion_invention_exact.py --run-and-archive
+          python - <<'PY'
+          import json,hashlib,zipfile
+          from pathlib import Path
+          r=json.loads(Path('R174_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R174_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['worlds']==72 and r['periods_per_world']==5 and len(r['cases'])==72
+          assert a['state_probability_cells']==5760
+          assert a['exact_results_sha256']==hashlib.sha256(Path('R174_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert all(x['independent_full_distribution_agreement'] for x in r['cases'])
+          assert all(x['TV_by_period']==['0']*5 for x in r['invention_vs_diffusion_TV']
+                     if x['graph']=='star' and x['seed']==0)
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R174_Diffusion_Invention_72_Worlds_Exact_Archive.zip') as z:
+            assert len(z.namelist())==4 and z.testzip() is None
+          print('R174_EXACT_ARTIFICIAL_E1_72_FULL_DISTRIBUTIONS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R174-diffusion-invention-72-exact-worlds
+          path: |
+            research/R174/R174_EXACT_RESULTS.json
+            research/R174/R174_FINAL_MACHINE_ACCEPTANCE.json
+            research/R174/R174_Diffusion_Invention_72_Worlds_Exact_Archive.zip
+          retention-days: 90
+      - name: Publish synthetic E1 with no observational promotion
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R174/R174_EXACT_RESULTS.json research/R174/R174_FINAL_MACHINE_ACCEPTANCE.json research/R174/R174_Diffusion_Invention_72_Worlds_Exact_Archive.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R174): exact artificial invention-diffusion 72 worlds and nonidentification proof'
+            git push origin HEAD:main
+          fi
