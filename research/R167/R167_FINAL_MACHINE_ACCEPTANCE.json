@@ -1,0 +1,148 @@
+{
+  "id": "R167",
+  "date": "2026-10-21",
+  "original_catalogue": "P2 / 07-009 Cultural Group Selection",
+  "status": "CLOSED_BOUNDED_E1_72_TWO_GROUP_COVARIANCE_WORLDS_103_UNIQUE_TESTS",
+  "precode_protocol_commit": "a7ba75f430f59217d9518a680fdebb70beb32d4",
+  "sources": [
+    {
+      "authors": [
+        "Robert Boyd",
+        "Peter J. Richerson"
+      ],
+      "year": 2002,
+      "doi": "10.1006/jtbi.2001.2515",
+      "publisher_original_abstract_checked": true,
+      "source_structured_population_equations_reproduced": false
+    },
+    {
+      "author": "Joseph Henrich",
+      "year": 2004,
+      "doi": "10.1016/S0167-2681(03)00094-5",
+      "publisher_abstract_checked": true,
+      "original_coevolutionary_group_models_reproduced": false
+    },
+    {
+      "author": "George R. Price",
+      "year": 1970,
+      "doi": "10.1038/227520a0",
+      "journal": "Nature 227:520-521",
+      "publisher_original_issue_and_PubMed_record_checked": true,
+      "original_general_price_equation_reproduced": false
+    }
+  ],
+  "project_toy_scope": "Two fictional groups with exogenously prescribed within-group cultural token frequency response and between-group population reweighting; no observed group processes",
+  "initial_group_pairs": [
+    [
+      "1/4",
+      "3/4"
+    ],
+    [
+      "1/3",
+      "2/3"
+    ],
+    [
+      "1/5",
+      "4/5"
+    ],
+    [
+      "1/2",
+      "1/2"
+    ]
+  ],
+  "initial_high_group_weights": [
+    "1/2",
+    "3/4"
+  ],
+  "within_delta": [
+    "-1/4",
+    "0",
+    "1/4"
+  ],
+  "between_kappa": [
+    0,
+    1,
+    2
+  ],
+  "frozen_world_count": 72,
+  "timepoints_per_world": 4,
+  "exact_oracles": [
+    "direct normalized Fraction group weights and local transitions",
+    "separate algebraic two-group covariance factorization and independently derived group masses"
+  ],
+  "all_72_full_paths_exactly_equal": true,
+  "simpson_style_counterexample": {
+    "start_group_A_fractions": [
+      "1/4",
+      "3/4"
+    ],
+    "start_group_weights": [
+      "1/2",
+      "1/2"
+    ],
+    "within_delta": "1/4",
+    "between_kappa": 2,
+    "new_group_A_fractions": [
+      "13/64",
+      "45/64"
+    ],
+    "within_total_contribution": "-3/64",
+    "between_total_contribution": "1/16",
+    "net_change": "1/64",
+    "new_overall_A": "33/64",
+    "no_real_group_causes_inferred": true
+  },
+  "CI": {
+    "first_run": 39534151899,
+    "pinned_final_run": 39534227555,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39534227555",
+    "conclusion": "success",
+    "final_jobs": [
+      {
+        "id": 119007015277,
+        "python": "3.11",
+        "distinct_methods": 103,
+        "conclusion": "success"
+      },
+      {
+        "id": 119007015478,
+        "python": "3.12",
+        "distinct_methods": 103,
+        "conclusion": "success"
+      },
+      {
+        "id": 119007060855,
+        "role": "pinned original JSON/source ZIP publisher",
+        "distinct_methods": 103,
+        "conclusion": "success"
+      }
+    ],
+    "distinct_unittest_methods": 103,
+    "total_actual_unittest_executions": 515,
+    "failures": 0
+  },
+  "archive_commit": "1925c0144381562189d440a7794787112aa396cd",
+  "git_blob_sha1": {
+    "r167_cultural_group_covariance_exact.py": "48bb2c625ed2c7c70e8e54984be75f7499b78a1e",
+    "test_r167_cultural_group_covariance_exact.py": "e7dbd446626e8801cfd8cc8cc6307d5d29d0e183",
+    "R167_EXACT_RESULTS.json": "86839d8d473e4aee2f450d8c598797299ec1cf41",
+    "R167_Cultural_Group_72_Worlds_103_Tests.zip": "9a81ad03712bd6743d214a575d9265c9f8081544"
+  },
+  "sha256": {
+    "r167_cultural_group_covariance_exact.py": "bf005a409c97045c0beb2ca88ee652ca08978ac01d32a8e004b22805cfad8ae6",
+    "test_r167_cultural_group_covariance_exact.py": "88394c087e33ebd816b39077814b39ec78f403a2f7004ec45fca3e3a0e902561",
+    "R167_EXACT_RESULTS.json": "118d8f8d37832777e265205af3f4d05811bf543656c46f2e24873c9ae93a839a",
+    "R167_Cultural_Group_72_Worlds_103_Tests.zip": "71209080b55f1fbcb9e4d0365635d6ec5af2c2ceb2633097ef4e6ab7ce5116f6"
+  },
+  "new_E2_human_independent_group_behavior_prediction": 0,
+  "new_E3_real_historical_group_forecasts": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next": {
+    "research_id": "R168",
+    "original_catalogue_id": "07-010",
+    "priority": "P1",
+    "name": "Cumulative Cultural Evolution"
+  },
+  "sequence": "finish all original R series, then classify and fuse"
+}
