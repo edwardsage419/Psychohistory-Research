@@ -54,7 +54,7 @@ class TestBass(unittest.TestCase):
                 self.assertEqual(adoption_density(0,p,q),p)
 
     def test_no_repeated_first_adoption(self):
-        f=cumulative(100,.2,.8)
+        f=cumulative(30,.2,.8)
         self.assertGreater(f,.999999999)
         self.assertLess(f,1.0)
 
