@@ -1,0 +1,78 @@
+name: R183 Logistic Separation 45 Exact Count Worlds
+on:
+  push:
+    paths:
+      - 'research/R183/r183_logistic_separation_exact.py'
+      - '.github/workflows/r183-logistic-separation-45.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-logistic-score-and-separation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify likelihood and score, source SHA, and exact Brier expectations
+        run: |
+          cd research/R183
+          python r183_logistic_separation_exact.py --test
+  full-source-enumeration-and-permanent-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-logistic-score-and-separation-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Evaluate 45 exact worlds and all 4125 ordered training pairs
+        run: |
+          cd research/R183
+          python r183_logistic_separation_exact.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from hashlib import sha256
+          from pathlib import Path
+          d=json.loads(Path('R183_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R183_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert d['world_count']==45 and len(d['worlds'])==45
+          assert d['complete_training_count_pairs']==4125
+          assert len(d['same_true_rate_n4_prescored_comparison'])==5
+          assert all(x['unpenalized_MLE_expected_test_logloss']=='INF' for x in d['worlds'])
+          assert all(x['both_independent_moment_and_full_count_pair_evaluations_exact'] for x in d['worlds'])
+          assert all(x['true_logit_slope_zero'] for x in d['same_true_rate_n4_prescored_comparison'])
+          with Path('R183_ALL_4125_TRAINING_COUNT_PAIRS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==4125
+          assert a['main_result_sha256']==sha256(Path('R183_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['complete_original_sample_CSV_sha256']==sha256(Path('R183_ALL_4125_TRAINING_COUNT_PAIRS.csv').read_bytes()).hexdigest()
+          assert d['new_E2']==d['new_E3']==0
+          with zipfile.ZipFile('R183_Logistic_45_Worlds_Exact_Separation_Archive.zip') as z:
+            assert len(z.namelist())==5 and z.testzip() is None
+          print('R183_ALL_45_LOGISTIC_EXACT_SEPARATION_WORLDS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R183-exact-logistic-45-worlds-complete-training-count-pairs
+          path: |
+            research/R183/R183_EXACT_RESULTS.json
+            research/R183/R183_ALL_4125_TRAINING_COUNT_PAIRS.csv
+            research/R183/R183_FINAL_MACHINE_ACCEPTANCE.json
+            research/R183/R183_Logistic_45_Worlds_Exact_Separation_Archive.zip
+          retention-days: 90
+      - name: Permanently publish bounded artificial results to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R183/R183_EXACT_RESULTS.json research/R183/R183_ALL_4125_TRAINING_COUNT_PAIRS.csv research/R183/R183_FINAL_MACHINE_ACCEPTANCE.json research/R183/R183_Logistic_45_Worlds_Exact_Separation_Archive.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R183): 45 exact logistic separation worlds and 4125 original paired samples'
+            git push origin HEAD:main
+          fi
