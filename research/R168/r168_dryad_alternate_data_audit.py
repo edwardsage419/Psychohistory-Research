@@ -31,7 +31,7 @@ def run():
         "download_status":"unavailable",
         "original_rows_scored":0,"independent_predictions":0}
     api=BASE+"/api/v2/datasets/"+quote(DOI,safe="")
-    endpoints=[api,BASE+"/downloads/file_stream/21647"]
+    endpoints=[api,BASE+"/api/v2/files/21647/download"]
     try:
         metadata,actual,typ=fetch(api)
         j=json.loads(metadata)
