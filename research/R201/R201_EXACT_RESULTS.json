@@ -1,0 +1,214 @@
+{
+  "caveat": "Four artificial exponential-race event-order sources. Cox PL alone cannot identify baseline hazard or absolute event times; censoring independence and PH need outside validation.",
+  "diagnostics": {
+    "censored_correct_partial_likelihood_hr4": "2/25",
+    "equal_composition_early_x1_event_share_hr4": "4/5",
+    "equal_composition_late_x1_event_share_hr1over4": "1/5",
+    "event_by_horizon_one_baseline_0_1_hr4": 0.63212055882856,
+    "event_by_horizon_one_baseline_0_2_hr4": 0.86466471676339,
+    "four_person_exposure": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "incorrect_keep_censored_in_later_risk_set": "1/15",
+    "same_next_event_order_probability_under_baseline_scale": true,
+    "tied_one_low_one_high_hr4": {
+      "breslow": "1/25",
+      "efron": "4/75",
+      "exact": "4/33"
+    }
+  },
+  "distinct_ordered_training_rows_count": 120,
+  "full_order_data_count": 72,
+  "independent_validation_worlds": 9,
+  "literature_doi": "10.1111/j.2517-6161.1972.tb00899.x",
+  "new_real_historical_E3": 0,
+  "new_real_human_E2": 0,
+  "research_id": "R201",
+  "status": "ARTIFICIAL_E1_PENDING_EXTERNAL_CI_ACCEPTANCE",
+  "training_only_candidates_prelocked": [
+    "1",
+    "1/4",
+    "4"
+  ],
+  "true_sources": [
+    "1/4",
+    "1",
+    "4"
+  ],
+  "worlds": [
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.732,
+      "independent_new_cohort_expected_brier_exact": "183/250",
+      "independent_new_cohort_expected_logloss": 1.35990492743252,
+      "known_true_hr_oracle_new_cohort_brier_exact": "33/50",
+      "oracle_gap_exact": "9/125",
+      "ordered_training_prefix_count": 4,
+      "selected_hr_probability": {
+        "1": "0",
+        "1/4": "4/5",
+        "4": "1/5"
+      },
+      "selected_true_hr_probability": "4/5",
+      "training_observed_event_count": 1,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "1/4"
+    },
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.708,
+      "independent_new_cohort_expected_brier_exact": "177/250",
+      "independent_new_cohort_expected_logloss": 1.29769786536718,
+      "known_true_hr_oracle_new_cohort_brier_exact": "33/50",
+      "oracle_gap_exact": "6/125",
+      "ordered_training_prefix_count": 12,
+      "selected_hr_probability": {
+        "1": "4/9",
+        "1/4": "8/15",
+        "4": "1/45"
+      },
+      "selected_true_hr_probability": "8/15",
+      "training_observed_event_count": 2,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "1/4"
+    },
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.6984,
+      "independent_new_cohort_expected_brier_exact": "873/1250",
+      "independent_new_cohort_expected_logloss": 1.27930011665677,
+      "known_true_hr_oracle_new_cohort_brier_exact": "33/50",
+      "oracle_gap_exact": "24/625",
+      "ordered_training_prefix_count": 24,
+      "selected_hr_probability": {
+        "1": "44/225",
+        "1/4": "56/75",
+        "4": "13/225"
+      },
+      "selected_true_hr_probability": "56/75",
+      "training_observed_event_count": 3,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "1/4"
+    },
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.84,
+      "independent_new_cohort_expected_brier_exact": "21/25",
+      "independent_new_cohort_expected_logloss": 1.6094379124341,
+      "known_true_hr_oracle_new_cohort_brier_exact": "3/4",
+      "oracle_gap_exact": "9/100",
+      "ordered_training_prefix_count": 4,
+      "selected_hr_probability": {
+        "1": "0",
+        "1/4": "1/2",
+        "4": "1/2"
+      },
+      "selected_true_hr_probability": "0",
+      "training_observed_event_count": 1,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "1"
+    },
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.78,
+      "independent_new_cohort_expected_brier_exact": "39/50",
+      "independent_new_cohort_expected_logloss": 1.46067554489129,
+      "known_true_hr_oracle_new_cohort_brier_exact": "3/4",
+      "oracle_gap_exact": "3/100",
+      "ordered_training_prefix_count": 12,
+      "selected_hr_probability": {
+        "1": "2/3",
+        "1/4": "1/6",
+        "4": "1/6"
+      },
+      "selected_true_hr_probability": "2/3",
+      "training_observed_event_count": 2,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "1"
+    },
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.81,
+      "independent_new_cohort_expected_brier_exact": "81/100",
+      "independent_new_cohort_expected_logloss": 1.5350567286627,
+      "known_true_hr_oracle_new_cohort_brier_exact": "3/4",
+      "oracle_gap_exact": "3/50",
+      "ordered_training_prefix_count": 24,
+      "selected_hr_probability": {
+        "1": "1/3",
+        "1/4": "1/3",
+        "4": "1/3"
+      },
+      "selected_true_hr_probability": "1/3",
+      "training_observed_event_count": 3,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "1"
+    },
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.732,
+      "independent_new_cohort_expected_brier_exact": "183/250",
+      "independent_new_cohort_expected_logloss": 1.35990492743252,
+      "known_true_hr_oracle_new_cohort_brier_exact": "33/50",
+      "oracle_gap_exact": "9/125",
+      "ordered_training_prefix_count": 4,
+      "selected_hr_probability": {
+        "1": "0",
+        "1/4": "1/5",
+        "4": "4/5"
+      },
+      "selected_true_hr_probability": "4/5",
+      "training_observed_event_count": 1,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "4"
+    },
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.708,
+      "independent_new_cohort_expected_brier_exact": "177/250",
+      "independent_new_cohort_expected_logloss": 1.29769786536718,
+      "known_true_hr_oracle_new_cohort_brier_exact": "33/50",
+      "oracle_gap_exact": "6/125",
+      "ordered_training_prefix_count": 12,
+      "selected_hr_probability": {
+        "1": "4/9",
+        "1/4": "1/45",
+        "4": "8/15"
+      },
+      "selected_true_hr_probability": "8/15",
+      "training_observed_event_count": 2,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "4"
+    },
+    {
+      "complete_order_source_count": 24,
+      "fixed_hr_1_new_cohort_brier_exact": "3/4",
+      "independent_new_cohort_expected_brier": 0.6984,
+      "independent_new_cohort_expected_brier_exact": "873/1250",
+      "independent_new_cohort_expected_logloss": 1.27930011665677,
+      "known_true_hr_oracle_new_cohort_brier_exact": "33/50",
+      "oracle_gap_exact": "24/625",
+      "ordered_training_prefix_count": 24,
+      "selected_hr_probability": {
+        "1": "44/225",
+        "1/4": "13/225",
+        "4": "56/75"
+      },
+      "selected_true_hr_probability": "56/75",
+      "training_observed_event_count": 3,
+      "training_prefix_source_probability_total": "1",
+      "true_hr": "4"
+    }
+  ]
+}
