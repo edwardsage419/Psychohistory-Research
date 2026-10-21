@@ -1,0 +1,432 @@
+{
+  "diagnostics": {
+    "mean_SAR_POS_smooth_x": [
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "mean_SEM_POS_smooth_x": [
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "ols_unadjusted_under_SEM_POS": {
+      "ALTERNATING": {
+        "actual_beta_hat_variance": "1/9",
+        "actual_to_naive_variance_ratio": "4/9",
+        "expected_beta_hat": "1",
+        "naive_iid_variance_with_known_unit_error_variance": "1/4",
+        "true_beta": "1"
+      },
+      "MIXED": {
+        "actual_beta_hat_variance": "13/36",
+        "actual_to_naive_variance_ratio": "13/18",
+        "expected_beta_hat": "1",
+        "naive_iid_variance_with_known_unit_error_variance": "1/2",
+        "true_beta": "1"
+      },
+      "SMOOTH": {
+        "actual_beta_hat_variance": "1",
+        "actual_to_naive_variance_ratio": "4",
+        "expected_beta_hat": "1",
+        "naive_iid_variance_with_known_unit_error_variance": "1/4",
+        "true_beta": "1"
+      }
+    },
+    "ols_under_SAR_POS_smooth": {
+      "actual_beta_hat_variance": "1",
+      "actual_to_naive_variance_ratio": "4",
+      "expected_beta_hat": "2",
+      "naive_iid_variance_with_known_unit_error_variance": "1/4",
+      "true_beta": "1"
+    },
+    "sigma_SAR_POS_equals_sigma_SEM_POS_for_same_W_and_rho": true,
+    "spatial_four_node_weight_matrix": [
+      [
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      [
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ],
+      [
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      [
+        "1/2",
+        "0",
+        "1/2",
+        "0"
+      ]
+    ],
+    "spatial_inverse_two_independent_exact_methods": true,
+    "warning": "Fixed beta=1 and finite candidates; normal work likelihood is misspecified for discrete ±1 source innovations. No causal identification or realistic spatial prediction is established."
+  },
+  "full_evaluation_worlds": 15,
+  "independent_train_test_pair_probability_each": "1/256",
+  "independent_train_test_pairs": 3840,
+  "new_real_historical_E3": 0,
+  "new_real_human_E2": 0,
+  "original_training_probability_each": "1/16",
+  "original_training_samples": 240,
+  "prior_tie_preference": [
+    "IID",
+    "SAR_POS",
+    "SEM_POS",
+    "SAR_NEG",
+    "SEM_NEG"
+  ],
+  "research_id": "R203",
+  "status": "ARTIFICIAL_E1_AWAIT_CI_ACCEPTANCE",
+  "training_true_sources": [
+    "IID",
+    "SAR_POS",
+    "SEM_POS",
+    "SAR_NEG",
+    "SEM_NEG"
+  ],
+  "two_way_independent_future_mse_exact": true,
+  "two_way_independent_future_work_logscore": true,
+  "worlds": [
+    {
+      "expected_independent_new_region_MSE": 1.090277777778,
+      "expected_independent_new_region_MSE_exact": "157/144",
+      "expected_independent_new_region_gaussian_logscore": 6.100845169045,
+      "fixed_IID_new_region_MSE_exact": "1",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "1",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "1",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.675754132819,
+      "original_training_vectors": 16,
+      "pattern": "SMOOTH",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/4",
+        "SAR_POS": "1/16",
+        "SEM_NEG": "1/8",
+        "SEM_POS": "1/16"
+      },
+      "selected_true_source_probability_exact": "1/2",
+      "source_probability_sum_exact": "1",
+      "true_source": "IID"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.923611111111,
+      "expected_independent_new_region_MSE_exact": "277/144",
+      "expected_independent_new_region_gaussian_logscore": 6.728321242713,
+      "fixed_IID_new_region_MSE_exact": "47/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "SMOOTH",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "0",
+        "SAR_POS": "11/16",
+        "SEM_NEG": "0",
+        "SEM_POS": "1/16"
+      },
+      "selected_true_source_probability_exact": "11/16",
+      "source_probability_sum_exact": "1",
+      "true_source": "SAR_POS"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.923611111111,
+      "expected_independent_new_region_MSE_exact": "277/144",
+      "expected_independent_new_region_gaussian_logscore": 6.797765687158,
+      "fixed_IID_new_region_MSE_exact": "29/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "SMOOTH",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "0",
+        "SAR_POS": "5/16",
+        "SEM_NEG": "1/8",
+        "SEM_POS": "5/16"
+      },
+      "selected_true_source_probability_exact": "5/16",
+      "source_probability_sum_exact": "1",
+      "true_source": "SEM_POS"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.680555555556,
+      "expected_independent_new_region_MSE_exact": "121/72",
+      "expected_independent_new_region_gaussian_logscore": 6.675618890963,
+      "fixed_IID_new_region_MSE_exact": "31/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "SMOOTH",
+      "selected_candidate_probabilities_exact": {
+        "IID": "5/16",
+        "SAR_NEG": "3/8",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/4",
+        "SEM_POS": "1/16"
+      },
+      "selected_true_source_probability_exact": "3/8",
+      "source_probability_sum_exact": "1",
+      "true_source": "SAR_NEG"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.701388888889,
+      "expected_independent_new_region_MSE_exact": "245/144",
+      "expected_independent_new_region_gaussian_logscore": 6.797765687158,
+      "fixed_IID_new_region_MSE_exact": "29/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "SMOOTH",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/4",
+        "SAR_POS": "1/16",
+        "SEM_NEG": "3/8",
+        "SEM_POS": "1/16"
+      },
+      "selected_true_source_probability_exact": "3/8",
+      "source_probability_sum_exact": "1",
+      "true_source": "SEM_NEG"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.090277777778,
+      "expected_independent_new_region_MSE_exact": "157/144",
+      "expected_independent_new_region_gaussian_logscore": 6.100845169045,
+      "fixed_IID_new_region_MSE_exact": "1",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "1",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "1",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.675754132819,
+      "original_training_vectors": 16,
+      "pattern": "ALTERNATING",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/8"
+      },
+      "selected_true_source_probability_exact": "1/2",
+      "source_probability_sum_exact": "1",
+      "true_source": "IID"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.680555555556,
+      "expected_independent_new_region_MSE_exact": "121/72",
+      "expected_independent_new_region_gaussian_logscore": 6.675618890963,
+      "fixed_IID_new_region_MSE_exact": "31/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "ALTERNATING",
+      "selected_candidate_probabilities_exact": {
+        "IID": "5/16",
+        "SAR_NEG": "0",
+        "SAR_POS": "3/8",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/4"
+      },
+      "selected_true_source_probability_exact": "3/8",
+      "source_probability_sum_exact": "1",
+      "true_source": "SAR_POS"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.701388888889,
+      "expected_independent_new_region_MSE_exact": "245/144",
+      "expected_independent_new_region_gaussian_logscore": 6.797765687158,
+      "fixed_IID_new_region_MSE_exact": "29/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "ALTERNATING",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "3/8"
+      },
+      "selected_true_source_probability_exact": "3/8",
+      "source_probability_sum_exact": "1",
+      "true_source": "SEM_POS"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.923611111111,
+      "expected_independent_new_region_MSE_exact": "277/144",
+      "expected_independent_new_region_gaussian_logscore": 6.728321242713,
+      "fixed_IID_new_region_MSE_exact": "47/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "ALTERNATING",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "11/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "0"
+      },
+      "selected_true_source_probability_exact": "11/16",
+      "source_probability_sum_exact": "1",
+      "true_source": "SAR_NEG"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.923611111111,
+      "expected_independent_new_region_MSE_exact": "277/144",
+      "expected_independent_new_region_gaussian_logscore": 6.797765687158,
+      "fixed_IID_new_region_MSE_exact": "29/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "ALTERNATING",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "5/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "5/16",
+        "SEM_POS": "1/8"
+      },
+      "selected_true_source_probability_exact": "5/16",
+      "source_probability_sum_exact": "1",
+      "true_source": "SEM_NEG"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.022569444444,
+      "expected_independent_new_region_MSE_exact": "589/576",
+      "expected_independent_new_region_gaussian_logscore": 5.983657669045,
+      "fixed_IID_new_region_MSE_exact": "1",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "1",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "1",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.675754132819,
+      "original_training_vectors": 16,
+      "pattern": "MIXED",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/8"
+      },
+      "selected_true_source_probability_exact": "1/2",
+      "source_probability_sum_exact": "1",
+      "true_source": "IID"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.654513888889,
+      "expected_independent_new_region_MSE_exact": "953/576",
+      "expected_independent_new_region_gaussian_logscore": 6.701411520491,
+      "fixed_IID_new_region_MSE_exact": "59/36",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "MIXED",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "3/8",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/4"
+      },
+      "selected_true_source_probability_exact": "3/8",
+      "source_probability_sum_exact": "1",
+      "true_source": "SAR_POS"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.633680555556,
+      "expected_independent_new_region_MSE_exact": "941/576",
+      "expected_independent_new_region_gaussian_logscore": 6.680578187158,
+      "fixed_IID_new_region_MSE_exact": "29/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "MIXED",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "3/8"
+      },
+      "selected_true_source_probability_exact": "3/8",
+      "source_probability_sum_exact": "1",
+      "true_source": "SEM_POS"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.720486111111,
+      "expected_independent_new_region_MSE_exact": "991/576",
+      "expected_independent_new_region_gaussian_logscore": 6.509201261434,
+      "fixed_IID_new_region_MSE_exact": "67/36",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "MIXED",
+      "selected_candidate_probabilities_exact": {
+        "IID": "3/8",
+        "SAR_NEG": "9/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "0"
+      },
+      "selected_true_source_probability_exact": "9/16",
+      "source_probability_sum_exact": "1",
+      "true_source": "SAR_NEG"
+    },
+    {
+      "expected_independent_new_region_MSE": 1.689236111111,
+      "expected_independent_new_region_MSE_exact": "973/576",
+      "expected_independent_new_region_gaussian_logscore": 6.680578187158,
+      "fixed_IID_new_region_MSE_exact": "29/18",
+      "independent_test_vectors_per_training_vector": 16,
+      "min_candidate_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_MSE_exact": "29/18",
+      "oracle_known_true_mechanism_new_region_gaussian_logscore": 5.96343620527,
+      "original_training_vectors": 16,
+      "pattern": "MIXED",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "5/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "5/16",
+        "SEM_POS": "1/8"
+      },
+      "selected_true_source_probability_exact": "5/16",
+      "source_probability_sum_exact": "1",
+      "true_source": "SEM_NEG"
+    }
+  ]
+}
