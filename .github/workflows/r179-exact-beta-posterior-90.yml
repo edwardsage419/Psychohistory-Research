@@ -1,0 +1,74 @@
+name: R179 Exact Beta Posterior 90 Credible Coverage Worlds
+on:
+  push:
+    paths:
+      - 'research/R179/r179_beta_posterior_90_exact.py'
+      - '.github/workflows/r179-exact-beta-posterior-90.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  beta-conjugate-and-polynomial-cdf-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate two exact Beta posterior routes on 90 source-prior worlds
+        run: |
+          cd research/R179
+          python r179_beta_posterior_90_exact.py --test
+  full-frozen-exact-posterior-evaluation-and-archive:
+    runs-on: ubuntu-latest
+    needs: beta-conjugate-and-polynomial-cdf-tests
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute all frozen 90 exact prior and count mechanism worlds
+        run: |
+          cd research/R179
+          python r179_beta_posterior_90_exact.py --run-and-archive
+          python - <<'PY'
+          import json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          r=json.loads(Path('R179_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R179_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(r['worlds'])==90 and r['prior_by_source_worlds']==90
+          assert len(r['fixed_n8_p_quarter_15_cases'])==15
+          assert r['full_source_count_PMF_cells']==810
+          assert sum(len(x['training_count_posteriors']) for x in r['worlds'])==810
+          assert all(z['independent_posterior_integral_parity']
+                     for x in r['worlds'] for z in x['training_count_posteriors'])
+          assert r['new_E2']==r['new_E3']==0
+          assert a['exact_results_sha256']==sha256(Path('R179_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          with zipfile.ZipFile('R179_Beta_Posterior_90_Exact_Count_Worlds.zip') as z:
+            assert len(z.namelist())==4 and z.testzip() is None
+          print('R179_EXACT_90_BETA_CREDIBLE_COVERAGES_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R179-90-exact-Beta-credible-worlds
+          path: |
+            research/R179/R179_EXACT_RESULTS.json
+            research/R179/R179_FINAL_MACHINE_ACCEPTANCE.json
+            research/R179/R179_Beta_Posterior_90_Exact_Count_Worlds.zip
+          retention-days: 90
+      - name: Permanently publish source-bounded E1 Beta posterior results on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R179/R179_EXACT_RESULTS.json research/R179/R179_FINAL_MACHINE_ACCEPTANCE.json research/R179/R179_Beta_Posterior_90_Exact_Count_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R179): 90 exact Beta posterior worlds and credible interval frequentist coverage'
+            git push origin HEAD:main
+          fi
