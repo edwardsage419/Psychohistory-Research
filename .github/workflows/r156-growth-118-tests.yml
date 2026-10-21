@@ -1,4 +1,4 @@
-name: R156 AK vs Concave 96 Worlds 118 Tests Preliminary
+name: R156 AK versus Concave 96 Worlds 118 Pinned Tests
 on:
   push:
     paths:
@@ -7,7 +7,7 @@ on:
       - '.github/workflows/r156-growth-118-tests.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   independent-analytic-numeric-growth:
     runs-on: ubuntu-latest
@@ -25,7 +25,8 @@ jobs:
           cd research/R156
           test "$(git hash-object r156_growth_pair.py)" = "96ecbc18053cd2f3fcea59a68a753975a471ef66"
           test "$(git hash-object test_r156_growth_pair.py)" = "5c33d72f08084d0bb5073f4f52ed05ea66e8cda3"
-          sha256sum r156_growth_pair.py test_r156_growth_pair.py
+          echo '4980bbaad13d2162503aa05ac05829035a6d891144913f7db100e33abc1eda0d  r156_growth_pair.py' | sha256sum -c -
+          echo '87ff03e0d15fe1c2edcddc5081488f58f3730fb0fc9df5039984721d32d7cd6a  test_r156_growth_pair.py' | sha256sum -c -
       - name: Generate full 96 growth systems and compare direct-stock RK4 to closed forms
         run: |
           cd research/R156
@@ -41,7 +42,7 @@ jobs:
           assert d['mechanism_controls']['AK_same_growth_path_a']==d['mechanism_controls']['AK_same_growth_path_b']
           print('R156 PASS 96 registered paired growth paths, distinct AK parameter vectors can identify same stock series')
           PY
-          sha256sum R156_EXACT_RESULTS.json
+          echo 'bc80a9bac0b7c6d26c6e5c829c761f482a2ba1a9803a097bccd3735aeaf0db88  R156_EXACT_RESULTS.json' | sha256sum -c -
       - name: Execute 118 genuine unit tests
         run: |
           cd research/R156
@@ -58,9 +59,45 @@ jobs:
                   item.external_attr=0o644<<16
                   z.writestr(item,open(name,'rb').read())
           PY
-          sha256sum R156_Growth_96_Worlds_118_Tests.zip
+          echo 'f7b7ddb26215b76cd5b60a4734e4b492206928141356e35768c7eb7ab4366a45  R156_Growth_96_Worlds_118_Tests.zip' | sha256sum -c -
       - uses: actions/upload-artifact@v4
         with:
           name: R156-96-original-growth-synthetic-${{ matrix.python-version }}
           path: research/R156/R156_Growth_96_Worlds_118_Tests.zip
           retention-days: 90
+  pin-and-publish-permanent-results:
+    needs: independent-analytic-numeric-growth
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Confirm all four immutable artifact hashes and rerun 118 original tests
+        run: |
+          cd research/R156
+          echo '4980bbaad13d2162503aa05ac05829035a6d891144913f7db100e33abc1eda0d  r156_growth_pair.py' | sha256sum -c -
+          echo '87ff03e0d15fe1c2edcddc5081488f58f3730fb0fc9df5039984721d32d7cd6a  test_r156_growth_pair.py' | sha256sum -c -
+          python r156_growth_pair.py > R156_EXACT_RESULTS.json
+          echo 'bc80a9bac0b7c6d26c6e5c829c761f482a2ba1a9803a097bccd3735aeaf0db88  R156_EXACT_RESULTS.json' | sha256sum -c -
+          python -m unittest -v test_r156_growth_pair.py
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('R156_Growth_96_Worlds_118_Tests.zip','w') as z:
+              for name in ('r156_growth_pair.py','test_r156_growth_pair.py','R156_EXACT_RESULTS.json'):
+                  item=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0))
+                  item.compress_type=zipfile.ZIP_LZMA
+                  item.external_attr=0o644<<16
+                  z.writestr(item,open(name,'rb').read())
+          PY
+          echo 'f7b7ddb26215b76cd5b60a4734e4b492206928141356e35768c7eb7ab4366a45  R156_Growth_96_Worlds_118_Tests.zip' | sha256sum -c -
+      - name: Permanently publish pinned complete JSON and source ZIP on main
+        run: |
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add research/R156/R156_EXACT_RESULTS.json research/R156/R156_Growth_96_Worlds_118_Tests.zip
+          if ! git diff --cached --quiet; then
+              git commit -m 'archive(R156): pin 96 AK and diminishing returns trajectories and 118 tests'
+              git push origin HEAD:main
+          fi
