@@ -1,0 +1,72 @@
+name: R175 Intergenerational Binary Memory 72 Exact Worlds
+on:
+  push:
+    paths:
+      - 'research/R175/r175_binary_memory_iterated_learning_exact.py'
+      - '.github/workflows/r175-intergenerational-binary-memory.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-math-unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test direct binomial and independent full-bit-string enumeration
+        run: |
+          cd research/R175
+          python r175_binary_memory_iterated_learning_exact.py --test
+  frozen-e1-exact-evaluation:
+    runs-on: ubuntu-latest
+    needs: independent-math-unit-tests
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compare all 24 exact Markov matrices and all 72x9x2 world states
+        run: |
+          cd research/R175
+          python r175_binary_memory_iterated_learning_exact.py --run
+          python - <<'PY'
+          from hashlib import sha256
+          from pathlib import Path
+          import json,zipfile
+          r=json.loads(Path('R175_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R175_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(r['matrices'])==24 and len(r['worlds'])==72
+          assert r['full_probability_cells']==1296
+          assert all(x['independent_fraction_methods_equal'] for x in r['worlds'])
+          assert a['exact_results_sha256']==sha256(Path('R175_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['MAP_nonstationary_matrix_count']>0
+          assert all(x['prior_stationary'] for x in r['matrices'] if x['rule']=='posterior_sample')
+          assert r['new_E2']==r['new_E3']==0
+          with zipfile.ZipFile('R175_Intergenerational_72_Binary_Memory_Worlds_Exact.zip') as z:
+            assert len(z.namelist())==4 and z.testzip() is None
+          print('R175_FULL_72_ARTIFICIAL_POSTERIOR_CHAIN_ACCEPTANCE_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R175-binary-memory-72-fraction-worlds
+          path: |
+            research/R175/R175_EXACT_RESULTS.json
+            research/R175/R175_FINAL_MACHINE_ACCEPTANCE.json
+            research/R175/R175_Intergenerational_72_Binary_Memory_Worlds_Exact.zip
+          retention-days: 90
+      - name: Archive authenticated exact artificial E1 on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R175/R175_EXACT_RESULTS.json research/R175/R175_FINAL_MACHINE_ACCEPTANCE.json research/R175/R175_Intergenerational_72_Binary_Memory_Worlds_Exact.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R175): 72 exact artificial memory worlds and Bayesian retention counterexample'
+            git push origin HEAD:main
+          fi
