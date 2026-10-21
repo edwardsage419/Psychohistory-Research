@@ -1,0 +1,57 @@
+name: R173 Real EA Missingness and Reciprocal SCCS Pre-Score Gate
+on:
+  push:
+    paths:
+      - 'research/R173/r173_real_ea_coverage_mapping_gate.py'
+      - '.github/workflows/r173-real-ea-coverage-reciprocal-mapping.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  real-EA-prescore-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently test mapping and strict exclusion rules
+        run: |
+          cd research/R173
+          python r173_real_ea_coverage_mapping_gate.py --self-test
+      - name: Download original six CC-BY-4.0 files and authenticate Git blobs
+        run: |
+          cd research/R173
+          python r173_original_dplace_source_audit.py --fetch
+      - name: Produce source-only missingness and reciprocity report with no associations
+        run: |
+          cd research/R173
+          python r173_real_ea_coverage_mapping_gate.py --audit
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("R173_REAL_EA005_EA006_COVERAGE_AND_RECIPROCAL_MAPPING.json").read_text())
+          assert r["source_rows"]==121354
+          assert r["EA_social_units"]==1291
+          assert r["estimated_associations"]==r["fitted_models"]==r["independent_predictions"]==0
+          assert r["new_E2"]==r["new_E3"]==0
+          assert r["strict_reciprocal_SCCS_coverage"]["unique_societies_considered"] <= 186
+          assert r["full_EA_coverage"]["unique_societies_considered"]==1291
+          print("R173_AUTHENTIC_REAL_SOURCE_COVERAGE_GATE_PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R173-real-prescore-original-EA-SCCS-coverage
+          path: research/R173/R173_REAL_EA005_EA006_COVERAGE_AND_RECIPROCAL_MAPPING.json
+          retention-days: 90
+      - name: Commit reproducible source-only audit JSON to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R173/R173_REAL_EA005_EA006_COVERAGE_AND_RECIPROCAL_MAPPING.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R173): preserve authenticated EA005 EA006 missingness and SCCS reciprocal mapping audit before scoring'
+            git push origin HEAD:main
+          fi
