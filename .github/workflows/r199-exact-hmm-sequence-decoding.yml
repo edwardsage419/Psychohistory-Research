@@ -1,0 +1,88 @@
+name: R199 Exact HMM 24 Sequence Decoding Worlds
+on:
+  push:
+    paths:
+      - 'research/R199/r199_exact_hmm_sequence_decoding.py'
+      - '.github/workflows/r199-exact-hmm-sequence-decoding.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-HMM-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test forward-backward versus hidden-path summation and Viterbi versus brute maximization
+        run: |
+          cd research/R199
+          python r199_exact_hmm_sequence_decoding.py --test
+  full-24-HMM-worlds-original-training-and-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-exact-HMM-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate 2064 true training sets, 196 fitted profiles and 144 latent decodings
+        run: |
+          cd research/R199
+          python r199_exact_hmm_sequence_decoding.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          d=json.loads(Path('R199_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R199_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          fits=json.loads(Path('R199_ALL_196_OBSERVABLE_FIT_PROFILES.json').read_text())
+          dec=json.loads(Path('R199_ALL_144_OBSERVABLE_HIDDEN_DECODINGS.json').read_text())
+          assert d['artificial_worlds']==24 and len(d['all_original_worlds'])==24
+          assert d['full_original_ordered_training_sets']==2064
+          assert d['unique_exact_visible_training_fit_profiles']==196
+          assert d['all_model_observed_full_sequence_decodings']==144
+          assert len(fits['profiles'])==196 and len(dec['all_observations'])==144
+          assert len(d['prelocked_label_alias_worlds'])==8
+          assert all(w['all_human_data_or_history_real'] is False for w in d['all_original_worlds'])
+          with Path('R199_ALL_2064_ORDERED_OBSERVED_TRAINING_SETS.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==2064
+          for path,key in [
+            ('R199_EXACT_RESULTS.json','full_result_SHA256'),
+            ('R199_ALL_2064_ORDERED_OBSERVED_TRAINING_SETS.csv','original_training_CSV_SHA256'),
+            ('R199_ALL_196_OBSERVABLE_FIT_PROFILES.json','fitted_profile_SHA256'),
+            ('R199_ALL_144_OBSERVABLE_HIDDEN_DECODINGS.json','decoder_profile_SHA256')
+          ]:
+            assert a[key]==sha256(Path(path).read_bytes()).hexdigest()
+          assert d['new_E2']==d['new_E3']==0
+          with zipfile.ZipFile('R199_Exact_24_HMM_Sequence_Worlds.zip') as z:
+            assert len(z.namelist())==7 and z.testzip() is None
+          print('R199_HMM_FWD_BACKWARD_VITERBI_LABEL_ALIAS_AND_NEW_SEQUENCE_RISK_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R199-24-Exact-HMM-Sequence-Worlds
+          path: |
+            research/R199/R199_EXACT_RESULTS.json
+            research/R199/R199_ALL_2064_ORDERED_OBSERVED_TRAINING_SETS.csv
+            research/R199/R199_ALL_196_OBSERVABLE_FIT_PROFILES.json
+            research/R199/R199_ALL_144_OBSERVABLE_HIDDEN_DECODINGS.json
+            research/R199/R199_FINAL_MACHINE_ACCEPTANCE.json
+            research/R199/R199_Exact_24_HMM_Sequence_Worlds.zip
+          retention-days: 90
+      - name: Permanently archive bounded artificial HMM research on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R199/R199_EXACT_RESULTS.json research/R199/R199_ALL_2064_ORDERED_OBSERVED_TRAINING_SETS.csv research/R199/R199_ALL_196_OBSERVABLE_FIT_PROFILES.json research/R199/R199_ALL_144_OBSERVABLE_HIDDEN_DECODINGS.json research/R199/R199_FINAL_MACHINE_ACCEPTANCE.json research/R199/R199_Exact_24_HMM_Sequence_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R199): complete artificial HMM training, hidden posterior and independently heldout sequence audit'
+            git push origin HEAD:main
+          fi
