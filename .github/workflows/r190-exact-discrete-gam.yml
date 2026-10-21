@@ -1,0 +1,81 @@
+name: R190 Exact Discrete GAM 10 Smoothing Worlds
+on:
+  push:
+    paths:
+      - 'research/R190/r190_exact_discrete_gam_smoothing.py'
+      - '.github/workflows/r190-exact-discrete-gam.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-GAM-smoother-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate all three exact primal dual and smoother-matrix paths
+        run: |
+          cd research/R190
+          python r190_exact_discrete_gam_smoothing.py --test
+  complete-10-world-smoothing-risk-and-permanent-archive:
+    runs-on: ubuntu-latest
+    needs: two-python-exact-GAM-smoother-tests
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate every artificial training table and exact heldout risk
+        run: |
+          cd research/R190
+          python r190_exact_discrete_gam_smoothing.py --run-and-archive
+          python - <<'PY'
+          import csv,json,zipfile
+          from pathlib import Path
+          from hashlib import sha256
+          d=json.loads(Path('R190_EXACT_RESULTS.json').read_text())
+          a=json.loads(Path('R190_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          lib=json.loads(Path('R190_ALL_8_FRACTION_SMOOTHING_MATRICES.json').read_text())
+          assert d['world_count']==10 and len(d['worlds'])==10
+          assert d['complete_training_count_tables']==1375
+          assert d['exact_primal_dual_and_linear_operator_fits']==5500
+          assert len(d['fixed_n1_flat_vs_nonlinear_truth'])==4
+          assert len(lib['matrices'])==8 and lib['matrix_count']==8
+          assert all(w['exact_enum_and_independent_analytic_bias_variance_equal'] for w in d['worlds'])
+          with Path('R190_ALL_1375_ARTIFICIAL_SMOOTHING_TRAINING_TABLES.csv').open() as f:
+            assert sum(1 for _ in csv.DictReader(f))==1375
+          assert a['result_sha256']==sha256(Path('R190_EXACT_RESULTS.json').read_bytes()).hexdigest()
+          assert a['original_source_CSV_sha256']==sha256(Path('R190_ALL_1375_ARTIFICIAL_SMOOTHING_TRAINING_TABLES.csv').read_bytes()).hexdigest()
+          assert a['smoothing_matrix_library_sha256']==sha256(Path('R190_ALL_8_FRACTION_SMOOTHING_MATRICES.json').read_bytes()).hexdigest()
+          assert d['new_E2']==d['new_E3']==0
+          with zipfile.ZipFile('R190_Exact_10_Discrete_GAM_Smoothing_Worlds.zip') as z:
+            assert len(z.namelist())==6 and z.testzip() is None
+          print('R190_EXACT_FIVE_KNOT_SMOOTHING_BIAS_VARIANCE_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R190-10-fraction-discrete-GAM-smoothing-worlds
+          path: |
+            research/R190/R190_EXACT_RESULTS.json
+            research/R190/R190_ALL_1375_ARTIFICIAL_SMOOTHING_TRAINING_TABLES.csv
+            research/R190/R190_ALL_8_FRACTION_SMOOTHING_MATRICES.json
+            research/R190/R190_FINAL_MACHINE_ACCEPTANCE.json
+            research/R190/R190_Exact_10_Discrete_GAM_Smoothing_Worlds.zip
+          retention-days: 90
+      - name: Publish permanently verified bounded E1 smoothing source to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R190/R190_EXACT_RESULTS.json research/R190/R190_ALL_1375_ARTIFICIAL_SMOOTHING_TRAINING_TABLES.csv research/R190/R190_ALL_8_FRACTION_SMOOTHING_MATRICES.json research/R190/R190_FINAL_MACHINE_ACCEPTANCE.json research/R190/R190_Exact_10_Discrete_GAM_Smoothing_Worlds.zip
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R190): 10 exact finite GAM surrogate worlds and 5500 verified smooths'
+            git push origin HEAD:main
+          fi
