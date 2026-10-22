@@ -1,0 +1,1134 @@
+{
+  "every_trajectory_has_positive_source_probability": true,
+  "exact_mechanism_distribution_equivalences": [
+    {
+      "complete_27_trajectory_distributions_exactly_identical": true,
+      "graph": "STAR",
+      "mechanisms": [
+        "BASE",
+        "COMPLEX"
+      ],
+      "seed": 0
+    }
+  ],
+  "fixed_base_adoption_rate": "1/4",
+  "fixed_exposed_adoption_rate": "3/4",
+  "full_original_joint_source_probabilities_exact": true,
+  "full_original_training_trajectories": 972,
+  "full_train_independent_new_trajectory_pairs": 26244,
+  "graph_seed_design_conditions": 12,
+  "graph_true_model_4_seed_summaries": [
+    {
+      "expected_new_adopters": "21/16",
+      "fixed_BASE_binary_Brier": "1012095/4194304",
+      "fixed_BASE_logscore": 2.952259509249,
+      "full_future_binary_Brier": "554231/2097152",
+      "full_future_logscore": 3.10702845998,
+      "graph": "STAR",
+      "oracle_binary_Brier": "1012095/4194304",
+      "oracle_logscore": 2.952259509249,
+      "seed_conditions": 4,
+      "true_model": "BASE"
+    },
+    {
+      "expected_new_adopters": "159/64",
+      "fixed_BASE_binary_Brier": "1394095/4194304",
+      "fixed_BASE_logscore": 4.023934230693,
+      "full_future_binary_Brier": "5219699/33554432",
+      "full_future_logscore": 2.960064281629,
+      "graph": "STAR",
+      "oracle_binary_Brier": "381807/4194304",
+      "oracle_logscore": 2.530508150784,
+      "seed_conditions": 4,
+      "true_model": "SIMPLE"
+    },
+    {
+      "expected_new_adopters": "735/512",
+      "fixed_BASE_binary_Brier": "1073979/4194304",
+      "fixed_BASE_logscore": 3.087440318206,
+      "full_future_binary_Brier": "36107525/134217728",
+      "full_future_logscore": 3.170658489196,
+      "graph": "STAR",
+      "oracle_binary_Brier": "1038987/4194304",
+      "oracle_logscore": 2.952259509249,
+      "seed_conditions": 4,
+      "true_model": "COMPLEX"
+    },
+    {
+      "expected_new_adopters": "21/16",
+      "fixed_BASE_binary_Brier": "1012095/4194304",
+      "fixed_BASE_logscore": 2.952259509249,
+      "full_future_binary_Brier": "72036239/268435456",
+      "full_future_logscore": 3.145186361318,
+      "graph": "PATH",
+      "oracle_binary_Brier": "1012095/4194304",
+      "oracle_logscore": 2.952259509249,
+      "seed_conditions": 4,
+      "true_model": "BASE"
+    },
+    {
+      "expected_new_adopters": "615/256",
+      "fixed_BASE_binary_Brier": "1386455/4194304",
+      "fixed_BASE_logscore": 3.933813691388,
+      "full_future_binary_Brier": "20930047/134217728",
+      "full_future_logscore": 2.892486449769,
+      "graph": "PATH",
+      "oracle_binary_Brier": "409671/4194304",
+      "oracle_logscore": 2.530508150784,
+      "seed_conditions": 4,
+      "true_model": "SIMPLE"
+    },
+    {
+      "expected_new_adopters": "363/256",
+      "fixed_BASE_binary_Brier": "1053351/4194304",
+      "fixed_BASE_logscore": 3.068128774069,
+      "full_future_binary_Brier": "74484431/268435456",
+      "full_future_logscore": 3.260376704665,
+      "graph": "PATH",
+      "oracle_binary_Brier": "1041687/4194304",
+      "oracle_logscore": 2.952259509249,
+      "seed_conditions": 4,
+      "true_model": "COMPLEX"
+    },
+    {
+      "expected_new_adopters": "21/16",
+      "fixed_BASE_binary_Brier": "1012095/4194304",
+      "fixed_BASE_logscore": 2.952259509249,
+      "full_future_binary_Brier": "9182015/33554432",
+      "full_future_logscore": 3.171970232537,
+      "graph": "CYCLE",
+      "oracle_binary_Brier": "1012095/4194304",
+      "oracle_logscore": 2.952259509249,
+      "seed_conditions": 4,
+      "true_model": "BASE"
+    },
+    {
+      "expected_new_adopters": "341/128",
+      "fixed_BASE_binary_Brier": "1449103/4194304",
+      "fixed_BASE_logscore": 4.1494206082,
+      "full_future_binary_Brier": "3289271/33554432",
+      "full_future_logscore": 2.754991337232,
+      "graph": "CYCLE",
+      "oracle_binary_Brier": "140367/4194304",
+      "oracle_logscore": 2.38992436463,
+      "seed_conditions": 4,
+      "true_model": "SIMPLE"
+    },
+    {
+      "expected_new_adopters": "195/128",
+      "fixed_BASE_binary_Brier": "1067103/4194304",
+      "fixed_BASE_logscore": 3.18399803889,
+      "full_future_binary_Brier": "9701879/33554432",
+      "full_future_logscore": 3.412207853217,
+      "graph": "CYCLE",
+      "oracle_binary_Brier": "1046367/4194304",
+      "oracle_logscore": 2.952259509249,
+      "seed_conditions": 4,
+      "true_model": "COMPLEX"
+    }
+  ],
+  "graphs": {
+    "CYCLE": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "PATH": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "STAR": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "independent_new_binary_Brier_double_Fraction_route": true,
+  "independent_new_full_trajectory_logloss_double_route": true,
+  "new_real_historical_E3": 0,
+  "new_real_human_E2": 0,
+  "original_trajectories_per_graph_seed_model": 27,
+  "research_id": "R209",
+  "rounds": 2,
+  "same_condition_independent_future_source_not_new_graph": true,
+  "scope_warning": "True models are four-node two-round synthetic Bernoulli hazards, not fitted original Bass equation or human adoption time series.",
+  "status": "ARTIFICIAL_E1_AWAIT_CI_ACCEPTANCE",
+  "training_mechanism_tie_order": [
+    "BASE",
+    "SIMPLE",
+    "COMPLEX"
+  ],
+  "world_count": 36,
+  "worlds": [
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1753879/67108864",
+      "full_independent_future_binary_Brier_exact": "17947399/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.174744590657,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE",
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "945/1024",
+        "COMPLEX": "0",
+        "SIMPLE": "79/1024"
+      },
+      "selected_true_mechanism_probability_exact": "945/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1467439/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 4.168654833573,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "4151587/67108864",
+      "full_independent_future_binary_Brier_exact": "4896787/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 2.484929579151,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "46575/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.108756792321,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "187/1024",
+        "COMPLEX": "0",
+        "SIMPLE": "837/1024"
+      },
+      "selected_true_mechanism_probability_exact": "837/1024",
+      "true_expected_additional_adopters_by_round2_exact": "45/16",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "2025/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1753879/67108864",
+      "full_independent_future_binary_Brier_exact": "17947399/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.174744590657,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE",
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "945/1024",
+        "COMPLEX": "0",
+        "SIMPLE": "79/1024"
+      },
+      "selected_true_mechanism_probability_exact": "0",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1471203/67108864",
+      "full_independent_future_binary_Brier_exact": "17664723/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.084456416421,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "837/1024",
+        "COMPLEX": "21/256",
+        "SIMPLE": "103/1024"
+      },
+      "selected_true_mechanism_probability_exact": "837/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1369647/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.975694029733,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "4390119/67108864",
+      "full_independent_future_binary_Brier_exact": "12286935/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.118442515788,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "493551/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.671091936939,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "271/1024",
+        "COMPLEX": "21/256",
+        "SIMPLE": "669/1024"
+      },
+      "selected_true_mechanism_probability_exact": "669/1024",
+      "true_expected_additional_adopters_by_round2_exact": "19/8",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1769/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1094607/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.132500587858,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1322001/67108864",
+      "full_independent_future_binary_Brier_exact": "18089217/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.169296455376,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1047951/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "669/1024",
+        "COMPLEX": "63/256",
+        "SIMPLE": "103/1024"
+      },
+      "selected_true_mechanism_probability_exact": "63/256",
+      "true_expected_additional_adopters_by_round2_exact": "189/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1049/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1471203/67108864",
+      "full_independent_future_binary_Brier_exact": "17664723/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.084456416421,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "837/1024",
+        "COMPLEX": "21/256",
+        "SIMPLE": "103/1024"
+      },
+      "selected_true_mechanism_probability_exact": "837/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1369647/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.975694029733,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "4390119/67108864",
+      "full_independent_future_binary_Brier_exact": "12286935/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.118442515788,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "493551/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.671091936939,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "271/1024",
+        "COMPLEX": "21/256",
+        "SIMPLE": "669/1024"
+      },
+      "selected_true_mechanism_probability_exact": "669/1024",
+      "true_expected_additional_adopters_by_round2_exact": "19/8",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1769/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1094607/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.132500587858,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1322001/67108864",
+      "full_independent_future_binary_Brier_exact": "18089217/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.169296455376,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1047951/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "669/1024",
+        "COMPLEX": "63/256",
+        "SIMPLE": "103/1024"
+      },
+      "selected_true_mechanism_probability_exact": "63/256",
+      "true_expected_additional_adopters_by_round2_exact": "189/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1049/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1471203/67108864",
+      "full_independent_future_binary_Brier_exact": "17664723/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.084456416421,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "837/1024",
+        "COMPLEX": "21/256",
+        "SIMPLE": "103/1024"
+      },
+      "selected_true_mechanism_probability_exact": "837/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1369647/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.975694029733,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "4390119/67108864",
+      "full_independent_future_binary_Brier_exact": "12286935/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.118442515788,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "493551/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.671091936939,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "271/1024",
+        "COMPLEX": "21/256",
+        "SIMPLE": "669/1024"
+      },
+      "selected_true_mechanism_probability_exact": "669/1024",
+      "true_expected_additional_adopters_by_round2_exact": "19/8",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1769/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1094607/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.132500587858,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1322001/67108864",
+      "full_independent_future_binary_Brier_exact": "18089217/67108864",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.169296455376,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "STAR",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1047951/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "669/1024",
+        "COMPLEX": "63/256",
+        "SIMPLE": "103/1024"
+      },
+      "selected_true_mechanism_probability_exact": "63/256",
+      "true_expected_additional_adopters_by_round2_exact": "189/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1049/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "4293117/268435456",
+      "full_independent_future_binary_Brier_exact": "69067197/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.071406036985,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "891/1024",
+        "COMPLEX": "39/1024",
+        "SIMPLE": "47/512"
+      },
+      "selected_true_mechanism_probability_exact": "891/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1337559/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.795452951123,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "17104725/268435456",
+      "full_independent_future_binary_Brier_exact": "56250645/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.088243082834,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "611655/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.671091936939,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "361/1024",
+        "COMPLEX": "21/1024",
+        "SIMPLE": "321/512"
+      },
+      "selected_true_mechanism_probability_exact": "321/512",
+      "true_expected_additional_adopters_by_round2_exact": "283/128",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1685/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1053351/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.081003136827,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "5267115/268435456",
+      "full_independent_future_binary_Brier_exact": "71935083/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.197383688189,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1041687/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "771/1024",
+        "COMPLEX": "117/1024",
+        "SIMPLE": "17/128"
+      },
+      "selected_true_mechanism_probability_exact": "117/1024",
+      "true_expected_additional_adopters_by_round2_exact": "183/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "941/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "10231201/268435456",
+      "full_independent_future_binary_Brier_exact": "75005281/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.218966685651,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "855/1024",
+        "COMPLEX": "9/256",
+        "SIMPLE": "133/1024"
+      },
+      "selected_true_mechanism_probability_exact": "855/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1435351/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 4.072174431653,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "14177575/268435456",
+      "full_independent_future_binary_Brier_exact": "27469543/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 2.696729816705,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "207687/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.38992436463,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "175/1024",
+        "COMPLEX": "3/256",
+        "SIMPLE": "837/1024"
+      },
+      "selected_true_mechanism_probability_exact": "837/1024",
+      "true_expected_additional_adopters_by_round2_exact": "83/32",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1941/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1053351/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.055254411311,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "10365811/268435456",
+      "full_independent_future_binary_Brier_exact": "77033779/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.32336972114,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1041687/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "759/1024",
+        "COMPLEX": "27/256",
+        "SIMPLE": "157/1024"
+      },
+      "selected_true_mechanism_probability_exact": "27/256",
+      "true_expected_additional_adopters_by_round2_exact": "45/32",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "941/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "10231201/268435456",
+      "full_independent_future_binary_Brier_exact": "75005281/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.218966685651,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "855/1024",
+        "COMPLEX": "9/256",
+        "SIMPLE": "133/1024"
+      },
+      "selected_true_mechanism_probability_exact": "855/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1435351/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 4.072174431653,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "14177575/268435456",
+      "full_independent_future_binary_Brier_exact": "27469543/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 2.696729816705,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "207687/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.38992436463,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "175/1024",
+        "COMPLEX": "3/256",
+        "SIMPLE": "837/1024"
+      },
+      "selected_true_mechanism_probability_exact": "837/1024",
+      "true_expected_additional_adopters_by_round2_exact": "83/32",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1941/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1053351/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.055254411311,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "10365811/268435456",
+      "full_independent_future_binary_Brier_exact": "77033779/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.32336972114,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1041687/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "759/1024",
+        "COMPLEX": "27/256",
+        "SIMPLE": "157/1024"
+      },
+      "selected_true_mechanism_probability_exact": "27/256",
+      "true_expected_additional_adopters_by_round2_exact": "45/32",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "941/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "4293117/268435456",
+      "full_independent_future_binary_Brier_exact": "69067197/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.071406036985,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "891/1024",
+        "COMPLEX": "39/1024",
+        "SIMPLE": "47/512"
+      },
+      "selected_true_mechanism_probability_exact": "891/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1337559/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.795452951123,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "17104725/268435456",
+      "full_independent_future_binary_Brier_exact": "56250645/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.088243082834,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "611655/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.671091936939,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "361/1024",
+        "COMPLEX": "21/1024",
+        "SIMPLE": "321/512"
+      },
+      "selected_true_mechanism_probability_exact": "321/512",
+      "true_expected_additional_adopters_by_round2_exact": "283/128",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1685/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1053351/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.081003136827,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "5267115/268435456",
+      "full_independent_future_binary_Brier_exact": "71935083/268435456",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.197383688189,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "PATH",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1041687/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "771/1024",
+        "COMPLEX": "117/1024",
+        "SIMPLE": "17/128"
+      },
+      "selected_true_mechanism_probability_exact": "117/1024",
+      "true_expected_additional_adopters_by_round2_exact": "183/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "941/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1085255/33554432",
+      "full_independent_future_binary_Brier_exact": "9182015/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.171970232537,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "909/1024",
+        "COMPLEX": "9/1024",
+        "SIMPLE": "53/512"
+      },
+      "selected_true_mechanism_probability_exact": "909/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1449103/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 4.1494206082,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "2166335/33554432",
+      "full_independent_future_binary_Brier_exact": "3289271/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 2.754991337232,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "140367/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.38992436463,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "205/1024",
+        "COMPLEX": "9/1024",
+        "SIMPLE": "405/512"
+      },
+      "selected_true_mechanism_probability_exact": "405/512",
+      "true_expected_additional_adopters_by_round2_exact": "341/128",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1977/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1067103/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.18399803889,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1330943/33554432",
+      "full_independent_future_binary_Brier_exact": "9701879/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.412207853217,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1046367/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 0,
+      "selected_model_probabilities_exact": {
+        "BASE": "789/1024",
+        "COMPLEX": "81/1024",
+        "SIMPLE": "77/512"
+      },
+      "selected_true_mechanism_probability_exact": "81/1024",
+      "true_expected_additional_adopters_by_round2_exact": "195/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "977/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1085255/33554432",
+      "full_independent_future_binary_Brier_exact": "9182015/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.171970232537,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "909/1024",
+        "COMPLEX": "9/1024",
+        "SIMPLE": "53/512"
+      },
+      "selected_true_mechanism_probability_exact": "909/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1449103/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 4.1494206082,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "2166335/33554432",
+      "full_independent_future_binary_Brier_exact": "3289271/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 2.754991337232,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "140367/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.38992436463,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "205/1024",
+        "COMPLEX": "9/1024",
+        "SIMPLE": "405/512"
+      },
+      "selected_true_mechanism_probability_exact": "405/512",
+      "true_expected_additional_adopters_by_round2_exact": "341/128",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1977/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1067103/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.18399803889,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1330943/33554432",
+      "full_independent_future_binary_Brier_exact": "9701879/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.412207853217,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1046367/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 1,
+      "selected_model_probabilities_exact": {
+        "BASE": "789/1024",
+        "COMPLEX": "81/1024",
+        "SIMPLE": "77/512"
+      },
+      "selected_true_mechanism_probability_exact": "81/1024",
+      "true_expected_additional_adopters_by_round2_exact": "195/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "977/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1085255/33554432",
+      "full_independent_future_binary_Brier_exact": "9182015/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.171970232537,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "909/1024",
+        "COMPLEX": "9/1024",
+        "SIMPLE": "53/512"
+      },
+      "selected_true_mechanism_probability_exact": "909/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1449103/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 4.1494206082,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "2166335/33554432",
+      "full_independent_future_binary_Brier_exact": "3289271/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 2.754991337232,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "140367/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.38992436463,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "205/1024",
+        "COMPLEX": "9/1024",
+        "SIMPLE": "405/512"
+      },
+      "selected_true_mechanism_probability_exact": "405/512",
+      "true_expected_additional_adopters_by_round2_exact": "341/128",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1977/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1067103/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.18399803889,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1330943/33554432",
+      "full_independent_future_binary_Brier_exact": "9701879/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.412207853217,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1046367/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 2,
+      "selected_model_probabilities_exact": {
+        "BASE": "789/1024",
+        "COMPLEX": "81/1024",
+        "SIMPLE": "77/512"
+      },
+      "selected_true_mechanism_probability_exact": "81/1024",
+      "true_expected_additional_adopters_by_round2_exact": "195/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "977/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1012095/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 2.952259509249,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1085255/33554432",
+      "full_independent_future_binary_Brier_exact": "9182015/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.171970232537,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "BASE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1012095/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "909/1024",
+        "COMPLEX": "9/1024",
+        "SIMPLE": "53/512"
+      },
+      "selected_true_mechanism_probability_exact": "909/1024",
+      "true_expected_additional_adopters_by_round2_exact": "21/16",
+      "true_model": "BASE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "833/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1449103/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 4.1494206082,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "2166335/33554432",
+      "full_independent_future_binary_Brier_exact": "3289271/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 2.754991337232,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "SIMPLE"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "140367/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.38992436463,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "205/1024",
+        "COMPLEX": "9/1024",
+        "SIMPLE": "405/512"
+      },
+      "selected_true_mechanism_probability_exact": "405/512",
+      "true_expected_additional_adopters_by_round2_exact": "341/128",
+      "true_model": "SIMPLE",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "1977/2048"
+    },
+    {
+      "fixed_BASE_independent_future_binary_Brier_exact": "1067103/4194304",
+      "fixed_BASE_independent_future_trajectory_logscore": 3.18399803889,
+      "full_independent_binary_Brier_excess_over_oracle_exact": "1330943/33554432",
+      "full_independent_future_binary_Brier_exact": "9701879/33554432",
+      "full_independent_future_trajectories_per_train": 27,
+      "full_independent_future_trajectory_logscore": 3.412207853217,
+      "full_joint_true_source_probability": "1",
+      "full_original_training_trajectories": 27,
+      "graph": "CYCLE",
+      "observationally_indistinguishable_models_under_this_graph_seed": [
+        "COMPLEX"
+      ],
+      "oracle_known_true_model_binary_Brier_exact": "1046367/4194304",
+      "oracle_known_true_model_future_trajectory_logscore": 2.952259509249,
+      "seed": 3,
+      "selected_model_probabilities_exact": {
+        "BASE": "789/1024",
+        "COMPLEX": "81/1024",
+        "SIMPLE": "77/512"
+      },
+      "selected_true_mechanism_probability_exact": "81/1024",
+      "true_expected_additional_adopters_by_round2_exact": "195/128",
+      "true_model": "COMPLEX",
+      "true_probability_two_plus_new_adopters_by_round2_exact": "977/2048"
+    }
+  ]
+}
