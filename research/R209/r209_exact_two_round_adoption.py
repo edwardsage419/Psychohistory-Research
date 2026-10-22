@@ -387,7 +387,7 @@ class Tests(unittest.TestCase):
     def test_path_two_endpoints(self):
         self.assertEqual(sorted(len(a) for a in neighbors("PATH")),[1,1,2,2])
     def test_cycle_all_degree2(self):
-        self.assertEqual(tuple(map(len,neighbors("CYCLE")),(2,2,2,2))
+        self.assertEqual(tuple(map(len, neighbors("CYCLE"))), (2,2,2,2))
     def test_27_trajectories_every_seed(self):
         self.assertTrue(all(len(trajectories(s))==27 for s in range(N)))
     def test_seed_time_zero_only(self):
