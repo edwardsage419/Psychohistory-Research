@@ -1,4 +1,4 @@
-name: R215 Exact Three-Period Difference in Differences and All Original Group Shocks
+name: R215-3P Supplement Independent Three-Period DiD Sources
 on:
   push:
     paths:
@@ -38,8 +38,8 @@ jobs:
           from fractions import Fraction as F
           from pathlib import Path
           p=Path('research/R215')
-          r=json.loads((p/'R215_EXACT_RESULTS.json').read_text())
-          a=json.loads((p/'R215_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          r=json.loads((p/'R215_3P_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R215_3P_FINAL_MACHINE_ACCEPTANCE.json').read_text())
           assert r['catalogue_id']==a['catalogue_id']=='09-006'
           assert r['all_worlds']==a['worlds']==12
           assert r['full_original_panel_source_rows']==a['original_complete_group_time_panel_sources']==768
@@ -63,7 +63,7 @@ jobs:
             rows=list(csv.DictReader(f))
           assert len(rows)==768
           assert all(row['original_source_probability']=='1/64' for row in rows)
-          for name,key in [('R215_EXACT_RESULTS.json','result_sha256'),
+          for name,key in [('R215_3P_EXACT_RESULTS.json','result_sha256'),
                            ('R215_ALL_768_ORIGINAL_GROUP_TIME_SHOCK_PANELS.csv','sources_sha256')]:
             assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
           print('R215_12_COMPLETE_DID_WORLDS_768_TRUE_ORIGINAL_GROUP_TIME_NOISE_PANELS_ACCEPTED')
@@ -72,17 +72,19 @@ jobs:
         with:
           name: R215-All-12-DID-Worlds-And-768-Original-Exogenous-Group-Shock-Source-Panels
           path: |
-            research/R215/R215_EXACT_RESULTS.json
+            research/R215/R215_3P_EXACT_RESULTS.json
             research/R215/R215_ALL_768_ORIGINAL_GROUP_TIME_SHOCK_PANELS.csv
-            research/R215/R215_FINAL_MACHINE_ACCEPTANCE.json
+            research/R215/R215_3P_FINAL_MACHINE_ACCEPTANCE.json
           retention-days: 90
       - name: Permanently archive all original artificial three-period DID source panels to main
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add research/R215/R215_EXACT_RESULTS.json research/R215/R215_ALL_768_ORIGINAL_GROUP_TIME_SHOCK_PANELS.csv research/R215/R215_FINAL_MACHINE_ACCEPTANCE.json
+          git add research/R215/R215_3P_EXACT_RESULTS.json research/R215/R215_ALL_768_ORIGINAL_GROUP_TIME_SHOCK_PANELS.csv research/R215/R215_3P_FINAL_MACHINE_ACCEPTANCE.json
           if ! git diff --cached --quiet; then
             git commit -m 'archive(R215): exact all DID untreated trend and original group-time shock source outcomes'
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
