@@ -35,7 +35,7 @@ jobs:
           python research/R209/r209_exact_two_round_adoption.py --emit
           python - <<'PY'
           import csv,hashlib,json
-          from fractions import Fraction
+          from fractions import Fraction as F
           from pathlib import Path
           p=Path('research/R209')
           r=json.loads((p/'R209_EXACT_RESULTS.json').read_text())
