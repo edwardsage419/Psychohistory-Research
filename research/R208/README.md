@@ -1,3 +1,9 @@
+# 2026-10-22 原239目录映射勘误
+
+此R208仅为有界人工网络中心性补充研究。此前写成“P1/08-032 Network Centrality”的目录ID不存在：239项正式目录08分类止于08-031 Matrix Completion，紧接09-001 Randomized Controlled Experiment。**R208不计作原239项新增完成条目**，研究证据、协议、CI结果不变。[独立校正公告](../../docs/R_SERIES_CATALOG_MAPPING_CORRECTION_2026-10-22.md)。以下历史原始报告保留当时错误文字以便追溯。
+
+---
+
 # R208 网络中心性：1024人工五节点图的全来源E1结题
 
 日期2026-10-22。原239目录P1/08-032 Network Centrality。**CLOSED_BOUNDED_E1_ARTIFICIAL_BOND_CENTRALITY**。
