@@ -1,0 +1,97 @@
+name: R232 Exact Structural Equations Mediation and Measurement Aliases
+on:
+  push:
+    paths:
+      - 'research/R232/r232_exact_structural_mediation.py'
+      - '.github/workflows/r232-exact-sem-mediation.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-sem-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Independently verify observation SEM coefficients and true interventions
+        run: python research/R232/r232_exact_structural_mediation.py --test
+  full-original-exogenous-archive:
+    needs: dual-python-exact-sem-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 1024 structural types and audit causal alias and SHA
+        run: |
+          python research/R232/r232_exact_structural_mediation.py --emit
+          python - <<'PY'
+          from fractions import Fraction as F
+          from pathlib import Path
+          from collections import defaultdict
+          import csv,hashlib,json
+          d=Path('research/R232')
+          rows=list(csv.DictReader((d/'R232_ALL_1024_ORIGINAL_SEM_EXOGENOUS_SOURCES.csv').open()))
+          result=json.loads((d/'R232_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R232_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==1024 and len(result['world_results'])==8
+          assert receipt['original_catalogue_id']==result['original_catalogue_id']=='10-006'
+          assert all(F(r['original_source_probability'])==F(1,128) for r in rows)
+          worlds={x['world']:x for x in result['world_results']}
+          for world,res in worlds.items():
+            rr=[r for r in rows if r['world']==world]
+            assert len(rr)==128 and sum((F(r['original_source_probability']) for r in rr),F(0))==1
+            assert len({(r['oracle_original_U'],r['oracle_original_R'],r['oracle_original_EM'],
+                         r['oracle_original_EY'],r['oracle_original_EW'],r['oracle_original_EZ1'],
+                         r['oracle_original_EZ2']) for r in rr})==128
+            assert len(res['actual_observed_covariance'])==5
+            assert res['observed_linear_path_regression']['observational_total_A_to_Y']==res['observed_linear_path_regression']['observational_sum_direct_plus_proxy_mediation']
+          a,b=worlds['LATENT_CAUSAL_ALIAS'],worlds['LATENT_COMMON_ALIAS']
+          assert a['full_five_variable_observed_joint']==b['full_five_variable_observed_joint']
+          assert (a['true_structural_effects']['true_total_doA_slope'],
+                  b['true_structural_effects']['true_total_doA_slope'])==('1','0')
+          assert a['observed_linear_path_regression']==b['observed_linear_path_regression']
+          assert worlds['RANDOMIZED_DIRECT_AND_MEDIATED']['true_structural_effects']=={
+              'true_total_doA_slope':'2','true_direct_at_fixed_M':'1','true_mediated_at_actual_A':'1'}
+          c=worlds['RANDOMIZED_MEDIATOR_CONFOUNDED']
+          assert c['observed_linear_path_regression']['observational_product_proxy_mediation']=='3/2'
+          assert c['observed_linear_path_regression']['observational_Y_on_A_control_measured_W']=='-1/2'
+          assert c['true_structural_effects']['true_direct_at_fixed_M']=='0'
+          assert c['true_structural_effects']['true_mediated_at_actual_A']=='1'
+          d1=worlds['RANDOMIZED_MEDIATOR_MEASUREMENT_ERROR']
+          assert d1['observed_linear_path_regression']['observational_product_proxy_mediation']=='1/2'
+          assert d1['observed_linear_path_regression']['observational_Y_on_A_control_measured_W']=='1/2'
+          assert d1['true_structural_effects']['true_direct_at_fixed_M']=='0'
+          for filename,key in [('R232_ALL_1024_ORIGINAL_SEM_EXOGENOUS_SOURCES.csv','sources_sha256'),
+                               ('R232_EXACT_RESULTS.json','results_sha256')]:
+            assert receipt[key]==hashlib.sha256((Path('research/R232')/filename).read_bytes()).hexdigest()
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R232_ALL_1024_STRUCTURAL_MEDIATION_SOURCE_ORACLES_AND_FULL_OBSERVED_ALIASES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R232-Eight-Full-Finite-SEM-Source-Worlds
+          path: |
+            research/R232/R232_ALL_1024_ORIGINAL_SEM_EXOGENOUS_SOURCES.csv
+            research/R232/R232_EXACT_RESULTS.json
+            research/R232/R232_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive original SEM sources and verified outcomes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R232/R232_ALL_1024_ORIGINAL_SEM_EXOGENOUS_SOURCES.csv research/R232/R232_EXACT_RESULTS.json research/R232/R232_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R232): 1024 original SEM mediation and measurement source atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
