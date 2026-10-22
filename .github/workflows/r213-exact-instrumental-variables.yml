@@ -1,0 +1,94 @@
+name: R213 Eight Instrumental Variable Assumption Worlds and Exact LATE
+on:
+  push:
+    paths:
+      - 'research/R213/r213_exact_instrumental_variables.py'
+      - '.github/workflows/r213-exact-instrumental-variables.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-IV-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate random encouragement Wald LATE and four assumption boundaries
+        run: python research/R213/r213_exact_instrumental_variables.py --test
+  permanent-eight-world-all-source-archive:
+    needs: dual-python-exact-IV-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Produce and verify 128 genuine artificial population by instrument original sources
+        run: |
+          python research/R213/r213_exact_instrumental_variables.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          p=Path('research/R213')
+          r=json.loads((p/'R213_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R213_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['catalogue_id']==a['catalogue_id']=='09-004'
+          assert len(r['summary_worlds'])==a['worlds']==8
+          assert r['all_original_population_instrument_atoms']==a['original_population_instrument_source_atoms']==128
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          w={x['world']:x for x in r['summary_worlds']}
+          for key,stage,ratio in [
+              ('FULL_COMPLY','1','5/2'),('MONOTONE_MIX','1/2','3'),
+              ('WEAK_COMPLIERS','1/8','4'),
+              ('NO_COMPLIERS','0','UNDEFINED_ZERO_FIRST_STAGE'),
+              ('WITH_DEFIERS','1/4','0'),
+              ('EXCLUSION_VIOLATION','1/2','5'),
+              ('WEAK_EXCLUSION','1/8','12'),
+              ('Z_CONFOUNDING','1/2','29/2')
+          ]:
+              assert w[key]['first_stage_exact']==stage
+              assert w[key]['wald_ratio_exact']==ratio
+              assert w[key]['original_joint_source_probability_sum_exact']=='1'
+              assert w[key]['P_instrument_Z0_exact']==w[key]['P_instrument_Z1_exact']=='1/2'
+          assert w['MONOTONE_MIX']['four_core_LATE_identification_conditions_hold']
+          assert not w['Z_CONFOUNDING']['instrument_is_as_if_independent_of_latent_type']
+          assert not w['EXCLUSION_VIOLATION']['instrument_exclusion_no_direct_Z_to_Y']
+          assert not w['WITH_DEFIERS']['monotonicity_no_defiers']
+          with (p/'R213_ALL_128_ORIGINAL_INSTRUMENT_SOURCE_ATOMS.csv').open(newline='') as f:
+              rows=list(csv.DictReader(f))
+          assert len(rows)==128
+          for key in w:
+              assert sum(F(row['joint_source_probability_exact']) for row in rows if row['world']==key)==1
+          for filename,key in [
+              ('R213_EXACT_RESULTS.json','results_sha256'),
+              ('R213_ALL_128_ORIGINAL_INSTRUMENT_SOURCE_ATOMS.csv','sources_sha256')
+          ]:
+              assert a[key]==hashlib.sha256((p/filename).read_bytes()).hexdigest()
+          print('R213_8_VALIDITY_WORLDS_128_FULL_ORIGINAL_ENCOURAGEMENT_SOURCES_IV_LATE_E1_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R213-Eight-Worlds-128-Instrument-Source-Atoms
+          path: |
+            research/R213/R213_EXACT_RESULTS.json
+            research/R213/R213_ALL_128_ORIGINAL_INSTRUMENT_SOURCE_ATOMS.csv
+            research/R213/R213_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive complete valid and invalid IV source evidence on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R213/R213_EXACT_RESULTS.json research/R213/R213_ALL_128_ORIGINAL_INSTRUMENT_SOURCE_ATOMS.csv research/R213/R213_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R213): full exact encouragement source atom LATE and invalid instrument contrasts'
+            git push origin HEAD:main
+          fi
