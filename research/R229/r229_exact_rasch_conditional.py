@@ -135,8 +135,8 @@ def world_result(world):
     if world=='DISCONNECTED_ITEM3':assert rr[2]['observed_item_count']==1 and rr[2]['score_one_item1_over_item2'] is None
     return dict(world=world,complete_original_matrix_count=len(rows),
                 positive_probability_sources=sum(x['original_probability']>0 for x in rows),
-                original_probability_mass='1',observed_joint_support=len(observed_joint(world)),
-                masked_answers_per_matrix=sum(9-sum(m) for m in WORLDS[world][-1]),
+                original_probability_mass='1',observed_joint_support=sum(p>0 for p in observed_joint(world).values()),
+                masked_answers_per_matrix=sum(3-sum(m) for m in WORLDS[world][-1]),
                 individual_conditional_odds=rr,
                 observed_matrix_probability_signature={key:str(val) for key,val in observed_joint(world).items()})
 def generate():
@@ -180,6 +180,12 @@ class Tests(unittest.TestCase):
     def test_clone_zeros(self):self.assertEqual(sum(x['original_probability']>0 for x in sources('LOCAL_DEPENDENT_CLONE')),64)
     def test_disconnect_mask(self):self.assertEqual(sum(sum(m) for m in WORLDS['DISCONNECTED_ITEM3'][-1]),5)
     def test_no_odds(self):self.assertIsNone(odds('DISCONNECTED_ITEM3',2,1,2))
+    def test_real_observable_support_clone(self):
+        self.assertEqual(world_result('LOCAL_DEPENDENT_CLONE')['observed_joint_support'],64)
+    def test_full_mask_is_zero_missing(self):
+        self.assertEqual(world_result('BASE_RASCH')['masked_answers_per_matrix'],0)
+    def test_partial_mask_four_missing(self):
+        self.assertEqual(world_result('DISCONNECTED_ITEM3')['masked_answers_per_matrix'],4)
     def test_invalid(self):
         with self.assertRaises(ValueError):sources('missing')
 def _case(world,kind):
