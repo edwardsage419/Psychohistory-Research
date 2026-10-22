@@ -1,0 +1,89 @@
+name: R210 Exact Six-Unit RCT Randomization and Interference Audit
+on:
+  push:
+    paths:
+      - 'research/R210/r210_exact_rct_randomization.py'
+      - '.github/workflows/r210-exact-rct-randomization.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-finite-rct-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 20 balanced treatment assignment sources and all finite causal tests
+        run: python research/R210/r210_exact_rct_randomization.py --test
+  archive-all-140-original-finite-random-assignments:
+    needs: dual-python-exact-finite-rct-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Permanently compute 7 worlds, exact 20 assignments, source risks and SHA verification
+        run: |
+          python research/R210/r210_exact_rct_randomization.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          p=Path('research/R210')
+          r=json.loads((p/'R210_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R210_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['original_239_catalogue_id']==a['catalogue_id']=='09-001'
+          assert r['source_worlds']==7
+          assert r['SUTVA_true_worlds']==6
+          assert r['complete_distinct_treatment_assignments']==20
+          assert r['original_world_and_complete_assignment_records']==a['complete_original_assignment_source_records']==140
+          assert r['two_sided_minimal_exact_p']=='1/10'
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert len(r['worlds'])==7
+          for w in r['worlds']:
+            assert w['source_random_assignment_probability_sum']=='1'
+            if w['SUTVA_no_interference']:
+              assert w['population_ATE']==w['actual_expected_difference_in_means_exact']
+              assert F(w['true_randomization_variance'])==F(w['actual_randomization_variance_exact'])
+              assert F(w['observed_sample_neyman_variance_expectation'])-F(w['true_randomization_variance'])==F(w['expected_naive_conservatism_gap'])
+          interfere=[w for w in r['worlds'] if not w['SUTVA_no_interference']]
+          assert len(interfere)==1
+          assert interfere[0]['actual_expected_difference_in_means_exact']=='7/5'
+          assert interfere[0]['direct_treatment_effect_holding_other_assignments_fixed']=='2'
+          with (p/'R210_ALL_140_COMPLETE_RANDOM_ASSIGNMENT_SOURCES.csv').open(newline='') as f:
+            records=list(csv.DictReader(f))
+          assert len(records)==140
+          assert all(row['original_random_assignment_probability']=='1/20' for row in records)
+          for name,key in [
+            ('R210_EXACT_RESULTS.json','results_sha256'),
+            ('R210_ALL_140_COMPLETE_RANDOM_ASSIGNMENT_SOURCES.csv','all_original_assignments_sha256'),
+          ]:
+            assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
+          print('R210_RCT_SIX_UNITS_20_COMPLETE_RANDOM_ASSIGNMENTS_7_ARTIFICIAL_WORLDS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R210-7-RCT-Worlds-All-140-Source-Assignments
+          path: |
+            research/R210/R210_EXACT_RESULTS.json
+            research/R210/R210_ALL_140_COMPLETE_RANDOM_ASSIGNMENT_SOURCES.csv
+            research/R210/R210_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Archive all synthetic finite assignment sources to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R210/R210_EXACT_RESULTS.json research/R210/R210_ALL_140_COMPLETE_RANDOM_ASSIGNMENT_SOURCES.csv research/R210/R210_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R210): exact randomized experiment finite assignment source outcomes'
+            git push origin HEAD:main
+          fi
