@@ -1,0 +1,84 @@
+name: R211 Exact 256 Binary Potential Outcome Tables and Assignment Identification
+on:
+  push:
+    paths:
+      - 'research/R211/r211_exact_potential_outcomes.py'
+      - '.github/workflows/r211-exact-binary-potential-outcomes.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-potential-outcomes-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test 256 finite counterfactual populations and complete randomized assignments
+        run: python research/R211/r211_exact_potential_outcomes.py --test
+  permanent-all-256-1536-original-source-archive:
+    runs-on: ubuntu-latest
+    needs: dual-python-potential-outcomes-tests
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit and recheck all 256 complete potential outcome schedules and six randomized assignments each
+        run: |
+          python research/R211/r211_exact_potential_outcomes.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from pathlib import Path
+          p=Path('research/R211')
+          r=json.loads((p/'R211_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R211_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['source_catalogue_id']==a['original_239_catalogue_id']=='09-002'
+          assert r['complete_ordered_true_potential_outcome_schedules']==a['full_binary_potential_outcome_schedules']==256
+          assert r['complete_original_random_source_rows']==a['full_randomized_assignment_sources']==1536
+          assert r['complete_deterministic_selection_policy_rows']==a['full_nonrandom_selection_worlds']==256
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert r['every_single_randomized_observation_unrestricted_compatible_schedules']==16
+          assert r['every_single_randomized_observation_unrestricted_ATE_interval_width']=='1'
+          assert sum(r['monotone_bound_width_distribution_over_all_1536_observed_records'].values())==1536
+          assert all(w['six_assignment_estimator_expectation_exact']==w['population_finite_ATE_exact'] for w in r['full_worlds'])
+          assert all(w['six_assignment_estimator_variance_exact']==w['independent_neyman_finite_variance_formula_exact'] for w in r['full_worlds'])
+          for name,num in [
+              ('R211_ALL_1536_ORIGINAL_RANDOMIZED_OBSERVATIONS.csv',1536),
+              ('R211_ALL_256_NONRANDOM_SELECTION_COUNTEREXAMPLES.csv',256)
+          ]:
+            with (p/name).open(newline='') as f:
+              assert sum(1 for _ in csv.DictReader(f))==num
+          for name,key in [
+              ('R211_EXACT_RESULTS.json','results_sha256'),
+              ('R211_ALL_1536_ORIGINAL_RANDOMIZED_OBSERVATIONS.csv','random_sha256'),
+              ('R211_ALL_256_NONRANDOM_SELECTION_COUNTEREXAMPLES.csv','selected_sha256')
+          ]:
+            assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
+          print('R211_EXACT_256_POPULATIONS_1536_RANDOM_AND_256_NONRANDOM_ORIGINAL_SOURCES_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R211-Exact-256-Complete-Potential-Outcome-Schedules
+          path: |
+            research/R211/R211_EXACT_RESULTS.json
+            research/R211/R211_ALL_1536_ORIGINAL_RANDOMIZED_OBSERVATIONS.csv
+            research/R211/R211_ALL_256_NONRANDOM_SELECTION_COUNTEREXAMPLES.csv
+            research/R211/R211_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive full source finite potential-outcomes audit to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R211/R211_EXACT_RESULTS.json research/R211/R211_ALL_1536_ORIGINAL_RANDOMIZED_OBSERVATIONS.csv research/R211/R211_ALL_256_NONRANDOM_SELECTION_COUNTEREXAMPLES.csv research/R211/R211_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R211): all binary potential outcomes original randomized and confounded assignment sources'
+            git push origin HEAD:main
+          fi
