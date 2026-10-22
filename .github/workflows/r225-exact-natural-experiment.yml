@@ -1,0 +1,88 @@
+name: R225 Six Exact Natural Experiment Credibility Worlds
+on:
+  push:
+    paths:
+      - 'research/R225/r225_exact_natural_experiment.py'
+      - '.github/workflows/r225-exact-natural-experiment.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-natural-assignment-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact independent moments and full-observation equivalence
+        run: python research/R225/r225_exact_natural_experiment.py --test
+  source-archive:
+    needs: dual-python-natural-assignment-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and cross-check all frozen original allocations
+        run: |
+          python research/R225/r225_exact_natural_experiment.py --emit
+          python - <<'PY'
+          from pathlib import Path
+          from collections import defaultdict
+          from fractions import Fraction as F
+          import hashlib,csv,json
+          d=Path('research/R225')
+          rows=list(csv.DictReader((d/'R225_ALL_576_ORIGINAL_NATURAL_ASSIGNMENT_SOURCES.csv').open()))
+          outcome=json.loads((d/'R225_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R225_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==576 and outcome['complete_original_source_atoms']==576
+          assert len({r['world'] for r in rows})==6
+          assert all(F(r['original_probability'])==F(1,96) for r in rows)
+          for w in outcome['world_results']:
+            v=[r for r in rows if r['world']==w['world']]
+            assert len(v)==96
+            assert sum((F(r['original_probability']) for r in v),F(0))==1
+            assert len({(r['original_schedule_index'],r['original_noise_mask']) for r in v})==96
+            for m in ('post_group_difference','pre_balance_placebo','two_period_DiD'):
+              assert F(w['observed_methods'][m]['variance'])>=0
+              assert F(w['observed_methods'][m]['mean_squared_error'])>=0
+          by={w['world']:w for w in outcome['world_results']}
+          a=by['AS_IF_RANDOM_VALID'];b=by['ENDOGENOUS_FUTURE_SHOCK_ALIAS']
+          assert a['truth_ATE']=='1' and b['truth_ATE']=='0'
+          assert a['observed_methods']==b['observed_methods']
+          assert outcome['hidden_endogenous_and_valid_full_observation_identical']
+          assert by['ENDOGENOUS_VISIBLE_SELECTION']['observed_methods']['pre_balance_placebo']['expectation']=='1'
+          assert by['ANTICIPATORY_PRE_RESPONSE']['observed_methods']['two_period_DiD']['expectation']=='1/2'
+          for file,key in [
+            ('R225_ALL_576_ORIGINAL_NATURAL_ASSIGNMENT_SOURCES.csv','sources_sha256'),
+            ('R225_EXACT_RESULTS.json','results_sha256')]:
+            assert receipt[key]==hashlib.sha256((d/file).read_bytes()).hexdigest()
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R225_ALL_576_NATURAL_ASSIGNMENT_ORIGINAL_SOURCES_AND_NONIDENTIFICATION_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R225-Original-All-Six-Assignment-Worlds
+          path: |
+            research/R225/R225_ALL_576_ORIGINAL_NATURAL_ASSIGNMENT_SOURCES.csv
+            research/R225/R225_EXACT_RESULTS.json
+            research/R225/R225_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive original source atoms on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R225/R225_ALL_576_ORIGINAL_NATURAL_ASSIGNMENT_SOURCES.csv research/R225/R225_EXACT_RESULTS.json research/R225/R225_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R225): 576 exact natural assignment and hidden future-shock sources'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
