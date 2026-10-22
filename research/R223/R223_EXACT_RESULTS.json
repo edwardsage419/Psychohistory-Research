@@ -1,0 +1,198 @@
+{
+  "research_id": "R223",
+  "catalogue_id": "09-014",
+  "scientific_scope": "FINITE_ARTIFICIAL_E1",
+  "protocol_commit": "1fec84f11e180f4dcd409f42318d8585d2787374",
+  "all_structural_atoms": 448,
+  "positive_probability_atoms": 416,
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "worlds": [
+    {
+      "world": "NULL_CONFOUNDED",
+      "source_structural_atoms": 64,
+      "positive_probability_atoms": 64,
+      "observed_joint_TY": {
+        "T0Y0": "11/32",
+        "T0Y1": "5/32",
+        "T1Y0": "5/32",
+        "T1Y1": "11/32"
+      },
+      "observed_risk_T0": "5/16",
+      "observed_risk_T1": "11/16",
+      "observed_RR": "11/5",
+      "true_intervention_risk_T0": "1/2",
+      "true_intervention_risk_T1": "1/2",
+      "true_causal_RR": "1",
+      "observed_U_standardized_risk": [
+        "1/2",
+        "1/2"
+      ],
+      "standardized_status": "EXACT_UNDER_OBSERVED_U_AND_POSITIVITY",
+      "oracle_sensitivity_RR_EU": "3",
+      "oracle_sensitivity_RR_UD": "7",
+      "oracle_bias_factor": "7/3",
+      "oracle_bounded_RR_lower": "33/35",
+      "association_E_value_point_50digit": "3.8248076809271920720919767136532080697008408173451"
+    },
+    {
+      "world": "CAUSAL_ALIAS",
+      "source_structural_atoms": 64,
+      "positive_probability_atoms": 64,
+      "observed_joint_TY": {
+        "T0Y0": "11/32",
+        "T0Y1": "5/32",
+        "T1Y0": "5/32",
+        "T1Y1": "11/32"
+      },
+      "observed_risk_T0": "5/16",
+      "observed_risk_T1": "11/16",
+      "observed_RR": "11/5",
+      "true_intervention_risk_T0": "5/16",
+      "true_intervention_risk_T1": "11/16",
+      "true_causal_RR": "11/5",
+      "observed_U_standardized_risk": [
+        "5/16",
+        "11/16"
+      ],
+      "standardized_status": "EXACT_UNDER_OBSERVED_U_AND_POSITIVITY",
+      "oracle_sensitivity_RR_EU": "1",
+      "oracle_sensitivity_RR_UD": "1",
+      "oracle_bias_factor": "1",
+      "oracle_bounded_RR_lower": "11/5",
+      "association_E_value_point_50digit": "3.8248076809271920720919767136532080697008408173451"
+    },
+    {
+      "world": "UNCONFOUNDED_CAUSAL",
+      "source_structural_atoms": 64,
+      "positive_probability_atoms": 64,
+      "observed_joint_TY": {
+        "T0Y0": "11/32",
+        "T0Y1": "5/32",
+        "T1Y0": "7/32",
+        "T1Y1": "9/32"
+      },
+      "observed_risk_T0": "5/16",
+      "observed_risk_T1": "9/16",
+      "observed_RR": "9/5",
+      "true_intervention_risk_T0": "5/16",
+      "true_intervention_risk_T1": "9/16",
+      "true_causal_RR": "9/5",
+      "observed_U_standardized_risk": [
+        "5/16",
+        "9/16"
+      ],
+      "standardized_status": "EXACT_UNDER_OBSERVED_U_AND_POSITIVITY",
+      "oracle_sensitivity_RR_EU": "1",
+      "oracle_sensitivity_RR_UD": "4",
+      "oracle_bias_factor": "1",
+      "oracle_bounded_RR_lower": "9/5",
+      "association_E_value_point_50digit": "3.0"
+    },
+    {
+      "world": "CONFOUNDED_CAUSAL",
+      "source_structural_atoms": 64,
+      "positive_probability_atoms": 64,
+      "observed_joint_TY": {
+        "T0Y0": "25/64",
+        "T0Y1": "7/64",
+        "T1Y0": "11/64",
+        "T1Y1": "21/64"
+      },
+      "observed_risk_T0": "7/32",
+      "observed_risk_T1": "21/32",
+      "observed_RR": "3",
+      "true_intervention_risk_T0": "5/16",
+      "true_intervention_risk_T1": "9/16",
+      "true_causal_RR": "9/5",
+      "observed_U_standardized_risk": [
+        "5/16",
+        "9/16"
+      ],
+      "standardized_status": "EXACT_UNDER_OBSERVED_U_AND_POSITIVITY",
+      "oracle_sensitivity_RR_EU": "3",
+      "oracle_sensitivity_RR_UD": "4",
+      "oracle_bias_factor": "2",
+      "oracle_bounded_RR_lower": "3/2",
+      "association_E_value_point_50digit": "5.4494897427831780981972840747058913919659474806567"
+    },
+    {
+      "world": "CONFOUNDED_REVERSED",
+      "source_structural_atoms": 64,
+      "positive_probability_atoms": 64,
+      "observed_joint_TY": {
+        "T0Y0": "1/4",
+        "T0Y1": "1/4",
+        "T1Y0": "1/4",
+        "T1Y1": "1/4"
+      },
+      "observed_risk_T0": "1/2",
+      "observed_risk_T1": "1/2",
+      "observed_RR": "1",
+      "true_intervention_risk_T0": "5/8",
+      "true_intervention_risk_T1": "3/8",
+      "true_causal_RR": "3/5",
+      "observed_U_standardized_risk": [
+        "5/8",
+        "3/8"
+      ],
+      "standardized_status": "EXACT_UNDER_OBSERVED_U_AND_POSITIVITY",
+      "oracle_sensitivity_RR_EU": "3",
+      "oracle_sensitivity_RR_UD": "5",
+      "oracle_bias_factor": "15/7",
+      "oracle_bounded_RR_lower": "7/15",
+      "association_E_value_point_50digit": "1"
+    },
+    {
+      "world": "WEAK_OVERLAP",
+      "source_structural_atoms": 64,
+      "positive_probability_atoms": 64,
+      "observed_joint_TY": {
+        "T0Y0": "109/256",
+        "T0Y1": "19/256",
+        "T1Y0": "35/256",
+        "T1Y1": "93/256"
+      },
+      "observed_risk_T0": "19/128",
+      "observed_risk_T1": "93/128",
+      "observed_RR": "93/19",
+      "true_intervention_risk_T0": "5/16",
+      "true_intervention_risk_T1": "9/16",
+      "true_causal_RR": "9/5",
+      "observed_U_standardized_risk": [
+        "5/16",
+        "9/16"
+      ],
+      "standardized_status": "EXACT_UNDER_OBSERVED_U_AND_POSITIVITY",
+      "oracle_sensitivity_RR_EU": "15",
+      "oracle_sensitivity_RR_UD": "4",
+      "oracle_bias_factor": "10/3",
+      "oracle_bounded_RR_lower": "279/190",
+      "association_E_value_point_50digit": "9.2609379267276080246656843886662334051906249770100"
+    },
+    {
+      "world": "NO_POSITIVITY",
+      "source_structural_atoms": 64,
+      "positive_probability_atoms": 32,
+      "observed_joint_TY": {
+        "T0Y0": "7/16",
+        "T0Y1": "1/16",
+        "T1Y0": "1/8",
+        "T1Y1": "3/8"
+      },
+      "observed_risk_T0": "1/8",
+      "observed_risk_T1": "3/4",
+      "observed_RR": "6",
+      "true_intervention_risk_T0": "5/16",
+      "true_intervention_risk_T1": "9/16",
+      "true_causal_RR": "9/5",
+      "observed_U_standardized_risk": null,
+      "standardized_status": "UNIDENTIFIED_NO_POSITIVITY",
+      "oracle_sensitivity_RR_EU": null,
+      "oracle_sensitivity_RR_UD": null,
+      "oracle_bias_factor": null,
+      "oracle_bounded_RR_lower": null,
+      "association_E_value_point_50digit": "11.477225575051661134569697828008021339527446949980"
+    }
+  ]
+}
