@@ -9,3 +9,14 @@
 [GitHub Actions run39740585568](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39740585568) Python3.11与3.12各39项单测共**78项测试全部成功**，第三完整12世界、192真原来源、独立Fraction方差与三文件SHA归档job也success；机器人[真正原始数据提交af59326b](https://github.com/edwardsage419/Psychohistory-Research/commit/af59326bd3990d83e94e1d490ce5e839f2d5d3ce)。
 
 人工数学E1有界方法研究，新增真人E2=0、真实历史E3=0；R073/PESEN v0.1冻结。下一真实原目录 **09-006 Difference in Differences**，研究编号拟R215。完成全部原R系列后统一分类，最后熔炼。
+
+
+## 2026-10-22 增量研究 R214-S2：7168原十位置噪声来源，原正式研究不变
+
+本节为**独立补充，绝不替代上述12世界192来源R214正式验收**。[增量完整科学报告与归档修复记录](R214_S2_SCIENTIFIC_REPORT_2026-10-22.md) · [事前增量冻结协议](../../protocols/R214_RDD_7_WORLDS_7168_ORIGINAL_GRIDS_PRESCORE_FREEZE_2026-10-22.md) · [7世界56配置完整S2结果](R214_S2_EXACT_RESULTS.json) · [7168条完整原噪声及真实评分](R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv) · [S2独立机器哈希验收](R214_S2_FINAL_MACHINE_ACCEPTANCE.json) · [独立正式验收收据](R214_S2_FINAL_ACCEPTANCE_STATUS.json)。
+
+S2固定十个真实人工X位置−5..−1,+1..+5及阈值0，7个生成函数×完整1024独立噪声向量=**7168条原人工来源**，四个带宽h2/3/4/5与局部常数/线性两算法共56评分，Python3.11及3.12各40项测试共**80测试通过**；[最终S2 run39743169253](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39743169253)三job全部success，[机器人独立增量归档73372995](https://github.com/edwardsage419/Psychohistory-Research/commit/73372995fd7eeb0c21b8829a7cfd181e549bb82c)。
+
+核心反例：真实因果效果2的FLAT_TAU2和效果0的CONTINUOUS_HIDDEN_RAMP在十个实际观察位置上**完全同分布**，即便后者潜在未处理均值在阈值连续并且一、二阶导数连续，实际观测网格离阈值最小距离仍为1，也不能仅从该数据估计真阈值因果效应。另有不合法基线突跳机制同样观察等价。只有人工E1，E2/E3=0。
+
+**归档纠错**：新增S2第一轮因结果同名暂时覆盖原R214的`R214_EXACT_RESULTS.json`和`R214_FINAL_MACHINE_ACCEPTANCE.json`；已通过原正式机器人提交[af59326b](https://github.com/edwardsage419/Psychohistory-Research/commit/af59326bd3990d83e94e1d490ce5e839f2d5d3ce)恢复，S2自此**只写独立S2前缀结果与收据**。本页原始正式R214的12世界192来源研究正文、正式结果、机器验收和结题收据均保留，S2不产生第240个目录项目。
