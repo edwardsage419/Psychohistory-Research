@@ -314,7 +314,7 @@ class Tests(unittest.TestCase):
     def test_star_neighbor_exposure(self):
         self.assertEqual(exposure("STAR",(1,0,0,1)),(1,1,1,1))
     def test_cycle_neighbor_exposure(self):
-        self.assertEqual(exposure("CYCLE",(1,0,0,1)),(1,2,1,0))
+        self.assertEqual(exposure("CYCLE",(1,0,0,1)),(1,1,1,1))
     def test_linear_spill_pair_complete_bias(self):
         self.assertEqual(analytic_design_HT_expectation("PAIRS","COMPLETE_TWO_OF_FOUR","LINEAR_SPILL"),F(4,3))
     def test_linear_spill_star_complete_bias(self):
