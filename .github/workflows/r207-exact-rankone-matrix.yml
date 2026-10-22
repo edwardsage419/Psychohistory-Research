@@ -1,0 +1,84 @@
+name: R207 All Rank-One 126 Masks 8064 Original Sources
+on:
+  push:
+    paths:
+      - 'research/R207/r207_exact_matrix_completion.py'
+      - '.github/workflows/r207-exact-rankone-matrix.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-completion-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact source matrix posterior and disconnected observation graph audit
+        run: python research/R207/r207_exact_matrix_completion.py --test
+  archive-every-missing-entry-source:
+    needs: dual-python-exact-completion-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit and audit every five-entry mask and all full rank-one source factors
+        run: |
+          python research/R207/r207_exact_matrix_completion.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction
+          from pathlib import Path
+          p=Path('research/R207')
+          r=json.loads((p/'R207_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R207_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(r['worlds'])==r['full_masks']==a['masks']==126
+          assert a['connected']==r['diagnostics']['connected_trees_count']==81
+          assert a['disconnected']==r['diagnostics']['disconnected_masks_count']==45
+          assert a['full_original_mask_and_factor_sources']==8064
+          assert a['full_heldout_squared_errors']==32256
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert r['connected_graph_masks']['bayes_source_expected_heldout_mse_exact']=='0'
+          assert Fraction(r['disconnected_graph_masks']['bayes_source_expected_heldout_mse_exact'])>0
+          assert all(w['bayes_source_expected_heldout_mse_exact']==w['independent_grouped_conditional_variance_exact'] for w in r['worlds'])
+          assert all(w['full_source_probability_sum']=='1' for w in r['worlds'])
+          with (p/'R207_ALL_8064_ORIGINAL_MASK_AND_FACTOR_SOURCES.csv').open(newline='') as f:
+            rows=list(csv.DictReader(f))
+          assert len(rows)==8064
+          for row in rows:
+            assert len(row['true_four_heldout_values'].split('|'))==4
+            assert len(row['informed_bayes_four_heldout_squared_errors'].split('|'))==4
+            assert row['source_original_probability']=='1/64'
+          for name,key in [
+            ('R207_EXACT_RESULTS.json','result_sha256'),
+            ('R207_ALL_8064_ORIGINAL_MASK_AND_FACTOR_SOURCES.csv','full_source_sha256')
+          ]:
+            assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
+          print('R207_RANKONE_126_MASKS_81_TREES_45_DISCONNECTED_8064_SOURCES_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R207-Exact-126-Rankone-Masks-8064-Sources
+          path: |
+            research/R207/R207_EXACT_RESULTS.json
+            research/R207/R207_ALL_8064_ORIGINAL_MASK_AND_FACTOR_SOURCES.csv
+            research/R207/R207_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all original masked matrix sources on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R207/R207_EXACT_RESULTS.json research/R207/R207_ALL_8064_ORIGINAL_MASK_AND_FACTOR_SOURCES.csv research/R207/R207_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R207): all rank-one 5-entry masks and complete actual heldout entry errors'
+            git push origin HEAD:main
+          fi
