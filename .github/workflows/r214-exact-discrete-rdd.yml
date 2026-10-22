@@ -1,0 +1,88 @@
+name: R214 Exact Discrete Support RDD and 7168 Original Shock Histories
+on:
+  push:
+    paths:
+      - 'research/R214/r214_exact_discrete_rdd.py'
+      - '.github/workflows/r214-exact-discrete-rdd.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-rdd-finite-support-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test finite-grid RDD aliasing, exact local OLS and variance/bias source moments
+        run: python research/R214/r214_exact_discrete_rdd.py --test
+  permanent-all-7168-original-rdd-shock-sources:
+    needs: dual-python-rdd-finite-support-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and verify seven full RDD worlds and 7168 original source histories
+        run: |
+          python research/R214/r214_exact_discrete_rdd.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          p=Path('research/R214')
+          r=json.loads((p/'R214_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R214_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['actual_catalogue_id']==a['actual_239_catalogue_id']=='09-005'
+          assert len(r['worlds'])==a['fixed_artificial_worlds']==7
+          assert r['full_original_shock_source_rows']==a['original_full_10_independent_shock_vector_sources']==7168
+          assert len(r['summaries'])==a['world_method_bandwidth_configurations']==56
+          assert r['observationally_identical_worlds_different_actual_tau_at_cutoff']
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert all(s['original_source_probability_sum']=='1' for s in r['summaries'])
+          for s in r['summaries']:
+            assert s['analytic_estimator_expected_value_exact']==s['full_original_noise_source_estimator_mean_exact']
+            assert s['analytic_independent_shock_variance_exact']==s['full_original_noise_source_variance_exact']
+            assert s['analytic_bias2_plus_variance_MSE_exact']==s['all_1024_original_source_actual_true_tau_MSE_exact']
+          with (p/'R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv').open(newline='') as f:
+            rows=list(csv.DictReader(f))
+          assert len(rows)==7168
+          assert all(row['original_source_probability_exact']=='1/1024' for row in rows)
+          assert all(len(row['eight_estimates_from_observations_only'].split('|'))==8 for row in rows)
+          observed={row['original_ten_independent_noise_draw_bitmask']:row['full_ten_actually_observed_outcomes']
+                    for row in rows if row['world']=='FLAT_TAU2'}
+          for row in rows:
+            if row['world'] in ('CONTINUOUS_HIDDEN_RAMP','INVALID_BASELINE_STEP'):
+              assert observed[row['original_ten_independent_noise_draw_bitmask']]==row['full_ten_actually_observed_outcomes']
+          for name,key in [
+            ('R214_EXACT_RESULTS.json','result_sha256'),
+            ('R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv','raw_sha256')
+          ]:
+            assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
+          print('R214_7_WORLDS_7168_FROZEN_NOISE_SOURCES_56_EXACT_RDD_SCORES_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R214-Exact-RDD-7168-Original-Discrete-Grid-Shock-Sources
+          path: |
+            research/R214/R214_EXACT_RESULTS.json
+            research/R214/R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv
+            research/R214/R214_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Archive true original grid shock histories permanently to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R214/R214_EXACT_RESULTS.json research/R214/R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv research/R214/R214_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R214): all finite-grid RDD original shock sources and exact bias variance audits'
+            git push origin HEAD:main
+          fi
