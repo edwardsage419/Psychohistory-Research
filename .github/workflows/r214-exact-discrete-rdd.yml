@@ -38,9 +38,12 @@ jobs:
           from fractions import Fraction as F
           from pathlib import Path
           p=Path('research/R214')
-          r=json.loads((p/'R214_EXACT_RESULTS.json').read_text())
-          a=json.loads((p/'R214_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          r=json.loads((p/'R214_S2_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R214_S2_FINAL_MACHINE_ACCEPTANCE.json').read_text())
           assert r['actual_catalogue_id']==a['actual_239_catalogue_id']=='09-005'
+          assert r['research_id']==a['model_id']=='R214-S2'
+          assert r['supplement_to_original_R214_not_catalogue_replacement'] is True
+          assert a['original_R214_192_source_acceptance_preserved'] is True
           assert len(r['worlds'])==a['fixed_artificial_worlds']==7
           assert r['full_original_shock_source_rows']==a['original_full_10_independent_shock_vector_sources']==7168
           assert len(r['summaries'])==a['world_method_bandwidth_configurations']==56
@@ -62,7 +65,7 @@ jobs:
             if row['world'] in ('CONTINUOUS_HIDDEN_RAMP','INVALID_BASELINE_STEP'):
               assert observed[row['original_ten_independent_noise_draw_bitmask']]==row['full_ten_actually_observed_outcomes']
           for name,key in [
-            ('R214_EXACT_RESULTS.json','result_sha256'),
+            ('R214_S2_EXACT_RESULTS.json','result_sha256'),
             ('R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv','raw_sha256')
           ]:
             assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
@@ -72,16 +75,16 @@ jobs:
         with:
           name: R214-Exact-RDD-7168-Original-Discrete-Grid-Shock-Sources
           path: |
-            research/R214/R214_EXACT_RESULTS.json
+            research/R214/R214_S2_EXACT_RESULTS.json
             research/R214/R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv
-            research/R214/R214_FINAL_MACHINE_ACCEPTANCE.json
+            research/R214/R214_S2_FINAL_MACHINE_ACCEPTANCE.json
           retention-days: 90
       - name: Archive true original grid shock histories permanently to main
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add research/R214/R214_EXACT_RESULTS.json research/R214/R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv research/R214/R214_FINAL_MACHINE_ACCEPTANCE.json
+          git add research/R214/R214_S2_EXACT_RESULTS.json research/R214/R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv research/R214/R214_S2_FINAL_MACHINE_ACCEPTANCE.json
           if ! git diff --cached --quiet; then
             git commit -m 'archive(R214): all finite-grid RDD original shock sources and exact bias variance audits'
             git push origin HEAD:main
