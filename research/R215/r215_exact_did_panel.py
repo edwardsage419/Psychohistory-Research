@@ -58,6 +58,7 @@ def original_noise(scheme):
             yield tuple(v for k in bits for v in (k,k)),F(1,16),bits
     else:raise ValueError("unknown noise design")
 def mean(xs):
+    xs=tuple(xs)
     if not xs:raise ValueError("empty average")
     return sum(xs,Z)/len(xs)
 def did(obs):
