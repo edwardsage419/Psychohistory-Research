@@ -1,0 +1,86 @@
+name: R215 Exact Difference in Differences Twelve Worlds and Complete Panel Noise
+on:
+  push:
+    paths:
+      - 'research/R215/r215_exact_did_panel.py'
+      - '.github/workflows/r215-exact-two-period-did.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-did-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact source-level two-period DiD validation and treatment nonidentification controls
+        run: python research/R215/r215_exact_did_panel.py --test
+  archive-all-finite-panel-sources:
+    needs: dual-python-exact-did-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit all 3264 original unit-period noise panels and verify raw source and variance math
+        run: |
+          python research/R215/r215_exact_did_panel.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          p=Path('research/R215')
+          r=json.loads((p/'R215_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R215_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['catalogue_id']==a['actual_catalogue_id']=='09-006'
+          assert len(r['worlds'])==24
+          assert a['complete_source_worlds']==12
+          assert a['noise_modes']==2
+          assert r['full_original_noise_panel_sources']==a['full_original_noise_panel_sources']==3264
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert all(w['original_source_probability_sum_exact']=='1' for w in r['worlds'])
+          assert all(w['DiD_source_MSE_exact']==w['DiD_independent_analytic_MSE_exact'] for w in r['worlds'])
+          assert all(F(w['DiD_exact_noise_variance'])==(F(2) if w['noise_scheme']=='CELL_INDEPENDENT' else F(0)) for w in r['worlds'])
+          assert all(w['post_only_exact_noise_variance']=='1' for w in r['worlds'])
+          worlds={(w['world'],w['noise_scheme']):w for w in r['worlds']}
+          for scheme in ('CELL_INDEPENDENT','UNIT_PERSISTENT'):
+            assert worlds[('VALID_CONSTANT_TWO',scheme)]['DiD_observed_estimator_expected_exact']=='2'
+            assert worlds[('SIMULTANEOUS_TREATED_SHOCK_NO_CAUSAL',scheme)]['DiD_observed_estimator_expected_exact']=='2'
+            assert worlds[('SIMULTANEOUS_TREATED_SHOCK_NO_CAUSAL',scheme)]['source_true_post_ATT_exact']=='0'
+          with (p/'R215_ALL_3264_ORIGINAL_PANEL_NOISE_SOURCES.csv').open(newline='') as f:
+            data=list(csv.DictReader(f))
+          assert len(data)==3264
+          assert all(len(row['actually_observed_four_units_two_periods_8'].split('|'))==8 for row in data)
+          for name,key in (
+              ('R215_EXACT_RESULTS.json','result_sha256'),
+              ('R215_ALL_3264_ORIGINAL_PANEL_NOISE_SOURCES.csv','full_source_sha256')
+          ):
+            assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
+          print('R215_12_TWO_PERIOD_DID_WORLDS_3264_EXACT_ORIGINAL_PANEL_SOURCES_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R215-All-Twelve-Two-Period-Panel-Source-Results
+          path: |
+            research/R215/R215_EXACT_RESULTS.json
+            research/R215/R215_ALL_3264_ORIGINAL_PANEL_NOISE_SOURCES.csv
+            research/R215/R215_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently synchronize actual source panels and exact causal risk to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R215/R215_EXACT_RESULTS.json research/R215/R215_ALL_3264_ORIGINAL_PANEL_NOISE_SOURCES.csv research/R215/R215_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R215): exact two-period DID complete original source panels and causal counterexamples'
+            git push origin HEAD:main
+          fi
