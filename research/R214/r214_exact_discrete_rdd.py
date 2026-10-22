@@ -274,7 +274,8 @@ def compute():
     if len(original)!=7168 or len(summary)!=56:
         raise AssertionError("world/sample score count mismatch")
     return {
-        "research_id":"R214",
+        "research_id":"R214-S2",
+        "supplement_to_original_R214_not_catalogue_replacement":True,
         "actual_catalogue_id":"09-005",
         "status":"ARTIFICIAL_E1_AWAIT_CI_ACCEPTANCE",
         "fixed_sharp_running_cutoff":"0",
@@ -308,7 +309,7 @@ def compute():
 def emit():
     data,original=compute()
     paths={
-        "result":HERE/"R214_EXACT_RESULTS.json",
+        "result":HERE/"R214_S2_EXACT_RESULTS.json",
         "raw":HERE/"R214_ALL_7168_ORIGINAL_TEN_POINT_SHOCK_SOURCES.csv",
     }
     paths["result"].write_text(json.dumps(data,sort_keys=True,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
@@ -317,7 +318,8 @@ def emit():
         writer.writeheader()
         writer.writerows(original)
     receipt={
-        "model_id":"R214",
+        "model_id":"R214-S2",
+        "original_R214_192_source_acceptance_preserved":True,
         "actual_239_catalogue_id":"09-005",
         "fixed_artificial_worlds":7,
         "original_full_10_independent_shock_vector_sources":7168,
@@ -328,7 +330,7 @@ def emit():
         "new_E2":0,"new_E3":0,
         **{k+"_sha256":hashlib.sha256(v.read_bytes()).hexdigest() for k,v in paths.items()},
     }
-    (HERE/"R214_FINAL_MACHINE_ACCEPTANCE.json").write_text(
+    (HERE/"R214_S2_FINAL_MACHINE_ACCEPTANCE.json").write_text(
         json.dumps(receipt,sort_keys=True,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(receipt,indent=2))
 
