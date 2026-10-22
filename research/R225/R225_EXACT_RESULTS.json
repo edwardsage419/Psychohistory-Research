@@ -1,0 +1,220 @@
+{
+  "research_id": "R225",
+  "original_catalogue_id": "09-016",
+  "scientific_scope": "FINITE_ARTIFICIAL_E1_ONLY",
+  "prescore_protocol_commit": "7fb54ef2158bb5e3934e5d7a72bbd135ad891ac9",
+  "original_world_count": 6,
+  "complete_original_source_atoms": 576,
+  "original_source_atoms_per_world": 96,
+  "hidden_endogenous_and_valid_full_observation_identical": true,
+  "new_human_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "AS_IF_RANDOM_VALID",
+      "original_full_sources": 96,
+      "truth_ATE": "1",
+      "assignment_rule": "EXTERNAL_UNIFORM_SIX_QUOTA_SCHEDULES",
+      "observed_joint_support_cells": 96,
+      "all_source_probabilities_sum": "1",
+      "observed_methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "world": "ENDOGENOUS_FUTURE_SHOCK_ALIAS",
+      "original_full_sources": 96,
+      "truth_ATE": "0",
+      "assignment_rule": "LATENT_FUTURE_TYPE_U_SELECTED",
+      "observed_joint_support_cells": 96,
+      "all_source_probabilities_sum": "1",
+      "observed_methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        }
+      }
+    },
+    {
+      "world": "AS_IF_RANDOM_NULL",
+      "original_full_sources": 96,
+      "truth_ATE": "0",
+      "assignment_rule": "EXTERNAL_UNIFORM_SIX_QUOTA_SCHEDULES",
+      "observed_joint_support_cells": 96,
+      "all_source_probabilities_sum": "1",
+      "observed_methods": {
+        "post_group_difference": {
+          "expectation": "0",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "world": "AS_IF_RANDOM_HETEROGENEOUS",
+      "original_full_sources": 96,
+      "truth_ATE": "3/2",
+      "assignment_rule": "EXTERNAL_UNIFORM_SIX_QUOTA_SCHEDULES",
+      "observed_joint_support_cells": 96,
+      "all_source_probabilities_sum": "1",
+      "observed_methods": {
+        "post_group_difference": {
+          "expectation": "3/2",
+          "fixed_schedule_component_variance": "5/12",
+          "independent_shock_variance": "1/16",
+          "variance": "23/48",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "23/48"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "3/2",
+          "fixed_schedule_component_variance": "5/12",
+          "independent_shock_variance": "1/16",
+          "variance": "23/48",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "23/48"
+        }
+      }
+    },
+    {
+      "world": "ENDOGENOUS_VISIBLE_SELECTION",
+      "original_full_sources": 96,
+      "truth_ATE": "0",
+      "assignment_rule": "LATENT_FUTURE_TYPE_U_SELECTED",
+      "observed_joint_support_cells": 96,
+      "all_source_probabilities_sum": "1",
+      "observed_methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "0",
+          "variance": "0",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "1"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "world": "ANTICIPATORY_PRE_RESPONSE",
+      "original_full_sources": 96,
+      "truth_ATE": "1",
+      "assignment_rule": "EXTERNAL_UNIFORM_SIX_QUOTA_SCHEDULES",
+      "observed_joint_support_cells": 96,
+      "all_source_probabilities_sum": "1",
+      "observed_methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1/2",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "0",
+          "variance": "0",
+          "bias_from_true_target": "1/2",
+          "mean_squared_error": "1/4"
+        },
+        "two_period_DiD": {
+          "expectation": "1/2",
+          "fixed_schedule_component_variance": "0",
+          "independent_shock_variance": "1/16",
+          "variance": "1/16",
+          "bias_from_true_target": "-1/2",
+          "mean_squared_error": "5/16"
+        }
+      }
+    }
+  ]
+}
