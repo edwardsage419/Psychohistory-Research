@@ -1,0 +1,93 @@
+name: R220 Exact Doubly Robust AIPW Seven Finite Worlds
+on:
+  push:
+    paths:
+      - 'research/R220/r220_exact_doubly_robust_aipw.py'
+      - '.github/workflows/r220-exact-doubly-robust.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-doubly-robust-source-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Full Bernoulli model misspecification and AIPW analytic source tests
+        run: python research/R220/r220_exact_doubly_robust_aipw.py --test
+  permanent-all-1537-AIPW-sources:
+    needs: dual-python-doubly-robust-source-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate seven exact worlds all 1537 assignments and verify two independent Fraction routes
+        run: |
+          python research/R220/r220_exact_doubly_robust_aipw.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          p=Path('research/R220')
+          r=json.loads((p/'R220_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R220_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert a['original_catalogue_id']==r['original_catalogue_id']=='09-011'
+          assert a['seven_true_artificial_worlds']==r['number_of_artificial_worlds']==7
+          assert a['complete_original_treatment_assignments']==r['full_original_assignment_source_rows']==1537
+          assert r['true_human_E2']==r['true_historical_E3']==0
+          assert all(w['full_original_source_probability_mass']=='1' for w in r['worlds'])
+          w={v['world']:v for v in r['worlds']}
+          for name in ['BOTH_CORRECT','PROP_CORRECT_OUTCOME_WRONG',
+                       'PROP_WRONG_OUTCOME_CORRECT','WEAK_OVERLAP']:
+            assert w[name]['PUBLIC_AIPW_expected_value_exact']=='2'
+          assert w['BOTH_WRONG']['PUBLIC_AIPW_expected_value_exact']!='2'
+          assert w['HIDDEN_U_BOTH']['PUBLIC_AIPW_expected_value_exact']!='2'
+          assert w['NO_POSITIVITY']['PUBLIC_AIPW_expected_value_exact'] is None
+          assert w['NO_POSITIVITY']['causal_AIPW_status']=='UNIDENTIFIED_NO_POSITIVITY'
+          for v in r['worlds']:
+            if v['has_full_positivity']:
+              assert v['PRIVILEGED_TRUE_P_AIPW_expected_value_exact']=='2'
+              assert v['PRIVILEGED_TRUE_Y_AIPW_variance_exact']=='0'
+              for method in ('PUBLIC_AIPW','PUBLIC_HT','PUBLIC_OUTCOME_ONLY',
+                             'PRIVILEGED_TRUE_P_AIPW','PRIVILEGED_TRUE_Y_AIPW'):
+                bias=F(v[method+'_bias_exact'])
+                var=F(v[method+'_variance_exact'])
+                assert F(v[method+'_MSE_exact'])==var+bias*bias
+          with (p/'R220_ALL_1537_ORIGINAL_AIPW_ASSIGNMENT_SOURCES.csv').open(newline='') as f:
+            rows=list(csv.DictReader(f))
+          assert len(rows)==1537
+          assert sum(row['world']=='NO_POSITIVITY' for row in rows)==1
+          for file,key in [
+            ('R220_EXACT_RESULTS.json','results_sha256'),
+            ('R220_ALL_1537_ORIGINAL_AIPW_ASSIGNMENT_SOURCES.csv','source_sha256')
+          ]:
+            assert a[key]==hashlib.sha256((p/file).read_bytes()).hexdigest()
+          print('R220_7_WORLDS_1537_EXACT_AIPW_SOURCE_ASSIGNMENTS_AND_DUAL_FRACTION_MOMENTS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R220-Complete-DR-AIPW-7-Worlds-1537-Full-Sources
+          path: |
+            research/R220/R220_EXACT_RESULTS.json
+            research/R220/R220_ALL_1537_ORIGINAL_AIPW_ASSIGNMENT_SOURCES.csv
+            research/R220/R220_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Commit actual complete source assignments and AIPW score results permanently to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R220/R220_EXACT_RESULTS.json research/R220/R220_ALL_1537_ORIGINAL_AIPW_ASSIGNMENT_SOURCES.csv research/R220/R220_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R220): all exact double-robust AIPW propensity and outcome source assignments'
+            git push origin HEAD:main
+          fi
