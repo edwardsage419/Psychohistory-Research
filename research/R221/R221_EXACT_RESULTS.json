@@ -1,0 +1,238 @@
+{
+  "artificial_scm_worlds": 6,
+  "full_original_exogenous_U_types_each_world": 4,
+  "full_original_randomized_T_by_U_observations": 48,
+  "gformula_reads_only_observed_T_M_Y": true,
+  "identical_observation_law_but_different_natural_effects": true,
+  "limitations": [
+    "All six mechanisms are artificial 4-latent-type SCMs with eight original observation atoms each",
+    "Mediation g-formula needs extra sequential ignorability including mediator-outcome exchangeability",
+    "T was truly randomized but M was NOT separately randomized",
+    "Cross-world potential outcomes known only to artificial scientific auditor",
+    "No actual human psychological, social or historical causal mediation evidence"
+  ],
+  "new_real_historical_E3": 0,
+  "new_real_human_E2": 0,
+  "original_239_catalogue_id": "09-012",
+  "perfect_observational_T_M_Y_equivalence_pair": [
+    "PURE_INDIRECT",
+    "LATENT_COMMON_CAUSE_NO_MEDIATION"
+  ],
+  "randomized_T_identifies_total_effect_not_natural_decomposition": true,
+  "research_id": "R221",
+  "status": "ARTIFICIAL_E1_AWAIT_CI_ACCEPTANCE",
+  "true_nested_effects_require_ORACLE_U": true,
+  "true_random_treatment_assignment_probability": "1/2",
+  "worlds": [
+    {
+      "complete_joint_original_source_probability": "1",
+      "complete_randomized_observation_source_atoms": 8,
+      "gformula_minus_true_NDE_bias_exact": "0",
+      "gformula_minus_true_NIE_bias_exact": "0",
+      "latent_mediator_outcome_common_cause_present": false,
+      "observable_only_gformula_results": {
+        "gformula_NDE_at_M0": "0",
+        "gformula_NIE_at_T1": "1/4",
+        "observable_T_Y_mean_difference": "1/4",
+        "observable_m_probability_by_t": {
+          "T0_M0": "1/2",
+          "T0_M1": "1/2",
+          "T1_M0": "1/4",
+          "T1_M1": "3/4"
+        },
+        "observable_outcome_conditional_TM": {
+          "T0_M0": "0",
+          "T0_M1": "1",
+          "T1_M0": "0",
+          "T1_M1": "1"
+        }
+      },
+      "original_true_exogenous_U_types": 4,
+      "true_oracle_nested_effects": {
+        "oracle_natural_Y0_mean": "1/2",
+        "oracle_natural_Y1_mean": "3/4",
+        "true_NDE_at_M0": "0",
+        "true_NDE_at_M1": "0",
+        "true_NIE_at_T0": "1/4",
+        "true_NIE_at_T1": "1/4",
+        "true_total_effect": "1/4"
+      },
+      "world": "PURE_INDIRECT"
+    },
+    {
+      "complete_joint_original_source_probability": "1",
+      "complete_randomized_observation_source_atoms": 8,
+      "gformula_minus_true_NDE_bias_exact": "-1/4",
+      "gformula_minus_true_NIE_bias_exact": "1/4",
+      "latent_mediator_outcome_common_cause_present": true,
+      "observable_only_gformula_results": {
+        "gformula_NDE_at_M0": "0",
+        "gformula_NIE_at_T1": "1/4",
+        "observable_T_Y_mean_difference": "1/4",
+        "observable_m_probability_by_t": {
+          "T0_M0": "1/2",
+          "T0_M1": "1/2",
+          "T1_M0": "1/4",
+          "T1_M1": "3/4"
+        },
+        "observable_outcome_conditional_TM": {
+          "T0_M0": "0",
+          "T0_M1": "1",
+          "T1_M0": "0",
+          "T1_M1": "1"
+        }
+      },
+      "original_true_exogenous_U_types": 4,
+      "true_oracle_nested_effects": {
+        "oracle_natural_Y0_mean": "1/2",
+        "oracle_natural_Y1_mean": "3/4",
+        "true_NDE_at_M0": "1/4",
+        "true_NDE_at_M1": "1/4",
+        "true_NIE_at_T0": "0",
+        "true_NIE_at_T1": "0",
+        "true_total_effect": "1/4"
+      },
+      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION"
+    },
+    {
+      "complete_joint_original_source_probability": "1",
+      "complete_randomized_observation_source_atoms": 8,
+      "gformula_minus_true_NDE_bias_exact": "0",
+      "gformula_minus_true_NIE_bias_exact": "0",
+      "latent_mediator_outcome_common_cause_present": false,
+      "observable_only_gformula_results": {
+        "gformula_NDE_at_M0": "1",
+        "gformula_NIE_at_T1": "0",
+        "observable_T_Y_mean_difference": "1",
+        "observable_m_probability_by_t": {
+          "T0_M0": "1/2",
+          "T0_M1": "1/2",
+          "T1_M0": "1/2",
+          "T1_M1": "1/2"
+        },
+        "observable_outcome_conditional_TM": {
+          "T0_M0": "0",
+          "T0_M1": "0",
+          "T1_M0": "1",
+          "T1_M1": "1"
+        }
+      },
+      "original_true_exogenous_U_types": 4,
+      "true_oracle_nested_effects": {
+        "oracle_natural_Y0_mean": "0",
+        "oracle_natural_Y1_mean": "1",
+        "true_NDE_at_M0": "1",
+        "true_NDE_at_M1": "1",
+        "true_NIE_at_T0": "0",
+        "true_NIE_at_T1": "0",
+        "true_total_effect": "1"
+      },
+      "world": "PURE_DIRECT"
+    },
+    {
+      "complete_joint_original_source_probability": "1",
+      "complete_randomized_observation_source_atoms": 8,
+      "gformula_minus_true_NDE_bias_exact": "0",
+      "gformula_minus_true_NIE_bias_exact": "0",
+      "latent_mediator_outcome_common_cause_present": false,
+      "observable_only_gformula_results": {
+        "gformula_NDE_at_M0": "0",
+        "gformula_NIE_at_T1": "0",
+        "observable_T_Y_mean_difference": "0",
+        "observable_m_probability_by_t": {
+          "T0_M0": "1/2",
+          "T0_M1": "1/2",
+          "T1_M0": "1/2",
+          "T1_M1": "1/2"
+        },
+        "observable_outcome_conditional_TM": {
+          "T0_M0": "0",
+          "T0_M1": "0",
+          "T1_M0": "0",
+          "T1_M1": "0"
+        }
+      },
+      "original_true_exogenous_U_types": 4,
+      "true_oracle_nested_effects": {
+        "oracle_natural_Y0_mean": "0",
+        "oracle_natural_Y1_mean": "0",
+        "true_NDE_at_M0": "0",
+        "true_NDE_at_M1": "0",
+        "true_NIE_at_T0": "0",
+        "true_NIE_at_T1": "0",
+        "true_total_effect": "0"
+      },
+      "world": "ZERO_CAUSAL_EFFECT"
+    },
+    {
+      "complete_joint_original_source_probability": "1",
+      "complete_randomized_observation_source_atoms": 8,
+      "gformula_minus_true_NDE_bias_exact": "0",
+      "gformula_minus_true_NIE_bias_exact": "0",
+      "latent_mediator_outcome_common_cause_present": false,
+      "observable_only_gformula_results": {
+        "gformula_NDE_at_M0": "1",
+        "gformula_NIE_at_T1": "1/4",
+        "observable_T_Y_mean_difference": "5/4",
+        "observable_m_probability_by_t": {
+          "T0_M0": "1/2",
+          "T0_M1": "1/2",
+          "T1_M0": "1/4",
+          "T1_M1": "3/4"
+        },
+        "observable_outcome_conditional_TM": {
+          "T0_M0": "0",
+          "T0_M1": "1",
+          "T1_M0": "1",
+          "T1_M1": "2"
+        }
+      },
+      "original_true_exogenous_U_types": 4,
+      "true_oracle_nested_effects": {
+        "oracle_natural_Y0_mean": "1/2",
+        "oracle_natural_Y1_mean": "7/4",
+        "true_NDE_at_M0": "1",
+        "true_NDE_at_M1": "1",
+        "true_NIE_at_T0": "1/4",
+        "true_NIE_at_T1": "1/4",
+        "true_total_effect": "5/4"
+      },
+      "world": "ADDITIVE_BOTH"
+    },
+    {
+      "complete_joint_original_source_probability": "1",
+      "complete_randomized_observation_source_atoms": 8,
+      "gformula_minus_true_NDE_bias_exact": "0",
+      "gformula_minus_true_NIE_bias_exact": "0",
+      "latent_mediator_outcome_common_cause_present": false,
+      "observable_only_gformula_results": {
+        "gformula_NDE_at_M0": "1/2",
+        "gformula_NIE_at_T1": "1/4",
+        "observable_T_Y_mean_difference": "3/4",
+        "observable_m_probability_by_t": {
+          "T0_M0": "1/2",
+          "T0_M1": "1/2",
+          "T1_M0": "1/4",
+          "T1_M1": "3/4"
+        },
+        "observable_outcome_conditional_TM": {
+          "T0_M0": "0",
+          "T0_M1": "0",
+          "T1_M0": "0",
+          "T1_M1": "1"
+        }
+      },
+      "original_true_exogenous_U_types": 4,
+      "true_oracle_nested_effects": {
+        "oracle_natural_Y0_mean": "0",
+        "oracle_natural_Y1_mean": "3/4",
+        "true_NDE_at_M0": "1/2",
+        "true_NDE_at_M1": "3/4",
+        "true_NIE_at_T0": "0",
+        "true_NIE_at_T1": "1/4",
+        "true_total_effect": "3/4"
+      },
+      "world": "TREATMENT_MEDIATOR_INTERACTION"
+    }
+  ]
+}
