@@ -1,3 +1,9 @@
+# 2026-10-22 编目错误补充说明
+
+本报告原首段和后文写作时误标“P1/08-032 Network Centrality”。经审查原239项JSON，该条目不存在，故正确身份为 **R208 人工图论有界补充研究，catalogue_id=null，不计原239目录一项结题**。真实原目录下一项应是09-001 Randomized Controlled Experiment。原研究数学、冻结协议、GitHub验证、原始数据完全不变；详情见[编目校正公告](../../docs/R_SERIES_CATALOG_MAPPING_CORRECTION_2026-10-22.md)。原历史说明的错误标签保留为可审计证据。
+
+---
+
 # R208 网络中心性：全1024五节点图、2048传播世界与118098条原边激活来源
 
 日期2026-10-22（Asia/Taipei）。原239目录P1/08-032 Network Centrality。最终科学状态**CLOSED_BOUNDED_E1_ARTIFICIAL_BOND_CENTRALITY**。全部为人工无向五节点图及预设独立随机边激活世界，新增真人E2=0、真实历史E3=0；不构成现实节点、社会权力、影响力、真实疾病传播或社会群体预测的外部证据。
