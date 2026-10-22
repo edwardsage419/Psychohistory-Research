@@ -1,0 +1,88 @@
+name: R226 Exact Network Homophily and Causal Peer Influence Aliases
+on:
+  push:
+    paths:
+      - 'research/R226/r226_exact_selection_vs_influence.py'
+      - '.github/workflows/r226-exact-selection-influence.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-network-selection-influence-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify full observational aliases and separately true oracle effects
+        run: python research/R226/r226_exact_selection_vs_influence.py --test
+  full-original-source-archive:
+    needs: dual-python-network-selection-influence-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 128 original exogenous network source atoms and SHA receipts
+        run: |
+          python research/R226/r226_exact_selection_vs_influence.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R226')
+          original=list(csv.DictReader((d/'R226_ALL_128_ORIGINAL_SELECTION_INFLUENCE_ATOMS.csv').open()))
+          o=json.loads((d/'R226_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R226_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(original)==128 and len(o['world_results'])==8
+          assert o['original_catalogue_id']==receipt['catalogue_id']=='09-017'
+          assert o['new_human_E2']==o['new_historical_E3']==0
+          assert all(F(r['original_probability'])==F(1,16) for r in original)
+          rows={}
+          for w in o['world_results']:
+            rs=[r for r in original if r['world']==w['world']]
+            assert len(rs)==16 and sum((F(r['original_probability']) for r in rs),F(0))==1
+            assert len({(r['oracle_U'],r['oracle_V'],r['external_random_R'],r['independent_background_Q']) for r in rs})==16
+            rows[w['world']]=w
+          a,b=rows['PEER_COPY'],rows['SHARED_LATENT_SHOCK']
+          assert a['observation_signature']==b['observation_signature']
+          assert a['oracle_true_population_doA_peer_effect']=='1'
+          assert b['oracle_true_population_doA_peer_effect']=='0'
+          a,b=rows['HOMOPHILY_ONLY'],rows['HOMOPHILY_WITH_COPY']
+          assert a['observation_signature']==b['observation_signature']
+          assert (a['oracle_true_population_doA_peer_effect'],b['oracle_true_population_doA_peer_effect'])==('0','1/2')
+          assert a['observed_discordance_probability_given_edge']==b['observed_discordance_probability_given_edge']=='0'
+          assert rows['RANDOMIZED_SIGNAL_ON_HOMOPHILY_NETWORK']['observed_discordance_probability_given_edge']=='1/2'
+          assert rows['RANDOMIZED_NO_COPY']['observed_peer_difference_given_edge']=='0'
+          for file,key in [('R226_ALL_128_ORIGINAL_SELECTION_INFLUENCE_ATOMS.csv','source_sha256'),
+                           ('R226_EXACT_RESULTS.json','result_sha256')]:
+            assert receipt[key]==hashlib.sha256((d/file).read_bytes()).hexdigest()
+          print('R226_ALL_128_SOURCE_TWO_COMPLETE_OBSERVATIONAL_ALIAS_PAIRS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R226-Eight-Complete-Network-Source-Worlds
+          path: |
+            research/R226/R226_ALL_128_ORIGINAL_SELECTION_INFLUENCE_ATOMS.csv
+            research/R226/R226_EXACT_RESULTS.json
+            research/R226/R226_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive true source and machine evidence to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R226/R226_ALL_128_ORIGINAL_SELECTION_INFLUENCE_ATOMS.csv research/R226/R226_EXACT_RESULTS.json research/R226/R226_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R226): full network peer influence and homophily original source atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
