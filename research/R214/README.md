@@ -20,3 +20,12 @@ S2固定十个真实人工X位置−5..−1,+1..+5及阈值0，7个生成函数�
 核心反例：真实因果效果2的FLAT_TAU2和效果0的CONTINUOUS_HIDDEN_RAMP在十个实际观察位置上**完全同分布**，即便后者潜在未处理均值在阈值连续并且一、二阶导数连续，实际观测网格离阈值最小距离仍为1，也不能仅从该数据估计真阈值因果效应。另有不合法基线突跳机制同样观察等价。只有人工E1，E2/E3=0。
 
 **归档纠错**：新增S2第一轮因结果同名暂时覆盖原R214的`R214_EXACT_RESULTS.json`和`R214_FINAL_MACHINE_ACCEPTANCE.json`；已通过原正式机器人提交[af59326b](https://github.com/edwardsage419/Psychohistory-Research/commit/af59326bd3990d83e94e1d490ce5e839f2d5d3ce)恢复，S2自此**只写独立S2前缀结果与收据**。本页原始正式R214的12世界192来源研究正文、正式结果、机器验收和结题收据均保留，S2不产生第240个目录项目。
+
+
+## 2026-10-22 R214-S9 九世界原冻结协议单独补充结题
+
+原2026-10-22冻结的九人工世界、576条R×U×E来源及36组局部外推现在也已**独立执行及归档**，其研究身份为 `R214-S9`，不覆盖R214原主研究12世界192来源、R214-S2七世界7168来源，也不额外计算一个239目录项目。主要文件：[原S9计算前冻结协议](../../protocols/R214_RDD_9_WORLDS_576_ORIGINAL_SOURCES_36_LOCAL_EXTRAPOLATIONS_PRESCORE_FREEZE_2026-10-22.md) · [S9科学报告](R214_S9_SCIENTIFIC_REPORT_2026-10-22.md) · [576条完整人工原来源CSV](R214_S9_ALL_576_ORIGINAL_RDD_SOURCES.csv) · [36组固定局部拟合CSV](R214_S9_ALL_36_LOCAL_EXTRAPOLATIONS.csv) · [9世界结果JSON](R214_S9_EXACT_RESULTS.json) · [SHA机器验收](R214_S9_FINAL_MACHINE_ACCEPTANCE.json) · [S9独立正式结题收据](R214_S9_FINAL_ACCEPTANCE_STATUS.json)。
+
+[GitHub CI run39786552882](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39786552882) 三作业全部success，Python3.11与3.12各48单测共96次，第三作业核验并将全源资料永久归档于main，原始机器人归档提交 [3b73602f](https://github.com/edwardsage419/Psychohistory-Research/commit/3b73602f026f85ef469b6e4f7eeee76340d80330)。密度跳跃、未处理基线跳跃、U构成变化、有限跨度曲率偏差已各自保留独立真效果与实际观察外推；仅有人工数学E1，真人E2与真实历史E3新增均0。
+
+原有 [并行协议审计](../../docs/R214_R215_CONCURRENT_PROTOCOL_PROVENANCE_AUDIT_2026-10-22.md) 所记录“9世界576来源尚未完成”为**更早时点的真实状态**，本次独立补充验收对其作有日期的状态更新，不改写原时序证据。
