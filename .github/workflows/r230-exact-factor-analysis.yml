@@ -1,0 +1,95 @@
+name: R230 Exact Exploratory Factor Analysis and Rotation Equivalence
+on:
+  push:
+    paths:
+      - 'research/R230/r230_exact_finite_factor_analysis.py'
+      - '.github/workflows/r230-exact-factor-analysis.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-factor-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test exact covariance, eigen invariants, factor ranks and rotated observable aliases
+        run: python research/R230/r230_exact_finite_factor_analysis.py --test
+  all-original-factor-sources-archive:
+    needs: dual-python-exact-factor-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 256 original latent and error sources and independent exact result checks
+        run: |
+          python research/R230/r230_exact_finite_factor_analysis.py --emit
+          python - <<'PY'
+          from pathlib import Path
+          from fractions import Fraction as F
+          import csv,hashlib,json
+          d=Path('research/R230')
+          rows=list(csv.DictReader((d/'R230_ALL_256_ORIGINAL_FACTOR_EXOGENOUS_SOURCES.csv').open()))
+          results=json.loads((d/'R230_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R230_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==256 and len(results['world_results'])==8
+          assert results['original_catalogue_id']==receipt['original_catalogue_id']=='10-004'
+          assert all(F(r['original_source_probability'])==F(1,32) for r in rows)
+          by={r['world']:r for r in results['world_results']}
+          for w,v in by.items():
+            rr=[r for r in rows if r['world']==w]
+            assert len(rr)==32
+            assert sum((F(r['original_source_probability']) for r in rr),F(0))==1
+            assert len({(r['original_U'],r['original_V'],r['independent_E1'],
+                         r['independent_E2'],r['independent_E3']) for r in rr})==32
+            assert len(v['exact_population_covariance'])==3
+            assert len(v['exact_eigenvalue_characteristic_polynomial_roots'])==3
+          assert by['ONE_COMMON_TRAIT']['full_observable_joint']==by['COMMON_METHOD_ALIAS']['full_observable_joint']
+          assert by['CROSS_LOADING']['full_observable_joint']==by['ROTATED_CROSS_ALIAS']['full_observable_joint']
+          a=[r for r in rows if r['world']=='CROSS_LOADING']
+          b=[r for r in rows if r['world']=='ROTATED_CROSS_ALIAS']
+          for s,t in zip(a,b):
+            assert s['observed_X1']==t['observed_X1']
+            assert s['observed_X2']==t['observed_X2']
+            assert s['observed_X3']==t['observed_X3']
+          assert by['ONE_COMMON_TRAIT']['oracle_common_component_rank']==1
+          assert by['CROSS_LOADING']['oracle_common_component_rank']==2
+          assert by['NO_COMMON_FACTOR']['oracle_common_component_rank']==0
+          assert by['HIGH_UNIQUENESS']['oracle_item_communality_fraction']==['1/5']*3
+          assert by['ONE_COMMON_TRAIT']['oracle_item_communality_fraction']==['1/2']*3
+          assert by['ONE_COMMON_TRAIT']['exact_eigenvalue_characteristic_polynomial_roots']==['4','1','1']
+          assert by['HIGH_UNIQUENESS']['exact_eigenvalue_characteristic_polynomial_roots']==['7','4','4']
+          for file,key in [('R230_ALL_256_ORIGINAL_FACTOR_EXOGENOUS_SOURCES.csv','source_sha256'),
+                           ('R230_EXACT_RESULTS.json','results_sha256')]:
+            assert receipt[key]==hashlib.sha256((d/file).read_bytes()).hexdigest()
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R230_ALL_256_FULL_FACTOR_SOURCES_ROTATION_AND_SPECTRAL_CERTIFICATES_VALID')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R230-Eight-Exact-Factor-Worlds
+          path: |
+            research/R230/R230_ALL_256_ORIGINAL_FACTOR_EXOGENOUS_SOURCES.csv
+            research/R230/R230_EXACT_RESULTS.json
+            research/R230/R230_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive 256 original factor sources and certificates
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R230/R230_ALL_256_ORIGINAL_FACTOR_EXOGENOUS_SOURCES.csv research/R230/R230_EXACT_RESULTS.json research/R230/R230_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R230): all 256 original factor source atoms and exact covariance certificates'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
