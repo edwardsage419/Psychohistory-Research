@@ -1,0 +1,85 @@
+name: R212 Exact Causal DAGs Observational Equivalence and Interventions
+on:
+  push:
+    paths:
+      - 'research/R212/r212_exact_causal_dags.py'
+      - '.github/workflows/r212-exact-six-causal-dags.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-dag-causal-graph-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact d-separation collider backdoor and same-exogenous intervention checks
+        run: python research/R212/r212_exact_causal_dags.py --test
+  permanent-all-six-scm-full-original-source-archive:
+    needs: dual-python-dag-causal-graph-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate six complete artificial DAG worlds and all source interventions
+        run: |
+          python research/R212/r212_exact_causal_dags.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          p=Path('research/R212')
+          r=json.loads((p/'R212_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R212_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert a['actual_original_catalogue_id']==r['catalogue_id']=='09-003'
+          assert a['six_DAG_worlds']==r['complete_artificial_structural_worlds']==6
+          assert a['original_true_exogenous_sources']==r['full_original_exogenous_source_records']==44
+          assert a['total_pairwise_intervention_outcomes']==r['complete_two_interventions_on_each_exogenous_source']==88
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert len(r['worlds'])==6
+          world={w['world']:w for w in r['worlds']}
+          assert world['CONFOUND']['observational_TY_2_by_2_distribution']==world['REVERSE_CAUSAL']['observational_TY_2_by_2_distribution']
+          assert world['CONFOUND']['true_average_causal_effect_exact']=='0'
+          assert world['REVERSE_CAUSAL']['true_average_causal_effect_exact']=='1/2'
+          assert world['COLLIDER']['conditioning_on_K1_creates_spurious_observed_difference_exact']=='-1/2'
+          assert world['MEDIATOR']['incorrect_post_treatment_M_adjustment_for_total_effect_exact']=='0'
+          assert all(w['true_exogenous_source_probability_sum']=='1' for w in r['worlds'])
+          assert all(w['DAG_all_edges_acyclic'] for w in r['worlds'])
+          with (p/'R212_ALL_44_ORIGINAL_SCM_EXOGENOUS_SOURCES.csv').open(newline='') as f:
+            rows=list(csv.DictReader(f))
+          assert len(rows)==44
+          assert all(row['original_source_probability_exact'] in ('1/8','1/4') for row in rows)
+          for name,key in [
+            ('R212_EXACT_RESULTS.json','results_sha256'),
+            ('R212_ALL_44_ORIGINAL_SCM_EXOGENOUS_SOURCES.csv','sources_sha256')
+          ]:
+            assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
+          print('R212_SIX_CAUSAL_DAG_WORLDS_44_SOURCES_88_FIXED_EXOGENOUS_INTERVENTIONS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R212-All-Six-Finite-Causal-DAGs-And-Interventional-Source-Evidence
+          path: |
+            research/R212/R212_EXACT_RESULTS.json
+            research/R212/R212_ALL_44_ORIGINAL_SCM_EXOGENOUS_SOURCES.csv
+            research/R212/R212_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Commit exact original artificial SCM source and DAG results to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R212/R212_EXACT_RESULTS.json research/R212/R212_ALL_44_ORIGINAL_SCM_EXOGENOUS_SOURCES.csv research/R212/R212_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R212): all causal DAG complete observational and do-intervention artificial sources'
+            git push origin HEAD:main
+          fi
