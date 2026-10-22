@@ -1,0 +1,81 @@
+name: R217 Exact Synthetic Control 1024 Independent Pre-Post Source Pairs
+on:
+  push:
+    paths:
+      - 'research/R217/r217_exact_synthetic_control.py'
+      - '.github/workflows/r217-exact-synthetic-control.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-pre-fit-heldout-fraction-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate finite convex donor weights and full independent future shock source risk
+        run: python research/R217/r217_exact_synthetic_control.py --test
+  full-source-1024-pre-post-independent-archive:
+    needs: dual-python-pre-fit-heldout-fraction-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate original pre-post sources and verify all 8 exact artificial worlds
+        run: |
+          python research/R217/r217_exact_synthetic_control.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R217')
+          r=json.loads((d/'R217_EXACT_RESULTS.json').read_text())
+          a=json.loads((d/'R217_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['source_catalogue_id']==a['real_original_catalogue_id']=='09-008'
+          assert r['true_world_count']==a['artificial_worlds']==8
+          assert r['full_original_train_independent_future_source_pairs']==a['complete_original_independent_pre_post_source_pairs']==1024
+          assert r['full_fixed_quarter_weight_grid_count']==15
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert len(r['worlds'])==8
+          assert all(w['full_original_joint_source_probability_sum']=='1' for w in r['worlds'])
+          assert all(sum(F(v) for v in w['selected_weight_probabilities_exact'].values())==1 for w in r['worlds'])
+          assert r['fully_identical_actual_source_joint_distributions_but_different_true_effects']==['VALID_TAU2','UNTREATED_POST_SHOCK_MIMIC']
+          with (d/'R217_ALL_1024_ORIGINAL_INDEPENDENT_PRE_POST_SOURCE_PAIRS.csv').open(newline='') as f:
+            rows=list(csv.DictReader(f))
+          assert len(rows)==1024
+          assert all(row['true_joint_train_independent_new_source_probability']=='1/128' for row in rows)
+          assert all(len(row['independent_future_actual_true_causal_effect_ORACLE_ONLY'].split('|'))==2 for row in rows)
+          for name,key in [
+            ('R217_EXACT_RESULTS.json','results_sha256'),
+            ('R217_ALL_1024_ORIGINAL_INDEPENDENT_PRE_POST_SOURCE_PAIRS.csv','all_source_sha256'),
+          ]:
+            assert a[key]==hashlib.sha256((d/name).read_bytes()).hexdigest()
+          print('R217_EXACT_SYNTHETIC_CONTROL_EIGHT_WORLDS_1024_TRUE_INDEPENDENT_FUTURE_SOURCE_PAIRS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R217-All-Eight-Exact-Synthetic-Control-Source-Worlds
+          path: |
+            research/R217/R217_EXACT_RESULTS.json
+            research/R217/R217_ALL_1024_ORIGINAL_INDEPENDENT_PRE_POST_SOURCE_PAIRS.csv
+            research/R217/R217_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently commit complete training and independently new shock source audit
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R217/R217_EXACT_RESULTS.json research/R217/R217_ALL_1024_ORIGINAL_INDEPENDENT_PRE_POST_SOURCE_PAIRS.csv research/R217/R217_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R217): all finite synthetic-control pre sources and independent future outcomes'
+            git push origin HEAD:main
+          fi
