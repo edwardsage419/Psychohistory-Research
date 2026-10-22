@@ -1,0 +1,98 @@
+name: R227 Exact Classical Test Theory and Independent Retest Sources
+on:
+  push:
+    paths:
+      - 'research/R227/r227_exact_classical_test_theory.py'
+      - '.github/workflows/r227-exact-classical-test-theory.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-exact-ctt-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Full exact reliability, alpha, alias and independent retest checks
+        run: python research/R227/r227_exact_classical_test_theory.py --test
+  full-single-and-retest-original-source-archive:
+    needs: two-python-exact-ctt-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and independently validate all 1152 original atom/pair records
+        run: |
+          python research/R227/r227_exact_classical_test_theory.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R227')
+          single=list(csv.DictReader((d/'R227_ALL_128_ORIGINAL_SINGLE_TEST_SOURCES.csv').open()))
+          pairs=list(csv.DictReader((d/'R227_ALL_1024_ORIGINAL_RETEST_SOURCE_PAIRS.csv').open()))
+          result=json.loads((d/'R227_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R227_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert receipt['catalogue_id']==result['actual_catalogue_id']=='10-001'
+          assert len(single)==128 and len(pairs)==1024 and len(result['world_results'])==8
+          assert all(F(x['source_probability'])==F(1,16) for x in single)
+          assert all(F(x['source_probability'])==F(1,128) for x in pairs)
+          names={r['world'] for r in single}
+          assert len(names)==8
+          for name in names:
+            s=[r for r in single if r['world']==name]
+            p=[r for r in pairs if r['world']==name]
+            assert len(s)==16 and len(p)==128
+            assert sum((F(x['source_probability']) for x in s),F(0))==1
+            assert sum((F(x['source_probability']) for x in p),F(0))==1
+            assert len({(x['stable_trait_T'],x['first_E1'],x['first_E2'],x['first_shared_M'],x['second_E1'],x['second_E2'],x['second_shared_M']) for x in p})==128
+          w={x['world']:x for x in result['world_results']}
+          assert w['PERFECT_TRAIT']['single_observation_joint']==w['PERFECT_METHOD']['single_observation_joint']
+          assert w['PERFECT_TRAIT']['retest_sum_joint']!=w['PERFECT_METHOD']['retest_sum_joint']
+          assert (w['PERFECT_TRAIT']['true_reliability_conditional_stable_trait'],
+                  w['PERFECT_METHOD']['true_reliability_conditional_stable_trait'])==('1','0')
+          assert (w['SHARED_METHOD_WITH_TRAIT']['two_item_alpha'],
+                  w['SHARED_METHOD_WITH_TRAIT']['true_reliability_conditional_stable_trait'])==('4/5','2/5')
+          assert (w['OPPOSING_METHOD']['two_item_alpha'],
+                  w['OPPOSING_METHOD']['true_reliability_conditional_stable_trait'])==('0','1')
+          assert w['OPPOSING_TRAIT']['two_item_alpha']=='-2'
+          for obj in w.values():
+            assert obj['true_reliability_conditional_stable_trait']==obj['retest_reliability_from_independent_occasion_pairs']
+          for filename,key in [
+            ('R227_ALL_128_ORIGINAL_SINGLE_TEST_SOURCES.csv','single_sources_sha256'),
+            ('R227_ALL_1024_ORIGINAL_RETEST_SOURCE_PAIRS.csv','retest_pairs_sha256'),
+            ('R227_EXACT_RESULTS.json','results_sha256')]:
+            assert receipt[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R227_ALL_128_SINGLE_AND_1024_RETEST_SOURCE_ATOMS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R227-Full-Original-Single-and-Independent-Retest-Sources
+          path: |
+            research/R227/R227_ALL_128_ORIGINAL_SINGLE_TEST_SOURCES.csv
+            research/R227/R227_ALL_1024_ORIGINAL_RETEST_SOURCE_PAIRS.csv
+            research/R227/R227_EXACT_RESULTS.json
+            research/R227/R227_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive complete source records and SHA receipts
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R227/R227_ALL_128_ORIGINAL_SINGLE_TEST_SOURCES.csv research/R227/R227_ALL_1024_ORIGINAL_RETEST_SOURCE_PAIRS.csv research/R227/R227_EXACT_RESULTS.json research/R227/R227_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R227): all 128 exact one-time and 1024 independent retest source records'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
