@@ -1,0 +1,195 @@
+{
+  "catalogue_id": "09-003",
+  "complete_artificial_structural_worlds": 6,
+  "complete_two_interventions_on_each_exogenous_source": 88,
+  "equal_TY_marginal_distribution": {
+    "00": "3/8",
+    "01": "1/8",
+    "10": "1/8",
+    "11": "3/8"
+  },
+  "exogenous_source_probabilities_all_worlds_sum_one": true,
+  "full_original_exogenous_source_records": 44,
+  "limits": "Known finite artificial binary SCMs, not any real human or historical causal effect; d-separation audited only on six small fixed graphs.",
+  "new_real_historical_E3": 0,
+  "new_real_human_E2": 0,
+  "no_interference_or_hidden_real_population_claim": true,
+  "observationally_equal_TY_marginals_but_different_do_effect_worlds": [
+    "CONFOUND",
+    "REVERSE_CAUSAL"
+  ],
+  "research_id": "R212",
+  "same_exogenous_values_held_fixed_under_two_do_interventions": true,
+  "status": "ARTIFICIAL_E1_AWAIT_CI_ACCEPTANCE",
+  "true_causal_effect_two_fraction_routes_consistent": true,
+  "worlds": [
+    {
+      "DAG_all_edges_acyclic": true,
+      "T_Y_d_separated_after_condition_C": true,
+      "T_Y_d_separated_without_conditioning": false,
+      "complete_exogenous_source_records": 8,
+      "graph_directed_edges": [
+        "C->T",
+        "C->Y"
+      ],
+      "naive_observed_Y_mean_difference_T1_minus_T0_exact": "1/2",
+      "observational_TY_2_by_2_distribution": {
+        "00": "3/8",
+        "01": "1/8",
+        "10": "1/8",
+        "11": "3/8"
+      },
+      "observed_graph_nodes": [
+        "C",
+        "T",
+        "Y"
+      ],
+      "true_average_causal_effect_exact": "0",
+      "true_do_T_0_mean_outcome_exact": "1/2",
+      "true_do_T_1_mean_outcome_exact": "1/2",
+      "true_exogenous_source_probability_sum": "1",
+      "valid_pre_treatment_C_backdoor_adjusted_total_effect": "0",
+      "world": "CONFOUND"
+    },
+    {
+      "DAG_all_edges_acyclic": true,
+      "T_Y_d_separated_after_condition_C": false,
+      "T_Y_d_separated_without_conditioning": false,
+      "complete_exogenous_source_records": 8,
+      "graph_directed_edges": [
+        "C->T",
+        "T->Y"
+      ],
+      "naive_observed_Y_mean_difference_T1_minus_T0_exact": "1",
+      "observational_TY_2_by_2_distribution": {
+        "00": "1/2",
+        "01": "0",
+        "10": "0",
+        "11": "1/2"
+      },
+      "observed_graph_nodes": [
+        "C",
+        "T",
+        "Y"
+      ],
+      "true_average_causal_effect_exact": "1",
+      "true_do_T_0_mean_outcome_exact": "0",
+      "true_do_T_1_mean_outcome_exact": "1",
+      "true_exogenous_source_probability_sum": "1",
+      "valid_pre_treatment_C_backdoor_adjusted_total_effect": "1",
+      "world": "DIRECT"
+    },
+    {
+      "DAG_all_edges_acyclic": true,
+      "T_Y_d_separated_after_condition_C": false,
+      "T_Y_d_separated_without_conditioning": false,
+      "complete_exogenous_source_records": 8,
+      "graph_directed_edges": [
+        "C->T",
+        "C->Y",
+        "T->Y"
+      ],
+      "naive_observed_Y_mean_difference_T1_minus_T0_exact": "3/4",
+      "observational_TY_2_by_2_distribution": {
+        "00": "3/8",
+        "01": "1/8",
+        "10": "0",
+        "11": "1/2"
+      },
+      "observed_graph_nodes": [
+        "C",
+        "T",
+        "Y"
+      ],
+      "true_average_causal_effect_exact": "1/2",
+      "true_do_T_0_mean_outcome_exact": "1/2",
+      "true_do_T_1_mean_outcome_exact": "1",
+      "true_exogenous_source_probability_sum": "1",
+      "valid_pre_treatment_C_backdoor_adjusted_total_effect": "1/2",
+      "world": "COMBINED"
+    },
+    {
+      "DAG_all_edges_acyclic": true,
+      "T_Y_d_separated_without_conditioning": false,
+      "complete_exogenous_source_records": 8,
+      "graph_directed_edges": [
+        "T->Y"
+      ],
+      "naive_observed_Y_mean_difference_T1_minus_T0_exact": "1/2",
+      "observational_TY_2_by_2_distribution": {
+        "00": "3/8",
+        "01": "1/8",
+        "10": "1/8",
+        "11": "3/8"
+      },
+      "observed_graph_nodes": [
+        "T",
+        "Y"
+      ],
+      "true_average_causal_effect_exact": "1/2",
+      "true_do_T_0_mean_outcome_exact": "1/4",
+      "true_do_T_1_mean_outcome_exact": "3/4",
+      "true_exogenous_source_probability_sum": "1",
+      "world": "REVERSE_CAUSAL"
+    },
+    {
+      "DAG_all_edges_acyclic": true,
+      "T1_K0_conditioning_has_zero_observed_support": true,
+      "T_Y_d_separated_after_condition_K": false,
+      "T_Y_d_separated_without_conditioning": true,
+      "complete_exogenous_source_records": 4,
+      "conditioning_on_K1_creates_spurious_observed_difference_exact": "-1/2",
+      "graph_directed_edges": [
+        "T->K",
+        "U->K",
+        "U->Y"
+      ],
+      "naive_observed_Y_mean_difference_T1_minus_T0_exact": "0",
+      "observational_TY_2_by_2_distribution": {
+        "00": "1/4",
+        "01": "1/4",
+        "10": "1/4",
+        "11": "1/4"
+      },
+      "observed_graph_nodes": [
+        "K",
+        "T",
+        "U",
+        "Y"
+      ],
+      "true_average_causal_effect_exact": "0",
+      "true_do_T_0_mean_outcome_exact": "1/2",
+      "true_do_T_1_mean_outcome_exact": "1/2",
+      "true_exogenous_source_probability_sum": "1",
+      "world": "COLLIDER"
+    },
+    {
+      "DAG_all_edges_acyclic": true,
+      "T_Y_d_separated_after_condition_M": true,
+      "T_Y_d_separated_without_conditioning": false,
+      "complete_exogenous_source_records": 8,
+      "graph_directed_edges": [
+        "T->M",
+        "M->Y"
+      ],
+      "incorrect_post_treatment_M_adjustment_for_total_effect_exact": "0",
+      "naive_observed_Y_mean_difference_T1_minus_T0_exact": "1/2",
+      "observational_TY_2_by_2_distribution": {
+        "00": "3/8",
+        "01": "1/8",
+        "10": "1/8",
+        "11": "3/8"
+      },
+      "observed_graph_nodes": [
+        "M",
+        "T",
+        "Y"
+      ],
+      "true_average_causal_effect_exact": "1/2",
+      "true_do_T_0_mean_outcome_exact": "1/4",
+      "true_do_T_1_mean_outcome_exact": "3/4",
+      "true_exogenous_source_probability_sum": "1",
+      "world": "MEDIATOR"
+    }
+  ]
+}
