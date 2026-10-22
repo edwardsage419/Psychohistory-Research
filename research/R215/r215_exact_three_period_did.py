@@ -134,8 +134,8 @@ def audit():
         raise AssertionError("full observable panel distribution equality failed")
     if len({indexed[k]["true_structural_post_treated_ATT_exact"] for k in pair})!=3:
         raise AssertionError("different true ATT values disappeared")
-    return {"research_id":"R215","catalogue_id":"09-006",
-        "scientific_status":"ARTIFICIAL_E1_AWAIT_CI",
+    return {"research_id":"R215-3P-SUPPLEMENT","catalogue_id":"09-006",
+        "scientific_status":"SUPPLEMENT_ARTIFICIAL_E1_AWAIT_CI",
         "two_artificial_groups":["T","C"],"pre_periods":[-1,0],"post_period":1,
         "frozen_group_time_noise_independent":True,
         "all_worlds":12,"full_original_panel_source_rows":768,
@@ -148,13 +148,13 @@ def audit():
         "new_real_human_E2":0,"new_real_historical_E3":0,"worlds":worlds},allrows
 def emit():
     r,rows=audit()
-    a=OUT/"R215_EXACT_RESULTS.json"
+    a=OUT/"R215_3P_EXACT_RESULTS.json"
     b=OUT/"R215_ALL_768_ORIGINAL_GROUP_TIME_SHOCK_PANELS.csv"
     a.write_text(json.dumps(r,indent=2,sort_keys=True,ensure_ascii=False)+"\n",encoding="utf-8")
     with b.open("w",newline="",encoding="utf-8") as f:
         writer=csv.DictWriter(f,fieldnames=list(rows[0]))
         writer.writeheader();writer.writerows(rows)
-    c={"model_id":"R215","catalogue_id":"09-006","worlds":12,
+    c={"model_id":"R215-3P-SUPPLEMENT","catalogue_id":"09-006","worlds":12,
        "original_complete_group_time_panel_sources":768,
        "six_independent_noise_cells_all_complete":True,
        "source_MSE_bias_variance_two_routes_consistent":True,
@@ -162,7 +162,7 @@ def emit():
        "new_E2":0,"new_E3":0,
        "result_sha256":hashlib.sha256(a.read_bytes()).hexdigest(),
        "sources_sha256":hashlib.sha256(b.read_bytes()).hexdigest()}
-    (OUT/"R215_FINAL_MACHINE_ACCEPTANCE.json").write_text(
+    (OUT/"R215_3P_FINAL_MACHINE_ACCEPTANCE.json").write_text(
         json.dumps(c,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps(c,indent=2))
 class Tests(unittest.TestCase):
