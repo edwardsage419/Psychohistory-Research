@@ -1,0 +1,59 @@
+{
+  "research_id": "R221",
+  "catalogue_id": "09-012",
+  "method": "Causal Mediation Analysis",
+  "date": "2026-10-22",
+  "scientific_scope": "CLOSED_BOUNDED_E1_ARTIFICIAL_SIX_MEDIATION_SCM",
+  "archival_validation": "ORIGINAL_FULL_SOURCES_PRESENT_AND_SHA_VERIFIED",
+  "ci_evidence_state": "RUN_CONCLUSION_SUCCESS_BOTH_PYTHON_TEST_LOGS_OK_BUT_3_11_JOB_LIST_STALE_QUEUED",
+  "prescore_freeze_commit": "00d8a7e6e31cca31047640a3b1968a1946a8d9c9",
+  "complete_original_source_archive_commit": "70c0846604fe1d00e0dc933da675f753d7b9fbd5",
+  "workflow_run_id": 39784385018,
+  "workflow_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39784385018",
+  "workflow_run_overall_conclusion": "success",
+  "python311_test_log": "Ran 39 tests; OK",
+  "python312_test_log": "Ran 39 tests; OK",
+  "actual_successful_test_executions": 78,
+  "python311_job_status_from_jobs_endpoint": "queued",
+  "python311_job_conclusion_from_jobs_endpoint": null,
+  "python312_job_conclusion_from_jobs_endpoint": "success",
+  "archive_job_conclusion_from_jobs_endpoint": "success",
+  "job_metadata_conflict_must_remain_disclosed": true,
+  "graph_worlds": 6,
+  "complete_original_source_atoms": 48,
+  "treatment_randomization_independent_U": true,
+  "observational_equivalent_pair": [
+    "PURE_INDIRECT",
+    "LATENT_COMMON_CAUSE_NO_MEDIATION"
+  ],
+  "genuine_mediation_pair_1": {
+    "total": "1/4",
+    "direct": "0",
+    "indirect": "1/4"
+  },
+  "genuine_mediation_pair_2": {
+    "total": "1/4",
+    "direct": "1/4",
+    "indirect": "0"
+  },
+  "equal_observable_gformula_both": {
+    "direct": "0",
+    "indirect": "1/4"
+  },
+  "interaction_decompositions": {
+    "nde0": "1/2",
+    "nie1": "1/4",
+    "nie0": "0",
+    "nde1": "3/4",
+    "te": "3/4"
+  },
+  "exact_results_sha256": "92b9cff5c73b41cb54606e274d4c2e18c80661ac8f84b03badef6dc665ef1eae",
+  "all_48_source_sha256": "41d8bc12cc2acd76370c0f97f6c8806646da7d049461bdd3e5a600834007c46e",
+  "E1": "COMPLETE_FINITE_ARTIFICIAL_SCOPE",
+  "human_E2": 0,
+  "historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_actual_catalogue": "09-013 Causal Inference with Interference R222",
+  "caveat": "CI workflow run is success and both actual Python logs show OK, but one job list record remains queued/null. Do not represent all 3 job summary fields as success."
+}
