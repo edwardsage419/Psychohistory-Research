@@ -1,0 +1,91 @@
+name: R224 Exact Negative Controls Eight Frozen Worlds
+on:
+  push:
+    paths:
+      - 'research/R224/r224_exact_negative_controls.py'
+      - '.github/workflows/r224-exact-negative-controls.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-negative-control-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact source, observed-only diagnostics, and oracle unit tests
+        run: python research/R224/r224_exact_negative_controls.py --test
+  archive-complete-original-source-space:
+    needs: dual-python-exact-negative-control-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit and independently audit eight complete original source worlds
+        run: |
+          python research/R224/r224_exact_negative_controls.py --emit
+          python - <<'PY'
+          from pathlib import Path
+          from fractions import Fraction as F
+          import csv,json,hashlib
+          d=Path('research/R224')
+          with (d/'R224_ALL_4096_ORIGINAL_NEGATIVE_CONTROL_SOURCE_ATOMS.csv').open() as f:
+            rows=list(csv.DictReader(f))
+          out=json.loads((d/'R224_EXACT_RESULTS.json').read_text())
+          machine=json.loads((d/'R224_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert out['catalogue_id']==machine['catalogue_id']=='09-015'
+          assert len(rows)==4096 and len(out['world_results'])==8
+          assert out['new_human_E2']==out['new_historical_E3']==0
+          assert all(F(row['true_original_probability'])==F(1,512) for row in rows)
+          for world in out['world_results']:
+            w=[r for r in rows if r['world']==world['world']]
+            assert len(w)==512
+            assert sum((F(r['true_original_probability']) for r in w),F(0))==1
+            assert len({(r['oracle_U'],r['original_V_A'],r['original_V_Z'],r['original_V_W'],r['original_V_Y']) for r in w})==512
+          z={w['world']:w for w in out['world_results']}
+          a=lambda w,k: F(z[w]['observational_marginal_associations'][k])
+          t=lambda w,k: F(z[w]['true_potential_outcome_oracles'][k])
+          assert a('HIDDEN_CONFOUNDED_NULL','D_AY')==F(1,4)
+          assert a('HIDDEN_CONFOUNDED_NULL','D_AW')==F(1,4)
+          assert t('HIDDEN_CONFOUNDED_NULL','true_doA_effect_on_Y')==0
+          assert a('INSENSITIVE_VALID_CONTROLS','D_AY')==F(1,4)
+          assert a('INSENSITIVE_VALID_CONTROLS','D_AW')==a('INSENSITIVE_VALID_CONTROLS','D_ZY')==0
+          assert a('INVALID_OUTCOME_DIRECT_A','D_AW')==t('INVALID_OUTCOME_DIRECT_A','true_doA_effect_on_W')==F(1,2)
+          assert a('INVALID_EXPOSURE_DIRECT_Z','D_ZY')==t('INVALID_EXPOSURE_DIRECT_Z','true_doZ_effect_on_Y')==F(1,2)
+          assert a('CANCELLED_INVALID_OUTCOME','D_AW')==0
+          assert t('CANCELLED_INVALID_OUTCOME','true_doA_effect_on_W')==F(-1,4)
+          assert a('MISMATCHED_VALID_OUTCOME','D_AW')==F(1,8)
+          for filename,key in [
+            ('R224_ALL_4096_ORIGINAL_NEGATIVE_CONTROL_SOURCE_ATOMS.csv','source_sha256'),
+            ('R224_EXACT_RESULTS.json','results_sha256')]:
+            assert machine[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          print('R224_FULL_4096_SOURCE_NEGATIVE_CONTROL_ASSUMPTION_GATES_PASSED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R224-Eight-Full-Negative-Control-Source-Worlds
+          path: |
+            research/R224/R224_ALL_4096_ORIGINAL_NEGATIVE_CONTROL_SOURCE_ATOMS.csv
+            research/R224/R224_EXACT_RESULTS.json
+            research/R224/R224_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Persist source atoms and SHA results to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R224/R224_ALL_4096_ORIGINAL_NEGATIVE_CONTROL_SOURCE_ATOMS.csv research/R224/R224_EXACT_RESULTS.json research/R224/R224_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R224): 4096 genuine finite negative control source atoms and contrasts'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
