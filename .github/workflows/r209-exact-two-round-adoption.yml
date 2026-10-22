@@ -1,0 +1,86 @@
+name: R209 Exact Two-Round Innovation Adoption and 26244 Independent Futures
+on:
+  push:
+    paths:
+      - 'research/R209/r209_exact_two_round_adoption.py'
+      - '.github/workflows/r209-exact-two-round-adoption.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-full-adoption-source-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate all two-round synthetic diffusion sources and independent scoring
+        run: python research/R209/r209_exact_two_round_adoption.py --test
+  permanent-full-36-world-26244-independent-source-archive:
+    needs: dual-python-full-adoption-source-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit 36 diffusion worlds and full original train and future sources and check SHA
+        run: |
+          python research/R209/r209_exact_two_round_adoption.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction
+          from pathlib import Path
+          p=Path('research/R209')
+          r=json.loads((p/'R209_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R209_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert a['artificial_full_worlds']==r['world_count']==36
+          assert a['real_original_training_trajectories']==r['full_original_training_trajectories']==972
+          assert a['real_joint_train_independent_new_trajectories']==r['full_train_independent_new_trajectory_pairs']==26244
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert len(r['worlds'])==36
+          assert len(r['graph_true_model_4_seed_summaries'])==9
+          assert any(x['graph']=='STAR' and x['seed']==0 and x['mechanisms']==['BASE','COMPLEX'] for x in r['exact_mechanism_distribution_equivalences'])
+          assert all(w['full_joint_true_source_probability']=='1' for w in r['worlds'])
+          for w in r['worlds']:
+            assert sum(F(v) for v in w['selected_model_probabilities_exact'].values())==1
+            assert F(w['full_independent_future_binary_Brier_exact'])>=F(w['oracle_known_true_model_binary_Brier_exact'])
+          for filename,num in [
+            ('R209_ALL_972_ORIGINAL_TRAIN_ADOPTION_TRAJECTORIES.csv',972),
+            ('R209_ALL_26244_INDEPENDENT_NEW_TRAJECTORY_PAIRS.csv',26244),
+          ]:
+            with (p/filename).open(newline='') as f:
+              assert sum(1 for _ in csv.DictReader(f))==num
+          for file,key in [
+            ('R209_EXACT_RESULTS.json','result_sha256'),
+            ('R209_ALL_972_ORIGINAL_TRAIN_ADOPTION_TRAJECTORIES.csv','training_sha256'),
+            ('R209_ALL_26244_INDEPENDENT_NEW_TRAJECTORY_PAIRS.csv','pairs_sha256'),
+          ]:
+            assert a[key]==hashlib.sha256((p/file).read_bytes()).hexdigest()
+          print('R209_36_WORLDS_972_TRAIN_26244_TRULY_INDEPENDENT_FULL_TRAJECTORY_SOURCE_PAIRS_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R209-36-Diffusion-Worlds-Full-Independent-26244-Trajectories
+          path: |
+            research/R209/R209_EXACT_RESULTS.json
+            research/R209/R209_ALL_972_ORIGINAL_TRAIN_ADOPTION_TRAJECTORIES.csv
+            research/R209/R209_ALL_26244_INDEPENDENT_NEW_TRAJECTORY_PAIRS.csv
+            research/R209/R209_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive original finite adoption sources and independent future evidence
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R209/R209_EXACT_RESULTS.json research/R209/R209_ALL_972_ORIGINAL_TRAIN_ADOPTION_TRAJECTORIES.csv research/R209/R209_ALL_26244_INDEPENDENT_NEW_TRAJECTORY_PAIRS.csv research/R209/R209_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R209): all exact adoption training and independent new full-trajectory sources'
+            git push origin HEAD:main
+          fi
