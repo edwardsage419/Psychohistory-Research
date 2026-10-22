@@ -42,5 +42,18 @@
   "PESEN_v0_1": "FROZEN",
   "caveat": "Real CI logs and permanent source archive succeeded, yet GitHub run/job API fields remained queued/null at audit. No blanket CI success assertion.",
   "next_actual_original_catalogue": "10-001 Classical Test Theory (R227)",
-  "owner_order": "Finish all existing R catalogue studies before classification and fusion"
+  "owner_order": "Finish all existing R catalogue studies before classification and fusion",
+  "later_ci_metadata_audit": {
+    "source": "GitHub API subsequent read 2026-10-22",
+    "run_status": "completed",
+    "run_conclusion": "success",
+    "python311_job_status": "completed",
+    "python311_job_conclusion": "success",
+    "python312_job_status": "in_progress",
+    "python312_job_conclusion": null,
+    "archive_job_status": "completed",
+    "archive_job_conclusion": "success",
+    "python312_actual_log": "Ran 61 tests; OK",
+    "interpretation": "Run overall is now success. Python3.12 job API remains in_progress/null despite completed test log; preserve earlier queued/null snapshot separately."
+  }
 }
