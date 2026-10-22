@@ -1,0 +1,84 @@
+name: R208 Exact Five-Node Network Centralities and Bond Influence
+on:
+  push:
+    paths:
+      - 'research/R208/r208_exact_network_centrality.py'
+      - '.github/workflows/r208-exact-network-centrality.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-centrality-and-percolation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run Fraction graph topology rankings and independent exact bond propagation tests
+        run: python research/R208/r208_exact_network_centrality.py --test
+  full-118098-source-permanent-archive:
+    needs: dual-python-centrality-and-percolation-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit 1024 complete graphs, 2048 p-worlds and ALL 118098 original live-edge configurations
+        run: |
+          python research/R208/r208_exact_network_centrality.py --emit
+          python - <<'PY'
+          import csv,json,hashlib
+          from pathlib import Path
+          from fractions import Fraction as F
+          p=Path('research/R208')
+          r=json.loads((p/'R208_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R208_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert a['graphs']==r['all_labeled_undirected_graphs']==1024
+          assert a['graph_p_worlds']==r['graph_p_worlds']==2048
+          assert a['raw_original_live_sources']==r['all_original_live_edge_source_records']==118098
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          assert set(r['per_probability_source_complete'])=={'1/4','3/4'}
+          for pvalue,world in r['per_probability_source_complete'].items():
+            assert world['graphs']==1024
+            for k in ('DEGREE','HARMONIC','BETWEENNESS','KATZ'):
+              assert F(world[k+'_expected_oracle_regret'])>=0
+              assert 0<=F(world[k+'_optimal_seed_probability'])<=1
+          assert len(r['per_graph_edge_count_comparison'])==22
+          with (p/'R208_ALL_2048_GRAPH_P_SEED_RANKING_WORLDS.csv').open(newline='') as f:
+            assert sum(1 for _ in csv.DictReader(f))==2048
+          with (p/'R208_ALL_118098_ORIGINAL_BOND_ACTIVATION_SOURCES.csv').open(newline='') as f:
+            assert sum(1 for _ in csv.DictReader(f))==118098
+          for name,key in [
+            ('R208_EXACT_RESULTS.json','result_sha256'),
+            ('R208_ALL_2048_GRAPH_P_SEED_RANKING_WORLDS.csv','graph_worlds_sha256'),
+            ('R208_ALL_118098_ORIGINAL_BOND_ACTIVATION_SOURCES.csv','raw_live_sources_sha256'),
+          ]:
+            assert a[key]==hashlib.sha256((p/name).read_bytes()).hexdigest()
+          print('R208_CENTRALITY_1024_GRAPHS_2048_WORLDS_118098_ORIGINAL_BOND_EVENTS_E1_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R208-1024-Graphs-118098-Original-Live-Edge-Outcomes
+          path: |
+            research/R208/R208_EXACT_RESULTS.json
+            research/R208/R208_ALL_2048_GRAPH_P_SEED_RANKING_WORLDS.csv
+            research/R208/R208_ALL_118098_ORIGINAL_BOND_ACTIVATION_SOURCES.csv
+            research/R208/R208_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Save complete artificial graph and bond source audit permanently to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R208/R208_EXACT_RESULTS.json research/R208/R208_ALL_2048_GRAPH_P_SEED_RANKING_WORLDS.csv research/R208/R208_ALL_118098_ORIGINAL_BOND_ACTIVATION_SOURCES.csv research/R208/R208_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R208): all five-node graph centralities and complete live bond spread evidence'
+            git push origin HEAD:main
+          fi
