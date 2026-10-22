@@ -14,7 +14,7 @@ A. **正式已结题主研究**：[12世界二期4人工单位×独立/人内持
 
 B. **独立三期补充（R215-3P）**：[12世界、两期pre−1与0及post1、768组×时间噪声原来源冻结](../protocols/R215_DID_12_WORLDS_768_ORIGINAL_GROUP_TIME_SHOCKS_PRESCORE_FREEZE_2026-10-22.md)，源冻结commit`d6884f2a`，程序`research/R215/r215_exact_three_period_did.py`，独立命名数据`research/R215/R215_3P_EXACT_RESULTS.json`、`research/R215/R215_ALL_768_ORIGINAL_GROUP_TIME_SHOCK_PANELS.csv`、`research/R215/R215_3P_FINAL_MACHINE_ACCEPTANCE.json`。此补充已有Python3.11/3.12各40测试、合计80次通过，[CI run39741554338](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39741554338)三个job success，原数据机器人commit`6f2a2d89`，实际原始机器数据入main。
 
-**当前结题状态严谨分层**：R215-3P虽已完成实际原资料和CI，机器主结果仍标记`SUPPLEMENT_ARTIFICIAL_E1_AWAIT_CI`，这是机器人来源文件产生时的过程性旧状态；第三job后仍需独立正式科学报告和事后补充科学验收，不能因为主R215已有完成收据就静默将补充材料也标成同一来源科学结题。两期3264、三期768不具有相同随机噪声单位或被解释的实验总体，原来源不能跨协议加权合并成一个样本。
+**当前结题状态严谨分层**：R215-3P虽已完成实际原资料和CI，机器主结果仍标记`SUPPLEMENT_ARTIFICIAL_E1_AWAIT_CI`，这是机器人来源文件产生时的过程性旧状态；第三job后已出现独立的`research/R215/R215_3P_SUPPLEMENT_SCIENTIFIC_REPORT_2026-10-22.md`（提交`854883e0`），但仍需要对应的事后补充正式机器科学验收；报告存在本身不自动改变原机器结果中过程性旧状态，不能因为主R215已有完成收据就静默将补充材料也标成同一来源科学结题。两期3264、三期768不具有相同随机噪声单位或被解释的实验总体，原来源不能跨协议加权合并成一个样本。
 初两次三期workflow失败（run39741409871和39741530183），正式第三次再使用独立命名文件避免覆盖主R215，并在并行main已有变更条件下安全归档。原过程失败均不记为通过的CI证据。
 
 ## 3. 目录覆盖、科学证据等级与后续执行
