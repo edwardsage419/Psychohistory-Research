@@ -1,0 +1,79 @@
+name: R214 S9 Frozen Nine World Sharp RDD
+on:
+  push:
+    paths:
+      - 'research/R214/r214_exact_nine_world_rdd.py'
+      - '.github/workflows/r214-nine-world-supplement.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-and-estimator-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate frozen nine worlds
+        run: python research/R214/r214_exact_nine_world_rdd.py --test
+  full-original-source-archive:
+    needs: source-and-estimator-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate 576 complete true artificial sources and 36 local fits
+        run: |
+          python research/R214/r214_exact_nine_world_rdd.py --emit
+          python - <<'PY'
+          import csv, json, hashlib
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R214')
+          receipt=json.loads((d/'R214_S9_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert receipt['frozen_original_worlds']==9
+          assert receipt['complete_source_rows']==576
+          assert receipt['total_estimator_rows']==36
+          assert receipt['new_E2']==receipt['new_E3']==0
+          with (d/'R214_S9_ALL_576_ORIGINAL_RDD_SOURCES.csv').open() as f:
+            src=list(csv.DictReader(f))
+          with (d/'R214_S9_ALL_36_LOCAL_EXTRAPOLATIONS.csv').open() as f:
+            fits=list(csv.DictReader(f))
+          assert len(src)==576 and len(fits)==36
+          for w in {x['world'] for x in src}:
+            a=[x for x in src if x['world']==w]
+            assert len(a)==64 and sum((F(x['source_probability']) for x in a),F(0))==1
+          assert len({x['world'] for x in fits})==9
+          for filename, key in (
+            ('R214_S9_ALL_576_ORIGINAL_RDD_SOURCES.csv','source_sha256'),
+            ('R214_S9_ALL_36_LOCAL_EXTRAPOLATIONS.csv','fits_sha256'),
+            ('R214_S9_EXACT_RESULTS.json','results_sha256')):
+            assert hashlib.sha256((d/filename).read_bytes()).hexdigest()==receipt[key]
+          print('R214_S9_ALL_FROZEN_SOURCE_AND_LOCAL_ESTIMATOR_GATES_PASSED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R214-S9-full-576-source-and-36-fits
+          path: |
+            research/R214/R214_S9_ALL_576_ORIGINAL_RDD_SOURCES.csv
+            research/R214/R214_S9_ALL_36_LOCAL_EXTRAPOLATIONS.csv
+            research/R214/R214_S9_EXACT_RESULTS.json
+            research/R214/R214_S9_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Commit permanent original source and machine results to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R214/R214_S9_ALL_576_ORIGINAL_RDD_SOURCES.csv research/R214/R214_S9_ALL_36_LOCAL_EXTRAPOLATIONS.csv research/R214/R214_S9_EXACT_RESULTS.json research/R214/R214_S9_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R214-S9): all 576 nine-world source atoms and 36 frozen local contrasts'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
