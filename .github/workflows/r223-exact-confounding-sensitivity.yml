@@ -1,0 +1,80 @@
+name: R223 Seven Finite Confounding Sensitivity SCMs
+on:
+  push:
+    paths:
+      - 'research/R223/r223_exact_confounding_sensitivity.py'
+      - '.github/workflows/r223-exact-confounding-sensitivity.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  python-sensitivity-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test positivity, exact hidden U bias and observed causal aliases
+        run: python research/R223/r223_exact_confounding_sensitivity.py --test
+  complete-original-source-archive:
+    needs: python-sensitivity-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit and verify every full structural atom including zero mass
+        run: |
+          python research/R223/r223_exact_confounding_sensitivity.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R223')
+          with (d/'R223_ALL_448_ORIGINAL_CONFOUNDING_STRUCTURAL_ATOMS.csv').open() as f:
+            rows=list(csv.DictReader(f))
+          results=json.loads((d/'R223_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R223_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==448 and rec['full_structural_atom_rows']==448
+          assert len(results['worlds'])==7 and len({r['world'] for r in rows})==7
+          assert len([r for r in rows if F(r['source_probability'])>0])==416
+          assert len([r for r in rows if F(r['source_probability'])==0])==32
+          for w in results['worlds']:
+            src=[r for r in rows if r['world']==w['world']]
+            assert len(src)==64 and sum((F(r['source_probability']) for r in src),F(0))==1
+          worlds={w['world']:w for w in results['worlds']}
+          assert worlds['NULL_CONFOUNDED']['observed_joint_TY']==worlds['CAUSAL_ALIAS']['observed_joint_TY']
+          assert (worlds['NULL_CONFOUNDED']['true_causal_RR'],worlds['CAUSAL_ALIAS']['true_causal_RR'])==('1','11/5')
+          assert worlds['NO_POSITIVITY']['standardized_status']=='UNIDENTIFIED_NO_POSITIVITY'
+          assert worlds['CONFOUNDED_REVERSED']['observed_RR']=='1'
+          for f,k in [('R223_ALL_448_ORIGINAL_CONFOUNDING_STRUCTURAL_ATOMS.csv','original_source_sha256'),
+                      ('R223_EXACT_RESULTS.json','exact_results_sha256')]:
+            assert hashlib.sha256((d/f).read_bytes()).hexdigest()==rec[k]
+          print('R223_ALL_448_STRUCTURAL_ATOMS_416_POSITIVE_SOURCE_AND_CAUSAL_ALIAS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R223-Full-Confounding-Source-and-Results
+          path: |
+            research/R223/R223_ALL_448_ORIGINAL_CONFOUNDING_STRUCTURAL_ATOMS.csv
+            research/R223/R223_EXACT_RESULTS.json
+            research/R223/R223_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive original structural atoms and results
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R223/R223_ALL_448_ORIGINAL_CONFOUNDING_STRUCTURAL_ATOMS.csv research/R223/R223_EXACT_RESULTS.json research/R223/R223_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R223): 448 original hidden confounding structural atoms and zero support'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
