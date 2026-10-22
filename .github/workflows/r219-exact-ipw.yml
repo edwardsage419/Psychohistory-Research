@@ -1,0 +1,87 @@
+name: R219 Exact IPW All Finite Treatment Assignment Sources
+on:
+  push:
+    paths:
+      - 'research/R219/r219_exact_inverse_probability_weighting.py'
+      - '.github/workflows/r219-exact-ipw.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-true-propensity-ipw-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify full source Bernoulli HT analytic identities, hidden U and defined Hajek support
+        run: python research/R219/r219_exact_inverse_probability_weighting.py --test
+  archive-complete-assignment-history-sources:
+    needs: dual-python-true-propensity-ipw-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit 1281 original treatment source records and compare analytic variance
+        run: |
+          python research/R219/r219_exact_inverse_probability_weighting.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          p=Path('research/R219')
+          r=json.loads((p/'R219_EXACT_RESULTS.json').read_text())
+          a=json.loads((p/'R219_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert r['original_239_catalogue_id']==a['original_catalogue_id']=='09-010'
+          assert r['true_worlds']==a['six_artificial_worlds']==6
+          assert r['complete_assignment_source_rows']==a['complete_original_assignment_source_rows']==1281
+          assert r['new_real_human_E2']==r['new_real_historical_E3']==0
+          w={w['world']:w for w in r['worlds']}
+          assert w['CORRECT_X']['PUBLIC_HT_X_expected_value_exact']=='2'
+          assert w['HIDDEN_U_BOTH']['PUBLIC_HT_X_expected_value_exact']!='2'
+          assert w['HIDDEN_U_ASSIGNMENT_ONLY']['PUBLIC_HT_X_expected_value_exact']=='2'
+          assert w['HETEROGENEOUS_TAU_X']['PUBLIC_HT_X_expected_value_exact']=='2'
+          assert w['WEAK_OVERLAP']['PUBLIC_max_possible_inverse_weight_exact']=='16'
+          assert w['WEAK_OVERLAP']['CLIPPED_max_possible_inverse_weight_exact']=='4'
+          assert w['POSITIVITY_FAILURE']['PUBLIC_HT_X_expected_value_exact'] is None
+          assert w['POSITIVITY_FAILURE']['IPW_status']=='UNIDENTIFIED_NO_POSITIVITY'
+          for name in ('R219_ALL_1281_ORIGINAL_TREATMENT_ASSIGNMENT_SOURCES.csv',):
+            with (p/name).open(newline='') as f:
+              rows=list(csv.DictReader(f))
+            assert len(rows)==1281
+          for file,key in [
+            ('R219_EXACT_RESULTS.json','results_sha256'),
+            ('R219_ALL_1281_ORIGINAL_TREATMENT_ASSIGNMENT_SOURCES.csv','sources_sha256')
+          ]:
+            assert a[key]==hashlib.sha256((p/file).read_bytes()).hexdigest()
+          assert all(w['true_source_probability_mass_exact']=='1' for w in r['worlds'])
+          assert all(w['PRIVILEGED_TRUE_HT_expected_value_exact']=='2'
+                     for w in r['worlds'] if w['has_full_public_X_positivity'])
+          print('R219_FULL_6_WORLDS_1281_INDEPENDENT_ASSIGNMENT_SOURCES_AND_DUAL_FRACTION_HT_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R219-All-Exact-IPW-1281-Assignment-Sources
+          path: |
+            research/R219/R219_EXACT_RESULTS.json
+            research/R219/R219_ALL_1281_ORIGINAL_TREATMENT_ASSIGNMENT_SOURCES.csv
+            research/R219/R219_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently commit all true propensity source and estimator outcomes to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R219/R219_EXACT_RESULTS.json research/R219/R219_ALL_1281_ORIGINAL_TREATMENT_ASSIGNMENT_SOURCES.csv research/R219/R219_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R219): all original inverse-weighting treatment histories and positivity and overlap errors'
+            git push origin HEAD:main
+          fi
