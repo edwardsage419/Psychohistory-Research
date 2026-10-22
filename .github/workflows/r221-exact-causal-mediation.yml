@@ -1,0 +1,95 @@
+name: R221 Exact Six Causal Mediation SCMs and Hidden Common Cause
+on:
+  push:
+    paths:
+      - 'research/R221/r221_exact_causal_mediation.py'
+      - '.github/workflows/r221-exact-causal-mediation.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-causal-mediation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate randomized treatment, cross-world causal decompositions and observational equivalence
+        run: python research/R221/r221_exact_causal_mediation.py --test
+  full-six-scm-original-source-permanent-archive:
+    needs: dual-python-causal-mediation-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit six complete SCM worlds and exact source, g-formula and hidden mediation diagnostics
+        run: |
+          python research/R221/r221_exact_causal_mediation.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R221')
+          result=json.loads((d/'R221_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R221_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert result['original_239_catalogue_id']==receipt['original_catalogue_id']=='09-012'
+          assert result['artificial_scm_worlds']==receipt['complete_synthetic_scm_worlds']==6
+          assert result['full_original_randomized_T_by_U_observations']==receipt['full_original_randomized_T_by_U_atoms']==48
+          assert result['new_real_human_E2']==result['new_real_historical_E3']==0
+          by={w['world']:w for w in result['worlds']}
+          assert len(by)==6
+          i=by['PURE_INDIRECT']['true_oracle_nested_effects']
+          u=by['LATENT_COMMON_CAUSE_NO_MEDIATION']['true_oracle_nested_effects']
+          assert (i['true_total_effect'],i['true_NDE_at_M0'],i['true_NIE_at_T1'])==('1/4','0','1/4')
+          assert (u['true_total_effect'],u['true_NDE_at_M0'],u['true_NIE_at_T1'])==('1/4','1/4','0')
+          assert by['PURE_INDIRECT']['observable_only_gformula_results']==by['LATENT_COMMON_CAUSE_NO_MEDIATION']['observable_only_gformula_results']
+          interaction=by['TREATMENT_MEDIATOR_INTERACTION']['true_oracle_nested_effects']
+          assert (interaction['true_total_effect'],interaction['true_NDE_at_M0'],interaction['true_NIE_at_T1'],interaction['true_NIE_at_T0'],interaction['true_NDE_at_M1'])==('3/4','1/2','1/4','0','3/4')
+          for w in by.values():
+            a=w['true_oracle_nested_effects']
+            g=w['observable_only_gformula_results']
+            assert F(a['true_total_effect'])==F(a['true_NDE_at_M0'])+F(a['true_NIE_at_T1'])
+            assert F(a['true_total_effect'])==F(a['true_NIE_at_T0'])+F(a['true_NDE_at_M1'])
+            assert F(a['true_total_effect'])==F(g['observable_T_Y_mean_difference'])
+            assert F(g['observable_T_Y_mean_difference'])==F(g['gformula_NDE_at_M0'])+F(g['gformula_NIE_at_T1'])
+          with (d/'R221_ALL_48_ORIGINAL_MEDIATION_SCM_SOURCES.csv').open(newline='') as f:
+            rows=list(csv.DictReader(f))
+          assert len(rows)==48
+          for w in by:
+            source=[row for row in rows if row['true_world']==w]
+            assert len(source)==8
+            assert sum(F(row['true_original_source_probability']) for row in source)==1
+            assert all(row['true_original_source_probability']=='1/8' for row in source)
+          for name,key in [
+            ('R221_EXACT_RESULTS.json','results_sha256'),
+            ('R221_ALL_48_ORIGINAL_MEDIATION_SCM_SOURCES.csv','sources_sha256'),
+          ]:
+            assert receipt[key]==hashlib.sha256((d/name).read_bytes()).hexdigest()
+          print('R221_ALL_6_MEDIATION_SCM_48_RANDOMIZED_ORIGINAL_SOURCES_NONIDENTIFICATION_ACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R221-Full-Causal-Mediation-48-Original-Source-Atoms
+          path: |
+            research/R221/R221_EXACT_RESULTS.json
+            research/R221/R221_ALL_48_ORIGINAL_MEDIATION_SCM_SOURCES.csv
+            research/R221/R221_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all observed and oracle cross-world original source results on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R221/R221_EXACT_RESULTS.json research/R221/R221_ALL_48_ORIGINAL_MEDIATION_SCM_SOURCES.csv research/R221/R221_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R221): six exact mediation mechanisms and all randomized treatment original sources'
+            git push origin HEAD:main
+          fi
