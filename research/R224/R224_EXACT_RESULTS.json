@@ -1,0 +1,191 @@
+{
+  "research_id": "R224",
+  "catalogue_id": "09-015",
+  "scientific_scope": "E1_FINITE_ARTIFICIAL_EXOGENOUS_SOURCE_ONLY",
+  "frozen_protocol_commit": "0e6be85718a91939ee03e2be6bda0c344b903389",
+  "worlds_count": 8,
+  "original_full_source_atoms": 4096,
+  "source_atoms_per_world": 512,
+  "true_R073_state": "FROZEN",
+  "true_PESEN_v0_1_state": "FROZEN",
+  "new_human_E2": 0,
+  "new_historical_E3": 0,
+  "world_results": [
+    {
+      "world": "RANDOMIZED_WITH_Z_SIGNAL",
+      "complete_original_source_atoms": 512,
+      "full_source_probability_sum": "1",
+      "observational_marginal_associations": {
+        "D_AY": "0",
+        "D_AW": "0",
+        "D_ZY": "1/4",
+        "D_ZW": "1/4"
+      },
+      "true_potential_outcome_oracles": {
+        "true_doA_effect_on_Y": "0",
+        "true_doA_effect_on_W": "0",
+        "true_doZ_effect_on_Y": "0"
+      },
+      "naive_unjustified_subtract_D_AW_from_D_AY": "0",
+      "naive_adjustment_bias_against_true_ATE": "0",
+      "negative_control_outcome_exclusion_valid": true,
+      "negative_control_exposure_exclusion_valid": true,
+      "associated_control_signal_AW_nonzero": false,
+      "associated_control_signal_ZY_nonzero": true
+    },
+    {
+      "world": "HIDDEN_CONFOUNDED_NULL",
+      "complete_original_source_atoms": 512,
+      "full_source_probability_sum": "1",
+      "observational_marginal_associations": {
+        "D_AY": "1/4",
+        "D_AW": "1/4",
+        "D_ZY": "1/4",
+        "D_ZW": "1/4"
+      },
+      "true_potential_outcome_oracles": {
+        "true_doA_effect_on_Y": "0",
+        "true_doA_effect_on_W": "0",
+        "true_doZ_effect_on_Y": "0"
+      },
+      "naive_unjustified_subtract_D_AW_from_D_AY": "0",
+      "naive_adjustment_bias_against_true_ATE": "0",
+      "negative_control_outcome_exclusion_valid": true,
+      "negative_control_exposure_exclusion_valid": true,
+      "associated_control_signal_AW_nonzero": true,
+      "associated_control_signal_ZY_nonzero": true
+    },
+    {
+      "world": "HIDDEN_CONFOUNDED_CAUSAL",
+      "complete_original_source_atoms": 512,
+      "full_source_probability_sum": "1",
+      "observational_marginal_associations": {
+        "D_AY": "1/2",
+        "D_AW": "1/4",
+        "D_ZY": "5/16",
+        "D_ZW": "1/4"
+      },
+      "true_potential_outcome_oracles": {
+        "true_doA_effect_on_Y": "1/4",
+        "true_doA_effect_on_W": "0",
+        "true_doZ_effect_on_Y": "0"
+      },
+      "naive_unjustified_subtract_D_AW_from_D_AY": "1/4",
+      "naive_adjustment_bias_against_true_ATE": "0",
+      "negative_control_outcome_exclusion_valid": true,
+      "negative_control_exposure_exclusion_valid": true,
+      "associated_control_signal_AW_nonzero": true,
+      "associated_control_signal_ZY_nonzero": true
+    },
+    {
+      "world": "INSENSITIVE_VALID_CONTROLS",
+      "complete_original_source_atoms": 512,
+      "full_source_probability_sum": "1",
+      "observational_marginal_associations": {
+        "D_AY": "1/4",
+        "D_AW": "0",
+        "D_ZY": "0",
+        "D_ZW": "0"
+      },
+      "true_potential_outcome_oracles": {
+        "true_doA_effect_on_Y": "0",
+        "true_doA_effect_on_W": "0",
+        "true_doZ_effect_on_Y": "0"
+      },
+      "naive_unjustified_subtract_D_AW_from_D_AY": "1/4",
+      "naive_adjustment_bias_against_true_ATE": "1/4",
+      "negative_control_outcome_exclusion_valid": true,
+      "negative_control_exposure_exclusion_valid": true,
+      "associated_control_signal_AW_nonzero": false,
+      "associated_control_signal_ZY_nonzero": false
+    },
+    {
+      "world": "INVALID_OUTCOME_DIRECT_A",
+      "complete_original_source_atoms": 512,
+      "full_source_probability_sum": "1",
+      "observational_marginal_associations": {
+        "D_AY": "0",
+        "D_AW": "1/2",
+        "D_ZY": "0",
+        "D_ZW": "0"
+      },
+      "true_potential_outcome_oracles": {
+        "true_doA_effect_on_Y": "0",
+        "true_doA_effect_on_W": "1/2",
+        "true_doZ_effect_on_Y": "0"
+      },
+      "naive_unjustified_subtract_D_AW_from_D_AY": "-1/2",
+      "naive_adjustment_bias_against_true_ATE": "-1/2",
+      "negative_control_outcome_exclusion_valid": false,
+      "negative_control_exposure_exclusion_valid": true,
+      "associated_control_signal_AW_nonzero": true,
+      "associated_control_signal_ZY_nonzero": false
+    },
+    {
+      "world": "INVALID_EXPOSURE_DIRECT_Z",
+      "complete_original_source_atoms": 512,
+      "full_source_probability_sum": "1",
+      "observational_marginal_associations": {
+        "D_AY": "0",
+        "D_AW": "0",
+        "D_ZY": "1/2",
+        "D_ZW": "0"
+      },
+      "true_potential_outcome_oracles": {
+        "true_doA_effect_on_Y": "0",
+        "true_doA_effect_on_W": "0",
+        "true_doZ_effect_on_Y": "1/2"
+      },
+      "naive_unjustified_subtract_D_AW_from_D_AY": "0",
+      "naive_adjustment_bias_against_true_ATE": "0",
+      "negative_control_outcome_exclusion_valid": true,
+      "negative_control_exposure_exclusion_valid": false,
+      "associated_control_signal_AW_nonzero": false,
+      "associated_control_signal_ZY_nonzero": true
+    },
+    {
+      "world": "CANCELLED_INVALID_OUTCOME",
+      "complete_original_source_atoms": 512,
+      "full_source_probability_sum": "1",
+      "observational_marginal_associations": {
+        "D_AY": "1/4",
+        "D_AW": "0",
+        "D_ZY": "0",
+        "D_ZW": "0"
+      },
+      "true_potential_outcome_oracles": {
+        "true_doA_effect_on_Y": "0",
+        "true_doA_effect_on_W": "-1/4",
+        "true_doZ_effect_on_Y": "0"
+      },
+      "naive_unjustified_subtract_D_AW_from_D_AY": "1/4",
+      "naive_adjustment_bias_against_true_ATE": "1/4",
+      "negative_control_outcome_exclusion_valid": false,
+      "negative_control_exposure_exclusion_valid": true,
+      "associated_control_signal_AW_nonzero": false,
+      "associated_control_signal_ZY_nonzero": false
+    },
+    {
+      "world": "MISMATCHED_VALID_OUTCOME",
+      "complete_original_source_atoms": 512,
+      "full_source_probability_sum": "1",
+      "observational_marginal_associations": {
+        "D_AY": "1/4",
+        "D_AW": "1/8",
+        "D_ZY": "1/4",
+        "D_ZW": "1/8"
+      },
+      "true_potential_outcome_oracles": {
+        "true_doA_effect_on_Y": "0",
+        "true_doA_effect_on_W": "0",
+        "true_doZ_effect_on_Y": "0"
+      },
+      "naive_unjustified_subtract_D_AW_from_D_AY": "1/8",
+      "naive_adjustment_bias_against_true_ATE": "1/8",
+      "negative_control_outcome_exclusion_valid": true,
+      "negative_control_exposure_exclusion_valid": true,
+      "associated_control_signal_AW_nonzero": true,
+      "associated_control_signal_ZY_nonzero": true
+    }
+  ]
+}
