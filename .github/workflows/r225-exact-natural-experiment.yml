@@ -56,7 +56,11 @@ jobs:
           by={w['world']:w for w in outcome['world_results']}
           a=by['AS_IF_RANDOM_VALID'];b=by['ENDOGENOUS_FUTURE_SHOCK_ALIAS']
           assert a['truth_ATE']=='1' and b['truth_ATE']=='0'
-          assert a['observed_methods']==b['observed_methods']
+          for m in ('post_group_difference','pre_balance_placebo','two_period_DiD'):
+            for observable_stat in ('expectation','variance','fixed_schedule_component_variance','independent_shock_variance'):
+              assert a['observed_methods'][m][observable_stat]==b['observed_methods'][m][observable_stat]
+          assert a['observed_methods']['two_period_DiD']['bias_from_true_target']=='0'
+          assert b['observed_methods']['two_period_DiD']['bias_from_true_target']=='1'
           assert outcome['hidden_endogenous_and_valid_full_observation_identical']
           assert by['ENDOGENOUS_VISIBLE_SELECTION']['observed_methods']['pre_balance_placebo']['expectation']=='1'
           assert by['ANTICIPATORY_PRE_RESPONSE']['observed_methods']['two_period_DiD']['expectation']=='1/2'
