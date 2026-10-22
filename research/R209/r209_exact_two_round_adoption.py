@@ -432,10 +432,12 @@ class Tests(unittest.TestCase):
                                  F(21,16))
     def test_star_hub_base_complex_identical(self):
         self.assertEqual(distribution("STAR",0,"BASE"),distribution("STAR",0,"COMPLEX"))
-    def test_star_all_seed_base_complex_identical(self):
-        for seed in range(N):
-            self.assertEqual(distribution("STAR",seed,"BASE"),
-                             distribution("STAR",seed,"COMPLEX"))
+    def test_star_leaf_complex_base_can_differ(self):
+        # With a leaf seed, OTHER leaves may innovate at round 1 while hub
+        # has not adopted; hub then sees >=2 adopted neighbors in round 2.
+        for seed in (1,2,3):
+            self.assertNotEqual(distribution("STAR",seed,"BASE"),
+                                distribution("STAR",seed,"COMPLEX"))
     def test_cycle_complex_base_distinguishable(self):
         self.assertNotEqual(distribution("CYCLE",0,"COMPLEX"),
                             distribution("CYCLE",0,"BASE"))
