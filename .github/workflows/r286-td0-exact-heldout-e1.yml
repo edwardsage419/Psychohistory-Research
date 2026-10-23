@@ -1,0 +1,135 @@
+name: R286 TD0 Online Temporal Credit Exact E1 Heldout Audit
+on:
+  push:
+    paths:
+      - 'research/R286/r286_exact_td0_learning.py'
+      - '.github/workflows/r286-td0-exact-heldout-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test 93 complete TD0, MC, reverse-order synthetic cases
+        run: python research/R286/r286_exact_td0_learning.py --test
+  independent-exact-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently reparse all 576 original sources and analytical heldout Brier
+        run: |
+          python research/R286/r286_exact_td0_learning.py --emit
+          python - <<'PY'
+          import csv,hashlib,itertools,json
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from pathlib import Path
+          root=Path('research/R286')
+          csvpath=root/'R286_ALL_576_ORIGINAL_TD0_SIXBIT_FUTURE_SOURCES.csv'
+          jsonpath=root/'R286_EXACT_TD0_RESULTS.json'
+          receipt=json.loads((root/'R286_MACHINE_RECEIPT.json').read_text())
+          result=json.loads(jsonpath.read_text())
+          original=list(csv.DictReader(csvpath.open()))
+          assert len(original)==576 and len(result['results'])==9
+          assert receipt['prescore_freeze_commit']==result['prescore_freeze_commit']=='d055e14831565571ca9e953d311b55e7eed9ef42'
+          assert receipt['original_catalogue_id']==result['catalogue_original_id']=='02-002'
+          for file,key in ((csvpath,'source_sha256'),(jsonpath,'results_sha256')):
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==receipt[key]
+          groups=defaultdict(list)
+          for r in original:groups[(r['true_p'],r['policy'])].append(r)
+          assert len(groups)==9
+          types={''.join(v) for v in itertools.product('01',repeat=6)}
+          frozen={(F(1,4),'TD0_ONLINE_CORRECT'):F(57,256),
+                  (F(1,4),'MC_COMPLETE_RETURN'):F(1,4),
+                  (F(1,4),'B_THEN_A_UPDATED_BOOTSTRAP'):F(3643,16384),
+                  (F(1,2),'TD0_ONLINE_CORRECT'):F(155,512),
+                  (F(1,2),'MC_COMPLETE_RETURN'):F(683,2048),
+                  (F(1,2),'B_THEN_A_UPDATED_BOOTSTRAP'):F(2445,8192),
+                  (F(3,4),'TD0_ONLINE_CORRECT'):F(123,512),
+                  (F(3,4),'MC_COMPLETE_RETURN'):F(513,2048),
+                  (F(3,4),'B_THEN_A_UPDATED_BOOTSTRAP'):F(3741,16384)}
+          for (pstr,policy),rows in groups.items():
+              p=F(pstr)
+              assert len(rows)==64
+              assert {r['ordered_all_original_Y1_Y2_Y3_Y4_Y5_Y6'] for r in rows}==types
+              countmass=risk=F(0)
+              for row in rows:
+                  source=row['ordered_all_original_Y1_Y2_Y3_Y4_Y5_Y6']
+                  y=list(map(int,source))
+                  assert source[:5]==row['original_5_train_bits']
+                  assert y[-1]==int(row['future_heldout_Y6'])
+                  mass=p**sum(y)*(1-p)**(6-sum(y))
+                  assert mass==F(row['complete_source_probability'])
+                  va=vb=F(0)
+                  at=[];bt=[]
+                  for yy in y[:5]:
+                      if policy=='TD0_ONLINE_CORRECT':
+                          nexta=(va+vb)/2;nextb=(vb+yy)/2
+                      elif policy=='MC_COMPLETE_RETURN':
+                          nexta=(va+yy)/2;nextb=(vb+yy)/2
+                      else:
+                          assert policy=='B_THEN_A_UPDATED_BOOTSTRAP'
+                          nextb=(vb+yy)/2;nexta=(va+nextb)/2
+                      va,vb=nexta,nextb
+                      at.append(str(va));bt.append(str(vb))
+                  assert row['train_A_value_after_each_episode']==';'.join(at)
+                  assert row['train_B_value_after_each_episode']==';'.join(bt)
+                  assert F(row['train_A_value_after_episode5'])==va
+                  loss=(F(y[-1])-va)**2
+                  assert F(row['future_Brier_squared_error'])==loss
+                  risk+=mass*loss;countmass+=mass
+              assert countmass==1 and risk==frozen[p,policy]
+              n=5
+              if policy=='TD0_ONLINE_CORRECT':coeff=[F(n-j,2**(n-j+1)) for j in range(1,6)]
+              elif policy=='MC_COMPLETE_RETURN':coeff=[F(1,2**(n-j+1)) for j in range(1,6)]
+              else:coeff=[F(n-j+1,2**(n-j+2)) for j in range(1,6)]
+              independent=p*(1-p)+p*p*(1-sum(coeff))**2+p*(1-p)*sum(c*c for c in coeff)
+              assert independent==risk
+              w=next(z for z in result['results'] if z['true_p']==pstr and z['policy']==policy)
+              assert w['exact_mean_heldout_Brier']==str(risk)
+              assert w['train_A_reward_coefficients']==list(map(str,coeff))
+              assert w['independent_method_agreement']
+          assert result['no_real_experimental_E2']==result['no_real_historical_E3']==0
+          print('R286_ALL_576_HELDOUT_REWARDS_5_EPISODE_TD0_MC_REVERSE_BRIER_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R286-All-576-TD0-Original-Reward-Sources
+          path: |
+            research/R286/R286_ALL_576_ORIGINAL_TD0_SIXBIT_FUTURE_SOURCES.csv
+            research/R286/R286_EXACT_TD0_RESULTS.json
+            research/R286/R286_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive TD0 training and untouched future source atom results
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R286/R286_ALL_576_ORIGINAL_TD0_SIXBIT_FUTURE_SOURCES.csv research/R286/R286_EXACT_TD0_RESULTS.json research/R286/R286_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R286): 576 complete TD0 versus MC future heldout original reward sources'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R286_ALL_576_TD0_HELDOUT_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
