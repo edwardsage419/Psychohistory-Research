@@ -1,0 +1,960 @@
+{
+  "research_id": "R239",
+  "original_catalogue_id": "10-013",
+  "prescore_freeze_commit": "af9ead7125b7a46a7dffc79b1f080ff6a69bc94d",
+  "scientific_scope": "FINITE_ARTIFICIAL_E1_CRISP_QCA_CONFIGURATION_AND_IDENTIFICATION",
+  "frozen_worlds": 9,
+  "original_exogenous_source_atoms": 144,
+  "full_observed_alias_pairs": [
+    [
+      "LIMITED_A_AND_B",
+      "LIMITED_UNSEEN_BRANCH"
+    ],
+    [
+      "ALIAS_A_CAUSAL",
+      "ALIAS_U_CONFOUNDED"
+    ]
+  ],
+  "independent_do_intervention_truth_verified": true,
+  "conservative_vs_parsimonious_unobserved_remainder_separated": true,
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "AND_AB",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 16,
+      "logical_remainder_configurations": 0,
+      "contradictory_configurations": 0,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        }
+      ],
+      "conservative_dnf_cubes": [
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "parsimonious_dnf_cubes": [
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "observational_sufficiency_A": "1/2",
+      "observational_necessity_A": "1",
+      "observational_sufficiency_A_and_B": "1",
+      "oracle_doA1_minus_doA0_population_effect": "1/2",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/8",
+        "00110": "1/8",
+        "01010": "1/8",
+        "01110": "1/8",
+        "10010": "1/8",
+        "10110": "1/8",
+        "11011": "1/8",
+        "11111": "1/8"
+      }
+    },
+    {
+      "world": "OR_AB",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 16,
+      "logical_remainder_configurations": 0,
+      "contradictory_configurations": 0,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        }
+      ],
+      "conservative_dnf_cubes": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "parsimonious_dnf_cubes": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "observational_sufficiency_A": "1",
+      "observational_necessity_A": "2/3",
+      "observational_sufficiency_A_and_B": "1",
+      "oracle_doA1_minus_doA0_population_effect": "1/2",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/8",
+        "00110": "1/8",
+        "01011": "1/8",
+        "01111": "1/8",
+        "10011": "1/8",
+        "10111": "1/8",
+        "11011": "1/8",
+        "11111": "1/8"
+      }
+    },
+    {
+      "world": "EQUIFINAL_AB_OR_NOTA_C",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 16,
+      "logical_remainder_configurations": 0,
+      "contradictory_configurations": 0,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        }
+      ],
+      "conservative_dnf_cubes": [
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "parsimonious_dnf_cubes": [
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "observational_sufficiency_A": "1/2",
+      "observational_necessity_A": "1/2",
+      "observational_sufficiency_A_and_B": "1",
+      "oracle_doA1_minus_doA0_population_effect": "0",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/8",
+        "00111": "1/8",
+        "01010": "1/8",
+        "01111": "1/8",
+        "10010": "1/8",
+        "10110": "1/8",
+        "11011": "1/8",
+        "11111": "1/8"
+      }
+    },
+    {
+      "world": "CONTRADICTORY_A_XOR_U",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 16,
+      "logical_remainder_configurations": 0,
+      "contradictory_configurations": 8,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 1,
+          "negative_original_atoms": 1,
+          "consistency": "1/2",
+          "state": "contradictory"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 1,
+          "negative_original_atoms": 1,
+          "consistency": "1/2",
+          "state": "contradictory"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 1,
+          "negative_original_atoms": 1,
+          "consistency": "1/2",
+          "state": "contradictory"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 1,
+          "negative_original_atoms": 1,
+          "consistency": "1/2",
+          "state": "contradictory"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 1,
+          "negative_original_atoms": 1,
+          "consistency": "1/2",
+          "state": "contradictory"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 1,
+          "negative_original_atoms": 1,
+          "consistency": "1/2",
+          "state": "contradictory"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 1,
+          "negative_original_atoms": 1,
+          "consistency": "1/2",
+          "state": "contradictory"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 1,
+          "negative_original_atoms": 1,
+          "consistency": "1/2",
+          "state": "contradictory"
+        }
+      ],
+      "conservative_dnf_cubes": [],
+      "parsimonious_dnf_cubes": [],
+      "observational_sufficiency_A": "1/2",
+      "observational_necessity_A": "1/2",
+      "observational_sufficiency_A_and_B": "1/2",
+      "oracle_doA1_minus_doA0_population_effect": "0",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/16",
+        "00011": "1/16",
+        "00110": "1/16",
+        "00111": "1/16",
+        "01010": "1/16",
+        "01011": "1/16",
+        "01110": "1/16",
+        "01111": "1/16",
+        "10010": "1/16",
+        "10011": "1/16",
+        "10110": "1/16",
+        "10111": "1/16",
+        "11010": "1/16",
+        "11011": "1/16",
+        "11110": "1/16",
+        "11111": "1/16"
+      }
+    },
+    {
+      "world": "LIMITED_A_AND_B",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 12,
+      "logical_remainder_configurations": 2,
+      "contradictory_configurations": 0,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 0,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 0,
+          "consistency": null,
+          "state": "remainder"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 0,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 0,
+          "consistency": null,
+          "state": "remainder"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        }
+      ],
+      "conservative_dnf_cubes": [
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "parsimonious_dnf_cubes": [
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "observational_sufficiency_A": "1/2",
+      "observational_necessity_A": "1",
+      "observational_sufficiency_A_and_B": "1",
+      "oracle_doA1_minus_doA0_population_effect": "1/2",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/8",
+        "0010-1": "1/8",
+        "01010": "1/8",
+        "0110-1": "1/8",
+        "10010": "1/8",
+        "10110": "1/8",
+        "11011": "1/8",
+        "11111": "1/8"
+      }
+    },
+    {
+      "world": "LIMITED_UNSEEN_BRANCH",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 12,
+      "logical_remainder_configurations": 2,
+      "contradictory_configurations": 0,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 0,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 0,
+          "consistency": null,
+          "state": "remainder"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 0,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 0,
+          "consistency": null,
+          "state": "remainder"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        }
+      ],
+      "conservative_dnf_cubes": [
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "parsimonious_dnf_cubes": [
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "observational_sufficiency_A": "1/2",
+      "observational_necessity_A": "1",
+      "observational_sufficiency_A_and_B": "1",
+      "oracle_doA1_minus_doA0_population_effect": "0",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/8",
+        "0010-1": "1/8",
+        "01010": "1/8",
+        "0110-1": "1/8",
+        "10010": "1/8",
+        "10110": "1/8",
+        "11011": "1/8",
+        "11111": "1/8"
+      }
+    },
+    {
+      "world": "ALIAS_A_CAUSAL",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 16,
+      "logical_remainder_configurations": 0,
+      "contradictory_configurations": 0,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        }
+      ],
+      "conservative_dnf_cubes": [
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "parsimonious_dnf_cubes": [
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "observational_sufficiency_A": "1",
+      "observational_necessity_A": "1",
+      "observational_sufficiency_A_and_B": "1",
+      "oracle_doA1_minus_doA0_population_effect": "1",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/8",
+        "00110": "1/8",
+        "01010": "1/8",
+        "01110": "1/8",
+        "10011": "1/8",
+        "10111": "1/8",
+        "11011": "1/8",
+        "11111": "1/8"
+      }
+    },
+    {
+      "world": "ALIAS_U_CONFOUNDED",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 16,
+      "logical_remainder_configurations": 0,
+      "contradictory_configurations": 0,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        }
+      ],
+      "conservative_dnf_cubes": [
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "parsimonious_dnf_cubes": [
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "observational_sufficiency_A": "1",
+      "observational_necessity_A": "1",
+      "observational_sufficiency_A_and_B": "1",
+      "oracle_doA1_minus_doA0_population_effect": "0",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/8",
+        "00110": "1/8",
+        "01010": "1/8",
+        "01110": "1/8",
+        "10011": "1/8",
+        "10111": "1/8",
+        "11011": "1/8",
+        "11111": "1/8"
+      }
+    },
+    {
+      "world": "NEGATED_A_AND_C",
+      "complete_original_exogenous_atoms": 16,
+      "original_source_mass": "1",
+      "selected_source_atoms": 16,
+      "logical_remainder_configurations": 0,
+      "contradictory_configurations": 0,
+      "complete_truth_table": [
+        {
+          "abc": "000",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "001",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "010",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "011",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 2,
+          "negative_original_atoms": 0,
+          "consistency": "1",
+          "state": "positive"
+        },
+        {
+          "abc": "100",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "101",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "110",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        },
+        {
+          "abc": "111",
+          "selected_original_atoms": 2,
+          "positive_original_atoms": 0,
+          "negative_original_atoms": 2,
+          "consistency": "0",
+          "state": "negative"
+        }
+      ],
+      "conservative_dnf_cubes": [
+        [
+          0,
+          -1,
+          1
+        ]
+      ],
+      "parsimonious_dnf_cubes": [
+        [
+          0,
+          -1,
+          1
+        ]
+      ],
+      "observational_sufficiency_A": "0",
+      "observational_necessity_A": "0",
+      "observational_sufficiency_A_and_B": "0",
+      "oracle_doA1_minus_doA0_population_effect": "-1/2",
+      "full_observed_joint_with_explicit_selection_missingness": {
+        "00010": "1/8",
+        "00111": "1/8",
+        "01010": "1/8",
+        "01111": "1/8",
+        "10010": "1/8",
+        "10110": "1/8",
+        "11010": "1/8",
+        "11110": "1/8"
+      }
+    }
+  ]
+}
