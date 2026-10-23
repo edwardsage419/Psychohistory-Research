@@ -1,0 +1,119 @@
+{
+  "research_id": "R274",
+  "original_catalogue_id": "12-004",
+  "prescore_freeze_commit": "47b75b49afb5c72c5ca2599ab38499e0f2856354",
+  "evidence_scope": "ARTIFICIAL_E1_FINITE_TEMPORAL_HOLDOUT_VS_INVALID_HINDSIGHT_SCORE",
+  "original_complete_source_types": 576,
+  "artificial_regimes": 3,
+  "models_per_regime": 3,
+  "worlds": 9,
+  "history_length": 4,
+  "future_test_length": 2,
+  "future_label_leakage_explicitly_recorded": true,
+  "all_nine_binomial_analytic_risks_verified": true,
+  "no_real_human_E2": 0,
+  "no_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "STABLE_HALF_PAST_ONLY_LAPLACE",
+      "regime": "STABLE_HALF",
+      "model": "PAST_ONLY_LAPLACE",
+      "past_p": "1/2",
+      "future_p": "1/2",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "5/18",
+      "future_labels_illegally_used_in_model_fit": false,
+      "independent_K_and_J_count_expectation_verified": true
+    },
+    {
+      "world": "STABLE_HALF_HINDSIGHT_POOLED",
+      "regime": "STABLE_HALF",
+      "model": "HINDSIGHT_POOLED",
+      "past_p": "1/2",
+      "future_p": "1/2",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "27/128",
+      "future_labels_illegally_used_in_model_fit": true,
+      "independent_K_and_J_count_expectation_verified": true
+    },
+    {
+      "world": "STABLE_HALF_PRECOMMITTED_HALF",
+      "regime": "STABLE_HALF",
+      "model": "PRECOMMITTED_HALF",
+      "past_p": "1/2",
+      "future_p": "1/2",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "1/4",
+      "future_labels_illegally_used_in_model_fit": false,
+      "independent_K_and_J_count_expectation_verified": true
+    },
+    {
+      "world": "RISING_RATE_PAST_ONLY_LAPLACE",
+      "regime": "RISING_RATE",
+      "model": "PAST_ONLY_LAPLACE",
+      "past_p": "1/4",
+      "future_p": "3/4",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "55/144",
+      "future_labels_illegally_used_in_model_fit": false,
+      "independent_K_and_J_count_expectation_verified": true
+    },
+    {
+      "world": "RISING_RATE_HINDSIGHT_POOLED",
+      "regime": "RISING_RATE",
+      "model": "HINDSIGHT_POOLED",
+      "past_p": "1/4",
+      "future_p": "3/4",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "131/512",
+      "future_labels_illegally_used_in_model_fit": true,
+      "independent_K_and_J_count_expectation_verified": true
+    },
+    {
+      "world": "RISING_RATE_PRECOMMITTED_HALF",
+      "regime": "RISING_RATE",
+      "model": "PRECOMMITTED_HALF",
+      "past_p": "1/4",
+      "future_p": "3/4",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "1/4",
+      "future_labels_illegally_used_in_model_fit": false,
+      "independent_K_and_J_count_expectation_verified": true
+    },
+    {
+      "world": "FALLING_RATE_PAST_ONLY_LAPLACE",
+      "regime": "FALLING_RATE",
+      "model": "PAST_ONLY_LAPLACE",
+      "past_p": "3/4",
+      "future_p": "1/4",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "55/144",
+      "future_labels_illegally_used_in_model_fit": false,
+      "independent_K_and_J_count_expectation_verified": true
+    },
+    {
+      "world": "FALLING_RATE_HINDSIGHT_POOLED",
+      "regime": "FALLING_RATE",
+      "model": "HINDSIGHT_POOLED",
+      "past_p": "3/4",
+      "future_p": "1/4",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "131/512",
+      "future_labels_illegally_used_in_model_fit": true,
+      "independent_K_and_J_count_expectation_verified": true
+    },
+    {
+      "world": "FALLING_RATE_PRECOMMITTED_HALF",
+      "regime": "FALLING_RATE",
+      "model": "PRECOMMITTED_HALF",
+      "past_p": "3/4",
+      "future_p": "1/4",
+      "full_ordered_primitive_source_types": 64,
+      "exact_source_weighted_future_test_Brier": "1/4",
+      "future_labels_illegally_used_in_model_fit": false,
+      "independent_K_and_J_count_expectation_verified": true
+    }
+  ]
+}
