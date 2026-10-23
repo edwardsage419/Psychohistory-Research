@@ -1,0 +1,109 @@
+{
+  "research_id": "R272",
+  "original_catalogue_id": "12-002",
+  "prescore_freeze_commit": "52f84dbfbe8563cf5c9a491e67d5e320223e0a56",
+  "scope": "FINITE_ARTIFICIAL_E1_INDEPENDENT_TRAIN4_TEST2_BERNOULLI_PREDICTION",
+  "artificial_worlds": 9,
+  "complete_source_types": 576,
+  "independent_source_sequences_per_true_p": 64,
+  "training_bit_count": 4,
+  "strictly_heldout_test_bit_count": 2,
+  "all_nine_analytical_binomial_scores_verified": true,
+  "zero_probability_log_loss_failure_separately_recorded": true,
+  "no_real_human_E2": 0,
+  "no_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "TRUE_P1OF4_CONSTANT_HALF",
+      "true_p": "1/4",
+      "predictor": "CONSTANT_HALF",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "1/4",
+      "exact_design_expected_independent_future_mean_Brier": "1/4",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "0",
+      "source_enumeration_equals_independent_binomial_theory": true
+    },
+    {
+      "world": "TRUE_P1OF4_TRAIN_MLE",
+      "true_p": "1/4",
+      "predictor": "TRAIN_MLE",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "9/64",
+      "exact_design_expected_independent_future_mean_Brier": "15/64",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "291/2048",
+      "source_enumeration_equals_independent_binomial_theory": true
+    },
+    {
+      "world": "TRUE_P1OF4_LAPLACE_BETA11",
+      "true_p": "1/4",
+      "predictor": "LAPLACE_BETA11",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "11/72",
+      "exact_design_expected_independent_future_mean_Brier": "31/144",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "0",
+      "source_enumeration_equals_independent_binomial_theory": true
+    },
+    {
+      "world": "TRUE_P1OF2_CONSTANT_HALF",
+      "true_p": "1/2",
+      "predictor": "CONSTANT_HALF",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "1/4",
+      "exact_design_expected_independent_future_mean_Brier": "1/4",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "0",
+      "source_enumeration_equals_independent_binomial_theory": true
+    },
+    {
+      "world": "TRUE_P1OF2_TRAIN_MLE",
+      "true_p": "1/2",
+      "predictor": "TRAIN_MLE",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "3/16",
+      "exact_design_expected_independent_future_mean_Brier": "5/16",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "3/32",
+      "source_enumeration_equals_independent_binomial_theory": true
+    },
+    {
+      "world": "TRUE_P1OF2_LAPLACE_BETA11",
+      "true_p": "1/2",
+      "predictor": "LAPLACE_BETA11",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "7/36",
+      "exact_design_expected_independent_future_mean_Brier": "5/18",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "0",
+      "source_enumeration_equals_independent_binomial_theory": true
+    },
+    {
+      "world": "TRUE_P3OF4_CONSTANT_HALF",
+      "true_p": "3/4",
+      "predictor": "CONSTANT_HALF",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "1/4",
+      "exact_design_expected_independent_future_mean_Brier": "1/4",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "0",
+      "source_enumeration_equals_independent_binomial_theory": true
+    },
+    {
+      "world": "TRUE_P3OF4_TRAIN_MLE",
+      "true_p": "3/4",
+      "predictor": "TRAIN_MLE",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "9/64",
+      "exact_design_expected_independent_future_mean_Brier": "15/64",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "291/2048",
+      "source_enumeration_equals_independent_binomial_theory": true
+    },
+    {
+      "world": "TRUE_P3OF4_LAPLACE_BETA11",
+      "true_p": "3/4",
+      "predictor": "LAPLACE_BETA11",
+      "full_ordered_source_types": 64,
+      "exact_design_expected_train_mean_Brier": "11/72",
+      "exact_design_expected_independent_future_mean_Brier": "31/144",
+      "exact_unfloored_infinite_test_log_loss_event_probability": "0",
+      "source_enumeration_equals_independent_binomial_theory": true
+    }
+  ]
+}
