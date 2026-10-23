@@ -1,0 +1,35 @@
+{
+  "research_id": "R278",
+  "original_catalogue_id": "12-008",
+  "outcome": "CLOSED_BOUNDED_E1_ARTIFICIAL_BAYESIAN_MODEL_AVERAGING",
+  "freeze_protocol_commit": "eb1c8df38349c36ed10d7a2103969818b14d7500",
+  "program_commit": "42c8a75de91032b2379e550511e35d935617602e",
+  "workflow_commit": "36b3a1c854e1fa025c21b4815e8cd7a49e3b21dd",
+  "full_source_archive_commit": "0f39a4a753aa47bc4484b9de429da12a316196cb",
+  "verified_ci_run_id": 39904644080,
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "successful_jobs": 3,
+  "python_3_11_real_tests_pass": 108,
+  "python_3_12_real_tests_pass": 108,
+  "worlds": 12,
+  "complete_original_source_types": 768,
+  "analytical_holdout_risk_worlds": 12,
+  "source_csv_sha256": "e0cd62f93b7a0ff54d1c5266d3fa7cacfeba2a87109a3f8659356b804201b93d",
+  "results_json_sha256": "8099d8f2e37a33b922fc466e5ba4033d26eff280c52a2604b01f8c40147ba166",
+  "core_findings": [
+    "BMA does not uniformly dominate single-model hard selection across three frozen true Bernoulli data generating rates.",
+    "Tie-breaking hard selection at train K=2 toward q=1/4 yields an asymmetric future risk under true p=1/4 versus p=3/4.",
+    "Truth oracle depends on unavailable ground-truth p; two-bit heldout Brier is only evaluated marginally."
+  ],
+  "limits": [
+    "Only artificial exact finite Bernoulli worlds.",
+    "No prospective deployment, model uncertainty beyond the specified two candidate points, or true external population testing."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": "12-009",
+  "next_research": "R279"
+}
