@@ -839,3 +839,10 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 [R270完整研究包](research/R270/README.md) · [正式科学报告](research/R270/R270_SCIENTIFIC_REPORT_2026-10-23.md) · [CI run39902465686](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39902465686)：九个冻结Beta先验×六位人工观察world、576完整有序后验复制source、166真实单测、三job全绿。三个K=3观察序列因排列结构不同，在相邻相同统计下产生不同后验预测尾概率；ALTERNATING的上尾1，正确下尾依先验为10/429、7/286、16/715。全部原source与SHA永久归档[33e6663e](https://github.com/edwardsage419/Psychohistory-Research/commit/33e6663e903b16f8c31e2d9e219696b6e99a3338)。
 
 [两项目科学证据与归档汇总索引](docs/R269_R270_GROUP_CV_POSTERIOR_PREDICTIVE_E1_CLOSURE_INDEX_2026-10-23.md)：九+九人工world、1152个原source配置、332次真实双Python测试和两个三job完成CI。新增真实人类E2及真实历史E3仍为0，R073和PESEN v0.1冻结。原模型目录类别11在11-030结束，**下一条直接为12-001 Preregistration and Registered Reports（P0，拟R271）**，没有11-031。依既定顺序优先完成剩余R研究，然后统一归纳分类，最后熔炼原创模型。
+
+
+## 2026-10-23 R271预注册与家族误报完整E1研究
+
+原239目录11-029至12-001的R269、R270、R271三项已连续完成[正式科研报告与归档总索引](docs/R269_R271_CV_PPC_PREREG_INDEPENDENT_E1_CLOSURE_INDEX_2026-10-23.md)。其中R271（12-001 Preregistration and Registered Reports，P0）在[原协议预先冻结](protocols/R271_PREREGISTRATION_9_DECISION_WORLDS_13104_SOURCE_ATOMS_PRESCORE_FREEZE_2026-10-23.md)后，穷尽3类检验家族大小×3报告策略共9个人工H0世界、**13104条完整来源类型**。冻结familywise alpha=1/8、每检验4bit公平Bernoulli：事前指定第一个检验误报1/16；不加校正而从三个检验事后择优的报告误报**721/4096**，超过alpha；Bonferroni对三个检验因离散最小原p=1/16大于alpha/3而无法拒绝。这说明探索性结果筛选与校正必须明确区分，并不意味着R271真的向任何注册平台提交计划或获得期刊注册报告资格。
+
+[R271完整研究入口](research/R271/README.md) · [正式科学报告](research/R271/R271_SCIENTIFIC_REPORT_2026-10-23.md) · [正式机器验收](research/R271/R271_FINAL_ACCEPTANCE_STATUS.json) · [全通过CI run39902734610](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39902734610) · [原13104来源及SHA永久归档3d99415b](https://github.com/edwardsage419/Psychohistory-Research/commit/3d99415bfe7da4449462c42da8d8ecafb83a9d88)。Python3.11及3.12各82真单测、共164通过，第三独立来源审计也success。R269至R271合计27人工world、14256条policy标识原source、496项双Python真单测、三个CI共9个job全部success；**新增真实真人E2=0、真实历史E3=0**，R073和PESEN v0.1未变。原239候选目录下一项为**12-002 Out of Sample Prediction（P0，拟R272）**。原R系列学习完成前仍不开始统一分类与模型熔炼。
