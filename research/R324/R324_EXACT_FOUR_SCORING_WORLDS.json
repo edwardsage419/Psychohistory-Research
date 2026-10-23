@@ -1,0 +1,68 @@
+{
+  "schema": "r324_constructed_two_axis_psychometric_risk_e1_v1",
+  "original_catalogue_id": "01-017",
+  "artificial_only": true,
+  "original_source_rows": 64,
+  "worlds": [
+    {
+      "world_id": 0,
+      "policy": "dread_weighted",
+      "a": 3,
+      "b": 1,
+      "state_count": 16,
+      "total_weight": "1",
+      "min_score": 0,
+      "max_score": 8,
+      "mean_score": "4",
+      "dread_only_score": 6,
+      "unknown_only_score": 2
+    },
+    {
+      "world_id": 1,
+      "policy": "unknown_weighted",
+      "a": 1,
+      "b": 3,
+      "state_count": 16,
+      "total_weight": "1",
+      "min_score": 0,
+      "max_score": 8,
+      "mean_score": "4",
+      "dread_only_score": 2,
+      "unknown_only_score": 6
+    },
+    {
+      "world_id": 2,
+      "policy": "balanced",
+      "a": 1,
+      "b": 1,
+      "state_count": 16,
+      "total_weight": "1",
+      "min_score": 0,
+      "max_score": 4,
+      "mean_score": "2",
+      "dread_only_score": 2,
+      "unknown_only_score": 2
+    },
+    {
+      "world_id": 3,
+      "policy": "scaled_balanced",
+      "a": 2,
+      "b": 2,
+      "state_count": 16,
+      "total_weight": "1",
+      "min_score": 0,
+      "max_score": 8,
+      "mean_score": "4",
+      "dread_only_score": 4,
+      "unknown_only_score": 4
+    }
+  ],
+  "witness": {
+    "dread_only": "1100",
+    "unknown_only": "0011",
+    "w0_dread_gt_unknown": true,
+    "w1_unknown_gt_dread": true,
+    "w2_equal": true,
+    "w3_double_w2_all_states": true
+  }
+}
