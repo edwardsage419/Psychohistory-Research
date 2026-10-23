@@ -1,0 +1,163 @@
+name: R261 Finite N2 Mean Field Versus Interacting Source Distribution
+on:
+  push:
+    paths:
+      - 'research/R261/r261_exact_finite_meanfield.py'
+      - '.github/workflows/r261-exact-meanfield.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-meanfield-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check all 9216 tenbit worlds against independently derived count transition matrices
+        run: python research/R261/r261_exact_finite_meanfield.py --test
+  all-original-finite-agent-source-archive:
+    needs: dual-python-meanfield-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate full original tenbit source audit independent N2 count laws and Jensen gaps
+        run: |
+          python research/R261/r261_exact_finite_meanfield.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R261')
+          rows=list(csv.DictReader((d/'R261_ALL_9216_ORIGINAL_TENBIT_MEAN_FIELD_AGENT_SOURCES.csv').open()))
+          j=json.loads((d/'R261_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R261_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==9216 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-021'
+          assert j['prescore_freeze_commit']=='32ed797483cd47496cf83a9d24d251b9aac3f15b'
+          assert j['no_N_tends_infinity_theorem_or_propagation_of_chaos_proven']
+          ntab={
+           'FINITE_NEUTRAL_IDIOSYNCRATIC':[F(0),F(1,2),F(1)],
+           'FINITE_CONVEX_SQUARE':[F(0),F(1,4),F(1)],
+           'FINITE_CONCAVE_CONFORMITY':[F(0),F(3,4),F(1)],
+           'FINITE_CONTRARIAN':[F(1),F(1,2),F(0)],
+           'INDEPENDENT_HALF':[F(1,2)]*3,
+           'UNANIMOUS_ONLY':[F(0),F(0),F(1)],
+           'MAJORITY_TIE_UP':[F(0),F(1),F(1)],
+           'COMMON_NOISE_NEUTRAL':[F(0),F(1,2),F(1)],
+           'OBSERVED_COMMON_NOISE_TRUE_INDEPENDENT_SENSOR':[F(0),F(1,2),F(1)]}
+          shared={'COMMON_NOISE_NEUTRAL','OBSERVED_COMMON_NOISE_TRUE_INDEPENDENT_SENSOR'}
+          by={w['world']:w for w in j['world_results']}
+          assert set(by)==set(ntab)
+          for w,r in by.items():
+              source=[z for z in rows if z['world']==w]
+              assert len(source)==1024
+              keys=['oracle_original_initial_agent_bit_0','oracle_original_initial_agent_bit_1']+[
+                'oracle_original_step'+str(t)+'_agent'+str(a)+'_R_'+s
+                for t in (0,1) for a in (0,1) for s in ('a','b')]
+              assert len({tuple(z[k] for k in keys) for z in source})==1024
+              assert all(F(z['original_complete_tenbit_source_probability'])==F(1,1024) for z in source)
+              assert sum((F(z['original_complete_tenbit_source_probability']) for z in source),F(0))==1
+              assert r['exact_n2_count_chain_vs_complete_bit_source_verified']
+              assert r['conditional_same_epoch_noise_is_shared_for_public']==(w in shared)
+              assert r['hidden_agents_update_independently_if_sensor']==(w=='OBSERVED_COMMON_NOISE_TRUE_INDEPENDENT_SENSOR')
+              T=[]
+              for q in ntab[w]:
+                  T.append((1-q,F(0),q) if w in shared else ((1-q)**2,2*q*(1-q),q*q))
+              assert r['frozen_3_by_3_finite_count_transition']==[[str(v) for v in row] for row in T]
+              for z in source:
+                  init=int(z['oracle_original_initial_agent_bit_0'])+int(z['oracle_original_initial_agent_bit_1'])
+                  assert int(z['observed_initial_count_K0'])==init
+                  assert F(z['observed_initial_empirical_mean_M0'])==F(init,2)
+                  for t in (0,1):
+                      old=init if t==0 else int(z['observed_reported_count_K1'])
+                      q=ntab[w][old]
+                      assert F(z['oracle_public_generator_q_t'+str(t)])==q
+                      r0=2*int(z['oracle_original_step'+str(t)+'_agent0_R_a'])+int(z['oracle_original_step'+str(t)+'_agent0_R_b'])
+                      r1=2*int(z['oracle_original_step'+str(t)+'_agent1_R_a'])+int(z['oracle_original_step'+str(t)+'_agent1_R_b'])
+                      next0=int(F(r0,4)<q)
+                      next1=int(F(r0 if w in shared else r1,4)<q)
+                      assert int(z['observed_reported_agent0_state_t'+str(t+1)])==next0
+                      assert int(z['observed_reported_agent1_state_t'+str(t+1)])==next1
+                      assert int(z['observed_reported_count_K'+str(t+1)])==next0+next1
+                      assert F(z['observed_reported_empirical_mean_M'+str(t+1)])==F(next0+next1,2)
+              for init in (0,1,2):
+                  cohort=[z for z in source if int(z['observed_initial_count_K0'])==init]
+                  assert len(cohort)==(512 if init==1 else 256)
+                  item=r['all_three_initial_count_conditions'][init]
+                  assert item['initial_visible_agent_count_K0']==init
+                  law=tuple(F(int(k==init)) for k in range(3))
+                  for time in (0,1,2):
+                      assert [str(p) for p in law]==item['exact_conditional_count_PMF_each_time'][time]
+                      key='observed_initial_count_K0' if time==0 else 'observed_reported_count_K'+str(time)
+                      independent_source=tuple(F(sum(int(z[key])==k for z in cohort),len(cohort)) for k in (0,1,2))
+                      assert law==independent_source,(w,init,time,law,independent_source)
+                      mean=sum((p*F(k,2) for k,p in enumerate(law)),F(0))
+                      variance=sum((p*(F(k,2)-mean)**2 for k,p in enumerate(law)),F(0))
+                      assert str(mean)==item['exact_finite_agent_empirical_mean_each_time'][time]
+                      assert str(variance)==item['exact_finite_agent_empirical_variance_each_time'][time]
+                      assert str(law[0]+law[2])==item['exact_finite_agent_full_consensus_probability_each_time'][time]
+                      if time<2:
+                          law=tuple(sum((law[k]*T[k][next_k] for k in (0,1,2)),F(0)) for next_k in (0,1,2))
+          neutral=by['FINITE_NEUTRAL_IDIOSYNCRATIC']['all_three_initial_count_conditions'][1]
+          sharedw=by['COMMON_NOISE_NEUTRAL']['all_three_initial_count_conditions'][1]
+          square=by['FINITE_CONVEX_SQUARE']['all_three_initial_count_conditions'][1]
+          concave=by['FINITE_CONCAVE_CONFORMITY']['all_three_initial_count_conditions'][1]
+          assert neutral['exact_finite_agent_empirical_variance_each_time']==['0','1/8','3/16']
+          assert sharedw['exact_finite_agent_empirical_variance_each_time']==['0','1/4','1/4']
+          assert square['deterministic_mean_field_m0_m1_m2']==['1/2','1/4','1/16']
+          assert square['exact_finite_agent_empirical_mean_each_time']==['1/2','1/4','5/32']
+          assert square['exact_finite_minus_deterministic_mean_field_mean_each_time'][2]=='3/32'
+          assert concave['deterministic_mean_field_m0_m1_m2']==['1/2','3/4','15/16']
+          assert concave['exact_finite_agent_empirical_mean_each_time'][2]=='27/32'
+          assert concave['exact_finite_minus_deterministic_mean_field_mean_each_time'][2]=='-3/32'
+          obs_a=[z for z in rows if z['world']=='COMMON_NOISE_NEUTRAL']
+          obs_b=[z for z in rows if z['world']=='OBSERVED_COMMON_NOISE_TRUE_INDEPENDENT_SENSOR']
+          assert len(obs_a)==len(obs_b)==1024
+          for x,y in zip(obs_a,obs_b):
+              assert all(x['observed_reported_agent'+str(i)+'_state_t'+str(t)]==
+                         y['observed_reported_agent'+str(i)+'_state_t'+str(t)]
+                         for i in (0,1) for t in (1,2))
+          assert any(z['oracle_true_hidden_count_H1']!=z['observed_reported_count_K1'] for z in obs_b)
+          for filename,key in [('R261_ALL_9216_ORIGINAL_TENBIT_MEAN_FIELD_AGENT_SOURCES.csv','source_sha256'),
+                               ('R261_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R261_ALL_9216_ORIGINAL_AGENT_SOURCE_AND_INDEPENDENT_N2_MEAN_FIELD_BIASES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R261-Nine-Finite-N2-MeanField-Complete-TenBit-Sources
+          path: |
+            research/R261/R261_ALL_9216_ORIGINAL_TENBIT_MEAN_FIELD_AGENT_SOURCES.csv
+            research/R261/R261_EXACT_RESULTS.json
+            research/R261/R261_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Archive all 9216 original complete mean-field source atoms
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R261/R261_ALL_9216_ORIGINAL_TENBIT_MEAN_FIELD_AGENT_SOURCES.csv research/R261/R261_EXACT_RESULTS.json research/R261/R261_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R261): all 9216 original finite agent tenbit sources'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R261_ALL_9216_ORIGINAL_MEAN_FIELD_SOURCES_PERMANENTLY_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
