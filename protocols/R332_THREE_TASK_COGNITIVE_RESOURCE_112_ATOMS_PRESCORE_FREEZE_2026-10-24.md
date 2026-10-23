@@ -1,0 +1,14 @@
+# R332 preregistered bounded E1 protocol: cognitive resource capacity and recoding
+Date 2026-10-24. Original239 02-015 Cognitive Resource Constraints. This freeze precedes code and artificial source generation.
+
+## Prior research and English original sources
+Read pending13 original239 queue, R260 robust hard budget and R259 multiobjective optimization reports, R330 retrieval and R295 habit reports. R260's budget is uncertainty-set membership for exogenous shocks, not cognitive task-processing cost. R259's tradeoffs are cost vectors without an attention budget. R330's recency retrieval has no simultaneous task resource constraint. Strict reuse of these existing experiments is rejected. Earlier ZIP exhaustive itemwise audit remains open.
+Miller (1956), The Magical Number Seven, Plus or Minus Two, Psychological Review 63:81-97, https://doi.org/10.1037/h0043158 and primary text https://www.yorku.ca/pclassic/Miller/ discusses limits and recoding. Miller's seven is not a universal fixed capacity parameter. This project's task costs and utilities are entirely artificial.
+
+## Frozen design and falsifiers
+Three binary tasks A,B,C with fixed costs (1,2,3) and utilities (1,3,4). Capacities c=0..6 inclusive. Recoding flag r in {0,1} changes B cost from 2 to 1 only when r=1; A and C costs and all utilities remain unchanged. For each (r,c), enumerate all 8 binary selection vectors in lexical order 000..111. Feasible if total cost<=c. Choose feasible subset with maximum sum utility, breaking ties by lexicographically smallest bit string. Exactly 2*7*8=112 artificial source rows and 14 world summaries. No stochastic process, fitted human parameters or actual participants.
+Predicted optimal utility for r=0 at c=0..6: (0,1,3,4,5,7,8); for r=1: (0,3,4,4,7,8,8). Corresponding utility gains: (0,2,1,0,2,1,0). At c=4 baseline chooses 101 (A+C) utility5; recoded chooses 011 (B+C) utility7. At c=3 both select 001 (C) utility4 due to lexical tie break.
+All 112 source rows, feasibility flags, computed utilities, 14 winner sets and strict tie breaking must replay byte for byte. Independent no-import audit must recompute all subsets, detect deliberate CSV tampering and verify frozen counterexamples. Any discrepancy blocks E1 acceptance.
+
+## Scientific boundary
+Only after successful Python 3.11 and 3.12 GitHub Actions and independent audit can this receive PASS_BOUNDED_E1_CONSTRUCTED_THREE_TASK_RESOURCE_ALLOCATION_ONLY. Resource cost and recoding are externally assigned symbols; this is no proof of human working memory span, actual chunking, dual-task interference, Miller 1956 empirical replication, human E2, historical E3 or predictive performance. Directory association is provenance. R073 and PESEN v0.1 frozen; complete R series before classification/fusion; personal decision system deferred.
