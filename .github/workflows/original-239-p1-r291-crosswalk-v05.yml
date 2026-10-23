@@ -1,0 +1,46 @@
+name: Original 239 P1 R291 TRA evidence crosswalk v0.5
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r291_crosswalk_v0_5.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.5_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_57_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r291-crosswalk-v05.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-crosswalk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all 239 original model links with 14 checks
+        run: python research/catalogue_audit/verify_p1_r291_crosswalk_v0_5.py --test
+  independent-source-scope:
+    needs: dual-python-crosswalk
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent v0.5 metadata, original R291 source and SHA checks
+        run: |
+          python research/catalogue_audit/verify_p1_r291_crosswalk_v0_5.py --audit
+          python research/catalogue_audit/independent_r291_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R291-TRA-v05-179Primary-57Pending
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.5_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_57_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R291/R291_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
