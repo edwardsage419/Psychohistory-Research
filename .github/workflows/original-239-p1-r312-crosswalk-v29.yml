@@ -1,0 +1,46 @@
+name: Original239 P1 R312 Deffuant Crosswalk v2.9
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r312_crosswalk_v2_9.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.9_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_33_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r312-crosswalk-v29.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original239:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify original239 exact one-row Deffuant R312 with 33 pending and HK research boundaries
+        run: python research/catalogue_audit/verify_p1_r312_crosswalk_v2_9.py --test
+  independent-original-sources:
+    needs: dual-python-original239
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently audit all original239 links and 1152 original Deffuant person events
+        run: |
+          python research/catalogue_audit/verify_p1_r312_crosswalk_v2_9.py --audit
+          python research/catalogue_audit/independent_r312_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R312-v29-203Primary-33Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.9_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_33_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R312/R312_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
