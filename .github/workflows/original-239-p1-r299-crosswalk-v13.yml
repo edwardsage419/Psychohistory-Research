@@ -1,0 +1,46 @@
+name: Original 239 P1 R299 Model Free TD MC Crosswalk v1.3
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r299_crosswalk_v1_3.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.3_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_49_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r299-crosswalk-v13.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-catalogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 16 original239 single-row and R063 historical overlap provenance checks
+        run: python research/catalogue_audit/verify_p1_r299_crosswalk_v1_3.py --test
+  independent-scope-and-source:
+    needs: dual-python-catalogue
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute original catalog SHA, R063 historical scoped evidence and all TD/MC sources
+        run: |
+          python research/catalogue_audit/verify_p1_r299_crosswalk_v1_3.py --audit
+          python research/catalogue_audit/independent_r299_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R299-v13-187Primary-49Pending-R063Preserved-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.3_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_49_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R299/R299_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
