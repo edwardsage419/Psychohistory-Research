@@ -1,0 +1,46 @@
+name: Original 239 P1 R309 SIR Exact E1 Crosswalk v2.4
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r309_crosswalk_v2_4.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.4_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_38_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r309-crosswalk-v24.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original239:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 16 canonical original239 source audits, one new 04-006 link and SIR original SHA checks
+        run: python research/catalogue_audit/verify_p1_r309_crosswalk_v2_4.py --test
+  independent-sir-and-original239:
+    needs: dual-python-original239
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently check 238 unchanged catalogue source records and 1134 SIR events from contact bit masks
+        run: |
+          python research/catalogue_audit/verify_p1_r309_crosswalk_v2_4.py --audit
+          python research/catalogue_audit/independent_r309_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R309-SIR-v24-198Primary-38Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.4_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_38_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R309/R309_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
