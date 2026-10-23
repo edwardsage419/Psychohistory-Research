@@ -1,0 +1,30 @@
+name: R325 finite statewise regret 1029 artificial E1
+on:
+  push:
+    paths:
+      - 'research/R325/**'
+      - 'research/catalogue_audit/independent_r325_regret_audit.py'
+      - '.github/workflows/r325-regret-1029-states-e1.yml'
+  workflow_dispatch:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R325/r325_regret.py --test
+      - run: python research/R325/r325_regret.py --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/independent_r325_regret_audit.py

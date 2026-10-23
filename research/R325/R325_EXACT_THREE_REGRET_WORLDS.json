@@ -1,0 +1,58 @@
+{
+  "schema": "r325_constructed_statewise_regret_cubic_e1_v1",
+  "original_catalogue_id": "01-020",
+  "artificial_only": true,
+  "original_source_rows": 1029,
+  "worlds": [
+    {
+      "world_id": 0,
+      "policy": "linear_eu",
+      "kappa": "0",
+      "state_count": 343,
+      "total_weight": "1",
+      "choice_A": 153,
+      "choice_B": 153,
+      "choice_TIE": 37,
+      "strict_eu_regret_reversals": 0,
+      "witness_regret_advantage": "-1/3"
+    },
+    {
+      "world_id": 1,
+      "policy": "mild_cubic",
+      "kappa": "1/4",
+      "state_count": 343,
+      "total_weight": "1",
+      "choice_A": 162,
+      "choice_B": 162,
+      "choice_TIE": 19,
+      "strict_eu_regret_reversals": 6,
+      "witness_regret_advantage": "7/12"
+    },
+    {
+      "world_id": 2,
+      "policy": "strong_cubic",
+      "kappa": "1",
+      "state_count": 343,
+      "total_weight": "1",
+      "choice_A": 162,
+      "choice_B": 162,
+      "choice_TIE": 19,
+      "strict_eu_regret_reversals": 6,
+      "witness_regret_advantage": "10/3"
+    }
+  ],
+  "witness": {
+    "difference_vector": [
+      3,
+      -2,
+      -2
+    ],
+    "eu_advantage": "-1/3",
+    "linear_regret_advantage": "-1/3",
+    "mild_regret_advantage": "7/12",
+    "strong_regret_advantage": "10/3",
+    "mild_strict_reversal": true,
+    "strong_strict_reversal": true,
+    "sign_symmetry_all": true
+  }
+}
