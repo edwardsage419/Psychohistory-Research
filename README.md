@@ -846,3 +846,16 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 原239目录11-029至12-001的R269、R270、R271三项已连续完成[正式科研报告与归档总索引](docs/R269_R271_CV_PPC_PREREG_INDEPENDENT_E1_CLOSURE_INDEX_2026-10-23.md)。其中R271（12-001 Preregistration and Registered Reports，P0）在[原协议预先冻结](protocols/R271_PREREGISTRATION_9_DECISION_WORLDS_13104_SOURCE_ATOMS_PRESCORE_FREEZE_2026-10-23.md)后，穷尽3类检验家族大小×3报告策略共9个人工H0世界、**13104条完整来源类型**。冻结familywise alpha=1/8、每检验4bit公平Bernoulli：事前指定第一个检验误报1/16；不加校正而从三个检验事后择优的报告误报**721/4096**，超过alpha；Bonferroni对三个检验因离散最小原p=1/16大于alpha/3而无法拒绝。这说明探索性结果筛选与校正必须明确区分，并不意味着R271真的向任何注册平台提交计划或获得期刊注册报告资格。
 
 [R271完整研究入口](research/R271/README.md) · [正式科学报告](research/R271/R271_SCIENTIFIC_REPORT_2026-10-23.md) · [正式机器验收](research/R271/R271_FINAL_ACCEPTANCE_STATUS.json) · [全通过CI run39902734610](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39902734610) · [原13104来源及SHA永久归档3d99415b](https://github.com/edwardsage419/Psychohistory-Research/commit/3d99415bfe7da4449462c42da8d8ecafb83a9d88)。Python3.11及3.12各82真单测、共164通过，第三独立来源审计也success。R269至R271合计27人工world、14256条policy标识原source、496项双Python真单测、三个CI共9个job全部success；**新增真实真人E2=0、真实历史E3=0**，R073和PESEN v0.1未变。原239候选目录下一项为**12-002 Out of Sample Prediction（P0，拟R272）**。原R系列学习完成前仍不开始统一分类与模型熔炼。
+
+
+## 2026-10-23 R272至R274 独立预测评价研究索引
+
+沿原239模型目录继续连续完成三项P0方法学：**12-002 R272 Out of Sample Prediction**、**12-003 R273 Cross Population Validation**、**12-004 R274 Temporal Holdout Validation**，均先冻结事前模型评分协议，独立解析精确概率，全原source CSV和SHA机器入库，双Python真实单测与GitHub Actions第三审计通过。[完整三研究正式E1结题与原资料总索引](docs/R272_R274_OUT_OF_SAMPLE_CROSS_POPULATION_TEMPORAL_E1_CLOSURE_INDEX_2026-10-23.md)。
+
+[R272完整研究](research/R272/README.md) · [科研报告](research/R272/R272_SCIENTIFIC_REPORT_2026-10-23.md) · [最终CI run39903106107](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39903106107)：九世界576完整人工原source，训练期MLE误差可优于固定模型却在独立测试期逆转，且边界MLE发生正概率无限log损失；双Python166真实单测成功，三job全success，[来源归档dd4995e8](https://github.com/edwardsage419/Psychohistory-Research/commit/dd4995e82cd62cc35c493b79f3525854c06a7eab)。
+
+[R273完整研究](research/R273/README.md) · [科研报告](research/R273/R273_SCIENTIFIC_REPORT_2026-10-23.md) · [最终CI run39903300167](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39903300167)：27世界1728完整人工source，当源群体p=1/4、目标群体p=3/4时，SOURCE_ORACLE预测损失7/16，SOURCE_LAPLACE 55/144，TARGET_ORACLE不可部署理论下界3/16；双Python344真实单测成功，三job全success，[来源归档1d57f507](https://github.com/edwardsage419/Psychohistory-Research/commit/1d57f5078d172d1feb4b6a07a68e8732c102edf6)。
+
+[R274完整研究](research/R274/README.md) · [科研报告](research/R274/R274_SCIENTIFIC_REPORT_2026-10-23.md) · [最终CI run39903501667](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39903501667)：九世界576完整人工时间来源，严格区分过去四bit可实施预测与含未来测试标签的非法事后回填；双Python164真实单测成功，三job全success，[来源归档df5ad9d9](https://github.com/edwardsage419/Psychohistory-Research/commit/df5ad9d907fed3fe1c2c17d8d12eb10ad25c081b)。
+
+合计**45个人工world、2880种带模型标识原source配置、674次真实双Python测试、9个成功CI job**。三项目全部科学证据仅人工数学**E1**，没有任何新增真人E2/真实历史E3，不代表真实跨实验或历史预测成效；R073与PESEN v0.1继续冻结。下一原239候选目录**12-005 Equifinality Analysis（P0，拟R275）**。原R系列全部学习研究完成后再统一归纳分类与熔炼，个人辅助决策系统实施继续暂缓。
