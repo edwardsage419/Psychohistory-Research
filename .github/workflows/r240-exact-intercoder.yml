@@ -1,0 +1,104 @@
+name: R240 Exact Inter Coder Reliability and Hidden Accuracy Aliases
+on:
+  push:
+    paths:
+      - 'research/R240/r240_exact_intercoder_reliability.py'
+      - '.github/workflows/r240-exact-intercoder.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-annotation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test exact coder agreement, Cohen kappa, nominal alpha and observed accuracy aliases
+        run: python research/R240/r240_exact_intercoder_reliability.py --test
+  full-original-annotation-archive:
+    needs: dual-python-annotation-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 2304 original annotator sources and separately verify chance and truth
+        run: |
+          python research/R240/r240_exact_intercoder_reliability.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R240')
+          rows=list(csv.DictReader((d/'R240_ALL_2304_ORIGINAL_TWO_CODER_ANNOTATION_ATOMS.csv').open()))
+          data=json.loads((d/'R240_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R240_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==2304 and len(data['world_results'])==9
+          assert data['original_catalogue_id']==rec['original_catalogue_id']=='10-014'
+          by={x['world']:x for x in data['world_results']}
+          assert len(by)==9
+          for w,r in by.items():
+              subset=[x for x in rows if x['world']==w]
+              assert len(subset)==256
+              assert all(F(x['original_structural_source_probability'])==F(1,256) for x in subset)
+              assert sum((F(x['original_structural_source_probability']) for x in subset),F(0))==1
+              assert len({tuple(x['oracle_original_'+key] for key in ('T','U','E1','E2','E3','E4','E5','E6')) for x in subset})==256
+              table=r['observed_pair_table_2x2']
+              assert len(table)==4 and sum(table.values())==r['observed_population_agreement_metrics']['selected_source_units']
+              assert sum((F(v) for v in r['full_observed_selection_and_coder_joint'].values()),F(0))==1
+              assert 0<=F(r['oracle_accuracy_to_hidden_gold_T'][0])<=1
+              assert 0<=F(r['oracle_accuracy_to_hidden_gold_T'][1])<=1
+          one=by['PERFECT_TRUTHFUL']
+          two=by['PERFECT_SYSTEMATICALLY_WRONG']
+          three=by['SHARED_SYSTEMATIC_ERROR']
+          assert one['full_observed_selection_and_coder_joint']==two['full_observed_selection_and_coder_joint']==three['full_observed_selection_and_coder_joint']
+          assert one['oracle_accuracy_to_hidden_gold_T']==['1','1']
+          assert two['oracle_accuracy_to_hidden_gold_T']==['0','0']
+          assert three['oracle_accuracy_to_hidden_gold_T']==['3/4','3/4']
+          assert all(x['observed_population_agreement_metrics']['cohens_kappa']=='1' for x in (one,two,three))
+          assert by['INDEPENDENT_QUARTER_ERRORS']['observed_population_agreement_metrics']['cohens_kappa']=='1/4'
+          balanced=by['BALANCED_INDEPENDENT_RANDOM']['observed_population_agreement_metrics']
+          rare=by['RARE_POSITIVE_INDEPENDENT_RANDOM']['observed_population_agreement_metrics']
+          assert balanced['observed_pair_agreement']=='1/2' and balanced['cohens_kappa']=='0'
+          assert rare['observed_pair_agreement']==rare['expected_independent_marginal_agreement']=='25/32'
+          assert rare['cohens_kappa']=='0'
+          assert by['ASYMMETRIC_FALSE_POSITIVE']['observed_population_agreement_metrics']['cohens_kappa']=='3/4'
+          chosen=by['SELECTIVE_MISSING_DISAGREEMENTS']
+          assert chosen['proportion_with_observed_complete_coder_pair']=='3/4'
+          assert chosen['observed_population_agreement_metrics']['cohens_kappa']=='1'
+          assert chosen['oracle_all_original_sources_coder_pair_agreement']=='3/4'
+          assert by['OPPOSING_CODERS']['observed_population_agreement_metrics']['cohens_kappa']=='-1'
+          assert balanced['nominal_krippendorff_alpha_pair_complete']!='0'
+          for f,k in [('R240_ALL_2304_ORIGINAL_TWO_CODER_ANNOTATION_ATOMS.csv','source_sha256'),
+                      ('R240_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[k]==hashlib.sha256((d/f).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R240_ALL_2304_CODER_ATOMS_AND_EXACT_KAPPA_ALPHA_ACCURACY_PREVALENCE_ALIASES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R240-Nine-Original-Two-Coder-Annotation-Worlds
+          path: |
+            research/R240/R240_ALL_2304_ORIGINAL_TWO_CODER_ANNOTATION_ATOMS.csv
+            research/R240/R240_EXACT_RESULTS.json
+            research/R240/R240_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive full two-coder original source and exact metrics
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R240/R240_ALL_2304_ORIGINAL_TWO_CODER_ANNOTATION_ATOMS.csv research/R240/R240_EXACT_RESULTS.json research/R240/R240_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R240): all 2304 two-coder structural sources and reliability certificates'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
