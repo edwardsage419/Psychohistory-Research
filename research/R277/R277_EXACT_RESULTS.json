@@ -1,0 +1,74 @@
+{
+  "research_id": "R277",
+  "original_catalogue_id": "12-007",
+  "prescore_freeze_commit": "923a161bbdc012c138e53f1fa316e6085ff2704e",
+  "scope": "E1_FINITE_ARTIFICIAL_MARKOV_SERIAL_DEPENDENCE_MISSPECIFICATION",
+  "actual_regime_count": 3,
+  "all_complete_original_source_types": 192,
+  "complete_sources_per_regime": 64,
+  "all_original_sources_positive_probability": true,
+  "one_time_marginals_in_all_regimes": "1/2",
+  "every_observation_constant_forecast_Brier": "1/4",
+  "all_3_independent_binomial_transition_PMFs_verified": true,
+  "note": "Each high or low persistence check has nominal null event mass 3/16; jointly, 3/8.",
+  "no_real_human_E2": 0,
+  "no_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "true_regime": "ANTIPERSISTENT",
+      "transition_stay_s": "1/4",
+      "original_complete_ordered_sequences": 64,
+      "transition_stay_count_PMF": {
+        "0": "243/1024",
+        "1": "405/1024",
+        "2": "135/512",
+        "3": "45/512",
+        "4": "15/1024",
+        "5": "1/1024"
+      },
+      "expected_number_of_equal_adjacent_transitions": "5/4",
+      "probability_of_high_persistence_region_T_at_least_4": "1/64",
+      "probability_of_low_persistence_region_T_at_most_1": "81/128",
+      "individual_Brier_expectation": "1/4",
+      "independent_Binomial_5_s_calculation_match": true
+    },
+    {
+      "true_regime": "IID_FAIR",
+      "transition_stay_s": "1/2",
+      "original_complete_ordered_sequences": 64,
+      "transition_stay_count_PMF": {
+        "0": "1/32",
+        "1": "5/32",
+        "2": "5/16",
+        "3": "5/16",
+        "4": "5/32",
+        "5": "1/32"
+      },
+      "expected_number_of_equal_adjacent_transitions": "5/2",
+      "probability_of_high_persistence_region_T_at_least_4": "3/16",
+      "probability_of_low_persistence_region_T_at_most_1": "3/16",
+      "individual_Brier_expectation": "1/4",
+      "independent_Binomial_5_s_calculation_match": true
+    },
+    {
+      "true_regime": "PERSISTENT",
+      "transition_stay_s": "3/4",
+      "original_complete_ordered_sequences": 64,
+      "transition_stay_count_PMF": {
+        "0": "1/1024",
+        "1": "15/1024",
+        "2": "45/512",
+        "3": "135/512",
+        "4": "405/1024",
+        "5": "243/1024"
+      },
+      "expected_number_of_equal_adjacent_transitions": "15/4",
+      "probability_of_high_persistence_region_T_at_least_4": "81/128",
+      "probability_of_low_persistence_region_T_at_most_1": "1/64",
+      "individual_Brier_expectation": "1/4",
+      "independent_Binomial_5_s_calculation_match": true
+    }
+  ]
+}
