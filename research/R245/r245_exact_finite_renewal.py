@@ -230,8 +230,8 @@ def world_result(world):
         observed_mean_count_by_time=[str(v) for v in mean],
         putative_iid_renewal_equation_mean_by_time=[str(v) for v in incorrect],
         observed_minus_putative_iid_renewal_mean_by_time=[str(v) for v in gapdiff],
-        oracle_generator_p_W2short_given_W1short=str(source_second_gap_condition(world,1)),
-        oracle_generator_p_W2short_given_W1long=str(source_second_gap_condition(world,2)),
+        oracle_generator_p_W2short_given_W1short=(str(source_second_gap_condition(world,1)) if source_second_gap_condition(world,1) is not None else None),
+        oracle_generator_p_W2short_given_W1long=(str(source_second_gap_condition(world,2)) if source_second_gap_condition(world,2) is not None else None),
         observed_five_time_count_path_joint={
             ",".join(map(str,k)):str(v) for k,v in obs.items()},
         true_hidden_count_at_time4_sourcewise=[
@@ -294,6 +294,9 @@ class Tests(unittest.TestCase):
         self.assertTrue(all(r["oracle_true_event_count_H4"]==0 for r in sources("STATIC_HIDDEN_EVENT_SENSOR_ALIAS")))
     def test_deterministic_unit(self):self.assertEqual(observed_mean_count("DETERMINISTIC_UNIT",4),F(4))
     def test_deterministic_two(self):self.assertEqual(observed_mean_count("DETERMINISTIC_TWO",4),F(2))
+    def test_unsupported_gap_condition_is_json_null(self):
+        self.assertIsNone(world_result("DETERMINISTIC_UNIT")["oracle_generator_p_W2short_given_W1long"])
+        self.assertIsNone(world_result("DETERMINISTIC_TWO")["oracle_generator_p_W2short_given_W1short"])
     def test_invalid(self):
         with self.assertRaises(ValueError):sources("UNFROZEN")
 
