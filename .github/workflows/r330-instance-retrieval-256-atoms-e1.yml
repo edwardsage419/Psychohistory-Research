@@ -1,0 +1,29 @@
+name: R330 finite four-instance retrieval 256 atoms E1
+on:
+  push:
+    paths:
+      - 'research/R330/**'
+      - 'research/catalogue_audit/independent_r330_instance_retrieval_audit.py'
+      - '.github/workflows/r330-instance-retrieval-256-atoms-e1.yml'
+  workflow_dispatch:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R330/r330_instance_retrieval.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/independent_r330_instance_retrieval_audit.py
