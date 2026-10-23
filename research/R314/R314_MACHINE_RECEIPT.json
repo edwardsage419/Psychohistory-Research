@@ -1,0 +1,68 @@
+{
+  "research_id": "R314",
+  "original_catalogue_id": "04-016",
+  "frozen_before_scoring_commit": "0426722f05cb409655f0bee5897d4b57c87cfa0a",
+  "prescore_protocol": "protocols/R314_BARABASI_ALBERT_THREE_SEED_TWO_ARRIVAL_54_TARGET_SOURCE_PRESCORE_FREEZE_2026-10-24.md",
+  "protocol_git_blob_sha1": "a9cf305df9fb24ca5fa84b0768fe2c179c847273",
+  "model": "Barabasi Albert 1999 degree proportional attachment m=1, three seed graphs and two arrivals",
+  "evidence_level": "BOUNDED_SYNTHETIC_EXACT_E1",
+  "source_evidence": [
+    {
+      "path": "research/R314/R314_ALL_54_ORIGINAL_TARGET_SOURCE_ATOMS.csv",
+      "git_blob_sha1": "063fd8b52f3aa425ccb9d61f26496d2db8365b9a",
+      "source_rows": 54
+    },
+    {
+      "path": "research/R314/R314_EXACT_44_TWO_ARRIVAL_PATH_RESULTS.json",
+      "git_blob_sha1": "e49b94e282fde0b2772af3a8d42b8ed84b000564",
+      "paths": 44
+    },
+    {
+      "path": "research/R314/r314_exact_preferential_attachment.py",
+      "git_blob_sha1": "5da34eaeafaec719b82e4e578ad2d66b59fb798f"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r314_source_audit.py",
+      "git_blob_sha1": "cea61fd4073402aa42895715c2713867f4e88525"
+    },
+    {
+      "path": "research/R314/R314_SCIENTIFIC_REPORT_2026-10-24.md",
+      "git_blob_sha1": "71340da5978142f72aab21fe2a47555e00d20563"
+    }
+  ],
+  "verification": {
+    "CI_run_id": 39994420445,
+    "CI_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39994420445",
+    "CI_head_sha": "b1534a77304090e3ce0fa17a71f2a11961f85a0e",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "exact-attachment (3.11)",
+        "unit_tests": 32,
+        "conclusion": "success"
+      },
+      {
+        "name": "exact-attachment (3.12)",
+        "unit_tests": 32,
+        "conclusion": "success"
+      },
+      {
+        "name": "independent-original-sources",
+        "full_source_rows": 54,
+        "complete_paths": 44,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "result": "PASS_BOUNDED_E1_ONLY",
+  "seed_count": 3,
+  "conditional_target_atoms": 54,
+  "full_two_arrival_paths": 44,
+  "new_real_human_E2": 0,
+  "new_historical_E3": 0,
+  "power_law_fit": "NOT_ATTEMPTED",
+  "real_network_prediction": "NOT_ATTEMPTED",
+  "R073_and_PESEN_v0_1": "FROZEN_UNCHANGED",
+  "complete_original239_scientific_closure": "OPEN"
+}
