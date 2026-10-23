@@ -1,0 +1,182 @@
+{
+  "research_id": "R291",
+  "catalogue_original_id": "01-013",
+  "freeze_commit": "161d40a01451f1e89be045910f95ec536768754c",
+  "scope": "BOUNDED_ARTIFICIAL_E1_TRA_ARCHITECTURE_NOT_ORIGINAL_HUMAN_FIT",
+  "world_count": 8,
+  "fully_labeled_joint_source_cells": 128,
+  "new_human_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "worlds": [
+    {
+      "world": "BALANCED__MEDIATED",
+      "profile": "BALANCED",
+      "mode": "MEDIATED",
+      "attitude_weight_a": 1,
+      "norm_weight_n": 1,
+      "behavior_direct_norm_d": 0,
+      "labeled_source_cells": 16,
+      "full_source_mass": "1",
+      "risks_Brier": {
+        "FULL_AN": "31/128",
+        "ATTITUDE_ONLY": "63/256",
+        "NORM_ONLY": "63/256",
+        "CONSTANT": "1/4"
+      },
+      "regret_attitude_only": "1/256",
+      "regret_norm_only": "1/256",
+      "regret_constant": "1/128",
+      "given_intention_norm_contrast": "0",
+      "analytic_risk_agreement": true
+    },
+    {
+      "world": "BALANCED__DIRECT_NORM_STRESS",
+      "profile": "BALANCED",
+      "mode": "DIRECT_NORM_STRESS",
+      "attitude_weight_a": 1,
+      "norm_weight_n": 1,
+      "behavior_direct_norm_d": 1,
+      "labeled_source_cells": 16,
+      "full_source_mass": "1",
+      "risks_Brier": {
+        "FULL_AN": "27/128",
+        "ATTITUDE_ONLY": "63/256",
+        "NORM_ONLY": "55/256",
+        "CONSTANT": "1/4"
+      },
+      "regret_attitude_only": "9/256",
+      "regret_norm_only": "1/256",
+      "regret_constant": "5/128",
+      "given_intention_norm_contrast": "1/4",
+      "analytic_risk_agreement": true
+    },
+    {
+      "world": "ATTITUDE_HEAVY__MEDIATED",
+      "profile": "ATTITUDE_HEAVY",
+      "mode": "MEDIATED",
+      "attitude_weight_a": 2,
+      "norm_weight_n": 1,
+      "behavior_direct_norm_d": 0,
+      "labeled_source_cells": 16,
+      "full_source_mass": "1",
+      "risks_Brier": {
+        "FULL_AN": "59/256",
+        "ATTITUDE_ONLY": "15/64",
+        "NORM_ONLY": "63/256",
+        "CONSTANT": "1/4"
+      },
+      "regret_attitude_only": "1/256",
+      "regret_norm_only": "1/64",
+      "regret_constant": "5/256",
+      "given_intention_norm_contrast": "0",
+      "analytic_risk_agreement": true
+    },
+    {
+      "world": "ATTITUDE_HEAVY__DIRECT_NORM_STRESS",
+      "profile": "ATTITUDE_HEAVY",
+      "mode": "DIRECT_NORM_STRESS",
+      "attitude_weight_a": 2,
+      "norm_weight_n": 1,
+      "behavior_direct_norm_d": 1,
+      "labeled_source_cells": 16,
+      "full_source_mass": "1",
+      "risks_Brier": {
+        "FULL_AN": "51/256",
+        "ATTITUDE_ONLY": "15/64",
+        "NORM_ONLY": "55/256",
+        "CONSTANT": "1/4"
+      },
+      "regret_attitude_only": "9/256",
+      "regret_norm_only": "1/64",
+      "regret_constant": "13/256",
+      "given_intention_norm_contrast": "1/4",
+      "analytic_risk_agreement": true
+    },
+    {
+      "world": "NORM_HEAVY__MEDIATED",
+      "profile": "NORM_HEAVY",
+      "mode": "MEDIATED",
+      "attitude_weight_a": 1,
+      "norm_weight_n": 2,
+      "behavior_direct_norm_d": 0,
+      "labeled_source_cells": 16,
+      "full_source_mass": "1",
+      "risks_Brier": {
+        "FULL_AN": "59/256",
+        "ATTITUDE_ONLY": "63/256",
+        "NORM_ONLY": "15/64",
+        "CONSTANT": "1/4"
+      },
+      "regret_attitude_only": "1/64",
+      "regret_norm_only": "1/256",
+      "regret_constant": "5/256",
+      "given_intention_norm_contrast": "0",
+      "analytic_risk_agreement": true
+    },
+    {
+      "world": "NORM_HEAVY__DIRECT_NORM_STRESS",
+      "profile": "NORM_HEAVY",
+      "mode": "DIRECT_NORM_STRESS",
+      "attitude_weight_a": 1,
+      "norm_weight_n": 2,
+      "behavior_direct_norm_d": 1,
+      "labeled_source_cells": 16,
+      "full_source_mass": "1",
+      "risks_Brier": {
+        "FULL_AN": "47/256",
+        "ATTITUDE_ONLY": "63/256",
+        "NORM_ONLY": "3/16",
+        "CONSTANT": "1/4"
+      },
+      "regret_attitude_only": "1/16",
+      "regret_norm_only": "1/256",
+      "regret_constant": "17/256",
+      "given_intention_norm_contrast": "1/4",
+      "analytic_risk_agreement": true
+    },
+    {
+      "world": "NORM_NULL__MEDIATED",
+      "profile": "NORM_NULL",
+      "mode": "MEDIATED",
+      "attitude_weight_a": 2,
+      "norm_weight_n": 0,
+      "behavior_direct_norm_d": 0,
+      "labeled_source_cells": 16,
+      "full_source_mass": "1",
+      "risks_Brier": {
+        "FULL_AN": "15/64",
+        "ATTITUDE_ONLY": "15/64",
+        "NORM_ONLY": "1/4",
+        "CONSTANT": "1/4"
+      },
+      "regret_attitude_only": "0",
+      "regret_norm_only": "1/64",
+      "regret_constant": "1/64",
+      "given_intention_norm_contrast": "0",
+      "analytic_risk_agreement": true
+    },
+    {
+      "world": "NORM_NULL__DIRECT_NORM_STRESS",
+      "profile": "NORM_NULL",
+      "mode": "DIRECT_NORM_STRESS",
+      "attitude_weight_a": 2,
+      "norm_weight_n": 0,
+      "behavior_direct_norm_d": 1,
+      "labeled_source_cells": 16,
+      "full_source_mass": "1",
+      "risks_Brier": {
+        "FULL_AN": "7/32",
+        "ATTITUDE_ONLY": "15/64",
+        "NORM_ONLY": "15/64",
+        "CONSTANT": "1/4"
+      },
+      "regret_attitude_only": "1/64",
+      "regret_norm_only": "1/64",
+      "regret_constant": "1/32",
+      "given_intention_norm_contrast": "1/4",
+      "analytic_risk_agreement": true
+    }
+  ]
+}
