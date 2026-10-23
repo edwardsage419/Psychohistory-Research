@@ -1,0 +1,67 @@
+name: R297 Q Learning Off Policy and Coverage Exact E1
+on:
+  push:
+    paths:
+      - 'research/R297/r297_exact_q_learning.py'
+      - 'research/catalogue_audit/independent_r297_source_audit.py'
+      - '.github/workflows/r297-p1-q-learning-off-policy-coverage-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  two-python-q-vectors:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 611 exact finite Q-learning model tests
+        run: python research/R297/r297_exact_q_learning.py --test
+      - name: Generate all 120 complete Q-vectors and independent source audit
+        run: |
+          python research/R297/r297_exact_q_learning.py --emit
+          python research/catalogue_audit/independent_r297_source_audit.py --test
+          python research/catalogue_audit/independent_r297_source_audit.py --audit
+  independent-source-and-archive:
+    needs: two-python-q-vectors
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute 120 Q-vector source rows, backups, frozen oracle and hashes independently
+        run: |
+          python research/R297/r297_exact_q_learning.py --emit
+          python research/catalogue_audit/independent_r297_source_audit.py --test
+          python research/catalogue_audit/independent_r297_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R297-24-Original-Q-Learning-Worlds-120-Q-Vectors
+          path: |
+            research/R297/R297_ALL_120_ORIGINAL_Q_LEARNING_Q_VECTOR_SOURCES.csv
+            research/R297/R297_EXACT_Q_LEARNING_OFF_POLICY_RESULTS.json
+            research/R297/R297_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive exact original 120 Q-vectors, results and SHA256
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R297/R297_ALL_120_ORIGINAL_Q_LEARNING_Q_VECTOR_SOURCES.csv research/R297/R297_EXACT_Q_LEARNING_OFF_POLICY_RESULTS.json research/R297/R297_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R297): 120 exact Q-vector sources and 24 world off-policy audits'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R297_Q_SOURCE_RESULTS_SHA_PERMANENT; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
