@@ -1,0 +1,46 @@
+name: Original 239 P1 R302 Multi Armed Bandits Crosswalk v1.6
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r302_crosswalk_v1_6.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.6_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_46_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r302-crosswalk-v16.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original239:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all original 239 candidate IDs, one R302 source link and 46 pending
+        run: python research/catalogue_audit/verify_p1_r302_crosswalk_v1_6.py --test
+  independently-replay-beta-sources-and-catalogue:
+    needs: dual-python-original239
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify unchanged 238 original rows and independent 162-arm Thompson posterior sources
+        run: |
+          python research/catalogue_audit/verify_p1_r302_crosswalk_v1_6.py --audit
+          python research/catalogue_audit/independent_r302_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R302-v16-190Primary-46Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.6_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_46_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R302/R302_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
