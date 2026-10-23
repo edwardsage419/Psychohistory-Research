@@ -1,0 +1,46 @@
+name: Original 239 P1 R307 Minority Influence Crosswalk v2.2
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r307_crosswalk_v2_2.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.2_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_40_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r307-crosswalk-v22.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original239:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check 16 canonical239 source original SHA, R307 only-row and no-E2 tests
+        run: python research/catalogue_audit/verify_p1_r307_crosswalk_v2_2.py --test
+  independent-all-original-candidate-sources:
+    needs: dual-python-original239
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recheck only one changed row plus all 864 independent sequential Bayes private/public sources
+        run: |
+          python research/catalogue_audit/verify_p1_r307_crosswalk_v2_2.py --audit
+          python research/catalogue_audit/independent_r307_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R307-v22-196Primary-40Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.2_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_40_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R307/R307_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
