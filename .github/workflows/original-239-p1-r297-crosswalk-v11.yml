@@ -1,0 +1,46 @@
+name: Original 239 P1 R297 Q-Learning Crosswalk v1.1
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r297_crosswalk_v1_1.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.1_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_51_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r297-crosswalk-v11.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 239 original model items, R297 source SHA256 and R063 scoped overlap in 15 tests
+        run: python research/catalogue_audit/verify_p1_r297_crosswalk_v1_1.py --test
+  independent-source-and-original-catalogue:
+    needs: dual-python-provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify one 02-003 model change and independent 120 Q vector source proof
+        run: |
+          python research/catalogue_audit/verify_p1_r297_crosswalk_v1_1.py --audit
+          python research/catalogue_audit/independent_r297_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R297-Q-Learning-v11-185Primary-51Pending-NotE2
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.1_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_51_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R297/R297_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
