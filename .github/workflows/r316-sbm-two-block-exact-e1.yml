@@ -1,0 +1,44 @@
+name: R316 SBM Exact Two Known Blocks E1
+on:
+  push:
+    paths:
+      - 'research/R316/**'
+      - 'research/catalogue_audit/independent_r316_sbm_source_audit.py'
+      - '.github/workflows/r316-sbm-two-block-exact-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact 4-node SBM unit tests and source replay
+        run: python research/R316/r316_exact_sbm.py --test
+      - name: Validate all 768 source rows and 128 graph probabilities
+        run: python research/R316/r316_exact_sbm.py --audit
+  independent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: No-import Bernoulli source and grouped binomial mass audit
+        run: python research/catalogue_audit/independent_r316_sbm_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R316-SBM-768OriginalAtoms-128Graphs-E1
+          path: |
+            research/R316/R316_ALL_768_ORIGINAL_GRAPH_DYAD_PROBABILITY_ATOMS.csv
+            research/R316/R316_EXACT_128_GRAPH_LIKELIHOODS.json
+          retention-days: 90
