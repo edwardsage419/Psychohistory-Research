@@ -1,0 +1,141 @@
+name: R267 Complete Discrete Latin Hypercube Source Audit
+on:
+  push:
+    paths:
+      - 'research/R267/r267_exact_discrete_latin_hypercube.py'
+      - '.github/workflows/r267-exact-discrete-lhs-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 136 exhaustive true Python unittests for all 9 worlds and both designs
+        run: python research/R267/r267_exact_discrete_latin_hypercube.py --test
+  independent-original-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and independently inspect all 6885 original sources and exact PMFs
+        run: |
+          python research/R267/r267_exact_discrete_latin_hypercube.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from pathlib import Path
+          root=Path('research/R267')
+          rows=list(csv.DictReader((root/'R267_ALL_6885_ORIGINAL_GRID_SAMPLE_SOURCES.csv').open()))
+          out=json.loads((root/'R267_EXACT_RESULTS.json').read_text())
+          rec=json.loads((root/'R267_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==6885 and len(out['world_results'])==9
+          assert rec['prescore_freeze_commit']==out['prescore_freeze_commit']=='8943746fab2b7f23256ff537007c9fc902bda386'
+          assert out['original_catalogue_id']=='11-027'
+          def f(name,x,y):
+              if name=='ADD_X':return F(x)
+              if name=='ADD_X_PLUS_Y':return F(x+y)
+              if name=='ADD_SQUARES':return F(x*x+y*y)
+              if name=='PRODUCT_XY':return F(x*y)
+              if name=='CENTERED_INTERACTION':return F((x-1)*(y-1))
+              if name=='EQUAL_INDICATOR':return F(int(x==y))
+              if name=='MODULAR_SUM':return F((x+y)%3)
+              if name=='THRESHOLD_SUM_GE2':return F(int(x+y>=2))
+              if name=='CORNER_22':return F(int(x==2 and y==2))
+              raise ValueError(name)
+          grouped=defaultdict(list)
+          for row in rows:grouped[(row['world'],row['design'])].append(row)
+          assert len(grouped)==18
+          for world in out['world_results']:
+              name=world['world']
+              grid=[[f(name,i,j) for j in range(3)] for i in range(3)]
+              truth=sum((a for row in grid for a in row),F(0))/9
+              ii=sum(((a-truth)**2 for row in grid for a in row),F(0))/27
+              rmean=[sum(row,F(0))/3 for row in grid]
+              cmean=[sum((grid[i][j] for i in range(3)),F(0))/3 for j in range(3)]
+              interaction=sum(((grid[i][j]-rmean[i]-cmean[j]+truth)**2 for i in range(3) for j in range(3)),F(0))
+              ll=interaction/18
+              assert str(truth)==world['target_grid_expectation']
+              assert str(interaction)==world['exact_ANOVA_squared_interaction_residual']
+              assert str(ll/ii)==world['LHS_over_IID_variance_ratio']
+              for design in ('IID','LHS'):
+                  sub=grouped[(name,design)]
+                  count=729 if design=='IID' else 36
+                  mass=F(1,count)
+                  assert len(sub)==count==world['designs'][design]['source_atoms']
+                  originals=set()
+                  histogram=defaultdict(lambda:F(0))
+                  for row in sub:
+                      points=tuple(tuple(map(int,p.split(':'))) for p in row['original_source_coordinate_triplet'].split('|'))
+                      assert len(points)==3 and all(0<=x<=2 and 0<=y<=2 for x,y in points)
+                      originals.add(points)
+                      if design=='LHS':
+                          assert sorted(x for x,y in points)==[0,1,2]
+                          assert sorted(y for x,y in points)==[0,1,2]
+                      vals=tuple(f(name,x,y) for x,y in points)
+                      avg=sum(vals,F(0))/3
+                      assert row['original_three_integrand_values']==';'.join(str(z) for z in vals)
+                      assert F(row['original_source_probability'])==mass
+                      assert F(row['original_three_evaluation_average'])==avg
+                      assert F(row['true_grid_expectation'])==truth
+                      assert F(row['squared_error'])==(avg-truth)**2
+                      histogram[avg]+=mass
+                  assert len(originals)==count and sum(histogram.values(),F(0))==1
+                  if design=='IID':
+                      assert originals==set(itertools.product(itertools.product(range(3),repeat=2),repeat=3))
+                  else:
+                      assert originals==set(tuple(zip(px,py)) for px in itertools.permutations(range(3)) for py in itertools.permutations(range(3)))
+                  claim=world['designs'][design]
+                  assert claim['complete_exact_estimator_PMF']=={str(k):str(v) for k,v in sorted(histogram.items())}
+                  avg=sum((v*p for v,p in histogram.items()),F(0))
+                  var=sum(((v-avg)**2*p for v,p in histogram.items()),F(0))
+                  assert avg==truth
+                  assert var==(ii if design=='IID' else ll)
+                  assert claim['exact_bias']=='0'
+                  assert claim['exact_mean']==str(truth)
+                  assert claim['exact_MSE']==claim['exact_variance']==str(var)
+          for fn,key in [('R267_ALL_6885_ORIGINAL_GRID_SAMPLE_SOURCES.csv','source_sha256'),('R267_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((root/fn).read_bytes()).hexdigest()
+          assert out['no_real_human_E2']==out['no_real_historical_E3']==0
+          print('R267_6885_FULL_DISCRETE_LATIN_GRID_SOURCES_18_PMF_AND_ANOVA_INDEPENDENT_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R267-6885-Full-IID-Latin-Grid-Sources
+          path: |
+            research/R267/R267_ALL_6885_ORIGINAL_GRID_SAMPLE_SOURCES.csv
+            research/R267/R267_EXACT_RESULTS.json
+            research/R267/R267_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive 6885 sources and exact results
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R267/R267_ALL_6885_ORIGINAL_GRID_SAMPLE_SOURCES.csv research/R267/R267_EXACT_RESULTS.json research/R267/R267_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R267): all 6885 discrete Latin hypercube and IID original sources'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R267_ALL_6885_ORIGINAL_GRID_SOURCES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
