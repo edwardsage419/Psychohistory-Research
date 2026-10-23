@@ -1,0 +1,31 @@
+name: R331 heterogeneous retention 81 artificial atoms E1
+on:
+  push:
+    paths:
+      - 'research/R331/**'
+      - 'research/catalogue_audit/independent_r331_retention_audit.py'
+      - '.github/workflows/r331-heterogeneous-retention-81-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R331/r331_retention_mixture.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r331_retention_audit.py
