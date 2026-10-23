@@ -1,0 +1,70 @@
+name: R291 P1 TRA Reasoned Action Exact Artificial E1
+on:
+  push:
+    paths:
+      - 'research/R291/r291_exact_reasoned_action.py'
+      - 'research/catalogue_audit/independent_r291_source_audit.py'
+      - '.github/workflows/r291-p1-reasoned-action-exact-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run R291 106 original unit tests
+        run: python research/R291/r291_exact_reasoned_action.py --test
+      - name: Generate all 128 original source cells and audit independently
+        run: |
+          python research/R291/r291_exact_reasoned_action.py --emit
+          python research/catalogue_audit/independent_r291_source_audit.py --test
+          python research/catalogue_audit/independent_r291_source_audit.py --audit
+  independent-source-and-permanent-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify source, closed form and negative controls
+        run: |
+          python research/R291/r291_exact_reasoned_action.py --emit
+          python research/catalogue_audit/independent_r291_source_audit.py --test
+          python research/catalogue_audit/independent_r291_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R291-TRA-8-Worlds-128-Complete-Original-Sources
+          path: |
+            research/R291/R291_ALL_128_ORIGINAL_TRA_LABELED_JOINT_SOURCES.csv
+            research/R291/R291_EXACT_TRA_RESULTS.json
+            research/R291/R291_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive exact 128 source cells and SHA256 receipt
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R291/R291_ALL_128_ORIGINAL_TRA_LABELED_JOINT_SOURCES.csv research/R291/R291_EXACT_TRA_RESULTS.json research/R291/R291_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R291): 128 exact TRA joint sources and independently verified Brier risks'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo R291_SOURCE_RESULTS_RECEIPT_PERMANENTLY_ARCHIVED
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
