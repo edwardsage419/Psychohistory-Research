@@ -1,0 +1,7 @@
+# Original239 v4.0: R322 schematic dual process E1, 214 primary / 22 pending
+
+Date 2026-10-24. Exactly original **01-012 Dual Process Accounts (P2)** changes to R322 bounded E1 provenance. Previous 238 rows remain unchanged. 239 candidates: **214 primary, 3 shared bounded mathematics, 22 P2 pending**; 173 provisional README links remain provisional.
+
+R322 prescore protocol [98cd2788](https://github.com/edwardsage419/Psychohistory-Research/commit/98cd278861258cfa1697bca9a8eb122ebafbb74b) preceded 256 artificial original source states [87ddd735](https://github.com/edwardsage419/Psychohistory-Research/commit/87ddd735890286f7117757b95b9a7b31277c674d). [Three-job CI run 40014627376](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40014627376) all success; independent no-import truth-table audit, Python 3.11/3.12 each 32 tests. **PASS_BOUNDED_E1_SCHEMATIC_DEFAULT_INTERVENTION_IDENTIFICATION_ONLY**, no human E2, historical E3, original empirical validation or process identification. R073/PESEN v0.1 frozen.
+
+[Full index](ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v4.0_2026-10-24.json), [22 pending queue](ORIGINAL_239_PENDING_22_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv), [scientific report](../research/R322/R322_SCIENTIFIC_REPORT_2026-10-24.md). Next **01-015 Value Belief Norm Theory**. First check existing R studies and early archives for strict reuse. Complete R series before classification or fusion.

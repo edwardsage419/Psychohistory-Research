@@ -1,0 +1,56 @@
+{
+  "research_id": "R322",
+  "original_catalogue_id": "01-012",
+  "protocol_commit": "98cd278861258cfa1697bca9a8eb122ebafbb74b",
+  "protocol_path": "protocols/R322_TYPE1_DEFAULT_TYPE2_INTERVENTION_256_STATES_PRESCORE_FREEZE_2026-10-24.md",
+  "protocol_blob_sha1": "685f637d5ad42351de50977f04249ffe30b443eb",
+  "original_source_commit": "87ddd735890286f7117757b95b9a7b31277c674d",
+  "verified_source_artifacts": [
+    {
+      "path": "research/R322/r322_dual_process.py",
+      "git_blob_sha1": "af24e8656383515934ce51faef6ae2e3d5d7f156"
+    },
+    {
+      "path": "research/R322/R322_ALL_256_ORIGINAL_BINARY_STATES.csv",
+      "git_blob_sha1": "0cd38ecc22adc5941832c2b00e6928d48be8d896"
+    },
+    {
+      "path": "research/R322/R322_EXACT_FOUR_POLICY_WORLDS.json",
+      "git_blob_sha1": "9087e53b1abe11a8eb21c2ef44440f373ad57d53"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r322_dual_process_audit.py",
+      "git_blob_sha1": "638c9d55054f596df697086d881e9ad9be4e3b69"
+    }
+  ],
+  "verification": {
+    "CI_run_id": 40014627376,
+    "CI_run_conclusion": "success",
+    "jobs": [
+      {
+        "id": 120623395008,
+        "name": "unit (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120623395425,
+        "name": "independent",
+        "conclusion": "success"
+      },
+      {
+        "id": 120623395679,
+        "name": "unit (3.12)",
+        "conclusion": "success"
+      }
+    ],
+    "python_311_tests": 32,
+    "python_312_tests": 32,
+    "independent_no_import_audit": "PASS",
+    "original_states": 256,
+    "world_count": 4
+  },
+  "evidence_scope": "SCHEMATIC_DEFAULT_INTERVENTION_IDENTIFICATION_E1_ONLY",
+  "real_human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED",
+  "original_Evans_Stanovich_empirical_replication": "NOT_ESTABLISHED"
+}

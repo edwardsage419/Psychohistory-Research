@@ -1,0 +1,7 @@
+# R322 Dual Process Accounts: finite default/intervention schematic E1
+
+Original239 **01-012**. Prescore freeze [98cd2788](https://github.com/edwardsage419/Psychohistory-Research/commit/98cd278861258cfa1697bca9a8eb122ebafbb74b) preceded source [87ddd735](https://github.com/edwardsage419/Psychohistory-Research/commit/87ddd735890286f7117757b95b9a7b31277c674d). Four policy worlds, all 64 six-bit artificial states per world, **256 original source rows**. Gated intervention changes default on 4/64 states; direct lookup is observationally identical on all 64 outputs while using different internal labels. All four worlds have 1/2 accuracy under independent uniform truth.
+
+**PASS_BOUNDED_E1_SCHEMATIC_DEFAULT_INTERVENTION_IDENTIFICATION_ONLY**, after [three green CI jobs](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40014627376), Python 3.11/3.12 each 32 tests, independent no-import source audit. [Scientific report](R322_SCIENTIFIC_REPORT_2026-10-24.md), [acceptance](R322_FINAL_ACCEPTANCE_STATUS.json), [receipt](R322_MACHINE_RECEIPT.json), [256 original states](R322_ALL_256_ORIGINAL_BINARY_STATES.csv), [exact results](R322_EXACT_FOUR_POLICY_WORLDS.json), [source](r322_dual_process.py).
+
+Replay `python research/R322/r322_dual_process.py --test` and `--audit`; independent `python research/catalogue_audit/independent_r322_dual_process_audit.py`. Artificial E1 only, no human E2, historical E3, or psychological process identification. R073/PESEN v0.1 frozen.
