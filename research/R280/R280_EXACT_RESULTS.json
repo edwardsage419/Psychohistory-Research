@@ -1,0 +1,117 @@
+{
+  "research_id": "R280",
+  "original_catalogue_id": "12-010",
+  "prescore_freeze_commit": "b21848cd58d9f9d581ce79c685467c49c32a6897",
+  "evidence": "E1_EXACT_FINITE_BERNOULLI_BRIER_STRICT_PROPRIETY_AND_SAMPLE_WINNER",
+  "world_count": 9,
+  "complete_original_source_types": 144,
+  "original_sequences_per_world": 16,
+  "all_nine_exact_source_vs_independent_binomial_results_identical": true,
+  "expected_Brier_equals_p_times_one_minus_p_plus_squared_forecast_bias": true,
+  "four_observation_sample_can_favor_misspecified_forecast": true,
+  "no_real_human_E2": 0,
+  "no_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "TRUE_1OF4_REPORT_1OF4",
+      "true_p": "1/4",
+      "reported_q": "1/4",
+      "source_types": 16,
+      "expected_reported_Brier": "3/16",
+      "expected_excess_Brier_regret": "0",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "0",
+      "probability_report_and_truth_tie_in_fourbit_sample": "1",
+      "independent_binomial_analytic_verified": true
+    },
+    {
+      "world": "TRUE_1OF4_REPORT_1OF2",
+      "true_p": "1/4",
+      "reported_q": "1/2",
+      "source_types": 16,
+      "expected_reported_Brier": "1/4",
+      "expected_excess_Brier_regret": "1/16",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "67/256",
+      "probability_report_and_truth_tie_in_fourbit_sample": "0",
+      "independent_binomial_analytic_verified": true
+    },
+    {
+      "world": "TRUE_1OF4_REPORT_3OF4",
+      "true_p": "1/4",
+      "reported_q": "3/4",
+      "source_types": 16,
+      "expected_reported_Brier": "7/16",
+      "expected_excess_Brier_regret": "1/4",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "13/256",
+      "probability_report_and_truth_tie_in_fourbit_sample": "27/128",
+      "independent_binomial_analytic_verified": true
+    },
+    {
+      "world": "TRUE_1OF2_REPORT_1OF4",
+      "true_p": "1/2",
+      "reported_q": "1/4",
+      "source_types": 16,
+      "expected_reported_Brier": "5/16",
+      "expected_excess_Brier_regret": "1/16",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "5/16",
+      "probability_report_and_truth_tie_in_fourbit_sample": "0",
+      "independent_binomial_analytic_verified": true
+    },
+    {
+      "world": "TRUE_1OF2_REPORT_1OF2",
+      "true_p": "1/2",
+      "reported_q": "1/2",
+      "source_types": 16,
+      "expected_reported_Brier": "1/4",
+      "expected_excess_Brier_regret": "0",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "0",
+      "probability_report_and_truth_tie_in_fourbit_sample": "1",
+      "independent_binomial_analytic_verified": true
+    },
+    {
+      "world": "TRUE_1OF2_REPORT_3OF4",
+      "true_p": "1/2",
+      "reported_q": "3/4",
+      "source_types": 16,
+      "expected_reported_Brier": "5/16",
+      "expected_excess_Brier_regret": "1/16",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "5/16",
+      "probability_report_and_truth_tie_in_fourbit_sample": "0",
+      "independent_binomial_analytic_verified": true
+    },
+    {
+      "world": "TRUE_3OF4_REPORT_1OF4",
+      "true_p": "3/4",
+      "reported_q": "1/4",
+      "source_types": 16,
+      "expected_reported_Brier": "7/16",
+      "expected_excess_Brier_regret": "1/4",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "13/256",
+      "probability_report_and_truth_tie_in_fourbit_sample": "27/128",
+      "independent_binomial_analytic_verified": true
+    },
+    {
+      "world": "TRUE_3OF4_REPORT_1OF2",
+      "true_p": "3/4",
+      "reported_q": "1/2",
+      "source_types": 16,
+      "expected_reported_Brier": "1/4",
+      "expected_excess_Brier_regret": "1/16",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "67/256",
+      "probability_report_and_truth_tie_in_fourbit_sample": "0",
+      "independent_binomial_analytic_verified": true
+    },
+    {
+      "world": "TRUE_3OF4_REPORT_3OF4",
+      "true_p": "3/4",
+      "reported_q": "3/4",
+      "source_types": 16,
+      "expected_reported_Brier": "3/16",
+      "expected_excess_Brier_regret": "0",
+      "probability_incorrect_fixed_report_beats_truth_in_fourbit_sample": "0",
+      "probability_report_and_truth_tie_in_fourbit_sample": "1",
+      "independent_binomial_analytic_verified": true
+    }
+  ]
+}
