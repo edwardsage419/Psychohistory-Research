@@ -1,0 +1,55 @@
+{
+  "research_id": "R284",
+  "original_catalogue_id": "12-014",
+  "prescore_freeze_commit": "0a6eccd270565c9a5a15a577f2dec1d1d4c7e3cb",
+  "evidence": "E1_COMPLETE_ARTIFICIAL_REGISTRY_PUBLICATION_SELECTION_MNAR",
+  "policies": 3,
+  "original_source_types": 768,
+  "source_types_per_policy": 256,
+  "all_registered_studies": [
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "no_real_papers_reviewed": true,
+  "cannot_infer_missing_publication_rate_from_published_only": true,
+  "null_empty_publication_events_retained": true,
+  "independent_single_study_selection_theory_matches_full_source_moments": true,
+  "no_real_human_E2": 0,
+  "no_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "policy": "COMPLETE_REGISTRY",
+      "all_sources": 256,
+      "per_study_publication_rate": "1",
+      "expected_published_study_count": "4",
+      "no_published_studies_probability": "0",
+      "conditional_published_positive_rate_given_nonempty": "1/2",
+      "complete_registry_true_expected_positive_rate": "1/2",
+      "independent_categorical_derivation_verified": true
+    },
+    {
+      "policy": "POSITIVE_ONLY",
+      "all_sources": 256,
+      "per_study_publication_rate": "1/2",
+      "expected_published_study_count": "2",
+      "no_published_studies_probability": "1/16",
+      "conditional_published_positive_rate_given_nonempty": "1",
+      "complete_registry_true_expected_positive_rate": "1/2",
+      "independent_categorical_derivation_verified": true
+    },
+    {
+      "policy": "POSITIVE_PREFERRED",
+      "all_sources": 256,
+      "per_study_publication_rate": "3/4",
+      "expected_published_study_count": "3",
+      "no_published_studies_probability": "1/256",
+      "conditional_published_positive_rate_given_nonempty": "2/3",
+      "complete_registry_true_expected_positive_rate": "1/2",
+      "independent_categorical_derivation_verified": true
+    }
+  ]
+}
