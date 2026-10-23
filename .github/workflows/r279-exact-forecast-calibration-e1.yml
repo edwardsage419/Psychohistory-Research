@@ -1,0 +1,132 @@
+name: R279 Exact Forecast Calibration and Murphy Decomposition Audit
+on:
+  push:
+    paths:
+      - 'research/R279/r279_exact_forecast_calibration.py'
+      - '.github/workflows/r279-exact-forecast-calibration-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute 84 exact forecast calibration unit tests
+        run: python research/R279/r279_exact_forecast_calibration.py --test
+  independent-original-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently recompute 144 complete source types and all Murphy decompositions
+        run: |
+          python research/R279/r279_exact_forecast_calibration.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from pathlib import Path
+          from collections import defaultdict
+          from fractions import Fraction as F
+          root=Path('research/R279')
+          src=root/'R279_ALL_144_ORIGINAL_FORECAST_CALIBRATION_SOURCES.csv'
+          jp=root/'R279_EXACT_RESULTS.json'
+          data=list(csv.DictReader(src.open()))
+          results=json.loads(jp.read_text())
+          receipt=json.loads((root/'R279_MACHINE_RECEIPT.json').read_text())
+          assert len(data)==144 and len(results['world_results'])==9
+          assert results['original_catalogue_id']=='12-009'
+          assert receipt['prescore_freeze_commit']==results['prescore_freeze_commit']=='acb48cd4e0640ac36c56d9bfdfa2fc111c720d11'
+          for file,key in ((src,'source_sha256'),(jp,'results_sha256')):
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==receipt[key]
+          orig={''.join(x) for x in itertools.product('01',repeat=4)}
+          grouped=defaultdict(list)
+          for row in data:grouped[row['world']].append(row)
+          assert len(grouped)==9
+          positive=0
+          for world in results['world_results']:
+              rows=grouped[world['world']]
+              assert len(rows)==16
+              assert {r['original_complete_two_group_fourbit'] for r in rows}==orig
+              theta=(F(world['true_group_L_probability']),F(world['true_group_H_probability']))
+              policy=world['policy']
+              if policy=='ORIGINAL_BUCKETS':qs=(F(1,4),F(3,4))
+              elif policy=='FLAT_HALF':qs=(F(1,2),F(1,2))
+              else:
+                  assert policy=='REVERSED_BUCKETS'
+                  qs=(F(3,4),F(1,4))
+              total=score=F(0);support=0
+              for r in rows:
+                  seq=r['original_complete_two_group_fourbit']
+                  k=seq[:2].count('1');j=seq[2:].count('1')
+                  mass=theta[0]**k*(1-theta[0])**(2-k)*theta[1]**j*(1-theta[1])**(2-j)
+                  assert r['original_group_labels']=='L;L;H;H'
+                  assert F(r['group_L_true_theta'])==theta[0] and F(r['group_H_true_theta'])==theta[1]
+                  assert F(r['original_probability_mass'])==mass
+                  four=(qs[0],qs[0],qs[1],qs[1])
+                  assert r['original_four_forecast_probabilities']==';'.join(map(str,four))
+                  losses=tuple((F(int(y))-q)**2 for y,q in zip(seq,four))
+                  assert r['original_four_Brier_losses']==';'.join(map(str,losses))
+                  avg=sum(losses,F(0))/4
+                  assert F(r['per_source_mean_Brier'])==avg
+                  total+=mass;score+=mass*avg;support+=int(mass>0)
+              assert total==1
+              assert support==world['positive_source_atoms']
+              positive+=support
+              # Independent true-population Murphy decomposition; duplicate q bins must merge.
+              base=(theta[0]+theta[1])/2
+              buckets=defaultdict(list)
+              for q,rate in zip(qs,theta):buckets[q].append(rate)
+              REL=RES=F(0)
+              for q,values in buckets.items():
+                  mu=sum(values,F(0))/len(values)
+                  weight=F(len(values),2)
+                  REL+=weight*(q-mu)**2
+                  RES+=weight*(mu-base)**2
+              UNC=base*(1-base)
+              assert score==REL-RES+UNC
+              assert (str(REL),str(RES),str(UNC),str(score))==(
+                world['population_reliability'],world['population_resolution'],
+                world['population_uncertainty'],world['expected_population_Brier'])
+              assert world['source_equals_population_decomposition']
+          assert positive==receipt['positive_original_source_types']==99
+          assert results['no_real_human_E2']==results['no_real_historical_E3']==0
+          print('R279_ALL_144_COMPLETE_FORECAST_SOURCES_99_POSITIVE_MURPHY_DECOMPOSITIONS_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R279-All-144-Calibration-Sources
+          path: |
+            research/R279/R279_ALL_144_ORIGINAL_FORECAST_CALIBRATION_SOURCES.csv
+            research/R279/R279_EXACT_RESULTS.json
+            research/R279/R279_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all original forecast source CSV JSON and SHA256
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R279/R279_ALL_144_ORIGINAL_FORECAST_CALIBRATION_SOURCES.csv research/R279/R279_EXACT_RESULTS.json research/R279/R279_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R279): all 144 forecast calibration original source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R279_ALL_144_CALIBRATION_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
