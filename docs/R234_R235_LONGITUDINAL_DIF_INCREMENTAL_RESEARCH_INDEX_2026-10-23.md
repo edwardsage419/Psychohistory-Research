@@ -1,0 +1,11 @@
+# R234–R235 原239目录增量归档：纵向等值与差异项目功能
+
+时间2026-10-23（Asia/Taipei）。性质：两项不同研究模型的原来源及正式科研验收导航；区别源文件完整性、双版本CI真实成功与E1人工模型有限科学结论。
+
+**R234：10-008 Longitudinal Measurement Invariance（P1）**。[计算前冻结协议](../protocols/R234_LONGITUDINAL_INVARIANCE_9_WORLDS_2304_PAIRED_SOURCES_PRESCORE_FREEZE_2026-10-23.md) · [独立科研报告](../research/R234/R234_SCIENTIFIC_REPORT_2026-10-23.md) · [正式有界验收](../research/R234/R234_FINAL_ACCEPTANCE_STATUS.json) · [原生数据入口](../research/R234/README.md)。九人工双波三题世界，每个256完整外生配对来源，共**2304个完整人工来源类型**。两组完整六维观察等价反例：真潜在均值增长1与三题共同截距漂移1具有完全相同全配对观察分布，却真改变均值1与0；因子F1=2T、载荷缩半的量尺重标定与固定F1=T世界完全观察相同，未经共用单位锚定的原latent改变值不可解释为真实变化。另验证潜在创新、单项目漂移、首题误差方差增加和跨时间误差复用的数学边界。[GitHub CI run39881566150](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39881566150) run及三job均success、Python3.11/3.12各66单测OK（合计132），永久机器人归档[689c8d47](https://github.com/edwardsage419/Psychohistory-Research/commit/689c8d47e9aab742bdd41e623c0578d6ee7a3f41)。仅人工E1。
+
+**R235：10-009 Differential Item Functioning（P1）**。[计算前冻结协议](../protocols/R235_DIF_9_3ITEM_WORLDS_432_ORIGINAL_RESPONSE_ATOMS_PRESCORE_FREEZE_2026-10-23.md) · [科研报告及首次失败审计](../research/R235/R235_SCIENTIFIC_REPORT_2026-10-23.md) · [正式有界验收](../research/R235/R235_FINAL_ACCEPTANCE_STATUS.json) · [原生源码/数据](../research/R235/README.md)。九人工双群体三题IRT模型，每模型完整48结构反应来源，共**432条人工响应原类型**。强反例：真能力依赖nonuniform DIF在低k−2/15、高k+2/15，而群体总体通过率均1/2，锚题分层的总体MH共同优势比恰1；另真实焦点完全无DIF时能力组成或锚题本身变化可造成MH OR非1。全局原点重标定与实际作答观察等价，不能判定为真DIF。首轮[失败CI run39882331741](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39882331741)为未定义源码常量导致两job failure，归档跳过；后[代码常量修复b05febb9](https://github.com/edwardsage419/Psychohistory-Research/commit/b05febb9e9fcf41915f8b72ee26db95b282bb865)严格保留固定机制。正式[CI run39882474328](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39882474328)三job success、Python3.11/3.12各77真实单测OK（合计154），原全部432来源永久归档[bb940f7a](https://github.com/edwardsage419/Psychohistory-Research/commit/bb940f7a327b37e55dd514892ac597014e02c632)。仅人工E1。
+
+两项合计18个人工模型、2736个各自完整原源类型、**286次两个Python环境单测通过**。它们分属不同有限概率空间，不能合并解释为真实受试者数量；新增真人E2=0，真实历史E3=0。R073及PESEN v0.1持续冻结。
+
+原239目录下一研究已核验`10-010 Survey Response Bias Models（P1）`，拟R236。始终按照所有者顺序：**原R系列全部研究完成 → 统一归纳分类 → 最后熔炼原创心理史学模型**，个人辅助决策系统建设后置。
