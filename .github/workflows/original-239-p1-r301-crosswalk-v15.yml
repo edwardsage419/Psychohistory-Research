@@ -1,0 +1,46 @@
+name: Original 239 P1 R301 BOCPD Crosswalk v1.5
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r301_crosswalk_v1_5.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.5_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_47_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r301-crosswalk-v15.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: 15 exact original239 R301 source and one-row provenance checks
+        run: python research/catalogue_audit/verify_p1_r301_crosswalk_v1_5.py --test
+  independent-all-original-candidate-and-source-proof:
+    needs: dual-python-provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify one catalogue row and 192 BOCPD original source partitions
+        run: |
+          python research/catalogue_audit/verify_p1_r301_crosswalk_v1_5.py --audit
+          python research/catalogue_audit/independent_r301_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R301-v15-189Primary-47Pending-BOCPD-E1
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.5_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_47_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R301/R301_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
