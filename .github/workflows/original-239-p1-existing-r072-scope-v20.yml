@@ -1,0 +1,44 @@
+name: Original 239 P1 Existing R072 Reputation Evidence v2.0
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_original_239_v2_0_existing_r072_03_010.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.0_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_42_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-existing-r072-scope-v20.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-archival-scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all original239 itemwise links, existing R072 exact E1 SHA and human S8 codebook blocker
+        run: python research/catalogue_audit/verify_original_239_v2_0_existing_r072_03_010.py --test
+  independent-existing-evidence-scope:
+    needs: dual-python-archival-scope
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently re-evaluate original R072 archived JSON and latest PLOS codebook negative evidence
+        run: python research/catalogue_audit/verify_original_239_v2_0_existing_r072_03_010.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-v20-194ExistingPrimary-42Pending-R072CodebookStillBlocked
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.0_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_42_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            docs/ORIGINAL239_03_010_EXISTING_R072_E1_AND_REV008_CODEBOOK_SCOPE_AUDIT_2026-10-23.md
+          retention-days: 90
