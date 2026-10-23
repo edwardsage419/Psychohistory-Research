@@ -1,0 +1,47 @@
+name: Original239 R314 BA Crosswalk v3.1
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r314_crosswalk_v3_1.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.1_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_31_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p1-r314-crosswalk-v31.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original239-two-pythons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify only original 04-016 BA changed and R314 source SHA matches
+        run: python research/catalogue_audit/verify_p1_r314_crosswalk_v3_1.py --test
+  independent-source:
+    needs: original239-two-pythons
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent R314 54 conditional atom plus 44 path replay
+        run: python research/catalogue_audit/independent_r314_source_audit.py --audit
+      - name: Recheck all original239 v3.1 source mapping invariants
+        run: python research/catalogue_audit/verify_p1_r314_crosswalk_v3_1.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R314-v31-205Primary-31Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.1_2026-10-24.json
+            docs/ORIGINAL_239_PENDING_31_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv
+            research/R314/R314_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
