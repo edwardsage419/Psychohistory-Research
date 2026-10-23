@@ -1,0 +1,67 @@
+name: R303 Social Learning Acquisition vs Expression 486 Artificial Sources E1
+on:
+  push:
+    paths:
+      - 'research/R303/r303_exact_observational_acquisition_expression.py'
+      - 'research/catalogue_audit/independent_r303_source_audit.py'
+      - '.github/workflows/r303-p1-bandura-observational-486-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact frozen 1473 social acquisition and imitative expression tests
+        run: python research/R303/r303_exact_observational_acquisition_expression.py --test
+      - name: Emit 486 artificial originals and independently audit 5-gate enumeration
+        run: |
+          python research/R303/r303_exact_observational_acquisition_expression.py --emit
+          python research/catalogue_audit/independent_r303_source_audit.py --test
+          python research/catalogue_audit/independent_r303_source_audit.py --audit
+  independent-source-and-permanent-archive:
+    needs: dual-python-model
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recreate 486 original social learning sources and independently enumerate each gate
+        run: |
+          python research/R303/r303_exact_observational_acquisition_expression.py --emit
+          python research/catalogue_audit/independent_r303_source_audit.py --test
+          python research/catalogue_audit/independent_r303_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R303-Bandura-Inspired-486-Exact-Synthetic-Sources
+          path: |
+            research/R303/R303_ALL_486_ORIGINAL_OBSERVATIONAL_SOURCE_PHASES.csv
+            research/R303/R303_EXACT_ACQUISITION_VS_EXPRESSION_RESULTS.json
+            research/R303/R303_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently commit fully audited original sources and SHA256 receipt
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R303/R303_ALL_486_ORIGINAL_OBSERVATIONAL_SOURCE_PHASES.csv research/R303/R303_EXACT_ACQUISITION_VS_EXPRESSION_RESULTS.json research/R303/R303_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R303): 486 original observational learning E1 phase sources and results'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R303_ORIGINAL_SOURCE_PROOF_PERMANENT; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
