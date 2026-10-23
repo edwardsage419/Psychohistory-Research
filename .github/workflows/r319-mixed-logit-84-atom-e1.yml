@@ -1,0 +1,44 @@
+name: R319 Mixed Logit Exact Finite E1
+on:
+  push:
+    paths:
+      - 'research/R319/**'
+      - 'research/catalogue_audit/independent_r319_mixed_logit_audit.py'
+      - '.github/workflows/r319-mixed-logit-84-atom-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-mixed-logit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 35 frozen finite rational tests
+        run: python research/R319/r319_exact_finite_mixed_logit.py --test
+      - name: Replay original 84 source atoms and 15 worlds
+        run: python research/R319/r319_exact_finite_mixed_logit.py --audit
+  independent-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently reconstruct all source rows
+        run: python research/catalogue_audit/independent_r319_mixed_logit_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R319-84SourceAtoms-15Worlds-E1
+          path: |
+            research/R319/R319_ALL_84_ORIGINAL_CONDITIONAL_MIXTURE_SOURCE_ATOMS.csv
+            research/R319/R319_EXACT_15_MIXED_LOGIT_WORLDS.json
+          retention-days: 90
