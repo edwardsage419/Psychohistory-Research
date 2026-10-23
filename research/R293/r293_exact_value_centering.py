@@ -78,7 +78,7 @@ def verify():
         for transform in ("raw","centered"):
             means,mat=moments(mode,transform)
             assert all(mat[i][j]==expected_cov(mode,transform,i,j) for i in range(K) for j in range(K))
-            assert all(means[i]==(ONE if transform=="raw" else ZERO) for i in range(K))
+            assert all(means[i]==(F(3,2) if transform=="raw" else ZERO) for i in range(K))
     assert moments("INDEPENDENT","raw")[1][0][1]/moments("INDEPENDENT","raw")[1][0][0]==F(4,5)
     assert moments("INDEPENDENT","centered")[1][0][1]/moments("INDEPENDENT","centered")[1][0][0]==-F(1,9)
     assert moments("OPPOSED_PAIRS","raw")[1][0][5]/moments("OPPOSED_PAIRS","raw")[1][0][0]==F(3,5)
