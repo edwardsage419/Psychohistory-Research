@@ -1,0 +1,97 @@
+name: R236 Exact Survey Response and Private-State Aliasing
+on:
+  push:
+    paths:
+      - 'research/R236/r236_exact_survey_response_bias.py'
+      - '.github/workflows/r236-exact-survey-response.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-survey-source-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact mode report versus true private state and complete alias tests
+        run: python research/R236/r236_exact_survey_response_bias.py --test
+  complete-original-survey-source-archive:
+    needs: dual-python-survey-source-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 576 source atoms and independently check survey mechanisms and SHA
+        run: |
+          python research/R236/r236_exact_survey_response_bias.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R236')
+          sources=list(csv.DictReader((d/'R236_ALL_576_ORIGINAL_SURVEY_RESPONSE_SOURCES.csv').open()))
+          results=json.loads((d/'R236_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R236_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(sources)==576 and len(results['world_results'])==9
+          assert results['original_catalogue_id']==receipt['original_catalogue_id']=='10-010'
+          assert all(F(r['original_probability'])==F(1,64) for r in sources)
+          by={w['world']:w for w in results['world_results']}
+          for w,summary in by.items():
+            rows=[r for r in sources if r['world']==w]
+            assert len(rows)==64
+            assert sum((F(r['original_probability']) for r in rows),F(0))==1
+            assert len({(r['oracle_original_T'],r['oracle_original_S'],r['oracle_original_U'],
+                         r['oracle_original_R'],r['oracle_proxy_ascertainment_E1'],
+                         r['oracle_proxy_ascertainment_E2']) for r in rows})==64
+          for a,b in [
+            ('TRUE_MODE_CHANGE','REPORT_MODE_CHANGE_ALIAS'),
+            ('TRUE_MODE_COMPLIER_ONLY','REPORT_MODE_COMPLIER_ONLY_ALIAS'),
+            ('SHARED_ACQUIESCENCE_RESPONSE','SHARED_TRUE_CONSTRUCT_ALIAS')]:
+            assert by[a]['complete_observed_mode_proxy_and_two_question_joint']==by[b]['complete_observed_mode_proxy_and_two_question_joint']
+          assert by['TRUE_MODE_CHANGE']['observed_mode_R_ITT_on_report_Y1']=='1/2'
+          assert by['REPORT_MODE_CHANGE_ALIAS']['observed_mode_R_ITT_on_report_Y1']=='1/2'
+          assert by['TRUE_MODE_CHANGE']['oracle_mode_effect_on_current_private_B1']=='1/2'
+          assert by['REPORT_MODE_CHANGE_ALIAS']['oracle_mode_effect_on_current_private_B1']=='0'
+          assert by['TRUE_MODE_COMPLIER_ONLY']['oracle_mode_effect_on_current_private_B1']=='1/4'
+          assert by['REPORT_MODE_COMPLIER_ONLY_ALIAS']['oracle_mode_effect_on_current_private_B1']=='0'
+          assert by['MODE_SUPPRESS_REPORT']['observed_mode_R_ITT_on_report_Y1']=='-1/2'
+          assert by['MODE_SUPPRESS_REPORT']['oracle_mode_effect_on_current_private_B1']=='0'
+          assert by['SOCIAL_DESIRABILITY_U']['observed_report_Y1_Y2_covariance']=='1/16'
+          assert by['SOCIAL_DESIRABILITY_U']['oracle_true_private_B1_B2_covariance']=='0'
+          assert by['SHARED_ACQUIESCENCE_RESPONSE']['observed_report_Y1_Y2_covariance']=='1/4'
+          assert by['SHARED_ACQUIESCENCE_RESPONSE']['oracle_true_private_B1_B2_covariance']=='0'
+          assert by['SHARED_TRUE_CONSTRUCT_ALIAS']['oracle_true_private_B1_B2_covariance']=='1/4'
+          for file,key in [('R236_ALL_576_ORIGINAL_SURVEY_RESPONSE_SOURCES.csv','source_sha256'),
+                           ('R236_EXACT_RESULTS.json','result_sha256')]:
+            assert receipt[key]==hashlib.sha256((d/file).read_bytes()).hexdigest()
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R236_ALL_576_SURVEY_SOURCES_THREE_FULL_OBSERVED_ALIASES_AND_TRUE_MODE_INTERVENTIONS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R236-Nine-Full-Survey-Response-Source-Worlds
+          path: |
+            research/R236/R236_ALL_576_ORIGINAL_SURVEY_RESPONSE_SOURCES.csv
+            research/R236/R236_EXACT_RESULTS.json
+            research/R236/R236_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive full original survey response source atoms
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R236/R236_ALL_576_ORIGINAL_SURVEY_RESPONSE_SOURCES.csv research/R236/R236_EXACT_RESULTS.json research/R236/R236_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R236): all 576 original survey report and true-state sources'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
