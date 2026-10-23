@@ -1,0 +1,44 @@
+name: Original239 Existing R066 HK Conditional E2 v2.8
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_original239_v28_existing_r066_hk_04_012.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.8_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_34_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-existing-r066-hk-scope-v28.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original-hk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check existing HK E1 and conditional real 16-village E2 and all original 239 IDs
+        run: python research/catalogue_audit/verify_original239_v28_existing_r066_hk_04_012.py --test
+  independent-original-scope:
+    needs: dual-python-original-hk
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently enforce only 04-012 linked to R066 and HK real network warning
+        run: python research/catalogue_audit/verify_original239_v28_existing_r066_hk_04_012.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-v28-R066-HK-202Primary-34Pending-E2InternalOnly
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.8_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_34_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            docs/ORIGINAL239_04_012_EXISTING_R066_HK_E1_E2_CONDITIONAL_SCOPE_AUDIT_2026-10-23.md
+          retention-days: 90
