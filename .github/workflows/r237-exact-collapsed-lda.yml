@@ -1,0 +1,106 @@
+name: R237 Exact Collapsed LDA Label Symmetry and Topic Ambiguity
+on:
+  push:
+    paths:
+      - 'research/R237/r237_exact_collapsed_lda.py'
+      - '.github/workflows/r237-exact-collapsed-lda.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-topic-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test all exact collapsed topics, source enumeration, independent cooccurrence and aliases
+        run: python research/R237/r237_exact_collapsed_lda.py --test
+  full-original-topic-atom-archive:
+    needs: dual-python-exact-topic-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 1944 complete topic-word source types and independent source audit
+        run: |
+          python research/R237/r237_exact_collapsed_lda.py --emit
+          python - <<'PY'
+          import csv,hashlib,json,itertools
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R237')
+          original=list(csv.DictReader((d/'R237_ALL_1944_ORIGINAL_LATENT_TOPIC_WORD_ATOMS.csv').open()))
+          results=json.loads((d/'R237_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R237_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(original)==1944 and len(results['world_results'])==9
+          assert results['original_catalogue_id']==receipt['original_catalogue_id']=='10-011'
+          by={x['world']:x for x in results['world_results']}
+          assert len(by)==9
+          for name,w in by.items():
+            rr=[x for x in original if x['world']==name]
+            assert len(rr)==216
+            assert len({(r['oracle_z1'],r['oracle_z2'],r['oracle_z3'],r['observed_word1'],
+                         r['observed_word2'],r['observed_word3']) for r in rr})==216
+            assert all(F(r['full_original_latent_word_atom_probability'])>0 for r in rr)
+            assert all(F(r['full_dirichlet_collapsed_topic_sequence_probability'])>0 for r in rr)
+            assert sum((F(r['full_original_latent_word_atom_probability']) for r in rr),F(0))==1
+            for r in rr:
+              assert F(r['full_original_latent_word_atom_probability'])==(
+                F(r['full_dirichlet_collapsed_topic_sequence_probability'])*
+                F(r['conditional_emission_probability']))
+            assert w['observed_full_document_support_size']==27
+            assert len(w['exact_observable_three_position_word_joint'])==27
+            assert sum((F(v) for v in w['exact_observable_three_position_word_joint'].values()),F(0))==1
+            for word in itertools.product('012', repeat=3):
+                s=''.join(word)
+                for perm in set(itertools.permutations(s)):
+                    assert w['exact_observable_three_position_word_joint'][s]==w['exact_observable_three_position_word_joint'][''.join(perm)]
+          assert by['BASE_TOPICS']['exact_observable_three_position_word_joint']==by['LABEL_SWAP_ALIAS']['exact_observable_three_position_word_joint']
+          assert by['DUPLICATE_TOPICS_A']['exact_observable_three_position_word_joint']==by['DUPLICATE_TOPICS_B']['exact_observable_three_position_word_joint']
+          expect={'BASE_TOPICS':'1/108','LABEL_SWAP_ALIAS':'1/108',
+                  'DUPLICATE_TOPICS_A':'0','DUPLICATE_TOPICS_B':'0',
+                  'CONTRASTED_TOPICS':'1/48','ALPHA_CONCENTRATED':'1/324',
+                  'ALPHA_SPARSE':'1/54','UNIFORM_WORDS':'0','ASYMMETRIC_ALPHA':'1/240'}
+          for name,value in expect.items():
+              assert by[name]['observable_word0_same_document_pair_covariance']==value
+              assert by[name]['independently_calculated_dirichlet_pair_covariance']==value
+          assert by['BASE_TOPICS']['observable_unigram_word0_probability']=='1/3'
+          assert by['ALPHA_SPARSE']['observable_unigram_word0_probability']=='1/3'
+          assert by['ALPHA_CONCENTRATED']['observable_unigram_word0_probability']=='1/3'
+          assert by['ASYMMETRIC_ALPHA']['observable_unigram_word0_probability']=='5/12'
+          assert all(v=='1/27' for v in by['UNIFORM_WORDS']['exact_observable_three_position_word_joint'].values())
+          assert F(by['ALPHA_SPARSE']['observable_predictive_third_word0_given_first_two_word0'])>F(by['ALPHA_CONCENTRATED']['observable_predictive_third_word0_given_first_two_word0'])
+          for filename,key in [('R237_ALL_1944_ORIGINAL_LATENT_TOPIC_WORD_ATOMS.csv','source_sha256'),
+                               ('R237_EXACT_RESULTS.json','results_sha256')]:
+              assert receipt[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R237_ALL_1944_COLLAPSED_LDA_SOURCES_TWO_FULL_ALIASES_AND_DIRICHLET_PAIR_COVARIANCES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R237-Nine-Exact-LDA-Original-Latent-Word-Worlds
+          path: |
+            research/R237/R237_ALL_1944_ORIGINAL_LATENT_TOPIC_WORD_ATOMS.csv
+            research/R237/R237_EXACT_RESULTS.json
+            research/R237/R237_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive complete artificial topic-word sources to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R237/R237_ALL_1944_ORIGINAL_LATENT_TOPIC_WORD_ATOMS.csv research/R237/R237_EXACT_RESULTS.json research/R237/R237_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R237): all 1944 collapsed LDA original topic-word structural atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
