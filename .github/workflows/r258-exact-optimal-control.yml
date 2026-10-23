@@ -78,7 +78,7 @@ jobs:
                   cohort=[z for z in rows if z['original_initial_state_x0']==str(initial)]
                   assert len(cohort)==64
                   assert sum((F(z['original_uniform_initial_and_sixbit_source_mass'])*3 for z in cohort),F(0))==1
-                  expectation=sum((F(z['observed_total_path_cost'],64) for z in cohort),F(0))
+                  expectation=sum((F(z['observed_total_path_cost'])/64 for z in cohort),F(0))
                   assert str(expectation)==v[initial],(w,initial,expectation)
               p=F(r['frozen_shock_probability'])
               k=F(r['frozen_action_cost_kappa'])
