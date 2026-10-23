@@ -1,0 +1,524 @@
+{
+  "research_id": "R237",
+  "original_catalogue_id": "10-011",
+  "prescore_freeze_commit": "9551877b185684dadf163de8c620acce4a80e939",
+  "scientific_scope": "FINITE_ARTIFICIAL_E1_COLLAPSED_LDA_LABEL_SWITCHING_AND_HYPERPRIOR_AMBIGUITY",
+  "fixed_document_length": 3,
+  "vocabulary_size": 3,
+  "topic_count": 2,
+  "worlds": 9,
+  "all_complete_original_source_atoms": 1944,
+  "two_full_observation_alias_pairs": [
+    [
+      "BASE_TOPICS",
+      "LABEL_SWAP_ALIAS"
+    ],
+    [
+      "DUPLICATE_TOPICS_A",
+      "DUPLICATE_TOPICS_B"
+    ]
+  ],
+  "exact_full_joint_source_and_polya_marginal_parity": true,
+  "independent_dirichlet_second_moment_parity": true,
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "BASE_TOPICS",
+      "alpha_dirichlet_parameters": [
+        "1",
+        "1"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ],
+        [
+          "1/6",
+          "1/3",
+          "1/2"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "1/3",
+      "observable_word0_same_document_pair_covariance": "1/108",
+      "independently_calculated_dirichlet_pair_covariance": "1/108",
+      "observable_predictive_third_word0_given_first_two_word0": "5/13",
+      "oracle_topic000_posterior_given_word000": "27/40",
+      "exact_observable_three_position_word_joint": {
+        "000": "5/108",
+        "001": "13/324",
+        "002": "11/324",
+        "010": "13/324",
+        "011": "1/27",
+        "012": "11/324",
+        "020": "11/324",
+        "021": "11/324",
+        "022": "11/324",
+        "100": "13/324",
+        "101": "1/27",
+        "102": "11/324",
+        "110": "1/27",
+        "111": "1/27",
+        "112": "1/27",
+        "120": "11/324",
+        "121": "1/27",
+        "122": "13/324",
+        "200": "11/324",
+        "201": "11/324",
+        "202": "11/324",
+        "210": "11/324",
+        "211": "1/27",
+        "212": "13/324",
+        "220": "11/324",
+        "221": "13/324",
+        "222": "5/108"
+      }
+    },
+    {
+      "world": "LABEL_SWAP_ALIAS",
+      "alpha_dirichlet_parameters": [
+        "1",
+        "1"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "1/6",
+          "1/3",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "1/3",
+      "observable_word0_same_document_pair_covariance": "1/108",
+      "independently_calculated_dirichlet_pair_covariance": "1/108",
+      "observable_predictive_third_word0_given_first_two_word0": "5/13",
+      "oracle_topic000_posterior_given_word000": "1/40",
+      "exact_observable_three_position_word_joint": {
+        "000": "5/108",
+        "001": "13/324",
+        "002": "11/324",
+        "010": "13/324",
+        "011": "1/27",
+        "012": "11/324",
+        "020": "11/324",
+        "021": "11/324",
+        "022": "11/324",
+        "100": "13/324",
+        "101": "1/27",
+        "102": "11/324",
+        "110": "1/27",
+        "111": "1/27",
+        "112": "1/27",
+        "120": "11/324",
+        "121": "1/27",
+        "122": "13/324",
+        "200": "11/324",
+        "201": "11/324",
+        "202": "11/324",
+        "210": "11/324",
+        "211": "1/27",
+        "212": "13/324",
+        "220": "11/324",
+        "221": "13/324",
+        "222": "5/108"
+      }
+    },
+    {
+      "world": "DUPLICATE_TOPICS_A",
+      "alpha_dirichlet_parameters": [
+        "1",
+        "1"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ],
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "1/2",
+      "observable_word0_same_document_pair_covariance": "0",
+      "independently_calculated_dirichlet_pair_covariance": "0",
+      "observable_predictive_third_word0_given_first_two_word0": "1/2",
+      "oracle_topic000_posterior_given_word000": "1/4",
+      "exact_observable_three_position_word_joint": {
+        "000": "1/8",
+        "001": "1/12",
+        "002": "1/24",
+        "010": "1/12",
+        "011": "1/18",
+        "012": "1/36",
+        "020": "1/24",
+        "021": "1/36",
+        "022": "1/72",
+        "100": "1/12",
+        "101": "1/18",
+        "102": "1/36",
+        "110": "1/18",
+        "111": "1/27",
+        "112": "1/54",
+        "120": "1/36",
+        "121": "1/54",
+        "122": "1/108",
+        "200": "1/24",
+        "201": "1/36",
+        "202": "1/72",
+        "210": "1/36",
+        "211": "1/54",
+        "212": "1/108",
+        "220": "1/72",
+        "221": "1/108",
+        "222": "1/216"
+      }
+    },
+    {
+      "world": "DUPLICATE_TOPICS_B",
+      "alpha_dirichlet_parameters": [
+        "3",
+        "1"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ],
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "1/2",
+      "observable_word0_same_document_pair_covariance": "0",
+      "independently_calculated_dirichlet_pair_covariance": "0",
+      "observable_predictive_third_word0_given_first_two_word0": "1/2",
+      "oracle_topic000_posterior_given_word000": "1/2",
+      "exact_observable_three_position_word_joint": {
+        "000": "1/8",
+        "001": "1/12",
+        "002": "1/24",
+        "010": "1/12",
+        "011": "1/18",
+        "012": "1/36",
+        "020": "1/24",
+        "021": "1/36",
+        "022": "1/72",
+        "100": "1/12",
+        "101": "1/18",
+        "102": "1/36",
+        "110": "1/18",
+        "111": "1/27",
+        "112": "1/54",
+        "120": "1/36",
+        "121": "1/54",
+        "122": "1/108",
+        "200": "1/24",
+        "201": "1/36",
+        "202": "1/72",
+        "210": "1/36",
+        "211": "1/54",
+        "212": "1/108",
+        "220": "1/72",
+        "221": "1/108",
+        "222": "1/216"
+      }
+    },
+    {
+      "world": "CONTRASTED_TOPICS",
+      "alpha_dirichlet_parameters": [
+        "1",
+        "1"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "2/3",
+          "1/6",
+          "1/6"
+        ],
+        [
+          "1/6",
+          "1/6",
+          "2/3"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "5/12",
+      "observable_word0_same_document_pair_covariance": "1/48",
+      "independently_calculated_dirichlet_pair_covariance": "1/48",
+      "observable_predictive_third_word0_given_first_two_word0": "85/168",
+      "oracle_topic000_posterior_given_word000": "64/85",
+      "exact_observable_three_position_word_joint": {
+        "000": "85/864",
+        "001": "7/216",
+        "002": "55/864",
+        "010": "7/216",
+        "011": "5/432",
+        "012": "11/432",
+        "020": "55/864",
+        "021": "11/432",
+        "022": "55/864",
+        "100": "7/216",
+        "101": "5/432",
+        "102": "11/432",
+        "110": "5/432",
+        "111": "1/216",
+        "112": "5/432",
+        "120": "11/432",
+        "121": "5/432",
+        "122": "7/216",
+        "200": "55/864",
+        "201": "11/432",
+        "202": "55/864",
+        "210": "11/432",
+        "211": "5/432",
+        "212": "7/216",
+        "220": "55/864",
+        "221": "7/216",
+        "222": "85/864"
+      }
+    },
+    {
+      "world": "ALPHA_CONCENTRATED",
+      "alpha_dirichlet_parameters": [
+        "4",
+        "4"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ],
+        [
+          "1/6",
+          "1/3",
+          "1/2"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "1/3",
+      "observable_word0_same_document_pair_covariance": "1/324",
+      "independently_calculated_dirichlet_pair_covariance": "1/324",
+      "observable_predictive_third_word0_given_first_two_word0": "13/37",
+      "oracle_topic000_posterior_given_word000": "27/52",
+      "exact_observable_three_position_word_joint": {
+        "000": "13/324",
+        "001": "37/972",
+        "002": "35/972",
+        "010": "37/972",
+        "011": "1/27",
+        "012": "35/972",
+        "020": "35/972",
+        "021": "35/972",
+        "022": "35/972",
+        "100": "37/972",
+        "101": "1/27",
+        "102": "35/972",
+        "110": "1/27",
+        "111": "1/27",
+        "112": "1/27",
+        "120": "35/972",
+        "121": "1/27",
+        "122": "37/972",
+        "200": "35/972",
+        "201": "35/972",
+        "202": "35/972",
+        "210": "35/972",
+        "211": "1/27",
+        "212": "37/972",
+        "220": "35/972",
+        "221": "37/972",
+        "222": "13/324"
+      }
+    },
+    {
+      "world": "ALPHA_SPARSE",
+      "alpha_dirichlet_parameters": [
+        "1/4",
+        "1/4"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ],
+        [
+          "1/6",
+          "1/3",
+          "1/2"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "1/3",
+      "observable_word0_same_document_pair_covariance": "1/54",
+      "independently_calculated_dirichlet_pair_covariance": "1/54",
+      "observable_predictive_third_word0_given_first_two_word0": "3/7",
+      "oracle_topic000_posterior_given_word000": "27/32",
+      "exact_observable_three_position_word_joint": {
+        "000": "1/18",
+        "001": "7/162",
+        "002": "5/162",
+        "010": "7/162",
+        "011": "1/27",
+        "012": "5/162",
+        "020": "5/162",
+        "021": "5/162",
+        "022": "5/162",
+        "100": "7/162",
+        "101": "1/27",
+        "102": "5/162",
+        "110": "1/27",
+        "111": "1/27",
+        "112": "1/27",
+        "120": "5/162",
+        "121": "1/27",
+        "122": "7/162",
+        "200": "5/162",
+        "201": "5/162",
+        "202": "5/162",
+        "210": "5/162",
+        "211": "1/27",
+        "212": "7/162",
+        "220": "5/162",
+        "221": "7/162",
+        "222": "1/18"
+      }
+    },
+    {
+      "world": "UNIFORM_WORDS",
+      "alpha_dirichlet_parameters": [
+        "1",
+        "1"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "1/3",
+          "1/3",
+          "1/3"
+        ],
+        [
+          "1/3",
+          "1/3",
+          "1/3"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "1/3",
+      "observable_word0_same_document_pair_covariance": "0",
+      "independently_calculated_dirichlet_pair_covariance": "0",
+      "observable_predictive_third_word0_given_first_two_word0": "1/3",
+      "oracle_topic000_posterior_given_word000": "1/4",
+      "exact_observable_three_position_word_joint": {
+        "000": "1/27",
+        "001": "1/27",
+        "002": "1/27",
+        "010": "1/27",
+        "011": "1/27",
+        "012": "1/27",
+        "020": "1/27",
+        "021": "1/27",
+        "022": "1/27",
+        "100": "1/27",
+        "101": "1/27",
+        "102": "1/27",
+        "110": "1/27",
+        "111": "1/27",
+        "112": "1/27",
+        "120": "1/27",
+        "121": "1/27",
+        "122": "1/27",
+        "200": "1/27",
+        "201": "1/27",
+        "202": "1/27",
+        "210": "1/27",
+        "211": "1/27",
+        "212": "1/27",
+        "220": "1/27",
+        "221": "1/27",
+        "222": "1/27"
+      }
+    },
+    {
+      "world": "ASYMMETRIC_ALPHA",
+      "alpha_dirichlet_parameters": [
+        "3",
+        "1"
+      ],
+      "frozen_topic_word_probabilities": [
+        [
+          "1/2",
+          "1/3",
+          "1/6"
+        ],
+        [
+          "1/6",
+          "1/3",
+          "1/2"
+        ]
+      ],
+      "full_original_topic_word_source_atoms": 216,
+      "observed_full_document_support_size": 27,
+      "observable_unigram_word0_probability": "5/12",
+      "observable_word0_same_document_pair_covariance": "1/240",
+      "independently_calculated_dirichlet_pair_covariance": "1/240",
+      "observable_predictive_third_word0_given_first_two_word0": "167/384",
+      "oracle_topic000_posterior_given_word000": "135/167",
+      "exact_observable_three_position_word_joint": {
+        "000": "167/2160",
+        "001": "8/135",
+        "002": "89/2160",
+        "010": "8/135",
+        "011": "5/108",
+        "012": "1/30",
+        "020": "89/2160",
+        "021": "1/30",
+        "022": "11/432",
+        "100": "8/135",
+        "101": "5/108",
+        "102": "1/30",
+        "110": "5/108",
+        "111": "1/27",
+        "112": "1/36",
+        "120": "1/30",
+        "121": "1/36",
+        "122": "1/45",
+        "200": "89/2160",
+        "201": "1/30",
+        "202": "11/432",
+        "210": "1/30",
+        "211": "1/36",
+        "212": "1/45",
+        "220": "11/432",
+        "221": "1/45",
+        "222": "41/2160"
+      }
+    }
+  ]
+}
