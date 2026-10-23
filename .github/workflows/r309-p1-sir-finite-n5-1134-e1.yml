@@ -1,0 +1,67 @@
+name: R309 SIR Five Agent 1134 Exact Synthetic Transitions E1
+on:
+  push:
+    paths:
+      - 'research/R309/r309_exact_five_agent_sir_transitions.py'
+      - 'research/catalogue_audit/independent_r309_source_audit.py'
+      - '.github/workflows/r309-p1-sir-finite-n5-1134-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-sir-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact frozen SIR five agent complete model unittests
+        run: python research/R309/r309_exact_five_agent_sir_transitions.py --test
+      - name: Emit all 1134 original synthetic transition sources and independently audit contact/recovery microstates
+        run: |
+          python research/R309/r309_exact_five_agent_sir_transitions.py --emit
+          python research/catalogue_audit/independent_r309_source_audit.py --test
+          python research/catalogue_audit/independent_r309_source_audit.py --audit
+  independent-sir-source-permanent-archive:
+    needs: dual-python-sir-model
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent 11664 contact/recovery assignment audit of all 1134 original source probabilities
+        run: |
+          python research/R309/r309_exact_five_agent_sir_transitions.py --emit
+          python research/catalogue_audit/independent_r309_source_audit.py --test
+          python research/catalogue_audit/independent_r309_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R309-1134-Five-Agent-SIR-Original-Artificial-Transition-Sources
+          path: |
+            research/R309/R309_ALL_1134_ORIGINAL_SIR_TRANSITION_SOURCES.csv
+            research/R309/R309_EXACT_FIVE_AGENT_SIR_RESULTS.json
+            research/R309/R309_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Commit original SIR source CSV results JSON and SHA receipt permanently
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R309/R309_ALL_1134_ORIGINAL_SIR_TRANSITION_SOURCES.csv research/R309/R309_EXACT_FIVE_AGENT_SIR_RESULTS.json research/R309/R309_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R309): all 1134 exact finite SIR original transition sources and SHA'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R309_1134_EXACT_SIR_ORIGINALS_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
