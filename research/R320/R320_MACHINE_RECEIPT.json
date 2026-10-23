@@ -1,0 +1,56 @@
+{
+  "research_id": "R320",
+  "original_catalogue_id": "01-009",
+  "protocol_commit": "ff112a92d32fd07695c77c6d6010cf121bfd8e8a",
+  "protocol_path": "protocols/R320_FINITE_BOUNDED_RANDOM_WALK_DDM_ANALOGUE_384_PATHS_PRESCORE_FREEZE_2026-10-24.md",
+  "protocol_blob_sha1": "0aded36e94724641cbdd94405f75db2eda87f43f",
+  "original_source_commit": "e8323977b398fbf591669815f2fe9206f6c59b40",
+  "verified_source_artifacts": [
+    {
+      "path": "research/R320/r320_exact_absorbing_walk.py",
+      "git_blob_sha1": "d8f5a2ad81b7212af17bc306fbd8cbd567a36085"
+    },
+    {
+      "path": "research/R320/R320_ALL_384_ORIGINAL_SIX_STEP_PATHS.csv",
+      "git_blob_sha1": "ece51a015bdfeb0a8233f7a24dffe641489e4282"
+    },
+    {
+      "path": "research/R320/R320_EXACT_6_FIRST_HIT_WORLDS.json",
+      "git_blob_sha1": "ec0f3702f956e0075444d1d3efafef0bced1d7a2"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r320_absorbing_walk_audit.py",
+      "git_blob_sha1": "3c7c13a620064fd61ada69e4ee61c2067cd62e97"
+    }
+  ],
+  "verification": {
+    "CI_run_id": 40006163876,
+    "CI_run_conclusion": "success",
+    "jobs": [
+      {
+        "id": 120594493177,
+        "name": "finite-first-passage (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120594493546,
+        "name": "finite-first-passage (3.12)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120594493571,
+        "name": "independent-dp",
+        "conclusion": "success"
+      }
+    ],
+    "python_311_tests": 35,
+    "python_312_tests": 35,
+    "independent_audit": "PASS",
+    "original_paths": 384,
+    "world_count": 6
+  },
+  "evidence_scope": "DISCRETE_ABSORBING_WALK_ANALOGUE_E1_ONLY",
+  "original_continuous_DDM_replication": false,
+  "real_human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED"
+}

@@ -1,0 +1,39 @@
+name: Original239 P2 R320 Discrete DDM Crosswalk v3.8
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p2_r320_crosswalk_v3_8.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.8_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_24_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p2-r320-crosswalk-v38.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all 239, v3.7, R320 blobs and 24 P2 queue
+        run: python research/catalogue_audit/verify_p2_r320_crosswalk_v3_8.py
+  independent-walk:
+    needs: index
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconfirm independent 384 path DP
+        run: python research/catalogue_audit/independent_r320_absorbing_walk_audit.py
+      - name: Reconfirm crosswalk source hashes
+        run: python research/catalogue_audit/verify_p2_r320_crosswalk_v3_8.py

@@ -1,6 +1,6 @@
 # R320 Drift Diffusion Model: exact six-step absorbing-walk analogue (E1)
 
-Date 2026-10-24. Original239 01-009, P2. **Scientific status: finite computation complete; CI and source identity verification pending**. Prescore protocol committed first at `ff112a92d32fd07695c77c6d6010cf121bfd8e8a`, before the path source and outcomes.
+Date 2026-10-24. Original239 01-009, P2. **Scientific status: PASS_BOUNDED_E1_DISCRETE_ANALOGUE_ONLY** after verified [GitHub Actions run 40006163876](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40006163876), 3/3 jobs success, Python3.11/3.12 each 35 tests and independent no-import interior-state dynamic programming audit. [Machine receipt](R320_MACHINE_RECEIPT.json) pins all original source blob identities. Prescore protocol committed first at `ff112a92d32fd07695c77c6d6010cf121bfd8e8a`, before the path source and outcomes.
 
 ## Original mechanism and reuse
 

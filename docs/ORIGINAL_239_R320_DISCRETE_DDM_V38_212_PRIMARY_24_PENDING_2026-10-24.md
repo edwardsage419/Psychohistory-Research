@@ -1,0 +1,9 @@
+# Original239 v3.8: R320 discrete DDM analogue 212 primary / 24 pending
+
+Date 2026-10-24. This revision changes exactly **01-009 Drift Diffusion Model (P2)** from unmatched to R320, preserving all other 238 rows, original candidate identities, priorities and order. Main v3.7 was 211 primary / 25 pending; now **212 primary, 3 shared bounded mathematical links, 24 P2 unmatched**.
+
+R320 [frozen protocol](../protocols/R320_FINITE_BOUNDED_RANDOM_WALK_DDM_ANALOGUE_384_PATHS_PRESCORE_FREEZE_2026-10-24.md) at [commit ff112a92](https://github.com/edwardsage419/Psychohistory-Research/commit/ff112a92d32fd07695c77c6d6010cf121bfd8e8a) preceded source [commit e8323977](https://github.com/edwardsage419/Psychohistory-Research/commit/e8323977b398fbf591669815f2fe9206f6c59b40). All 384 artificial six-step exogenous path records and six first-hit worlds are replayable. [GitHub Actions run 40006163876](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40006163876) three jobs success: Python3.11/3.12 each 35 tests plus independent no-import dynamic programming source audit. [Receipt](../research/R320/R320_MACHINE_RECEIPT.json) pins Git blobs and job IDs.
+
+**Evidence grade: finite discrete analogue E1 only**. R320 does not reproduce the original continuous-time diffusion likelihood, fitted human RTs, external human E2 or historical E3. All previously provisional 173 README links remain provisional; index completion is not scientific validation. R073/PESEN v0.1 unchanged.
+
+[Full original239 v3.8](ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.8_2026-10-24.json), [remaining 24 P2 queue](ORIGINAL_239_PENDING_24_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv). Next **01-010 Sequential Sampling Models**: first audit whether R320's bounded accumulation is reusable as a shared submechanism and whether an independent mechanism remains to study; avoid duplicating R320. Complete all R studies before taxonomy and fusion.
