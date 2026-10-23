@@ -1,0 +1,67 @@
+name: R301 Bayesian Online Changepoint 192 Sources Exact E1
+on:
+  push:
+    paths:
+      - 'research/R301/r301_exact_bocpd.py'
+      - 'research/catalogue_audit/independent_r301_source_audit.py'
+      - '.github/workflows/r301-p1-bayesian-online-changepoint-192-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-bocpd:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 588 full exact run-length source model tests
+        run: python research/R301/r301_exact_bocpd.py --test
+      - name: Produce and independently exhaust every 192-source segmentation
+        run: |
+          python research/R301/r301_exact_bocpd.py --emit
+          python research/catalogue_audit/independent_r301_source_audit.py --test
+          python research/catalogue_audit/independent_r301_source_audit.py --audit
+  independent-permanent-original-source-archive:
+    needs: dual-python-exact-bocpd
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replay all 192 original BOCPD prefixes from partition product marginals
+        run: |
+          python research/R301/r301_exact_bocpd.py --emit
+          python research/catalogue_audit/independent_r301_source_audit.py --test
+          python research/catalogue_audit/independent_r301_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R301-192-BOCPD-Bernoulli-Exact-Original-Prefixes
+          path: |
+            research/R301/R301_ALL_192_ORIGINAL_BAYESIAN_CHANGEPOINT_PREFIX_SOURCES.csv
+            research/R301/R301_EXACT_CHANGEPOINT_RUN_LENGTH_RESULTS.json
+            research/R301/R301_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Archive source CSV, exact posterior results and SHA256 receipts to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R301/R301_ALL_192_ORIGINAL_BAYESIAN_CHANGEPOINT_PREFIX_SOURCES.csv research/R301/R301_EXACT_CHANGEPOINT_RUN_LENGTH_RESULTS.json research/R301/R301_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R301): exact BOCPD 192 original source rows with exhaustive audit'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R301_ORIGINAL_ALL_SOURCES_PERMANENT; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
