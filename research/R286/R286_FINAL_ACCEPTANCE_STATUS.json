@@ -1,0 +1,49 @@
+{
+  "research_id": "R286",
+  "catalogue_original_id": "02-002",
+  "catalogue_priority": "P0",
+  "nature": "BACKFILL_ORIGINAL_239_CATALOGUE_ENTRY_NOT_NEW_240TH_MODEL",
+  "outcome": "CLOSED_BOUNDED_E1_SYNTHETIC_TD0_TIMING_AND_HELDOUT_BRIER",
+  "prescore_freeze_commit": "d055e14831565571ca9e953d311b55e7eed9ef42",
+  "program_commit": "415b01586cf9feda43a033dd0a5bcacd52c9f59d",
+  "workflow_commit": "c508e715c0dd8d713b8f8a69fe37f45fab978ca9",
+  "complete_sources_archive_commit": "cdf9c6ee74630e5ed1fddd26dc25e069b485281c",
+  "workflow_run": 39909168454,
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "green_jobs": 3,
+  "actual_python3_11_unittests": 93,
+  "actual_python3_12_unittests": 93,
+  "independent_source_reaudit": true,
+  "model_labeled_complete_source_types": 576,
+  "nine_exact_source_and_analytic_world_risks_equal": true,
+  "per_truth_heldout_brier": {
+    "p_quarter": {
+      "TD0": "57/256",
+      "MC": "1/4",
+      "B_then_A": "3643/16384"
+    },
+    "p_half": {
+      "TD0": "155/512",
+      "MC": "683/2048",
+      "B_then_A": "2445/8192"
+    },
+    "p_three_quarters": {
+      "TD0": "123/512",
+      "MC": "513/2048",
+      "B_then_A": "3741/16384"
+    }
+  },
+  "original_source_sha256": "9e7bf07e8ab61d58185496076c4e1d1256b1f215c2340b4c1e1fae653bc297e1",
+  "result_sha256": "7512e3a097d993727c1a56dc61d65f333be4d1245f3eb198a1472f0874349eec",
+  "limits": [
+    "Original Sutton TD general theory not entirely reproduced",
+    "Toy stationary independent Bernoulli source, not measured social learning",
+    "Reverse schedule is distinct algorithm, not online TD(0), but uses no future heldout reward",
+    "Finite five-train one-holdout design only"
+  ],
+  "new_real_human_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
