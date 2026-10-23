@@ -1,0 +1,37 @@
+# R303 Scientific Report — Bandura (1965), observational acquisition versus expressed imitation
+
+Date 2026-10-23 Asia/Taipei. Original-239 P1 **03-001 Social Learning Theory**. Scoped scientific acceptance **CLOSED_BOUNDED_E1_ARTIFICIAL_R303_ACQUISITION_EXPRESSION** (only synthetic internally defined mathematical mechanism), **no new human/animal E2, historical E3=0**.
+
+## First-party original scientific evidence and scope separation
+
+Bandura (1965), *Influence of models' reinforcement contingencies on the acquisition of imitative responses*, *Journal of Personality and Social Psychology* 1(6):589–595, DOI https://doi.org/10.1037/h0022070; [1965 paper reprint](https://www.psychologywizard.net/uploads/2/6/6/4/26640833/bandura_1965.pdf), [PubMed first-party bibliography](https://pubmed.ncbi.nlm.nih.gov/14300234/). Bandura, Ross & Ross (1961), *Transmission of aggression through imitation of aggressive models*, DOI https://doi.org/10.1037/h0045925.
+
+1965 original study presented film-mediated demonstrators whose aggressive responses were rewarded, punished or followed by no consequence. At first imitation test, punished-model observers expressed fewer matching responses; a subsequent incentive for imitation removed those differences, demonstrating the empirical reason to distinguish response acquisition from currently expressed performance. **We neither possess nor re-fit the original individual children's experimental response records, randomization and original inference procedures.** No original child-level model parameters are estimated here.
+
+Earlier [R063 scientific audit](../R063/R063_EVIDENCE_AUDIT.md) examined Najar et al. (2020) metaVS/VS2 social imitation learning-rate gate, original MATLAB code and author Figure6 numerical outputs, not the distinct Bandura 1965 acquisition/expression phenomenon. R063 lacks locally verified full trial-CSV out-of-sample predictions. R303 did not reuse R063 data, its original people or author figures. This difference matters: a prior research model mentioning imitation does **not** establish Bandura theory's itemwise empirical replication.
+
+## Prescore-frozen new toy mechanism
+
+[Full protocol](../../protocols/R303_BANDURA_OBSERVATIONAL_ACQUISITION_PERFORMANCE_486_SOURCE_PRESCORE_FREEZE_2026-10-23.md) was committed on main **before** model execution at [5adc32ae](https://github.com/edwardsage419/Psychohistory-Research/commit/5adc32ae7c91c150fe82bb16f99a059d2a62e991). Our project—not Bandura—created the following multiplicative gate equations as a **deliberately simplified synthetic formalization**:
+* Four artificial independent gates attention A, retention R, production P, motivation M each in {0,1/2,1}.
+* Latent acquisition q_acquired=A·R; producible latent response q_available=A·R·P.
+* Synthetic vicarious consequence c∈{REWARDED:1, NO_CONSEQUENCE:1/2, PUNISHED:1/4}. These constants are invented by the project and **not fitted original Bandura 1965 effect sizes**.
+* Spontaneous imitation q_available·M·c; subsequently incentivized imitation q_available. The incentive is an artificial intervention that sets expression factor to1, **not** a measurement of recovered Bandura memory.
+
+Grid 3^4=81 gate tuples ×3 consequence types=**243 artificial worlds**, with two SPONTANEOUS/INCENTIVIZED source phases each, hence **486 complete artificial labeled source rows**. No direct learner reward, learner's Q values or pseudo-reward, skill estimates, actual children, experimental outcome recordings or real social network data. This model *stipulates* that observed punishment/reward changes spontaneous expression only, not acquisition. Therefore its equal post-incentive values **follow from the formal definition**, and do not independently prove original authors' causal interpretation or that all actual observers learned equally.
+
+### Frozen positive counterexample and zero gates
+
+If A=R=P=1 and M=1/2, acquisition and productive trace both1 regardless of c; spontaneous imitation rewarded1/2, no consequence1/4, punished1/8; post-incentive imitation exactly1 under all three vicarious consequences. The gaps are1/2,3/4,7/8. For all 81 gate tuples, the three settings preserve acquisition and post-incentive expression; for the 16 tuples where A,R,P,M are all strictly positive, rewarded > neutral > punished spontaneous output; other zero gates allow equality.
+
+If A=0 or R=0, no observational acquisition can be induced in this synthetic mechanism and subsequent incentives cannot fix missing trace. If A=R=1 but P=0, latent acquisition=1 but expressed response remains0 in both phases. If A=R=P=1 but M=0, spontaneous expression0 even with rewarded model; subsequently incentivized expression1, since the intervention replaces the expression gate. This explicitly separates **attention/encoding, potential reproduction and expression**. The probability q_acquired is *not observed or identified* by behavior alone; identical observed low expression can arise from different gate combinations.
+
+No claim is made that independent product gates are Bandura's original fitted cognitive model, that these exact fractional inputs arise in children, or that a physical aggressive action is morally or clinically desirable. This toy encodes qualitative distinctions only, not an empirically validated theory.
+
+## Reproducible result provenance, CI failure and correction
+
+[Main runnable exact mathematical model and 1,473 real unittest cases](r303_exact_observational_acquisition_expression.py); [all 486 original artificial source phase rows](R303_ALL_486_ORIGINAL_OBSERVATIONAL_SOURCE_PHASES.csv); [243 worlds and exact results](R303_EXACT_ACQUISITION_VS_EXPRESSION_RESULTS.json); [source/result SHA256 receipt](R303_MACHINE_RECEIPT.json); [wholly independent five-Bernoulli-gate enumeration and 17 adversarial tests](../catalogue_audit/independent_r303_source_audit.py).
+
+**Transparency of actual execution history:** first GitHub Actions [run39934080577](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39934080577) failed during source emitting SHA receipt: Python output file variable was accidentally overwritten by production-gate loop variable. **All 1473 primary model unittests passed in that run**, but artifact generation failed and consequently no E1 acceptance was claimed. A minimal source-variable fix [commitf49c949b](https://github.com/edwardsage419/Psychohistory-Research/commit/f49c949b3b9ff95b3c13b87a22b611a490083087) changed the file-path binding without revising the original frozen protocol, world grid, formulas or results. Entire workflow was re-run as fresh [run39934165046](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39934165046), with **all 3 jobs completed/success**: Python3.11 and3.12 each 1,473 main model tests plus 17 independent alternative five-gate enumerator tests, and independent third job reconstructed 486 rows, cross-checked complete result JSON and original byte hashes. The third job permanently archived them to main [commit8b1c570e](https://github.com/edwardsage419/Psychohistory-Research/commit/8b1c570e13921d4c4170d7eec48f36ea76cbd96e).
+
+All status limited to finite artificial E1 **CLOSED_BOUNDED_E1_ARTIFICIAL_R303_ACQUISITION_EXPRESSION**. No new human/animal E2, historical E3 or autonomous social learning generalization. R073 and PESEN v0.1 frozen. Keep entire R-series priority until complete before taxonomy and novel fusion.
