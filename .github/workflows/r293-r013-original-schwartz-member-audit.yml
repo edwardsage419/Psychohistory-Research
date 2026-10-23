@@ -1,0 +1,41 @@
+name: R293 R013 Original ZIP SHA and Schwartz Member Scan
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/scout_r013_schwartz_original_zip.py'
+      - '.github/workflows/r293-r013-original-schwartz-member-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sha-crc-member-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Re-read binary original R013 archive and all member CRC
+        run: python research/catalogue_audit/scout_r013_schwartz_original_zip.py --emit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R293-R013-Historical-Binary-Member-Audit
+          path: docs/R293_R013_ORIGINAL_ZIP_MEMBERS_SCHWARTZ_EVIDENCE_AUDIT_2026-10-23.json
+          retention-days: 90
+      - name: Archive original ZIP bounded member audit to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/R293_R013_ORIGINAL_ZIP_MEMBERS_SCHWARTZ_EVIDENCE_AUDIT_2026-10-23.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'audit(archive): R013 original ZIP SHA CRC and bounded Schwartz references'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
