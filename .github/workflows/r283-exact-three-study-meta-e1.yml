@@ -78,7 +78,7 @@ jobs:
                   assert F(row['original_source_mass'])==mass
                   assert [int(x) for x in row['three_reported_risk_differences'].split(';')]==diffs
                   D=sum(w*d for w,d in zip(weights,diffs))/sum(weights)
-                  Q=sum(w*(F(d)-D)**2 for w,d in zip(weights))
+                  Q=sum(w*(F(d)-D)**2 for w,d in zip(weights,diffs))
                   assert F(row['fixed_all_studies_estimate'])==D
                   assert F(row['cochran_Q'])==Q
                   assert int(row['invalid_posthoc_largest_study_effect'])==max(diffs)
