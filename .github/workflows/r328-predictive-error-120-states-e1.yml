@@ -1,0 +1,29 @@
+name: R328 scalar predictive error 120 states E1
+on:
+  push:
+    paths:
+      - 'research/R328/**'
+      - 'research/catalogue_audit/independent_r328_predictive_error_audit.py'
+      - '.github/workflows/r328-predictive-error-120-states-e1.yml'
+  workflow_dispatch:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R328/r328_scalar_predictive_error.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/independent_r328_predictive_error_audit.py
