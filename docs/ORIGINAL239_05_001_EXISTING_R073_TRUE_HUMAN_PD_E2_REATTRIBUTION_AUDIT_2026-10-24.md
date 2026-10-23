@@ -1,0 +1,21 @@
+# Original239 05-001 Prisoners Dilemma: reattribute to existing R073, no new E2
+
+Date 2026-10-24 Asia/Taipei. Original model is a **general Prisoner's Dilemma family**, and the concrete previously accepted implementation here is **repeated binary cooperation/defection in real human experimental sessions**. The mapping preserves original game mechanism subject to the exact R073 dataset and measurement scope, not all conceivable prisoner-dilemma equilibria, causal behavioral theories, or cross-cultural forecasts.
+
+## Historical source evidence in main
+
+* [R073 final true-human acceptance](../research/R073/R073_FINAL_ACCEPTANCE_STATUS.json) (Git blob SHA1 `4dcd30a7b47cc0f81ff186541d791474a3e2e0e9`), [R073 README](../research/R073/README.md) (SHA1 `88ca2775873d02e6c408ffb667bd44e3623bd5de`), frozen protocol commit `8f8e5451692065f1b62db0338bc5b4fa5def486f`.
+* Original Montero-Porras et al 2022 DOI https://doi.org/10.1038/s41598-022-11654-2, author Git commit `4743f74d8a03a031b8f70aff64956f8ad5155182`; precise source blobs `fix.csv` `3bf78bf85f6642afee18d6f1965dca7272582f40` and `rand.csv` `f5a86cd033b739da45d3fc7c5019068f612146a2`. Final Dryad release source bytes equal these initial author files is UNKNOWN.
+* 12 original sessions, 188 genuine humans, 18,800 original choices, **18,424** heldout full-session binary targets from t3..100. Paired history signals generate prior condition forecasts under pre-frozen seven models. Sessions equal-weight Brier for own-last M1=0.1341970798874635; own and former opponent last M3=0.12475795617162207; both two lags M4=0.12054640684474983. Within this treatment/specification M3 relative to M1 change −0.00943912371584143. Effects are not uniformly positive per session and do not identify behavior causally.
+* [Real source score run38931506064](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38931506064) and [independent full original archive replay38931698718](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/38931698718) both independently confirmed on 2026-10-24 as `completed/success`. This is inspection of historical successful CI, not a novel 2026-10-24 original-data re-score.
+
+## Keep related but distinct studies separate
+
+* [R106 acceptance](../research/R106/R106_FINAL_ACCEPTANCE_STATUS.json), Git blob `ad7b328a7a2fb7a3a5aa2cd9eb33fd4bd7dc68ad`: later 2025 UK cohort **260 new humans**, 26 sessions, E2 bounded. Its acceptance explicitly states `R073_exact_frozen_model_replication=false`, uses different frozen fitted shrink/dyadic tests with stage exclusions. R106 is useful related evidence, cannot be pooled as direct literal R073 same-model external E3.
+* [R110 Phase C0 limited failure](../research/R110/R110_PHASE_C0_LIVE_CI_2015_UCL_ACTOR_PEER_SIGNAL_MATCHED_SHRINK_SHAM_E2_OR_BOUNDED_FAILURE.json), SHA1 `f142b5b7917986fee9c2da1e585d4e8d23f7bea4` records `real_human_model_scores=0` and source/score gate `FAIL_CLOSED`. Must not count R110 as an accepted separate true-human replication.
+
+## Catalogue effects, kept mechanistic
+
+Original 05-001 now eligible to reattribute **existing primary R073** evidence grade `PREVIOUS_REAL_HUMAN_REPEATED_PD_SESSION_HELDOUT_CONDITIONAL_E2`. This creates zero new substantive models and zero additional E2 results, no new per-person rows published. Real E2 was established **previously** within R073, whereas real-human causal learning mechanisms, open-loop next partner forecasting, independent historical E3 and cross-cultural generalization remain open.
+
+[Prescope reattribution freeze](../protocols/ORIGINAL239_05_001_R073_PD_EXISTING_E2_PROVENANCE_REATTRIBUTION_FREEZE_2026-10-24.md) commits the exact old sha provenance before index change. Compare v3.4 to v3.5: only 05-001 eligible to change, original239 ID/name/order/P1 preserved, 238 other candidate source records identical. Main provenance count may go from 208→209 and old-scoped-only from1→0, remaining source gaps 28→27; the unchanged 27 missing P2 candidates become the next research priority. Full 239 model scientific closure remains OPEN, with 173 preexisting provisional README-only mappings still requiring proper scientific review. R073 and PESEN v0.1 remain frozen.
