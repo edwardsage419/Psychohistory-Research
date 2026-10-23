@@ -1,0 +1,46 @@
+name: Original 239 P1 R294 Discount Evidence Crosswalk v0.8
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r294_crosswalk_v0_8.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.8_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_54_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r294-crosswalk-v08.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-python-original-catalogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 15 exact catalogue and original 144 source hash checks
+        run: python research/catalogue_audit/verify_p1_r294_crosswalk_v0_8.py --test
+  independent-math-source-and-provenance:
+    needs: two-python-original-catalogue
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify 239 original catalogue entries and 144 choices
+        run: |
+          python research/catalogue_audit/verify_p1_r294_crosswalk_v0_8.py --audit
+          python research/catalogue_audit/independent_r294_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R294-v08-182Primary-54Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.8_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_54_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R294/R294_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
