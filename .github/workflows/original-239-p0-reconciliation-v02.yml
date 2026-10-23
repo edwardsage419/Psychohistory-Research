@@ -1,0 +1,109 @@
+name: Original 239 P0 Backfill and Shared Source Crosswalk v0.2 Audit
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p0_reconciliation_v0_2.py'
+      - '.github/workflows/original-239-p0-reconciliation-v02.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Reconcile 249 original catalogue row and P0 R-scope tests
+        run: python research/catalogue_audit/verify_p0_reconciliation_v0_2.py --test
+  independently-verify-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently compare original 239 catalogue v0.1 to P0 scope v0.2
+        run: |
+          python research/catalogue_audit/verify_p0_reconciliation_v0_2.py --emit
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          base=Path('.')
+          docs=base/'docs'
+          orig=json.loads((docs/'ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json').read_text())
+          new=json.loads((docs/'ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.2_2026-10-23.json').read_text())
+          model=json.loads((docs/'MODEL_CANDIDATE_CATALOG_v0.1.json').read_text())
+          results=json.loads((docs/'ORIGINAL_239_P0_RECONCILIATION_MACHINE_RESULTS.json').read_text())
+          receipt=json.loads((docs/'ORIGINAL_239_P0_RECONCILIATION_SHA256_RECEIPT.json').read_text())
+          assert len(orig['rows'])==len(new['rows'])==len(model['models'])==239
+          assert new['counts']==dict(direct_primary_R=174,shared_substantive_R_evidence=2,
+                                    older_scoped_only=5,not_linked_in_checked_sets=58,
+                                    pending_including_old_scoped=63)
+          for i,(o,n,m) in enumerate(zip(orig['rows'],new['rows'],model['models'])):
+              assert o['catalogue_id']==n['catalogue_id']==m['id']
+              assert o['catalogue_name_en']==n['catalogue_name_en']==m['name_en']
+              assert n['original_v0_1_link_status']==o['link_status']
+              assert n['catalogue_category']==o['catalogue_category']
+              assert n['original_priority']==o['original_priority']
+              if n['catalogue_id'] not in {'01-008','02-002','04-001'}:
+                  assert n['link_status']==o['link_status']
+                  assert n['proposed_primary_research_id']==o['proposed_primary_research_id']
+                  assert n['scientific_evidence_grade']==o['scientific_evidence_grade']
+          expected={'01-008':('SHARED_CORE_FORMULA_E1_NO_SEPARATE_PRIMARY_R','R111'),
+                    '04-001':('SHARED_ORIGINAL_GRANOVETTER_1978_E1_NO_SEPARATE_PRIMARY_R','R118')}
+          for id,(status,R) in expected.items():
+              z=next(r for r in new['rows'] if r['catalogue_id']==id)
+              assert z['link_status']==status and z['shared_substantive_R_relation']['source_R']==R
+              assert z['proposed_primary_research_id'] is None
+              for p in ('report','acceptance'):
+                  assert (base/z['shared_substantive_R_relation'][p]).is_file()
+          td=next(r for r in new['rows'] if r['catalogue_id']=='02-002')
+          assert td['proposed_primary_research_id']=='R286'
+          assert json.loads((base/'research/R286/R286_FINAL_ACCEPTANCE_STATUS.json').read_text())['outcome'].startswith('CLOSED_BOUNDED_E1')
+          assert results['summary']['still_pending_primary_R_links']==63
+          assert not results['summary']['scientific_acceptance_of_all_239_certified']
+          fields={
+            'original_239_catalogue_sha256':docs/'MODEL_CANDIDATE_CATALOG_v0.1.json',
+            'crosswalk_v0_1_sha256':docs/'ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json',
+            'crosswalk_v0_2_sha256':docs/'ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.2_2026-10-23.json',
+            'original_74_ZIP_member_scan_sha256':docs/'ORIGINAL_239_P0_EARLY_74_ZIP_CONTENT_SCAN_RESULTS.json',
+            'R286_final_acceptance_sha256':base/'research/R286/R286_FINAL_ACCEPTANCE_STATUS.json',
+            'summary_sha256':docs/'ORIGINAL_239_P0_RECONCILIATION_MACHINE_RESULTS.json'}
+          for k,p in fields.items():assert hashlib.sha256(p.read_bytes()).hexdigest()==receipt[k]
+          print('P0_RECONCILIATION_239_ROWS_174_DIRECT_2_SHARED_63_PENDING_SUCCESS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-P0-Evidence-Crosswalk-v0.2
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.2_2026-10-23.json
+            docs/ORIGINAL_239_P0_RECONCILIATION_MACHINE_RESULTS.json
+            docs/ORIGINAL_239_P0_RECONCILIATION_SHA256_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive P0 source-scope reconciliation and hashes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/ORIGINAL_239_P0_RECONCILIATION_MACHINE_RESULTS.json docs/ORIGINAL_239_P0_RECONCILIATION_SHA256_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(audit): 239 entries, 174 direct, two shared bounded P0 and 63 still pending'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'P0_239_SOURCE_SCOPE_AUDIT_RESULTS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
