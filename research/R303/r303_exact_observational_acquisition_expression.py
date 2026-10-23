@@ -93,8 +93,8 @@ def emit():
       "model_consequence","consequence_factor","phase","latent_acquisition_probability",
       "production_available_probability","expression_factor","imitative_response_probability",
       "no_observation_baseline_probability","incentive_minus_spontaneous_probability")
-    p=ROOT/CSV_NAME
-    with p.open("w",newline="",encoding="utf-8") as f:
+    csvpath=ROOT/CSV_NAME
+    with csvpath.open("w",newline="",encoding="utf-8") as f:
         w=csv.DictWriter(f,fieldnames=cols,lineterminator="\n")
         w.writeheader()
         for source in sources():w.writerow({k:str(source[k]) for k in cols})
@@ -128,7 +128,7 @@ def emit():
     rp=ROOT/RESULT_NAME
     rp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     rec={"research_id":"R303","freeze_commit":FREEZE,"source_rows":486,
-      "source_sha256":hashlib.sha256(p.read_bytes()).hexdigest(),
+      "source_sha256":hashlib.sha256(csvpath.read_bytes()).hexdigest(),
       "results_sha256":hashlib.sha256(rp.read_bytes()).hexdigest(),
       "new_real_E2":0,"new_historical_E3":0}
     (ROOT/RECEIPT_NAME).write_text(json.dumps(rec,indent=2)+"\n",encoding="utf-8")
