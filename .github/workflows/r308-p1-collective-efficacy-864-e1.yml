@@ -1,0 +1,67 @@
+name: R308 Collective Efficacy Belief and Action Proxy 864 Synthetic E1
+on:
+  push:
+    paths:
+      - 'research/R308/r308_exact_collective_efficacy_belief_action.py'
+      - 'research/catalogue_audit/independent_r308_source_audit.py'
+      - '.github/workflows/r308-p1-collective-efficacy-864-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-collective-efficacy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 2607 exact synthetic collective belief and action proxy unit tests
+        run: python research/R308/r308_exact_collective_efficacy_belief_action.py --test
+      - name: Emit original 864 synthetic channel rows and independently enumerate action gate possibilities
+        run: |
+          python research/R308/r308_exact_collective_efficacy_belief_action.py --emit
+          python research/catalogue_audit/independent_r308_source_audit.py --test
+          python research/catalogue_audit/independent_r308_source_audit.py --audit
+  independent-archive:
+    needs: dual-python-collective-efficacy
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all 864 original source rows and 432 worlds with independent 4-Bernoulli-gate calculation
+        run: |
+          python research/R308/r308_exact_collective_efficacy_belief_action.py --emit
+          python research/catalogue_audit/independent_r308_source_audit.py --test
+          python research/catalogue_audit/independent_r308_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R308-864-Collective-Efficacy-Synthetic-Source-Rows
+          path: |
+            research/R308/R308_ALL_864_ORIGINAL_COLLECTIVE_EFFICACY_CHANNEL_SOURCES.csv
+            research/R308/R308_EXACT_COLLECTIVE_EFFICACY_RESULTS.json
+            research/R308/R308_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Commit source dataset and original scientific SHA256 receipt permanently
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R308/R308_ALL_864_ORIGINAL_COLLECTIVE_EFFICACY_CHANNEL_SOURCES.csv research/R308/R308_EXACT_COLLECTIVE_EFFICACY_RESULTS.json research/R308/R308_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R308): 864 artificial collective efficacy belief and action source rows'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R308_ORIGINAL_SOURCE_DATA_SHA256_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
