@@ -1,0 +1,6 @@
+# Original239 v4.6 R328 predictive error itemwise audit
+Date 2026-10-24. Candidate 02-010 Predictive Processing was first in the 17-item v4.5 pending queue. Checked R300 HMM, R112 Bayesian updating, R326 hierarchical Bayes and R327 POMDP; no identical precision-weighted scalar residual gradient verified in their scoped reports. Historical ZIP full itemwise review remains OPEN.
+
+Prescore R328 freeze commit cf240df27b0fa1391fb03be2e714e8d498ed83de preceded original source commit 5a6a011a359c8528b5443ff61041876250e353fd. Science CI 40029363018 completed 3/3 success. R328 contains 120 artificial scalar prediction-error source states, 24 precision worlds, independent no-import closed-form audit and tamper rejection. Formal scientific grade is only bounded constructed E1. No real neural signal, human E2, historical E3 or Rao-Ballard original natural-image replication.
+
+This v4.6 changes only 02-010 while preserving 239 candidate IDs/order and all other row contents. Counts: 220 primary R, 3 shared bounded math, 16 pending, 173 provisional README associations. Next pending 02-011 Active Inference. Catalogue association does not imply empirical validation. R073 and PESEN v0.1 frozen; classification, fusion and personal decision system deferred.
