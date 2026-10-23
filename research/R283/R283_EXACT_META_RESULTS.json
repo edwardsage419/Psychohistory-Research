@@ -1,0 +1,60 @@
+{
+  "research_id": "R283",
+  "original_catalogue_id": "12-013",
+  "prescore_freeze_commit": "310b134383db1b08b66750d12d7229005426b439",
+  "scope": "E1_THREE_SYNTHETIC_STUDIES_NOT_REAL_LITERATURE_REVIEW",
+  "registry": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "complete_original_sources": 192,
+  "no_literature_search_or_real_studies": true,
+  "oracle_weights_require_unobserved_true_variances": true,
+  "all_three_independent_three_study_trinomial_checks_match": true,
+  "human_E2": 0,
+  "historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "results": [
+    {
+      "regime": "HOMOGENEOUS",
+      "original_sources": 64,
+      "oracle_weights": [
+        "8/3",
+        "8/3",
+        "8/3"
+      ],
+      "pooled_mean": "1/2",
+      "pooled_variance": "1/8",
+      "expected_Q": "2",
+      "posthoc_largest_mean": "469/512"
+    },
+    {
+      "regime": "BALANCED_HETEROGENEITY",
+      "original_sources": 64,
+      "oracle_weights": [
+        "8/3",
+        "2",
+        "8/3"
+      ],
+      "pooled_mean": "0",
+      "pooled_variance": "3/22",
+      "expected_Q": "10/3",
+      "posthoc_largest_mean": "175/256"
+    },
+    {
+      "regime": "ONE_REVERSAL",
+      "original_sources": 64,
+      "oracle_weights": [
+        "8/3",
+        "8/3",
+        "8/3"
+      ],
+      "pooled_mean": "1/6",
+      "pooled_variance": "1/8",
+      "expected_Q": "34/9",
+      "posthoc_largest_mean": "419/512"
+    }
+  ]
+}
