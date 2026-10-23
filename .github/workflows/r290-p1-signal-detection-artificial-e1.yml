@@ -1,0 +1,49 @@
+name: R290 P1 Signal Detection Exact E1 Audit
+on:
+  push:
+    paths:
+      - 'research/R290/**'
+      - 'research/catalogue_audit/independent_r290_source_audit.py'
+      - '.github/workflows/r290-p1-signal-detection-artificial-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  model-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute 117 actual model unit tests
+        run: python research/R290/r290_exact_signal_detection.py --test
+      - name: Recreate exact source and hash-preserved results
+        run: |
+          python research/R290/r290_exact_signal_detection.py --emit
+          git diff --exit-code -- research/R290/R290_ALL_120_ORIGINAL_LABELED_SIGNAL_SOURCE_CELLS.csv research/R290/R290_EXACT_SIGNAL_DETECTION_RESULTS.json research/R290/R290_MACHINE_RECEIPT.json
+  independent-source-audit:
+    needs: model-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run independent audit and adversarial negative tests
+        run: |
+          python research/catalogue_audit/independent_r290_source_audit.py --test
+          python research/catalogue_audit/independent_r290_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R290-Exact-120-Source-And-12-World-E1-Audit
+          path: |
+            research/R290/R290_ALL_120_ORIGINAL_LABELED_SIGNAL_SOURCE_CELLS.csv
+            research/R290/R290_EXACT_SIGNAL_DETECTION_RESULTS.json
+            research/R290/R290_MACHINE_RECEIPT.json
+          retention-days: 90
