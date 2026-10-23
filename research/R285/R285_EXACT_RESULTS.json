@@ -1,0 +1,133 @@
+{
+  "research_id": "R285",
+  "original_catalogue_id": "12-015",
+  "prescore_freeze_commit": "923b083cc61cbafdd339136fe9b5c407cffb88bf",
+  "scope": "E1_ARTIFICIAL_TWO_HYPOTHESIS_DISCRETE_MULTIPLE_TESTING",
+  "worlds": 9,
+  "complete_original_source_types": 2304,
+  "primitive_eightbit_source_space_size_per_world": 256,
+  "family_nominal_alpha": "1/2",
+  "alpha_purpose": "illustrative discrete threshold, not recommended real-world significance level",
+  "frozen_null_one_sided_pvalues": [
+    "1",
+    "15/16",
+    "11/16",
+    "5/16",
+    "1/16"
+  ],
+  "no_real_human_E2": 0,
+  "no_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "all_nine_source_vs_binomial_25_class_moments_verified": true,
+  "world_results": [
+    {
+      "world": "BOTH_NULL_RAW_UNADJUSTED",
+      "regime": "BOTH_NULL",
+      "policy": "RAW_UNADJUSTED",
+      "original_source_types": 256,
+      "expected_FWER": "135/256",
+      "expected_FDR": "135/256",
+      "expected_false_discoveries": "5/8",
+      "expected_true_discoveries": "0",
+      "expected_total_rejections": "5/8",
+      "independent_25_class_binomial_analysis_verified": true
+    },
+    {
+      "world": "BOTH_NULL_HOLM_FWER",
+      "regime": "BOTH_NULL",
+      "policy": "HOLM_FWER",
+      "original_source_types": 256,
+      "expected_FWER": "31/256",
+      "expected_FDR": "31/256",
+      "expected_false_discoveries": "5/32",
+      "expected_true_discoveries": "0",
+      "expected_total_rejections": "5/32",
+      "independent_25_class_binomial_analysis_verified": true
+    },
+    {
+      "world": "BOTH_NULL_BH_FDR",
+      "regime": "BOTH_NULL",
+      "policy": "BH_FDR",
+      "original_source_types": 256,
+      "expected_FWER": "47/256",
+      "expected_FDR": "47/256",
+      "expected_false_discoveries": "9/32",
+      "expected_true_discoveries": "0",
+      "expected_total_rejections": "9/32",
+      "independent_25_class_binomial_analysis_verified": true
+    },
+    {
+      "world": "ONE_SIGNAL_RAW_UNADJUSTED",
+      "regime": "ONE_SIGNAL",
+      "policy": "RAW_UNADJUSTED",
+      "original_source_types": 256,
+      "expected_FWER": "5/16",
+      "expected_FDR": "1615/8192",
+      "expected_false_discoveries": "5/16",
+      "expected_true_discoveries": "189/256",
+      "expected_total_rejections": "269/256",
+      "independent_25_class_binomial_analysis_verified": true
+    },
+    {
+      "world": "ONE_SIGNAL_HOLM_FWER",
+      "regime": "ONE_SIGNAL",
+      "policy": "HOLM_FWER",
+      "original_source_types": 256,
+      "expected_FWER": "145/1024",
+      "expected_FDR": "647/8192",
+      "expected_false_discoveries": "145/1024",
+      "expected_true_discoveries": "351/1024",
+      "expected_total_rejections": "31/64",
+      "independent_25_class_binomial_analysis_verified": true
+    },
+    {
+      "world": "ONE_SIGNAL_BH_FDR",
+      "regime": "ONE_SIGNAL",
+      "policy": "BH_FDR",
+      "original_source_types": 256,
+      "expected_FWER": "253/1024",
+      "expected_FDR": "1079/8192",
+      "expected_false_discoveries": "253/1024",
+      "expected_true_discoveries": "459/1024",
+      "expected_total_rejections": "89/128",
+      "independent_25_class_binomial_analysis_verified": true
+    },
+    {
+      "world": "BOTH_SIGNAL_RAW_UNADJUSTED",
+      "regime": "BOTH_SIGNAL",
+      "policy": "RAW_UNADJUSTED",
+      "original_source_types": 256,
+      "expected_FWER": "0",
+      "expected_FDR": "0",
+      "expected_false_discoveries": "0",
+      "expected_true_discoveries": "189/128",
+      "expected_total_rejections": "189/128",
+      "independent_25_class_binomial_analysis_verified": true
+    },
+    {
+      "world": "BOTH_SIGNAL_HOLM_FWER",
+      "regime": "BOTH_SIGNAL",
+      "policy": "HOLM_FWER",
+      "original_source_types": 256,
+      "expected_FWER": "0",
+      "expected_FDR": "0",
+      "expected_false_discoveries": "0",
+      "expected_true_discoveries": "7371/8192",
+      "expected_total_rejections": "7371/8192",
+      "independent_25_class_binomial_analysis_verified": true
+    },
+    {
+      "world": "BOTH_SIGNAL_BH_FDR",
+      "regime": "BOTH_SIGNAL",
+      "policy": "BH_FDR",
+      "original_source_types": 256,
+      "expected_FWER": "0",
+      "expected_FDR": "0",
+      "expected_false_discoveries": "0",
+      "expected_true_discoveries": "10287/8192",
+      "expected_total_rejections": "10287/8192",
+      "independent_25_class_binomial_analysis_verified": true
+    }
+  ]
+}
