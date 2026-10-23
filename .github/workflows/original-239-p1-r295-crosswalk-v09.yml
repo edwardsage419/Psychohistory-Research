@@ -1,0 +1,46 @@
+name: Original 239 P1 R295 Habit Evidence Crosswalk v0.9
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r295_crosswalk_v0_9.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.9_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_53_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r295-crosswalk-v09.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 14 original 239 row and R295 SHA256 tests
+        run: python research/catalogue_audit/verify_p1_r295_crosswalk_v0_9.py --test
+  independent-source-and-catalogue-audit:
+    needs: dual-python-provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify unchanged 238 links and independent R295 180 source reconstruction
+        run: |
+          python research/catalogue_audit/verify_p1_r295_crosswalk_v0_9.py --audit
+          python research/catalogue_audit/independent_r295_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R295-v09-183Primary-53Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.9_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_53_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R295/R295_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
