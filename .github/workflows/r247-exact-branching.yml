@@ -1,0 +1,112 @@
+name: R247 Exact Finite Galton Watson and Correlated Branching Sources
+on:
+  push:
+    paths:
+      - 'research/R247/r247_exact_finite_branching.py'
+      - '.github/workflows/r247-exact-branching.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-branching-source-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test complete finite family sources, iid offspring PGF and correlated survival
+        run: python research/R247/r247_exact_finite_branching.py --test
+  all-original-family-atom-archive:
+    needs: dual-python-branching-source-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate complete 2304 8-bit sources and independently verify exact branching contrasts
+        run: |
+          python research/R247/r247_exact_finite_branching.py --emit
+          python - <<'PY'
+          import csv,json,hashlib
+          from pathlib import Path
+          from fractions import Fraction as F
+          d=Path('research/R247')
+          rows=list(csv.DictReader((d/'R247_ALL_2304_ORIGINAL_BINARY_TREE_FAMILY_SOURCES.csv').open()))
+          data=json.loads((d/'R247_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R247_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==2304 and len(data['world_results'])==9
+          assert data['original_catalogue_id']==rec['original_catalogue_id']=='11-007'
+          by={w['world']:w for w in data['world_results']}
+          assert len(by)==9
+          for world,w in by.items():
+              sub=[r for r in rows if r['world']==world]
+              assert len(sub)==256
+              keys=['oracle_hidden_environment_U']+['oracle_original_node_bit_B'+str(i) for i in range(7)]
+              assert len({tuple(r[k] for k in keys) for r in sub})==256
+              assert all(F(r['original_complete_source_probability'])==F(1,256) for r in sub)
+              assert sum((F(r['original_complete_source_probability']) for r in sub),F(0))==1
+              assert len(w['observed_expected_generation_sizes_by_generation'])==4
+              assert len(w['observed_survival_probabilities_by_generation'])==4
+              assert w['observed_expected_generation_sizes_by_generation'][0]=='1'
+              assert w['observed_survival_probabilities_by_generation'][0]=='1'
+              assert sum((F(p) for p in w['observed_full_four_generation_family_path_joint'].values()),F(0))==1
+              assert sum((F(p) for p in w['observed_generation3_distribution'].values()),F(0))==1
+              source_expected=sum((F(r['observed_generation_size_Y3'],256) for r in sub),F(0))
+              source_survival=sum((F(int(r['observed_generation_size_Y3']!='0'),256) for r in sub),F(0))
+              assert str(source_expected)==w['observed_expected_generation_sizes_by_generation'][3]
+              assert str(source_survival)==w['observed_survival_probabilities_by_generation'][3]
+          critical=by['IID_FAIR_0_OR_2']
+          assert critical['observed_expected_generation_sizes_by_generation'][-1]=='1'
+          assert critical['observed_survival_probabilities_by_generation'][-1]=='39/128'
+          assert critical['observed_generation3_distribution']['0']=='89/128'
+          assert by['IID_SUBCRITICAL_0_OR_1']['observed_expected_generation_sizes_by_generation'][-1]=='1/8'
+          assert by['IID_SUBCRITICAL_0_OR_1']['observed_survival_probabilities_by_generation'][-1]=='1/8'
+          assert by['IID_SUPERCRITICAL_1_OR_2']['observed_expected_generation_sizes_by_generation'][-1]=='27/8'
+          assert by['IID_SUPERCRITICAL_1_OR_2']['observed_survival_probabilities_by_generation'][-1]=='1'
+          assert by['DETERMINISTIC_ONE']['observed_expected_generation_sizes_by_generation'][-1]=='1'
+          assert by['DETERMINISTIC_TWO']['observed_expected_generation_sizes_by_generation'][-1]=='8'
+          assert by['GLOBAL_SHARED_ENVIRONMENT']['observed_expected_generation_sizes_by_generation'][-1]=='4'
+          assert by['GLOBAL_SHARED_ENVIRONMENT']['observed_survival_probabilities_by_generation'][-1]=='1/2'
+          assert by['GENERATION_SHARED_SHOCK']['observed_expected_generation_sizes_by_generation'][-1]=='1'
+          assert by['GENERATION_SHARED_SHOCK']['observed_survival_probabilities_by_generation'][-1]=='1/8'
+          assert by['SIBLING_ANTICORRELATED_OFFSPRING']['observed_survival_probabilities_by_generation'][-1]=='3/8'
+          alias=by['STATIC_HIDDEN_TREE_SENSOR_ALIAS']
+          assert critical['observed_full_four_generation_family_path_joint']==alias['observed_full_four_generation_family_path_joint']
+          assert alias['true_hidden_generation3_size_by_complete_exogenous_source']==[0]*256
+          for w in by:
+              if w in ('GLOBAL_SHARED_ENVIRONMENT','GENERATION_SHARED_SHOCK','SIBLING_ANTICORRELATED_OFFSPRING'):
+                  assert by[w]['correlated_shared_parent_offspring_not_assumed_iid']
+              else:
+                  assert by[w]['independent_classical_iid_offspring_PGF_certified']
+          for name,key in [('R247_ALL_2304_ORIGINAL_BINARY_TREE_FAMILY_SOURCES.csv','source_sha256'),
+                           ('R247_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/name).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R247_ALL_2304_BINARY_BRANCHING_SOURCE_FAMILIES_AND_INDEPENDENT_IID_PGF_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R247-All-Original-Nine-Branching-Family-Worlds
+          path: |
+            research/R247/R247_ALL_2304_ORIGINAL_BINARY_TREE_FAMILY_SOURCES.csv
+            research/R247/R247_EXACT_RESULTS.json
+            research/R247/R247_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive 2304 original source family trees to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R247/R247_ALL_2304_ORIGINAL_BINARY_TREE_FAMILY_SOURCES.csv research/R247/R247_EXACT_RESULTS.json research/R247/R247_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R247): all 2304 original 8-bit branching family atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
