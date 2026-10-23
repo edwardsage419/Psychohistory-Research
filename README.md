@@ -828,3 +828,14 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 原目录11-028 AIC and BIC（P1）正式研究R268已按[事前冻结协议](protocols/R268_AIC_BIC_NINE_BERNOULLI_WORLDS_3312_COMPLETE_SOURCE_PRESCORE_FREEZE_2026-10-23.md)完整验证。9个人工Bernoulli世界、3312有序全原source，原数据与Binomial独立解析概率两路径完全一致。n=4两准则分歧时BIC倾向较复杂M1，n=6无分歧，n=10分歧时AIC偏向M1。[完整科研报告](research/R268/R268_SCIENTIFIC_REPORT_2026-10-23.md) · [正式E1有界机器验收](research/R268/R268_FINAL_ACCEPTANCE_STATUS.json) · [原始来源永久归档215333c1](https://github.com/edwardsage419/Psychohistory-Research/commit/215333c1b7e3abaf6c43e8094d4a86e8244af12a) · [3-job GitHub Actions run39901449413](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39901449413)。Python3.11和3.12分别84真测试，合计168项通过。
 
 [R266至R268三项连续原目录研究总索引](docs/R266_R268_MONTE_CARLO_LHS_AIC_BIC_CONTINUOUS_E1_CLOSURE_INDEX_2026-10-23.md)：27个人工冻结world、15525条完整人工原source类型、712项真实双Python单元测试、3次CI各3job全部success。全部仅E1，没有新增真人E2或真实历史E3；没有AIC/BIC样本外预测优越性验收。后续为原目录11-029 Cross Validation（拟R269）。原R完成之前不开展统一归纳分类或原创模型熔炼，R073/PESEN v0.1冻结。
+
+
+## 2026-10-23 R269交叉验证与R270后验预测检验，原239目录接续
+
+原239候选目录11-029 Cross Validation（P0）与11-030 Posterior Predictive Checks（P1）已按先冻协议、独立数学源码、完整原source、Python3.11/3.12真实测试、独立第三审核、GitHub永久归档的统一标准完成有界人工E1研究。
+
+[R269完整研究包](research/R269/README.md) · [正式科学报告](research/R269/R269_SCIENTIFIC_REPORT_2026-10-23.md) · [CI run39902238505](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39902238505)：九个人工双复制群组world、576原来源、166真实单测、三job全绿。按行留一时同组记忆器Brier恒0，整组留一后为1/4；故预测未见群组不能用行内验证分数代替。完整CSV与SHA已永久main归档[23b88012](https://github.com/edwardsage419/Psychohistory-Research/commit/23b88012cc4811666aa47d51e16f2df3d79e9760)。
+
+[R270完整研究包](research/R270/README.md) · [正式科学报告](research/R270/R270_SCIENTIFIC_REPORT_2026-10-23.md) · [CI run39902465686](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39902465686)：九个冻结Beta先验×六位人工观察world、576完整有序后验复制source、166真实单测、三job全绿。三个K=3观察序列因排列结构不同，在相邻相同统计下产生不同后验预测尾概率；ALTERNATING的上尾1，正确下尾依先验为10/429、7/286、16/715。全部原source与SHA永久归档[33e6663e](https://github.com/edwardsage419/Psychohistory-Research/commit/33e6663e903b16f8c31e2d9e219696b6e99a3338)。
+
+[两项目科学证据与归档汇总索引](docs/R269_R270_GROUP_CV_POSTERIOR_PREDICTIVE_E1_CLOSURE_INDEX_2026-10-23.md)：九+九人工world、1152个原source配置、332次真实双Python测试和两个三job完成CI。新增真实人类E2及真实历史E3仍为0，R073和PESEN v0.1冻结。原模型目录类别11在11-030结束，**下一条直接为12-001 Preregistration and Registered Reports（P0，拟R271）**，没有11-031。依既定顺序优先完成剩余R研究，然后统一归纳分类，最后熔炼原创模型。
