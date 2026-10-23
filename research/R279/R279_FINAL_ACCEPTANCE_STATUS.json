@@ -1,0 +1,40 @@
+{
+  "research_id": "R279",
+  "original_catalogue_id": "12-009",
+  "outcome": "CLOSED_BOUNDED_E1_ARTIFICIAL_POPULATION_FORECAST_CALIBRATION",
+  "freeze_commit": "acb48cd4e0640ac36c56d9bfdfa2fc111c720d11",
+  "program_initial_commit": "1caa795f50ba7c7da4c2f99dd6ca173e5e0e8a6f",
+  "program_syntax_fix_commit": "40fa945d0273b085279576f52b5abd0e3d24c284",
+  "ci_workflow_commit": "57467dc4431f41d82dfacc5e1b0ab732158a5330",
+  "archived_complete_source_commit": "1f7275b346824e5b235a9fcdf59bd10d40028d6c",
+  "first_ci_run_id": 39904785939,
+  "first_ci_status": "completed",
+  "first_ci_conclusion": "failure",
+  "final_ci_run_id": 39904942557,
+  "final_ci_status": "completed",
+  "final_ci_conclusion": "success",
+  "final_success_jobs": 3,
+  "python_3_11_real_tests": 84,
+  "python_3_12_real_tests": 84,
+  "artificial_worlds": 9,
+  "original_full_source_types": 144,
+  "source_types_positive_probability": 99,
+  "population_murphy_decompositions_independently_verified": 9,
+  "source_sha256": "c2c64e3a2bb4c5b1248663301ac50528e3762776ea3d4ef5ff2eeddf342edab0",
+  "results_sha256": "985764e4205d5673a0e2c7ca33f8e5589252ff6a5b5de39b617912773700da7f",
+  "findings": [
+    "Always predicting 1/2 can be perfectly calibrated in a population with mean outcome 1/2 yet have zero risk resolution.",
+    "With fixed true groups 1/4,3/4, group forecast expected Brier 3/16 beats flat calibrated Brier 1/4.",
+    "Decomposition uses true-population conditional rates, not a sample-based empirical decomposition."
+  ],
+  "limits": [
+    "Artificial fixed two-group binary probability mechanisms only.",
+    "Never treat 144 world-labeled source configurations as 144 independent human datasets."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": "12-010",
+  "next_research": "R280"
+}
