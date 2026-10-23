@@ -1,0 +1,44 @@
+name: R318 CPT Rank Sign Finite Exact E1
+on:
+  push:
+    paths:
+      - 'research/R318/**'
+      - 'research/catalogue_audit/independent_r318_cpt_source_audit.py'
+      - '.github/workflows/r318-cpt-sign-rank-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rational-CPT:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact illustrative CPT signed rank unit tests
+        run: python research/R318/r318_exact_cpt_rank_sign.py --test
+      - name: Verify complete 72 atoms and 36 valuations
+        run: python research/R318/r318_exact_cpt_rank_sign.py --audit
+  independent-odds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify all outcome atoms using odds formula
+        run: python research/catalogue_audit/independent_r318_cpt_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R318-CPT-72Atoms-36Lotteries-Synthetic-E1
+          path: |
+            research/R318/R318_ALL_72_ORIGINAL_RANK_SIGN_OUTCOME_SOURCE_ATOMS.csv
+            research/R318/R318_EXACT_36_TWO_OUTCOME_CPT_VALUES.json
+          retention-days: 90
