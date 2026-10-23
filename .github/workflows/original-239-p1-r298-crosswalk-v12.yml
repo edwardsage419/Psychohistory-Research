@@ -1,0 +1,46 @@
+name: Original 239 P1 R298 Model-Based RL Crosswalk v1.2
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r298_crosswalk_v1_2.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.2_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_50_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r298-crosswalk-v12.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: 15 exact original 239 candidate and R298 byte hash checks
+        run: python research/catalogue_audit/verify_p1_r298_crosswalk_v1_2.py --test
+  independent-original-catalogue-and-source:
+    needs: dual-python-provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify 02-004 only and all 64 source revaluation rows
+        run: |
+          python research/catalogue_audit/verify_p1_r298_crosswalk_v1_2.py --audit
+          python research/catalogue_audit/independent_r298_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R298-v12-186Primary-50Pending-NotE2
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.2_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_50_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R298/R298_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
