@@ -1,0 +1,182 @@
+{
+  "research_id": "R292",
+  "original_catalogue_id": "01-014",
+  "freeze_commit": "eaec7179a52e01fa86130e7c496c620093205500",
+  "scope": "SYNTHETIC_E1_TPB_PERCEIVED_CONTROL_VS_ACTUAL_FEASIBILITY",
+  "worlds_count": 8,
+  "original_positive_source_cells": 256,
+  "new_real_human_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "worlds": [
+    {
+      "world": "BALANCED__UNINFORMATIVE",
+      "profile": "BALANCED",
+      "calibration": "UNINFORMATIVE",
+      "kappa": 0,
+      "a": 1,
+      "n": 1,
+      "c": 1,
+      "complete_source_cells": 32,
+      "source_mass": "1",
+      "Brier_risk": {
+        "FULL_ANC": "189/1024",
+        "TRA_AN": "95/512",
+        "CONTROL_ONLY_C": "191/1024",
+        "CONSTANT": "3/16"
+      },
+      "omitting_perceived_control_excess_risk": "1/1024",
+      "behavior_given_intention_1_control_contrast": "0",
+      "behavior_given_intention_0_control_contrast": "0",
+      "matches_independent_closed_form": true
+    },
+    {
+      "world": "BALANCED__INFORMATIVE",
+      "profile": "BALANCED",
+      "calibration": "INFORMATIVE",
+      "kappa": 1,
+      "a": 1,
+      "n": 1,
+      "c": 1,
+      "complete_source_cells": 32,
+      "source_mass": "1",
+      "Brier_risk": {
+        "FULL_ANC": "689/4096",
+        "TRA_AN": "791/4096",
+        "CONTROL_ONLY_C": "699/4096",
+        "CONSTANT": "799/4096"
+      },
+      "omitting_perceived_control_excess_risk": "51/2048",
+      "behavior_given_intention_1_control_contrast": "1/2",
+      "behavior_given_intention_0_control_contrast": "0",
+      "matches_independent_closed_form": true
+    },
+    {
+      "world": "CONTROL_HEAVY__UNINFORMATIVE",
+      "profile": "CONTROL_HEAVY",
+      "calibration": "UNINFORMATIVE",
+      "kappa": 0,
+      "a": 1,
+      "n": 1,
+      "c": 2,
+      "complete_source_cells": 32,
+      "source_mass": "1",
+      "Brier_risk": {
+        "FULL_ANC": "93/512",
+        "TRA_AN": "95/512",
+        "CONTROL_ONLY_C": "47/256",
+        "CONSTANT": "3/16"
+      },
+      "omitting_perceived_control_excess_risk": "1/256",
+      "behavior_given_intention_1_control_contrast": "0",
+      "behavior_given_intention_0_control_contrast": "0",
+      "matches_independent_closed_form": true
+    },
+    {
+      "world": "CONTROL_HEAVY__INFORMATIVE",
+      "profile": "CONTROL_HEAVY",
+      "calibration": "INFORMATIVE",
+      "kappa": 1,
+      "a": 1,
+      "n": 1,
+      "c": 2,
+      "complete_source_cells": 32,
+      "source_mass": "1",
+      "Brier_risk": {
+        "FULL_ANC": "337/2048",
+        "TRA_AN": "205/1024",
+        "CONTROL_ONLY_C": "171/1024",
+        "CONSTANT": "207/1024"
+      },
+      "omitting_perceived_control_excess_risk": "73/2048",
+      "behavior_given_intention_1_control_contrast": "1/2",
+      "behavior_given_intention_0_control_contrast": "0",
+      "matches_independent_closed_form": true
+    },
+    {
+      "world": "CONTROL_NULL__UNINFORMATIVE",
+      "profile": "CONTROL_NULL",
+      "calibration": "UNINFORMATIVE",
+      "kappa": 0,
+      "a": 1,
+      "n": 1,
+      "c": 0,
+      "complete_source_cells": 32,
+      "source_mass": "1",
+      "Brier_risk": {
+        "FULL_ANC": "95/512",
+        "TRA_AN": "95/512",
+        "CONTROL_ONLY_C": "3/16",
+        "CONSTANT": "3/16"
+      },
+      "omitting_perceived_control_excess_risk": "0",
+      "behavior_given_intention_1_control_contrast": "0",
+      "behavior_given_intention_0_control_contrast": "0",
+      "matches_independent_closed_form": true
+    },
+    {
+      "world": "CONTROL_NULL__INFORMATIVE",
+      "profile": "CONTROL_NULL",
+      "calibration": "INFORMATIVE",
+      "kappa": 1,
+      "a": 1,
+      "n": 1,
+      "c": 0,
+      "complete_source_cells": 32,
+      "source_mass": "1",
+      "Brier_risk": {
+        "FULL_ANC": "347/2048",
+        "TRA_AN": "95/512",
+        "CONTROL_ONLY_C": "11/64",
+        "CONSTANT": "3/16"
+      },
+      "omitting_perceived_control_excess_risk": "33/2048",
+      "behavior_given_intention_1_control_contrast": "1/2",
+      "behavior_given_intention_0_control_contrast": "0",
+      "matches_independent_closed_form": true
+    },
+    {
+      "world": "NORM_HEAVY__UNINFORMATIVE",
+      "profile": "NORM_HEAVY",
+      "calibration": "UNINFORMATIVE",
+      "kappa": 0,
+      "a": 1,
+      "n": 2,
+      "c": 1,
+      "complete_source_cells": 32,
+      "source_mass": "1",
+      "Brier_risk": {
+        "FULL_ANC": "93/512",
+        "TRA_AN": "187/1024",
+        "CONTROL_ONLY_C": "191/1024",
+        "CONSTANT": "3/16"
+      },
+      "omitting_perceived_control_excess_risk": "1/1024",
+      "behavior_given_intention_1_control_contrast": "0",
+      "behavior_given_intention_0_control_contrast": "0",
+      "matches_independent_closed_form": true
+    },
+    {
+      "world": "NORM_HEAVY__INFORMATIVE",
+      "profile": "NORM_HEAVY",
+      "calibration": "INFORMATIVE",
+      "kappa": 1,
+      "a": 1,
+      "n": 2,
+      "c": 1,
+      "complete_source_cells": 32,
+      "source_mass": "1",
+      "Brier_risk": {
+        "FULL_ANC": "337/2048",
+        "TRA_AN": "779/4096",
+        "CONTROL_ONLY_C": "699/4096",
+        "CONSTANT": "799/4096"
+      },
+      "omitting_perceived_control_excess_risk": "105/4096",
+      "behavior_given_intention_1_control_contrast": "1/2",
+      "behavior_given_intention_0_control_contrast": "0",
+      "matches_independent_closed_form": true
+    }
+  ]
+}
