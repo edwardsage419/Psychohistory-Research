@@ -1,0 +1,39 @@
+name: Original239 P2 R318 CPT Crosswalk v3.6
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p2_r318_crosswalk_v3_6.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.6_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_26_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p2-r318-crosswalk-v36.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify original239 R318 CPT only and 26 P2 gap queue
+        run: python research/catalogue_audit/verify_p2_r318_crosswalk_v3_6.py --test
+  independent-cpt:
+    needs: index
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconfirm 72 source atoms independently
+        run: python research/catalogue_audit/independent_r318_cpt_source_audit.py --audit
+      - name: Reconfirm Git blob and all 239 source invariants
+        run: python research/catalogue_audit/verify_p2_r318_crosswalk_v3_6.py --audit
