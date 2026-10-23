@@ -1,0 +1,113 @@
+name: R248 Exact Rational Dynamical Equilibria and Nonhyperbolic Local Proofs
+on:
+  push:
+    paths:
+      - 'research/R248/r248_exact_rational_equilibria.py'
+      - '.github/workflows/r248-exact-equilibria.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-rational-map-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all exact fixed points, polynomial sources and nonlinear local stability proofs
+        run: python research/R248/r248_exact_rational_equilibria.py --test
+  full-original-map-source-archive:
+    needs: dual-python-rational-map-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 405 original map points and independently audit nonhyperbolic certificates
+        run: |
+          python research/R248/r248_exact_rational_equilibria.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R248')
+          rows=list(csv.DictReader((d/'R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv').open()))
+          j=json.loads((d/'R248_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R248_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==405 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-008'
+          by={w['world']:w for w in j['world_results']}
+          assert len(by)==9
+          for name,w in by.items():
+              source=[x for x in rows if x['world']==name]
+              assert len(source)==45
+              assert len({(x['observed_initial_x0'],x['observed_time_step_n']) for x in source})==45
+              assert all(F(x['original_cohort_time_source_probability'])==F(1,45) for x in source)
+              assert sum((F(x['original_cohort_time_source_probability']) for x in source),F(0))==1
+              assert w['exact_all_stepwise_vs_polynomial_and_formal_derivative_certified']
+              assert w['all_finite_cohort_step4_flow_semigroup_certified']
+              assert len(w['nine_cohort_step4_exact_state'])==9
+              assert len(w['nine_cohort_step4_initial_sensitivities'])==9
+              for point in w['algebraic_fixed_point_and_local_multiplier_certificates']:
+                  if point['root']=='ALL_REAL':
+                      assert name=='IDENTITY_EVERY_POINT_FIXED'
+                      assert point['multiplier']=='1'
+                  else:
+                      assert F(point['root'])==F(point['root'])
+              assert len(w['observed_source_joint'])==45
+          expect={
+              'AFFINE_CONTRACT_ZERO':[('0','1/2')],
+              'AFFINE_CONTRACT_ONE':[('1','1/2')],
+              'AFFINE_ALTERNATE_CONTRACT':[('0','-1/2')],
+              'AFFINE_EXPAND_ZERO':[('0','2')],
+              'IDENTITY_EVERY_POINT_FIXED':[('ALL_REAL','1')],
+              'LOGISTIC_R2':[('0','2'),('1/2','0')],
+              'LOGISTIC_R3_BORDER':[('0','3'),('2/3','-1')],
+              'LOGISTIC_R4_REPELLER':[('0','4'),('3/4','-2')],
+              'CUBIC_NONHYPERBOLIC_ATTRACTOR':[('0','1')]
+          }
+          for name,pairs in expect.items():
+              assert [(c['root'],c['multiplier']) for c in by[name]['algebraic_fixed_point_and_local_multiplier_certificates']]==pairs
+          cert=j['nonhyperbolic_local_theorem_certificates']
+          assert cert['logistic_r3_second_iterate_y_polynomial_coefficients']==['0','1','0','-18','-27']
+          assert cert['logistic_r3_upper_bound_strict_factor_deficit']=='9/64'
+          assert cert['logistic_r3_second_iterate_strict_inward_and_local_asymptotic'] is True
+          assert cert['cubic_strict_magnitude_decrease_except_fixed_zero'] is True
+          assert cert['identity_every_real_is_fixed_no_single_point_attractor'] is True
+          assert cert['logistic_r4_special_initial_preimage']=='1/4'
+          assert cert['logistic_r4_repeller_fixed_point']=='3/4'
+          assert cert['logistic_r4_repeller_multiplier']=='-2'
+          assert by['IDENTITY_EVERY_POINT_FIXED']['nine_cohort_step4_exact_state']==['-1/2','-1/4','0','1/4','1/2','2/3','3/4','1','5/4']
+          assert by['LOGISTIC_R4_REPELLER']['nine_cohort_step4_exact_state'][3]=='3/4'
+          for fn,key in [('R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv','source_sha256'),
+                         ('R248_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/fn).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R248_ALL_405_RATIONAL_EQUILIBRIUM_SOURCE_MAPS_AND_NONHYPERBOLIC_THEOREMS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R248-Nine-Exact-Equilibrium-Worlds-405-Original-Sources
+          path: |
+            research/R248/R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv
+            research/R248/R248_EXACT_RESULTS.json
+            research/R248/R248_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all 405 original exact map points
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R248/R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv research/R248/R248_EXACT_RESULTS.json research/R248/R248_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R248): all 405 original rational map sources and local proofs'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
