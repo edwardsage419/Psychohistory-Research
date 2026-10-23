@@ -196,7 +196,7 @@ def world_result(w):
         frozen_source_service_probability=str(CONFIG[w][1]),
         frozen_event_order=CONFIG[w][2],
         full_original_ninebit_source_atoms=512,
-        exact_observed_queue_path_joint={"".join(map(str(k))):str(v) for k,v in joint.items()},
+        exact_observed_queue_path_joint={"".join(map(str,k)):str(v) for k,v in joint.items()},
         observed_queue_path_support_size=len(joint),
         exact_reported_expected_Q_each_bin=[str(x) for x in stats["mean_reported_Q_by_time"]],
         oracle_expected_total_offered=str(stats["mean_total_offered"]),
