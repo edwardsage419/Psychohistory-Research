@@ -1,0 +1,67 @@
+name: R302 Multi Armed Beta Thompson 162 Original Sources Exact E1
+on:
+  push:
+    paths:
+      - 'research/R302/r302_exact_beta_thompson_bandits.py'
+      - 'research/catalogue_audit/independent_r302_source_audit.py'
+      - '.github/workflows/r302-p1-multiarmed-thompson-beta-162-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-beta-thompson:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 660 exact Beta Bernoulli Thompson bandit tests
+        run: python research/R302/r302_exact_beta_thompson_bandits.py --test
+      - name: Emit 162 complete original arm sources and audit alternate beta integral
+        run: |
+          python research/R302/r302_exact_beta_thompson_bandits.py --emit
+          python research/catalogue_audit/independent_r302_source_audit.py --test
+          python research/catalogue_audit/independent_r302_source_audit.py --audit
+  independent-source-permanent-archive:
+    needs: dual-python-beta-thompson
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent all 162 posterior probability source and alternate integral audit
+        run: |
+          python research/R302/r302_exact_beta_thompson_bandits.py --emit
+          python research/catalogue_audit/independent_r302_source_audit.py --test
+          python research/catalogue_audit/independent_r302_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R302-162-Original-Bandit-Beta-Posterior-Arm-Sources
+          path: |
+            research/R302/R302_ALL_162_ORIGINAL_BETA_BANDIT_ARM_SOURCES.csv
+            research/R302/R302_EXACT_BANDIT_THOMPSON_RESULTS.json
+            research/R302/R302_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive exact original posterior sources/JSON/SHA to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R302/R302_ALL_162_ORIGINAL_BETA_BANDIT_ARM_SOURCES.csv research/R302/R302_EXACT_BANDIT_THOMPSON_RESULTS.json research/R302/R302_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R302): 162 exact original Beta Thompson arm sources'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R302_BETA_THOMPSON_ORIGINAL_SOURCE_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
