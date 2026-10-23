@@ -1,0 +1,136 @@
+name: R283 Three Synthetic Study Complete Registry Meta Audit
+on:
+  push:
+    paths:
+      - 'research/R283/r283_exact_meta.py'
+      - '.github/workflows/r283-exact-three-study-meta-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute 99 source- and registry-level real unittests
+        run: python research/R283/r283_exact_meta.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently validate all 192 original source worlds and 27 ternary effect classes
+        run: |
+          python research/R283/r283_exact_meta.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from pathlib import Path
+          from fractions import Fraction as F
+          from collections import defaultdict
+          root=Path('research/R283')
+          src=root/'R283_ALL_192_ORIGINAL_THREE_STUDY_META_SOURCES.csv'
+          jp=root/'R283_EXACT_META_RESULTS.json'
+          rows=list(csv.DictReader(src.open()))
+          result=json.loads(jp.read_text())
+          receipt=json.loads((root/'R283_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==192 and len(result['results'])==3
+          assert result['original_catalogue_id']=='12-013'
+          assert result['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='310b134383db1b08b66750d12d7229005426b439'
+          for file,key in ((src,'source_sha256'),(jp,'result_sha256')):
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==receipt[key]
+          expected_sources={''.join(x) for x in itertools.product('01',repeat=6)}
+          grouped=defaultdict(list)
+          for row in rows:grouped[row['regime']].append(row)
+          assert len(grouped)==3
+          for world in result['results']:
+              m=world['regime'];records=grouped[m]
+              assert len(records)==64
+              assert {r['original_ordered_T1C1T2C2T3C3'] for r in records}==expected_sources
+              means=means2=Qtotal=maxmean=mass_total=F(0)
+              pairs=[]
+              ratesT=[F(x) for x in records[0]['treatment_true_rates'].split(';')]
+              ratesC=[F(x) for x in records[0]['control_true_rates'].split(';')]
+              weights=[1/(t*(1-t)+c*(1-c)) for t,c in zip(ratesT,ratesC)]
+              assert len(weights)==3
+              assert [str(w) for w in weights]==world['oracle_weights']
+              for row in records:
+                  assert row['all_included_studies']=='S1;S2;S3'
+                  six=row['original_ordered_T1C1T2C2T3C3']
+                  obs=[int(x) for x in six]
+                  mass=F(1)
+                  diffs=[]
+                  for i in range(3):
+                      t,c=obs[2*i:2*i+2]
+                      mass*=ratesT[i]**t*(1-ratesT[i])**(1-t)
+                      mass*=ratesC[i]**c*(1-ratesC[i])**(1-c)
+                      diffs.append(t-c)
+                  assert F(row['original_source_mass'])==mass
+                  assert [int(x) for x in row['three_reported_risk_differences'].split(';')]==diffs
+                  D=sum(w*d for w,d in zip(weights,diffs))/sum(weights)
+                  Q=sum(w*(F(d)-D)**2 for w,d in zip(weights))
+                  assert F(row['fixed_all_studies_estimate'])==D
+                  assert F(row['cochran_Q'])==Q
+                  assert int(row['invalid_posthoc_largest_study_effect'])==max(diffs)
+                  mass_total+=mass;means+=mass*D;means2+=mass*D*D
+                  Qtotal+=mass*Q;maxmean+=mass*max(diffs)
+              assert mass_total==1
+              vari=means2-means**2
+              assert (str(means),str(vari),str(Qtotal),str(maxmean))==(
+                  world['pooled_mean'],world['pooled_variance'],
+                  world['expected_Q'],world['posthoc_largest_mean'])
+              true_d=[t-c for t,c in zip(ratesT,ratesC)]
+              theory=sum(w*d for w,d in zip(weights,true_d))/sum(weights)
+              theoryvar=1/sum(weights)
+              theoryQ=F(2)+sum(w*(d-theory)**2 for w,d in zip(weights,true_d))
+              assert (means,vari,Qtotal)==(theory,theoryvar,theoryQ)
+              pmfs=[]
+              for t,c in zip(ratesT,ratesC):
+                  pmfs.append({-1:(1-t)*c,0:t*c+(1-t)*(1-c),1:t*(1-c)})
+              oracle_max=F(0)
+              for d in itertools.product((-1,0,1),repeat=3):
+                  weight=F(1)
+                  for i,x in enumerate(d):weight*=pmfs[i][x]
+                  oracle_max+=weight*max(d)
+              assert oracle_max==maxmean
+          assert result['no_literature_search_or_real_studies']
+          assert result['human_E2']==result['historical_E3']==0
+          print('R283_THREE_COMPLETE_ARTIFICIAL_REGISTRY_192_SOURCES_27_CATEGORY_META_AUDIT_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R283-192-Original-Synthetic-Study-Sources
+          path: |
+            research/R283/R283_ALL_192_ORIGINAL_THREE_STUDY_META_SOURCES.csv
+            research/R283/R283_EXACT_META_RESULTS.json
+            research/R283/R283_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all original synthetic study source atoms
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R283/R283_ALL_192_ORIGINAL_THREE_STUDY_META_SOURCES.csv research/R283/R283_EXACT_META_RESULTS.json research/R283/R283_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R283): all 192 complete artificial study source types'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R283_COMPLETE_SYNTHETIC_STUDY_SOURCES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
