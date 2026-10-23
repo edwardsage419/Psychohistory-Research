@@ -1,0 +1,37 @@
+name: Original239 Existing R073 PD E2 Crosswalk v3.5
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_original239_existing_r073_pd_e2_v3_5.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.5_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_27_P2_ONLY_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-existing-r073-pd-e2-v35.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original239-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate 05-001 R073 existing exact source E2, nonliteral R106 and fail-closed R110
+        run: python research/catalogue_audit/verify_original239_existing_r073_pd_e2_v3_5.py --test
+  independent-old-evidence:
+    needs: original239-source
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently repeat original239 PD provenance and Git blob identity
+        run: python research/catalogue_audit/verify_original239_existing_r073_pd_e2_v3_5.py --audit
