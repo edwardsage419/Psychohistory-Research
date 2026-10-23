@@ -1,0 +1,14 @@
+# R330 finite instance retrieval with cue and recency: prescore protocol freeze
+Date 2026-10-24. Original239 02-013 Instance Based Learning, P2. Status at freeze: PROTOCOL_ONLY, NO RESULTS.
+
+## Reuse audit and primary English reference
+Gonzalez, Lerch & Lebiere (2003), *Instance-based learning in dynamic decision making*, Cognitive Science 27(4):591–635, DOI 10.1207/s15516709cog2704_2. The original paper proposes situation-action-utility instances, similarity retrieval, strategy adaptation and feedback, with ACT-R implementation and human experiments. R295 habit cue/valuation, R302 Bayesian bandits and R303 observational learning were inspected: none establishes this fixed four-instance similarity-by-recency retrieval score. Historical ZIP content audit remains open. This is a constructed pedagogical analogue, not the original ACT-R implementation.
+
+## Fixed finite artificial memory universe
+Four memory instances with fixed times, actions and context labels: (t=1,A,cue=0), (t=2,B,cue=1), (t=3,A,cue=1), (t=4,B,cue=0). Each instance's binary utility is one bit of a four-bit history (r1,r2,r3,r4), exhaustively enumerate all 16 histories in lexicographic order. Query cue z in {0,1}; decay d in {0,1}. Retrieval weight for each instance i: w_i=(1 if cue_i=z else 1/2)*(5-t_i)^(-d). Action score is the weighted mean of that action's two stored binary outcomes, all computed with exact rational arithmetic. Select A if A_score>=B_score, else B. Exactly 16*2*2=64 worlds, 4 source memory atoms each, **256 artificial rows**, all positive weights. No simulated human data.
+
+## Prespecified falsifiers
+For history (1,0,0,1), cue0,d0: A=B=2/3, tie selects A; cue0,d1: A=1/2, B=6/7, selects B. For history (1,1,0,0), d0: cue0 selects A (A=2/3,B=1/3); cue1 selects B (A=1/3,B=2/3). At d0 retrieval weights depend on cue alone; d1 additionally depends on time. All action weights must sum to positive values, and all weighted action scores remain within [0,1]. Full 256 source rows and 64 worlds are deterministic byte replay. Independent auditor must not import production module; independently enumerate weighted sums and reject deliberate tampering. Any mismatch rejects E1.
+
+## Acceptance and nonclaims
+Formal E1 requires prescore freeze earlier than implementation, original artificial source and 64-world JSON, executable standard-library Python tests on 3.11 and 3.12, independent no-import audit with tamper rejection, three successful CI jobs, blob-identity receipt, scientific report and formal acceptance. Index only 02-013 changes; 239 candidate identity/order unchanged. Passing establishes only constructed finite arithmetic, not human memory retrieval, ACT-R model replication, original task performance, human E2, historical E3, or external predictive validity. Preserve R073 and PESEN v0.1; defer classification, fusion and personal decision system.
