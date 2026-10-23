@@ -1,0 +1,29 @@
+name: R321 finite Wald SPRT E1
+on:
+  push:
+    paths:
+      - 'research/R321/**'
+      - 'research/catalogue_audit/independent_r321_sprt_audit.py'
+      - '.github/workflows/r321-finite-sprt-1024-paths-e1.yml'
+  workflow_dispatch:
+jobs:
+  unit:
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R321/r321_finite_sprt.py --test
+      - run: python research/R321/r321_finite_sprt.py --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/independent_r321_sprt_audit.py
