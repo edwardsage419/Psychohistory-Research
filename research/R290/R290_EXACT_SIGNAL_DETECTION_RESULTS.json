@@ -1,0 +1,728 @@
+{
+  "research_id": "R290",
+  "original_catalogue_id": "01-011",
+  "freeze_commit": "696e86b029581d2b00dc79bdd2219c59427a7980",
+  "scope": "EXACT_ARTIFICIAL_DISCRETE_SDT_E1_ONLY",
+  "worlds": 12,
+  "labeled_source_cells": 120,
+  "number_of_roc_cutoffs": 6,
+  "new_human_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "results": [
+    {
+      "world": "MONOTONE_PI1of2_FP1_FN1",
+      "model": "MONOTONE",
+      "signal_prior": "1/2",
+      "cost_false_positive": 1,
+      "cost_false_negative": 1,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        3,
+        4
+      ],
+      "bayes_risk": "5/21",
+      "bayes_hit_rate": "2/3",
+      "bayes_false_alarm_rate": "1/7",
+      "exact_independent_cell_minimum": "5/21",
+      "smallest_best_single_cutoff": 2,
+      "best_single_cutoff_risk": "5/21",
+      "fixed_t3_risk": "5/21",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 1,
+          "hit_rate": "20/21",
+          "false_alarm_rate": "13/21",
+          "weighted_risk": "1/3"
+        },
+        {
+          "t": 2,
+          "hit_rate": "6/7",
+          "false_alarm_rate": "1/3",
+          "weighted_risk": "5/21"
+        },
+        {
+          "t": 3,
+          "hit_rate": "2/3",
+          "false_alarm_rate": "1/7",
+          "weighted_risk": "5/21"
+        },
+        {
+          "t": 4,
+          "hit_rate": "8/21",
+          "false_alarm_rate": "1/21",
+          "weighted_risk": "1/3"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "MONOTONE_PI1of2_FP1_FN3",
+      "model": "MONOTONE",
+      "signal_prior": "1/2",
+      "cost_false_positive": 1,
+      "cost_false_negative": 3,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        2,
+        3,
+        4
+      ],
+      "bayes_risk": "8/21",
+      "bayes_hit_rate": "6/7",
+      "bayes_false_alarm_rate": "1/3",
+      "exact_independent_cell_minimum": "8/21",
+      "smallest_best_single_cutoff": 1,
+      "best_single_cutoff_risk": "8/21",
+      "fixed_t3_risk": "4/7",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 1,
+          "hit_rate": "20/21",
+          "false_alarm_rate": "13/21",
+          "weighted_risk": "8/21"
+        },
+        {
+          "t": 2,
+          "hit_rate": "6/7",
+          "false_alarm_rate": "1/3",
+          "weighted_risk": "8/21"
+        },
+        {
+          "t": 3,
+          "hit_rate": "2/3",
+          "false_alarm_rate": "1/7",
+          "weighted_risk": "4/7"
+        },
+        {
+          "t": 4,
+          "hit_rate": "8/21",
+          "false_alarm_rate": "1/21",
+          "weighted_risk": "20/21"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "3/2"
+        }
+      ]
+    },
+    {
+      "world": "MONOTONE_PI3of4_FP1_FN1",
+      "model": "MONOTONE",
+      "signal_prior": "3/4",
+      "cost_false_positive": 1,
+      "cost_false_negative": 1,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        2,
+        3,
+        4
+      ],
+      "bayes_risk": "4/21",
+      "bayes_hit_rate": "6/7",
+      "bayes_false_alarm_rate": "1/3",
+      "exact_independent_cell_minimum": "4/21",
+      "smallest_best_single_cutoff": 1,
+      "best_single_cutoff_risk": "4/21",
+      "fixed_t3_risk": "2/7",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/4"
+        },
+        {
+          "t": 1,
+          "hit_rate": "20/21",
+          "false_alarm_rate": "13/21",
+          "weighted_risk": "4/21"
+        },
+        {
+          "t": 2,
+          "hit_rate": "6/7",
+          "false_alarm_rate": "1/3",
+          "weighted_risk": "4/21"
+        },
+        {
+          "t": 3,
+          "hit_rate": "2/3",
+          "false_alarm_rate": "1/7",
+          "weighted_risk": "2/7"
+        },
+        {
+          "t": 4,
+          "hit_rate": "8/21",
+          "false_alarm_rate": "1/21",
+          "weighted_risk": "10/21"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "3/4"
+        }
+      ]
+    },
+    {
+      "world": "MONOTONE_PI3of4_FP1_FN3",
+      "model": "MONOTONE",
+      "signal_prior": "3/4",
+      "cost_false_positive": 1,
+      "cost_false_negative": 3,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "bayes_risk": "1/4",
+      "bayes_hit_rate": "1",
+      "bayes_false_alarm_rate": "1",
+      "exact_independent_cell_minimum": "1/4",
+      "smallest_best_single_cutoff": 0,
+      "best_single_cutoff_risk": "1/4",
+      "fixed_t3_risk": "11/14",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/4"
+        },
+        {
+          "t": 1,
+          "hit_rate": "20/21",
+          "false_alarm_rate": "13/21",
+          "weighted_risk": "11/42"
+        },
+        {
+          "t": 2,
+          "hit_rate": "6/7",
+          "false_alarm_rate": "1/3",
+          "weighted_risk": "17/42"
+        },
+        {
+          "t": 3,
+          "hit_rate": "2/3",
+          "false_alarm_rate": "1/7",
+          "weighted_risk": "11/14"
+        },
+        {
+          "t": 4,
+          "hit_rate": "8/21",
+          "false_alarm_rate": "1/21",
+          "weighted_risk": "59/42"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "9/4"
+        }
+      ]
+    },
+    {
+      "world": "CENTERED_PI1of2_FP1_FN1",
+      "model": "CENTERED",
+      "signal_prior": "1/2",
+      "cost_false_positive": 1,
+      "cost_false_negative": 1,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        1,
+        2,
+        3
+      ],
+      "bayes_risk": "1/6",
+      "bayes_hit_rate": "19/21",
+      "bayes_false_alarm_rate": "5/21",
+      "exact_independent_cell_minimum": "1/6",
+      "smallest_best_single_cutoff": 1,
+      "best_single_cutoff_risk": "1/3",
+      "fixed_t3_risk": "9/14",
+      "gain_over_best_single_cutoff": "1/6",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 1,
+          "hit_rate": "20/21",
+          "false_alarm_rate": "13/21",
+          "weighted_risk": "1/3"
+        },
+        {
+          "t": 2,
+          "hit_rate": "17/21",
+          "false_alarm_rate": "11/21",
+          "weighted_risk": "5/14"
+        },
+        {
+          "t": 3,
+          "hit_rate": "4/21",
+          "false_alarm_rate": "10/21",
+          "weighted_risk": "9/14"
+        },
+        {
+          "t": 4,
+          "hit_rate": "1/21",
+          "false_alarm_rate": "8/21",
+          "weighted_risk": "2/3"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "CENTERED_PI1of2_FP1_FN3",
+      "model": "CENTERED",
+      "signal_prior": "1/2",
+      "cost_false_positive": 1,
+      "cost_false_negative": 3,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        1,
+        2,
+        3
+      ],
+      "bayes_risk": "11/42",
+      "bayes_hit_rate": "19/21",
+      "bayes_false_alarm_rate": "5/21",
+      "exact_independent_cell_minimum": "11/42",
+      "smallest_best_single_cutoff": 1,
+      "best_single_cutoff_risk": "8/21",
+      "fixed_t3_risk": "61/42",
+      "gain_over_best_single_cutoff": "5/42",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 1,
+          "hit_rate": "20/21",
+          "false_alarm_rate": "13/21",
+          "weighted_risk": "8/21"
+        },
+        {
+          "t": 2,
+          "hit_rate": "17/21",
+          "false_alarm_rate": "11/21",
+          "weighted_risk": "23/42"
+        },
+        {
+          "t": 3,
+          "hit_rate": "4/21",
+          "false_alarm_rate": "10/21",
+          "weighted_risk": "61/42"
+        },
+        {
+          "t": 4,
+          "hit_rate": "1/21",
+          "false_alarm_rate": "8/21",
+          "weighted_risk": "34/21"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "3/2"
+        }
+      ]
+    },
+    {
+      "world": "CENTERED_PI3of4_FP1_FN1",
+      "model": "CENTERED",
+      "signal_prior": "3/4",
+      "cost_false_positive": 1,
+      "cost_false_negative": 1,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        1,
+        2,
+        3
+      ],
+      "bayes_risk": "11/84",
+      "bayes_hit_rate": "19/21",
+      "bayes_false_alarm_rate": "5/21",
+      "exact_independent_cell_minimum": "11/84",
+      "smallest_best_single_cutoff": 1,
+      "best_single_cutoff_risk": "4/21",
+      "fixed_t3_risk": "61/84",
+      "gain_over_best_single_cutoff": "5/84",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/4"
+        },
+        {
+          "t": 1,
+          "hit_rate": "20/21",
+          "false_alarm_rate": "13/21",
+          "weighted_risk": "4/21"
+        },
+        {
+          "t": 2,
+          "hit_rate": "17/21",
+          "false_alarm_rate": "11/21",
+          "weighted_risk": "23/84"
+        },
+        {
+          "t": 3,
+          "hit_rate": "4/21",
+          "false_alarm_rate": "10/21",
+          "weighted_risk": "61/84"
+        },
+        {
+          "t": 4,
+          "hit_rate": "1/21",
+          "false_alarm_rate": "8/21",
+          "weighted_risk": "17/21"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "3/4"
+        }
+      ]
+    },
+    {
+      "world": "CENTERED_PI3of4_FP1_FN3",
+      "model": "CENTERED",
+      "signal_prior": "3/4",
+      "cost_false_positive": 1,
+      "cost_false_negative": 3,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "bayes_risk": "1/4",
+      "bayes_hit_rate": "1",
+      "bayes_false_alarm_rate": "1",
+      "exact_independent_cell_minimum": "1/4",
+      "smallest_best_single_cutoff": 0,
+      "best_single_cutoff_risk": "1/4",
+      "fixed_t3_risk": "163/84",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/4"
+        },
+        {
+          "t": 1,
+          "hit_rate": "20/21",
+          "false_alarm_rate": "13/21",
+          "weighted_risk": "11/42"
+        },
+        {
+          "t": 2,
+          "hit_rate": "17/21",
+          "false_alarm_rate": "11/21",
+          "weighted_risk": "47/84"
+        },
+        {
+          "t": 3,
+          "hit_rate": "4/21",
+          "false_alarm_rate": "10/21",
+          "weighted_risk": "163/84"
+        },
+        {
+          "t": 4,
+          "hit_rate": "1/21",
+          "false_alarm_rate": "8/21",
+          "weighted_risk": "47/21"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "9/4"
+        }
+      ]
+    },
+    {
+      "world": "IDENTICAL_PI1of2_FP1_FN1",
+      "model": "IDENTICAL",
+      "signal_prior": "1/2",
+      "cost_false_positive": 1,
+      "cost_false_negative": 1,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [],
+      "bayes_risk": "1/2",
+      "bayes_hit_rate": "0",
+      "bayes_false_alarm_rate": "0",
+      "exact_independent_cell_minimum": "1/2",
+      "smallest_best_single_cutoff": 0,
+      "best_single_cutoff_risk": "1/2",
+      "fixed_t3_risk": "1/2",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 1,
+          "hit_rate": "8/9",
+          "false_alarm_rate": "8/9",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 2,
+          "hit_rate": "2/3",
+          "false_alarm_rate": "2/3",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 3,
+          "hit_rate": "1/3",
+          "false_alarm_rate": "1/3",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 4,
+          "hit_rate": "1/9",
+          "false_alarm_rate": "1/9",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "IDENTICAL_PI1of2_FP1_FN3",
+      "model": "IDENTICAL",
+      "signal_prior": "1/2",
+      "cost_false_positive": 1,
+      "cost_false_negative": 3,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "bayes_risk": "1/2",
+      "bayes_hit_rate": "1",
+      "bayes_false_alarm_rate": "1",
+      "exact_independent_cell_minimum": "1/2",
+      "smallest_best_single_cutoff": 0,
+      "best_single_cutoff_risk": "1/2",
+      "fixed_t3_risk": "7/6",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/2"
+        },
+        {
+          "t": 1,
+          "hit_rate": "8/9",
+          "false_alarm_rate": "8/9",
+          "weighted_risk": "11/18"
+        },
+        {
+          "t": 2,
+          "hit_rate": "2/3",
+          "false_alarm_rate": "2/3",
+          "weighted_risk": "5/6"
+        },
+        {
+          "t": 3,
+          "hit_rate": "1/3",
+          "false_alarm_rate": "1/3",
+          "weighted_risk": "7/6"
+        },
+        {
+          "t": 4,
+          "hit_rate": "1/9",
+          "false_alarm_rate": "1/9",
+          "weighted_risk": "25/18"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "3/2"
+        }
+      ]
+    },
+    {
+      "world": "IDENTICAL_PI3of4_FP1_FN1",
+      "model": "IDENTICAL",
+      "signal_prior": "3/4",
+      "cost_false_positive": 1,
+      "cost_false_negative": 1,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "bayes_risk": "1/4",
+      "bayes_hit_rate": "1",
+      "bayes_false_alarm_rate": "1",
+      "exact_independent_cell_minimum": "1/4",
+      "smallest_best_single_cutoff": 0,
+      "best_single_cutoff_risk": "1/4",
+      "fixed_t3_risk": "7/12",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/4"
+        },
+        {
+          "t": 1,
+          "hit_rate": "8/9",
+          "false_alarm_rate": "8/9",
+          "weighted_risk": "11/36"
+        },
+        {
+          "t": 2,
+          "hit_rate": "2/3",
+          "false_alarm_rate": "2/3",
+          "weighted_risk": "5/12"
+        },
+        {
+          "t": 3,
+          "hit_rate": "1/3",
+          "false_alarm_rate": "1/3",
+          "weighted_risk": "7/12"
+        },
+        {
+          "t": 4,
+          "hit_rate": "1/9",
+          "false_alarm_rate": "1/9",
+          "weighted_risk": "25/36"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "3/4"
+        }
+      ]
+    },
+    {
+      "world": "IDENTICAL_PI3of4_FP1_FN3",
+      "model": "IDENTICAL",
+      "signal_prior": "3/4",
+      "cost_false_positive": 1,
+      "cost_false_negative": 3,
+      "sources": 10,
+      "bayes_signal_evidence_bins": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "bayes_risk": "1/4",
+      "bayes_hit_rate": "1",
+      "bayes_false_alarm_rate": "1",
+      "exact_independent_cell_minimum": "1/4",
+      "smallest_best_single_cutoff": 0,
+      "best_single_cutoff_risk": "1/4",
+      "fixed_t3_risk": "19/12",
+      "gain_over_best_single_cutoff": "0",
+      "roc_thresholds": [
+        {
+          "t": 0,
+          "hit_rate": "1",
+          "false_alarm_rate": "1",
+          "weighted_risk": "1/4"
+        },
+        {
+          "t": 1,
+          "hit_rate": "8/9",
+          "false_alarm_rate": "8/9",
+          "weighted_risk": "17/36"
+        },
+        {
+          "t": 2,
+          "hit_rate": "2/3",
+          "false_alarm_rate": "2/3",
+          "weighted_risk": "11/12"
+        },
+        {
+          "t": 3,
+          "hit_rate": "1/3",
+          "false_alarm_rate": "1/3",
+          "weighted_risk": "19/12"
+        },
+        {
+          "t": 4,
+          "hit_rate": "1/9",
+          "false_alarm_rate": "1/9",
+          "weighted_risk": "73/36"
+        },
+        {
+          "t": 5,
+          "hit_rate": "0",
+          "false_alarm_rate": "0",
+          "weighted_risk": "9/4"
+        }
+      ]
+    }
+  ]
+}
