@@ -1,0 +1,68 @@
+{
+  "research_id": "R317",
+  "catalogue_id": "04-022",
+  "scientific_grade": "BOUNDED_SYNTHETIC_E1_ONLY",
+  "prescore_commit": "ff6ae9c21a559bce7e266a8203b1db0f674b41a3",
+  "prescore_path": "protocols/R317_TEMPORAL_NETWORKS_THREE_CONTACT_81_SOURCE_STRICT_TIME_FREEZE_2026-10-24.md",
+  "prescore_blob_sha1": "b1e014a0645ba535d4619920432fd579f4db9bf2",
+  "artifacts": [
+    {
+      "path": "research/R317/r317_exact_temporal_reachability.py",
+      "git_blob_sha1": "13c5cb4cfbd49ba2cc02755a7ba464a73ad20661"
+    },
+    {
+      "path": "research/R317/R317_ALL_81_ORIGINAL_TEMPORAL_CONTACT_SOURCE_ROWS.csv",
+      "git_blob_sha1": "926c1fee6a473da6bbedb9746cf109f5a3a3eb16"
+    },
+    {
+      "path": "research/R317/R317_ALL_81_ORIGIN_TEMPORAL_REACHABILITY_OUTCOMES.json",
+      "git_blob_sha1": "af19d64d8132f351861fecb074bcd3aae1e261c9"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r317_temporal_source_audit.py",
+      "git_blob_sha1": "77eab511811fb39a05c25e011cce543ad35605f5"
+    },
+    {
+      "path": "research/R317/R317_SCIENTIFIC_REPORT_2026-10-24.md",
+      "git_blob_sha1": "42d76162b99b1e8e4a7db8b527ecca9412608ec9"
+    },
+    {
+      "path": "research/R317/README.md",
+      "git_blob_sha1": "b21f7d32ba2799899f09759ec4c42f82eab89277"
+    }
+  ],
+  "source_rows": 81,
+  "origin_outcomes": 81,
+  "temporal_static_overstatement_ordered_pairs": 12,
+  "denominator": 162,
+  "verification": {
+    "run_id": 39996280974,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39996280974",
+    "CI_head_sha": "82c56800cade7d0d348e18ad14bb348b8b55e818",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "exact-time (3.11)",
+        "unit_tests": 32,
+        "conclusion": "success"
+      },
+      {
+        "name": "exact-time (3.12)",
+        "unit_tests": 32,
+        "conclusion": "success"
+      },
+      {
+        "name": "independent-time",
+        "audited_original_source_rows": 81,
+        "audited_origin_outcomes": 81,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "E2": "NONE_NEW",
+  "E3": "NONE_NEW",
+  "human_communication_data": "NONE",
+  "R073_PESEN": "FROZEN",
+  "all239_scientific_closure": "OPEN"
+}
