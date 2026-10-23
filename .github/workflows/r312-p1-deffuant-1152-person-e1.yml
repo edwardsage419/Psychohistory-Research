@@ -1,0 +1,67 @@
+name: R312 Deffuant 1152 Person Original Sources E1
+on:
+  push:
+    paths:
+      - 'research/R312/r312_exact_deffuant_dyadic_update.py'
+      - 'research/catalogue_audit/independent_r312_source_audit.py'
+      - '.github/workflows/r312-p1-deffuant-1152-person-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-deffuant:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact Deffuant pair update, conservation, and order-dependent tests
+        run: python research/R312/r312_exact_deffuant_dyadic_update.py --test
+      - name: Emit full 1152 artificial person sources and independent source reconstruction
+        run: |
+          python research/R312/r312_exact_deffuant_dyadic_update.py --emit
+          python research/catalogue_audit/independent_r312_source_audit.py --test
+          python research/catalogue_audit/independent_r312_source_audit.py --audit
+  independent-1152-sources-and-permanent-archive:
+    needs: dual-python-deffuant
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently reproduce original 1152 person rows and SHA
+        run: |
+          python research/R312/r312_exact_deffuant_dyadic_update.py --emit
+          python research/catalogue_audit/independent_r312_source_audit.py --test
+          python research/catalogue_audit/independent_r312_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R312-Deffuant-1152-Original-Person-Event-Sources
+          path: |
+            research/R312/R312_ALL_1152_ORIGINAL_DEFFUANT_PERSON_SOURCE_ROWS.csv
+            research/R312/R312_EXACT_DEFFUANT_PAIR_EVENT_RESULTS.json
+            research/R312/R312_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Commit all original Deffuant sources and exact receipts to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R312/R312_ALL_1152_ORIGINAL_DEFFUANT_PERSON_SOURCE_ROWS.csv research/R312/R312_EXACT_DEFFUANT_PAIR_EVENT_RESULTS.json research/R312/R312_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R312): all 1152 original exact Deffuant artificial person events'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R312_FULL_PERSON_SOURCE_PERMANENT; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
