@@ -23,7 +23,7 @@ READM=ROOT/"research/R290/README.md"
 def obj(p):return json.loads(p.read_text(encoding="utf-8"))
 def gitblob(p):
     b=p.read_bytes()
-    return hashlib.sha1(("blob "+str(len(b))+"\\0").encode()+b).hexdigest()
+    return hashlib.sha1(("blob "+str(len(b))).encode()+bytes([0])+b).hexdigest()
 def queue(p):
     with p.open(newline="",encoding="utf-8") as f:return list(csv.DictReader(f))
 def evidence():
@@ -76,7 +76,7 @@ def evidence():
 
 class Tests(unittest.TestCase):
     def test_full_independent_evidence(self):self.assertEqual(evidence()["changed"],["01-011"])
-    def test_readme_blob_exact(self):self.assertEqual(obj(NEW)["rows"][10]["catalogue_id"],"01-011") if False else self.assertTrue(any(r["readme_git_blob_sha1"]==gitblob(READM) for r in obj(NEW)["rows"]))
+    def test_readme_blob_exact(self):self.assertTrue(any(r["readme_git_blob_sha1"]==gitblob(READM) for r in obj(NEW)["rows"]))
     def test_count(self):self.assertEqual(evidence()["original_rows"],239)
     def test_diff(self):self.assertEqual(evidence()["changed"],["01-011"])
     def test_remaining(self):self.assertEqual(evidence()["pending"],58)
