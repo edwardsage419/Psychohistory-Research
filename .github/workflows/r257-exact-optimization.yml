@@ -1,0 +1,130 @@
+name: R257 Nine Rational Triangle Optimization and KKT Source Audit
+on:
+  push:
+    paths:
+      - 'research/R257/r257_exact_triangle_optimization.py'
+      - '.github/workflows/r257-exact-optimization.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-optimization-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify convex KKT, exact face projections and nonconvex counterexample
+        run: python research/R257/r257_exact_triangle_optimization.py --test
+  all-original-optimization-source-archive:
+    needs: dual-python-optimization-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 225 original candidates and independently validate KKT global proofs
+        run: |
+          python research/R257/r257_exact_triangle_optimization.py --emit
+          python - <<'PY'
+          import csv,json,hashlib
+          from pathlib import Path
+          from fractions import Fraction as F
+          d=Path('research/R257')
+          rows=list(csv.DictReader((d/'R257_ALL_225_ORIGINAL_GRID_CANDIDATE_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R257_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R257_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==225 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-017'
+          assert j['prescore_freeze_commit']=='75b7f963eb850c9bc9e573d48877dab5f261a8ab'
+          by={w['world']:w for w in j['world_results']}
+          exact={
+            'INTERIOR_OFF_GRID':(('3/5','1/5'),'0','1/80'),
+            'BINDING_SUM_BOTH':(('1/2','1/2'),'1/8','0'),
+            'LOWER_X_ACTIVE':(('0','1/2'),'1/4','0'),
+            'LOWER_Y_ACTIVE':(('1/2','0'),'1/4','0'),
+            'VERTEX_ORIGIN':(('0','0'),'1/2','0'),
+            'VERTEX_RIGHT':(('1','0'),'17/16','0'),
+            'VERTEX_UPPER':(('0','1'),'17/16','0'),
+            'CAPACITY_TWO_SLACK':(('3/4','3/4'),'0','0'),
+            'NONCONVEX_KKT_NOT_SUFFICIENT':(('0','1/2'),'-1/4','0')}
+          assert set(by)==set(exact)
+          for world,r in by.items():
+              src=[z for z in rows if z['world']==world]
+              assert len(src)==25
+              assert len({(z['original_candidate_x'],z['original_candidate_y']) for z in src})==25
+              assert all(F(z['original_uniform_grid_design_mass'])==F(1,25) for z in src)
+              assert sum((F(z['original_uniform_grid_design_mass']) for z in src),F(0))==1
+              points,v,gap=exact[world]
+              assert (tuple(r['exact_continuous_global_optimum']),r['exact_continuous_global_optimum_value'],r['exact_grid_suboptimality_gap'])==(points,v,gap)
+              c=F(r['capacity']);a=F(r['target_a']);b=F(r['target_b'])
+              assert r['number_feasible_grid_candidates']==(25 if c==2 else 15)
+              possible=[]
+              for z in src:
+                  x=F(z['original_candidate_x']);y=F(z['original_candidate_y'])
+                  feas=(x>=0 and y>=0 and x+y<=c)
+                  assert int(z['original_candidate_feasible'])==int(feas)
+                  f=(-(x-a)**2+(y-b)**2) if not r['globally_convex_and_strictly_positive_definite'] else ((x-a)**2+(y-b)**2)
+                  assert F(z['original_objective_value'])==f
+                  if feas:possible.append(f)
+              assert possible and min(possible)==F(r['exact_grid_objective_minimum'])
+              assert F(r['exact_grid_objective_minimum'])-F(v)==F(gap)
+              if r['globally_convex_and_strictly_positive_definite']:
+                  cert=r['exact_convex_KKT_primal_dual_complementary_certificate']
+                  assert cert and all(val is True for k,val in cert.items() if isinstance(val,bool))
+                  x,y=map(F,points);lam=F(cert['lambda_capacity'])
+                  mux=F(cert['mu_lower_x']);muy=F(cert['mu_lower_y'])
+                  assert min(x,y,lam,mux,muy)>=0 and x+y<=c
+                  assert lam*(x+y-c)==0 and mux*x==muy*y==0
+                  assert 2*(x-a)+lam-mux==2*(y-b)+lam-muy==0
+                  assert F(v)==(x-a)**2+(y-b)**2
+              else:
+                  non=r['nonconvex_KKT_not_sufficient_certified']
+                  assert non['stationary_primal']==['1/2','1/2']
+                  assert non['stationary_objective']=='0'
+                  assert non['feasible_better_value']=='-1/4'
+                  assert non['stationary_all_multipliers_zero_are_valid']
+                  assert non['incorrect_KKT_sufficiency_claim'] is False
+          assert by['INTERIOR_OFF_GRID']['exact_grid_objective_minimum']=='1/80'
+          assert by['BINDING_SUM_BOTH']['exact_convex_KKT_primal_dual_complementary_certificate']['lambda_capacity']=='1/2'
+          assert by['VERTEX_RIGHT']['exact_convex_KKT_primal_dual_complementary_certificate']['mu_lower_y']=='3/2'
+          for filename,key in [('R257_ALL_225_ORIGINAL_GRID_CANDIDATE_SOURCE_ATOMS.csv','source_sha256'),
+                               ('R257_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R257_ALL_225_ORIGINAL_OPTIMIZATION_CANDIDATES_AND_STRICT_KKT_CERTIFICATES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R257-Nine-Rational-Triangle-Optimization-Worlds
+          path: |
+            research/R257/R257_ALL_225_ORIGINAL_GRID_CANDIDATE_SOURCE_ATOMS.csv
+            research/R257/R257_EXACT_RESULTS.json
+            research/R257/R257_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all original 225 optimization candidates
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R257/R257_ALL_225_ORIGINAL_GRID_CANDIDATE_SOURCE_ATOMS.csv research/R257/R257_EXACT_RESULTS.json research/R257/R257_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R257): all 225 original optimization candidate source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R257_ALL_225_ORIGINAL_OPTIMIZATION_CANDIDATES_PERMANENTLY_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
