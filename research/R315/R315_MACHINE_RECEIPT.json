@@ -1,0 +1,62 @@
+{
+  "research_id": "R315",
+  "catalogue_id": "04-017",
+  "freeze_commit_sha": "7cbbc7785a411d7d535536c028c3c051edf71e28",
+  "freeze_protocol_path": "protocols/R315_WATTS_STROGATZ_TWO_CLOCKWISE_EDGES_210_ATOMS_PRESCORE_FREEZE_2026-10-24.md",
+  "freeze_protocol_blob_sha1": "8d37595d39fa15c8c9d0915bbabac0754b83ff2b",
+  "research_grade": "BOUNDED_SYNTHETIC_E1_ONLY",
+  "artifacts": [
+    {
+      "path": "research/R315/r315_exact_small_world.py",
+      "git_blob_sha1": "782255002255d8948d49dd7722fd6a925199950b"
+    },
+    {
+      "path": "research/R315/R315_ALL_210_ORIGINAL_REWIRING_ATOMS.csv",
+      "git_blob_sha1": "29f2774cfd56ad4ebd65beca9980900e250675af"
+    },
+    {
+      "path": "research/R315/R315_EXACT_180_TWO_EVENT_GRAPH_PATHS.json",
+      "git_blob_sha1": "5abbcdbf01e8b31e54671e83d033ab0f1985bd78"
+    },
+    {
+      "path": "research/R315/R315_SCIENTIFIC_REPORT_2026-10-24.md",
+      "git_blob_sha1": "0089618a3627c97c067c0cde961ff6fe3c3772d8"
+    },
+    {
+      "path": "research/R315/README.md",
+      "git_blob_sha1": "5739979cf0f76d86d9349df74dabd6f55fe82c80"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r315_source_audit.py",
+      "git_blob_sha1": "53edcb9b6ea1e9ae88b01ab7aadcb06ff4ab5c3d"
+    }
+  ],
+  "verification": {
+    "CI_run_id": 39995420565,
+    "CI_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39995420565",
+    "head_sha": "148687916f0984c32eebe12ba82b4a8ecf2114b2",
+    "CI_result": "completed/success",
+    "job_count": 3,
+    "python_311_tests": 34,
+    "python_312_tests": 34,
+    "independent_no_import_FloydWarshall": "PASS"
+  },
+  "samples": {
+    "artificial_nodes": [
+      8,
+      10
+    ],
+    "network_degree": 4,
+    "events": 210,
+    "paths": 180,
+    "baseline_n8_C": "1/2",
+    "baseline_n8_L": "10/7",
+    "baseline_n10_C": "1/2",
+    "baseline_n10_L": "5/3"
+  },
+  "new_real_human_E2": 0,
+  "historical_E3": 0,
+  "full_network_SW_empirical": "NOT_ESTABLISHED",
+  "R073_and_PESEN": "FROZEN",
+  "all239_scientific_closure": "OPEN"
+}
