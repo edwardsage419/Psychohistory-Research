@@ -1,0 +1,37 @@
+{
+  "research_id": "R266",
+  "original_catalogue_id": "11-026",
+  "outcome": "CLOSED_BOUNDED_E1_EXACT_FINITE_MONTE_CARLO",
+  "protocol_frozen_before_implementation": true,
+  "protocol_commit": "634230df411eca00badadaa0c593f28ae08773c8",
+  "program_commit": "5168ab9d22e7fe382569387343140c63a3e76e7c",
+  "workflow_commit": "829f3d61eb8ff002a72fd731e5ee381cbe231aaf",
+  "source_archive_commit": "e46f0e06afb637ba2bb0cc2e267f2c36c1cc9c35",
+  "verified_workflow_run": 39900969661,
+  "workflow_status": "completed",
+  "workflow_conclusion": "success",
+  "success_jobs": 3,
+  "python_3_11_unittest_pass": 136,
+  "python_3_12_unittest_pass": 136,
+  "full_artificial_original_source_types": 5328,
+  "independent_exact_PMF_comparisons": 18,
+  "source_csv_sha256": "5e0aac41c960ee21b54d3266064793a7e9a2454dbb4493ae8e4451591d48587a",
+  "result_json_sha256": "1ce039fd5ce94fb59741ea45fa2e62f052ac7ea28c99b172379ec1f8e195b218",
+  "supported_claims": [
+    "Antithetic covariance may be negative, zero, or positive depending on integrand.",
+    "For the frozen four level sets and fixed equal function evaluation counts, the antithetic to IID variance ratios are 0, 2/3, or 2.",
+    "Finite full exact PMFs, means, variances, and MSEs match an independent convolution and covariance formulas."
+  ],
+  "limitations": [
+    "Only artificial four-value uniform sample spaces are studied.",
+    "No actual stochastic Monte Carlo draws or empirical evidence.",
+    "No assertion of universal variance reduction or real psychology/history predictive validity."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_catalogue_id": "11-027",
+  "next_R": "R267",
+  "next_model": "Latin Hypercube Sampling"
+}
