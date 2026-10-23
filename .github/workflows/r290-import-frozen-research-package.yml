@@ -1,0 +1,42 @@
+name: R290 import prescored research package
+on:
+  push:
+    paths:
+      - 'archives/R290_STAGING_TAR_XZ_BASE64.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore exact original R290 files
+        run: |
+          base64 --decode archives/R290_STAGING_TAR_XZ_BASE64.txt | tar -xJf -
+          python research/R290/r290_exact_signal_detection.py --test
+          python research/catalogue_audit/independent_r290_source_audit.py --test
+          python research/catalogue_audit/independent_r290_source_audit.py --audit
+          python research/R290/r290_exact_signal_detection.py --emit
+          python research/catalogue_audit/independent_r290_source_audit.py --audit
+      - name: Archive source and remove transient transfer envelope
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm archives/R290_STAGING_TAR_XZ_BASE64.txt
+          git add research/R290/ research/catalogue_audit/independent_r290_source_audit.py .github/workflows/r290-p1-signal-detection-artificial-e1.yml
+          git commit -m 'research(R290): exact 120-source SDT artificial E1 and independent audit'
+          for attempt in 1 2 3 4 5 6; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo R290_COMPLETE_SOURCE_PROVENANCE_ARCHIVED
+              exit 0
+            fi
+            sleep 2
+          done
+          exit 1
