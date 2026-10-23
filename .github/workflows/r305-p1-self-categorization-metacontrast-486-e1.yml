@@ -1,0 +1,67 @@
+name: R305 Self Categorization Metacontrast 486 Synthetic Sources E1
+on:
+  push:
+    paths:
+      - 'research/R305/r305_exact_self_categorization_metacontrast.py'
+      - 'research/catalogue_audit/independent_r305_source_audit.py'
+      - '.github/workflows/r305-p1-self-categorization-metacontrast-486-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-self-categorization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 1473 exact comparative and normative fit model unit tests
+        run: python research/R305/r305_exact_self_categorization_metacontrast.py --test
+      - name: Emit 486 sources and independently enumerate all comparison pairs
+        run: |
+          python research/R305/r305_exact_self_categorization_metacontrast.py --emit
+          python research/catalogue_audit/independent_r305_source_audit.py --test
+          python research/catalogue_audit/independent_r305_source_audit.py --audit
+  independent-source-and-permanent-archive:
+    needs: dual-python-self-categorization
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent full 486 source comparator and all original source SHA256 verification
+        run: |
+          python research/R305/r305_exact_self_categorization_metacontrast.py --emit
+          python research/catalogue_audit/independent_r305_source_audit.py --test
+          python research/catalogue_audit/independent_r305_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R305-486-Original-Self-Categorization-Metacontrast-Source-Cells
+          path: |
+            research/R305/R305_ALL_486_ORIGINAL_SELF_CATEGORIZATION_SOURCE_CELLS.csv
+            research/R305/R305_EXACT_SCT_COMPARATIVE_FIT_RESULTS.json
+            research/R305/R305_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive complete SCT original artificial sources and receipt main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R305/R305_ALL_486_ORIGINAL_SELF_CATEGORIZATION_SOURCE_CELLS.csv research/R305/R305_EXACT_SCT_COMPARATIVE_FIT_RESULTS.json research/R305/R305_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R305): 486 source SCT metacontrast normative readiness artificial states'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R305_FULL_SOURCE_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
