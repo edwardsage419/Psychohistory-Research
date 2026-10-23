@@ -1,0 +1,64 @@
+name: R287 Expected Utility Common Consequence Full Artificial Source Audit
+on:
+  push:
+    paths:
+      - 'research/R287/r287_exact_expected_utility.py'
+      - 'research/catalogue_audit/independent_r287_r289_source_audit.py'
+      - '.github/workflows/r287-p1-original-catalogue-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 90 real unittests of original P1 finite mechanics
+        run: python research/R287/r287_exact_expected_utility.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate every original source and verify independent exact mathematics
+        run: |
+          python research/R287/r287_exact_expected_utility.py --emit
+          python research/catalogue_audit/independent_r287_r289_source_audit.py --research R287
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R287-All-Original-P1-Synthetic-Source-Configurations
+          path: |
+            research/R287/R287_ALL_2304_ORIGINAL_COMMON_CONSEQUENCE_SOURCES.csv
+            research/R287/R287_EXACT_EU_RESULTS.json
+            research/R287/R287_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive original exact-source evidence on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R287/R287_ALL_2304_ORIGINAL_COMMON_CONSEQUENCE_SOURCES.csv research/R287/R287_EXACT_EU_RESULTS.json research/R287/R287_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R287): complete original P1 artificial sources and exact theoretical risks'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R287_ALL_ORIGINAL_SOURCE_TYPES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
