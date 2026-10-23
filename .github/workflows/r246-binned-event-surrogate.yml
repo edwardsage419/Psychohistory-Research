@@ -1,0 +1,102 @@
+name: R246 Four-Bin Bernoulli Event Self-Excitation Surrogate
+on:
+  push:
+    paths:
+      - 'research/R246/r246_exact_binned_poisson_hawkes_surrogate.py'
+      - '.github/workflows/r246-binned-event-surrogate.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-binned-event-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test finite Bernoulli event worlds, independent likelihoods and Poisson exclusion
+        run: python research/R246/r246_exact_binned_poisson_hawkes_surrogate.py --test
+  all-original-event-sources-archive:
+    needs: dual-python-binned-event-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 4608 complete binned-event paths and independent numerical checks
+        run: |
+          python research/R246/r246_exact_binned_poisson_hawkes_surrogate.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from pathlib import Path
+          from fractions import Fraction as F
+          d=Path('research/R246')
+          src=list(csv.DictReader((d/'R246_ALL_4608_ORIGINAL_BINNED_EVENT_SOURCES.csv').open()))
+          j=json.loads((d/'R246_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R246_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(src)==4608 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-006'
+          assert j['true_continuous_Poisson_Hawkes_reproduction'] is False
+          assert j['only_zero_or_one_event_per_bin'] is True
+          by={w['world']:w for w in j['world_results']}
+          for w,r in by.items():
+              rows=[z for z in src if z['world']==w]
+              assert len(rows)==512
+              assert all(F(z['original_exogenous_source_probability'])==F(1,512) for z in rows)
+              keys=['oracle_hidden_U']+['oracle_exogenous_R'+str(k)+suffix for k in (1,2,3,4) for suffix in ('1','2')]
+              assert len({tuple(z[k] for k in keys) for z in rows})==512
+              assert sum((F(z['original_exogenous_source_probability']) for z in rows),F(0))==1
+              assert sum((F(z) for z in r['complete_observed_four_bin_event_joint'].values()),F(0))==1
+              assert all(len(k)==4 for k in r['complete_observed_four_bin_event_joint'])
+              assert r['independent_conditional_Bernoulli_path_product_parity']
+              for row in rows:
+                  for k in (1,2,3,4):
+                      assert int(row['observed_accumulated_count_N'+str(k)])==sum(int(row['observed_event_Y'+str(s)]) for s in range(1,k+1))
+          base=by['SELF_EXCITING_LAG1']
+          alias=by['STATIC_HIDDEN_SELF_EXCITING_SENSOR_ALIAS']
+          assert base['complete_observed_four_bin_event_joint']==alias['complete_observed_four_bin_event_joint']
+          assert alias['oracle_true_hidden_events_sourcewise']==['0000']*512
+          assert base['observed_event_probability_by_bin'][:2]==['1/4','3/8']
+          assert base['observed_first_second_bin_covariance']=='3/32'
+          assert by['REFRACTORY_LAG1']['observed_first_second_bin_covariance']=='-1/16'
+          assert by['IID_LOW']['observed_first_second_bin_covariance']=='0'
+          assert by['IID_HIGH']['observed_first_second_bin_covariance']=='0'
+          mix=by['STATIC_LATENT_RATE_MIXTURE']
+          assert mix['observed_first_second_bin_covariance']=='1/16'
+          assert mix['observed_p_bin2_event_given_bin1_event']=='5/8'
+          assert mix['observed_p_bin2_event_given_bin1_no_event']=='3/8'
+          assert by['COMMON_SHOCK_ALL_BINS']['observed_first_second_bin_covariance']=='1/4'
+          assert by['SELF_EXCITING_TWO_LAG']['observed_p_bin3_event_given_bin2zero_bin1one']=='1/2'
+          assert by['SELF_EXCITING_TWO_LAG']['observed_p_bin3_event_given_bin2zero_bin1zero']=='1/4'
+          for name,key in [('R246_ALL_4608_ORIGINAL_BINNED_EVENT_SOURCES.csv','source_sha256'),
+                           ('R246_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/name).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R246_ALL_4608_BERNOULLI_EVENT_SOURCE_LAWS_NOT_ACTUAL_POISSON_HAWKES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R246-All-Nine-Finite-Bernoulli-Event-Source-Worlds
+          path: |
+            research/R246/R246_ALL_4608_ORIGINAL_BINNED_EVENT_SOURCES.csv
+            research/R246/R246_EXACT_RESULTS.json
+            research/R246/R246_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive complete finite original event atoms to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R246/R246_ALL_4608_ORIGINAL_BINNED_EVENT_SOURCES.csv research/R246/R246_EXACT_RESULTS.json research/R246/R246_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R246): all 4608 finite Bernoulli event source atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
