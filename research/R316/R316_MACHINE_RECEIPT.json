@@ -1,0 +1,69 @@
+{
+  "research_id": "R316",
+  "original239_catalogue_id": "04-019",
+  "scope": "two specified fixed-label 4-node undirected independent Bernoulli SBM regimes",
+  "grade": "BOUNDED_SYNTHETIC_E1_ONLY",
+  "prescore_commit": "8a9730882203dffbf46e1ef843bb8f52b2b9674d",
+  "prescore_path": "protocols/R316_SBM_KNOWN_BLOCK_FOUR_NODE_768_DYAD_SOURCE_PRESCORE_FREEZE_2026-10-24.md",
+  "prescore_blob_sha1": "34a915de894436ae0c86f9518b77ead5169295ac",
+  "artifacts": [
+    {
+      "path": "research/R316/r316_exact_sbm.py",
+      "git_blob_sha1": "74b9257f710487fc6628d79987132fd8ea3b3fe0"
+    },
+    {
+      "path": "research/R316/R316_ALL_768_ORIGINAL_GRAPH_DYAD_PROBABILITY_ATOMS.csv",
+      "git_blob_sha1": "68c14ad9714872716b808b387bf2e50f2011029a"
+    },
+    {
+      "path": "research/R316/R316_EXACT_128_GRAPH_LIKELIHOODS.json",
+      "git_blob_sha1": "36da587adbc6e1d92824a5fd39516e506569166c"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r316_sbm_source_audit.py",
+      "git_blob_sha1": "704ffb288d76abf2a51bb0eb307d7d2ed124b69d"
+    },
+    {
+      "path": "research/R316/R316_SCIENTIFIC_REPORT_2026-10-24.md",
+      "git_blob_sha1": "745dfe9000b98d0e4a112036656e3bbc02e79ae5"
+    },
+    {
+      "path": "research/R316/README.md",
+      "git_blob_sha1": "eb97f090c12f1690b91e29a77779534ccec644b6"
+    }
+  ],
+  "verification": {
+    "run_id": 39995863890,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39995863890",
+    "head_sha": "2afdcffda136364d9cd660eab30f403a8b2d19a9",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "exact (3.11)",
+        "unit_tests": 34,
+        "conclusion": "success"
+      },
+      {
+        "name": "exact (3.12)",
+        "unit_tests": 34,
+        "conclusion": "success"
+      },
+      {
+        "name": "independent",
+        "verified_source_atoms": 768,
+        "verified_graphs": 128,
+        "conclusion": "success"
+      }
+    ]
+  },
+  "complete_synthetic_sources": 768,
+  "graph_probabilities": 128,
+  "total_variation": "203/256",
+  "within_only_conditional_bayes_factor": 729,
+  "actual_empirical_people": 0,
+  "historical_E3": 0,
+  "unknown_label_inference": "NOT_EVALUATED",
+  "R073_PESEN": "FROZEN",
+  "full239_scientific_conclusion": "OPEN"
+}
