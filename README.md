@@ -812,3 +812,12 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 ## R222 社会网络干扰因果模型：三人工图×两政策×三响应机制，18世界与198原来源正式E1结题（2026-10-22）
 
 [R222正式科研报告](research/R222/R222_SCIENTIFIC_REPORT_2026-10-22.md) · [研究入口](research/R222/README.md) · [全部18设计世界精确结果](research/R222/R222_EXACT_RESULTS.json) · [全部198条原真实人工分配与四单位结果](research/R222/R222_ALL_198_ORIGINAL_NETWORK_ASSIGNMENT_SOURCES.csv) · [GitHub Actions run39786040396](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39786040396)。真实原239目录 **09-013 Causal Inference with Interference（P1）**，先行[冻结三图×两政策×三模型及固定Bernoulli同伴因果目标](protocols/R222_INTERFERENCE_18_WORLDS_198_ORIGINAL_ASSIGNMENTS_PRESCORE_FREEZE_2026-10-22.md)，完整18个人工图机制和真正198条互斥原处理赋值来源。固定政策目标在纯人工LINEAR_SPILL下为2，独立Bernoulli随机化的HT设计平均三图均为2；固定恰2人接受处理随机化下PAIRS/STAR/CYCLE分别降为**4/3、1、2/3**，原因是自己的分配与邻居分配条件负相关，必须区分无干扰与有干扰时的政策效应目标。在STAR固定2人设计，中心个体有6个理论`(自身处理,邻居处理数)`格**概率0**，CYCLE全部单位共8格为0，说明随机化不保证所有曝露水平正值性。Python3.11及3.12各43项、共**86单测通过**，三CI job均success，原完整来源及哈希机器人[正式提交9d6e68da](https://github.com/edwardsage419/Psychohistory-Research/commit/9d6e68da4aeb253ca56c84d2c5d2737faa221911)，[正式科学与归档机器验收](research/R222/R222_FINAL_ACCEPTANCE_STATUS.json)。**R222=CLOSED_BOUNDED_E1_ARTIFICIAL_EXACT_NETWORK_INTERFERENCE，E2=0、E3=0、R073/PESEN v0.1继续冻结。下一真实目录09-014 Sensitivity Analysis for Confounding（P0），拟R223。**全部R先完成，再分类，最后熔炼。
+
+
+## 2026-10-23 R263至R267更新导航（原239目录连续E1限定结题）
+
+原目录11-023至11-025连续研究R263遗传算法、R264有限拒绝式ABC、R265精确Sobol敏感度已归档[全部原来源和科学边界总索引](docs/R263_R265_GENETIC_ABC_SOBOL_INDEPENDENT_E1_CLOSURE_INDEX_2026-10-23.md)，三个正式CI成功、三个原source共9792种、双Python测试合计492次。状态仅限人工数学E1，未增加真人E2或真实历史E3。
+
+原目录11-026与11-027对应R266有限蒙特卡洛和R267离散拉丁超立方抽样。两项目[完整E1结题及来源总索引](docs/R266_R267_FINITE_SAMPLING_EXACT_E1_CLOSURE_INDEX_2026-10-23.md)，分别具有完整人工原source5328和6885种、18+18份独立核对精确概率分布、Python3.11与3.12合计544次真实单元测试通过，最终[CI R266](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39900969661)与[CI R267](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39901198271)各三job全成功。[R266科研报告](research/R266/R266_SCIENTIFIC_REPORT_2026-10-23.md)确认对偶采样方差比可能0、2/3、2；[R267科研报告](research/R267/R267_SCIENTIFIC_REPORT_2026-10-23.md)确认三类加性零方差但三类非加性有限格点函数方差比3/2。全部是固定小规模人工数学E1，**不得冒充真实行为/历史验证**。这两项永久来源归档分别是[GitHub e46f0e06](https://github.com/edwardsage419/Psychohistory-Research/commit/e46f0e06afb637ba2bb0cc2e267f2c36c1cc9c35)与[GitHub 82087648](https://github.com/edwardsage419/Psychohistory-Research/commit/82087648e4be587e156ee32846d4cc83c8cef9fd)。
+
+项目下一原目录11-028 AIC and BIC（拟R268），R073与PESEN v0.1冻结。全R学习研究完成后统一归纳分类，最后模型熔炼；个人辅助决策系统构建暂缓。
