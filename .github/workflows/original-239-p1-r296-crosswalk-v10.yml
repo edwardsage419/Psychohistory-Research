@@ -1,0 +1,46 @@
+name: Original 239 P1 R296 Rescorla Wagner Crosswalk v1.0
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r296_crosswalk_v1_0.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.0_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_52_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r296-crosswalk-v10.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-canonical-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 239 original rows, R296 source SHA and 52 pending (14 real tests)
+        run: python research/catalogue_audit/verify_p1_r296_crosswalk_v1_0.py --test
+  independent-scientific-metadata-audit:
+    needs: dual-python-canonical-checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent original metadata and exact 40 source replay
+        run: |
+          python research/catalogue_audit/verify_p1_r296_crosswalk_v1_0.py --audit
+          python research/catalogue_audit/independent_r296_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R296-v10-184Primary-52Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.0_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_52_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R296/R296_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
