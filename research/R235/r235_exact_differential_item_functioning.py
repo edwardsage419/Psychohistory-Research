@@ -147,8 +147,8 @@ def observed_MH_odds_and_anchor_differences(world):
     No oracle k or IRT item parameter is inspected.
     """
     tables=observed_anchor_strata(world)
-    num=Z
-    den=Z
+    num=ZERO
+    den=ZERO
     conditional_dif=[]
     for s in (0,1,2):
         t=tables[s]
@@ -168,10 +168,10 @@ def world_result(world):
     ability=oracle_ability_conditional_focal_difference(world)
     mh,strata=observed_MH_odds_and_anchor_differences(world)
     if world=="BASE_NO_DIF":
-        assert rates==(F(1,2),F(1,2)) and mh==ONE and ability==(Z,Z,Z)
+        assert rates==(F(1,2),F(1,2)) and mh==ONE and ability==(ZERO,ZERO,ZERO)
     if world=="ABILITY_MIX_NO_DIF":
         assert rates==(F(1,2),F(5,9))
-        assert ability==(Z,Z,Z) and mh>ONE
+        assert ability==(ZERO,ZERO,ZERO) and mh>ONE
     if world=="UNIFORM_FOCAL_HARDER":
         assert all(v<0 for v in ability) and mh<ONE
     if world=="UNIFORM_FOCAL_EASIER":
@@ -181,9 +181,9 @@ def world_result(world):
         assert rates==(F(1,2),F(1,2)) and mh==ONE
         assert strata[0]<0 and strata[1]==0 and strata[2]>0
     if world in ("ANCHOR_ITEM1_DRIFT","ANCHOR_ITEM3_DRIFT"):
-        assert ability==(Z,Z,Z) and mh>ONE and rates==(F(1,2),F(1,2))
+        assert ability==(ZERO,ZERO,ZERO) and mh>ONE and rates==(F(1,2),F(1,2))
     if world=="GLOBAL_REANCHOR_ALIAS":
-        assert rates==(F(1,2),F(1,2)) and ability==(Z,Z,Z) and mh==ONE
+        assert rates==(F(1,2),F(1,2)) and ability==(ZERO,ZERO,ZERO) and mh==ONE
     if world=="COMPOSITION_PLUS_TRUE_DIF":
         assert all(v<0 for v in ability) and mh<ONE
     raw_grp_b=item_parameters(world,1)[1]
@@ -253,7 +253,7 @@ class Tests(unittest.TestCase):
     def test_count(self):self.assertEqual(sum(len(source_rows(w)) for w in WORLD_OVERRIDES),432)
     def test_base(self):self.assertEqual(observed_MH_odds_and_anchor_differences("BASE_NO_DIF")[0],ONE)
     def test_ability_mix_no_focal_dif(self):
-        self.assertEqual(oracle_ability_conditional_focal_difference("ABILITY_MIX_NO_DIF"),(Z,Z,Z))
+        self.assertEqual(oracle_ability_conditional_focal_difference("ABILITY_MIX_NO_DIF"),(ZERO,ZERO,ZERO))
         self.assertGreater(observed_MH_odds_and_anchor_differences("ABILITY_MIX_NO_DIF")[0],ONE)
     def test_ability_mix_rate(self):
         self.assertEqual(observable_group_focal_rates("ABILITY_MIX_NO_DIF"),(F(1,2),F(5,9)))
@@ -264,14 +264,14 @@ class Tests(unittest.TestCase):
         self.assertEqual(a["oracle_fixed_ability_group1_minus_group0_focal_probabilities"],["-2/15","0","2/15"])
     def test_nonuniform_sign_with_anchor(self):
         dif=observed_MH_odds_and_anchor_differences("NONUNIFORM_FOCAL_DISCRIMINATION")[1]
-        self.assertEqual(dif,(F(-18,325),Z,F(18,325)))
+        self.assertEqual(dif,(F(-18,325),ZERO,F(18,325)))
     def test_uniform_harder(self):self.assertLess(observed_MH_odds_and_anchor_differences("UNIFORM_FOCAL_HARDER")[0],ONE)
     def test_uniform_easier(self):self.assertGreater(observed_MH_odds_and_anchor_differences("UNIFORM_FOCAL_EASIER")[0],ONE)
     def test_anchor1_false_positive(self):
-        self.assertEqual(oracle_ability_conditional_focal_difference("ANCHOR_ITEM1_DRIFT"),(Z,Z,Z))
+        self.assertEqual(oracle_ability_conditional_focal_difference("ANCHOR_ITEM1_DRIFT"),(ZERO,ZERO,ZERO))
         self.assertGreater(observed_MH_odds_and_anchor_differences("ANCHOR_ITEM1_DRIFT")[0],ONE)
     def test_anchor3_false_positive(self):
-        self.assertEqual(oracle_ability_conditional_focal_difference("ANCHOR_ITEM3_DRIFT"),(Z,Z,Z))
+        self.assertEqual(oracle_ability_conditional_focal_difference("ANCHOR_ITEM3_DRIFT"),(ZERO,ZERO,ZERO))
         self.assertGreater(observed_MH_odds_and_anchor_differences("ANCHOR_ITEM3_DRIFT")[0],ONE)
     def test_global_reanchor(self):
         self.assertEqual(observed_joint("BASE_NO_DIF"),observed_joint("GLOBAL_REANCHOR_ALIAS"))
@@ -284,7 +284,7 @@ def _case(world,kind):
     def test(self):
         rows=source_rows(world)
         if kind=="mass":
-            self.assertEqual(sum((r["original_source_probability"] for r in rows),Z),ONE)
+            self.assertEqual(sum((r["original_source_probability"] for r in rows),ZERO),ONE)
         elif kind=="structure":
             self.assertEqual(len({(r["observed_group_G"],r["oracle_latent_ability_index_k"],
                                    r["observed_Y1"],r["observed_Y2"],r["observed_Y3"]) for r in rows}),48)
@@ -293,7 +293,7 @@ def _case(world,kind):
         elif kind=="marginal":
             self.assertEqual(observed_joint(world),independent_observed_joint(world))
         elif kind=="mh":
-            self.assertGreater(observed_MH_odds_and_anchor_differences(world)[0],Z)
+            self.assertGreater(observed_MH_odds_and_anchor_differences(world)[0],ZERO)
         elif kind=="three_strata":
             self.assertEqual(len(observed_anchor_strata(world)),3)
         elif kind=="summary":
