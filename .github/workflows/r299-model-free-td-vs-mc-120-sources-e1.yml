@@ -1,0 +1,67 @@
+name: R299 Model Free TD0 Versus Monte Carlo 120 Sources E1
+on:
+  push:
+    paths:
+      - 'research/R299/r299_exact_model_free_td_mc.py'
+      - 'research/catalogue_audit/independent_r299_source_audit.py'
+      - '.github/workflows/r299-model-free-td-vs-mc-120-sources-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-model-free:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 492 exact TD and MC original model tests
+        run: python research/R299/r299_exact_model_free_td_mc.py --test
+      - name: Emit 120 complete source rows and independently test entire TD/MC protocol
+        run: |
+          python research/R299/r299_exact_model_free_td_mc.py --emit
+          python research/catalogue_audit/independent_r299_source_audit.py --test
+          python research/catalogue_audit/independent_r299_source_audit.py --audit
+  independent-archival:
+    needs: dual-python-model-free
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconstruct all 120 original TD and Monte Carlo state sources independently
+        run: |
+          python research/R299/r299_exact_model_free_td_mc.py --emit
+          python research/catalogue_audit/independent_r299_source_audit.py --test
+          python research/catalogue_audit/independent_r299_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R299-120-Original-ModelFree-TD-MC-States
+          path: |
+            research/R299/R299_ALL_120_ORIGINAL_MODEL_FREE_TD_MC_STATES.csv
+            research/R299/R299_EXACT_MODEL_FREE_TD_MC_RESULTS.json
+            research/R299/R299_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive 120 original source states and SHA256 on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R299/R299_ALL_120_ORIGINAL_MODEL_FREE_TD_MC_STATES.csv research/R299/R299_EXACT_MODEL_FREE_TD_MC_RESULTS.json research/R299/R299_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R299): 120 exact model-free TD MC prediction states and hash'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R299_TD_MC_SOURCE_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
