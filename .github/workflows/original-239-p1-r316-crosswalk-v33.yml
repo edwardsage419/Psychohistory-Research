@@ -1,0 +1,39 @@
+name: Original239 R316 SBM Crosswalk v3.3
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r316_crosswalk_v3_3.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.3_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_29_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p1-r316-crosswalk-v33.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all 239 source invariant and one R316 SBM candidate promotion
+        run: python research/catalogue_audit/verify_p1_r316_crosswalk_v3_3.py --test
+  independent-sbm-source:
+    needs: dual-python
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent complete 768 graph-dyad source replay
+        run: python research/catalogue_audit/independent_r316_sbm_source_audit.py --audit
+      - name: Repeat v3.3 Git blob and 29 pending audit
+        run: python research/catalogue_audit/verify_p1_r316_crosswalk_v3_3.py --audit
