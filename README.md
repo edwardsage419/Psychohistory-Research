@@ -901,3 +901,12 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 原239目录的12-012至12-015已按顺序完成四项**有界人工E1**研究：[R282 ODD七要素与执行调度](research/R282/README.md)、[R283 人工三研究合成](research/R283/README.md)、[R284 选择性发表机制](research/R284/README.md)、[R285 Holm与BH多重检验](research/R285/README.md)。[四项完整报告、源码、原数据和独立CI正式验收索引](docs/R282_R285_ODD_META_PUBLICATION_MULTIPLE_TESTING_E1_CLOSURE_INDEX_2026-10-23.md)：合计18个人工情境、3456带策略标签完整原source、786次真实双版本单测通过、12个最终成功CI job；R283首次独立审计失败并修正的历史另行保留。新增真人E2与真实历史E3均为0，R073/PESEN v0.1保持冻结。
 
 **不把R285等同239候选的总体验收完毕。** [原239目录与Git树结构审计](docs/ORIGINAL_239_CATALOGUE_AND_R213_R285_REPOSITORY_COVERAGE_AUDIT_2026-10-23.md)发现R213—R285共73个连续R项目七类归档结构文件全具备，但全库21个R目录未检出约定命名的验收JSON、早期48个R编号没有research目录，且R208/R209是239目录之外补充模型。下一步应逐239原目录ID建立模型映射与科学证据核验、核对历史其它归档来源和真实缺口；确认原R全部完成后再统一归纳分类，最后熔炼原创体系。
+
+
+## 2026-10-23 原239候选目录逐项证据映射与R001—R064早期ZIP对账
+
+已对原239条[唯一候选模型目录](docs/MODEL_CANDIDATE_CATALOG_v0.1.json)完成可重复的**逐项来源/档案元数据审计**（不等于239模型科学结题）。[239行主目录→R研究链接的来源JSON](docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json)逐项保存目录ID、模型名称、优先级、对应R研究README实际Git blob SHA、验收/科学报告文件路径候选和旧有界研究链接：其中**173个原候选建立README主研究关联线索、66项尚无主R对应线索**。66中7项已有2026-10-18早期相关证据链接、59项在当前两组来源里未确认。**这66项不等于全部未经研究**，详见[66项按P0/P1/P2排序待核CSV队列](docs/ORIGINAL_239_PENDING_66_PRIMARY_R_LINK_TRIAGE_QUEUE_2026-10-23.csv)。待优先核查的P0为01-008 Softmax、02-002 Temporal Difference Learning（R063已有相关审计）及04-001 Granovetter Threshold Model（R069相关、R118为不同的03-019）。
+
+[正式审计报告与74原ZIP对账](docs/ORIGINAL_239_MODEL_TO_R_CROSSWALK_EVIDENCE_GATES_AND_EARLY_ARCHIVE_RECONCILIATION_2026-10-23.md)证实：**R001—R064所有64个早期轮次**已在历史资料库恢复清单中记录相应研究包；Library实际保存**74个ZIP**，其中**73个不同ZIP对应上述轮次**，独立余下一份“模型研究第二轮知识包”属于附加知识资料。早前按独立research目录发现48个历史编号缺位，不应推断48份历史研究包丢失；历史ZIP CRC和路径完整性仍不能证明全部原模型经过科学独立复算。R208、R209按既有勘误属于目录外补充研究，不计239唯一覆盖；R173从报告纠正主目录为07-015（README首先出现的07-016是下一项R174）。
+
+可复跑[239逐行Git blob/目录/轮次来源验证器](research/catalogue_audit/verify_239_crosswalk.py)；[最终GitHub Actions run39908490800](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39908490800)三个job completed/success，Python3.11及3.12各**251项真正单测**，共**502项通过**，另第三独立完整来源路径/SHA及ZIP元数据审计成功；机器JSON/SHA256永久归档[commit2a1fd391](https://github.com/edwardsage419/Psychohistory-Research/commit/2a1fd3913a21c16c42bb2b064b23a538bee89aed)。早期Unicode字词边界审计失败run保留并已修复。本轮[正式机读结论](docs/ORIGINAL_239_CROSSWALK_FINAL_METADATA_ACCEPTANCE_NOT_SCIENTIFIC_CLOSURE_2026-10-23.json)为**METADATA COMPLETE，239项科学结题NOT ESTABLISHED**。下一步优先查66项早期资料成员和P0，并逐项读取173项真正科研验收合同，不能仅因README映射而升级E1/E2/E3，R073/PESEN v0.1继续冻结。用户既定顺序：先全部R完成→统一归纳分类→最后模型熔炼，个人决策系统继续暂缓。
