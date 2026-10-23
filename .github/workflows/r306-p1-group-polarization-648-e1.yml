@@ -1,0 +1,67 @@
+name: R306 Group Polarization 648 Synthetic Person Sources E1
+on:
+  push:
+    paths:
+      - 'research/R306/r306_exact_group_polarization.py'
+      - 'research/catalogue_audit/independent_r306_source_audit.py'
+      - '.github/workflows/r306-p1-group-polarization-648-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-group-polarization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 1959 exact artificial polarization tests
+        run: python research/R306/r306_exact_group_polarization.py --test
+      - name: Emit 648 complete original person sources and independent source audits
+        run: |
+          python research/R306/r306_exact_group_polarization.py --emit
+          python research/catalogue_audit/independent_r306_source_audit.py --test
+          python research/catalogue_audit/independent_r306_source_audit.py --audit
+  independent-all-sources-and-permanent-archive:
+    needs: dual-python-group-polarization
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all 648 artificial person sources, synthetic status counts and SHA256
+        run: |
+          python research/R306/r306_exact_group_polarization.py --emit
+          python research/catalogue_audit/independent_r306_source_audit.py --test
+          python research/catalogue_audit/independent_r306_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R306-648-Original-Group-Polarization-Person-Sources
+          path: |
+            research/R306/R306_ALL_648_ORIGINAL_POLARIZATION_PERSON_SOURCES.csv
+            research/R306/R306_EXACT_GROUP_POLARIZATION_RESULTS.json
+            research/R306/R306_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently commit all independently verified 648 synthetic source rows to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R306/R306_ALL_648_ORIGINAL_POLARIZATION_PERSON_SOURCES.csv research/R306/R306_EXACT_GROUP_POLARIZATION_RESULTS.json research/R306/R306_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R306): 648 original synthetic group polarization person sources'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R306_GROUP_POLARIZATION_ORIGINAL_ARTIFACTS_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
