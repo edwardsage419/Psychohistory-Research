@@ -1,0 +1,133 @@
+name: R272 Exact Honest Train Test Brier and Infinite Log Risk Audit
+on:
+  push:
+    paths:
+      - 'research/R272/r272_exact_train_test_prediction.py'
+      - '.github/workflows/r272-exact-train-test-oos-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test all 83 exact source-level independent holdout assertions
+        run: python research/R272/r272_exact_train_test_prediction.py --test
+  independent-sources-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit all sources, independently recompute heldout predictions and analytic risks
+        run: |
+          python research/R272/r272_exact_train_test_prediction.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from pathlib import Path
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from math import comb
+          home=Path('research/R272')
+          source=home/'R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv'
+          results=home/'R272_EXACT_RESULTS.json'
+          rows=list(csv.DictReader(source.open()))
+          result=json.loads(results.read_text())
+          receipt=json.loads((home/'R272_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==576 and len(result['world_results'])==9
+          assert receipt['prescore_freeze_commit']==result['prescore_freeze_commit']=='52f84dbfbe8563cf5c9a491e67d5e320223e0a56'
+          assert result['original_catalogue_id']=='12-002'
+          for fname,key in [(source,'source_sha256'),(results,'results_sha256')]:
+              assert hashlib.sha256(fname.read_bytes()).hexdigest()==receipt[key]
+          grouped=defaultdict(list)
+          for z in rows:grouped[z['world']].append(z)
+          for world in result['world_results']:
+              p=F(world['true_p']);m=world['predictor'];src=grouped[world['world']]
+              assert len(src)==64
+              assert {z['original_full_sixbit_source'] for z in src}=={
+                  ''.join(bits) for bits in itertools.product('01',repeat=6)}
+              train_score=test_score=infinite_mass=mass_total=F(0)
+              for z in src:
+                  original=z['original_full_sixbit_source']
+                  train=list(map(int,original[:4]));future=list(map(int,original[4:]))
+                  k=sum(train);j=sum(future)
+                  if m=='CONSTANT_HALF':q=F(1,2)
+                  elif m=='TRAIN_MLE':q=F(k,4)
+                  else:
+                      assert m=='LAPLACE_BETA11'
+                      q=F(k+1,6)
+                  mass=p**(k+j)*(1-p)**(6-k-j)
+                  assert z['original_training_four_bits']==original[:4]
+                  assert z['original_future_test_two_bits']==original[4:]
+                  assert F(z['exact_original_source_probability'])==mass
+                  assert F(z['forecast_trained_on_four_bits_only'])==q
+                  assert int(z['train_successes'])==k and int(z['test_successes'])==j
+                  train_losses=[(F(v)-q)**2 for v in train]
+                  test_losses=[(F(v)-q)**2 for v in future]
+                  assert z['original_train_brier_per_row']==';'.join(map(str,train_losses))
+                  assert z['original_test_brier_per_row']==';'.join(map(str,test_losses))
+                  st=sum(train_losses,F(0))/4;sf=sum(test_losses,F(0))/2
+                  assert F(z['exact_train_mean_brier'])==st
+                  assert F(z['exact_independent_test_mean_brier'])==sf
+                  inf=int((q==0 and j>=1) or (q==1 and j<=1))
+                  assert int(z['unfloored_future_log_loss_is_infinite'])==inf
+                  train_score+=mass*st;test_score+=mass*sf;infinite_mass+=mass*inf;mass_total+=mass
+              assert mass_total==1
+              assert world['full_ordered_source_types']==64
+              assert (str(train_score),str(test_score),str(infinite_mass))==(
+                  world['exact_design_expected_train_mean_Brier'],
+                  world['exact_design_expected_independent_future_mean_Brier'],
+                  world['exact_unfloored_infinite_test_log_loss_event_probability'])
+              # Independent K~Binomial(4,p) oracle does not use any heldout labels.
+              atrain=atest=F(0)
+              for k in range(5):
+                  w=F(comb(4,k))*p**k*(1-p)**(4-k)
+                  if m=='CONSTANT_HALF':q=F(1,2)
+                  elif m=='TRAIN_MLE':q=F(k,4)
+                  else:q=F(k+1,6)
+                  atrain+=w*(F(k)*(1-q)**2+F(4-k)*q*q)/4
+                  atest+=w*(p*(1-q)**2+(1-p)*q*q)
+              assert (atrain,atest)==(train_score,test_score)
+              f=p**4*(1-p*p)+(1-p)**4*(1-(1-p)**2) if m=='TRAIN_MLE' else F(0)
+              assert f==infinite_mass
+          assert result['no_real_human_E2']==result['no_real_historical_E3']==0
+          print('R272_ALL_576_HONEST_TRAIN_TEST_ORIGINAL_SOURCES_9_ANALYTIC_BRIER_RISKS_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R272-576-Honest-Train-Test-Original-Source-Atoms
+          path: |
+            research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv
+            research/R272/R272_EXACT_RESULTS.json
+            research/R272/R272_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive full original train and independently heldout test sources
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv research/R272/R272_EXACT_RESULTS.json research/R272/R272_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R272): all 576 exact four-train two-heldout Bernoulli source types'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R272_ALL_576_HONEST_TRAIN_TEST_SOURCES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
