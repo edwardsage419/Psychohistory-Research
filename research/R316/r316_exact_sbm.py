@@ -15,7 +15,7 @@ BLOCKS=(0,0,1,1)
 DYADS=((0,1),(0,2),(0,3),(1,2),(1,3),(2,3))
 PARAMS=(("A",Fraction(3,4),Fraction(1,4)),("D",Fraction(1,4),Fraction(3,4)))
 FIELDS=("regime","mask","edge_vector","dyad_index","node_i","node_j",
-        "same_block","edge_present","bernoulIi_parameter","realized_factor",
+        "same_block","edge_present","bernoulli_parameter","realized_factor",
         "full_graph_probability")
 
 def bits(mask):
@@ -52,7 +52,7 @@ def generate():
                     "dyad_index":str(i),"node_i":str(u),"node_j":str(v),
                     "same_block":str(int(BLOCKS[u]==BLOCKS[v])),
                     "edge_present":str(b[i]),
-                    "bernoulIi_parameter":str(q),
+                    "bernoulli_parameter":str(q),
                     "realized_factor":str(factor(mask,i,pw,pc)),
                     "full_graph_probability":str(like),
                 }
