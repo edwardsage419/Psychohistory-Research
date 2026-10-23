@@ -1,0 +1,47 @@
+name: Original 239 P1 R293 Schwartz Evidence Crosswalk v0.7
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r293_crosswalk_v0_7.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.7_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_55_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r293-crosswalk-v07.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-python-catalogue-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute 14 historical source R013, 239 crosswalk and E1-boundary checks
+        run: python research/catalogue_audit/verify_p1_r293_crosswalk_v0_7.py --test
+  independent-historical-original-source-audit:
+    needs: two-python-catalogue-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recalculate all catalogue links and independent original 2112 source hash
+        run: |
+          python research/catalogue_audit/verify_p1_r293_crosswalk_v0_7.py --audit
+          python research/catalogue_audit/independent_r293_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R293-v07-181Primary-55Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.7_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_55_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            docs/R293_R013_ORIGINAL_ZIP_MEMBERS_SCHWARTZ_EVIDENCE_AUDIT_2026-10-23.json
+            research/R293/R293_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
