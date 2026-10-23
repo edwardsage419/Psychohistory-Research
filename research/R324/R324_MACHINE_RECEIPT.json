@@ -1,0 +1,59 @@
+{
+  "research_id": "R324",
+  "original_catalogue_id": "01-017",
+  "protocol_commit": "854fc11f1be6e902de753a919b9594884241ee8d",
+  "protocol_path": "protocols/R324_PSYCHOMETRIC_RISK_TWO_DIMENSION_64_ARTIFICIAL_STATES_PRESCORE_FREEZE_2026-10-24.md",
+  "protocol_blob_sha1": "e98ae5e41bc9799a821b33125f33b6701d05e157",
+  "first_source_commit": "ae9568f0d5c04f9973db6e2b7f9883d5ba8333f5",
+  "test_syntax_fix_commit": "6ebdfed14ef01a897533dfe09fcfd0853e0edd3d",
+  "verified_source_artifacts": [
+    {
+      "path": "research/R324/r324_risk.py",
+      "git_blob_sha1": "817b1177e2024f385b4080debcedede350d0bcf3"
+    },
+    {
+      "path": "research/R324/R324_ALL_64_ARTIFICIAL_RISK_STATES.csv",
+      "git_blob_sha1": "1b0062eeea020606a3d510d566da43db03ace8d9"
+    },
+    {
+      "path": "research/R324/R324_EXACT_FOUR_SCORING_WORLDS.json",
+      "git_blob_sha1": "97c506e487fd60dfdae76fc862031803aaf911de"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r324_risk_audit.py",
+      "git_blob_sha1": "24e9b846e190e3ea72d82832e81f82815f35bf1e"
+    }
+  ],
+  "verification": {
+    "initial_CI_run_id": 40021221413,
+    "initial_CI_conclusion": "failure",
+    "corrected_CI_run_id": 40021287400,
+    "corrected_CI_conclusion": "success",
+    "jobs": [
+      {
+        "id": 120646195287,
+        "name": "independent",
+        "conclusion": "success"
+      },
+      {
+        "id": 120646195665,
+        "name": "unit (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120646195670,
+        "name": "unit (3.12)",
+        "conclusion": "success"
+      }
+    ],
+    "python_311_tests": 26,
+    "python_312_tests": 26,
+    "independent_no_import_audit": "PASS",
+    "original_artificial_rows": 64,
+    "world_count": 4
+  },
+  "evidence_scope": "CONSTRUCTED_TWO_AXIS_RISK_COMPOSITE_RANK_REVERSAL_E1_ONLY",
+  "real_human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED",
+  "original_1978_data_reanalysis": "NOT_ESTABLISHED"
+}
