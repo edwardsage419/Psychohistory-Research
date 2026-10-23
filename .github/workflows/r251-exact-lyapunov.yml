@@ -1,0 +1,105 @@
+name: R251 Exact Finite Discrete Lyapunov Candidate and Two Step Proofs
+on:
+  push:
+    paths:
+      - 'research/R251/r251_exact_lyapunov.py'
+      - '.github/workflows/r251-exact-lyapunov.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-lyapunov-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact nine discrete Lyapunov stability worlds and formal polynomial proof
+        run: python research/R251/r251_exact_lyapunov.py --test
+  all-original-lyapunov-source-archive:
+    needs: dual-python-lyapunov-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and independently audit all 405 sources and two-step sign counterexample
+        run: |
+          python research/R251/r251_exact_lyapunov.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R251')
+          rows=list(csv.DictReader((d/'R251_ALL_405_ORIGINAL_LYAPUNOV_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R251_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R251_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==405 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-011'
+          assert j['prescore_freeze_commit']=='15568be1625414aa72a179c93f315535de704d73'
+          by={w['world']:w for w in j['world_results']}
+          for world,w in by.items():
+              src=[x for x in rows if x['world']==world]
+              assert len(src)==45
+              assert len({(x['original_initial_x0'],x['original_time_n']) for x in src})==45
+              assert all(F(x['original_structural_source_mass'])==F(1,45) for x in src)
+              assert sum((F(x['original_structural_source_mass']) for x in src),F(0))==1
+              assert w['independent_formal_polynomial_composition_and_derivative_verified']
+              assert w['finite_cohort_autonomous_semigroup_verified']
+              assert len(w['exact_source_joint'])==45
+              assert len(w['initial_cohort_step4_values'])==9
+              for x in src:
+                  s=F(x['observed_state_xn'])
+                  assert F(x['observed_positive_candidate_Vn'])==s*s
+                  assert F(x['observed_one_step_delta_V'])==F(x['observed_next_state_fx'])**2-s*s
+          cert=j['one_step_vs_two_step_certificates']
+          assert cert['HALF_CONTRACTION']['coefficient_deltaV_over_x2']=='-3/4'
+          assert cert['NEGATIVE_HALF_CONTRACTION']['coefficient_deltaV_over_x2']=='-3/4'
+          assert cert['ZERO_MAP']['coefficient_deltaV_over_x2']=='-1'
+          assert cert['DOUBLE_EXPANSION']['coefficient_deltaV_over_x2']=='3'
+          assert cert['IDENTITY_NEUTRAL']['coefficient_deltaV_over_x2']=='0'
+          assert cert['SIGN_FLIP_NEUTRAL']['coefficient_deltaV_over_x2']=='0'
+          assert cert['CUBIC_OUTWARD']['exact_deltaV']=='x^4(2+x^2)'
+          assert cert['CUBIC_LOCAL_INWARD']['strict_interval']=='0<abs(x)<1'
+          t=cert['LOGISTIC_R3_CENTERED']
+          assert t['exact_second_iterate_shifted_coefficients']==['0','1','0','-18','-27']
+          assert t['maximum_two_step_factor_deficit']=='9/64'
+          assert t['one_step_V_increases_for_small_positive_x'] is True
+          assert t['one_step_V_decreases_for_small_negative_x'] is True
+          positive=[z for z in rows if z['world']=='LOGISTIC_R3_CENTERED' and z['original_initial_x0']=='1/12' and z['original_time_n']=='0']
+          negative=[z for z in rows if z['world']=='LOGISTIC_R3_CENTERED' and z['original_initial_x0']=='-1/12' and z['original_time_n']=='0']
+          assert len(positive)==len(negative)==1
+          assert F(positive[0]['observed_one_step_delta_V'])>0
+          assert F(negative[0]['observed_one_step_delta_V'])<0
+          for fname,key in [('R251_ALL_405_ORIGINAL_LYAPUNOV_SOURCE_ATOMS.csv','source_sha256'),
+                            ('R251_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/fname).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R251_ALL_405_EXACT_LYAPUNOV_CANDIDATE_ATOMS_AND_TWO_STEP_PROOF_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R251-Nine-Exact-Lyapunov-Original-Source-Worlds
+          path: |
+            research/R251/R251_ALL_405_ORIGINAL_LYAPUNOV_SOURCE_ATOMS.csv
+            research/R251/R251_EXACT_RESULTS.json
+            research/R251/R251_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive 405 original Lyapunov sources to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R251/R251_ALL_405_ORIGINAL_LYAPUNOV_SOURCE_ATOMS.csv research/R251/R251_EXACT_RESULTS.json research/R251/R251_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R251): all 405 exact Lyapunov original cohort time atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
