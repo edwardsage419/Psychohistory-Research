@@ -1,0 +1,44 @@
+name: Original 239 P1 Existing R066 FJ Human E2 Source v2.6
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_original_239_v2_6_existing_r066_fj_e2.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.6_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_36_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-existing-r066-fj-v26.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-existing-fj-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 16 original239 source audits and independent existing R066 village heldout checks
+        run: python research/catalogue_audit/verify_original_239_v2_6_existing_r066_fj_e2.py --test
+  independently-verify-original-human-E2-scope:
+    needs: dual-python-existing-fj-provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify R066 original FJ results without accessing individual human records, and 238 unchanged original catalogue rows
+        run: python research/catalogue_audit/verify_original_239_v2_6_existing_r066_fj_e2.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R066-FJ-v26-200Primary-36Pending-ExistingHumanE2Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.6_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_36_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            docs/ORIGINAL239_04_010_EXISTING_R066_FJ_INTERNAL_REAL_E2_SCOPE_AUDIT_2026-10-23.md
+          retention-days: 90
