@@ -101,8 +101,8 @@ def frozen_claims():
             assert b[0]==b[1]==ZERO
     assert sum(int(z["original_probability_mass"]>ZERO)
       for r,m in WORLDS for z in original_sources(r,m))==99
-    assert LOCKED["DETERMINISTIC_GROUP","ORIGINAL_BUCKETS"][3]<
-           LOCKED["DETERMINISTIC_GROUP","FLAT_HALF"][3]
+    assert (LOCKED["DETERMINISTIC_GROUP","ORIGINAL_BUCKETS"][3]
+            < LOCKED["DETERMINISTIC_GROUP","FLAT_HALF"][3])
     return True
 
 def emit():
