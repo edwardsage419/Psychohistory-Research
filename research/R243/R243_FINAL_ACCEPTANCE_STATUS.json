@@ -1,0 +1,57 @@
+{
+  "research_id": "R243",
+  "original_catalogue_id": "11-003",
+  "date": "2026-10-23",
+  "scientific_status": "CLOSED_BOUNDED_E1_FINITE_NON_GAUSSIAN_EULER_STYLE_SURROGATE",
+  "prescore_protocol_commit": "4733342e3fd16083468541f557f3bb2bffa3ce69",
+  "source_code_commit": "a9090dac4e9521e918b55c46cdbfcdb1b4619187",
+  "workflow_commit": "fcb4cdd9791cb8df556a938d66db86cd5de6602c",
+  "permanent_archive_commit": "d894092493ed62f0a0423d58398e8b0d6b117ff7",
+  "ci_run_id": 39889392631,
+  "ci_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39889392631",
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "jobs_success": 3,
+  "python311_passed_tests": 84,
+  "python312_passed_tests": 84,
+  "total_actual_passed_tests": 168,
+  "frozen_worlds": 9,
+  "original_full_four_increment_paths": 144,
+  "source_sha256": "d63b6acd378979a6e0cadbd016aea3edd37d6d93f310d93d1686d0a06a9675dd",
+  "results_sha256": "dff3ffccae8decacf82c105b7af83f1c27f17497d11d9e91f99ca9032b5cbc73",
+  "noise_type": "independent Rademacher epsilon +/- 1, increment Delta Z = epsilon/2, Delta t = 1/4; NOT Gaussian Brownian",
+  "single_increment_fourth_moment_finite": "1/16",
+  "same_variance_true_gaussian_fourth_moment": "3/16",
+  "four_step_terminal_fourth_moment_finite": "5/2",
+  "same_variance_true_gaussian_terminal_fourth_moment": "3",
+  "complete_path_distribution_aliases": [
+    [
+      "ADDITIVE_SYMMETRIC",
+      "ADDITIVE_NEGATIVE_SIGMA"
+    ],
+    [
+      "ADDITIVE_SYMMETRIC",
+      "STATIC_HIDDEN_STOCHASTIC_SENSOR"
+    ],
+    [
+      "ADDITIVE_SYMMETRIC",
+      "HIDDEN_DOUBLE_SCALE"
+    ]
+  ],
+  "alias_sign_negative_reindexes_epsilon_not_sourcewise": true,
+  "static_hidden_sensor_and_scale_sourcewise_observation_equal": true,
+  "common_shock_n4_variance": "4",
+  "independent_shock_n4_variance": "1",
+  "multiplicative_no_drift_n4_mean": "1",
+  "multiplicative_no_drift_n4_variance": "369/256",
+  "multiplicative_positive_drift_n4_mean": "6561/4096",
+  "multiplicative_positive_drift_n4_variance": "710665/262144",
+  "all_paths_analytic_exact_first_two_moments": true,
+  "limitations": "Finite 4-step non-Gaussian noise quadrature; no Brownian increments, actual continuous-time stochastic calculus convergence, strong or weak EM order, historical data, or learned empirical parameters.",
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_verified_original_catalogue": "11-004 Markov Stochastic Processes (R244)",
+  "owner_order": "All R first, then consolidate and classify, finally model fusion."
+}
