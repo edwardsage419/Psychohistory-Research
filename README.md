@@ -894,3 +894,10 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 [R281全部原来源与运行研究](research/R281/README.md) · [正式科学报告](research/R281/R281_SCIENTIFIC_REPORT_2026-10-23.md) · [机器有界验收](research/R281/R281_FINAL_ACCEPTANCE_STATUS.json) · [全成功GitHub Actions run39905387817](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39905387817)：三真Bernoulli生成p×五事前固定q，**15人工world、240完整四bit原source**。有限负log概率损失精确编码为有理数ln2与ln3系数，且对q=0/1与真实结果矛盾的事件严格记+INF，不做任意截尾。真p=1/2、固定q=0时，四bit中出现至少一个1并导致INF的真实概率为15/16，总体未来期望log-loss为+∞。双Python3.11/3.12各134真正unittest，共**268项通过**，第三独立来源重算及机器人永久原CSV/结果JSON/SHA256归档成功。[全部原source commitd038a6b9](https://github.com/edwardsage419/Psychohistory-Research/commit/d038a6b9794152463bf05e058c3d43c22f197cb6)。
 
 四个连续模型R278—R281正式科学E1验收合计：**45人工world、1296种带模型标识完整原source类型、818项双Python真正通过的测试、四个完成的GitHub Actions各三job共12成功job**。R279首次语法失败run单独完整保留，最终修复重跑成功并正式存证，不能计为成功CI。四项仅人工E1，没有新增真人E2、真实历史E3或R073跨实验真人复验结果；R073/PESEN v0.1仍冻结。原239目录下一项为**12-012 Open Reproducible Workflow and ODD（P0，拟R282）**。依用户既定主线优先完成全部原R系列，再统一归纳分类，最后原创模型熔炼，具体个人辅助决策系统实施继续暂缓。
+
+
+## 2026-10-23 R282-R285 末四项及239目录审计
+
+原239目录的12-012至12-015已按顺序完成四项**有界人工E1**研究：[R282 ODD七要素与执行调度](research/R282/README.md)、[R283 人工三研究合成](research/R283/README.md)、[R284 选择性发表机制](research/R284/README.md)、[R285 Holm与BH多重检验](research/R285/README.md)。[四项完整报告、源码、原数据和独立CI正式验收索引](docs/R282_R285_ODD_META_PUBLICATION_MULTIPLE_TESTING_E1_CLOSURE_INDEX_2026-10-23.md)：合计18个人工情境、3456带策略标签完整原source、786次真实双版本单测通过、12个最终成功CI job；R283首次独立审计失败并修正的历史另行保留。新增真人E2与真实历史E3均为0，R073/PESEN v0.1保持冻结。
+
+**不把R285等同239候选的总体验收完毕。** [原239目录与Git树结构审计](docs/ORIGINAL_239_CATALOGUE_AND_R213_R285_REPOSITORY_COVERAGE_AUDIT_2026-10-23.md)发现R213—R285共73个连续R项目七类归档结构文件全具备，但全库21个R目录未检出约定命名的验收JSON、早期48个R编号没有research目录，且R208/R209是239目录之外补充模型。下一步应逐239原目录ID建立模型映射与科学证据核验、核对历史其它归档来源和真实缺口；确认原R全部完成后再统一归纳分类，最后熔炼原创体系。
