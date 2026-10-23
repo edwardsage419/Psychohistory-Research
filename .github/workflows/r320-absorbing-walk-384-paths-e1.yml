@@ -1,0 +1,44 @@
+name: R320 Discrete DDM Analogue Exact 384 Paths E1
+on:
+  push:
+    paths:
+      - 'research/R320/**'
+      - 'research/catalogue_audit/independent_r320_absorbing_walk_audit.py'
+      - '.github/workflows/r320-absorbing-walk-384-paths-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-first-passage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 35 exact frozen walk tests
+        run: python research/R320/r320_exact_absorbing_walk.py --test
+      - name: Replay 384 original path source rows
+        run: python research/R320/r320_exact_absorbing_walk.py --audit
+  independent-dp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify all source paths and six-world DP
+        run: python research/catalogue_audit/independent_r320_absorbing_walk_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R320-384OriginalPaths-6Worlds-DiscreteAnalogue-E1
+          path: |
+            research/R320/R320_ALL_384_ORIGINAL_SIX_STEP_PATHS.csv
+            research/R320/R320_EXACT_6_FIRST_HIT_WORLDS.json
+          retention-days: 90
