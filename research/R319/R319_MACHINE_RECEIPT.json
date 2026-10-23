@@ -1,0 +1,55 @@
+{
+  "research_id": "R319",
+  "original_catalogue_id": "01-007",
+  "protocol_commit": "93c0c409c0a33f478eaa6942e211a2b0a3baecb0",
+  "protocol_path": "protocols/R319_MIXED_LOGIT_TWO_POINT_84_ATOMS_PRESCORE_FREEZE_2026-10-24.md",
+  "protocol_blob_sha1": "42bbb7283a70c69bd23d8203568e43119dc6a9ac",
+  "original_source_commit": "46b6b921b284f10d8f6131baf1fdfcf0a33ab7fd",
+  "verified_source_artifacts": [
+    {
+      "path": "research/R319/r319_exact_finite_mixed_logit.py",
+      "git_blob_sha1": "526172db832b656f51895aecbe47e705a3c1b37a"
+    },
+    {
+      "path": "research/R319/R319_ALL_84_ORIGINAL_CONDITIONAL_MIXTURE_SOURCE_ATOMS.csv",
+      "git_blob_sha1": "abbc6b79715535bcf0b5d35d7f8c8578c82a2ef6"
+    },
+    {
+      "path": "research/R319/R319_EXACT_15_MIXED_LOGIT_WORLDS.json",
+      "git_blob_sha1": "5ea1cde7f7f5bad3c0b12bbeee614ac7dda7a947"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r319_mixed_logit_audit.py",
+      "git_blob_sha1": "250b0cc05a8c455cb8410ac0a6f472b8805dca02"
+    }
+  ],
+  "verification": {
+    "CI_run_id": 40005442471,
+    "CI_run_conclusion": "success",
+    "jobs": [
+      {
+        "id": 120592054387,
+        "name": "independent-source",
+        "conclusion": "success"
+      },
+      {
+        "id": 120592054702,
+        "name": "finite-mixed-logit (3.12)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120592054822,
+        "name": "finite-mixed-logit (3.11)",
+        "conclusion": "success"
+      }
+    ],
+    "python_311_tests": 35,
+    "python_312_tests": 35,
+    "independent_audit": "PASS",
+    "replay_source_atoms": 84,
+    "choice_worlds": 15
+  },
+  "evidence_scope": "ARTIFICIAL_E1_ONLY",
+  "real_human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED"
+}

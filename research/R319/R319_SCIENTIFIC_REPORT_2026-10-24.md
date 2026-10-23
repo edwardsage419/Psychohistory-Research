@@ -1,6 +1,6 @@
 # R319 Mixed Logit: exact finite random coefficient mixture (E1)
 
-Date 2026-10-24. Original239 01-007, P2. **Scientific status: E1 computation complete; formal CI acceptance pending** until all 3 jobs and Git blob identities are verified.
+Date 2026-10-24. Original239 01-007, P2. **Scientific status: PASS_BOUNDED_E1_ONLY**, after independently verified [GitHub Actions run 40005442471](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40005442471), all 3 jobs success, Python 3.11/3.12 each 35 tests and independent no-import source reconstruction. Git blob identities pinned in [machine receipt](R319_MACHINE_RECEIPT.json).
 
 ## Sources and strict reuse
 

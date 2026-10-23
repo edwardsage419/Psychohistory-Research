@@ -1,0 +1,39 @@
+name: Original239 P2 R319 Mixed Logit Crosswalk v3.7
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p2_r319_crosswalk_v3_7.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.7_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_25_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p2-r319-crosswalk-v37.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all 239, previous v3.6, R319 Git blobs and 25 P2 queue
+        run: python research/catalogue_audit/verify_p2_r319_crosswalk_v3_7.py
+  independent-mixed:
+    needs: index
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconfirm independent 84-atom mixed logit source audit
+        run: python research/catalogue_audit/independent_r319_mixed_logit_audit.py
+      - name: Reconfirm crosswalk source hashes
+        run: python research/catalogue_audit/verify_p2_r319_crosswalk_v3_7.py

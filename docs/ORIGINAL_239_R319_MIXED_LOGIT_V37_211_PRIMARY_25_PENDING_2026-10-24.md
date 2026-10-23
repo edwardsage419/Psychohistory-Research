@@ -1,0 +1,9 @@
+# Original239 v3.7: R319 mixed logit 211 primary / 25 pending
+
+Date 2026-10-24. Previous main original239 v3.6 was 210 primary / 26 pending. This change **only** assigns original candidate **01-007 Mixed Logit (P2)** to R319, preserving original 239 candidate identities, order, priority, and other 238 rows. All remaining 25 unmatched candidates are P2.
+
+R319 was independently pre-frozen at [protocol commit 93c0c409](https://github.com/edwardsage419/Psychohistory-Research/commit/93c0c409c0a33f478eaa6942e211a2b0a3baecb0), then created complete [84 original artificial source atoms](../research/R319/R319_ALL_84_ORIGINAL_CONDITIONAL_MIXTURE_SOURCE_ATOMS.csv), 15 worlds and 42 marginal probabilities at [source commit 46b6b921](https://github.com/edwardsage419/Psychohistory-Research/commit/46b6b921b284f10d8f6131baf1fdfcf0a33ab7fd). [CI run 40005442471](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40005442471) completed with 3/3 jobs success, 35 tests on each of Python3.11 and 3.12, independent no-import audit. [Source receipt](../research/R319/R319_MACHINE_RECEIPT.json) pins original Git blobs and job identities. This is finite **E1 only**; no real human E2 or historical E3.
+
+[Original239 v3.7](ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.7_2026-10-24.json) and [remaining 25 P2 queue](ORIGINAL_239_PENDING_25_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv) must pass independent previous-version one-row-only, all-239 identity, blob, queue, receipt and original source audit checks. The 173 previously provisional README primary mappings remain provisional. Primary R link is not evidence of external scientific validation.
+
+**Next R320**: original 01-009 Drift Diffusion Model (P2). First check earlier R archives and existing sequential sampling code for strict reuse, then prescore freeze a small falsifiable finite hitting-time study if necessary. R073/PESEN v0.1 frozen. No classification or fusion yet.
