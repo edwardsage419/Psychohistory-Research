@@ -1,0 +1,135 @@
+name: R275 Equifinality Full Source And Bayes Classification Audit
+on:
+  push:
+    paths:
+      - 'research/R275/r275_exact_equifinality.py'
+      - '.github/workflows/r275-exact-equifinality-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test 50 complete exact source and identifiability assertions
+        run: python research/R275/r275_exact_equifinality.py --test
+  independent-sources-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconstruct all 768 primitive source configurations and both observation decisions
+        run: |
+          python research/R275/r275_exact_equifinality.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from pathlib import Path
+          from fractions import Fraction as F
+          from collections import defaultdict
+          root=Path("research/R275")
+          source=root/"R275_ALL_768_ORIGINAL_EQUIFINALITY_PAIR_SOURCES.csv"
+          result_file=root/"R275_EXACT_EQUIFINALITY_RESULTS.json"
+          rows=list(csv.DictReader(source.open()))
+          result=json.loads(result_file.read_text())
+          receipt=json.loads((root/"R275_MACHINE_RECEIPT.json").read_text())
+          assert len(rows)==768 and len(result["world_results"])==3
+          assert result["prescore_freeze_commit"]==receipt["prescore_freeze_commit"]=="c29ff305375f8510137f3a50bf20005fd695768d"
+          assert result["original_catalogue_id"]=="12-005"
+          assert receipt["source_sha256"]==hashlib.sha256(source.read_bytes()).hexdigest()
+          assert receipt["results_sha256"]==hashlib.sha256(result_file.read_bytes()).hexdigest()
+          names=("IID_PAIR","COPY_PAIR","FLIP_PAIR")
+          allbit={''.join(b) for b in itertools.product('01',repeat=8)}
+          grouped=defaultdict(list)
+          for r in rows:grouped[r["true_mechanism"]].append(r)
+          assert set(grouped)==set(names)
+          nnonzero=0
+          for summary in result["world_results"]:
+              model=summary["true_mechanism"]
+              world=grouped[model]
+              assert len(world)==256
+              assert {r["original_full_four_pair_eightbits"] for r in world}==allbit
+              total=partial=full=F(0);active=0
+              observed_marginal=defaultdict(lambda:F(0))
+              for r in world:
+                  eight=r["original_full_four_pair_eightbits"]
+                  pairs=[(int(eight[2*i]),int(eight[2*i+1])) for i in range(4)]
+                  A=''.join(str(pair[0]) for pair in pairs)
+                  equal=sum(v==w for v,w in pairs)
+                  all_eq=(equal==4);all_flip=(equal==0)
+                  like=(F(1,256),F(1,16) if all_eq else F(0),F(1,16) if all_flip else F(0))
+                  partial_like=(F(1,16),)*3
+                  expected_mass=like[names.index(model)]
+                  p_full=tuple(x/sum(like,F(0)) for x in like)
+                  p_partial=(F(1,3),)*3
+                  select_full=names[next(i for i,v in enumerate(like) if v==max(like))]
+                  select_partial="IID_PAIR"
+                  assert r["partial_observed_first_bits_only"]==A
+                  assert int(r["complete_pair_equal_count"])==equal
+                  assert F(r["exact_true_source_mass"])==expected_mass
+                  assert tuple(F(x) for x in r["partial_all_mechanism_likelihoods"].split(';'))==partial_like
+                  assert tuple(F(x) for x in r["full_all_mechanism_likelihoods"].split(';'))==like
+                  assert tuple(F(x) for x in r["partial_three_mechanism_posterior"].split(';'))==p_partial
+                  assert tuple(F(x) for x in r["full_three_mechanism_posterior"].split(';'))==p_full
+                  assert r["partial_MAP_selection"]==select_partial
+                  assert r["full_MAP_selection"]==select_full
+                  assert int(r["partial_MAP_correct"])==int(select_partial==model)
+                  assert int(r["full_MAP_correct"])==int(select_full==model)
+                  total+=expected_mass
+                  observed_marginal[A]+=expected_mass
+                  partial+=expected_mass*int(select_partial==model)
+                  full+=expected_mass*int(select_full==model)
+                  active+=int(expected_mass>0)
+              assert total==1
+              assert len(observed_marginal)==16
+              assert all(w==F(1,16) for w in observed_marginal.values())
+              expected=(F(1),F(7,8),256) if model=="IID_PAIR" else (F(0),F(1),16)
+              assert (partial,full,active)==expected
+              assert summary["partial_A_only_MAP_correct_probability"]==str(partial)
+              assert summary["full_AB_pair_MAP_correct_probability"]==str(full)
+              assert summary["positive_probability_original_source_count"]==active
+              nnonzero+=active
+          assert nnonzero==receipt["source_support_nonzero"]==288
+          assert result["average_full_pair_MAP_correct_probability"]=="23/24"
+          assert result["average_partial_MAP_correct_probability"]=="1/3"
+          assert result["new_real_human_E2"]==result["new_real_historical_E3"]==0
+          print("R275_ALL_768_EQUIFINALITY_ORIGINAL_SOURCES_288_POSITIVE_SUPPORT_23_24_MAP_VERIFIED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R275-All-768-Primitive-Equifinality-Sources
+          path: |
+            research/R275/R275_ALL_768_ORIGINAL_EQUIFINALITY_PAIR_SOURCES.csv
+            research/R275/R275_EXACT_EQUIFINALITY_RESULTS.json
+            research/R275/R275_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive complete original source CSV JSON and SHA256
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R275/R275_ALL_768_ORIGINAL_EQUIFINALITY_PAIR_SOURCES.csv research/R275/R275_EXACT_EQUIFINALITY_RESULTS.json research/R275/R275_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R275): all 768 equifinality primitive source configurations'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R275_COMPLETE_EQUIFINALITY_SOURCES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
