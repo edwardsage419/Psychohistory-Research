@@ -1,0 +1,476 @@
+{
+  "research_id": "R235",
+  "original_catalogue_id": "10-009",
+  "prescore_freeze_commit": "b71bff10ce9e21affd0a7619fa9c7fd72551e080",
+  "scientific_scope": "FINITE_ARTIFICIAL_E1_DIF_MH_AND_ANCHOR_CONTAMINATION",
+  "nine_worlds": 9,
+  "full_original_response_structure_atoms": 432,
+  "finite_nonuniform_DIF_with_MH_exact_null": true,
+  "finite_no_DIF_with_ability_mix_or_anchor_contamination_MH_false_positive": true,
+  "coordinate_reanchoring_full_observation_alias": true,
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "BASE_NO_DIF",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "1/2"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "0",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "1",
+      "observable_focal_success_differences_by_anchor_score": [
+        "0",
+        "0",
+        "0"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "0",
+        "0",
+        "0"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        -1,
+        0,
+        1
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        1,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 0,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "37/540",
+        "1001": "7/270",
+        "1010": "7/135",
+        "1011": "7/270",
+        "1100": "14/135",
+        "1101": "7/135",
+        "1110": "14/135",
+        "1111": "37/540"
+      }
+    },
+    {
+      "world": "ABILITY_MIX_NO_DIF",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "5/9"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "1/18",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "1304723/1069477",
+      "observable_focal_success_differences_by_anchor_score": [
+        "366/6695",
+        "3/56",
+        "366/10205"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "0",
+        "0",
+        "0"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        -1,
+        0,
+        1
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        1,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 0,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "53/1080",
+        "1001": "5/216",
+        "1010": "5/108",
+        "1011": "31/1080",
+        "1100": "5/54",
+        "1101": "31/540",
+        "1110": "31/270",
+        "1111": "19/216"
+      }
+    },
+    {
+      "world": "UNIFORM_FOCAL_HARDER",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "31/90"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "-7/45",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "19907/38107",
+      "observable_focal_success_differences_by_anchor_score": [
+        "-289/1950",
+        "-131/840",
+        "-158/975"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "-2/15",
+        "-1/6",
+        "-1/6"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        -1,
+        1,
+        1
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        1,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 0,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "1399/16200",
+        "1001": "551/16200",
+        "1010": "551/16200",
+        "1011": "289/16200",
+        "1100": "551/4050",
+        "1101": "289/4050",
+        "1110": "289/4050",
+        "1111": "397/8100"
+      }
+    },
+    {
+      "world": "UNIFORM_FOCAL_EASIER",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "59/90"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "7/45",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "38107/19907",
+      "observable_focal_success_differences_by_anchor_score": [
+        "158/975",
+        "131/840",
+        "289/1950"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "1/6",
+        "1/6",
+        "2/15"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        -1,
+        -1,
+        1
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        1,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 0,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "397/8100",
+        "1001": "289/16200",
+        "1010": "289/4050",
+        "1011": "551/16200",
+        "1100": "289/4050",
+        "1101": "551/16200",
+        "1110": "551/4050",
+        "1111": "1399/16200"
+      }
+    },
+    {
+      "world": "NONUNIFORM_FOCAL_DISCRIMINATION",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "1/2"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "0",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "1",
+      "observable_focal_success_differences_by_anchor_score": [
+        "-18/325",
+        "0",
+        "18/325"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "-2/15",
+        "0",
+        "2/15"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        -1,
+        0,
+        1
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        2,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 0,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "203/2700",
+        "1001": "7/270",
+        "1010": "61/1350",
+        "1011": "7/270",
+        "1100": "14/135",
+        "1101": "61/1350",
+        "1110": "14/135",
+        "1111": "203/2700"
+      }
+    },
+    {
+      "world": "ANCHOR_ITEM1_DRIFT",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "1/2"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "0",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "156452/149773",
+      "observable_focal_success_differences_by_anchor_score": [
+        "61/6045",
+        "1/84",
+        "61/6630"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "0",
+        "0",
+        "0"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        0,
+        0,
+        1
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        1,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 0,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "13/135",
+        "1001": "41/1080",
+        "1010": "41/540",
+        "1011": "43/1080",
+        "1100": "41/540",
+        "1101": "43/1080",
+        "1110": "43/540",
+        "1111": "59/1080"
+      }
+    },
+    {
+      "world": "ANCHOR_ITEM3_DRIFT",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "1/2"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "0",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "110465081/106549396",
+      "observable_focal_success_differences_by_anchor_score": [
+        "29/3705",
+        "1/102",
+        "64/7995"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "0",
+        "0",
+        "0"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        -1,
+        0,
+        2
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        1,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 0,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "32/405",
+        "1001": "5/324",
+        "1010": "5/81",
+        "1011": "13/810",
+        "1100": "10/81",
+        "1101": "13/405",
+        "1110": "52/405",
+        "1111": "71/1620"
+      }
+    },
+    {
+      "world": "GLOBAL_REANCHOR_ALIAS",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "1/2"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "0",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "1",
+      "observable_focal_success_differences_by_anchor_score": [
+        "0",
+        "0",
+        "0"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "0",
+        "0",
+        "0"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        0,
+        1,
+        2
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        1,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 1,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "37/540",
+        "1001": "7/270",
+        "1010": "7/135",
+        "1011": "7/270",
+        "1100": "14/135",
+        "1101": "7/135",
+        "1110": "14/135",
+        "1111": "37/540"
+      }
+    },
+    {
+      "world": "COMPOSITION_PLUS_TRUE_DIF",
+      "full_original_response_structure_source_atoms": 48,
+      "full_source_probability_mass": "1",
+      "observable_focal_success_rates_by_group": [
+        "1/2",
+        "71/180"
+      ],
+      "observable_group1_minus_group0_focal_success_rate": "-19/180",
+      "observable_matching_anchor_score": "observed_Y1 + observed_Y3",
+      "observable_mantel_haenszel_common_odds_ratio_group1_vs_group0": "9229381/14581955",
+      "observable_focal_success_differences_by_anchor_score": [
+        "-4031/40170",
+        "-181/1680",
+        "-3946/30615"
+      ],
+      "oracle_fixed_ability_group1_minus_group0_focal_probabilities": [
+        "-2/15",
+        "-1/6",
+        "-1/6"
+      ],
+      "oracle_raw_group1_item_difficulties": [
+        -1,
+        1,
+        1
+      ],
+      "oracle_raw_group1_item_discriminations": [
+        1,
+        1,
+        1
+      ],
+      "oracle_group1_numeric_ability_origin_shift": 0,
+      "full_observed_group_three_item_joint_signature": {
+        "0000": "37/540",
+        "0001": "7/270",
+        "0010": "7/135",
+        "0011": "7/270",
+        "0100": "14/135",
+        "0101": "7/135",
+        "0110": "14/135",
+        "0111": "37/540",
+        "1000": "2069/32400",
+        "1001": "1021/32400",
+        "1010": "1021/32400",
+        "1011": "659/32400",
+        "1100": "1021/8100",
+        "1101": "659/8100",
+        "1110": "659/8100",
+        "1111": "1037/16200"
+      }
+    }
+  ]
+}
