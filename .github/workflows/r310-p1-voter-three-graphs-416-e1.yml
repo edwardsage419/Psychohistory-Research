@@ -1,0 +1,67 @@
+name: R310 Voter Model Three Graphs 416 Synthetic Directed Sources E1
+on:
+  push:
+    paths:
+      - 'research/R310/r310_exact_four_node_voter_model.py'
+      - 'research/catalogue_audit/independent_r310_source_audit.py'
+      - '.github/workflows/r310-p1-voter-three-graphs-416-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-voter-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run complete site-selected voter model exact graph tests
+        run: python research/R310/r310_exact_four_node_voter_model.py --test
+      - name: Emit 416 original directed updates and independently verify degree-weighted martingale
+        run: |
+          python research/R310/r310_exact_four_node_voter_model.py --emit
+          python research/catalogue_audit/independent_r310_source_audit.py --test
+          python research/catalogue_audit/independent_r310_source_audit.py --audit
+  independent-voter-source-permanent-archive:
+    needs: dual-python-voter-model
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute exact 416 source updates and all 48 world graph martingale proofs
+        run: |
+          python research/R310/r310_exact_four_node_voter_model.py --emit
+          python research/catalogue_audit/independent_r310_source_audit.py --test
+          python research/catalogue_audit/independent_r310_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R310-416-Original-Directional-Voter-Model-Source-Events
+          path: |
+            research/R310/R310_ALL_416_ORIGINAL_VOTER_DIRECTED_UPDATE_SOURCES.csv
+            research/R310/R310_EXACT_NETWORK_VOTER_MODEL_RESULTS.json
+            research/R310/R310_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently commit all 416 exact voter source events and SHA to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R310/R310_ALL_416_ORIGINAL_VOTER_DIRECTED_UPDATE_SOURCES.csv research/R310/R310_EXACT_NETWORK_VOTER_MODEL_RESULTS.json research/R310/R310_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R310): 416 exact original voter neighbor-copy events 48 worlds'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R310_416_EXACT_VOTER_ORIGINALS_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
