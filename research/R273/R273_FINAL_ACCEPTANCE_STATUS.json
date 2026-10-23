@@ -1,0 +1,36 @@
+{
+  "research_id": "R273",
+  "original_catalogue_id": "12-003",
+  "outcome": "CLOSED_BOUNDED_E1_ARTIFICIAL_CROSS_POPULATION_TRANSFER",
+  "freeze_commit": "91abafbaf627dbf67f86208a82008a5be419e507",
+  "program_commit": "c51203ab9bcf29c3d4f744239d9df5a27279c149",
+  "ci_workflow_commit": "fe20198e748fff5c6ac14fc28fddb69d5f59a6ba",
+  "complete_original_source_archive_commit": "1d57f5078d172d1feb4b6a07a68e8732c102edf6",
+  "ci_run_id": 39903300167,
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "success_jobs": 3,
+  "python_3_11_tests_pass": 172,
+  "python_3_12_tests_pass": 172,
+  "artificial_worlds": 27,
+  "complete_source_types": 1728,
+  "independent_analytic_population_transfer_worlds": 27,
+  "source_sha256": "b4f417d0b218fd1aaa9082ab7a49e52675df59af9fd80841e74888b31dcd6d52",
+  "results_sha256": "1f1e35d20ddd486bb7d71c65cea96e9590912268c93f17ad1ec99b7f6ac463b8",
+  "supported_claims": [
+    "All exact target risk formula results hold under 4 source and 2 target Bernoulli independent observations.",
+    "Target shifted source oracle can have risk 7/16 versus target oracle lower bound 3/16.",
+    "Laplace source-only smoothing may mitigate shift yet incurs source estimation variance."
+  ],
+  "limitations": [
+    "Oracle comparison baselines require inaccessible true population probabilities.",
+    "Only two artificially independent Bernoulli domains, no actual psychological population data.",
+    "No causal transportability evidence or live historical validation."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": "12-004",
+  "next_R": "R274"
+}
