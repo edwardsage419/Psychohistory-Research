@@ -1,0 +1,38 @@
+{
+  "research_id": "R269",
+  "original_catalogue_id": "11-029",
+  "outcome": "CLOSED_BOUNDED_E1_ARTIFICIAL_EXACT_GROUP_CROSS_VALIDATION",
+  "prescore_protocol_commit": "1ba86be0a35b77c0d5e5f6a72bb102ba08c48795",
+  "source_program_commit": "0d77cc29b047b1a9e9a5d9a1251352f2509b027c",
+  "workflow_commit": "7e763a3bb8a1105c93f4f1e1ab96862def321afd",
+  "original_source_archive_commit": "23b88012cc4811666aa47d51e16f2df3d79e9760",
+  "verified_ci_run": 39902238505,
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "successful_jobs": 3,
+  "python_3_11_real_tests_pass": 83,
+  "python_3_12_real_tests_pass": 83,
+  "worlds": 9,
+  "full_artificial_original_source_types": 576,
+  "unique_latent_group_vectors_per_p": 64,
+  "independent_analytic_expected_score_comparisons": 18,
+  "full_sources_csv_sha256": "6bc98c0c07c2a6d48184e6a8643dbd515dfa470ba626a10928d90614ce75155d",
+  "results_json_sha256": "d7dda54fdd07148713cd8acbaaafb06bc1282a005b48b09f570211e1a7d4193e",
+  "supported_claims": [
+    "With two identical rows per independent latent group, rowwise leave-one-out leaks the group label to the memorizer and has exact zero Brier loss.",
+    "Group heldout leave-one-group-out shows the memorizer's exact Brier loss 1/4.",
+    "Global Laplace group versus row heldout expectations are derived independently for three known Bernoulli p values."
+  ],
+  "limitations": [
+    "Only artificial binary group latent worlds; no independent human experimental evaluation.",
+    "Rowwise versus groupwise predictions use different training row counts; the difference has no unique causal leakage attribution for every model.",
+    "No postselection external risk, unseen historical forecasting, or PESEN promotion established."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": "11-030",
+  "next_model": "Posterior Predictive Checks",
+  "next_research": "R270"
+}
