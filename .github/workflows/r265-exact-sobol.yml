@@ -1,0 +1,143 @@
+name: R265 Four Bernoulli Input Sobol Exact Variance Decomposition
+on:
+  push:
+    paths:
+      - 'research/R265/r265_exact_fourbit_sobol.py'
+      - '.github/workflows/r265-exact-sobol.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-sobol-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Audit 144 original fourbit source atoms, Walsh Fourier and conditional Sobol all 15 subsets
+        run: python research/R265/r265_exact_fourbit_sobol.py --test
+  all-original-sobol-source-archive:
+    needs: dual-python-sobol-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recalculate Sobol using independent group-conditional ANOVA on all 144 sources
+        run: |
+          python research/R265/r265_exact_fourbit_sobol.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R265')
+          rows=list(csv.DictReader((d/'R265_ALL_144_ORIGINAL_FOURBIT_SOBOL_INPUT_SOURCES.csv').open()))
+          j=json.loads((d/'R265_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R265_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==144 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-025'
+          assert j['prescore_freeze_commit']=='3236f95d7773c63f54fdfd521d060d9ef606b1ad'
+          by={w['world']:w for w in j['world_results']}
+          assert len(by)==9
+          for w,r in by.items():
+              sub=[z for z in rows if z['world']==w]
+              assert len(sub)==16
+              keys=['oracle_original_independent_input_X'+str(i) for i in range(1,5)]
+              assert len({tuple(z[k] for k in keys) for z in sub})==16
+              assert all(F(z['original_complete_fourbit_design_probability'])==F(1,16) for z in sub)
+              assert sum((F(z['original_complete_fourbit_design_probability']) for z in sub),F(0))==1
+              outcomes={}
+              for z in sub:
+                  x=tuple(int(z[k]) for k in keys)
+                  assert all(v in (0,1) for v in x)
+                  val=F(z['original_frozen_fourbit_output_Y'])
+                  assert F(z['original_output_squared_Y2'])==val*val
+                  outcomes[x]=val
+              mean=sum(outcomes.values(),F(0))/16
+              variance=sum(((v-mean)**2 for v in outcomes.values()),F(0))/16
+              assert variance>0 and str(mean)==r['exact_mean_Y']
+              assert str(variance)==r['exact_variance_Y']
+              # Independent conditional E[Y|X_S] calculation, then Möbius inversion
+              conditional={0:F(0)}
+              partial={}
+              for mask in sorted(range(1,16),key=lambda k:(k.bit_count(),k)):
+                  chosen=tuple(i for i in range(4) if mask&(1<<i))
+                  groups=defaultdict(list)
+                  for x,v in outcomes.items():
+                      groups[tuple(x[i] for i in chosen)].append(v)
+                  assert len(groups)==2**len(chosen)
+                  average=[sum(values,F(0))/len(values) for values in groups.values()]
+                  W=sum(((q-mean)**2 for q in average),F(0))/len(average)
+                  conditional[mask]=W
+                  component=W-sum((v for subset,v in partial.items() if subset&mask==subset),F(0))
+                  assert component>=0
+                  partial[mask]=component
+                  assert str(component)==r['complete_nonempty_subset_variance_components'][str(mask)]
+                  assert str(component/variance)==r['complete_nonempty_subset_Sobol_indices'][str(mask)]
+              assert sum(partial.values(),F(0))==variance
+              first=[partial[1<<i]/variance for i in range(4)]
+              total=[sum((v for mask,v in partial.items() if mask&(1<<i)),F(0))/variance for i in range(4)]
+              assert r['first_order_S1_S2_S3_S4']==[str(x) for x in first]
+              assert r['total_effect_ST1_ST2_ST3_ST4']==[str(x) for x in total]
+              assert all(0<=a<=b<=1 for a,b in zip(first,total))
+              assert r['independent_conditional_expectation_Mobius_decomposition_verified']
+              assert r['source_variance_equals_sum_all_15_interaction_components']
+              assert r['all_four_total_indices_equal_complement_conditional_formula']
+          a=by['ADDITIVE_WEIGHTED_123']
+          assert a['exact_variance_Y']=='7/2'
+          assert a['first_order_S1_S2_S3_S4']==['1/14','2/7','9/14','0']
+          assert a['first_order_S1_S2_S3_S4']==a['total_effect_ST1_ST2_ST3_ST4']
+          assert by['ADDITIVE_EQUAL_FOUR']['first_order_S1_S2_S3_S4']==['1/4']*4
+          assert by['PURE_PAIR_PARITY']['complete_nonempty_subset_Sobol_indices']['3']=='1'
+          assert by['PURE_TRIPLE_PARITY']['complete_nonempty_subset_Sobol_indices']['7']=='1'
+          assert by['PURE_FOUR_PARITY']['complete_nonempty_subset_Sobol_indices']['15']=='1'
+          assert by['PURE_FOUR_PARITY']['first_order_S1_S2_S3_S4']==['0']*4
+          assert by['PURE_FOUR_PARITY']['total_effect_ST1_ST2_ST3_ST4']==['1']*4
+          assert by['AND_PAIR']['total_effect_ST1_ST2_ST3_ST4']==['2/3','2/3','0','0']
+          assert by['AND_FOUR']['exact_variance_Y']=='15/256'
+          assert all(x=='1/15' for x in by['AND_FOUR']['complete_nonempty_subset_Sobol_indices'].values())
+          assert by['AND_FOUR']['total_effect_ST1_ST2_ST3_ST4']==['8/15']*4
+          assert by['SHIFT_SCALED_PAIR_PARITY']['complete_nonempty_subset_Sobol_indices']['3']=='1'
+          assert by['INTERACTION_PLUS_ADDITIVE']['first_order_S1_S2_S3_S4']==['0','0','1/6','2/3']
+          assert by['INTERACTION_PLUS_ADDITIVE']['total_effect_ST1_ST2_ST3_ST4']==['1/6','1/6','1/6','2/3']
+          for filename,key in [('R265_ALL_144_ORIGINAL_FOURBIT_SOBOL_INPUT_SOURCES.csv','source_sha256'),
+                               ('R265_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R265_ALL_144_ORIGINAL_SOBOL_INPUTS_AND_135_EXACT_ANOVA_SUBSETS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R265-Nine-FourBit-Exact-Sobol-Source-Worlds
+          path: |
+            research/R265/R265_ALL_144_ORIGINAL_FOURBIT_SOBOL_INPUT_SOURCES.csv
+            research/R265/R265_EXACT_RESULTS.json
+            research/R265/R265_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all 144 original Sobol sources
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R265/R265_ALL_144_ORIGINAL_FOURBIT_SOBOL_INPUT_SOURCES.csv research/R265/R265_EXACT_RESULTS.json research/R265/R265_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R265): all 144 original independent Sobol input sources'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R265_ALL_144_ORIGINAL_SOBOL_SOURCES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
