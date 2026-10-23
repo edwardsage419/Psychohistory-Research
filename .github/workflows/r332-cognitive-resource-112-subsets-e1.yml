@@ -1,0 +1,31 @@
+name: R332 cognitive resource 112 artificial subsets E1
+on:
+  push:
+    paths:
+      - 'research/R332/**'
+      - 'research/catalogue_audit/independent_r332_resource_audit.py'
+      - '.github/workflows/r332-cognitive-resource-112-subsets-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R332/r332_resource_allocation.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r332_resource_audit.py
