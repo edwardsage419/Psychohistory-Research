@@ -1,0 +1,73 @@
+{
+  "research_id": "R313",
+  "original_catalogue_id": "04-014",
+  "model": "Axelrod 1997 dissemination of culture, exact directional similarity-weighted single-feature adoption",
+  "freeze_protocol_path": "protocols/R313_AXELROD_THREE_SITE_TWO_FEATURE_EXACT_ONE_STEP_PRESCORE_FREEZE_2026-10-24.md",
+  "freeze_protocol_commit_sha": "8b69fc8c73a850279a3fac1a5e9314a3374c6d52",
+  "freeze_git_blob_sha1": "3d696ff6c53c0139519e45007fe1c3c91318fc98",
+  "artifacts": [
+    {
+      "path": "research/R313/R313_ALL_512_ORIGINAL_FEATURE_SOURCE_ATOMS.csv",
+      "git_blob_sha1": "362cdca76d3dc605c73015c80ddd0e10140a00d8",
+      "row_count": 512
+    },
+    {
+      "path": "research/R313/R313_EXACT_64_WORLD_ONE_STEP_RESULTS.json",
+      "git_blob_sha1": "b05bd67ee362bfcbb77726ab9262c807c93236cd",
+      "world_count": 64
+    },
+    {
+      "path": "research/R313/r313_exact_axelrod.py",
+      "git_blob_sha1": "bf9d3d7a7465e242eb51971aa8845f0269598617"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r313_source_audit.py",
+      "git_blob_sha1": "e2de4cd5bdd3aee1ca49f7171534ecfcc6cafd29"
+    },
+    {
+      "path": "research/R313/R313_SCIENTIFIC_REPORT_2026-10-24.md",
+      "git_blob_sha1": "2651a317430c96466124bcd41e678a874f23dea3"
+    }
+  ],
+  "full_archival_scope": {
+    "artificial_worlds": 64,
+    "directed_events": 256,
+    "feature_source_atoms": 512,
+    "positive_copy_atoms": 128,
+    "absorbing_worlds": 16,
+    "new_real_human_participants": 0,
+    "historical_outcomes": 0
+  },
+  "independent_test_run": {
+    "workflow_run_id": 39993794818,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39993794818",
+    "head_sha": "9599cda4a7edd57b6edd1465a197456c16568bd0",
+    "workflow_conclusion": "success",
+    "jobs": [
+      {
+        "name": "exact-kernel (3.11)",
+        "conclusion": "success",
+        "unit_tests_passed": 29
+      },
+      {
+        "name": "exact-kernel (3.12)",
+        "conclusion": "success",
+        "unit_tests_passed": 29
+      },
+      {
+        "name": "independent-replay",
+        "conclusion": "success",
+        "full_source_rows_replayed": 512
+      }
+    ]
+  },
+  "verified_evidence_grade": "E1_FINITE_ARTIFICIAL_EXACT_MECHANISM_ONLY",
+  "scientific_acceptance": "PASS_BOUNDED_E1",
+  "real_human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED",
+  "original_paper_large_scale_parametric_results": "NOT_REPLICATED",
+  "cross_experiment_human_prediction": "NOT_ESTABLISHED",
+  "PESEN_v0_1": "FROZEN_UNCHANGED",
+  "R073": "FROZEN_UNCHANGED",
+  "whole_239_scientific_completion": "OPEN"
+}
