@@ -821,3 +821,10 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 原目录11-026与11-027对应R266有限蒙特卡洛和R267离散拉丁超立方抽样。两项目[完整E1结题及来源总索引](docs/R266_R267_FINITE_SAMPLING_EXACT_E1_CLOSURE_INDEX_2026-10-23.md)，分别具有完整人工原source5328和6885种、18+18份独立核对精确概率分布、Python3.11与3.12合计544次真实单元测试通过，最终[CI R266](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39900969661)与[CI R267](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39901198271)各三job全成功。[R266科研报告](research/R266/R266_SCIENTIFIC_REPORT_2026-10-23.md)确认对偶采样方差比可能0、2/3、2；[R267科研报告](research/R267/R267_SCIENTIFIC_REPORT_2026-10-23.md)确认三类加性零方差但三类非加性有限格点函数方差比3/2。全部是固定小规模人工数学E1，**不得冒充真实行为/历史验证**。这两项永久来源归档分别是[GitHub e46f0e06](https://github.com/edwardsage419/Psychohistory-Research/commit/e46f0e06afb637ba2bb0cc2e267f2c36c1cc9c35)与[GitHub 82087648](https://github.com/edwardsage419/Psychohistory-Research/commit/82087648e4be587e156ee32846d4cc83c8cef9fd)。
 
 项目下一原目录11-028 AIC and BIC（拟R268），R073与PESEN v0.1冻结。全R学习研究完成后统一归纳分类，最后模型熔炼；个人辅助决策系统构建暂缓。
+
+
+## 2026-10-23 R268 AIC与BIC有界结题导航
+
+原目录11-028 AIC and BIC（P1）正式研究R268已按[事前冻结协议](protocols/R268_AIC_BIC_NINE_BERNOULLI_WORLDS_3312_COMPLETE_SOURCE_PRESCORE_FREEZE_2026-10-23.md)完整验证。9个人工Bernoulli世界、3312有序全原source，原数据与Binomial独立解析概率两路径完全一致。n=4两准则分歧时BIC倾向较复杂M1，n=6无分歧，n=10分歧时AIC偏向M1。[完整科研报告](research/R268/R268_SCIENTIFIC_REPORT_2026-10-23.md) · [正式E1有界机器验收](research/R268/R268_FINAL_ACCEPTANCE_STATUS.json) · [原始来源永久归档215333c1](https://github.com/edwardsage419/Psychohistory-Research/commit/215333c1b7e3abaf6c43e8094d4a86e8244af12a) · [3-job GitHub Actions run39901449413](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39901449413)。Python3.11和3.12分别84真测试，合计168项通过。
+
+[R266至R268三项连续原目录研究总索引](docs/R266_R268_MONTE_CARLO_LHS_AIC_BIC_CONTINUOUS_E1_CLOSURE_INDEX_2026-10-23.md)：27个人工冻结world、15525条完整人工原source类型、712项真实双Python单元测试、3次CI各3job全部success。全部仅E1，没有新增真人E2或真实历史E3；没有AIC/BIC样本外预测优越性验收。后续为原目录11-029 Cross Validation（拟R269）。原R完成之前不开展统一归纳分类或原创模型熔炼，R073/PESEN v0.1冻结。
