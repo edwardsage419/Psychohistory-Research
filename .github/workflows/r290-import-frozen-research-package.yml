@@ -18,6 +18,7 @@ jobs:
       - name: Restore exact original R290 files
         run: |
           base64 --decode archives/R290_STAGING_TAR_XZ_BASE64.txt | tar -xJf -
+          python research/R290/r290_exact_signal_detection.py --emit
           python research/R290/r290_exact_signal_detection.py --test
           python research/catalogue_audit/independent_r290_source_audit.py --test
           python research/catalogue_audit/independent_r290_source_audit.py --audit
