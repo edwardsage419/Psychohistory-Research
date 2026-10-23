@@ -1,0 +1,128 @@
+name: R256 Exact Finite Capacity Two Queue Source and Markov Path Audit
+on:
+  push:
+    paths:
+      - 'research/R256/r256_exact_finite_queue.py'
+      - '.github/workflows/r256-finite-queue.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-queue-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify four slot capacity queue flow and full independent conditional Markov path laws
+        run: python research/R256/r256_exact_finite_queue.py --test
+  all-original-finite-queue-archive:
+    needs: dual-python-queue-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 4608 queue original sources and independently audit four bin distributions
+        run: |
+          python research/R256/r256_exact_finite_queue.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R256')
+          src=list(csv.DictReader((d/'R256_ALL_4608_ORIGINAL_FOUR_SLOT_QUEUE_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R256_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R256_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(src)==4608 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-016'
+          assert j['prescore_freeze_commit']=='d16f5d3c5cecade05e43c583573b34d0571801bb'
+          assert j['not_continuous_time_M_M_1_reproduction'] is True
+          by={w['world']:w for w in j['world_results']}
+          assert len(by)==9
+          for w,r in by.items():
+              rows=[z for z in src if z['world']==w]
+              assert len(rows)==512
+              keys=['oracle_original_shared_environment_U']+['oracle_original_'+t+'_bit_'+tag+str(i) for i in (1,2,3,4) for t,tag in (('arrival','A'),('service','S'))]
+              assert len({tuple(z[k] for k in keys) for z in rows})==512
+              assert all(F(z['original_complete_ninebit_source_probability'])==F(1,512) for z in rows)
+              assert sum((F(z['original_complete_ninebit_source_probability']) for z in rows),F(0))==1
+              assert sum((F(p) for p in r['exact_observed_queue_path_joint'].values()),F(0))==1
+              assert all(len(key)==4 and all(c in '012' for c in key) for key in r['exact_observed_queue_path_joint'])
+              assert r['full_four_slot_source_conservation']
+              assert r['independent_conditional_markov_path_likelihood_verified']
+              for z in rows:
+                  assert all(0<=int(z['observed_reported_queue_Q'+str(t)])<=2 for t in (1,2,3,4))
+                  offered=int(z['oracle_total_offered'])
+                  served=int(z['oracle_total_served'])
+                  rejected=int(z['oracle_total_rejected'])
+                  q4=int(z['observed_reported_queue_Q4'])
+                  assert offered==served+rejected+q4
+                  qprev=0
+                  for t in (1,2,3,4):
+                      a=int(z['oracle_exogenous_realized_offered_arrival_a'+str(t)])
+                      service=int(z['oracle_model_served_d'+str(t)])
+                      reject=int(z['oracle_model_rejected_r'+str(t)])
+                      q=int(z['observed_reported_queue_Q'+str(t)])
+                      assert qprev+a==q+service+reject
+                      qprev=q
+              mean_q4=sum((F(int(z['observed_reported_queue_Q4']),512) for z in rows),F(0))
+              assert str(mean_q4)==r['exact_reported_expected_Q_each_bin'][3]
+              mean_drop=sum((F(int(z['oracle_total_rejected']),512) for z in rows),F(0))
+              assert str(mean_drop)==r['oracle_expected_total_rejected']
+          idle=by['IDLE_NO_ARRIVALS'];full=by['DEMAND_ALWAYS_NO_SERVICE']
+          assert idle['exact_observed_queue_path_joint']=={'0000':'1'}
+          assert full['exact_observed_queue_path_joint']=={'1222':'1'}
+          assert full['oracle_expected_total_served']=='0'
+          assert full['oracle_expected_total_rejected']=='2'
+          base=by['BALANCED_INDEPENDENT_HALF_HALF']
+          order=by['ARRIVAL_FIRST_BALANCED_HALF_HALF']
+          assert sum((F(v) for k,v in base['exact_observed_queue_path_joint'].items() if k[0]=='1'),F(0))==F(1,2)
+          assert sum((F(v) for k,v in order['exact_observed_queue_path_joint'].items() if k[0]=='1'),F(0))==F(1,4)
+          def p01(w):
+              return sum((F(v) for k,v in w['exact_observed_queue_path_joint'].items() if k[:2]=='01'),F(0))
+          assert p01(base)==F(1,4)
+          assert p01(by['SHARED_DEMAND_ENV_HALF_HALF'])==0
+          alias=by['STATIC_EMPTY_TRUE_QUEUE_SENSOR_ALIAS']
+          assert alias['exact_observed_queue_path_joint']==base['exact_observed_queue_path_joint']
+          assert all(all(z['oracle_true_hidden_physical_queue_H'+str(k)]=='0' for k in (1,2,3,4)) for z in src if z['world']=='STATIC_EMPTY_TRUE_QUEUE_SENSOR_ALIAS')
+          for fn,key in [('R256_ALL_4608_ORIGINAL_FOUR_SLOT_QUEUE_SOURCE_ATOMS.csv','source_sha256'),
+                         ('R256_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/fn).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R256_ALL_4608_ORIGINAL_FOUR_SLOT_QUEUE_SOURCE_PATHS_AND_MARKOV_PRODUCTS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R256-Nine-Exact-FourSlot-CapacityTwo-Queue-Worlds
+          path: |
+            research/R256/R256_ALL_4608_ORIGINAL_FOUR_SLOT_QUEUE_SOURCE_ATOMS.csv
+            research/R256/R256_EXACT_RESULTS.json
+            research/R256/R256_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive 4608 complete original queue source atoms to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R256/R256_ALL_4608_ORIGINAL_FOUR_SLOT_QUEUE_SOURCE_ATOMS.csv research/R256/R256_EXACT_RESULTS.json research/R256/R256_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R256): all 4608 original capacity two queue source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R256_ALL_4608_QUEUE_SOURCES_PERMANENTLY_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
