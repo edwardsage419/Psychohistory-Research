@@ -1,0 +1,138 @@
+name: R276 Structural Identifiability Sixbit Source Audit
+on:
+  push:
+    paths:
+      - 'research/R276/r276_exact_structural_identifiability.py'
+      - '.github/workflows/r276-exact-structural-identifiability-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run all 50 source and parameter equivalence unittests
+        run: python research/R276/r276_exact_structural_identifiability.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify all 192 primitive source parameters and exact posterior MAP
+        run: |
+          python research/R276/r276_exact_structural_identifiability.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from fractions import Fraction as F
+          from pathlib import Path
+          from collections import defaultdict
+          root=Path('research/R276')
+          source=root/'R276_ALL_192_ORIGINAL_IDENTIFIABILITY_PARAMETER_SOURCES.csv'
+          output=root/'R276_EXACT_RESULTS.json'
+          rows=list(csv.DictReader(source.open()))
+          result=json.loads(output.read_text())
+          receipt=json.loads((root/'R276_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==192 and len(result['world_results'])==3
+          assert result['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='58e192c523cc87b4fd4f6b9758af118d620a1951'
+          assert result['original_catalogue_id']=='12-006'
+          for file,key in [(source,'source_sha256'),(output,'results_sha256')]:
+              assert receipt[key]==hashlib.sha256(file.read_bytes()).hexdigest()
+          models=['PARAM_A','PARAM_B','PARAM_C']
+          theta={'PARAM_A':(F(1,2),F(1,2)),
+                 'PARAM_B':(F(1,4),F(1)),
+                 'PARAM_C':(F(1),F(1,4))}
+          fullsix={''.join(k) for k in itertools.product('01',repeat=6)}
+          grouped=defaultdict(list)
+          for row in rows:grouped[row['true_parameter_model']].append(row)
+          assert set(grouped)==set(models)
+          total_positive=0
+          expected_y={''.join(k):F(1,4)**sum(int(x) for x in k)*
+            F(3,4)**(4-sum(int(x) for x in k))
+            for k in itertools.product('01',repeat=4)}
+          for w in result['world_results']:
+              model=w['true_parameter_model'];group=grouped[model]
+              assert len(group)==64
+              assert {z['original_complete_Y4_Z2_sixbit_source'] for z in group}==fullsix
+              a,b=theta[model]
+              py=pyz=total=F(0)
+              marg=defaultdict(lambda:F(0))
+              pos=0
+              for row in group:
+                  seq=row['original_complete_Y4_Z2_sixbit_source']
+                  y=seq[:4];z=seq[4:];k=y.count('1');j=z.count('1')
+                  assert row['original_Y_fourbits']==y and row['original_Z_twobits']==z
+                  assert int(row['original_Y_successes'])==k and int(row['original_Z_successes'])==j
+                  assert F(row['true_theta1'])==a and F(row['true_theta2'])==b
+                  assert F(row['observed_q_product'])==a*b==F(1,4)
+                  y_likelihood=F(1,4)**k*F(3,4)**(4-k)
+                  y_likes=(y_likelihood,)*3
+                  yz_likes=tuple(y_likelihood*theta[m][0]**j*(1-theta[m][0])**(2-j) for m in models)
+                  thismass=yz_likes[models.index(model)]
+                  assert F(row['complete_original_source_probability'])==thismass
+                  total+=thismass;marg[y]+=thismass;pos+=int(thismass>0)
+                  assert tuple(F(v) for v in row['Y_only_all_three_parameter_likelihoods'].split(';'))==y_likes
+                  assert tuple(F(v) for v in row['YZ_all_three_parameter_likelihoods'].split(';'))==yz_likes
+                  assert tuple(F(v) for v in row['Y_only_three_parameter_posteriors'].split(';'))==(F(1,3),)*3
+                  denom=sum(yz_likes,F(0))
+                  assert tuple(F(v) for v in row['YZ_three_parameter_posteriors'].split(';'))==tuple(v/denom for v in yz_likes)
+                  y_choice='PARAM_A'
+                  yz_choice=models[next(i for i,v in enumerate(yz_likes) if v==max(yz_likes))]
+                  assert row['Y_only_MAP_selection']==y_choice
+                  assert row['YZ_MAP_selection']==yz_choice
+                  assert int(row['Y_only_MAP_correct'])==int(y_choice==model)
+                  assert int(row['YZ_MAP_correct'])==int(yz_choice==model)
+                  py+=thismass*int(y_choice==model)
+                  pyz+=thismass*int(yz_choice==model)
+              assert total==1 and marg==expected_y
+              if model=='PARAM_A':expected=(F(1),F(1,2),64)
+              elif model=='PARAM_B':expected=(F(0),F(9,16),64)
+              else:expected=(F(0),F(1),16)
+              assert (py,pyz,pos)==expected
+              assert str(py)==w['Y_only_MAP_correct_probability']
+              assert str(pyz)==w['YZ_MAP_correct_probability']
+              total_positive+=pos
+          assert total_positive==receipt['positive_source_types']==144
+          assert result['equal_prior_Y_only_MAP_correct_probability']=='1/3'
+          assert result['equal_prior_YZ_MAP_correct_probability']=='11/16'
+          assert result['no_real_human_E2']==result['no_real_historical_E3']==0
+          print('R276_ALL_192_COMPLETE_PARAMETER_SOURCES_144_SUPPORT_11_16_MAP_REPRODUCED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R276-192-Complete-Structural-Identifiability-Sources
+          path: |
+            research/R276/R276_ALL_192_ORIGINAL_IDENTIFIABILITY_PARAMETER_SOURCES.csv
+            research/R276/R276_EXACT_RESULTS.json
+            research/R276/R276_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all original parameter source CSV results and receipt
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R276/R276_ALL_192_ORIGINAL_IDENTIFIABILITY_PARAMETER_SOURCES.csv research/R276/R276_EXACT_RESULTS.json research/R276/R276_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R276): all 192 model identifiability primitive sources'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R276_ALL_192_COMPLETE_PARAMETER_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
