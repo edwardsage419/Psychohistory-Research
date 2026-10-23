@@ -15,7 +15,7 @@ Q1=DOC/"ORIGINAL_239_PENDING_25_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv"
 
 def gitblob(p):
     data=p.read_bytes()
-    return hashlib.sha1(b"blob "+str(len(data)).encode()+b"\\0"+data).hexdigest()
+    return hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
 
 def audit():
     before=json.loads(P.read_text(encoding="utf-8"))
