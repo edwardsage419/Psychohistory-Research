@@ -1,0 +1,7 @@
+# R321 finite Wald-inspired Bernoulli sequential sampling E1
+
+Original239 01-010 Sequential Sampling Models (P2). Prescore protocol [f8895542](https://github.com/edwardsage419/Psychohistory-Research/commit/f889554205b5339f1c52faa4c25d36dc270edb1f) preceded all source data [1da4a0df](https://github.com/edwardsage419/Psychohistory-Research/commit/1da4a0dfaad4494dd11ce35d128f5a2f05d78007). Exactly 8 worlds, 1024 artificial original seven-bit paths. R320 first-hit arithmetic shared; R321 separately tests finite likelihood-ratio stopping with explicit H0/H1 decisions, censoring, type-I/type-II masses and fixed-seven comparison.
+
+**PASS_BOUNDED_E1_FINITE_WALD_INSPIRED_ONLY** after [three green CI jobs](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40013917870). Python 3.11 and 3.12 each 35 tests; separate no-import dynamic programming audit. [Scientific report](R321_SCIENTIFIC_REPORT_2026-10-24.md), [machine receipt](R321_MACHINE_RECEIPT.json), [acceptance](R321_FINAL_ACCEPTANCE_STATUS.json), [all 1024 original paths](R321_ALL_1024_ORIGINAL_SEVEN_BIT_PATHS.csv), [8 exact worlds](R321_EXACT_8_WORLDS.json), [replayable source](r321_finite_sprt.py).
+
+Replay: `python research/R321/r321_finite_sprt.py --test`, `--audit`; independent: `python research/catalogue_audit/independent_r321_sprt_audit.py`. Artificial E1 only. No human E2, historical E3, general sequential-sampling-family validation or infinite-horizon Wald optimality. R073/PESEN v0.1 frozen.
