@@ -1,0 +1,96 @@
+name: R241 Exact Rational ODE Initial Values and Sensor Aliases
+on:
+  push:
+    paths:
+      - 'research/R241/r241_exact_rational_ode_ivp.py'
+      - '.github/workflows/r241-exact-ode.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-ode-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test exact ODE source, local flow, chain derivatives, sensitivities and observational alias
+        run: python research/R241/r241_exact_rational_ode_ivp.py --test
+  full-rational-ivp-source-archive:
+    needs: dual-python-exact-ode-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 180 rational IVP sources and independently audit dynamical equations
+        run: |
+          python research/R241/r241_exact_rational_ode_ivp.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R241')
+          rows=list(csv.DictReader((d/'R241_ALL_180_EXACT_ODE_IVP_TIME_SOURCES.csv').open()))
+          data=json.loads((d/'R241_EXACT_RESULTS.json').read_text())
+          machine=json.loads((d/'R241_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==180 and len(data['world_results'])==9
+          assert data['original_catalogue_id']==machine['original_catalogue_id']=='11-001'
+          assert all(F(r['original_source_probability'])==F(1,20) for r in rows)
+          by={x['world']:x for x in data['world_results']}
+          for w,r in by.items():
+              subset=[x for x in rows if x['world']==w]
+              assert len(subset)==20
+              assert len({(x['observed_cohort_x0'],x['observed_time']) for x in subset})==20
+              assert sum((F(x['original_source_probability']) for x in subset),F(0))==1
+              assert all(F(x['oracle_state_ODE_rhs'])==F(x['oracle_hidden_dhdt']) for x in subset)
+              assert r['all_prescore_half_horizon_flow_semigroup_checks_passed']
+              assert r['all_analytic_hidden_and_observed_chain_derivatives_passed']
+              assert len(r['exact_observed_joint_with_cohort_and_time'])==20
+              assert len(r['observed_time_half_initial_sensitivity_by_cohort'])==4
+          for a,b in [
+              ('DECAY_L1','DECAY_HIDDEN_DOUBLE_COORDINATE'),
+              ('DECAY_L1','CONSTANT_STATE_TIME_DRIFT_SENSOR_DECAY'),
+              ('GROWTH_L1','CONSTANT_STATE_TIME_DRIFT_SENSOR_GROWTH')]:
+              assert by[a]['exact_observed_joint_with_cohort_and_time']==by[b]['exact_observed_joint_with_cohort_and_time']
+          assert by['DECAY_L1']['time0_to_time_half_true_hidden_change_by_cohort']!=by['CONSTANT_STATE_TIME_DRIFT_SENSOR_DECAY']['time0_to_time_half_true_hidden_change_by_cohort']
+          assert by['GROWTH_L1']['time0_to_time_half_true_hidden_change_by_cohort']!=by['CONSTANT_STATE_TIME_DRIFT_SENSOR_GROWTH']['time0_to_time_half_true_hidden_change_by_cohort']
+          assert by['DECAY_L1']['time0_to_time_half_observed_change_by_cohort']==by['CONSTANT_STATE_TIME_DRIFT_SENSOR_DECAY']['time0_to_time_half_observed_change_by_cohort']
+          assert by['GROWTH_L1']['time0_to_time_half_observed_change_by_cohort']==by['CONSTANT_STATE_TIME_DRIFT_SENSOR_GROWTH']['time0_to_time_half_observed_change_by_cohort']
+          assert by['DECAY_L1']['observed_time_half_initial_sensitivity_by_cohort']==by['CONSTANT_STATE_TIME_DRIFT_SENSOR_DECAY']['observed_time_half_initial_sensitivity_by_cohort']
+          assert by['GROWTH_L1']['observed_time_half_initial_sensitivity_by_cohort']==by['CONSTANT_STATE_TIME_DRIFT_SENSOR_GROWTH']['observed_time_half_initial_sensitivity_by_cohort']
+          assert by['GROWTH_L1']['minimum_finite_hidden_or_sensor_growth_pole_time']=='1'
+          assert by['GROWTH_L1']['exact_observed_times']==['0','1/8','1/4','3/8','1/2']
+          assert by['DECAY_NONLINEAR_SENSOR']['all_exact_original_trajectory_points'][-1]['observed_y']=='4/9'
+          for fn,key in [('R241_ALL_180_EXACT_ODE_IVP_TIME_SOURCES.csv','source_sha256'),
+                         ('R241_EXACT_RESULTS.json','results_sha256')]:
+              assert machine[key]==hashlib.sha256((d/fn).read_bytes()).hexdigest()
+          assert machine['new_real_human_E2']==machine['new_real_historical_E3']==0
+          print('R241_ALL_180_EXACT_ODE_ORIGINAL_SOURCES_SENSOR_ALIASES_AND_FLOW_SEMIGROUP_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R241-Nine-Exact-ODE-Original-IVP-Trajectory-Worlds
+          path: |
+            research/R241/R241_ALL_180_EXACT_ODE_IVP_TIME_SOURCES.csv
+            research/R241/R241_EXACT_RESULTS.json
+            research/R241/R241_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive complete rational IVP original sources to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R241/R241_ALL_180_EXACT_ODE_IVP_TIME_SOURCES.csv research/R241/R241_EXACT_RESULTS.json research/R241/R241_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R241): all 180 original rational ODE IVP/time atoms and flow certificates'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
