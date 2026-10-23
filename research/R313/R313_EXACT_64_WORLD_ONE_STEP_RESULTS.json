@@ -1,0 +1,1196 @@
+{
+  "schema": "r313_axelrod_three_site_two_binary_feature_exact_e1_v1",
+  "original_catalogue_id": "04-014",
+  "source_scope": "SYNTHETIC_EXACT_E1_ONLY",
+  "world_count": 64,
+  "directed_event_count": 256,
+  "potential_feature_source_count": 512,
+  "absorbing_world_count": 16,
+  "positive_copy_atom_count": 128,
+  "worlds": [
+    {
+      "world": 0,
+      "state": "000000",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 0,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 1,
+      "state": "000001",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 0,
+          "probability": "1/6"
+        },
+        {
+          "world": 1,
+          "probability": "3/4"
+        },
+        {
+          "world": 5,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 2,
+      "state": "000010",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 0,
+          "probability": "1/6"
+        },
+        {
+          "world": 2,
+          "probability": "3/4"
+        },
+        {
+          "world": 10,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 3,
+      "state": "000011",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 3,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 4,
+      "state": "000100",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 0,
+          "probability": "1/6"
+        },
+        {
+          "world": 4,
+          "probability": "1/2"
+        },
+        {
+          "world": 5,
+          "probability": "1/6"
+        },
+        {
+          "world": 20,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 5,
+      "state": "000101",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 1,
+          "probability": "1/12"
+        },
+        {
+          "world": 5,
+          "probability": "3/4"
+        },
+        {
+          "world": 21,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 6,
+      "state": "000110",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 2,
+          "probability": "1/12"
+        },
+        {
+          "world": 6,
+          "probability": "3/4"
+        },
+        {
+          "world": 22,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 7,
+      "state": "000111",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 3,
+          "probability": "1/12"
+        },
+        {
+          "world": 5,
+          "probability": "1/6"
+        },
+        {
+          "world": 7,
+          "probability": "1/2"
+        },
+        {
+          "world": 15,
+          "probability": "1/12"
+        },
+        {
+          "world": 23,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 8,
+      "state": "001000",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 0,
+          "probability": "1/6"
+        },
+        {
+          "world": 8,
+          "probability": "1/2"
+        },
+        {
+          "world": 10,
+          "probability": "1/6"
+        },
+        {
+          "world": 40,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 9,
+      "state": "001001",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 1,
+          "probability": "1/12"
+        },
+        {
+          "world": 9,
+          "probability": "3/4"
+        },
+        {
+          "world": 41,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 10,
+      "state": "001010",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 2,
+          "probability": "1/12"
+        },
+        {
+          "world": 10,
+          "probability": "3/4"
+        },
+        {
+          "world": 42,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 11,
+      "state": "001011",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 3,
+          "probability": "1/12"
+        },
+        {
+          "world": 10,
+          "probability": "1/6"
+        },
+        {
+          "world": 11,
+          "probability": "1/2"
+        },
+        {
+          "world": 15,
+          "probability": "1/12"
+        },
+        {
+          "world": 43,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 12,
+      "state": "001100",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 12,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 13,
+      "state": "001101",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 5,
+          "probability": "1/12"
+        },
+        {
+          "world": 13,
+          "probability": "3/4"
+        },
+        {
+          "world": 15,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 14,
+      "state": "001110",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 10,
+          "probability": "1/12"
+        },
+        {
+          "world": 14,
+          "probability": "3/4"
+        },
+        {
+          "world": 15,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 15,
+      "state": "001111",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 15,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 16,
+      "state": "010000",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 0,
+          "probability": "1/6"
+        },
+        {
+          "world": 16,
+          "probability": "3/4"
+        },
+        {
+          "world": 20,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 17,
+      "state": "010001",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 1,
+          "probability": "1/6"
+        },
+        {
+          "world": 16,
+          "probability": "1/6"
+        },
+        {
+          "world": 17,
+          "probability": "1/2"
+        },
+        {
+          "world": 21,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 18,
+      "state": "010010",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 2,
+          "probability": "1/6"
+        },
+        {
+          "world": 16,
+          "probability": "1/6"
+        },
+        {
+          "world": 18,
+          "probability": "1/2"
+        },
+        {
+          "world": 22,
+          "probability": "1/12"
+        },
+        {
+          "world": 26,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 19,
+      "state": "010011",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 3,
+          "probability": "1/6"
+        },
+        {
+          "world": 19,
+          "probability": "3/4"
+        },
+        {
+          "world": 23,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 20,
+      "state": "010100",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 16,
+          "probability": "1/12"
+        },
+        {
+          "world": 20,
+          "probability": "3/4"
+        },
+        {
+          "world": 21,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 21,
+      "state": "010101",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 21,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 22,
+      "state": "010110",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 22,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 23,
+      "state": "010111",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 21,
+          "probability": "1/6"
+        },
+        {
+          "world": 23,
+          "probability": "3/4"
+        },
+        {
+          "world": 31,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 24,
+      "state": "011000",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 16,
+          "probability": "1/12"
+        },
+        {
+          "world": 24,
+          "probability": "3/4"
+        },
+        {
+          "world": 26,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 25,
+      "state": "011001",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 25,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 26,
+      "state": "011010",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 26,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 27,
+      "state": "011011",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 26,
+          "probability": "1/6"
+        },
+        {
+          "world": 27,
+          "probability": "3/4"
+        },
+        {
+          "world": 31,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 28,
+      "state": "011100",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 20,
+          "probability": "1/12"
+        },
+        {
+          "world": 28,
+          "probability": "3/4"
+        },
+        {
+          "world": 60,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 29,
+      "state": "011101",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 21,
+          "probability": "1/6"
+        },
+        {
+          "world": 29,
+          "probability": "1/2"
+        },
+        {
+          "world": 31,
+          "probability": "1/6"
+        },
+        {
+          "world": 61,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 30,
+      "state": "011110",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 22,
+          "probability": "1/12"
+        },
+        {
+          "world": 26,
+          "probability": "1/12"
+        },
+        {
+          "world": 30,
+          "probability": "1/2"
+        },
+        {
+          "world": 31,
+          "probability": "1/6"
+        },
+        {
+          "world": 62,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 31,
+      "state": "011111",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 23,
+          "probability": "1/12"
+        },
+        {
+          "world": 31,
+          "probability": "3/4"
+        },
+        {
+          "world": 63,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 32,
+      "state": "100000",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 0,
+          "probability": "1/6"
+        },
+        {
+          "world": 32,
+          "probability": "3/4"
+        },
+        {
+          "world": 40,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 33,
+      "state": "100001",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 1,
+          "probability": "1/6"
+        },
+        {
+          "world": 32,
+          "probability": "1/6"
+        },
+        {
+          "world": 33,
+          "probability": "1/2"
+        },
+        {
+          "world": 37,
+          "probability": "1/12"
+        },
+        {
+          "world": 41,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 34,
+      "state": "100010",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 2,
+          "probability": "1/6"
+        },
+        {
+          "world": 32,
+          "probability": "1/6"
+        },
+        {
+          "world": 34,
+          "probability": "1/2"
+        },
+        {
+          "world": 42,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 35,
+      "state": "100011",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 3,
+          "probability": "1/6"
+        },
+        {
+          "world": 35,
+          "probability": "3/4"
+        },
+        {
+          "world": 43,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 36,
+      "state": "100100",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 32,
+          "probability": "1/12"
+        },
+        {
+          "world": 36,
+          "probability": "3/4"
+        },
+        {
+          "world": 37,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 37,
+      "state": "100101",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 37,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 38,
+      "state": "100110",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 38,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 39,
+      "state": "100111",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 37,
+          "probability": "1/6"
+        },
+        {
+          "world": 39,
+          "probability": "3/4"
+        },
+        {
+          "world": 47,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 40,
+      "state": "101000",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 32,
+          "probability": "1/12"
+        },
+        {
+          "world": 40,
+          "probability": "3/4"
+        },
+        {
+          "world": 42,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 41,
+      "state": "101001",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 41,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 42,
+      "state": "101010",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 42,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 43,
+      "state": "101011",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 42,
+          "probability": "1/6"
+        },
+        {
+          "world": 43,
+          "probability": "3/4"
+        },
+        {
+          "world": 47,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 44,
+      "state": "101100",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 40,
+          "probability": "1/12"
+        },
+        {
+          "world": 44,
+          "probability": "3/4"
+        },
+        {
+          "world": 60,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 45,
+      "state": "101101",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 37,
+          "probability": "1/12"
+        },
+        {
+          "world": 41,
+          "probability": "1/12"
+        },
+        {
+          "world": 45,
+          "probability": "1/2"
+        },
+        {
+          "world": 47,
+          "probability": "1/6"
+        },
+        {
+          "world": 61,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 46,
+      "state": "101110",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 42,
+          "probability": "1/6"
+        },
+        {
+          "world": 46,
+          "probability": "1/2"
+        },
+        {
+          "world": 47,
+          "probability": "1/6"
+        },
+        {
+          "world": 62,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 47,
+      "state": "101111",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 43,
+          "probability": "1/12"
+        },
+        {
+          "world": 47,
+          "probability": "3/4"
+        },
+        {
+          "world": 63,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 48,
+      "state": "110000",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 48,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 49,
+      "state": "110001",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 48,
+          "probability": "1/6"
+        },
+        {
+          "world": 49,
+          "probability": "3/4"
+        },
+        {
+          "world": 53,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 50,
+      "state": "110010",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 48,
+          "probability": "1/6"
+        },
+        {
+          "world": 50,
+          "probability": "3/4"
+        },
+        {
+          "world": 58,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 51,
+      "state": "110011",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 51,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 52,
+      "state": "110100",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 20,
+          "probability": "1/6"
+        },
+        {
+          "world": 48,
+          "probability": "1/12"
+        },
+        {
+          "world": 52,
+          "probability": "1/2"
+        },
+        {
+          "world": 53,
+          "probability": "1/6"
+        },
+        {
+          "world": 60,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 53,
+      "state": "110101",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 21,
+          "probability": "1/6"
+        },
+        {
+          "world": 53,
+          "probability": "3/4"
+        },
+        {
+          "world": 61,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 54,
+      "state": "110110",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 22,
+          "probability": "1/6"
+        },
+        {
+          "world": 54,
+          "probability": "3/4"
+        },
+        {
+          "world": 62,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 55,
+      "state": "110111",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 23,
+          "probability": "1/6"
+        },
+        {
+          "world": 53,
+          "probability": "1/6"
+        },
+        {
+          "world": 55,
+          "probability": "1/2"
+        },
+        {
+          "world": 63,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 56,
+      "state": "111000",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 40,
+          "probability": "1/6"
+        },
+        {
+          "world": 48,
+          "probability": "1/12"
+        },
+        {
+          "world": 56,
+          "probability": "1/2"
+        },
+        {
+          "world": 58,
+          "probability": "1/6"
+        },
+        {
+          "world": 60,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 57,
+      "state": "111001",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 41,
+          "probability": "1/6"
+        },
+        {
+          "world": 57,
+          "probability": "3/4"
+        },
+        {
+          "world": 61,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 58,
+      "state": "111010",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 42,
+          "probability": "1/6"
+        },
+        {
+          "world": 58,
+          "probability": "3/4"
+        },
+        {
+          "world": 62,
+          "probability": "1/12"
+        }
+      ]
+    },
+    {
+      "world": 59,
+      "state": "111011",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 43,
+          "probability": "1/6"
+        },
+        {
+          "world": 58,
+          "probability": "1/6"
+        },
+        {
+          "world": 59,
+          "probability": "1/2"
+        },
+        {
+          "world": 63,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 60,
+      "state": "111100",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 60,
+          "probability": "1"
+        }
+      ]
+    },
+    {
+      "world": 61,
+      "state": "111101",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 53,
+          "probability": "1/12"
+        },
+        {
+          "world": 61,
+          "probability": "3/4"
+        },
+        {
+          "world": 63,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 62,
+      "state": "111110",
+      "absorbing": false,
+      "next_world_probabilities": [
+        {
+          "world": 58,
+          "probability": "1/12"
+        },
+        {
+          "world": 62,
+          "probability": "3/4"
+        },
+        {
+          "world": 63,
+          "probability": "1/6"
+        }
+      ]
+    },
+    {
+      "world": 63,
+      "state": "111111",
+      "absorbing": true,
+      "next_world_probabilities": [
+        {
+          "world": 63,
+          "probability": "1"
+        }
+      ]
+    }
+  ]
+}
