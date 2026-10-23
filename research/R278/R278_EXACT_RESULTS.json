@@ -1,0 +1,130 @@
+{
+  "research_id": "R278",
+  "original_catalogue_id": "12-008",
+  "prescore_freeze_commit": "eb1c8df38349c36ed10d7a2103969818b14d7500",
+  "evidence": "BOUNDED_E1_ARTIFICIAL_TWO_MODEL_BAYES_AVERAGING_VS_HARD_SELECTION",
+  "artificial_worlds": 12,
+  "original_complete_model_labelled_sources": 768,
+  "original_bit_types_per_p": 64,
+  "train_bits": 4,
+  "heldout_bits": 2,
+  "model_weight_prior": "1/2 each on candidate q=1/4 and q=3/4",
+  "hard_selection_tie_break": "q=1/4 if K=2",
+  "target_oracle_infeasible_as_source_only_forecaster": true,
+  "two_holdout_bit_Brier": "separately scored single-bit marginals, no joint independence claim",
+  "all_twelve_exact_source_means_equal_independent_binomial_means": true,
+  "no_real_human_E2": 0,
+  "no_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "P1OF4_HARD_SELECT",
+      "true_p": "1/4",
+      "policy": "HARD_SELECT",
+      "primitive_sources": 64,
+      "expected_training_Brier": "89/512",
+      "expected_independent_holdout_Brier": "205/1024",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P1OF4_BAYES_AVERAGE",
+      "true_p": "1/4",
+      "policy": "BAYES_AVERAGE",
+      "primitive_sources": 64,
+      "expected_training_Brier": "267/1640",
+      "expected_independent_holdout_Brier": "87/410",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P1OF4_FIXED_HALF",
+      "true_p": "1/4",
+      "policy": "FIXED_HALF",
+      "primitive_sources": 64,
+      "expected_training_Brier": "1/4",
+      "expected_independent_holdout_Brier": "1/4",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P1OF4_TRUTH_ORACLE",
+      "true_p": "1/4",
+      "policy": "TRUTH_ORACLE",
+      "primitive_sources": 64,
+      "expected_training_Brier": "3/16",
+      "expected_independent_holdout_Brier": "3/16",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P1OF2_HARD_SELECT",
+      "true_p": "1/2",
+      "policy": "HARD_SELECT",
+      "primitive_sources": 64,
+      "expected_training_Brier": "7/32",
+      "expected_independent_holdout_Brier": "5/16",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P1OF2_BAYES_AVERAGE",
+      "true_p": "1/2",
+      "policy": "BAYES_AVERAGE",
+      "primitive_sources": 64,
+      "expected_training_Brier": "33107/168100",
+      "expected_independent_holdout_Brier": "46637/168100",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P1OF2_FIXED_HALF",
+      "true_p": "1/2",
+      "policy": "FIXED_HALF",
+      "primitive_sources": 64,
+      "expected_training_Brier": "1/4",
+      "expected_independent_holdout_Brier": "1/4",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P1OF2_TRUTH_ORACLE",
+      "true_p": "1/2",
+      "policy": "TRUTH_ORACLE",
+      "primitive_sources": 64,
+      "expected_training_Brier": "1/4",
+      "expected_independent_holdout_Brier": "1/4",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P3OF4_HARD_SELECT",
+      "true_p": "3/4",
+      "policy": "HARD_SELECT",
+      "primitive_sources": 64,
+      "expected_training_Brier": "89/512",
+      "expected_independent_holdout_Brier": "259/1024",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P3OF4_BAYES_AVERAGE",
+      "true_p": "3/4",
+      "policy": "BAYES_AVERAGE",
+      "primitive_sources": 64,
+      "expected_training_Brier": "267/1640",
+      "expected_independent_holdout_Brier": "87/410",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P3OF4_FIXED_HALF",
+      "true_p": "3/4",
+      "policy": "FIXED_HALF",
+      "primitive_sources": 64,
+      "expected_training_Brier": "1/4",
+      "expected_independent_holdout_Brier": "1/4",
+      "independent_binomial_risk_verified": true
+    },
+    {
+      "world": "P3OF4_TRUTH_ORACLE",
+      "true_p": "3/4",
+      "policy": "TRUTH_ORACLE",
+      "primitive_sources": 64,
+      "expected_training_Brier": "3/16",
+      "expected_independent_holdout_Brier": "3/16",
+      "independent_binomial_risk_verified": true
+    }
+  ]
+}
