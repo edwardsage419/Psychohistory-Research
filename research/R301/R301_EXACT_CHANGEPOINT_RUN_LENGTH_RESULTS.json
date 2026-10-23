@@ -1,0 +1,2147 @@
+{
+  "research_id": "R301",
+  "original_catalogue_id": "02-012",
+  "freeze_commit": "1e0209ffa2c8597d3d3f2a7ccef40eea0be4485e",
+  "scope": "E1_EXACT_ARTIFICIAL_BERNOULLI_BETA_ONLINE_CHANGEPOINT_RUN_LENGTH_NOT_REAL_DETECTION",
+  "original_full_source_rows": 192,
+  "synthetic_worlds": 48,
+  "hazards": [
+    "0",
+    "1/4",
+    "1/2"
+  ],
+  "four_bit_original_observation_strings": 16,
+  "prefix_lengths_each": 4,
+  "new_real_human_E2": 0,
+  "new_real_animal_E2": 0,
+  "new_historical_E3": 0,
+  "Bayesian_hazard_estimated_from_data": false,
+  "empirical_detection_false_positive_calibration": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "worlds": [
+    {
+      "world": "hazard=0|observations=0000",
+      "hazard": "0",
+      "full_observation_bits": "0000",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:0;2:1/3",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/3",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/4"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "000",
+          "joint_run_length_weights": "1:0;2:0;3:1/4",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/4",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0000",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/5",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/5",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/6"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=0001",
+      "hazard": "0",
+      "full_observation_bits": "0001",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:0;2:1/3",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/3",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/4"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "000",
+          "joint_run_length_weights": "1:0;2:0;3:1/4",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/4",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0001",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/20",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/20",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=0010",
+      "hazard": "0",
+      "full_observation_bits": "0010",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:0;2:1/3",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/3",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/4"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "001",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0010",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/20",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/20",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=0011",
+      "hazard": "0",
+      "full_observation_bits": "0011",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:0;2:1/3",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/3",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/4"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "001",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0011",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/30",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/30",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=0100",
+      "hazard": "0",
+      "full_observation_bits": "0100",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:0;2:1/6",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/6",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "010",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0100",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/20",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/20",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=0101",
+      "hazard": "0",
+      "full_observation_bits": "0101",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:0;2:1/6",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/6",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "010",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0101",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/30",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/30",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=0110",
+      "hazard": "0",
+      "full_observation_bits": "0110",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:0;2:1/6",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/6",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "011",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0110",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/30",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/30",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=0111",
+      "hazard": "0",
+      "full_observation_bits": "0111",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:0;2:1/6",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/6",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "011",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0111",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/20",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/20",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=1000",
+      "hazard": "0",
+      "full_observation_bits": "1000",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:0;2:1/6",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/6",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "100",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1000",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/20",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/20",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/3"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=1001",
+      "hazard": "0",
+      "full_observation_bits": "1001",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:0;2:1/6",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/6",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "100",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1001",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/30",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/30",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=1010",
+      "hazard": "0",
+      "full_observation_bits": "1010",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:0;2:1/6",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/6",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "101",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1010",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/30",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/30",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=1011",
+      "hazard": "0",
+      "full_observation_bits": "1011",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:0;2:1/6",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/6",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "101",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1011",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/20",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/20",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=1100",
+      "hazard": "0",
+      "full_observation_bits": "1100",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:0;2:1/3",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/3",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/4"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "110",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1100",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/30",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/30",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "1/2"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=1101",
+      "hazard": "0",
+      "full_observation_bits": "1101",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:0;2:1/3",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/3",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/4"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "110",
+          "joint_run_length_weights": "1:0;2:0;3:1/12",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/12",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1101",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/20",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/20",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=1110",
+      "hazard": "0",
+      "full_observation_bits": "1110",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:0;2:1/3",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/3",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/4"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "111",
+          "joint_run_length_weights": "1:0;2:0;3:1/4",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/4",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "4/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1110",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/20",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/20",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        }
+      ]
+    },
+    {
+      "world": "hazard=0|observations=1111",
+      "hazard": "0",
+      "full_observation_bits": "1111",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "2/3"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:0;2:1/3",
+          "posterior_run_length": "1:0;2:1",
+          "prefix_evidence": "1/3",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/4"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "111",
+          "joint_run_length_weights": "1:0;2:0;3:1/4",
+          "posterior_run_length": "1:0;2:0;3:1",
+          "prefix_evidence": "1/4",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "4/5"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1111",
+          "joint_run_length_weights": "1:0;2:0;3:0;4:1/5",
+          "posterior_run_length": "1:0;2:0;3:0;4:1",
+          "prefix_evidence": "1/5",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/6"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=0000",
+      "hazard": "1/4",
+      "full_observation_bits": "0000",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:1/16;2:1/4",
+          "posterior_run_length": "1:1/5;2:4/5",
+          "prefix_evidence": "5/16",
+          "current_last_boundary_change_posterior": "1/5",
+          "predictive_next_observed_one": "13/40"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "000",
+          "joint_run_length_weights": "1:5/128;2:1/32;3:9/64",
+          "posterior_run_length": "1:5/27;2:4/27;3:2/3",
+          "prefix_evidence": "27/128",
+          "current_last_boundary_change_posterior": "5/27",
+          "predictive_next_observed_one": "323/1080"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0000",
+          "joint_run_length_weights": "1:27/1024;2:5/256;3:9/512;4:27/320",
+          "posterior_run_length": "1:135/757;2:100/757;3:90/757;4:432/757",
+          "prefix_evidence": "757/5120",
+          "current_last_boundary_change_posterior": "135/757",
+          "predictive_next_observed_one": "1717/6056"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=0001",
+      "hazard": "1/4",
+      "full_observation_bits": "0001",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:1/16;2:1/4",
+          "posterior_run_length": "1:1/5;2:4/5",
+          "prefix_evidence": "5/16",
+          "current_last_boundary_change_posterior": "1/5",
+          "predictive_next_observed_one": "13/40"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "000",
+          "joint_run_length_weights": "1:5/128;2:1/32;3:9/64",
+          "posterior_run_length": "1:5/27;2:4/27;3:2/3",
+          "prefix_evidence": "27/128",
+          "current_last_boundary_change_posterior": "5/27",
+          "predictive_next_observed_one": "323/1080"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0001",
+          "joint_run_length_weights": "1:27/1024;2:5/512;3:3/512;4:27/1280",
+          "posterior_run_length": "1:135/323;2:50/323;3:30/323;4:108/323",
+          "prefix_evidence": "323/5120",
+          "current_last_boundary_change_posterior": "135/323",
+          "predictive_next_observed_one": "1301/2584"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=0010",
+      "hazard": "1/4",
+      "full_observation_bits": "0010",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:1/16;2:1/4",
+          "posterior_run_length": "1:1/5;2:4/5",
+          "prefix_evidence": "5/16",
+          "current_last_boundary_change_posterior": "1/5",
+          "predictive_next_observed_one": "13/40"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "001",
+          "joint_run_length_weights": "1:5/128;2:1/64;3:3/64",
+          "posterior_run_length": "1:5/13;2:2/13;3:6/13",
+          "prefix_evidence": "13/128",
+          "current_last_boundary_change_posterior": "5/13",
+          "predictive_next_observed_one": "267/520"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0010",
+          "joint_run_length_weights": "1:13/1024;2:5/512;3:3/512;4:27/1280",
+          "posterior_run_length": "1:65/253;2:50/253;3:30/253;4:108/253",
+          "prefix_evidence": "253/5120",
+          "current_last_boundary_change_posterior": "65/253",
+          "predictive_next_observed_one": "821/2024"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=0011",
+      "hazard": "1/4",
+      "full_observation_bits": "0011",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:1/16;2:1/4",
+          "posterior_run_length": "1:1/5;2:4/5",
+          "prefix_evidence": "5/16",
+          "current_last_boundary_change_posterior": "1/5",
+          "predictive_next_observed_one": "13/40"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "001",
+          "joint_run_length_weights": "1:5/128;2:1/64;3:3/64",
+          "posterior_run_length": "1:5/13;2:2/13;3:6/13",
+          "prefix_evidence": "13/128",
+          "current_last_boundary_change_posterior": "5/13",
+          "predictive_next_observed_one": "267/520"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0011",
+          "joint_run_length_weights": "1:13/1024;2:5/256;3:3/512;4:9/640",
+          "posterior_run_length": "1:65/267;2:100/267;3:10/89;4:24/89",
+          "prefix_evidence": "267/5120",
+          "current_last_boundary_change_posterior": "65/267",
+          "predictive_next_observed_one": "1301/2136"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=0100",
+      "hazard": "1/4",
+      "full_observation_bits": "0100",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:1/16;2:1/8",
+          "posterior_run_length": "1:1/3;2:2/3",
+          "prefix_evidence": "3/16",
+          "current_last_boundary_change_posterior": "1/3",
+          "predictive_next_observed_one": "13/24"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "010",
+          "joint_run_length_weights": "1:3/128;2:1/64;3:3/64",
+          "posterior_run_length": "1:3/11;2:2/11;3:6/11",
+          "prefix_evidence": "11/128",
+          "current_last_boundary_change_posterior": "3/11",
+          "predictive_next_observed_one": "17/40"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0100",
+          "joint_run_length_weights": "1:11/1024;2:3/256;3:3/512;4:27/1280",
+          "posterior_run_length": "1:5/23;2:60/253;3:30/253;4:108/253",
+          "prefix_evidence": "253/5120",
+          "current_last_boundary_change_posterior": "5/23",
+          "predictive_next_observed_one": "741/2024"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=0101",
+      "hazard": "1/4",
+      "full_observation_bits": "0101",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:1/16;2:1/8",
+          "posterior_run_length": "1:1/3;2:2/3",
+          "prefix_evidence": "3/16",
+          "current_last_boundary_change_posterior": "1/3",
+          "predictive_next_observed_one": "13/24"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "010",
+          "joint_run_length_weights": "1:3/128;2:1/64;3:3/64",
+          "posterior_run_length": "1:3/11;2:2/11;3:6/11",
+          "prefix_evidence": "11/128",
+          "current_last_boundary_change_posterior": "3/11",
+          "predictive_next_observed_one": "17/40"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0101",
+          "joint_run_length_weights": "1:11/1024;2:3/512;3:3/512;4:9/640",
+          "posterior_run_length": "1:5/17;2:30/187;3:30/187;4:72/187",
+          "prefix_evidence": "187/5120",
+          "current_last_boundary_change_posterior": "5/17",
+          "predictive_next_observed_one": "821/1496"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=0110",
+      "hazard": "1/4",
+      "full_observation_bits": "0110",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:1/16;2:1/8",
+          "posterior_run_length": "1:1/3;2:2/3",
+          "prefix_evidence": "3/16",
+          "current_last_boundary_change_posterior": "1/3",
+          "predictive_next_observed_one": "13/24"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "011",
+          "joint_run_length_weights": "1:3/128;2:1/32;3:3/64",
+          "posterior_run_length": "1:3/13;2:4/13;3:6/13",
+          "prefix_evidence": "13/128",
+          "current_last_boundary_change_posterior": "3/13",
+          "predictive_next_observed_one": "323/520"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0110",
+          "joint_run_length_weights": "1:13/1024;2:3/512;3:3/512;4:9/640",
+          "posterior_run_length": "1:65/197;2:30/197;3:30/197;4:72/197",
+          "prefix_evidence": "197/5120",
+          "current_last_boundary_change_posterior": "65/197",
+          "predictive_next_observed_one": "741/1576"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=0111",
+      "hazard": "1/4",
+      "full_observation_bits": "0111",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "3/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:1/16;2:1/8",
+          "posterior_run_length": "1:1/3;2:2/3",
+          "prefix_evidence": "3/16",
+          "current_last_boundary_change_posterior": "1/3",
+          "predictive_next_observed_one": "13/24"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "011",
+          "joint_run_length_weights": "1:3/128;2:1/32;3:3/64",
+          "posterior_run_length": "1:3/13;2:4/13;3:6/13",
+          "prefix_evidence": "13/128",
+          "current_last_boundary_change_posterior": "3/13",
+          "predictive_next_observed_one": "323/520"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0111",
+          "joint_run_length_weights": "1:13/1024;2:3/256;3:9/512;4:27/1280",
+          "posterior_run_length": "1:65/323;2:60/323;3:90/323;4:108/323",
+          "prefix_evidence": "323/5120",
+          "current_last_boundary_change_posterior": "65/323",
+          "predictive_next_observed_one": "101/152"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=1000",
+      "hazard": "1/4",
+      "full_observation_bits": "1000",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:1/16;2:1/8",
+          "posterior_run_length": "1:1/3;2:2/3",
+          "prefix_evidence": "3/16",
+          "current_last_boundary_change_posterior": "1/3",
+          "predictive_next_observed_one": "11/24"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "100",
+          "joint_run_length_weights": "1:3/128;2:1/32;3:3/64",
+          "posterior_run_length": "1:3/13;2:4/13;3:6/13",
+          "prefix_evidence": "13/128",
+          "current_last_boundary_change_posterior": "3/13",
+          "predictive_next_observed_one": "197/520"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1000",
+          "joint_run_length_weights": "1:13/1024;2:3/256;3:9/512;4:27/1280",
+          "posterior_run_length": "1:65/323;2:60/323;3:90/323;4:108/323",
+          "prefix_evidence": "323/5120",
+          "current_last_boundary_change_posterior": "65/323",
+          "predictive_next_observed_one": "51/152"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=1001",
+      "hazard": "1/4",
+      "full_observation_bits": "1001",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:1/16;2:1/8",
+          "posterior_run_length": "1:1/3;2:2/3",
+          "prefix_evidence": "3/16",
+          "current_last_boundary_change_posterior": "1/3",
+          "predictive_next_observed_one": "11/24"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "100",
+          "joint_run_length_weights": "1:3/128;2:1/32;3:3/64",
+          "posterior_run_length": "1:3/13;2:4/13;3:6/13",
+          "prefix_evidence": "13/128",
+          "current_last_boundary_change_posterior": "3/13",
+          "predictive_next_observed_one": "197/520"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1001",
+          "joint_run_length_weights": "1:13/1024;2:3/512;3:3/512;4:9/640",
+          "posterior_run_length": "1:65/197;2:30/197;3:30/197;4:72/197",
+          "prefix_evidence": "197/5120",
+          "current_last_boundary_change_posterior": "65/197",
+          "predictive_next_observed_one": "835/1576"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=1010",
+      "hazard": "1/4",
+      "full_observation_bits": "1010",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:1/16;2:1/8",
+          "posterior_run_length": "1:1/3;2:2/3",
+          "prefix_evidence": "3/16",
+          "current_last_boundary_change_posterior": "1/3",
+          "predictive_next_observed_one": "11/24"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "101",
+          "joint_run_length_weights": "1:3/128;2:1/64;3:3/64",
+          "posterior_run_length": "1:3/11;2:2/11;3:6/11",
+          "prefix_evidence": "11/128",
+          "current_last_boundary_change_posterior": "3/11",
+          "predictive_next_observed_one": "23/40"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1010",
+          "joint_run_length_weights": "1:11/1024;2:3/512;3:3/512;4:9/640",
+          "posterior_run_length": "1:5/17;2:30/187;3:30/187;4:72/187",
+          "prefix_evidence": "187/5120",
+          "current_last_boundary_change_posterior": "5/17",
+          "predictive_next_observed_one": "675/1496"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=1011",
+      "hazard": "1/4",
+      "full_observation_bits": "1011",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:1/16;2:1/8",
+          "posterior_run_length": "1:1/3;2:2/3",
+          "prefix_evidence": "3/16",
+          "current_last_boundary_change_posterior": "1/3",
+          "predictive_next_observed_one": "11/24"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "101",
+          "joint_run_length_weights": "1:3/128;2:1/64;3:3/64",
+          "posterior_run_length": "1:3/11;2:2/11;3:6/11",
+          "prefix_evidence": "11/128",
+          "current_last_boundary_change_posterior": "3/11",
+          "predictive_next_observed_one": "23/40"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1011",
+          "joint_run_length_weights": "1:11/1024;2:3/256;3:3/512;4:27/1280",
+          "posterior_run_length": "1:5/23;2:60/253;3:30/253;4:108/253",
+          "prefix_evidence": "253/5120",
+          "current_last_boundary_change_posterior": "5/23",
+          "predictive_next_observed_one": "1283/2024"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=1100",
+      "hazard": "1/4",
+      "full_observation_bits": "1100",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:1/16;2:1/4",
+          "posterior_run_length": "1:1/5;2:4/5",
+          "prefix_evidence": "5/16",
+          "current_last_boundary_change_posterior": "1/5",
+          "predictive_next_observed_one": "27/40"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "110",
+          "joint_run_length_weights": "1:5/128;2:1/64;3:3/64",
+          "posterior_run_length": "1:5/13;2:2/13;3:6/13",
+          "prefix_evidence": "13/128",
+          "current_last_boundary_change_posterior": "5/13",
+          "predictive_next_observed_one": "253/520"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1100",
+          "joint_run_length_weights": "1:13/1024;2:5/256;3:3/512;4:9/640",
+          "posterior_run_length": "1:65/267;2:100/267;3:10/89;4:24/89",
+          "prefix_evidence": "267/5120",
+          "current_last_boundary_change_posterior": "65/267",
+          "predictive_next_observed_one": "835/2136"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=1101",
+      "hazard": "1/4",
+      "full_observation_bits": "1101",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:1/16;2:1/4",
+          "posterior_run_length": "1:1/5;2:4/5",
+          "prefix_evidence": "5/16",
+          "current_last_boundary_change_posterior": "1/5",
+          "predictive_next_observed_one": "27/40"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "110",
+          "joint_run_length_weights": "1:5/128;2:1/64;3:3/64",
+          "posterior_run_length": "1:5/13;2:2/13;3:6/13",
+          "prefix_evidence": "13/128",
+          "current_last_boundary_change_posterior": "5/13",
+          "predictive_next_observed_one": "253/520"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1101",
+          "joint_run_length_weights": "1:13/1024;2:5/512;3:3/512;4:27/1280",
+          "posterior_run_length": "1:65/253;2:50/253;3:30/253;4:108/253",
+          "prefix_evidence": "253/5120",
+          "current_last_boundary_change_posterior": "65/253",
+          "predictive_next_observed_one": "1203/2024"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=1110",
+      "hazard": "1/4",
+      "full_observation_bits": "1110",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:1/16;2:1/4",
+          "posterior_run_length": "1:1/5;2:4/5",
+          "prefix_evidence": "5/16",
+          "current_last_boundary_change_posterior": "1/5",
+          "predictive_next_observed_one": "27/40"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "111",
+          "joint_run_length_weights": "1:5/128;2:1/32;3:9/64",
+          "posterior_run_length": "1:5/27;2:4/27;3:2/3",
+          "prefix_evidence": "27/128",
+          "current_last_boundary_change_posterior": "5/27",
+          "predictive_next_observed_one": "757/1080"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1110",
+          "joint_run_length_weights": "1:27/1024;2:5/512;3:3/512;4:27/1280",
+          "posterior_run_length": "1:135/323;2:50/323;3:30/323;4:108/323",
+          "prefix_evidence": "323/5120",
+          "current_last_boundary_change_posterior": "135/323",
+          "predictive_next_observed_one": "1283/2584"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/4|observations=1111",
+      "hazard": "1/4",
+      "full_observation_bits": "1111",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/8"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:1/16;2:1/4",
+          "posterior_run_length": "1:1/5;2:4/5",
+          "prefix_evidence": "5/16",
+          "current_last_boundary_change_posterior": "1/5",
+          "predictive_next_observed_one": "27/40"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "111",
+          "joint_run_length_weights": "1:5/128;2:1/32;3:9/64",
+          "posterior_run_length": "1:5/27;2:4/27;3:2/3",
+          "prefix_evidence": "27/128",
+          "current_last_boundary_change_posterior": "5/27",
+          "predictive_next_observed_one": "757/1080"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1111",
+          "joint_run_length_weights": "1:27/1024;2:5/256;3:9/512;4:27/320",
+          "posterior_run_length": "1:135/757;2:100/757;3:90/757;4:432/757",
+          "prefix_evidence": "757/5120",
+          "current_last_boundary_change_posterior": "135/757",
+          "predictive_next_observed_one": "4339/6056"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=0000",
+      "hazard": "1/2",
+      "full_observation_bits": "0000",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:1/8;2:1/6",
+          "posterior_run_length": "1:3/7;2:4/7",
+          "prefix_evidence": "7/24",
+          "current_last_boundary_change_posterior": "3/7",
+          "predictive_next_observed_one": "11/28"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "000",
+          "joint_run_length_weights": "1:7/96;2:1/24;3:1/16",
+          "posterior_run_length": "1:7/17;2:4/17;3:6/17",
+          "prefix_evidence": "17/96",
+          "current_last_boundary_change_posterior": "7/17",
+          "predictive_next_observed_one": "23/60"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0000",
+          "joint_run_length_weights": "1:17/384;2:7/288;3:1/64;4:1/40",
+          "posterior_run_length": "1:15/37;2:140/629;3:90/629;4:144/629",
+          "prefix_evidence": "629/5760",
+          "current_last_boundary_change_posterior": "15/37",
+          "predictive_next_observed_one": "953/2516"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=0001",
+      "hazard": "1/2",
+      "full_observation_bits": "0001",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:1/8;2:1/6",
+          "posterior_run_length": "1:3/7;2:4/7",
+          "prefix_evidence": "7/24",
+          "current_last_boundary_change_posterior": "3/7",
+          "predictive_next_observed_one": "11/28"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "000",
+          "joint_run_length_weights": "1:7/96;2:1/24;3:1/16",
+          "posterior_run_length": "1:7/17;2:4/17;3:6/17",
+          "prefix_evidence": "17/96",
+          "current_last_boundary_change_posterior": "7/17",
+          "predictive_next_observed_one": "23/60"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0001",
+          "joint_run_length_weights": "1:17/384;2:7/576;3:1/192;4:1/160",
+          "posterior_run_length": "1:15/23;2:70/391;3:30/391;4:36/391",
+          "prefix_evidence": "391/5760",
+          "current_last_boundary_change_posterior": "15/23",
+          "predictive_next_observed_one": "849/1564"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=0010",
+      "hazard": "1/2",
+      "full_observation_bits": "0010",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:1/8;2:1/6",
+          "posterior_run_length": "1:3/7;2:4/7",
+          "prefix_evidence": "7/24",
+          "current_last_boundary_change_posterior": "3/7",
+          "predictive_next_observed_one": "11/28"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "001",
+          "joint_run_length_weights": "1:7/96;2:1/48;3:1/48",
+          "posterior_run_length": "1:7/11;2:2/11;3:2/11",
+          "prefix_evidence": "11/96",
+          "current_last_boundary_change_posterior": "7/11",
+          "predictive_next_observed_one": "359/660"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0010",
+          "joint_run_length_weights": "1:11/384;2:7/576;3:1/192;4:1/160",
+          "posterior_run_length": "1:165/301;2:10/43;3:30/301;4:36/301",
+          "prefix_evidence": "301/5760",
+          "current_last_boundary_change_posterior": "165/301",
+          "predictive_next_observed_one": "529/1204"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=0011",
+      "hazard": "1/2",
+      "full_observation_bits": "0011",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "00",
+          "joint_run_length_weights": "1:1/8;2:1/6",
+          "posterior_run_length": "1:3/7;2:4/7",
+          "prefix_evidence": "7/24",
+          "current_last_boundary_change_posterior": "3/7",
+          "predictive_next_observed_one": "11/28"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "001",
+          "joint_run_length_weights": "1:7/96;2:1/48;3:1/48",
+          "posterior_run_length": "1:7/11;2:2/11;3:2/11",
+          "prefix_evidence": "11/96",
+          "current_last_boundary_change_posterior": "7/11",
+          "predictive_next_observed_one": "359/660"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0011",
+          "joint_run_length_weights": "1:11/384;2:7/288;3:1/192;4:1/240",
+          "posterior_run_length": "1:165/359;2:140/359;3:30/359;4:24/359",
+          "prefix_evidence": "359/5760",
+          "current_last_boundary_change_posterior": "165/359",
+          "predictive_next_observed_one": "849/1436"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=0100",
+      "hazard": "1/2",
+      "full_observation_bits": "0100",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:1/8;2:1/12",
+          "posterior_run_length": "1:3/5;2:2/5",
+          "prefix_evidence": "5/24",
+          "current_last_boundary_change_posterior": "3/5",
+          "predictive_next_observed_one": "11/20"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "010",
+          "joint_run_length_weights": "1:5/96;2:1/48;3:1/48",
+          "posterior_run_length": "1:5/9;2:2/9;3:2/9",
+          "prefix_evidence": "3/32",
+          "current_last_boundary_change_posterior": "5/9",
+          "predictive_next_observed_one": "239/540"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0100",
+          "joint_run_length_weights": "1:3/128;2:5/288;3:1/192;4:1/160",
+          "posterior_run_length": "1:135/301;2:100/301;3:30/301;4:36/301",
+          "prefix_evidence": "301/5760",
+          "current_last_boundary_change_posterior": "135/301",
+          "predictive_next_observed_one": "489/1204"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=0101",
+      "hazard": "1/2",
+      "full_observation_bits": "0101",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:1/8;2:1/12",
+          "posterior_run_length": "1:3/5;2:2/5",
+          "prefix_evidence": "5/24",
+          "current_last_boundary_change_posterior": "3/5",
+          "predictive_next_observed_one": "11/20"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "010",
+          "joint_run_length_weights": "1:5/96;2:1/48;3:1/48",
+          "posterior_run_length": "1:5/9;2:2/9;3:2/9",
+          "prefix_evidence": "3/32",
+          "current_last_boundary_change_posterior": "5/9",
+          "predictive_next_observed_one": "239/540"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0101",
+          "joint_run_length_weights": "1:3/128;2:5/576;3:1/192;4:1/240",
+          "posterior_run_length": "1:135/239;2:50/239;3:30/239;4:24/239",
+          "prefix_evidence": "239/5760",
+          "current_last_boundary_change_posterior": "135/239",
+          "predictive_next_observed_one": "529/956"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=0110",
+      "hazard": "1/2",
+      "full_observation_bits": "0110",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:1/8;2:1/12",
+          "posterior_run_length": "1:3/5;2:2/5",
+          "prefix_evidence": "5/24",
+          "current_last_boundary_change_posterior": "3/5",
+          "predictive_next_observed_one": "11/20"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "011",
+          "joint_run_length_weights": "1:5/96;2:1/24;3:1/48",
+          "posterior_run_length": "1:5/11;2:4/11;3:2/11",
+          "prefix_evidence": "11/96",
+          "current_last_boundary_change_posterior": "5/11",
+          "predictive_next_observed_one": "391/660"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0110",
+          "joint_run_length_weights": "1:11/384;2:5/576;3:1/192;4:1/240",
+          "posterior_run_length": "1:165/269;2:50/269;3:30/269;4:24/269",
+          "prefix_evidence": "269/5760",
+          "current_last_boundary_change_posterior": "165/269",
+          "predictive_next_observed_one": "489/1076"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=0111",
+      "hazard": "1/2",
+      "full_observation_bits": "0111",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "0",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "5/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "01",
+          "joint_run_length_weights": "1:1/8;2:1/12",
+          "posterior_run_length": "1:3/5;2:2/5",
+          "prefix_evidence": "5/24",
+          "current_last_boundary_change_posterior": "3/5",
+          "predictive_next_observed_one": "11/20"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "011",
+          "joint_run_length_weights": "1:5/96;2:1/24;3:1/48",
+          "posterior_run_length": "1:5/11;2:4/11;3:2/11",
+          "prefix_evidence": "11/96",
+          "current_last_boundary_change_posterior": "5/11",
+          "predictive_next_observed_one": "391/660"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "0111",
+          "joint_run_length_weights": "1:11/384;2:5/288;3:1/64;4:1/160",
+          "posterior_run_length": "1:165/391;2:100/391;3:90/391;4:36/391",
+          "prefix_evidence": "391/5760",
+          "current_last_boundary_change_posterior": "165/391",
+          "predictive_next_observed_one": "953/1564"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=1000",
+      "hazard": "1/2",
+      "full_observation_bits": "1000",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "7/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:1/8;2:1/12",
+          "posterior_run_length": "1:3/5;2:2/5",
+          "prefix_evidence": "5/24",
+          "current_last_boundary_change_posterior": "3/5",
+          "predictive_next_observed_one": "9/20"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "100",
+          "joint_run_length_weights": "1:5/96;2:1/24;3:1/48",
+          "posterior_run_length": "1:5/11;2:4/11;3:2/11",
+          "prefix_evidence": "11/96",
+          "current_last_boundary_change_posterior": "5/11",
+          "predictive_next_observed_one": "269/660"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1000",
+          "joint_run_length_weights": "1:11/384;2:5/288;3:1/64;4:1/160",
+          "posterior_run_length": "1:165/391;2:100/391;3:90/391;4:36/391",
+          "prefix_evidence": "391/5760",
+          "current_last_boundary_change_posterior": "165/391",
+          "predictive_next_observed_one": "611/1564"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=1001",
+      "hazard": "1/2",
+      "full_observation_bits": "1001",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "7/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:1/8;2:1/12",
+          "posterior_run_length": "1:3/5;2:2/5",
+          "prefix_evidence": "5/24",
+          "current_last_boundary_change_posterior": "3/5",
+          "predictive_next_observed_one": "9/20"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "100",
+          "joint_run_length_weights": "1:5/96;2:1/24;3:1/48",
+          "posterior_run_length": "1:5/11;2:4/11;3:2/11",
+          "prefix_evidence": "11/96",
+          "current_last_boundary_change_posterior": "5/11",
+          "predictive_next_observed_one": "269/660"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1001",
+          "joint_run_length_weights": "1:11/384;2:5/576;3:1/192;4:1/240",
+          "posterior_run_length": "1:165/269;2:50/269;3:30/269;4:24/269",
+          "prefix_evidence": "269/5760",
+          "current_last_boundary_change_posterior": "165/269",
+          "predictive_next_observed_one": "587/1076"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=1010",
+      "hazard": "1/2",
+      "full_observation_bits": "1010",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "7/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:1/8;2:1/12",
+          "posterior_run_length": "1:3/5;2:2/5",
+          "prefix_evidence": "5/24",
+          "current_last_boundary_change_posterior": "3/5",
+          "predictive_next_observed_one": "9/20"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "101",
+          "joint_run_length_weights": "1:5/96;2:1/48;3:1/48",
+          "posterior_run_length": "1:5/9;2:2/9;3:2/9",
+          "prefix_evidence": "3/32",
+          "current_last_boundary_change_posterior": "5/9",
+          "predictive_next_observed_one": "301/540"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1010",
+          "joint_run_length_weights": "1:3/128;2:5/576;3:1/192;4:1/240",
+          "posterior_run_length": "1:135/239;2:50/239;3:30/239;4:24/239",
+          "prefix_evidence": "239/5760",
+          "current_last_boundary_change_posterior": "135/239",
+          "predictive_next_observed_one": "427/956"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=1011",
+      "hazard": "1/2",
+      "full_observation_bits": "1011",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "7/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "10",
+          "joint_run_length_weights": "1:1/8;2:1/12",
+          "posterior_run_length": "1:3/5;2:2/5",
+          "prefix_evidence": "5/24",
+          "current_last_boundary_change_posterior": "3/5",
+          "predictive_next_observed_one": "9/20"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "101",
+          "joint_run_length_weights": "1:5/96;2:1/48;3:1/48",
+          "posterior_run_length": "1:5/9;2:2/9;3:2/9",
+          "prefix_evidence": "3/32",
+          "current_last_boundary_change_posterior": "5/9",
+          "predictive_next_observed_one": "301/540"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1011",
+          "joint_run_length_weights": "1:3/128;2:5/288;3:1/192;4:1/160",
+          "posterior_run_length": "1:135/301;2:100/301;3:30/301;4:36/301",
+          "prefix_evidence": "301/5760",
+          "current_last_boundary_change_posterior": "135/301",
+          "predictive_next_observed_one": "715/1204"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=1100",
+      "hazard": "1/2",
+      "full_observation_bits": "1100",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "7/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:1/8;2:1/6",
+          "posterior_run_length": "1:3/7;2:4/7",
+          "prefix_evidence": "7/24",
+          "current_last_boundary_change_posterior": "3/7",
+          "predictive_next_observed_one": "17/28"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "110",
+          "joint_run_length_weights": "1:7/96;2:1/48;3:1/48",
+          "posterior_run_length": "1:7/11;2:2/11;3:2/11",
+          "prefix_evidence": "11/96",
+          "current_last_boundary_change_posterior": "7/11",
+          "predictive_next_observed_one": "301/660"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1100",
+          "joint_run_length_weights": "1:11/384;2:7/288;3:1/192;4:1/240",
+          "posterior_run_length": "1:165/359;2:140/359;3:30/359;4:24/359",
+          "prefix_evidence": "359/5760",
+          "current_last_boundary_change_posterior": "165/359",
+          "predictive_next_observed_one": "587/1436"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=1101",
+      "hazard": "1/2",
+      "full_observation_bits": "1101",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "7/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:1/8;2:1/6",
+          "posterior_run_length": "1:3/7;2:4/7",
+          "prefix_evidence": "7/24",
+          "current_last_boundary_change_posterior": "3/7",
+          "predictive_next_observed_one": "17/28"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "110",
+          "joint_run_length_weights": "1:7/96;2:1/48;3:1/48",
+          "posterior_run_length": "1:7/11;2:2/11;3:2/11",
+          "prefix_evidence": "11/96",
+          "current_last_boundary_change_posterior": "7/11",
+          "predictive_next_observed_one": "301/660"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1101",
+          "joint_run_length_weights": "1:11/384;2:7/576;3:1/192;4:1/160",
+          "posterior_run_length": "1:165/301;2:10/43;3:30/301;4:36/301",
+          "prefix_evidence": "301/5760",
+          "current_last_boundary_change_posterior": "165/301",
+          "predictive_next_observed_one": "675/1204"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=1110",
+      "hazard": "1/2",
+      "full_observation_bits": "1110",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "7/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:1/8;2:1/6",
+          "posterior_run_length": "1:3/7;2:4/7",
+          "prefix_evidence": "7/24",
+          "current_last_boundary_change_posterior": "3/7",
+          "predictive_next_observed_one": "17/28"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "111",
+          "joint_run_length_weights": "1:7/96;2:1/24;3:1/16",
+          "posterior_run_length": "1:7/17;2:4/17;3:6/17",
+          "prefix_evidence": "17/96",
+          "current_last_boundary_change_posterior": "7/17",
+          "predictive_next_observed_one": "37/60"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1110",
+          "joint_run_length_weights": "1:17/384;2:7/576;3:1/192;4:1/160",
+          "posterior_run_length": "1:15/23;2:70/391;3:30/391;4:36/391",
+          "prefix_evidence": "391/5760",
+          "current_last_boundary_change_posterior": "15/23",
+          "predictive_next_observed_one": "715/1564"
+        }
+      ]
+    },
+    {
+      "world": "hazard=1/2|observations=1111",
+      "hazard": "1/2",
+      "full_observation_bits": "1111",
+      "source_rows": 4,
+      "epoch_records": [
+        {
+          "prefix_length": "1",
+          "observed_prefix": "1",
+          "joint_run_length_weights": "1:1/2",
+          "posterior_run_length": "1:1",
+          "prefix_evidence": "1/2",
+          "current_last_boundary_change_posterior": "0",
+          "predictive_next_observed_one": "7/12"
+        },
+        {
+          "prefix_length": "2",
+          "observed_prefix": "11",
+          "joint_run_length_weights": "1:1/8;2:1/6",
+          "posterior_run_length": "1:3/7;2:4/7",
+          "prefix_evidence": "7/24",
+          "current_last_boundary_change_posterior": "3/7",
+          "predictive_next_observed_one": "17/28"
+        },
+        {
+          "prefix_length": "3",
+          "observed_prefix": "111",
+          "joint_run_length_weights": "1:7/96;2:1/24;3:1/16",
+          "posterior_run_length": "1:7/17;2:4/17;3:6/17",
+          "prefix_evidence": "17/96",
+          "current_last_boundary_change_posterior": "7/17",
+          "predictive_next_observed_one": "37/60"
+        },
+        {
+          "prefix_length": "4",
+          "observed_prefix": "1111",
+          "joint_run_length_weights": "1:17/384;2:7/288;3:1/64;4:1/40",
+          "posterior_run_length": "1:15/37;2:140/629;3:90/629;4:144/629",
+          "prefix_evidence": "629/5760",
+          "current_last_boundary_change_posterior": "15/37",
+          "predictive_next_observed_one": "1563/2516"
+        }
+      ]
+    }
+  ],
+  "reference_cases": {
+    "h_quarter_0000_evidence": "757/5120",
+    "h_quarter_0000_last_change": "135/757",
+    "h_quarter_0000_predict_one": "1717/6056",
+    "h_quarter_0001_evidence": "323/5120",
+    "h_quarter_0001_last_change": "135/323",
+    "h_quarter_0001_predict_one": "1301/2584",
+    "h_zero_0000_predict_one": "1/6",
+    "h_zero_0001_predict_one": "1/3",
+    "h_half_0001_last_change": "15/23"
+  }
+}
