@@ -1,0 +1,44 @@
+name: R315 WS Exact Small World Two Edge E1
+on:
+  push:
+    paths:
+      - 'research/R315/**'
+      - 'research/catalogue_audit/independent_r315_source_audit.py'
+      - '.github/workflows/r315-ws-two-clockwise-edges-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit tests and independent archive equality
+        run: python research/R315/r315_exact_small_world.py --test
+      - name: Verify original 210 atoms 180 paths
+        run: python research/R315/r315_exact_small_world.py --audit
+  no-import-graph-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent per-edge enumeration and Floyd Warshall graph metrics
+        run: python research/catalogue_audit/independent_r315_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R315-WS-210-Sources-180-Paths-Finite-E1
+          path: |
+            research/R315/R315_ALL_210_ORIGINAL_REWIRING_ATOMS.csv
+            research/R315/R315_EXACT_180_TWO_EVENT_GRAPH_PATHS.json
+          retention-days: 90
