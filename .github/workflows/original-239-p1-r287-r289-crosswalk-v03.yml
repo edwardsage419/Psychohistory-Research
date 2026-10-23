@@ -1,0 +1,111 @@
+name: Original 239 P1 R287-R289 Model-to-Evidence Crosswalk v0.3 Audit
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_crosswalk_v0_3.py'
+      - '.github/workflows/original-239-p1-r287-r289-crosswalk-v03.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate 250 original catalogue and 4 P1 evidence amendments
+        run: python research/catalogue_audit/verify_p1_crosswalk_v0_3.py --test
+  independently-check-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify all 239 catalogue ID and evidence paths
+        run: |
+          python research/catalogue_audit/verify_p1_crosswalk_v0_3.py --emit
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('.')
+          docs=root/'docs'
+          original=json.loads((docs/'MODEL_CANDIDATE_CATALOG_v0.1.json').read_text())['models']
+          old=json.loads((docs/'ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.2_2026-10-23.json').read_text())['rows']
+          new=json.loads((docs/'ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.3_2026-10-23.json').read_text())['rows']
+          report=json.loads((docs/'ORIGINAL_239_P1_R287_R289_CROSSWALK_MACHINE_RESULTS.json').read_text())
+          sha=json.loads((docs/'ORIGINAL_239_P1_R287_R289_CROSSWALK_SHA256_RECEIPT.json').read_text())
+          assert len(original)==len(old)==len(new)==239
+          allowed={'01-001':('R287',39910069650),'01-002':('R288',39910074038),
+                   '01-004':('R289',39910079877)}
+          for o,b,a in zip(original,old,new):
+              assert o['id']==b['catalogue_id']==a['catalogue_id']
+              assert o['name_en']==b['catalogue_name_en']==a['catalogue_name_en']
+              assert o['priority']==b['original_priority']==a['original_priority']
+              assert a['prior_v0_2_status']==b['link_status']
+              if o['id'] in allowed:
+                  name,run=allowed[o['id']]
+                  assert a['proposed_primary_research_id']==name
+                  assert a['P1_scoped_review_addendum']['CI_run_id']==run
+                  status=json.loads((root/f'research/{name}/{name}_FINAL_ACCEPTANCE_STATUS.json').read_text())
+                  assert status['original_catalogue_id']==o['id']
+                  assert status['ci_conclusion']=='success'
+                  assert status['ci_jobs_completed_success']==3
+                  assert status['new_real_human_E2']==status['new_historical_E3']==0
+              elif o['id']=='01-006':
+                  assert a['proposed_primary_research_id'] is None
+                  assert a['shared_substantive_R_relation']['source_R']=='R111'
+                  assert a['link_status']=='SHARED_R111_MULTINOMIAL_LOGIT_FORMULA_NOT_SEPARATE_EMPIRICAL_ESTIMATION'
+              else:
+                  for key in b:assert a[key]==b[key],(o['id'],key)
+              assert a['original_v0_1_link_status']==b['original_v0_1_link_status']
+          assert report['results']['direct_primary_R']==177
+          assert report['results']['shared_substantive_without_double_counting']==3
+          assert report['results']['pending_primary']==59
+          assert report['results']['exact_original_239_completion_certified'] is False
+          mapping={'catalog_sha256':docs/'MODEL_CANDIDATE_CATALOG_v0.1.json',
+                   'old_sha256':docs/'ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.2_2026-10-23.json',
+                   'new_sha256':docs/'ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.3_2026-10-23.json',
+                   'results_sha256':docs/'ORIGINAL_239_P1_R287_R289_CROSSWALK_MACHINE_RESULTS.json'}
+          for name,path in mapping.items():assert hashlib.sha256(path.read_bytes()).hexdigest()==sha[name]
+          for name in allowed.values():
+              r=name[0]
+              path=root/f'research/{r}/{r}_FINAL_ACCEPTANCE_STATUS.json'
+              assert hashlib.sha256(path.read_bytes()).hexdigest()==sha[r+'_scientific_acceptance_sha256']
+          print('R287_R289_P1_CROSSWALK_ALL_239_ROWS_177_PRIMARY_3_SHARED_59_PENDING_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original-239-P1-R287-R289-Scientific-Scope-Provenance
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.3_2026-10-23.json
+            docs/ORIGINAL_239_P1_R287_R289_CROSSWALK_MACHINE_RESULTS.json
+            docs/ORIGINAL_239_P1_R287_R289_CROSSWALK_SHA256_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive machine reconciliation and provenance SHA
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/ORIGINAL_239_P1_R287_R289_CROSSWALK_MACHINE_RESULTS.json docs/ORIGINAL_239_P1_R287_R289_CROSSWALK_SHA256_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(audit): 177 primary research rows and 3 shared-scoped model links verified'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'ORIGINAL_239_P1_V03_CROSSWALK_SCIENTIFIC_BOUNDARY_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
