@@ -1,0 +1,642 @@
+{
+  "research_id": "R258",
+  "original_catalogue_id": "11-018",
+  "prescore_freeze_commit": "62b3cff2023ec7f4d0a35dbb408a6b24c8d6f5ae",
+  "scientific_scope": "FINITE_ARTIFICIAL_E1_THREE_STAGE_FINITE_STOCHASTIC_OPTIMAL_CONTROL",
+  "frozen_worlds": 9,
+  "original_all_initial_sixbit_atom_types": 1728,
+  "initial_states_per_world": 3,
+  "sixbit_shock_paths_per_initial": 64,
+  "distinct_legal_deterministic_Markov_feedback_policies_exhausted": 512,
+  "distinct_open_loop_action_sequences_exhausted": 8,
+  "decision_timing": "action chosen after seeing current state and before seeing current/future shock",
+  "optimal_feedback_weakly_dominates_open_loop_under_identical_information_laws": true,
+  "no_actual_policy_data_or_empirical_causality_established": true,
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "NO_SHOCK_EXPENSIVE",
+      "frozen_shock_probability": "0",
+      "frozen_action_cost_kappa": "2",
+      "frozen_terminal_weight_tau": "1",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "0",
+        "3",
+        "9"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "0",
+        "3",
+        "9"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "0",
+        "3",
+        "9"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "0",
+        "0",
+        "0"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          0,
+          1,
+          1
+        ],
+        "1": [
+          0,
+          0,
+          1
+        ],
+        "2": [
+          0,
+          0,
+          1
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "0",
+          "3",
+          "9"
+        ],
+        "1": [
+          "0",
+          "3",
+          "8"
+        ],
+        "2": [
+          "0",
+          "2",
+          "7"
+        ],
+        "3": [
+          "0",
+          "1",
+          "4"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    },
+    {
+      "world": "NO_SHOCK_CHEAP",
+      "frozen_shock_probability": "0",
+      "frozen_action_cost_kappa": "1/4",
+      "frozen_terminal_weight_tau": "1",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "0",
+        "5/4",
+        "11/2"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "0",
+        "5/4",
+        "11/2"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "0",
+        "5/4",
+        "11/2"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "0",
+        "0",
+        "0"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          0,
+          1,
+          1
+        ],
+        "1": [
+          0,
+          1,
+          1
+        ],
+        "2": [
+          0,
+          1,
+          1
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "0",
+          "5/4",
+          "11/2"
+        ],
+        "1": [
+          "0",
+          "5/4",
+          "11/2"
+        ],
+        "2": [
+          "0",
+          "5/4",
+          "21/4"
+        ],
+        "3": [
+          "0",
+          "1",
+          "4"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    },
+    {
+      "world": "HALF_SHOCK_LOW_ACTION",
+      "frozen_shock_probability": "1/2",
+      "frozen_action_cost_kappa": "1/4",
+      "frozen_terminal_weight_tau": "1",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "3/4",
+        "21/8",
+        "77/8"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "3/4",
+        "21/8",
+        "77/8"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "3/4",
+        "21/8",
+        "77/8"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "0",
+        "0",
+        "0"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          1,
+          1,
+          1
+        ],
+        "1": [
+          1,
+          1,
+          1
+        ],
+        "2": [
+          1,
+          1,
+          1
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "3/4",
+          "21/8",
+          "77/8"
+        ],
+        "1": [
+          "1/2",
+          "9/4",
+          "17/2"
+        ],
+        "2": [
+          "1/4",
+          "7/4",
+          "27/4"
+        ],
+        "3": [
+          "0",
+          "1",
+          "4"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    },
+    {
+      "world": "HALF_SHOCK_MEDIUM",
+      "frozen_shock_probability": "1/2",
+      "frozen_action_cost_kappa": "1",
+      "frozen_terminal_weight_tau": "1",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "5/2",
+        "9/2",
+        "47/4"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "5/2",
+        "9/2",
+        "47/4"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "5/2",
+        "19/4",
+        "95/8"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "0",
+        "1/4",
+        "1/8"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          0,
+          1,
+          1
+        ],
+        "1": [
+          0,
+          1,
+          1
+        ],
+        "2": [
+          0,
+          1,
+          1
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "5/2",
+          "9/2",
+          "47/4"
+        ],
+        "1": [
+          "3/2",
+          "7/2",
+          "10"
+        ],
+        "2": [
+          "1/2",
+          "5/2",
+          "15/2"
+        ],
+        "3": [
+          "0",
+          "1",
+          "4"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    },
+    {
+      "world": "HALF_SHOCK_HIGH",
+      "frozen_shock_probability": "1/2",
+      "frozen_action_cost_kappa": "4",
+      "frozen_terminal_weight_tau": "1",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "35/8",
+        "75/8",
+        "16"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "35/8",
+        "75/8",
+        "16"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "35/8",
+        "75/8",
+        "16"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "0",
+        "0",
+        "0"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          0,
+          1,
+          0
+        ],
+        "1": [
+          0,
+          0,
+          0
+        ],
+        "2": [
+          0,
+          0,
+          0
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "35/8",
+          "75/8",
+          "16"
+        ],
+        "1": [
+          "2",
+          "27/4",
+          "12"
+        ],
+        "2": [
+          "1/2",
+          "7/2",
+          "8"
+        ],
+        "3": [
+          "0",
+          "1",
+          "4"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    },
+    {
+      "world": "QUARTER_SHOCK_MEDIUM",
+      "frozen_shock_probability": "1/4",
+      "frozen_action_cost_kappa": "1",
+      "frozen_terminal_weight_tau": "1",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "5/4",
+        "13/4",
+        "293/32"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "5/4",
+        "13/4",
+        "293/32"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "53/32",
+        "117/32",
+        "603/64"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "13/32",
+        "13/32",
+        "17/64"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          0,
+          1,
+          1
+        ],
+        "1": [
+          0,
+          1,
+          1
+        ],
+        "2": [
+          0,
+          1,
+          1
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "5/4",
+          "13/4",
+          "293/32"
+        ],
+        "1": [
+          "3/4",
+          "11/4",
+          "67/8"
+        ],
+        "2": [
+          "1/4",
+          "9/4",
+          "27/4"
+        ],
+        "3": [
+          "0",
+          "1",
+          "4"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    },
+    {
+      "world": "THREEQUARTER_SHOCK_MEDIUM",
+      "frozen_shock_probability": "3/4",
+      "frozen_action_cost_kappa": "1",
+      "frozen_terminal_weight_tau": "1",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "11/4",
+        "45/8",
+        "949/64"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "11/4",
+        "45/8",
+        "949/64"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "11/4",
+        "367/64",
+        "959/64"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "0",
+        "7/64",
+        "5/32"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          1,
+          1,
+          1
+        ],
+        "1": [
+          1,
+          1,
+          1
+        ],
+        "2": [
+          0,
+          1,
+          0
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "11/4",
+          "45/8",
+          "949/64"
+        ],
+        "1": [
+          "7/4",
+          "17/4",
+          "187/16"
+        ],
+        "2": [
+          "3/4",
+          "11/4",
+          "8"
+        ],
+        "3": [
+          "0",
+          "1",
+          "4"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    },
+    {
+      "world": "ALWAYS_SHOCK_MEDIUM",
+      "frozen_shock_probability": "1",
+      "frozen_action_cost_kappa": "1",
+      "frozen_terminal_weight_tau": "1",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "3",
+        "7",
+        "16"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "3",
+        "7",
+        "16"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "3",
+        "7",
+        "16"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "0",
+        "0",
+        "0"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          1,
+          1,
+          0
+        ],
+        "1": [
+          1,
+          1,
+          0
+        ],
+        "2": [
+          0,
+          1,
+          0
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "3",
+          "7",
+          "16"
+        ],
+        "1": [
+          "2",
+          "5",
+          "12"
+        ],
+        "2": [
+          "1",
+          "3",
+          "8"
+        ],
+        "3": [
+          "0",
+          "1",
+          "4"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    },
+    {
+      "world": "HALF_SHOCK_NO_TERMINAL",
+      "frozen_shock_probability": "1/2",
+      "frozen_action_cost_kappa": "1",
+      "frozen_terminal_weight_tau": "0",
+      "complete_original_initial_and_sixbit_source_atoms": 192,
+      "Bellman_V0_by_initial_state": [
+        "3/2",
+        "7/2",
+        "10"
+      ],
+      "exhaustive_512_feedback_policy_global_min_by_initial_state": [
+        "3/2",
+        "7/2",
+        "10"
+      ],
+      "best_of_8_open_loop_action_sequence_values": [
+        "3/2",
+        "15/4",
+        "10"
+      ],
+      "strictly_nonnegative_open_loop_value_gaps": [
+        "0",
+        "1/4",
+        "0"
+      ],
+      "optimal_feedback_actions_by_time_and_state": {
+        "0": [
+          0,
+          1,
+          1
+        ],
+        "1": [
+          0,
+          1,
+          1
+        ],
+        "2": [
+          0,
+          0,
+          0
+        ]
+      },
+      "all_Bellman_value_layers": {
+        "0": [
+          "3/2",
+          "7/2",
+          "10"
+        ],
+        "1": [
+          "1/2",
+          "5/2",
+          "15/2"
+        ],
+        "2": [
+          "0",
+          "1",
+          "4"
+        ],
+        "3": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "oracle_original_source_policy_cost_parity": true,
+      "full_exhaustive_admissible_feedback_policy_parity": true,
+      "all_eight_open_loop_strategies_checked": true
+    }
+  ]
+}
