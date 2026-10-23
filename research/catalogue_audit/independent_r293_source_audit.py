@@ -86,9 +86,9 @@ def source_audit(rows, result):
 def audit():
     r=loadobj(RECEIPT)
     j=loadobj(RESULT)
-    if j["freeze_commit"]!=r["freeze_commit"]!="44ede9c449b06fa221c51bdbbc2008c5492aed06":raise AssertionError("prescore freeze mismatch")
+    if j["freeze_commit"]!="44ede9c449b06fa221c51bdbbc2008c5492aed06" or r["freeze_commit"]!="44ede9c449b06fa221c51bdbbc2008c5492aed06":raise AssertionError("prescore freeze mismatch")
     if j["original_catalogue_id"]!="01-016" or r["original_source_rows"]!=2112:raise AssertionError("catalogue binding")
-    if r["E2_added"]!=r["E3_added"]!=0 or j["empirical_circle_validated"]:raise AssertionError("scientific overclaim")
+    if r["E2_added"]!=0 or r["E3_added"]!=0 or j["empirical_circle_validated"]:raise AssertionError("scientific overclaim")
     if hashlib.sha256(CSV_PATH.read_bytes()).hexdigest()!=r["source_sha256"]:raise AssertionError("CSV hash mismatch")
     if hashlib.sha256(RESULT.read_bytes()).hexdigest()!=r["result_sha256"]:raise AssertionError("result hash mismatch")
     return {**source_audit(load(),j),"original_source_sha256":r["source_sha256"],"result_sha256":r["result_sha256"]}
