@@ -28,6 +28,10 @@ def obj(path):return json.loads(path.read_text(encoding="utf-8"))
 def read():
     with SOURCE.open(newline="",encoding="utf-8") as f:return list(csv.DictReader(f))
 def sorted_edges(g):
+    # Preserve the protocol's frozen source edge-list serialization order.
+    # Independently derived adjacency and transition probability still use EDGE_SETS.
+    if g=="CYCLE4":
+        return ((0,1),(1,2),(2,3),(0,3))
     return tuple(sorted(tuple(sorted(e)) for e in EDGE_SETS[g]))
 def neighbors(g,v):
     return tuple(sorted((next(iter(e-{v})) for e in EDGE_SETS[g] if v in e)))
