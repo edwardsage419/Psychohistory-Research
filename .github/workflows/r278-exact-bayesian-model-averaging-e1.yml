@@ -1,0 +1,137 @@
+name: R278 Exact Bayesian Model Averaging and Independent Holdout Audit
+on:
+  push:
+    paths:
+      - 'research/R278/r278_exact_bayesian_model_averaging.py'
+      - '.github/workflows/r278-exact-bayesian-model-averaging-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute 108 real source-level model averaging tests
+        run: python research/R278/r278_exact_bayesian_model_averaging.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify all 768 original train and test configurations
+        run: |
+          python research/R278/r278_exact_bayesian_model_averaging.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from fractions import Fraction as F
+          from collections import defaultdict
+          from math import comb
+          from pathlib import Path
+          root=Path('research/R278')
+          src=root/'R278_ALL_768_ORIGINAL_MODEL_AVERAGING_SOURCES.csv'
+          jp=root/'R278_EXACT_RESULTS.json'
+          rows=list(csv.DictReader(src.open()))
+          output=json.loads(jp.read_text())
+          receipt=json.loads((root/'R278_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==768 and len(output['world_results'])==12
+          assert output['original_catalogue_id']=='12-008'
+          assert output['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='eb1c8df38349c36ed10d7a2103969818b14d7500'
+          for f,key in ((src,'source_sha256'),(jp,'results_sha256')):
+              assert hashlib.sha256(f.read_bytes()).hexdigest()==receipt[key]
+          source_types={''.join(v) for v in itertools.product('01',repeat=6)}
+          by_world=defaultdict(list)
+          for r in rows:by_world[r['world']].append(r)
+          assert len(by_world)==12
+          for w in output['world_results']:
+              p=F(w['true_p']);m=w['policy'];data=by_world[w['world']]
+              assert len(data)==64
+              assert {r['original_full_sixbit_source'] for r in data}==source_types
+              total=t_score=v_score=F(0)
+              for r in data:
+                  bits=r['original_full_sixbit_source']
+                  x=bits[:4];y=bits[4:];k=x.count('1');j=y.count('1')
+                  low=F(1,4)**k*F(3,4)**(4-k)
+                  high=F(3,4)**k*F(1,4)**(4-k)
+                  wlow=low/(low+high)
+                  if m=='HARD_SELECT':q=F(1,4) if low>=high else F(3,4)
+                  elif m=='BAYES_AVERAGE':q=wlow*F(1,4)+(1-wlow)*F(3,4)
+                  elif m=='FIXED_HALF':q=F(1,2)
+                  else:
+                      assert m=='TRUTH_ORACLE'
+                      q=p
+                  assert r['original_training_fourbit']==x and r['original_holdout_twobit']==y
+                  assert int(r['original_train_successes'])==k
+                  assert int(r['original_test_successes'])==j
+                  assert F(r['posterior_probability_of_low_candidate'])==wlow
+                  assert F(r['frozen_after_training_singlebit_prediction'])==q
+                  assert int(r['hard_selection_tie_at_k2'])==int(k==2)
+                  assert int(r['policy_uses_unavailable_true_p'])==int(m=='TRUTH_ORACLE')
+                  mass=p**(k+j)*(1-p)**(6-k-j)
+                  assert F(r['original_source_probability'])==mass
+                  trow=[(F(int(z))-q)**2 for z in x]
+                  vrow=[(F(int(z))-q)**2 for z in y]
+                  assert r['train_row_Brier']==';'.join(map(str,trow))
+                  assert r['holdout_row_Brier']==';'.join(map(str,vrow))
+                  ts=sum(trow,F(0))/4;vs=sum(vrow,F(0))/2
+                  assert F(r['mean_train_Brier'])==ts
+                  assert F(r['mean_holdout_Brier'])==vs
+                  total+=mass;t_score+=mass*ts;v_score+=mass*vs
+              assert total==1
+              assert w['primitive_sources']==64
+              assert str(t_score)==w['expected_training_Brier']
+              assert str(v_score)==w['expected_independent_holdout_Brier']
+              # Independent count-class Binomial(4,p) route.
+              tr=fu=F(0)
+              for k in range(5):
+                  a=F(1,4)**k*F(3,4)**(4-k);b=F(3,4)**k*F(1,4)**(4-k)
+                  if m=='HARD_SELECT':q=F(1,4) if a>=b else F(3,4)
+                  elif m=='BAYES_AVERAGE':q=(a*F(1,4)+b*F(3,4))/(a+b)
+                  elif m=='FIXED_HALF':q=F(1,2)
+                  else:q=p
+                  wk=F(comb(4,k))*p**k*(1-p)**(4-k)
+                  tr+=wk*(k*(1-q)**2+(4-k)*q*q)/4
+                  fu+=wk*(p*(1-q)**2+(1-p)*q*q)
+              assert (tr,fu)==(t_score,v_score)
+              assert w['independent_binomial_risk_verified']
+          assert output['no_real_human_E2']==output['no_real_historical_E3']==0
+          print('R278_ALL_768_SOURCE_TYPES_AND_12_INDEPENDENT_HOLDOUT_RISKS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R278-All-768-BMA-and-Selection-Original-Sources
+          path: |
+            research/R278/R278_ALL_768_ORIGINAL_MODEL_AVERAGING_SOURCES.csv
+            research/R278/R278_EXACT_RESULTS.json
+            research/R278/R278_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all primitive sources and exact results
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R278/R278_ALL_768_ORIGINAL_MODEL_AVERAGING_SOURCES.csv research/R278/R278_EXACT_RESULTS.json research/R278/R278_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R278): all 768 exact BMA and model selection source types'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R278_ALL_768_EXACT_SOURCE_TYPES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
