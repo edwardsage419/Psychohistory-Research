@@ -1,0 +1,46 @@
+name: Original 239 P1 R304 Social Identity Crosswalk v1.8
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r304_crosswalk_v1_8.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.8_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_44_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r304-crosswalk-v18.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original239:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: 16 exact original239 one-row source and Tajfel no-human-fit provenance checks
+        run: python research/catalogue_audit/verify_p1_r304_crosswalk_v1_8.py --test
+  independently-verify-identity-allocations-and-provenance:
+    needs: dual-python-original239
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recheck all 239 canonical IDs, 238 unchanged source rows and 432 original option sources
+        run: |
+          python research/catalogue_audit/verify_p1_r304_crosswalk_v1_8.py --audit
+          python research/catalogue_audit/independent_r304_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R304-v18-192Primary-44Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.8_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_44_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R304/R304_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
