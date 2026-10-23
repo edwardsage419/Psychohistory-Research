@@ -1,0 +1,131 @@
+name: R270 Exact Sixbit Posterior Predictive Independent Audit
+on:
+  push:
+    paths:
+      - 'research/R270/r270_exact_posterior_predictive.py'
+      - '.github/workflows/r270-exact-posterior-predictive-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test all 83 exact Beta Bernoulli PPC claims and run-length decompositions
+        run: python research/R270/r270_exact_posterior_predictive.py --test
+  independent-replicate-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit and independently verify all 576 exact sixbit source atoms and all PPC probabilities
+        run: |
+          python research/R270/r270_exact_posterior_predictive.py --emit
+          python - <<'PY'
+          import csv,json,itertools,hashlib
+          from fractions import Fraction as F
+          from collections import defaultdict
+          from math import comb
+          from pathlib import Path
+          root=Path('research/R270')
+          src=root/'R270_ALL_576_ORIGINAL_POSTERIOR_PREDICTIVE_REPLICATES.csv'
+          resultpath=root/'R270_EXACT_POSTERIOR_PREDICTIVE_RESULTS.json'
+          rows=list(csv.DictReader(src.open()))
+          result=json.loads(resultpath.read_text())
+          receipt=json.loads((root/'R270_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==576 and len(result['world_results'])==9
+          assert result['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='5771124558a4c033cca9f5e2d0e6d7ea5315cc8c'
+          assert result['original_catalogue_id']=='11-030'
+          for file,key in [(src,'source_sha256'),(resultpath,'results_sha256')]:
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==receipt[key]
+          grouped=defaultdict(list)
+          for item in rows:grouped[item['world']].append(item)
+          assert len(grouped)==9
+          for w in result['world_results']:
+              subset=grouped[w['world']]
+              assert len(subset)==64
+              a=int(w['prior_a']);b=int(w['prior_b'])
+              obs=w['original_observed_sixbit'];ok=int(w['observed_count_K'])
+              ot=int(w['observed_equal_adjacencies_T'])
+              assert obs.count('1')==ok==3
+              assert sum(obs[i]==obs[i+1] for i in range(5))==ot
+              A=a+ok;B=b+6-ok
+              complete=set()
+              countpmf=defaultdict(lambda:F(0))
+              adjpmf=defaultdict(lambda:F(0))
+              for item in subset:
+                  rep=item['original_complete_replicate_sixbit']
+                  complete.add(rep)
+                  k=rep.count('1')
+                  t=sum(rep[i]==rep[i+1] for i in range(5))
+                  assert len(rep)==6 and set(rep)<={'0','1'}
+                  assert int(item['prior_a'])==a and int(item['prior_b'])==b
+                  assert item['original_observed_sixbit']==obs
+                  assert int(item['posterior_a'])==A and int(item['posterior_b'])==B
+                  assert int(item['original_replicate_success_count'])==k
+                  assert int(item['original_replicate_equal_adjacency_count'])==t
+                  num=1;den=1
+                  for v in range(k):num*=A+v
+                  for v in range(6-k):num*=B+v
+                  for v in range(6):den*=A+B+v
+                  mass=F(num,den)
+                  assert F(item['exact_original_posterior_predictive_mass'])==mass
+                  countpmf[k]+=mass
+                  adjpmf[t]+=mass
+              assert complete=={''.join(bits) for bits in itertools.product('01',repeat=6)}
+              assert sum(countpmf.values(),F(0))==sum(adjpmf.values(),F(0))==1
+              assert {str(k):str(countpmf[k]) for k in range(7)}==w['exact_replicate_success_count_PMF']
+              assert {str(t):str(adjpmf[t]) for t in range(6)}==w['exact_replicate_equal_adjacency_PMF']
+              assert str(sum((v for k,v in countpmf.items() if k>=ok),F(0)))==w['count_success_upper_tail']
+              assert str(sum((v for t,v in adjpmf.items() if t>=ot),F(0)))==w['adjacency_equal_upper_tail']
+              assert str(sum((v for t,v in adjpmf.items() if t<=ot),F(0)))==w['adjacency_equal_lower_tail']
+              assert w['independent_beta_binomial_and_run_composition_PMFs_verified']
+              # Independent direct beta-binomial K mass check.
+              for k in range(7):
+                  num=1;den=1
+                  for i in range(k):num*=A+i
+                  for j in range(6-k):num*=B+j
+                  for i in range(6):den*=A+B+i
+                  assert countpmf[k]==comb(6,k)*F(num,den)
+          assert result['no_real_human_E2']==result['no_real_historical_E3']==0
+          print('R270_576_COMPLETE_POSTERIOR_REPLICATES_AND_9_REP_ORDER_CHECKS_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R270-576-Exact-Posterior-Predictive-Replicates
+          path: |
+            research/R270/R270_ALL_576_ORIGINAL_POSTERIOR_PREDICTIVE_REPLICATES.csv
+            research/R270/R270_EXACT_POSTERIOR_PREDICTIVE_RESULTS.json
+            research/R270/R270_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive full original posterior predictive replicate sources
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R270/R270_ALL_576_ORIGINAL_POSTERIOR_PREDICTIVE_REPLICATES.csv research/R270/R270_EXACT_POSTERIOR_PREDICTIVE_RESULTS.json research/R270/R270_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R270): all 576 original sixbit posterior predictive replicate sources'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R270_ALL_576_ORDERED_POSTERIOR_PREDICTIVE_REPLICATES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
