@@ -1,0 +1,691 @@
+{
+  "research_id": "R298",
+  "original_catalogue_id": "02-004",
+  "freeze_commit": "24cdb3119991c7233ee02fdad271d74881ab8825",
+  "scope": "E1_SYNTHETIC_KNOWN_MODEL_PLANNING_AFTER_EXOGENOUS_NOTIFICATION_NOT_WORLD_MODEL_LEARNING",
+  "synthetic_worlds": 32,
+  "original_full_labeled_action_sources": 64,
+  "no_new_direct_experience_after_revaluation": true,
+  "model_transition_learning_performed": false,
+  "new_real_human_E2": 0,
+  "new_real_animal_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "worlds": [
+    {
+      "world": "scenario=BASELINE|gamma=1/2|notified=0|controller=MODEL_BASED_PLANNER",
+      "scenario": "BASELINE",
+      "gamma": "1/2",
+      "notified": 0,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BASELINE|gamma=1/2|notified=0|controller=CACHED_VALUES",
+      "scenario": "BASELINE",
+      "gamma": "1/2",
+      "notified": 0,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BASELINE|gamma=1/2|notified=1|controller=MODEL_BASED_PLANNER",
+      "scenario": "BASELINE",
+      "gamma": "1/2",
+      "notified": 1,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BASELINE|gamma=1/2|notified=1|controller=CACHED_VALUES",
+      "scenario": "BASELINE",
+      "gamma": "1/2",
+      "notified": 1,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BASELINE|gamma=1|notified=0|controller=MODEL_BASED_PLANNER",
+      "scenario": "BASELINE",
+      "gamma": "1",
+      "notified": 0,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BASELINE|gamma=1|notified=0|controller=CACHED_VALUES",
+      "scenario": "BASELINE",
+      "gamma": "1",
+      "notified": 0,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BASELINE|gamma=1|notified=1|controller=MODEL_BASED_PLANNER",
+      "scenario": "BASELINE",
+      "gamma": "1",
+      "notified": 1,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BASELINE|gamma=1|notified=1|controller=CACHED_VALUES",
+      "scenario": "BASELINE",
+      "gamma": "1",
+      "notified": 1,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=REWARD_SHIFT|gamma=1/2|notified=0|controller=MODEL_BASED_PLANNER",
+      "scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "notified": 0,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3/2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "3/2",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=REWARD_SHIFT|gamma=1/2|notified=0|controller=CACHED_VALUES",
+      "scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "notified": 0,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3/2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "3/2",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=REWARD_SHIFT|gamma=1/2|notified=1|controller=MODEL_BASED_PLANNER",
+      "scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "notified": 1,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "REWARD_SHIFT",
+      "predicted_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3/2"
+      },
+      "chosen_action": "RIGHT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=REWARD_SHIFT|gamma=1/2|notified=1|controller=CACHED_VALUES",
+      "scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "notified": 1,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3/2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "3/2",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=REWARD_SHIFT|gamma=1|notified=0|controller=MODEL_BASED_PLANNER",
+      "scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "notified": 0,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "3",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=REWARD_SHIFT|gamma=1|notified=0|controller=CACHED_VALUES",
+      "scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "notified": 0,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "3",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=REWARD_SHIFT|gamma=1|notified=1|controller=MODEL_BASED_PLANNER",
+      "scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "notified": 1,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "REWARD_SHIFT",
+      "predicted_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3"
+      },
+      "chosen_action": "RIGHT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=REWARD_SHIFT|gamma=1|notified=1|controller=CACHED_VALUES",
+      "scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "notified": 1,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "0",
+        "RIGHT": "3"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "3",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=TRANSITION_SWAP|gamma=1/2|notified=0|controller=MODEL_BASED_PLANNER",
+      "scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "notified": 0,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1/2",
+        "RIGHT": "1"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "1/2",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=TRANSITION_SWAP|gamma=1/2|notified=0|controller=CACHED_VALUES",
+      "scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "notified": 0,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1/2",
+        "RIGHT": "1"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "1/2",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=TRANSITION_SWAP|gamma=1/2|notified=1|controller=MODEL_BASED_PLANNER",
+      "scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "notified": 1,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "TRANSITION_SWAP",
+      "predicted_action_Q": {
+        "LEFT": "1/2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1/2",
+        "RIGHT": "1"
+      },
+      "chosen_action": "RIGHT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=TRANSITION_SWAP|gamma=1/2|notified=1|controller=CACHED_VALUES",
+      "scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "notified": 1,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1/2",
+        "RIGHT": "1"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "1/2",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=TRANSITION_SWAP|gamma=1|notified=0|controller=MODEL_BASED_PLANNER",
+      "scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "notified": 0,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "1",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=TRANSITION_SWAP|gamma=1|notified=0|controller=CACHED_VALUES",
+      "scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "notified": 0,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "1",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=TRANSITION_SWAP|gamma=1|notified=1|controller=MODEL_BASED_PLANNER",
+      "scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "notified": 1,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "TRANSITION_SWAP",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "2"
+      },
+      "chosen_action": "RIGHT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=TRANSITION_SWAP|gamma=1|notified=1|controller=CACHED_VALUES",
+      "scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "notified": 1,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "2"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "RIGHT",
+      "oracle_agreement": false,
+      "regret_against_actual_model": "1",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BOTH|gamma=1/2|notified=0|controller=MODEL_BASED_PLANNER",
+      "scenario": "BOTH",
+      "gamma": "1/2",
+      "notified": 0,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "3/2",
+        "RIGHT": "0"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BOTH|gamma=1/2|notified=0|controller=CACHED_VALUES",
+      "scenario": "BOTH",
+      "gamma": "1/2",
+      "notified": 0,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "3/2",
+        "RIGHT": "0"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BOTH|gamma=1/2|notified=1|controller=MODEL_BASED_PLANNER",
+      "scenario": "BOTH",
+      "gamma": "1/2",
+      "notified": 1,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BOTH",
+      "predicted_action_Q": {
+        "LEFT": "3/2",
+        "RIGHT": "0"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "3/2",
+        "RIGHT": "0"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BOTH|gamma=1/2|notified=1|controller=CACHED_VALUES",
+      "scenario": "BOTH",
+      "gamma": "1/2",
+      "notified": 1,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "1",
+        "RIGHT": "1/2"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "3/2",
+        "RIGHT": "0"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BOTH|gamma=1|notified=0|controller=MODEL_BASED_PLANNER",
+      "scenario": "BOTH",
+      "gamma": "1",
+      "notified": 0,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "3",
+        "RIGHT": "0"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BOTH|gamma=1|notified=0|controller=CACHED_VALUES",
+      "scenario": "BOTH",
+      "gamma": "1",
+      "notified": 0,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "3",
+        "RIGHT": "0"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BOTH|gamma=1|notified=1|controller=MODEL_BASED_PLANNER",
+      "scenario": "BOTH",
+      "gamma": "1",
+      "notified": 1,
+      "controller": "MODEL_BASED_PLANNER",
+      "assumed_environment_scenario": "BOTH",
+      "predicted_action_Q": {
+        "LEFT": "3",
+        "RIGHT": "0"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "3",
+        "RIGHT": "0"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    },
+    {
+      "world": "scenario=BOTH|gamma=1|notified=1|controller=CACHED_VALUES",
+      "scenario": "BOTH",
+      "gamma": "1",
+      "notified": 1,
+      "controller": "CACHED_VALUES",
+      "assumed_environment_scenario": "BASELINE",
+      "predicted_action_Q": {
+        "LEFT": "2",
+        "RIGHT": "1"
+      },
+      "true_environment_action_Q": {
+        "LEFT": "3",
+        "RIGHT": "0"
+      },
+      "chosen_action": "LEFT",
+      "actual_optimal_action": "LEFT",
+      "oracle_agreement": true,
+      "regret_against_actual_model": "0",
+      "original_source_rows": 2
+    }
+  ],
+  "oracle_agreement_count": 20,
+  "oracle_disagreement_count": 12
+}
