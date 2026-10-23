@@ -1,0 +1,341 @@
+{
+  "research_id": "R257",
+  "original_catalogue_id": "11-017",
+  "prescore_freeze_commit": "75b7f963eb850c9bc9e573d48877dab5f261a8ab",
+  "scientific_scope": "FINITE_ARTIFICIAL_E1_STRICT_CONVEX_TRIANGLE_OPTIMIZATION_AND_NONCONVEX_KKT_COUNTEREXAMPLE",
+  "frozen_worlds": 9,
+  "all_original_grid_candidate_source_atoms": 225,
+  "grid_is_not_the_continuous_feasible_region": true,
+  "convex_worlds_have_exact_unique_KKT_optima": 8,
+  "nonconvex_KKT_conditions_not_sufficient": true,
+  "offgrid_world_grid_gap": "1/80",
+  "no_real_institutional_allocation_optimization_claim": true,
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "INTERIOR_OFF_GRID",
+      "capacity": "1",
+      "target_a": "3/5",
+      "target_b": "1/5",
+      "globally_convex_and_strictly_positive_definite": true,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 15,
+      "exact_grid_objective_minimum": "1/80",
+      "all_grid_optimum_points": [
+        [
+          "1/2",
+          "1/4"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "3/5",
+        "1/5"
+      ],
+      "exact_continuous_global_optimum_value": "0",
+      "exact_grid_suboptimality_gap": "1/80",
+      "exact_convex_KKT_primal_dual_complementary_certificate": {
+        "lambda_capacity": "0",
+        "mu_lower_x": "0",
+        "mu_lower_y": "0",
+        "primal_nonnegative": true,
+        "primal_capacity": true,
+        "dual_multipliers_nonnegative": true,
+        "complementary_slackness": true,
+        "stationary": true,
+        "hessian_is_2I_positive_definite": true,
+        "strict_slater_point_exists": true
+      },
+      "nonconvex_KKT_not_sufficient_certified": null
+    },
+    {
+      "world": "BINDING_SUM_BOTH",
+      "capacity": "1",
+      "target_a": "3/4",
+      "target_b": "3/4",
+      "globally_convex_and_strictly_positive_definite": true,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 15,
+      "exact_grid_objective_minimum": "1/8",
+      "all_grid_optimum_points": [
+        [
+          "1/2",
+          "1/2"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "1/2",
+        "1/2"
+      ],
+      "exact_continuous_global_optimum_value": "1/8",
+      "exact_grid_suboptimality_gap": "0",
+      "exact_convex_KKT_primal_dual_complementary_certificate": {
+        "lambda_capacity": "1/2",
+        "mu_lower_x": "0",
+        "mu_lower_y": "0",
+        "primal_nonnegative": true,
+        "primal_capacity": true,
+        "dual_multipliers_nonnegative": true,
+        "complementary_slackness": true,
+        "stationary": true,
+        "hessian_is_2I_positive_definite": true,
+        "strict_slater_point_exists": true
+      },
+      "nonconvex_KKT_not_sufficient_certified": null
+    },
+    {
+      "world": "LOWER_X_ACTIVE",
+      "capacity": "1",
+      "target_a": "-1/2",
+      "target_b": "1/2",
+      "globally_convex_and_strictly_positive_definite": true,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 15,
+      "exact_grid_objective_minimum": "1/4",
+      "all_grid_optimum_points": [
+        [
+          "0",
+          "1/2"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "0",
+        "1/2"
+      ],
+      "exact_continuous_global_optimum_value": "1/4",
+      "exact_grid_suboptimality_gap": "0",
+      "exact_convex_KKT_primal_dual_complementary_certificate": {
+        "lambda_capacity": "0",
+        "mu_lower_x": "1",
+        "mu_lower_y": "0",
+        "primal_nonnegative": true,
+        "primal_capacity": true,
+        "dual_multipliers_nonnegative": true,
+        "complementary_slackness": true,
+        "stationary": true,
+        "hessian_is_2I_positive_definite": true,
+        "strict_slater_point_exists": true
+      },
+      "nonconvex_KKT_not_sufficient_certified": null
+    },
+    {
+      "world": "LOWER_Y_ACTIVE",
+      "capacity": "1",
+      "target_a": "1/2",
+      "target_b": "-1/2",
+      "globally_convex_and_strictly_positive_definite": true,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 15,
+      "exact_grid_objective_minimum": "1/4",
+      "all_grid_optimum_points": [
+        [
+          "1/2",
+          "0"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "1/2",
+        "0"
+      ],
+      "exact_continuous_global_optimum_value": "1/4",
+      "exact_grid_suboptimality_gap": "0",
+      "exact_convex_KKT_primal_dual_complementary_certificate": {
+        "lambda_capacity": "0",
+        "mu_lower_x": "0",
+        "mu_lower_y": "1",
+        "primal_nonnegative": true,
+        "primal_capacity": true,
+        "dual_multipliers_nonnegative": true,
+        "complementary_slackness": true,
+        "stationary": true,
+        "hessian_is_2I_positive_definite": true,
+        "strict_slater_point_exists": true
+      },
+      "nonconvex_KKT_not_sufficient_certified": null
+    },
+    {
+      "world": "VERTEX_ORIGIN",
+      "capacity": "1",
+      "target_a": "-1/2",
+      "target_b": "-1/2",
+      "globally_convex_and_strictly_positive_definite": true,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 15,
+      "exact_grid_objective_minimum": "1/2",
+      "all_grid_optimum_points": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "0",
+        "0"
+      ],
+      "exact_continuous_global_optimum_value": "1/2",
+      "exact_grid_suboptimality_gap": "0",
+      "exact_convex_KKT_primal_dual_complementary_certificate": {
+        "lambda_capacity": "0",
+        "mu_lower_x": "1",
+        "mu_lower_y": "1",
+        "primal_nonnegative": true,
+        "primal_capacity": true,
+        "dual_multipliers_nonnegative": true,
+        "complementary_slackness": true,
+        "stationary": true,
+        "hessian_is_2I_positive_definite": true,
+        "strict_slater_point_exists": true
+      },
+      "nonconvex_KKT_not_sufficient_certified": null
+    },
+    {
+      "world": "VERTEX_RIGHT",
+      "capacity": "1",
+      "target_a": "2",
+      "target_b": "1/4",
+      "globally_convex_and_strictly_positive_definite": true,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 15,
+      "exact_grid_objective_minimum": "17/16",
+      "all_grid_optimum_points": [
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "1",
+        "0"
+      ],
+      "exact_continuous_global_optimum_value": "17/16",
+      "exact_grid_suboptimality_gap": "0",
+      "exact_convex_KKT_primal_dual_complementary_certificate": {
+        "lambda_capacity": "2",
+        "mu_lower_x": "0",
+        "mu_lower_y": "3/2",
+        "primal_nonnegative": true,
+        "primal_capacity": true,
+        "dual_multipliers_nonnegative": true,
+        "complementary_slackness": true,
+        "stationary": true,
+        "hessian_is_2I_positive_definite": true,
+        "strict_slater_point_exists": true
+      },
+      "nonconvex_KKT_not_sufficient_certified": null
+    },
+    {
+      "world": "VERTEX_UPPER",
+      "capacity": "1",
+      "target_a": "1/4",
+      "target_b": "2",
+      "globally_convex_and_strictly_positive_definite": true,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 15,
+      "exact_grid_objective_minimum": "17/16",
+      "all_grid_optimum_points": [
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "0",
+        "1"
+      ],
+      "exact_continuous_global_optimum_value": "17/16",
+      "exact_grid_suboptimality_gap": "0",
+      "exact_convex_KKT_primal_dual_complementary_certificate": {
+        "lambda_capacity": "2",
+        "mu_lower_x": "3/2",
+        "mu_lower_y": "0",
+        "primal_nonnegative": true,
+        "primal_capacity": true,
+        "dual_multipliers_nonnegative": true,
+        "complementary_slackness": true,
+        "stationary": true,
+        "hessian_is_2I_positive_definite": true,
+        "strict_slater_point_exists": true
+      },
+      "nonconvex_KKT_not_sufficient_certified": null
+    },
+    {
+      "world": "CAPACITY_TWO_SLACK",
+      "capacity": "2",
+      "target_a": "3/4",
+      "target_b": "3/4",
+      "globally_convex_and_strictly_positive_definite": true,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 25,
+      "exact_grid_objective_minimum": "0",
+      "all_grid_optimum_points": [
+        [
+          "3/4",
+          "3/4"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "3/4",
+        "3/4"
+      ],
+      "exact_continuous_global_optimum_value": "0",
+      "exact_grid_suboptimality_gap": "0",
+      "exact_convex_KKT_primal_dual_complementary_certificate": {
+        "lambda_capacity": "0",
+        "mu_lower_x": "0",
+        "mu_lower_y": "0",
+        "primal_nonnegative": true,
+        "primal_capacity": true,
+        "dual_multipliers_nonnegative": true,
+        "complementary_slackness": true,
+        "stationary": true,
+        "hessian_is_2I_positive_definite": true,
+        "strict_slater_point_exists": true
+      },
+      "nonconvex_KKT_not_sufficient_certified": null
+    },
+    {
+      "world": "NONCONVEX_KKT_NOT_SUFFICIENT",
+      "capacity": "1",
+      "target_a": "1/2",
+      "target_b": "1/2",
+      "globally_convex_and_strictly_positive_definite": false,
+      "all_original_candidate_types": 25,
+      "number_feasible_grid_candidates": 15,
+      "exact_grid_objective_minimum": "-1/4",
+      "all_grid_optimum_points": [
+        [
+          "0",
+          "1/2"
+        ]
+      ],
+      "exact_continuous_global_optimum": [
+        "0",
+        "1/2"
+      ],
+      "exact_continuous_global_optimum_value": "-1/4",
+      "exact_grid_suboptimality_gap": "0",
+      "exact_convex_KKT_primal_dual_complementary_certificate": null,
+      "nonconvex_KKT_not_sufficient_certified": {
+        "incorrect_KKT_sufficiency_claim": false,
+        "nonconvex_hessian_diagonal": [
+          "-2",
+          "2"
+        ],
+        "stationary_primal": [
+          "1/2",
+          "1/2"
+        ],
+        "stationary_objective": "0",
+        "stationary_all_multipliers_zero_are_valid": true,
+        "feasible_strictly_better_point": [
+          "0",
+          "1/2"
+        ],
+        "feasible_better_value": "-1/4",
+        "global_bound_proven_by_x_interval_and_nonnegative_y_square": true
+      }
+    }
+  ]
+}
