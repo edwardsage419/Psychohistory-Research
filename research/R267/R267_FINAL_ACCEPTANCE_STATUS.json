@@ -1,0 +1,36 @@
+{
+  "research_id": "R267",
+  "original_catalogue_id": "11-027",
+  "outcome": "CLOSED_BOUNDED_E1_EXACT_DISCRETE_THREE_LEVEL_LATIN_HYPERCUBE",
+  "prescore_freeze_commit": "8943746fab2b7f23256ff537007c9fc902bda386",
+  "model_commit": "7240296fb36c100d3debf7a99c85c1b6765581db",
+  "workflow_commit": "763e86e9ccb829db75651ba05802d4ee61cbaa60",
+  "original_source_archive_commit": "82087648e4be587e156ee32846d4cc83c8cef9fd",
+  "github_actions_run_id": 39901198271,
+  "github_actions_status": "completed",
+  "github_actions_conclusion": "success",
+  "success_jobs": 3,
+  "python_3_11_unittest_pass": 136,
+  "python_3_12_unittest_pass": 136,
+  "exact_artificial_source_types": 6885,
+  "independent_complete_estimator_PMFs_verified": 18,
+  "original_source_csv_sha256": "95008933124b100798820610eb427467fa8dc7ea104a230f22582c44bd17869a",
+  "exact_results_json_sha256": "2c2f11fbee6360f825164c800a9c75b5c7c7d07defbaa00bdfa519a183352e1a",
+  "supported_claims": [
+    "Finite n=3, discrete 3x3 grid, nine frozen functions, IID vs LHS source distributions and estimator moments exactly verified.",
+    "Three additive worlds have exactly zero LHS variance.",
+    "Three nonadditive worlds have 3/2 LHS to IID variance ratio under exactly equal function evaluation budgets."
+  ],
+  "limitations": [
+    "No randomized execution or original McKay/Stein software or data reproduction.",
+    "Only discrete 3x3 complete no-jitter finite experiment; no general continuous or high-dimensional LHS superiority claim.",
+    "No human or historical observations or model fusion."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": "11-028",
+  "next_research": "R268",
+  "next_model": "AIC and BIC"
+}
