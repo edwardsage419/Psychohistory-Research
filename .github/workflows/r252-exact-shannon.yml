@@ -1,0 +1,119 @@
+name: R252 Exact Six Bit Shannon Information and Conditional Dependence
+on:
+  push:
+    paths:
+      - 'research/R252/r252_exact_shannon_information.py'
+      - '.github/workflows/r252-exact-shannon.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-entropy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact 6-bit source laws and symbolic rational plus log2 prime Shannon information
+        run: python research/R252/r252_exact_shannon_information.py --test
+  all-original-exact-information-source-archive:
+    needs: dual-python-exact-entropy-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate 576 full original bit atoms and independently verify entropy and do counterexamples
+        run: |
+          python research/R252/r252_exact_shannon_information.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R252')
+          src=list(csv.DictReader((d/'R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv').open()))
+          j=json.loads((d/'R252_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R252_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(src)==576 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==receipt['original_catalogue_id']=='11-012'
+          assert j['prescore_freeze_commit']=='30815e3018c099ee362780f1b2292dc33644e27d'
+          assert j['bsc_and_collider_information_exact']=='3/4*log2(3)-1'
+          assert 3**3>2**4
+          by={w['world']:w for w in j['world_results']}
+          for world,w in by.items():
+              rows=[r for r in src if r['world']==world]
+              assert len(rows)==64
+              bits=['oracle_original_'+x for x in 'UABCDE']
+              assert len({tuple(r[b] for b in bits) for r in rows})==64
+              assert all(F(r['original_sixbit_source_probability'])==F(1,64) for r in rows)
+              assert sum((F(r['original_sixbit_source_probability']) for r in rows),F(0))==1
+              assert sum((F(r) for r in w['observed_complete_XYZ_joint'].values()),F(0))==1
+              assert w['full_source_and_independent_analytic_PMF_equal']
+              assert w['exact_symbolic_prime_log_entropy_algebra']
+              assert len(w['original_oracle_do_flip_Y_by_source'])==64
+              for m in w['exact_information_measures'].values():
+                  assert isinstance(m['exact_rational'],str)
+                  assert isinstance(m['exact_log2_prime_coefficients'],dict)
+          def sy(world,kind):
+              return by[world]['exact_information_measures'][kind]
+          def check(world,kind,rational,logs={}):
+              val=sy(world,kind)
+              assert val['exact_rational']==rational,(world,kind,val)
+              assert val['exact_log2_prime_coefficients']==logs,(world,kind,val)
+          check('INDEPENDENT_BITS','HXYZ','3')
+          check('INDEPENDENT_BITS','IXY','0')
+          check('DIRECT_COPY','IXY','1')
+          check('HIDDEN_COMMON_CAUSE_ALIAS','IXY','1')
+          check('XOR_SYNERGY','IXY','0')
+          check('XOR_SYNERGY','IXY_given_Z','1')
+          check('XOR_SYNERGY','interaction_information','-1')
+          check('ERASURE_HALF','HY','3/2')
+          check('ERASURE_HALF','IXY','1/2')
+          check('ERASURE_HALF','IXY_given_Z','1/2')
+          check('BINARY_SYMMETRIC_QUARTER','IXY','-1',{'3':'3/4'})
+          check('BINARY_SYMMETRIC_QUARTER','IXY_given_Z','1/2')
+          check('COLLIDER_AND','IXY','0')
+          check('COLLIDER_AND','HZ','2',{'3':'-3/4'})
+          check('COLLIDER_AND','IXY_given_Z','-1',{'3':'3/4'})
+          check('XOR_MASK_REPARAM','IXY_given_Z','1')
+          check('CONSTANT_REPORTER','HY','0')
+          check('CONSTANT_REPORTER','IXY','0')
+          direct=by['DIRECT_COPY'];cause=by['HIDDEN_COMMON_CAUSE_ALIAS']
+          assert direct['observed_complete_XYZ_joint']==cause['observed_complete_XYZ_joint']
+          assert by['XOR_SYNERGY']['observed_complete_XYZ_joint']==by['XOR_MASK_REPARAM']['observed_complete_XYZ_joint']
+          for drow,crow in zip([r for r in src if r['world']=='DIRECT_COPY'],
+                               [r for r in src if r['world']=='HIDDEN_COMMON_CAUSE_ALIAS']):
+              assert tuple(drow['observed_'+c] for c in 'XYZ')==tuple(crow['observed_'+c] for c in 'XYZ')
+              assert drow['oracle_counterfactual_Y_after_do_X_flip']!=crow['oracle_counterfactual_Y_after_do_X_flip']
+          for fn,key in [('R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv','source_sha256'),
+                         ('R252_EXACT_RESULTS.json','results_sha256')]:
+              assert receipt[key]==hashlib.sha256((d/fn).read_bytes()).hexdigest()
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R252_ALL_576_SYMBOLIC_SHANNON_ENTROPY_SOURCE_ALIASES_AND_LOG3_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R252-Nine-Shannon-Exact-PrimeLog-Worlds
+          path: |
+            research/R252/R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv
+            research/R252/R252_EXACT_RESULTS.json
+            research/R252/R252_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all 576 exact entropy source atoms to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R252/R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv research/R252/R252_EXACT_RESULTS.json research/R252/R252_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R252): all 576 original six-bit entropy and information source atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
