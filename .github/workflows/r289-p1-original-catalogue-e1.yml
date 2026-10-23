@@ -1,0 +1,64 @@
+name: R289 Satisficing Sequential Search Full Artificial Source Audit
+on:
+  push:
+    paths:
+      - 'research/R289/r289_exact_satisficing.py'
+      - 'research/catalogue_audit/independent_r287_r289_source_audit.py'
+      - '.github/workflows/r289-p1-original-catalogue-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 70 real unittests of original P1 finite mechanics
+        run: python research/R289/r289_exact_satisficing.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate every original source and verify independent exact mathematics
+        run: |
+          python research/R289/r289_exact_satisficing.py --emit
+          python research/catalogue_audit/independent_r287_r289_source_audit.py --research R289
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R289-All-Original-P1-Synthetic-Source-Configurations
+          path: |
+            research/R289/R289_ALL_486_ORIGINAL_SEQUENTIAL_OFFER_SOURCES.csv
+            research/R289/R289_EXACT_SATISFICING_RESULTS.json
+            research/R289/R289_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive original exact-source evidence on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R289/R289_ALL_486_ORIGINAL_SEQUENTIAL_OFFER_SOURCES.csv research/R289/R289_EXACT_SATISFICING_RESULTS.json research/R289/R289_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R289): complete original P1 artificial sources and exact theoretical risks'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R289_ALL_ORIGINAL_SOURCE_TYPES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
