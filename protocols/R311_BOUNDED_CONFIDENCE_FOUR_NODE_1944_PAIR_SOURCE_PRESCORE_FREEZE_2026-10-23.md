@@ -1,0 +1,24 @@
+# R311 prospective E1 protocol: threshold confidence graph geometry (original239 04-011)
+2026-10-23 Asia/Taipei. Original candidate 04-011 Bounded Confidence Models P1. Freeze this exact finite full state/pair universe **before code/results**. All claims **mathematical artificial E1**; no humans, no real group decisions, no historical E3. Existing R066 Hegselmann–Krause and FJ study stays untouched; original04-012 HK and04-013 Deffuant remain separate itemwise research subjects. R073/PESEN v0.1 frozen.
+
+Primary original model family references:
+- Hegselmann & Krause(2002), *Opinion dynamics and bounded confidence: models, analysis and simulation*, JASSS 5(3) art.2, https://www.jasss.org/5/3/2.html. Introduces nonlinear averaging restricted to close opinions (HK).
+- Deffuant, Neau, Amblard & Weisbuch(2000), *Mixing beliefs among interacting agents*, *Advances in Complex Systems*, https://doi.org/10.1142/S0219525900000078. Pairwise random binary encounters restricted by opinion distance.
+- Lorenz(2007), *Continuous Opinion Dynamics Under Bounded Confidence: A Survey*, https://doi.org/10.1142/S0129183107011789, distinguishes distinct micro-updates sharing local confidence thresholds.
+
+**The research target is only a family-common confidence-relation graph, NOT either HK synchronous opinion dynamics or Deffuant async pairwise opinion updating, NOT asymptotic consensus/fragmentation theorem, and NOT original human experimental validation.** These three source references establish conceptual relation only; R311's source rows are entirely project-defined finite artificial opinions.
+
+Four distinguishable artificial agents, indexed0..3. Each initial scalar opinion independently in {0,1/2,1}, yielding 3^4=81 labeled configurations. Independently one confidence threshold epsilon∈{0,1/4,1/2,1}; total 81×4=**324 artificial worlds**. For each world examine six unordered distinct pairs (i,j) with i<j. Let confidence edge E(i,j)=1 precisely when |x_i−x_j|≤epsilon, **inclusive threshold equality**. All 4 nodes implicitly self-confident; do NOT count 4 self loops among six original edge sources. Need **324×6=1944 fully labeled original dyadic source rows**, not independent actual humans/trials. Every row stores vector, epsilon, i,j, opinion_i/opinion_j, exact distance, exact confidence Boolean, and world-level connected component, edge count, clique flag, component count, nontransitivity witness flag. Store exact Fractions.
+
+Graph is undirected and reflexive if loops added; **confidence relation need not be transitive**. Define connected components of undirected confidence graph using actual dyads; fix component ID to smallest indexed member for canonical output. A graph is CONNECTED iff one component and PAIRWISE_CONFIDENT iff all six dyads are edges. Group's path connectivity is **not** guaranteed global consensus, bounded opinion trajectories or any real-world social influence.
+
+Frozen reference vector (0,1/2,1,1):
+- epsilon=0 => only dyad (2,3) positive, 1 edge, 3 components;
+- epsilon=1/4 => same 1 edge, 3 components;
+- epsilon=1/2 => positive dyads (0,1),(1,2),(1,3),(2,3), 4 edges, 1 connected component, **not** pairwise confident. Witness nontransitivity: nodes0,1,2 have confidence(0,1)=confidence(1,2)=true but (0,2)=false.
+- epsilon=1 => all six edges, connected, pairwise confident.
+For all full configurations epsilon0 only exactly equal-valued agent pairs connect; epsilon1 all connect. When epsilon rises, dyads and their membership sets can only grow, so connected component count cannot increase. All 324 graphs and all six dyads must be audited, not just examples. The numeric configuration and graph geometry are our finite demonstration; the lack of transitivity is a **logical mathematical fact**, not empirical opinion polarization.
+
+No dynamic time evolution in R311, no Markov assumption, no individual-level influence coefficients, no model fitting; subsequent R066 04-012 HK existing E1 and a separately gated Deffuant 04-013 should supply actual dynamic algorithm evidence. No present human E2; R066's real 16-village source and FJ E2 cannot be re-labeled as empirical R311 graph topology evidence.
+
+Completion: prospective Git commit freeze, main Python3.11/3.12 --test and --emit; 1944 original pair source CSV, 324-world full finite graph JSON, SHA256 receipt; independent code **not importing main** reconstructs all six dyads and all components with a second union-find algorithm vs main BFS, including full corruption and missing/duplicate tests. Three actual GitHub Actions completed/success jobs (dual Python + independent source auditor and permanent commit), machine accepted limited E1 and source science report. Only then update original239 crosswalk v2.7 row **04-011 only**, 200→201 primary /36→35 pending, preserve original04-012 as prior R066-scoped, original04-013 unlinked, R066 current human E2 appropriately bounded. Original canonical 239 never touched.
