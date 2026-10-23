@@ -1,0 +1,67 @@
+name: R296 Rescorla Wagner Blocking Unblocking Exact E1
+on:
+  push:
+    paths:
+      - 'research/R296/r296_exact_rescorla_wagner.py'
+      - 'research/catalogue_audit/independent_r296_source_audit.py'
+      - '.github/workflows/r296-p1-rescorla-wagner-shared-error-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 211 mathematical model unit tests
+        run: python research/R296/r296_exact_rescorla_wagner.py --test
+      - name: Emit all 40 exact source states, independent 14-test audit
+        run: |
+          python research/R296/r296_exact_rescorla_wagner.py --emit
+          python research/catalogue_audit/independent_r296_source_audit.py --test
+          python research/catalogue_audit/independent_r296_source_audit.py --audit
+  independent-permanent-archive:
+    needs: dual-python-exact-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent 40 complete sources and analytical blocking formulas
+        run: |
+          python research/R296/r296_exact_rescorla_wagner.py --emit
+          python research/catalogue_audit/independent_r296_source_audit.py --test
+          python research/catalogue_audit/independent_r296_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R296-RW-40-Original-Cue-Competition-Source-States
+          path: |
+            research/R296/R296_ALL_40_ORIGINAL_RW_CUE_BLOCKING_STATES.csv
+            research/R296/R296_EXACT_BLOCKING_UNBLOCKING_RESULTS.json
+            research/R296/R296_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Archive exact original source states and SHA256 receipts to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R296/R296_ALL_40_ORIGINAL_RW_CUE_BLOCKING_STATES.csv research/R296/R296_EXACT_BLOCKING_UNBLOCKING_RESULTS.json research/R296/R296_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R296): 40 exact RW cue blocking and unblocking source states'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R296_ORIGINAL_SOURCES_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
