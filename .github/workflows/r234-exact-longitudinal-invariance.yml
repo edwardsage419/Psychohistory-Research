@@ -1,0 +1,95 @@
+name: R234 Exact Paired Longitudinal Measurement Invariance
+on:
+  push:
+    paths:
+      - 'research/R234/r234_exact_longitudinal_invariance.py'
+      - '.github/workflows/r234-exact-longitudinal-invariance.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-paired-measurement-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify paired 6D source aliases, change oracle and covariance
+        run: python research/R234/r234_exact_longitudinal_invariance.py --test
+  full-paired-source-archive:
+    needs: dual-python-paired-measurement-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute all 2304 original paired exogenous types and independent acceptance checks
+        run: |
+          python research/R234/r234_exact_longitudinal_invariance.py --emit
+          python - <<'PY'
+          from pathlib import Path
+          from fractions import Fraction as F
+          from collections import defaultdict
+          import csv,hashlib,json
+          d=Path('research/R234')
+          rows=list(csv.DictReader((d/'R234_ALL_2304_ORIGINAL_TWO_WAVE_SOURCES.csv').open()))
+          data=json.loads((d/'R234_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R234_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==2304 and len(data['world_results'])==9
+          assert data['original_catalogue_id']==receipt['original_catalogue_id']=='10-008'
+          assert all(F(r['original_source_probability'])==F(1,256) for r in rows)
+          by={w['world']:w for w in data['world_results']}
+          assert len(by)==9
+          for world,v in by.items():
+            ww=[r for r in rows if r['world']==world]
+            assert len(ww)==256
+            assert sum((F(r['original_source_probability']) for r in ww),F(0))==1
+            assert len({tuple(r['oracle_'+k] for k in ('T','H','E01','E02','E03','E11','E12','E13')) for r in ww})==256
+            assert len(v['all_observed_six_by_six_covariance'])==6
+            assert all(len(rr)==6 for rr in v['all_observed_six_by_six_covariance'])
+          a,b=by['TRUE_LATENT_SHIFT'],by['UNIFORM_INTERCEPT_DRIFT_ALIAS']
+          assert a['exact_full_paired_observed_joint']==b['exact_full_paired_observed_joint']
+          assert a['oracle_true_individual_latent_change_mean']=='1'
+          assert b['oracle_true_individual_latent_change_mean']=='0'
+          assert a['observed_per_item_time1_minus_time0_means']==b['observed_per_item_time1_minus_time0_means']==['1','1','1']
+          a,b=by['STABLE_BASE'],by['LATENT_SCALE_REANCHOR_ALIAS']
+          assert a['exact_full_paired_observed_joint']==b['exact_full_paired_observed_joint']
+          assert not b['raw_parameter_invariance']['raw_loading_equal_to_time0']
+          assert by['LATENT_INNOVATION']['oracle_true_individual_latent_change_variance']=='1'
+          assert by['LATENT_INNOVATION']['all_observed_six_by_six_covariance'][3][4]=='2'
+          assert by['ERROR_VARIANCE_DRIFT']['all_observed_six_by_six_covariance'][3][3]=='5'
+          assert by['PERSISTENT_FIRST_ITEM_ERROR']['all_observed_six_by_six_covariance'][0][3]=='2'
+          assert by['PERSISTENT_FIRST_ITEM_ERROR']['observed_composite_change_variance']=='4/9'
+          assert by['STABLE_BASE']['observed_composite_change_variance']=='2/3'
+          for f,k in [('R234_ALL_2304_ORIGINAL_TWO_WAVE_SOURCES.csv','source_sha256'),
+                      ('R234_EXACT_RESULTS.json','results_sha256')]:
+            assert hashlib.sha256((d/f).read_bytes()).hexdigest()==receipt[k]
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R234_ALL_2304_PAIRED_LONGITUDINAL_ORIGINAL_ATOMS_AND_TWO_FULL_OBSERVATIONAL_ALIASES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R234-Full-Original-Paired-Longitudinal-Sources
+          path: |
+            research/R234/R234_ALL_2304_ORIGINAL_TWO_WAVE_SOURCES.csv
+            research/R234/R234_EXACT_RESULTS.json
+            research/R234/R234_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Archive full paired source universe on main permanently
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R234/R234_ALL_2304_ORIGINAL_TWO_WAVE_SOURCES.csv research/R234/R234_EXACT_RESULTS.json research/R234/R234_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R234): full 2304 original paired measurement source atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
