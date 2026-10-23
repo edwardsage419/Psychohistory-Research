@@ -1,0 +1,122 @@
+name: R255 Exact Random Three Node Laplacian and Consensus
+on:
+  push:
+    paths:
+      - 'research/R255/r255_exact_random_graph_laplacian.py'
+      - '.github/workflows/r255-exact-graph-laplacian.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-laplacian-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify exact graph Laplacian eigen gaps, connectedness and consensus source laws
+        run: python research/R255/r255_exact_random_graph_laplacian.py --test
+  full-original-laplacian-source-archive:
+    needs: dual-python-laplacian-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 18432 complete source atoms and independently audit Laplacian and consensus
+        run: |
+          python research/R255/r255_exact_random_graph_laplacian.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R255')
+          rows=list(csv.DictReader((d/'R255_ALL_18432_ORIGINAL_LAPLACIAN_CONSENSUS_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R255_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R255_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==18432 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-015'
+          assert j['prescore_freeze_commit']=='1b5b16feb1291a017c1ab01b7dd1deda87ae138f'
+          by={w['world']:w for w in j['world_results']}
+          expect={
+            'EMPTY_P0':('0','0','3'),
+            'EDGE01_P1':('0','0','2'),
+            'EDGE12_P1':('0','0','2'),
+            'PATH_01_12_P1':('1','1','1'),
+            'TRIANGLE_P1':('3','1','1'),
+            'ER_TRIANGLE_P_QUARTER':('3/16','5/32','145/64'),
+            'ER_TRIANGLE_P_HALF':('3/4','1/2','13/8'),
+            'ER_TRIANGLE_P_THREE_QUARTER':('27/16','27/32','75/64'),
+            'STATIC_EMPTY_TRUE_GRAPH_OBS_REPORT_HALF':('3/4','1/2','13/8')}
+          assert set(by)==set(expect)
+          for w,r in by.items():
+              sub=[z for z in rows if z['world']==w]
+              assert len(sub)==2048
+              keys=['oracle_original_edge_R'+e+s for e in ('01','02','12') for s in ('a','b')]+['oracle_original_initial_opinion_S'+str(i) for i in range(3)]+['observed_time_index_n']
+              assert len({tuple(z[k] for k in keys) for z in sub})==2048
+              assert all(F(z['original_complete_source_mass'])==F(1,2048) for z in sub)
+              assert sum((F(z['original_complete_source_mass']) for z in sub),F(0))==1
+              assert r['exact_full_source_direct_matrix_vs_independent_walks']
+              assert r['exact_independent_closed_edge_mask_law']
+              assert r['graph_L_eigenvalue_zero_multiplicity_equals_BFS_components']
+              assert r['all_complete_source_opinion_variances_nonincreasing']
+              assert sum((F(v) for v in r['complete_observed_edge_joint'].values()),F(0))==1
+              stats=(r['exact_expected_algebraic_connectivity_lambda2'],r['observed_graph_connected_probability'],r['exact_expected_number_connected_components'])
+              assert stats==expect[w],(w,stats,expect[w])
+              for z in sub:
+                  v=F(z['observed_squared_deviation_Vn'])
+                  nxt=F(z['observed_next_squared_deviation_V'])
+                  assert 0<=nxt<=v
+                  assert sum((F(z['observed_opinion_x'+str(i)+'_at_n']) for i in range(3)),F(0))==sum((F(int(z['oracle_original_initial_opinion_S'+str(i)])) for i in range(3)),F(0))
+                  edges=[int(z['observed_reported_edge_Y'+e]) for e in ('01','02','12')]
+                  m=sum(edges)
+                  expected_gap=0 if m<=1 else (1 if m==2 else 3)
+                  expected_components=3 if m==0 else (2 if m==1 else 1)
+                  assert int(z['oracle_observed_graph_lambda2'])==expected_gap
+                  assert int(z['oracle_observed_graph_zero_eigenvalue_multiplicity'])==expected_components
+              gap=sum((F(int(z['oracle_observed_graph_lambda2']),2048) for z in sub),F(0))
+              conn=sum((F(int(z['oracle_observed_graph_lambda2']!='0'),2048) for z in sub),F(0))
+              comps=sum((F(int(z['oracle_observed_graph_zero_eigenvalue_multiplicity']),2048) for z in sub),F(0))
+              assert tuple(map(str,(gap,conn,comps)))==expect[w]
+          base=by['ER_TRIANGLE_P_HALF'];alias=by['STATIC_EMPTY_TRUE_GRAPH_OBS_REPORT_HALF']
+          assert base['complete_observed_edge_joint']==alias['complete_observed_edge_joint']
+          assert all(z['oracle_true_graph_connected_components']=='3' for z in rows if z['world']=='STATIC_EMPTY_TRUE_GRAPH_OBS_REPORT_HALF')
+          for fn,key in [('R255_ALL_18432_ORIGINAL_LAPLACIAN_CONSENSUS_SOURCE_ATOMS.csv','source_sha256'),('R255_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/fn).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R255_ALL_18432_ORIGINAL_LAPLACIAN_AND_CONSENSUS_SOURCE_ATOMS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R255-Nine-Exact-Random-Graph-Laplacian-Source-Worlds
+          path: |
+            research/R255/R255_ALL_18432_ORIGINAL_LAPLACIAN_CONSENSUS_SOURCE_ATOMS.csv
+            research/R255/R255_EXACT_RESULTS.json
+            research/R255/R255_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive 18432 complete Laplacian source atoms to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R255/R255_ALL_18432_ORIGINAL_LAPLACIAN_CONSENSUS_SOURCE_ATOMS.csv research/R255/R255_EXACT_RESULTS.json research/R255/R255_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R255): all 18432 finite graph Laplacian and consensus source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R255_ALL_18432_SOURCE_ATOMS_PERMANENTLY_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
