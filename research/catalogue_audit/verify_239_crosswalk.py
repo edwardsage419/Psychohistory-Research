@@ -17,6 +17,7 @@ ROOT=Path(__file__).resolve().parents[2]
 CROSS="docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json"
 CAT="docs/MODEL_CANDIDATE_CATALOG_v0.1.json"
 EARLY="manifests/RECOVERY_STATUS_R001_R064.csv"
+LIBRARY="manifests/LIBRARY_ORIGINAL_ZIPS_2026-10-15.csv"
 PATTERN=re.compile(r"(?<![A-Za-z0-9])(?:0[1-9]|1[012])-\d{3}(?![A-Za-z0-9])")
 CROSS_OBJ=json.loads((ROOT/CROSS).read_text(encoding="utf-8"))
 CAT_OBJ=json.loads((ROOT/CAT).read_text(encoding="utf-8"))
@@ -94,6 +95,23 @@ def early_zip_archive():
     assert all(int(r["library_zip_count"])>=1 for r in data)
     return len(data),sum(int(r["library_zip_count"]) for r in data)
 
+def zip_inventory_check():
+    with (ROOT/LIBRARY).open(encoding="utf-8",newline="") as stream:
+        library=list(csv.DictReader(stream))
+    with (ROOT/EARLY).open(encoding="utf-8",newline="") as stream:
+        rounds=list(csv.DictReader(stream))
+    assert len(library)==74
+    assert all(x["zip_crc"]=="PASS" for x in library)
+    assert all((ROOT/x["archive_path"]).is_file() for x in library)
+    original_names={x["original_filename"] for x in library}
+    assert len(original_names)==74
+    references=[name for r in rounds for name in r["library_zip_names"].split(" | ")]
+    assert len(references)==len(set(references))==73
+    assert all(name in original_names for name in references)
+    unassigned=sorted(original_names-set(references))
+    assert unassigned==["心理史学_模型研究第二轮知识包_v0.2.zip"]
+    return len(library),len(references),unassigned
+
 def verify_all():
     assert len(CAT_ROWS)==len(ROWS)==239
     assert [r["catalogue_id"] for r in ROWS]==[r["id"] for r in CAT_ROWS]
@@ -124,6 +142,9 @@ def verify_all():
       R208_R209_supplementary_not_catalogue_entries=True,
       original_R001_R064_archive_rounds=early_zip_archive()[0],
       original_R001_R064_archive_zip_entries=early_zip_archive()[1],
+      original_library_zip_inventory_count=zip_inventory_check()[0],
+      library_zip_referenced_by_original_R001_R064_rounds=zip_inventory_check()[1],
+      supplementary_knowledge_zip_not_assigned_to_R_rounds=zip_inventory_check()[2],
       itemwise_scientific_E1_E2_E3_grade_validated=False,
       original_full_paper_reproduction_certified=False,
       full_239_scientific_completion_certified=False)
@@ -139,6 +160,7 @@ def emit():
                  catalogue_sha256=hashlib.sha256((ROOT/CAT).read_bytes()).hexdigest(),
                  crosswalk_sha256=hashlib.sha256((ROOT/CROSS).read_bytes()).hexdigest(),
                  early_archive_manifest_sha256=hashlib.sha256((ROOT/EARLY).read_bytes()).hexdigest(),
+                 original_library_zip_inventory_sha256=hashlib.sha256((ROOT/LIBRARY).read_bytes()).hexdigest(),
                  results_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
     (ROOT/"docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RECEIPT.json").write_text(
       json.dumps(receipt,indent=2)+"\n",encoding="utf-8")
@@ -150,6 +172,7 @@ class Tests(unittest.TestCase):
     def test_catalogue_complete(self):self.assertEqual(len(CAT_ROWS),239)
     def test_source_order(self):self.assertEqual([r["id"] for r in CAT_ROWS],[r["catalogue_id"] for r in ROWS])
     def test_early_archive(self):self.assertEqual(early_zip_archive()[0],64)
+    def test_library_archive_inventory(self):self.assertEqual(zip_inventory_check()[0:2],(74,73))
     def test_supplements(self):self.assertTrue(all(r["proposed_primary_research_id"] not in ("R208","R209") for r in ROWS))
     def test_R173_correct(self):self.assertEqual(next(r for r in ROWS if r["proposed_primary_research_id"]=="R173")["catalogue_id"],"07-015")
     def test_unresolved(self):self.assertEqual(sum(r["link_status"]==STATUSES[2] for r in ROWS),59)
