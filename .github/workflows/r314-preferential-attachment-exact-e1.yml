@@ -1,0 +1,45 @@
+name: R314 BA Preferential Attachment Exact E1
+on:
+  push:
+    paths:
+      - 'research/R314/**'
+      - 'research/catalogue_audit/independent_r314_source_audit.py'
+      - '.github/workflows/r314-preferential-attachment-exact-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-attachment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Full rational preferential attachment unit tests
+        run: python research/R314/r314_exact_preferential_attachment.py --test
+      - name: Full conditional source and path archive replay
+        run: python research/R314/r314_exact_preferential_attachment.py --audit
+  independent-original-sources:
+    needs: exact-attachment
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently regenerate all 54 target atoms and 44 complete paths
+        run: python research/catalogue_audit/independent_r314_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R314-BA-Exact-54-OriginalAtoms-44Paths-E1
+          path: |
+            research/R314/R314_ALL_54_ORIGINAL_TARGET_SOURCE_ATOMS.csv
+            research/R314/R314_EXACT_44_TWO_ARRIVAL_PATH_RESULTS.json
+          retention-days: 90
