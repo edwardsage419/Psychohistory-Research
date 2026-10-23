@@ -1,0 +1,147 @@
+name: R285 Exact Holm FWER and BH FDR Complete Primitive Source Audit
+on:
+  push:
+    paths:
+      - 'research/R285/r285_exact_multiple_testing.py'
+      - '.github/workflows/r285-exact-multiple-testing-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 80 genuine Holm BH source and risk unit tests
+        run: python research/R285/r285_exact_multiple_testing.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify all 2304 primitive sources and 25 count classes
+        run: |
+          python research/R285/r285_exact_multiple_testing.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from pathlib import Path
+          from fractions import Fraction as F
+          from math import comb
+          from collections import defaultdict
+          root=Path('research/R285')
+          source=root/'R285_ALL_2304_ORIGINAL_MULTIPLE_TESTING_SOURCES.csv'
+          result_file=root/'R285_EXACT_RESULTS.json'
+          rows=list(csv.DictReader(source.open()))
+          result=json.loads(result_file.read_text())
+          receipt=json.loads((root/'R285_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==2304 and len(result['world_results'])==9
+          assert result['original_catalogue_id']=='12-015'
+          assert result['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='923b083cc61cbafdd339136fe9b5c407cffb88bf'
+          for f,key in ((source,'source_sha256'),(result_file,'result_sha256')):
+              assert receipt[key]==hashlib.sha256(f.read_bytes()).hexdigest()
+          bitspace={''.join(v) for v in itertools.product('01',repeat=8)}
+          grouped=defaultdict(list)
+          for row in rows:grouped[row['world']].append(row)
+          assert len(grouped)==9
+          null_p=F(1,2);alpha=F(1,2)
+          pv=(F(1),F(15,16),F(11,16),F(5,16),F(1,16))
+          def classify(ps,policy):
+              if policy=='RAW_UNADJUSTED':return [int(p<=alpha) for p in ps]
+              order=sorted(range(2),key=lambda i:(ps[i],i))
+              mask=[0,0]
+              if policy=='HOLM_FWER':
+                  for r,i in enumerate(order):
+                      if ps[i]<=alpha/F(2-r):mask[i]=1
+                      else:break
+              else:
+                  assert policy=='BH_FDR'
+                  last=0
+                  for r,i in enumerate(order,1):
+                      if ps[i]<=alpha*r/2:last=r
+                  for i in order[:last]:mask[i]=1
+              return mask
+          for w in result['world_results']:
+              r=w['regime'];m=w['policy'];data=grouped[w['world']]
+              assert len(data)==256
+              assert {z['original_eightbit_two_fourtrial_sources'] for z in data}==bitspace
+              true1=F(data[0]['true_H1_success_probability'])
+              true2=F(data[0]['true_H2_success_probability'])
+              isnull=[true1==null_p,true2==null_p]
+              totals=[F(0)]*5
+              mass_sum=F(0)
+              for z in data:
+                  s=z['original_eightbit_two_fourtrial_sources']
+                  k1=s[:4].count('1');k2=s[4:].count('1')
+                  mass=true1**k1*(1-true1)**(4-k1)*true2**k2*(1-true2)**(4-k2)
+                  ps=[pv[k1],pv[k2]]
+                  mask=classify(ps,m)
+                  R=sum(mask);V=sum(mask[i]*int(isnull[i]) for i in range(2))
+                  S=R-V;FDP=F(V,max(R,1));FWER=int(V>0)
+                  assert z['regime']==r and z['policy']==m
+                  assert int(z['count_H1'])==k1 and int(z['count_H2'])==k2
+                  assert F(z['original_source_probability'])==mass
+                  assert [F(z['one_sided_exact_pvalue_H1']),F(z['one_sided_exact_pvalue_H2'])]==ps
+                  assert [int(z['reject_H1']),int(z['reject_H2'])]==mask
+                  assert [int(z['total_rejections_R']),int(z['false_discoveries_V']),
+                         int(z['true_discoveries_S'])]==[R,V,S]
+                  assert F(z['false_discovery_proportion'])==FDP
+                  assert int(z['familywise_false_positive_flag'])==FWER
+                  mass_sum+=mass
+                  for j,v in enumerate((FWER,FDP,V,S,R)):totals[j]+=mass*v
+              assert mass_sum==1
+              assert tuple(map(str,totals))==(w['expected_FWER'],w['expected_FDR'],
+                 w['expected_false_discoveries'],w['expected_true_discoveries'],
+                 w['expected_total_rejections'])
+              oracle=[F(0)]*5
+              for k1,k2 in itertools.product(range(5),repeat=2):
+                  mass=F(comb(4,k1))*true1**k1*(1-true1)**(4-k1)
+                  mass*=F(comb(4,k2))*true2**k2*(1-true2)**(4-k2)
+                  mask=classify([pv[k1],pv[k2]],m)
+                  R=sum(mask);V=sum(mask[i]*int(isnull[i]) for i in range(2))
+                  values=(int(V>0),F(V,max(1,R)),V,R-V,R)
+                  for j,v in enumerate(values):oracle[j]+=mass*v
+              assert oracle==totals
+              assert w['independent_25_class_binomial_analysis_verified']
+          assert classify([F(5,16),F(5,16)],'HOLM_FWER')==[0,0]
+          assert classify([F(5,16),F(5,16)],'BH_FDR')==[1,1]
+          assert result['no_real_human_E2']==result['no_real_historical_E3']==0
+          print('R285_ALL_2304_ORIGINAL_SOURCE_TYPES_9_EXACT_FWER_FDR_POLICIES_AUDITED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R285-All-2304-Holm-BH-Primitive-Sources
+          path: |
+            research/R285/R285_ALL_2304_ORIGINAL_MULTIPLE_TESTING_SOURCES.csv
+            research/R285/R285_EXACT_RESULTS.json
+            research/R285/R285_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all 2304 original source and exact FWER FDR results
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R285/R285_ALL_2304_ORIGINAL_MULTIPLE_TESTING_SOURCES.csv research/R285/R285_EXACT_RESULTS.json research/R285/R285_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R285): 2304 original exact Holm BH multiple-testing sources'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R285_ALL_2304_PRIMITIVE_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
