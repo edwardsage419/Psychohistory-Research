@@ -1,0 +1,46 @@
+name: Original 239 P1 R300 HMM Crosswalk v1.4
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r300_crosswalk_v1_4.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.4_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_48_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r300-crosswalk-v14.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original239:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: 16 exact original239 provenance R300 source link and prior R063 preservation tests
+        run: python research/catalogue_audit/verify_p1_r300_crosswalk_v1_4.py --test
+  independent-original-source-and-research:
+    needs: dual-python-original239
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute single 02-008 provenance change and all 128 HMM hidden path source cells
+        run: |
+          python research/catalogue_audit/verify_p1_r300_crosswalk_v1_4.py --audit
+          python research/catalogue_audit/independent_r300_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R300-v14-188Primary-48Pending-HMM-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v1.4_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_48_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R300/R300_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
