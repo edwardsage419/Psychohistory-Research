@@ -1,0 +1,127 @@
+name: R280 Brier Strict Propriety Finite Sample Audit
+on:
+  push:
+    paths:
+      - 'research/R280/r280_exact_brier_strict_propriety.py'
+      - '.github/workflows/r280-exact-brier-score-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 83 exact Brier properness and source-level unittests
+        run: python research/R280/r280_exact_brier_strict_propriety.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all 144 full original scoring sources and nine exact binomial risks
+        run: |
+          python research/R280/r280_exact_brier_strict_propriety.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from fractions import Fraction as F
+          from math import comb
+          from collections import defaultdict
+          from pathlib import Path
+          root=Path('research/R280')
+          src=root/'R280_ALL_144_ORIGINAL_BRIER_SCORING_SOURCES.csv'
+          jp=root/'R280_EXACT_RESULTS.json'
+          data=list(csv.DictReader(src.open()))
+          out=json.loads(jp.read_text())
+          receipt=json.loads((root/'R280_MACHINE_RECEIPT.json').read_text())
+          assert len(data)==144 and len(out['world_results'])==9
+          assert out['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='b21848cd58d9f9d581ce79c685467c49c32a6897'
+          assert out['original_catalogue_id']=='12-010'
+          for file,key in ((src,'source_sha256'),(jp,'results_sha256')):
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==receipt[key]
+          all_bits={''.join(v) for v in itertools.product('01',repeat=4)}
+          grouped=defaultdict(list)
+          for row in data:grouped[row['world']].append(row)
+          assert len(grouped)==9
+          for world in out['world_results']:
+              p=F(world['true_p']);q=F(world['reported_q'])
+              rows=grouped[world['world']]
+              assert len(rows)==16 and {r['original_complete_fourbit_source'] for r in rows}==all_bits
+              mass_sum=risk=regret=beat=tie=F(0)
+              for r in rows:
+                  bits=r['original_complete_fourbit_source'];k=bits.count('1')
+                  assert int(r['successes'])==k
+                  mass=p**k*(1-p)**(4-k)
+                  assert F(r['source_probability'])==mass
+                  assert F(r['true_p'])==p and F(r['reported_q'])==q
+                  qloss=tuple((F(int(z))-q)**2 for z in bits)
+                  ploss=tuple((F(int(z))-p)**2 for z in bits)
+                  assert r['source_four_reported_Brier_losses']==';'.join(map(str,qloss))
+                  assert r['source_four_oracle_Brier_losses']==';'.join(map(str,ploss))
+                  sq=sum(qloss,F(0))/4
+                  sp=sum(ploss,F(0))/4
+                  assert F(r['source_mean_reported_Brier'])==sq
+                  assert F(r['source_mean_truth_oracle_Brier'])==sp
+                  assert F(r['source_score_regret'])==sq-sp
+                  assert int(r['incorrect_fixed_forecast_beats_truth_on_source'])==int(sq<sp)
+                  assert int(r['score_tied_with_truth_on_source'])==int(sq==sp)
+                  mass_sum+=mass;risk+=mass*sq;regret+=mass*(sq-sp)
+                  beat+=mass*int(sq<sp);tie+=mass*int(sq==sp)
+              assert mass_sum==1
+              assert risk==p*(1-p)+(q-p)**2
+              assert regret==(q-p)**2
+              # Independent K-class calculations reproduce the rare wins and ties.
+              win_from_counts=tie_from_counts=F(0)
+              for k in range(5):
+                  mass=F(comb(4,k))*p**k*(1-p)**(4-k)
+                  sq=(F(k)*(1-q)**2+F(4-k)*q*q)/4
+                  sp=(F(k)*(1-p)**2+F(4-k)*p*p)/4
+                  win_from_counts+=mass*int(sq<sp)
+                  tie_from_counts+=mass*int(sq==sp)
+              assert (beat,tie)==(win_from_counts,tie_from_counts)
+              assert (str(risk),str(regret),str(beat),str(tie))==(
+                world['expected_reported_Brier'],world['expected_excess_Brier_regret'],
+                world['probability_incorrect_fixed_report_beats_truth_in_fourbit_sample'],
+                world['probability_report_and_truth_tie_in_fourbit_sample'])
+              assert world['independent_binomial_analytic_verified']
+          assert out['no_real_human_E2']==out['no_real_historical_E3']==0
+          print('R280_ALL_144_COMPLETE_BRIER_SOURCES_9_STRICT_PROPRIETY_RISKS_AND_SAMPLE_WINS_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R280-All-144-Brier-Primitive-Sources
+          path: |
+            research/R280/R280_ALL_144_ORIGINAL_BRIER_SCORING_SOURCES.csv
+            research/R280/R280_EXACT_RESULTS.json
+            research/R280/R280_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all original source CSV results and receipts
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R280/R280_ALL_144_ORIGINAL_BRIER_SCORING_SOURCES.csv research/R280/R280_EXACT_RESULTS.json research/R280/R280_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R280): all 144 Brier strict propriety full original source types'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R280_ALL_144_BRIER_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
