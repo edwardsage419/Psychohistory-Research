@@ -58,7 +58,7 @@ jobs:
               assert w['observed_survival_probabilities_by_generation'][0]=='1'
               assert sum((F(p) for p in w['observed_full_four_generation_family_path_joint'].values()),F(0))==1
               assert sum((F(p) for p in w['observed_generation3_distribution'].values()),F(0))==1
-              source_expected=sum((F(r['observed_generation_size_Y3'],256) for r in sub),F(0))
+              source_expected=sum((F(int(r['observed_generation_size_Y3']),256) for r in sub),F(0))
               source_survival=sum((F(int(r['observed_generation_size_Y3']!='0'),256) for r in sub),F(0))
               assert str(source_expected)==w['observed_expected_generation_sizes_by_generation'][3]
               assert str(source_survival)==w['observed_survival_probabilities_by_generation'][3]
