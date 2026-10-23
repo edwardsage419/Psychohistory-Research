@@ -72,7 +72,6 @@ def independently_replay():
                 mid=set(base)
                 if a1=="rewire":
                     mid.remove(edge(0,1));mid.add(edge(0,t1))
-                assert row==dict(zip(row,[])) if False else True
                 expected=[n,str(prob),1,"none",-1,0,1,a1,t1,initial,str(w1),label(mid)]
                 if tuple(row.values())!=tuple(map(str,expected)):
                     raise AssertionError(f"invalid R315 stage 1 source {n=} {prob=} {a1=} {t1=}")
