@@ -1,0 +1,6 @@
+# Original239 v4.7 R329 finite active inference itemwise audit
+Date 2026-10-24. Original candidate 02-011 Active Inference was first in the 16-item v4.6 pending queue. Checked R327 POMDP, R328 predictive error, R300 HMM, R326 hierarchical Bayes; none proves this exact preference-information-cost expected-free-energy score. Historical ZIP exhaustive content audit remains OPEN.
+
+Prescore freeze commit 15cb8ddaf57295ea3a2b6ad16f20cab4483187cb preceded source commit 596012c7822ee2f555842a7d42b7e9793f2abae0. Science CI 40035516146 completed 3/3 success. R329 contains 144 artificial joint atoms, 18 worlds, independent no-import risk-plus-ambiguity audit and deliberate tamper rejection. Scientific grade PASS_BOUNDED_E1_CONSTRUCTED_BINARY_EFE_ONLY. No original neuronal simulation, human E2 or historical E3.
+
+Only 02-011 changed among 239 catalogue rows, preserving identity/order and all other row fields. Counts: 221 primary R, 3 shared bounded math, 15 pending, 173 provisional README associations. Next pending 02-013 Instance Based Learning. Catalogue association does not establish empirical validity. R073 and PESEN v0.1 frozen; classification, fusion and personal decision system deferred.
