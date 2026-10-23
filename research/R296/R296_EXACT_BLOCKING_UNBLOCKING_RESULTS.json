@@ -1,0 +1,497 @@
+{
+  "research_id": "R296",
+  "original_catalogue_id": "02-001",
+  "freeze_commit": "78e947a3de8dbeb209edc473ae74f98eb6937904",
+  "scope": "EXACT_ARTIFICIAL_RW_COMPOUND_CUE_BLOCKING_UNBLOCKING_NOT_AUTHOR_ANIMAL_EXPERIMENT_REPRODUCTION",
+  "world_count": 8,
+  "complete_artificial_source_rows": 40,
+  "source_states_per_world": 5,
+  "blocking_under_A_pretraining_for_both_alphas": true,
+  "unblocking_under_reward_upshift_for_both_alphas": true,
+  "reference_alpha_half": {
+    "A_after_eight_pretrain": "255/256",
+    "RW_B_after_pretrain_reinforced_AB_four": "1/512",
+    "RW_B_without_pretrain_reinforced_AB_four": "1/2",
+    "RW_B_after_pretrain_AB_reward_double_four": "257/512",
+    "independent_B_pretraining_invariant_with_AB_reward_one": "15/16"
+  },
+  "worlds": [
+    {
+      "world": "alpha=1/4|npre=0|compound_reward=1",
+      "alpha": "1/4",
+      "pretraining_trials": 0,
+      "compound_reward_target": 1,
+      "original_source_rows": 5,
+      "stages": [
+        {
+          "m": 0,
+          "pretrained_A": "0",
+          "RW_A": "0",
+          "RW_B": "0",
+          "RW_compound_sum": "0",
+          "RW_remaining_compound_error": "1",
+          "INDEPENDENT_A": "0",
+          "INDEPENDENT_B": "0"
+        },
+        {
+          "m": 1,
+          "pretrained_A": "0",
+          "RW_A": "1/4",
+          "RW_B": "1/4",
+          "RW_compound_sum": "1/2",
+          "RW_remaining_compound_error": "1/2",
+          "INDEPENDENT_A": "1/4",
+          "INDEPENDENT_B": "1/4"
+        },
+        {
+          "m": 2,
+          "pretrained_A": "0",
+          "RW_A": "3/8",
+          "RW_B": "3/8",
+          "RW_compound_sum": "3/4",
+          "RW_remaining_compound_error": "1/4",
+          "INDEPENDENT_A": "7/16",
+          "INDEPENDENT_B": "7/16"
+        },
+        {
+          "m": 3,
+          "pretrained_A": "0",
+          "RW_A": "7/16",
+          "RW_B": "7/16",
+          "RW_compound_sum": "7/8",
+          "RW_remaining_compound_error": "1/8",
+          "INDEPENDENT_A": "37/64",
+          "INDEPENDENT_B": "37/64"
+        },
+        {
+          "m": 4,
+          "pretrained_A": "0",
+          "RW_A": "15/32",
+          "RW_B": "15/32",
+          "RW_compound_sum": "15/16",
+          "RW_remaining_compound_error": "1/16",
+          "INDEPENDENT_A": "175/256",
+          "INDEPENDENT_B": "175/256"
+        }
+      ]
+    },
+    {
+      "world": "alpha=1/4|npre=0|compound_reward=2",
+      "alpha": "1/4",
+      "pretraining_trials": 0,
+      "compound_reward_target": 2,
+      "original_source_rows": 5,
+      "stages": [
+        {
+          "m": 0,
+          "pretrained_A": "0",
+          "RW_A": "0",
+          "RW_B": "0",
+          "RW_compound_sum": "0",
+          "RW_remaining_compound_error": "2",
+          "INDEPENDENT_A": "0",
+          "INDEPENDENT_B": "0"
+        },
+        {
+          "m": 1,
+          "pretrained_A": "0",
+          "RW_A": "1/2",
+          "RW_B": "1/2",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "1",
+          "INDEPENDENT_A": "1/2",
+          "INDEPENDENT_B": "1/2"
+        },
+        {
+          "m": 2,
+          "pretrained_A": "0",
+          "RW_A": "3/4",
+          "RW_B": "3/4",
+          "RW_compound_sum": "3/2",
+          "RW_remaining_compound_error": "1/2",
+          "INDEPENDENT_A": "7/8",
+          "INDEPENDENT_B": "7/8"
+        },
+        {
+          "m": 3,
+          "pretrained_A": "0",
+          "RW_A": "7/8",
+          "RW_B": "7/8",
+          "RW_compound_sum": "7/4",
+          "RW_remaining_compound_error": "1/4",
+          "INDEPENDENT_A": "37/32",
+          "INDEPENDENT_B": "37/32"
+        },
+        {
+          "m": 4,
+          "pretrained_A": "0",
+          "RW_A": "15/16",
+          "RW_B": "15/16",
+          "RW_compound_sum": "15/8",
+          "RW_remaining_compound_error": "1/8",
+          "INDEPENDENT_A": "175/128",
+          "INDEPENDENT_B": "175/128"
+        }
+      ]
+    },
+    {
+      "world": "alpha=1/4|npre=8|compound_reward=1",
+      "alpha": "1/4",
+      "pretraining_trials": 8,
+      "compound_reward_target": 1,
+      "original_source_rows": 5,
+      "stages": [
+        {
+          "m": 0,
+          "pretrained_A": "58975/65536",
+          "RW_A": "58975/65536",
+          "RW_B": "0",
+          "RW_compound_sum": "58975/65536",
+          "RW_remaining_compound_error": "6561/65536",
+          "INDEPENDENT_A": "58975/65536",
+          "INDEPENDENT_B": "0"
+        },
+        {
+          "m": 1,
+          "pretrained_A": "58975/65536",
+          "RW_A": "242461/262144",
+          "RW_B": "6561/262144",
+          "RW_compound_sum": "124511/131072",
+          "RW_remaining_compound_error": "6561/131072",
+          "INDEPENDENT_A": "242461/262144",
+          "INDEPENDENT_B": "1/4"
+        },
+        {
+          "m": 2,
+          "pretrained_A": "58975/65536",
+          "RW_A": "491483/524288",
+          "RW_B": "19683/524288",
+          "RW_compound_sum": "255583/262144",
+          "RW_remaining_compound_error": "6561/262144",
+          "INDEPENDENT_A": "989527/1048576",
+          "INDEPENDENT_B": "7/16"
+        },
+        {
+          "m": 3,
+          "pretrained_A": "58975/65536",
+          "RW_A": "989527/1048576",
+          "RW_B": "45927/1048576",
+          "RW_compound_sum": "517727/524288",
+          "RW_remaining_compound_error": "6561/524288",
+          "INDEPENDENT_A": "4017157/4194304",
+          "INDEPENDENT_B": "37/64"
+        },
+        {
+          "m": 4,
+          "pretrained_A": "58975/65536",
+          "RW_A": "1985615/2097152",
+          "RW_B": "98415/2097152",
+          "RW_compound_sum": "1042015/1048576",
+          "RW_remaining_compound_error": "6561/1048576",
+          "INDEPENDENT_A": "16245775/16777216",
+          "INDEPENDENT_B": "175/256"
+        }
+      ]
+    },
+    {
+      "world": "alpha=1/4|npre=8|compound_reward=2",
+      "alpha": "1/4",
+      "pretraining_trials": 8,
+      "compound_reward_target": 2,
+      "original_source_rows": 5,
+      "stages": [
+        {
+          "m": 0,
+          "pretrained_A": "58975/65536",
+          "RW_A": "58975/65536",
+          "RW_B": "0",
+          "RW_compound_sum": "58975/65536",
+          "RW_remaining_compound_error": "72097/65536",
+          "INDEPENDENT_A": "58975/65536",
+          "INDEPENDENT_B": "0"
+        },
+        {
+          "m": 1,
+          "pretrained_A": "58975/65536",
+          "RW_A": "307997/262144",
+          "RW_B": "72097/262144",
+          "RW_compound_sum": "190047/131072",
+          "RW_remaining_compound_error": "72097/131072",
+          "INDEPENDENT_A": "307997/262144",
+          "INDEPENDENT_B": "1/2"
+        },
+        {
+          "m": 2,
+          "pretrained_A": "58975/65536",
+          "RW_A": "688091/524288",
+          "RW_B": "216291/524288",
+          "RW_compound_sum": "452191/262144",
+          "RW_remaining_compound_error": "72097/262144",
+          "INDEPENDENT_A": "1448279/1048576",
+          "INDEPENDENT_B": "7/8"
+        },
+        {
+          "m": 3,
+          "pretrained_A": "58975/65536",
+          "RW_A": "1448279/1048576",
+          "RW_B": "504679/1048576",
+          "RW_compound_sum": "976479/524288",
+          "RW_remaining_compound_error": "72097/524288",
+          "INDEPENDENT_A": "6441989/4194304",
+          "INDEPENDENT_B": "37/32"
+        },
+        {
+          "m": 4,
+          "pretrained_A": "58975/65536",
+          "RW_A": "2968655/2097152",
+          "RW_B": "1081455/2097152",
+          "RW_compound_sum": "2025055/1048576",
+          "RW_remaining_compound_error": "72097/1048576",
+          "INDEPENDENT_A": "27714575/16777216",
+          "INDEPENDENT_B": "175/128"
+        }
+      ]
+    },
+    {
+      "world": "alpha=1/2|npre=0|compound_reward=1",
+      "alpha": "1/2",
+      "pretraining_trials": 0,
+      "compound_reward_target": 1,
+      "original_source_rows": 5,
+      "stages": [
+        {
+          "m": 0,
+          "pretrained_A": "0",
+          "RW_A": "0",
+          "RW_B": "0",
+          "RW_compound_sum": "0",
+          "RW_remaining_compound_error": "1",
+          "INDEPENDENT_A": "0",
+          "INDEPENDENT_B": "0"
+        },
+        {
+          "m": 1,
+          "pretrained_A": "0",
+          "RW_A": "1/2",
+          "RW_B": "1/2",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "1/2",
+          "INDEPENDENT_B": "1/2"
+        },
+        {
+          "m": 2,
+          "pretrained_A": "0",
+          "RW_A": "1/2",
+          "RW_B": "1/2",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "3/4",
+          "INDEPENDENT_B": "3/4"
+        },
+        {
+          "m": 3,
+          "pretrained_A": "0",
+          "RW_A": "1/2",
+          "RW_B": "1/2",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "7/8",
+          "INDEPENDENT_B": "7/8"
+        },
+        {
+          "m": 4,
+          "pretrained_A": "0",
+          "RW_A": "1/2",
+          "RW_B": "1/2",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "15/16",
+          "INDEPENDENT_B": "15/16"
+        }
+      ]
+    },
+    {
+      "world": "alpha=1/2|npre=0|compound_reward=2",
+      "alpha": "1/2",
+      "pretraining_trials": 0,
+      "compound_reward_target": 2,
+      "original_source_rows": 5,
+      "stages": [
+        {
+          "m": 0,
+          "pretrained_A": "0",
+          "RW_A": "0",
+          "RW_B": "0",
+          "RW_compound_sum": "0",
+          "RW_remaining_compound_error": "2",
+          "INDEPENDENT_A": "0",
+          "INDEPENDENT_B": "0"
+        },
+        {
+          "m": 1,
+          "pretrained_A": "0",
+          "RW_A": "1",
+          "RW_B": "1",
+          "RW_compound_sum": "2",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "1",
+          "INDEPENDENT_B": "1"
+        },
+        {
+          "m": 2,
+          "pretrained_A": "0",
+          "RW_A": "1",
+          "RW_B": "1",
+          "RW_compound_sum": "2",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "3/2",
+          "INDEPENDENT_B": "3/2"
+        },
+        {
+          "m": 3,
+          "pretrained_A": "0",
+          "RW_A": "1",
+          "RW_B": "1",
+          "RW_compound_sum": "2",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "7/4",
+          "INDEPENDENT_B": "7/4"
+        },
+        {
+          "m": 4,
+          "pretrained_A": "0",
+          "RW_A": "1",
+          "RW_B": "1",
+          "RW_compound_sum": "2",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "15/8",
+          "INDEPENDENT_B": "15/8"
+        }
+      ]
+    },
+    {
+      "world": "alpha=1/2|npre=8|compound_reward=1",
+      "alpha": "1/2",
+      "pretraining_trials": 8,
+      "compound_reward_target": 1,
+      "original_source_rows": 5,
+      "stages": [
+        {
+          "m": 0,
+          "pretrained_A": "255/256",
+          "RW_A": "255/256",
+          "RW_B": "0",
+          "RW_compound_sum": "255/256",
+          "RW_remaining_compound_error": "1/256",
+          "INDEPENDENT_A": "255/256",
+          "INDEPENDENT_B": "0"
+        },
+        {
+          "m": 1,
+          "pretrained_A": "255/256",
+          "RW_A": "511/512",
+          "RW_B": "1/512",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "511/512",
+          "INDEPENDENT_B": "1/2"
+        },
+        {
+          "m": 2,
+          "pretrained_A": "255/256",
+          "RW_A": "511/512",
+          "RW_B": "1/512",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "1023/1024",
+          "INDEPENDENT_B": "3/4"
+        },
+        {
+          "m": 3,
+          "pretrained_A": "255/256",
+          "RW_A": "511/512",
+          "RW_B": "1/512",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "2047/2048",
+          "INDEPENDENT_B": "7/8"
+        },
+        {
+          "m": 4,
+          "pretrained_A": "255/256",
+          "RW_A": "511/512",
+          "RW_B": "1/512",
+          "RW_compound_sum": "1",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "4095/4096",
+          "INDEPENDENT_B": "15/16"
+        }
+      ]
+    },
+    {
+      "world": "alpha=1/2|npre=8|compound_reward=2",
+      "alpha": "1/2",
+      "pretraining_trials": 8,
+      "compound_reward_target": 2,
+      "original_source_rows": 5,
+      "stages": [
+        {
+          "m": 0,
+          "pretrained_A": "255/256",
+          "RW_A": "255/256",
+          "RW_B": "0",
+          "RW_compound_sum": "255/256",
+          "RW_remaining_compound_error": "257/256",
+          "INDEPENDENT_A": "255/256",
+          "INDEPENDENT_B": "0"
+        },
+        {
+          "m": 1,
+          "pretrained_A": "255/256",
+          "RW_A": "767/512",
+          "RW_B": "257/512",
+          "RW_compound_sum": "2",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "767/512",
+          "INDEPENDENT_B": "1"
+        },
+        {
+          "m": 2,
+          "pretrained_A": "255/256",
+          "RW_A": "767/512",
+          "RW_B": "257/512",
+          "RW_compound_sum": "2",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "1791/1024",
+          "INDEPENDENT_B": "3/2"
+        },
+        {
+          "m": 3,
+          "pretrained_A": "255/256",
+          "RW_A": "767/512",
+          "RW_B": "257/512",
+          "RW_compound_sum": "2",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "3839/2048",
+          "INDEPENDENT_B": "7/4"
+        },
+        {
+          "m": 4,
+          "pretrained_A": "255/256",
+          "RW_A": "767/512",
+          "RW_B": "257/512",
+          "RW_compound_sum": "2",
+          "RW_remaining_compound_error": "0",
+          "INDEPENDENT_A": "7935/4096",
+          "INDEPENDENT_B": "15/8"
+        }
+      ]
+    }
+  ],
+  "new_real_human_E2": 0,
+  "new_real_animal_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
