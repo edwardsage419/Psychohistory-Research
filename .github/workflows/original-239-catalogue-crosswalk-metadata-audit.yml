@@ -1,0 +1,124 @@
+name: Original 239 Catalogue-to-R Provenance Crosswalk Audit
+on:
+  push:
+    paths:
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json'
+      - 'research/catalogue_audit/verify_239_crosswalk.py'
+      - '.github/workflows/original-239-catalogue-crosswalk-metadata-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 250 real catalogue rows and early archive metadata tests
+        run: python research/catalogue_audit/verify_239_crosswalk.py --test
+  independently-verify-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit audit hashes and independently cross-check all original README blobs
+        run: |
+          python research/catalogue_audit/verify_239_crosswalk.py --emit
+          python - <<'PY'
+          import json,csv,re,hashlib
+          from pathlib import Path
+          from collections import Counter
+          base=Path('.')
+          cross=base/'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json'
+          cat=base/'docs/MODEL_CANDIDATE_CATALOG_v0.1.json'
+          early=base/'manifests/RECOVERY_STATUS_R001_R064.csv'
+          receipt=base/'docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RECEIPT.json'
+          results=base/'docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RESULTS.json'
+          source=json.loads(cross.read_text())
+          originals=json.loads(cat.read_text())['models']
+          assert len(originals)==len(source['rows'])==239
+          assert [m['id'] for m in originals]==[r['catalogue_id'] for r in source['rows']]
+          assert len(set(r['catalogue_id'] for r in source['rows']))==239
+          assert source['summary']=={'direct':173,'old_only':7,'neither':59}
+          counts=Counter(r['link_status'] for r in source['rows'])
+          assert counts=={'PROVISIONAL_PRIMARY_README_LINK':173,
+                          'PREVIOUS_SCOPED_EVIDENCE_LINK_ONLY':7,
+                          'NO_ITEMWISE_RESEARCH_LINK_FOUND_IN_THIS_PASS':59}
+          linked=set()
+          for orig,r in zip(originals,source['rows']):
+              assert r['catalogue_name_en']==orig['name_en']
+              assert r['original_priority']==orig['priority']
+              assert r['catalogue_category']==orig['category']
+              assert r['scientific_evidence_grade']=='UNDETERMINED_BY_FILENAME_AND_README_TOKEN_SCAN'
+              id=r['proposed_primary_research_id']
+              if id is None:
+                  assert r['readme_path'] is None
+                  continue
+              assert id not in linked
+              linked.add(id)
+              assert id not in ('R208','R209')
+              path=base/r['readme_path']
+              assert path.is_file()
+              raw=path.read_bytes()
+              blob=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\x00'+raw).hexdigest()
+              assert blob==r['readme_git_blob_sha1']
+              found=list(re.finditer(r'\b(?:0[1-9]|1[012])-\d{3}\b',raw.decode('utf-8')))
+              assert found and found[0].start()==r['readme_first_token_offset']
+              expected=found[0].group()
+              if id=='R173':
+                  assert r['catalogue_id']=='07-015' and expected=='07-016'
+                  assert '07-015' in (base/'research/R173/R173_SCIENTIFIC_REPORT_2026-10-21.md').read_text()
+              else:assert r['catalogue_id']==expected
+              for p in r['formal_acceptance_filename_candidates']+r['scientific_report_filenames']:
+                  assert (base/p).is_file()
+          assert linked=={'R'+str(i).zfill(3) for i in range(111,286)}-{'R208','R209'}
+          with early.open(newline='',encoding='utf-8') as f:archive=list(csv.DictReader(f))
+          assert len(archive)==64
+          assert {r['round'] for r in archive}=={'R'+str(i).zfill(3) for i in range(1,65)}
+          assert all(r['zip_integrity']=='PASS' for r in archive)
+          summary=json.loads(results.read_text())['provenance']
+          assert summary['catalogue_count']==239 and summary['primary_readme_links']==173
+          assert not summary['full_239_scientific_completion_certified']
+          rec=json.loads(receipt.read_text())
+          for path,key in ((cat,'catalogue_sha256'),(cross,'crosswalk_sha256'),
+                           (early,'early_archive_manifest_sha256'),(results,'results_sha256')):
+              assert hashlib.sha256(path.read_bytes()).hexdigest()==rec[key]
+          print('ORIGINAL_239_CROSSWALK_173_README_BLOBS_66_UNRESOLVED_64_ARCHIVE_ROUNDS_INDEPENDENTLY_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original-239-Catalogue-R-Crosswalk-Metadata-Audit
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json
+            docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RESULTS.json
+            docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive metadata audit result and SHA256 receipt
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RESULTS.json docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(audit): verified all 239 catalogue links and early 64 ZIP source rounds'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'ORIGINAL_239_METADATA_AUDIT_ARCHIVED_WITH_HASHES'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
