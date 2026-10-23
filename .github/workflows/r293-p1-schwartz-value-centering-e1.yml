@@ -1,0 +1,67 @@
+name: R293 Schwartz Ten Value Centering 2112 Exact E1
+on:
+  push:
+    paths:
+      - 'research/R293/r293_exact_value_centering.py'
+      - 'research/catalogue_audit/independent_r293_source_audit.py'
+      - '.github/workflows/r293-p1-schwartz-value-centering-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 153 true exact-moment model tests
+        run: python research/R293/r293_exact_value_centering.py --test
+      - name: Emit 2112 full source cells and run 13 independent source adversarial tests
+        run: |
+          python research/R293/r293_exact_value_centering.py --emit
+          python research/catalogue_audit/independent_r293_source_audit.py --test
+          python research/catalogue_audit/independent_r293_source_audit.py --audit
+  independent-full-source-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent source matrix recalculation and SHA256
+        run: |
+          python research/R293/r293_exact_value_centering.py --emit
+          python research/catalogue_audit/independent_r293_source_audit.py --test
+          python research/catalogue_audit/independent_r293_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R293-2112-Full-Synthetic-Value-Sources-And-Moments
+          path: |
+            research/R293/R293_ALL_2112_ORIGINAL_TEN_VALUE_STYLE_SOURCES.csv
+            research/R293/R293_EXACT_VALUE_CENTERING_RESULTS.json
+            research/R293/R293_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive original sources, moments and hash
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R293/R293_ALL_2112_ORIGINAL_TEN_VALUE_STYLE_SOURCES.csv research/R293/R293_EXACT_VALUE_CENTERING_RESULTS.json research/R293/R293_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R293): 2112 exact original value scores and center covariance SHA'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R293_2112_SOURCES_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
