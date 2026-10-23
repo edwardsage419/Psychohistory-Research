@@ -1,0 +1,67 @@
+name: R311 Bounded Confidence 1944 Dyadic Sources E1
+on:
+  push:
+    paths:
+      - 'research/R311/r311_exact_bounded_confidence_relation.py'
+      - 'research/catalogue_audit/independent_r311_source_audit.py'
+      - '.github/workflows/r311-p1-bounded-confidence-dyad-1944-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-bounded-confidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run all exact confidence source and component tests
+        run: python research/R311/r311_exact_bounded_confidence_relation.py --test
+      - name: Generate 1944 exact dyad sources and independently audit
+        run: |
+          python research/R311/r311_exact_bounded_confidence_relation.py --emit
+          python research/catalogue_audit/independent_r311_source_audit.py --test
+          python research/catalogue_audit/independent_r311_source_audit.py --audit
+  independent-source-permanent-archive:
+    needs: dual-python-bounded-confidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify 1944 complete original dyad rows and byte SHA
+        run: |
+          python research/R311/r311_exact_bounded_confidence_relation.py --emit
+          python research/catalogue_audit/independent_r311_source_audit.py --test
+          python research/catalogue_audit/independent_r311_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R311-1944-Original-Confidence-Graph-Dyads
+          path: |
+            research/R311/R311_ALL_1944_ORIGINAL_CONFIDENCE_DYAD_SOURCES.csv
+            research/R311/R311_EXACT_BOUNDED_CONFIDENCE_GRAPH_RESULTS.json
+            research/R311/R311_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive complete source and exact SHA result on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R311/R311_ALL_1944_ORIGINAL_CONFIDENCE_DYAD_SOURCES.csv research/R311/R311_EXACT_BOUNDED_CONFIDENCE_GRAPH_RESULTS.json research/R311/R311_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R311): 1944 exact artificial bounded confidence dyad source rows'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R311_COMPLETE_ORIGINAL_SOURCE_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
