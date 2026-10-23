@@ -1,0 +1,56 @@
+{
+  "research_id": "R328",
+  "original_catalogue_id": "02-010",
+  "protocol_commit": "cf240df27b0fa1391fb03be2e714e8d498ed83de",
+  "protocol_path": "protocols/R328_SCALAR_PRECISION_WEIGHTED_PREDICTIVE_ERROR_120_ROWS_PRESCORE_FREEZE_2026-10-24.md",
+  "protocol_blob_sha1": "8cd8dadb4d651907f3390cc757bd11197c847a42",
+  "original_source_commit": "5a6a011a359c8528b5443ff61041876250e353fd",
+  "verified_source_artifacts": [
+    {
+      "path": "research/R328/r328_scalar_predictive_error.py",
+      "git_blob_sha1": "84dc8326ebfdc85746fa7abb3554780d4bbf8979"
+    },
+    {
+      "path": "research/R328/R328_ALL_120_ARTIFICIAL_PREDICTION_ERROR_STATES.csv",
+      "git_blob_sha1": "b699cf1100955e89ed2edee7757bee70083656b0"
+    },
+    {
+      "path": "research/R328/R328_EXACT_24_PRECISION_WORLDS.json",
+      "git_blob_sha1": "0ad1a1ea4e17bc27b7cd3bef961da5d9f3ccee4f"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r328_predictive_error_audit.py",
+      "git_blob_sha1": "a703e313bbbc2e82a3379a36a5dc9906767198f3"
+    }
+  ],
+  "verification": {
+    "CI_run_id": 40029363018,
+    "CI_run_conclusion": "success",
+    "jobs": [
+      {
+        "id": 120673473068,
+        "name": "unit (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120673473331,
+        "name": "independent",
+        "conclusion": "success"
+      },
+      {
+        "id": 120673473524,
+        "name": "unit (3.12)",
+        "conclusion": "success"
+      }
+    ],
+    "python_311_tests": 7,
+    "python_312_tests": 7,
+    "independent_no_import_audit": "PASS",
+    "original_artificial_source_rows": 120,
+    "world_count": 24
+  },
+  "evidence_scope": "PROJECT_CONSTRUCTED_SCALAR_PRECISION_WEIGHTED_PREDICTIVE_ERROR_E1_ONLY",
+  "real_human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED",
+  "original_visual_cortex_replication": "NOT_ESTABLISHED"
+}
