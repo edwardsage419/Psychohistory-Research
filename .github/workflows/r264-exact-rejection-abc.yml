@@ -1,0 +1,150 @@
+name: R264 Exact Finite Rejection ABC and Bayes Summary Information
+on:
+  push:
+    paths:
+      - 'research/R264/r264_exact_finite_rejection_abc.py'
+      - '.github/workflows/r264-exact-rejection-abc.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-abc-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all 432 prior-simulator sources and independent 81 ABC posterior laws
+        run: python research/R264/r264_exact_finite_rejection_abc.py --test
+  all-original-abc-source-archive:
+    needs: dual-python-abc-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit source and independently audit all ABC acceptance sets and exact posterior
+        run: |
+          python research/R264/r264_exact_finite_rejection_abc.py --emit
+          python - <<'PY'
+          import csv,hashlib,itertools,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R264')
+          rows=list(csv.DictReader((d/'R264_ALL_432_ORIGINAL_THETA_SIMULATOR_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R264_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R264_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==432 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-024'
+          assert j['prescore_freeze_commit']=='58f17a0b73556dfb2517c4bf26da3bd82c719bd6'
+          assert j['epsilon_0_full_Hamming_is_full_exact_Bayes_for_all_worlds']
+          worlds={w['world']:w for w in j['world_results']}
+          assert len(worlds)==9
+          methods=('FULL_HAMMING','COUNT_SUM','FIRST_COMPONENT')
+          def discrepancy(method,y):
+              if method=='FULL_HAMMING':return 1-y[0]+y[1]
+              if method=='COUNT_SUM':return abs(y[0]+y[1]-1)
+              if method=='FIRST_COMPONENT':return 1-y[0]
+              raise AssertionError(method)
+          def normalize(ms):
+              z=sum(ms,F(0))
+              assert z>0
+              return tuple(v/z for v in ms)
+          for w,r in worlds.items():
+              data=[z for z in rows if z['world']==w]
+              assert len(data)==48
+              keys=['original_theta']+['oracle_original_random_bit_'+str(k) for k in range(4)]
+              assert len({tuple(z[k] for k in keys) for z in data})==48
+              assert all(F(z['original_full_theta_rng_source_probability'])==F(1,48) for z in data)
+              assert sum((F(z['original_full_theta_rng_source_probability']) for z in data),F(0))==1
+              assert r['all_original_theta_rng_source_atoms']==48
+              p1=list(map(F,r['frozen_q1_by_theta']))
+              p2=list(map(F,r['frozen_q2_by_theta']))
+              likelihood=[]
+              for theta in (0,1,2):
+                  cohort=[z for z in data if int(z['original_theta'])==theta]
+                  assert len(cohort)==16
+                  q1,q2=p1[theta],p2[theta]
+                  for z in cohort:
+                      raw=[int(z['oracle_original_random_bit_'+str(k)]) for k in range(4)]
+                      r1=2*raw[0]+raw[1];r2=2*raw[2]+raw[3]
+                      assert int(z['oracle_r1_four_equally_likely_values'])==r1
+                      assert int(z['oracle_r2_four_equally_likely_values'])==r2
+                      assert F(z['oracle_original_conditional_probability_q1'])==q1
+                      assert F(z['oracle_original_conditional_probability_q2'])==q2
+                      assert int(z['observed_simulated_Y1'])==int(F(r1,4)<q1)
+                      assert int(z['observed_simulated_Y2'])==int(F(r2,4)<q2)
+                  likelihood.append(q1*(1-q2))
+              exact=normalize(likelihood)
+              assert r['exact_full_data_Bayes_posterior_theta0_theta1_theta2']==[str(x) for x in exact]
+              assert r['full_source_vs_Bernoulli_exact_likelihood_all_four_possible_Y_verified']
+              for method in methods:
+                  for eps in (0,1,2):
+                      cert=r['nine_rejection_ABC_discrepancy_epsilon_certificates'][method][str(eps)]
+                      direct=[F(0)]*3
+                      for z in data:
+                          y=(int(z['observed_simulated_Y1']),int(z['observed_simulated_Y2']))
+                          if discrepancy(method,y)<=eps:
+                              direct[int(z['original_theta'])]+=F(1,48)
+                      analytic=[F(0)]*3
+                      for theta in (0,1,2):
+                          q1,q2=p1[theta],p2[theta]
+                          analytic[theta]=sum(( (q1 if a else 1-q1)*(q2 if b else 1-q2)/3
+                            for a,b in itertools.product((0,1),repeat=2)
+                            if discrepancy(method,(a,b))<=eps),F(0))
+                      assert direct==analytic,(w,method,eps,direct,analytic)
+                      prob=sum(analytic,F(0));post=normalize(analytic)
+                      assert str(prob)==cert['exact_acceptance_probability']
+                      assert [str(x) for x in post]==cert['posterior_theta0_theta1_theta2']
+                      tv=sum((abs(a-b) for a,b in zip(post,exact)),F(0))/2
+                      assert str(tv)==cert['posterior_total_variation_against_exact_full_observation']
+                      assert cert['independent_analytic_Bernoulli_outcome_acceptance_verified']
+                      if method=='FULL_HAMMING' and eps==0:assert post==exact
+                      if eps==2 or (method in ('COUNT_SUM','FIRST_COMPONENT') and eps==1):
+                          assert post==(F(1,3),)*3
+          l=worlds['COMPLEMENTARY_GRADIENT'];rr=worlds['REVERSED_COMPLEMENT']
+          assert l['exact_full_data_Bayes_posterior_theta0_theta1_theta2']==['1/14','2/7','9/14']
+          assert rr['exact_full_data_Bayes_posterior_theta0_theta1_theta2']==['9/14','2/7','1/14']
+          assert l['nine_rejection_ABC_discrepancy_epsilon_certificates']['COUNT_SUM']['0']['posterior_theta0_theta1_theta2']==['5/14','2/7','5/14']
+          assert rr['nine_rejection_ABC_discrepancy_epsilon_certificates']['COUNT_SUM']['0']['posterior_theta0_theta1_theta2']==['5/14','2/7','5/14']
+          assert worlds['IID_GRADIENT']['exact_full_data_Bayes_posterior_theta0_theta1_theta2']==['3/10','2/5','3/10']
+          for fn,key in [('R264_ALL_432_ORIGINAL_THETA_SIMULATOR_SOURCE_ATOMS.csv','source_sha256'),
+                         ('R264_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/fn).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R264_ALL_432_ORIGINAL_PRIOR_SIMULATOR_AND_81_ABC_EXACT_POSTERIORS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R264-Nine-Finite-Rejection-ABC-Original-Sources
+          path: |
+            research/R264/R264_ALL_432_ORIGINAL_THETA_SIMULATOR_SOURCE_ATOMS.csv
+            research/R264/R264_EXACT_RESULTS.json
+            research/R264/R264_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all 432 original ABC source atoms
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R264/R264_ALL_432_ORIGINAL_THETA_SIMULATOR_SOURCE_ATOMS.csv research/R264/R264_EXACT_RESULTS.json research/R264/R264_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R264): all 432 original prior simulator source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R264_ALL_432_ORIGINAL_ABC_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
