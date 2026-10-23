@@ -1,0 +1,851 @@
+{
+  "research_id": "R259",
+  "original_catalogue_id": "11-019",
+  "prescore_freeze_commit": "e40857bc7fe4ea2040791042cbe24f3e902c9ba2",
+  "scientific_scope": "FINITE_ARTIFICIAL_E1_FIVE_DECISION_MULTI_OBJECTIVE_PARETO_VS_SUPPORTED_SOLUTION_IDENTIFICATION",
+  "frozen_worlds": 9,
+  "complete_original_decision_weight_atoms": 225,
+  "continuous_supported_weights_not_inferred_from_five_weight_grid": true,
+  "nonconvex_frontier_Pareto_but_unsupported_decisions": [
+    "B",
+    "C",
+    "D"
+  ],
+  "epsilon_f1_at_most_2_recovers_unsupported_C": true,
+  "strictly_convex_finite_front_support_B_interval": [
+    "5/9",
+    "7/11"
+  ],
+  "lambda_quarter_linear_world_winner": [
+    "E"
+  ],
+  "lambda_quarter_objective1_scaled_world_winner": [
+    "A"
+  ],
+  "no_human_preferences_or_institutional_welfare_estimated": true,
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "world_results": [
+    {
+      "world": "LINEAR_FIVE_ALL_SUPPORTED",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "0",
+          "4"
+        ],
+        "B": [
+          "1",
+          "3"
+        ],
+        "C": [
+          "2",
+          "2"
+        ],
+        "D": [
+          "3",
+          "1"
+        ],
+        "E": [
+          "4",
+          "0"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "1/2",
+          "1"
+        ],
+        "B": [
+          "1/2",
+          "1/2"
+        ],
+        "C": [
+          "1/2",
+          "1/2"
+        ],
+        "D": [
+          "1/2",
+          "1/2"
+        ],
+        "E": [
+          "0",
+          "1/2"
+        ]
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "E"
+        ],
+        "1/4": [
+          "E"
+        ],
+        "1/2": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "3/4": [
+          "A"
+        ],
+        "1": [
+          "A"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "C"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    },
+    {
+      "world": "CONCAVE_THREE_UNSUPPORTED",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "0",
+          "4"
+        ],
+        "B": [
+          "1",
+          "7/2"
+        ],
+        "C": [
+          "2",
+          "3"
+        ],
+        "D": [
+          "3",
+          "2"
+        ],
+        "E": [
+          "4",
+          "0"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "E"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [
+        "B",
+        "C",
+        "D"
+      ],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "1/2",
+          "1"
+        ],
+        "B": null,
+        "C": null,
+        "D": null,
+        "E": [
+          "0",
+          "1/2"
+        ]
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "E"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "E"
+        ],
+        "1/4": [
+          "E"
+        ],
+        "1/2": [
+          "A",
+          "E"
+        ],
+        "3/4": [
+          "A"
+        ],
+        "1": [
+          "A"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "C"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    },
+    {
+      "world": "DOMINATED_EXTRAS",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "0",
+          "4"
+        ],
+        "B": [
+          "1",
+          "5"
+        ],
+        "C": [
+          "2",
+          "2"
+        ],
+        "D": [
+          "5",
+          "1"
+        ],
+        "E": [
+          "4",
+          "0"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "C",
+        "E"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "C",
+        "E"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "1/2",
+          "1"
+        ],
+        "B": null,
+        "C": [
+          "1/2",
+          "1/2"
+        ],
+        "D": null,
+        "E": [
+          "0",
+          "1/2"
+        ]
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "C",
+        "E"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "E"
+        ],
+        "1/4": [
+          "E"
+        ],
+        "1/2": [
+          "A",
+          "C",
+          "E"
+        ],
+        "3/4": [
+          "A"
+        ],
+        "1": [
+          "A"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "C"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    },
+    {
+      "world": "OBJECTIVE1_MULTIPLY10",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "0",
+          "4"
+        ],
+        "B": [
+          "10",
+          "3"
+        ],
+        "C": [
+          "20",
+          "2"
+        ],
+        "D": [
+          "30",
+          "1"
+        ],
+        "E": [
+          "40",
+          "0"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "1/11",
+          "1"
+        ],
+        "B": [
+          "1/11",
+          "1/11"
+        ],
+        "C": [
+          "1/11",
+          "1/11"
+        ],
+        "D": [
+          "1/11",
+          "1/11"
+        ],
+        "E": [
+          "0",
+          "1/11"
+        ]
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "E"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [
+        "B",
+        "C",
+        "D"
+      ],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "E"
+        ],
+        "1/4": [
+          "A"
+        ],
+        "1/2": [
+          "A"
+        ],
+        "3/4": [
+          "A"
+        ],
+        "1": [
+          "A"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "A"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    },
+    {
+      "world": "DUPLICATE_TIE",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "0",
+          "4"
+        ],
+        "B": [
+          "0",
+          "4"
+        ],
+        "C": [
+          "2",
+          "2"
+        ],
+        "D": [
+          "4",
+          "0"
+        ],
+        "E": [
+          "5",
+          "5"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "1/2",
+          "1"
+        ],
+        "B": [
+          "1/2",
+          "1"
+        ],
+        "C": [
+          "1/2",
+          "1/2"
+        ],
+        "D": [
+          "0",
+          "1/2"
+        ],
+        "E": null
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "D"
+        ],
+        "1/4": [
+          "D"
+        ],
+        "1/2": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "3/4": [
+          "A",
+          "B"
+        ],
+        "1": [
+          "A",
+          "B"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "C"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    },
+    {
+      "world": "STRICTLY_CONVEX_DISCRETE_FRONT",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "0",
+          "4"
+        ],
+        "B": [
+          "1",
+          "9/4"
+        ],
+        "C": [
+          "2",
+          "1"
+        ],
+        "D": [
+          "3",
+          "1/4"
+        ],
+        "E": [
+          "4",
+          "0"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "7/11",
+          "1"
+        ],
+        "B": [
+          "5/9",
+          "7/11"
+        ],
+        "C": [
+          "3/7",
+          "5/9"
+        ],
+        "D": [
+          "1/5",
+          "3/7"
+        ],
+        "E": [
+          "0",
+          "1/5"
+        ]
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [
+        "B"
+      ],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "E"
+        ],
+        "1/4": [
+          "D"
+        ],
+        "1/2": [
+          "C"
+        ],
+        "3/4": [
+          "A"
+        ],
+        "1": [
+          "A"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "C"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    },
+    {
+      "world": "OBJECTIVE2_MULTIPLY10",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "0",
+          "40"
+        ],
+        "B": [
+          "1",
+          "30"
+        ],
+        "C": [
+          "2",
+          "20"
+        ],
+        "D": [
+          "3",
+          "10"
+        ],
+        "E": [
+          "4",
+          "0"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "10/11",
+          "1"
+        ],
+        "B": [
+          "10/11",
+          "10/11"
+        ],
+        "C": [
+          "10/11",
+          "10/11"
+        ],
+        "D": [
+          "10/11",
+          "10/11"
+        ],
+        "E": [
+          "0",
+          "10/11"
+        ]
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "E"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [
+        "B",
+        "C",
+        "D"
+      ],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "E"
+        ],
+        "1/4": [
+          "E"
+        ],
+        "1/2": [
+          "E"
+        ],
+        "3/4": [
+          "E"
+        ],
+        "1": [
+          "A"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "C"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    },
+    {
+      "world": "REVERSE_LABELS",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "4",
+          "0"
+        ],
+        "B": [
+          "3",
+          "1"
+        ],
+        "C": [
+          "2",
+          "2"
+        ],
+        "D": [
+          "1",
+          "3"
+        ],
+        "E": [
+          "0",
+          "4"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "0",
+          "1/2"
+        ],
+        "B": [
+          "1/2",
+          "1/2"
+        ],
+        "C": [
+          "1/2",
+          "1/2"
+        ],
+        "D": [
+          "1/2",
+          "1/2"
+        ],
+        "E": [
+          "1/2",
+          "1"
+        ]
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "A"
+        ],
+        "1/4": [
+          "A"
+        ],
+        "1/2": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "3/4": [
+          "E"
+        ],
+        "1": [
+          "E"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "C"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    },
+    {
+      "world": "LINEAR_COST2_STEEPER",
+      "original_complete_decision_weight_source_atoms": 25,
+      "all_decision_objective_pairs": {
+        "A": [
+          "0",
+          "8"
+        ],
+        "B": [
+          "1",
+          "6"
+        ],
+        "C": [
+          "2",
+          "4"
+        ],
+        "D": [
+          "3",
+          "2"
+        ],
+        "E": [
+          "4",
+          "0"
+        ]
+      },
+      "Pareto_decision_labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "supported_by_some_continuous_normalized_weight": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "Pareto_unsupported_by_any_continuous_weight": [],
+      "all_continuous_weight_support_closed_intervals": {
+        "A": [
+          "2/3",
+          "1"
+        ],
+        "B": [
+          "2/3",
+          "2/3"
+        ],
+        "C": [
+          "2/3",
+          "2/3"
+        ],
+        "D": [
+          "2/3",
+          "2/3"
+        ],
+        "E": [
+          "0",
+          "2/3"
+        ]
+      },
+      "selected_by_frozen_five_weight_grid": [
+        "A",
+        "E"
+      ],
+      "supported_but_missed_by_frozen_weight_grid": [
+        "B",
+        "C",
+        "D"
+      ],
+      "complete_weight_grid_scalar_winner_ties": {
+        "0": [
+          "E"
+        ],
+        "1/4": [
+          "E"
+        ],
+        "1/2": [
+          "E"
+        ],
+        "3/4": [
+          "A"
+        ],
+        "1": [
+          "A"
+        ]
+      },
+      "exact_epsilon_f1_le_2_f2_minimizers": [
+        "C"
+      ],
+      "full_Pareto_dominance_and_continuous_support_interval_certificate": true
+    }
+  ]
+}
