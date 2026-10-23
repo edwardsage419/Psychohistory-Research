@@ -1,0 +1,37 @@
+{
+  "research_id": "R274",
+  "original_catalogue_id": "12-004",
+  "outcome": "CLOSED_BOUNDED_E1_FINITE_ARTIFICIAL_TEMPORAL_HOLDOUT",
+  "prescore_freeze_commit": "47b75b49afb5c72c5ca2599ab38499e0f2856354",
+  "source_program_commit": "485863eb887515413926f2202062af5076e6b01d",
+  "ci_workflow_commit": "b982ae5d12c2cd96decfa255e252b201dbba658a",
+  "source_archive_commit": "df5ad9d907fed3fe1c2c17d8d12eb10ad25c081b",
+  "verified_workflow_run": 39903501667,
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "success_jobs": 3,
+  "python_3_11_real_unit_tests_pass": 82,
+  "python_3_12_real_unit_tests_pass": 82,
+  "artificial_time_mechanisms": 3,
+  "model_worlds": 9,
+  "complete_original_source_types": 576,
+  "independently_verified_K_J_analytic_worlds": 9,
+  "source_csv_sha256": "0a4cc5417df9b99284155f74b187ca191d4ac053c0f2c8d339e12968f8d94657",
+  "results_json_sha256": "f7ec6f607161d8d8dc72a28fa47cd95611a70b391b87c2d441eed45ef100013c",
+  "supported_claims": [
+    "Same four-bit past with different future outcomes produces different hindsight-pool forecasts, an explicit future label leakage.",
+    "Under artificial stable and changing Bernoulli time regimes, the 9 source-weighted future-period Brier results equal independent joint Binomial K/J calculations.",
+    "Under stable p=1/2, illegal hindsight score 27/128 is lower than legal fixed half baseline 1/4, without genuine predictive interpretation."
+  ],
+  "limitations": [
+    "No human or historical time series.",
+    "Hindsight pooled scoring is an invalid model for a prospective t4 prediction, retained only as a counterexample.",
+    "No autocorrelation or real world structural break estimates."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": "12-005",
+  "next_R": "R275"
+}
