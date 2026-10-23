@@ -1,0 +1,44 @@
+name: R317 Temporal Strict Time Path Exact E1
+on:
+  push:
+    paths:
+      - 'research/R317/**'
+      - 'research/catalogue_audit/independent_r317_temporal_source_audit.py'
+      - '.github/workflows/r317-temporal-strict-time-paths-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-time:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Full strict-time temporal source tests
+        run: python research/R317/r317_exact_temporal_reachability.py --test
+      - name: Verify 81 event source and 81 origin outcomes
+        run: python research/R317/r317_exact_temporal_reachability.py --audit
+  independent-time:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently enumerate strict time respecting contact subsequences
+        run: python research/catalogue_audit/independent_r317_temporal_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R317-Temporal-81Sources-81Origins-E1
+          path: |
+            research/R317/R317_ALL_81_ORIGINAL_TEMPORAL_CONTACT_SOURCE_ROWS.csv
+            research/R317/R317_ALL_81_ORIGIN_TEMPORAL_REACHABILITY_OUTCOMES.json
+          retention-days: 90
