@@ -1,0 +1,135 @@
+name: R273 Exact Cross Population Transfer Independent Source Audit
+on:
+  push:
+    paths:
+      - 'research/R273/r273_exact_cross_population_prediction.py'
+      - '.github/workflows/r273-cross-population-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 172 real source and transfer risk unit tests
+        run: python research/R273/r273_exact_cross_population_prediction.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconstruct all 1728 primitive source populations, forecasts and target risks
+        run: |
+          python research/R273/r273_exact_cross_population_prediction.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from math import comb
+          from pathlib import Path
+          home=Path('research/R273')
+          src=home/'R273_ALL_1728_ORIGINAL_CROSS_POPULATION_SOURCES.csv'
+          result_path=home/'R273_EXACT_CROSS_POPULATION_RESULTS.json'
+          rows=list(csv.DictReader(src.open()))
+          results=json.loads(result_path.read_text())
+          receipt=json.loads((home/'R273_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==1728 and len(results['world_results'])==27
+          assert results['original_catalogue_id']=='12-003'
+          assert results['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='91abafbaf627dbf67f86208a82008a5be419e507'
+          for file,key in [(src,'source_sha256'),(result_path,'results_sha256')]:
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==receipt[key]
+          groups=defaultdict(list)
+          for z in rows:groups[z['world']].append(z)
+          assert len(groups)==27
+          original_full={''.join(bits) for bits in itertools.product('01',repeat=6)}
+          for w in results['world_results']:
+              a=F(w['source_p']);b=F(w['target_p']);m=w['predictor']
+              data=groups[w['world']]
+              assert len(data)==64
+              assert {r['original_full_source_target_sixbits'] for r in data}==original_full
+              mass_total=trainloss=testloss=mean_bias=F(0)
+              for z in data:
+                  six=z['original_full_source_target_sixbits']
+                  X=list(map(int,six[:4]))
+                  Y=list(map(int,six[4:]))
+                  k=sum(X);j=sum(Y)
+                  if m=='SOURCE_ORACLE':q=a
+                  elif m=='TARGET_ORACLE':q=b
+                  else:
+                      assert m=='SOURCE_LAPLACE'
+                      q=F(k+1,6)
+                  mass=a**k*(1-a)**(4-k)*b**j*(1-b)**(2-j)
+                  assert z['original_source_group_fourbits']==six[:4]
+                  assert z['original_target_group_twobits']==six[4:]
+                  assert int(z['source_training_successes'])==k
+                  assert int(z['target_test_successes'])==j
+                  assert F(z['exact_two_population_source_probability'])==mass
+                  assert F(z['frozen_before_target_observation_forecast'])==q
+                  st=[(F(y)-q)**2 for y in X];sv=[(F(y)-q)**2 for y in Y]
+                  assert z['original_source_group_train_Brier_per_row']==';'.join(map(str,st))
+                  assert z['original_target_group_test_Brier_per_row']==';'.join(map(str,sv))
+                  assert F(z['source_mean_Brier'])==sum(st,F(0))/4
+                  assert F(z['target_independent_mean_Brier'])==sum(sv,F(0))/2
+                  assert F(z['target_forecast_bias'])==q-b
+                  mass_total+=mass
+                  trainloss+=mass*sum(st,F(0))/4
+                  testloss+=mass*sum(sv,F(0))/2
+                  mean_bias+=mass*(q-b)
+              assert mass_total==1 and w['original_source_types']==64
+              assert (str(trainloss),str(testloss),str(mean_bias))==(
+                  w['complete_source_expected_training_Brier'],
+                  w['complete_source_expected_target_test_Brier'],
+                  w['expected_forecast_minus_target_probability'])
+              if m=='SOURCE_ORACLE':
+                  theory=b*(1-b)+(a-b)**2
+                  bias=a-b
+              elif m=='TARGET_ORACLE':
+                  theory=b*(1-b);bias=F(0)
+              else:
+                  meanq=(4*a+1)/6
+                  theory=b*(1-b)+a*(1-a)/9+(meanq-b)**2
+                  bias=meanq-b
+              assert testloss==theory and mean_bias==bias
+              assert w['independent_analytic_target_risk_verified']
+          assert results['real_human_E2']==results['real_historical_E3']==0
+          print('R273_1728_ALL_ORIGINAL_A_TO_B_SOURCES_27_INDEPENDENT_PREDICTIVE_RISKS_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R273-1728-Cross-Population-Primitive-Source-Types
+          path: |
+            research/R273/R273_ALL_1728_ORIGINAL_CROSS_POPULATION_SOURCES.csv
+            research/R273/R273_EXACT_CROSS_POPULATION_RESULTS.json
+            research/R273/R273_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all 1728 source and target population atoms
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R273/R273_ALL_1728_ORIGINAL_CROSS_POPULATION_SOURCES.csv research/R273/R273_EXACT_CROSS_POPULATION_RESULTS.json research/R273/R273_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R273): all 1728 source target population transfer atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R273_ALL_1728_CROSS_POPULATION_SOURCES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
