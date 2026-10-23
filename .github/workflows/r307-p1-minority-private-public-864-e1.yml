@@ -1,0 +1,67 @@
+name: R307 Minority Influence Bayesian Consistency 864 Synthetic E1 Sources
+on:
+  push:
+    paths:
+      - 'research/R307/r307_exact_minority_consistency_private_public.py'
+      - 'research/catalogue_audit/independent_r307_source_audit.py'
+      - '.github/workflows/r307-p1-minority-private-public-864-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-minority:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 2607 exact minority influence model unittest cases
+        run: python research/R307/r307_exact_minority_consistency_private_public.py --test
+      - name: Emit 864 original synthetic sources and independently recalculate sequential Bayes
+        run: |
+          python research/R307/r307_exact_minority_consistency_private_public.py --emit
+          python research/catalogue_audit/independent_r307_source_audit.py --test
+          python research/catalogue_audit/independent_r307_source_audit.py --audit
+  independent-source-and-permanent-archive:
+    needs: dual-python-minority
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently regenerate 864 minority sources and validate exact binary Bayesian update and SHA
+        run: |
+          python research/R307/r307_exact_minority_consistency_private_public.py --emit
+          python research/catalogue_audit/independent_r307_source_audit.py --test
+          python research/catalogue_audit/independent_r307_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R307-864-Original-Synthetic-Minority-Private-Public-Sources
+          path: |
+            research/R307/R307_ALL_864_ORIGINAL_MINORITY_PRIVATE_PUBLIC_SOURCES.csv
+            research/R307/R307_EXACT_MINORITY_INFLUENCE_RESULTS.json
+            research/R307/R307_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Commit original E1 minority source/results and SHA256 permanently to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R307/R307_ALL_864_ORIGINAL_MINORITY_PRIVATE_PUBLIC_SOURCES.csv research/R307/R307_EXACT_MINORITY_INFLUENCE_RESULTS.json research/R307/R307_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R307): 864 original synthetic minority private public source observations'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R307_COMPLETE_ORIGINAL_SOURCES_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
