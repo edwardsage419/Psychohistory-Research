@@ -1,0 +1,46 @@
+name: Original 239 P1 R292 TPB evidence crosswalk v0.6
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r292_crosswalk_v0_6.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.6_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_56_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r292-crosswalk-v06.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-python-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check 239 original candidates and R292 source data with 14 tests
+        run: python research/catalogue_audit/verify_p1_r292_crosswalk_v0_6.py --test
+  independent-recompute:
+    needs: two-python-metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fully audit original catalogue and all 256 exact source records
+        run: |
+          python research/catalogue_audit/verify_p1_r292_crosswalk_v0_6.py --audit
+          python research/catalogue_audit/independent_r292_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R292-v06-180Primary-56Pending-NotFullScientificClosure
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.6_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_56_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R292/R292_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
