@@ -1,0 +1,38 @@
+{
+  "research_id": "R281",
+  "original_catalogue_id": "12-011",
+  "outcome": "CLOSED_BOUNDED_E1_EXACT_SYMBOLIC_LOG_SCORE_WITH_INFINITE_RISK",
+  "prescore_freeze_commit": "cbf8eec7db1ab7d78e4c8d3a03b0e0ae5acad2f3",
+  "program_commit": "001856444c727d7f0ed9642e3ebc72e07cceb5d6",
+  "workflow_commit": "8a999baec6bceac70b702c4d05c7282bfa5ea995",
+  "archive_commit": "d038a6b9794152463bf05e058c3d43c22f197cb6",
+  "verified_workflow_run": 39905387817,
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "success_jobs": 3,
+  "python3_11_actual_unittests": 134,
+  "python3_12_actual_unittests": 134,
+  "artificial_worlds": 15,
+  "original_complete_source_types": 240,
+  "fully_independent_analytic_worlds": 15,
+  "all_finite_log_scores_exact_as_rational_ln2_ln3_coefficients": true,
+  "positive_mass_infinite_loss_boundary_worlds": 6,
+  "source_sha256": "02d4a5d8ae9f4da9a580185e0fb09ff0a7b553d98d2c9544f6d285a29ca68fd2",
+  "results_sha256": "b73358d184daebd3bdf4ed46484e257f92b0ec379cf39104d508d58dd226c5b8",
+  "supported_claims": [
+    "Zero or one binary outcome probabilities produce infinite expected log loss when true Bernoulli p strictly between 0 and 1.",
+    "Finite log scores and expected risks can be represented exactly by rational coefficients of ln2 and ln3 over this frozen grid.",
+    "With true p=1/2, reported q=0 produces an infinite sample-mean loss in 15/16 of complete fourbit source probability."
+  ],
+  "limits": [
+    "Synthetic Bernoulli source space only.",
+    "Exact rational symbolic coefficients are not an original proof of general KL strict propriety.",
+    "No human experimental, historical or actual deployable external scoring results."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "next_original_catalogue": "12-012",
+  "next_research": "R282"
+}
