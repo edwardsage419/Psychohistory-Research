@@ -859,3 +859,16 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 [R274完整研究](research/R274/README.md) · [科研报告](research/R274/R274_SCIENTIFIC_REPORT_2026-10-23.md) · [最终CI run39903501667](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39903501667)：九世界576完整人工时间来源，严格区分过去四bit可实施预测与含未来测试标签的非法事后回填；双Python164真实单测成功，三job全success，[来源归档df5ad9d9](https://github.com/edwardsage419/Psychohistory-Research/commit/df5ad9d907fed3fe1c2c17d8d12eb10ad25c081b)。
 
 合计**45个人工world、2880种带模型标识原source配置、674次真实双Python测试、9个成功CI job**。三项目全部科学证据仅人工数学**E1**，没有任何新增真人E2/真实历史E3，不代表真实跨实验或历史预测成效；R073与PESEN v0.1继续冻结。下一原239候选目录**12-005 Equifinality Analysis（P0，拟R275）**。原R系列全部学习研究完成后再统一归纳分类与熔炼，个人辅助决策系统实施继续暂缓。
+
+
+## 2026-10-23 R275至R277 等效机制、可辨识性与结构错设
+
+原239模型目录连续完成三项P0方法学模型：**12-005 R275 Equifinality Analysis**、**12-006 R276 Model Identifiability**、**12-007 R277 Model Misspecification Checks**。均先独立冻结研究协议，再执行完整来源穷举与独立解析方法，通过Python3.11/3.12真单元测试及第三GitHub Actions原source审计，并将CSV、JSON与SHA256机器人永久main归档。[三项完整结题与科学证据索引](docs/R275_R277_EQUIFINALITY_IDENTIFIABILITY_MISSPECIFICATION_E1_CLOSURE_INDEX_2026-10-23.md)。
+
+[R275 等效机制正式研究](research/R275/README.md) · [科学报告](research/R275/R275_SCIENTIFIC_REPORT_2026-10-23.md) · [CI run39903913659](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39903913659)：三人工机制的四个A联合观测分布完全一致，只看A等候选先验MAP平均正确率1/3；加入与A配对的B后，四pair观察下平均MAP正确率23/24。完整**768个人工原source类型**（其中288条非零质量）；双Python100项真测试，三job success，[全原source归档d70cb4e5](https://github.com/edwardsage419/Psychohistory-Research/commit/d70cb4e542b47d3efe10c551a863408a2c31081e)。
+
+[R276 参数可辨识正式研究](research/R276/README.md) · [科学报告](research/R276/R276_SCIENTIFIC_REPORT_2026-10-23.md) · [CI run39904079585](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39904079585)：三个参数点(1/2,1/2)、(1/4,1)、(1,1/4)使同一乘积θ1θ2=1/4，Y-only的完整观察分布相同；新增Z辅助测量后，**仅对这三个离散参数点**的分布可辨识，有限两次Z的MAP平均正确率11/16。完整**192个人工source类型**（144条非零质量）；双Python100项真测试，三job success，[全原source归档e32a4a4f](https://github.com/edwardsage419/Psychohistory-Research/commit/e32a4a4fb38ee90eea6ab7670eadf54ff3bbdbad)。
+
+[R277 模型错设诊断正式研究](research/R277/README.md) · [科学报告](research/R277/R277_SCIENTIFIC_REPORT_2026-10-23.md) · [CI run39904180046](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39904180046)：三个二状态Markov机制保持概率s=1/4,1/2,3/4，每个时点边缘公平导致固定半概率Brier恰1/4；然而5个转移保持次数T有不同Binomial(5,s)分布，定向T≥4在IID参考下概率3/16、在s=3/4下概率81/128。完整**192个人工原source类型**，双Python100项真测试，三job success，[全原source归档12b5de59](https://github.com/edwardsage419/Psychohistory-Research/commit/12b5de59e410a5044e480b192e60df7e72436a14)。
+
+三项合计**9人工冻结世界、1152个机制标识完整原source配置、300项经实际单元测试日志验证的Python双版本通过测试、三个完成CI共9个成功job**。全部科研证据仍只有**有限人工E1**，没有新增真人E2与真实历史E3，R073及PESEN v0.1继续冻结。下一原目录**12-008 Model Averaging and Ensembles（P2，拟R278）**。用户确定研究顺序继续保持：完成全部原R系列→统一归纳分类→熔炼原创模型，具体个人辅助决策系统暂不实施。
