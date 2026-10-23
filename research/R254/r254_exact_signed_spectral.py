@@ -178,9 +178,9 @@ def locked_claims():
      "EDGE_01_P1":(1,1,0),
      "PATH_01_12_P1":(2,0,1),
      "TRIANGLE_P1":(4,2,0),
-     "ER_TRIANGLE_P_QUARTER":(F(49,64),F(31,64),F(27,64)),
+     "ER_TRIANGLE_P_QUARTER":(F(49,64),F(29,64),F(9,64)),
      "ER_TRIANGLE_P_HALF":(F(13,8),F(5,8),F(3,8)),
-     "ER_TRIANGLE_P_THREE_QUARTER":(F(171,64),F(81,64),F(27,64)),
+     "ER_TRIANGLE_P_THREE_QUARTER":(F(171,64),F(63,64),F(27,64)),
      "SIGNED_ER_TRIANGLE_P_HALF":(F(13,8),F(1,2),F(3,8)),
      "SIGNED_TRIANGLE_P1":(4,1,0)
     }
