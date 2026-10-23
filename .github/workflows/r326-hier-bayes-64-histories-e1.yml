@@ -1,0 +1,30 @@
+name: R326 finite hierarchical Bayesian 64 histories E1
+on:
+  push:
+    paths:
+      - 'research/R326/**'
+      - 'research/catalogue_audit/independent_r326_hier_bayes_audit.py'
+      - '.github/workflows/r326-hier-bayes-64-histories-e1.yml'
+  workflow_dispatch:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R326/r326_hier_bayes.py --test
+      - run: python research/R326/r326_hier_bayes.py --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/independent_r326_hier_bayes_audit.py
