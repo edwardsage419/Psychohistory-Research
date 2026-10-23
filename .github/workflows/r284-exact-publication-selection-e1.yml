@@ -1,0 +1,131 @@
+name: R284 Publication Selection Complete Registry Audit
+on:
+  push:
+    paths:
+      - 'research/R284/r284_exact_publication_selection.py'
+      - '.github/workflows/r284-exact-publication-selection-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test 100 original source and missing-not-at-random unit cases
+        run: python research/R284/r284_exact_publication_selection.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently audit all 768 source types and zero-publication null cases
+        run: |
+          python research/R284/r284_exact_publication_selection.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from pathlib import Path
+          from collections import defaultdict
+          from fractions import Fraction as F
+          root=Path('research/R284')
+          src=root/'R284_ALL_768_ORIGINAL_PUBLICATION_SOURCES.csv'
+          out=root/'R284_EXACT_RESULTS.json'
+          items=list(csv.DictReader(src.open()))
+          result=json.loads(out.read_text())
+          receipt=json.loads((root/'R284_MACHINE_RECEIPT.json').read_text())
+          assert len(items)==768 and len(result['world_results'])==3
+          assert receipt['prescore_freeze_commit']==result['prescore_freeze_commit']=='0a6eccd270565c9a5a15a577f2dec1d1d4c7e3cb'
+          assert result['original_catalogue_id']=='12-014'
+          assert receipt['source_sha256']==hashlib.sha256(src.read_bytes()).hexdigest()
+          assert receipt['results_sha256']==hashlib.sha256(out.read_bytes()).hexdigest()
+          original={''.join(v) for v in itertools.product('01',repeat=8)}
+          groups=defaultdict(list)
+          for item in items:groups[item['policy']].append(item)
+          assert len(groups)==3
+          frozen={'COMPLETE_REGISTRY':(F(1),F(4),F(0),F(1,2)),
+                  'POSITIVE_ONLY':(F(1,2),F(2),F(1,16),F(1)),
+                  'POSITIVE_PREFERRED':(F(3,4),F(3),F(1,256),F(2,3))}
+          for p,records in groups.items():
+              assert len(records)==256 and {r['original_complete_Y1R1_Y2R2_Y3R3_Y4R4'] for r in records}==original
+              total=pub_count=empty=weighted_pos_frac=F(0)
+              for row in records:
+                  s=row['original_complete_Y1R1_Y2R2_Y3R3_Y4R4']
+                  y=[int(s[2*i]) for i in range(4)]
+                  r=[int(s[2*i+1]) for i in range(4)]
+                  if p=='COMPLETE_REGISTRY':included=[1]*4
+                  elif p=='POSITIVE_ONLY':included=list(y)
+                  else:
+                      assert p=='POSITIVE_PREFERRED'
+                      included=[int(bool(y[i] or r[i])) for i in range(4)]
+                  k=sum(included)
+                  selected_pos=sum(y[i]*included[i] for i in range(4))
+                  assert row['complete_declared_registry']=='S1;S2;S3;S4'
+                  assert row['true_registry_outcomes']==';'.join(map(str,y))
+                  assert row['independent_disclosure_coins']==';'.join(map(str,r))
+                  assert F(row['source_probability'])==F(1,256)
+                  assert row['published_four_study_flags']==';'.join(map(str,included))
+                  assert F(row['complete_registry_positive_rate'])==F(sum(y),4)
+                  assert int(row['published_study_count'])==k
+                  assert int(row['published_positive_count'])==selected_pos
+                  assert int(row['no_study_published_flag'])==int(k==0)
+                  if k==0:
+                      assert row['published_positive_rate_if_nonempty']=='NULL'
+                  else:
+                      expected=F(selected_pos,k)
+                      assert F(row['published_positive_rate_if_nonempty'])==expected
+                      weighted_pos_frac+=F(1,256)*expected
+                  total+=F(1,256)
+                  pub_count+=F(1,256)*k
+                  empty+=F(1,256)*int(k==0)
+              assert total==1
+              moments=(pub_count/4,pub_count,empty,weighted_pos_frac/(1-empty))
+              assert moments==frozen[p]
+              resultrow=next(z for z in result['world_results'] if z['policy']==p)
+              assert tuple(str(v) for v in moments)==(
+                resultrow['per_study_publication_rate'],
+                resultrow['expected_published_study_count'],
+                resultrow['no_published_studies_probability'],
+                resultrow['conditional_published_positive_rate_given_nonempty'])
+              assert resultrow['independent_categorical_derivation_verified']
+          assert result['no_real_papers_reviewed']
+          assert result['no_real_human_E2']==result['no_real_historical_E3']==0
+          print('R284_768_COMPLETE_ORIGINAL_SOURCES_3_MNAR_PUBLICATION_POLICIES_NULLS_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R284-768-Original-Publication-Selection-Sources
+          path: |
+            research/R284/R284_ALL_768_ORIGINAL_PUBLICATION_SOURCES.csv
+            research/R284/R284_EXACT_RESULTS.json
+            research/R284/R284_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive complete original registry and selection sources
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R284/R284_ALL_768_ORIGINAL_PUBLICATION_SOURCES.csv research/R284/R284_EXACT_RESULTS.json research/R284/R284_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R284): all 768 publication selection source atom types'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R284_ALL_768_PUBLICATION_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
