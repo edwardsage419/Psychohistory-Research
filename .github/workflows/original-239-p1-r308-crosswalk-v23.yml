@@ -1,0 +1,46 @@
+name: Original 239 P1 R308 Collective Efficacy v2.3
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r308_crosswalk_v2_3.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.3_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_39_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r308-crosswalk-v23.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original239:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 16 original candidate identity, R308 864-source SHA, no-crime/teacher-E2 checks
+        run: python research/catalogue_audit/verify_p1_r308_crosswalk_v2_3.py --test
+  independent-original-catalogue-and-sources:
+    needs: dual-python-original239
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently compare only one changed 03-018 and full 864-source action/belief audit
+        run: |
+          python research/catalogue_audit/verify_p1_r308_crosswalk_v2_3.py --audit
+          python research/catalogue_audit/independent_r308_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R308-v23-197Primary-39Pending-CollectiveEfficacyE1
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.3_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_39_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R308/R308_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
