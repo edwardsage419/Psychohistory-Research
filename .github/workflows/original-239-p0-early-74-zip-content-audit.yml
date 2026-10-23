@@ -1,0 +1,102 @@
+name: Original 239 P0 Early 74 ZIP Binary and Member Audit
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/scan_early_zip_P0_2026_10_23.py'
+      - '.github/workflows/original-239-p0-early-74-zip-content-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify frozen ZIP binary and P0 text-scanning rules
+        run: python research/catalogue_audit/scan_early_zip_P0_2026_10_23.py --test
+  independent-zip-binary-and-evidence-audit:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read all 74 actual ZIP bytes and compare manifest, CRC, source member evidence
+        run: |
+          python research/catalogue_audit/scan_early_zip_P0_2026_10_23.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,zipfile
+          from pathlib import Path
+          root=Path('.')
+          csvpath=root/'manifests/LIBRARY_ORIGINAL_ZIPS_2026-10-15.csv'
+          roundpath=root/'manifests/RECOVERY_STATUS_R001_R064.csv'
+          out=root/'docs/ORIGINAL_239_P0_EARLY_74_ZIP_CONTENT_SCAN_RESULTS.json'
+          rec=root/'docs/ORIGINAL_239_P0_EARLY_ZIP_SCAN_SHA256_RECEIPT.json'
+          with csvpath.open(newline='',encoding='utf-8') as f:inventory=list(csv.DictReader(f))
+          with roundpath.open(newline='',encoding='utf-8') as f:rounds=list(csv.DictReader(f))
+          result=json.loads(out.read_text());receipt=json.loads(rec.read_text())
+          assert len(inventory)==len(result['archives'])==74
+          assert len(rounds)==64 and result['original_rounds']==64
+          assert receipt['protocol_commit']==result['protocol_commit']=='fc4bd2414fc0b1cdf83a8ff71bdf488c713f6ac6'
+          for file,key in ((csvpath,'inventory_sha256'),(roundpath,'index_sha256'),(out,'result_sha256')):
+              assert receipt[key]==hashlib.sha256(file.read_bytes()).hexdigest()
+          members=0;scanned=0
+          for row,archive in zip(inventory,result['archives']):
+              path=root/row['archive_path']
+              raw=path.read_bytes()
+              assert hashlib.sha256(raw).hexdigest()==row['sha256']==archive['archive_sha256']
+              assert hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==row['git_blob_sha1']
+              assert len(raw)==int(row['size_bytes'])==archive['archive_size_bytes']
+              with zipfile.ZipFile(path) as z:
+                  assert z.testzip() is None
+                  files=[m for m in z.infolist() if not m.is_dir()]
+                  assert len(files)==int(row['member_count'])==archive['member_count']
+                  assert sum(m.file_size for m in files)==int(row['unpacked_bytes'])==archive['unpacked_member_bytes']
+                  allowed_names={m.filename for m in files}
+                  for found in archive['member_hits']:
+                      assert found['member'] in allowed_names
+                      assert set(found['hits']).issubset({'01-008','02-002','04-001'})
+                      for x in found['hits'].values():
+                          assert all(len(c['excerpt'])<=160 for c in x['limited_contexts'])
+                  members+=len(files);scanned+=archive['text_scanned']
+          assert members==result['counts']['total_archive_members']
+          assert scanned==result['counts']['scanned_text_members']
+          assert result['classification']=='KEYWORD_MATCH_ONLY_NOT_ORIGINAL_PAPER_OR_MECHANISM_ACCEPTANCE'
+          assert result['new_E2']==result['new_E3']==0
+          print('P0_EARLY_ALL_74_ORIGINAL_ZIP_BYTES_CRC_SHA1_SHA256_AND_MEMBER_CONTENT_AUDIT_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: P0-Early-74-ZIP-Member-and-Byte-Audit
+          path: |
+            docs/ORIGINAL_239_P0_EARLY_74_ZIP_CONTENT_SCAN_RESULTS.json
+            docs/ORIGINAL_239_P0_EARLY_ZIP_SCAN_SHA256_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive original P0 triage and SHA256 evidence receipt
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/ORIGINAL_239_P0_EARLY_74_ZIP_CONTENT_SCAN_RESULTS.json docs/ORIGINAL_239_P0_EARLY_ZIP_SCAN_SHA256_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(audit): independent 74 original ZIP binary and P0 source-member triage'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'P0_74_ZIP_BINARY_SOURCE_AUDIT_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
