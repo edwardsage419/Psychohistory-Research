@@ -1,0 +1,91 @@
+{
+  "research_id": "R282",
+  "original_catalogue_id": "12-012",
+  "prescore_freeze_commit": "5447354be84992df49810b59cd258405851d2eb9",
+  "evidence": "E1_COMPLETE_ARTIFICIAL_ABM_ODD_2020_SEVEN_SECTIONS_SCHEDULE_REPLAY",
+  "odd2020_sections": [
+    "Purpose and patterns",
+    "Entities, state variables, and scales",
+    "Process overview and scheduling",
+    "Design concepts",
+    "Initialization",
+    "Input data",
+    "Submodels"
+  ],
+  "odd_has_all_seven_structural_headings": true,
+  "complete_schedule_labeled_source_types": 192,
+  "complete_primitive_sources_per_schedule": 64,
+  "original_source_index_is_bitstream_enumerator_not_prng_seed": true,
+  "real_empirical_input_data": false,
+  "all_schedule_terminal_marginals_identical_uniform": true,
+  "source_index_1_terminal_counterexample": {
+    "SYNC": "01",
+    "A_THEN_B": "01",
+    "B_THEN_A": "11"
+  },
+  "synchronous_vs_asynchronous_paired_source_disagreements": {
+    "A_THEN_B": {
+      "t1_disagreement_source_count": 32,
+      "t2_disagreement_source_count": 48
+    },
+    "B_THEN_A": {
+      "t1_disagreement_source_count": 32,
+      "t2_disagreement_source_count": 48
+    }
+  },
+  "two_asynchronous_schedules_t2_disagreement_count": 48,
+  "schedule_results": [
+    {
+      "schedule": "SYNC",
+      "primitive_complete_source_types": 64,
+      "terminal_joint_state_counts": {
+        "00": 16,
+        "01": 16,
+        "10": 16,
+        "11": 16
+      },
+      "terminal_joint_state_probabilities": {
+        "00": "1/4",
+        "01": "1/4",
+        "10": "1/4",
+        "11": "1/4"
+      }
+    },
+    {
+      "schedule": "A_THEN_B",
+      "primitive_complete_source_types": 64,
+      "terminal_joint_state_counts": {
+        "00": 16,
+        "01": 16,
+        "10": 16,
+        "11": 16
+      },
+      "terminal_joint_state_probabilities": {
+        "00": "1/4",
+        "01": "1/4",
+        "10": "1/4",
+        "11": "1/4"
+      }
+    },
+    {
+      "schedule": "B_THEN_A",
+      "primitive_complete_source_types": 64,
+      "terminal_joint_state_counts": {
+        "00": 16,
+        "01": 16,
+        "10": 16,
+        "11": 16
+      },
+      "terminal_joint_state_probabilities": {
+        "00": "1/4",
+        "01": "1/4",
+        "10": "1/4",
+        "11": "1/4"
+      }
+    }
+  ],
+  "no_real_human_E2": 0,
+  "no_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
