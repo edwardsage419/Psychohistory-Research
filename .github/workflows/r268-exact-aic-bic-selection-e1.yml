@@ -1,0 +1,139 @@
+name: R268 AIC BIC Complete Bernoulli Selection Audit
+on:
+  push:
+    paths:
+      - 'research/R268/r268_exact_aic_bic_bernoulli.py'
+      - '.github/workflows/r268-exact-aic-bic-selection-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all 84 real unit tests for nine frozen AIC BIC source worlds
+        run: python research/R268/r268_exact_aic_bic_bernoulli.py --test
+  independent-ordered-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit 3312 source types and independently confirm K binomial probabilities and model criteria
+        run: |
+          python research/R268/r268_exact_aic_bic_bernoulli.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools,math
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from math import comb
+          from pathlib import Path
+          root=Path('research/R268')
+          rows=list(csv.DictReader((root/'R268_ALL_3312_BERNOULLI_ORDERED_SOURCE_TYPES.csv').open()))
+          out=json.loads((root/'R268_EXACT_RESULTS.json').read_text())
+          rec=json.loads((root/'R268_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==3312 and len(out['worlds'])==9
+          assert rec['prescore_freeze_commit']==out['prescore_freeze_commit']=='6ab880be304cebf916948aa9877e6d233b6a5e69'
+          assert out['original_catalogue_id']=='11-028'
+          groups=defaultdict(list)
+          for z in rows:groups[z['world']].append(z)
+          assert len(groups)==9
+          for world in out['worlds']:
+              label=world['world'];p=F(world['true_p']);n=world['n']
+              subset=groups[label]
+              assert len(subset)==2**n==world['full_ordered_original_source_types']
+              known=set()
+              hist=defaultdict(lambda:F(0))
+              selectedA=selectedB=disagree=F(0)
+              for z in subset:
+                  seq=z['original_ordered_binary_sequence']
+                  assert len(seq)==n and set(seq)<={'0','1'}
+                  known.add(seq)
+                  k=seq.count('1')
+                  assert int(z['original_success_count'])==k
+                  assert int(z['n'])==n and F(z['true_p'])==p
+                  source_p=p**k*(1-p)**(n-k)
+                  assert F(z['exact_source_probability'])==source_p
+                  assert F(z['maximum_likelihood_qhat'])==F(k,n)
+                  l0=k*math.log(.2)+(n-k)*math.log(.8)
+                  q=k/n
+                  l1=0 if k in (0,n) else k*math.log(q)+(n-k)*math.log(1-q)
+                  delta=2*(l1-l0)
+                  a0=-2*l0;a1=-2*l1+2
+                  b0=a0;b1=-2*l1+math.log(n)
+                  for key,value in [('log_likelihood_M0',l0),('log_likelihood_M1',l1),
+                                    ('deviance_gain',delta),('AIC_M0',a0),('AIC_M1',a1),
+                                    ('BIC_M0',b0),('BIC_M1',b1)]:
+                      assert math.isclose(float(z[key]),value,rel_tol=0,abs_tol=1e-10)
+                  a='M1_FITTED' if delta>2 else 'M0_FIXED'
+                  b='M1_FITTED' if delta>math.log(n) else 'M0_FIXED'
+                  assert z['AIC_selected']==a and z['BIC_selected']==b
+                  assert int(z['criteria_disagree'])==int(a!=b)
+                  hist[k]+=source_p
+                  if a=='M1_FITTED':selectedA+=source_p
+                  if b=='M1_FITTED':selectedB+=source_p
+                  if a!=b:disagree+=source_p
+              assert known==set(''.join(s) for s in itertools.product('01',repeat=n))
+              assert sum(hist.values(),F(0))==1
+              for k in range(n+1):
+                  assert hist[k]==F(comb(n,k))*p**k*(1-p)**(n-k)
+              assert (str(selectedA),str(selectedB),str(disagree))==(
+                  world['source_weighted_probability_AIC_selects_M1'],
+                  world['source_weighted_probability_BIC_selects_M1'],
+                  world['source_weighted_probability_AIC_BIC_disagree'])
+              assert world['independent_binomial_exact_aggregate_verified']
+              for k in range(n+1):
+                  q=k/n
+                  l1=0 if k in (0,n) else k*math.log(q)+(n-k)*math.log(1-q)
+                  gain=2*(l1-(k*math.log(.2)+(n-k)*math.log(.8)))
+                  frozen=world['frozen_per_K_decisions'][str(k)]
+                  assert frozen['AIC']==('M1_FITTED' if gain>2 else 'M0_FIXED')
+                  assert frozen['BIC']==('M1_FITTED' if gain>math.log(n) else 'M0_FIXED')
+              expected=[0,2] if n==4 else ([] if n==6 else [4])
+              actual=[k for k in range(n+1)
+                  if world['frozen_per_K_decisions'][str(k)]['AIC']!=world['frozen_per_K_decisions'][str(k)]['BIC']]
+              assert actual==expected
+          for fn,key in [('R268_ALL_3312_BERNOULLI_ORDERED_SOURCE_TYPES.csv','source_sha256'),
+                         ('R268_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((root/fn).read_bytes()).hexdigest()
+          assert out['new_real_human_E2']==out['new_real_historical_E3']==0
+          print('R268_3312_ORDERED_BERNOULLI_SOURCES_AND_9_BINOMIAL_DESIGN_SELECTION_AUDIT_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R268-3312-Bernoulli-AIC-BIC-Original-Source-Types
+          path: |
+            research/R268/R268_ALL_3312_BERNOULLI_ORDERED_SOURCE_TYPES.csv
+            research/R268/R268_EXACT_RESULTS.json
+            research/R268/R268_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all original R268 source types
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R268/R268_ALL_3312_BERNOULLI_ORDERED_SOURCE_TYPES.csv research/R268/R268_EXACT_RESULTS.json research/R268/R268_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R268): all 3312 Bernoulli ordered source types and exact selection probabilities'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R268_FULL_3312_ORDERED_BERNOULLI_AIC_BIC_SOURCE_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
