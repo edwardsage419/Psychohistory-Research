@@ -1,0 +1,153 @@
+{
+  "research_id": "R286",
+  "catalogue_original_id": "02-002",
+  "prescore_freeze_commit": "d055e14831565571ca9e953d311b55e7eed9ef42",
+  "scope": "BOUNDED_E1_SYNTHETIC_TD0_TRAINING_TIME_VS_MC_AND_REORDERING",
+  "original_worlds": 9,
+  "model_labeled_complete_source_types": 576,
+  "no_real_experimental_E2": 0,
+  "no_real_historical_E3": 0,
+  "actual_train_episodes": 5,
+  "heldout_future_episodes": 1,
+  "no_heldout_bit_ever_used_for_training": true,
+  "reverse_order_is_separate_offline_schedule_not_online_TD0": true,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "results": [
+    {
+      "true_p": "1/4",
+      "policy": "TD0_ONLINE_CORRECT",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "57/256",
+      "independent_coefficient_moment_risk": "57/256",
+      "train_A_reward_coefficients": [
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4",
+        "0"
+      ],
+      "independent_method_agreement": true
+    },
+    {
+      "true_p": "1/4",
+      "policy": "MC_COMPLETE_RETURN",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "1/4",
+      "independent_coefficient_moment_risk": "1/4",
+      "train_A_reward_coefficients": [
+        "1/32",
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2"
+      ],
+      "independent_method_agreement": true
+    },
+    {
+      "true_p": "1/4",
+      "policy": "B_THEN_A_UPDATED_BOOTSTRAP",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "3643/16384",
+      "independent_coefficient_moment_risk": "3643/16384",
+      "train_A_reward_coefficients": [
+        "5/64",
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4"
+      ],
+      "independent_method_agreement": true
+    },
+    {
+      "true_p": "1/2",
+      "policy": "TD0_ONLINE_CORRECT",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "155/512",
+      "independent_coefficient_moment_risk": "155/512",
+      "train_A_reward_coefficients": [
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4",
+        "0"
+      ],
+      "independent_method_agreement": true
+    },
+    {
+      "true_p": "1/2",
+      "policy": "MC_COMPLETE_RETURN",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "683/2048",
+      "independent_coefficient_moment_risk": "683/2048",
+      "train_A_reward_coefficients": [
+        "1/32",
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2"
+      ],
+      "independent_method_agreement": true
+    },
+    {
+      "true_p": "1/2",
+      "policy": "B_THEN_A_UPDATED_BOOTSTRAP",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "2445/8192",
+      "independent_coefficient_moment_risk": "2445/8192",
+      "train_A_reward_coefficients": [
+        "5/64",
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4"
+      ],
+      "independent_method_agreement": true
+    },
+    {
+      "true_p": "3/4",
+      "policy": "TD0_ONLINE_CORRECT",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "123/512",
+      "independent_coefficient_moment_risk": "123/512",
+      "train_A_reward_coefficients": [
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4",
+        "0"
+      ],
+      "independent_method_agreement": true
+    },
+    {
+      "true_p": "3/4",
+      "policy": "MC_COMPLETE_RETURN",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "513/2048",
+      "independent_coefficient_moment_risk": "513/2048",
+      "train_A_reward_coefficients": [
+        "1/32",
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2"
+      ],
+      "independent_method_agreement": true
+    },
+    {
+      "true_p": "3/4",
+      "policy": "B_THEN_A_UPDATED_BOOTSTRAP",
+      "original_source_count": 64,
+      "exact_mean_heldout_Brier": "3741/16384",
+      "independent_coefficient_moment_risk": "3741/16384",
+      "train_A_reward_coefficients": [
+        "5/64",
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4"
+      ],
+      "independent_method_agreement": true
+    }
+  ]
+}
