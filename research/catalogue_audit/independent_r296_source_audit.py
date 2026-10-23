@@ -90,7 +90,7 @@ def verify(rows,results):
     if results["blocking_under_A_pretraining_for_both_alphas"] is not True:raise AssertionError("false blocking claim")
     if results["unblocking_under_reward_upshift_for_both_alphas"] is not True:raise AssertionError("false upshift claim")
     return {"original_full_states":40,"artificial_trajectory_worlds":8,
-       "original_trials_reconstructed":sum(8+m for _,pre,_ in WORLDS for m in STAGES) if False else 0,
+       "original_trials_reconstructed":sum(pre+m for _,pre,_ in WORLDS for m in STAGES),
        "blocking_each_alpha":"PASS","reward_upshift_each_alpha":"PASS",
        "independent_negative_control":"PASS","added_human_E2":0,"added_animal_E2":0,"added_historical_E3":0}
 
