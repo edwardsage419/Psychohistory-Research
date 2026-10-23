@@ -1,0 +1,122 @@
+name: R277 Markov Misspecification Full Source Audit
+on:
+  push:
+    paths:
+      - 'research/R277/r277_exact_misspecification_markov.py'
+      - '.github/workflows/r277-exact-markov-misspecification-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run all 50 genuine sixbit Markov misspecification unit tests
+        run: python research/R277/r277_exact_misspecification_markov.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit all 192 complete original Markov sources and exact 3 transition PMFs
+        run: |
+          python research/R277/r277_exact_misspecification_markov.py --emit
+          python - <<'PY'
+          import csv,json,itertools,hashlib
+          from pathlib import Path
+          from fractions import Fraction as F
+          from math import comb
+          from collections import defaultdict
+          root=Path('research/R277')
+          src=root/'R277_ALL_192_ORIGINAL_MARKOV_MISSPECIFICATION_SOURCES.csv'
+          out=root/'R277_EXACT_RESULTS.json'
+          rows=list(csv.DictReader(src.open()))
+          results=json.loads(out.read_text())
+          receipt=json.loads((root/'R277_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==192 and len(results['world_results'])==3
+          assert results['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='923a161bbdc012c138e53f1fa316e6085ff2704e'
+          assert results['original_catalogue_id']=='12-007'
+          assert receipt['source_sha256']==hashlib.sha256(src.read_bytes()).hexdigest()
+          assert receipt['results_sha256']==hashlib.sha256(out.read_bytes()).hexdigest()
+          grouped=defaultdict(list)
+          for row in rows:grouped[row['true_regime']].append(row)
+          assert len(grouped)==3
+          full={' '.join(c) for c in ()} # empty inert setup; actual source set immediately below
+          full={''.join(bits) for bits in itertools.product('01',repeat=6)}
+          for w in results['world_results']:
+              name=w['true_regime'];s=F(w['transition_stay_s'])
+              sub=grouped[name]
+              assert len(sub)==64 and {r['original_sixbit_ordered_sequence'] for r in sub}==full
+              pmf=defaultdict(lambda:F(0))
+              marginal=[F(0)]*6
+              total=hi=lo=F(0)
+              for row in sub:
+                  seq=row['original_sixbit_ordered_sequence']
+                  stays=[int(seq[i]==seq[i+1]) for i in range(5)]
+                  t=sum(stays)
+                  mass=F(1,2)*s**t*(1-s)**(5-t)
+                  assert row['original_five_stay_indicators']==''.join(map(str,stays))
+                  assert int(row['original_number_of_equal_adjacent_transitions'])==t
+                  assert F(row['actual_transition_stay_probability'])==s
+                  assert F(row['exact_original_sequence_mass'])==mass
+                  assert F(row['frozen_individual_prediction_probability'])==F(1,2)
+                  assert row['original_six_individual_Brier_losses']==';'.join(['1/4']*6)
+                  assert F(row['original_mean_individual_Brier'])==F(1,4)
+                  assert int(row['preregistered_high_persistence_flag'])==int(t>=4)
+                  assert int(row['preregistered_low_persistence_flag'])==int(t<=1)
+                  pmf[t]+=mass;total+=mass
+                  hi+=mass*int(t>=4);lo+=mass*int(t<=1)
+                  for i,c in enumerate(seq):marginal[i]+=mass*int(c)
+              assert total==1
+              assert marginal==[F(1,2)]*6
+              for t in range(6):
+                  assert pmf[t]==F(comb(5,t))*s**t*(1-s)**(5-t)
+              assert w['transition_stay_count_PMF']=={str(k):str(pmf[k]) for k in range(6)}
+              assert str(sum((F(k)*pmf[k] for k in range(6)),F(0)))==w['expected_number_of_equal_adjacent_transitions']
+              assert hi==5*s**4*(1-s)+s**5
+              assert lo==(1-s)**5+5*s*(1-s)**4
+              assert str(hi)==w['probability_of_high_persistence_region_T_at_least_4']
+              assert str(lo)==w['probability_of_low_persistence_region_T_at_most_1']
+              assert w['independent_Binomial_5_s_calculation_match']
+          assert results['no_real_human_E2']==results['no_real_historical_E3']==0
+          print('R277_ALL_192_ORDERED_MARKOV_SOURCES_THREE_BINOMIAL_PMF_MISSPEC_CHECKS_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R277-All-192-Markov-Misspecification-Primitive-Sources
+          path: |
+            research/R277/R277_ALL_192_ORIGINAL_MARKOV_MISSPECIFICATION_SOURCES.csv
+            research/R277/R277_EXACT_RESULTS.json
+            research/R277/R277_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all 192 source atoms and result hashes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R277/R277_ALL_192_ORIGINAL_MARKOV_MISSPECIFICATION_SOURCES.csv research/R277/R277_EXACT_RESULTS.json research/R277/R277_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R277): all 192 finite Markov misspecification source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R277_ALL_192_COMPLETE_MARKOV_MISSPECIFICATION_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
