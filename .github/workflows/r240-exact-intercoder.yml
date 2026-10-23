@@ -52,7 +52,7 @@ jobs:
               assert sum((F(x['original_structural_source_probability']) for x in subset),F(0))==1
               assert len({tuple(x['oracle_original_'+key] for key in ('T','U','E1','E2','E3','E4','E5','E6')) for x in subset})==256
               table=r['observed_pair_table_2x2']
-              assert len(table)==4 and sum(table.values())==r['observed_population_agreement_metrics']['selected_source_units']
+              assert len(table)==4 and sum(table.values())==int(r['observed_population_agreement_metrics']['selected_source_units'])
               assert sum((F(v) for v in r['full_observed_selection_and_coder_joint'].values()),F(0))==1
               assert 0<=F(r['oracle_accuracy_to_hidden_gold_T'][0])<=1
               assert 0<=F(r['oracle_accuracy_to_hidden_gold_T'][1])<=1
