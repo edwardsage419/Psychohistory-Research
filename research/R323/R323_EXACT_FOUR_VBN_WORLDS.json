@@ -1,0 +1,56 @@
+{
+  "schema": "r323_schematic_vbn_mediation_e1_v1",
+  "original_catalogue_id": "01-015",
+  "artificial_schematic_only": true,
+  "original_source_rows": 128,
+  "worlds": [
+    {
+      "world_id": 0,
+      "policy": "vbn_cascade",
+      "state_count": 32,
+      "personal_norm_positive_count": 2,
+      "action_positive_count": 1,
+      "personal_norm_rate": "1/16",
+      "action_rate": "1/32",
+      "action_when_C_zero_count": 0
+    },
+    {
+      "world_id": 1,
+      "policy": "direct_product",
+      "state_count": 32,
+      "personal_norm_positive_count": 0,
+      "action_positive_count": 1,
+      "personal_norm_rate": "0",
+      "action_rate": "1/32",
+      "action_when_C_zero_count": 0
+    },
+    {
+      "world_id": 2,
+      "policy": "unconstrained_norm",
+      "state_count": 32,
+      "personal_norm_positive_count": 2,
+      "action_positive_count": 2,
+      "personal_norm_rate": "1/16",
+      "action_rate": "1/16",
+      "action_when_C_zero_count": 1
+    },
+    {
+      "world_id": 3,
+      "policy": "value_feasible",
+      "state_count": 32,
+      "personal_norm_positive_count": 16,
+      "action_positive_count": 8,
+      "personal_norm_rate": "1/2",
+      "action_rate": "1/4",
+      "action_when_C_zero_count": 0
+    }
+  ],
+  "pairwise_action_disagreement_counts": {
+    "vbn_cascade|direct_product": 0,
+    "vbn_cascade|unconstrained_norm": 1,
+    "vbn_cascade|value_feasible": 7,
+    "direct_product|unconstrained_norm": 1,
+    "direct_product|value_feasible": 7,
+    "unconstrained_norm|value_feasible": 8
+  }
+}

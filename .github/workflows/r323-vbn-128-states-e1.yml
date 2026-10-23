@@ -1,0 +1,29 @@
+name: R323 finite VBN mediation identification E1
+on:
+  push:
+    paths:
+      - 'research/R323/**'
+      - 'research/catalogue_audit/independent_r323_vbn_audit.py'
+      - '.github/workflows/r323-vbn-128-states-e1.yml'
+  workflow_dispatch:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R323/r323_vbn.py --test
+      - run: python research/R323/r323_vbn.py --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/independent_r323_vbn_audit.py
