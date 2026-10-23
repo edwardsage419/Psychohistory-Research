@@ -114,6 +114,18 @@ jobs:
           git add research/R252/R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv research/R252/R252_EXACT_RESULTS.json research/R252/R252_FINAL_MACHINE_ACCEPTANCE.json
           if ! git diff --cached --quiet; then
             git commit -m 'archive(R252): all 576 original six-bit entropy and information source atoms'
-            git pull --rebase origin main
-            git push origin HEAD:main
+            # Independent downstream documentation updates may land after the fetch.
+            # Rebase and retry rather than force-pushing or dropping original source files.
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R252_ALL_ORIGINAL_576_SOURCES_PERMANENTLY_ARCHIVED'
+                exit 0
+              fi
+              echo "Push raced with another main update: retry $attempt"
+              sleep 2
+            done
+            echo 'R252 archive push failed after retries'
+            exit 1
           fi
