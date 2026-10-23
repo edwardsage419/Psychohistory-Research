@@ -1,0 +1,16 @@
+# R316 pre-score freeze: original239 04-019 stochastic block model two known blocks, exact Bernoulli enumeration
+
+Date 2026-10-24 Asia/Taipei. Original catalogue 04-019 (P1). Evidence target BOUNDED SYNTHETIC EXACT E1 only.
+
+Primary source Holland, Laskey & Leinhardt (1983), *Stochastic blockmodels: First steps*, Social Networks 5(2):109–137, DOI https://doi.org/10.1016/0378-8733(83)90021-7 . This finite example is a **specified undirected independent-edge planted partition special case** with known labels, not a reproduction of the original paper's reciprocity extension or fitted empirical study.
+
+## Frozen complete experiment universe
+
+1. Four labeled nodes 0,1,2,3. Two fixed known block labels: z=(0,0,1,1). No label inference or permutations. Six unordered dyads in lexicographic order (0,1),(0,2),(0,3),(1,2),(1,3),(2,3). Two within-block dyads and four cross-block dyads.
+2. Exactly two known-parameter worlds: A assortative (p_within=3/4,p_cross=1/4), D disassortative (p_within=1/4,p_cross=3/4). Every dyad's edge independent Bernoulli conditional on z and the chosen A/D regime. No latent node random effects or degree correction.
+3. Each regime enumerates all 2^6=64 undirected simple graphs, represented by 6 bits in the dyad order, from mask0=000000 to mask63=111111. Source unit is one **graph-dyad probability atom**, 2 regimes ×64 complete graphs ×6 dyads = **768 original atomic source rows**; produce **128 full graph probabilities**, all exact fractions. Every source row must record regime, mask, binary edge vector, dyad, within/cross class, edge presence, edge probability parameter, realized Bernoulli factor, and the complete graph likelihood.
+4. Verify every complete graph probability is product of its six source factors; sum over 64 graph probabilities equals exactly one separately in both A and D; positive masses and edge-count expected values equal A 5/2 and D 7/2. Expected within-edge counts A 3/2,D 1/2; expected cross A 1,D 3. The graph with both within edges and no cross edges (binary bits100001, mask33) has A likelihood 729/4096 and D likelihood 1/4096, exact Bayes factor729. Empty graph A 81/4096 and D 9/4096; full complete graph A 9/4096 and D 81/4096.
+5. Bounded finite inference calculation may compare likelihood ratio A/D under **equal prior odds**, but must not infer actual block labels, estimate parameters or assert posterior predictive calibration. Exact total variation of the two enumerated known-parameter distributions may be calculated only without selecting samples or thresholds afterward.
+6. Independently audit all 768 CSV atoms and 128 complete graphs without importing main implementation; separately derive source probabilities and total mass, use a different algorithm or factorial/binomial combinatorial grouping. Pure Python3.11/3.12 generator at least20 tests and independent CI all 3 jobs success. Git blobs and CI run captured, then only 04-019 may be changed in original239 catalogue v3.3.
+7. Real human E2=0, historical E3=0, source is artificial graphs not social ties observed among people. No network causal effect, correct model selection in unknown SBM, graph community detection accuracy or temporal forecasts.
+8. R073/PESEN v0.1 remain frozen. Complete full R-series study and audit before unified classification and last fusion.
