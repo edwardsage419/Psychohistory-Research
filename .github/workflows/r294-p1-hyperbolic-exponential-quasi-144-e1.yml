@@ -1,0 +1,67 @@
+name: R294 Hyperbolic Exponential Quasi 144 Decisions Exact E1
+on:
+  push:
+    paths:
+      - 'research/R294/r294_exact_discounting_time_inconsistency.py'
+      - 'research/catalogue_audit/independent_r294_source_audit.py'
+      - '.github/workflows/r294-p1-hyperbolic-exponential-quasi-144-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  double-python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 583 model mathematical unit tests
+        run: python research/R294/r294_exact_discounting_time_inconsistency.py --test
+      - name: Generate and independently audit 144 paired-date decisions
+        run: |
+          python research/R294/r294_exact_discounting_time_inconsistency.py --emit
+          python research/catalogue_audit/independent_r294_source_audit.py --test
+          python research/catalogue_audit/independent_r294_source_audit.py --audit
+  independent-source-archive:
+    needs: double-python
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently rebuild every discount preference and reversal
+        run: |
+          python research/R294/r294_exact_discounting_time_inconsistency.py --emit
+          python research/catalogue_audit/independent_r294_source_audit.py --test
+          python research/catalogue_audit/independent_r294_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R294-72-Worlds-144-Original-Decision-Sources
+          path: |
+            research/R294/R294_ALL_144_EXACT_INTERTEMPORAL_DECISION_SOURCES.csv
+            research/R294/R294_EXACT_DISCOUNT_REVERSALS.json
+            research/R294/R294_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive original 144 decisions, exact results and SHA256
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R294/R294_ALL_144_EXACT_INTERTEMPORAL_DECISION_SOURCES.csv research/R294/R294_EXACT_DISCOUNT_REVERSALS.json research/R294/R294_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R294): exact 144 two-date discount choices and independently checked reversals'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R294_FULL_DECISIONS_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
