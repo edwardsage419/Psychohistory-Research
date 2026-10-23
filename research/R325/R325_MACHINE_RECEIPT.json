@@ -1,0 +1,61 @@
+{
+  "research_id": "R325",
+  "original_catalogue_id": "01-020",
+  "protocol_commit": "2d4fec87becfc46b6f66da1db5187b557afdcb53",
+  "protocol_path": "protocols/R325_REGRET_THEORY_1029_ARTIFICIAL_STATEWISE_DIFFERENCE_PRESCORE_FREEZE_2026-10-24.md",
+  "protocol_blob_sha1": "c9cca57618d2c1d5a4b3e391c865a50bac60c306",
+  "original_source_commit": "73c847c4be895b806621d929f80f20439b166c11",
+  "verified_source_artifacts": [
+    {
+      "path": "research/R325/r325_regret.py",
+      "git_blob_sha1": "e1fd070d271fa9a5516515e162d9057a47e76f46"
+    },
+    {
+      "path": "research/R325/R325_ALL_1029_ARTIFICIAL_REGRET_STATES.csv",
+      "git_blob_sha1": "b4964ef88aded2c9bd2a70280c067176fedcd597"
+    },
+    {
+      "path": "research/R325/R325_EXACT_THREE_REGRET_WORLDS.json",
+      "git_blob_sha1": "05e0b2e1f582420ea4aa510aaa9ba9b56dcd57a9"
+    },
+    {
+      "path": "research/catalogue_audit/independent_r325_regret_audit.py",
+      "git_blob_sha1": "c798bd1ce671c559f41d5d634ce09ff45ece965b"
+    }
+  ],
+  "verification": {
+    "CI_run_id": 40021709853,
+    "CI_run_conclusion": "success",
+    "jobs": [
+      {
+        "id": 120647619362,
+        "name": "unit (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120647619704,
+        "name": "unit (3.12)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120647619823,
+        "name": "independent",
+        "conclusion": "success"
+      }
+    ],
+    "python_311_tests": 26,
+    "python_312_tests": 26,
+    "independent_no_import_audit": "PASS",
+    "original_artificial_rows": 1029,
+    "world_count": 3,
+    "strict_eu_regret_reversal_counts": [
+      0,
+      6,
+      6
+    ]
+  },
+  "evidence_scope": "PROJECT_CONSTRUCTED_CUBIC_STATEWISE_REGRET_E1_ONLY",
+  "real_human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED",
+  "original_1982_replication": "NOT_ESTABLISHED"
+}
