@@ -71,9 +71,9 @@ jobs:
               assert r['all_source_vectors_direct_matvec_vs_independent_walks_verified']
               assert r['exact_independent_bernoulli_edge_mask_probability_parity']
               assert sum((F(x) for x in r['complete_sixbit_edge_weight_joint'].values()),F(0))==1
-              mean_rho=sum((F(z['oracle_spectral_radius_squared'],2048) for z in sub),F(0))
-              mean_a=sum((F(z['oracle_largest_eigenvalue_rational_coefficient'],2048) for z in sub),F(0))
-              mean_b=sum((F(z['oracle_largest_eigenvalue_sqrt2_coefficient'],2048) for z in sub),F(0))
+              mean_rho=sum((F(int(z['oracle_spectral_radius_squared']),2048) for z in sub),F(0))
+              mean_a=sum((F(int(z['oracle_largest_eigenvalue_rational_coefficient']),2048) for z in sub),F(0))
+              mean_b=sum((F(int(z['oracle_largest_eigenvalue_sqrt2_coefficient']),2048) for z in sub),F(0))
               assert (str(mean_rho),str(mean_a),str(mean_b))==(rho,a,b)
               for z in sub:
                   e=tuple(int(z['observed_edge_weight_w'+n]) for n in ('01','02','12'))
