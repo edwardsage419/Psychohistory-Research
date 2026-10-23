@@ -1,0 +1,39 @@
+name: Original239 R317 Temporal Crosswalk v3.4
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r317_crosswalk_v3_4.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.4_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_28_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p1-r317-crosswalk-v34.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify original239 source identity only R317 04-022
+        run: python research/catalogue_audit/verify_p1_r317_crosswalk_v3_4.py --test
+  independent-temporal:
+    needs: two-python
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify R317 original temporal sources
+        run: python research/catalogue_audit/independent_r317_temporal_source_audit.py --audit
+      - name: Verify original239 v3.4 and R317 Git blob identities
+        run: python research/catalogue_audit/verify_p1_r317_crosswalk_v3_4.py --audit
