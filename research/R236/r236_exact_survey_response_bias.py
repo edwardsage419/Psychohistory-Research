@@ -295,7 +295,7 @@ def _case(world,kind):
         if kind=="mass":
             self.assertEqual(sum((r["original_probability"] for r in rows),ZERO),ONE)
         elif kind=="unique":
-            self.assertEqual(len({tuple(r["oracle_original_"+k] for k in SOURCES) for r in rows}),64)
+            self.assertEqual(len({(r["oracle_original_T"],r["oracle_original_S"],r["oracle_original_U"],r["oracle_original_R"],r["oracle_proxy_ascertainment_E1"],r["oracle_proxy_ascertainment_E2"]) for r in rows}),64)
         elif kind=="observable":
             self.assertEqual(observed_joint_from_sources(world),independent_observed_joint(world))
         elif kind=="intervention":
