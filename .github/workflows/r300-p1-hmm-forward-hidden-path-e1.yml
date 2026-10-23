@@ -1,0 +1,67 @@
+name: R300 Hidden Markov Model Forward and Hidden-Path Exact E1
+on:
+  push:
+    paths:
+      - 'research/R300/r300_exact_hmm_forward_filter.py'
+      - 'research/catalogue_audit/independent_r300_source_audit.py'
+      - '.github/workflows/r300-p1-hmm-forward-hidden-path-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-hmm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 394 exact original HMM forward model tests
+        run: python research/R300/r300_exact_hmm_forward_filter.py --test
+      - name: Emit all 128 original source cells and enumerate latent paths independently
+        run: |
+          python research/R300/r300_exact_hmm_forward_filter.py --emit
+          python research/catalogue_audit/independent_r300_source_audit.py --test
+          python research/catalogue_audit/independent_r300_source_audit.py --audit
+  independently-archive:
+    needs: dual-python-exact-hmm
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent complete 128 HMM source/hidden-path and source SHA256 audit
+        run: |
+          python research/R300/r300_exact_hmm_forward_filter.py --emit
+          python research/catalogue_audit/independent_r300_source_audit.py --test
+          python research/catalogue_audit/independent_r300_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R300-128-HMM-Forward-Source-Paths
+          path: |
+            research/R300/R300_ALL_128_ORIGINAL_HMM_PREFIX_SOURCES.csv
+            research/R300/R300_EXACT_HMM_FORWARD_RESULTS.json
+            research/R300/R300_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive original HMM 128 source cells and exact result byte hashes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R300/R300_ALL_128_ORIGINAL_HMM_PREFIX_SOURCES.csv research/R300/R300_EXACT_HMM_FORWARD_RESULTS.json research/R300/R300_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R300): 128 exact HMM observation prefixes and hidden-path audits'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R300_HMM_SOURCE_RESULTS_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
