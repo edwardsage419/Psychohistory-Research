@@ -72,7 +72,7 @@ jobs:
               raw=path.read_bytes()
               blob=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\x00'+raw).hexdigest()
               assert blob==r['readme_git_blob_sha1']
-              found=list(re.finditer(r'\b(?:0[1-9]|1[012])-\d{3}\b',raw.decode('utf-8')))
+              found=list(re.finditer(r'(?<![A-Za-z0-9])(?:0[1-9]|1[012])-\d{3}(?![A-Za-z0-9])',raw.decode('utf-8')))
               assert found and found[0].start()==r['readme_first_token_offset']
               expected=found[0].group()
               if id=='R173':
