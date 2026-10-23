@@ -1,0 +1,6 @@
+# Original239 v4.5 R327 itemwise bounded evidence crosswalk
+Date: 2026-10-24. Starting v4.4 at main e340c49bc8e8d11b9db1dcb44779a318054b98a0. Candidate 02-009 POMDP, P2, was the first item of the 18-item queue. Checked R300 HMM, R298 model-based replanning, R112 Bayesian updating and R326 hierarchical Bayes for strict reuse; no exact costly sensing policy was established in those reports. Early ZIP content review remains open.
+
+R327 prescore protocol commit e40b9f4252afb2b31efc9977091057fa1480ff15 precedes original source commit 62f73f8a3cddb86c7d838283cac35c105e60669d. R327 science CI run 40029054228 passed all three jobs with 72 original artificial hidden-state/observation paths, 18 prior/accuracy worlds, exact byte replay and independent contingent-policy enumeration with corruption rejection. Only project-defined E1 finite one-sense POMDP evidence is attributed. No human E2, historical E3, original 1973/1998 empirical replication or general POMDP validation.
+
+This v4.5 modifies only candidate 02-009, preserves original 239 identity and ordering, and updates counts to 219 primary R, 3 shared finite mathematics, 17 pending, 173 provisional README mappings. The next pending candidate is 02-010 Predictive Processing. Provisional links are not scientific acceptances. R073 and PESEN v0.1 frozen; classification, fusion and personal decision system deferred.
