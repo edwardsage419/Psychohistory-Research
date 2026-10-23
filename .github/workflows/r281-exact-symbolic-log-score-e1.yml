@@ -1,0 +1,139 @@
+name: R281 Symbolic Log Score Strict Propriety and Infinite Boundary Audit
+on:
+  push:
+    paths:
+      - 'research/R281/r281_exact_symbolic_log_score.py'
+      - '.github/workflows/r281-exact-symbolic-log-score-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute all 134 symbolic log-score source and infinite boundary tests
+        run: python research/R281/r281_exact_symbolic_log_score.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit all 240 exact log score primitive source atoms and infinity risks
+        run: |
+          python research/R281/r281_exact_symbolic_log_score.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from fractions import Fraction as F
+          from pathlib import Path
+          from collections import defaultdict
+          root=Path('research/R281')
+          src=root/'R281_ALL_240_ORIGINAL_LOG_SCORE_SYMBOLIC_SOURCES.csv'
+          jp=root/'R281_EXACT_RESULTS.json'
+          rows=list(csv.DictReader(src.open()))
+          result=json.loads(jp.read_text())
+          receipt=json.loads((root/'R281_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==240 and len(result['world_results'])==15
+          assert result['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='cbf8eec7db1ab7d78e4c8d3a03b0e0ae5acad2f3'
+          assert result['original_catalogue_id']=='12-011'
+          for file,key in ((src,'source_sha256'),(jp,'results_sha256')):
+              assert receipt[key]==hashlib.sha256(file.read_bytes()).hexdigest()
+          grouped=defaultdict(list)
+          for r in rows:grouped[r['world']].append(r)
+          original={''.join(bits) for bits in itertools.product('01',repeat=4)}
+          assert len(grouped)==15
+          for w in result['world_results']:
+              p=F(w['true_p']);q=F(w['reported_q'])
+              rows=grouped[w['world']]
+              assert len(rows)==16 and {r['original_complete_fourbit_source'] for r in rows}==original
+              total=inf=log2=log3=F(0)
+              for r in rows:
+                  bits=r['original_complete_fourbit_source'];k=bits.count('1')
+                  mass=p**k*(1-p)**(4-k)
+                  assert F(r['true_p'])==p and F(r['reported_q'])==q
+                  assert F(r['original_source_probability'])==mass
+                  assert int(r['original_success_count'])==k
+                  tokens=[]
+                  for bit in bits:
+                      if q==0:part=(F(0),F(0)) if bit=='0' else None
+                      elif q==1:part=(F(0),F(0)) if bit=='1' else None
+                      elif q==F(1,4):part=(F(2),F(0)) if bit=='1' else (F(2),F(-1))
+                      elif q==F(1,2):part=(F(1),F(0))
+                      else:
+                          assert q==F(3,4)
+                          part=(F(2),F(-1)) if bit=='1' else (F(2),F(0))
+                      tokens.append('INF' if part is None else str(part[0])+','+str(part[1]))
+                  assert r['original_four_symbolic_log_losses']==';'.join(tokens)
+                  bad=int('INF' in tokens)
+                  assert int(r['full_sample_infinite_log_loss_flag'])==bad
+                  if bad:
+                      assert r['source_mean_log2_coefficient']==''
+                      assert r['source_mean_log3_coefficient']==''
+                      inf+=mass
+                  else:
+                      a=sum((F(t.split(',')[0]) for t in tokens),F(0))/4
+                      b=sum((F(t.split(',')[1]) for t in tokens),F(0))/4
+                      assert F(r['source_mean_log2_coefficient'])==a
+                      assert F(r['source_mean_log3_coefficient'])==b
+                      log2+=mass*a;log3+=mass*b
+                  total+=mass
+              assert total==1
+              assert str(inf)==w['event_probability_infinite_log_score']
+              if q==0:
+                  assert inf==1-(1-p)**4
+              elif q==1:
+                  assert inf==1-p**4
+              else:
+                  assert inf==0
+                  if q==F(1,4):expected=(F(2),-(1-p))
+                  elif q==F(1,2):expected=(F(1),F(0))
+                  else:expected=(F(2),-p)
+                  assert (log2,log3)==expected
+                  assert (str(log2),str(log3))==(w['expected_log2_coefficient'],w['expected_log3_coefficient'])
+                  if p==F(1,2):truth=(F(1),F(0))
+                  else:truth=(F(2),F(-3,4))
+                  assert (str(log2-truth[0]),str(log3-truth[1]))==(
+                    w['expected_regret_log2_coefficient'],w['expected_regret_log3_coefficient'])
+              assert w['expected_log_score_infinite']==(q in (0,1))
+              assert w['analytic_score_and_infinite_probability_match']
+          assert result['no_real_human_E2']==result['no_real_historical_E3']==0
+          print('R281_ALL_240_ORDERED_SYMBOLIC_LOG_SOURCES_AND_15_INFINITY_AWARE_WORLD_RISKS_PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R281-All-240-Symbolic-Log-Score-Sources
+          path: |
+            research/R281/R281_ALL_240_ORIGINAL_LOG_SCORE_SYMBOLIC_SOURCES.csv
+            research/R281/R281_EXACT_RESULTS.json
+            research/R281/R281_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all exact symbolic log-score source atoms
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R281/R281_ALL_240_ORIGINAL_LOG_SCORE_SYMBOLIC_SOURCES.csv research/R281/R281_EXACT_RESULTS.json research/R281/R281_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R281): all 240 symbolic log-score primitive source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R281_ALL_240_SYMBOLIC_LOG_SCORE_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
