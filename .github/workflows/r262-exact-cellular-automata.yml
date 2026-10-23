@@ -1,0 +1,146 @@
+name: R262 Elementary Cellular Automata Seven Ring Full Source
+on:
+  push:
+    paths:
+      - 'research/R262/r262_exact_elementary_ca.py'
+      - '.github/workflows/r262-exact-cellular-automata.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-ca-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 5760 full seven-ring cellular automata source atoms by two independent transition routes
+        run: python research/R262/r262_exact_elementary_ca.py --test
+  original-seven-ring-archive:
+    needs: dual-python-ca-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate source and independently rebuild all ECA truth tables, states and information losses
+        run: |
+          python research/R262/r262_exact_elementary_ca.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from pathlib import Path
+          from fractions import Fraction as F
+          from collections import Counter
+          d=Path('research/R262')
+          rows=list(csv.DictReader((d/'R262_ALL_5760_ORIGINAL_SEVEN_RING_CA_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R262_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R262_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(rows)==5760 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-022'
+          assert j['prescore_freeze_commit']=='8dc5cbb95ed011e5fd190d42e63336df938ccd40'
+          rules={
+           'ABSORB_ZERO':(0,'00000000',1,1,['1/2','0','0','0','0']),
+           'ABSORB_ONE':(255,'11111111',1,1,['1/2','1','1','1','1']),
+           'IDENTITY':(204,'11001100',128,128,['1/2']*5),
+           'SHIFT_RIGHT':(170,'10101010',128,2,['1/2']*5),
+           'SHIFT_LEFT':(240,'11110000',128,2,['1/2']*5),
+           'XOR_NEIGHBORS':(90,'01011010',64,1,['1/2']*5),
+           'XOR_THREE':(150,'10010110',128,2,['1/2']*5),
+           'RULE30':(30,'00011110',106,1,['1/2','1/2','1/2','1/2','61/128']),
+           'RULE110':(110,'01101110',79,1,['1/2','5/8','17/32','33/64','17/32'])}
+          by={w['world']:w for w in j['world_results']}
+          assert set(by)==set(rules)
+          init_all=list(itertools.product((0,1),repeat=7))
+          patterns=('111','110','101','100','011','010','001','000')
+          def independent_table_step(state,table):
+              new=[]
+              for i in range(7):
+                  key=''.join(str(state[k%7]) for k in (i-1,i,i+1))
+                  new.append(int(table[patterns.index(key)]))
+              return tuple(new)
+          full={}
+          for w,r in by.items():
+              rule,table,images,fixed,expected_density=rules[w]
+              src=[z for z in rows if z['world']==w]
+              assert len(src)==640
+              keys=['original_initial_cell_bit_'+str(k) for k in range(7)]+['observed_time_index_n']
+              assert len({tuple(z[k] for k in keys) for z in src})==640
+              assert all(F(z['original_complete_initial_and_time_design_mass'])==F(1,640) for z in src)
+              assert sum((F(z['original_complete_initial_and_time_design_mass']) for z in src),F(0))==1
+              assert int(r['frozen_Wolfram_rule'])==rule
+              assert r['frozen_truth_table_111_to_000']==table
+              assert r['one_step_distinct_full_sevenbit_images']==images
+              assert r['one_step_original_initial_fixed_point_count']==fixed
+              assert r['all_five_time_uniform_original_source_expected_one_density']==expected_density
+              assert r['all_128_initials_all_5_times_independent_truth_table_parity']
+              paths={}
+              for orig in init_all:
+                  state=orig
+                  path=[orig]
+                  for n in (1,2,3,4):
+                      state=independent_table_step(state,table)
+                      path.append(state)
+                  paths[orig]=tuple(path)
+              full[w]=paths
+              assert len(set(paths[o][1] for o in init_all))==images
+              assert sum(paths[o][1]==o for o in init_all)==fixed
+              for n in range(5):
+                  density=F(sum(sum(paths[o][n]) for o in init_all),7*128)
+                  assert str(density)==expected_density[n]
+              for z in src:
+                  orig=tuple(int(z['original_initial_cell_bit_'+str(k)]) for k in range(7))
+                  n=int(z['observed_time_index_n'])
+                  v=tuple(int(z['observed_cell_state_'+str(k)+'_at_time']) for k in range(7))
+                  assert v==paths[orig][n]
+                  assert sum(v)==int(z['observed_number_cells_in_state_1'])
+                  assert sum(v)%2==int(z['observed_global_state_parity'])
+                  assert int(z['frozen_Wolfram_rule_decimal'])==rule
+          outputs=[full['XOR_NEIGHBORS'][o][1] for o in init_all]
+          pre=Counter(outputs)
+          assert len(pre)==64 and set(pre.values())=={2}
+          assert all(sum(y)%2==0 for y in outputs)
+          m150=[full['XOR_THREE'][o][1] for o in init_all]
+          assert len(set(m150))==128
+          assert all(sum(o)%2==sum(y)%2 for o,y in zip(init_all,m150))
+          assert all(all(sum(a)==sum(b) for a,b in zip(full['SHIFT_LEFT'][o],full['SHIFT_RIGHT'][o])) for o in init_all)
+          assert sum(full['SHIFT_LEFT'][o][1]!=full['SHIFT_RIGHT'][o][1] for o in init_all)==126
+          for filename,key in [('R262_ALL_5760_ORIGINAL_SEVEN_RING_CA_SOURCE_ATOMS.csv','source_sha256'),
+                               ('R262_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R262_ALL_5760_ORIGINAL_SEVEN_RING_CA_STATES_AND_INDEPENDENT_TRUTH_TABLES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R262-Elementary-SevenRing-5760-Full-Original-Sources
+          path: |
+            research/R262/R262_ALL_5760_ORIGINAL_SEVEN_RING_CA_SOURCE_ATOMS.csv
+            research/R262/R262_EXACT_RESULTS.json
+            research/R262/R262_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all 5760 original seven-ring cellular source atoms
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R262/R262_ALL_5760_ORIGINAL_SEVEN_RING_CA_SOURCE_ATOMS.csv research/R262/R262_EXACT_RESULTS.json research/R262/R262_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R262): all 5760 original finite elementary cellular source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R262_ALL_5760_ORIGINAL_SEVEN_RING_SOURCES_PERMANENTLY_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
