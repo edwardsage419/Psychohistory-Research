@@ -1,0 +1,7 @@
+# Original239 v4.1: R323 schematic VBN E1, 215 primary / 21 pending
+
+Date 2026-10-24. Exactly original **01-015 Value Belief Norm Theory (P2)** changes to R323 bounded E1 provenance. Previous 238 rows remain unchanged. 239 candidates: **215 primary, 3 shared bounded mathematics, 21 P2 pending**; 173 provisional README links remain provisional.
+
+R323 prescore protocol [54aee0ea](https://github.com/edwardsage419/Psychohistory-Research/commit/54aee0ea3e5153396b167249ce7f75afa95a6756) preceded 128 artificial original source states [0e560dc9](https://github.com/edwardsage419/Psychohistory-Research/commit/0e560dc9be36534a65e8325dcc18d06adb12a341). [Three-job CI run 40015028540](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40015028540) all success; independent no-import truth-table audit, Python 3.11/3.12 each 30 tests. **PASS_BOUNDED_E1_SCHEMATIC_VBN_MEDIATION_ONLY**, no human E2, historical E3, original 1999 survey reanalysis or causal mediator identification. R073/PESEN v0.1 frozen.
+
+[Full index](ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v4.1_2026-10-24.json), [21 pending queue](ORIGINAL_239_PENDING_21_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv), [scientific report](../research/R323/R323_SCIENTIFIC_REPORT_2026-10-24.md). Next **01-017 Psychometric Paradigm of Risk Perception**. Check existing R studies and early archives before any new source. Complete R series before classification or fusion.

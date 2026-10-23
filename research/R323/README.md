@@ -1,0 +1,7 @@
+# R323 Value Belief Norm Theory: finite schematic mediator identification E1
+
+Original239 **01-015**. Prescore freeze [54aee0ea](https://github.com/edwardsage419/Psychohistory-Research/commit/54aee0ea3e5153396b167249ce7f75afa95a6756) preceded source [0e560dc9](https://github.com/edwardsage419/Psychohistory-Research/commit/0e560dc9be36534a65e8325dcc18d06adb12a341). Four artificial policy worlds, all 32 binary value/threat/responsibility/efficacy/feasibility states per world, **128 original source rows**. Cascade and direct product have identical action on 32/32 states despite different latent norm assignment, showing a finite behavior-only mediation identification limitation.
+
+**PASS_BOUNDED_E1_SCHEMATIC_VBN_MEDIATION_ONLY**, after [three green CI jobs](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40015028540), Python 3.11/3.12 each 30 tests, independent no-import source audit. [Scientific report](R323_SCIENTIFIC_REPORT_2026-10-24.md), [acceptance](R323_FINAL_ACCEPTANCE_STATUS.json), [receipt](R323_MACHINE_RECEIPT.json), [128 original states](R323_ALL_128_ORIGINAL_VBN_STATES.csv), [exact results](R323_EXACT_FOUR_VBN_WORLDS.json), [source](r323_vbn.py).
+
+Replay `python research/R323/r323_vbn.py --test` and `--audit`; independent `python research/catalogue_audit/independent_r323_vbn_audit.py`. Artificial E1 only; no original 1999 survey replication, human E2, historical E3 or causal mediator identification. R073/PESEN v0.1 frozen.
