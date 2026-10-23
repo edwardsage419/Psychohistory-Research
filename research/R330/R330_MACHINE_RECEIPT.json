@@ -1,0 +1,33 @@
+{
+  "research_id": "R330",
+  "catalogue_id": "02-013",
+  "protocol_commit": "0d51148a63e16abdc9505e2c57fab0488e27e0b5",
+  "source_commit": "dfa4e045d08ae60459cb1ad355ca5dd417ea1694",
+  "blob_sha1": {
+    "protocols/R330_FOUR_INSTANCE_CUE_RECENCY_256_ATOMS_PRESCORE_FREEZE_2026-10-24.md": "fd73ccb03726c26b2db8a4b0e88b0258cb7c39f6",
+    "research/R330/r330_instance_retrieval.py": "a61f49f47f81ed12d89b856038e00f853d4156ce",
+    "research/R330/R330_ALL_256_ARTIFICIAL_MEMORY_ATOMS.csv": "209067b67e45b4cbf9976ffcfb1cd78800fe8655",
+    "research/R330/R330_EXACT_64_RETRIEVAL_WORLDS.json": "c0ede1e2bedbd914cf5005c678370e0c8916466a",
+    "research/catalogue_audit/independent_r330_instance_retrieval_audit.py": "3ee6bddcbf3c41e684119c26333bcb01a1cdd7a7",
+    ".github/workflows/r330-instance-retrieval-256-atoms-e1.yml": "6c667f98a91db44b2fa84650a492c98872db6420"
+  },
+  "verification": {
+    "CI_run_id": 40035835578,
+    "conclusion": "success",
+    "three_jobs_success": true,
+    "python_311": "success",
+    "python_312": "success",
+    "independent": "success",
+    "independent_tamper_rejection": true,
+    "source_byte_replay": true
+  },
+  "counts": {
+    "artificial_memory_atoms": 256,
+    "worlds": 64,
+    "A_chosen": 38,
+    "B_chosen": 26
+  },
+  "scientific_grade": "PASS_BOUNDED_E1_CONSTRUCTED_FOUR_INSTANCE_RETRIEVAL_ONLY",
+  "human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED"
+}
