@@ -1,0 +1,111 @@
+name: R250 Finite Three Node Percolation Smooth Connectivity Response
+on:
+  push:
+    paths:
+      - 'research/R250/r250_exact_finite_bond_percolation.py'
+      - '.github/workflows/r250-finite-percolation.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-finite-percolation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 3-node exact finite bond connectivity, source masks, smooth polynomial baseline
+        run: python research/R250/r250_exact_finite_bond_percolation.py --test
+  full-original-bond-source-archive:
+    needs: dual-python-finite-percolation-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute all 576 original edge atoms and audit polynomial no-phase-transition limitation
+        run: |
+          python research/R250/r250_exact_finite_bond_percolation.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R250')
+          src=list(csv.DictReader((d/'R250_ALL_576_ORIGINAL_THREE_NODE_EDGE_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R250_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R250_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(src)==576 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-010'
+          assert j['finite_vertices']==j['finite_possible_edges']==3
+          assert j['true_thermodynamic_critical_phase_transition_verified'] is False
+          assert j['finite_polynomials_are_continuous_and_smooth'] is True
+          assert j['chain_analytic_mean_polynomial']=='1+p+p^2'
+          assert j['triangle_analytic_mean_polynomial']=='1+2p+2p^2-2p^3'
+          by={x['world']:x for x in j['world_results']}
+          assert len(by)==9
+          for world,w in by.items():
+              rows=[x for x in src if x['world']==world]
+              assert len(rows)==64
+              keys=['oracle_original_edge_R'+e+s for e in ('01','02','12') for s in ('a','b')]
+              assert len({tuple(x[k] for k in keys) for x in rows})==64
+              assert all(F(x['original_full_edge_source_probability'])==F(1,64) for x in rows)
+              assert sum((F(x['original_full_edge_source_probability']) for x in rows),F(0))==1
+              assert w['independent_finite_Bernoulli_edge_product_formula_verified']
+              assert w['independent_finite_root_component_polynomial_verified']
+              assert w['strictly_finite_no_genuine_critical_point']
+              assert sum((F(x) for x in w['observed_full_three_edge_mask_joint'].values()),F(0))==1
+              assert sum((F(x) for x in w['observed_root_size_distribution'].values()),F(0))==1
+              mean=sum((F(int(x['observed_root_component_size']),64) for x in rows),F(0))
+              assert str(mean)==w['exact_root_expected_component_size']
+              assert 1<=mean<=3
+              full=sum((F(1,64) for x in rows if x['observed_root_component_size']=='3'),F(0))
+              assert str(full)==w['exact_root_component_size3_probability']
+          assert by['CHAIN_P_HALF']['exact_root_expected_component_size']=='7/4'
+          assert by['CHAIN_P_HALF']['exact_root_component_size3_probability']=='1/4'
+          assert by['TRIANGLE_P_HALF']['exact_root_expected_component_size']=='9/4'
+          assert by['TRIANGLE_P_HALF']['exact_root_component_size3_probability']=='1/2'
+          assert by['TRIANGLE_P_QUARTER']['exact_root_expected_component_size']=='51/32'
+          assert by['TRIANGLE_P_QUARTER']['exact_root_component_size3_probability']=='5/32'
+          assert by['TRIANGLE_P_THREE_QUARTER']['exact_root_expected_component_size']=='89/32'
+          assert by['TRIANGLE_P_THREE_QUARTER']['exact_root_component_size3_probability']=='27/32'
+          assert by['TRIANGLE_P_ZERO']['observed_root_size_distribution']=={'1':'1'}
+          assert by['TRIANGLE_P_ONE']['observed_root_size_distribution']=={'3':'1'}
+          assert by['TRIANGLE_P_HALF']['derivative_expected_root_component_vs_p']=='5/2'
+          assert by['CHAIN_P_HALF']['derivative_expected_root_component_vs_p']=='2'
+          alias=by['TRIANGLE_STATIC_TRUE_GRAPH_REPORT_ALIAS']
+          base=by['TRIANGLE_P_HALF']
+          assert alias['observed_full_three_edge_mask_joint']==base['observed_full_three_edge_mask_joint']
+          assert alias['observed_root_size_distribution']==base['observed_root_size_distribution']
+          assert alias['actual_true_hidden_component_size_sourcewise']==[1]*64
+          for fn,key in [('R250_ALL_576_ORIGINAL_THREE_NODE_EDGE_SOURCE_ATOMS.csv','source_sha256'),
+                         ('R250_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/fn).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R250_ALL_576_THREENODE_BOND_ORIGINAL_SOURCES_AND_NO_PHASE_TRANSITION_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R250-Nine-Finite-Percolation-Graph-Source-Worlds
+          path: |
+            research/R250/R250_ALL_576_ORIGINAL_THREE_NODE_EDGE_SOURCE_ATOMS.csv
+            research/R250/R250_EXACT_RESULTS.json
+            research/R250/R250_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all 576 original three-node graph sources
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R250/R250_ALL_576_ORIGINAL_THREE_NODE_EDGE_SOURCE_ATOMS.csv research/R250/R250_EXACT_RESULTS.json research/R250/R250_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R250): all 576 complete finite 3-node edge atom sources'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
