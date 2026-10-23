@@ -1,0 +1,126 @@
+name: R271 Complete Preregistration and Selective Reporting Null Audit
+on:
+  push:
+    paths:
+      - 'research/R271/r271_exact_preregistration_familywise.py'
+      - '.github/workflows/r271-exact-preregistration-selection-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute 82 full-source exact null testing unit tests
+        run: python research/R271/r271_exact_preregistration_familywise.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate and independently recompute all 13104 source-level decisions and risks
+        run: |
+          python research/R271/r271_exact_preregistration_familywise.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from math import comb
+          from pathlib import Path
+          root=Path('research/R271')
+          source=root/'R271_ALL_13104_ORIGINAL_NULL_POLICY_SOURCE_TYPES.csv'
+          resultfile=root/'R271_EXACT_NULL_REPORTING_RESULTS.json'
+          rows=list(csv.DictReader(source.open()))
+          result=json.loads(resultfile.read_text())
+          receipt=json.loads((root/'R271_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==13104 and len(result['worlds'])==9
+          assert result['prescore_freeze_commit']==receipt['prescore_freeze_commit']=='b5a1d888ee830759f599cf39cae8120ed3f84d59'
+          assert result['original_catalogue_id']=='12-001'
+          for file,key in [(source,'source_sha256'),(resultfile,'results_sha256')]:
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==receipt[key]
+          alpha=F(1,8)
+          grouped=defaultdict(list)
+          for row in rows:grouped[row['world']].append(row)
+          assert len(grouped)==9
+          for world in result['worlds']:
+              name=world['world']
+              m=world['family_count']
+              policy=world['decision_policy']
+              data=grouped[name]
+              assert len(data)==2**(4*m)==world['original_complete_source_types']
+              assert m in (1,2,3)
+              assert policy in ('FROZEN_FIRST','FLEXIBLE_ANY','BONFERRONI_ANY')
+              original=set()
+              risk=F(0)
+              mass_sum=F(0)
+              for row in data:
+                  bits=row['original_complete_independent_null_bit_sequence']
+                  assert len(bits)==4*m and set(bits)<={'0','1'}
+                  original.add(bits)
+                  counts=tuple(bits[4*j:4*j+4].count('1') for j in range(m))
+                  ps=tuple(F(sum(comb(4,k) for k in range(v,5)),16) for v in counts)
+                  assert int(row['family_test_count'])==m and row['policy']==policy
+                  assert row['original_block_success_counts']==';'.join(map(str,counts))
+                  assert row['original_all_block_raw_one_sided_pvalues']==';'.join(map(str,ps))
+                  assert F(row['frozen_familywise_nominal_alpha'])==alpha
+                  assert F(row['original_source_probability'])==F(1,2**(4*m))
+                  mass_sum+=F(row['original_source_probability'])
+                  if policy=='FROZEN_FIRST':
+                      selected=0 if ps[0]<=alpha else -1
+                  else:
+                      limit=alpha if policy=='FLEXIBLE_ANY' else alpha/m
+                      selected=next((i for i,v in enumerate(ps) if v<=limit),-1)
+                  assert int(row['reported_test_index'])==selected
+                  assert int(row['declared_positive'])==int(selected>=0)
+                  if selected>=0:
+                      risk+=F(row['original_source_probability'])
+              assert original=={''.join(bits) for bits in itertools.product('01',repeat=4*m)}
+              assert mass_sum==1
+              base=F(1,16)
+              if policy=='FROZEN_FIRST':theory=base
+              elif policy=='FLEXIBLE_ANY':theory=1-(1-base)**m
+              else:theory=(1-(1-base)**m) if base<=alpha/m else F(0)
+              assert risk==theory
+              assert str(theory)==world['exact_null_probability_of_any_reported_positive']
+          assert result['no_real_human_E2']==result['no_real_historical_E3']==0
+          print('R271_ALL_13104_PREREG_VERSUS_SELECTIVE_NULL_SOURCES_AND_9_FWER_RISKS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R271-13104-Complete-Preregistration-Null-Policy-Sources
+          path: |
+            research/R271/R271_ALL_13104_ORIGINAL_NULL_POLICY_SOURCE_TYPES.csv
+            research/R271/R271_EXACT_NULL_REPORTING_RESULTS.json
+            research/R271/R271_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all 13104 complete policy source types
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R271/R271_ALL_13104_ORIGINAL_NULL_POLICY_SOURCE_TYPES.csv research/R271/R271_EXACT_NULL_REPORTING_RESULTS.json research/R271/R271_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R271): all 13104 frozen null source outcomes and prereg reporting decisions'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R271_ALL_13104_ORIGINAL_PREREGISTRATION_NULL_SOURCES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
