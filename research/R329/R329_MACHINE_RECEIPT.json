@@ -1,0 +1,46 @@
+{
+  "research_id": "R329",
+  "catalogue_id": "02-011",
+  "protocol_commit": "15cb8ddaf57295ea3a2b6ad16f20cab4483187cb",
+  "source_commit": "596012c7822ee2f555842a7d42b7e9793f2abae0",
+  "blob_sha1": {
+    "protocols/R329_ACTIVE_INFERENCE_144_JOINT_ATOMS_18_WORLDS_PRESCORE_FREEZE_2026-10-24.md": "a142b1a9a830ea0070a8c7e6991766cf49347d25",
+    "research/R329/r329_active_inference.py": "63c7e7c5ed1d7d390a7f6093073d5d62e23b91f1",
+    "research/R329/R329_ALL_144_ARTIFICIAL_JOINT_ATOMS.csv": "7308a1e34a24915d06f6b26f2cba47566d0c6c97",
+    "research/R329/R329_EXACT_18_EFE_WORLDS.json": "19218910a5b59e222f2b7f4ae64b7fc88f4b2eb8",
+    "research/catalogue_audit/independent_r329_active_inference_audit.py": "53b4b8cb32c335273e3b22103fe4bf44026ce208",
+    ".github/workflows/r329-active-inference-144-atoms-e1.yml": "3039a2fcf12f743462bd8dd90ba173cd683c000d"
+  },
+  "verification": {
+    "CI_run_id": 40035516146,
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 120693877418,
+        "name": "unit (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120693876933,
+        "name": "unit (3.12)",
+        "conclusion": "success"
+      },
+      {
+        "id": 120693877289,
+        "name": "independent",
+        "conclusion": "success"
+      }
+    ],
+    "independent_tamper_rejection": true,
+    "source_byte_replay": true
+  },
+  "counts": {
+    "artificial_joint_atoms": 144,
+    "worlds": 18,
+    "precise_chosen": 8,
+    "noisy_chosen": 10
+  },
+  "scientific_grade": "PASS_BOUNDED_E1_CONSTRUCTED_BINARY_EFE_ONLY",
+  "human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED"
+}
