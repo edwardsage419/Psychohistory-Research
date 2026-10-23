@@ -1,0 +1,47 @@
+name: Original239 R313 Axelrod Crosswalk v3.0
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r313_crosswalk_v3_0.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.0_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_32_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p1-r313-crosswalk-v30.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  index-python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compare all original candidate IDs and only R313 changed row
+        run: python research/catalogue_audit/verify_p1_r313_crosswalk_v3_0.py --test
+  independent-source-and-index:
+    needs: index-python
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent R313 exact kernel full source check
+        run: python research/catalogue_audit/independent_r313_source_audit.py --audit
+      - name: Recheck original239 v3.0 and Git blob identity
+        run: python research/catalogue_audit/verify_p1_r313_crosswalk_v3_0.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-R313-v30-204Primary-32Pending-E1Only
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v3.0_2026-10-24.json
+            docs/ORIGINAL_239_PENDING_32_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv
+            research/R313/R313_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
