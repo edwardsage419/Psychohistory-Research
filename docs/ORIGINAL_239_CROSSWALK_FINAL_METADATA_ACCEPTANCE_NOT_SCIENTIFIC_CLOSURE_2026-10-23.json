@@ -1,0 +1,55 @@
+{
+  "audit_kind": "RESEARCH_CATALOGUE_PROVENANCE_AND_ARCHIVE_METADATA_ONLY",
+  "date": "2026-10-23 Asia/Taipei",
+  "outcome": "COMPLETE_METADATA_AUDIT_239_ROWS_SCIENTIFIC_COMPLETION_NOT_ESTABLISHED",
+  "original_catalogue_rows": 239,
+  "catalogue_unique_categories": 12,
+  "catalogue_readme_primary_link_candidates_with_source_sha1": 173,
+  "original_models_without_primary_readme_link": 66,
+  "earlier_scoped_research_links_among_66": 7,
+  "unlinked_in_both_checked_evidence_sets": 59,
+  "unmapped_primary_link_P0": [
+    "01-008",
+    "02-002",
+    "04-001"
+  ],
+  "excluded_supplementary_R_not_original_239": [
+    "R208",
+    "R209"
+  ],
+  "R173_catalogue_id_correction": "07-015",
+  "early_archived_rounds_indexed": 64,
+  "library_zip_inventory_files": 74,
+  "unique_round_referenced_zip_files": 73,
+  "standalone_knowledge_zip_outside_round_refs": [
+    "心理史学_模型研究第二轮知识包_v0.2.zip"
+  ],
+  "historical_archive_crc_status": "PASS_FROM_PREVIOUS_MANIFEST_NOT_RECHECKED_BINARY_IN_THIS_AUDIT",
+  "crosswalk_json": "docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json",
+  "remaining_66_queue_csv": "docs/ORIGINAL_239_PENDING_66_PRIMARY_R_LINK_TRIAGE_QUEUE_2026-10-23.csv",
+  "scientific_and_archive_report": "docs/ORIGINAL_239_MODEL_TO_R_CROSSWALK_EVIDENCE_GATES_AND_EARLY_ARCHIVE_RECONCILIATION_2026-10-23.md",
+  "machine_result_json": "docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RESULTS.json",
+  "machine_receipt_json": "docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RECEIPT.json",
+  "validated_original_crosswalk_git_commit": "812c7de6bb67efe1d864774df5f3f1eecf6ca98a",
+  "final_machine_archive_git_commit": "2a1fd3913a21c16c42bb2b064b23a538bee89aed",
+  "final_workflow_run_id": 39908490800,
+  "final_ci_status": "completed",
+  "final_ci_conclusion": "success",
+  "successful_ci_jobs": 3,
+  "python311_actual_unittest_passed": 251,
+  "python312_actual_unittest_passed": 251,
+  "first_failed_ci_run_id": 39908245511,
+  "first_failed_ci_reason": "Unicode versus ASCII word boundary in Chinese-adjacent catalogue IDs; later corrected and rerun",
+  "does_not_validate_every_model_original_paper": true,
+  "does_not_claim_239_scientific_acceptances": true,
+  "does_not_upgrade_E1_to_real_E2_or_E3": true,
+  "requires_next": [
+    "Inspect older R001-R064 ZIP member contents, identify sources relevant to 66 unresolved original model IDs.",
+    "Read scientific accepted scope for each of 173 candidate R matches, including actual acceptance flags and their human/historical evidence boundaries.",
+    "Complete genuinely unstudied entries without duplicating prior ZIP material; only then begin taxonomy and fusion."
+  ],
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "new_real_human_E2": 0,
+  "new_historical_E3": 0
+}
