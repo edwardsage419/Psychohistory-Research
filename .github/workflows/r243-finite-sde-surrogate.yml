@@ -1,0 +1,95 @@
+name: R243 Finite Euler Noise Surrogate Non-Brownian and Latent Sensor Aliases
+on:
+  push:
+    paths:
+      - 'research/R243/r243_exact_finite_sde_noise_surrogate.py'
+      - '.github/workflows/r243-finite-sde-surrogate.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-surrogate-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Exact noise-path simulation, Gaussian-fourth-moment warning, dual-formula testing
+        run: python research/R243/r243_exact_finite_sde_noise_surrogate.py --test
+  original-four-noise-path-archive:
+    needs: dual-python-exact-surrogate-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate all 144 path sources, verify independent moment formulas and SHA
+        run: |
+          python research/R243/r243_exact_finite_sde_noise_surrogate.py --emit
+          python - <<'PY'
+          import csv,json,hashlib
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R243')
+          src=list(csv.DictReader((d/'R243_ALL_144_ORIGINAL_FOUR_NOISE_INCREMENT_PATHS.csv').open()))
+          out=json.loads((d/'R243_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R243_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(src)==144 and len(out['world_results'])==9
+          assert out['original_catalogue_id']==rec['original_catalogue_id']=='11-003'
+          assert out['epsilon_increment_fourth_moment']=='1/16'
+          assert out['same_variance_gaussian_increment_fourth_moment']=='3/16'
+          assert out['four_step_artificial_terminal_fourth_moment']=='5/2'
+          assert out['same_variance_gaussian_terminal_fourth_moment']=='3'
+          by={w['world']:w for w in out['world_results']}
+          for name,r in by.items():
+              rows=[x for x in src if x['world']==name]
+              assert len(rows)==16
+              assert all(F(x['original_path_probability'])==F(1,16) for x in rows)
+              assert len({tuple(x['oracle_original_epsilon_'+str(i)] for i in (1,2,3,4)) for x in rows})==16
+              assert sum((F(x['original_path_probability']) for x in rows),F(0))==1
+              assert sum((F(x) for x in r['exact_full_observed_five_point_path_joint'].values()),F(0))==1
+              assert len(r['observed_mean_by_step'])==len(r['observed_variance_by_step'])==5
+              assert r['independent_closed_formula_path_integral']
+              assert r['independent_analytical_first_two_moments']
+          base=by['ADDITIVE_SYMMETRIC']
+          for name in ('ADDITIVE_NEGATIVE_SIGMA','STATIC_HIDDEN_STOCHASTIC_SENSOR','HIDDEN_DOUBLE_SCALE'):
+              assert by[name]['exact_full_observed_five_point_path_joint']==base['exact_full_observed_five_point_path_joint']
+          assert by['STATIC_HIDDEN_STOCHASTIC_SENSOR']['artificial_oracle_terminal_hidden_h4_by_epsilon_source']==['0']*16
+          assert by['ADDITIVE_SYMMETRIC']['observed_variance_by_step']==['0','1/4','1/2','3/4','1']
+          assert by['COMMON_SHOCK_REPEAT']['observed_variance_by_step']==['0','1/4','1','9/4','4']
+          assert by['ADDITIVE_DOUBLE_SIGMA']['observed_variance_by_step'][-1]=='4'
+          assert by['ADDITIVE_DRIFT_ONE']['observed_mean_by_step'][-1]=='1'
+          assert by['MULTIPLICATIVE_EM_ZERO_DRIFT']['observed_variance_by_step'][-1]=='369/256'
+          assert by['MULTIPLICATIVE_EM_POSITIVE_DRIFT']['observed_mean_by_step'][-1]=='6561/4096'
+          for fname,key in [('R243_ALL_144_ORIGINAL_FOUR_NOISE_INCREMENT_PATHS.csv','source_sha256'),
+                            ('R243_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/fname).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R243_144_FINITE_NON_GAUSSIAN_EM_SURROGATE_ORIGINAL_PATHS_AND_ALIASES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R243-Nine-Finite-NonBrownian-SDE-Surrogate-Original-Paths
+          path: |
+            research/R243/R243_ALL_144_ORIGINAL_FOUR_NOISE_INCREMENT_PATHS.csv
+            research/R243/R243_EXACT_RESULTS.json
+            research/R243/R243_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all finite path sources to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R243/R243_ALL_144_ORIGINAL_FOUR_NOISE_INCREMENT_PATHS.csv research/R243/R243_EXACT_RESULTS.json research/R243/R243_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R243): all 144 finite Euler noise surrogate path atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
