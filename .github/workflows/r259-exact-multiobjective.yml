@@ -1,0 +1,160 @@
+name: R259 Multi Objective Pareto and Continuous Weighted Support
+on:
+  push:
+    paths:
+      - 'research/R259/r259_exact_multiobjective_pareto.py'
+      - '.github/workflows/r259-exact-multiobjective.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-pareto-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify exact Pareto dominance, supported intervals and weighted-grid misses
+        run: python research/R259/r259_exact_multiobjective_pareto.py --test
+  complete-original-pareto-source-archive:
+    needs: dual-python-pareto-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate 225 original decision weight atoms and independently check scalarization versus Pareto
+        run: |
+          python research/R259/r259_exact_multiobjective_pareto.py --emit
+          python - <<'PY'
+          import csv,json,hashlib
+          from pathlib import Path
+          from fractions import Fraction as F
+          d=Path('research/R259')
+          src=list(csv.DictReader((d/'R259_ALL_225_ORIGINAL_DECISION_WEIGHT_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R259_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R259_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(src)==225 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-019'
+          assert j['prescore_freeze_commit']=='e40857bc7fe4ea2040791042cbe24f3e902c9ba2'
+          by={w['world']:w for w in j['world_results']}
+          allfive=['A','B','C','D','E']
+          pareto={
+            'LINEAR_FIVE_ALL_SUPPORTED':allfive,
+            'CONCAVE_THREE_UNSUPPORTED':allfive,
+            'DOMINATED_EXTRAS':['A','C','E'],
+            'OBJECTIVE1_MULTIPLY10':allfive,
+            'DUPLICATE_TIE':['A','B','C','D'],
+            'STRICTLY_CONVEX_DISCRETE_FRONT':allfive,
+            'OBJECTIVE2_MULTIPLY10':allfive,
+            'REVERSE_LABELS':allfive,
+            'LINEAR_COST2_STEEPER':allfive}
+          assert set(by)==set(pareto)
+          for w,r in by.items():
+              data=[z for z in src if z['world']==w]
+              assert len(data)==25
+              assert len({(z['original_decision_label'],z['original_scalar_weight_lambda']) for z in data})==25
+              assert all(F(z['original_uniform_decision_weight_design_mass'])==F(1,25) for z in data)
+              assert sum((F(z['original_uniform_decision_weight_design_mass']) for z in data),F(0))==1
+              assert r['Pareto_decision_labels']==pareto[w]
+              assert r['full_Pareto_dominance_and_continuous_support_interval_certificate']
+              costs={k:tuple(map(F,v)) for k,v in r['all_decision_objective_pairs'].items()}
+              assert set(costs)==set(allfive)
+              # Independent direct pairwise comparison of every original 5-decision set
+              efficient=[]
+              for a,(ax,ay) in costs.items():
+                  if not any(b!=a and bx<=ax and by<=ay and (bx<ax or by<ay)
+                             for b,(bx,by) in costs.items()):
+                      efficient.append(a)
+              assert efficient==pareto[w]
+              # Independent grid scalarization of all 25 original records and ALL ties
+              for lmb in (F(0),F(1,4),F(1,2),F(3,4),F(1)):
+                  values={key:lmb*c1+(1-lmb)*c2 for key,(c1,c2) in costs.items()}
+                  minv=min(values.values())
+                  winners=[key for key in allfive if values[key]==minv]
+                  assert r['complete_weight_grid_scalar_winner_ties'][str(lmb)]==winners
+                  for z in data:
+                      if F(z['original_scalar_weight_lambda'])!=lmb:continue
+                      key=z['original_decision_label']
+                      assert F(z['original_objective_f1'])==costs[key][0]
+                      assert F(z['original_objective_f2'])==costs[key][1]
+                      assert F(z['original_weighted_objective_score'])==values[key]
+                      assert int(z['original_decision_wins_this_weight'])==int(key in winners)
+                      assert int(z['original_decision_is_Pareto'])==int(key in efficient)
+              # Independent analytic support interval proof, without the finite grid
+              for action,(a,b) in costs.items():
+                  lo=F(0);hi=F(1)
+                  valid=True
+                  for rival,(c,d2) in costs.items():
+                      if rival==action:continue
+                      slope=a-c-b+d2;intercept=b-d2
+                      if slope==0:
+                          if intercept>0:valid=False;break
+                      elif slope>0:hi=min(hi,-intercept/slope)
+                      else:lo=max(lo,-intercept/slope)
+                      if lo>hi:valid=False;break
+                  interval=r['all_continuous_weight_support_closed_intervals'][action]
+                  if not valid:
+                      assert interval is None
+                  else:
+                      assert interval==[str(lo),str(hi)],(w,action,interval,lo,hi)
+                      midpoint=(lo+hi)/2
+                      mine=midpoint*a+(1-midpoint)*b
+                      assert all(mine<=midpoint*c+(1-midpoint)*d2 for c,d2 in costs.values())
+              assert r['supported_by_some_continuous_normalized_weight']==[z for z in allfive if r['all_continuous_weight_support_closed_intervals'][z] is not None]
+          concave=by['CONCAVE_THREE_UNSUPPORTED']
+          assert concave['Pareto_unsupported_by_any_continuous_weight']==['B','C','D']
+          assert concave['supported_by_some_continuous_normalized_weight']==['A','E']
+          assert concave['exact_epsilon_f1_le_2_f2_minimizers']==['C']
+          assert by['LINEAR_FIVE_ALL_SUPPORTED']['complete_weight_grid_scalar_winner_ties']['1/2']==allfive
+          assert by['OBJECTIVE1_MULTIPLY10']['all_continuous_weight_support_closed_intervals']['B']==['1/11','1/11']
+          assert by['OBJECTIVE2_MULTIPLY10']['all_continuous_weight_support_closed_intervals']['B']==['10/11','10/11']
+          convex=by['STRICTLY_CONVEX_DISCRETE_FRONT']
+          assert convex['all_continuous_weight_support_closed_intervals']['B']==['5/9','7/11']
+          assert 'B' not in convex['selected_by_frozen_five_weight_grid']
+          assert convex['complete_weight_grid_scalar_winner_ties']['1/4']==['D']
+          assert convex['complete_weight_grid_scalar_winner_ties']['1/2']==['C']
+          assert convex['complete_weight_grid_scalar_winner_ties']['3/4']==['A']
+          assert by['LINEAR_FIVE_ALL_SUPPORTED']['complete_weight_grid_scalar_winner_ties']['1/4']==['E']
+          assert by['OBJECTIVE1_MULTIPLY10']['complete_weight_grid_scalar_winner_ties']['1/4']==['A']
+          assert sorted(by['REVERSE_LABELS']['all_decision_objective_pairs'].values())==sorted(by['LINEAR_FIVE_ALL_SUPPORTED']['all_decision_objective_pairs'].values())
+          for filename,key in [('R259_ALL_225_ORIGINAL_DECISION_WEIGHT_SOURCE_ATOMS.csv','source_sha256'),
+                               ('R259_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R259_ALL_225_ORIGINAL_PARETO_DECISION_WEIGHT_AND_CONTINUOUS_SUPPORT_WITNESSES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R259-Nine-Exact-Discrete-Multiobjective-Worlds
+          path: |
+            research/R259/R259_ALL_225_ORIGINAL_DECISION_WEIGHT_SOURCE_ATOMS.csv
+            research/R259/R259_EXACT_RESULTS.json
+            research/R259/R259_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all 225 original Pareto decision-weight source atoms
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R259/R259_ALL_225_ORIGINAL_DECISION_WEIGHT_SOURCE_ATOMS.csv research/R259/R259_EXACT_RESULTS.json research/R259/R259_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R259): all 225 original multiobjective decision-weight atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R259_ALL_225_ORIGINAL_PARETO_SOURCES_PERMANENTLY_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
