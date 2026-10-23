@@ -1,0 +1,61 @@
+{
+  "schema": "r322_schematic_default_intervention_e1_v1",
+  "original_catalogue_id": "01-012",
+  "artificial_schematic_only": true,
+  "original_source_rows": 256,
+  "state_count_per_policy": 64,
+  "worlds": [
+    {
+      "world_id": 0,
+      "policy": "default_only",
+      "state_count": 64,
+      "correct_count": 32,
+      "changed_from_default_count": 0,
+      "intervention_count": 0,
+      "correct_fraction": "1/2",
+      "changed_fraction": "0",
+      "intervention_fraction": "0"
+    },
+    {
+      "world_id": 1,
+      "policy": "gated_intervention",
+      "state_count": 64,
+      "correct_count": 32,
+      "changed_from_default_count": 4,
+      "intervention_count": 4,
+      "correct_fraction": "1/2",
+      "changed_fraction": "1/16",
+      "intervention_fraction": "1/16"
+    },
+    {
+      "world_id": 2,
+      "policy": "analytic_only",
+      "state_count": 64,
+      "correct_count": 32,
+      "changed_from_default_count": 32,
+      "intervention_count": 64,
+      "correct_fraction": "1/2",
+      "changed_fraction": "1/2",
+      "intervention_fraction": "1"
+    },
+    {
+      "world_id": 3,
+      "policy": "lookup_equivalent",
+      "state_count": 64,
+      "correct_count": 32,
+      "changed_from_default_count": 4,
+      "intervention_count": 0,
+      "correct_fraction": "1/2",
+      "changed_fraction": "1/16",
+      "intervention_fraction": "0"
+    }
+  ],
+  "pairwise_output_disagreement_counts": {
+    "default_only|gated_intervention": 4,
+    "default_only|analytic_only": 32,
+    "default_only|lookup_equivalent": 4,
+    "gated_intervention|analytic_only": 28,
+    "gated_intervention|lookup_equivalent": 0,
+    "analytic_only|lookup_equivalent": 28
+  }
+}

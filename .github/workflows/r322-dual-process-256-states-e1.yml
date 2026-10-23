@@ -1,0 +1,29 @@
+name: R322 schematic dual process identification E1
+on:
+  push:
+    paths:
+      - 'research/R322/**'
+      - 'research/catalogue_audit/independent_r322_dual_process_audit.py'
+      - '.github/workflows/r322-dual-process-256-states-e1.yml'
+  workflow_dispatch:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/R322/r322_dual_process.py --test
+      - run: python research/R322/r322_dual_process.py --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/independent_r322_dual_process_audit.py
