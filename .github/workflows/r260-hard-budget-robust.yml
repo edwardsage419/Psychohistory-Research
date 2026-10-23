@@ -84,8 +84,8 @@ jobs:
                   opt=min(worst.values())
                   regret={a:max(costs[a][i]-min(costs[b][i] for b in names) for i in allowable) for a in names}
                   ropt=min(regret.values())
-                  v,ws,r,rs=expected[w][g]
-                  assert (opt,''.join(a for a in names if worst[a]==opt),ropt,''.join(a for a in names if regret[a]==ropt))==(F(v),ws,F(r),rs)
+                  v,ws,expected_regret,rs=expected[w][g]
+                  assert (opt,''.join(a for a in names if worst[a]==opt),ropt,''.join(a for a in names if regret[a]==ropt))==(F(v),ws,F(expected_regret),rs)
                   assert data['minimum_worst_case_loss']==str(opt)
                   assert data['minimum_maximum_regret']==str(ropt)
                   assert data['all_minimax_cost_actions']==list(ws)
