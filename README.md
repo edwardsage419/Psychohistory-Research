@@ -872,3 +872,16 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 [R277 模型错设诊断正式研究](research/R277/README.md) · [科学报告](research/R277/R277_SCIENTIFIC_REPORT_2026-10-23.md) · [CI run39904180046](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39904180046)：三个二状态Markov机制保持概率s=1/4,1/2,3/4，每个时点边缘公平导致固定半概率Brier恰1/4；然而5个转移保持次数T有不同Binomial(5,s)分布，定向T≥4在IID参考下概率3/16、在s=3/4下概率81/128。完整**192个人工原source类型**，双Python100项真测试，三job success，[全原source归档12b5de59](https://github.com/edwardsage419/Psychohistory-Research/commit/12b5de59e410a5044e480b192e60df7e72436a14)。
 
 三项合计**9人工冻结世界、1152个机制标识完整原source配置、300项经实际单元测试日志验证的Python双版本通过测试、三个完成CI共9个成功job**。全部科研证据仍只有**有限人工E1**，没有新增真人E2与真实历史E3，R073及PESEN v0.1继续冻结。下一原目录**12-008 Model Averaging and Ensembles（P2，拟R278）**。用户确定研究顺序继续保持：完成全部原R系列→统一归纳分类→熔炼原创模型，具体个人辅助决策系统暂不实施。
+
+
+## 2026-10-23 R278至R280 模型平均、预测校准与Brier评分
+
+顺着原239候选目录正式完成三项方法模型：**12-008 R278 Model Averaging and Ensembles（P2）**、**12-009 R279 Forecast Calibration（P1）**、**12-010 R280 Brier Score（P1）**。均有先冻结来源与数学目标、完整原随机来源、独立解析路径、双Python真实单元测试、GitHub Actions第三独立原CSV和SHA256机器审核、原数据永久机器人提交、正式科学报告与有限E1验收。[本轮三项完整科学研究、原数据与审核总索引](docs/R278_R280_BMA_CALIBRATION_BRIER_SCORE_E1_CLOSURE_INDEX_2026-10-23.md)。
+
+[R278 全来源研究](research/R278/README.md) · [科学报告](research/R278/R278_SCIENTIFIC_REPORT_2026-10-23.md) · [成功CI run39904644080](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39904644080)：三真率×四政策，12world、**768完整人工原source**，比较冻结两模型Bayes平均与硬选择，并区分固定1/2和不可部署真实概率oracle。真正独立未来平均Brier依真生成率和硬选择平手规则而改变，BMA不保证无条件胜过单模型。Python双版本各108真单测，**216次通过**，三job success；[完整原source归档0f39a4a7](https://github.com/edwardsage419/Psychohistory-Research/commit/0f39a4a753aa47bc4484b9de429da12a316196cb)。
+
+[R279 全来源研究](research/R279/README.md) · [科学报告](research/R279/R279_SCIENTIFIC_REPORT_2026-10-23.md) · [最终成功CI run39904942557](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39904942557)：两群体×三真率场景×三预测政策共9world、**144完整人工原source（99正质量）**，Murphy Brier=REL−RES+UNC的population分解验证了**完全校准的固定50%预测可能没有群体风险分辨力**。首次[失败run39904785939](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39904785939)是Python断行语法问题，保留失败记录、修正后重跑且双版本各84真单测，总**168次通过**，三job success；[全来源归档1f7275b3](https://github.com/edwardsage419/Psychohistory-Research/commit/1f7275b346824e5b235a9fcdf59bd10d40028d6c)。
+
+[R280 全来源研究](research/R280/README.md) · [科学报告](research/R280/R280_SCIENTIFIC_REPORT_2026-10-23.md) · [成功CI run39905121175](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39905121175)：三真p×三固定报告q=9world、**144完整人工原source**，验证Brier严格适当期望等式p(1−p)+(q−p)²与有限样本中错误q偶然得更低样本评分的正概率。Python双版本各83真单测，**166次通过**，三job success；[全来源归档6d94abb6](https://github.com/edwardsage419/Psychohistory-Research/commit/6d94abb697633a44b12db4db587d38c27fce11c9)。
+
+本轮合计**30人工world、1056带模型标识原source、550次真实成功测试、9个最终成功CI job**；另R279一次早期失败已单独如实记录。没有新增真人E2/历史E3或R073跨实验验证，R073及PESEN v0.1仍冻结。原239目录下一项为**12-011 Logarithmic Score（P1，拟R281）**。按原主线先完成全部R，随后统一归纳分类，最后熔炼原创体系，个人辅助决策系统继续暂缓。
