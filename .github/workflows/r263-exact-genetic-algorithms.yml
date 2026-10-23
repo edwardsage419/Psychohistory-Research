@@ -1,0 +1,153 @@
+name: R263 Genetic Algorithms Two Individuals Exact Full Source
+on:
+  push:
+    paths:
+      - 'research/R263/r263_exact_genetic_population.py'
+      - '.github/workflows/r263-exact-genetic-algorithms.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-genetic-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Audit all one-generation GA sources and independent conditional integer mask laws
+        run: python research/R263/r263_exact_genetic_population.py --test
+  full-original-genetic-source-archive:
+    needs: dual-python-genetic-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit 9216 sources and independently reconstruct crossover mutation and elite statistics
+        run: |
+          python research/R263/r263_exact_genetic_population.py --emit
+          python - <<'PY'
+          import csv,json,hashlib
+          from fractions import Fraction as F
+          from collections import Counter,defaultdict
+          from pathlib import Path
+          d=Path('research/R263')
+          src=list(csv.DictReader((d/'R263_ALL_9216_ORIGINAL_TWO_PARENT_GENETIC_SOURCE_ATOMS.csv').open()))
+          j=json.loads((d/'R263_EXACT_RESULTS.json').read_text())
+          rec=json.loads((d/'R263_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(src)==9216 and len(j['world_results'])==9
+          assert j['original_catalogue_id']==rec['original_catalogue_id']=='11-023'
+          assert j['prescore_freeze_commit']=='e50f54089dac1bab48bd898b3fc1f1dd89c20ebf'
+          config={
+            'CLONAL_ONEMAX':(False,False,False,'ONEMAX'),
+            'CROSS_ONEMAX':(True,False,False,'ONEMAX'),
+            'MUTATE_ONEMAX':(False,True,False,'ONEMAX'),
+            'CROSS_MUTATE_ONEMAX':(True,True,False,'ONEMAX'),
+            'ELITE_CLONAL_ONEMAX':(False,False,True,'ONEMAX'),
+            'ELITE_CROSS_ONEMAX':(True,False,True,'ONEMAX'),
+            'ELITE_MUTATE_ONEMAX':(False,True,True,'ONEMAX'),
+            'ELITE_CROSS_MUTATE_ONEMAX':(True,True,True,'ONEMAX'),
+            'ELITE_CROSS_MUTATE_TRAP':(True,True,True,'TRAP')}
+          by={w['world']:w for w in j['world_results']}
+          assert set(by)==set(config)
+          def fitness(g,obj):
+              s=sum(map(int,g))
+              return 4 if obj=='TRAP' and g=='000' else s
+          for world,result in by.items():
+              sub=[z for z in src if z['world']==world]
+              assert len(sub)==1024
+              assert len({tuple(z['oracle_original_bit_'+str(i)] for i in range(10)) for z in sub})==1024
+              assert all(F(z['original_complete_tenbit_source_mass'])==F(1,1024) for z in sub)
+              assert sum((F(z['original_complete_tenbit_source_mass']) for z in sub),F(0))==1
+              cross,mutation,elite,obj=config[world]
+              assert (result['frozen_crossover_enabled'],result['frozen_mutation_enabled'],result['frozen_elitism_enabled'],result['frozen_fitness_objective'])==(cross,mutation,elite,obj)
+              exact_changes=Counter()
+              parent_groups=defaultdict(lambda:defaultdict(F))
+              for z in sub:
+                  bits=[int(z['oracle_original_bit_'+str(i)]) for i in range(10)]
+                  p0=''.join(map(str,bits[:3]))
+                  p1=''.join(map(str,bits[3:6]))
+                  assert z['observed_parent0_threebit_genome']==p0
+                  assert z['observed_parent1_threebit_genome']==p1
+                  if cross and bits[6]:
+                      cut=1+bits[7]
+                      c0=p0[:cut]+p1[cut:];c1=p1[:cut]+p0[cut:]
+                  else:c0,c1=p0,p1
+                  if mutation and bits[8]:c0=str(1-int(c0[0]))+c0[1:]
+                  if mutation and bits[9]:c1=c1[:2]+str(1-int(c1[2]))
+                  assert z['observed_candidate_child0_threebit_genome']==c0
+                  assert z['observed_candidate_child1_threebit_genome']==c1
+                  if elite:
+                      candidate=(p0,p1,c0,c1)
+                      ranked=sorted(range(4),key=lambda i:(-fitness(candidate[i],obj),candidate[i],i))
+                      s0,s1=candidate[ranked[0]],candidate[ranked[1]]
+                  else:s0,s1=c0,c1
+                  assert z['observed_survivor0_threebit_genome']==s0
+                  assert z['observed_survivor1_threebit_genome']==s1
+                  pb=max(fitness(p0,obj),fitness(p1,obj))
+                  sb=max(fitness(s0,obj),fitness(s1,obj))
+                  assert int(z['observed_original_parent_best_fitness'])==pb
+                  assert int(z['observed_next_survivor_best_fitness'])==sb
+                  assert int(z['observed_next_minus_original_best_fitness'])==sb-pb
+                  for label,g in [('parent0',p0),('parent1',p1),('candidate_child0',c0),('candidate_child1',c1),('survivor0',s0),('survivor1',s1)]:
+                      assert int(z['observed_'+label+'_fitness'])==fitness(g,obj)
+                  if elite:assert sb>=pb
+                  if cross and not mutation:assert p0.count('1')+p1.count('1')==c0.count('1')+c1.count('1')
+                  exact_changes['increase' if sb>pb else 'decrease' if sb<pb else 'tie']+=1
+                  parent_groups[(p0,p1)][(s0,s1)]+=F(1,16)
+              assert len(parent_groups)==64
+              assert all(sum(v.values(),F(0))==1 for v in parent_groups.values())
+              assert result['original_sources_fitness_increase']==exact_changes['increase']
+              assert result['original_sources_fitness_tie']==exact_changes['tie']
+              assert result['original_sources_fitness_decrease']==exact_changes['decrease']
+              assert result['entire_64_parent_pair_conditioned_survivor_law_verified']
+              assert F(result['exact_parent_best_mean'])==sum((F(int(z['observed_original_parent_best_fitness']),1024) for z in sub),F(0))
+              assert F(result['exact_survivor_best_mean'])==sum((F(int(z['observed_next_survivor_best_fitness']),1024) for z in sub),F(0))
+              assert F(result['exact_best_fitness_gain_mean'])==sum((F(int(z['observed_next_minus_original_best_fitness']),1024) for z in sub),F(0))
+          for w in ('CROSS_ONEMAX','MUTATE_ONEMAX','CROSS_MUTATE_ONEMAX'):
+              assert by[w]['original_sources_fitness_decrease']>0
+              assert by[w]['original_sources_fitness_increase']>0
+          for w in config:
+              if config[w][2]:assert by[w]['original_sources_fitness_decrease']==0
+          assert by['CLONAL_ONEMAX']['exact_best_fitness_gain_mean']=='0'
+          assert by['ELITE_CLONAL_ONEMAX']['exact_best_fitness_gain_mean']=='0'
+          for filename,key in [('R263_ALL_9216_ORIGINAL_TWO_PARENT_GENETIC_SOURCE_ATOMS.csv','source_sha256'),
+                               ('R263_EXACT_RESULTS.json','results_sha256')]:
+              assert rec[key]==hashlib.sha256((d/filename).read_bytes()).hexdigest()
+          assert rec['new_real_human_E2']==rec['new_real_historical_E3']==0
+          print('R263_ALL_9216_ORIGINAL_GENETIC_CROSSOVER_MUTATION_ELITISM_SOURCES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R263-Nine-Toy-Genetic-Algorithm-Full-Sources
+          path: |
+            research/R263/R263_ALL_9216_ORIGINAL_TWO_PARENT_GENETIC_SOURCE_ATOMS.csv
+            research/R263/R263_EXACT_RESULTS.json
+            research/R263/R263_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive all 9216 original genetic sources
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R263/R263_ALL_9216_ORIGINAL_TWO_PARENT_GENETIC_SOURCE_ATOMS.csv research/R263/R263_EXACT_RESULTS.json research/R263/R263_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R263): all 9216 original genetic algorithm source atoms'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R263_ALL_9216_ORIGINAL_GENETIC_SOURCE_ATOMS_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
