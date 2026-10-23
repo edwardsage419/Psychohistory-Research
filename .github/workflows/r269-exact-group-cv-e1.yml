@@ -1,0 +1,142 @@
+name: R269 Exact Grouped Cross Validation Full Source Audit
+on:
+  push:
+    paths:
+      - 'research/R269/r269_exact_group_cross_validation.py'
+      - '.github/workflows/r269-exact-group-cv-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all 83 real tests for rowwise versus clusterwise CV
+        run: python research/R269/r269_exact_group_cross_validation.py --test
+  independent-source-audit-and-archive:
+    needs: dual-python-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconstruct all 576 original source worlds and 12 predictions per design
+        run: |
+          python research/R269/r269_exact_group_cross_validation.py --emit
+          python - <<'PY'
+          import csv,json,hashlib,itertools
+          from collections import defaultdict
+          from fractions import Fraction as F
+          from math import comb
+          from pathlib import Path
+          base=Path('research/R269')
+          csv_path=base/'R269_ALL_576_ORIGINAL_CLUSTERED_CV_SOURCE_TYPES.csv'
+          json_path=base/'R269_EXACT_RESULTS.json'
+          rows=list(csv.DictReader(csv_path.open()))
+          results=json.loads(json_path.read_text())
+          receipt=json.loads((base/'R269_MACHINE_RECEIPT.json').read_text())
+          assert len(rows)==576 and len(results['world_results'])==9
+          assert receipt['prescore_freeze_commit']==results['prescore_freeze_commit']=='1ba86be0a35b77c0d5e5f6a72bb102ba08c48795'
+          assert results['original_catalogue_id']=='11-029'
+          for filename,key in [(csv_path,'source_sha256'),(json_path,'results_sha256')]:
+              assert receipt[key]==hashlib.sha256(filename.read_bytes()).hexdigest()
+          # Independent manual split evaluator, written separately from the model script.
+          grouped=defaultdict(list)
+          for row in rows:grouped[row['world']].append(row)
+          assert len(grouped)==9
+          for w in results['world_results']:
+              name=w['world'];p=F(w['true_p']);model=w['predictor']
+              sources=grouped[name]
+              assert len(sources)==64
+              original=set()
+              mass_loor=mass_logo=F(0)
+              total_mass=F(0)
+              for row in sources:
+                  bits=tuple(map(int,row['original_six_independent_group_latents']))
+                  assert len(bits)==6 and all(x in (0,1) for x in bits)
+                  original.add(bits)
+                  assert row['predictor']==model and F(row['true_p'])==p
+                  mass=p**sum(bits)*(1-p)**(6-sum(bits))
+                  assert F(row['original_complete_source_probability'])==mass
+                  total_mass+=mass
+                  data=[(i//2,bits[i//2]) for i in range(12)]
+                  assert row['original_twelve_row_groups']==';'.join(str(i//2) for i in range(12))
+                  assert row['original_twelve_row_outcomes']==';'.join(str(y) for _,y in data)
+                  for protocol in ('loor','logo'):
+                      preds=[]; losses=[]
+                      for held in range(12):
+                          test_group=held//2
+                          train=[data[j] for j in range(12) if j!=held and (protocol=='loor' or j//2!=test_group)]
+                          assert len(train)==(11 if protocol=='loor' else 10)
+                          if protocol=='logo':
+                              assert not any(g==test_group for g,y in train)
+                          else:
+                              assert sum(g==test_group for g,y in train)==1
+                          if model=='CONSTANT_HALF': q=F(1,2)
+                          elif model=='GLOBAL_LAPLACE':q=F(1+sum(y for g,y in train),2+len(train))
+                          else:
+                              assert model=='GROUP_ID_MEMORIZER'
+                              matched=[y for g,y in train if g==test_group]
+                              q=F(matched[0]) if matched else F(1,2)
+                          preds.append(q)
+                          losses.append((F(data[held][1])-q)**2)
+                      assert row[protocol+'_row_predictions']==';'.join(map(str,preds))
+                      assert row[protocol+'_row_squared_losses']==';'.join(map(str,losses))
+                      avg=sum(losses,F(0))/12
+                      assert F(row[protocol+'_average_brier'])==avg
+                      if protocol=='loor':mass_loor+=mass*avg
+                      else:mass_logo+=mass*avg
+              assert original==set(itertools.product((0,1),repeat=6))
+              assert total_mass==1
+              assert str(mass_loor)==w['expected_LOOR_Brier']
+              assert str(mass_logo)==w['expected_LOGO_Brier']
+              if model=='CONSTANT_HALF':expected=(F(1,4),F(1,4))
+              elif model=='GROUP_ID_MEMORIZER':expected=(F(0),F(1,4))
+              else:
+                  # Independent S~Binomial(5,p) and B~Bernoulli(p) formula.
+                  value=sum((F(comb(5,s))*p**s*(1-p)**(5-s)*
+                      ((1-p)*(F(2*s+1)**2)+p*(F(11-2*s)**2))
+                      for s in range(6)),F(0))
+                  expected=(value/169,value/144)
+                  assert value==1+160*p*(1-p)
+              assert (mass_loor,mass_logo)==expected
+          assert results['new_real_human_E2']==results['new_real_historical_E3']==0
+          print('R269_ALL_576_ORIGINAL_GROUP_SOURCES_216_SHARED_LABELS_AND_18_CV_MEANS_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R269-576-Complete-Original-Cluster-CV-Atoms
+          path: |
+            research/R269/R269_ALL_576_ORIGINAL_CLUSTERED_CV_SOURCE_TYPES.csv
+            research/R269/R269_EXACT_RESULTS.json
+            research/R269/R269_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Permanently archive all exact group CV source artifacts
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R269/R269_ALL_576_ORIGINAL_CLUSTERED_CV_SOURCE_TYPES.csv research/R269/R269_EXACT_RESULTS.json research/R269/R269_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R269): all 576 complete clustered group CV source configurations'
+            for attempt in 1 2 3 4 5 6; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo 'R269_ALL_576_ORIGINAL_GROUP_CV_SOURCES_ARCHIVED'
+                exit 0
+              fi
+              sleep 2
+            done
+            exit 1
+          fi
