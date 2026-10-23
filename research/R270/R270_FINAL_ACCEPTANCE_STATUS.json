@@ -1,0 +1,38 @@
+{
+  "research_id": "R270",
+  "original_catalogue_id": "11-030",
+  "outcome": "CLOSED_BOUNDED_E1_EXACT_ARTIFICIAL_POSTERIOR_PREDICTIVE_ORDER_CHECK",
+  "prescore_freeze_commit": "5771124558a4c033cca9f5e2d0e6d7ea5315cc8c",
+  "model_commit": "708f3101c025e2f65971e77dac8beb9149e91adc",
+  "workflow_commit": "a39a6b5f6a85d432fd18bbf3cb792822b359c22e",
+  "all_source_archive_commit": "33e6663e903b16f8c31e2d9e219696b6e99a3338",
+  "github_ci_run_id": 39902465686,
+  "github_ci_status": "completed",
+  "github_ci_conclusion": "success",
+  "successful_job_count": 3,
+  "python_3_11_real_tests_pass": 83,
+  "python_3_12_real_tests_pass": 83,
+  "frozen_prior_observation_worlds": 9,
+  "complete_original_posterior_replicate_source_types": 576,
+  "independent_complete_distribution_pairs_checked": 9,
+  "source_csv_sha256": "6d28b991f912ba6a365a1d788eede5d2dc4773507f75908d46084db22de11dcd",
+  "results_json_sha256": "60137ade2efdb253426432cf27b60de468e475ceba95b4635431b30ebf40feaa",
+  "supported_claims": [
+    "All three frozen observations share count K=3, hence a fixed-prior Beta Bernoulli posterior and count check are blind to their order.",
+    "Observed equal adjacent transitions 4, 0 and 2 produce different exact posterior predictive adjacent-tail checks.",
+    "For the alternating observed sequence, one-sided upper tail is 1 while lower tail is less than 0.05 across all three frozen priors."
+  ],
+  "limitations": [
+    "All nine frozen observed sequences and 576 source types are artificial.",
+    "Posterior predictive discrepancy tail probabilities are not classical uniform frequentist p values and have no real-world validation.",
+    "No causal, psychological, historical, new out-of-sample predictive evidence or original paper dataset replication."
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "original_catalogue_correction": "11-030 is the last 11 category candidate; next is 12-001",
+  "next_original_catalogue": "12-001",
+  "next_research": "R271",
+  "next_model": "Preregistration and Registered Reports"
+}
