@@ -1,0 +1,98 @@
+name: R238 Exact Diachronic Embedding Alignment and Hidden Sense Worlds
+on:
+  push:
+    paths:
+      - 'research/R238/r238_exact_historical_embedding_geometry.py'
+      - '.github/workflows/r238-exact-historical-embeddings.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-exact-embedding-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test exact 2D anchor rotation, Gram matrix, token composition and hidden sense aliases
+        run: python research/R238/r238_exact_historical_embedding_geometry.py --test
+  full-original-hidden-sense-archive:
+    needs: dual-python-exact-embedding-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute all 144 original sense atom rows and independent exact verification
+        run: |
+          python research/R238/r238_exact_historical_embedding_geometry.py --emit
+          python - <<'PY'
+          import csv,hashlib,json
+          from fractions import Fraction as F
+          from pathlib import Path
+          d=Path('research/R238')
+          atoms=list(csv.DictReader((d/'R238_ALL_144_ORIGINAL_HIDDEN_SENSE_AND_OBSERVED_EMBEDDING_SOURCES.csv').open()))
+          results=json.loads((d/'R238_EXACT_RESULTS.json').read_text())
+          receipt=json.loads((d/'R238_FINAL_MACHINE_ACCEPTANCE.json').read_text())
+          assert len(atoms)==144 and len(results['world_results'])==9
+          assert results['original_catalogue_id']==receipt['original_catalogue_id']=='10-012'
+          by={r['world']:r for r in results['world_results']}
+          for name,r in by.items():
+            rows=[a for a in atoms if a['world']==name]
+            assert len(rows)==16
+            assert len({(a['time'],a['word'],a['oracle_sense']) for a in rows})==16
+            assert all(F(a['original_structural_source_probability'])>0 for a in rows)
+            assert sum((F(a['original_structural_source_probability']) for a in rows),F(0))==1
+            assert len(r['observed_gram_matrices']['0'])==len(r['observed_gram_matrices']['1'])==4
+            for time in ('0','1'):
+                assert sum((F(v) for v in r['observed_word_frequencies_by_time'][time].values()),F(0))==1
+            assert r['source_latent_sense_atoms']==16
+          a=by['STABLE_BASE'];b=by['SENSE_RECONFIGURATION_ALIAS']
+          assert a['exact_observed_time_word_frequency_and_embedding_joint']==b['exact_observed_time_word_frequency_and_embedding_joint']
+          assert a['oracle_target_D_hidden_sense_covariance_by_time']['1']==[['1','0'],['0','0']]
+          assert b['oracle_target_D_hidden_sense_covariance_by_time']['1']==[['0','0'],['0','1']]
+          assert by['GLOBAL_ROTATION']['observed_target_D_naive_displacement_squared']=='8/5'
+          assert by['GLOBAL_ROTATION']['observed_target_D_anchor_aligned_displacement_squared']=='0'
+          assert by['GLOBAL_ROTATION']['observed_gram_matrices']['1']==by['STABLE_BASE']['observed_gram_matrices']['1']
+          assert by['GLOBAL_SCALE_2']['observed_target_D_naive_displacement_squared']=='2'
+          assert by['GLOBAL_SCALE_2']['observed_target_D_anchor_aligned_displacement_squared']=='0'
+          assert by['ANCHOR_DRIFT_FALSE_ALIGNMENT']['observed_target_D_naive_displacement_squared']=='0'
+          assert by['ANCHOR_DRIFT_FALSE_ALIGNMENT']['observed_target_D_anchor_aligned_displacement_squared']=='8/5'
+          assert by['TARGET_SEMANTIC_DRIFT']['observed_target_D_anchor_aligned_displacement_squared']=='1'
+          assert by['ROTATED_TARGET_DRIFT']['observed_target_D_naive_displacement_squared']=='5'
+          assert by['ROTATED_TARGET_DRIFT']['observed_target_D_anchor_aligned_displacement_squared']=='1'
+          assert by['TARGET_SEMANTIC_DRIFT']['observed_gram_matrices']['1']==by['ROTATED_TARGET_DRIFT']['observed_gram_matrices']['1']
+          assert by['FREQUENCY_COMPOSITION_ONLY']['observed_target_D_anchor_aligned_displacement_squared']=='0'
+          assert F(by['FREQUENCY_COMPOSITION_ONLY']['observed_corpus_weighted_centroid_displacement_squared'])>0
+          for fn,key in [('R238_ALL_144_ORIGINAL_HIDDEN_SENSE_AND_OBSERVED_EMBEDDING_SOURCES.csv','source_sha256'),
+                         ('R238_EXACT_RESULTS.json','results_sha256')]:
+              assert receipt[key]==hashlib.sha256((d/fn).read_bytes()).hexdigest()
+          assert receipt['new_real_human_E2']==receipt['new_real_historical_E3']==0
+          print('R238_ALL_144_HIDDEN_SENSE_ATOMS_AND_ROTATION_ALIGNMENT_FREQUENCY_ALIASES_VERIFIED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R238-All-Nine-Exact-Diachronic-Sense-Worlds
+          path: |
+            research/R238/R238_ALL_144_ORIGINAL_HIDDEN_SENSE_AND_OBSERVED_EMBEDDING_SOURCES.csv
+            research/R238/R238_EXACT_RESULTS.json
+            research/R238/R238_FINAL_MACHINE_ACCEPTANCE.json
+          retention-days: 90
+      - name: Permanently archive original sense sources and coordinate certificates to main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R238/R238_ALL_144_ORIGINAL_HIDDEN_SENSE_AND_OBSERVED_EMBEDDING_SOURCES.csv research/R238/R238_EXACT_RESULTS.json research/R238/R238_FINAL_MACHINE_ACCEPTANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R238): all 144 original diachronic hidden-sense source atoms'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
