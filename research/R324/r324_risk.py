@@ -79,7 +79,7 @@ class Tests(unittest.TestCase):
     def test_05_weight(self): self.assertTrue(all(r["weight"]=="1/16" for r in generate()[0]))
     def test_06_mass(self):
         for i in range(4):
-            self.assertEqual(sum((F(r["weight"]) for r in generate()[0] if r["world_id"]==str(i)),F(1))
+            self.assertEqual(sum([F(r["weight"]) for r in generate()[0] if r["world_id"]==str(i)]),F(1))
     def test_07_dread_only(self): self.assertEqual(evaluate((1,1,0,0),3,1),(2,0,6))
     def test_08_unknown_only(self): self.assertEqual(evaluate((0,0,1,1),3,1),(0,2,2))
     def test_09_reverse(self): self.assertEqual(evaluate((1,1,0,0),1,3)[2],2)
