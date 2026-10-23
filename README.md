@@ -885,3 +885,12 @@ R106另已**先冻原文件来源协议**，严格从2025年Drouvelis/Pearce正�
 [R280 全来源研究](research/R280/README.md) · [科学报告](research/R280/R280_SCIENTIFIC_REPORT_2026-10-23.md) · [成功CI run39905121175](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39905121175)：三真p×三固定报告q=9world、**144完整人工原source**，验证Brier严格适当期望等式p(1−p)+(q−p)²与有限样本中错误q偶然得更低样本评分的正概率。Python双版本各83真单测，**166次通过**，三job success；[全来源归档6d94abb6](https://github.com/edwardsage419/Psychohistory-Research/commit/6d94abb697633a44b12db4db587d38c27fce11c9)。
 
 本轮合计**30人工world、1056带模型标识原source、550次真实成功测试、9个最终成功CI job**；另R279一次早期失败已单独如实记录。没有新增真人E2/历史E3或R073跨实验验证，R073及PESEN v0.1仍冻结。原239目录下一项为**12-011 Logarithmic Score（P1，拟R281）**。按原主线先完成全部R，随后统一归纳分类，最后熔炼原创体系，个人辅助决策系统继续暂缓。
+
+
+## 2026-10-23 R281 对数预测评分与R278—R281四研究结题总索引
+
+原239候选模型目录按顺序进一步完成**12-011 R281 Logarithmic Score（P1）**，同时将**12-008 R278模型平均**、**12-009 R279预测校准**、**12-010 R280 Brier评分**、**12-011 R281对数评分**四项连续研究统一收束于[完整E1科研验收与资料归档总索引](docs/R278_R281_ENSEMBLE_CALIBRATION_BRIER_LOG_SCORE_FOUR_MODEL_E1_CLOSURE_2026-10-23.md)。
+
+[R281全部原来源与运行研究](research/R281/README.md) · [正式科学报告](research/R281/R281_SCIENTIFIC_REPORT_2026-10-23.md) · [机器有界验收](research/R281/R281_FINAL_ACCEPTANCE_STATUS.json) · [全成功GitHub Actions run39905387817](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/39905387817)：三真Bernoulli生成p×五事前固定q，**15人工world、240完整四bit原source**。有限负log概率损失精确编码为有理数ln2与ln3系数，且对q=0/1与真实结果矛盾的事件严格记+INF，不做任意截尾。真p=1/2、固定q=0时，四bit中出现至少一个1并导致INF的真实概率为15/16，总体未来期望log-loss为+∞。双Python3.11/3.12各134真正unittest，共**268项通过**，第三独立来源重算及机器人永久原CSV/结果JSON/SHA256归档成功。[全部原source commitd038a6b9](https://github.com/edwardsage419/Psychohistory-Research/commit/d038a6b9794152463bf05e058c3d43c22f197cb6)。
+
+四个连续模型R278—R281正式科学E1验收合计：**45人工world、1296种带模型标识完整原source类型、818项双Python真正通过的测试、四个完成的GitHub Actions各三job共12成功job**。R279首次语法失败run单独完整保留，最终修复重跑成功并正式存证，不能计为成功CI。四项仅人工E1，没有新增真人E2、真实历史E3或R073跨实验真人复验结果；R073/PESEN v0.1仍冻结。原239目录下一项为**12-012 Open Reproducible Workflow and ODD（P0，拟R282）**。依用户既定主线优先完成全部原R系列，再统一归纳分类，最后原创模型熔炼，具体个人辅助决策系统实施继续暂缓。
