@@ -17,7 +17,7 @@ ROOT=Path(__file__).resolve().parents[2]
 CROSS="docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json"
 CAT="docs/MODEL_CANDIDATE_CATALOG_v0.1.json"
 EARLY="manifests/RECOVERY_STATUS_R001_R064.csv"
-PATTERN=re.compile(r"\b(?:0[1-9]|1[012])-\d{3}\b")
+PATTERN=re.compile(r"(?<![A-Za-z0-9])(?:0[1-9]|1[012])-\d{3}(?![A-Za-z0-9])")
 CROSS_OBJ=json.loads((ROOT/CROSS).read_text(encoding="utf-8"))
 CAT_OBJ=json.loads((ROOT/CAT).read_text(encoding="utf-8"))
 ROWS=CROSS_OBJ["rows"]
