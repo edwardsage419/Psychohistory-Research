@@ -1,0 +1,46 @@
+name: Original 239 P1 R311 Bounded Confidence Crosswalk v2.7
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p1_r311_crosswalk_v2_7.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.7_2026-10-23.json'
+      - 'docs/ORIGINAL_239_PENDING_35_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv'
+      - '.github/workflows/original-239-p1-r311-crosswalk-v27.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dual-python-original239:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 15 original239 source version SHA and bounded E1-only R311 tests
+        run: python research/catalogue_audit/verify_p1_r311_crosswalk_v2_7.py --test
+  independent-1944-original-dyads:
+    needs: dual-python-original239
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recheck one original changed ID and independent 1944 dyad records with union-find
+        run: |
+          python research/catalogue_audit/verify_p1_r311_crosswalk_v2_7.py --audit
+          python research/catalogue_audit/independent_r311_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Original239-v27-R311-201Primary-35Pending
+          path: |
+            docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v2.7_2026-10-23.json
+            docs/ORIGINAL_239_PENDING_35_P1_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-23.csv
+            research/R311/R311_FINAL_ACCEPTANCE_STATUS.json
+          retention-days: 90
