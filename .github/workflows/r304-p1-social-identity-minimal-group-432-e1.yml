@@ -1,0 +1,67 @@
+name: R304 Social Identity Minimal Group Allocation 432 Sources Exact E1
+on:
+  push:
+    paths:
+      - 'research/R304/r304_exact_social_identity_allocation.py'
+      - 'research/catalogue_audit/independent_r304_source_audit.py'
+      - '.github/workflows/r304-p1-social-identity-minimal-group-432-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dual-python-identity-allocations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run 1310 original allocation utility identity and negative control tests
+        run: python research/R304/r304_exact_social_identity_allocation.py --test
+      - name: Emit 432 complete option source rows and run no-import independent audit
+        run: |
+          python research/R304/r304_exact_social_identity_allocation.py --emit
+          python research/catalogue_audit/independent_r304_source_audit.py --test
+          python research/catalogue_audit/independent_r304_source_audit.py --audit
+  independent-source-and-archive:
+    needs: dual-python-identity-allocations
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recompute all original allocation outcomes, label flips, source SHA256 and results
+        run: |
+          python research/R304/r304_exact_social_identity_allocation.py --emit
+          python research/catalogue_audit/independent_r304_source_audit.py --test
+          python research/catalogue_audit/independent_r304_source_audit.py --audit
+      - uses: actions/upload-artifact@v4
+        with:
+          name: R304-432-Original-Social-Identity-Allocation-Options
+          path: |
+            research/R304/R304_ALL_432_ORIGINAL_MINIMAL_GROUP_ALLOCATION_OPTIONS.csv
+            research/R304/R304_EXACT_SOCIAL_IDENTITY_ALLOCATION_RESULTS.json
+            research/R304/R304_MACHINE_RECEIPT.json
+          retention-days: 90
+      - name: Commit exact source CSV results JSON and SHA256 receipt permanently
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/R304/R304_ALL_432_ORIGINAL_MINIMAL_GROUP_ALLOCATION_OPTIONS.csv research/R304/R304_EXACT_SOCIAL_IDENTITY_ALLOCATION_RESULTS.json research/R304/R304_MACHINE_RECEIPT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'archive(R304): exact social identity allocation 432 source options'
+            for attempt in 1 2 3 4 5 6 7 8; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then echo R304_ORIGINAL_SOCIAL_IDENTITY_SOURCES_ARCHIVED; exit 0; fi
+              sleep 2
+            done
+            exit 1
+          fi
