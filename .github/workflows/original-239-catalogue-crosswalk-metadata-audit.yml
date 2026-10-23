@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Verify 250 real catalogue rows and early archive metadata tests
+      - name: Verify 251 real catalogue rows and original 74 ZIP metadata tests
         run: python research/catalogue_audit/verify_239_crosswalk.py --test
   independently-verify-and-archive:
     needs: dual-python-tests
@@ -42,6 +42,7 @@ jobs:
           cross=base/'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v0.1_2026-10-23.json'
           cat=base/'docs/MODEL_CANDIDATE_CATALOG_v0.1.json'
           early=base/'manifests/RECOVERY_STATUS_R001_R064.csv'
+          library=base/'manifests/LIBRARY_ORIGINAL_ZIPS_2026-10-15.csv'
           receipt=base/'docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RECEIPT.json'
           results=base/'docs/ORIGINAL_239_CROSSWALK_MACHINE_AUDIT_RESULTS.json'
           source=json.loads(cross.read_text())
@@ -86,14 +87,26 @@ jobs:
           assert len(archive)==64
           assert {r['round'] for r in archive}=={'R'+str(i).zfill(3) for i in range(1,65)}
           assert all(r['zip_integrity']=='PASS' for r in archive)
+          with library.open(newline='',encoding='utf-8') as f:library_rows=list(csv.DictReader(f))
+          assert len(library_rows)==74
+          assert all(r['zip_crc']=='PASS' for r in library_rows)
+          assert all((base/r['archive_path']).is_file() for r in library_rows)
+          zip_refs=[name for r in archive for name in r['library_zip_names'].split(' | ')]
+          assert len(zip_refs)==len(set(zip_refs))==73
+          unassigned={r['original_filename'] for r in library_rows}-set(zip_refs)
+          assert unassigned=={'心理史学_模型研究第二轮知识包_v0.2.zip'}
           summary=json.loads(results.read_text())['provenance']
           assert summary['catalogue_count']==239 and summary['primary_readme_links']==173
+          assert summary['original_library_zip_inventory_count']==74
+          assert summary['library_zip_referenced_by_original_R001_R064_rounds']==73
           assert not summary['full_239_scientific_completion_certified']
           rec=json.loads(receipt.read_text())
           for path,key in ((cat,'catalogue_sha256'),(cross,'crosswalk_sha256'),
-                           (early,'early_archive_manifest_sha256'),(results,'results_sha256')):
+                           (early,'early_archive_manifest_sha256'),
+                           (library,'original_library_zip_inventory_sha256'),
+                           (results,'results_sha256')):
               assert hashlib.sha256(path.read_bytes()).hexdigest()==rec[key]
-          print('ORIGINAL_239_CROSSWALK_173_README_BLOBS_66_UNRESOLVED_64_ARCHIVE_ROUNDS_INDEPENDENTLY_PASS')
+          print('ORIGINAL_239_CROSSWALK_173_READMES_64_ROUNDS_73_LINKED_ZIPS_ONE_STANDALONE_PASS')
           PY
       - uses: actions/upload-artifact@v4
         with:
