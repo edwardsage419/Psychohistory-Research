@@ -1,0 +1,59 @@
+{
+  "catalogue_id": "04-005",
+  "research_id": "R122",
+  "date": "2026-10-24",
+  "status": "PASS_BOUNDED_INTERNAL_ASYNC_REACHABILITY_E1",
+  "evidence_level": "E1_CONSTRUCTED_MATHEMATICAL_ONLY",
+  "original_source": "Centola and Macy 2007 AJS 113(3):702-734 DOI 10.1086/521848",
+  "reuse": "existing R122 original source report, two original solvers, 51 tests, formal bounded acceptance",
+  "protocol_path": "research/validation/R122_THIRD_METHOD_ASYNC_BITMASK_PROTOCOL_FREEZE_2026-10-24.md",
+  "protocol_blob_sha1": "a0e341e963afb1309a021f2756d919bf9ebc645e",
+  "third_method": "asynchronous single-node bitmask BFS reachability, all reachable terminal masks compared to both original solvers",
+  "cases_by_n": {
+    "1": 2,
+    "2": 32,
+    "3": 512,
+    "4": 16384
+  },
+  "total_cases": 16930,
+  "raw_csv": "research/validation/R122_ASYNC_16930_CONSTRUCTED_STATES_2026-10-24.csv",
+  "raw_csv_git_blob_sha1": "b219fc1da3db01fcd6d74c4006b637db755acd4c",
+  "raw_csv_sha256": "8b86493df9e51e46b95d08bc608f294441bdc9e84dee7b953c8cc5e4caeb8013",
+  "third_method_script": "research/validation/verify_r122_async_bitmask.py",
+  "third_method_script_git_blob_sha1": "d016296b5576e23f3edcc3e779965e2528133899",
+  "original_source_blobs": {
+    "source": "bde1c39fc9b536aaa794209ceaf76c90407d0f16",
+    "tests": "6058f0f4ddb5f0fdcaf643e969374507f6a70063",
+    "report": "7301d5a7b026feaa16ce7ac8e942d60a7ad1af63"
+  },
+  "negative_controls": 4,
+  "wrong_blob_rejected": true,
+  "modified_csv_rejected": true,
+  "ci_run_id": 40087355161,
+  "ci_status": "completed",
+  "ci_conclusion": "success",
+  "ci_jobs": [
+    {
+      "python": "3.11",
+      "job_id": 120852896455,
+      "conclusion": "success",
+      "original_tests": 51
+    },
+    {
+      "python": "3.12",
+      "job_id": 120852896288,
+      "conclusion": "success",
+      "original_tests": 51
+    }
+  ],
+  "scientific_report": "research/validation/R122_ASYNC_REACHABILITY_SCIENTIFIC_REPORT_2026-10-24.md",
+  "internal_method_independence": true,
+  "external_team_replication": false,
+  "new_human_E2": 0,
+  "new_historical_E3": 0,
+  "heldout_prediction": "NOT_RUN",
+  "calibration": "NOT_RUN",
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "billing_checked": "public repository, standard ubuntu-latest, no paid services"
+}
