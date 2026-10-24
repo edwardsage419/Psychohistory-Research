@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-24（Asia/Shanghai）；已收录 TH007
+更新：2026-10-24（Asia/Shanghai）；已收录 TH008
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -16,11 +16,13 @@
 | TH006 | 语言语境主义、言语行动与政治语言史 | Skinner 1969 第三方原刊转录关键段落与 2002 出版社公开章节开头；Pocock 1971 原版馆藏、1989 出版社书介；Lamb/Fear/Martinich 评论摘要。作者全文及版本比对仍有缺口 | THEORY_NOTE_BOUNDED | [研究笔记](TH006_LINGUISTIC_CONTEXTUALISM_SPEECH_ACTS_2026-10-24.md) |
 | TH007 | 制度权力执行、合法性与服从 | Weber 1922/1978 授权节录索引；Knight 1992 出版社公开前言及第一章开头；Moe 2005 原刊摘要；Tyler 1990/2006 章节预览和 2003 原刊摘要；Beetham 1991/2013 书目及二手交叉核对。全文与因果识别待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH007_LEGITIMACY_OBEDIENCE_POWER_2026-10-24.md) |
 
+| TH008 | 集体记忆、社会表征与文化记忆 | Halbwachs 1925 原著前言、家庭记忆及结论选段；Moscovici 1961 书目及 1988 原刊摘要；Assmann 1995 书目与索引片段；Olick 1999、Jahoda 1988 原刊摘要。全文及实证待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH008_COLLECTIVE_MEMORY_SOCIAL_REPRESENTATIONS_2026-10-24.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH008 | 集体记忆与社会表征理论 | Maurice Halbwachs；Serge Moscovici；Jan Assmann 原作及反对意见待核验 | QUEUED_UNVERIFIED |
+| 1 | TH009 | 社会认同、群际分类与群体边界 | Tajfel、Turner 原作及竞争批评待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -55,6 +57,11 @@
 | legitimacy / legitimation | Beetham 1991/2013；规则、可辩护性、同意的规范性分析 | 群体、制度 | 出版社目录与二手学术核对；原著正文待审 |
 | procedural justice | Tyler 1990/2006, 2003；程序公平与法律服从 | 个体、群体、制度 | 原著章节预览、原刊摘要；独立因果复验无 |
 | coercion versus voluntary compliance | Weber、Tyler、Knight、Moe 的竞争解释 | 个体、群体、制度、历史 | 项目综合推论，待区分性证据 |
+
+| collective memory / cadres sociaux | Halbwachs 1925；社会框架参与记忆重构 | 个体、群体、历史 | 原著前言、第五章和结论选段 |
+| social representations | Moscovici 1961/1988；文化类别、传播与认知 | 个体、群体、制度 | 1961书目、1988原刊摘要 |
+| communicative / cultural memory | Assmann 1995；日常交流与文化载体 | 群体、制度、历史 | 原刊书目、索引片段、后续同行评议综述 |
+| collected / collective memory | Olick 1999；个人回忆与公共实践的分析单位争议 | 个体、群体、历史 | 原刊摘要 |
 
 ## C 与 D 研究日历（候选方法储备）
 
