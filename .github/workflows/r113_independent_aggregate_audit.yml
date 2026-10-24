@@ -1,0 +1,27 @@
+name: R113 independent published aggregate bounded E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r113_aggregate_and_synthetic_independent.py'
+      - '.github/workflows/r113_independent_aggregate_audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent_aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Independent exact published aggregates and counterexample
+        run: python research/validation/verify_r113_aggregate_and_synthetic_independent.py
+      - name: Replay original R113 twenty five tests
+        run: PYTHONPATH=research/R113 python -m unittest -v research/R113/test_r113_social_norm_expectations_identifiability.py
