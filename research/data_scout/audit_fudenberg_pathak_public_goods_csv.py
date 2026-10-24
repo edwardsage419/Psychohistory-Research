@@ -16,7 +16,7 @@ REQUIRED = {"session","period","subject","group","contrib","profit",
             "pun1","pun2","pun3","con1","con2","con3","opp1","opp2","opp3"}
 
 def git_blob_hash(raw: bytes) -> str:
-    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\\0"+raw).hexdigest()
+    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
 
 def audit_rows(rows: list[dict], headers: list[str]) -> dict:
     if len(headers)!=28 or not REQUIRED.issubset(headers):
