@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-25",
+  "research_id": "R138",
+  "catalogue_id": "05-014",
+  "status": "PASS_BOUNDED_LOCAL_INTERNAL_E1_NO_REMOTE_CI",
+  "freeze_path": "research/validation/R138_THIRD_METHOD_CRITICAL_VALUE_ASSIGNMENT_DP_PROTOCOL_FREEZE_2026-10-25.md",
+  "freeze_git_blob": "fc644e4fa7127073a9cf94006b6efa7454d3d48e",
+  "python": {
+    "environment": "Python 3.13.5 local",
+    "executed_local_script_sha256": "0b9db12883d2da63df0b7438e618cecfeac3737cd8d69355894630566eccf85b",
+    "uploaded_script_path": "research/validation/r138_critical_value_assignment_dp_third_method.py",
+    "uploaded_script_git_blob": "345d5dae3eb35963cc06be62a9e899add30a9e26",
+    "uploaded_source_byte_identical_to_local": false,
+    "uploaded_script_execution_in_this_run": "NOT_EXECUTED_FROM_GITHUB_BYTES",
+    "local_receipt_sha256": "297033707eae40d8fd2b9329403e0ea1227d71494203669798fdfa63f9f84bdf",
+    "single": {
+      "profiles": 125,
+      "deviations": 1875,
+      "violations": 0,
+      "nontruth_utility_ties": 1050
+    },
+    "two_goods": {
+      "profiles": 729,
+      "deviations": 19683,
+      "violations": 0,
+      "negative_taxes": 0,
+      "truthful_ir_fail": 0,
+      "welfare_fail": 0
+    },
+    "public": {
+      "profiles": 216,
+      "deviations": 3888,
+      "violations": 0,
+      "built": 181,
+      "deficits": 160,
+      "built_zero_tax": 69,
+      "truthful_ir_fail": 0
+    },
+    "total_deviations": 25446,
+    "negative_controls_all_detected": true
+  },
+  "js_b": {
+    "runtime": "V8 code-mode same JS bytes as uploaded",
+    "path": "research/validation/r138_b_independent_groves_welfare_audit.js",
+    "git_blob": "70bb481417e83a9fc1a5f025a7ca999c66e275a0",
+    "worlds": 729,
+    "allocations": 13,
+    "deviations": 19683,
+    "groves_violations": 0,
+    "welfare_violations": 0,
+    "negative_tax": 0,
+    "truthful_ir_fail": 0
+  },
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replication": 0,
+  "ci": "NOT_RUN",
+  "global_crosswalk_unchanged": true
+}
