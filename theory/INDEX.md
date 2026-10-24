@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-24（Asia/Shanghai）；已收录 TH011
+更新：2026-10-24（Asia/Shanghai）；已收录 TH012
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -24,11 +24,13 @@
 
 | TH011 | 多元无知、沉默螺旋与偏好伪装 | Miller & McFarland 1987、Prentice & Miller 1993 作者机构摘要；Noelle-Neumann 1974 出版者页面；Kuran 1989 作者摘要与 1995 原版书目；Matthes et al. 2018 元分析摘要。全文及独立识别待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH011_PLURALISTIC_IGNORANCE_SILENCE_PREFERENCE_2026-10-24.md) |
 
+| TH012 | 描述性规范、命令性规范、条件性期待与社会惩罚 | Bicchieri 2006 出版社前言与第一章节录；Fehr & Gächter 2002 四页原刊全文；Cialdini et al. 1990、Kallgren et al. 2000、Schultz et al. 2007、Ostrom 2000 原刊摘要；Herrmann et al. 2008 机构摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH012_DESCRIPTIVE_INJUNCTIVE_NORMS_SANCTIONS_2026-10-24.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH012 | 描述性规范、命令性规范与社会惩罚 | Cialdini, Reno & Kallgren 1990；Bicchieri 2006；Fehr & Gächter 2002 原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH013 | 礼物交换、互惠与道德经济 | Mauss 1925；Polanyi 1944；E. P. Thompson 1971；James C. Scott 1976 原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -86,6 +88,13 @@
 | pluralistic ignorance | Miller & McFarland 1987；Prentice & Miller 1993；自我与他人态度估计的系统性偏差 | 个体、群体 | 作者机构原刊摘要；全文未审 |
 | spiral of silence | Noelle-Neumann 1974；舆论气候感知与公开表达的候选反馈机制 | 个体、群体、制度 | 原刊页面；Matthes et al. 2018 元分析摘要，平均 r=.10 |
 | preference falsification | Kuran 1989/1995；公开表态与私人偏好可能分离 | 个体、群体、制度、历史 | 作者原刊摘要与原版书目；全文及预测检验未审 |
+
+| descriptive / injunctive norms | Cialdini, Reno & Kallgren 1990；通常行为与群体认可可分离 | 个体、群体、制度 | 原作者摘要；全文待审 |
+| empirical / normative expectations | Bicchieri 2006；他人行为与他人期待的条件性信念 | 个体、群体、制度 | 出版社原著前言已审 |
+| conditional preference for conformity | Bicchieri 2006；服从偏好随期待改变 | 个体、群体 | 原著前言，操作定义待审 |
+| normative focus / salience | Kallgren, Reno & Cialdini 2000；情境注意激活 | 个体、群体 | 出版者摘要 |
+| altruistic / antisocial punishment | Fehr & Gächter 2002；Herrmann et al. 2008；惩罚方向存在社会差异 | 群体、制度、历史 | 2002原刊全文、2008机构摘要 |
+| boomerang effect of normative feedback | Schultz et al. 2007；描述性反馈可能逆向改变行为 | 个体、群体、制度 | 原作者摘要，全文待审 |
 
 ## C 与 D 研究日历（候选方法储备）
 
