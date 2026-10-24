@@ -1,0 +1,41 @@
+{
+  "research_id": "R137",
+  "date": "2026-10-25",
+  "status": "PASS_BOUNDED_LOCAL_E1_THIRD_METHOD",
+  "protocol": "research/validation/R137_CYCLE_DB_BIRTH_DEATH_GRADIENT_THIRD_METHOD_PROTOCOL_FREEZE_2026-10-25.md",
+  "source_script": "research/validation/r137_cycle_db_birth_death_third_method.py",
+  "source_git_blob_sha1": "0964a9c634e250efd688e1809f6af93b7c1c375c",
+  "full_local_json_sha256": "8e477211035c535bd25cd21a0b440f72683773a5893da3968cc6837a239cfbda",
+  "graphs": 5,
+  "independent_b_conditions": 20,
+  "neutral_state_checks": 30,
+  "zero_cost_negative_controls": 5,
+  "reversed_event_negative_controls": 5,
+  "thresholds": {
+    "C5": "6",
+    "C6": "4",
+    "C7": "10/3",
+    "C8": "3",
+    "C9": "14/5"
+  },
+  "gradient_b0": {
+    "C5": "-3/5",
+    "C6": "-2/3",
+    "C7": "-5/7",
+    "C8": "-3/4",
+    "C9": "-7/9"
+  },
+  "gradient_b1": {
+    "C5": "-1/2",
+    "C6": "-1/2",
+    "C7": "-1/2",
+    "C8": "-1/2",
+    "C9": "-1/2"
+  },
+  "evidence": "E1_INTERNAL_ONLY",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replication": 0,
+  "new_CI": "NOT_RUN",
+  "note": "New bounded third-method check of the already accepted R137, not a new original239 item acceptance. Full per-state JSON is a local artifact and regenerable with the source script."
+}
