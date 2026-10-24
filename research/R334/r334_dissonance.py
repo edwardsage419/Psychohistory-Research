@@ -52,10 +52,10 @@ def build():
 def render():
     rows,obj=build()
     output=io.StringIO(newline="")
-    writer=csv.writer(output,lineterminator="\\r\\n")
+    writer=csv.writer(output,lineterminator="\r\n")
     writer.writerow(HEADER)
     writer.writerows(rows)
-    return output.getvalue().encode(),(json.dumps(obj,indent=2,ensure_ascii=False)+"\\n").encode()
+    return output.getvalue().encode(),(json.dumps(obj,indent=2,ensure_ascii=False)+"\n").encode()
 
 def audit():
     cb,jb=render()

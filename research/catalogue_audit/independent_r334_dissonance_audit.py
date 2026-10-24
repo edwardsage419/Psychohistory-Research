@@ -39,11 +39,11 @@ def expected():
         low_justification_larger_dissonance_shifts=low,
         high_justification_larger_incentive_shifts=high)
     buff=io.StringIO(newline="")
-    writer=csv.writer(buff,lineterminator="\\r\\n")
+    writer=csv.writer(buff,lineterminator="\r\n")
     writer.writerow(["model","a","b","j","c","m","latent_strain","post_attitude"])
     writer.writerows(entries)
     obj=dict(schema="R334_frozen_induced_compliance_v1",conditions=summary,checks=checks)
-    return buff.getvalue().encode(),(json.dumps(obj,indent=2,ensure_ascii=False)+"\\n").encode(),checks
+    return buff.getvalue().encode(),(json.dumps(obj,indent=2,ensure_ascii=False)+"\n").encode(),checks
 
 def validate(cb,jb):
     a,b,checks=expected()
@@ -65,7 +65,7 @@ if __name__=="__main__":
         assert "CSV tampering" in str(e)
     obj=json.loads(jb)
     obj["conditions"][0]["post_dissonance"]="0"
-    bad=(json.dumps(obj,indent=2,ensure_ascii=False)+"\\n").encode()
+    bad=(json.dumps(obj,indent=2,ensure_ascii=False)+"\n").encode()
     assert bad!=jb
     try:
         validate(cb,bad)
