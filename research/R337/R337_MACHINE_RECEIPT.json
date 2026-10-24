@@ -1,0 +1,43 @@
+{
+  "research_id": "R337",
+  "catalogue_id": "03-015",
+  "protocol_commit": "c26ded95a844908d692f069c1a11ac1934b15487",
+  "source_commit": "7f7a44f9596acb5d06ffe4d51677e59d75a5f357",
+  "protocol_blob_sha1": "1f98d653400ec2661edc2675e6396be8593cf0a2",
+  "original_artificial_source_blob_sha1": "e711da9e296693037e5a87def3604b3fe53025e8",
+  "results_blob_sha1": "5061ce0d74a9703e9a11ef2180395066a99aca1f",
+  "production_python_blob_sha1": "96e9e2be1b7d7ac0ac7b3cfcf05c7c81e938090d",
+  "independent_auditor_blob_sha1": "db952978d4e71bc3cbba61915c44e96c3d629af7",
+  "data_rows": 64,
+  "condition_count": 32,
+  "policies": 2,
+  "checks": {
+    "worlds": 32,
+    "rows": 64,
+    "central_worlds": 8,
+    "other_worlds": 24,
+    "low_no_cue_zero": 12,
+    "quality_pairs_central": 4,
+    "quality_pairs_low": 12,
+    "cue_pairs_central": 2,
+    "cue_pairs_low": 6,
+    "agreement": 2,
+    "disagreement": 30
+  },
+  "verification": {
+    "run_id": 40055959491,
+    "conclusion": "success",
+    "jobs": {
+      "python311": "success",
+      "python312": "success",
+      "independent": "success"
+    },
+    "unit_tests_per_python": 6,
+    "negative_tamper_tests": 2
+  },
+  "evidence_grade": "PASS_BOUNDED_E1_CONSTRUCTED_BINARY_ELM_GATE_ONLY",
+  "actual_human_E2": false,
+  "historical_E3": false,
+  "original_author_empirical_replication": false,
+  "early_zip_full_reuse_audit_complete": false
+}
