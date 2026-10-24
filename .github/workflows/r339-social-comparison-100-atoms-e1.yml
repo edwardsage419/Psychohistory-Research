@@ -1,0 +1,35 @@
+name: R339 Social Comparison 100 artificial target atoms E1
+on:
+  push:
+    paths:
+      - 'research/R339/**'
+      - 'research/catalogue_audit/independent_r339_social_comparison_audit.py'
+      - '.github/workflows/r339-social-comparison-100-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R339/r339_social_comparison.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R339/r339_social_comparison.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r339_social_comparison_audit.py
