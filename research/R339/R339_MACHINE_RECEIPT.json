@@ -1,0 +1,46 @@
+{
+  "research_id": "R339",
+  "catalogue_id": "03-020",
+  "protocol_commit": "dba0ded506b85e7c938a2c97d9478c2cd1daf120",
+  "source_commit": "9152132df26ecfb9a09aaa6ce09f12aedd3658e9",
+  "protocol_blob_sha1": "18629c8708189fc6a196ebbadeb84bd06f7aed10",
+  "original_artificial_source_blob_sha1": "fe06c06c7f158ab174251f1a14d184a4317b3371",
+  "results_blob_sha1": "817389e331f07dda90ae291daef9b20df1f65363",
+  "production_python_blob_sha1": "ed769df49658f345e78859f2be733b5b43322791",
+  "independent_auditor_blob_sha1": "dd0ea88f73bdc3d4a75ac9b53b1442a56b4dfe25",
+  "data_rows": 100,
+  "condition_count": 50,
+  "policies": 2,
+  "checks": {
+    "worlds": 50,
+    "rows": 100,
+    "objective_worlds": 25,
+    "no_objective_worlds": 25,
+    "objective_both_none": 25,
+    "agreement": 40,
+    "disagreement": 10,
+    "similar_A": 17,
+    "similar_B": 8,
+    "high_A": 15,
+    "high_B": 10,
+    "similar_better": 8,
+    "similar_equal": 17,
+    "similar_worse": 0
+  },
+  "verification": {
+    "run_id": 40059401269,
+    "conclusion": "success",
+    "jobs": {
+      "python311": "success",
+      "python312": "success",
+      "independent": "success"
+    },
+    "unit_tests_per_python": 6,
+    "negative_tamper_tests": 2
+  },
+  "evidence_grade": "PASS_BOUNDED_E1_CONSTRUCTED_TWO_TARGET_SIMILARITY_ONLY",
+  "actual_human_E2": false,
+  "historical_E3": false,
+  "original_author_empirical_replication": false,
+  "early_zip_full_reuse_audit_complete": false
+}
