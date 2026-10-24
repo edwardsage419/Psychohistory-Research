@@ -1,0 +1,53 @@
+{
+  "schema": "original239_itemwise_existing_R_formal_E1_acceptance_v1",
+  "date": "2026-10-24",
+  "catalogue_id": "04-015",
+  "candidate": "Homophily Models",
+  "primary_R": "R124",
+  "prior_R_reused": true,
+  "frozen_protocol_path": "research/validation/R124_THIRD_METHOD_ENDPOINT_COVARIANCE_PROTOCOL_FREEZE_2026-10-24.md",
+  "frozen_protocol_blob": "095ef1ec2412c602b84dc83c6a1428d6836dfb1e",
+  "new_independent_script": "research/validation/verify_r124_endpoint_covariance.py",
+  "new_independent_script_blob": "6c4afa0350d156719f3b7d3cb50fdc157bd8b98f",
+  "raw_csv": "research/validation/R124_ENDPOINT_COVARIANCE_948_CONSTRUCTED_GRAPHS_2026-10-24.csv",
+  "raw_csv_git_blob": "2ace3cf66e941fae07f19619fa3c35ebac7a1615",
+  "raw_csv_sha256": "4901466eb6215bdd90c9f9e70057be49a1d9a5373df68db431c82a40b8416b74",
+  "scientific_report": "research/validation/R124_ENDPOINT_COVARIANCE_INDEPENDENT_SCIENTIFIC_REPORT_2026-10-24.md",
+  "method": "independent exact Pearson correlation on both orientations of each undirected edge, compared with original Newman mixing matrix",
+  "constructed_graph_label_count": 948,
+  "by_n": {
+    "2": 4,
+    "3": 48,
+    "4": 896
+  },
+  "nonempty": 926,
+  "empty": 22,
+  "undefined_nonempty": 74,
+  "exact_agreements_nonempty": 926,
+  "negative_positive_controls": 6,
+  "mutated_csv_rejected": true,
+  "wrong_source_blob_rejected": true,
+  "original_R124_tests_per_python": 56,
+  "ci": {
+    "run_id": 40091492475,
+    "workflow_commit": "e2141458a0c9dda629517a961418343636d44736",
+    "status": "completed",
+    "conclusion": "success",
+    "python_3_11_job_id": 120864915211,
+    "python_3_12_job_id": 120864915347,
+    "job_log_checked": true
+  },
+  "grade": "PASS_BOUNDED_INTERNAL_ENDPOINT_COVARIANCE_E1",
+  "new_human_E2_scores": 0,
+  "new_historical_E3_scores": 0,
+  "external_independent_reproduction": false,
+  "limitations": [
+    "no empirical social network microdata",
+    "assortativity does not identify individual preference",
+    "opportunity and influence confounding remains",
+    "no out-of-sample human prediction",
+    "no historical validation"
+  ],
+  "directory_link_is_scientific_validity": false,
+  "additional_paid_resources_used": false
+}
