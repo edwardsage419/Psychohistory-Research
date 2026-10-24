@@ -1,0 +1,52 @@
+{
+  "research_id": "R136",
+  "date": "2026-10-25",
+  "evidence_class": "E1_INTERNAL_ALGORITHMIC_REPLICATION",
+  "frozen_protocol": "research/validation/R136_THIRD_METHOD_MARKOV_TREE_PROTOCOL_FREEZE_2026-10-25.md",
+  "source_git_blob_sha1": "a1495bc01a71064e190116e2ec71580aa3e8e1f1",
+  "source_sha_verified_during_local_execution": true,
+  "algorithm": "exact_directed_spanning_in_trees_fraction",
+  "rooted_trees_per_root": [
+    16,
+    16,
+    16,
+    16
+  ],
+  "extortion_parameter_pairs": 14,
+  "extortion_opponent_conditions": 1134,
+  "extortion_payoff_identity_exact_pass": 1134,
+  "equalizer_opponent_conditions": 81,
+  "equalizer_Y_5_over_3_exact_pass": 81,
+  "deterministic_nonunique_cases": 2,
+  "stationarity_residual_failures": 0,
+  "negative_control_normalization": "PASS",
+  "frozen_negative_control_q2_q3_swap": "FAILED_NONDISCRIMINATING",
+  "frozen_negative_control_failure_reason": "The ZD payoff identity is invariant under any opponent q; swapping q2 and q3 changes the opponent strategy while preserving the identity.",
+  "posthoc_transition_order_diagnostic": "PASS_NOT_PREREGISTERED",
+  "posthoc_witness": {
+    "chi": 3,
+    "phi": "1/20",
+    "q": [
+      "1/4",
+      "1/2",
+      "3/4",
+      "1/4"
+    ],
+    "correct_X": "721/328",
+    "correct_Y": "459/328",
+    "wrong_X": "3413/1448",
+    "wrong_Y": "2103/1448",
+    "correct_residual": "0",
+    "wrong_residual": "0"
+  },
+  "csv_generated_locally_rows": 1215,
+  "csv_sha256": "c1e5c7680314e8734d6388662aef322b1e03befd7111dd5e5596b2c9c40ee856",
+  "csv_bytes": 115527,
+  "csv_archived_in_repository": false,
+  "script_path": "research/validation/r136_markov_tree_independent.py",
+  "new_CI": "NOT_RUN",
+  "E2": 0,
+  "E3": 0,
+  "external_replication": 0,
+  "acceptance": "BOUNDED_LOCAL_E1_PASS_WITH_FROZEN_NEGATIVE_CONTROL_FAILURE_OPEN"
+}
