@@ -1,0 +1,28 @@
+name: Original239 existing R123 Crosswalk v7.3
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v7.3_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_160_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - 'docs/ORIGINAL239_04-009_R123_E1_REATTRIBUTION_ACCEPTANCE.json'
+      - 'research/catalogue_audit/verify_original239_v7_3_existing_r123.py'
+      - '.github/workflows/original239_r123_crosswalk_v7_3.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strict_crosswalk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 239 identities, R123 bounded E1 and 160 pending items
+        run: python research/catalogue_audit/verify_original239_v7_3_existing_r123.py
