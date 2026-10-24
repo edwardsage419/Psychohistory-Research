@@ -1,0 +1,31 @@
+name: R117 independent published aggregate and focus E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r117_independent_aggregates_focus.py'
+      - '.github/workflows/r117_independent_aggregate_focus_audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent_aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check original R117 source and test identity
+        run: |
+          echo '027e407435ef26ebaf20ce26c617836899f0eb11c6af21afdfa0f6226cd27e8e  research/R117/r117_descriptive_injunctive_norms_published_aggregate_focus.py' | sha256sum -c -
+          echo 'ba0e8873f5655b13d7654aec81613acb80248d5d8245634c55527c527167ec3c  research/R117/test_r117_descriptive_injunctive_norms_published_aggregate_focus.py' | sha256sum -c -
+      - name: Independent published aggregate and synthetic focus audit
+        run: python research/validation/verify_r117_independent_aggregates_focus.py
+      - name: Replay original 39 tests
+        run: PYTHONPATH=research/R117 python -m unittest -v research/R117/test_r117_descriptive_injunctive_norms_published_aggregate_focus.py
