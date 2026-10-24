@@ -1,0 +1,26 @@
+name: Original239 existing R115 R116 Crosswalk v6.4
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v6.4_2026-10-24.json'
+      - 'research/catalogue_audit/verify_original239_v6_4_existing_r115_r116.py'
+      - '.github/workflows/original239_r115_r116_crosswalk_v6_4.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strict_crosswalk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Strict original239 identity and acceptance audit
+        run: python research/catalogue_audit/verify_original239_v6_4_existing_r115_r116.py
