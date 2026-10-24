@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH015，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH016，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -32,11 +32,13 @@
 
 | TH015 | 日常互动秩序、面子与情境定义 | Goffman 1953 博士论文第22章开放原文、Garfinkel 1964 原刊扫描 pp.225–232,239–241,249–250 直接审读；Goffman 1955/1974、1983 仅书目或目录；Drury & Stokoe 2022 开放全文，Atkinson 1988、Arminen 2008 摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH015_INTERACTION_ORDER_FACEWORK_SITUATION_2026-10-25.md) |
 
+| TH016 | 社会现实的建构、知识社会学与制度化 | Berger & Luckmann 1966 原著英文再版制度化、知识分工和社会化选段直接审读；Schütz 1953 原刊书目及2023同行评审论文间接核验；Searle 1995、Hacking 1999 出版社书介，原著正文待审 | THEORY_NOTE_BOUNDED | [研究笔记](TH016_SOCIAL_CONSTRUCTION_KNOWLEDGE_INSTITUTIONALIZATION_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH016 | 社会现实的建构、知识社会学与制度化 | Berger & Luckmann 1966；Schütz 1932/1953 原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH017 | 知识权威、分类实践与制度标准化 | Bowker & Star 1999；Hacking 1986/1999；Foucault 1975/1977 原著待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -117,6 +119,11 @@
 | background expectancies / breaching demonstrations | Garfinkel 1964 pp.226–232；默认期待及其破坏的展示性研究 | 个体、群体、制度 | 原刊扫描直接审读；非随机因果实验 |
 | documentary interpretation / sequential intelligibility | Garfinkel 1964 pp.228–229；话语在时序与共同背景中获得意义 | 个体、群体、历史 | 原刊原始对话材料；跨语言外推未证 |
 | interaction order / face-work / framing | Goffman 1955、1974、1983；面子、互动秩序与框架线索 | 个体、群体、制度、历史 | 部分书目和目录，相关原著正文待核验 |
+
+| habitualization / reciprocal typification | Berger & Luckmann 1966，再版印刷 pp.70–73；个人习惯与制度化需区分 | 个体、群体、制度 | 英文原著再版直接审读；历史因果未复验 |
+| externalization / objectivation / internalization | Berger & Luckmann 1966，再版印刷 pp.77–79；制度生成、外在化与社会化 | 个体、群体、制度、历史 | 英文原著再版直接审读；跨时期外推未证 |
+| adequacy postulate / subjective interpretation | Schütz 1953；科学构念与行动者日常理解 | 个体、群体、方法论 | 原刊书目及2023开放论文间接核验；原刊全文待审 |
+| institutional facts / construction target | Searle 1995；Hacking 1999；制度事实及建构对象界限 | 制度、哲学、方法论 | 出版社书介及目录；原著全文待审 |
 
 ## C 与 D 研究日历（候选方法储备）
 
