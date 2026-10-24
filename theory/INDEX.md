@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-24（Asia/Shanghai）；已收录 TH005
+更新：2026-10-24（Asia/Shanghai）；已收录 TH006
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -13,13 +13,14 @@
 | TH003 | Begriffsgeschichte 概念史、经验空间与期待视野 | Koselleck 1979 原版馆藏；2004 英译授权节录 pp. 73–77 直接审读；pp. 255–276 仅章节开头；Schinkel、Jordheim、Palti 批评摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH003_CONCEPTUAL_HISTORY_2026-10-24.md) |
 | TH004 | 社会机制、历史叙述与因果解释 | Hedström & Swedberg 1998、Elster 1998 出版社开放章节导论；Tilly 2000/2001 出版者摘要；付费全文未审 | THEORY_NOTE_BOUNDED | [研究笔记](TH004_MECHANISM_EXPLANATION_2026-10-24.md) |
 | TH005 | 历史制度主义的权力、冲突、行动者与路径依赖批评 | Hall & Taylor 1996 作者开放全文已审；Peters et al. 2005、Kay 2005、Moe 2005 原刊摘要；Knight 1992、Streeck & Thelen 2005、Mahoney & Thelen 2009/2010 出版社书目与开放节录 | THEORY_NOTE_BOUNDED | [研究笔记](TH005_POWER_CONFLICT_AGENCY_2026-10-24.md) |
+| TH006 | 语言语境主义、言语行动与政治语言史 | Skinner 1969 第三方原刊转录关键段落与 2002 出版社公开章节开头；Pocock 1971 原版馆藏、1989 出版社书介；Lamb/Fear/Martinich 评论摘要。作者全文及版本比对仍有缺口 | THEORY_NOTE_BOUNDED | [研究笔记](TH006_LINGUISTIC_CONTEXTUALISM_SPEECH_ACTS_2026-10-24.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH006 | 历史行动的语言语境主义与言语行动 | Quentin Skinner 1969/2002；J. G. A. Pocock 的原始作品待核查 | QUEUED_UNVERIFIED |
-| 2 | TH007 | 制度权力的执行、合法性与服从 | Jack Knight 1992；Terry Moe 2005；Mahoney & Thelen 2009/2010 的开放全文及独立案例待查 | QUEUED_UNVERIFIED |
+| 1 | TH007 | 制度权力的执行、合法性与服从 | Jack Knight 1992；Terry Moe 2005；Mahoney & Thelen 2009/2010 的开放全文及独立案例待查 | QUEUED_UNVERIFIED |
+| 2 | TH008 | 集体记忆与社会表征理论 | Maurice Halbwachs；Serge Moscovici；Jan Assmann 原作及反对意见待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -45,6 +46,10 @@
 | calculus / cultural approach | Hall & Taylor 1996；制度通过策略预期、规范与身份影响行动 | 个体、群体、制度 | 作者开放全文 pp. 939–940 |
 | political conflict over ideas | Peters, Pierre & King 2005；政策观念及基本假设冲突可能促成变迁 | 群体、制度、历史 | 原刊摘要；全文未审 |
 | distributional conflict | Knight 1992；制度形成的权力与分配解释 | 群体、制度 | 出版社原著简介；全文未审 |
+
+| linguistic contextualism / illocutionary force | Skinner 1969/2002；语言使用、语境与言语行动 | 个体、群体、制度、历史 | 原文第三方转录关键段落＋出版社原作章节开头；版本待复核 |
+| political languages / paradigms | Pocock 1971/1989；政治语言传统及变化 | 群体、制度、历史 | 原版馆藏＋再版出版社书介；正文未通读 |
+| mythologies of doctrines / coherence / prolepsis | Skinner 1969；历史解释中预设教义、强求一致和后见之明的风险 | 历史、方法论 | 原文第三方转录；待原刊扫描复核 |
 
 ## C 与 D 研究日历（候选方法储备）
 
