@@ -1,0 +1,38 @@
+name: Original239 R111 existing E1 Crosswalk v6.2
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_original239_r111_existing_e1_v6_2.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v6.2_2026-10-24.json'
+      - 'docs/ORIGINAL239_01-005_R111_E1_REATTRIBUTION_ACCEPTANCE.json'
+      - 'docs/ORIGINAL239_01-005_R111_E1_AUDIT_RECEIPT.json'
+      - '.github/workflows/original239-r111-existing-e1-crosswalk-v62.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  index311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/verify_original239_r111_existing_e1_v6_2.py
+  index312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/verify_original239_r111_existing_e1_v6_2.py
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_original239_01_005_r111_scope_audit.py
+      - run: python research/catalogue_audit/verify_original239_r111_existing_e1_v6_2.py
