@@ -1,0 +1,35 @@
+name: R342 SAOM 1152 artificial actor choice atoms E1
+on:
+  push:
+    paths:
+      - 'research/R342/**'
+      - 'research/catalogue_audit/independent_r342_saom_audit.py'
+      - '.github/workflows/r342-saom-1152-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R342/r342_actor_choice.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R342/r342_actor_choice.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r342_saom_audit.py
