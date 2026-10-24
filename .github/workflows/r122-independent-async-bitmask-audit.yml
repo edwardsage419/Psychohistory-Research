@@ -1,0 +1,28 @@
+name: R122 independent asynchronous bitmask E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r122_async_bitmask.py'
+      - 'research/validation/R122_ASYNC_16930_CONSTRUCTED_STATES_2026-10-24.csv'
+      - '.github/workflows/r122-independent-async-bitmask-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  async_bitmask:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify frozen source blobs and independent asynchronous 16930-case CSV
+        run: python research/validation/verify_r122_async_bitmask.py --output research/validation/R122_ASYNC_16930_CONSTRUCTED_STATES_2026-10-24.csv --verify
+      - name: Original R122 51 unit tests
+        run: PYTHONPATH=research/R122 python -m unittest -q research/R122/test_r122_centola_macy_2007_distinct_neighbor_complex_contagion.py
