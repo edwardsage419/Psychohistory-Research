@@ -1,0 +1,46 @@
+name: Original239 existing R130 Crosswalk v7.8
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v7.8_2026-10-25.json'
+      - 'docs/ORIGINAL_239_PENDING_154_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv'
+      - 'docs/ORIGINAL239_05-006_R130_E1_REATTRIBUTION_ACCEPTANCE.json'
+      - '.github/workflows/original239_r130_crosswalk_v7_8.yml'
+permissions:
+  contents: read
+jobs:
+  verify-catalogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 239 original models 154 provisional and R130 exact E1 provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv,hashlib,json,subprocess
+          from pathlib import Path
+          d=Path("docs")
+          x=json.loads((d/"ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v7.8_2026-10-25.json").read_text())
+          a=json.loads((d/"ORIGINAL239_05-006_R130_E1_REATTRIBUTION_ACCEPTANCE.json").read_text())
+          with (d/"ORIGINAL_239_PENDING_154_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv").open(newline="") as f: q=list(csv.DictReader(f))
+          assert x["total_original_models"]==239 and len(x["rows"])==239
+          assert x["provisional_itemwise_audit_open_count"]==154
+          assert x["status_counts"]["PROVISIONAL_PRIMARY_README_LINK"]==154
+          assert sum(x["status_counts"].values())==239
+          assert len(q)==154 and len({r["catalogue_id"] for r in q})==154
+          assert "05-003" in {r["catalogue_id"] for r in q}
+          assert "05-006" not in {r["catalogue_id"] for r in q}
+          assert {r["catalogue_id"] for r in q}=={r["catalogue_id"] for r in x["rows"] if r["link_status"]=="PROVISIONAL_PRIMARY_README_LINK"}
+          r=next(z for z in x["rows"] if z["catalogue_id"]=="05-006")
+          assert r["proposed_primary_research_id"]=="R130" and r["method_specific_E1_acceptance"]=="docs/ORIGINAL239_05-006_R130_E1_REATTRIBUTION_ACCEPTANCE.json"
+          assert a["CI_run"]==40113779564 and a["CI_status"]=="completed/success"
+          assert a["new_human_E2"]==a["new_historical_E3"]==0
+          data=Path(a["raw_csv"]).read_bytes()
+          assert hashlib.sha256(data).hexdigest()==a["raw_csv_sha256"]
+          assert subprocess.check_output(["git","hash-object",a["raw_csv"]],text=True).strip()==a["raw_csv_blob"]
+          assert subprocess.check_output(["git","hash-object",a["third_method_source"]],text=True).strip()==a["third_method_source_blob"]
+          print("PASS 239 entries, 154 provisional, R130 exact bounded E1")
+          PY
