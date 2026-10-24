@@ -1,0 +1,3 @@
+# R335 Groupthink Accounts original239 03-013
+
+Finite project-created three-person public unanimity, dissent suppression and perfect-truth information gate. Original source is 384 artificial records across 128 conditions. Prescore protocol frozen in protocols/R335_GROUPTHINK_384_ARTIFICIAL_PUBLIC_UNANIMITY_PRESCORE_FREEZE_2026-10-24.md at commit 0c553f662ae723adadaba9c7f4ce325d8964032e. Janis 1972 and 1982 original books and critical reviews Aldag Fuller 1993, Esser 1998 motivate the limited counterexample. No original Janis causal model replication, real E2 or historical E3. Scientific report and acceptance pending independent CI.
