@@ -12,7 +12,7 @@ QUEUE="docs/ORIGINAL_239_PENDING_8_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv"
 def data(path):return (ROOT/path).read_bytes()
 def blob(path):
     b=data(path)
-    return hashlib.sha1(b"blob "+str(len(b)).encode()+b"\\0"+b).hexdigest()
+    return hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
 def main():
     old=json.loads(data(OLD)); new=json.loads(data(NEW))
     assert blob(OLD)=="d2a3933adfed40fdb3b534a0e835a5dcf6272cc3"
