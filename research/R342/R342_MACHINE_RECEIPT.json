@@ -1,0 +1,40 @@
+{
+  "research_id": "R342",
+  "catalogue_id": "04-021",
+  "protocol_commit": "a18daa73d3fc2db9f01b2a50ef70a7094bdb6e9f",
+  "source_commit": "e3b94a895e16a578dbcedeaf21b4a0806a25518f",
+  "protocol_blob_sha1": "5b62289a71d9a3893aac0b57108eb51852ebc582",
+  "artificial_source_blob_sha1": "d3899536531c7bc708f7ee603116b6002573e951",
+  "results_blob_sha1": "c11012e3d4857e7a9c175b2abe9191bdc0b38f59",
+  "production_python_blob_sha1": "e54b2e3fa76a794d5feb71c4b9ba6e81bcb46ce9",
+  "independent_auditor_blob_sha1": "c967bca36bdb7baefd35752981db51888979bb91",
+  "data_rows": 1152,
+  "world_count": 128,
+  "local_decisions": 384,
+  "checks": {
+    "worlds": 2,
+    "networks": 64,
+    "actors": 3,
+    "decisions": 384,
+    "source_rows": 1152,
+    "uniform_choice_decisions": 192,
+    "normalized_decisions": 384,
+    "nonuniform_r2_decisions": 144
+  },
+  "verification": {
+    "run_id": 40063626962,
+    "conclusion": "success",
+    "jobs": {
+      "python311": "success",
+      "python312": "success",
+      "independent": "success"
+    },
+    "unit_tests_per_python": 7,
+    "negative_tamper_tests": 2
+  },
+  "evidence_grade": "PASS_BOUNDED_E1_CONSTRUCTED_THREE_ACTOR_LOCAL_CHOICE_ONLY",
+  "actual_human_E2": false,
+  "historical_E3": false,
+  "original_author_empirical_replication": false,
+  "early_zip_full_reuse_audit_complete": false
+}
