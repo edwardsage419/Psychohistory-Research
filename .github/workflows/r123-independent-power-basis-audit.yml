@@ -1,0 +1,28 @@
+name: R123 independent exact power basis E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r123_power_basis.py'
+      - 'research/validation/R123_POWER_BASIS_226_CONSTRUCTED_MATRICES_2026-10-24.csv'
+      - '.github/workflows/r123-independent-power-basis-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  power_basis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify frozen source blobs and 226 exact Fraction basis distributions
+        run: python research/validation/verify_r123_power_basis.py --output research/validation/R123_POWER_BASIS_226_CONSTRUCTED_MATRICES_2026-10-24.csv --verify
+      - name: Original R123 58 unit tests
+        run: PYTHONPATH=research/R123 python -m unittest -q research/R123/test_r123_degroot_1974_berger_1981_exact_consensus.py
