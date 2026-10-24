@@ -1,0 +1,18 @@
+name: R116 independent bounded E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r116_independent_analytic.py'
+      - '.github/workflows/r116-independent-bounded-e1-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Independent analytic enumeration, original source and receipt
+        run: python3 research/validation/verify_r116_independent_analytic.py --repo-root .
