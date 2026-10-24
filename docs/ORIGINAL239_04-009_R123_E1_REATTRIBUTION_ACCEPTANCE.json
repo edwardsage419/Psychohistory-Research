@@ -1,0 +1,52 @@
+{
+  "schema": "original239_itemwise_existing_R_formal_E1_acceptance_v1",
+  "date": "2026-10-24",
+  "catalogue_id": "04-009",
+  "candidate": "DeGroot Consensus Model",
+  "primary_R": "R123",
+  "prior_R_reused": true,
+  "frozen_protocol_path": "research/validation/R123_THIRD_METHOD_EXACT_POWER_BASIS_PROTOCOL_FREEZE_2026-10-24.md",
+  "frozen_protocol_blob": "5cb01102d9792f6503e7897a5b4eb6276d7c69ef",
+  "new_independent_script": "research/validation/verify_r123_power_basis.py",
+  "raw_csv": "research/validation/R123_POWER_BASIS_226_CONSTRUCTED_MATRICES_2026-10-24.csv",
+  "raw_csv_git_blob": "c3dc289d997dd80d1a3c1c3e962a30229c7d4962",
+  "raw_csv_sha256": "ec7700258254fcfc27eff46619f50a931f0fdf1c53a60a76f1db71f313a79e55",
+  "scientific_report": "research/validation/R123_POWER_BASIS_INDEPENDENT_SCIENTIFIC_REPORT_2026-10-24.md",
+  "method": "independent Fraction repeated 256 exact matrix multiplications for every basis vector, independent SCC period classifier, original structural classifier only in final crosscheck",
+  "frozen_tolerance": "1/16777216",
+  "constructed_matrix_count": 226,
+  "row_count_by_n": {
+    "1": 1,
+    "2": 9,
+    "3": 216
+  },
+  "finite_and_structural_consensus_agreements": 226,
+  "universal_consensus_matrices": 176,
+  "nonuniversal_matrices": 50,
+  "negative_positive_controls": 4,
+  "mutated_csv_rejected": true,
+  "wrong_source_blob_rejected": true,
+  "original_R123_tests_per_python": 58,
+  "ci": {
+    "run_id": 40090970105,
+    "workflow_commit": "f9cf9a8b62da0468e7a80985ea0d64988d6205de",
+    "status": "completed",
+    "conclusion": "success",
+    "python_3_11_job_id": 120863372067,
+    "python_3_12_job_id": 120863371872,
+    "job_log_checked": true
+  },
+  "grade": "PASS_BOUNDED_INTERNAL_FINITE_POWER_BASIS_E1",
+  "new_human_E2_scores": 0,
+  "new_historical_E3_scores": 0,
+  "external_independent_reproduction": false,
+  "limitations": [
+    "finite horizon tolerance is not a general mathematical limit proof",
+    "no human longitudinal opinion measurements",
+    "no empirical estimation or held-out prediction",
+    "no historical test",
+    "no R073 or PESEN modification"
+  ],
+  "directory_link_is_scientific_validity": false,
+  "additional_paid_resources_used": false
+}
