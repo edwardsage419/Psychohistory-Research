@@ -1,0 +1,28 @@
+name: R125 independent exact matrix-tree E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r125_matrix_tree_connectivity.py'
+      - 'research/validation/R125_MATRIX_TREE_1099_CONSTRUCTED_GRAPHS_2026-10-24.csv'
+      - '.github/workflows/r125-independent-matrix-tree-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matrix_tree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify pinned original files, 1099 graph rows, 25 buckets, Gilbert recurrence and tamper rejection
+        run: python research/validation/verify_r125_matrix_tree_connectivity.py --output research/validation/R125_MATRIX_TREE_1099_CONSTRUCTED_GRAPHS_2026-10-24.csv --verify
+      - name: Rerun unchanged R125 original 54 unit tests
+        run: PYTHONPATH=research/R125 python -m unittest -q research/R125/test_r125_erdos_renyi_gnm_gilbert_gnp_exact.py
