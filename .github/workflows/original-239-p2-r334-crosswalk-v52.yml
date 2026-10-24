@@ -1,0 +1,37 @@
+name: Original239 P2 R334 Dissonance Crosswalk v5.2
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p2_r334_crosswalk_v5_2.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v5.2_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_10_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p2-r334-crosswalk-v52.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  index311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/verify_p2_r334_crosswalk_v5_2.py
+  index312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/verify_p2_r334_crosswalk_v5_2.py
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r334_dissonance_audit.py
+      - run: python research/catalogue_audit/verify_p2_r334_crosswalk_v5_2.py
