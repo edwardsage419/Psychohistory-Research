@@ -1,0 +1,29 @@
+name: R121 independent subset-cut third-method E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/R121_SUBSET_CUT_RECURRENCE_PROTOCOL_FREEZE_2026-10-24.md'
+      - 'research/validation/verify_r121_subset_cut_recurrence.py'
+      - 'research/validation/R121_SUBSET_CUT_1060_CASE_TERMINAL_DISTRIBUTIONS_2026-10-24.csv'
+      - '.github/workflows/r121-independent-subset-cut-third-method-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  subset_cut:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Independent subset-cut full distribution, controls and CSV identity
+        run: python research/validation/verify_r121_subset_cut_recurrence.py
+      - name: Original R121 48 unit tests
+        run: PYTHONPATH=research/R121 python -m unittest -q research/R121/test_r121_kkt_2003_independent_cascade_exact.py
