@@ -25,7 +25,7 @@ HEADER = ("n", "edge_mask", "edge_count", "spanning_tree_count",
           "matrix_tree_connected", "original_dfs_connected")
 
 def git_blob_sha(data: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\\0" + data).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
 
 def verify_pins(pins=PINN):
     for path, expected in pins.items():
@@ -78,7 +78,7 @@ def generate_rows(original):
 
 def serialize(rows):
     buffer = io.StringIO(newline="")
-    writer = csv.writer(buffer, lineterminator="\\n")
+    writer = csv.writer(buffer, lineterminator="\n")
     writer.writerow(HEADER)
     writer.writerows(rows)
     return buffer.getvalue().encode("utf-8")
