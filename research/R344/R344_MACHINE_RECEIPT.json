@@ -1,0 +1,41 @@
+{
+  "research_id": "R344",
+  "catalogue_id": "04-024",
+  "protocol_commit": "000b70435a2e1f65a1826af3fe604862be1f0c60",
+  "source_commit": "0eb0967f693a17c6bb29154f78042220692e5c5b",
+  "protocol_blob_sha1": "311508f8c83a54459b6030f990ac94cd72588e78",
+  "artificial_source_blob_sha1": "d119907b968606da49308bf85c0cb4ac83dfff4d",
+  "results_blob_sha1": "557e5251b7b56101bf2976fd34ed8130277bbf0b",
+  "production_python_blob_sha1": "b2457224923b2e68d14c79b0c36a7d82b0cdfb93",
+  "independent_auditor_blob_sha1": "c95121dbdd49536515d78cce7447c5e400027147",
+  "data_rows": 64,
+  "world_count": 16,
+  "checks": {
+    "worlds": 16,
+    "source_rows": 64,
+    "symmetric_worlds": 16,
+    "positive_cross_similarity_worlds": 7,
+    "zero_graph_cross_similarity": "0",
+    "layer_B_swap_invariant_worlds": 16,
+    "projection_collision_witness": [
+      "1010",
+      "0101"
+    ]
+  },
+  "verification": {
+    "run_id": 40063860148,
+    "conclusion": "success",
+    "jobs": {
+      "python311": "success",
+      "python312": "success",
+      "independent": "success"
+    },
+    "unit_tests_per_python": 8,
+    "negative_tamper_tests": 2
+  },
+  "evidence_grade": "PASS_BOUNDED_E1_CONSTRUCTED_TWO_TYPE_METAPATH_SIMILARITY_ONLY",
+  "actual_human_E2": false,
+  "historical_E3": false,
+  "original_author_empirical_replication": false,
+  "early_zip_full_reuse_audit_complete": false
+}
