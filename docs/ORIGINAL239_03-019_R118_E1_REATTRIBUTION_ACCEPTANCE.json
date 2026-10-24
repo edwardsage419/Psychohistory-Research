@@ -1,0 +1,42 @@
+{
+  "schema": "original239_existing_R118_bfs_reachability_e1_acceptance_v1",
+  "date": "2026-10-24",
+  "catalogue_id": "03-019",
+  "catalogue_name": "Threshold Participation",
+  "existing_primary_R": "R118",
+  "reuse_status": "VERIFIED_BOUNDED_EXISTING_R_REUSE",
+  "scientific_grade": "PASS_BOUNDED_INTERNAL_INDEPENDENT_REACHABILITY_E1",
+  "scope": "Granovetter 1978 global deterministic no-exit finite threshold model; independent all-reachable-subset BFS n=1..4 and two distinct 100-person theoretical examples",
+  "source_doi": [
+    "10.1086/226707"
+  ],
+  "original_source_blob_sha1": "438288bef99455ba9087988baf10eec09139ffe1",
+  "original_test_blob_sha1": "c81b8fd6dfbb7802d7f1652c838ce4a9eb21a552",
+  "protocol_freeze_commit": "6480045c34a195c113ca831521956e67976e13b7",
+  "independent_script": "research/validation/verify_r118_bfs_reachability_independent.py",
+  "independent_constructed_data": "research/validation/R118_BFS_REACHABILITY_ENUMERATION_2026-10-24.csv",
+  "independent_report": "research/validation/R118_INDEPENDENT_REACHABLE_STATE_SCIENTIFIC_REPORT_2026-10-24.md",
+  "independent_CI_receipt": "research/validation/R118_BFS_REACHABILITY_CI_RECEIPT_2026-10-24.json",
+  "original_CI_run": 39248405444,
+  "independent_CI_run": 40079060024,
+  "independent_CI_status": "completed",
+  "independent_CI_conclusion": "success",
+  "original_synthetic_tests_per_python": 44,
+  "independent_python_jobs": [
+    "3.11",
+    "3.12"
+  ],
+  "independent_constructed_worlds": 700,
+  "independent_vs_original_solver_comparisons": 700,
+  "negative_controls": 2,
+  "tamper_controls_rejected": 2,
+  "new_human_E2_scores": 0,
+  "new_historical_E3_scores": 0,
+  "external_independent_replication": false,
+  "real_out_of_sample_prediction": "NOT_PERFORMED",
+  "original_human_microdata_retrieved": false,
+  "early_ZIP_reuse_audit": "OPEN",
+  "directory_link_is_not_empirical_validity": true,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
