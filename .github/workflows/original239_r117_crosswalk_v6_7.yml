@@ -1,0 +1,27 @@
+name: Original239 existing R117 Crosswalk v6.7
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v6.7_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_166_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - 'research/catalogue_audit/verify_original239_v6_7_existing_r117.py'
+      - '.github/workflows/original239_r117_crosswalk_v6_7.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strict_crosswalk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 239 identities, R117 E1 and 166 pending items
+        run: python research/catalogue_audit/verify_original239_v6_7_existing_r117.py
