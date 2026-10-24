@@ -1,0 +1,23 @@
+name: Data scout public goods source audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/data_scout/audit_fudenberg_pathak_public_goods_csv.py'
+      - '.github/workflows/data_scout_unobserved_punishment_source_audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source_audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download fixed public CSV without retaining an artifact
+        run: |
+          curl --fail --location --silent --show-error --retry 2 \
+            'https://raw.githubusercontent.com/MIT-Blueprint-Labs/unobserved_punishment/f8d3760c954a8757ab16ac5c2f7a1c69d2517898/clean_data/unobserved_dataset.csv' \
+            --output /tmp/unobserved_dataset.csv
+      - name: Audit source identity and session boundaries
+        run: python research/data_scout/audit_fudenberg_pathak_public_goods_csv.py --file /tmp/unobserved_dataset.csv
