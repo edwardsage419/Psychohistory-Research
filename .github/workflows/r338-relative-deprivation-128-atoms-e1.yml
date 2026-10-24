@@ -1,0 +1,35 @@
+name: R338 Relative Deprivation 128 artificial atoms E1
+on:
+  push:
+    paths:
+      - 'research/R338/**'
+      - 'research/catalogue_audit/independent_r338_relative_deprivation_audit.py'
+      - '.github/workflows/r338-relative-deprivation-128-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R338/r338_relative_deprivation.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R338/r338_relative_deprivation.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r338_relative_deprivation_audit.py
