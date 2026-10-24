@@ -1,0 +1,35 @@
+{
+  "research_id": "R134",
+  "date": "2026-10-25",
+  "source": "Taylor 1979 DOI 10.2307/3213376",
+  "prior_protocol": "research/validation/R134_THIRD_METHOD_EXACT_JACOBIAN_INTERPOLATION_PROTOCOL_FREEZE_2026-10-25.md",
+  "scope": "internal_exact_synthetic_E1",
+  "worlds": 81,
+  "resident_mutant_combinations": 11664,
+  "direct_source_evaluations": 34992,
+  "midpoint_interpolation_exact_checks": 11664,
+  "quadratic_form_exact_checks": 11664,
+  "exact_jacobian_entry_checks": 324,
+  "counts": {
+    "saddle": 28,
+    "unstable_linear": 11,
+    "nonhyperbolic": 25,
+    "linear_center_inconclusive": 6,
+    "asymptotically_stable_linear": 11
+  },
+  "unilateral_strict_worlds": 9,
+  "joint_saddle_worlds": 2,
+  "joint_saddle_parameters": [
+    "1,-1,-1,1",
+    "1,1,1,1"
+  ],
+  "negative_controls": {
+    "wrong_cross_jacobian_rejected": true,
+    "omitted_cross_Q_rejected": true
+  },
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_independent_replication": false,
+  "original_R134_zip_executed_this_run": false,
+  "CI_run_this_turn": false
+}
