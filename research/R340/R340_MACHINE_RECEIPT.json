@@ -1,0 +1,38 @@
+{
+  "research_id": "R340",
+  "catalogue_id": "04-007",
+  "protocol_commit": "86c0d5fc0a371ecd804f4ee92d6d83f665f0755d",
+  "source_commit": "bf4547eeb7a070a0b04fc14e1f25d114c12c17d8",
+  "protocol_blob_sha1": "334f0ebcf5cad782538f4cc705d82ff81f7c8249",
+  "artificial_source_blob_sha1": "36ae0a9a11d2f27dacd8948f9617122eade0c40c",
+  "results_blob_sha1": "e5615c6d99bd79acac5501bda60976b3f7d3cad2",
+  "production_python_blob_sha1": "7bd287300825266be1a13fc12229b8c48b01e7a7",
+  "independent_auditor_blob_sha1": "7e780d30cdc6bb7fc3f1d4aabb6fb6b47fa98dca",
+  "data_rows": 48,
+  "world_count": 3,
+  "checks": {
+    "worlds": 3,
+    "source_rows": 48,
+    "absorbing_worlds": 3,
+    "zero_sum_rows": 12,
+    "nonnegative_offdiagonal_entries": 36,
+    "correct_01_10_transitions": 6,
+    "correct_11_recoveries": 3
+  },
+  "verification": {
+    "run_id": 40063363405,
+    "conclusion": "success",
+    "jobs": {
+      "python311": "success",
+      "python312": "success",
+      "independent": "success"
+    },
+    "unit_tests_per_python": 7,
+    "negative_tamper_tests": 2
+  },
+  "evidence_grade": "PASS_BOUNDED_E1_CONSTRUCTED_TWO_NODE_SIS_GENERATOR_ONLY",
+  "actual_human_E2": false,
+  "historical_E3": false,
+  "original_author_empirical_replication": false,
+  "early_zip_full_reuse_audit_complete": false
+}
