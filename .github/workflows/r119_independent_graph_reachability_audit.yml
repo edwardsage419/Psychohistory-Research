@@ -1,0 +1,37 @@
+name: R119 third-method finite graph reachability E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r119_third_method_reachability.py'
+      - 'research/validation/R119_GRAPH_REACHABILITY_687_CONSTRUCTED_WORLDS_2026-10-24.csv'
+      - '.github/workflows/r119_independent_graph_reachability_audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent_graph:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Independently enumerate 687 network worlds and three branching ratios
+        run: python research/validation/verify_r119_third_method_reachability.py
+      - name: Replay original 43 R119 mathematical tests
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R119 python -m unittest -v research/R119/test_r119_watts_2002_fraction_neighbor_cascade.py 2>&1 | tee /tmp/r119_tests.log
+          python - <<'PY'
+          import pathlib,re
+          text=pathlib.Path('/tmp/r119_tests.log').read_text()
+          assert re.findall(r'Ran (\d+) tests? in',text)==['43']
+          assert re.search(r'\nOK\s*$',text)
+          print('R119_ORIGINAL_43_TESTS_PASS')
+          PY
