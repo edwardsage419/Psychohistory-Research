@@ -1,0 +1,35 @@
+name: R343 multiplex two layer 192 artificial edge atoms E1
+on:
+  push:
+    paths:
+      - 'research/R343/**'
+      - 'research/catalogue_audit/independent_r343_multiplex_audit.py'
+      - '.github/workflows/r343-multiplex-192-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R343/r343_multiplex_projection.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R343/r343_multiplex_projection.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r343_multiplex_audit.py
