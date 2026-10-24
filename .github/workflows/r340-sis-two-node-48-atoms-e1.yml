@@ -1,0 +1,35 @@
+name: R340 SIS two node 48 artificial generator atoms E1
+on:
+  push:
+    paths:
+      - 'research/R340/**'
+      - 'research/catalogue_audit/independent_r340_sis_audit.py'
+      - '.github/workflows/r340-sis-two-node-48-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R340/r340_sis_generator.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R340/r340_sis_generator.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r340_sis_audit.py
