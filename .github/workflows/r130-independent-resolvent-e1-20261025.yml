@@ -1,0 +1,34 @@
+name: R130 independent exact resolvent E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r130_exact_resolvent.py'
+      - 'research/validation/R130_EXACT_RESOLVENT_175_CASES_2026-10-25.csv'
+      - '.github/workflows/r130-independent-resolvent-e1-20261025.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Frozen independent exact matrix resolvent
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/validation/verify_r130_exact_resolvent.py
+      - name: Unmodified R130 original 65 tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=research/R130 python -m unittest -q research/R130/test_r130_axelrod1981_tft_nowak1993_pavlov_repeated_exact.py 2>&1 | tee /tmp/r130-original.log
+          grep -Eq 'Ran 65 tests? in' /tmp/r130-original.log
