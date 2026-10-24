@@ -2,6 +2,7 @@
 """Strict v6.3 to v6.4 original239 evidence reattribution audit, standard library."""
 from __future__ import annotations
 import copy
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -29,6 +30,15 @@ def validate(old,new,root):
         raise AssertionError("STATUS_TOTAL")
     if new["counts"]!=old["counts"]:
         raise AssertionError("PRIMARY_COVERAGE_CHANGED")
+    queue_path=root/"docs/ORIGINAL_239_PENDING_169_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv"
+    with queue_path.open(encoding="utf-8",newline="") as stream:
+        queue=list(csv.DictReader(stream))
+    expected_pending=[r["catalogue_id"] for r in new["rows"]
+                      if r["link_status"]=="PROVISIONAL_PRIMARY_README_LINK"]
+    if [r["catalogue_id"] for r in queue]!=expected_pending:
+        raise AssertionError("PENDING_QUEUE_IDENTITY_OR_ORDER")
+    if any(r["current_status"]!="PROVISIONAL_PRIMARY_README_LINK" for r in queue):
+        raise AssertionError("PENDING_QUEUE_STATUS")
     changed=[]
     for a,b in zip(old["rows"],new["rows"]):
         if a!=b:
