@@ -1,0 +1,27 @@
+name: R127 independent integer tent payoff E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r127_integer_tent_best_response.py'
+      - 'research/validation/R127_INTEGER_TENT_2793_PROFILES_2026-10-24.csv'
+      - '.github/workflows/r127-independent-integer-tent-audit.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Independent exact payoff and tamper audit
+        run: python research/validation/verify_r127_integer_tent_best_response.py --verify
+      - name: Unmodified original 60 tests
+        run: PYTHONPATH=research/R127 python -m unittest -q research/R127/test_r127_van_huyck_1990_min_effort_coordination_selection_exact.py
