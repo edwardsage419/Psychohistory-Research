@@ -3,6 +3,7 @@
 from fractions import Fraction as F
 from pathlib import Path
 import importlib.util
+import hashlib
 import json
 
 H, Z, O = F(1,2), F(0), F(1)
@@ -51,6 +52,14 @@ def source(root):
     path=root/"research/R115/r115_bhw_1992_informational_action_cascade_exact.py"
     if not path.is_file():
         raise FileNotFoundError("ORIGINAL_R115_SOURCE_MISSING")
+    receipt_path=root/"research/R115/R115_PHASE_A_BHW_1992_EXACT_FRACTION_SYNTHETIC_EQ1_CI_ACCEPTANCE.json"
+    receipt=json.loads(receipt_path.read_text(encoding="utf-8"))
+    expected=receipt["underlying_study_source_SHA256"]
+    for filename,expected_sha in expected.items():
+        source_file=root/"research/R115"/filename
+        actual=hashlib.sha256(source_file.read_bytes()).hexdigest()
+        if actual!=expected_sha:
+            raise AssertionError("ORIGINAL_SOURCE_SHA256_MISMATCH "+filename)
     spec=importlib.util.spec_from_file_location("r115_original_comparison_only",path)
     mod=importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
@@ -116,6 +125,7 @@ def run(root):
     return {"research_id":"R115","catalogue_id":"03-006",
             "grade":"PASS_BOUNDED_INTERNAL_INDEPENDENT_METHOD_E1",
             "method":"joint_state_action_path_probability_enumeration",
+            "original_source_receipt_sha256_verified":3,
             "cases":cases,"case_count":len(cases),"feasible_path_comparisons":paths_checked,
             "exact_assertions":comparisons,"tamper_controls_rejected":2,
             "p70_public_posterior_after_two":"119/158",
