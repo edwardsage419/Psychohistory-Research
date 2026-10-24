@@ -1,0 +1,34 @@
+name: Original239 02-006 existing R112 bounded E1 scope audit
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/independent_original239_02_006_r112_scope_audit.py'
+      - '.github/workflows/original239-02-006-existing-r112-e1-scope.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R112/test_r112_bayesian_belief_updating.py -v
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R112/test_r112_bayesian_belief_updating.py -v
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_original239_02_006_r112_scope_audit.py
