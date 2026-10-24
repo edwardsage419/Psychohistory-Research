@@ -1,0 +1,41 @@
+{
+  "research_id": "R334",
+  "catalogue_id": "03-011",
+  "protocol_commit": "7ec583e77d7e4a937b552601dcca5409483cc59b",
+  "verified_source_commit": "4380bcd830aac7edb8fdfef11ce32dec720f1186",
+  "protocol_blob_sha1": "08153771bd8d7db10c267135aa25503a40d4fffd",
+  "original_artificial_source_blob_sha1": "6e3bdcc5ca07d1321a651c29b899798a32f7fb72",
+  "results_blob_sha1": "02883b6b9cfc22b3b855d8a7cbaa5e5ddf6bd86c",
+  "production_python_blob_sha1": "7d232a07d9d2979c2fcc8a407dd8bda18cd8ab93",
+  "independent_auditor_blob_sha1": "cc92d9c89e450deb032af3453e6fcaa719561db3",
+  "data_rows": 48,
+  "condition_count": 16,
+  "mechanisms": 3,
+  "checks": {
+    "rows": 48,
+    "conditions": 16,
+    "unchanged_conditions": 12,
+    "identical_reports": 16,
+    "latent_strain_disagreements": 4,
+    "low_justification_larger_dissonance_shifts": 2,
+    "high_justification_larger_incentive_shifts": 2
+  },
+  "verification": {
+    "run_id": 40051279908,
+    "conclusion": "success",
+    "jobs": {
+      "python311": "success",
+      "python312": "success",
+      "independent": "success"
+    },
+    "unit_tests_per_python": 5,
+    "negative_tamper_tests": 2,
+    "initial_failed_run_id": 40051251666,
+    "initial_failure_remediated_by_commit": "4380bcd830aac7edb8fdfef11ce32dec720f1186"
+  },
+  "evidence_grade": "PASS_BOUNDED_E1_CONSTRUCTED_INDUCED_COMPLIANCE_ONLY",
+  "actual_human_E2": false,
+  "historical_E3": false,
+  "original_empirical_replication": false,
+  "early_zip_full_reuse_audit_complete": false
+}
