@@ -1,0 +1,68 @@
+name: R131 independent absorbing chain source replay E1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/r131_absorbing_chain_original_source_e1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-84-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recompute frozen independent JS and compare all 84 CSV rows
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'JS'
+          const fs=require('fs'),vm=require('vm'),assert=require('assert');
+          const p='research/validation/r131_independent_absorbing_chain_exact.js';
+          const src=fs.readFileSync(p,'utf8');
+          const result=vm.runInNewContext(src+'\nrunAudit()');
+          assert.strictEqual(result.interior_cases,84);
+          assert.strictEqual(result.transition_rows,126);
+          assert.strictEqual(result.zero_residuals,84);
+          assert.strictEqual(result.recurrence_formula_checks,21);
+          assert.strictEqual(result.negative_controls,2);
+          const raw=fs.readFileSync('research/validation/R131_ABSORBING_CHAIN_84_EXACT_FIXATION_ROWS_2026-10-25.csv','utf8');
+          assert.strictEqual(result.csv,raw);
+          console.log('R131_JS_84_CSV_BYTE_EXACT_PASS',result.interior_cases,result.transition_rows);
+          JS
+      - name: Run unchanged original R131 Python 21 direct checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import csv,hashlib,importlib.util
+          from pathlib import Path
+          from fractions import Fraction as F
+          p=Path('research/R131/r131_taylor_jonker_1978_evolutionary_game_exact.py')
+          b=p.read_bytes()
+          blob=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+          assert blob=='3c61e0c3c0fe7a6d4458eccd8fc18e9714e7152f',blob
+          spec=importlib.util.spec_from_file_location('r131_frozen',p)
+          m=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+          rows=list(csv.DictReader(open('research/validation/R131_ABSORBING_CHAIN_84_EXACT_FIXATION_ROWS_2026-10-25.csv',encoding='utf-8')))
+          assert len(rows)==84
+          count=0
+          for n in range(2,9):
+              for fa,fb in ((3,2),(1,1),(2,3)):
+                  found=[r for r in rows if int(r['N'])==n and int(r['fitness_A'])==fa and int(r['fitness_B'])==fb and int(r['initial_mutant_B_count'])==1]
+                  assert len(found)==1
+                  actual=m.exact_project_moran_fixation_probability(n,F(fa),F(fb))
+                  assert actual==F(found[0]['fixation_probability'])
+                  count+=1
+          assert count==21
+          print('R131_UNMODIFIED_ORIGINAL_21_EXACT_PASS',count)
+          PY
+      - name: Existing R131 63 tests
+        shell: bash
+        env:
+          PYTHONPATH: research/R131
+        run: python3 -m unittest -q research/R131/test_r131_taylor_jonker_1978_evolutionary_game_exact.py
