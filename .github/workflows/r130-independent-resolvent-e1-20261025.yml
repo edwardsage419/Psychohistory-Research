@@ -25,7 +25,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python research/validation/verify_r130_exact_resolvent.py
+          python research/validation/verify_r130_exact_resolvent.py --verify-existing
       - name: Unmodified R130 original 65 tests
         shell: bash
         run: |
