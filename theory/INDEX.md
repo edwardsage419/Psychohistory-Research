@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH018，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH021，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -40,11 +40,13 @@
 | TH019 | 科学革命、范式转换与研究纲领 | Popper 1963原著节录、Kuhn 1970原文开头、Lakatos 1978再版多页直接审读；Kuhn 1962与Laudan 1977出版社书目，整书未审 | THEORY_NOTE_BOUNDED | [研究笔记](TH019_SCIENTIFIC_REVOLUTIONS_RESEARCH_PROGRAMMES_2026-10-25.md) |
 | TH020 | 科学发现的社会网络、优先权竞争与知识扩散 | Merton 1957/1968、Price 1965 原刊及 Rogers 2003 出版社第一章直接审读；Crane 1969摘要、1972书目、Latour 1987作者介绍，Granovetter 1973原刊摘要及选段；竞争解释与不可识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH020_SCIENTIFIC_NETWORKS_PRIORITY_DIFFUSION_2026-10-25.md) |
 
+| TH021 | 信息级联、社会学习与独立判断 | Banerjee 1992、Bikhchandani et al. 1992 原刊开放扫描重点页；2022 作者综述 §1–2.2；Salganik et al. 2006 三页原刊全文；Anderson & Holt 1997、Çelen & Kariv 2004、Goeree et al. 2007、Centola & Macy 2007 摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH021_INFORMATION_CASCADES_SOCIAL_LEARNING_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH021 | 信息级联、社会学习与独立判断 | Banerjee 1992；Bikhchandani, Hirshleifer & Welch 1992；Salganik et al. 2006；Centola & Macy 2007 | QUEUED_UNVERIFIED |
+| 1 | TH022 | 网络阈值、复杂传染与多重强化 | Granovetter 1978；Watts 2002；Centola & Macy 2007；Centola 2010 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -154,6 +156,11 @@
 | research front / citation network | Price 1965；时间排序引用形成局部前沿 | 群体、制度、历史 | 原刊六页直接审读；引文不等于真实传播 |
 | innovation diffusion / reinvention | Rogers 2003；传播通道、采用时序、感知属性与再发明 | 个体、群体、制度、历史 | 出版社开放第一章直接审读；QWERTY案例有竞争研究 |
 | actor-network / weak ties | Latour 1987、Granovetter 1973；物质中介与跨群体桥接的不同视角 | 群体、制度、历史 | 作者书介、原刊摘要及选段；整书与净效应待审 |
+
+| informational cascade / herd externality | Banerjee 1992；Bikhchandani et al. 1992；观察前人行动时私人信号可能不再进入公开信息池 | 个体、群体、制度、历史 | 两项原刊重点页直接审读；实验跨域外推未证 |
+| observable actions versus observable signals | Bikhchandani et al. 1992 pp.996–999；2022 作者综述 §2.2；信息结构决定后续更新能力 | 个体、群体、制度 | 原作直接审读；具体制度因果尚待识别 |
+| self-correcting cascades / bounded rationality | Goeree et al. 2007；长序列实验中形成与瓦解的竞争结果 | 个体、群体 | Caltech 公开摘要；全文附件本轮受阻 |
+| parallel social influence worlds | Salganik, Dodds & Watts 2006；社会信息可见性、文化结果不平等和跨世界不确定性 | 个体、群体、历史 | 作者开放三页原刊全文；单一文化实验边界 |
 
 ## C 与 D 研究日历（候选方法储备）
 
