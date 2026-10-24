@@ -1,0 +1,27 @@
+name: R126 independent exact integer payoff E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r126_integer_payoff.py'
+      - 'research/validation/R126_INTEGER_PAYOFF_5000_CONSTRUCTED_WORLDS_2026-10-24.csv'
+      - '.github/workflows/r126-independent-integer-payoff-audit.yml'
+permissions:
+  contents: read
+jobs:
+  integer_payoff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify original Git blobs, 5000 frozen exact payoff worlds and tamper controls
+        run: python research/validation/verify_r126_integer_payoff.py --output research/validation/R126_INTEGER_PAYOFF_5000_CONSTRUCTED_WORLDS_2026-10-24.csv --verify
+      - name: Rerun unchanged original R126 57 tests
+        run: PYTHONPATH=research/R126 python -m unittest -q research/R126/test_r126_fehr_gachter_2000_pgg_payoffs_punishment_table3_exact.py
