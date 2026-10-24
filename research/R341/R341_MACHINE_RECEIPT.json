@@ -1,0 +1,42 @@
+{
+  "research_id": "R341",
+  "catalogue_id": "04-020",
+  "protocol_commit": "67d74d18b90d8c435f39d32270da2b7b77667d74",
+  "source_commit": "253dda5063adf103f0bda0c45d7e9c297194ab85",
+  "protocol_blob_sha1": "6d1d2afb4763f94848a052ffdf01811153989b34",
+  "artificial_source_blob_sha1": "41c7df1e190bdd5e4985fe0d4586cbb9d3365325",
+  "results_blob_sha1": "c7cb9c0e981f3f45ff2c80f1a3fac82900dc072b",
+  "production_python_blob_sha1": "c0e0e30e2e030bc0d63a7491b76c09a47d82e0d9",
+  "independent_auditor_blob_sha1": "a215576698153f0105ca1f0bc6c5f45b4f6471df",
+  "data_rows": 32,
+  "world_count": 4,
+  "checks": {
+    "worlds": 4,
+    "source_rows": 32,
+    "normalization_worlds": 4,
+    "expected_partition_functions": [
+      "8",
+      "9",
+      "27",
+      "35"
+    ],
+    "baseline_independent_worlds": 2,
+    "closure_contrast_worlds": 2
+  },
+  "verification": {
+    "run_id": 40063471750,
+    "conclusion": "success",
+    "jobs": {
+      "python311": "success",
+      "python312": "success",
+      "independent": "success"
+    },
+    "unit_tests_per_python": 8,
+    "negative_tamper_tests": 2
+  },
+  "evidence_grade": "PASS_BOUNDED_E1_CONSTRUCTED_THREE_NODE_EDGE_TRIANGLE_ERGM_ONLY",
+  "actual_human_E2": false,
+  "historical_E3": false,
+  "original_author_empirical_replication": false,
+  "early_zip_full_reuse_audit_complete": false
+}
