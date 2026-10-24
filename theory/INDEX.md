@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH014，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH015，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -30,11 +30,13 @@
 
 | TH014 | 仪式、象征资本与权力再生产 | Durkheim 1912/1915 原著选段；Bourdieu 1977 第4章开放开头；Collins 2004 第1、2章开放开头；Bell 1992 仅目录 | THEORY_NOTE_BOUNDED | [研究笔记](TH014_RITUAL_SYMBOLIC_CAPITAL_POWER_2026-10-25.md) |
 
+| TH015 | 日常互动秩序、面子与情境定义 | Goffman 1953 博士论文第22章开放原文、Garfinkel 1964 原刊扫描 pp.225–232,239–241,249–250 直接审读；Goffman 1955/1974、1983 仅书目或目录；Drury & Stokoe 2022 开放全文，Atkinson 1988、Arminen 2008 摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH015_INTERACTION_ORDER_FACEWORK_SITUATION_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH015 | 日常互动秩序、面子与情境定义 | Goffman 1955/1959/1967；Garfinkel 1967 原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH016 | 社会现实的建构、知识社会学与制度化 | Berger & Luckmann 1966；Schütz 1932/1953 原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -110,6 +112,11 @@
 | habitus / symbolic capital | Bourdieu 1972/1977；分类、声望与权力的候选机制 | 个体、群体、制度、历史 | 出版社章节开头，资本全文待审 |
 | mutual focus / emotional entrainment | Collins 2004；共同注意、情绪同步与互动结果 | 个体、群体、制度 | 原著第1、2章开放开头，因果未审 |
 | ritualization / power | Bell 1992；仪式化与权力的竞争研究线索 | 群体、制度、历史 | 仅原书目录，正文未审 |
+
+| projected self / working acceptance | Goffman 1953 第22章；角色投射、初始认可与互动维持 | 个体、群体、制度 | 作者博士论文开放章节直接审读；单一田野场域 |
+| background expectancies / breaching demonstrations | Garfinkel 1964 pp.226–232；默认期待及其破坏的展示性研究 | 个体、群体、制度 | 原刊扫描直接审读；非随机因果实验 |
+| documentary interpretation / sequential intelligibility | Garfinkel 1964 pp.228–229；话语在时序与共同背景中获得意义 | 个体、群体、历史 | 原刊原始对话材料；跨语言外推未证 |
+| interaction order / face-work / framing | Goffman 1955、1974、1983；面子、互动秩序与框架线索 | 个体、群体、制度、历史 | 部分书目和目录，相关原著正文待核验 |
 
 ## C 与 D 研究日历（候选方法储备）
 
