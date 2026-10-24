@@ -1,0 +1,38 @@
+name: Original239 P2 R340 R341 Crosswalk v5.8
+on:
+  push:
+    paths:
+      - 'research/catalogue_audit/verify_p2_r340_r341_crosswalk_v5_8.py'
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v5.8_2026-10-24.json'
+      - 'docs/ORIGINAL_239_PENDING_3_P2_EVIDENCE_TRIAGE_QUEUE_2026-10-24.csv'
+      - '.github/workflows/original-239-p2-r340-r341-crosswalk-v58.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  index311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/catalogue_audit/verify_p2_r340_r341_crosswalk_v5_8.py
+  index312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/verify_p2_r340_r341_crosswalk_v5_8.py
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r340_sis_audit.py
+      - run: python research/catalogue_audit/independent_r341_ergm_audit.py
+      - run: python research/catalogue_audit/verify_p2_r340_r341_crosswalk_v5_8.py
