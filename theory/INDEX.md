@@ -9,15 +9,15 @@
 | 编号 | 主题 | 来源与审计边界 | 状态 | 后续 |
 | --- | --- | --- | --- | --- |
 | TH001 | 历史制度主义：路径依赖、关键节点、渐进变迁 | Pierson 2000；Mahoney 2000；Thelen 2004；Capoccia & Kelemen 2007；Mahoney & Thelen 2010；Kay 2005。原始出版信息与摘要核对，部分观点通过二手同行评议研究交叉核对，未逐页通读全部原文 | THEORY_NOTE_BOUNDED | [研究笔记](TH001_HISTORICAL_INSTITUTIONALISM_2026-10-24.md) |
+| TH002 | Annales 学派与 longue durée：历史时间尺度 | Braudel 1949 原版书目、1958 原刊首页与 1960 摘要；2015 年长时段争论及微观史书评。原版全文审读仍待补充 | THEORY_NOTE_BOUNDED | [研究笔记](TH002_ANNALES_LONGUE_DUREE_2026-10-24.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH002 | Annales 学派、longue durée、事件与结构的时间尺度 | Fernand Braudel 1958, “Histoire et sciences sociales: La longue durée”; Braudel 1949, La Méditerranée | QUEUED_UNVERIFIED |
-| 2 | TH003 | Begriffsgeschichte 概念史、历史语义变化 | Reinhart Koselleck, Futures Past / Vergangene Zukunft | QUEUED_UNVERIFIED |
-| 3 | TH004 | 机制解释、历史叙述与反事实 | Jon Elster; Peter Hedström; Charles Tilly 的原始作品待核查 | QUEUED_UNVERIFIED |
-| 4 | TH005 | 制度权力、冲突、行动者与路径依赖的批评 | Peters, Pierre & King 2005；Kay 2005 | QUEUED_UNVERIFIED |
+| 1 | TH003 | Begriffsgeschichte 概念史、历史语义变化 | Reinhart Koselleck, Futures Past / Vergangene Zukunft | QUEUED_UNVERIFIED |
+| 2 | TH004 | 机制解释、历史叙述与反事实 | Jon Elster; Peter Hedström; Charles Tilly 的原始作品待核查 | QUEUED_UNVERIFIED |
+| 3 | TH005 | 制度权力、冲突、行动者与路径依赖的批评 | Peters, Pierre & King 2005；Kay 2005 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -31,6 +31,10 @@
 | reactive sequences | Mahoney 2000；事件之间的反应性链条 | 群体、历史 | 原刊书目＋后续学术讨论 |
 | layering, drift, conversion, displacement | Mahoney & Thelen 2010；制度渐进变迁方式 | 制度、历史 | 出版者章节摘要＋后续学术讨论 |
 | counterfactual reasoning | Capoccia & Kelemen 2007；历史替代路径论证 | 历史、方法论 | 出版者摘要 |
+| longue durée | Braudel 1958；长期结构的历史时间视角 | 制度、历史、方法论 | 原刊首页＋1960 摘要；全文待审 |
+| conjoncture | Braudel 1949/1958；社会经济过程的中程变化视角 | 群体、制度、历史 | 再版主题目录与后续研究；原文细节待审 |
+| événement | Braudel 1949/1958；事件性历史时间 | 个体、群体、历史 | 再版主题目录与后续研究；原文细节待审 |
+| microhistory / jeux d'échelles | Revel 1996；观察尺度与微观分析 | 个体、群体、历史 | 原书书目＋1998 年学术书评 |
 
 ## 持续执行规则
 
