@@ -1,0 +1,3 @@
+# R334 Cognitive Dissonance Theory original239 03-011
+
+Finite constructed induced compliance and external justification contrast. Source 48 artificial atoms, 16 conditions, three invented mechanisms. Original English source: Festinger and Carlsmith 1959 DOI 10.1037/h0041593. Frozen protocol: protocols/R334_COGNITIVE_DISSONANCE_48_ARTIFICIAL_CONTRAST_PRESCORE_FREEZE_2026-10-24.md (commit 7ec583e77d7e4a937b552601dcca5409483cc59b). No real E2, no historical E3, no original empirical replication. The 1959 dollar conditions are not treated as numeric calibration. Scientific report and formal acceptance are pending CI verification.

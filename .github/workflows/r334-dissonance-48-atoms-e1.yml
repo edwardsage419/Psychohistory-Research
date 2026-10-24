@@ -1,0 +1,35 @@
+name: R334 cognitive dissonance 48 artificial atoms E1
+on:
+  push:
+    paths:
+      - 'research/R334/**'
+      - 'research/catalogue_audit/independent_r334_dissonance_audit.py'
+      - '.github/workflows/r334-dissonance-48-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R334/r334_dissonance.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R334/r334_dissonance.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r334_dissonance_audit.py
