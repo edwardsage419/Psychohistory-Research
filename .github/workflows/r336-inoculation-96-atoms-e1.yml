@@ -1,0 +1,35 @@
+name: R336 inoculation 96 artificial atoms E1
+on:
+  push:
+    paths:
+      - 'research/R336/**'
+      - 'research/catalogue_audit/independent_r336_inoculation_audit.py'
+      - '.github/workflows/r336-inoculation-96-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R336/r336_inoculation.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R336/r336_inoculation.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r336_inoculation_audit.py
