@@ -1,0 +1,49 @@
+name: Original239 R128 R129 bounded E1 Crosswalk v7.7
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v7.7_2026-10-25.json'
+      - 'docs/ORIGINAL_239_PENDING_155_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv'
+      - 'docs/ORIGINAL239_05-004_R128_E1_REATTRIBUTION_ACCEPTANCE.json'
+      - 'docs/ORIGINAL239_05-005_R129_E1_REATTRIBUTION_ACCEPTANCE.json'
+      - '.github/workflows/original239_r128_r129_crosswalk_v7_7.yml'
+permissions:
+  contents: read
+jobs:
+  verify-catalogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 239 total 155 pending and frozen E1 receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv,json,subprocess
+          from pathlib import Path
+          d=Path("docs")
+          x=json.loads((d/"ORIGINAL_239_CATALOGUE_TO_R_EVIDENCE_PROVENANCE_CROSSWALK_v7.7_2026-10-25.json").read_text())
+          with (d/"ORIGINAL_239_PENDING_155_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv").open(newline="") as f: q=list(csv.DictReader(f))
+          assert x["total_original_models"]==239 and len(x["rows"])==239
+          assert x["provisional_itemwise_audit_open_count"]==155
+          assert x["status_counts"]["PROVISIONAL_PRIMARY_README_LINK"]==155
+          assert sum(x["status_counts"].values())==239
+          assert len(q)==155 and len({r["catalogue_id"] for r in q})==155
+          assert "05-003" in {r["catalogue_id"] for r in q}
+          assert not ({"05-004","05-005"} & {r["catalogue_id"] for r in q})
+          assert {r["catalogue_id"] for r in q}=={r["catalogue_id"] for r in x["rows"] if r["link_status"]=="PROVISIONAL_PRIMARY_README_LINK"}
+          for cat,rid in (("05-004","R128"),("05-005","R129")):
+              a=json.loads((d/f"ORIGINAL239_{cat}_{rid}_E1_REATTRIBUTION_ACCEPTANCE.json").read_text())
+              r=next(z for z in x["rows"] if z["catalogue_id"]==cat)
+              assert r["proposed_primary_research_id"]==rid and r["method_specific_E1_acceptance"]==f"docs/ORIGINAL239_{cat}_{rid}_E1_REATTRIBUTION_ACCEPTANCE.json"
+              assert a["CI_run"]==40113226398 and a["CI_status"]=="completed/success"
+              assert a["new_human_E2"]==a["new_historical_E3"]==0
+              paths=[a["raw_csv"]] if rid=="R128" else a["raw_csv_paths"]
+              blobs=[a["raw_csv_blob"]] if rid=="R128" else a["raw_csv_blobs"]
+              for path,sha in zip(paths,blobs):
+                  assert subprocess.check_output(["git","hash-object",path],text=True).strip()==sha
+              assert subprocess.check_output(["git","hash-object",a["third_method_source"]],text=True).strip()==a["third_method_source_blob"]
+          print("PASS 239 original entries, 155 provisional, R128/R129 bounded E1 provenance")
+          PY
