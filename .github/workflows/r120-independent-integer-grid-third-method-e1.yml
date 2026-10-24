@@ -1,0 +1,29 @@
+name: R120 independent integer-grid third-method E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/R120_INTEGER_GRID_THIRD_METHOD_PROTOCOL_FREEZE_2026-10-24.md'
+      - 'research/validation/R120_INTEGER_GRID_530_CASE_TERMINAL_DISTRIBUTIONS_2026-10-24.csv'
+      - 'research/validation/verify_r120_independent_integer_grid.py'
+      - '.github/workflows/r120-independent-integer-grid-third-method-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  third_method:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Independently enumerate 530 terminal distributions and test tampering
+        run: python research/validation/verify_r120_independent_integer_grid.py
+      - name: Re-execute original 45 unit tests
+        run: PYTHONPATH=research/R120 python -m unittest -q research/R120/test_r120_kkt_2003_uniform_linear_threshold_exact.py
