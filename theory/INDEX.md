@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-24（Asia/Shanghai）；已收录 TH008
+更新：2026-10-24（Asia/Shanghai）；已收录 TH009
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -18,11 +18,13 @@
 
 | TH008 | 集体记忆、社会表征与文化记忆 | Halbwachs 1925 原著前言、家庭记忆及结论选段；Moscovici 1961 书目及 1988 原刊摘要；Assmann 1995 书目与索引片段；Olick 1999、Jahoda 1988 原刊摘要。全文及实证待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH008_COLLECTIVE_MEMORY_SOCIAL_REPRESENTATIONS_2026-10-24.md) |
 
+| TH009 | 社会认同、群际分类与群体边界 | Tajfel et al. 1971、Billig & Tajfel 1973 原刊摘要；Tajfel & Turner 1986 原书扫描选页；Sherif 1961 第8章原文；Brewer 1999 原刊开放选页；Rabbie et al. 1989 批评摘要；Turner 1985/1987 仅书目 | THEORY_NOTE_BOUNDED | [研究笔记](TH009_SOCIAL_IDENTITY_INTERGROUP_BOUNDARIES_2026-10-24.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH009 | 社会认同、群际分类与群体边界 | Tajfel、Turner 原作及竞争批评待核验 | QUEUED_UNVERIFIED |
+| 1 | TH010 | 社会影响、规范形成与少数派影响 | Sherif、Asch、Moscovici 原作及竞争批评待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -62,6 +64,13 @@
 | social representations | Moscovici 1961/1988；文化类别、传播与认知 | 个体、群体、制度 | 1961书目、1988原刊摘要 |
 | communicative / cultural memory | Assmann 1995；日常交流与文化载体 | 群体、制度、历史 | 原刊书目、索引片段、后续同行评议综述 |
 | collected / collective memory | Olick 1999；个人回忆与公共实践的分析单位争议 | 个体、群体、历史 | 原刊摘要 |
+
+| minimal group paradigm / positive distinctiveness | Tajfel et al. 1971、Billig & Tajfel 1973、Tajfel & Turner 1986；分类、群际比较及分配行为 | 个体、群体 | 原作者摘要与1986扫描原文选页；全文复现未审 |
+| social identity / self-categorization | Tajfel & Turner 1986；Turner 1985/1987；身份显著性与自我分类 | 个体、群体、制度 | 1986原文选页；1985/1987仅书目 |
+| social mobility / social creativity / social competition | Tajfel & Turner 1986 pp.18–21；地位与群体策略 | 群体、制度、历史 | 原作者扫描选页；跨时代适用未检验 |
+| realistic group conflict / superordinate goals | Sherif et al. 1961第8章；竞争与共同目标 | 群体、制度 | 原作者章节全文；单一历史实验情境 |
+| ingroup favoritism versus outgroup hostility | Brewer 1999；偏好、信任与敌意可分离 | 个体、群体、历史 | 原作者开放全文选页；无本项目复验 |
+| behavioural interaction model / instrumental alternatives | Rabbie et al. 1989；工具性利益的竞争解释 | 个体、群体 | 原刊摘要；双方全文对比待补 |
 
 ## C 与 D 研究日历（候选方法储备）
 
