@@ -1,0 +1,57 @@
+{
+  "schema": "r118_internal_independent_reachability_audit_ci_v1",
+  "date": "2026-10-24",
+  "catalogue_id": "03-019",
+  "research_id": "R118",
+  "protocol_freeze_commit": "6480045c34a195c113ca831521956e67976e13b7",
+  "workflow_commit": "3a8ac22b9d271848e3838428721d2a8f6975b6d6",
+  "run_id": 40079060024,
+  "run_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40079060024",
+  "run_status": "completed",
+  "run_conclusion": "success",
+  "jobs": [
+    {
+      "id": 120828594682,
+      "python": "3.11",
+      "conclusion": "success",
+      "original_tests": 44
+    },
+    {
+      "id": 120828594494,
+      "python": "3.12",
+      "conclusion": "success",
+      "original_tests": 44
+    }
+  ],
+  "constructed_worlds": 700,
+  "worlds_by_n": {
+    "1": 2,
+    "2": 9,
+    "3": 64,
+    "4": 625
+  },
+  "independent_bfs_vs_original_synchronous_and_sorted_comparisons": 700,
+  "source_git_blob_sha1": {
+    "research/R118/r118_granovetter_1978_finite_threshold_participation.py": "438288bef99455ba9087988baf10eec09139ffe1",
+    "research/R118/test_r118_granovetter_1978_finite_threshold_participation.py": "c81b8fd6dfbb7802d7f1652c838ce4a9eb21a552"
+  },
+  "source_sha256": {
+    "research/R118/r118_granovetter_1978_finite_threshold_participation.py": "6432dc10b1aab4599448e31a858060e95e6556ef166de624f1121e1f95e1120c",
+    "research/R118/test_r118_granovetter_1978_finite_threshold_participation.py": "c7b3cfeed3fac63624f9ba49616762dbf24cafa63ee06fb0f570ebfd3536265d"
+  },
+  "constructed_csv_sha256": "5a7f5cc06ff6cd1f244b4f64fb4febc46c01ab4c5c79689e9f22b6637ab5a172",
+  "negative_controls": 2,
+  "tamper_controls_rejected": 2,
+  "author_original_and_project_compensated_100_person_outcomes": [
+    100,
+    1,
+    1
+  ],
+  "scientific_grade": "PASS_BOUNDED_INTERNAL_INDEPENDENT_REACHABILITY_E1",
+  "human_E2_new_scores": 0,
+  "historical_E3_new_scores": 0,
+  "external_replication": false,
+  "original_R118_files_modified": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
