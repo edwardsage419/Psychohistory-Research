@@ -38,12 +38,13 @@
 | TH018 | 科学知识权威、默会知识与专家分歧 | Merton 1942/1973 原著再版 pp.267–278、Polanyi 1965 Lecture 4 原稿、Collins & Evans 2002 Cardiff 81页工作论文、Gieryn 1983 原刊扫描直接审读；Polanyi Lecture 2、Wynne 1992、Anderson et al. 2007 仅首页或摘要；正式刊文逐字核对待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH018_SCIENTIFIC_AUTHORITY_TACIT_KNOWLEDGE_EXPERT_DISAGREEMENT_2026-10-25.md) |
 
 | TH019 | 科学革命、范式转换与研究纲领 | Popper 1963原著节录、Kuhn 1970原文开头、Lakatos 1978再版多页直接审读；Kuhn 1962与Laudan 1977出版社书目，整书未审 | THEORY_NOTE_BOUNDED | [研究笔记](TH019_SCIENTIFIC_REVOLUTIONS_RESEARCH_PROGRAMMES_2026-10-25.md) |
+| TH020 | 科学发现的社会网络、优先权竞争与知识扩散 | Merton 1957/1968、Price 1965 原刊及 Rogers 2003 出版社第一章直接审读；Crane 1969摘要、1972书目、Latour 1987作者介绍，Granovetter 1973原刊摘要及选段；竞争解释与不可识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH020_SCIENTIFIC_NETWORKS_PRIORITY_DIFFUSION_2026-10-25.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH020 | 科学发现的社会网络、优先权竞争与知识扩散 | Merton 1957/1968；Crane 1972；Rogers 2003；Latour 1987 原著待核验 | QUEUED_UNVERIFIED |
+| 1 | TH021 | 信息级联、社会学习与独立判断 | Banerjee 1992；Bikhchandani, Hirshleifer & Welch 1992；Salganik et al. 2006；Centola & Macy 2007 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -145,6 +146,14 @@
 | paradigm / normal science / anomaly | Kuhn 1962/1970；共享实践、难题与异常 | 群体、制度、历史 | 1962出版社目录、1970原文开头；全书待审 |
 | hard core / protective belt / progressive problemshift | Lakatos 1970/1978；研究纲领连续版本及经验进步 | 个体、群体、制度、历史 | 1978再版印刷页33–35、48、53、55、74直接审读 |
 | research tradition / problem solving | Laudan 1977；情境问题解决的评价方向 | 群体、制度、历史 | 出版社书介；正文待审 |
+
+
+| priority reward / scientific ambivalence | Merton 1957；原创奖励、谦逊规范及优先权争议 | 个体、群体、制度、历史 | 原刊选页直接审读；总体因果未识别 |
+| Matthew effect / cumulative visibility | Merton 1968；既有声望与认可、传播可见性可能相互促进 | 个体、群体、制度 | 原刊扫描直接审读；质量混杂待区分 |
+| invisible colleges / informal networks | Crane 1969/1972；非正式科研交流与研究领域边界 | 群体、制度、历史 | 1969摘要转录、1972书目；全文待审 |
+| research front / citation network | Price 1965；时间排序引用形成局部前沿 | 群体、制度、历史 | 原刊六页直接审读；引文不等于真实传播 |
+| innovation diffusion / reinvention | Rogers 2003；传播通道、采用时序、感知属性与再发明 | 个体、群体、制度、历史 | 出版社开放第一章直接审读；QWERTY案例有竞争研究 |
+| actor-network / weak ties | Latour 1987、Granovetter 1973；物质中介与跨群体桥接的不同视角 | 群体、制度、历史 | 作者书介、原刊摘要及选段；整书与净效应待审 |
 
 ## C 与 D 研究日历（候选方法储备）
 
