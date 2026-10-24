@@ -1,0 +1,35 @@
+name: R333 triadic feedback 160 artificial states E1
+on:
+  push:
+    paths:
+      - 'research/R333/**'
+      - 'research/catalogue_audit/independent_r333_triadic_audit.py'
+      - '.github/workflows/r333-triadic-feedback-160-states-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R333/r333_triadic_feedback.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R333/r333_triadic_feedback.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r333_triadic_audit.py
