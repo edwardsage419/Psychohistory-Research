@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH017，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH018，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -35,12 +35,13 @@
 
 | TH016 | 社会现实的建构、知识社会学与制度化 | Berger & Luckmann 1966 原著英文再版制度化、知识分工和社会化选段直接审读；Schütz 1953 原刊书目及2023同行评审论文间接核验；Searle 1995、Hacking 1999 出版社书介，原著正文待审 | THEORY_NOTE_BOUNDED | [研究笔记](TH016_SOCIAL_CONSTRUCTION_KNOWLEDGE_INSTITUTIONALIZATION_2026-10-25.md) |
 | TH017 | 知识权威、分类实践与制度标准化 | Bowker & Star 1999 原著导论、Star & Griesemer 1989 原刊 pp.387–396 直接审读；Hacking 2006 作者开头、Tsou 2007 摘要；Foucault、Scott 出版者书介 | THEORY_NOTE_BOUNDED | [研究笔记](TH017_CLASSIFICATION_KNOWLEDGE_AUTHORITY_STANDARDIZATION_2026-10-25.md) |
+| TH018 | 科学知识权威、默会知识与专家分歧 | Merton 1942/1973 原著再版 pp.267–278、Polanyi 1965 Lecture 4 原稿、Collins & Evans 2002 Cardiff 81页工作论文、Gieryn 1983 原刊扫描直接审读；Polanyi Lecture 2、Wynne 1992、Anderson et al. 2007 仅首页或摘要；正式刊文逐字核对待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH018_SCIENTIFIC_AUTHORITY_TACIT_KNOWLEDGE_EXPERT_DISAGREEMENT_2026-10-25.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH018 | 科学知识权威、默会知识与专家分歧 | Merton 1942；Polanyi 1966；Collins & Evans 2002 原著待核验 | QUEUED_UNVERIFIED |
+| 1 | TH019 | 科学革命、范式转换与研究纲领 | Kuhn 1962；Lakatos 1970；Laudan 1977；Popper 1959 原著待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -131,6 +132,12 @@
 | boundary objects / n-way translation | Star & Griesemer 1989；跨群体协作与局部适配 | 群体、制度、历史 | 原刊 pp.387–396 直接审读，单案例边界 |
 | looping effects / making up people | Hacking 1986/2006；分类与行动的反馈 | 个体、群体、制度 | 作者开头及 Tsou 2007 竞争解释，全文待补 |
 | legibility / local knowledge | Scott 1998；行政可读性与地方知识张力 | 群体、制度、历史 | 出版者书介，原著案例未核验 |
+
+| ethos of science / communalism / organized skepticism | Merton 1942/1973；知识共享、非人格评价与同行批判的规范 | 群体、制度、历史 | 原著再版 pp.270–278 已审；实际遵循程度未验证 |
+| tacit knowing / mutual authority | Polanyi 1965 Lecture 4；可信性判断、科研自主与共同体监督 | 个体、群体、制度 | 原始讲稿已审；1966著作全文待补 |
+| interactional / contributory expertise | Collins & Evans 2002；跨群体翻译与实践贡献的区别 | 个体、群体、制度 | Cardiff工作论文已审；正式刊文待核对 |
+| boundary-work / professional demarcation | Gieryn 1983；科学身份边界与资源、自治之间的关系 | 群体、制度、历史 | 原刊全文选段已审；历史案例未独立复核 |
+| normative dissonance / local knowledge | Anderson et al. 2007；Wynne 1992；规范落差与地方经验 | 个体、群体、制度 | 原刊摘要；全文与独立因果识别待补 |
 
 ## C 与 D 研究日历（候选方法储备）
 
