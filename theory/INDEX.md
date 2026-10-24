@@ -32,9 +32,9 @@
 
 | TH015 | 日常互动秩序、面子与情境定义 | Goffman 1953 博士论文第22章开放原文、Garfinkel 1964 原刊扫描 pp.225–232,239–241,249–250 直接审读；Goffman 1955/1974、1983 仅书目或目录；Drury & Stokoe 2022 开放全文，Atkinson 1988、Arminen 2008 摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH015_INTERACTION_ORDER_FACEWORK_SITUATION_2026-10-25.md) |
 
-| TH017 | 知识权威、分类实践与制度标准化 | Bowker & Star 1999 原著导论、Star & Griesemer 1989 原刊 pp.387–396 直接审读；Hacking 2006 作者开头、Tsou 2007 摘要；Foucault、Scott 出版者书介 | THEORY_NOTE_BOUNDED | [研究笔记](TH017_CLASSIFICATION_KNOWLEDGE_AUTHORITY_STANDARDIZATION_2026-10-25.md) |
 
 | TH016 | 社会现实的建构、知识社会学与制度化 | Berger & Luckmann 1966 原著英文再版制度化、知识分工和社会化选段直接审读；Schütz 1953 原刊书目及2023同行评审论文间接核验；Searle 1995、Hacking 1999 出版社书介，原著正文待审 | THEORY_NOTE_BOUNDED | [研究笔记](TH016_SOCIAL_CONSTRUCTION_KNOWLEDGE_INSTITUTIONALIZATION_2026-10-25.md) |
+| TH017 | 知识权威、分类实践与制度标准化 | Bowker & Star 1999 原著导论、Star & Griesemer 1989 原刊 pp.387–396 直接审读；Hacking 2006 作者开头、Tsou 2007 摘要；Foucault、Scott 出版者书介 | THEORY_NOTE_BOUNDED | [研究笔记](TH017_CLASSIFICATION_KNOWLEDGE_AUTHORITY_STANDARDIZATION_2026-10-25.md) |
 
 ## 待研究队列
 
