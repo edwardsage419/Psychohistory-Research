@@ -1,0 +1,24 @@
+name: DF2011 pinned public RDA source decode gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/data_scout/DF2011_FIXED_SOURCE_BINARY_DECODE_GATE_FREEZE_2026-10-24.md'
+      - 'research/data_scout/audit_df2011_fixed_blob_decode.py'
+      - '.github/workflows/data_scout_df2011_fixed_blob_decode.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source_decode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned free open-source RDA reader
+        run: python -m pip install --disable-pip-version-check pyreadr==0.5.4
+      - name: Decode pinned raw DF2011, check identity and leakage gates
+        run: python research/data_scout/audit_df2011_fixed_blob_decode.py
