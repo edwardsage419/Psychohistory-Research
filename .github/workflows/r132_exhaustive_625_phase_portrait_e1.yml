@@ -1,0 +1,44 @@
+name: R132 exhaustive 625 exact E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/r132_exhaustive_625_phase_portrait_e1.yml'
+      - 'research/validation/r132_exhaustive_625_phase_portrait.py'
+      - 'research/validation/R132_EXHAUSTIVE_625_TWO_STRATEGY_PHASE_PORTRAITS_2026-10-25.csv'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-exact-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact third method and unchanged R132 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 --version
+          python3 research/validation/r132_exhaustive_625_phase_portrait.py | tee /tmp/r132-audit.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/r132-audit.json',encoding='utf-8'))
+          assert d['matrix_cases']==625
+          assert d['exact_field_comparisons']==4375
+          assert d['original_unchanged_source_executed'] is True
+          assert d['original_source_exact_matches']==4375
+          assert d['negative_controls_rejected']==2
+          assert d['class_counts']=={
+              'A_monotone':200,'B_monotone':200,
+              'bistable_threshold':100,'neutral_continuum':25,
+              'stable_coexistence':100}
+          PY
+          git diff --exit-code -- research/validation/R132_EXHAUSTIVE_625_TWO_STRATEGY_PHASE_PORTRAITS_2026-10-25.csv
+      - name: Original R132 70 tests
+        shell: bash
+        env:
+          PYTHONPATH: research/R132
+        run: python3 -m unittest -q research/R132/test_r132_replicator_1978_exact_invariants_and_trajectories.py
