@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-24（Asia/Shanghai）；已收录 TH013
+更新：2026-10-25（Asia/Shanghai）；已收录 TH014，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -28,12 +28,13 @@
 
 | TH013 | 礼物交换、互惠、道德经济与生存伦理 | Mauss 1925 的 Guyer 2016 开放英译第一章与译者导言；Thompson 1971 原刊扫描选页；Polanyi 1944 第21章公开全文；Scott 1976、Popkin 1979 原书开放章节开头。Polanyi 第4章与 Scott/Popkin 全文待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH013_GIFT_RECIPROCITY_MORAL_ECONOMY_2026-10-24.md) |
 
+| TH014 | 仪式、象征资本与权力再生产 | Durkheim 1912/1915 原著选段；Bourdieu 1977 第4章开放开头；Collins 2004 第1、2章开放开头；Bell 1992 仅目录 | THEORY_NOTE_BOUNDED | [研究笔记](TH014_RITUAL_SYMBOLIC_CAPITAL_POWER_2026-10-25.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH014 | 仪式、象征资本与交换关系的权力再生产 | Durkheim 1912；Bourdieu 1972/1977；Collins 2004 原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH015 | 日常互动秩序、面子与情境定义 | Goffman 1955/1959/1967；Garfinkel 1967 原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -105,16 +106,21 @@
 | subsistence ethic / safety first | Scott 1976，第1、2、6、7章开放开头；生存保障、风险分配与公平 | 个体、群体、制度 | 原书章节开头直接审读，全文待补 |
 | rational peasant / village insurance | Popkin 1979，第1–3章开放开头；策略行动、村社内差异与有限互助 | 个体、群体、制度、历史 | 原著章节开头与出版社说明，全文待补 |
 
+| collective effervescence / ritual | Durkheim 1912/1915；共同实践、象征和群体情感 | 个体、群体、历史 | 原著英译选段已审，跨文化外推未证 |
+| habitus / symbolic capital | Bourdieu 1972/1977；分类、声望与权力的候选机制 | 个体、群体、制度、历史 | 出版社章节开头，资本全文待审 |
+| mutual focus / emotional entrainment | Collins 2004；共同注意、情绪同步与互动结果 | 个体、群体、制度 | 原著第1、2章开放开头，因果未审 |
+| ritualization / power | Bell 1992；仪式化与权力的竞争研究线索 | 群体、制度、历史 | 仅原书目录，正文未审 |
+
 ## C 与 D 研究日历（候选方法储备）
 
-研究日期：2026-10-24；研究周：2026-W43。
+研究日期：2026-10-25；研究周：2026-W43。
 
 | 子流程 | 当前完成记录 | 研究性质 | 下一项 |
 | --- | --- | --- | --- |
-| C 每日人生决策测量与因果方法 | [C001 构念效度、因果测量与价值边界](../research/decision_methods/C001_CONSTRUCT_VALIDITY_2026-10-24.md) | 2026-10-24 已完成原始文献摘要审读和候选验证清单；无私人数据和实证检验 | 纵向测量等值性与动态偏好 |
+| C 每日人生决策测量与因果方法 | [C002 纵向测量等值性与反应转移](../research/decision_methods/C002_LONGITUDINAL_INVARIANCE_RESPONSE_SHIFT_2026-10-25.md)；[C001 前日记录](../research/decision_methods/C001_CONSTRUCT_VALIDITY_2026-10-24.md) | 2026-10-25 已完成原始文献、开放全文深读、欠识别示例和方法验证清单；无私人数据或实证复算 | MNAR 缺失与纵向敏感性界限 |
 | D 每周历史环境与长期情景 | [D001 1918 流感历史冲击](../research/historical_scenarios/D001_1918_INFLUENZA_SHOCK_2026-W43.md) | 2026-W43 已完成历史证据、竞争机制、识别风险及多情景研究；无未来事件预测 | 技术扩散冲击与制度适应 |
 
-C 与 D 只记录各自方法储备，不占用 R 系列验收工作。每次运行先检查当日/当周记录，若已完成则保持只读并继续理论主线。
+C 今日 C002 已完成，D 本周 D001 保持只读。C 与 D 只记录各自方法储备，不占用 R 系列验收工作。每次运行先检查当日/当周记录，若已完成则保持只读并继续理论主线。
 
 ## 持续执行规则
 
