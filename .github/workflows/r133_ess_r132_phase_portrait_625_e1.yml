@@ -1,0 +1,35 @@
+name: R133 ESS R132 exact phase portrait 625 E1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/r133_ess_r132_phase_portrait_625_e1.yml'
+      - 'research/validation/r133_ess_r132_phase_portrait_bridge.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  strict-ess-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recompute 625 independent strict ESS classifications
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/validation/r133_ess_r132_phase_portrait_bridge.py | tee /tmp/r133-bridge.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/r133-bridge.json',encoding='utf-8'))
+          assert d['checked_games']==625
+          assert d['crossmodel_class_matches']==625
+          assert d['R133_frozen_status_verified'] is True
+          assert d['negative_controls_rejected']==2
+          assert d['counts']=={
+            'pure_A_ESS':300,'pure_B_ESS':300,'both_pure_ESS':100,
+            'internal_mixed_ESS':100,'no_strict_ESS':25}
+          print('R133_625_EXACT_BRIDGE_PASS')
+          PY
