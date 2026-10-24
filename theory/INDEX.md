@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-24（Asia/Shanghai）；已收录 TH009
+更新：2026-10-24（Asia/Shanghai）；已收录 TH010
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -20,11 +20,13 @@
 
 | TH009 | 社会认同、群际分类与群体边界 | Tajfel et al. 1971、Billig & Tajfel 1973 原刊摘要；Tajfel & Turner 1986 原书扫描选页；Sherif 1961 第8章原文；Brewer 1999 原刊开放选页；Rabbie et al. 1989 批评摘要；Turner 1985/1987 仅书目 | THEORY_NOTE_BOUNDED | [研究笔记](TH009_SOCIAL_IDENTITY_INTERGROUP_BOUNDARIES_2026-10-24.md) |
 
+| TH010 | 社会影响、规范形成与少数派影响 | Sherif 1935 原作扫描多页、Asch 1955 原刊全文、Moscovici et al. 1969 原刊全文已审；Deutsch & Gerard 1955、Nemeth 1983/1986、Wood et al. 1994、Mori & Arai 2010 原始书目与摘要，全文待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH010_SOCIAL_INFLUENCE_NORMS_MINORITY_2026-10-24.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH010 | 社会影响、规范形成与少数派影响 | Sherif、Asch、Moscovici 原作及竞争批评待核验 | QUEUED_UNVERIFIED |
+| 1 | TH011 | 多元无知、沉默螺旋与偏好伪装 | Prentice & Miller 1993；Noelle-Neumann 1974；Kuran 1995 原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -71,6 +73,13 @@
 | realistic group conflict / superordinate goals | Sherif et al. 1961第8章；竞争与共同目标 | 群体、制度 | 原作者章节全文；单一历史实验情境 |
 | ingroup favoritism versus outgroup hostility | Brewer 1999；偏好、信任与敌意可分离 | 个体、群体、历史 | 原作者开放全文选页；无本项目复验 |
 | behavioural interaction model / instrumental alternatives | Rabbie et al. 1989；工具性利益的竞争解释 | 个体、群体 | 原刊摘要；双方全文对比待补 |
+
+| autokinetic norm formation / frame of reference | Sherif 1935；模糊刺激下判断范围、群体趋近与后续延续 | 个体、群体、历史 | 原作扫描印刷 pp.22–23, 32–33, 40–41 已审；跨尺度推论未证 |
+| public conformity / unanimity | Asch 1955；清晰判断下的公开多数压力及同伴支持 | 个体、群体、制度 | 原刊全文已审；技术专著 1956 待审 |
+| minority consistency / behavioral style | Moscovici, Lage & Naffrechoux 1969；少数意见的持续一致与多数判断 | 个体、群体、制度 | 原刊全文 pp.365–380 已审；阈值解释和外推待独立检验 |
+| normative versus informational influence | Deutsch & Gerard 1955；规范期待与信息证据两条候选路径 | 个体、群体 | 原始书目已审，正文待审 |
+| public versus private minority impact | Wood et al. 1994；公开与间接私下测量的影响差异 | 个体、群体、制度 | 97 实验元分析摘要，全文及异质性待审 |
+| divergent versus convergent thought | Nemeth & Wachtler 1983；Nemeth 1986；少数异议与认知探索 | 个体、群体 | 出版社摘要与书目；不能推断少数观点恒正确 |
 
 ## C 与 D 研究日历（候选方法储备）
 
