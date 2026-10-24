@@ -1,0 +1,47 @@
+name: R127 R128 R129 frozen third method E1 replay
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/r127-r129-third-method-e1-acceptance-20261025.yml'
+permissions:
+  contents: read
+jobs:
+  frozen-e1-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: R127 post hoc row flags and unchanged original tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/validation/verify_r127_row_flags_supplement.py --verify-existing
+          PYTHONPATH=research/R127 python -m unittest -q research/R127/test_r127_van_huyck_1990_min_effort_coordination_selection_exact.py 2>&1 | tee /tmp/r127-original.log
+          grep -Eq 'Ran 60 tests? in' /tmp/r127-original.log
+      - name: R128 frozen 42 exact Frechet constructions and unchanged original tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/R128/r128_skyrms2004_stag_hunt_exact.py)" = "4695fb1d03fc9e004f91e993907e9b165f90cc52"
+          node research/validation/r128_frechet_joint_bounds_third_method.js --csv | cmp - research/validation/R128_FRECHET_JOINT_BOUNDS_42_CASES_2026-10-24.csv
+          node research/validation/r128_frechet_joint_bounds_third_method.js | python -c 'import json,sys; s=json.load(sys.stdin); assert (s["cases"],s["ambiguous"],s["identified_S"],s["identified_H"],s["identified_TIE"],s["negative_controls"],s["failures"])==(42,12,8,21,1,2,0),s; print("R128_FROZEN_42_CASES_AND_2_NEGATIVE_CONTROLS_PASS")'
+          PYTHONPATH=research/R128 python -m unittest -q research/R128/test_r128_skyrms2004_stag_hunt_exact.py 2>&1 | tee /tmp/r128-original.log
+          grep -Eq 'Ran 70 tests? in' /tmp/r128-original.log
+      - name: R129 frozen 49 asymmetric couplings 25 table cells and unchanged original tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/validation/verify_r129_asymmetric_collision_and_rounding.py --verify-existing
+          PYTHONPATH=research/R129 python -m unittest -q research/R129/test_r129_chicken_original_table_and_exact_conflict.py 2>&1 | tee /tmp/r129-original.log
+          grep -Eq 'Ran 68 tests? in' /tmp/r129-original.log
