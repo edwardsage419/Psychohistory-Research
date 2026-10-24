@@ -1,0 +1,31 @@
+name: R114 independent symbolic odds E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r114_independent_symbolic_odds.py'
+      - '.github/workflows/r114_independent_symbolic_odds_audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent_symbolic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check original R114 source and test identity
+        run: |
+          echo '8fbd5571974e435e52a0328e3d9c732877c08f9c5fb056d076edbdfd581e2a24  research/R114/r114_conditional_norm_compliance_discordant_expectations.py' | sha256sum -c -
+          echo '9dacf991196b2ad6a18bcee364ec7aef9c5863bb2412f391572b3468941f4710  research/R114/test_r114_conditional_norm_compliance_discordant_expectations.py' | sha256sum -c -
+      - name: Independent integer log odds and Decimal probability audit
+        run: python research/validation/verify_r114_independent_symbolic_odds.py
+      - name: Replay original 30 synthetic tests
+        run: PYTHONPATH=research/R114 python -m unittest -v research/R114/test_r114_conditional_norm_compliance_discordant_expectations.py
