@@ -37,11 +37,13 @@
 | TH017 | 知识权威、分类实践与制度标准化 | Bowker & Star 1999 原著导论、Star & Griesemer 1989 原刊 pp.387–396 直接审读；Hacking 2006 作者开头、Tsou 2007 摘要；Foucault、Scott 出版者书介 | THEORY_NOTE_BOUNDED | [研究笔记](TH017_CLASSIFICATION_KNOWLEDGE_AUTHORITY_STANDARDIZATION_2026-10-25.md) |
 | TH018 | 科学知识权威、默会知识与专家分歧 | Merton 1942/1973 原著再版 pp.267–278、Polanyi 1965 Lecture 4 原稿、Collins & Evans 2002 Cardiff 81页工作论文、Gieryn 1983 原刊扫描直接审读；Polanyi Lecture 2、Wynne 1992、Anderson et al. 2007 仅首页或摘要；正式刊文逐字核对待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH018_SCIENTIFIC_AUTHORITY_TACIT_KNOWLEDGE_EXPERT_DISAGREEMENT_2026-10-25.md) |
 
+| TH019 | 科学革命、范式转换与研究纲领 | Popper 1963原著节录、Kuhn 1970原文开头、Lakatos 1978再版多页直接审读；Kuhn 1962与Laudan 1977出版社书目，整书未审 | THEORY_NOTE_BOUNDED | [研究笔记](TH019_SCIENTIFIC_REVOLUTIONS_RESEARCH_PROGRAMMES_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH019 | 科学革命、范式转换与研究纲领 | Kuhn 1962；Lakatos 1970；Laudan 1977；Popper 1959 原著待核验 | QUEUED_UNVERIFIED |
+| 1 | TH020 | 科学发现的社会网络、优先权竞争与知识扩散 | Merton 1957/1968；Crane 1972；Rogers 2003；Latour 1987 原著待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -138,6 +140,11 @@
 | interactional / contributory expertise | Collins & Evans 2002；跨群体翻译与实践贡献的区别 | 个体、群体、制度 | Cardiff工作论文已审；正式刊文待核对 |
 | boundary-work / professional demarcation | Gieryn 1983；科学身份边界与资源、自治之间的关系 | 群体、制度、历史 | 原刊全文选段已审；历史案例未独立复核 |
 | normative dissonance / local knowledge | Anderson et al. 2007；Wynne 1992；规范落差与地方经验 | 个体、群体、制度 | 原刊摘要；全文与独立因果识别待补 |
+
+| falsifiability / risky prediction | Popper 1963；预先可反驳的预测及严厉检验 | 个体、制度、方法论 | 原著节录直接审读 |
+| paradigm / normal science / anomaly | Kuhn 1962/1970；共享实践、难题与异常 | 群体、制度、历史 | 1962出版社目录、1970原文开头；全书待审 |
+| hard core / protective belt / progressive problemshift | Lakatos 1970/1978；研究纲领连续版本及经验进步 | 个体、群体、制度、历史 | 1978再版印刷页33–35、48、53、55、74直接审读 |
+| research tradition / problem solving | Laudan 1977；情境问题解决的评价方向 | 群体、制度、历史 | 出版社书介；正文待审 |
 
 ## C 与 D 研究日历（候选方法储备）
 
