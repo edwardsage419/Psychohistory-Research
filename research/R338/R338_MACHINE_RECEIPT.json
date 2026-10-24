@@ -1,0 +1,42 @@
+{
+  "research_id": "R338",
+  "catalogue_id": "03-017",
+  "protocol_commit": "6b843af069053eb73c7883ba700f918c5cb8288d",
+  "source_commit": "f4d219fecb3f54a522d0ab86a26cb24b41ee0452",
+  "protocol_blob_sha1": "52607cc28f098603f2d0286b58a76f0d79691f93",
+  "original_artificial_source_blob_sha1": "c434463b5a3c1e4dc4da068dfd6e720466e68ce3",
+  "results_blob_sha1": "7f428ceaa0ff89ac359437e4e99768ebe06e4776",
+  "production_python_blob_sha1": "1ee4cff348278f208628358b626174fd5fcb5524",
+  "independent_auditor_blob_sha1": "ce5dc79a9b9df2869a2989309129b50d0c3b4b43",
+  "data_rows": 128,
+  "condition_count": 64,
+  "policies": 2,
+  "checks": {
+    "worlds": 64,
+    "rows": 128,
+    "gap_worlds": 16,
+    "zero_gap_worlds": 48,
+    "conjunctive_positive": 1,
+    "gap_only_positive": 16,
+    "agreement": 49,
+    "disagreement": 15,
+    "single_missing_gate_negative": 4,
+    "zero_gap_both_zero": 48
+  },
+  "verification": {
+    "run_id": 40059210892,
+    "conclusion": "success",
+    "jobs": {
+      "python311": "success",
+      "python312": "success",
+      "independent": "success"
+    },
+    "unit_tests_per_python": 6,
+    "negative_tamper_tests": 2
+  },
+  "evidence_grade": "PASS_BOUNDED_E1_CONSTRUCTED_REFERENCE_GAP_AND_FOUR_GATES_ONLY",
+  "actual_human_E2": false,
+  "historical_E3": false,
+  "original_author_empirical_replication": false,
+  "early_zip_full_reuse_audit_complete": false
+}
