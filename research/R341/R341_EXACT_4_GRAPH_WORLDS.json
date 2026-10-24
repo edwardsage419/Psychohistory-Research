@@ -1,0 +1,90 @@
+{
+  "schema": "R341_frozen_three_node_ergm_v1",
+  "worlds": [
+    {
+      "a": "1",
+      "b": "1",
+      "Z": "8",
+      "edge_marginal": "1/2",
+      "triangle_probability": "1/8",
+      "closure_odds_ratio": "1",
+      "graph_probabilities": [
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8",
+        "1/8"
+      ]
+    },
+    {
+      "a": "1",
+      "b": "2",
+      "Z": "9",
+      "edge_marginal": "5/9",
+      "triangle_probability": "2/9",
+      "closure_odds_ratio": "2",
+      "graph_probabilities": [
+        "1/9",
+        "1/9",
+        "1/9",
+        "1/9",
+        "1/9",
+        "1/9",
+        "1/9",
+        "2/9"
+      ]
+    },
+    {
+      "a": "2",
+      "b": "1",
+      "Z": "27",
+      "edge_marginal": "2/3",
+      "triangle_probability": "8/27",
+      "closure_odds_ratio": "1",
+      "graph_probabilities": [
+        "1/27",
+        "2/27",
+        "2/27",
+        "4/27",
+        "2/27",
+        "4/27",
+        "4/27",
+        "8/27"
+      ]
+    },
+    {
+      "a": "2",
+      "b": "2",
+      "Z": "35",
+      "edge_marginal": "26/35",
+      "triangle_probability": "16/35",
+      "closure_odds_ratio": "2",
+      "graph_probabilities": [
+        "1/35",
+        "2/35",
+        "2/35",
+        "4/35",
+        "2/35",
+        "4/35",
+        "4/35",
+        "16/35"
+      ]
+    }
+  ],
+  "checks": {
+    "worlds": 4,
+    "source_rows": 32,
+    "normalization_worlds": 4,
+    "expected_partition_functions": [
+      "8",
+      "9",
+      "27",
+      "35"
+    ],
+    "baseline_independent_worlds": 2,
+    "closure_contrast_worlds": 2
+  }
+}

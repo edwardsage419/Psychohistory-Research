@@ -1,0 +1,35 @@
+name: R341 ERGM three node 32 artificial graph atoms E1
+on:
+  push:
+    paths:
+      - 'research/R341/**'
+      - 'research/catalogue_audit/independent_r341_ergm_audit.py'
+      - '.github/workflows/r341-ergm-three-node-32-atoms-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python311:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python research/R341/r341_exact_ergm.py --test --audit
+  python312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/R341/r341_exact_ergm.py --test --audit
+  independent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/catalogue_audit/independent_r341_ergm_audit.py
