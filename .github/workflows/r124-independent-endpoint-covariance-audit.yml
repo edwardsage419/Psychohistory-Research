@@ -1,0 +1,28 @@
+name: R124 independent endpoint covariance E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r124_endpoint_covariance.py'
+      - 'research/validation/R124_ENDPOINT_COVARIANCE_948_CONSTRUCTED_GRAPHS_2026-10-24.csv'
+      - '.github/workflows/r124-independent-endpoint-covariance-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  endpoint_covariance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify 948 exact Pearson covariance graph cases
+        run: python research/validation/verify_r124_endpoint_covariance.py --output research/validation/R124_ENDPOINT_COVARIANCE_948_CONSTRUCTED_GRAPHS_2026-10-24.csv --verify
+      - name: Original R124 56 unit tests
+        run: PYTHONPATH=research/R124 python -m unittest -q research/R124/test_r124_homophily_baseline_assortativity_causal_ambiguity.py
