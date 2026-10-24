@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-24（Asia/Shanghai）；已收录 TH012
+更新：2026-10-24（Asia/Shanghai）；已收录 TH013
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -26,11 +26,14 @@
 
 | TH012 | 描述性规范、命令性规范、条件性期待与社会惩罚 | Bicchieri 2006 出版社前言与第一章节录；Fehr & Gächter 2002 四页原刊全文；Cialdini et al. 1990、Kallgren et al. 2000、Schultz et al. 2007、Ostrom 2000 原刊摘要；Herrmann et al. 2008 机构摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH012_DESCRIPTIVE_INJUNCTIVE_NORMS_SANCTIONS_2026-10-24.md) |
 
+| TH013 | 礼物交换、互惠、道德经济与生存伦理 | Mauss 1925 的 Guyer 2016 开放英译第一章与译者导言；Thompson 1971 原刊扫描选页；Polanyi 1944 第21章公开全文；Scott 1976、Popkin 1979 原书开放章节开头。Polanyi 第4章与 Scott/Popkin 全文待补 | THEORY_NOTE_BOUNDED | [研究笔记](TH013_GIFT_RECIPROCITY_MORAL_ECONOMY_2026-10-24.md) |
+
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH013 | 礼物交换、互惠与道德经济 | Mauss 1925；Polanyi 1944；E. P. Thompson 1971；James C. Scott 1976 原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH014 | 仪式、象征资本与交换关系的权力再生产 | Durkheim 1912；Bourdieu 1972/1977；Collins 2004 原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -95,6 +98,12 @@
 | normative focus / salience | Kallgren, Reno & Cialdini 2000；情境注意激活 | 个体、群体 | 出版者摘要 |
 | altruistic / antisocial punishment | Fehr & Gächter 2002；Herrmann et al. 2008；惩罚方向存在社会差异 | 群体、制度、历史 | 2002原刊全文、2008机构摘要 |
 | boomerang effect of normative feedback | Schultz et al. 2007；描述性反馈可能逆向改变行为 | 个体、群体、制度 | 原作者摘要，全文待审 |
+
+| gift / don / prestation totale | Mauss 1925，Guyer 2016 英译 pp.65–76；给出、接受、回报及交换与身份、权利交织 | 个体、群体、制度、历史 | 原著开放英译选段直接审读，法文版本待对读 |
+| reciprocity / redistribution / householding | Polanyi 1944，第4章检索可见节录；第21章直接审读；组织形式与市场关系 | 群体、制度、历史 | 第4章全文访问受阻，不能视为全文核验 |
+| moral economy / legitimizing notions | Thompson 1971，原刊 pp.78–80、97–99、136；抗议中的正当性与习俗 | 群体、制度、历史 | 原刊扫描选页直接审读，历史因果尚未独立复验 |
+| subsistence ethic / safety first | Scott 1976，第1、2、6、7章开放开头；生存保障、风险分配与公平 | 个体、群体、制度 | 原书章节开头直接审读，全文待补 |
+| rational peasant / village insurance | Popkin 1979，第1–3章开放开头；策略行动、村社内差异与有限互助 | 个体、群体、制度、历史 | 原著章节开头与出版社说明，全文待补 |
 
 ## C 与 D 研究日历（候选方法储备）
 
