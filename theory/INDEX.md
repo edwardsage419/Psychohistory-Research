@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-24（Asia/Shanghai）；已收录 TH004
+更新：2026-10-24（Asia/Shanghai）；已收录 TH005
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -12,13 +12,14 @@
 | TH002 | Annales 学派与 longue durée：历史时间尺度 | Braudel 1949 原版书目、1958 原刊首页与 1960 摘要；2015 年长时段争论及微观史书评。原版全文审读仍待补充 | THEORY_NOTE_BOUNDED | [研究笔记](TH002_ANNALES_LONGUE_DUREE_2026-10-24.md) |
 | TH003 | Begriffsgeschichte 概念史、经验空间与期待视野 | Koselleck 1979 原版馆藏；2004 英译授权节录 pp. 73–77 直接审读；pp. 255–276 仅章节开头；Schinkel、Jordheim、Palti 批评摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH003_CONCEPTUAL_HISTORY_2026-10-24.md) |
 | TH004 | 社会机制、历史叙述与因果解释 | Hedström & Swedberg 1998、Elster 1998 出版社开放章节导论；Tilly 2000/2001 出版者摘要；付费全文未审 | THEORY_NOTE_BOUNDED | [研究笔记](TH004_MECHANISM_EXPLANATION_2026-10-24.md) |
+| TH005 | 历史制度主义的权力、冲突、行动者与路径依赖批评 | Hall & Taylor 1996 作者开放全文已审；Peters et al. 2005、Kay 2005、Moe 2005 原刊摘要；Knight 1992、Streeck & Thelen 2005、Mahoney & Thelen 2009/2010 出版社书目与开放节录 | THEORY_NOTE_BOUNDED | [研究笔记](TH005_POWER_CONFLICT_AGENCY_2026-10-24.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH005 | 制度权力、冲突、行动者与路径依赖的批评 | Peters, Pierre & King 2005；Kay 2005 | QUEUED_UNVERIFIED |
-| 2 | TH006 | 历史行动的语言语境主义与言语行动 | Quentin Skinner 1969/2002；J. G. A. Pocock 的原始作品待核查 | QUEUED_UNVERIFIED |
+| 1 | TH006 | 历史行动的语言语境主义与言语行动 | Quentin Skinner 1969/2002；J. G. A. Pocock 的原始作品待核查 | QUEUED_UNVERIFIED |
+| 2 | TH007 | 制度权力的执行、合法性与服从 | Jack Knight 1992；Terry Moe 2005；Mahoney & Thelen 2009/2010 的开放全文及独立案例待查 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -39,6 +40,11 @@
 | Begriffsgeschichte / historical semantics | Koselleck 1979/2004；政治社会概念与社会史 | 群体、制度、历史、方法论 | 英译 pp. 73–77 授权节录已审 |
 | Erfahrungsraum / Erwartungshorizont | Koselleck 2004 pp. 255–276；经验与期待 | 个体、群体、历史 | 原作者章节开头＋后续论文摘要；全章待审 |
 | Sattelzeit | Koselleck 编辑项目；约 1750–1850 年欧洲转型的争议分期 | 制度、历史 | 学术机构说明＋后续研究片段；跨地区普遍性未证 |
+
+| institutional power asymmetry | Hall & Taylor 1996 作者全文；Knight 1992 出版社书目；Moe 2005 摘要 | 群体、制度、历史 | 原作者全文＋其他原作摘要；独立案例未核验 |
+| calculus / cultural approach | Hall & Taylor 1996；制度通过策略预期、规范与身份影响行动 | 个体、群体、制度 | 作者开放全文 pp. 939–940 |
+| political conflict over ideas | Peters, Pierre & King 2005；政策观念及基本假设冲突可能促成变迁 | 群体、制度、历史 | 原刊摘要；全文未审 |
+| distributional conflict | Knight 1992；制度形成的权力与分配解释 | 群体、制度 | 出版社原著简介；全文未审 |
 
 ## C 与 D 研究日历（候选方法储备）
 
