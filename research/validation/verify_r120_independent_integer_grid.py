@@ -159,7 +159,7 @@ def check_fixtures():
         actual = sum((len(s) * p for s, p in distribution.items()), F(0))
         if actual != expected:
             raise AssertionError("R120_CHAIN_OR_CYCLE_MISMATCH")
-    correct = sum((p for active, p in compare_all(3, single, (0, 1))
+    correct = sum((p for active, p in compare_all(3, single, (0, 1)).items()
                    if 2 in active), F(0))
     incorrect_independent_inbound = 1 - (1 - F(1, 2)) * (1 - F(1, 4))
     if correct != F(3, 4) or incorrect_independent_inbound != F(5, 8):
