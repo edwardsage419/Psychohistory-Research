@@ -1,0 +1,25 @@
+name: R115 independent joint path bounded E1 audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/validation/verify_r115_joint_path_independent.py'
+      - '.github/workflows/r115_independent_joint_path_audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent_joint_path:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Independent exact joint probability audit and negative controls
+        run: python research/validation/verify_r115_joint_path_independent.py --repo-root .
