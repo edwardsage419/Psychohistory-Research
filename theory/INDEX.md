@@ -54,11 +54,13 @@
 
 | TH027 | 抗争与国家回应：压制、让步、反弹及双向因果 | Hager & Krakowski 2022、Dornschneider-Elkink & Edmonds 2024开放原刊直接审读；Lichbach 1987、Earl 2003、Carey 2006、Davenport 2007、Ritter & Conrad 2016、Young 2019摘要；Rasler 1996书目 | THEORY_NOTE_BOUNDED | [研究笔记](TH027_REPRESSION_CONCESSIONS_BACKLASH_STATE_RESPONSE_2026-10-25.md) |
 
+| TH028 | 革命动员、精英分裂与国家能力 | Skocpol 1979出版社原著导论 pp.3–11、Goodwin 2001出版社原著导论 pp.3–11 直接审读；Goldstone 2001/2017、Foran 1992 摘要；Goldstone 1991书目；国家能力、动员与结果定义的不可识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH028_REVOLUTION_ELITE_SPLITS_STATE_CAPACITY_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH028 | 革命动员、精英分裂与国家能力 | Skocpol 1979；Goldstone 1991；Tilly 1978；Goodwin 2001 | QUEUED_UNVERIFIED |
+| 1 | TH029 | 战争、财政国家与国家形成 | Tilly 1990；Mann 1984；Levi 1988；Downing 1992 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -197,6 +199,8 @@
 | repression–dissent feedback / preventive repression | Carey 2006；Ritter & Conrad 2016；双向时序与事前预防选择 | 个体、群体、制度、历史 | 原刊摘要；全文待审 |
 | surveillance and divergent resistance outcomes | Hager & Krakowski 2022；监视与抗议及怠工不同方向 | 个体、群体、制度、历史 | 开放原刊直接审读；未复算 |
 | emotional backlash / repression heterogeneity | Dornschneider-Elkink & Edmonds 2024；压制类型与短期长期情绪机制 | 个体、群体、制度、历史 | 开放原刊直接审读；模拟未独立验证 |
+
+| state breakdown / elite conflict / mobilization | Skocpol 1979；Goldstone 2001；Goodwin 2001；国家组织危机、精英竞争与群众动员的竞争机制 | 个体、群体、制度、历史 | Skocpol、Goodwin原著导论直接审读；Goldstone摘要；独立实证未验证 |
 
 ## C 与 D 研究日历（候选方法储备）
 
