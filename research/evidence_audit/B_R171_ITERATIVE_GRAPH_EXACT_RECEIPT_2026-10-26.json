@@ -1,0 +1,78 @@
+{
+  "source_length": 10954,
+  "parser": "iterative token stack",
+  "distance": "undirected DFS",
+  "tips": 400,
+  "nodes": 756,
+  "edges": 755,
+  "zero_edges": 52,
+  "unordered_pairs": 79800,
+  "sum_distance_micro": 590570691634,
+  "mean_distance_millennia": 7.400635233508773,
+  "root_depth_micro": {
+    "min": 1733214,
+    "median_low": 4633214,
+    "median_high": 4633214,
+    "max": 4633215
+  },
+  "reroot_label": "Agta",
+  "reroot_depth_micro": {
+    "min": 0,
+    "max": 9266428
+  },
+  "quartets": {
+    "attempts": 1024,
+    "skipped": 16,
+    "valid": 1008,
+    "resolved": 951,
+    "unresolved": 57,
+    "witness": {
+      "k": 0,
+      "sums": [
+        16565283,
+        16565283,
+        15152605
+      ]
+    }
+  },
+  "zero_distance_pairs": 10,
+  "zero_groups": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "nine_original_pairs_match": true,
+  "edge_mutant": {
+    "pass": true,
+    "edge": [
+      0,
+      1,
+      285379
+    ],
+    "affected_pair": [
+      "Buyang",
+      "Agta"
+    ],
+    "before": 9266428,
+    "after": 9266429
+  },
+  "quartet_mutant_pass": true,
+  "E1_internal_only": true,
+  "checks": {
+    "structure": true,
+    "zero_edges": true,
+    "root_depth": true,
+    "reroot": true,
+    "quartets": true,
+    "zero_pairs": true,
+    "zero_groups": true,
+    "mean_frozen": true
+  }
+}
