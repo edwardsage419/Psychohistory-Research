@@ -1,0 +1,37 @@
+{
+  "research": "R146",
+  "date": "2026-10-25",
+  "evidence": "E1_CONSTRUCTED_INTERNAL",
+  "method": "integer-scaled voter utilities, exhaustive majority winners and derivative closed form",
+  "n_counts": {
+    "5": 126,
+    "7": 330,
+    "9": 715
+  },
+  "synthetic_economies": 1171,
+  "positive_tax": 751,
+  "zero_tax": 420,
+  "flat_all_zero": 3,
+  "grid_median_ties": 16,
+  "majority_pairwise_comparisons": 516411,
+  "budget_identity_world_grid_checks": 5855,
+  "examples": {
+    "baseline": "7/23",
+    "high_productivity": "35/106",
+    "rising_median_before": "13/33",
+    "rising_median_after": "1/9",
+    "richest_five_only": "0"
+  },
+  "negative_controls": {
+    "reject_mean_only_monotonicity": true,
+    "reject_unique_zero_in_flat_case": true,
+    "preserve_fiscal_population_when_voting_rights_change": true,
+    "reject_fixed_labor_substitution": true
+  },
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0,
+  "source_js_blob_sha1": "7922bb45a903fe4e40ac27e9813a212f7a812868",
+  "execution": "connected V8 from exact GitHub fetched JS source",
+  "ci": "NOT_RUN"
+}
