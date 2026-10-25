@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH040，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH042，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -77,11 +77,13 @@
 | TH040 | 组织生态中的密度依赖、合法化与竞争 | Barron & Hannan 1991 原刊公开摘要及注释；Hannan 1997、Baum 1995、Kalnins 2016、Lander & Heugens 2017原刊摘要；Carroll & Hannan 1989、Baum & Mezias 1992作者摘要；九项理论命题及四项人工识别反例，原始回归未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH040_DENSITY_DEPENDENCE_LEGITIMATION_COMPETITION_2026-10-26.md) |
 | TH041 | 组织生态位宽度、资源分割与专业化生存 | Dobrev、Kim、Hannan 2001 和 Reis等 2013 作者开放原刊理论、表格与讨论直接审读；Freeman & Hannan 1983、Carroll 1985、Carroll & Swaminathan 2000 原刊摘要；十项命题、四项独立识别反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH041_NICHE_WIDTH_RESOURCE_PARTITIONING_SPECIALISTS_2026-10-26.md) |
 
+| TH042 | 组织身份、类别跨越与受众评价惩罚 | Zuckerman 1999、Hsu 2006、Hsu & Hannan 2005、Hannan et al. 2003及Hsu et al. 2009原刊摘要与2005原文索引片段；Goldfarb & Yan 2021复验及2026勘误；十项命题、四项人工反例，原刊全文及回归未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH042_ORGANIZATIONAL_IDENTITY_CATEGORY_SPANNING_AUDIENCE_PENALTIES_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH042 | 组织身份、类别跨越与受众评价惩罚 | Zuckerman 1999；Hsu 2006；Hsu & Hannan 2005；Hannan et al. 2003 | QUEUED_UNVERIFIED |
+| 1 | TH043 | 类别模糊性、受众异质性与混合身份的条件性优势 | Pontikes 2012；Rao、Monin、Durand 2005；Wry、Lounsbury、Jennings 2014；Kovács & Hannan 2011 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
