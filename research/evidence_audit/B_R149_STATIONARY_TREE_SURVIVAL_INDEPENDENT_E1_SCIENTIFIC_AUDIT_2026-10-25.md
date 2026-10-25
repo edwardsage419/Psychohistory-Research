@@ -1,0 +1,12 @@
+# B scientific audit: R149-A stationary and first-hitting evidence
+Date: 2026-10-25. Prescored third-method protocol committed before both independent calculations: `protocols/R149_STATIONARY_FIRST_HIT_THIRD_METHOD_FREEZE_2026-10-25.md`.
+
+## Independent method and replay
+The R149 third-method primary script solves a stationary birth-death detailed-balance recursion, then uses a 3x3 exact first-step linear equation for hitting time. This B script `research/evidence_audit/r149_b_independent_tree_survival.py` uses directed spanning-tree product weights and an independent exact 256-step survival sum. It imports neither the primary R149 code nor the new main script. Both were actually executed locally with Python standard-library Fraction. B source as executed has Git blob SHA1 `584e81a31df480e43685bb8889b839ad8944d9b8`.
+
+The five independent spanning-tree stationary weights normalize to `[72/155,9/310,2/155,9/310,72/155]`, matching the primary method. The first-hitting expected time from S0=2 is `19/4` in the primary exact first-step solution. The B survival-series partial sum after 256 periods is strictly less than 19/4 and has upper bound `9*(7/9)^128` on its omitted remainder, less than 1e-12. The interval contains 19/4. Every interior state has at least 2/9 chance of first reaching a boundary within the next two periods. This establishes a quantitative independent cross-check rather than claiming the finite series itself equals the exact infinite sum.
+
+## Mutation checks and evidence limitations
+Both independent programs detect incorrect substitution of `p(1-p)` for the upward `p^2` transition at S=0, and detect the false absorbing-boundary assumption: S=0 and S=4 have positive inward escape probabilities 1/36 in the original chain. The absorption used in B is only a bookkeeping device for first hitting, and does not modify the original process.
+
+The result is internally method-independent E1, using the same investigator-defined model and assumptions. It is not external-team replication, independent human data, a held-out prediction, or an empirical calibration test. The result cannot adjudicate between competing real-world theories of social structure. The prior R149-A and R149-B GitHub CI runs are historical and do not validate these new scripts. No new Actions run was started. R073 and PESEN v0.1 remain frozen; original239 pending queue and original R149 acceptance unchanged.
