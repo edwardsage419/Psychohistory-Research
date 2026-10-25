@@ -1,0 +1,334 @@
+{
+  "research": "R150",
+  "evidence": "E1_ARTIFICIAL",
+  "prescore": "protocols/R150_TERMINAL_VS_TRAJECTORY_IDENTIFIABILITY_THIRD_METHOD_FREEZE_2026-10-25.md",
+  "scenarios": 243,
+  "steps": 12,
+  "results": {
+    "NONE": {
+      "terminal": {
+        "distinct": 17,
+        "max_class": 9,
+        "class_size_histogram": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 1
+        },
+        "collision_example": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            7,
+            7
+          ],
+          [
+            8,
+            8
+          ]
+        ]
+      },
+      "trajectory": {
+        "distinct": 73,
+        "max_class": 9,
+        "class_size_histogram": {
+          "1": 72,
+          "9": 1
+        },
+        "collision_example": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            7,
+            7
+          ],
+          [
+            8,
+            8
+          ]
+        ]
+      },
+      "terminal_p0_0": "1000",
+      "example_td2_tb6": "279841/160"
+    },
+    "PANDEMIC_YEAR4": {
+      "terminal": {
+        "distinct": 25,
+        "max_class": 9,
+        "class_size_histogram": {
+          "1": 6,
+          "2": 4,
+          "3": 6,
+          "4": 4,
+          "5": 2,
+          "7": 2,
+          "9": 1
+        },
+        "collision_example": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            7,
+            7
+          ],
+          [
+            8,
+            8
+          ]
+        ]
+      },
+      "trajectory": {
+        "distinct": 73,
+        "max_class": 9,
+        "class_size_histogram": {
+          "1": 72,
+          "9": 1
+        },
+        "collision_example": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            7,
+            7
+          ],
+          [
+            8,
+            8
+          ]
+        ]
+      },
+      "terminal_p0_0": "900",
+      "example_td2_tb6": "255507/160"
+    },
+    "INMIGRATION_YEAR4": {
+      "terminal": {
+        "distinct": 25,
+        "max_class": 9,
+        "class_size_histogram": {
+          "1": 6,
+          "2": 4,
+          "3": 6,
+          "4": 4,
+          "5": 2,
+          "7": 2,
+          "9": 1
+        },
+        "collision_example": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            7,
+            7
+          ],
+          [
+            8,
+            8
+          ]
+        ]
+      },
+      "trajectory": {
+        "distinct": 73,
+        "max_class": 9,
+        "class_size_histogram": {
+          "1": 72,
+          "9": 1
+        },
+        "collision_example": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            7,
+            7
+          ],
+          [
+            8,
+            8
+          ]
+        ]
+      },
+      "terminal_p0_0": "1100",
+      "example_td2_tb6": "60835/32"
+    }
+  },
+  "mortality_shock_terminal_multipliers": [
+    "15/17",
+    "21/23",
+    "9/10"
+  ],
+  "negative_controls": {
+    "terminal_not_injective": true,
+    "full_trajectory_simultaneous_not_injective": true,
+    "shock_multiplier_not_constant": true
+  },
+  "checks": {
+    "exact_scenario_count": 243,
+    "annual_accounting_updates": 2916,
+    "expected_distinct_classes_verified": 6
+  },
+  "source_blob_sha1": "e33ba0288e82bc30db46e9024b5fc9cba29405ae",
+  "execution": "ACTUALLY_EXECUTED_IN_V8_2026-10-25",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_independent_replication": 0
+}
