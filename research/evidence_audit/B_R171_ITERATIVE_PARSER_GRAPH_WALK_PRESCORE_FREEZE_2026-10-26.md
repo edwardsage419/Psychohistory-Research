@@ -1,0 +1,7 @@
+# B R171 independent iterative parser and graph-walk freeze
+
+Date 2026-10-26. Baseline main ad41a3d18cb02125c8ed1d1de9a2a40bb0449e66. Existing R third-method freeze and executed receipt remain unchanged.
+
+Independence goal: a separately implemented nonrecursive stack-based NEXUS/Newick parser plus graph path search, with no import or calls to research/validation/r171_root_quartet_20261026.js. Input is the same archived published original tree, research/R171/source/summary.trees.
+
+Before running, require 400 unique tips, 756 nodes, 755 edges, 52 zero edges, all nine frozen named distances. Parse branch lengths to integer micro-millennia including exponent syntax; fail malformed tokens, negative edges, duplicate leaves. Recompute all 79,800 unordered tip distances using graph path traversal, compare their exact aggregate sum and selected pairs against the original R171 frozen output, and independently reroot via undirected paths. Test strict ultrametricity and 1024 deterministic quartets with the exact index formula from the R freeze. Compute zero-distance distinct tip pairs. Include one edge-mutation and one quartet-mutation negative control, record failures. Compare independently obtained results with the existing R receipt, state any discrepancy. No human E2 or independent historical E3 is claimed. This is project-internal method separation with shared published input. Do not launch paid CI or modify any existing file.
