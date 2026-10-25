@@ -1,0 +1,906 @@
+{
+  "input_rows": 2899,
+  "groups": {
+    "SCCS_186": {
+      "n": 186,
+      "mean_log_loss_M0": 1.7067539627234412,
+      "mean_log_loss_M1": 1.692512691094305,
+      "delta_log_loss_M0_minus_M1": 0.014241271629136232,
+      "mean_brier_M0": 0.7762055938246732,
+      "mean_brier_M1": 0.7544158893811691,
+      "delta_brier_M0_minus_M1": 0.021789704443504112,
+      "by_agriculture": {
+        "0": {
+          "n": 44,
+          "delta_sum": 2.2648791608153527,
+          "delta_mean": 0.0514745263821671
+        },
+        "1": {
+          "n": 11,
+          "delta_sum": 1.0724051021568186,
+          "delta_mean": 0.09749137292334714
+        },
+        "2": {
+          "n": 4,
+          "delta_sum": -1.0494570578699647,
+          "delta_mean": -0.26236426446749117
+        },
+        "3": {
+          "n": 2,
+          "delta_sum": -0.19062035960864976,
+          "delta_mean": -0.09531017980432488
+        },
+        "4": {
+          "n": 16,
+          "delta_sum": 0.9635109787778156,
+          "delta_mean": 0.06021943617361347
+        },
+        "5": {
+          "n": 37,
+          "delta_sum": -2.6704080394508685,
+          "delta_mean": -0.07217319025542887
+        },
+        "6": {
+          "n": 38,
+          "delta_sum": 0.4323596348760289,
+          "delta_mean": 0.011377885128316551
+        },
+        "7": {
+          "n": 17,
+          "delta_sum": -2.0178145561549323,
+          "delta_mean": -0.1186949738914666
+        },
+        "8": {
+          "n": 13,
+          "delta_sum": 4.893478717348007,
+          "delta_mean": 0.3764214397960005
+        },
+        "9": {
+          "n": 4,
+          "delta_sum": -1.0494570578699651,
+          "delta_mean": -0.2623642644674913
+        }
+      },
+      "by_marriage": {
+        "1": {
+          "n": 71,
+          "delta_sum": 5.563874138063549,
+          "delta_mean": 0.0783644244797683
+        },
+        "2": {
+          "n": 24,
+          "delta_sum": 4.262961893628713,
+          "delta_mean": 0.1776234122345297
+        },
+        "3": {
+          "n": 16,
+          "delta_sum": -4.044561586914728,
+          "delta_mean": -0.2527850991821705
+        },
+        "4": {
+          "n": 15,
+          "delta_sum": -3.2345589793402603,
+          "delta_mean": -0.21563726528935068
+        },
+        "5": {
+          "n": 9,
+          "delta_sum": -1.983311551692747,
+          "delta_mean": -0.220367950188083
+        },
+        "6": {
+          "n": 42,
+          "delta_sum": 2.1710806299676193,
+          "delta_mean": 0.05169239595160998
+        },
+        "7": {
+          "n": 9,
+          "delta_sum": -0.08660802069250728,
+          "delta_mean": -0.009623113410278586
+        }
+      },
+      "drop_agriculture_stratum": {
+        "0": {
+          "removed": 44,
+          "remaining": 142,
+          "delta_remaining": 0.0027042067760844135
+        },
+        "1": {
+          "removed": 11,
+          "remaining": 175,
+          "delta_remaining": 0.009008408119214405
+        },
+        "2": {
+          "removed": 4,
+          "remaining": 182,
+          "delta_remaining": 0.020320514180710462
+        },
+        "3": {
+          "removed": 2,
+          "remaining": 184,
+          "delta_remaining": 0.015432048275152113
+        },
+        "4": {
+          "removed": 16,
+          "remaining": 170,
+          "delta_remaining": 0.00991391496612661
+        },
+        "5": {
+          "removed": 37,
+          "remaining": 149,
+          "delta_remaining": 0.0356998963924175
+        },
+        "6": {
+          "removed": 38,
+          "remaining": 148,
+          "delta_remaining": 0.014976465460427774
+        },
+        "7": {
+          "removed": 17,
+          "remaining": 169,
+          "delta_remaining": 0.027613556681504565
+        },
+        "8": {
+          "removed": 13,
+          "remaining": 173,
+          "delta_remaining": -0.012974579157969176
+        },
+        "9": {
+          "removed": 4,
+          "remaining": 182,
+          "delta_remaining": 0.020320514180710465
+        }
+      },
+      "drop_marriage_class": {
+        "1": {
+          "removed": 71,
+          "remaining": 115,
+          "delta_remaining": -0.02534780534821052
+        },
+        "2": {
+          "removed": 24,
+          "remaining": 162,
+          "delta_remaining": -0.009963489942033171
+        },
+        "3": {
+          "removed": 16,
+          "remaining": 170,
+          "delta_remaining": 0.03937316535255334
+        },
+        "4": {
+          "removed": 15,
+          "remaining": 171,
+          "delta_remaining": 0.03440605556935438
+        },
+        "5": {
+          "removed": 9,
+          "remaining": 177,
+          "delta_remaining": 0.02617055409441857
+        },
+        "6": {
+          "removed": 42,
+          "remaining": 144,
+          "delta_remaining": 0.0033180270350813895
+        },
+        "7": {
+          "removed": 9,
+          "remaining": 177,
+          "delta_remaining": 0.015454714936225123
+        }
+      },
+      "top5_absolute_influence": [
+        {
+          "society_id": "Aa5",
+          "x": 0,
+          "y": 5,
+          "delta": -1.6677068205580756
+        },
+        {
+          "society_id": "Id1",
+          "x": 0,
+          "y": 7,
+          "delta": -1.6677068205580756
+        },
+        {
+          "society_id": "Ii14",
+          "x": 6,
+          "y": 4,
+          "delta": -1.547562508716013
+        },
+        {
+          "society_id": "Ce3",
+          "x": 6,
+          "y": 7,
+          "delta": -1.5475625087160125
+        },
+        {
+          "society_id": "Ea13",
+          "x": 8,
+          "y": 7,
+          "delta": 1.2130226398458546
+        }
+      ]
+    },
+    "EA_1271": {
+      "n": 1271,
+      "mean_log_loss_M0": 1.434867656877094,
+      "mean_log_loss_M1": 1.3959163884924777,
+      "delta_log_loss_M0_minus_M1": 0.03895126838461624,
+      "mean_brier_M0": 0.6701418505486251,
+      "mean_brier_M1": 0.6438285067749474,
+      "delta_brier_M0_minus_M1": 0.026313343773677684,
+      "by_agriculture": {
+        "0": {
+          "n": 255,
+          "delta_sum": 44.941598952298385,
+          "delta_mean": 0.1762415645188172
+        },
+        "1": {
+          "n": 49,
+          "delta_sum": -4.340878522242297,
+          "delta_mean": -0.08858935759678158
+        },
+        "2": {
+          "n": 34,
+          "delta_sum": -1.0099812344380523,
+          "delta_mean": -0.029705330424648596
+        },
+        "3": {
+          "n": 37,
+          "delta_sum": -2.3750411318648297,
+          "delta_mean": -0.06419030086121161
+        },
+        "4": {
+          "n": 89,
+          "delta_sum": -0.9470522853126564,
+          "delta_mean": -0.010641036913625352
+        },
+        "5": {
+          "n": 207,
+          "delta_sum": -3.1991045564322014,
+          "delta_mean": -0.015454611383730442
+        },
+        "6": {
+          "n": 292,
+          "delta_sum": 14.085221139791468,
+          "delta_mean": 0.04823705869791599
+        },
+        "7": {
+          "n": 204,
+          "delta_sum": 3.339756608010731,
+          "delta_mean": 0.01637135592162123
+        },
+        "8": {
+          "n": 83,
+          "delta_sum": -0.3946988397309106,
+          "delta_mean": -0.004755407707601332
+        },
+        "9": {
+          "n": 21,
+          "delta_sum": -0.5927580132233644,
+          "delta_mean": -0.028226572058255447
+        }
+      },
+      "by_marriage": {
+        "1": {
+          "n": 657,
+          "delta_sum": 26.239224198658878,
+          "delta_mean": 0.03993793637543208
+        },
+        "2": {
+          "n": 125,
+          "delta_sum": 5.233646092897105,
+          "delta_mean": 0.041869168743176845
+        },
+        "3": {
+          "n": 68,
+          "delta_sum": -6.526219474910992,
+          "delta_mean": -0.09597381580751459
+        },
+        "4": {
+          "n": 65,
+          "delta_sum": 9.395970013758255,
+          "delta_mean": 0.14455338482705007
+        },
+        "5": {
+          "n": 39,
+          "delta_sum": -5.017839572412534,
+          "delta_mean": -0.12866255313878291
+        },
+        "6": {
+          "n": 274,
+          "delta_sum": 21.5703904112737,
+          "delta_mean": 0.07872405259588941
+        },
+        "7": {
+          "n": 43,
+          "delta_sum": -1.3881095524084701,
+          "delta_mean": -0.032281617497871395
+        }
+      },
+      "drop_agriculture_stratum": {
+        "0": {
+          "removed": 255,
+          "remaining": 1016,
+          "delta_remaining": 0.004493566106839421
+        },
+        "1": {
+          "removed": 49,
+          "remaining": 1222,
+          "delta_remaining": 0.04406541787159537
+        },
+        "2": {
+          "removed": 34,
+          "remaining": 1237,
+          "delta_remaining": 0.04083835355803176
+        },
+        "3": {
+          "removed": 37,
+          "remaining": 1234,
+          "delta_remaining": 0.042043843799604595
+        },
+        "4": {
+          "removed": 89,
+          "remaining": 1182,
+          "delta_remaining": 0.042685375974754566
+        },
+        "5": {
+          "removed": 207,
+          "remaining": 1064,
+          "delta_remaining": 0.04953587093353331
+        },
+        "6": {
+          "removed": 292,
+          "remaining": 979,
+          "delta_remaining": 0.036181655747758695
+        },
+        "7": {
+          "removed": 204,
+          "remaining": 1067,
+          "delta_remaining": 0.04326832756217105
+        },
+        "8": {
+          "removed": 83,
+          "remaining": 1188,
+          "delta_remaining": 0.04200484929004894
+        },
+        "9": {
+          "removed": 21,
+          "remaining": 1250,
+          "delta_remaining": 0.04007985610405648
+        }
+      },
+      "drop_marriage_class": {
+        "1": {
+          "removed": 657,
+          "remaining": 614,
+          "delta_remaining": 0.03789550149542078
+        },
+        "2": {
+          "removed": 125,
+          "remaining": 1146,
+          "delta_remaining": 0.038632998275698195
+        },
+        "3": {
+          "removed": 68,
+          "remaining": 1203,
+          "delta_remaining": 0.046577956435376745
+        },
+        "4": {
+          "removed": 65,
+          "remaining": 1206,
+          "delta_remaining": 0.03325961202577859
+        },
+        "5": {
+          "removed": 39,
+          "remaining": 1232,
+          "delta_remaining": 0.04425722539712644
+        },
+        "6": {
+          "removed": 274,
+          "remaining": 997,
+          "delta_remaining": 0.028020733907295425
+        },
+        "7": {
+          "removed": 43,
+          "remaining": 1228,
+          "delta_remaining": 0.04144557953522452
+        }
+      },
+      "top5_absolute_influence": [
+        {
+          "society_id": "Ch2",
+          "x": 4,
+          "y": 7,
+          "delta": -2.2823823856765264
+        },
+        {
+          "society_id": "Ef11",
+          "x": 8,
+          "y": 4,
+          "delta": -2.219203484054995
+        },
+        {
+          "society_id": "Id1",
+          "x": 0,
+          "y": 7,
+          "delta": -1.894656496045438
+        },
+        {
+          "society_id": "Id6",
+          "x": 0,
+          "y": 7,
+          "delta": -1.894656496045438
+        },
+        {
+          "society_id": "Af44",
+          "x": 1,
+          "y": 3,
+          "delta": -1.7578579175523736
+        }
+      ]
+    },
+    "SCCS_COMPLETE_SOURCE_YEARS": {
+      "n": 183,
+      "mean_log_loss_M0": 1.6991123571239133,
+      "mean_log_loss_M1": 1.6707163333633464,
+      "delta_log_loss_M0_minus_M1": 0.028396023760567,
+      "mean_brier_M0": 0.7742952630916322,
+      "mean_brier_M1": 0.7486152943358206,
+      "delta_brier_M0_minus_M1": 0.025679968755811577,
+      "by_agriculture": {
+        "0": {
+          "n": 44,
+          "delta_sum": 1.8849267010441149,
+          "delta_mean": 0.042839243205548064
+        },
+        "1": {
+          "n": 11,
+          "delta_sum": 1.0431628967688242,
+          "delta_mean": 0.09483299061534765
+        },
+        "2": {
+          "n": 4,
+          "delta_sum": -1.0494570578699642,
+          "delta_mean": -0.26236426446749106
+        },
+        "3": {
+          "n": 2,
+          "delta_sum": -0.19062035960864943,
+          "delta_mean": -0.09531017980432471
+        },
+        "4": {
+          "n": 15,
+          "delta_sum": 1.4280975684445214,
+          "delta_mean": 0.0952065045629681
+        },
+        "5": {
+          "n": 37,
+          "delta_sum": -2.6903733649509016,
+          "delta_mean": -0.07271279364732167
+        },
+        "6": {
+          "n": 36,
+          "delta_sum": 2.6319425571298556,
+          "delta_mean": 0.07310951547582932
+        },
+        "7": {
+          "n": 17,
+          "delta_sum": -1.995012467526442,
+          "delta_mean": -0.11735367456037894
+        },
+        "8": {
+          "n": 13,
+          "delta_sum": 5.1832629326224415,
+          "delta_mean": 0.39871253327864936
+        },
+        "9": {
+          "n": 4,
+          "delta_sum": -1.0494570578699638,
+          "delta_mean": -0.26236426446749095
+        }
+      },
+      "by_marriage": {
+        "1": {
+          "n": 70,
+          "delta_sum": 6.4032122611151205,
+          "delta_mean": 0.09147446087307315
+        },
+        "2": {
+          "n": 24,
+          "delta_sum": 4.296726796455678,
+          "delta_mean": 0.17903028318565326
+        },
+        "3": {
+          "n": 15,
+          "delta_sum": -4.307418612485696,
+          "delta_mean": -0.28716124083237976
+        },
+        "4": {
+          "n": 15,
+          "delta_sum": -3.2263063094233,
+          "delta_mean": -0.21508708729488665
+        },
+        "5": {
+          "n": 9,
+          "delta_sum": -1.9338544496728134,
+          "delta_mean": -0.2148727166303126
+        },
+        "6": {
+          "n": 42,
+          "delta_sum": 2.0066248470635504,
+          "delta_mean": 0.04777678207294168
+        },
+        "7": {
+          "n": 8,
+          "delta_sum": 1.957487815131298,
+          "delta_mean": 0.24468597689141225
+        }
+      },
+      "drop_agriculture_stratum": {
+        "0": {
+          "removed": 44,
+          "remaining": 139,
+          "delta_remaining": 0.023824069403882344
+        },
+        "1": {
+          "removed": 11,
+          "remaining": 172,
+          "delta_remaining": 0.024147147973342654
+        },
+        "2": {
+          "removed": 4,
+          "remaining": 179,
+          "delta_remaining": 0.03489346036901522
+        },
+        "3": {
+          "removed": 2,
+          "remaining": 181,
+          "delta_remaining": 0.029762943136974643
+        },
+        "4": {
+          "removed": 15,
+          "remaining": 168,
+          "delta_remaining": 0.022430802260352618
+        },
+        "5": {
+          "removed": 37,
+          "remaining": 146,
+          "delta_remaining": 0.054019491185853856
+        },
+        "6": {
+          "removed": 36,
+          "remaining": 147,
+          "delta_remaining": 0.017445780891523165
+        },
+        "7": {
+          "removed": 17,
+          "remaining": 166,
+          "delta_remaining": 0.04332219768500122
+        },
+        "8": {
+          "removed": 13,
+          "remaining": 170,
+          "delta_remaining": 0.0000777024444783493
+        },
+        "9": {
+          "removed": 4,
+          "remaining": 179,
+          "delta_remaining": 0.03489346036901522
+        }
+      },
+      "drop_marriage_class": {
+        "1": {
+          "removed": 70,
+          "remaining": 113,
+          "delta_remaining": -0.010679114273728847
+        },
+        "2": {
+          "removed": 24,
+          "remaining": 159,
+          "delta_remaining": 0.005658777054893604
+        },
+        "3": {
+          "removed": 15,
+          "remaining": 168,
+          "delta_remaining": 0.056570779527794386
+        },
+        "4": {
+          "removed": 15,
+          "remaining": 168,
+          "delta_remaining": 0.05013558724766108
+        },
+        "5": {
+          "removed": 9,
+          "remaining": 174,
+          "delta_remaining": 0.04097888964285387
+        },
+        "6": {
+          "removed": 42,
+          "remaining": 141,
+          "delta_remaining": 0.022623031922838373
+        },
+        "7": {
+          "removed": 8,
+          "remaining": 175,
+          "delta_remaining": 0.018508483046014074
+        }
+      },
+      "top5_absolute_influence": [
+        {
+          "society_id": "Id1",
+          "x": 0,
+          "y": 7,
+          "delta": -1.6677068205580765
+        },
+        {
+          "society_id": "Aa5",
+          "x": 0,
+          "y": 5,
+          "delta": -1.667706820558076
+        },
+        {
+          "society_id": "Ii14",
+          "x": 6,
+          "y": 4,
+          "delta": -1.5040773967762742
+        },
+        {
+          "society_id": "Ea13",
+          "x": 8,
+          "y": 7,
+          "delta": 1.3018622994627487
+        },
+        {
+          "society_id": "Ed15b",
+          "x": 8,
+          "y": 7,
+          "delta": 1.3018622994627487
+        }
+      ]
+    },
+    "EA_COMPLETE_SOURCE_YEARS": {
+      "n": 1259,
+      "mean_log_loss_M0": 1.432438754772879,
+      "mean_log_loss_M1": 1.394624794376507,
+      "delta_log_loss_M0_minus_M1": 0.037813960396371735,
+      "mean_brier_M0": 0.6691658925892462,
+      "mean_brier_M1": 0.642749779271207,
+      "delta_brier_M0_minus_M1": 0.026416113318039156,
+      "by_agriculture": {
+        "0": {
+          "n": 255,
+          "delta_sum": 44.81464931027943,
+          "delta_mean": 0.17574372278540953
+        },
+        "1": {
+          "n": 49,
+          "delta_sum": -4.361635458641993,
+          "delta_mean": -0.08901296854371415
+        },
+        "2": {
+          "n": 33,
+          "delta_sum": -1.481788406104047,
+          "delta_mean": -0.044902678972849906
+        },
+        "3": {
+          "n": 37,
+          "delta_sum": -2.364023080365005,
+          "delta_mean": -0.06389251568554068
+        },
+        "4": {
+          "n": 86,
+          "delta_sum": -1.500987062593781,
+          "delta_mean": -0.01745333793713699
+        },
+        "5": {
+          "n": 207,
+          "delta_sum": -3.286050062158733,
+          "delta_mean": -0.015874637981443156
+        },
+        "6": {
+          "n": 288,
+          "delta_sum": 14.246454855648398,
+          "delta_mean": 0.04946685713766805
+        },
+        "7": {
+          "n": 201,
+          "delta_sum": 2.848643594878144,
+          "delta_mean": 0.014172356193423602
+        },
+        "8": {
+          "n": 82,
+          "delta_sum": -0.6947683096785995,
+          "delta_mean": -0.008472784264373165
+        },
+        "9": {
+          "n": 21,
+          "delta_sum": -0.612719242216737,
+          "delta_mean": -0.029177106772225573
+        }
+      },
+      "by_marriage": {
+        "1": {
+          "n": 652,
+          "delta_sum": 26.20272236696734,
+          "delta_mean": 0.04018822448921371
+        },
+        "2": {
+          "n": 123,
+          "delta_sum": 4.327933759763009,
+          "delta_mean": 0.035186453331406575
+        },
+        "3": {
+          "n": 66,
+          "delta_sum": -7.146370541178845,
+          "delta_mean": -0.1082783415330128
+        },
+        "4": {
+          "n": 65,
+          "delta_sum": 9.172747435182867,
+          "delta_mean": 0.14111919131050565
+        },
+        "5": {
+          "n": 39,
+          "delta_sum": -4.99087000705946,
+          "delta_mean": -0.12797102582203743
+        },
+        "6": {
+          "n": 272,
+          "delta_sum": 21.641929714173997,
+          "delta_mean": 0.07956591806681616
+        },
+        "7": {
+          "n": 42,
+          "delta_sum": -1.6003165888021624,
+          "delta_mean": -0.03810277592386101
+        }
+      },
+      "drop_agriculture_stratum": {
+        "0": {
+          "removed": 255,
+          "remaining": 1004,
+          "delta_remaining": 0.002781998833418908
+        },
+        "1": {
+          "removed": 49,
+          "remaining": 1210,
+          "delta_remaining": 0.04294992694022645
+        },
+        "2": {
+          "removed": 33,
+          "remaining": 1226,
+          "delta_remaining": 0.04004042785084507
+        },
+        "3": {
+          "removed": 37,
+          "remaining": 1222,
+          "delta_remaining": 0.040893452716364166
+        },
+        "4": {
+          "removed": 86,
+          "remaining": 1173,
+          "delta_remaining": 0.04186595328356845
+        },
+        "5": {
+          "removed": 207,
+          "remaining": 1052,
+          "delta_remaining": 0.04837816178820414
+        },
+        "6": {
+          "removed": 288,
+          "remaining": 971,
+          "delta_remaining": 0.03435769442161032
+        },
+        "7": {
+          "removed": 201,
+          "remaining": 1058,
+          "delta_remaining": 0.04230541828369931
+        },
+        "8": {
+          "removed": 82,
+          "remaining": 1177,
+          "delta_remaining": 0.0410386953684882
+        },
+        "9": {
+          "removed": 21,
+          "remaining": 1238,
+          "delta_remaining": 0.03895031937096022
+        }
+      },
+      "drop_marriage_class": {
+        "1": {
+          "removed": 652,
+          "remaining": 607,
+          "delta_remaining": 0.035263680019875905
+        },
+        "2": {
+          "removed": 123,
+          "remaining": 1136,
+          "delta_remaining": 0.038098452798652295
+        },
+        "3": {
+          "removed": 66,
+          "remaining": 1193,
+          "delta_remaining": 0.045896183302775236
+        },
+        "4": {
+          "removed": 65,
+          "remaining": 1194,
+          "delta_remaining": 0.03219014129300598
+        },
+        "5": {
+          "removed": 39,
+          "remaining": 1220,
+          "delta_remaining": 0.04311364438204219
+        },
+        "6": {
+          "removed": 272,
+          "remaining": 987,
+          "delta_remaining": 0.026307848454770025
+        },
+        "7": {
+          "removed": 42,
+          "remaining": 1217,
+          "delta_remaining": 0.040433929932484944
+        }
+      },
+      "top5_absolute_influence": [
+        {
+          "society_id": "Ch2",
+          "x": 4,
+          "y": 7,
+          "delta": -2.2512917986064953
+        },
+        {
+          "society_id": "Ef11",
+          "x": 8,
+          "y": 4,
+          "delta": -2.2082744135228043
+        },
+        {
+          "society_id": "Id1",
+          "x": 0,
+          "y": 7,
+          "delta": -1.8840978786432223
+        },
+        {
+          "society_id": "Id6",
+          "x": 0,
+          "y": 7,
+          "delta": -1.8840978786432223
+        },
+        {
+          "society_id": "Af44",
+          "x": 1,
+          "y": 3,
+          "delta": -1.7578579175523736
+        }
+      ]
+    }
+  },
+  "cross_sample": {
+    "SCCS_186_vs_EA_1271": {
+      "overlap": 186,
+      "identity_label_conflicts": 0,
+      "probabilities_differ": 186,
+      "max_probability_difference": 0.3334875612978375
+    },
+    "SCCS_COMPLETE_SOURCE_YEARS_vs_SCCS_186": {
+      "overlap": 183,
+      "identity_label_conflicts": 0,
+      "probabilities_differ": 183,
+      "max_probability_difference": 0.030262345679012398
+    },
+    "EA_COMPLETE_SOURCE_YEARS_vs_EA_1271": {
+      "overlap": 1259,
+      "identity_label_conflicts": 0,
+      "probabilities_differ": 1259,
+      "max_probability_difference": 0.020654321443028603
+    }
+  },
+  "checks": {
+    "probability_max_error": 3.3306690738754696e-16,
+    "logloss_max_error": 8.881784197001252e-16,
+    "invalid_rows": 0
+  }
+}
