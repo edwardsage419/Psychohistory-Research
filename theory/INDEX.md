@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH035，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH036，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -67,11 +67,13 @@
 
 | TH035 | 制度逻辑多元性、制度创业与制度变迁 | Friedland & Alford 1991作者原书扫描选页、Battilana等2009作者上传原刊重要章节直接审读；Thornton & Ocasio 1999、Lounsbury 2007、Greenwood等2002原刊摘要；九项命题、两项逻辑反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH035_INSTITUTIONAL_LOGICS_PLURALISM_ENTREPRENEURSHIP_2026-10-25.md) |
 
+| TH036 | 制度维护、制度工作与渐进制度变迁 | Mahoney & Thelen 2010 出版社原章 pp.1–10 直接审读；Lawrence & Suddaby 2006、Lawrence et al. 2009、Hallett & Ventresca 2006、van der Heijden 2010 原作摘要或机构元数据；9项命题、2项代数反例；原章后续页待审 | THEORY_NOTE_BOUNDED | [研究笔记](TH036_INSTITUTIONAL_MAINTENANCE_WORK_GRADUAL_CHANGE_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH036 | 制度维护、制度工作与渐进制度变迁 | Lawrence & Suddaby 2006；Mahoney & Thelen 2010；Hallett & Ventresca 2006 | QUEUED_UNVERIFIED |
+| 1 | TH037 | 组织惯例、惯例动力学与内生组织变化 | Feldman 2000；Feldman & Pentland 2003；Pentland & Feldman 2005 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -245,6 +247,9 @@
 
 | institutional logics / contradictory orders | Friedland & Alford 1991；市场、国家、家庭、民主等制度秩序及其冲突 | 个体、群体、制度、历史 | 作者上传原书选页直接审读；跨文明外推未证 |
 | institutional entrepreneurship / embedded agency | Battilana, Leca & Boxenbaum 2009；偏离既有模板的改革、场域条件与联盟 | 个体、群体、制度、历史 | 作者上传原刊重点页直接审读；成功者偏差未排除 |
+
+| institutional work / maintenance | Lawrence & Suddaby 2006；Lawrence et al. 2009；有目的的创造、维护与破坏制度的实践 | 个体、群体、制度、历史 | 原作者原作摘要；原章全文未审 |
+| gradual institutional change / compliance | Mahoney & Thelen 2010 pp.1–10；规则解释、执行与分配权力的持续互动 | 个体、群体、制度、历史 | 出版社原章节录直接审读；后续分类全文待补 |
 
 ## C 与 D 研究日历（候选方法储备）
 
