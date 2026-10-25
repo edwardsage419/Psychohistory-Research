@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH037，C002 今日增量
+更新：2026-10-26（Asia/Shanghai）；已收录 TH038，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -71,11 +71,13 @@
 
 | TH037 | 组织惯例、惯例动力学与内生组织变化 | Feldman 2000、Feldman & Pentland 2003原刊重点页与D’Adderio 2011原刊前部章节直接审读；Pentland & Feldman 2005、Cohen & Bacdayan 1994、Howard-Grenville 2005摘要；9项命题、2项不可识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH037_ORGANIZATIONAL_ROUTINES_DYNAMICS_ENDOGENOUS_CHANGE_2026-10-25.md) |
 
+| TH038 | 组织学习、探索与利用、能力陷阱 | March 1991、Levitt & March 1988 原刊重要章节直接审读；Argote 1999 出版社书目与目录；九项命题及两项独立代数反例，原作者模拟未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH038_ORGANIZATIONAL_LEARNING_EXPLORATION_COMPETENCY_TRAPS_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH038 | 组织学习、探索与利用、能力惯性 | March 1991；Levitt & March 1988；Argote 1999 | QUEUED_UNVERIFIED |
+| 1 | TH039 | 组织生态、结构惯性与组织存亡 | Hannan & Freeman 1984；Carroll 1984；Baum 1996 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -253,16 +255,19 @@
 | institutional work / maintenance | Lawrence & Suddaby 2006；Lawrence et al. 2009；有目的的创造、维护与破坏制度的实践 | 个体、群体、制度、历史 | 原作者原作摘要；原章全文未审 |
 | gradual institutional change / compliance | Mahoney & Thelen 2010 pp.1–10；规则解释、执行与分配权力的持续互动 | 个体、群体、制度、历史 | 出版社原章节录直接审读；后续分类全文待补 |
 
+| exploration / exploitation / competency traps | March 1991、Levitt & March 1988；探索利用资源权衡、经验强化与能力陷阱 | 个体、群体、制度、历史 | 原刊重点章节直接审读，原作者模拟未复算 |
+| organizational code / mutual learning | March 1991 pp.74–79；成员与组织代码双向学习，社会化与流动条件效应 | 个体、群体、制度 | 原刊模型直接审读，跨域外推待证 |
+
 ## C 与 D 研究日历（候选方法储备）
 
-研究日期：2026-10-25；研究周：2026-W43。
+研究日期：2026-10-26；研究周：2026-W44。
 
 | 子流程 | 当前完成记录 | 研究性质 | 下一项 |
 | --- | --- | --- | --- |
-| C 每日人生决策测量与因果方法 | [C002 纵向测量等值性与反应转移](../research/decision_methods/C002_LONGITUDINAL_INVARIANCE_RESPONSE_SHIFT_2026-10-25.md)；[C001 前日记录](../research/decision_methods/C001_CONSTRUCT_VALIDITY_2026-10-24.md) | 2026-10-25 已完成原始文献、开放全文深读、欠识别示例和方法验证清单；无私人数据或实证复算 | MNAR 缺失与纵向敏感性界限 |
-| D 每周历史环境与长期情景 | [D001 1918 流感历史冲击](../research/historical_scenarios/D001_1918_INFLUENZA_SHOCK_2026-W43.md) | 2026-W43 已完成历史证据、竞争机制、识别风险及多情景研究；无未来事件预测 | 技术扩散冲击与制度适应 |
+| C 每日人生决策测量与因果方法 | [C003 MNAR 缺失与纵向敏感性界限](../research/decision_methods/C003_MNAR_SELECTION_LONGITUDINAL_BOUNDS_2026-10-26.md)；[C002 前日记录](../research/decision_methods/C002_LONGITUDINAL_INVARIANCE_RESPONSE_SHIFT_2026-10-25.md) | 2026-10-26 完成 Rubin、Little、Manski 原作书目核验，National Academies 原章深读、可核算的部分识别界限与敏感性验证清单；无私人数据 | 动态效用权重、多目标偏序与鲁棒决策 |
+| D 每周历史环境与长期情景 | [D002 工业电气化与制度适应](../research/historical_scenarios/D002_ELECTRIFICATION_INSTITUTIONAL_ADAPTATION_2026-W44.md)；[D001 上周记录](../research/historical_scenarios/D001_1918_INFLUENZA_SHOCK_2026-W43.md) | 2026-W44 完成 David & Wright 1999 开放原文、Atack 等 2022 原刊重点章节，竞争解释、历史识别与四情景研究；无未来事件预测 | 人口转型、迁移冲击与制度适应 |
 
-C 今日 C002 已完成，D 本周 D001 保持只读。C 与 D 只记录各自方法储备，不占用 R 系列验收工作。每次运行先检查当日/当周记录，若已完成则保持只读并继续理论主线。
+C 今日 C003 与 D 本周 D002 已形成独立候选方法笔记，后续同日/同周保持只读。C 与 D 不占用 R 系列验收工作。每轮先查 main 和研究日历，避免重复。
 
 ## 持续执行规则
 
