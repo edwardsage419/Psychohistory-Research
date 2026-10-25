@@ -1,0 +1,9 @@
+# B R172 independent arithmetic prescore freeze
+
+Date 2026-10-26 Asia/Singapore. Status FROZEN_BEFORE_B_EXECUTION. B may know existing R172 original report but does not inspect new third-method scores before its own calculations. Main R172 third-method protocol frozen at commit c758dd2f8815bcc9137dd404bfa963515887f530. B is a separate algorithmic route within one project, not external independent replication.
+
+Read only the same original 319-row R172 CSV Git blob 00d0379d77ec8e776a00cbb9c6e9dd5a00958dce. B uses exact BigInt rational fractions to calculate aggregate M0/M1/M2 Brier loss and the exact M1-M0 and M2-M0 differences. Independently aggregate rational squared losses by country. Derive every leave-one-country-out Brier difference by subtracting that country's numerator and row count from global totals, whereas main R filters the retained rows directly. Require exact equality of the two mathematical routes for each country deletion. Recompute all-country annual event count, unique episode/country counts, fixed calibration bin membership, and count of countries containing more than one heldout episode. Cross-check published M0/M1/M2 mean Brier to 1e-10.
+
+Predeclared mutation controls: (a) change one country label on the first row to a fresh sentinel; all-row Brier stays identical while country partition and LOCO structure must change; (b) replace first row M2 probability by 1/2; its exact squared error must change. Neither mutation is applied to archived input. Fail closed on any invalid CSV probability, invalid outcome, duplicate episode-year, or inconsistent country within an episode.
+
+No training-data refit, new prediction, model choice, data pooling or CI. This audit tests mathematical consistency and grouping, not historical predictive superiority, external replication, or future outcomes. All new files must be additive, preserving R073, PESEN v0.1 and original239.
