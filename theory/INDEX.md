@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH025，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH026，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -50,11 +50,13 @@
 
 | TH025 | 社会运动框架过程、集体身份与动员叙事 | Snow et al. 1986 原刊摘要；Snow & Benford 1988 原作扫描选页；Benford & Snow 2000 原刊选页；Polletta & Jasper 2001 作者上传原刊选页；Benford 1997 原刊扫描选页；Gamson 1992 正文未审 | THEORY_NOTE_BOUNDED | [研究笔记](TH025_FRAMING_COLLECTIVE_IDENTITY_MOBILIZATION_2026-10-25.md) |
 
+| TH026 | 抗争行动剧目、抗议周期与历史事件性 | Tilly 1993 原刊摘要、2006 出版者书介；Tarrow 1998 章节摘要；Sewell 1996 原作者授权节录 pp.864–871、Earl et al. 2004 原刊 pp.65–73 直接审读；Horn & Tilly ICPSR 原始元数据。跨史料实证待检验 | THEORY_NOTE_BOUNDED | [研究笔记](TH026_CONTENTIOUS_REPERTOIRES_PROTEST_CYCLES_EVENTFUL_HISTORY_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH026 | 抗争行动剧目、抗议周期与历史事件性 | Tilly 1995/2006；Tarrow 1994/1998；Sewell 1996 | QUEUED_UNVERIFIED |
+| 1 | TH027 | 抗争与国家回应：压制、让步与反弹 | Davenport 2007；Earl 2003；Tilly 2006；Carey 2006 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
