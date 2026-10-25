@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH029，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH030，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -58,11 +58,13 @@
 
 | TH029 | 战争、财政国家与国家形成 | Tilly 1985原章第三方转录重点页及Abramson 2017开放原刊多节直接审读；Tilly 1990/1992、Mann 1984、Levi 1988/1989、Downing 1992、Schwarz 2011、Dwenger 2016摘要或书介；财政欠识别与IV审计 | THEORY_NOTE_BOUNDED | [研究笔记](TH029_WAR_FISCAL_STATE_FORMATION_2026-10-25.md) |
 
+| TH030 | 税收、代表制、财政谈判与可信承诺 | North & Weingast 1989 原刊扫描及 Stasavage 2010 开放原刊重点章节直接审读；Bates & Lien 1985、Dincecco 2009/2010、Cox 2012/2020 摘要，Stasavage 2003目录；数学欠识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH030_TAXATION_REPRESENTATION_FISCAL_BARGAINING_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH030 | 税收、代表制、财政谈判与可信承诺 | North & Weingast 1989；Bates & Lien 1985；Stasavage 2003/2010；Dincecco 2009/2011 | QUEUED_UNVERIFIED |
+| 1 | TH031 | 官僚制、委托代理与行政能力 | Weber 1922；Wilson 1989；Moe 1984/1989；Carpenter 2001；Evans & Rauch 1999 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -208,6 +210,12 @@
 | despotic / infrastructural power | Mann 1984原刊摘要；国家权力的两个面向 | 群体、制度、历史 | 原刊摘要；正文待审 |
 | economic origins / political fragmentation | Abramson 2017开放原刊；城市增长与小国存续 | 群体、制度、历史 | 原刊多节已审；数据与工具变量未复算 |
 | predatory rule / tax compliance | Levi 1988/1989原书目录；Dwenger et al. 2016摘要 | 个体、群体、制度 | 书介及原刊摘要，原著正文待审 |
+
+| credible commitment / sovereign borrowing | North & Weingast 1989原刊扫描重点页；制度约束与债务信用的候选机制 | 个体、群体、制度、历史 | 原刊重点页直接审读；因果未复验 |
+| taxation bargaining / asset mobility | Bates & Lien 1985机构摘要；资产退出与税务谈判 | 个体、群体、制度 | 机构摘要；工作论文PDF跳转受阻 |
+| fiscal veto / expenditure control / geographic monitoring cost | Stasavage 2010开放原刊全文；税收与支出权力及地理监督成本 | 群体、制度、历史 | 原刊多节直接审读；数据未复算 |
+| fiscal centralization / limited government | Dincecco 2009/2010原刊摘要；财政制度组合 | 制度、历史 | 摘要；机构PDF访问失败 |
+| sectoral credibility / sovereign risk identification | Cox 2012/2020竞争摘要与North & Weingast 1989；信用差异与利率欠识别 | 制度、历史、方法论 | 原刊扫描、摘要及本项目逻辑反例 |
 
 ## C 与 D 研究日历（候选方法储备）
 
