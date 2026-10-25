@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH036，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH037，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -69,11 +69,13 @@
 
 | TH036 | 制度维护、制度工作与渐进制度变迁 | Mahoney & Thelen 2010 出版社原章 pp.1–10 直接审读；Lawrence & Suddaby 2006、Lawrence et al. 2009、Hallett & Ventresca 2006、van der Heijden 2010 原作摘要或机构元数据；9项命题、2项代数反例；原章后续页待审 | THEORY_NOTE_BOUNDED | [研究笔记](TH036_INSTITUTIONAL_MAINTENANCE_WORK_GRADUAL_CHANGE_2026-10-25.md) |
 
+| TH037 | 组织惯例、惯例动力学与内生组织变化 | Feldman 2000、Feldman & Pentland 2003原刊重点页与D’Adderio 2011原刊前部章节直接审读；Pentland & Feldman 2005、Cohen & Bacdayan 1994、Howard-Grenville 2005摘要；9项命题、2项不可识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH037_ORGANIZATIONAL_ROUTINES_DYNAMICS_ENDOGENOUS_CHANGE_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH037 | 组织惯例、惯例动力学与内生组织变化 | Feldman 2000；Feldman & Pentland 2003；Pentland & Feldman 2005 | QUEUED_UNVERIFIED |
+| 1 | TH038 | 组织学习、探索与利用、能力惯性 | March 1991；Levitt & March 1988；Argote 1999 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
