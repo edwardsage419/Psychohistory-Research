@@ -1,0 +1,761 @@
+{
+  "research_id": "R167",
+  "date": "2026-10-26",
+  "protocol": "protocols/R167_KAPPA_REVERSAL_CRITICAL_THRESHOLD_THIRD_METHOD_FREEZE_2026-10-26.md",
+  "evidence": "E1_SYNTHETIC_ONLY",
+  "original_frozen_R167_blob": "86839d8d473e4aee2f450d8c598797299ec1cf41",
+  "worlds": 72,
+  "exact_archival_scalar_comparisons": 792,
+  "delta_positive_worlds": 24,
+  "threshold_sign_tests": 24,
+  "finite_threshold_worlds": 12,
+  "impossible_threshold_worlds": 12,
+  "strict_reversal_worlds": 5,
+  "zero_net_worlds": 0,
+  "independent_direct_weight_boundary_tests": 36,
+  "negative_controls": 42,
+  "example": [
+    {
+      "kappa": "1",
+      "net": "-1/192"
+    },
+    {
+      "kappa": "6/5",
+      "net": "0"
+    },
+    {
+      "kappa": "2",
+      "net": "1/64"
+    }
+  ],
+  "positive_world_ids": [
+    "p0_w0_d2_k2",
+    "p2_w0_d2_k1",
+    "p2_w0_d2_k2",
+    "p2_w1_d2_k1",
+    "p2_w1_d2_k2"
+  ],
+  "records": [
+    {
+      "id": "p0_w0_d0_k0",
+      "delta": "-1/4",
+      "kappa": 0,
+      "within": "3/64",
+      "between": "0",
+      "net": "3/64",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w0_d0_k1",
+      "delta": "-1/4",
+      "kappa": 1,
+      "within": "3/64",
+      "between": "1/24",
+      "net": "17/192",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w0_d0_k2",
+      "delta": "-1/4",
+      "kappa": 2,
+      "within": "3/64",
+      "between": "1/16",
+      "net": "7/64",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w0_d1_k0",
+      "delta": "0",
+      "kappa": 0,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w0_d1_k1",
+      "delta": "0",
+      "kappa": 1,
+      "within": "0",
+      "between": "1/24",
+      "net": "1/24",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w0_d1_k2",
+      "delta": "0",
+      "kappa": 2,
+      "within": "0",
+      "between": "1/16",
+      "net": "1/16",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w0_d2_k0",
+      "delta": "1/4",
+      "kappa": 0,
+      "within": "-3/64",
+      "between": "0",
+      "net": "-3/64",
+      "critical_kappa": "6/5",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p0_w0_d2_k1",
+      "delta": "1/4",
+      "kappa": 1,
+      "within": "-3/64",
+      "between": "1/24",
+      "net": "-1/192",
+      "critical_kappa": "6/5",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p0_w0_d2_k2",
+      "delta": "1/4",
+      "kappa": 2,
+      "within": "-3/64",
+      "between": "1/16",
+      "net": "1/64",
+      "critical_kappa": "6/5",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p0_w1_d0_k0",
+      "delta": "-1/4",
+      "kappa": 0,
+      "within": "3/64",
+      "between": "0",
+      "net": "3/64",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w1_d0_k1",
+      "delta": "-1/4",
+      "kappa": 1,
+      "within": "3/64",
+      "between": "3/104",
+      "net": "63/832",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w1_d0_k2",
+      "delta": "-1/4",
+      "kappa": 2,
+      "within": "3/64",
+      "between": "1/24",
+      "net": "17/192",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w1_d1_k0",
+      "delta": "0",
+      "kappa": 0,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w1_d1_k1",
+      "delta": "0",
+      "kappa": 1,
+      "within": "0",
+      "between": "3/104",
+      "net": "3/104",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w1_d1_k2",
+      "delta": "0",
+      "kappa": 2,
+      "within": "0",
+      "between": "1/24",
+      "net": "1/24",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p0_w1_d2_k0",
+      "delta": "1/4",
+      "kappa": 0,
+      "within": "-3/64",
+      "between": "0",
+      "net": "-3/64",
+      "critical_kappa": "8/3",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p0_w1_d2_k1",
+      "delta": "1/4",
+      "kappa": 1,
+      "within": "-3/64",
+      "between": "3/104",
+      "net": "-15/832",
+      "critical_kappa": "8/3",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p0_w1_d2_k2",
+      "delta": "1/4",
+      "kappa": 2,
+      "within": "-3/64",
+      "between": "1/24",
+      "net": "-1/192",
+      "critical_kappa": "8/3",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p1_w0_d0_k0",
+      "delta": "-1/4",
+      "kappa": 0,
+      "within": "1/18",
+      "between": "0",
+      "net": "1/18",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w0_d0_k1",
+      "delta": "-1/4",
+      "kappa": 1,
+      "within": "1/18",
+      "between": "1/54",
+      "net": "2/27",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w0_d0_k2",
+      "delta": "-1/4",
+      "kappa": 2,
+      "within": "1/18",
+      "between": "1/36",
+      "net": "1/12",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w0_d1_k0",
+      "delta": "0",
+      "kappa": 0,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w0_d1_k1",
+      "delta": "0",
+      "kappa": 1,
+      "within": "0",
+      "between": "1/54",
+      "net": "1/54",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w0_d1_k2",
+      "delta": "0",
+      "kappa": 2,
+      "within": "0",
+      "between": "1/36",
+      "net": "1/36",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w0_d2_k0",
+      "delta": "1/4",
+      "kappa": 0,
+      "within": "-1/18",
+      "between": "0",
+      "net": "-1/18",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p1_w0_d2_k1",
+      "delta": "1/4",
+      "kappa": 1,
+      "within": "-1/18",
+      "between": "1/54",
+      "net": "-1/27",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p1_w0_d2_k2",
+      "delta": "1/4",
+      "kappa": 2,
+      "within": "-1/18",
+      "between": "1/36",
+      "net": "-1/36",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p1_w1_d0_k0",
+      "delta": "-1/4",
+      "kappa": 0,
+      "within": "1/18",
+      "between": "0",
+      "net": "1/18",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w1_d0_k1",
+      "delta": "-1/4",
+      "kappa": 1,
+      "within": "1/18",
+      "between": "1/76",
+      "net": "47/684",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w1_d0_k2",
+      "delta": "-1/4",
+      "kappa": 2,
+      "within": "1/18",
+      "between": "1/52",
+      "net": "35/468",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w1_d1_k0",
+      "delta": "0",
+      "kappa": 0,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w1_d1_k1",
+      "delta": "0",
+      "kappa": 1,
+      "within": "0",
+      "between": "1/76",
+      "net": "1/76",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w1_d1_k2",
+      "delta": "0",
+      "kappa": 2,
+      "within": "0",
+      "between": "1/52",
+      "net": "1/52",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p1_w1_d2_k0",
+      "delta": "1/4",
+      "kappa": 0,
+      "within": "-1/18",
+      "between": "0",
+      "net": "-1/18",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p1_w1_d2_k1",
+      "delta": "1/4",
+      "kappa": 1,
+      "within": "-1/18",
+      "between": "1/76",
+      "net": "-29/684",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p1_w1_d2_k2",
+      "delta": "1/4",
+      "kappa": 2,
+      "within": "-1/18",
+      "between": "1/52",
+      "net": "-17/468",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p2_w0_d0_k0",
+      "delta": "-1/4",
+      "kappa": 0,
+      "within": "1/25",
+      "between": "0",
+      "net": "1/25",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w0_d0_k1",
+      "delta": "-1/4",
+      "kappa": 1,
+      "within": "1/25",
+      "between": "3/50",
+      "net": "1/10",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w0_d0_k2",
+      "delta": "-1/4",
+      "kappa": 2,
+      "within": "1/25",
+      "between": "9/100",
+      "net": "13/100",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w0_d1_k0",
+      "delta": "0",
+      "kappa": 0,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w0_d1_k1",
+      "delta": "0",
+      "kappa": 1,
+      "within": "0",
+      "between": "3/50",
+      "net": "3/50",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w0_d1_k2",
+      "delta": "0",
+      "kappa": 2,
+      "within": "0",
+      "between": "9/100",
+      "net": "9/100",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w0_d2_k0",
+      "delta": "1/4",
+      "kappa": 0,
+      "within": "-1/25",
+      "between": "0",
+      "net": "-1/25",
+      "critical_kappa": "4/7",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p2_w0_d2_k1",
+      "delta": "1/4",
+      "kappa": 1,
+      "within": "-1/25",
+      "between": "3/50",
+      "net": "1/50",
+      "critical_kappa": "4/7",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p2_w0_d2_k2",
+      "delta": "1/4",
+      "kappa": 2,
+      "within": "-1/25",
+      "between": "9/100",
+      "net": "1/20",
+      "critical_kappa": "4/7",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p2_w1_d0_k0",
+      "delta": "-1/4",
+      "kappa": 0,
+      "within": "1/25",
+      "between": "0",
+      "net": "1/25",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w1_d0_k1",
+      "delta": "-1/4",
+      "kappa": 1,
+      "within": "1/25",
+      "between": "9/220",
+      "net": "89/1100",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w1_d0_k2",
+      "delta": "-1/4",
+      "kappa": 2,
+      "within": "1/25",
+      "between": "27/460",
+      "net": "227/2300",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w1_d1_k0",
+      "delta": "0",
+      "kappa": 0,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w1_d1_k1",
+      "delta": "0",
+      "kappa": 1,
+      "within": "0",
+      "between": "9/220",
+      "net": "9/220",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w1_d1_k2",
+      "delta": "0",
+      "kappa": 2,
+      "within": "0",
+      "between": "27/460",
+      "net": "27/460",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p2_w1_d2_k0",
+      "delta": "1/4",
+      "kappa": 0,
+      "within": "-1/25",
+      "between": "0",
+      "net": "-1/25",
+      "critical_kappa": "80/83",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p2_w1_d2_k1",
+      "delta": "1/4",
+      "kappa": 1,
+      "within": "-1/25",
+      "between": "9/220",
+      "net": "1/1100",
+      "critical_kappa": "80/83",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p2_w1_d2_k2",
+      "delta": "1/4",
+      "kappa": 2,
+      "within": "-1/25",
+      "between": "27/460",
+      "net": "43/2300",
+      "critical_kappa": "80/83",
+      "threshold_status": "FINITE_CRITICAL_KAPPA"
+    },
+    {
+      "id": "p3_w0_d0_k0",
+      "delta": "-1/4",
+      "kappa": 0,
+      "within": "1/16",
+      "between": "0",
+      "net": "1/16",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w0_d0_k1",
+      "delta": "-1/4",
+      "kappa": 1,
+      "within": "1/16",
+      "between": "0",
+      "net": "1/16",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w0_d0_k2",
+      "delta": "-1/4",
+      "kappa": 2,
+      "within": "1/16",
+      "between": "0",
+      "net": "1/16",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w0_d1_k0",
+      "delta": "0",
+      "kappa": 0,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w0_d1_k1",
+      "delta": "0",
+      "kappa": 1,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w0_d1_k2",
+      "delta": "0",
+      "kappa": 2,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w0_d2_k0",
+      "delta": "1/4",
+      "kappa": 0,
+      "within": "-1/16",
+      "between": "0",
+      "net": "-1/16",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p3_w0_d2_k1",
+      "delta": "1/4",
+      "kappa": 1,
+      "within": "-1/16",
+      "between": "0",
+      "net": "-1/16",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p3_w0_d2_k2",
+      "delta": "1/4",
+      "kappa": 2,
+      "within": "-1/16",
+      "between": "0",
+      "net": "-1/16",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p3_w1_d0_k0",
+      "delta": "-1/4",
+      "kappa": 0,
+      "within": "1/16",
+      "between": "0",
+      "net": "1/16",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w1_d0_k1",
+      "delta": "-1/4",
+      "kappa": 1,
+      "within": "1/16",
+      "between": "0",
+      "net": "1/16",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w1_d0_k2",
+      "delta": "-1/4",
+      "kappa": 2,
+      "within": "1/16",
+      "between": "0",
+      "net": "1/16",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w1_d1_k0",
+      "delta": "0",
+      "kappa": 0,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w1_d1_k1",
+      "delta": "0",
+      "kappa": 1,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w1_d1_k2",
+      "delta": "0",
+      "kappa": 2,
+      "within": "0",
+      "between": "0",
+      "net": "0",
+      "critical_kappa": null,
+      "threshold_status": "NOT_APPLICABLE_DELTA_NONPOSITIVE"
+    },
+    {
+      "id": "p3_w1_d2_k0",
+      "delta": "1/4",
+      "kappa": 0,
+      "within": "-1/16",
+      "between": "0",
+      "net": "-1/16",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p3_w1_d2_k1",
+      "delta": "1/4",
+      "kappa": 1,
+      "within": "-1/16",
+      "between": "0",
+      "net": "-1/16",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    },
+    {
+      "id": "p3_w1_d2_k2",
+      "delta": "1/4",
+      "kappa": 2,
+      "within": "-1/16",
+      "between": "0",
+      "net": "-1/16",
+      "critical_kappa": null,
+      "threshold_status": "NO_FINITE_NONNEGATIVE_KAPPA_REVERSAL"
+    }
+  ],
+  "claim_limit": "conditional exact one-step two-group toy theorem; no E2/E3; no external independent replication"
+}
