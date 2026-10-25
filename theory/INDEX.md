@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH030，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH031，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -60,11 +60,13 @@
 
 | TH030 | 税收、代表制、财政谈判与可信承诺 | North & Weingast 1989 原刊扫描及 Stasavage 2010 开放原刊重点章节直接审读；Bates & Lien 1985、Dincecco 2009/2010、Cox 2012/2020 摘要，Stasavage 2003目录；数学欠识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH030_TAXATION_REPRESENTATION_FISCAL_BARGAINING_2026-10-25.md) |
 
+| TH031 | 官僚制、委托代理与行政能力 | Rauch & Evans 1999作者工作论文46页原文重点章节及Gailmard & Patty 2007开放原刊17页直接审读；Carpenter 2001章节开头；Weber、Wilson、Moe与Brehm & Gates仅书目或出版者介绍；行政绩效构念重叠和覆盖率欠识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH031_BUREAUCRACY_DELEGATION_ADMINISTRATIVE_CAPACITY_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH031 | 官僚制、委托代理与行政能力 | Weber 1922；Wilson 1989；Moe 1984/1989；Carpenter 2001；Evans & Rauch 1999 | QUEUED_UNVERIFIED |
+| 1 | TH032 | 政策执行、街头官僚与政策反馈 | Pressman & Wildavsky 1973；Lipsky 1980；Pierson 1993；Mettler & Soss 2004 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -216,6 +218,11 @@
 | fiscal veto / expenditure control / geographic monitoring cost | Stasavage 2010开放原刊全文；税收与支出权力及地理监督成本 | 群体、制度、历史 | 原刊多节直接审读；数据未复算 |
 | fiscal centralization / limited government | Dincecco 2009/2010原刊摘要；财政制度组合 | 制度、历史 | 摘要；机构PDF访问失败 |
 | sectoral credibility / sovereign risk identification | Cox 2012/2020竞争摘要与North & Weingast 1989；信用差异与利率欠识别 | 制度、历史、方法论 | 原刊扫描、摘要及本项目逻辑反例 |
+
+| meritocratic recruitment / career stability / salary | Rauch & Evans 1999作者工作论文；35国核心经济部门制度与评级关联 | 个体、群体、制度、历史 | 工作论文直接审读；无因果复算，发表版差异待核 |
+| expertise investment / policy discretion | Gailmard & Patty 2007；双期委托、知识投资与政治偏好权衡 | 个体、制度 | 开放原刊直接审读；形式均衡未独立复算 |
+| bureaucratic autonomy / networked reputation | Carpenter 2001；机构服务声誉与联盟 | 群体、制度、历史 | 出版社书介与章节开头；档案未核 |
+| bureaucratic performance measurement overlap | Rauch & Evans 1999工作论文；绩效评级与制度评分条目重叠 | 制度、方法论 | 作者原文提醒及本项目代数反例 |
 
 ## C 与 D 研究日历（候选方法储备）
 
