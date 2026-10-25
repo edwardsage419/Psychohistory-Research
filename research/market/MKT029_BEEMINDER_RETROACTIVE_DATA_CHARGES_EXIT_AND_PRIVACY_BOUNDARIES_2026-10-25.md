@@ -4,7 +4,8 @@ date: 2026-10-25 (UTC+08)
 track: commercial_market
 subflow: market
 status: COMPLETE_BOUNDED_OFFICIAL_DOCUMENT_AND_TOY_STATE_TEST
-prewrite_main_head_observed: dbbcbd3f56df8c16142de3f72e6b68bcffeec6d8
+initial_main_head_observed: dbbcbd3f56df8c16142de3f72e6b68bcffeec6d8
+prewrite_main_head_observed: 887974bb1c35d4590a4e724a647f23f33a5a4c4b
 prior: MKT001（分段目标、safebuf、autoratchet 与七日约束），MKT028（ProjectionLab 情景支出规则）
 source_language: English only
 evidence: MARKET_E1_OFFICIAL_HELP_API_AND_POLICY; EXPLORATORY_SYNTHETIC_TOY_STATE_CHECKS_8_PASS; INDEPENDENT_COMMITMENT_LITERATURE_NOT_PRODUCT_VALIDATION
@@ -120,7 +121,7 @@ MKT029-R6：连接器撤权、目标归档、账户删除、支付记录与备�
 
 已读取本日 E002、E003 及 F001，确认 E 当日已完成跨轨实质检查，本轮避免重复新建 E004。远端主线新增 R155 与 R156 两组方法研究，均保留冻结先行、源码、机器收据及独立 B 方法记录。R155 75个人工 Bass 世界，60个正创新率世界的三阶初始销量导数可反演，15个零创新率世界不可辨；B 独立 Taylor 方法逐行复核 75/75，检测非线性项缺失的48个突变案例。R156 96个人工资本积累世界，B 的变换变量方法 96/96 精确一致；凹函数模型42个非稳态世界可在理想初始流与加速度下反演，AK 家族不能凭同一观测分离储蓄与折旧。均是内部 E1，非真人 E2 或历史 E3。
 
-直接查询 R156 最新科学报告提交 `dbbcbd3f56df8c16142de3f72e6b68bcffeec6d8` 的 Actions head_sha，返回0项；新方法 CI 未验收。R155 历史家电发货数据侦察发现1960至1985年26个年度数据的“出货量”与“首次采用人数”不一致，原始行尚未取得，不能充作 R155 历史 E3。original239 v7.8 仍有154条 provisional itemwise audit open，内部 schema/date 仍指向 v7.6/2026-10-24，登记为元数据滞后；本轮未改索引。R136 冻结负对照未通过与缺完整 CSV 仍开放。未执行全仓冻结哈希核验，不宣称全仓协议无变化；本轮未修改任何 R、E、F、TH、C、A、B 文件或冻结协议。
+直接查询 R156 最新科学报告提交 `dbbcbd3f56df8c16142de3f72e6b68bcffeec6d8` 的 Actions head_sha，返回0项；新方法 CI 未验收。R155 历史家电发货数据侦察发现1960至1985年26个年度数据的“出货量”与“首次采用人数”不一致，原始行尚未取得，不能充作 R155 历史 E3。original239 v7.8 仍有154条 provisional itemwise audit open，内部 schema/date 仍指向 v7.6/2026-10-24，登记为元数据滞后；本轮未改索引。R136 冻结负对照未通过与缺完整 CSV 仍开放。另见最新理论轨 TH032 政策执行专题已新增，来源审读区分1969原始论文与1980书籍及仅摘要可读的文献；本轮仅核对报告存在和来源边界，未复核其全部理论推导。未执行全仓冻结哈希核验，不宣称全仓协议无变化；本轮未修改任何 R、E、F、TH、C、A、B 文件或冻结协议。
 
 ## 7. F 本周专题状态
 
