@@ -1,0 +1,223 @@
+{
+  "research": "R145",
+  "date": "2026-10-25",
+  "evidence": "E1_CONSTRUCTED_INTERNAL",
+  "method": "exact Gram dual with explicit KKT, independently coded in JS",
+  "model_count": 3,
+  "cost_count": 4,
+  "exact_cases": 12,
+  "four_state_label_permutation_checks": 192,
+  "redundant_conditional_independence": true,
+  "informative_conditional_difference": true,
+  "gross_monitor_value": "171/36416",
+  "nonzero_fees_all_exceed_value": true,
+  "negative_controls": {
+    "reject_claim_redundant_strict_saving": true,
+    "reject_claim_strict_IC": true,
+    "reject_claim_positive_net_value_at_nonzero_fees": true
+  },
+  "rows": [
+    {
+      "model": "base",
+      "c": "0",
+      "G": "4/3",
+      "v": [
+        "1/2",
+        "1/2"
+      ],
+      "cost": "1/4",
+      "ir": "1/2",
+      "ic": "0",
+      "lambda": "1",
+      "mu": "0",
+      "strict_ic": false
+    },
+    {
+      "model": "base",
+      "c": "1/8",
+      "G": "4/3",
+      "v": [
+        "11/16",
+        "7/16"
+      ],
+      "cost": "103/256",
+      "ir": "5/8",
+      "ic": "1/8",
+      "lambda": "5/4",
+      "mu": "3/16",
+      "strict_ic": false
+    },
+    {
+      "model": "base",
+      "c": "1/4",
+      "G": "4/3",
+      "v": [
+        "7/8",
+        "3/8"
+      ],
+      "cost": "39/64",
+      "ir": "3/4",
+      "ic": "1/4",
+      "lambda": "3/2",
+      "mu": "3/8",
+      "strict_ic": false
+    },
+    {
+      "model": "base",
+      "c": "3/8",
+      "G": "4/3",
+      "v": [
+        "17/16",
+        "5/16"
+      ],
+      "cost": "223/256",
+      "ir": "7/8",
+      "ic": "3/8",
+      "lambda": "7/4",
+      "mu": "9/16",
+      "strict_ic": false
+    },
+    {
+      "model": "redundant",
+      "c": "0",
+      "G": "4/3",
+      "v": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "cost": "1/4",
+      "ir": "1/2",
+      "ic": "0",
+      "lambda": "1",
+      "mu": "0",
+      "strict_ic": false
+    },
+    {
+      "model": "redundant",
+      "c": "1/8",
+      "G": "4/3",
+      "v": [
+        "11/16",
+        "11/16",
+        "7/16",
+        "7/16"
+      ],
+      "cost": "103/256",
+      "ir": "5/8",
+      "ic": "1/8",
+      "lambda": "5/4",
+      "mu": "3/16",
+      "strict_ic": false
+    },
+    {
+      "model": "redundant",
+      "c": "1/4",
+      "G": "4/3",
+      "v": [
+        "7/8",
+        "7/8",
+        "3/8",
+        "3/8"
+      ],
+      "cost": "39/64",
+      "ir": "3/4",
+      "ic": "1/4",
+      "lambda": "3/2",
+      "mu": "3/8",
+      "strict_ic": false
+    },
+    {
+      "model": "redundant",
+      "c": "3/8",
+      "G": "4/3",
+      "v": [
+        "17/16",
+        "17/16",
+        "5/16",
+        "5/16"
+      ],
+      "cost": "223/256",
+      "ir": "7/8",
+      "ic": "3/8",
+      "lambda": "7/4",
+      "mu": "9/16",
+      "strict_ic": false
+    },
+    {
+      "model": "informative",
+      "c": "0",
+      "G": "569/384",
+      "v": [
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "cost": "1/4",
+      "ir": "1/2",
+      "ic": "0",
+      "lambda": "1",
+      "mu": "0",
+      "strict_ic": false
+    },
+    {
+      "model": "informative",
+      "c": "1/8",
+      "G": "569/384",
+      "v": [
+        "3181/4552",
+        "2941/4552",
+        "1693/4552",
+        "2205/4552"
+      ],
+      "cost": "14609/36416",
+      "ir": "5/8",
+      "ic": "1/8",
+      "lambda": "5/4",
+      "mu": "96/569",
+      "strict_ic": false
+    },
+    {
+      "model": "informative",
+      "c": "1/4",
+      "G": "569/384",
+      "v": [
+        "2043/2276",
+        "1803/2276",
+        "555/2276",
+        "1067/2276"
+      ],
+      "cost": "5505/9104",
+      "ir": "3/4",
+      "ic": "1/4",
+      "lambda": "3/2",
+      "mu": "192/569",
+      "strict_ic": false
+    },
+    {
+      "model": "informative",
+      "c": "3/8",
+      "G": "569/384",
+      "v": [
+        "4991/4552",
+        "4271/4552",
+        "527/4552",
+        "2063/4552"
+      ],
+      "cost": "31337/36416",
+      "ir": "7/8",
+      "ic": "3/8",
+      "lambda": "7/4",
+      "mu": "288/569",
+      "strict_ic": false
+    }
+  ],
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0,
+  "source_js_blob_sha1": "28e7b9a883c9812a03a2fc2b58cd1006fdda40ba",
+  "execution": "connected V8 from exact GitHub fetched JS source",
+  "ci": "NOT_RUN"
+}
