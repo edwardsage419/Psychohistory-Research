@@ -1,0 +1,631 @@
+{
+  "research_id": "R169",
+  "evidence": "E1_INTERNAL_EXACT",
+  "worlds": 72,
+  "strata": 12,
+  "horizon": 3,
+  "observations": [
+    "A_count",
+    "A_count_discordant",
+    "A_count_discordant_components",
+    "full_labeled_network_and_opinions"
+  ],
+  "aggregate_by_t_and_O": {
+    "1": {
+      "O1": {
+        "classes": 36,
+        "uniques": 0,
+        "ambiguous": 72,
+        "distinguished_pairs": 144
+      },
+      "O2": {
+        "classes": 44,
+        "uniques": 16,
+        "ambiguous": 56,
+        "distinguished_pairs": 152
+      },
+      "O3": {
+        "classes": 44,
+        "uniques": 16,
+        "ambiguous": 56,
+        "distinguished_pairs": 152
+      },
+      "O4": {
+        "classes": 58,
+        "uniques": 44,
+        "ambiguous": 28,
+        "distinguished_pairs": 166
+      }
+    },
+    "2": {
+      "O1": {
+        "classes": 36,
+        "uniques": 0,
+        "ambiguous": 72,
+        "distinguished_pairs": 144
+      },
+      "O2": {
+        "classes": 54,
+        "uniques": 36,
+        "ambiguous": 36,
+        "distinguished_pairs": 162
+      },
+      "O3": {
+        "classes": 54,
+        "uniques": 36,
+        "ambiguous": 36,
+        "distinguished_pairs": 162
+      },
+      "O4": {
+        "classes": 60,
+        "uniques": 48,
+        "ambiguous": 24,
+        "distinguished_pairs": 168
+      }
+    },
+    "3": {
+      "O1": {
+        "classes": 38,
+        "uniques": 4,
+        "ambiguous": 68,
+        "distinguished_pairs": 146
+      },
+      "O2": {
+        "classes": 56,
+        "uniques": 40,
+        "ambiguous": 32,
+        "distinguished_pairs": 164
+      },
+      "O3": {
+        "classes": 56,
+        "uniques": 40,
+        "ambiguous": 32,
+        "distinguished_pairs": 164
+      },
+      "O4": {
+        "classes": 60,
+        "uniques": 48,
+        "ambiguous": 24,
+        "distinguished_pairs": 168
+      }
+    }
+  },
+  "strata_compact": [
+    {
+      "id": "path/block",
+      "classes": [
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          4,
+          4,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          2,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "path/alternate",
+      "classes": [
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "path/singleton",
+      "classes": [
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          4,
+          5,
+          5,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          2,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "star/block",
+      "classes": [
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "star/alternate",
+      "classes": [
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "star/singleton",
+      "classes": [
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          4,
+          5,
+          5,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          2,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "cycle/block",
+      "classes": [
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          4,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          4,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          2,
+          2,
+          4
+        ],
+        [
+          0,
+          2,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "cycle/alternate",
+      "classes": [
+        [
+          3,
+          3,
+          3,
+          3
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "cycle/singleton",
+      "classes": [
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "chord/block",
+      "classes": [
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          4,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          4,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          2,
+          2,
+          4
+        ],
+        [
+          0,
+          2,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "chord/alternate",
+      "classes": [
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          3,
+          5,
+          5,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "chord/singleton",
+      "classes": [
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          3,
+          3,
+          5
+        ],
+        [
+          3,
+          4,
+          4,
+          5
+        ]
+      ],
+      "unique": [
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          2,
+          2,
+          4
+        ]
+      ]
+    }
+  ],
+  "witness_count": 68,
+  "witness_first": {
+    "graph": "path",
+    "opinion": "block",
+    "pair": [
+      "1/2_same",
+      "1/2_any"
+    ],
+    "t": 1,
+    "tv_O1": "0",
+    "tv_O4": "1/2"
+  },
+  "known_original_R169_TV2": "1/2",
+  "mutation_alpha_half_to_third_TV1": "1/6",
+  "path_distribution_sha256": "8a7bddff1f100fb4736871906dac5b65cdf3b437a015731d1adbeb2aab07f177",
+  "total_nonzero_state_snapshots": 2829,
+  "E2_new": 0,
+  "E3_new": 0,
+  "external_independent_replications": 0,
+  "receipt_scope": "Compact verified aggregation of local complete exact output; full original R169 JSON is already archived; no original JSON byte equality asserted."
+}
