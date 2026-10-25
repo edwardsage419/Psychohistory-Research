@@ -1,0 +1,106 @@
+{
+  "id": "R168_EFFECTIVE_KERNEL_THIRD_METHOD",
+  "evidence": "E1_SYNTHETIC_ONLY",
+  "original_kernel_count": 32,
+  "original_world_count": 64,
+  "kernel_cells_verified": 288,
+  "path_cells_verified": 960,
+  "distinct_kernels": 16,
+  "distinct_effective_pairs": 16,
+  "ambiguous_rows": 23,
+  "singletons": 9,
+  "class_sizes": [
+    5,
+    4,
+    4,
+    4,
+    2,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "classes": [
+    [
+      "16|3/4|0|single_channel",
+      "2|1/2|0|full_pool",
+      "2|3/4|0|single_channel",
+      "4|3/4|0|single_channel",
+      "8|3/4|0|single_channel"
+    ],
+    [
+      "16|1/2|0|single_channel",
+      "2|1/2|0|single_channel",
+      "4|1/2|0|single_channel",
+      "8|1/2|0|single_channel"
+    ],
+    [
+      "16|1/2|1/8|single_channel",
+      "2|1/2|1/8|single_channel",
+      "4|1/2|1/8|single_channel",
+      "8|1/2|1/8|single_channel"
+    ],
+    [
+      "16|3/4|1/8|single_channel",
+      "2|3/4|1/8|single_channel",
+      "4|3/4|1/8|single_channel",
+      "8|3/4|1/8|single_channel"
+    ],
+    [
+      "16|1/2|0|full_pool",
+      "8|3/4|0|full_pool"
+    ],
+    [
+      "2|3/4|0|full_pool",
+      "4|1/2|0|full_pool"
+    ],
+    [
+      "4|3/4|0|full_pool",
+      "8|1/2|0|full_pool"
+    ],
+    [
+      "16|1/2|1/8|full_pool"
+    ],
+    [
+      "16|3/4|0|full_pool"
+    ],
+    [
+      "16|3/4|1/8|full_pool"
+    ],
+    [
+      "2|1/2|1/8|full_pool"
+    ],
+    [
+      "2|3/4|1/8|full_pool"
+    ],
+    [
+      "4|1/2|1/8|full_pool"
+    ],
+    [
+      "4|3/4|1/8|full_pool"
+    ],
+    [
+      "8|1/2|1/8|full_pool"
+    ],
+    [
+      "8|3/4|1/8|full_pool"
+    ]
+  ],
+  "distinct_five_time_paths": 27,
+  "counterfactuals": "PASS",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replications": 0,
+  "frozen_original_blob": "053c7fb851638e4ec4f0838afff7ee78603d2818",
+  "program_blob": "f33db693a114c91b3a392e365f7f0ccbd7b86781",
+  "protocol_commit": "8cc8f44bf64bc630874f12c540c64e1a2ced0c4d",
+  "execution": "executed in JS V8 on frozen GitHub archive",
+  "date": "2026-10-26"
+}
