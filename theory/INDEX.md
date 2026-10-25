@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH044，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH045，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -83,11 +83,13 @@
 
 | TH044 | 概念组合、原型表征与类别连贯性 | Hampton 1988作者开放正式原刊多节直接审读；Rosch 1978原章第三方转录选段；Cohen & Murphy 1984、Murphy & Medin 1985、Osherson & Smith 1981原刊摘要；十项命题、四项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH044_CONCEPTUAL_COMBINATION_PROTOTYPES_THEORY_COHERENCE_2026-10-26.md) |
 
+| TH045 | 实例记忆、相似性特征、选择性注意与临时目标类别 | Nosofsky 1986、Tversky 1977、Barsalou 1983正式原刊重点章节直接审读；Medin & Schaffer 1978及Barsalou 1987仅摘要/机构书目；十项命题、四项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH045_EXEMPLAR_SIMILARITY_CONTEXT_DEPENDENT_CATEGORIZATION_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH045 | 实例模型、相似性度量与语境依赖的类别学习 | Medin & Schaffer 1978；Nosofsky 1986；Tversky 1977；Barsalou 1983/1987 | QUEUED_UNVERIFIED |
+| 1 | TH046 | 规则与实例的竞争、类别边界学习与知识驱动更新 | Ashby & Maddox 2005；Smith & Sloman 1994；Johansen & Palmeri 2002；Nosofsky et al. 1994 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -95,6 +97,10 @@
 
 | 概念 | 初始来源与含义范围 | 理论层级 | 证据标记 |
 | --- | --- | --- | --- |
+| exemplar-based classification / selective attention | Medin & Schaffer 1978摘要、Nosofsky 1986原刊；实例相似度聚合与任务注意权重 | 个体、群体、方法论 | 1986原刊直接审读；1978摘要；无独立预测复验 |
+| asymmetric feature similarity | Tversky 1977；共同/独有特征的方向性对比 | 个体、群体、制度、方法论 | 原刊直接审读；人工方向性反例，跨域未验证 |
+| ad hoc goal-derived categories | Barsalou 1983、1987；即时目标与典型性等级 | 个体、群体、制度、历史 | 1983原刊直接审读；1987书目；未做跨期验证 |
+
 | path dependence | Pierson 2000; Mahoney 2000；历史序列及其后果 | 制度、历史 | 出版者摘要与书目 |
 | increasing returns | Pierson 2000；自我强化的一个候选机制 | 个体、群体、制度 | 出版者摘要 |
 | critical junctures | Capoccia & Kelemen 2007；偶然性选择与替代路径 | 制度、历史 | 出版者摘要 |
