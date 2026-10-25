@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH027，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH029，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -56,11 +56,13 @@
 
 | TH028 | 革命动员、精英分裂与国家能力 | Skocpol 1979出版社原著导论 pp.3–11、Goodwin 2001出版社原著导论 pp.3–11 直接审读；Goldstone 2001/2017、Foran 1992 摘要；Goldstone 1991书目；国家能力、动员与结果定义的不可识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH028_REVOLUTION_ELITE_SPLITS_STATE_CAPACITY_2026-10-25.md) |
 
+| TH029 | 战争、财政国家与国家形成 | Tilly 1985原章第三方转录重点页及Abramson 2017开放原刊多节直接审读；Tilly 1990/1992、Mann 1984、Levi 1988/1989、Downing 1992、Schwarz 2011、Dwenger 2016摘要或书介；财政欠识别与IV审计 | THEORY_NOTE_BOUNDED | [研究笔记](TH029_WAR_FISCAL_STATE_FORMATION_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH029 | 战争、财政国家与国家形成 | Tilly 1990；Mann 1984；Levi 1988；Downing 1992 | QUEUED_UNVERIFIED |
+| 1 | TH030 | 税收、代表制、财政谈判与可信承诺 | North & Weingast 1989；Bates & Lien 1985；Stasavage 2003/2010；Dincecco 2009/2011 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -201,6 +203,11 @@
 | emotional backlash / repression heterogeneity | Dornschneider-Elkink & Edmonds 2024；压制类型与短期长期情绪机制 | 个体、群体、制度、历史 | 开放原刊直接审读；模拟未独立验证 |
 
 | state breakdown / elite conflict / mobilization | Skocpol 1979；Goldstone 2001；Goodwin 2001；国家组织危机、精英竞争与群众动员的竞争机制 | 个体、群体、制度、历史 | Skocpol、Goodwin原著导论直接审读；Goldstone摘要；独立实证未验证 |
+
+| war making / state making / protection / extraction | Tilly 1985原章转录 pp.181–184；四类活动与不同组织遗产 | 群体、制度、历史 | 原文转录直接审读，未逐字校勘出版社扫描 |
+| despotic / infrastructural power | Mann 1984原刊摘要；国家权力的两个面向 | 群体、制度、历史 | 原刊摘要；正文待审 |
+| economic origins / political fragmentation | Abramson 2017开放原刊；城市增长与小国存续 | 群体、制度、历史 | 原刊多节已审；数据与工具变量未复算 |
+| predatory rule / tax compliance | Levi 1988/1989原书目录；Dwenger et al. 2016摘要 | 个体、群体、制度 | 书介及原刊摘要，原著正文待审 |
 
 ## C 与 D 研究日历（候选方法储备）
 
