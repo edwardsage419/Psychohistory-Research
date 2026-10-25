@@ -1,0 +1,31 @@
+{
+  "status": "PASS_BOUNDED_INTERNAL_E1",
+  "model": "R157",
+  "method": "exact independent finite convolution",
+  "archive_worlds": 72,
+  "base_rate_triples": 8,
+  "exact_state_cells": 2808,
+  "exact_product_cells": 936,
+  "early_zero_product_cells": 216,
+  "positive_t3_worlds": 48,
+  "counterexample": {
+    "world_A": "H=1/2,r=0",
+    "world_B": "H=1,r=7/8",
+    "equal_product_all_times": "algebraic H^3(1-r) identity",
+    "M1_A": "1/8",
+    "M1_B": "1/4",
+    "P3": "185/1048576",
+    "P12": "2345008149288796188925/37778931862957161709568"
+  },
+  "negative_controls": {
+    "wrong_H_square": "REJECTED",
+    "wrong_buffer_sign": "REJECTED",
+    "zero_product_implies_zero_H": "REJECTED_BY_r_equals_1"
+  },
+  "evidence": "E1_ONLY",
+  "external_replication": false,
+  "original_archive_blob_sha1": "27621615444dcb76489232236dfa528fabd2d3c6",
+  "protocol_commit_sha": "408fe2301031361a99e47e90bd17b77bea06a94a",
+  "main_script_git_blob_sha1": "5257f3b4140aee137efcdd076a2d6877936e8ee0",
+  "run_date": "2026-10-25"
+}
