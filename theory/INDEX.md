@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH043，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH044，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -81,11 +81,13 @@
 
 | TH043 | 类别模糊性、受众异质性与混合身份的条件性优势 | Wry等2014正式原刊、Kovács与Johnson 2014开放原刊及Kovács与Hannan 2011作者工作稿重点章节直接审读；Pontikes 2012与Rao等2005原刊摘要；十项命题、五项人工反例及验证设计，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH043_CATEGORY_AMBIGUITY_AUDIENCE_HYBRID_ADVANTAGE_2026-10-26.md) |
 
+| TH044 | 概念组合、原型表征与类别连贯性 | Hampton 1988作者开放正式原刊多节直接审读；Rosch 1978原章第三方转录选段；Cohen & Murphy 1984、Murphy & Medin 1985、Osherson & Smith 1981原刊摘要；十项命题、四项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH044_CONCEPTUAL_COMBINATION_PROTOTYPES_THEORY_COHERENCE_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH044 | 概念组合、类别学习与混合身份的认知机制 | Cohen & Murphy 1984；Murphy & Medin 1985；Hampton 1988；Rosch 1978 | QUEUED_UNVERIFIED |
+| 1 | TH045 | 实例模型、相似性度量与语境依赖的类别学习 | Medin & Schaffer 1978；Nosofsky 1986；Tversky 1977；Barsalou 1983/1987 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -280,6 +282,11 @@
 | header–modifier composite identity | Wry等2014；起点与核心/外围身份标记 | 个体、群体、制度、历史 | 作者开放正式原刊重点章节；未直接测认知 |
 | categorical distance / contrast | Kovács & Hannan 2011；类别共现距离与边界对比度 | 个体、群体、制度 | 作者工作稿；测量选择敏感 |
 | category boundary erosion / bricolage | Rao等2005；高地位借用与同行模仿 | 群体、制度、历史 | 原刊摘要；统计未复算 |
+
+| prototype / conjunctive overextension | Hampton 1988；复合概念主观成员判断可超出较弱成分 | 个体、群体、制度 | 作者原刊直接审读；未复算原始数据 |
+| category coherence / background theory | Murphy & Medin 1985；背景知识与类别解释关系 | 个体、群体、制度、历史 | 原刊首页和摘要；全文待审 |
+| basic level / typicality | Rosch 1978；层次结构与同层典型性 | 个体、群体、历史 | 原章第三方转录选段，逐页校勘待补 |
+| composition / truth conditions | Cohen & Murphy 1984；Osherson & Smith 1981；复合概念与集合真值 | 个体、制度、方法论 | 原刊摘要；全文待审 |
 
 ## C 与 D 研究日历（候选方法储备）
 
