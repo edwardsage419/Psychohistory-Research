@@ -1,0 +1,14 @@
+# R149 third method prescore freeze: stationary occupancy and first boundary hitting
+Date: 2026-10-25. Evidence class: E1 finite synthetic. Parent repository main HEAD inspected before this protocol: 2db4dce8c568c72c33ee4d3442f1bb8a67e4edc2.
+
+## Frozen object
+Reuse exactly R149-A's five-state synthetic feedback process, initial S0=2, two conditionally independent agents, p_s=(s+1)/6, P(s to s+1)=p_s^2, P(s to s-1)=(1-p_s)^2, P(stay)=2p_s(1-p_s), with reflecting boundaries (outward transitions are folded into self). Compare the frozen fixed-action model p=1/2 with the same reflecting transition, and distinguish the separate frozen-structure control (identity transition). Do not change R149-A or R149-B original equations or acceptance.
+
+## Precommitted mathematical gates
+1. Derive a stationary measure for the feedback process using birth-death detailed balance: w0=1; w_{s+1}=w_s * u_s/d_{s+1}; normalize exact rational weights. Verify all five balance equations and sum=1. The stationary mean must equal 2 and the endpoint occupancy must equal 144/155. The fixed-action comparison must have uniform stationary weights (1/5 each), endpoint occupancy 2/5. The frozen-structure model is not irreducible and has no unique stationary distribution.
+2. Independently compute finite-horizon terminal distribution from initial state2 for horizons 1,2,4,8,16,32 using exact forward transition. At t8, compare endpoint occupancy against the previously archived R149-A 16624456774/19591041024. Do not claim 32 periods was previously prescored.
+3. Solve the exact expected first hitting time from state2 to {0,4} with boundaries treated as absorbing ONLY for this first-hitting calculation. Use an independently constructed linear first-step system, then compare with a second approach based on summing survival probabilities, reporting a rigorous finite-horizon remainder bound or explaining its absence.
+4. Negative controls: (a) replacing upward probability p_s^2 with p_s(1-p_s) must be rejected by transition/identity checks; (b) incorrectly treating original boundaries as absorbing must be rejected by transition/irreducibility checks; (c) stationary detailed balance alone must not be confused with empirical convergence or E2 evidence.
+5. Record all exact rational results, methods, disagreements, provenance, and scope. A separate independent method audit should avoid sharing the forward engine. R073 and PESEN v0.1 remain frozen. No paid computation or GitHub Actions unless zero-charge status is confirmed.
+
+Acceptance: internal bounded E1 third-method audit only after exact calculations and independent method comparison. No E2/E3 or external-team replication claims. Preserve original failures and original frozen tests.
