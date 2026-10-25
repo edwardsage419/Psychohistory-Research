@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH038，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH039，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -72,12 +72,13 @@
 | TH037 | 组织惯例、惯例动力学与内生组织变化 | Feldman 2000、Feldman & Pentland 2003原刊重点页与D’Adderio 2011原刊前部章节直接审读；Pentland & Feldman 2005、Cohen & Bacdayan 1994、Howard-Grenville 2005摘要；9项命题、2项不可识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH037_ORGANIZATIONAL_ROUTINES_DYNAMICS_ENDOGENOUS_CHANGE_2026-10-25.md) |
 
 | TH038 | 组织学习、探索与利用、能力陷阱 | March 1991、Levitt & March 1988 原刊重要章节直接审读；Argote 1999 出版社书目与目录；九项命题及两项独立代数反例，原作者模拟未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH038_ORGANIZATIONAL_LEARNING_EXPLORATION_COMPETENCY_TRAPS_2026-10-26.md) |
+| TH039 | 组织生态、结构惯性与组织存亡 | Hannan & Freeman 1984原刊公开转录重点页、Baum & Shipilov 2006/2007作者开放原章重点页直接审读；Carroll 1984/1985、Hannan & Freeman 1977、Barnett & Carroll 1995出版社摘要；九项命题、两项人工选择偏差反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH039_ORGANIZATIONAL_ECOLOGY_STRUCTURAL_INERTIA_MORTALITY_2026-10-26.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH039 | 组织生态、结构惯性与组织存亡 | Hannan & Freeman 1984；Carroll 1984；Baum 1996 | QUEUED_UNVERIFIED |
+| 1 | TH040 | 密度依赖、合法化与竞争 | Hannan 1986；Carroll & Hannan 1989；Baum & Mezias 1992 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -257,6 +258,11 @@
 
 | exploration / exploitation / competency traps | March 1991、Levitt & March 1988；探索利用资源权衡、经验强化与能力陷阱 | 个体、群体、制度、历史 | 原刊重点章节直接审读，原作者模拟未复算 |
 | organizational code / mutual learning | March 1991 pp.74–79；成员与组织代码双向学习，社会化与流动条件效应 | 个体、群体、制度 | 原刊模型直接审读，跨域外推待证 |
+
+| organizational structural inertia / reproducibility | Hannan & Freeman 1984；可靠产出与可复制结构及变更成本 | 群体、制度、历史 | 原刊公开转录已审，理论推导未独立验证 |
+| ecological selection / within-organization adaptation | Hannan & Freeman 1977/1984；Baum & Shipilov 2006/2007；组织更替与内部调整的区分 | 群体、制度、历史 | 1984原文转录与作者开放综述，人工组成反例 |
+| liability of newness / frailty selection | Hannan & Freeman 1984；组织年龄与退出风险 | 群体、制度、历史、方法论 | 原刊转录与本项目人工混合风险反例，因果未识别 |
+| core change / reorganization risk | Hannan & Freeman 1984；核心重组可能扰乱惯例及外部交换 | 群体、制度、历史 | 原刊重点页直接审读，短期与长期净效应未验证 |
 
 ## C 与 D 研究日历（候选方法储备）
 
