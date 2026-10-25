@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH023，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH024，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -46,11 +46,13 @@
 
 | TH023 | 集体行动临界规模、搭便车与选择性激励 | Oliver 1980 与 Oliver、Marwell、Teixeira 1985 原刊公开全文重点章节直接审读；Olson 1965 经作者引文间接核验；Marwell & Oliver 1993、Ostrom 1990 开放章节摘要；Apex Game 1980/1984 原刊摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH023_COLLECTIVE_ACTION_CRITICAL_MASS_SELECTIVE_INCENTIVES_2026-10-25.md) |
 
+| TH024 | 资源动员、政治机会结构与社会运动组织 | McCarthy & Zald 1977 原刊多页直接审读；Tarrow 1998 作者章节摘要；Tilly 1978 目录、McAdam 1999 书介、Meyer & Minkoff 2004 原刊摘要；未完成独立实证验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH024_RESOURCE_MOBILIZATION_POLITICAL_OPPORTUNITY_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH024 | 资源动员、政治机会结构与社会运动组织 | McCarthy & Zald 1977；Tilly 1978；Tarrow 1998 | QUEUED_UNVERIFIED |
+| 1 | TH025 | 社会运动框架过程、集体身份与动员叙事 | Snow et al. 1986；Snow & Benford 1988；Gamson 1992；Polletta & Jasper 2001 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -175,6 +177,11 @@
 | second-order incentive provision / jointness of supply | Oliver 1980；激励提供者的决策及奖励联合供给成本 | 个体、群体、制度 | 作者公开原刊 pp.1360–1366 直接审读 |
 | critical mass / production-function curvature | Oliver, Marwell & Teixeira 1985；初始成本、边际收益和资源异质性 | 群体、制度、历史 | 作者公开原刊重点章节直接审读；模拟未复算 |
 | polycentric self-governance / commons | Ostrom 1990/2009；使用者组织、信任和多尺度治理 | 群体、制度、历史 | 1990开放章节摘要及2009讲演机构摘要；全文待补 |
+
+| resource mobilization / SMO / SMI | McCarthy & Zald 1977；资源汇聚、组织和组织集合分别测量 | 个体、群体、制度 | 原刊选页直接审读，因果未识别 |
+| political opportunities / threats | Tarrow 1998 第5章作者摘要；Tilly 1978书目目录 | 群体、制度、历史 | Tarrow作者摘要，Tilly全文待审 |
+| political process / indigenous organizations | McAdam 1982/1999出版社原著介绍 | 群体、制度、历史 | 原著书介，案例未复验 |
+| opportunity operationalization | Meyer & Minkoff 2004原刊摘要；机会指标及结果变量敏感性 | 群体、制度、方法论 | 原刊摘要，全文待补 |
 
 ## C 与 D 研究日历（候选方法储备）
 
