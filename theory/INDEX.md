@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH032，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH033，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -62,12 +62,13 @@
 
 | TH031 | 官僚制、委托代理与行政能力 | Rauch & Evans 1999作者工作论文46页原文重点章节及Gailmard & Patty 2007开放原刊17页直接审读；Carpenter 2001章节开头；Weber、Wilson、Moe与Brehm & Gates仅书目或出版者介绍；行政绩效构念重叠和覆盖率欠识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH031_BUREAUCRACY_DELEGATION_ADMINISTRATIVE_CAPACITY_2026-10-25.md) |
 | TH032 | 政策执行、街头官僚与政策反馈 | Lipsky 1969大学存档48页原论文§I至§IV重点页直接审读；Pressman & Wildavsky 1973/1984版本、Lipsky 1980/2010原著书目；Pierson 1993、Mettler & Soss 2004、Sabatier 1986、Soss 1999等原刊摘要；联合审批与政策触达数学反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH032_POLICY_IMPLEMENTATION_STREET_LEVEL_FEEDBACK_2026-10-25.md) |
+| TH033 | 政策扩散、跨地区模仿与制度学习 | Walker 1969 原刊印刷 pp.881–885、892–899 与 Volden、Ting、Carpenter 2008 作者稿核心模型和经验含义直接审读；Berry & Berry 1990、Shipan & Volden 2008、Frant 等 1991 原刊摘要；扩散与共同冲击的代数欠识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH033_POLICY_DIFFUSION_INTERSTATE_LEARNING_2026-10-25.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH033 | 政策扩散、跨地区模仿与制度学习 | Walker 1969；Berry & Berry 1990；Shipan & Volden 2008 | QUEUED_UNVERIFIED |
+| 1 | TH034 | 组织制度同形化、规范性压力与象征性采纳 | Meyer & Rowan 1977；DiMaggio & Powell 1983；Tolbert & Zucker 1983 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -229,6 +230,10 @@
 | implementation coordination / correlated vetoes | Pressman & Wildavsky 1973/1984书目与目录；联合行动与项目独立概率反例 | 群体、制度、历史 | 原著正文待审；概率反例非实证 |
 | policy feedback / political learning | Pierson 1993、Soss 1999、Mettler & Soss 2004原刊摘要；政策经历、资源与参与 | 个体、群体、制度、历史 | 原刊摘要；因果与自选择未识别 |
 | administrative burden / take-up funnel | Moynihan & Herd 2010原刊摘要、Herd & Moynihan 2018书介；知晓、申请、审批、领取阶段 | 个体、群体、制度 | 出版社书介与项目代数反例；原始实证未复算 |
+| policy diffusion / reference groups | Walker 1969原刊；参照网络、区域采用聚类与专业传播 | 个体、群体、制度、历史 | 原刊选页直接审读；实际信息流与因果未识别 |
+| event history / internal determinants | Berry & Berry 1990原刊摘要；采用风险与内部条件及邻近影响 | 制度、历史、方法论 | 摘要；正文、数据和交互模型待审 |
+| learning / competition / imitation / coercion | Shipan & Volden 2008原刊摘要；四种不同政策扩散机制 | 群体、制度、历史 | 摘要；全文与独立因果复算未审 |
+| learning free-riding / independent convergence | Volden、Ting、Carpenter 2008作者稿；策略性实验、共同政策窗口与区分性预测 | 个体、群体、制度、历史 | 作者稿 Propositions 1–2、Comments 1–2 和经验含义已审；无实证复验 |
 
 ## C 与 D 研究日历（候选方法储备）
 
