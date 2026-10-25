@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-25",
+  "research": "R149-A",
+  "evidence": "E1_synthetic",
+  "protocol": "protocols/R149_STATIONARY_FIRST_HIT_THIRD_METHOD_FREEZE_2026-10-25.md",
+  "main_script": "research/validation/r149_stationary_first_hit_exact.py",
+  "main_script_git_blob": "5152c6c74aef1133082c8c9e76d9f4c2d08cac26",
+  "independent_script": "research/evidence_audit/r149_b_independent_tree_survival.py",
+  "independent_script_git_blob": "584e81a31df480e43685bb8889b839ad8944d9b8",
+  "feedback_stationary": [
+    "72/155",
+    "9/310",
+    "2/155",
+    "9/310",
+    "72/155"
+  ],
+  "fixed_action_stationary": [
+    "1/5",
+    "1/5",
+    "1/5",
+    "1/5",
+    "1/5"
+  ],
+  "endpoint_stationary_feedback": "144/155",
+  "endpoint_stationary_fixed": "2/5",
+  "first_hit_expected_from_s2": "19/4",
+  "first_hit_expected_from_s1": "11/4",
+  "first_hit_expected_from_s3": "11/4",
+  "transient_endpoints": {
+    "t8": "8312228387/9795520512",
+    "t16": "25557320162303450379779/27634239965091669737472",
+    "t32": "204321006936460938470639984800091742343533713603/219931550913101658701952385231985717395473825792"
+  },
+  "archived_t8_original": "16624456774/19591041024",
+  "survival_256_tail_upper_bound": "9*(7/9)^128",
+  "survival_256_tail_upper_bound_less_than": "1e-12",
+  "independent_methods": [
+    "birth_death_detailed_balance_and_first_step_linear_elimination",
+    "directed_spanning_tree_and_survival_series"
+  ],
+  "negative_controls_passed": 2,
+  "independent_external_team": false,
+  "github_actions_new_run": "NOT_RUN",
+  "E2_new": 0,
+  "E3_new": 0
+}
