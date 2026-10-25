@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH026，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH027，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -52,11 +52,13 @@
 
 | TH026 | 抗争行动剧目、抗议周期与历史事件性 | Tilly 1993 原刊摘要、2006 出版者书介；Tarrow 1998 章节摘要；Sewell 1996 原作者授权节录 pp.864–871、Earl et al. 2004 原刊 pp.65–73 直接审读；Horn & Tilly ICPSR 原始元数据。跨史料实证待检验 | THEORY_NOTE_BOUNDED | [研究笔记](TH026_CONTENTIOUS_REPERTOIRES_PROTEST_CYCLES_EVENTFUL_HISTORY_2026-10-25.md) |
 
+| TH027 | 抗争与国家回应：压制、让步、反弹及双向因果 | Hager & Krakowski 2022、Dornschneider-Elkink & Edmonds 2024开放原刊直接审读；Lichbach 1987、Earl 2003、Carey 2006、Davenport 2007、Ritter & Conrad 2016、Young 2019摘要；Rasler 1996书目 | THEORY_NOTE_BOUNDED | [研究笔记](TH027_REPRESSION_CONCESSIONS_BACKLASH_STATE_RESPONSE_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH027 | 抗争与国家回应：压制、让步与反弹 | Davenport 2007；Earl 2003；Tilly 2006；Carey 2006 | QUEUED_UNVERIFIED |
+| 1 | TH028 | 革命动员、精英分裂与国家能力 | Skocpol 1979；Goldstone 1991；Tilly 1978；Goodwin 2001 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -191,6 +193,10 @@
 | diagnostic / prognostic / motivational framing | Snow & Benford 1988 原刊选页、Benford & Snow 2000 pp.615–617；Wilson 1973 为理论先例 | 个体、群体、制度 | 原著选页；不是普适决策阶段 |
 | frame resonance / counterframing / frame disputes | Benford & Snow 2000 pp.619–626；Benford 1997 p.417 | 群体、制度、历史 | 原刊选页；受众共鸣不等于客观真值 |
 | collective identity / identity through participation | Polletta & Jasper 2001 pp.284–285、290–293、298–299 | 个体、群体、历史 | 作者上传原刊选页；因果方向未识别 |
+
+| repression–dissent feedback / preventive repression | Carey 2006；Ritter & Conrad 2016；双向时序与事前预防选择 | 个体、群体、制度、历史 | 原刊摘要；全文待审 |
+| surveillance and divergent resistance outcomes | Hager & Krakowski 2022；监视与抗议及怠工不同方向 | 个体、群体、制度、历史 | 开放原刊直接审读；未复算 |
+| emotional backlash / repression heterogeneity | Dornschneider-Elkink & Edmonds 2024；压制类型与短期长期情绪机制 | 个体、群体、制度、历史 | 开放原刊直接审读；模拟未独立验证 |
 
 ## C 与 D 研究日历（候选方法储备）
 
