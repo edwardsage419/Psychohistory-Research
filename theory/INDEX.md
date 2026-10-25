@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH031，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH032，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -61,12 +61,13 @@
 | TH030 | 税收、代表制、财政谈判与可信承诺 | North & Weingast 1989 原刊扫描及 Stasavage 2010 开放原刊重点章节直接审读；Bates & Lien 1985、Dincecco 2009/2010、Cox 2012/2020 摘要，Stasavage 2003目录；数学欠识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH030_TAXATION_REPRESENTATION_FISCAL_BARGAINING_2026-10-25.md) |
 
 | TH031 | 官僚制、委托代理与行政能力 | Rauch & Evans 1999作者工作论文46页原文重点章节及Gailmard & Patty 2007开放原刊17页直接审读；Carpenter 2001章节开头；Weber、Wilson、Moe与Brehm & Gates仅书目或出版者介绍；行政绩效构念重叠和覆盖率欠识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH031_BUREAUCRACY_DELEGATION_ADMINISTRATIVE_CAPACITY_2026-10-25.md) |
+| TH032 | 政策执行、街头官僚与政策反馈 | Lipsky 1969大学存档48页原论文§I至§IV重点页直接审读；Pressman & Wildavsky 1973/1984版本、Lipsky 1980/2010原著书目；Pierson 1993、Mettler & Soss 2004、Sabatier 1986、Soss 1999等原刊摘要；联合审批与政策触达数学反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH032_POLICY_IMPLEMENTATION_STREET_LEVEL_FEEDBACK_2026-10-25.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH032 | 政策执行、街头官僚与政策反馈 | Pressman & Wildavsky 1973；Lipsky 1980；Pierson 1993；Mettler & Soss 2004 | QUEUED_UNVERIFIED |
+| 1 | TH033 | 政策扩散、跨地区模仿与制度学习 | Walker 1969；Berry & Berry 1990；Shipan & Volden 2008 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -223,6 +224,11 @@
 | expertise investment / policy discretion | Gailmard & Patty 2007；双期委托、知识投资与政治偏好权衡 | 个体、制度 | 开放原刊直接审读；形式均衡未独立复算 |
 | bureaucratic autonomy / networked reputation | Carpenter 2001；机构服务声誉与联盟 | 群体、制度、历史 | 出版社书介与章节开头；档案未核 |
 | bureaucratic performance measurement overlap | Rauch & Evans 1999工作论文；绩效评级与制度评分条目重叠 | 制度、方法论 | 作者原文提醒及本项目代数反例 |
+
+| street-level discretion / coping routines | Lipsky 1969原论文§I–IV；资源、风险、角色冲突与基层惯例 | 个体、群体、制度、历史 | 大学存档原作重点章节直接审读；无因果复验 |
+| implementation coordination / correlated vetoes | Pressman & Wildavsky 1973/1984书目与目录；联合行动与项目独立概率反例 | 群体、制度、历史 | 原著正文待审；概率反例非实证 |
+| policy feedback / political learning | Pierson 1993、Soss 1999、Mettler & Soss 2004原刊摘要；政策经历、资源与参与 | 个体、群体、制度、历史 | 原刊摘要；因果与自选择未识别 |
+| administrative burden / take-up funnel | Moynihan & Herd 2010原刊摘要、Herd & Moynihan 2018书介；知晓、申请、审批、领取阶段 | 个体、群体、制度 | 出版社书介与项目代数反例；原始实证未复算 |
 
 ## C 与 D 研究日历（候选方法储备）
 
