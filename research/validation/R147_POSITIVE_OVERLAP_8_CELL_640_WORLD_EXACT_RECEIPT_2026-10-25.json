@@ -1,0 +1,69 @@
+{
+  "protocol": "R147_POSITIVE_OVERLAP_CAUSAL_TWIN_PROTOCOL_FREEZE_2026-10-25.md",
+  "evidence": "E1_SYNTHETIC_EXACT_ONLY",
+  "elementary_worlds_S": 128,
+  "elementary_worlds_D": 512,
+  "cell_order": "000,001,010,011,100,101,110,111",
+  "S_cell_numerators_over_128": [
+    28,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    28
+  ],
+  "D_cell_numerators_over_512": [
+    112,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    112
+  ],
+  "symbolic_cell_numerators_over_128": [
+    28,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    28
+  ],
+  "A_assignment_given_U_0": [
+    "3/4",
+    "1/4"
+  ],
+  "A_assignment_given_U_1": [
+    "1/4",
+    "3/4"
+  ],
+  "observed_B_risk_difference": "1/4",
+  "do_A_effect_on_B_S": "0",
+  "do_A_effect_on_B_D": "1/4",
+  "P_B1_C1_given_A1": "7/16",
+  "conditional_BC_covariance_given_A1": "3/64",
+  "wrong_independent_BC_P11_given_A1": "25/64",
+  "check_count": 12,
+  "checks": {
+    "s_128_worlds": true,
+    "symbolic_eight_cells": true,
+    "observed_eight_cells_equal": true,
+    "d_512_worlds": true,
+    "positivity": true,
+    "observational_risk_diff_quarter": true,
+    "diffusion_do_effect_quarter": true,
+    "shock_do_effect_zero": true,
+    "residual_joint_seven_sixteenths": true,
+    "residual_covariance_three_sixtyfourths": true,
+    "negative_control_independent_BC_rejected": true,
+    "negative_control_conditioning_as_do_rejected": true
+  },
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replication": 0
+}
