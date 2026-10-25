@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH021，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH022，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -42,11 +42,13 @@
 
 | TH021 | 信息级联、社会学习与独立判断 | Banerjee 1992、Bikhchandani et al. 1992 原刊开放扫描重点页；2022 作者综述 §1–2.2；Salganik et al. 2006 三页原刊全文；Anderson & Holt 1997、Çelen & Kariv 2004、Goeree et al. 2007、Centola & Macy 2007 摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH021_INFORMATION_CASCADES_SOCIAL_LEARNING_2026-10-25.md) |
 
+| TH022 | 网络阈值、复杂传染与多重强化 | Granovetter 1978 摘要；Watts 2002 原刊公式；Centola & Macy 2007 作者预刊稿；Centola 2010 原刊实验；Watts & Dodds 2007 摘要。阈值、桥宽与实验外推边界已记录 | THEORY_NOTE_BOUNDED | [研究笔记](TH022_NETWORK_THRESHOLDS_COMPLEX_CONTAGION_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH022 | 网络阈值、复杂传染与多重强化 | Granovetter 1978；Watts 2002；Centola & Macy 2007；Centola 2010 | QUEUED_UNVERIFIED |
+| 1 | TH023 | 集体行动临界规模、搭便车与选择性激励 | Olson 1965；Schelling 1978；Marwell & Oliver 1993；Ostrom 1990 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -161,6 +163,11 @@
 | observable actions versus observable signals | Bikhchandani et al. 1992 pp.996–999；2022 作者综述 §2.2；信息结构决定后续更新能力 | 个体、群体、制度 | 原作直接审读；具体制度因果尚待识别 |
 | self-correcting cascades / bounded rationality | Goeree et al. 2007；长序列实验中形成与瓦解的竞争结果 | 个体、群体 | Caltech 公开摘要；全文附件本轮受阻 |
 | parallel social influence worlds | Salganik, Dodds & Watts 2006；社会信息可见性、文化结果不平等和跨世界不确定性 | 个体、群体、历史 | 作者开放三页原刊全文；单一文化实验边界 |
+
+| collective action thresholds | Granovetter 1978；个体阈值分布与群体结果 | 个体、群体 | 原刊摘要，正文待审 |
+| vulnerable cluster / cascade window | Watts 2002；稀疏随机图级联临界条件 | 群体、复杂系统 | 原刊公式直接审读 |
+| complex contagion / bridge width | Centola & Macy 2007；多来源强化与跨群桥宽 | 群体、制度 | 作者预刊稿重点章节 |
+| clustered network diffusion | Centola 2010；拓扑随机实验与论坛采用 | 个体、群体 | 原刊实验结果，外推有限 |
 
 ## C 与 D 研究日历（候选方法储备）
 
