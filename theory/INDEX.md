@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH022，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH023，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -44,11 +44,13 @@
 
 | TH022 | 网络阈值、复杂传染与多重强化 | Granovetter 1978 摘要；Watts 2002 原刊公式；Centola & Macy 2007 作者预刊稿；Centola 2010 原刊实验；Watts & Dodds 2007 摘要。阈值、桥宽与实验外推边界已记录 | THEORY_NOTE_BOUNDED | [研究笔记](TH022_NETWORK_THRESHOLDS_COMPLEX_CONTAGION_2026-10-25.md) |
 
+| TH023 | 集体行动临界规模、搭便车与选择性激励 | Oliver 1980 与 Oliver、Marwell、Teixeira 1985 原刊公开全文重点章节直接审读；Olson 1965 经作者引文间接核验；Marwell & Oliver 1993、Ostrom 1990 开放章节摘要；Apex Game 1980/1984 原刊摘要 | THEORY_NOTE_BOUNDED | [研究笔记](TH023_COLLECTIVE_ACTION_CRITICAL_MASS_SELECTIVE_INCENTIVES_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH023 | 集体行动临界规模、搭便车与选择性激励 | Olson 1965；Schelling 1978；Marwell & Oliver 1993；Ostrom 1990 | QUEUED_UNVERIFIED |
+| 1 | TH024 | 资源动员、政治机会结构与社会运动组织 | McCarthy & Zald 1977；Tilly 1978；Tarrow 1998 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -168,6 +170,11 @@
 | vulnerable cluster / cascade window | Watts 2002；稀疏随机图级联临界条件 | 群体、复杂系统 | 原刊公式直接审读 |
 | complex contagion / bridge width | Centola & Macy 2007；多来源强化与跨群桥宽 | 群体、制度 | 作者预刊稿重点章节 |
 | clustered network diffusion | Centola 2010；拓扑随机实验与论坛采用 | 个体、群体 | 原刊实验结果，外推有限 |
+
+| public good / free riding / selective incentives | Olson 1965 经 Oliver 1980 引文核验；个体受益与贡献激励脱节 | 个体、群体、制度 | 原著间接核验，直接全文待补 |
+| second-order incentive provision / jointness of supply | Oliver 1980；激励提供者的决策及奖励联合供给成本 | 个体、群体、制度 | 作者公开原刊 pp.1360–1366 直接审读 |
+| critical mass / production-function curvature | Oliver, Marwell & Teixeira 1985；初始成本、边际收益和资源异质性 | 群体、制度、历史 | 作者公开原刊重点章节直接审读；模拟未复算 |
+| polycentric self-governance / commons | Ostrom 1990/2009；使用者组织、信任和多尺度治理 | 群体、制度、历史 | 1990开放章节摘要及2009讲演机构摘要；全文待补 |
 
 ## C 与 D 研究日历（候选方法储备）
 
