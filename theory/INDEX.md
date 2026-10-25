@@ -75,12 +75,13 @@
 | TH039 | 组织生态、结构惯性与组织存亡 | Hannan & Freeman 1984原刊公开转录重点页、Baum & Shipilov 2006/2007作者开放原章重点页直接审读；Carroll 1984/1985、Hannan & Freeman 1977、Barnett & Carroll 1995出版社摘要；九项命题、两项人工选择偏差反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH039_ORGANIZATIONAL_ECOLOGY_STRUCTURAL_INERTIA_MORTALITY_2026-10-26.md) |
 
 | TH040 | 组织生态中的密度依赖、合法化与竞争 | Barron & Hannan 1991 原刊公开摘要及注释；Hannan 1997、Baum 1995、Kalnins 2016、Lander & Heugens 2017原刊摘要；Carroll & Hannan 1989、Baum & Mezias 1992作者摘要；九项理论命题及四项人工识别反例，原始回归未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH040_DENSITY_DEPENDENCE_LEGITIMATION_COMPETITION_2026-10-26.md) |
+| TH041 | 组织生态位宽度、资源分割与专业化生存 | Dobrev、Kim、Hannan 2001 和 Reis等 2013 作者开放原刊理论、表格与讨论直接审读；Freeman & Hannan 1983、Carroll 1985、Carroll & Swaminathan 2000 原刊摘要；十项命题、四项独立识别反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH041_NICHE_WIDTH_RESOURCE_PARTITIONING_SPECIALISTS_2026-10-26.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH041 | 生态位宽度、资源分割与专业化生存 | Carroll 1985；Freeman & Hannan 1983；Carroll & Swaminathan 2000 | QUEUED_UNVERIFIED |
+| 1 | TH042 | 组织身份、类别跨越与受众评价惩罚 | Zuckerman 1999；Hsu 2006；Hsu & Hannan 2005；Hannan et al. 2003 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -268,6 +269,8 @@
 
 | density dependence / legitimation / competition | Carroll & Hannan 1989；Barron & Hannan 1991；密度与创立率的非单调关系及其制度解释 | 群体、制度、历史、方法论 | 原刊公开摘要及注释，历史统计未复算；潜在机制欠识别 |
 | local niche overlap / competitive asymmetry | Baum & Mezias 1992；Baum 1995；Kalnins 2016；局部资源重叠与规模不对称竞争 | 群体、制度、历史 | 原作者摘要与跨市场复验摘要，原始数据未复算 |
+| niche width / environmental grain | Freeman & Hannan 1983；环境变化粒度、幅度与专业化条件 | 个体、群体、制度、历史 | 原刊摘要；模型全文待审 |
+| resource partitioning / center overlap / specialist entry | Carroll 1985；Dobrev et al. 2001；Reis et al. 2013；中心重叠、资源释放及信息条件 | 个体、群体、制度、历史 | 2001、2013作者开放原刊直接审读；1985摘要；未独立复算 |
 
 ## C 与 D 研究日历（候选方法储备）
 
