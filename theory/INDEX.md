@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-25（Asia/Shanghai）；已收录 TH034，C002 今日增量
+更新：2026-10-25（Asia/Shanghai）；已收录 TH035，C002 今日增量
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -65,11 +65,13 @@
 | TH033 | 政策扩散、跨地区模仿与制度学习 | Walker 1969 原刊印刷 pp.881–885、892–899 与 Volden、Ting、Carpenter 2008 作者稿核心模型和经验含义直接审读；Berry & Berry 1990、Shipan & Volden 2008、Frant 等 1991 原刊摘要；扩散与共同冲击的代数欠识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH033_POLICY_DIFFUSION_INTERSTATE_LEARNING_2026-10-25.md) |
 | TH034 | 组织制度同形化、规范性压力与象征性采纳 | DiMaggio & Powell 1983 作者上传原刊及 Bromley & Powell 2012 作者开放原刊重点章节直接审读；Meyer & Rowan 1977、Tolbert & Zucker 1983、Edelman 1992 原刊摘要；9项理论命题与不可识别反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH034_ORGANIZATIONAL_ISOMORPHISM_SYMBOLIC_ADOPTION_2026-10-25.md) |
 
+| TH035 | 制度逻辑多元性、制度创业与制度变迁 | Friedland & Alford 1991作者原书扫描选页、Battilana等2009作者上传原刊重要章节直接审读；Thornton & Ocasio 1999、Lounsbury 2007、Greenwood等2002原刊摘要；九项命题、两项逻辑反例 | THEORY_NOTE_BOUNDED | [研究笔记](TH035_INSTITUTIONAL_LOGICS_PLURALISM_ENTREPRENEURSHIP_2026-10-25.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH035 | 制度逻辑多元性、制度创业与制度变迁 | Friedland & Alford 1991；Thornton & Ocasio 1999；Battilana et al. 2009 | QUEUED_UNVERIFIED |
+| 1 | TH036 | 制度维护、制度工作与渐进制度变迁 | Lawrence & Suddaby 2006；Mahoney & Thelen 2010；Hallett & Ventresca 2006 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -240,6 +242,9 @@
 | ceremonial adoption / policy–practice decoupling | Meyer & Rowan 1977 原刊摘要；Bromley & Powell 2012 作者原刊 pp.7–9 | 群体、制度、历史 | 2012全文直接审读；1977摘要层级 |
 | means–ends decoupling | Bromley & Powell 2012 原刊 pp.14–17；政策落实与目标结果关系未识别 | 个体、群体、制度 | 原刊直接审读；因果效果未复验 |
 | early / late institutional adoption | Tolbert & Zucker 1983 康奈尔原刊摘要；城市文官制度改革 | 制度、历史 | 机构摘要；原始统计未复算 |
+
+| institutional logics / contradictory orders | Friedland & Alford 1991；市场、国家、家庭、民主等制度秩序及其冲突 | 个体、群体、制度、历史 | 作者上传原书选页直接审读；跨文明外推未证 |
+| institutional entrepreneurship / embedded agency | Battilana, Leca & Boxenbaum 2009；偏离既有模板的改革、场域条件与联盟 | 个体、群体、制度、历史 | 作者上传原刊重点页直接审读；成功者偏差未排除 |
 
 ## C 与 D 研究日历（候选方法储备）
 
