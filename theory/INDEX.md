@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH042，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH043，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -79,11 +79,13 @@
 
 | TH042 | 组织身份、类别跨越与受众评价惩罚 | Zuckerman 1999、Hsu 2006、Hsu & Hannan 2005、Hannan et al. 2003及Hsu et al. 2009原刊摘要与2005原文索引片段；Goldfarb & Yan 2021复验及2026勘误；十项命题、四项人工反例，原刊全文及回归未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH042_ORGANIZATIONAL_IDENTITY_CATEGORY_SPANNING_AUDIENCE_PENALTIES_2026-10-26.md) |
 
+| TH043 | 类别模糊性、受众异质性与混合身份的条件性优势 | Wry等2014正式原刊、Kovács与Johnson 2014开放原刊及Kovács与Hannan 2011作者工作稿重点章节直接审读；Pontikes 2012与Rao等2005原刊摘要；十项命题、五项人工反例及验证设计，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH043_CATEGORY_AMBIGUITY_AUDIENCE_HYBRID_ADVANTAGE_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH043 | 类别模糊性、受众异质性与混合身份的条件性优势 | Pontikes 2012；Rao、Monin、Durand 2005；Wry、Lounsbury、Jennings 2014；Kovács & Hannan 2011 | QUEUED_UNVERIFIED |
+| 1 | TH044 | 概念组合、类别学习与混合身份的认知机制 | Cohen & Murphy 1984；Murphy & Medin 1985；Hampton 1988；Rosch 1978 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -273,6 +275,11 @@
 | local niche overlap / competitive asymmetry | Baum & Mezias 1992；Baum 1995；Kalnins 2016；局部资源重叠与规模不对称竞争 | 群体、制度、历史 | 原作者摘要与跨市场复验摘要，原始数据未复算 |
 | niche width / environmental grain | Freeman & Hannan 1983；环境变化粒度、幅度与专业化条件 | 个体、群体、制度、历史 | 原刊摘要；模型全文待审 |
 | resource partitioning / center overlap / specialist entry | Carroll 1985；Dobrev et al. 2001；Reis et al. 2013；中心重叠、资源释放及信息条件 | 个体、群体、制度、历史 | 2001、2013作者开放原刊直接审读；1985摘要；未独立复算 |
+
+| ambiguous labels / audience roles | Pontikes 2012；消费者、独立VC与企业VC的条件性评价 | 个体、群体、制度 | 原刊摘要；正文未审 |
+| header–modifier composite identity | Wry等2014；起点与核心/外围身份标记 | 个体、群体、制度、历史 | 作者开放正式原刊重点章节；未直接测认知 |
+| categorical distance / contrast | Kovács & Hannan 2011；类别共现距离与边界对比度 | 个体、群体、制度 | 作者工作稿；测量选择敏感 |
+| category boundary erosion / bricolage | Rao等2005；高地位借用与同行模仿 | 群体、制度、历史 | 原刊摘要；统计未复算 |
 
 ## C 与 D 研究日历（候选方法储备）
 
