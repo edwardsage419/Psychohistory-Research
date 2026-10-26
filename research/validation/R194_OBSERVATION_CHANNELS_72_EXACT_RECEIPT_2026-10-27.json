@@ -1,0 +1,5006 @@
+{
+  "protocol": "protocols/R194_LAST_PAIR_VS_LAG2_PAIR_FULL_TRAJECTORY_THIRD_METHOD_FREEZE_2026-10-27.md",
+  "source_model": "research/R194/r194_exact_binary_markov_order.py",
+  "source_blob_sha1": "d1a4e5c061add45b929dd9fe701b36b08231c67b",
+  "evidence": "E1_ARTIFICIAL_EXACT",
+  "worlds": 72,
+  "checks": 90,
+  "negative_controls_rejected": 2,
+  "rows": [
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 1,
+      "channel": "FULL",
+      "TV": "1/4",
+      "bayes_error": "3/8",
+      "aggregated_likelihood_states": 2,
+      "category_count": 8,
+      "full_ordered_observations": 8,
+      "pmf_a": [
+        [
+          "000",
+          8
+        ],
+        [
+          "001",
+          8
+        ],
+        [
+          "010",
+          8
+        ],
+        [
+          "011",
+          8
+        ],
+        [
+          "100",
+          8
+        ],
+        [
+          "101",
+          8
+        ],
+        [
+          "110",
+          8
+        ],
+        [
+          "111",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          12
+        ],
+        [
+          "001",
+          4
+        ],
+        [
+          "010",
+          12
+        ],
+        [
+          "011",
+          4
+        ],
+        [
+          "100",
+          4
+        ],
+        [
+          "101",
+          12
+        ],
+        [
+          "110",
+          4
+        ],
+        [
+          "111",
+          12
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 1,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 1,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "1/4",
+      "bayes_error": "3/8",
+      "aggregated_likelihood_states": 2,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          24
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "10",
+          8
+        ],
+        [
+          "11",
+          24
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 2,
+      "channel": "FULL",
+      "TV": "5/16",
+      "bayes_error": "11/32",
+      "aggregated_likelihood_states": 3,
+      "category_count": 8,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "000",
+          8
+        ],
+        [
+          "001",
+          8
+        ],
+        [
+          "010",
+          8
+        ],
+        [
+          "011",
+          8
+        ],
+        [
+          "100",
+          8
+        ],
+        [
+          "101",
+          8
+        ],
+        [
+          "110",
+          8
+        ],
+        [
+          "111",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          12
+        ],
+        [
+          "001",
+          4
+        ],
+        [
+          "010",
+          12
+        ],
+        [
+          "011",
+          4
+        ],
+        [
+          "100",
+          4
+        ],
+        [
+          "101",
+          12
+        ],
+        [
+          "110",
+          4
+        ],
+        [
+          "111",
+          12
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 2,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 2,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "5/16",
+      "bayes_error": "11/32",
+      "aggregated_likelihood_states": 3,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          24
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "10",
+          8
+        ],
+        [
+          "11",
+          24
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 3,
+      "channel": "FULL",
+      "TV": "11/32",
+      "bayes_error": "21/64",
+      "aggregated_likelihood_states": 4,
+      "category_count": 8,
+      "full_ordered_observations": 512,
+      "pmf_a": [
+        [
+          "000",
+          8
+        ],
+        [
+          "001",
+          8
+        ],
+        [
+          "010",
+          8
+        ],
+        [
+          "011",
+          8
+        ],
+        [
+          "100",
+          8
+        ],
+        [
+          "101",
+          8
+        ],
+        [
+          "110",
+          8
+        ],
+        [
+          "111",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          12
+        ],
+        [
+          "001",
+          4
+        ],
+        [
+          "010",
+          12
+        ],
+        [
+          "011",
+          4
+        ],
+        [
+          "100",
+          4
+        ],
+        [
+          "101",
+          12
+        ],
+        [
+          "110",
+          4
+        ],
+        [
+          "111",
+          12
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 3,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 3,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "11/32",
+      "bayes_error": "21/64",
+      "aggregated_likelihood_states": 4,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          24
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "10",
+          8
+        ],
+        [
+          "11",
+          24
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 4,
+      "channel": "FULL",
+      "TV": "109/256",
+      "bayes_error": "147/512",
+      "aggregated_likelihood_states": 5,
+      "category_count": 8,
+      "full_ordered_observations": 4096,
+      "pmf_a": [
+        [
+          "000",
+          8
+        ],
+        [
+          "001",
+          8
+        ],
+        [
+          "010",
+          8
+        ],
+        [
+          "011",
+          8
+        ],
+        [
+          "100",
+          8
+        ],
+        [
+          "101",
+          8
+        ],
+        [
+          "110",
+          8
+        ],
+        [
+          "111",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          12
+        ],
+        [
+          "001",
+          4
+        ],
+        [
+          "010",
+          12
+        ],
+        [
+          "011",
+          4
+        ],
+        [
+          "100",
+          4
+        ],
+        [
+          "101",
+          12
+        ],
+        [
+          "110",
+          4
+        ],
+        [
+          "111",
+          12
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 4,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 4,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "109/256",
+      "bayes_error": "147/512",
+      "aggregated_likelihood_states": 5,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          24
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "10",
+          8
+        ],
+        [
+          "11",
+          24
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 1,
+      "channel": "FULL",
+      "TV": "5/16",
+      "bayes_error": "11/32",
+      "aggregated_likelihood_states": 3,
+      "category_count": 16,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "0000",
+          16
+        ],
+        [
+          "0001",
+          16
+        ],
+        [
+          "0010",
+          16
+        ],
+        [
+          "0011",
+          16
+        ],
+        [
+          "0100",
+          16
+        ],
+        [
+          "0101",
+          16
+        ],
+        [
+          "0110",
+          16
+        ],
+        [
+          "0111",
+          16
+        ],
+        [
+          "1000",
+          16
+        ],
+        [
+          "1001",
+          16
+        ],
+        [
+          "1010",
+          16
+        ],
+        [
+          "1011",
+          16
+        ],
+        [
+          "1100",
+          16
+        ],
+        [
+          "1101",
+          16
+        ],
+        [
+          "1110",
+          16
+        ],
+        [
+          "1111",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          36
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          4
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          36
+        ],
+        [
+          "0110",
+          4
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          4
+        ],
+        [
+          "1010",
+          36
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          4
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          36
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 1,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 1,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "1/4",
+      "bayes_error": "3/8",
+      "aggregated_likelihood_states": 2,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          96
+        ],
+        [
+          "01",
+          32
+        ],
+        [
+          "10",
+          32
+        ],
+        [
+          "11",
+          96
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 2,
+      "channel": "FULL",
+      "TV": "109/256",
+      "bayes_error": "147/512",
+      "aggregated_likelihood_states": 5,
+      "category_count": 16,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "0000",
+          16
+        ],
+        [
+          "0001",
+          16
+        ],
+        [
+          "0010",
+          16
+        ],
+        [
+          "0011",
+          16
+        ],
+        [
+          "0100",
+          16
+        ],
+        [
+          "0101",
+          16
+        ],
+        [
+          "0110",
+          16
+        ],
+        [
+          "0111",
+          16
+        ],
+        [
+          "1000",
+          16
+        ],
+        [
+          "1001",
+          16
+        ],
+        [
+          "1010",
+          16
+        ],
+        [
+          "1011",
+          16
+        ],
+        [
+          "1100",
+          16
+        ],
+        [
+          "1101",
+          16
+        ],
+        [
+          "1110",
+          16
+        ],
+        [
+          "1111",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          36
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          4
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          36
+        ],
+        [
+          "0110",
+          4
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          4
+        ],
+        [
+          "1010",
+          36
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          4
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          36
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 2,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 2,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "5/16",
+      "bayes_error": "11/32",
+      "aggregated_likelihood_states": 3,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          96
+        ],
+        [
+          "01",
+          32
+        ],
+        [
+          "10",
+          32
+        ],
+        [
+          "11",
+          96
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 3,
+      "channel": "FULL",
+      "TV": "997/2048",
+      "bayes_error": "1051/4096",
+      "aggregated_likelihood_states": 7,
+      "category_count": 16,
+      "full_ordered_observations": 4096,
+      "pmf_a": [
+        [
+          "0000",
+          16
+        ],
+        [
+          "0001",
+          16
+        ],
+        [
+          "0010",
+          16
+        ],
+        [
+          "0011",
+          16
+        ],
+        [
+          "0100",
+          16
+        ],
+        [
+          "0101",
+          16
+        ],
+        [
+          "0110",
+          16
+        ],
+        [
+          "0111",
+          16
+        ],
+        [
+          "1000",
+          16
+        ],
+        [
+          "1001",
+          16
+        ],
+        [
+          "1010",
+          16
+        ],
+        [
+          "1011",
+          16
+        ],
+        [
+          "1100",
+          16
+        ],
+        [
+          "1101",
+          16
+        ],
+        [
+          "1110",
+          16
+        ],
+        [
+          "1111",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          36
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          4
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          36
+        ],
+        [
+          "0110",
+          4
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          4
+        ],
+        [
+          "1010",
+          36
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          4
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          36
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 3,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 3,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "11/32",
+      "bayes_error": "21/64",
+      "aggregated_likelihood_states": 4,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          96
+        ],
+        [
+          "01",
+          32
+        ],
+        [
+          "10",
+          32
+        ],
+        [
+          "11",
+          96
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 4,
+      "channel": "FULL",
+      "TV": "34997/65536",
+      "bayes_error": "30539/131072",
+      "aggregated_likelihood_states": 9,
+      "category_count": 16,
+      "full_ordered_observations": 65536,
+      "pmf_a": [
+        [
+          "0000",
+          16
+        ],
+        [
+          "0001",
+          16
+        ],
+        [
+          "0010",
+          16
+        ],
+        [
+          "0011",
+          16
+        ],
+        [
+          "0100",
+          16
+        ],
+        [
+          "0101",
+          16
+        ],
+        [
+          "0110",
+          16
+        ],
+        [
+          "0111",
+          16
+        ],
+        [
+          "1000",
+          16
+        ],
+        [
+          "1001",
+          16
+        ],
+        [
+          "1010",
+          16
+        ],
+        [
+          "1011",
+          16
+        ],
+        [
+          "1100",
+          16
+        ],
+        [
+          "1101",
+          16
+        ],
+        [
+          "1110",
+          16
+        ],
+        [
+          "1111",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          36
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          4
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          36
+        ],
+        [
+          "0110",
+          4
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          4
+        ],
+        [
+          "1010",
+          36
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          4
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          36
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 4,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 4,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "109/256",
+      "bayes_error": "147/512",
+      "aggregated_likelihood_states": 5,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          96
+        ],
+        [
+          "01",
+          32
+        ],
+        [
+          "10",
+          32
+        ],
+        [
+          "11",
+          96
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 1,
+      "channel": "FULL",
+      "TV": "1/4",
+      "bayes_error": "3/8",
+      "aggregated_likelihood_states": 2,
+      "category_count": 8,
+      "full_ordered_observations": 8,
+      "pmf_a": [
+        [
+          "000",
+          8
+        ],
+        [
+          "001",
+          8
+        ],
+        [
+          "010",
+          8
+        ],
+        [
+          "011",
+          8
+        ],
+        [
+          "100",
+          8
+        ],
+        [
+          "101",
+          8
+        ],
+        [
+          "110",
+          8
+        ],
+        [
+          "111",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          4
+        ],
+        [
+          "001",
+          12
+        ],
+        [
+          "010",
+          4
+        ],
+        [
+          "011",
+          12
+        ],
+        [
+          "100",
+          12
+        ],
+        [
+          "101",
+          4
+        ],
+        [
+          "110",
+          12
+        ],
+        [
+          "111",
+          4
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 1,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 1,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "1/4",
+      "bayes_error": "3/8",
+      "aggregated_likelihood_states": 2,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          8
+        ],
+        [
+          "01",
+          24
+        ],
+        [
+          "10",
+          24
+        ],
+        [
+          "11",
+          8
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 2,
+      "channel": "FULL",
+      "TV": "5/16",
+      "bayes_error": "11/32",
+      "aggregated_likelihood_states": 3,
+      "category_count": 8,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "000",
+          8
+        ],
+        [
+          "001",
+          8
+        ],
+        [
+          "010",
+          8
+        ],
+        [
+          "011",
+          8
+        ],
+        [
+          "100",
+          8
+        ],
+        [
+          "101",
+          8
+        ],
+        [
+          "110",
+          8
+        ],
+        [
+          "111",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          4
+        ],
+        [
+          "001",
+          12
+        ],
+        [
+          "010",
+          4
+        ],
+        [
+          "011",
+          12
+        ],
+        [
+          "100",
+          12
+        ],
+        [
+          "101",
+          4
+        ],
+        [
+          "110",
+          12
+        ],
+        [
+          "111",
+          4
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 2,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 2,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "5/16",
+      "bayes_error": "11/32",
+      "aggregated_likelihood_states": 3,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          8
+        ],
+        [
+          "01",
+          24
+        ],
+        [
+          "10",
+          24
+        ],
+        [
+          "11",
+          8
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 3,
+      "channel": "FULL",
+      "TV": "11/32",
+      "bayes_error": "21/64",
+      "aggregated_likelihood_states": 4,
+      "category_count": 8,
+      "full_ordered_observations": 512,
+      "pmf_a": [
+        [
+          "000",
+          8
+        ],
+        [
+          "001",
+          8
+        ],
+        [
+          "010",
+          8
+        ],
+        [
+          "011",
+          8
+        ],
+        [
+          "100",
+          8
+        ],
+        [
+          "101",
+          8
+        ],
+        [
+          "110",
+          8
+        ],
+        [
+          "111",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          4
+        ],
+        [
+          "001",
+          12
+        ],
+        [
+          "010",
+          4
+        ],
+        [
+          "011",
+          12
+        ],
+        [
+          "100",
+          12
+        ],
+        [
+          "101",
+          4
+        ],
+        [
+          "110",
+          12
+        ],
+        [
+          "111",
+          4
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 3,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 3,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "11/32",
+      "bayes_error": "21/64",
+      "aggregated_likelihood_states": 4,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          8
+        ],
+        [
+          "01",
+          24
+        ],
+        [
+          "10",
+          24
+        ],
+        [
+          "11",
+          8
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 4,
+      "channel": "FULL",
+      "TV": "109/256",
+      "bayes_error": "147/512",
+      "aggregated_likelihood_states": 5,
+      "category_count": 8,
+      "full_ordered_observations": 4096,
+      "pmf_a": [
+        [
+          "000",
+          8
+        ],
+        [
+          "001",
+          8
+        ],
+        [
+          "010",
+          8
+        ],
+        [
+          "011",
+          8
+        ],
+        [
+          "100",
+          8
+        ],
+        [
+          "101",
+          8
+        ],
+        [
+          "110",
+          8
+        ],
+        [
+          "111",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          4
+        ],
+        [
+          "001",
+          12
+        ],
+        [
+          "010",
+          4
+        ],
+        [
+          "011",
+          12
+        ],
+        [
+          "100",
+          12
+        ],
+        [
+          "101",
+          4
+        ],
+        [
+          "110",
+          12
+        ],
+        [
+          "111",
+          4
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 4,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 3,
+      "m": 4,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "109/256",
+      "bayes_error": "147/512",
+      "aggregated_likelihood_states": 5,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          8
+        ],
+        [
+          "01",
+          24
+        ],
+        [
+          "10",
+          24
+        ],
+        [
+          "11",
+          8
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 1,
+      "channel": "FULL",
+      "TV": "5/16",
+      "bayes_error": "11/32",
+      "aggregated_likelihood_states": 3,
+      "category_count": 16,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "0000",
+          16
+        ],
+        [
+          "0001",
+          16
+        ],
+        [
+          "0010",
+          16
+        ],
+        [
+          "0011",
+          16
+        ],
+        [
+          "0100",
+          16
+        ],
+        [
+          "0101",
+          16
+        ],
+        [
+          "0110",
+          16
+        ],
+        [
+          "0111",
+          16
+        ],
+        [
+          "1000",
+          16
+        ],
+        [
+          "1001",
+          16
+        ],
+        [
+          "1010",
+          16
+        ],
+        [
+          "1011",
+          16
+        ],
+        [
+          "1100",
+          16
+        ],
+        [
+          "1101",
+          16
+        ],
+        [
+          "1110",
+          16
+        ],
+        [
+          "1111",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          4
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          36
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          4
+        ],
+        [
+          "0110",
+          36
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          36
+        ],
+        [
+          "1010",
+          4
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          36
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          4
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 1,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 1,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "1/4",
+      "bayes_error": "3/8",
+      "aggregated_likelihood_states": 2,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          32
+        ],
+        [
+          "01",
+          96
+        ],
+        [
+          "10",
+          96
+        ],
+        [
+          "11",
+          32
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 2,
+      "channel": "FULL",
+      "TV": "109/256",
+      "bayes_error": "147/512",
+      "aggregated_likelihood_states": 5,
+      "category_count": 16,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "0000",
+          16
+        ],
+        [
+          "0001",
+          16
+        ],
+        [
+          "0010",
+          16
+        ],
+        [
+          "0011",
+          16
+        ],
+        [
+          "0100",
+          16
+        ],
+        [
+          "0101",
+          16
+        ],
+        [
+          "0110",
+          16
+        ],
+        [
+          "0111",
+          16
+        ],
+        [
+          "1000",
+          16
+        ],
+        [
+          "1001",
+          16
+        ],
+        [
+          "1010",
+          16
+        ],
+        [
+          "1011",
+          16
+        ],
+        [
+          "1100",
+          16
+        ],
+        [
+          "1101",
+          16
+        ],
+        [
+          "1110",
+          16
+        ],
+        [
+          "1111",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          4
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          36
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          4
+        ],
+        [
+          "0110",
+          36
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          36
+        ],
+        [
+          "1010",
+          4
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          36
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          4
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 2,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 2,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "5/16",
+      "bayes_error": "11/32",
+      "aggregated_likelihood_states": 3,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          32
+        ],
+        [
+          "01",
+          96
+        ],
+        [
+          "10",
+          96
+        ],
+        [
+          "11",
+          32
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 3,
+      "channel": "FULL",
+      "TV": "997/2048",
+      "bayes_error": "1051/4096",
+      "aggregated_likelihood_states": 7,
+      "category_count": 16,
+      "full_ordered_observations": 4096,
+      "pmf_a": [
+        [
+          "0000",
+          16
+        ],
+        [
+          "0001",
+          16
+        ],
+        [
+          "0010",
+          16
+        ],
+        [
+          "0011",
+          16
+        ],
+        [
+          "0100",
+          16
+        ],
+        [
+          "0101",
+          16
+        ],
+        [
+          "0110",
+          16
+        ],
+        [
+          "0111",
+          16
+        ],
+        [
+          "1000",
+          16
+        ],
+        [
+          "1001",
+          16
+        ],
+        [
+          "1010",
+          16
+        ],
+        [
+          "1011",
+          16
+        ],
+        [
+          "1100",
+          16
+        ],
+        [
+          "1101",
+          16
+        ],
+        [
+          "1110",
+          16
+        ],
+        [
+          "1111",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          4
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          36
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          4
+        ],
+        [
+          "0110",
+          36
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          36
+        ],
+        [
+          "1010",
+          4
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          36
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          4
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 3,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 3,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "11/32",
+      "bayes_error": "21/64",
+      "aggregated_likelihood_states": 4,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          32
+        ],
+        [
+          "01",
+          96
+        ],
+        [
+          "10",
+          96
+        ],
+        [
+          "11",
+          32
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 4,
+      "channel": "FULL",
+      "TV": "34997/65536",
+      "bayes_error": "30539/131072",
+      "aggregated_likelihood_states": 9,
+      "category_count": 16,
+      "full_ordered_observations": 65536,
+      "pmf_a": [
+        [
+          "0000",
+          16
+        ],
+        [
+          "0001",
+          16
+        ],
+        [
+          "0010",
+          16
+        ],
+        [
+          "0011",
+          16
+        ],
+        [
+          "0100",
+          16
+        ],
+        [
+          "0101",
+          16
+        ],
+        [
+          "0110",
+          16
+        ],
+        [
+          "0111",
+          16
+        ],
+        [
+          "1000",
+          16
+        ],
+        [
+          "1001",
+          16
+        ],
+        [
+          "1010",
+          16
+        ],
+        [
+          "1011",
+          16
+        ],
+        [
+          "1100",
+          16
+        ],
+        [
+          "1101",
+          16
+        ],
+        [
+          "1110",
+          16
+        ],
+        [
+          "1111",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          4
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          36
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          4
+        ],
+        [
+          "0110",
+          36
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          36
+        ],
+        [
+          "1010",
+          4
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          36
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          4
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 4,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "IID",
+      "source_b": "LAG2_SWITCH",
+      "L": 4,
+      "m": 4,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "109/256",
+      "bayes_error": "147/512",
+      "aggregated_likelihood_states": 5,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          32
+        ],
+        [
+          "01",
+          96
+        ],
+        [
+          "10",
+          96
+        ],
+        [
+          "11",
+          32
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 1,
+      "channel": "FULL",
+      "TV": "1/2",
+      "bayes_error": "1/4",
+      "aggregated_likelihood_states": 2,
+      "category_count": 8,
+      "full_ordered_observations": 8,
+      "pmf_a": [
+        [
+          "000",
+          4
+        ],
+        [
+          "001",
+          12
+        ],
+        [
+          "010",
+          4
+        ],
+        [
+          "011",
+          12
+        ],
+        [
+          "100",
+          12
+        ],
+        [
+          "101",
+          4
+        ],
+        [
+          "110",
+          12
+        ],
+        [
+          "111",
+          4
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          12
+        ],
+        [
+          "001",
+          4
+        ],
+        [
+          "010",
+          12
+        ],
+        [
+          "011",
+          4
+        ],
+        [
+          "100",
+          4
+        ],
+        [
+          "101",
+          12
+        ],
+        [
+          "110",
+          4
+        ],
+        [
+          "111",
+          12
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 1,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 1,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "1/2",
+      "bayes_error": "1/4",
+      "aggregated_likelihood_states": 2,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          8
+        ],
+        [
+          "01",
+          24
+        ],
+        [
+          "10",
+          24
+        ],
+        [
+          "11",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          24
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "10",
+          8
+        ],
+        [
+          "11",
+          24
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 2,
+      "channel": "FULL",
+      "TV": "1/2",
+      "bayes_error": "1/4",
+      "aggregated_likelihood_states": 3,
+      "category_count": 8,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "000",
+          4
+        ],
+        [
+          "001",
+          12
+        ],
+        [
+          "010",
+          4
+        ],
+        [
+          "011",
+          12
+        ],
+        [
+          "100",
+          12
+        ],
+        [
+          "101",
+          4
+        ],
+        [
+          "110",
+          12
+        ],
+        [
+          "111",
+          4
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          12
+        ],
+        [
+          "001",
+          4
+        ],
+        [
+          "010",
+          12
+        ],
+        [
+          "011",
+          4
+        ],
+        [
+          "100",
+          4
+        ],
+        [
+          "101",
+          12
+        ],
+        [
+          "110",
+          4
+        ],
+        [
+          "111",
+          12
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 2,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 2,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "1/2",
+      "bayes_error": "1/4",
+      "aggregated_likelihood_states": 3,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          8
+        ],
+        [
+          "01",
+          24
+        ],
+        [
+          "10",
+          24
+        ],
+        [
+          "11",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          24
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "10",
+          8
+        ],
+        [
+          "11",
+          24
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 3,
+      "channel": "FULL",
+      "TV": "11/16",
+      "bayes_error": "5/32",
+      "aggregated_likelihood_states": 4,
+      "category_count": 8,
+      "full_ordered_observations": 512,
+      "pmf_a": [
+        [
+          "000",
+          4
+        ],
+        [
+          "001",
+          12
+        ],
+        [
+          "010",
+          4
+        ],
+        [
+          "011",
+          12
+        ],
+        [
+          "100",
+          12
+        ],
+        [
+          "101",
+          4
+        ],
+        [
+          "110",
+          12
+        ],
+        [
+          "111",
+          4
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          12
+        ],
+        [
+          "001",
+          4
+        ],
+        [
+          "010",
+          12
+        ],
+        [
+          "011",
+          4
+        ],
+        [
+          "100",
+          4
+        ],
+        [
+          "101",
+          12
+        ],
+        [
+          "110",
+          4
+        ],
+        [
+          "111",
+          12
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 3,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 3,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "11/16",
+      "bayes_error": "5/32",
+      "aggregated_likelihood_states": 4,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          8
+        ],
+        [
+          "01",
+          24
+        ],
+        [
+          "10",
+          24
+        ],
+        [
+          "11",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          24
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "10",
+          8
+        ],
+        [
+          "11",
+          24
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 4,
+      "channel": "FULL",
+      "TV": "11/16",
+      "bayes_error": "5/32",
+      "aggregated_likelihood_states": 5,
+      "category_count": 8,
+      "full_ordered_observations": 4096,
+      "pmf_a": [
+        [
+          "000",
+          4
+        ],
+        [
+          "001",
+          12
+        ],
+        [
+          "010",
+          4
+        ],
+        [
+          "011",
+          12
+        ],
+        [
+          "100",
+          12
+        ],
+        [
+          "101",
+          4
+        ],
+        [
+          "110",
+          12
+        ],
+        [
+          "111",
+          4
+        ]
+      ],
+      "pmf_b": [
+        [
+          "000",
+          12
+        ],
+        [
+          "001",
+          4
+        ],
+        [
+          "010",
+          12
+        ],
+        [
+          "011",
+          4
+        ],
+        [
+          "100",
+          4
+        ],
+        [
+          "101",
+          12
+        ],
+        [
+          "110",
+          4
+        ],
+        [
+          "111",
+          12
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 4,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          16
+        ],
+        [
+          "01",
+          16
+        ],
+        [
+          "10",
+          16
+        ],
+        [
+          "11",
+          16
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 3,
+      "m": 4,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "11/16",
+      "bayes_error": "5/32",
+      "aggregated_likelihood_states": 5,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          8
+        ],
+        [
+          "01",
+          24
+        ],
+        [
+          "10",
+          24
+        ],
+        [
+          "11",
+          8
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          24
+        ],
+        [
+          "01",
+          8
+        ],
+        [
+          "10",
+          8
+        ],
+        [
+          "11",
+          24
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 1,
+      "channel": "FULL",
+      "TV": "1/2",
+      "bayes_error": "1/4",
+      "aggregated_likelihood_states": 3,
+      "category_count": 16,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "0000",
+          4
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          36
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          4
+        ],
+        [
+          "0110",
+          36
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          36
+        ],
+        [
+          "1010",
+          4
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          36
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          4
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          36
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          4
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          36
+        ],
+        [
+          "0110",
+          4
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          4
+        ],
+        [
+          "1010",
+          36
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          4
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          36
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 1,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 1,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "1/2",
+      "bayes_error": "1/4",
+      "aggregated_likelihood_states": 2,
+      "category_count": 4,
+      "full_ordered_observations": 4,
+      "pmf_a": [
+        [
+          "00",
+          32
+        ],
+        [
+          "01",
+          96
+        ],
+        [
+          "10",
+          96
+        ],
+        [
+          "11",
+          32
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          96
+        ],
+        [
+          "01",
+          32
+        ],
+        [
+          "10",
+          32
+        ],
+        [
+          "11",
+          96
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 2,
+      "channel": "FULL",
+      "TV": "11/16",
+      "bayes_error": "5/32",
+      "aggregated_likelihood_states": 5,
+      "category_count": 16,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "0000",
+          4
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          36
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          4
+        ],
+        [
+          "0110",
+          36
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          36
+        ],
+        [
+          "1010",
+          4
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          36
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          4
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          36
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          4
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          36
+        ],
+        [
+          "0110",
+          4
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          4
+        ],
+        [
+          "1010",
+          36
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          4
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          36
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 2,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 2,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "1/2",
+      "bayes_error": "1/4",
+      "aggregated_likelihood_states": 3,
+      "category_count": 4,
+      "full_ordered_observations": 16,
+      "pmf_a": [
+        [
+          "00",
+          32
+        ],
+        [
+          "01",
+          96
+        ],
+        [
+          "10",
+          96
+        ],
+        [
+          "11",
+          32
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          96
+        ],
+        [
+          "01",
+          32
+        ],
+        [
+          "10",
+          32
+        ],
+        [
+          "11",
+          96
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 3,
+      "channel": "FULL",
+      "TV": "203/256",
+      "bayes_error": "53/512",
+      "aggregated_likelihood_states": 7,
+      "category_count": 16,
+      "full_ordered_observations": 4096,
+      "pmf_a": [
+        [
+          "0000",
+          4
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          36
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          4
+        ],
+        [
+          "0110",
+          36
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          36
+        ],
+        [
+          "1010",
+          4
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          36
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          4
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          36
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          4
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          36
+        ],
+        [
+          "0110",
+          4
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          4
+        ],
+        [
+          "1010",
+          36
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          4
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          36
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 3,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 3,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "11/16",
+      "bayes_error": "5/32",
+      "aggregated_likelihood_states": 4,
+      "category_count": 4,
+      "full_ordered_observations": 64,
+      "pmf_a": [
+        [
+          "00",
+          32
+        ],
+        [
+          "01",
+          96
+        ],
+        [
+          "10",
+          96
+        ],
+        [
+          "11",
+          32
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          96
+        ],
+        [
+          "01",
+          32
+        ],
+        [
+          "10",
+          32
+        ],
+        [
+          "11",
+          96
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 4,
+      "channel": "FULL",
+      "TV": "1759/2048",
+      "bayes_error": "289/4096",
+      "aggregated_likelihood_states": 9,
+      "category_count": 16,
+      "full_ordered_observations": 65536,
+      "pmf_a": [
+        [
+          "0000",
+          4
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          36
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          4
+        ],
+        [
+          "0110",
+          36
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          36
+        ],
+        [
+          "1010",
+          4
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          36
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          4
+        ]
+      ],
+      "pmf_b": [
+        [
+          "0000",
+          36
+        ],
+        [
+          "0001",
+          12
+        ],
+        [
+          "0010",
+          12
+        ],
+        [
+          "0011",
+          4
+        ],
+        [
+          "0100",
+          12
+        ],
+        [
+          "0101",
+          36
+        ],
+        [
+          "0110",
+          4
+        ],
+        [
+          "0111",
+          12
+        ],
+        [
+          "1000",
+          12
+        ],
+        [
+          "1001",
+          4
+        ],
+        [
+          "1010",
+          36
+        ],
+        [
+          "1011",
+          12
+        ],
+        [
+          "1100",
+          4
+        ],
+        [
+          "1101",
+          12
+        ],
+        [
+          "1110",
+          12
+        ],
+        [
+          "1111",
+          36
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 4,
+      "channel": "LAST_ADJACENT_PAIR",
+      "TV": "0/1",
+      "bayes_error": "1/2",
+      "aggregated_likelihood_states": 1,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          64
+        ],
+        [
+          "01",
+          64
+        ],
+        [
+          "10",
+          64
+        ],
+        [
+          "11",
+          64
+        ]
+      ]
+    },
+    {
+      "source_a": "LAG2_SWITCH",
+      "source_b": "LAG2_REPEAT",
+      "L": 4,
+      "m": 4,
+      "channel": "LAST_LAG2_PAIR",
+      "TV": "11/16",
+      "bayes_error": "5/32",
+      "aggregated_likelihood_states": 5,
+      "category_count": 4,
+      "full_ordered_observations": 256,
+      "pmf_a": [
+        [
+          "00",
+          32
+        ],
+        [
+          "01",
+          96
+        ],
+        [
+          "10",
+          96
+        ],
+        [
+          "11",
+          32
+        ]
+      ],
+      "pmf_b": [
+        [
+          "00",
+          96
+        ],
+        [
+          "01",
+          32
+        ],
+        [
+          "10",
+          32
+        ],
+        [
+          "11",
+          96
+        ]
+      ]
+    }
+  ],
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replication": 0
+}
