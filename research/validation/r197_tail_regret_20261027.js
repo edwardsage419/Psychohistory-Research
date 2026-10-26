@@ -1,4 +1,6 @@
-// Exact R197 third-method E1 artificial risk. Node.js >=18.\nconst fs=require("fs"),path=require("path");\nfunction analyze(csv,baseline){
+// Exact R197 third-method E1 artificial risk. Node.js >=18.
+const fs=require("fs"),path=require("path");
+function analyze(csv,baseline){
  const F=x=>{const [a,b="1"]=String(x).split("/");let n=BigInt(a),d=BigInt(b);if(d<0n){n=-n;d=-d}let p=n<0n?-n:n,q=d;while(q){const t=p%q;p=q;q=t}const g=p||1n;return [n/g,d/g]};
  const add=(x,y)=>F((x[0]*y[1]+y[0]*x[1])+"/"+(x[1]*y[1]));
  const sub=(x,y)=>F((x[0]*y[1]-y[0]*x[1])+"/"+(x[1]*y[1]));
@@ -43,4 +45,6 @@
  if(!gt(F(find("RW",5,1).selected_minus_RW),Z)||!gt(F(find("RW",5,2).selected_minus_RW),Z)||!lt(F(find("DRIFT",5,2).selected_minus_RW),Z))throw Error("prelocked contrasts");
  for(const s of S)for(const T of [4,5]){const a=find(s,T,1),b=find(s,T,2);for(const m of S)if(a.by_selected_model[m].probability!==b.by_selected_model[m].probability)throw Error("future leakage in model selection")}
  return {schema:"R197_selection_tail_regret_v1",source_csv_blob:"ed8b150677dd5213e4798154162135245e1aa18a",source_original_blob:"53b47a5096243812551d3b38fe07bb17bddfe5fa",counts:{rows:ls.length,worlds:rows.length,candidateChecks,selectedChecks,archiveChecks},worlds:rows,evidence:"E1_INTERNAL_ARTIFICIAL",new_E2:0,new_E3:0,external_replication:0};
-}\nif(require.main===module){const root=process.argv[2]||path.resolve(__dirname,"../..");process.stdout.write(JSON.stringify(analyze(fs.readFileSync(path.join(root,"research/R197/R197_ALL_3888_INDEPENDENT_HELDOUT_RISK_PROFILES.csv"),"utf8"),fs.readFileSync(path.join(root,"research/R197/R197_EXACT_RESULTS.json"),"utf8")),null,2)+"\\n")}\nmodule.exports={analyze};\n
+}
+if(require.main===module){const root=process.argv[2]||path.resolve(__dirname,"../..");process.stdout.write(JSON.stringify(analyze(fs.readFileSync(path.join(root,"research/R197/R197_ALL_3888_INDEPENDENT_HELDOUT_RISK_PROFILES.csv"),"utf8"),fs.readFileSync(path.join(root,"research/R197/R197_EXACT_RESULTS.json"),"utf8")),null,2)+"\n")}
+module.exports={analyze};
