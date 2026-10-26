@@ -1,0 +1,26 @@
+{
+  "status": "PASS_INTERNAL_ALTERNATE_ANALYTIC_RECOMPUTATION",
+  "original_csv_rows": 120,
+  "scored_rows": 360,
+  "worlds": 27,
+  "row_field_checks": 1440,
+  "world_field_checks": 216,
+  "normalized_worlds": 27,
+  "external_independent_replication": 0,
+  "negative_controls": {
+    "csv_mutation_detected": true,
+    "receipt_mutation_detected": true
+  },
+  "source_paths": {
+    "research/R201/R201_ALL_120_ORIGINAL_TRAINING_PREFIXES.csv": "18248e299595818e4d06b394e4d2d42aead6c2bd",
+    "research/validation/R201_COHORT_COMPOSITION_SHIFT_27_WORLDS_360_EXACT_RECEIPT_2026-10-27.json": "aa2ec16703fc32f70ed4724a2a823fb02d42055c",
+    "research/evidence_audit/b_r201_cohort_shift_independent_20261027.js": "e2bd46a06ac2b006a4c351e432364a250e0ed807"
+  },
+  "method": "Original R201 CSV weights and fitted HR, independent analytic 1-2 p dot q + sum q squared",
+  "data_leakage_gate": "test x only used in post-fit prediction; original fitted HR from original 120 CSV",
+  "sample_outside_gate": "independent artificial four-subject new cohort, no real cohort",
+  "calibration_gate": "not measured in this addendum",
+  "evidence": "E1_ONLY",
+  "external_replication": 0,
+  "created": "2026-10-27"
+}
