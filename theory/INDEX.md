@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH046，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH047，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -86,11 +86,13 @@
 | TH045 | 实例记忆、相似性特征、选择性注意与临时目标类别 | Nosofsky 1986、Tversky 1977、Barsalou 1983正式原刊重点章节直接审读；Medin & Schaffer 1978及Barsalou 1987仅摘要/机构书目；十项命题、四项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH045_EXEMPLAR_SIMILARITY_CONTEXT_DEPENDENT_CATEGORIZATION_2026-10-26.md) |
 | TH046 | 规则、例外、实例迁移与类别边界更新 | Seitz等2025开放原刊全文；Nosofsky等1994、Smith与Sloman1994、Johansen与Palmeri2002、Ashby与Maddox2005摘要；十项命题、四项人工识别反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH046_RULE_EXEMPLAR_BOUNDARY_KNOWLEDGE_UPDATING_2026-10-26.md) |
 
+| TH047 | 贝叶斯类别学习、理性模型与知识先验 | Griffiths等2007作者原文六页、Sanborn等2010作者接受稿前部直接审读；Anderson1991、Nosofsky1991摘要；九项命题与五项人工概率反例；原始实验未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH047_BAYESIAN_CATEGORIZATION_RATIONAL_MODELS_PRIORS_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH047 | 贝叶斯类别学习、理性模型与知识先验 | Anderson 1991；Griffiths等2007；Sanborn等2010 | QUEUED_UNVERIFIED |
+| 1 | TH048 | 贝叶斯认知模型的可证伪性、先验识别与资源理性批评 | Tauber等2017；Jones & Love 2011；Gigerenzer & Todd 1999 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -98,6 +100,7 @@
 
 | 概念 | 初始来源与含义范围 | 理论层级 | 证据标记 |
 | --- | --- | --- | --- |
+| Bayesian categorization / prior sensitivity / rational approximation | Griffiths等2007、Sanborn等2010；类别后验、簇数先验与近似推断分开审计 | 个体、群体、制度、历史、方法论 | 原文重点页与人工反例；无独立实证 |
 | exemplar-based classification / selective attention | Medin & Schaffer 1978摘要、Nosofsky 1986原刊；实例相似度聚合与任务注意权重 | 个体、群体、方法论 | 1986原刊直接审读；1978摘要；无独立预测复验 |
 | asymmetric feature similarity | Tversky 1977；共同/独有特征的方向性对比 | 个体、群体、制度、方法论 | 原刊直接审读；人工方向性反例，跨域未验证 |
 | ad hoc goal-derived categories | Barsalou 1983、1987；即时目标与典型性等级 | 个体、群体、制度、历史 | 1983原刊直接审读；1987书目；未做跨期验证 |
