@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH065，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH066，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -115,16 +115,21 @@
 | TH064 | 家庭、同伴与代际价值社会化的竞争机制 | Harris1995原刊大学转录与Knafo/Schwartz2003公开原刊正文直接审读；Grusec/Goodnow1994、Kohn/Schooler1982、Grusec等2000、Knafo/Schwartz2004原刊摘要核验；14项条件命题、1项发表表格算术核对及5项人工反例，未做独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH064_FAMILY_PEER_INTERGENERATIONAL_VALUE_SOCIALIZATION_2026-10-27.md) |
 
 | TH065 | 同伴网络选择、影响与共同冲击的因果识别 | Aral等2009、Shalizi与Thomas2011、Bramoullé等2009开放原刊重点章节直接审读；Kandel1978、Manski1993、Sacerdote2000/2001原始摘要核验；15项命题、6项人工识别审计，无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH065_PEER_SELECTION_INFLUENCE_COMMON_SHOCK_IDENTIFICATION_2026-10-27.md) |
+| TH066 | 网络随机化、暴露映射与干扰外推边界 | Ugander等2013、Aronow与Samii2017、Eckles等2017开放原作重要章节直接审读；Hudgens与Halloran2008、Basse与Feller2018摘要核验；16项条件命题、6项人工概率与识别审计；无真实数据复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH066_NETWORK_RANDOMIZATION_EXPOSURE_MAPPING_INTERFERENCE_2026-10-27.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH066 | 网络随机化、干扰暴露映射与同伴影响实验的外推边界 | Hudgens与Halloran2008、Aronow与Samii2017、Ugander等2013；实验暴露、溢出及动态网络 | QUEUED_UNVERIFIED |
+| 1 | TH067 | 网络干扰下的随机化推断、精确检验与设计敏感性 | Rosenbaum 2007；Athey、Eckles与Imbens 2018；Bowers、Fredrickson与Panagopoulos 2013；需核验原作及适用边界 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| network interference / exposure mapping / graph cluster randomization | Ugander等2013、Aronow与Samii2017、Eckles等2017；全局政策效应、暴露错设、正概率、联合暴露概率及网络依赖 | 个体、群体、制度、历史、方法论 | 三份开放原作重要章节、两份原刊摘要，六项人工反例；无独立因果验证 |
+
+
 
 | autonomy / internalization / need satisfaction / cultural choice | Ryan与Deci2000、Deci与Ryan2000、Ryan与Connell1989、Deci等1994、Chirkov等2003、Iyengar与Lepper1999、Chen等2015；自愿认可、内摄与整合、文化选择的竞争机制 | 个体、群体、制度、历史、方法论 | 五份开放原刊指定章节与两份原刊摘要；1994表格三项近似核算、三项人工反例；无独立长期因果验证 |
 
