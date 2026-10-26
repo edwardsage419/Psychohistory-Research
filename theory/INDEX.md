@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH064，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH065，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -114,11 +114,13 @@
 
 | TH064 | 家庭、同伴与代际价值社会化的竞争机制 | Harris1995原刊大学转录与Knafo/Schwartz2003公开原刊正文直接审读；Grusec/Goodnow1994、Kohn/Schooler1982、Grusec等2000、Knafo/Schwartz2004原刊摘要核验；14项条件命题、1项发表表格算术核对及5项人工反例，未做独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH064_FAMILY_PEER_INTERGENERATIONAL_VALUE_SOCIALIZATION_2026-10-27.md) |
 
+| TH065 | 同伴网络选择、影响与共同冲击的因果识别 | Aral等2009、Shalizi与Thomas2011、Bramoullé等2009开放原刊重点章节直接审读；Kandel1978、Manski1993、Sacerdote2000/2001原始摘要核验；15项命题、6项人工识别审计，无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH065_PEER_SELECTION_INFLUENCE_COMMON_SHOCK_IDENTIFICATION_2026-10-27.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH065 | 同伴网络选择、影响与共同冲击的因果识别 | Kandel1978、Aral等2009、Shalizi与Thomas2011原作待核验；网络干扰、共同环境与潜在同质性 | QUEUED_UNVERIFIED |
+| 1 | TH066 | 网络随机化、干扰暴露映射与同伴影响实验的外推边界 | Hudgens与Halloran2008、Aronow与Samii2017、Ugander等2013；实验暴露、溢出及动态网络 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -359,6 +361,8 @@
 | longitudinal value stability / socialization / response shift | Bardi等2009/2014、Bardi与Goodwin2011、Lake等2025、Verdam等2016；转折前自选择、进入后社会化、分位稳定性、测量尺度变化与失访选择 | 个体、群体、制度、历史、方法论 | 两份开放正式原刊指定章节及五份原刊摘要或机构书目；发表汇总数值核算、人工欠识别反例；无独立因果或预测验证 |
 
 | family/peer socialization / value perception / common causes | Grusec与Goodnow1994、Knafo与Schwartz2003、Harris1995、Kohn与Schooler1982；感知与接受、同伴规范、家庭/职业共同环境的竞争解释 | 个体、群体、制度、历史、方法论 | 两份原作公开正文或转录直接审读，四份原刊摘要；发表表格算术与人工反例；长期因果与跨文化外推未识别 |
+
+| peer selection / contagion / common shock / reflection | Kandel1978、Aral等2009、Shalizi与Thomas2011、Bramoullé等2009、Manski1993、Sacerdote2000/2001；择友、同伴影响、共同冲击、网络秩与随机分配的竞争识别 | 个体、群体、制度、历史、方法论 | 三份开放原刊重点章节与三份原始摘要，六项人工反例；匹配上界与结构识别均有条件，无独立因果复验 |
 
 ## C 与 D 研究日历（候选方法储备）
 
