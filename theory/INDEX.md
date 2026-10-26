@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH049，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH050，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -91,11 +91,13 @@
 
 | TH049 | 预测加工、主动推断与神经机制竞争 | Clark2013原刊重点章节、Aitchison与Lengyel2017作者全文直接审读；Friston2010、de Lange等2018、Kok等2012、Heilbron与Chait2018原刊或机构摘要；十项命题、四项人工反例，原始神经数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH049_PREDICTIVE_PROCESSING_ACTIVE_INFERENCE_NEURAL_EVIDENCE_2026-10-26.md) |
 
+| TH050 | 预测编码反证设计、适应与注意竞争 | Heilbron与Chait2018、de Lange等2018、Todorovic与de Lange2012、Kok等2012 Neuron与Cerebral Cortex开放原文重点章节直接审读；十项命题、四项人工识别反例和16条件候选设计，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH050_PREDICTIVE_CODING_FALSIFICATION_ADAPTATION_ATTENTION_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH050 | 预测加工的反证设计、感觉适应与注意竞争 | Heilbron与Chait 2018；de Lange等2018；Kok等2012 | QUEUED_UNVERIFIED |
+| 1 | TH051 | 主动推断、反馈控制与强化学习的可区分预测 | Friston主动推断原作；Todorov与Jordan最优反馈控制；强化学习竞争机制 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
