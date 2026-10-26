@@ -1,0 +1,21 @@
+# B轨R196新增脚本的归档回放与收据对齐更正
+
+日期：2026-10-27。状态：PASS_BOUNDED_IN_PROCESS_ARCHIVED_FUNCTION_REPLAY。此报告只补充同轮已完成的程序回放和修复，不改变冻结协议、原始输入、任何计算结果或R196正式结题状态。
+
+## 回放与精确对齐
+
+从main重新读取两份原始R196 JSON、R轨完整60条收据、B轨审计收据和两个已归档JavaScript脚本，直接编译归档脚本的算法函数并在隔离JavaScript执行环境运行。
+
+R脚本重建12个来源×5方法共60行，重新生成的JSON与远端机器收据逐字段、顺序和字符完全相同。B脚本重建180项精确比较、60项归一化与两项负对照计数，重新生成的JSON与远端B收据逐字段、顺序和字符完全相同。编译时去除Node.js脚本首行的shebang，以便用Function构造器进行独立环境语法检查；两个脚本主体均通过。这里是**已归档算法函数的隔离环境回放**，未声称已在GitHub Actions或完整Node.js命令行执行。
+
+R脚本Git blob cfe4b1297d8f3098096b6d651f74ec9090828b1c，R收据blob fa34c364fb9042d94bddaba6d63abf6e67cabc02。B修复后脚本blob 287e8f0c68a9bfb9c8fa4c823b135e77859ed8df，B收据blob 5755c5905b054d66a4f57e38df4aa45a0af0a98b。
+
+## 可追溯的修复
+
+B初次提交的脚本将输出字段main_receipt_blob_sha1保留为PENDING，而人工归档收据已填入实际blob身份。算法比较与科学数字正确，原始独立脚本直接执行时会造成输出JSON与归档JSON的元数据不一致。本轮在重新核对main HEAD、B脚本blob及写入权限后，用GitHub内容SHA条件更新，将该字段固定为已核验的fa34c364fb9042d94bddaba6d63abf6e67cabc02。修复提交4cd89154e81789a78d309e4ab5b2ea733dc18471，旧blob 9c8573e4313e2eca39d7e85a628a3b5ed0f87605，修复后blob 287e8f0c68a9bfb9c8fa4c823b135e77859ed8df。已完成修复后的再次回放，结果完全一致。没有修改其他工作流文件。
+
+## 索引与CI边界
+
+完整读取original239 v7.8交叉索引JSON，239个原目录条目，Git blob 36f24235901172642c46853298aebb421f1a3552；完整读取154条待核队列CSV，Git blob 3b96d46b3d88ccafd779a08509c3cfd0e435772f。二者保持原样。最近operations E030、theory TH064及market MKT061归档已检查，没有重做E030的R195全占有动态规划。
+
+本轮新增R196研究只属于人工E1，新增真人E2=0，历史E3=0，外部独立团队复现=0。GitHub Actions免费额度未独立核验，未主动运行CI。主动新增费用0。
