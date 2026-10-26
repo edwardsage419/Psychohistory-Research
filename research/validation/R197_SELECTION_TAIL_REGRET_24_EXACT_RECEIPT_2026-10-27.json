@@ -1,0 +1,1290 @@
+{
+  "schema": "R197_selection_tail_regret_v1",
+  "source_csv_blob": "ed8b150677dd5213e4798154162135245e1aa18a",
+  "source_original_blob": "53b47a5096243812551d3b38fe07bb17bddfe5fa",
+  "counts": {
+    "rows": 3888,
+    "worlds": 24,
+    "candidateChecks": 23328,
+    "selectedChecks": 7776,
+    "archiveChecks": 216
+  },
+  "worlds": [
+    {
+      "source": "WHITE",
+      "T": 4,
+      "h": 1,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "4793/32768",
+      "RW_excess": "1/2",
+      "selected_minus_RW": "-11591/32768",
+      "P_excess_gt_quarter": "5/64",
+      "P_excess_gt_one": "3/128",
+      "P_worse_than_RW": "3/128",
+      "P_better_than_RW": "27/64",
+      "P_equal_RW": "71/128",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "25/32",
+          "paths": 55,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-23/50"
+        },
+        "AR1": {
+          "probability": "9/64",
+          "paths": 17,
+          "conditional_excess": "1/9",
+          "conditional_vs_RW": "-1/3"
+        },
+        "RW": {
+          "probability": "7/128",
+          "paths": 6,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "1/64",
+          "paths": 2,
+          "conditional_excess": "4",
+          "conditional_vs_RW": "3"
+        },
+        "DIFF_AR1": {
+          "probability": "0",
+          "paths": 0,
+          "conditional_excess": null,
+          "conditional_vs_RW": null
+        },
+        "DIFF_MA1": {
+          "probability": "1/128",
+          "paths": 1,
+          "conditional_excess": "441/256",
+          "conditional_vs_RW": "185/256"
+        }
+      }
+    },
+    {
+      "source": "WHITE",
+      "T": 4,
+      "h": 2,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "6969/32768",
+      "RW_excess": "1/2",
+      "selected_minus_RW": "-9415/32768",
+      "P_excess_gt_quarter": "5/64",
+      "P_excess_gt_one": "3/128",
+      "P_worse_than_RW": "3/128",
+      "P_better_than_RW": "27/64",
+      "P_equal_RW": "71/128",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "25/32",
+          "paths": 55,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-23/50"
+        },
+        "AR1": {
+          "probability": "9/64",
+          "paths": 17,
+          "conditional_excess": "1/36",
+          "conditional_vs_RW": "-5/12"
+        },
+        "RW": {
+          "probability": "7/128",
+          "paths": 6,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "1/64",
+          "paths": 2,
+          "conditional_excess": "9",
+          "conditional_vs_RW": "8"
+        },
+        "DIFF_AR1": {
+          "probability": "0",
+          "paths": 0,
+          "conditional_excess": null,
+          "conditional_vs_RW": null
+        },
+        "DIFF_MA1": {
+          "probability": "1/128",
+          "paths": 1,
+          "conditional_excess": "441/256",
+          "conditional_vs_RW": "185/256"
+        }
+      }
+    },
+    {
+      "source": "WHITE",
+      "T": 5,
+      "h": 1,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "20129/262144",
+      "RW_excess": "1/2",
+      "selected_minus_RW": "-110943/262144",
+      "P_excess_gt_quarter": "23/512",
+      "P_excess_gt_one": "3/256",
+      "P_worse_than_RW": "3/256",
+      "P_better_than_RW": "235/512",
+      "P_equal_RW": "271/512",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "393/512",
+          "paths": 173,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-187/393"
+        },
+        "AR1": {
+          "probability": "3/16",
+          "paths": 56,
+          "conditional_excess": "23/192",
+          "conditional_vs_RW": "-23/64"
+        },
+        "RW": {
+          "probability": "15/512",
+          "paths": 8,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "0",
+          "paths": 0,
+          "conditional_excess": null,
+          "conditional_vs_RW": null
+        },
+        "DIFF_AR1": {
+          "probability": "1/256",
+          "paths": 2,
+          "conditional_excess": "9/4",
+          "conditional_vs_RW": "5/4"
+        },
+        "DIFF_MA1": {
+          "probability": "3/256",
+          "paths": 4,
+          "conditional_excess": "1419/1024",
+          "conditional_vs_RW": "395/1024"
+        }
+      }
+    },
+    {
+      "source": "WHITE",
+      "T": 5,
+      "h": 2,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "16545/262144",
+      "RW_excess": "1/2",
+      "selected_minus_RW": "-114527/262144",
+      "P_excess_gt_quarter": "23/512",
+      "P_excess_gt_one": "3/256",
+      "P_worse_than_RW": "3/256",
+      "P_better_than_RW": "235/512",
+      "P_equal_RW": "271/512",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "393/512",
+          "paths": 173,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-187/393"
+        },
+        "AR1": {
+          "probability": "3/16",
+          "paths": 56,
+          "conditional_excess": "23/768",
+          "conditional_vs_RW": "-115/256"
+        },
+        "RW": {
+          "probability": "15/512",
+          "paths": 8,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "0",
+          "paths": 0,
+          "conditional_excess": null,
+          "conditional_vs_RW": null
+        },
+        "DIFF_AR1": {
+          "probability": "1/256",
+          "paths": 2,
+          "conditional_excess": "49/16",
+          "conditional_vs_RW": "33/16"
+        },
+        "DIFF_MA1": {
+          "probability": "3/256",
+          "paths": 4,
+          "conditional_excess": "1419/1024",
+          "conditional_vs_RW": "395/1024"
+        }
+      }
+    },
+    {
+      "source": "AR1",
+      "T": 4,
+      "h": 1,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "16225/65536",
+      "RW_excess": "85/512",
+      "selected_minus_RW": "5345/65536",
+      "P_excess_gt_quarter": "55/256",
+      "P_excess_gt_one": "5/128",
+      "P_worse_than_RW": "7/64",
+      "P_better_than_RW": "97/256",
+      "P_equal_RW": "131/256",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "53/128",
+          "paths": 33,
+          "conditional_excess": "1549/13568",
+          "conditional_vs_RW": "0"
+        },
+        "AR1": {
+          "probability": "85/256",
+          "paths": 22,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-1681/21760"
+        },
+        "RW": {
+          "probability": "17/256",
+          "paths": 7,
+          "conditional_excess": "2129/4352",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "5/128",
+          "paths": 5,
+          "conditional_excess": "171/64",
+          "conditional_vs_RW": "9/4"
+        },
+        "DIFF_AR1": {
+          "probability": "1/16",
+          "paths": 7,
+          "conditional_excess": "3/4",
+          "conditional_vs_RW": "441/2048"
+        },
+        "DIFF_MA1": {
+          "probability": "11/128",
+          "paths": 7,
+          "conditional_excess": "543/2816",
+          "conditional_vs_RW": "3/44"
+        }
+      }
+    },
+    {
+      "source": "AR1",
+      "T": 4,
+      "h": 2,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "146505/262144",
+      "RW_excess": "765/2048",
+      "selected_minus_RW": "48585/262144",
+      "P_excess_gt_quarter": "45/256",
+      "P_excess_gt_one": "33/256",
+      "P_worse_than_RW": "7/64",
+      "P_better_than_RW": "187/256",
+      "P_equal_RW": "41/256",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "53/128",
+          "paths": 33,
+          "conditional_excess": "1549/54272",
+          "conditional_vs_RW": "-1549/6784"
+        },
+        "AR1": {
+          "probability": "85/256",
+          "paths": 22,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-15129/87040"
+        },
+        "RW": {
+          "probability": "17/256",
+          "paths": 7,
+          "conditional_excess": "19161/17408",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "5/128",
+          "paths": 5,
+          "conditional_excess": "2227/256",
+          "conditional_vs_RW": "31/4"
+        },
+        "DIFF_AR1": {
+          "probability": "1/16",
+          "paths": 7,
+          "conditional_excess": "27/16",
+          "conditional_vs_RW": "3969/8192"
+        },
+        "DIFF_MA1": {
+          "probability": "11/128",
+          "paths": 7,
+          "conditional_excess": "3759/11264",
+          "conditional_vs_RW": "75/1408"
+        }
+      }
+    },
+    {
+      "source": "AR1",
+      "T": 5,
+      "h": 1,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "182701/1048576",
+      "RW_excess": "341/2048",
+      "selected_minus_RW": "8109/1048576",
+      "P_excess_gt_quarter": "97/512",
+      "P_excess_gt_one": "5/512",
+      "P_worse_than_RW": "85/1024",
+      "P_better_than_RW": "57/128",
+      "P_equal_RW": "483/1024",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "191/512",
+          "paths": 93,
+          "conditional_excess": "20805/195584",
+          "conditional_vs_RW": "0"
+        },
+        "AR1": {
+          "probability": "101/256",
+          "paths": 85,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-2883/25856"
+        },
+        "RW": {
+          "probability": "85/1024",
+          "paths": 24,
+          "conditional_excess": "8117/17408",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "5/512",
+          "paths": 5,
+          "conditional_excess": "3253/1024",
+          "conditional_vs_RW": "41/16"
+        },
+        "DIFF_AR1": {
+          "probability": "23/512",
+          "paths": 12,
+          "conditional_excess": "15/23",
+          "conditional_vs_RW": "3875/23552"
+        },
+        "DIFF_MA1": {
+          "probability": "97/1024",
+          "paths": 24,
+          "conditional_excess": "4657/12416",
+          "conditional_vs_RW": "20247/99328"
+        }
+      }
+    },
+    {
+      "source": "AR1",
+      "T": 5,
+      "h": 2,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "672495/2097152",
+      "RW_excess": "3069/8192",
+      "selected_minus_RW": "-113169/2097152",
+      "P_excess_gt_quarter": "85/512",
+      "P_excess_gt_one": "59/512",
+      "P_worse_than_RW": "85/1024",
+      "P_better_than_RW": "403/512",
+      "P_equal_RW": "133/1024",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "191/512",
+          "paths": 93,
+          "conditional_excess": "20805/782336",
+          "conditional_vs_RW": "-20805/97792"
+        },
+        "AR1": {
+          "probability": "101/256",
+          "paths": 85,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-25947/103424"
+        },
+        "RW": {
+          "probability": "85/1024",
+          "paths": 24,
+          "conditional_excess": "73053/69632",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "5/512",
+          "paths": 5,
+          "conditional_excess": "41245/4096",
+          "conditional_vs_RW": "139/16"
+        },
+        "DIFF_AR1": {
+          "probability": "23/512",
+          "paths": 12,
+          "conditional_excess": "135/92",
+          "conditional_vs_RW": "34875/94208"
+        },
+        "DIFF_MA1": {
+          "probability": "97/1024",
+          "paths": 24,
+          "conditional_excess": "249185/397312",
+          "conditional_vs_RW": "12013/49664"
+        }
+      }
+    },
+    {
+      "source": "RW",
+      "T": 4,
+      "h": 1,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "8337/32768",
+      "RW_excess": "0",
+      "selected_minus_RW": "8337/32768",
+      "P_excess_gt_quarter": "31/128",
+      "P_excess_gt_one": "0",
+      "P_worse_than_RW": "13/32",
+      "P_better_than_RW": "0",
+      "P_equal_RW": "19/32",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "19/64",
+          "paths": 21,
+          "conditional_excess": "8/19",
+          "conditional_vs_RW": "8/19"
+        },
+        "AR1": {
+          "probability": "17/128",
+          "paths": 11,
+          "conditional_excess": "5/68",
+          "conditional_vs_RW": "5/68"
+        },
+        "RW": {
+          "probability": "5/16",
+          "paths": 19,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "3/32",
+          "paths": 10,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "1"
+        },
+        "DIFF_AR1": {
+          "probability": "1/16",
+          "paths": 8,
+          "conditional_excess": "3/16",
+          "conditional_vs_RW": "3/16"
+        },
+        "DIFF_MA1": {
+          "probability": "13/128",
+          "paths": 12,
+          "conditional_excess": "465/3328",
+          "conditional_vs_RW": "465/3328"
+        }
+      }
+    },
+    {
+      "source": "RW",
+      "T": 4,
+      "h": 2,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "18433/32768",
+      "RW_excess": "0",
+      "selected_minus_RW": "18433/32768",
+      "P_excess_gt_quarter": "21/64",
+      "P_excess_gt_one": "3/32",
+      "P_worse_than_RW": "13/32",
+      "P_better_than_RW": "0",
+      "P_equal_RW": "19/32",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "19/64",
+          "paths": 21,
+          "conditional_excess": "8/19",
+          "conditional_vs_RW": "8/19"
+        },
+        "AR1": {
+          "probability": "17/128",
+          "paths": 11,
+          "conditional_excess": "45/272",
+          "conditional_vs_RW": "45/272"
+        },
+        "RW": {
+          "probability": "5/16",
+          "paths": 19,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "3/32",
+          "paths": 10,
+          "conditional_excess": "4",
+          "conditional_vs_RW": "4"
+        },
+        "DIFF_AR1": {
+          "probability": "1/16",
+          "paths": 8,
+          "conditional_excess": "27/64",
+          "conditional_vs_RW": "27/64"
+        },
+        "DIFF_MA1": {
+          "probability": "13/128",
+          "paths": 12,
+          "conditional_excess": "465/3328",
+          "conditional_vs_RW": "465/3328"
+        }
+      }
+    },
+    {
+      "source": "RW",
+      "T": 5,
+      "h": 1,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "90259/524288",
+      "RW_excess": "0",
+      "selected_minus_RW": "90259/524288",
+      "P_excess_gt_quarter": "37/256",
+      "P_excess_gt_one": "0",
+      "P_worse_than_RW": "13/32",
+      "P_better_than_RW": "0",
+      "P_equal_RW": "19/32",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "13/64",
+          "paths": 43,
+          "conditional_excess": "11/26",
+          "conditional_vs_RW": "11/26"
+        },
+        "AR1": {
+          "probability": "53/256",
+          "paths": 50,
+          "conditional_excess": "23/212",
+          "conditional_vs_RW": "23/212"
+        },
+        "RW": {
+          "probability": "169/512",
+          "paths": 67,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "9/256",
+          "paths": 15,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "1"
+        },
+        "DIFF_AR1": {
+          "probability": "5/64",
+          "paths": 23,
+          "conditional_excess": "5/32",
+          "conditional_vs_RW": "5/32"
+        },
+        "DIFF_MA1": {
+          "probability": "75/512",
+          "paths": 45,
+          "conditional_excess": "573/5120",
+          "conditional_vs_RW": "573/5120"
+        }
+      }
+    },
+    {
+      "source": "RW",
+      "T": 5,
+      "h": 2,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "168275/524288",
+      "RW_excess": "0",
+      "selected_minus_RW": "168275/524288",
+      "P_excess_gt_quarter": "145/512",
+      "P_excess_gt_one": "9/256",
+      "P_worse_than_RW": "13/32",
+      "P_better_than_RW": "0",
+      "P_equal_RW": "19/32",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "13/64",
+          "paths": 43,
+          "conditional_excess": "11/26",
+          "conditional_vs_RW": "11/26"
+        },
+        "AR1": {
+          "probability": "53/256",
+          "paths": 50,
+          "conditional_excess": "207/848",
+          "conditional_vs_RW": "207/848"
+        },
+        "RW": {
+          "probability": "169/512",
+          "paths": 67,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "9/256",
+          "paths": 15,
+          "conditional_excess": "4",
+          "conditional_vs_RW": "4"
+        },
+        "DIFF_AR1": {
+          "probability": "5/64",
+          "paths": 23,
+          "conditional_excess": "45/128",
+          "conditional_vs_RW": "45/128"
+        },
+        "DIFF_MA1": {
+          "probability": "75/512",
+          "paths": 45,
+          "conditional_excess": "573/5120",
+          "conditional_vs_RW": "573/5120"
+        }
+      }
+    },
+    {
+      "source": "DRIFT",
+      "T": 4,
+      "h": 1,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "6349/32768",
+      "RW_excess": "1",
+      "selected_minus_RW": "-26419/32768",
+      "P_excess_gt_quarter": "45/256",
+      "P_excess_gt_one": "1/128",
+      "P_worse_than_RW": "1/128",
+      "P_better_than_RW": "109/128",
+      "P_equal_RW": "9/64",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "3/256",
+          "paths": 2,
+          "conditional_excess": "3",
+          "conditional_vs_RW": "2"
+        },
+        "AR1": {
+          "probability": "0",
+          "paths": 0,
+          "conditional_excess": null,
+          "conditional_vs_RW": null
+        },
+        "RW": {
+          "probability": "19/256",
+          "paths": 8,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "211/256",
+          "paths": 64,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-1"
+        },
+        "DIFF_AR1": {
+          "probability": "7/128",
+          "paths": 3,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "0"
+        },
+        "DIFF_MA1": {
+          "probability": "9/256",
+          "paths": 4,
+          "conditional_excess": "973/1152",
+          "conditional_vs_RW": "-179/1152"
+        }
+      }
+    },
+    {
+      "source": "DRIFT",
+      "T": 4,
+      "h": 2,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "23949/32768",
+      "RW_excess": "4",
+      "selected_minus_RW": "-107123/32768",
+      "P_excess_gt_quarter": "45/256",
+      "P_excess_gt_one": "45/256",
+      "P_worse_than_RW": "1/128",
+      "P_better_than_RW": "109/128",
+      "P_equal_RW": "9/64",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "3/256",
+          "paths": 2,
+          "conditional_excess": "22/3",
+          "conditional_vs_RW": "10/3"
+        },
+        "AR1": {
+          "probability": "0",
+          "paths": 0,
+          "conditional_excess": null,
+          "conditional_vs_RW": null
+        },
+        "RW": {
+          "probability": "19/256",
+          "paths": 8,
+          "conditional_excess": "4",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "211/256",
+          "paths": 64,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-4"
+        },
+        "DIFF_AR1": {
+          "probability": "7/128",
+          "paths": 3,
+          "conditional_excess": "4",
+          "conditional_vs_RW": "0"
+        },
+        "DIFF_MA1": {
+          "probability": "9/256",
+          "paths": 4,
+          "conditional_excess": "4237/1152",
+          "conditional_vs_RW": "-371/1152"
+        }
+      }
+    },
+    {
+      "source": "DRIFT",
+      "T": 5,
+      "h": 1,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "87747/524288",
+      "RW_excess": "1",
+      "selected_minus_RW": "-436541/524288",
+      "P_excess_gt_quarter": "163/1024",
+      "P_excess_gt_one": "9/512",
+      "P_worse_than_RW": "9/512",
+      "P_better_than_RW": "887/1024",
+      "P_equal_RW": "119/1024",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "1/256",
+          "paths": 3,
+          "conditional_excess": "9/2",
+          "conditional_vs_RW": "7/2"
+        },
+        "AR1": {
+          "probability": "0",
+          "paths": 0,
+          "conditional_excess": null,
+          "conditional_vs_RW": null
+        },
+        "RW": {
+          "probability": "71/1024",
+          "paths": 27,
+          "conditional_excess": "1",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "853/1024",
+          "paths": 191,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-1"
+        },
+        "DIFF_AR1": {
+          "probability": "49/1024",
+          "paths": 10,
+          "conditional_excess": "46/49",
+          "conditional_vs_RW": "-3/49"
+        },
+        "DIFF_MA1": {
+          "probability": "47/1024",
+          "paths": 12,
+          "conditional_excess": "18627/24064",
+          "conditional_vs_RW": "-5437/24064"
+        }
+      }
+    },
+    {
+      "source": "DRIFT",
+      "T": 5,
+      "h": 2,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "343491/524288",
+      "RW_excess": "4",
+      "selected_minus_RW": "-1753661/524288",
+      "P_excess_gt_quarter": "171/1024",
+      "P_excess_gt_one": "171/1024",
+      "P_worse_than_RW": "9/512",
+      "P_better_than_RW": "887/1024",
+      "P_equal_RW": "119/1024",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "1/256",
+          "paths": 3,
+          "conditional_excess": "19/2",
+          "conditional_vs_RW": "11/2"
+        },
+        "AR1": {
+          "probability": "0",
+          "paths": 0,
+          "conditional_excess": null,
+          "conditional_vs_RW": null
+        },
+        "RW": {
+          "probability": "71/1024",
+          "paths": 27,
+          "conditional_excess": "4",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "853/1024",
+          "paths": 191,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-4"
+        },
+        "DIFF_AR1": {
+          "probability": "49/1024",
+          "paths": 10,
+          "conditional_excess": "745/196",
+          "conditional_vs_RW": "-39/196"
+        },
+        "DIFF_MA1": {
+          "probability": "47/1024",
+          "paths": 12,
+          "conditional_excess": "83267/24064",
+          "conditional_vs_RW": "-12989/24064"
+        }
+      }
+    },
+    {
+      "source": "DIFF_AR1",
+      "T": 4,
+      "h": 1,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "9261/32768",
+      "RW_excess": "85/512",
+      "selected_minus_RW": "3821/32768",
+      "P_excess_gt_quarter": "55/256",
+      "P_excess_gt_one": "23/256",
+      "P_worse_than_RW": "15/64",
+      "P_better_than_RW": "153/256",
+      "P_equal_RW": "43/256",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "19/128",
+          "paths": 7,
+          "conditional_excess": "5585/4864",
+          "conditional_vs_RW": "1"
+        },
+        "AR1": {
+          "probability": "1/8",
+          "paths": 11,
+          "conditional_excess": "3/16",
+          "conditional_vs_RW": "15/128"
+        },
+        "RW": {
+          "probability": "17/256",
+          "paths": 9,
+          "conditional_excess": "437/4352",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "51/256",
+          "paths": 19,
+          "conditional_excess": "1721/4352",
+          "conditional_vs_RW": "53/408"
+        },
+        "DIFF_AR1": {
+          "probability": "21/64",
+          "paths": 21,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-1895/10752"
+        },
+        "DIFF_MA1": {
+          "probability": "17/128",
+          "paths": 14,
+          "conditional_excess": "27/1088",
+          "conditional_vs_RW": "-7/64"
+        }
+      }
+    },
+    {
+      "source": "DIFF_AR1",
+      "T": 4,
+      "h": 2,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "93241/131072",
+      "RW_excess": "765/2048",
+      "selected_minus_RW": "44281/131072",
+      "P_excess_gt_quarter": "43/128",
+      "P_excess_gt_one": "65/256",
+      "P_worse_than_RW": "17/64",
+      "P_better_than_RW": "145/256",
+      "P_equal_RW": "43/256",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "19/128",
+          "paths": 7,
+          "conditional_excess": "30929/19456",
+          "conditional_vs_RW": "3055/2432"
+        },
+        "AR1": {
+          "probability": "1/8",
+          "paths": 11,
+          "conditional_excess": "27/64",
+          "conditional_vs_RW": "135/512"
+        },
+        "RW": {
+          "probability": "17/256",
+          "paths": 9,
+          "conditional_excess": "3933/17408",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "51/256",
+          "paths": 19,
+          "conditional_excess": "34593/17408",
+          "conditional_vs_RW": "189/136"
+        },
+        "DIFF_AR1": {
+          "probability": "21/64",
+          "paths": 21,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-5685/14336"
+        },
+        "DIFF_MA1": {
+          "probability": "17/128",
+          "paths": 14,
+          "conditional_excess": "193/2176",
+          "conditional_vs_RW": "-29/136"
+        }
+      }
+    },
+    {
+      "source": "DIFF_AR1",
+      "T": 5,
+      "h": 1,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "200695/1048576",
+      "RW_excess": "341/2048",
+      "selected_minus_RW": "26103/1048576",
+      "P_excess_gt_quarter": "165/1024",
+      "P_excess_gt_one": "27/512",
+      "P_worse_than_RW": "3/16",
+      "P_better_than_RW": "337/512",
+      "P_equal_RW": "79/512",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "41/512",
+          "paths": 11,
+          "conditional_excess": "46723/41984",
+          "conditional_vs_RW": "317/328"
+        },
+        "AR1": {
+          "probability": "31/256",
+          "paths": 32,
+          "conditional_excess": "9/31",
+          "conditional_vs_RW": "3051/15872"
+        },
+        "RW": {
+          "probability": "51/512",
+          "paths": 34,
+          "conditional_excess": "553/6528",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "141/1024",
+          "paths": 43,
+          "conditional_excess": "56657/144384",
+          "conditional_vs_RW": "257/2256"
+        },
+        "DIFF_AR1": {
+          "probability": "381/1024",
+          "paths": 69,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-66211/390144"
+        },
+        "DIFF_MA1": {
+          "probability": "97/512",
+          "paths": 54,
+          "conditional_excess": "305/12416",
+          "conditional_vs_RW": "-14847/99328"
+        }
+      }
+    },
+    {
+      "source": "DIFF_AR1",
+      "T": 5,
+      "h": 2,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "2151021/4194304",
+      "RW_excess": "3069/8192",
+      "selected_minus_RW": "579693/4194304",
+      "P_excess_gt_quarter": "139/512",
+      "P_excess_gt_one": "187/1024",
+      "P_worse_than_RW": "101/512",
+      "P_better_than_RW": "41/64",
+      "P_equal_RW": "83/512",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "41/512",
+          "paths": 11,
+          "conditional_excess": "259331/167936",
+          "conditional_vs_RW": "25501/20992"
+        },
+        "AR1": {
+          "probability": "31/256",
+          "paths": 32,
+          "conditional_excess": "81/124",
+          "conditional_vs_RW": "27459/63488"
+        },
+        "RW": {
+          "probability": "51/512",
+          "paths": 34,
+          "conditional_excess": "1659/8704",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "141/1024",
+          "paths": 43,
+          "conditional_excess": "378931/192512",
+          "conditional_vs_RW": "1009/752"
+        },
+        "DIFF_AR1": {
+          "probability": "381/1024",
+          "paths": 69,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-198633/520192"
+        },
+        "DIFF_MA1": {
+          "probability": "97/512",
+          "paths": 54,
+          "conditional_excess": "42079/397312",
+          "conditional_vs_RW": "-3547/12416"
+        }
+      }
+    },
+    {
+      "source": "DIFF_MA1",
+      "T": 4,
+      "h": 1,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "1293/4096",
+      "RW_excess": "1/8",
+      "selected_minus_RW": "781/4096",
+      "P_excess_gt_quarter": "41/256",
+      "P_excess_gt_one": "23/256",
+      "P_worse_than_RW": "63/256",
+      "P_better_than_RW": "65/256",
+      "P_equal_RW": "1/2",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "19/128",
+          "paths": 7,
+          "conditional_excess": "45/38",
+          "conditional_vs_RW": "79/76"
+        },
+        "AR1": {
+          "probability": "1/8",
+          "paths": 11,
+          "conditional_excess": "53/256",
+          "conditional_vs_RW": "21/256"
+        },
+        "RW": {
+          "probability": "5/64",
+          "paths": 12,
+          "conditional_excess": "1/5",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "33/256",
+          "paths": 14,
+          "conditional_excess": "31/44",
+          "conditional_vs_RW": "6/11"
+        },
+        "DIFF_AR1": {
+          "probability": "37/256",
+          "paths": 10,
+          "conditional_excess": "31/592",
+          "conditional_vs_RW": "-29/592"
+        },
+        "DIFF_MA1": {
+          "probability": "3/8",
+          "paths": 27,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-19/192"
+        }
+      }
+    },
+    {
+      "source": "DIFF_MA1",
+      "T": 4,
+      "h": 2,
+      "paths": 81,
+      "probability_mass": "1",
+      "selected_excess": "11057/16384",
+      "RW_excess": "1/8",
+      "selected_minus_RW": "9009/16384",
+      "P_excess_gt_quarter": "17/64",
+      "P_excess_gt_one": "59/256",
+      "P_worse_than_RW": "45/128",
+      "P_better_than_RW": "7/32",
+      "P_equal_RW": "55/128",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "19/128",
+          "paths": 7,
+          "conditional_excess": "45/38",
+          "conditional_vs_RW": "79/76"
+        },
+        "AR1": {
+          "probability": "1/8",
+          "paths": 11,
+          "conditional_excess": "305/1024",
+          "conditional_vs_RW": "177/1024"
+        },
+        "RW": {
+          "probability": "5/64",
+          "paths": 12,
+          "conditional_excess": "1/5",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "33/256",
+          "paths": 14,
+          "conditional_excess": "13/4",
+          "conditional_vs_RW": "34/11"
+        },
+        "DIFF_AR1": {
+          "probability": "37/256",
+          "paths": 10,
+          "conditional_excess": "447/2368",
+          "conditional_vs_RW": "207/2368"
+        },
+        "DIFF_MA1": {
+          "probability": "3/8",
+          "paths": 27,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-19/192"
+        }
+      }
+    },
+    {
+      "source": "DIFF_MA1",
+      "T": 5,
+      "h": 1,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "3707/16384",
+      "RW_excess": "1/8",
+      "selected_minus_RW": "1659/16384",
+      "P_excess_gt_quarter": "33/256",
+      "P_excess_gt_one": "3/64",
+      "P_worse_than_RW": "99/512",
+      "P_better_than_RW": "307/1024",
+      "P_equal_RW": "519/1024",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "41/512",
+          "paths": 11,
+          "conditional_excess": "189/164",
+          "conditional_vs_RW": "83/82"
+        },
+        "AR1": {
+          "probability": "33/256",
+          "paths": 36,
+          "conditional_excess": "155/528",
+          "conditional_vs_RW": "25/176"
+        },
+        "RW": {
+          "probability": "49/512",
+          "paths": 34,
+          "conditional_excess": "29/196",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "117/1024",
+          "paths": 36,
+          "conditional_excess": "103/156",
+          "conditional_vs_RW": "20/39"
+        },
+        "DIFF_AR1": {
+          "probability": "149/1024",
+          "paths": 33,
+          "conditional_excess": "107/2384",
+          "conditional_vs_RW": "-129/2384"
+        },
+        "DIFF_MA1": {
+          "probability": "223/512",
+          "paths": 93,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-25/223"
+        }
+      }
+    },
+    {
+      "source": "DIFF_MA1",
+      "T": 5,
+      "h": 2,
+      "paths": 243,
+      "probability_mass": "1",
+      "selected_excess": "35927/65536",
+      "RW_excess": "1/8",
+      "selected_minus_RW": "27735/65536",
+      "P_excess_gt_quarter": "115/512",
+      "P_excess_gt_one": "195/1024",
+      "P_worse_than_RW": "37/128",
+      "P_better_than_RW": "17/64",
+      "P_equal_RW": "57/128",
+      "by_selected_model": {
+        "WHITE": {
+          "probability": "41/512",
+          "paths": 11,
+          "conditional_excess": "189/164",
+          "conditional_vs_RW": "83/82"
+        },
+        "AR1": {
+          "probability": "33/256",
+          "paths": 36,
+          "conditional_excess": "911/2112",
+          "conditional_vs_RW": "197/704"
+        },
+        "RW": {
+          "probability": "49/512",
+          "paths": 34,
+          "conditional_excess": "29/196",
+          "conditional_vs_RW": "0"
+        },
+        "DRIFT": {
+          "probability": "117/1024",
+          "paths": 36,
+          "conditional_excess": "165/52",
+          "conditional_vs_RW": "118/39"
+        },
+        "DIFF_AR1": {
+          "probability": "149/1024",
+          "paths": 33,
+          "conditional_excess": "1547/9536",
+          "conditional_vs_RW": "603/9536"
+        },
+        "DIFF_MA1": {
+          "probability": "223/512",
+          "paths": 93,
+          "conditional_excess": "0",
+          "conditional_vs_RW": "-25/223"
+        }
+      }
+    }
+  ],
+  "evidence": "E1_INTERNAL_ARTIFICIAL",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replication": 0
+}
