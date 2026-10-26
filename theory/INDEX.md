@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH061，C003 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH062，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -109,11 +109,13 @@
 | TH060 | 绩效奖励、内在动机与长期心理适应 | Deci1971、Gneezy与Rustichini2000原刊选页及Frey与Jegen2000 CESifo原始工作论文直接审读；Deci等1999、Cameron与Pierce1994、Cameron等2001元分析摘要核验；12项条件命题、5项表格复算及人工反例，未做真实数据复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH060_REWARDS_INTRINSIC_MOTIVATION_LONG_TERM_ADAPTATION_2026-10-26.md) |
 | TH061 | 自我决定、目标内化与心理需要的跨情境边界 | Ryan与Deci2000、Deci与Ryan2000、Ryan与Connell1989、Deci等1994、Chirkov等2003开放原刊直接审读；Iyengar与Lepper1999、Chen等2015原刊摘要；14项条件命题、3项发表汇总表核算及3项人工反例，无独立真实数据复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH061_SELF_DETERMINATION_INTERNALIZATION_CROSS_CULTURAL_2026-10-26.md) |
 
+| TH062 | 目标内容、价值冲突与自我一致目标的长期适应 | Sheldon与Elliot1999开放原刊指定页及Schwartz2012开放原文直接审读；Kasser与Ryan1993/1996、Schwartz1992原刊摘要和书目核验；12项条件性命题、4项人工反例，因果未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH062_GOAL_CONTENT_VALUE_CONFLICT_SELF_CONCORDANCE_2026-10-27.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH062 | 目标内容、价值冲突与自我一致目标的长期适应 | Kasser与Ryan1993/1996、Sheldon与Elliot1999、Schwartz1992、Carver与Scheier原始研究，原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH063 | 价值优先序的纵向稳定性、社会化与人生转折中的响应转移 | Schwartz、Bardi、Goodwin、Rokeach相关原始纵向研究，原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -350,16 +352,18 @@
 
 | performative prediction / causal transportability / off-policy evaluation | Perdomo等2020、Miller等2021、Pearl与Bareinboim2014、Jiang与Li2016、Kallus与Uehara2020；稳定点与风险最优、目标总体迁移、支持集与序贯DR | 个体、群体、制度、历史、方法论 | 五份开放原作指定章节、六项人工反例；无独立实证 |
 
+| goal self-concordance / value priority conflict | Sheldon与Elliot1999、Schwartz1992/2012、Kasser与Ryan1996；目标内容与理由、价值张力、需要满足及纵向福祉关联 | 个体、群体、制度、历史 | Sheldon1999与Schwartz2012开放原刊选段已审，Kasser1996摘要；无独立因果复验 |
+
 ## C 与 D 研究日历（候选方法储备）
 
-研究日期：2026-10-26；研究周：2026-W44。
+研究日期：2026-10-27；研究周：2026-W44。
 
 | 子流程 | 当前完成记录 | 研究性质 | 下一项 |
 | --- | --- | --- | --- |
-| C 每日人生决策测量与因果方法 | [C003 MNAR 缺失与纵向敏感性界限](../research/decision_methods/C003_MNAR_SELECTION_LONGITUDINAL_BOUNDS_2026-10-26.md)；[C002 前日记录](../research/decision_methods/C002_LONGITUDINAL_INVARIANCE_RESPONSE_SHIFT_2026-10-25.md) | 2026-10-26 完成 Rubin、Little、Manski 原作书目核验，National Academies 原章深读、可核算的部分识别界限与敏感性验证清单；无私人数据 | 动态效用权重、多目标偏序与鲁棒决策 |
+| C 每日人生决策测量与因果方法 | [C004 动态效用、多目标偏序与鲁棒决策](../research/decision_methods/C004_DYNAMIC_UTILITY_MULTI_OBJECTIVE_ROBUST_2026-10-27.md)；[C003 前日记录](../research/decision_methods/C003_MNAR_SELECTION_LONGITUDINAL_BOUNDS_2026-10-26.md) | 2026-10-27 完成 Schwartz2012原刊深读、Keeney1971、Greco等2008、Lahdelma等1998、Strotz1955原刊摘要核验及5项人工计算；主观权重与不可识别性明确；无私人数据 | 多维测量不变性、跨维效用交互与N-of-1序贯因果识别条件 |
 | D 每周历史环境与长期情景 | [D002 工业电气化与制度适应](../research/historical_scenarios/D002_ELECTRIFICATION_INSTITUTIONAL_ADAPTATION_2026-W44.md)；[D001 上周记录](../research/historical_scenarios/D001_1918_INFLUENZA_SHOCK_2026-W43.md) | 2026-W44 完成 David & Wright 1999 开放原文、Atack 等 2022 原刊重点章节，竞争解释、历史识别与四情景研究；无未来事件预测 | 人口转型、迁移冲击与制度适应 |
 
-C 今日 C003 与 D 本周 D002 已形成独立候选方法笔记，后续同日/同周保持只读。C 与 D 不占用 R 系列验收工作。每轮先查 main 和研究日历，避免重复。
+C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日/同周保持只读。C 与 D 不占用 R 系列验收工作。每轮先查 main 和研究日历，避免重复。
 
 ## 持续执行规则
 
