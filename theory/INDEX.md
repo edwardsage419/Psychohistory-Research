@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH056，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH057，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -100,11 +100,13 @@
 
 | TH056 | 预测状态多步误差、环境漂移与行为反馈的外推边界 | Venkatraman等2015、Talvitie2017、Jiang等2016、Gama等2014开放原文重点章节直接审读；Ross与Bagnell2012等摘要核验；十项命题、六项人工反例，无真实数据复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH056_PSR_MULTISTEP_ERROR_DRIFT_POLICY_FEEDBACK_2026-10-26.md) |
 
+| TH057 | 策略干预、预测反馈、因果可迁移性与离策略评价 | Perdomo等2020、Miller等2021、Pearl与Bareinboim2014、Jiang与Li2016、Kallus与Uehara2020原文指定章节直接审读；12项条件命题、6项人工反例；无真实数据复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH057_PERFORMATIVE_PREDICTION_CAUSAL_TRANSPORT_OFF_POLICY_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH057 | 预测模型的策略干预、因果可迁移性与离策略评价 | performative prediction、因果MDP、分布鲁棒性原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH058 | 战略分类、Goodhart/Campbell指标反馈与制度激励 | Goodhart 1975、Campbell 1976/1979、Hardt等2016原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -326,6 +328,8 @@
 | rule-plus-exception / model identifiability | Nosofsky等1994摘要、Johansen与Palmeri2002摘要、Seitz等2025开放原刊；规则、实例、策略混合与迁移测试 | 个体、群体、制度、历史、方法论 | 2025原刊全文直接审读；1994与2002摘要；跨层因果未证 |
 
 | multistep rollout / drift / policy feedback | Venkatraman等2015、Talvitie2017、Jiang等2016、Gama等2014；多步误差、模型自生成输入、真实/虚拟漂移及策略反馈 | 个体、群体、制度、历史、方法论 | 四份开放原文重点章节、六项人工反例；无独立实证 |
+
+| performative prediction / causal transportability / off-policy evaluation | Perdomo等2020、Miller等2021、Pearl与Bareinboim2014、Jiang与Li2016、Kallus与Uehara2020；稳定点与风险最优、目标总体迁移、支持集与序贯DR | 个体、群体、制度、历史、方法论 | 五份开放原作指定章节、六项人工反例；无独立实证 |
 
 ## C 与 D 研究日历（候选方法储备）
 
