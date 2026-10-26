@@ -43,6 +43,6 @@ const audit=function audit(src,worlds,receipt){
   }
  }
  if(comparisons!==180||normalizations!==60||errors.length||positiveControl===0||wrongRiskCaught===0)throw Error("audit failed "+JSON.stringify({comparisons,normalizations,errors,positiveControl,wrongRiskCaught}));
- return {audit:"B_R196_DIRECT_LATENT_FUTURE_EVENT_ENUMERATION",evidence_class:"INTERNAL_E1_PROGRAMMATIC_RECOMPUTATION",source_sha1:[ "490c30eb8bd912afcb6e8d2d1cafacb1928b2f39","f39ccf402edbfbc11f9d8eb135efec6fff838b0e"],main_receipt_blob_sha1:"PENDING",source_worlds:12,method_rows:60,exact_comparisons:comparisons,normalizations,errors,negative_controls:{wrong_independent_new_latent_detected_sources:positiveControl,missing_future_zero_term_detected_methods:wrongRiskCaught},external_independent_replication:false};
+ return {audit:"B_R196_DIRECT_LATENT_FUTURE_EVENT_ENUMERATION",evidence_class:"INTERNAL_E1_PROGRAMMATIC_RECOMPUTATION",source_sha1:[ "490c30eb8bd912afcb6e8d2d1cafacb1928b2f39","f39ccf402edbfbc11f9d8eb135efec6fff838b0e"],main_receipt_blob_sha1:"fa34c364fb9042d94bddaba6d63abf6e67cabc02",source_worlds:12,method_rows:60,exact_comparisons:comparisons,normalizations,errors,negative_controls:{wrong_independent_new_latent_detected_sources:positiveControl,missing_future_zero_term_detected_methods:wrongRiskCaught},external_independent_replication:false};
 };
 process.stdout.write(JSON.stringify(audit(src,worlds,receipt),null,2)+"\n");
