@@ -1,0 +1,9 @@
+# A Pereda 2019 source followup: round duration and secondary license metadata
+
+Date 2026-10-26. Incremental source gate for `research/data_scout/PEREDA_2019_ZENODO_REPEATED_PGG_SOURCE_GATE_2026-10-26.md`. No participant rows or CSV bytes accessed.
+
+The original peer reviewed article (https://www.nature.com/articles/s41598-019-50964-w, DOI 10.1038/s41598-019-50964-w) states that each round lasted 24 hours, with approximately two weeks of repeated decisions. It describes 100 and 1000 participant group conditions and distinct information feedback treatments. Therefore the substantive observation time unit is a daily round, and feedback variables must be shifted to the previous round for prospective prediction. This paper is CC BY 4.0, which is not itself a license determination for the archived CSV.
+
+An institutional research metadata mirror at https://producciocientifica.uv.es/documentos/668fc446b9e7c03b01bd8645 explicitly labels the Zenodo dataset record CC BY 4.0. The accessible Zenodo landing page (https://zenodo.org/records/2590686) displays a License heading with no rendered value; record specific primary license confirmation remains pending. Record metadata from the institutional portal is secondary evidence for a likely CC BY 4.0 dataset license, pending authoritative primary verification. No redistribution attempted.
+
+The study's treatment structure includes very large interacting groups. Treating each participant as an independent held out experimental unit would be pseudoreplication if groupwide feedback is shared. Before a predictive E2 study, verify raw MD5, session/treatment assignment, group identifiers, temporal splits, group size, exposure timing and dropout. For the frozen R073 two player binary repeated PD transfer, this candidate remains incompatible. No E2 or E3 scoring.
