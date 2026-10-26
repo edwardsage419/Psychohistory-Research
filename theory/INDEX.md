@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH048，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH049，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -89,11 +89,13 @@
 | TH047 | 贝叶斯类别学习、理性模型与知识先验 | Griffiths等2007作者原文六页、Sanborn等2010作者接受稿前部直接审读；Anderson1991、Nosofsky1991摘要；九项命题与五项人工概率反例；原始实验未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH047_BAYESIAN_CATEGORIZATION_RATIONAL_MODELS_PRIORS_2026-10-26.md) |
 | TH048 | 贝叶斯认知可证伪性、先验识别、生态与资源理性 | Tauber等2017作者开放全文重点章节、Speekenbrink与Shanks2011原刊全文直接审读；Jones与Love2011、Todd与Gigerenzer2000、Lieder与Griffiths2020原作摘要；十项命题与四项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH048_BAYESIAN_FALSIFIABILITY_ECOLOGICAL_RESOURCE_RATIONALITY_2026-10-26.md) |
 
+| TH049 | 预测加工、主动推断与神经机制竞争 | Clark2013原刊重点章节、Aitchison与Lengyel2017作者全文直接审读；Friston2010、de Lange等2018、Kok等2012、Heilbron与Chait2018原刊或机构摘要；十项命题、四项人工反例，原始神经数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH049_PREDICTIVE_PROCESSING_ACTIVE_INFERENCE_NEURAL_EVIDENCE_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH049 | 预测加工、主动推断与感知认知的机制竞争 | Friston 2010；Clark 2013；de Lange等2018 | QUEUED_UNVERIFIED |
+| 1 | TH050 | 预测加工的反证设计、感觉适应与注意竞争 | Heilbron与Chait 2018；de Lange等2018；Kok等2012 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -101,6 +103,7 @@
 
 | 概念 | 初始来源与含义范围 | 理论层级 | 证据标记 |
 | --- | --- | --- | --- |
+| predictive coding / active inference / direct variable coding | Clark2013、Aitchison与Lengyel2017、Friston2010；误差表征、精度、行动与神经实现需分别检验 | 个体、群体、制度、历史、方法论 | 2013原刊重点章节、2017作者全文；其他摘要与人工反例，未复算神经数据 |
 | normative versus descriptive Bayesian cognition / falsifiability | Tauber等2017；Speekenbrink与Shanks2011；Jones与Love2011；预先约束先验、似然、效用与跨任务预测 | 个体、群体、制度、历史、方法论 | 2017作者全文重点章节、2011评论原刊全文；无本项目独立复算 |
 | ecological and resource rationality / process constraints | Todd与Gigerenzer2000；Lieder与Griffiths2020；环境匹配、计算成本和机制证据 | 个体、群体、制度、历史 | 原作者及机构摘要；人工反例，跨环境待验 |
 | Bayesian categorization / prior sensitivity / rational approximation | Griffiths等2007、Sanborn等2010；类别后验、簇数先验与近似推断分开审计 | 个体、群体、制度、历史、方法论 | 原文重点页与人工反例；无独立实证 |
