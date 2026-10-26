@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH050，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH051，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -92,12 +92,13 @@
 | TH049 | 预测加工、主动推断与神经机制竞争 | Clark2013原刊重点章节、Aitchison与Lengyel2017作者全文直接审读；Friston2010、de Lange等2018、Kok等2012、Heilbron与Chait2018原刊或机构摘要；十项命题、四项人工反例，原始神经数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH049_PREDICTIVE_PROCESSING_ACTIVE_INFERENCE_NEURAL_EVIDENCE_2026-10-26.md) |
 
 | TH050 | 预测编码反证设计、适应与注意竞争 | Heilbron与Chait2018、de Lange等2018、Todorovic与de Lange2012、Kok等2012 Neuron与Cerebral Cortex开放原文重点章节直接审读；十项命题、四项人工识别反例和16条件候选设计，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH050_PREDICTIVE_CODING_FALSIFICATION_ADAPTATION_ATTENTION_2026-10-26.md) |
+| TH051 | 主动推断、最优反馈控制与强化学习的机制竞争 | Todorov与Jordan2002作者原刊、Friston等2009开放原刊、Friston与Ao2012原刊、Sajid等2021及Millidge等2020作者稿重要章节直接审读；Friston等2012与Da Costa等2020摘要；十项命题与五项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH051_ACTIVE_INFERENCE_FEEDBACK_CONTROL_REINFORCEMENT_LEARNING_2026-10-26.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH051 | 主动推断、反馈控制与强化学习的可区分预测 | Friston主动推断原作；Todorov与Jordan最优反馈控制；强化学习竞争机制 | QUEUED_UNVERIFIED |
+| 1 | TH052 | 双重控制、实验性行动与信息价值的机制识别 | Feldbaum 1961；Wittenmark 1995；DeGroot 1962；Bayes-adaptive POMDP | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -105,6 +106,7 @@
 
 | 概念 | 初始来源与含义范围 | 理论层级 | 证据标记 |
 | --- | --- | --- | --- |
+| active inference / optimal feedback control / reinforcement learning | Todorov & Jordan 2002、Friston等2009、Sajid等2021、Millidge等2020；偏好先验、成本函数、信息价值、最小干预与机制可区分性 | 个体、群体、制度、历史、方法论 | 原刊与作者稿重要章节审读，五项人工反例；无原始数据复算或跨层实证 |
 | predictive coding / active inference / direct variable coding | Clark2013、Aitchison与Lengyel2017、Friston2010；误差表征、精度、行动与神经实现需分别检验 | 个体、群体、制度、历史、方法论 | 2013原刊重点章节、2017作者全文；其他摘要与人工反例，未复算神经数据 |
 | normative versus descriptive Bayesian cognition / falsifiability | Tauber等2017；Speekenbrink与Shanks2011；Jones与Love2011；预先约束先验、似然、效用与跨任务预测 | 个体、群体、制度、历史、方法论 | 2017作者全文重点章节、2011评论原刊全文；无本项目独立复算 |
 | ecological and resource rationality / process constraints | Todd与Gigerenzer2000；Lieder与Griffiths2020；环境匹配、计算成本和机制证据 | 个体、群体、制度、历史 | 原作者及机构摘要；人工反例，跨环境待验 |
