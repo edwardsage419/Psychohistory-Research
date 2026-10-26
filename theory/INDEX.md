@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH053，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH054，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -95,16 +95,20 @@
 | TH051 | 主动推断、最优反馈控制与强化学习的机制竞争 | Todorov与Jordan2002作者原刊、Friston等2009开放原刊、Friston与Ao2012原刊、Sajid等2021及Millidge等2020作者稿重要章节直接审读；Friston等2012与Da Costa等2020摘要；十项命题与五项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH051_ACTIVE_INFERENCE_FEEDBACK_CONTROL_REINFORCEMENT_LEARNING_2026-10-26.md) |
 | TH052 | 双重控制、实验性行动与信息价值的机制识别 | Ross等2007会议原文及2011 JMLR扩展原刊重点章节直接审读；Feldbaum1961、Wittenmark1995、DeGroot1962及Bayard与Schumitzky2010摘要与书目核验；十项条件性命题、五项人工反例，无真人实证 | THEORY_NOTE_BOUNDED | [研究笔记](TH052_DUAL_CONTROL_EXPERIMENTAL_ACTION_VALUE_OF_INFORMATION_2026-10-26.md) |
 | TH053 | 部分可观测可识别性、信息结构与鲁棒规划 | Kaelbling等1998与Osogami2015开放原刊直接审读；Smallwood与Sondik1973、Iyengar2005、Nilim与El Ghaoui2005原刊摘要；十项命题与五项人工反例，无真人验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH053_PARTIAL_OBSERVABILITY_IDENTIFIABILITY_INFORMATION_ROBUST_PLANNING_2026-10-26.md) |
+| TH054 | 有限记忆、预测状态表征与部分可观测认知的竞争模型 | Littman等2001、Singh等2004、Jaeger2000作者修订原文重点章节直接审读；McCallum1995与2004/2005学习论文摘要；十项命题、五项人工反例，无真人验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH054_FINITE_MEMORY_PREDICTIVE_STATE_REPRESENTATIONS_2026-10-26.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH054 | 有限记忆、预测状态表征与部分可观测认知的竞争模型 | Littman、Sutton与Singh2001；Singh、James与Rudary2004；预测状态表示原始研究 | QUEUED_UNVERIFIED |
+| 1 | TH055 | 预测状态学习误差、谱估计与离策略可识别性 | James与Singh2004；Wolfe等2005；谱学习原始研究 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| predictive state / core tests / system-dynamics matrix | Littman等2001、Singh等2004、Jaeger2000作者2017修订版；预测状态、线性秩、有限历史与隐藏状态的形式比较 | 个体、群体、制度、历史、方法论 | 三份开放原文重点章节、五项人工反例；无真人独立预测 |
+
 
 | belief state / observational equivalence / robust POMDP | Kaelbling等1998与Osogami2015开放原刊、Smallwood与Sondik1973摘要；状态估计充分性、模型识别与最坏情况信息价值需分开审查 | 个体、群体、制度、历史、方法论 | 两份开放原刊重点章节直接审读，五项人工反例；无真人验证 |
 
