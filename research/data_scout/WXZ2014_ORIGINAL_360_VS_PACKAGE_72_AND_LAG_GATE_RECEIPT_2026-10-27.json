@@ -1,0 +1,40 @@
+{
+  "schema": "WXZ2014_prescore_source_gate_v1",
+  "paper_full_population": {
+    "participants": 360,
+    "six_person_groups": 60,
+    "rounds": 300,
+    "source": "Wang Xu Zhou 2014 Scientific Reports 4:5830"
+  },
+  "stratEst_package_dataset": {
+    "documented_rows": 21600,
+    "documented_participants": 72,
+    "derived_six_person_groups_if_complete": 12,
+    "documented_rounds": 300,
+    "raw_columns": [
+      "id",
+      "game",
+      "period",
+      "choice",
+      "other.choice",
+      "result"
+    ],
+    "derived_extra_column": "input",
+    "derived_input_definition": "lagged own choice only, reset at first game round",
+    "raw_rda_git_blob": "c6424a938312f6044133f80894bda8c34dabc226",
+    "derived_rda_git_blob": "1de215778a02edfcb5344abf8d076df3a00bd20d"
+  },
+  "subset_ratio_if_from_same_paper": "72/360 = 1/5",
+  "actual_decoded_rows_verified": false,
+  "actual_game_to_payoff_mapping_verified": false,
+  "opponent_ID_in_documented_columns": false,
+  "source_data_license_for_redistribution": "UNRESOLVED",
+  "r073_direct_transfer": "BLOCKED_THREE_ACTIONS",
+  "synthetic_tests": {
+    "positive": true,
+    "opponent_corruption": true,
+    "lag_corruption": true,
+    "result_corruption": true
+  },
+  "scope": "SOURCE_DOCUMENTATION_AND_SYNTHETIC_PREPARATION_ONLY"
+}
