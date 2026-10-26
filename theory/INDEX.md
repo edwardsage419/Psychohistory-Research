@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH059，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH060，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -106,15 +106,20 @@
 
 | TH059 | 多任务委托代理、绩效报酬与指标制度的反事实评价 | Holmström与Milgrom1991、Baker1992原刊重点章节直接审读；Lazear2000、Baker等1993/1994、Prendergast1999原始摘要核验；12项条件命题、6项人工数学反例；无真实数据复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH059_MULTITASK_AGENCY_PERFORMANCE_PAY_CAUSAL_EVALUATION_2026-10-26.md) |
 
+| TH060 | 绩效奖励、内在动机与长期心理适应 | Deci1971、Gneezy与Rustichini2000原刊选页及Frey与Jegen2000 CESifo原始工作论文直接审读；Deci等1999、Cameron与Pierce1994、Cameron等2001元分析摘要核验；12项条件命题、5项表格复算及人工反例，未做真实数据复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH060_REWARDS_INTRINSIC_MOTIVATION_LONG_TERM_ADAPTATION_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH060 | 绩效奖励、内在动机与长期心理适应 | Deci1971、Deci等1999、Gneezy与Rustichini2000、Frey与Jegen2001原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH061 | 自我决定、目标内化与心理需要的跨情境边界 | Ryan与Deci2000、Deci与Ryan2000、有关跨文化与目标内化的竞争研究，原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| reward crowding / intrinsic motivation / autonomy support | Deci1971、Gneezy与Rustichini2000、Frey与Jegen2000/2001、Deci等1999、Cameron等1994/2001；奖励撤除后的行为、当期产出、控制感与任务兴趣的竞争机制 | 个体、群体、制度、历史、方法论 | 三份原文指定章节与三份元分析摘要、五项代数复算或人工反例；无长期独立验证 |
+
 
 | multitask agency / performance pay / selection / relational incentives | Holmström与Milgrom1991、Baker1992、Lazear2000、Baker等1993/1994；多任务努力挤出、指标边际错位、人员组成与关系契约 | 个体、群体、制度、历史、方法论 | 两份原刊选定章节、三项原作摘要及六项人工反例；无独立因果复验 |
 
