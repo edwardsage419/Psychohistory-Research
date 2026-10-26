@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH058，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH059，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -104,15 +104,19 @@
 
 | TH058 | 战略分类、Goodhart与Campbell指标反馈及制度性激励 | Campbell1976/2011重刊、Espeland与Sauder2007、Hardt等2016、Manheim与Garrabrant2018开放原文指定章节直接审读；Goodhart1975原作仅官方书目核验；12项条件命题、6项人工反例，无真实数据复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH058_GOODHART_CAMPBELL_STRATEGIC_CLASSIFICATION_INSTITUTIONAL_METRICS_2026-10-26.md) |
 
+| TH059 | 多任务委托代理、绩效报酬与指标制度的反事实评价 | Holmström与Milgrom1991、Baker1992原刊重点章节直接审读；Lazear2000、Baker等1993/1994、Prendergast1999原始摘要核验；12项条件命题、6项人工数学反例；无真实数据复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH059_MULTITASK_AGENCY_PERFORMANCE_PAY_CAUSAL_EVALUATION_2026-10-26.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH059 | 指标制度的反事实评估、动态激励与多任务委托代理 | Holmström与Milgrom1991、Baker1992、Lazear2000原作待核验 | QUEUED_UNVERIFIED |
+| 1 | TH060 | 绩效奖励、内在动机与长期心理适应 | Deci1971、Deci等1999、Gneezy与Rustichini2000、Frey与Jegen2001原作待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| multitask agency / performance pay / selection / relational incentives | Holmström与Milgrom1991、Baker1992、Lazear2000、Baker等1993/1994；多任务努力挤出、指标边际错位、人员组成与关系契约 | 个体、群体、制度、历史、方法论 | 两份原刊选定章节、三项原作摘要及六项人工反例；无独立因果复验 |
 
 | metric reactivity / Goodhart / Campbell / strategic classification | Goodhart1975/1976、Campbell1976/2011、Espeland与Sauder2007、Hardt等2016、Manheim与Garrabrant2018；指标控制压力、测量反应、排名自我实现与策略性特征改动 | 个体、群体、制度、历史、方法论 | 四份开放原作指定章节与六项人工反例；Goodhart原文未审、无独立因果复验 |
 
