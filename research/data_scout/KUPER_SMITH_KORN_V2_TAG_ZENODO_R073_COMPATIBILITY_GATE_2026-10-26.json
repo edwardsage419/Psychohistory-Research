@@ -1,0 +1,109 @@
+{
+  "research_track": "A_PUBLIC_DATA_SCOUT",
+  "date": "2026-10-26",
+  "candidate": "Kuper-Smith and Korn 2025 experiments 2 and 3",
+  "paper_doi": "10.1038/s44271-025-00288-5",
+  "publisher_data_availability": "https://www.nature.com/articles/s44271-025-00288-5",
+  "author_repository": "dnhi-lab/losses_gains_2x2",
+  "fixed_git_tag": "v2.0",
+  "fixed_tag_commit": "345348cdc0018e8e030b05fb47dc845fd3e0d29a",
+  "tag_commit_matches_prior_audit": true,
+  "zenodo_doi": "10.5281/zenodo.15667770",
+  "zenodo_record_date": "2025-06-15",
+  "zenodo_resource_type": "Software",
+  "zenodo_zip_filename": "dnhi-lab/losses_gains_2x2-v2.0.zip",
+  "zenodo_zip_size_display": "3.9 MB",
+  "zenodo_zip_md5": "82fdf1d671727c9aaba18b3b21f8a236",
+  "zip_bytes_downloaded_this_run": false,
+  "git_vs_zenodo_zip_byte_identity_verified": false,
+  "zenodo_license_field": "BLANK",
+  "repo_license_scope": "MIT software; human CSV-specific rights not separately stated",
+  "csv_source_blob": "ffd6776f3e9fd1444c84e50e4c61e3ff418a2488",
+  "prior_cleaned_rows": 33702,
+  "prior_experiments_2_3_directed_rows": 26601,
+  "prior_complete_mirror_dyads": 12292,
+  "prior_unmatched_directed_rows": 2017,
+  "prior_lag1_self_and_opponent_exact_matches": 33177,
+  "frozen_R073_source": "protocols/R073_HUMAN_IPD_LAGGED_SOCIAL_MEMORY_LOSO_2026-10-17.md",
+  "R073_requirements": {
+    "treatment_levels": [
+      "FP",
+      "SP"
+    ],
+    "sessions_per_treatment": 6,
+    "rounds_per_participant": 100,
+    "eligible_targets_per_participant": 98,
+    "alpha": 20,
+    "models": 7,
+    "scoring": "same-treatment leave-one-whole-session-out equal-session Brier and log loss"
+  },
+  "candidate_observations": {
+    "experiment_2_3_group_count": 16,
+    "rounds_per_participant": 300,
+    "blocks_per_participant": 5,
+    "trials_per_block": 60,
+    "opponent_id_present_in_exp2_3": true,
+    "own_and_opponent_action_columns": [
+      25,
+      26
+    ],
+    "lag1_columns": [
+      30,
+      31
+    ],
+    "lag2_columns_explicit": false,
+    "FP_SP_treatment_label_explicit": false
+  },
+  "gates": [
+    {
+      "id": "SOURCE_IDENTITY",
+      "status": "PASS_TAG_SHA_MATCH"
+    },
+    {
+      "id": "INDEPENDENT_ORIGINAL_STUDY",
+      "status": "PASS_DIFFERENT_AUTHORS_PARTICIPANTS"
+    },
+    {
+      "id": "PUBLIC_BEHAVIOR_ROWS",
+      "status": "PASS_PREVIOUS_FULL_ROW_AUDIT"
+    },
+    {
+      "id": "DYAD_MIRROR_COMPLETE",
+      "status": "PARTIAL_2017_DIRECTED_ROWS_UNMATCHED"
+    },
+    {
+      "id": "LAG_ONE_TIME_SEMANTICS",
+      "status": "PASS_PREVIOUS_33177_CHECKS"
+    },
+    {
+      "id": "LAG_TWO_EXPLICIT_FIELDS",
+      "status": "PENDING_DERIVATION_AND_VALIDITY"
+    },
+    {
+      "id": "R073_FP_SP_SAME_TREATMENT_TRAINING",
+      "status": "FAIL_NO_COMPATIBLE_TREATMENT_MAPPING"
+    },
+    {
+      "id": "R073_100_ROUND_98_TARGET_UNIVERSE",
+      "status": "FAIL_CANDIDATE_300_ROUNDS"
+    },
+    {
+      "id": "R073_12_SESSION_6_6_DESIGN",
+      "status": "FAIL_CANDIDATE_16_GROUPS_NO_FP_SP"
+    },
+    {
+      "id": "ZENODO_ARCHIVE_FILE_IDENTITY",
+      "status": "PENDING_ZIP_BYTES"
+    },
+    {
+      "id": "HUMAN_CSV_LICENSE",
+      "status": "PENDING_EXPLICIT_GRANT"
+    }
+  ],
+  "R073_DIRECT_FROZEN_TRANSFER": "BLOCKED",
+  "R073_model_score_or_alpha_changed": false,
+  "new_E2_predictive_scores": 0,
+  "new_E3_historical_scores": 0,
+  "external_independent_team_replication": 0,
+  "cost_new_paid_resources": 0
+}
