@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH063，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH064，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -112,11 +112,13 @@
 | TH062 | 目标内容、价值冲突与自我一致目标的长期适应 | Sheldon与Elliot1999开放原刊指定页及Schwartz2012开放原文直接审读；Kasser与Ryan1993/1996、Schwartz1992原刊摘要和书目核验；12项条件性命题、4项人工反例，因果未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH062_GOAL_CONTENT_VALUE_CONFLICT_SELF_CONCORDANCE_2026-10-27.md) |
 | TH063 | 价值优先序的纵向稳定性、社会化与人生转折中的响应转移 | Lake等2025及Verdam等2016开放正式原刊指定章节直接审读；Bardi等2009/2014、Bardi与Goodwin2011、Rokeach与Cochkane1972、Oort2005原刊摘要或机构书目核验；14项条件性命题、2项原刊汇总算术核对、4项人工或内部一致性审计；因果及独立复现未完成 | THEORY_NOTE_BOUNDED | [研究笔记](TH063_VALUE_STABILITY_SOCIALIZATION_RESPONSE_SHIFT_2026-10-27.md) |
 
+| TH064 | 家庭、同伴与代际价值社会化的竞争机制 | Harris1995原刊大学转录与Knafo/Schwartz2003公开原刊正文直接审读；Grusec/Goodnow1994、Kohn/Schooler1982、Grusec等2000、Knafo/Schwartz2004原刊摘要核验；14项条件命题、1项发表表格算术核对及5项人工反例，未做独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH064_FAMILY_PEER_INTERGENERATIONAL_VALUE_SOCIALIZATION_2026-10-27.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH064 | 家庭、同伴与代际价值社会化的竞争机制 | Grusec与Goodnow1994、Knafo与Schwartz2003、Kohn与Schooler1982原作待核验；父母示范、主动选择与阶层共同环境 | QUEUED_UNVERIFIED |
+| 1 | TH065 | 同伴网络选择、影响与共同冲击的因果识别 | Kandel1978、Aral等2009、Shalizi与Thomas2011原作待核验；网络干扰、共同环境与潜在同质性 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -355,6 +357,8 @@
 
 | goal self-concordance / value priority conflict | Sheldon与Elliot1999、Schwartz1992/2012、Kasser与Ryan1996；目标内容与理由、价值张力、需要满足及纵向福祉关联 | 个体、群体、制度、历史 | Sheldon1999与Schwartz2012开放原刊选段已审，Kasser1996摘要；无独立因果复验 |
 | longitudinal value stability / socialization / response shift | Bardi等2009/2014、Bardi与Goodwin2011、Lake等2025、Verdam等2016；转折前自选择、进入后社会化、分位稳定性、测量尺度变化与失访选择 | 个体、群体、制度、历史、方法论 | 两份开放正式原刊指定章节及五份原刊摘要或机构书目；发表汇总数值核算、人工欠识别反例；无独立因果或预测验证 |
+
+| family/peer socialization / value perception / common causes | Grusec与Goodnow1994、Knafo与Schwartz2003、Harris1995、Kohn与Schooler1982；感知与接受、同伴规范、家庭/职业共同环境的竞争解释 | 个体、群体、制度、历史、方法论 | 两份原作公开正文或转录直接审读，四份原刊摘要；发表表格算术与人工反例；长期因果与跨文化外推未识别 |
 
 ## C 与 D 研究日历（候选方法储备）
 
