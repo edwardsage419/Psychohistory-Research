@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-26（Asia/Shanghai）；已收录 TH045，C003 今日增量与 D002 本周专题
+更新：2026-10-26（Asia/Shanghai）；已收录 TH046，C003 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -84,12 +84,13 @@
 | TH044 | 概念组合、原型表征与类别连贯性 | Hampton 1988作者开放正式原刊多节直接审读；Rosch 1978原章第三方转录选段；Cohen & Murphy 1984、Murphy & Medin 1985、Osherson & Smith 1981原刊摘要；十项命题、四项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH044_CONCEPTUAL_COMBINATION_PROTOTYPES_THEORY_COHERENCE_2026-10-26.md) |
 
 | TH045 | 实例记忆、相似性特征、选择性注意与临时目标类别 | Nosofsky 1986、Tversky 1977、Barsalou 1983正式原刊重点章节直接审读；Medin & Schaffer 1978及Barsalou 1987仅摘要/机构书目；十项命题、四项人工反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH045_EXEMPLAR_SIMILARITY_CONTEXT_DEPENDENT_CATEGORIZATION_2026-10-26.md) |
+| TH046 | 规则、例外、实例迁移与类别边界更新 | Seitz等2025开放原刊全文；Nosofsky等1994、Smith与Sloman1994、Johansen与Palmeri2002、Ashby与Maddox2005摘要；十项命题、四项人工识别反例，原始数据未复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH046_RULE_EXEMPLAR_BOUNDARY_KNOWLEDGE_UPDATING_2026-10-26.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH046 | 规则与实例的竞争、类别边界学习与知识驱动更新 | Ashby & Maddox 2005；Smith & Sloman 1994；Johansen & Palmeri 2002；Nosofsky et al. 1994 | QUEUED_UNVERIFIED |
+| 1 | TH047 | 贝叶斯类别学习、理性模型与知识先验 | Anderson 1991；Griffiths等2007；Sanborn等2010 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -293,6 +294,8 @@
 | category coherence / background theory | Murphy & Medin 1985；背景知识与类别解释关系 | 个体、群体、制度、历史 | 原刊首页和摘要；全文待审 |
 | basic level / typicality | Rosch 1978；层次结构与同层典型性 | 个体、群体、历史 | 原章第三方转录选段，逐页校勘待补 |
 | composition / truth conditions | Cohen & Murphy 1984；Osherson & Smith 1981；复合概念与集合真值 | 个体、制度、方法论 | 原刊摘要；全文待审 |
+
+| rule-plus-exception / model identifiability | Nosofsky等1994摘要、Johansen与Palmeri2002摘要、Seitz等2025开放原刊；规则、实例、策略混合与迁移测试 | 个体、群体、制度、历史、方法论 | 2025原刊全文直接审读；1994与2002摘要；跨层因果未证 |
 
 ## C 与 D 研究日历（候选方法储备）
 
