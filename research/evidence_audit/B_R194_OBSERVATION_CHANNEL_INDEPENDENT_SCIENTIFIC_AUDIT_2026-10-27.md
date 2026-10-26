@@ -1,0 +1,9 @@
+# B轨：R194观察通道与二阶记忆独立直方图审计
+
+日期：2026-10-27。状态：PASS_BOUNDED_INTERNAL_E1_DIFFERENT_ALGORITHM。预先冻结协议：`protocols/R194_LAST_PAIR_VS_LAG2_PAIR_FULL_TRAJECTORY_THIRD_METHOD_FREEZE_2026-10-27.md`。
+
+主R脚本对有序轨迹观测采用BigInt双来源似然对动态合并，B脚本不调用R脚本任何函数，独立从公平初始状态及逐步条件概率重建单轨迹PMF，再枚举无序观察类别计数直方图，以多项式重数求联合概率重叠与Bayes错误率。
+
+本轮实际复核72组条件、144项TV及Bayes错误率精确字段、144项单轨迹来源PMF，累计枚举16842个直方图配置。全部逐BigInt有理数一致，概率归一化通过。预先冻结的两个错误对照均检出：把非IID二阶来源错误替换为IID会把L3 FULL TV错误变成0；把LAST_LAG2_PAIR错换成LAST_ADJACENT_PAIR会丢失判别信息。
+
+执行脚本：`research/evidence_audit/b_r194_observation_histogram_20261027.js`；审计收据：`research/evidence_audit/B_R194_OBSERVATION_HISTOGRAM_EXACT_AUDIT_RECEIPT_2026-10-27.json`。输入为主R机器收据，不调用主算法函数。可用Node.js免费本地运行，未触发远端CI。B只验证原R194已知参数人工机制的本次第三方法增量，不验证原R194全部24世界拟合正确性、真人预测校准或外部历史结果。内部不同算法程序性复核，外部团队复现0项；新增E2=0，E3=0。
