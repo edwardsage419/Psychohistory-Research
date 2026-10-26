@@ -1,0 +1,33 @@
+{
+  "audit": "B_R184_DIRECT_T_Y_ENUMERATION",
+  "source_blob": "f7d8ee20f9885594097de9cb6284bb48e7b6642b",
+  "source_normalizations": 90,
+  "source_moment_checks": 90,
+  "independent_three_predictor_comparisons": 810,
+  "negative_control_detected": 270,
+  "maximum_absolute_discrepancy": 1.1102230246251565e-16,
+  "examples": [
+    {
+      "mechanism": "IID_BIN",
+      "risk_P": 0.09133093450288773,
+      "risk_E": 0.13513547892216593,
+      "risk_S": 0.11024823636859192,
+      "incorrect_denominator_risk": 0.10161478313346135
+    },
+    {
+      "mechanism": "CLUSTERED_BB_C2",
+      "risk_P": 0.28885394652172813,
+      "risk_E": 0.35001572454348207,
+      "risk_S": 0.29136579001610463,
+      "incorrect_denominator_risk": 0.28550550046537315
+    },
+    {
+      "mechanism": "INACTIVE_ZIB_Z1_8",
+      "risk_P": 0.15272399091867328,
+      "risk_E": 0.22549109347692328,
+      "risk_S": 0.1839997719368328,
+      "incorrect_denominator_risk": 0.17251853217323987
+    }
+  ],
+  "scope": "internal independent enumeration only"
+}
