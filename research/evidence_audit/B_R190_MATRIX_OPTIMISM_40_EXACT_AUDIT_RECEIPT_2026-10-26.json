@@ -1,0 +1,340 @@
+{
+  "research_id": "R190",
+  "audit": "INDEPENDENT_MATRIX_ONLY_EXACT_BIAS_VARIANCE_AND_OPTIMISM",
+  "method": "matrix bias variance plus weighted diagonal covariance, no training CSV enumeration",
+  "worlds": 10,
+  "world_lambda_rows": 40,
+  "exact_identity_checks": 160,
+  "constant_row_sum_checks": 200,
+  "corrupted_diagonal_negative_controls_detected": 40,
+  "strictly_positive_optimism_cases": 40,
+  "exact_mismatches": 0,
+  "evidence": "INTERNAL_E1_DIFFERENT_ALGORITHM",
+  "external_independent_replications": 0,
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073_unchanged": true,
+  "PESEN_v01_unchanged": true,
+  "details": [
+    {
+      "source": "FLAT",
+      "n_trials_per_x": 1,
+      "lambda": "0",
+      "train": "0",
+      "future": "2",
+      "optimism": "2"
+    },
+    {
+      "source": "FLAT",
+      "n_trials_per_x": 1,
+      "lambda": "1",
+      "train": "1009/2880",
+      "future": "845/576",
+      "optimism": "67/60"
+    },
+    {
+      "source": "FLAT",
+      "n_trials_per_x": 1,
+      "lambda": "4",
+      "train": "5457376/11115405",
+      "future": "15688618/11115405",
+      "optimism": "6862/7455"
+    },
+    {
+      "source": "FLAT",
+      "n_trials_per_x": 1,
+      "lambda": "16",
+      "train": "15811657216/27947530845",
+      "future": "7831101362/5589506169",
+      "optimism": "312238/373815"
+    },
+    {
+      "source": "FLAT",
+      "n_trials_per_x": 2,
+      "lambda": "0",
+      "train": "1/2",
+      "future": "3/2",
+      "optimism": "1"
+    },
+    {
+      "source": "FLAT",
+      "n_trials_per_x": 2,
+      "lambda": "1",
+      "train": "124121/196000",
+      "future": "247041/196000",
+      "optimism": "439/700"
+    },
+    {
+      "source": "FLAT",
+      "n_trials_per_x": 2,
+      "lambda": "4",
+      "train": "3875741/5431690",
+      "future": "6601167/5431690",
+      "optimism": "1849/3685"
+    },
+    {
+      "source": "FLAT",
+      "n_trials_per_x": 2,
+      "lambda": "16",
+      "train": "7169905061/9329970250",
+      "future": "11212902351/9329970250",
+      "optimism": "66181/152725"
+    },
+    {
+      "source": "LINEAR",
+      "n_trials_per_x": 1,
+      "lambda": "0",
+      "train": "0",
+      "future": "7/4",
+      "optimism": "7/4"
+    },
+    {
+      "source": "LINEAR",
+      "n_trials_per_x": 1,
+      "lambda": "1",
+      "train": "207/640",
+      "future": "2429/1920",
+      "optimism": "113/120"
+    },
+    {
+      "source": "LINEAR",
+      "n_trials_per_x": 1,
+      "lambda": "4",
+      "train": "1658812/3705135",
+      "future": "18040901/14820540",
+      "optimism": "22949/29820"
+    },
+    {
+      "source": "LINEAR",
+      "n_trials_per_x": 1,
+      "lambda": "16",
+      "train": "1592459584/3105281205",
+      "future": "15009525379/12421124820",
+      "optimism": "115561/166140"
+    },
+    {
+      "source": "LINEAR",
+      "n_trials_per_x": 2,
+      "lambda": "0",
+      "train": "7/16",
+      "future": "21/16",
+      "optimism": "7/8"
+    },
+    {
+      "source": "LINEAR",
+      "n_trials_per_x": 2,
+      "lambda": "1",
+      "train": "1760461/3136000",
+      "future": "3428981/3136000",
+      "optimism": "5959/11200"
+    },
+    {
+      "source": "LINEAR",
+      "n_trials_per_x": 2,
+      "lambda": "4",
+      "train": "27519563/43453520",
+      "future": "9163265/8690704",
+      "optimism": "12413/29480"
+    },
+    {
+      "source": "LINEAR",
+      "n_trials_per_x": 2,
+      "lambda": "16",
+      "train": "50859570563/74639762000",
+      "future": "77834654233/74639762000",
+      "optimism": "441563/1221800"
+    },
+    {
+      "source": "HUMP",
+      "n_trials_per_x": 1,
+      "lambda": "0",
+      "train": "0",
+      "future": "17/10",
+      "optimism": "17/10"
+    },
+    {
+      "source": "HUMP",
+      "n_trials_per_x": 1,
+      "lambda": "1",
+      "train": "3983/11520",
+      "future": "14591/11520",
+      "optimism": "221/240"
+    },
+    {
+      "source": "HUMP",
+      "n_trials_per_x": 1,
+      "lambda": "4",
+      "train": "5738168/11115405",
+      "future": "5664629/4446162",
+      "optimism": "11299/14910"
+    },
+    {
+      "source": "HUMP",
+      "n_trials_per_x": 1,
+      "lambda": "16",
+      "train": "17163928448/27947530845",
+      "future": "72811886857/55895061690",
+      "optimism": "514747/747630"
+    },
+    {
+      "source": "HUMP",
+      "n_trials_per_x": 2,
+      "lambda": "0",
+      "train": "17/40",
+      "future": "51/40",
+      "optimism": "17/20"
+    },
+    {
+      "source": "HUMP",
+      "n_trials_per_x": 2,
+      "lambda": "1",
+      "train": "219949/392000",
+      "future": "423509/392000",
+      "optimism": "727/1400"
+    },
+    {
+      "source": "HUMP",
+      "n_trials_per_x": 2,
+      "lambda": "4",
+      "train": "14602121/21726760",
+      "future": "23577307/21726760",
+      "optimism": "6089/14740"
+    },
+    {
+      "source": "HUMP",
+      "n_trials_per_x": 2,
+      "lambda": "16",
+      "train": "28608972593/37319881000",
+      "future": "41931540883/37319881000",
+      "optimism": "218081/610900"
+    },
+    {
+      "source": "VALLEY",
+      "n_trials_per_x": 1,
+      "lambda": "0",
+      "train": "0",
+      "future": "17/10",
+      "optimism": "17/10"
+    },
+    {
+      "source": "VALLEY",
+      "n_trials_per_x": 1,
+      "lambda": "1",
+      "train": "3983/11520",
+      "future": "14591/11520",
+      "optimism": "221/240"
+    },
+    {
+      "source": "VALLEY",
+      "n_trials_per_x": 1,
+      "lambda": "4",
+      "train": "5738168/11115405",
+      "future": "5664629/4446162",
+      "optimism": "11299/14910"
+    },
+    {
+      "source": "VALLEY",
+      "n_trials_per_x": 1,
+      "lambda": "16",
+      "train": "17163928448/27947530845",
+      "future": "72811886857/55895061690",
+      "optimism": "514747/747630"
+    },
+    {
+      "source": "VALLEY",
+      "n_trials_per_x": 2,
+      "lambda": "0",
+      "train": "17/40",
+      "future": "51/40",
+      "optimism": "17/20"
+    },
+    {
+      "source": "VALLEY",
+      "n_trials_per_x": 2,
+      "lambda": "1",
+      "train": "219949/392000",
+      "future": "423509/392000",
+      "optimism": "727/1400"
+    },
+    {
+      "source": "VALLEY",
+      "n_trials_per_x": 2,
+      "lambda": "4",
+      "train": "14602121/21726760",
+      "future": "23577307/21726760",
+      "optimism": "6089/14740"
+    },
+    {
+      "source": "VALLEY",
+      "n_trials_per_x": 2,
+      "lambda": "16",
+      "train": "28608972593/37319881000",
+      "future": "41931540883/37319881000",
+      "optimism": "218081/610900"
+    },
+    {
+      "source": "ALTERNATE",
+      "n_trials_per_x": 1,
+      "lambda": "0",
+      "train": "0",
+      "future": "3/2",
+      "optimism": "3/2"
+    },
+    {
+      "source": "ALTERNATE",
+      "n_trials_per_x": 1,
+      "lambda": "1",
+      "train": "1681/3840",
+      "future": "4897/3840",
+      "optimism": "67/80"
+    },
+    {
+      "source": "ALTERNATE",
+      "n_trials_per_x": 1,
+      "lambda": "4",
+      "train": "2154616/3705135",
+      "future": "9424853/7410270",
+      "optimism": "3431/4970"
+    },
+    {
+      "source": "ALTERNATE",
+      "n_trials_per_x": 1,
+      "lambda": "16",
+      "train": "6111780736/9315843615",
+      "future": "23895486269/18631687230",
+      "optimism": "156119/249210"
+    },
+    {
+      "source": "ALTERNATE",
+      "n_trials_per_x": 2,
+      "lambda": "0",
+      "train": "3/8",
+      "future": "9/8",
+      "optimism": "3/4"
+    },
+    {
+      "source": "ALTERNATE",
+      "n_trials_per_x": 2,
+      "lambda": "1",
+      "train": "487611/784000",
+      "future": "856371/784000",
+      "optimism": "1317/2800"
+    },
+    {
+      "source": "ALTERNATE",
+      "n_trials_per_x": 2,
+      "lambda": "4",
+      "train": "15901911/21726760",
+      "future": "24078189/21726760",
+      "optimism": "5547/14740"
+    },
+    {
+      "source": "ALTERNATE",
+      "n_trials_per_x": 2,
+      "lambda": "16",
+      "train": "29896103151/37319881000",
+      "future": "42025095021/37319881000",
+      "optimism": "198543/610900"
+    }
+  ]
+}
