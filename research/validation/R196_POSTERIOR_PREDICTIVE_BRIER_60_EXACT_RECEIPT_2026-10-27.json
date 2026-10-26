@@ -1,0 +1,697 @@
+{
+  "protocol": "protocols/R196_POSTERIOR_PREDICTIVE_BRIER_24_THIRD_METHOD_FREEZE_2026-10-27.md",
+  "source_blobs": [
+    "490c30eb8bd912afcb6e8d2d1cafacb1928b2f39",
+    "f39ccf402edbfbc11f9d8eb135efec6fff838b0e"
+  ],
+  "evidence_class": "E1_ARTIFICIAL_INTERNAL",
+  "sources": 12,
+  "selected_grid_worlds": 24,
+  "predictors": 5,
+  "exact_rows": 60,
+  "summary": {
+    "fine_better_than_coarse": 8,
+    "fine_worse_than_coarse": 0,
+    "fine_equal_to_coarse": 4,
+    "prior_better_than_fine": 0,
+    "prior_worse_than_fine": 10,
+    "prior_equal_to_fine": 2,
+    "oracle_vs_prior_nontrivial": 10
+  },
+  "comparisons": [
+    {
+      "source": "UNIFORM",
+      "m": 1,
+      "coarse_minus_fine_excess": "0",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "UNIFORM",
+      "m": 2,
+      "coarse_minus_fine_excess": "0",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 1,
+      "coarse_minus_fine_excess": "0",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 2,
+      "coarse_minus_fine_excess": "581/19200",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 1,
+      "coarse_minus_fine_excess": "291375/4456448",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 2,
+      "coarse_minus_fine_excess": "5421375/67371008",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 1,
+      "coarse_minus_fine_excess": "291375/4456448",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 2,
+      "coarse_minus_fine_excess": "5421375/67371008",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 1,
+      "coarse_minus_fine_excess": "90117/2883584",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 2,
+      "coarse_minus_fine_excess": "3352743/35913728",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 1,
+      "coarse_minus_fine_excess": "0",
+      "fine_worse_than_coarse": false
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 2,
+      "coarse_minus_fine_excess": "3421/84672",
+      "fine_worse_than_coarse": false
+    }
+  ],
+  "rows": [
+    {
+      "source": "UNIFORM",
+      "m": 1,
+      "method": "ORACLE",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 1,
+      "method": "PRIOR",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 1,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 1,
+      "method": "COARSE",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 1,
+      "method": "FINE",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 2,
+      "method": "ORACLE",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 2,
+      "method": "PRIOR",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 2,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 2,
+      "method": "COARSE",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "UNIFORM",
+      "m": 2,
+      "method": "FINE",
+      "forecast_success_probability": "1",
+      "true_success_probability": "1",
+      "brier_risk": "0",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 1,
+      "method": "ORACLE",
+      "forecast_success_probability": "25/36",
+      "true_success_probability": "25/36",
+      "brier_risk": "275/1296",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 1,
+      "method": "PRIOR",
+      "forecast_success_probability": "4/9",
+      "true_success_probability": "25/36",
+      "brier_risk": "89/324",
+      "excess_brier": "1/16",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 1,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "25/36",
+      "true_success_probability": "25/36",
+      "brier_risk": "275/1296",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 1,
+      "method": "COARSE",
+      "forecast_success_probability": "25/36",
+      "true_success_probability": "25/36",
+      "brier_risk": "275/1296",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 1,
+      "method": "FINE",
+      "forecast_success_probability": "25/36",
+      "true_success_probability": "25/36",
+      "brier_risk": "275/1296",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 2,
+      "method": "ORACLE",
+      "forecast_success_probability": "196/225",
+      "true_success_probability": "196/225",
+      "brier_risk": "5684/50625",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 2,
+      "method": "PRIOR",
+      "forecast_success_probability": "4/9",
+      "true_success_probability": "196/225",
+      "brier_risk": "596/2025",
+      "excess_brier": "1024/5625",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 2,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "196/225",
+      "true_success_probability": "196/225",
+      "brier_risk": "5684/50625",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 2,
+      "method": "COARSE",
+      "forecast_success_probability": "25/36",
+      "true_success_probability": "196/225",
+      "brier_risk": "4649/32400",
+      "excess_brier": "2809/90000",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "INDEPENDENT_SKEW",
+      "m": 2,
+      "method": "FINE",
+      "forecast_success_probability": "121/144",
+      "true_success_probability": "196/225",
+      "brier_risk": "58697/518400",
+      "excess_brier": "1369/1440000",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 1,
+      "method": "ORACLE",
+      "forecast_success_probability": "257/272",
+      "true_success_probability": "257/272",
+      "brier_risk": "3855/73984",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 1,
+      "method": "PRIOR",
+      "forecast_success_probability": "17/32",
+      "true_success_probability": "257/272",
+      "brier_risk": "3885/17408",
+      "excess_brier": "50625/295936",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 1,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "17/32",
+      "true_success_probability": "257/272",
+      "brier_risk": "3885/17408",
+      "excess_brier": "50625/295936",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 1,
+      "method": "COARSE",
+      "forecast_success_probability": "83/128",
+      "true_success_probability": "257/272",
+      "brier_risk": "38985/278528",
+      "excess_brier": "416025/4734976",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 1,
+      "method": "FINE",
+      "forecast_success_probability": "407/512",
+      "true_success_probability": "257/272",
+      "brier_risk": "332385/4456448",
+      "excess_brier": "1703025/75759616",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 2,
+      "method": "ORACLE",
+      "forecast_success_probability": "4097/4112",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "61455/16908544",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 2,
+      "method": "PRIOR",
+      "forecast_success_probability": "17/32",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "57885/263168",
+      "excess_brier": "14630625/67634176",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 2,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "17/32",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "57885/263168",
+      "excess_brier": "14630625/67634176",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 2,
+      "method": "COARSE",
+      "forecast_success_probability": "83/128",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "524985/4210688",
+      "excess_brier": "130988025/1082146816",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "POSITIVE_COUPLED",
+      "m": 2,
+      "method": "FINE",
+      "forecast_success_probability": "407/512",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "2978385/67371008",
+      "excess_brier": "702515025/17314349056",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 1,
+      "method": "ORACLE",
+      "forecast_success_probability": "257/272",
+      "true_success_probability": "257/272",
+      "brier_risk": "3855/73984",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 1,
+      "method": "PRIOR",
+      "forecast_success_probability": "17/32",
+      "true_success_probability": "257/272",
+      "brier_risk": "3885/17408",
+      "excess_brier": "50625/295936",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 1,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "17/32",
+      "true_success_probability": "257/272",
+      "brier_risk": "3885/17408",
+      "excess_brier": "50625/295936",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 1,
+      "method": "COARSE",
+      "forecast_success_probability": "83/128",
+      "true_success_probability": "257/272",
+      "brier_risk": "38985/278528",
+      "excess_brier": "416025/4734976",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 1,
+      "method": "FINE",
+      "forecast_success_probability": "407/512",
+      "true_success_probability": "257/272",
+      "brier_risk": "332385/4456448",
+      "excess_brier": "1703025/75759616",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 2,
+      "method": "ORACLE",
+      "forecast_success_probability": "4097/4112",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "61455/16908544",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 2,
+      "method": "PRIOR",
+      "forecast_success_probability": "17/32",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "57885/263168",
+      "excess_brier": "14630625/67634176",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 2,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "17/32",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "57885/263168",
+      "excess_brier": "14630625/67634176",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 2,
+      "method": "COARSE",
+      "forecast_success_probability": "83/128",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "524985/4210688",
+      "excess_brier": "130988025/1082146816",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "NEGATIVE_COUPLED",
+      "m": 2,
+      "method": "FINE",
+      "forecast_success_probability": "407/512",
+      "true_success_probability": "4097/4112",
+      "brier_risk": "2978385/67371008",
+      "excess_brier": "702515025/17314349056",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 1,
+      "method": "ORACLE",
+      "forecast_success_probability": "137/176",
+      "true_success_probability": "137/176",
+      "brier_risk": "5343/30976",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 1,
+      "method": "PRIOR",
+      "forecast_success_probability": "11/32",
+      "true_success_probability": "137/176",
+      "brier_risk": "4071/11264",
+      "excess_brier": "23409/123904",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 1,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "2447/3872",
+      "true_success_probability": "137/176",
+      "brier_risk": "2907501/14992384",
+      "excess_brier": "321489/14992384",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 1,
+      "method": "COARSE",
+      "forecast_success_probability": "77/128",
+      "true_success_probability": "137/176",
+      "brier_risk": "36723/180224",
+      "excess_brier": "62001/1982464",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 1,
+      "method": "FINE",
+      "forecast_success_probability": "401/512",
+      "true_success_probability": "137/176",
+      "brier_risk": "497451/2883584",
+      "excess_brier": "729/31719424",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 2,
+      "method": "ORACLE",
+      "forecast_success_probability": "2081/2192",
+      "true_success_probability": "2081/2192",
+      "brier_risk": "230991/4804864",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 2,
+      "method": "PRIOR",
+      "forecast_success_probability": "11/32",
+      "true_success_probability": "2081/2192",
+      "brier_risk": "58197/140288",
+      "excess_brier": "7049025/19219456",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 2,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "533339/600608",
+      "true_success_probability": "2081/2192",
+      "brier_risk": "18700171341/360729969664",
+      "excess_brier": "1358291025/360729969664",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 2,
+      "method": "COARSE",
+      "forecast_success_probability": "77/128",
+      "true_success_probability": "2081/2192",
+      "brier_risk": "379425/2244608",
+      "excess_brier": "37197801/307511296",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "ASYMMETRIC_COUPLED",
+      "m": 2,
+      "method": "FINE",
+      "forecast_success_probability": "401/512",
+      "true_success_probability": "2081/2192",
+      "brier_risk": "2718057/35913728",
+      "excess_brier": "135839025/4920180736",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 1,
+      "method": "ORACLE",
+      "forecast_success_probability": "49/72",
+      "true_success_probability": "49/72",
+      "brier_risk": "1127/5184",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 1,
+      "method": "PRIOR",
+      "forecast_success_probability": "4/9",
+      "true_success_probability": "49/72",
+      "brier_risk": "59/216",
+      "excess_brier": "289/5184",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 1,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "173/288",
+      "true_success_probability": "49/72",
+      "brier_risk": "6187/27648",
+      "excess_brier": "529/82944",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 1,
+      "method": "COARSE",
+      "forecast_success_probability": "2/3",
+      "true_success_probability": "49/72",
+      "brier_risk": "47/216",
+      "excess_brier": "1/5184",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 1,
+      "method": "FINE",
+      "forecast_success_probability": "2/3",
+      "true_success_probability": "49/72",
+      "brier_risk": "47/216",
+      "excess_brier": "1/5184",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 2,
+      "method": "ORACLE",
+      "forecast_success_probability": "386/441",
+      "true_success_probability": "386/441",
+      "brier_risk": "21230/194481",
+      "excess_brier": "0",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 2,
+      "method": "PRIOR",
+      "forecast_success_probability": "4/9",
+      "true_success_probability": "386/441",
+      "brier_risk": "130/441",
+      "excess_brier": "36100/194481",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 2,
+      "method": "FORWARD_PRODUCT",
+      "forecast_success_probability": "17488/21609",
+      "true_success_probability": "386/441",
+      "brier_risk": "5889634/51883209",
+      "excess_brier": "2033476/466948881",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 2,
+      "method": "COARSE",
+      "forecast_success_probability": "2/3",
+      "true_success_probability": "386/441",
+      "brier_risk": "202/1323",
+      "excess_brier": "8464/194481",
+      "exact_brier_identity_pass": true
+    },
+    {
+      "source": "WEAK_COUPLED",
+      "m": 2,
+      "method": "FINE",
+      "forecast_success_probability": "59/72",
+      "true_success_probability": "386/441",
+      "brier_risk": "3169/28224",
+      "excess_brier": "38809/12446784",
+      "exact_brier_identity_pass": true
+    }
+  ]
+}
