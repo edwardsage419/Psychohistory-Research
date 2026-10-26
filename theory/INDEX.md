@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH067，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH068，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -118,12 +118,13 @@
 | TH066 | 网络随机化、暴露映射与干扰外推边界 | Ugander等2013、Aronow与Samii2017、Eckles等2017开放原作重要章节直接审读；Hudgens与Halloran2008、Basse与Feller2018摘要核验；16项条件命题、6项人工概率与识别审计；无真实数据复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH066_NETWORK_RANDOMIZATION_EXPOSURE_MAPPING_INTERFERENCE_2026-10-27.md) |
 
 | TH067 | 网络干扰下的随机化推断、精确检验与设计敏感性 | Athey等2018、Basse等2019、Puelz等2022原作者开放稿指定章节直接审读；Bowers等2013与Basse/Feller2018原始摘要；14项条件命题、7项人工穷举；无真实因果估计 | THEORY_NOTE_BOUNDED | [研究笔记](TH067_NETWORK_RANDOMIZATION_EXACT_TEST_DESIGN_SENSITIVITY_2026-10-27.md) |
+| TH068 | 网络处理不遵从、暴露错设与敏感性界限 | Imai等2021、Kang与Imbens2016、Imai与Jiang2020、Leung2022、Sävje等2021开放原作指定章节直接审读；2024竞争摘要；16项条件性命题、7项人工反例、2项发表表格算术审计；无独立因果复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH068_NONCOMPLIANCE_EXPOSURE_MISSPECIFICATION_PARTIAL_IDENTIFICATION_2026-10-27.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH068 | 网络实验中的处理不遵从、溢出机制错设与敏感性界限 | 原始研究与识别界限待核验 | QUEUED_UNVERIFIED |
+| 1 | TH069 | 网络观测误差、动态关系重连与传播的时间识别 | 网络面板、关系误测与时变混杂的原始研究待核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -372,6 +373,8 @@
 | peer selection / contagion / common shock / reflection | Kandel1978、Aral等2009、Shalizi与Thomas2011、Bramoullé等2009、Manski1993、Sacerdote2000/2001；择友、同伴影响、共同冲击、网络秩与随机分配的竞争识别 | 个体、群体、制度、历史、方法论 | 三份开放原刊重点章节与三份原始摘要，六项人工反例；匹配上界与结构识别均有条件，无独立因果复验 |
 
 | conditional randomization / nonsharp interference null / biclique | Athey等2018、Basse等2019、Puelz等2022；条件支持集、平局、精确检验功效 | 个体、群体、制度、历史、方法论 | 三份原作者开放稿指定章节、两份原始摘要、七项人工穷举；无独立因果验证 |
+
+| noncompliance / encouragement / exposure misspecification / partial identification | Imai等2021、Kang与Imbens2016、Imai与Jiang2020、Leung2022、Sävje等2021；随机分配与实际接受、传播机制、ANI、设计边际EATE | 个体、群体、制度、历史、方法论 | 五份开放原作指定章节直接审读、人工反例和发表表格算术；真实因果与外推未验证 |
 
 ## C 与 D 研究日历（候选方法储备）
 
