@@ -1,0 +1,7 @@
+# B轨：R195多指标N64有效样本量的独立状态占有矩审计
+
+日期：2026-10-27。状态：PASS_BOUNDED_INTERNAL_E1_DIFFERENT_ALGORITHM。预冻结协议 `protocols/R195_INDICATOR_SPECIFIC_ESS_N64_THIRD_METHOD_FREEZE_2026-10-27.md`。
+
+R主程序使用T的63阶幂和自协方差计算样本均值方差。B程序独立传播每个状态下访问指定状态j的累计次数S的一阶和二阶未归一化矩，不调用R算法或读取R的自协方差序列。对原R195八个固定三态MH核，每个分别检验f0、f1、f2三个状态事件，得到24个指标核组合。实际逐精确有理数核对48个方差及ESS字段，全部一致；状态质量归一化1512项全部通过。额外用SKEW目标的错误π2替代f0的真实π0构造错误中心化，故意错误对照1项检出。
+
+B独立执行脚本：`research/evidence_audit/b_r195_occupancy_moment_20261027.js`。机器审计收据：`research/evidence_audit/B_R195_INDICATOR_ESS_OCCUPANCY_AUDIT_RECEIPT_2026-10-27.json`。原8套T和π从 `research/R195/R195_ALL_8_EXACT_MCMC_KERNELS_AND_ESS.json` 读取。B仅复核R195新增第三方法的16个指标与8个来源f2对照，属于项目内部程序性独立算法核验。真实社会参数后验、真人E2、历史E3、外部独立团队复现均未新增。远端CI未主动启动，不能称CI PASS。
