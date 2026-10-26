@@ -1,0 +1,498 @@
+{
+  "schema": "b_r200_prefix_absorbing_dp_v1",
+  "worlds": [
+    {
+      "source": "LOW",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "3/16",
+          "ever": "3/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/16"
+          },
+          "never": "13/16",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "3/256",
+          "ever": "3/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/256"
+          },
+          "never": "253/256",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "HIGH",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "3/16",
+          "ever": "3/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/16"
+          },
+          "never": "13/16",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "27/256",
+          "ever": "27/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "27/256"
+          },
+          "never": "229/256",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "MID",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "1/4",
+          "ever": "1/4",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "1/4"
+          },
+          "never": "3/4",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "1/16",
+          "ever": "1/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "1/16"
+          },
+          "never": "15/16",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "UP2",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "7/16",
+          "ever": "7/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "7/16"
+          },
+          "never": "9/16",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "81/256",
+          "ever": "81/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "81/256"
+          },
+          "never": "175/256",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "UP3",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "7/16",
+          "ever": "7/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "7/16"
+          },
+          "never": "9/16",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "27/256",
+          "ever": "27/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "27/256"
+          },
+          "never": "229/256",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "DOWN2",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "7/16",
+          "ever": "7/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "7/16"
+          },
+          "never": "9/16",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "1/256",
+          "ever": "1/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "1/256"
+          },
+          "never": "255/256",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "DOWN3",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "7/16",
+          "ever": "7/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "7/16"
+          },
+          "never": "9/16",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "3/256",
+          "ever": "3/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/256"
+          },
+          "never": "253/256",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "SPIKE2",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "3/16",
+          "ever": "3/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/16"
+          },
+          "never": "13/16",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "9/256",
+          "ever": "9/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "9/256"
+          },
+          "never": "247/256",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "SPIKE3",
+      "T": 4,
+      "modes": {
+        "scan": {
+          "terminal": "3/16",
+          "ever": "3/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/16"
+          },
+          "never": "13/16",
+          "excess_ever_over_terminal": "0/1"
+        },
+        "single": {
+          "terminal": "9/256",
+          "ever": "9/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "9/256"
+          },
+          "never": "247/256",
+          "excess_ever_over_terminal": "0/1"
+        }
+      }
+    },
+    {
+      "source": "LOW",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "15/128",
+          "ever": "3/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/16",
+            "t5": "0/1"
+          },
+          "never": "13/16",
+          "excess_ever_over_terminal": "9/128"
+        },
+        "single": {
+          "terminal": "3/1024",
+          "ever": "3/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/256",
+            "t5": "0/1"
+          },
+          "never": "253/256",
+          "excess_ever_over_terminal": "9/1024"
+        }
+      }
+    },
+    {
+      "source": "HIGH",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "15/128",
+          "ever": "3/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/16",
+            "t5": "0/1"
+          },
+          "never": "13/16",
+          "excess_ever_over_terminal": "9/128"
+        },
+        "single": {
+          "terminal": "81/1024",
+          "ever": "27/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "27/256",
+            "t5": "0/1"
+          },
+          "never": "229/256",
+          "excess_ever_over_terminal": "27/1024"
+        }
+      }
+    },
+    {
+      "source": "MID",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "1/8",
+          "ever": "1/4",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "1/4",
+            "t5": "0/1"
+          },
+          "never": "3/4",
+          "excess_ever_over_terminal": "1/8"
+        },
+        "single": {
+          "terminal": "1/32",
+          "ever": "1/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "1/16",
+            "t5": "0/1"
+          },
+          "never": "15/16",
+          "excess_ever_over_terminal": "1/32"
+        }
+      }
+    },
+    {
+      "source": "UP2",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "41/128",
+          "ever": "7/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "7/16",
+            "t5": "0/1"
+          },
+          "never": "9/16",
+          "excess_ever_over_terminal": "15/128"
+        },
+        "single": {
+          "terminal": "243/1024",
+          "ever": "81/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "81/256",
+            "t5": "0/1"
+          },
+          "never": "175/256",
+          "excess_ever_over_terminal": "81/1024"
+        }
+      }
+    },
+    {
+      "source": "UP3",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "41/128",
+          "ever": "7/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "7/16",
+            "t5": "0/1"
+          },
+          "never": "9/16",
+          "excess_ever_over_terminal": "15/128"
+        },
+        "single": {
+          "terminal": "81/1024",
+          "ever": "27/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "27/256",
+            "t5": "0/1"
+          },
+          "never": "229/256",
+          "excess_ever_over_terminal": "27/1024"
+        }
+      }
+    },
+    {
+      "source": "DOWN2",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "41/128",
+          "ever": "7/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "7/16",
+            "t5": "0/1"
+          },
+          "never": "9/16",
+          "excess_ever_over_terminal": "15/128"
+        },
+        "single": {
+          "terminal": "1/1024",
+          "ever": "1/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "1/256",
+            "t5": "0/1"
+          },
+          "never": "255/256",
+          "excess_ever_over_terminal": "3/1024"
+        }
+      }
+    },
+    {
+      "source": "DOWN3",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "41/128",
+          "ever": "7/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "7/16",
+            "t5": "0/1"
+          },
+          "never": "9/16",
+          "excess_ever_over_terminal": "15/128"
+        },
+        "single": {
+          "terminal": "3/1024",
+          "ever": "3/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/256",
+            "t5": "0/1"
+          },
+          "never": "253/256",
+          "excess_ever_over_terminal": "9/1024"
+        }
+      }
+    },
+    {
+      "source": "SPIKE2",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "15/128",
+          "ever": "3/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/16",
+            "t5": "0/1"
+          },
+          "never": "13/16",
+          "excess_ever_over_terminal": "9/128"
+        },
+        "single": {
+          "terminal": "9/1024",
+          "ever": "9/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "9/256",
+            "t5": "0/1"
+          },
+          "never": "247/256",
+          "excess_ever_over_terminal": "27/1024"
+        }
+      }
+    },
+    {
+      "source": "SPIKE3",
+      "T": 5,
+      "modes": {
+        "scan": {
+          "terminal": "9/128",
+          "ever": "3/16",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "3/16",
+            "t5": "0/1"
+          },
+          "never": "13/16",
+          "excess_ever_over_terminal": "15/128"
+        },
+        "single": {
+          "terminal": "9/1024",
+          "ever": "9/256",
+          "first_alarm": {
+            "t3": "0/1",
+            "t4": "9/256",
+            "t5": "0/1"
+          },
+          "never": "247/256",
+          "excess_ever_over_terminal": "27/1024"
+        }
+      }
+    }
+  ],
+  "checks": {
+    "worlds": 18,
+    "full_trajectory_leaves_scanned_in_terminal_dp": 864,
+    "infinite_threshold_zero_alarm_controls": 36,
+    "mid5_terminal_only_negative_control": 1,
+    "UP2_to_SPIKE2_source_swap_negative_control": 1
+  }
+}
