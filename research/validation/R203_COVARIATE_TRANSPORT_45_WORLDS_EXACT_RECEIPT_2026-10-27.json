@@ -1,0 +1,925 @@
+{
+  "research_id": "R203",
+  "method": "third_covariate_pattern_transport",
+  "evidence_class": "E1_ARTIFICIAL_ONLY",
+  "original_result_git_blob": "ed9cc4865132ebb33de1b22908d1932237586af8",
+  "protocol_path": "protocols/R203_COVARIATE_TRANSPORT_THIRD_METHOD_PRESCORE_FREEZE_2026-10-27.md",
+  "worlds": 45,
+  "original_training_vectors": 240,
+  "independent_source_pairs": 11520,
+  "original_same_pattern_exact_checks": 15,
+  "statistics": {
+    "different_pattern_worlds": 30,
+    "stale_worse": 30,
+    "stale_equal": 0,
+    "stale_better": 0,
+    "selected_current_better_than_fixed_IID": 16,
+    "selected_current_equal_fixed_IID": 0,
+    "selected_current_worse_than_fixed_IID": 29
+  },
+  "results": [
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "SMOOTH",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "157/144",
+      "selected_stale_MSE_exact": "157/144",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "1",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/4",
+        "SAR_POS": "1/16",
+        "SEM_NEG": "1/8",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "ALTERNATING",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "181/144",
+      "selected_stale_MSE_exact": "439/144",
+      "stale_minus_current_exact": "43/24",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "3",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/4",
+        "SAR_POS": "1/16",
+        "SEM_NEG": "1/8",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "MIXED",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "613/576",
+      "selected_stale_MSE_exact": "367/144",
+      "stale_minus_current_exact": "95/64",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "5/2",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/4",
+        "SAR_POS": "1/16",
+        "SEM_NEG": "1/8",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "SMOOTH",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "277/144",
+      "selected_stale_MSE_exact": "277/144",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "47/18",
+      "fixed_IID_stale_MSE_exact": "47/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "0",
+        "SAR_POS": "11/16",
+        "SEM_NEG": "0",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "79/48",
+      "selected_stale_MSE_exact": "737/144",
+      "stale_minus_current_exact": "125/36",
+      "fixed_IID_current_MSE_exact": "31/18",
+      "fixed_IID_stale_MSE_exact": "55/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "0",
+        "SAR_POS": "11/16",
+        "SEM_NEG": "0",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "MIXED",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "311/192",
+      "selected_stale_MSE_exact": "725/144",
+      "stale_minus_current_exact": "1967/576",
+      "fixed_IID_current_MSE_exact": "59/36",
+      "fixed_IID_stale_MSE_exact": "107/36",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "0",
+        "SAR_POS": "11/16",
+        "SEM_NEG": "0",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "SMOOTH",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "277/144",
+      "selected_stale_MSE_exact": "277/144",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "29/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "0",
+        "SAR_POS": "5/16",
+        "SEM_NEG": "1/8",
+        "SEM_POS": "5/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "79/48",
+      "selected_stale_MSE_exact": "655/144",
+      "stale_minus_current_exact": "209/72",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "65/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "0",
+        "SAR_POS": "5/16",
+        "SEM_NEG": "1/8",
+        "SEM_POS": "5/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "MIXED",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "311/192",
+      "selected_stale_MSE_exact": "583/144",
+      "stale_minus_current_exact": "1399/576",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "28/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "0",
+        "SAR_POS": "5/16",
+        "SEM_NEG": "1/8",
+        "SEM_POS": "5/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "SMOOTH",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "121/72",
+      "selected_stale_MSE_exact": "121/72",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "31/18",
+      "fixed_IID_stale_MSE_exact": "31/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "5/16",
+        "SAR_NEG": "3/8",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/4",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "161/72",
+      "selected_stale_MSE_exact": "461/72",
+      "stale_minus_current_exact": "25/6",
+      "fixed_IID_current_MSE_exact": "47/18",
+      "fixed_IID_stale_MSE_exact": "119/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "5/16",
+        "SAR_NEG": "3/8",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/4",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "MIXED",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "509/288",
+      "selected_stale_MSE_exact": "263/72",
+      "stale_minus_current_exact": "181/96",
+      "fixed_IID_current_MSE_exact": "67/36",
+      "fixed_IID_stale_MSE_exact": "139/36",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "5/16",
+        "SAR_NEG": "3/8",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/4",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "SMOOTH",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "245/144",
+      "selected_stale_MSE_exact": "245/144",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "29/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/4",
+        "SAR_POS": "1/16",
+        "SEM_NEG": "3/8",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "269/144",
+      "selected_stale_MSE_exact": "527/144",
+      "stale_minus_current_exact": "43/24",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "65/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/4",
+        "SAR_POS": "1/16",
+        "SEM_NEG": "3/8",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "SMOOTH",
+      "test_pattern": "MIXED",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "965/576",
+      "selected_stale_MSE_exact": "455/144",
+      "stale_minus_current_exact": "95/64",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "28/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/4",
+        "SAR_POS": "1/16",
+        "SEM_NEG": "3/8",
+        "SEM_POS": "1/16"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "SMOOTH",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "181/144",
+      "selected_stale_MSE_exact": "439/144",
+      "stale_minus_current_exact": "43/24",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "3",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "ALTERNATING",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "157/144",
+      "selected_stale_MSE_exact": "157/144",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "1",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "MIXED",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "589/576",
+      "selected_stale_MSE_exact": "113/72",
+      "stale_minus_current_exact": "35/64",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "3/2",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "SMOOTH",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "161/72",
+      "selected_stale_MSE_exact": "461/72",
+      "stale_minus_current_exact": "25/6",
+      "fixed_IID_current_MSE_exact": "47/18",
+      "fixed_IID_stale_MSE_exact": "119/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "5/16",
+        "SAR_NEG": "0",
+        "SAR_POS": "3/8",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/4"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "121/72",
+      "selected_stale_MSE_exact": "121/72",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "31/18",
+      "fixed_IID_stale_MSE_exact": "31/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "5/16",
+        "SAR_NEG": "0",
+        "SAR_POS": "3/8",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/4"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "MIXED",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "469/288",
+      "selected_stale_MSE_exact": "157/72",
+      "stale_minus_current_exact": "53/96",
+      "fixed_IID_current_MSE_exact": "59/36",
+      "fixed_IID_stale_MSE_exact": "83/36",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "5/16",
+        "SAR_NEG": "0",
+        "SAR_POS": "3/8",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/4"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "SMOOTH",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "269/144",
+      "selected_stale_MSE_exact": "527/144",
+      "stale_minus_current_exact": "43/24",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "65/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "3/8"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "245/144",
+      "selected_stale_MSE_exact": "245/144",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "29/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "3/8"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "MIXED",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "941/576",
+      "selected_stale_MSE_exact": "157/72",
+      "stale_minus_current_exact": "35/64",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "19/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "3/8"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "SMOOTH",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "79/48",
+      "selected_stale_MSE_exact": "737/144",
+      "stale_minus_current_exact": "125/36",
+      "fixed_IID_current_MSE_exact": "31/18",
+      "fixed_IID_stale_MSE_exact": "55/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "11/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "0"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "277/144",
+      "selected_stale_MSE_exact": "277/144",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "47/18",
+      "fixed_IID_stale_MSE_exact": "47/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "11/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "0"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "MIXED",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "973/576",
+      "selected_stale_MSE_exact": "367/144",
+      "stale_minus_current_exact": "55/64",
+      "fixed_IID_current_MSE_exact": "67/36",
+      "fixed_IID_stale_MSE_exact": "67/36",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "11/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "0"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "SMOOTH",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "79/48",
+      "selected_stale_MSE_exact": "655/144",
+      "stale_minus_current_exact": "209/72",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "65/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "5/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "5/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "277/144",
+      "selected_stale_MSE_exact": "277/144",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "29/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "5/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "5/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "ALTERNATING",
+      "test_pattern": "MIXED",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "973/576",
+      "selected_stale_MSE_exact": "197/72",
+      "stale_minus_current_exact": "67/64",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "19/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "5/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "5/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "SMOOTH",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "181/144",
+      "selected_stale_MSE_exact": "1447/576",
+      "stale_minus_current_exact": "241/192",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "5/2",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "ALTERNATING",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "157/144",
+      "selected_stale_MSE_exact": "883/576",
+      "stale_minus_current_exact": "85/192",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "3/2",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "MIXED",
+      "true_source": "IID",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "589/576",
+      "selected_stale_MSE_exact": "589/576",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "1",
+      "fixed_IID_stale_MSE_exact": "1",
+      "oracle_known_true_MSE_exact": "1",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/2",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "SMOOTH",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "329/144",
+      "selected_stale_MSE_exact": "3517/576",
+      "stale_minus_current_exact": "2201/576",
+      "fixed_IID_current_MSE_exact": "47/18",
+      "fixed_IID_stale_MSE_exact": "55/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "3/8",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/4"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "257/144",
+      "selected_stale_MSE_exact": "1109/576",
+      "stale_minus_current_exact": "9/64",
+      "fixed_IID_current_MSE_exact": "31/18",
+      "fixed_IID_stale_MSE_exact": "17/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "3/8",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/4"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "MIXED",
+      "true_source": "SAR_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "953/576",
+      "selected_stale_MSE_exact": "953/576",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "59/36",
+      "fixed_IID_stale_MSE_exact": "59/36",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "3/8",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "1/4"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "SMOOTH",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "269/144",
+      "selected_stale_MSE_exact": "1799/576",
+      "stale_minus_current_exact": "241/192",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "28/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "3/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "245/144",
+      "selected_stale_MSE_exact": "1235/576",
+      "stale_minus_current_exact": "85/192",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "19/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "3/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "MIXED",
+      "true_source": "SEM_POS",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "941/576",
+      "selected_stale_MSE_exact": "941/576",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "29/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "1/16",
+        "SAR_POS": "1/4",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "3/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "SMOOTH",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "239/144",
+      "selected_stale_MSE_exact": "1715/576",
+      "stale_minus_current_exact": "253/192",
+      "fixed_IID_current_MSE_exact": "31/18",
+      "fixed_IID_stale_MSE_exact": "23/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "3/8",
+        "SAR_NEG": "9/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "0"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "295/144",
+      "selected_stale_MSE_exact": "1963/576",
+      "stale_minus_current_exact": "87/64",
+      "fixed_IID_current_MSE_exact": "47/18",
+      "fixed_IID_stale_MSE_exact": "37/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "3/8",
+        "SAR_NEG": "9/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "0"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "MIXED",
+      "true_source": "SAR_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "991/576",
+      "selected_stale_MSE_exact": "991/576",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "67/36",
+      "fixed_IID_stale_MSE_exact": "67/36",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "3/8",
+        "SAR_NEG": "9/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "1/16",
+        "SEM_POS": "0"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "SMOOTH",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "79/48",
+      "selected_stale_MSE_exact": "1927/576",
+      "stale_minus_current_exact": "979/576",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "28/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "5/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "5/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "ALTERNATING",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "277/144",
+      "selected_stale_MSE_exact": "1171/576",
+      "stale_minus_current_exact": "7/64",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "19/9",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "5/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "5/16",
+        "SEM_POS": "1/8"
+      }
+    },
+    {
+      "train_pattern": "MIXED",
+      "test_pattern": "MIXED",
+      "true_source": "SEM_NEG",
+      "original_training_vectors": 16,
+      "independent_test_shocks_per_training": 16,
+      "selected_current_MSE_exact": "973/576",
+      "selected_stale_MSE_exact": "973/576",
+      "stale_minus_current_exact": "0",
+      "fixed_IID_current_MSE_exact": "29/18",
+      "fixed_IID_stale_MSE_exact": "29/18",
+      "oracle_known_true_MSE_exact": "29/18",
+      "selected_candidate_probabilities_exact": {
+        "IID": "1/4",
+        "SAR_NEG": "5/16",
+        "SAR_POS": "0",
+        "SEM_NEG": "5/16",
+        "SEM_POS": "1/8"
+      }
+    }
+  ],
+  "new_E2_predictions": 0,
+  "new_E3_predictions": 0,
+  "external_independent_replications": 0
+}
