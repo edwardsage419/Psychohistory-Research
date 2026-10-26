@@ -5,7 +5,7 @@ const headers=lines.shift().split(',');
 const csv=lines.map(s=>Object.fromEntries(s.split(',').map((v,i)=>[headers[i],v])));
 const receipt=JSON.parse(fs.readFileSync('research/validation/R202_HORIZON_TRANSPORT_24_WORLDS_384_EXACT_RECEIPT_2026-10-27.json','utf8'));
 const gcd=(a,b)=>b===0n?a:gcd(b,a%b);
-function F(x){if(Array.isArray(x))return x;let [n,d='1']=String(x).split('/').map(BigInt);if(d<0n){n=-n;d=-d}const g=gcd(n<0n?-n:n,d);return [n/g,d/g]}
+function F(x){if(Array.isArray(x))return x;let [n,d=1n]=String(x).split('/').map(BigInt);if(d<0n){n=-n;d=-d}const g=gcd(n<0n?-n:n,d);return [n/g,d/g]}
 const add=(a,b)=>F(`${a[0]*b[1]+b[0]*a[1]}/${a[1]*b[1]}`);
 const sub=(a,b)=>add(a,[-b[0],b[1]]);
 const mul=(a,b)=>F(`${a[0]*b[0]}/${a[1]*b[1]}`);
