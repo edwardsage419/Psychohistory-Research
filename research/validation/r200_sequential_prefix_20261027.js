@@ -1,6 +1,6 @@
-// Reproducible expression: node -e 'console.log(JSON.stringify(require("./")))' is not supported; use node to eval source and print JSON.
-// Exact finite Bernoulli enumeration; returns receipt object when evaluated.
-(()=>{
+// R200 exact prefix monitoring; run: node research/validation/r200_sequential_prefix_20261027.js
+// No dependencies, exact integer likelihood comparisons.
+console.log(JSON.stringify((()=>{
 "use strict";
 const sources=["LOW","HIGH","MID","UP2","UP3","DOWN2","DOWN3","SPIKE2","SPIKE3"];
 const changes=["UP2","UP3","DOWN2","DOWN3"];
@@ -59,4 +59,4 @@ for(const T of [4,5]){
 const mid4=worlds.find(r=>r.source==="MID"&&r.T===4),mid5=worlds.find(r=>r.source==="MID"&&r.T===5);
 if(mid4.modes.scan.terminal!=="1/4"||mid5.modes.scan.terminal!=="1/8"||mid4.modes.single.terminal!=="1/16"||mid5.modes.single.terminal!=="1/32")throw Error("old R200 terminal mismatch");
 return {schema:"r200_sequential_prefix_third_method_v1",date:"2026-10-27",protocol:"protocols/R200_SEQUENTIAL_PREFIX_LOOKS_THIRD_METHOD_PRESCORE_FREEZE_2026-10-27.md",sources,T_values:[4,5],looks_start:3,threshold_LR:4,zero_source:"MID",modes:["scan","single"],worlds,checks:{worlds:worlds.length,weighted_ordered_paths:paths,exact_identities:identityChecks,old_terminal_anchors:4,strict_ever_over_terminal_world_modes:strictEver,terminal_only_misses_early_alarm_world_modes:wrongTerminalOnly},evidence:"E1_INTERNAL_ARTIFICIAL_ONLY"};
-})()
+})(),null,2));
