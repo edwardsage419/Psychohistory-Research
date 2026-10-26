@@ -1,0 +1,63 @@
+{
+  "research_id": "R199",
+  "audit_method": "complete_hidden_observed_joint_enumeration_and_direct_hidden_Brier",
+  "comparison_worlds": 4,
+  "full_hidden_observed_joint_atom_contributions": 640,
+  "observed_likelihood_equal_checks": 48,
+  "posterior_complement_checks": 176,
+  "wrong_label_negative_controls": 4,
+  "rows": [
+    {
+      "true_source": "BASE",
+      "L": 3,
+      "observed_sequence_count": 8,
+      "source_mass": "1",
+      "oracle_hidden_Brier": "509/2912",
+      "opposite_label_hidden_Brier": "1385/2912",
+      "unconditional_half_hidden_Brier": "1/4",
+      "opposite_excess_Brier": "219/728",
+      "oracle_gain_over_half": "219/2912",
+      "squared_posterior_complement_identity": "219/728"
+    },
+    {
+      "true_source": "BASE",
+      "L": 4,
+      "observed_sequence_count": 16,
+      "source_mass": "1",
+      "oracle_hidden_Brier": "74348859/430168816",
+      "opposite_label_hidden_Brier": "207122239/430168816",
+      "unconditional_half_hidden_Brier": "1/4",
+      "opposite_excess_Brier": "33193345/107542204",
+      "oracle_gain_over_half": "33193345/430168816",
+      "squared_posterior_complement_identity": "33193345/107542204"
+    },
+    {
+      "true_source": "LABEL_SWAPPED",
+      "L": 3,
+      "observed_sequence_count": 8,
+      "source_mass": "1",
+      "oracle_hidden_Brier": "509/2912",
+      "opposite_label_hidden_Brier": "1385/2912",
+      "unconditional_half_hidden_Brier": "1/4",
+      "opposite_excess_Brier": "219/728",
+      "oracle_gain_over_half": "219/2912",
+      "squared_posterior_complement_identity": "219/728"
+    },
+    {
+      "true_source": "LABEL_SWAPPED",
+      "L": 4,
+      "observed_sequence_count": 16,
+      "source_mass": "1",
+      "oracle_hidden_Brier": "74348859/430168816",
+      "opposite_label_hidden_Brier": "207122239/430168816",
+      "unconditional_half_hidden_Brier": "1/4",
+      "opposite_excess_Brier": "33193345/107542204",
+      "oracle_gain_over_half": "33193345/430168816",
+      "squared_posterior_complement_identity": "33193345/107542204"
+    }
+  ],
+  "external_replication": false,
+  "main_receipt_blob_sha": "b28e6d9958f6ff88744ad36ebd80bfbcfeea77af",
+  "exact_main_B_field_comparisons": 40,
+  "exact_mismatches": 0
+}
