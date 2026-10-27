@@ -1,0 +1,9 @@
+# B轨 R206 归档源码实际回放核验
+
+日期：2026-10-27。状态：REMOTE_ARCHIVED_SOURCE_REPLAY_PASS。项目内部程序性审计。
+
+从main重新读取 `research/validation/r206_future_prior_shift_third_method_20261027.js` Git blob `ab9d4444249880bd7bba4bc63976e5e0be57aa02`、`research/evidence_audit/b_r206_future_prior_shift_reweight_20261027.js` Git blob `32231ca618d76f3e81908bbe78dfaf560a70392a` 及正式收据 Git blob `858539fb4e6d861e3e1742cb2dae7ef8720a1191`。
+
+实际在隔离JavaScript环境提供只读原始1920训练CSV、7680未来CSV及原正式结果，按仓库归档脚本原文字节执行。R脚本重新生成108世界；B脚本重新读取独立未来事件计算108世界、540项跨算法精确字段比较，并通过条件H负对照，风险11对29。重新生成的R世界数组与正式收据逐字段和顺序完全一致。此核验没有改写任何原有研究文件，也没有启动Actions。
+
+注意：两条脚本共用通用有理数及CSV解析基础函数，预测几何来源不同。属于内部两算法复核，不能当作完全独立实现或外部研究团队复现。首次冻结总体H负对照因训练分布符号对称失败，已经在修订协议与科学报告中透明记录。E1人工证据，E2/E3新增0，R073/PESEN保持冻结。远端CI成功仍未建立。
