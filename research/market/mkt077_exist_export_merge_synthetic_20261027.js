@@ -1,0 +1,24 @@
+"use strict";
+// Synthetic OR-tag merge and selective export demonstration; not an Exist implementation.
+let checks=0;const ok=(x,m)=>{checks++;if(!x)throw Error(m)};
+const A=[1,0,1,0],B=[0,1,1,0],C=[1,1,1,0],D=[0,0,0,0];
+const union=(a,b)=>a.map((x,i)=>+(!!(x||b[i])));
+const u1=union(A,B),u2=union(C,D);
+ok(u1.join()===u2.join(),"same union");ok(A.join()!==C.join(),"A differs");
+ok(B.join()!==D.join(),"B differs");ok(u1.join()==="1,1,1,0","union values");
+ok(A.reduce((a,b)=>a+b,0)===2,"A sum");ok(B.reduce((a,b)=>a+b,0)===2,"B sum");
+ok(C.reduce((a,b)=>a+b,0)===3,"C sum");ok(D.reduce((a,b)=>a+b,0)===0,"D sum");
+ok(u1.reduce((a,b)=>a+b,0)===3,"union sum");
+const full=[{name:"mood",value:6},{name:"sleep",value:7},{name:"stress",value:8}];
+const share=full.filter(x=>x.name!=="stress");
+ok(full.length===3,"full count");ok(share.length===2,"selection count");
+ok(!share.some(x=>x.name==="stress"),"omitted raw attribute");
+ok(full.some(x=>x.name==="stress"),"full retains attribute");
+const exportView={attributes:share,derived_summary:"synthetic derived correlation"};
+ok(Boolean(exportView.derived_summary),"derived disclosed");ok(exportView.attributes.length===2,"selected count");
+ok(!exportView.attributes.some(x=>x.name==="stress"),"raw omission");
+ok(new Set([A.join(),C.join()]).size===2,"distinct originals");
+ok(new Set([u1.join(),u2.join()]).size===1,"many-to-one");
+ok(checks===18,"expected prior checks");
+const output={checks,failed:0,scope:"synthetic only",Exist_merge_semantics:"UNVERIFIED"};
+if(typeof module!=="undefined"&&require.main===module)console.log(JSON.stringify(output,null,2));
