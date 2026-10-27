@@ -1,0 +1,21 @@
+{
+  "research_id": "R222_S18",
+  "audit_type": "INTERNAL_INDEPENDENT_ALGORITHM_PAIRWISE_MOMENTS",
+  "evidence_class": "E1_ARTIFICIAL",
+  "source_blob": "5100af6615ff5a8fe8e9ad2702dfa4227aa6c0bc",
+  "original_R_receipt_blob": "a1550b6c96eedde2f7e594651a27f71af1c9ff49",
+  "conditions_checked": 54,
+  "source_rows_checked": 198,
+  "exact_field_comparisons": 864,
+  "failures": 0,
+  "mutation_test": {
+    "source_row_index_1based": 1,
+    "modified_column": "actual_four_individual_results",
+    "original": "0|1|2|3",
+    "mutated": "1|1|2|3",
+    "independent_mismatch_count": 12,
+    "detected": true
+  },
+  "external_independent_replication": 0,
+  "CI": "NOT_RUN"
+}
