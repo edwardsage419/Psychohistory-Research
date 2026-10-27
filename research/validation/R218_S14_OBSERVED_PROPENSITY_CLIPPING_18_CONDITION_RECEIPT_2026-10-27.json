@@ -1,0 +1,2645 @@
+{
+  "research": "R218_S14",
+  "evidence": "E1_ARTIFICIAL",
+  "frozen_protocol": "protocols/R218_S14_OBSERVED_PROPENSITY_CLIPPING_PRESCORE_FREEZE_2026-10-27.md",
+  "original_csv_blob": "83fc87bc6b82f8e08c10519134d49972168e982d",
+  "worlds": 6,
+  "source_rows": 101,
+  "source_slots": 303,
+  "valid_slots": 300,
+  "unsupported_slots": 3,
+  "conditions": [
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "0",
+      "mse": "0"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "9/4",
+      "bias": "1/4",
+      "variance": "0",
+      "mse": "1/16"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "3",
+      "bias": "1",
+      "variance": "0",
+      "mse": "1"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "3",
+      "bias": "1",
+      "variance": "3/2",
+      "mse": "5/2"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "99/32",
+      "bias": "35/32",
+      "variance": "2187/2048",
+      "mse": "4637/2048"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "15/4",
+      "bias": "7/4",
+      "variance": "27/32",
+      "mse": "125/32"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "0",
+      "mse": "0"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "9/4",
+      "bias": "1/4",
+      "variance": "0",
+      "mse": "1/16"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "3",
+      "bias": "1",
+      "variance": "0",
+      "mse": "1"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "0",
+      "mse": "0"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "39/16",
+      "bias": "7/16",
+      "variance": "0",
+      "mse": "49/256"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "original_assignment_count": 16,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "7/2",
+      "bias": "3/2",
+      "variance": "0",
+      "mse": "9/4"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "original_assignment_count": 36,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "3/2",
+      "mse": "3/2"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "original_assignment_count": 36,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "3/2",
+      "mse": "3/2"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "original_assignment_count": 36,
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "3/2",
+      "mse": "3/2"
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "0",
+      "original_assignment_count": 1,
+      "source_mass": "1",
+      "status": "NO_COMMON_SUPPORT",
+      "mean": null,
+      "bias": null,
+      "variance": null,
+      "mse": null
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "1/3",
+      "original_assignment_count": 1,
+      "source_mass": "1",
+      "status": "NO_COMMON_SUPPORT",
+      "mean": null,
+      "bias": null,
+      "variance": null,
+      "mse": null
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "1/2",
+      "original_assignment_count": 1,
+      "source_mass": "1",
+      "status": "NO_COMMON_SUPPORT",
+      "mean": null,
+      "bias": null,
+      "variance": null,
+      "mse": null
+    }
+  ],
+  "records": [
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "0",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "0",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "0",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "0",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "9/16",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "9/16",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "9/16",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "9/16",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "63/16",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "63/16",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "63/16",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "63/16",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "3/2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "3/2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "3/2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "3/2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "9/2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "9/2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "9/2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "9/2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "9/4",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "3/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "9/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "9/64",
+      "estimate": "3",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "39/16",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "1|0|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|1|0|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|0|1|0|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|1|1|0",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|1|0|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|1|0|1|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "assignment": "0|0|0|1|0|1|1|1",
+      "source_probability": "1/16",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|1|0|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "-1",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|1|0|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|1|0|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|1|0|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|1|0|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|1|0|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|1|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|1|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|1|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|1|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|1|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|1|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "1|0|0|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|1|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|1|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|1|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|1|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|1|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|1|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|1|0|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "assignment": "0|0|1|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "5",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|1|0|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "-1",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|1|0|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|1|0|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|1|0|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|1|0|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|1|0|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|1|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|1|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|1|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|1|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|1|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|1|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "1|0|0|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|1|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|1|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|1|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|1|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|1|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|1|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|1|0|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "assignment": "0|0|1|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "5",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|1|0|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "-1",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|1|0|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|1|0|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|1|0|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|1|0|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|1|0|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|1|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|1|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|1|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|1|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|1|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|1|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "1|0|0|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|1|0|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|1|0|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|1|0|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|1|0|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|1|0|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|1|0|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "1/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|1|0|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|1|1|1|0|0",
+      "source_probability": "1/36",
+      "estimate": "2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|1|1|0|1|0",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|1|1|0|0|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|1|0|1|1|0",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|1|0|1|0|1",
+      "source_probability": "1/36",
+      "estimate": "7/2",
+      "status": "OK"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "assignment": "0|0|1|1|0|0|1|1",
+      "source_probability": "1/36",
+      "estimate": "5",
+      "status": "OK"
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "0",
+      "assignment": "0|0|0|0|1|1|1|1",
+      "source_probability": "1",
+      "estimate": null,
+      "status": "NO_COMMON_SUPPORT"
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "1/3",
+      "assignment": "0|0|0|0|1|1|1|1",
+      "source_probability": "1",
+      "estimate": null,
+      "status": "NO_COMMON_SUPPORT"
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "1/2",
+      "assignment": "0|0|0|0|1|1|1|1",
+      "source_probability": "1",
+      "estimate": null,
+      "status": "NO_COMMON_SUPPORT"
+    }
+  ],
+  "checks": {
+    "raw_equals_X_matching_rows": 100,
+    "half_equals_naive_rows": 100,
+    "balanced_invariance_rows": 108,
+    "observed_outcome_mutation_detected": true
+  },
+  "new_E2": 0,
+  "new_E3": 0
+}
