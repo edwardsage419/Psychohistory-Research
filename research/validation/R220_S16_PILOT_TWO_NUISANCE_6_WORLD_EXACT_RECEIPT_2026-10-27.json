@@ -1,0 +1,288 @@
+{
+  "research_id": "R220",
+  "extension": "S16",
+  "evidence": "E1_ARTIFICIAL",
+  "status": "COMPUTED_INTERNAL_EXACT_CI_NOT_RUN",
+  "original_result_blob": "390562952c0f5ae496287d3e74e9a434b529e10a",
+  "protocol": "protocols/R220_S16_INDEPENDENT_PILOT_TWO_NUISANCE_FUTURE_AIPW_PRESCORE_FREEZE_2026-10-27.md",
+  "pilot_and_future_distinct_artificial_ids": true,
+  "worlds_total": 7,
+  "positive_worlds": 6,
+  "positive_joint_assignment_slots": 393216,
+  "original_R220_full_assignment_sources_unchanged": 1537,
+  "comparison_method_fields_exact_checked": 42,
+  "negative_controls": {
+    "future_y1_mutation_detected": true,
+    "original_mean_at_pilot_zero": "293/25",
+    "mutated_mean_at_pilot_zero": "4763/400",
+    "future_z_leak_detected": true,
+    "pilot_q_x0_mask0": "1/6",
+    "leaky_q_x0_mask0_future_z0_one": "2/7",
+    "no_positivity_remains_null": true
+  },
+  "human_E2": 0,
+  "historical_E3": 0,
+  "external_replication": 0,
+  "worlds": [
+    {
+      "world": "BOTH_CORRECT",
+      "positivity": true,
+      "pilot_assignments": 256,
+      "future_assignments": 256,
+      "joint_assignment_slots": 65536,
+      "pilot_probability_mass": "1",
+      "future_probability_mass": "1",
+      "methods": {
+        "PILOT_BOTH_AIPW": {
+          "mean": "55551/25600",
+          "variance": "3168812619/655360000",
+          "bias": "4351/25600",
+          "mse": "159387191/32768000"
+        },
+        "PILOT_Q_TRUE_M_AIPW": {
+          "mean": "2",
+          "variance": "282933/409600",
+          "bias": "0",
+          "mse": "282933/409600"
+        },
+        "TRUE_X_Q_PILOT_M_AIPW": {
+          "mean": "2",
+          "variance": "198437/76800",
+          "bias": "0",
+          "mse": "198437/76800"
+        },
+        "PILOT_OUTCOME_ONLY": {
+          "mean": "939/640",
+          "variance": "598967/819200",
+          "bias": "-341/640",
+          "mse": "831529/819200"
+        },
+        "ORIGINAL_FIXED_AIPW": {
+          "mean": "2",
+          "variance": "2/3",
+          "bias": "0",
+          "mse": "2/3"
+        }
+      }
+    },
+    {
+      "world": "PROP_CORRECT_OUTCOME_WRONG",
+      "positivity": true,
+      "pilot_assignments": 256,
+      "future_assignments": 256,
+      "joint_assignment_slots": 65536,
+      "pilot_probability_mass": "1",
+      "future_probability_mass": "1",
+      "methods": {
+        "PILOT_BOTH_AIPW": {
+          "mean": "55551/25600",
+          "variance": "3168812619/655360000",
+          "bias": "4351/25600",
+          "mse": "159387191/32768000"
+        },
+        "PILOT_Q_TRUE_M_AIPW": {
+          "mean": "2",
+          "variance": "282933/409600",
+          "bias": "0",
+          "mse": "282933/409600"
+        },
+        "TRUE_X_Q_PILOT_M_AIPW": {
+          "mean": "2",
+          "variance": "198437/76800",
+          "bias": "0",
+          "mse": "198437/76800"
+        },
+        "PILOT_OUTCOME_ONLY": {
+          "mean": "939/640",
+          "variance": "598967/819200",
+          "bias": "-341/640",
+          "mse": "831529/819200"
+        },
+        "ORIGINAL_FIXED_AIPW": {
+          "mean": "2",
+          "variance": "125/24",
+          "bias": "0",
+          "mse": "125/24"
+        }
+      }
+    },
+    {
+      "world": "PROP_WRONG_OUTCOME_CORRECT",
+      "positivity": true,
+      "pilot_assignments": 256,
+      "future_assignments": 256,
+      "joint_assignment_slots": 65536,
+      "pilot_probability_mass": "1",
+      "future_probability_mass": "1",
+      "methods": {
+        "PILOT_BOTH_AIPW": {
+          "mean": "55551/25600",
+          "variance": "3168812619/655360000",
+          "bias": "4351/25600",
+          "mse": "159387191/32768000"
+        },
+        "PILOT_Q_TRUE_M_AIPW": {
+          "mean": "2",
+          "variance": "282933/409600",
+          "bias": "0",
+          "mse": "282933/409600"
+        },
+        "TRUE_X_Q_PILOT_M_AIPW": {
+          "mean": "2",
+          "variance": "198437/76800",
+          "bias": "0",
+          "mse": "198437/76800"
+        },
+        "PILOT_OUTCOME_ONLY": {
+          "mean": "939/640",
+          "variance": "598967/819200",
+          "bias": "-341/640",
+          "mse": "831529/819200"
+        },
+        "ORIGINAL_FIXED_AIPW": {
+          "mean": "2",
+          "variance": "3/8",
+          "bias": "0",
+          "mse": "3/8"
+        }
+      }
+    },
+    {
+      "world": "BOTH_WRONG",
+      "positivity": true,
+      "pilot_assignments": 256,
+      "future_assignments": 256,
+      "joint_assignment_slots": 65536,
+      "pilot_probability_mass": "1",
+      "future_probability_mass": "1",
+      "methods": {
+        "PILOT_BOTH_AIPW": {
+          "mean": "55551/25600",
+          "variance": "3168812619/655360000",
+          "bias": "4351/25600",
+          "mse": "159387191/32768000"
+        },
+        "PILOT_Q_TRUE_M_AIPW": {
+          "mean": "2",
+          "variance": "282933/409600",
+          "bias": "0",
+          "mse": "282933/409600"
+        },
+        "TRUE_X_Q_PILOT_M_AIPW": {
+          "mean": "2",
+          "variance": "198437/76800",
+          "bias": "0",
+          "mse": "198437/76800"
+        },
+        "PILOT_OUTCOME_ONLY": {
+          "mean": "939/640",
+          "variance": "598967/819200",
+          "bias": "-341/640",
+          "mse": "831529/819200"
+        },
+        "ORIGINAL_FIXED_AIPW": {
+          "mean": "3",
+          "variance": "99/32",
+          "bias": "1",
+          "mse": "131/32"
+        }
+      }
+    },
+    {
+      "world": "HIDDEN_U_BOTH",
+      "positivity": true,
+      "pilot_assignments": 256,
+      "future_assignments": 256,
+      "joint_assignment_slots": 65536,
+      "pilot_probability_mass": "1",
+      "future_probability_mass": "1",
+      "methods": {
+        "PILOT_BOTH_AIPW": {
+          "mean": "692111/245760",
+          "variance": "6156903818731/1509949440000",
+          "bias": "200591/245760",
+          "mse": "1790705637689/377487360000"
+        },
+        "PILOT_Q_TRUE_M_AIPW": {
+          "mean": "108571/40960",
+          "variance": "2125577639/3355443200",
+          "bias": "26651/40960",
+          "mse": "3546129241/3355443200"
+        },
+        "TRUE_X_Q_PILOT_M_AIPW": {
+          "mean": "8/3",
+          "variance": "297279433/132710400",
+          "bias": "2/3",
+          "mse": "356261833/132710400"
+        },
+        "PILOT_OUTCOME_ONLY": {
+          "mean": "3747/2048",
+          "variance": "408234269/629145600",
+          "bias": "-349/2048",
+          "mse": "426504419/629145600"
+        },
+        "ORIGINAL_FIXED_AIPW": {
+          "mean": "8/3",
+          "variance": "11/18",
+          "bias": "2/3",
+          "mse": "19/18"
+        }
+      }
+    },
+    {
+      "world": "WEAK_OVERLAP",
+      "positivity": true,
+      "pilot_assignments": 256,
+      "future_assignments": 256,
+      "joint_assignment_slots": 65536,
+      "pilot_probability_mass": "1",
+      "future_probability_mass": "1",
+      "methods": {
+        "PILOT_BOTH_AIPW": {
+          "mean": "2196015/1048576",
+          "variance": "329488426906743/137438953472000",
+          "bias": "98863/1048576",
+          "mse": "82677540875717/34359738368000"
+        },
+        "PILOT_Q_TRUE_M_AIPW": {
+          "mean": "2",
+          "variance": "109524069/335544320",
+          "bias": "0",
+          "mse": "109524069/335544320"
+        },
+        "TRUE_X_Q_PILOT_M_AIPW": {
+          "mean": "2",
+          "variance": "65229737/3932160",
+          "bias": "0",
+          "mse": "65229737/3932160"
+        },
+        "PILOT_OUTCOME_ONLY": {
+          "mean": "51555/32768",
+          "variance": "3579823507/10737418240",
+          "bias": "-13981/32768",
+          "mse": "5534507117/10737418240"
+        },
+        "ORIGINAL_FIXED_AIPW": {
+          "mean": "2",
+          "variance": "1937/120",
+          "bias": "0",
+          "mse": "1937/120"
+        }
+      }
+    },
+    {
+      "world": "NO_POSITIVITY",
+      "positivity": false,
+      "pilot_assignments": 1,
+      "future_assignments": 1,
+      "all_methods_null": true,
+      "methods": {
+        "PILOT_BOTH_AIPW": null,
+        "PILOT_Q_TRUE_M_AIPW": null,
+        "TRUE_X_Q_PILOT_M_AIPW": null,
+        "PILOT_OUTCOME_ONLY": null,
+        "ORIGINAL_FIXED_AIPW": null
+      }
+    }
+  ]
+}
