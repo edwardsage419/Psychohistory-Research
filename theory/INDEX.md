@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH080，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH081，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -136,12 +136,13 @@
 | TH079 | 隐私保护、群体信息外部性与差别影响 | Dwork2006、Nissenbaum2004、Acemoglu等2022作者稿、Kearns等2018、Chouldechova2017原作选段直接审读；Barocas与Selbst2016原刊摘要及片段；15项命题、8项人工反例；无独立实证 | THEORY_NOTE_BOUNDED | [研究笔记](TH079_PRIVACY_CONTEXTUAL_INTEGRITY_INFORMATION_EXTERNALITIES_SUBGROUP_FAIRNESS_2026-10-27.md) |
 
 | TH080 | 差分隐私组合预算、群体推断与公平审计共同可行域 | Dwork与Roth2014、Kairouz等2015、Cummings等2019、Jagielski等2019原作指定章节直接审读；Kifer与Machanavajjhala2011、Murtagh与Vadhan2018摘要；15项命题、8项人工反例；无真实实证 | THEORY_NOTE_BOUNDED | [研究笔记](TH080_DP_COMPOSITION_GROUP_INFERENCE_FAIR_AUDIT_FEASIBILITY_2026-10-27.md) |
+| TH081 | 数据用途限制、可撤回同意、机器遗忘与长期档案治理 | GDPR2016及EDPB2020原始条文与指定章节、Ginart2019、Bourtoule2021、Carroll2020、Wilkinson2016开放原作直接审读；Cao与Yang2015出版机构摘要；16项条件性命题、8项人工审计；无真实数据 | THEORY_NOTE_BOUNDED | [研究笔记](TH081_PURPOSE_LIMITATION_CONSENT_WITHDRAWAL_ARCHIVAL_GOVERNANCE_2026-10-27.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH081 | 数据用途限制、可撤回同意与长期档案治理 | Nissenbaum2004；Solove2006；相关原作待核 | QUEUED_UNVERIFIED |
+| 1 | TH082 | 档案缺失、选择性保存、历史记忆与证据链可识别性 | Trouillot1995；Ketelaar2001；Little与Rubin缺失数据理论，均待原作核验 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -426,6 +427,8 @@ C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | privacy / contextual integrity / data externalities / subgroup fairness | [TH079 隐私与信息外部性](TH079_PRIVACY_CONTEXTUAL_INTEGRITY_INFORMATION_EXTERNALITIES_SUBGROUP_FAIRNESS_2026-10-27.md)；Dwork2006、Nissenbaum2004、Acemoglu等2022、Kearns等2018、Chouldechova2017、Barocas与Selbst2016；相关数据泄漏、差分隐私、交叉子群、基准率公平冲突 | 个体、群体、制度、历史、方法论 | 五份开放原作指定章节、另一本原刊摘要及检索片段；八项人工反例；无独立实证 |
 
 | privacy composition / group inference / fair audit feasibility | [TH080 组合隐私与公平审计](TH080_DP_COMPOSITION_GROUP_INFERENCE_FAIR_AUDIT_FEASIBILITY_2026-10-27.md)；Dwork与Roth2014、Kairouz等2015、Cummings等2019、Jagielski等2019；多轮发布、群体推断、少数子群精度与近似公平 | 个体、群体、制度、历史、方法论 | 四份原作选段、两份原始摘要、八项人工反例；无独立实证 |
+
+| purpose limitation / consent withdrawal / machine unlearning / archival governance | [TH081 数据用途与档案治理](TH081_PURPOSE_LIMITATION_CONSENT_WITHDRAWAL_ARCHIVAL_GOVERNANCE_2026-10-27.md)；GDPR2016、EDPB2020、Ginart2019、Bourtoule2021、Carroll2020、Wilkinson2016；用途与合法依据、撤回时间边界、删除谱系、FAIR与CARE规范性冲突 | 个体、群体、制度、历史、方法论 | 六份原始文本指定章节、一个出版机构摘要、16项条件性命题及8项人工反例；无个人数据或独立实证 |
 
 ## 持续执行规则
 
