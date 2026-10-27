@@ -1,0 +1,263 @@
+{
+  "research_id": "R204",
+  "protocol": "protocols/R204_DISCRETE_BAYES_ORACLE_THIRD_METHOD_PRESCORE_FREEZE_2026-10-27.md",
+  "status": "INTERNAL_E1_THIRD_METHOD_NOT_FORMAL_NEW_ACCEPTANCE",
+  "summary": {
+    "total_source_atoms": 912,
+    "worlds": 12,
+    "source": "R204 frozen four discrete Rademacher kernels and three splits",
+    "evidence": "E1_ARTIFICIAL",
+    "gp_true_strictly_worse_than_discrete_bayes": 9,
+    "gp_selected_strictly_worse_than_discrete_bayes": 12,
+    "zero_strictly_worse_than_discrete_bayes": 9
+  },
+  "worlds": [
+    {
+      "split": "EXTRAPOLATION",
+      "true_kernel": "IID",
+      "source_atoms": 256,
+      "distinct_observed_y": 27,
+      "risk_exact": {
+        "bayes": "1",
+        "gp_true": "1",
+        "gp_selected": "127/72",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "0",
+        "gp_selected": "55/72",
+        "zero": "0"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "EXTRAPOLATION",
+      "true_kernel": "CONSTANT",
+      "source_atoms": 16,
+      "distinct_observed_y": 15,
+      "risk_exact": {
+        "bayes": "1/8",
+        "gp_true": "1/4",
+        "gp_selected": "499/288",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "1/8",
+        "gp_selected": "463/288",
+        "zero": "7/8"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1/8",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "EXTRAPOLATION",
+      "true_kernel": "ALTERNATING",
+      "source_atoms": 16,
+      "distinct_observed_y": 15,
+      "risk_exact": {
+        "bayes": "1/8",
+        "gp_true": "1/4",
+        "gp_selected": "289/288",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "1/8",
+        "gp_selected": "253/288",
+        "zero": "7/8"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1/8",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "EXTRAPOLATION",
+      "true_kernel": "LINEAR",
+      "source_atoms": 16,
+      "distinct_observed_y": 16,
+      "risk_exact": {
+        "bayes": "0",
+        "gp_true": "5/12",
+        "gp_selected": "587/288",
+        "zero": "5/2"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "5/12",
+        "gp_selected": "587/288",
+        "zero": "5/2"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "0",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "INTERPOLATION",
+      "true_kernel": "IID",
+      "source_atoms": 256,
+      "distinct_observed_y": 27,
+      "risk_exact": {
+        "bayes": "1",
+        "gp_true": "1",
+        "gp_selected": "14065/10368",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "0",
+        "gp_selected": "3697/10368",
+        "zero": "0"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "INTERPOLATION",
+      "true_kernel": "CONSTANT",
+      "source_atoms": 16,
+      "distinct_observed_y": 15,
+      "risk_exact": {
+        "bayes": "1/8",
+        "gp_true": "1/4",
+        "gp_selected": "17/32",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "1/8",
+        "gp_selected": "13/32",
+        "zero": "7/8"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1/8",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "INTERPOLATION",
+      "true_kernel": "ALTERNATING",
+      "source_atoms": 16,
+      "distinct_observed_y": 15,
+      "risk_exact": {
+        "bayes": "1/8",
+        "gp_true": "1/4",
+        "gp_selected": "89/32",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "1/8",
+        "gp_selected": "85/32",
+        "zero": "7/8"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1/8",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "INTERPOLATION",
+      "true_kernel": "LINEAR",
+      "source_atoms": 16,
+      "distinct_observed_y": 16,
+      "risk_exact": {
+        "bayes": "0",
+        "gp_true": "1/9",
+        "gp_selected": "1/9",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "1/9",
+        "gp_selected": "1/9",
+        "zero": "1"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "0",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "GAP",
+      "true_kernel": "IID",
+      "source_atoms": 256,
+      "distinct_observed_y": 27,
+      "risk_exact": {
+        "bayes": "1",
+        "gp_true": "1",
+        "gp_selected": "1191/800",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "0",
+        "gp_selected": "391/800",
+        "zero": "0"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "GAP",
+      "true_kernel": "CONSTANT",
+      "source_atoms": 16,
+      "distinct_observed_y": 15,
+      "risk_exact": {
+        "bayes": "1/8",
+        "gp_true": "1/4",
+        "gp_selected": "17/32",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "1/8",
+        "gp_selected": "13/32",
+        "zero": "7/8"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1/8",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "GAP",
+      "true_kernel": "ALTERNATING",
+      "source_atoms": 16,
+      "distinct_observed_y": 15,
+      "risk_exact": {
+        "bayes": "1/8",
+        "gp_true": "1/4",
+        "gp_selected": "25/32",
+        "zero": "1"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "1/8",
+        "gp_selected": "21/32",
+        "zero": "7/8"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "1/8",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    },
+    {
+      "split": "GAP",
+      "true_kernel": "LINEAR",
+      "source_atoms": 16,
+      "distinct_observed_y": 16,
+      "risk_exact": {
+        "bayes": "0",
+        "gp_true": "1/20",
+        "gp_selected": "1/20",
+        "zero": "1/2"
+      },
+      "excess_over_discrete_bayes_exact": {
+        "gp_true": "1/20",
+        "gp_selected": "1/20",
+        "zero": "1/2"
+      },
+      "independent_conditional_moment_bayes_risk_exact": "0",
+      "original_R204_GP_risk_regression": "PASS",
+      "orthogonality_identity": "PASS"
+    }
+  ],
+  "evidence_limits": {
+    "new_E2": 0,
+    "new_E3": 0,
+    "external_independent_replications": 0,
+    "R073_frozen": true,
+    "PESEN_v0_1_frozen": true
+  }
+}
