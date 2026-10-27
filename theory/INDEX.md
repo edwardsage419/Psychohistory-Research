@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH084，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH085，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -140,12 +140,13 @@
 | TH082 | 档案沉默、选择性保存与历史证据链可识别性 | Stoler2002、Schwartz与Cook2002原刊选段直接审读；Trouillot1995书目及Rubin1976、Little1993、Zimran2020等原刊摘要；16项条件性命题、8项人工审计；无真实历史因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH082_ARCHIVAL_SILENCES_SELECTIVE_SURVIVAL_HISTORICAL_IDENTIFIABILITY_2026-10-27.md) |
 | TH083 | 口述史、集体记忆、证言冲突与多来源证据三角检验 | Halbwachs1925第III/IV章、Portelli2009/2010公开意大利语原作、Talarico与Rubin2003原刊直接审读；Hirst2009、Cuc2007、Coman2009、Roediger2001等原刊摘要；16项条件性命题、7项人工审计及原刊数字核验；无独立历史因果验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH083_ORAL_HISTORY_COLLECTIVE_MEMORY_TESTIMONY_TRIANGULATION_2026-10-27.md) |
 | TH084 | 历史证言的来源监测、误导信息与跨代叙事传播 | Johnson等1993、Lindsay与Johnson1989开放原刊指定页直接审读；Loftus等1974/1978、McCloskey与Zaragoza1985、Gabbert等2003、Wiechert等2026原刊摘要；16项条件性命题、8项算术与人工审计；无真实历史因果验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH084_SOURCE_MONITORING_MISINFORMATION_TRANSGENERATIONAL_TESTIMONY_2026-10-27.md) |
+| TH085 | 跨代历史叙事的传播网络、证据谱系与纠错持续性 | Friggeri等2014开放原刊pp.101–109直接审读；Vosoughi等2018、Goel等2015/2016、Bode与Vraga2015、Nyhan与Reifler2010、Wood与Porter2019、Centola与Macy2007、Bakshy等2015摘要或作者机构资料；16项条件性命题、7项算术及人工审计；无真实历史因果验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH085_NARRATIVE_DIFFUSION_PROVENANCE_CORRECTION_PERSISTENCE_2026-10-27.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH085 | 跨代历史叙事的传播网络、证据谱系与纠错持续性 | 来源图、重复传播、纠错后信念更新、失访与选择偏差的原始研究 | QUEUED_UNVERIFIED |
+| 1 | TH086 | 叙事来源图缺失、匿名引用与跨代证据依赖的部分识别 | 缺失传播边、链接错误、来源依赖与历史证据部分识别的原始研究 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -438,6 +439,8 @@ C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | oral history / collective memory / testimony dependence / triangulation | [TH083 口述史、集体记忆与证言三角检验](TH083_ORAL_HISTORY_COLLECTIVE_MEMORY_TESTIMONY_TRIANGULATION_2026-10-27.md)；Halbwachs1925、Portelli2009/2010、Talarico与Rubin2003、Hirst2009、Cuc2007、Coman2009、Roediger2001；社会框架、访谈互动、记忆信心与准确性、共同来源依赖 | 个体、群体、制度、历史、方法论 | 三份原著指定章节直接审读、其他原刊摘要；16项命题、7项人工反例、原刊数字核验；未独立历史验证 |
 
 | source monitoring / misinformation / testimony lineage / memory conformity | [TH084 来源监测、误导信息与跨代叙事传播](TH084_SOURCE_MONITORING_MISINFORMATION_TRANSGENERATIONAL_TESTIMONY_2026-10-27.md)；Johnson等1993、Lindsay与Johnson1989、Loftus等1974/1978、McCloskey与Zaragoza1985、Gabbert等2003、Wiechert等2026；来源线索、判断阈值、测试设计与传播依赖 | 个体、群体、制度、历史、方法论 | 两份开放原刊指定页、九份原始摘要、两项原刊算术与六项人工反例；无真实历史因果估计 |
+
+| narrative diffusion / provenance graph / correction persistence | [TH085 跨代叙事传播与纠错持续性](TH085_NARRATIVE_DIFFUSION_PROVENANCE_CORRECTION_PERSISTENCE_2026-10-27.md)；Friggeri等2014、Vosoughi等2018、Goel等2015/2016、Bode与Vraga2015、Nyhan与Reifler2010、Wood与Porter2019；选择性可见、传播结构、纠错与删除、复制证据依赖 | 个体、群体、制度、历史、方法论 | 一份开放原刊重点页直接审读、七份原作摘要或作者机构说明、七项人工与算术审计；无独立历史因果验证 |
 
 ## 持续执行规则
 
