@@ -1,0 +1,96 @@
+{
+  "research": "R211",
+  "method": "outcome_dependent_attrition_partial_identification_third_method",
+  "date": "2026-10-27",
+  "evidence": "E1_ARTIFICIAL",
+  "source_schedules": 256,
+  "randomizations_per_schedule": 6,
+  "response_policies": [
+    "FULL",
+    "FIXED_02",
+    "ARM_FAVORABLE"
+  ],
+  "total_source_policy_rows": 4608,
+  "enumeration_invariant_checks": 18432,
+  "policies": {
+    "FULL": {
+      "rows": 1536,
+      "missing_hist": {
+        "0": 1536
+      },
+      "width_quarters_sum": 6144,
+      "covered": 1536,
+      "cc_defined": 1536,
+      "cc_undefined": 0,
+      "cc_diff_halves_sum": 0,
+      "zero_ate_cc_positive": 102,
+      "cc_equals_one": 96,
+      "example_zero_ate_positive": {
+        "schedule_index": 3,
+        "schedule": "00|00|00|11",
+        "treated": "0|3",
+        "response_mask": "1|1|1|1",
+        "observed": "0|0|0|1",
+        "cc_diff_halves": 1,
+        "true_ate_quarters": 0
+      },
+      "worlds_cc_mean_differs_from_true": 0
+    },
+    "FIXED_02": {
+      "rows": 1536,
+      "missing_hist": {
+        "2": 1536
+      },
+      "width_quarters_sum": 9216,
+      "covered": 1536,
+      "cc_defined": 1024,
+      "cc_undefined": 512,
+      "cc_diff_halves_sum": 0,
+      "zero_ate_cc_positive": 60,
+      "cc_equals_one": 256,
+      "example_zero_ate_positive": {
+        "schedule_index": 6,
+        "schedule": "00|00|01|10",
+        "treated": "1|2",
+        "response_mask": "1|0|1|0",
+        "observed": "0|?|1|?",
+        "cc_diff_halves": 2,
+        "true_ate_quarters": 0
+      },
+      "worlds_cc_mean_differs_from_true": 186
+    },
+    "ARM_FAVORABLE": {
+      "rows": 1536,
+      "missing_hist": {
+        "0": 96,
+        "1": 384,
+        "2": 576,
+        "3": 384,
+        "4": 96
+      },
+      "width_quarters_sum": 9216,
+      "covered": 1536,
+      "cc_defined": 864,
+      "cc_undefined": 672,
+      "cc_diff_halves_sum": 1728,
+      "zero_ate_cc_positive": 246,
+      "cc_equals_one": 864,
+      "example_zero_ate_positive": {
+        "schedule_index": 3,
+        "schedule": "00|00|00|11",
+        "treated": "0|3",
+        "response_mask": "0|1|1|1",
+        "observed": "?|0|0|1",
+        "cc_diff_halves": 2,
+        "true_ate_quarters": 0
+      },
+      "worlds_cc_mean_differs_from_true": 220
+    }
+  },
+  "information_permission": "Z,response_mask,observed Y only; true schedule audit-only; selection policy unknown to bound estimator",
+  "protocol": "protocols/R211_OUTCOME_DEPENDENT_ATTRITION_THIRD_METHOD_PRESCORE_FREEZE_2026-10-27.md",
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
