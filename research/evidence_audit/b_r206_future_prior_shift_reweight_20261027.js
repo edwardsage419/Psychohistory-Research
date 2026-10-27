@@ -1,0 +1,25 @@
+// R206 independent audit. Node.js 18+; run from repository root. Reads original 7680 future outcomes, never R geometry code.
+const fs=require("fs");
+function csvParse(s){let out=[],row=[],field="",quoted=false;for(let i=0;i<s.length;i++){let c=s[i];if(c==='"'){if(quoted&&s[i+1]==='"'){field+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){row.push(field);field="";}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&s[i+1]==='\n')i++;row.push(field);if(row.some(x=>x!==""))out.push(row);row=[];field="";}else field+=c;}if(field!==""||row.length){row.push(field);out.push(row);}const head=out.shift();return out.map(row=>Object.fromEntries(head.map((h,i)=>[h,row[i]])));}
+class Rat{constructor(n,d=1n){n=BigInt(n);d=BigInt(d);if(d<0n){n=-n;d=-d;}if(!d)throw Error("zero denominator");let a=n<0n?-n:n,b=d;while(b){let t=a%b;a=b;b=t;}this.n=n/a;this.d=d/a;}static from(x){if(x instanceof Rat)return x;let z=String(x).split("/");return new Rat(z[0],z[1]??1);}add(b){b=Rat.from(b);return new Rat(this.n*b.d+b.n*this.d,this.d*b.d);}sub(b){b=Rat.from(b);return new Rat(this.n*b.d-b.n*this.d,this.d*b.d);}mul(b){b=Rat.from(b);return new Rat(this.n*b.n,this.d*b.d);}lt(b){b=Rat.from(b);return this.n*b.d<b.n*this.d;}eq(b){b=Rat.from(b);return this.n===b.n&&this.d===b.d;}str(){return this.d===1n?String(this.n):`${this.n}/${this.d}`;}num(){return Number(this.n)/Number(this.d);}}
+const Z=Rat.from(0),O=Rat.from(1);
+function sq(a){return a.mul(a);}
+function weight(qG,qH,g,h){let pg=g===1?qG:O.sub(qG),ph=h===1?qH:O.sub(qH);return pg.mul(ph);}
+function score(events){let keys=[...new Set(events.map(e=>`${e.a},${e.b},${e.n}`))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));let grouped=new Map(keys.map(k=>[k,[]]));for(const e of events)grouped.get(`${e.a},${e.b},${e.n}`).push(e);let out=[];for(const k of keys){const [a,b,n]=k.split(",").map(Number);for(const gq of ["1/4","1/2","3/4"])for(const hq of ["1/4","1/2","3/4"]){const qG=Rat.from(gq),qH=Rat.from(hq);let r2=Z,r1=Z,rg=Z,mass=Z;for(const e of grouped.get(k)){let w=e.trainP.mul(weight(qG,qH,e.g,e.h));mass=mass.add(w);r2=r2.add(w.mul(e.k2));r1=r1.add(w.mul(e.k1));rg=rg.add(w.mul(e.err));}if(!mass.eq(O))throw Error("probability mass "+k+" "+gq+" "+hq+" "+mass.str());out.push({a,b,n,qG:gq,qH:hq,k2_quantization_exact:r2.str(),k1_quantization_exact:r1.str(),g_classification_exact:rg.str(),constant_plus_baseline_exact:O.sub(qG).str(),target_sign_oracle_exact:"0",k2_quantization:r2.num(),g_classification:rg.num()});}}return out;}
+
+function eventsFromArchive(rows){return rows.map(r=>({a:Number(r.a),b:Number(r.b),n:Number(r.training_n),g:Number(r.independent_new_G),h:Number(r.independent_new_H),trainP:Rat.from(r.joint_train_independent_new_state_probability).mul(4),k2:Rat.from(r.independent_new_k2_squared_quantization_error),k1:Rat.from(r.independent_new_k1_squared_quantization_error),err:Rat.from(r.independent_new_G_prediction_zero_one_error)}));}
+const rows=csvParse(fs.readFileSync("research/R206/R206_ALL_7680_INDEPENDENT_NEW_SAMPLE_PAIRS.csv","utf8"));
+const worlds=score(eventsFromArchive(rows));
+if(rows.length!==7680||worlds.length!==108)throw Error("original future source or world count changed");
+const original=JSON.parse(fs.readFileSync("research/R206/R206_EXACT_RESULTS.json","utf8"));
+for(const w of worlds.filter(w=>w.qG==="1/2"&&w.qH==="1/2")){const old=original.worlds.find(x=>x.true_scale_a===w.a&&x.true_nuisance_scale_b===w.b&&x.n_independent_original_training_rows===w.n);if(!old||old.expected_independent_new_k2_quantization_mse_exact!==w.k2_quantization_exact||old.expected_independent_new_G_error_after_train_label_map_exact!==w.g_classification_exact)throw Error("original R206 balanced parity failed");}
+const r=JSON.parse(fs.readFileSync("R206_SHIFT_R_OUTPUT.json","utf8")).worlds;
+const fields=["k2_quantization_exact","k1_quantization_exact","g_classification_exact","constant_plus_baseline_exact","target_sign_oracle_exact"];let checks=0;
+for(let i=0;i<108;i++)for(const f of fields){if(worlds[i][f]!==r[i][f])throw Error("R/B mismatch "+i+" "+f);checks++;}
+const source=rows.filter(r=>r.a==="1"&&r.b==="3"&&r.training_n==="4"&&r.ordered_original_GH_source_states==="-1,-1|-1,-1|-1,-1|-1,-1");
+if(source.length!==4)throw Error("conditional training source not found");
+function conditional(qH){let s=Z;for(const row of source)s=s.add(weight(Rat.from("1/2"),Rat.from(qH),Number(row.independent_new_G),Number(row.independent_new_H)).mul(Rat.from(row.independent_new_k2_squared_quantization_error)));return s;}
+if(conditional("1/4").eq(conditional("3/4")))throw Error("conditional H negative control failed");
+if(!worlds.some(w=>w.qG==="3/4"&&w.constant_plus_baseline_exact!=="1/2"))throw Error("G negative control failed");
+if(!worlds.some(w=>Rat.from(w.g_classification_exact).num()>0))throw Error("future label leak negative control failed");
+process.stdout.write(JSON.stringify({worlds:108,source_rows:7680,exact_checks:checks,conditional_H_low:conditional("1/4").str(),conditional_H_high:conditional("3/4").str()})+"\n");
