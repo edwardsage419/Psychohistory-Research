@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH072，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH073，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -125,11 +125,13 @@
 
 | TH072 | 集体行动、互惠规范与制度性信任的竞争机制 | Fehr与Gächter2000正式原刊收益函数、表1/3，Ostrom2000作者预刊稿与1990原著转录指定章节直接审读；Olson1965、Axelrod1981/1984、Herrmann等2008原始书目/作者回顾/机构摘要；16项命题、7项人工与算术审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH072_COLLECTIVE_ACTION_RECIPROCITY_POLYCENTRIC_TRUST_2026-10-27.md) |
 
+| TH073 | 共同资源治理的制度失灵、权力不对称与外部干预 | Baland与Platteau1996 FAO原著六个小节、Ostrom2007开放正式原刊直接审读；Ostrom1990第5章及Agrawal2001、Dayton-Johnson与Bardhan2002、Platteau2004原始摘要；16项命题、5项人工反例、2项原著转述数字核算 | THEORY_NOTE_BOUNDED | [研究笔记](TH073_COMMONS_FAILURE_POWER_EXTERNAL_INTERVENTION_2026-10-27.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH073 | 共同资源治理的制度失灵、权力不对称与外部干预 | Ostrom1990第5章；Agrawal2001；Baland与Platteau1996 | QUEUED_UNVERIFIED |
+| 1 | TH074 | 社会生态系统的鲁棒性、跨尺度反馈与制度适应 | Ostrom2007；Anderies等2004；Janssen等2007 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -398,6 +400,8 @@
 | D 每周历史环境与长期情景 | [D002 工业电气化与制度适应](../research/historical_scenarios/D002_ELECTRIFICATION_INSTITUTIONAL_ADAPTATION_2026-W44.md)；[D001 上周记录](../research/historical_scenarios/D001_1918_INFLUENZA_SHOCK_2026-W43.md) | 2026-W44 完成 David & Wright 1999 开放原文、Atack 等 2022 原刊重点章节，竞争解释、历史识别与四情景研究；无未来事件预测 | 人口转型、迁移冲击与制度适应 |
 
 C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日/同周保持只读。C 与 D 不占用 R 系列验收工作。每轮先查 main 和研究日历，避免重复。
+
+| commons governance failure / elite capture / co-management / diagnostic systems | Ostrom1990/2007、Baland与Platteau1996、Agrawal2001、Dayton-Johnson与Bardhan2002、Platteau2004；外部进入、权力截取、生态生计多目标 | 个体、群体、制度、历史、方法论 | FAO原著六节与Ostrom2007开放原刊直接审读；其他多为摘要；无独立因果复验 |
 
 ## 持续执行规则
 
