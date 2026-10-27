@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH081，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH083，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -137,6 +137,8 @@
 
 | TH080 | 差分隐私组合预算、群体推断与公平审计共同可行域 | Dwork与Roth2014、Kairouz等2015、Cummings等2019、Jagielski等2019原作指定章节直接审读；Kifer与Machanavajjhala2011、Murtagh与Vadhan2018摘要；15项命题、8项人工反例；无真实实证 | THEORY_NOTE_BOUNDED | [研究笔记](TH080_DP_COMPOSITION_GROUP_INFERENCE_FAIR_AUDIT_FEASIBILITY_2026-10-27.md) |
 | TH081 | 数据用途限制、可撤回同意、机器遗忘与长期档案治理 | GDPR2016及EDPB2020原始条文与指定章节、Ginart2019、Bourtoule2021、Carroll2020、Wilkinson2016开放原作直接审读；Cao与Yang2015出版机构摘要；16项条件性命题、8项人工审计；无真实数据 | THEORY_NOTE_BOUNDED | [研究笔记](TH081_PURPOSE_LIMITATION_CONSENT_WITHDRAWAL_ARCHIVAL_GOVERNANCE_2026-10-27.md) |
+| TH082 | 档案沉默、选择性保存与历史证据链可识别性 | Stoler2002、Schwartz与Cook2002原刊选段直接审读；Trouillot1995书目及Rubin1976、Little1993、Zimran2020等原刊摘要；16项条件性命题、8项人工审计；无真实历史因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH082_ARCHIVAL_SILENCES_SELECTIVE_SURVIVAL_HISTORICAL_IDENTIFIABILITY_2026-10-27.md) |
+| TH083 | 口述史、集体记忆、证言冲突与多来源证据三角检验 | Halbwachs1925第III/IV章、Portelli2009/2010公开意大利语原作、Talarico与Rubin2003原刊直接审读；Hirst2009、Cuc2007、Coman2009、Roediger2001等原刊摘要；16项条件性命题、7项人工审计及原刊数字核验；无独立历史因果验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH083_ORAL_HISTORY_COLLECTIVE_MEMORY_TESTIMONY_TRIANGULATION_2026-10-27.md) |
 
 ## 待研究队列
 
@@ -431,6 +433,8 @@ C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | purpose limitation / consent withdrawal / machine unlearning / archival governance | [TH081 数据用途与档案治理](TH081_PURPOSE_LIMITATION_CONSENT_WITHDRAWAL_ARCHIVAL_GOVERNANCE_2026-10-27.md)；GDPR2016、EDPB2020、Ginart2019、Bourtoule2021、Carroll2020、Wilkinson2016；用途与合法依据、撤回时间边界、删除谱系、FAIR与CARE规范性冲突 | 个体、群体、制度、历史、方法论 | 六份原始文本指定章节、一个出版机构摘要、16项条件性命题及8项人工反例；无个人数据或独立实证 |
 
 | archival silences / selective survival / record linkage / historical partial identification | [TH082 档案沉默、选择性保存与证据链可识别性](TH082_ARCHIVAL_SILENCES_SELECTIVE_SURVIVAL_HISTORICAL_IDENTIFIABILITY_2026-10-27.md)；Trouillot1995、Stoler2002、Schwartz与Cook2002、Rubin1976、Little1993、Zimran2020、Antonie等2020、Lee2022；史料形成、保存、访问、链接与研究者抽样的多阶段选择 | 个体、群体、制度、历史、方法论 | 两份作者公开正式原刊选段直接审读，六份原始出版摘要或书目核验，8项人工数学反例；Trouillot原著正文仍待合法全文校勘，无独立历史数据复算或因果验证 |
+
+| oral history / collective memory / testimony dependence / triangulation | [TH083 口述史、集体记忆与证言三角检验](TH083_ORAL_HISTORY_COLLECTIVE_MEMORY_TESTIMONY_TRIANGULATION_2026-10-27.md)；Halbwachs1925、Portelli2009/2010、Talarico与Rubin2003、Hirst2009、Cuc2007、Coman2009、Roediger2001；社会框架、访谈互动、记忆信心与准确性、共同来源依赖 | 个体、群体、制度、历史、方法论 | 三份原著指定章节直接审读、其他原刊摘要；16项命题、7项人工反例、原刊数字核验；未独立历史验证 |
 
 ## 持续执行规则
 
