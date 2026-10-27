@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH087，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH088，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -145,12 +145,13 @@
 | TH086 | 叙事来源图缺失、匿名引证与历史证据部分识别 | Handcock与Gile2010开放原作指定章节直接审读；Allman等2009、Dawid与Skene1979、Liben-Nowell与Kleinberg2007原始摘要；16项命题、7项人工反例；无历史数据复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH086_MISSING_PROVENANCE_GRAPHS_ANONYMOUS_SOURCES_PARTIAL_IDENTIFICATION_2026-10-28.md) |
 
 | TH087 | 历史来源图时间一致性、引用倒置与证据谱系审计 | W3C PROV-DM与PROV-CONSTRAINTS 2013、Lamport1978原作指定章节直接审读；Allen1983、Buneman等2001原始摘要；16项命题、9项人工审计，无真实历史因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH087_TEMPORAL_CONSISTENCY_CITATION_INVERSION_PROVENANCE_AUDIT_2026-10-28.md) |
+| TH088 | 历史过程追踪、贝叶斯证据权重与竞争机制诊断 | Collier2011、Fairfield与Charman2017作者接受稿、Zaks2022、Befani2020四份原作指定章节直接审读；Mahoney2012及Beach/Pedersen2019原始摘要或书介；16项条件命题、9项人工审计，无历史因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH088_PROCESS_TRACING_BAYESIAN_DIAGNOSTIC_EVIDENCE_COMPETING_MECHANISMS_2026-10-28.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH088 | 历史过程追踪、贝叶斯证据权重与竞争机制诊断 | Collier2011、Bennett与Checkel2015、Beach与Pedersen2013等原始方法文献待核 | QUEUED_UNVERIFIED |
+| 1 | TH089 | 历史反事实的可比性、负面案例与机制外推边界 | 历史比较、反事实及案例选择的原始方法文献待核 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
