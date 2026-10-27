@@ -1,0 +1,655 @@
+{
+  "study": "R225_S21",
+  "evidence": "E1_FINITE_ARTIFICIAL_ONLY",
+  "source_rows": 576,
+  "weighted_evaluation_slots": 2304,
+  "source_blob_sha1": "a1ece971788aabef644cf1bc24522d6b2070ada0",
+  "scenario_count": 4,
+  "world_count": 6,
+  "method_count": 3,
+  "original_uniform_numeric_regression_checks": 72,
+  "probability_checks": 24,
+  "alias": [
+    {
+      "scenario": "UNIFORM",
+      "observed_joint_equal": true,
+      "support_cells": 96,
+      "true_ATE_pair": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "scenario": "FAVOR_FIRST_PAIR",
+      "observed_joint_equal": true,
+      "support_cells": 96,
+      "true_ATE_pair": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "scenario": "FAVOR_LAST_PAIR",
+      "observed_joint_equal": true,
+      "support_cells": 96,
+      "true_ATE_pair": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "scenario": "FAVOR_UNIT_ZERO",
+      "observed_joint_equal": true,
+      "support_cells": 96,
+      "true_ATE_pair": [
+        "1",
+        "0"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "scenario": "UNIFORM",
+      "world": "AS_IF_RANDOM_VALID",
+      "truth_ATE": "1",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "UNIFORM",
+      "world": "ENDOGENOUS_FUTURE_SHOCK_ALIAS",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        }
+      }
+    },
+    {
+      "scenario": "UNIFORM",
+      "world": "AS_IF_RANDOM_NULL",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "UNIFORM",
+      "world": "AS_IF_RANDOM_HETEROGENEOUS",
+      "truth_ATE": "3/2",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "3/2",
+          "variance": "23/48",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "23/48"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "3/2",
+          "variance": "23/48",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "23/48"
+        }
+      }
+    },
+    {
+      "scenario": "UNIFORM",
+      "world": "ENDOGENOUS_VISIBLE_SELECTION",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1",
+          "variance": "0",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "1"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "UNIFORM",
+      "world": "ANTICIPATORY_PRE_RESPONSE",
+      "truth_ATE": "1",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1/2",
+          "variance": "0",
+          "bias_from_true_target": "1/2",
+          "mean_squared_error": "1/4"
+        },
+        "two_period_DiD": {
+          "expectation": "1/2",
+          "variance": "1/16",
+          "bias_from_true_target": "-1/2",
+          "mean_squared_error": "5/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_FIRST_PAIR",
+      "world": "AS_IF_RANDOM_VALID",
+      "truth_ATE": "1",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_FIRST_PAIR",
+      "world": "ENDOGENOUS_FUTURE_SHOCK_ALIAS",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_FIRST_PAIR",
+      "world": "AS_IF_RANDOM_NULL",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_FIRST_PAIR",
+      "world": "AS_IF_RANDOM_HETEROGENEOUS",
+      "truth_ATE": "3/2",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "23/22",
+          "variance": "1041/1936",
+          "bias_from_true_target": "-5/11",
+          "mean_squared_error": "131/176"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "23/22",
+          "variance": "1041/1936",
+          "bias_from_true_target": "-5/11",
+          "mean_squared_error": "131/176"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_FIRST_PAIR",
+      "world": "ENDOGENOUS_VISIBLE_SELECTION",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1",
+          "variance": "0",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "1"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_FIRST_PAIR",
+      "world": "ANTICIPATORY_PRE_RESPONSE",
+      "truth_ATE": "1",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1/2",
+          "variance": "0",
+          "bias_from_true_target": "1/2",
+          "mean_squared_error": "1/4"
+        },
+        "two_period_DiD": {
+          "expectation": "1/2",
+          "variance": "1/16",
+          "bias_from_true_target": "-1/2",
+          "mean_squared_error": "5/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_LAST_PAIR",
+      "world": "AS_IF_RANDOM_VALID",
+      "truth_ATE": "1",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_LAST_PAIR",
+      "world": "ENDOGENOUS_FUTURE_SHOCK_ALIAS",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_LAST_PAIR",
+      "world": "AS_IF_RANDOM_NULL",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_LAST_PAIR",
+      "world": "AS_IF_RANDOM_HETEROGENEOUS",
+      "truth_ATE": "3/2",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "43/22",
+          "variance": "1041/1936",
+          "bias_from_true_target": "5/11",
+          "mean_squared_error": "131/176"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "43/22",
+          "variance": "1041/1936",
+          "bias_from_true_target": "5/11",
+          "mean_squared_error": "131/176"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_LAST_PAIR",
+      "world": "ENDOGENOUS_VISIBLE_SELECTION",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1",
+          "variance": "0",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "1"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_LAST_PAIR",
+      "world": "ANTICIPATORY_PRE_RESPONSE",
+      "truth_ATE": "1",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1/2",
+          "variance": "0",
+          "bias_from_true_target": "1/2",
+          "mean_squared_error": "1/4"
+        },
+        "two_period_DiD": {
+          "expectation": "1/2",
+          "variance": "1/16",
+          "bias_from_true_target": "-1/2",
+          "mean_squared_error": "5/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_UNIT_ZERO",
+      "world": "AS_IF_RANDOM_VALID",
+      "truth_ATE": "1",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_UNIT_ZERO",
+      "world": "ENDOGENOUS_FUTURE_SHOCK_ALIAS",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_UNIT_ZERO",
+      "world": "AS_IF_RANDOM_NULL",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_UNIT_ZERO",
+      "world": "AS_IF_RANDOM_HETEROGENEOUS",
+      "truth_ATE": "3/2",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "5/4",
+          "variance": "5/12",
+          "bias_from_true_target": "-1/4",
+          "mean_squared_error": "23/48"
+        },
+        "pre_balance_placebo": {
+          "expectation": "0",
+          "variance": "0",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "0"
+        },
+        "two_period_DiD": {
+          "expectation": "5/4",
+          "variance": "5/12",
+          "bias_from_true_target": "-1/4",
+          "mean_squared_error": "23/48"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_UNIT_ZERO",
+      "world": "ENDOGENOUS_VISIBLE_SELECTION",
+      "truth_ATE": "0",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "17/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1",
+          "variance": "0",
+          "bias_from_true_target": "1",
+          "mean_squared_error": "1"
+        },
+        "two_period_DiD": {
+          "expectation": "0",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        }
+      }
+    },
+    {
+      "scenario": "FAVOR_UNIT_ZERO",
+      "world": "ANTICIPATORY_PRE_RESPONSE",
+      "truth_ATE": "1",
+      "methods": {
+        "post_group_difference": {
+          "expectation": "1",
+          "variance": "1/16",
+          "bias_from_true_target": "0",
+          "mean_squared_error": "1/16"
+        },
+        "pre_balance_placebo": {
+          "expectation": "1/2",
+          "variance": "0",
+          "bias_from_true_target": "1/2",
+          "mean_squared_error": "1/4"
+        },
+        "two_period_DiD": {
+          "expectation": "1/2",
+          "variance": "1/16",
+          "bias_from_true_target": "-1/2",
+          "mean_squared_error": "5/16"
+        }
+      }
+    }
+  ],
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_independent_replications": 0
+}
