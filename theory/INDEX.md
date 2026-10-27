@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH090，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH091，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -150,11 +150,13 @@
 
 | TH090 | 历史机制异质性、测量等值与负例选择敏感性 | Cieciuch等2014、Athey与Imbens2016、Imai等2008开放原刊指定章节直接审读；Mahoney与Goertz2004、Meredith1993、Vandenberg与Lance2000原始摘要；16项条件命题、8项人工及发表汇总算术审计；无真实历史因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH090_HISTORICAL_MEASUREMENT_INVARIANCE_MECHANISM_HETEROGENEITY_NEGATIVE_CASE_SENSITIVITY_2026-10-28.md) |
 
+| TH091 | 历史事件时间对齐、处理前趋势与负对照的共同识别边界 | Sun与Abraham2021、Lipsitch等2010、Arnold等2016开放原作重点章节；Rambachan与Roth2023、Roth2022、Callaway与Sant’Anna2021原始摘要；16项命题、9项人工审计，无真实历史因果估计 | THEORY_NOTE_BOUNDED | [研究笔记](TH091_EVENT_TIME_PRETRENDS_NEGATIVE_CONTROLS_IDENTIFICATION_2026-10-28.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH091 | 历史事件时间对齐、处理前趋势与负对照的共同识别边界 | 历史事件研究、安慰剂检验与负对照原始文献待核 | QUEUED_UNVERIFIED |
+| 1 | TH092 | 政策公告、实际执行与预期效应的动态识别 | 历史政策执行时点、事件研究、动态处理及干扰原始文献待核 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -453,6 +455,8 @@ C 今日 C005 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | historical counterfactual / negative cases / support / transportability | [TH089 历史反事实与外推边界](TH089_HISTORICAL_COUNTERFACTUAL_COMPARABILITY_NEGATIVE_CASES_TRANSPORTABILITY_2026-10-28.md)；Fearon1991、King与Zeng2006、Mahoney与Goertz2004、Seawright与Gerring2008、Pearl与Bareinboim2011/2014；机会集合、凸包、共同支持、结构不变性 | 个体、群体、制度、历史、方法论 | 两份开放原作选页直接审读、作者原文片段及三份摘要或书目；8项人工审计；无真实历史因果验证 |
 
 | historical measurement invariance / effect heterogeneity / negative-case opportunity set | [TH090 历史机制异质性与跨期测量等值](TH090_HISTORICAL_MEASUREMENT_INVARIANCE_MECHANISM_HETEROGENEITY_NEGATIVE_CASE_SENSITIVITY_2026-10-28.md)；Cieciuch等2014、Athey与Imbens2016、Imai等2008、Mahoney与Goertz2004；同名量表、群体组成、选择性保存、负例机会集合 | 个体、群体、制度、历史、方法论 | 三份原刊指定章节直接审读，三份原刊摘要；8项人工与汇总算术审计；无真实因果复验 |
+
+| event time / pretrend contamination / negative control / timing error | [TH091 历史事件时间对齐与识别边界](TH091_EVENT_TIME_PRETRENDS_NEGATIVE_CONTROLS_IDENTIFICATION_2026-10-28.md)；Sun与Abraham2021、Lipsitch等2010、Arnold等2016、Rambachan与Roth2023、Roth2022、Callaway与Sant’Anna2021；队列异质性、日期错置、预期行为与负对照可比性 | 个体、群体、制度、历史、方法论 | 三份开放全文指定章节、三份摘要、九项人工审计；无独立历史因果复验 |
 
 ## 持续执行规则
 
