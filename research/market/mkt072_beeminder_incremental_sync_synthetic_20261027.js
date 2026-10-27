@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+"use strict";
+let n=0;const ck=(v,m)=>{n++;if(!v)throw Error(m)};
+const data=[{id:"a",daystamp:"20261020",value:100,updated_at:1},{id:"b",daystamp:"20261021",value:100,updated_at:2},{id:"c",daystamp:"20261022",value:100,updated_at:3}];
+const asMap=x=>new Map(x.map(v=>[v.id,{...v}])),sum=x=>[...x.values()].reduce((a,b)=>a+b.value,0);
+const local=asMap(data);ck(local.size===3,"start size");ck(sum(local)===300,"start sum");ck(local.get("a").value===100,"start a");
+const delta={goals:[{slug:"test",datapoints:[{id:"b",daystamp:"20261021",value:25,updated_at:5}]}],deleted_goals:[]};
+for(const v of delta.goals[0].datapoints)local.set(v.id,v);
+ck(local.size===3,"delta size");ck(local.get("b").value===25,"updated b");ck(local.get("a").value===100,"retained a");ck(local.get("c").value===100,"retained c");
+const server=asMap([{id:"b",daystamp:"20261021",value:25,updated_at:5},{id:"c",daystamp:"20261022",value:100,updated_at:3}]);
+ck(server.size===2,"server size");ck(!server.has("a"),"deleted a");ck(local.has("a"),"ghost a");ck(sum(local)===225,"stale sum");ck(sum(server)===125,"true sum");ck(sum(local)-sum(server)===100,"gap");
+ck(Object.hasOwn(delta,"deleted_goals"),"goal tombstone");ck(!Object.hasOwn(delta,"deleted_datapoints"),"synthetic missing point tombstone");
+const full=asMap([...server.values()]);ck(full.size===2,"full count");ck(!full.has("a"),"full deletion");ck(full.get("b").value===25,"full correction");ck(sum(full)===125,"full score");
+const skinny=asMap(data);skinny.set("c",data[2]);ck(skinny.get("b").value===100,"skinny misses correction");ck(skinny.get("c").value===100,"skinny last");ck(sum(skinny)===300,"skinny total");
+const ordered=[{id:"old",daystamp:"20261001",updated_at:9},{id:"new",daystamp:"20261022",updated_at:3}].sort((a,b)=>b.updated_at-a.updated_at);
+ck(ordered[0].id==="old","updated ordering");ck(ordered[0].daystamp<ordered[1].daystamp,"event ordering");
+const goal={aggday:"sqrt",roadall:[[20261020,0,null],[20261030,null,10]],updated_at:9};
+ck(goal.aggday==="sqrt","aggday");ck(goal.roadall.length===2,"roadall");ck(!Object.hasOwn(goal,"config_revision"),"synthetic no revision");
+const sqrt=x=>Math.sqrt(x.reduce((a,b)=>a+b,0));ck(sqrt([30,70])===10,"sqrt sum");ck(sqrt([100])===10,"sqrt single");ck(sqrt([0])===0,"sqrt zero");
+console.log(JSON.stringify({checks:n,failures:0,scope:"synthetic only"}));
