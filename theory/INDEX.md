@@ -430,6 +430,8 @@ C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | purpose limitation / consent withdrawal / machine unlearning / archival governance | [TH081 数据用途与档案治理](TH081_PURPOSE_LIMITATION_CONSENT_WITHDRAWAL_ARCHIVAL_GOVERNANCE_2026-10-27.md)；GDPR2016、EDPB2020、Ginart2019、Bourtoule2021、Carroll2020、Wilkinson2016；用途与合法依据、撤回时间边界、删除谱系、FAIR与CARE规范性冲突 | 个体、群体、制度、历史、方法论 | 六份原始文本指定章节、一个出版机构摘要、16项条件性命题及8项人工反例；无个人数据或独立实证 |
 
+| archival silences / selective survival / record linkage / historical partial identification | [TH082 档案沉默、选择性保存与证据链可识别性](TH082_ARCHIVAL_SILENCES_SELECTIVE_SURVIVAL_HISTORICAL_IDENTIFIABILITY_2026-10-27.md)；Trouillot1995、Stoler2002、Schwartz与Cook2002、Rubin1976、Little1993、Zimran2020、Antonie等2020、Lee2022；史料形成、保存、访问、链接与研究者抽样的多阶段选择 | 个体、群体、制度、历史、方法论 | 两份作者公开正式原刊选段直接审读，六份原始出版摘要或书目核验，8项人工数学反例；Trouillot原著正文仍待合法全文校勘，无独立历史数据复算或因果验证 |
+
 ## 持续执行规则
 
 每次选择新理论后，记录原始出处、可访问范围、核心命题、竞争解释、适用边界、与四层框架的研究问题、证据缺口、下一主题；使用中文笔记保留原文术语。科学证据与理论整理分离。GitHub 写入需回读核验，未经核验不得标注同步成功。
