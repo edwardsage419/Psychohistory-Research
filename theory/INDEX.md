@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH074，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH075，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -128,6 +128,7 @@
 | TH073 | 共同资源治理的制度失灵、权力不对称与外部干预 | Baland与Platteau1996 FAO原著六个小节、Ostrom2007开放正式原刊直接审读；Ostrom1990第5章及Agrawal2001、Dayton-Johnson与Bardhan2002、Platteau2004原始摘要；16项命题、5项人工反例、2项原著转述数字核算 | THEORY_NOTE_BOUNDED | [研究笔记](TH073_COMMONS_FAILURE_POWER_EXTERNAL_INTERVENTION_2026-10-27.md) |
 
 | TH074 | 社会生态系统鲁棒性、跨尺度反馈、制度适应与权力批评 | Anderies等2004、Walker等2004、Ostrom2007、Olsson等2015四份开放原刊指定章节；Carpenter等2001与Cote、Nightingale2012原刊摘要；14项条件性命题、7项人工反例；无真实因果与预测复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH074_SES_ROBUSTNESS_CROSS_SCALE_FEEDBACK_ADAPTIVE_GOVERNANCE_2026-10-27.md) |
+| TH075 | 临界减速、早期预警、误报率与社会制度决策 | Scheffer等2009、Dakos等2012、Boettiger与Hastings2012/2013、Drake2013；15项命题、7项人工反例与1项作者稿算术核验；真实社会预测未验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH075_CRITICAL_SLOWING_EARLY_WARNING_FALSE_ALARMS_DECISION_2026-10-27.md) |
 
 ## 待研究队列
 
@@ -406,6 +407,8 @@ C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | commons governance failure / elite capture / co-management / diagnostic systems | Ostrom1990/2007、Baland与Platteau1996、Agrawal2001、Dayton-Johnson与Bardhan2002、Platteau2004；外部进入、权力截取、生态生计多目标 | 个体、群体、制度、历史、方法论 | FAO原著六节与Ostrom2007开放原刊直接审读；其他多为摘要；无独立因果复验 |
 
 | SES robustness / cross-scale feedback / transformability / power | Anderies等2004、Walker等2004、Ostrom2007、Olsson等2015；四组件八连接、阈值与反馈、社会冲突 | 个体、群体、制度、历史、方法论 | 四份开放原刊指定章节、两份摘要、七项人工反例；无独立真实因果或预测验证 |
+
+| critical slowing down / early warnings / false alarms / selection bias | Scheffer等2009、Dakos等2012、Boettiger与Hastings2012/2013、Drake2013；恢复率、随机越界、ROC与决策损失 | 个体、群体、制度、历史、方法论 | 正式原刊与作者开放稿指定章节、摘要层级竞争观点、人工反例；无社会预测验证 |
 
 ## 持续执行规则
 
