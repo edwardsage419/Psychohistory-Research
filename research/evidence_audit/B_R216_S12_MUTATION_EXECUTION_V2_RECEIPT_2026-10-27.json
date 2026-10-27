@@ -1,0 +1,36 @@
+{
+  "schema": "b_r216_s12_mutation_execution_v2",
+  "original": {
+    "accepted": 4096,
+    "mean_E_k1": 2,
+    "unique_joint_states": 257
+  },
+  "coefficient_mutation": {
+    "index": "E3",
+    "estimator": "E_k1_clean",
+    "from": 1,
+    "to": -1,
+    "actual_mutated_DP": {
+      "accepted": 4096,
+      "mean_E_k1": -10,
+      "unique_joint_states": 344
+    },
+    "detected": true
+  },
+  "threshold_mutation": {
+    "from": 1,
+    "to": 2,
+    "strict": {
+      "accepted": 576,
+      "mean_E_k1": 2,
+      "unique_joint_states": 257
+    },
+    "relaxed": {
+      "accepted": 3136,
+      "mean_E_k1": 2,
+      "unique_joint_states": 257
+    },
+    "detected": true
+  },
+  "source_type": "E1_ARTIFICIAL"
+}
