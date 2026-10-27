@@ -1,0 +1,2357 @@
+{
+  "research_id": "R222_S18",
+  "evidence_class": "E1_ARTIFICIAL",
+  "source_path": "research/R222/R222_ALL_198_ORIGINAL_NETWORK_ASSIGNMENT_SOURCES.csv",
+  "source_git_blob": "5100af6615ff5a8fe8e9ad2702dfa4227aa6c0bc",
+  "source_worlds": 18,
+  "source_assignment_rows": 198,
+  "condition_count": 54,
+  "control_checks": {
+    "no_spill": 16,
+    "add_or_true": 30,
+    "linear_bernoulli_drop": 3,
+    "interaction_bernoulli_drop_positive": 3,
+    "zero_support_conditions": 6,
+    "source_rows": 198
+  },
+  "scoring_target": "true graph zero treated neighbor controlled direct effect tau=2; supported units only",
+  "conditions": [
+    {
+      "graph": "PAIRS",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|23",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "18",
+      "bias_exact": "0",
+      "mse_exact": "18"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "23",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "67/4",
+      "bias_exact": "0",
+      "mse_exact": "67/4"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|23|02",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "49/2",
+      "bias_exact": "0",
+      "mse_exact": "49/2"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|23",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "389/16",
+      "bias_exact": "0",
+      "mse_exact": "389/16"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "23",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "635/48",
+      "bias_exact": "0",
+      "mse_exact": "635/48"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|23|02",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        3
+      ],
+      "excluded_units": [
+        0,
+        2
+      ],
+      "eligible_unit_count": 2,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "191/4",
+      "bias_exact": "0",
+      "mse_exact": "191/4"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|23",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "18",
+      "bias_exact": "0",
+      "mse_exact": "18"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "23",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "79/4",
+      "bias_exact": "0",
+      "mse_exact": "79/4"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|23|02",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "49/2",
+      "bias_exact": "0",
+      "mse_exact": "49/2"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|23",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "389/16",
+      "bias_exact": "0",
+      "mse_exact": "389/16"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "23",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "5/3",
+      "variance_exact": "953/144",
+      "bias_exact": "-1/3",
+      "mse_exact": "323/48"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|23|02",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        3
+      ],
+      "excluded_units": [
+        0,
+        2
+      ],
+      "eligible_unit_count": 2,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "191/4",
+      "bias_exact": "0",
+      "mse_exact": "191/4"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|23",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "18",
+      "bias_exact": "0",
+      "mse_exact": "18"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "23",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "5/2",
+      "variance_exact": "169/8",
+      "bias_exact": "1/2",
+      "mse_exact": "171/8"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|23|02",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "49/2",
+      "bias_exact": "0",
+      "mse_exact": "49/2"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|23",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "389/16",
+      "bias_exact": "0",
+      "mse_exact": "389/16"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "23",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "13/6",
+      "variance_exact": "905/144",
+      "bias_exact": "1/6",
+      "mse_exact": "101/16"
+    },
+    {
+      "graph": "PAIRS",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|23|02",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        3
+      ],
+      "excluded_units": [
+        0,
+        2
+      ],
+      "eligible_unit_count": 2,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "191/4",
+      "bias_exact": "0",
+      "mse_exact": "191/4"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|02|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "19",
+      "bias_exact": "0",
+      "mse_exact": "19"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "02|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "61/4",
+      "bias_exact": "0",
+      "mse_exact": "61/4"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|02|03|12",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "55/2",
+      "bias_exact": "0",
+      "mse_exact": "55/2"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|02|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [
+        0
+      ],
+      "eligible_unit_count": 3,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "7",
+      "bias_exact": "0",
+      "mse_exact": "7"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "02|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [
+        0
+      ],
+      "eligible_unit_count": 3,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "89/9",
+      "bias_exact": "0",
+      "mse_exact": "89/9"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|02|03|12",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        3
+      ],
+      "excluded_units": [
+        0,
+        1,
+        2
+      ],
+      "eligible_unit_count": 1,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "125",
+      "bias_exact": "0",
+      "mse_exact": "125"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|02|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "19",
+      "bias_exact": "0",
+      "mse_exact": "19"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "02|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "95/4",
+      "bias_exact": "0",
+      "mse_exact": "95/4"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|02|03|12",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "55/2",
+      "bias_exact": "0",
+      "mse_exact": "55/2"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|02|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [
+        0
+      ],
+      "eligible_unit_count": 3,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "7",
+      "bias_exact": "0",
+      "mse_exact": "7"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "02|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [
+        0
+      ],
+      "eligible_unit_count": 3,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "16/9",
+      "variance_exact": "1061/81",
+      "bias_exact": "-2/9",
+      "mse_exact": "355/27"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|02|03|12",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        3
+      ],
+      "excluded_units": [
+        0,
+        1,
+        2
+      ],
+      "eligible_unit_count": 1,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "125",
+      "bias_exact": "0",
+      "mse_exact": "125"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|02|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "19",
+      "bias_exact": "0",
+      "mse_exact": "19"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "02|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "5/2",
+      "variance_exact": "24",
+      "bias_exact": "1/2",
+      "mse_exact": "97/4"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|02|03|12",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "55/2",
+      "bias_exact": "0",
+      "mse_exact": "55/2"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|02|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [
+        0
+      ],
+      "eligible_unit_count": 3,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "7",
+      "bias_exact": "0",
+      "mse_exact": "7"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "02|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [
+        0
+      ],
+      "eligible_unit_count": 3,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/2",
+          "p_treated": "1/2"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "19/9",
+      "variance_exact": "962/81",
+      "bias_exact": "1/9",
+      "mse_exact": "107/9"
+    },
+    {
+      "graph": "STAR",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|02|03|12",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        3
+      ],
+      "excluded_units": [
+        0,
+        1,
+        2
+      ],
+      "eligible_unit_count": 1,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "125",
+      "bias_exact": "0",
+      "mse_exact": "125"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|12|23|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "38",
+      "bias_exact": "0",
+      "mse_exact": "38"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "12|23|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "33",
+      "bias_exact": "0",
+      "mse_exact": "33"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "NO_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|12|23|03|02",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "52",
+      "bias_exact": "0",
+      "mse_exact": "52"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|12|23|03",
+      "original_assignment_count": 6,
+      "eligible_units": [],
+      "excluded_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "eligible_unit_count": 0,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": null,
+      "variance_exact": null,
+      "bias_exact": null,
+      "mse_exact": null
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "12|23|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1
+      ],
+      "excluded_units": [
+        2,
+        3
+      ],
+      "eligible_unit_count": 2,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "47/4",
+      "bias_exact": "0",
+      "mse_exact": "47/4"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "NO_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|12|23|03|02",
+      "original_assignment_count": 6,
+      "eligible_units": [],
+      "excluded_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "eligible_unit_count": 0,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": null,
+      "variance_exact": null,
+      "bias_exact": null,
+      "mse_exact": null
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|12|23|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "38",
+      "bias_exact": "0",
+      "mse_exact": "38"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "12|23|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "41",
+      "bias_exact": "0",
+      "mse_exact": "41"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|12|23|03|02",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "52",
+      "bias_exact": "0",
+      "mse_exact": "52"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|12|23|03",
+      "original_assignment_count": 6,
+      "eligible_units": [],
+      "excluded_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "eligible_unit_count": 0,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": null,
+      "variance_exact": null,
+      "bias_exact": null,
+      "mse_exact": null
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "12|23|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1
+      ],
+      "excluded_units": [
+        2,
+        3
+      ],
+      "eligible_unit_count": 2,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "1",
+      "variance_exact": "215/4",
+      "bias_exact": "-1",
+      "mse_exact": "219/4"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "LINEAR_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|12|23|03|02",
+      "original_assignment_count": 6,
+      "eligible_units": [],
+      "excluded_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "eligible_unit_count": 0,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": null,
+      "variance_exact": null,
+      "bias_exact": null,
+      "mse_exact": null
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|12|23|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "38",
+      "bias_exact": "0",
+      "mse_exact": "38"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "12|23|03",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/4",
+          "p_treated": "1/4"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "5/2",
+      "variance_exact": "327/8",
+      "bias_exact": "1/2",
+      "mse_exact": "329/8"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "BERNOULLI_HALF",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|12|23|03|02",
+      "original_assignment_count": 16,
+      "eligible_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "excluded_units": [],
+      "eligible_unit_count": 4,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        },
+        {
+          "unit": 2,
+          "p_control": "1/16",
+          "p_treated": "1/16"
+        },
+        {
+          "unit": 3,
+          "p_control": "1/8",
+          "p_treated": "1/8"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "2",
+      "variance_exact": "52",
+      "bias_exact": "0",
+      "mse_exact": "52"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "TRUE_GRAPH",
+      "observed_graph_edges": "01|12|23|03",
+      "original_assignment_count": 6,
+      "eligible_units": [],
+      "excluded_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "eligible_unit_count": 0,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": null,
+      "variance_exact": null,
+      "bias_exact": null,
+      "mse_exact": null
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "DROP_FIRST_EDGE",
+      "observed_graph_edges": "12|23|03",
+      "original_assignment_count": 6,
+      "eligible_units": [
+        0,
+        1
+      ],
+      "excluded_units": [
+        2,
+        3
+      ],
+      "eligible_unit_count": 2,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 1,
+          "p_control": "1/6",
+          "p_treated": "1/3"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": "5/2",
+      "variance_exact": "103/2",
+      "bias_exact": "1/2",
+      "mse_exact": "207/4"
+    },
+    {
+      "graph": "CYCLE",
+      "mechanism": "INTERACTION_SPILL",
+      "policy": "COMPLETE_TWO_OF_FOUR",
+      "observed_graph_regime": "ADD_FIRST_NONEDGE",
+      "observed_graph_edges": "01|12|23|03|02",
+      "original_assignment_count": 6,
+      "eligible_units": [],
+      "excluded_units": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "eligible_unit_count": 0,
+      "zero_exposure_cell_probabilities": [
+        {
+          "unit": 0,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 1,
+          "p_control": "0",
+          "p_treated": "1/6"
+        },
+        {
+          "unit": 2,
+          "p_control": "0",
+          "p_treated": "0"
+        },
+        {
+          "unit": 3,
+          "p_control": "0",
+          "p_treated": "1/6"
+        }
+      ],
+      "true_no_treated_neighbor_direct_effect": "2",
+      "expected_estimator_exact": null,
+      "variance_exact": null,
+      "bias_exact": null,
+      "mse_exact": null
+    }
+  ]
+}
