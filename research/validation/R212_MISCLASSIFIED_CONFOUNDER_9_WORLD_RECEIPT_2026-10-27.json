@@ -1,0 +1,337 @@
+{
+  "research": "R212",
+  "method": "misclassified_confounder_third_method",
+  "date": "2026-10-27",
+  "evidence": "E1_ARTIFICIAL",
+  "original_source_worlds": 3,
+  "original_source_rows_per_world": 8,
+  "independent_measurement_slots": 4,
+  "misclassification_rates": [
+    "0",
+    "1/4",
+    "1/2"
+  ],
+  "augmented_source_rows": 288,
+  "worlds": [
+    {
+      "world": "CONFOUND",
+      "q": "0/4",
+      "source_rows": 32,
+      "observational_difference": "1/2",
+      "proxy_adjusted_difference": "0",
+      "true_do_effect": "0",
+      "proxy_adjustment_bias": "0",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 12,
+          "y": 0
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 4,
+          "y": 0
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 4,
+          "y": 4
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 12,
+          "y": 12
+        }
+      ]
+    },
+    {
+      "world": "CONFOUND",
+      "q": "1/4",
+      "source_rows": 32,
+      "observational_difference": "1/2",
+      "proxy_adjusted_difference": "2/5",
+      "true_do_effect": "0",
+      "proxy_adjustment_bias": "2/5",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 10,
+          "y": 1
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 6,
+          "y": 3
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 6,
+          "y": 3
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 10,
+          "y": 9
+        }
+      ]
+    },
+    {
+      "world": "CONFOUND",
+      "q": "2/4",
+      "source_rows": 32,
+      "observational_difference": "1/2",
+      "proxy_adjusted_difference": "1/2",
+      "true_do_effect": "0",
+      "proxy_adjustment_bias": "1/2",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 8,
+          "y": 2
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 8,
+          "y": 6
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 8,
+          "y": 2
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 8,
+          "y": 6
+        }
+      ]
+    },
+    {
+      "world": "DIRECT",
+      "q": "0/4",
+      "source_rows": 32,
+      "observational_difference": "1",
+      "proxy_adjusted_difference": "1",
+      "true_do_effect": "1",
+      "proxy_adjustment_bias": "0",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 12,
+          "y": 0
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 4,
+          "y": 4
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 4,
+          "y": 0
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 12,
+          "y": 12
+        }
+      ]
+    },
+    {
+      "world": "DIRECT",
+      "q": "1/4",
+      "source_rows": 32,
+      "observational_difference": "1",
+      "proxy_adjusted_difference": "1",
+      "true_do_effect": "1",
+      "proxy_adjustment_bias": "0",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 10,
+          "y": 0
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 6,
+          "y": 6
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 6,
+          "y": 0
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 10,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "world": "DIRECT",
+      "q": "2/4",
+      "source_rows": 32,
+      "observational_difference": "1",
+      "proxy_adjusted_difference": "1",
+      "true_do_effect": "1",
+      "proxy_adjustment_bias": "0",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 8,
+          "y": 0
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 8,
+          "y": 8
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 8,
+          "y": 0
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 8,
+          "y": 8
+        }
+      ]
+    },
+    {
+      "world": "COMBINED",
+      "q": "0/4",
+      "source_rows": 32,
+      "observational_difference": "3/4",
+      "proxy_adjusted_difference": "1/2",
+      "true_do_effect": "1/2",
+      "proxy_adjustment_bias": "0",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 12,
+          "y": 0
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 4,
+          "y": 4
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 4,
+          "y": 4
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 12,
+          "y": 12
+        }
+      ]
+    },
+    {
+      "world": "COMBINED",
+      "q": "1/4",
+      "source_rows": 32,
+      "observational_difference": "3/4",
+      "proxy_adjusted_difference": "7/10",
+      "true_do_effect": "1/2",
+      "proxy_adjustment_bias": "1/5",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 10,
+          "y": 1
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 6,
+          "y": 6
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 6,
+          "y": 3
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 10,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "world": "COMBINED",
+      "q": "2/4",
+      "source_rows": 32,
+      "observational_difference": "3/4",
+      "proxy_adjusted_difference": "3/4",
+      "true_do_effect": "1/2",
+      "proxy_adjustment_bias": "1/4",
+      "support": [
+        {
+          "cstar": 0,
+          "t": 0,
+          "n": 8,
+          "y": 2
+        },
+        {
+          "cstar": 0,
+          "t": 1,
+          "n": 8,
+          "y": 8
+        },
+        {
+          "cstar": 1,
+          "t": 0,
+          "n": 8,
+          "y": 2
+        },
+        {
+          "cstar": 1,
+          "t": 1,
+          "n": 8,
+          "y": 8
+        }
+      ]
+    }
+  ],
+  "protocol": "protocols/R212_MISCLASSIFIED_CONFOUNDER_THIRD_METHOD_PRESCORE_FREEZE_2026-10-27.md",
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
