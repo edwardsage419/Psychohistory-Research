@@ -410,6 +410,8 @@ C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | critical slowing down / early warnings / false alarms / selection bias | Scheffer等2009、Dakos等2012、Boettiger与Hastings2012/2013、Drake2013；恢复率、随机越界、ROC与决策损失 | 个体、群体、制度、历史、方法论 | 正式原刊与作者开放稿指定章节、摘要层级竞争观点、人工反例；无社会预测验证 |
 
+| prospective validation / forecast feedback / selective labels / policy loss | [TH076 前瞻性验证、干预反馈与政策决策损失](TH076_PROSPECTIVE_VALIDATION_INTERVENTION_FEEDBACK_POLICY_LOSS_2026-10-27.md)；Brier1950、Murphy1973、Dawid1984、Vickers与Elkin2006、Gneiting与Raftery2007、Lakkaraju等2017、Kleinberg等2018、Lieli与Nieto-Barthaburu2023/2026；预警时域冻结、政策后标签、选择性结果、价值阈值 | 个体、群体、制度、历史、方法论 | 一份开放原作指定章节直接审读，其余原刊公开片段及摘要；7项人工反例；无独立因果或前瞻性预测验证 |
+
 ## 持续执行规则
 
 每次选择新理论后，记录原始出处、可访问范围、核心命题、竞争解释、适用边界、与四层框架的研究问题、证据缺口、下一主题；使用中文笔记保留原文术语。科学证据与理论整理分离。GitHub 写入需回读核验，未经核验不得标注同步成功。
