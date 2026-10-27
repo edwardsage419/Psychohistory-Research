@@ -1,0 +1,976 @@
+{
+  "schema": "r216_s12_exact_v1",
+  "protocol": "protocols/R216_S12_PRETREND_SCREENING_CONDITIONAL_RISK_PRESCORE_FREEZE_2026-10-27.md",
+  "original_R216_artificial_source_worlds": 6,
+  "original_complete_source_histories": 24576,
+  "conditions": 30,
+  "estimator_condition_cells": 90,
+  "conditional_on_observed_pretrend_only": true,
+  "original_R216_unchanged": true,
+  "source_type": "E1_ARTIFICIAL",
+  "new_real_E2": 0,
+  "new_historical_E3": 0,
+  "external_independent_replications": 0,
+  "rows": [
+    {
+      "world": "VALID_CONSTANT",
+      "threshold": 0,
+      "accepted": 576,
+      "source_count": 4096,
+      "acceptance_probability": "9/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "L_k0_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "0",
+          "variance": "34/9",
+          "bias": "-2",
+          "mse": "70/9"
+        }
+      }
+    },
+    {
+      "world": "VALID_CONSTANT",
+      "threshold": 1,
+      "accepted": 576,
+      "source_count": 4096,
+      "acceptance_probability": "9/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "L_k0_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "0",
+          "variance": "34/9",
+          "bias": "-2",
+          "mse": "70/9"
+        }
+      }
+    },
+    {
+      "world": "VALID_CONSTANT",
+      "threshold": 2,
+      "accepted": 3136,
+      "source_count": 4096,
+      "acceptance_probability": "49/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "26/7",
+          "bias": "0",
+          "mse": "26/7"
+        },
+        "L_k0_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "26/7",
+          "bias": "0",
+          "mse": "26/7"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "0",
+          "variance": "194/49",
+          "bias": "-2",
+          "mse": "390/49"
+        }
+      }
+    },
+    {
+      "world": "VALID_CONSTANT",
+      "threshold": 4,
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "L_k0_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "0",
+          "variance": "4",
+          "bias": "-2",
+          "mse": "8"
+        }
+      }
+    },
+    {
+      "world": "VALID_CONSTANT",
+      "threshold": "ALL",
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "L_k0_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "0",
+          "variance": "4",
+          "bias": "-2",
+          "mse": "8"
+        }
+      }
+    },
+    {
+      "world": "VALID_HETEROGENEOUS",
+      "threshold": 0,
+      "accepted": 576,
+      "source_count": 4096,
+      "acceptance_probability": "9/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "3",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 1,
+          "mean": "-2",
+          "variance": "34/9",
+          "bias": "-3",
+          "mse": "115/9"
+        }
+      }
+    },
+    {
+      "world": "VALID_HETEROGENEOUS",
+      "threshold": 1,
+      "accepted": 576,
+      "source_count": 4096,
+      "acceptance_probability": "9/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "3",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 1,
+          "mean": "-2",
+          "variance": "34/9",
+          "bias": "-3",
+          "mse": "115/9"
+        }
+      }
+    },
+    {
+      "world": "VALID_HETEROGENEOUS",
+      "threshold": 2,
+      "accepted": 3136,
+      "source_count": 4096,
+      "acceptance_probability": "49/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "26/7",
+          "bias": "0",
+          "mse": "26/7"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "3",
+          "variance": "26/7",
+          "bias": "0",
+          "mse": "26/7"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 1,
+          "mean": "-2",
+          "variance": "194/49",
+          "bias": "-3",
+          "mse": "635/49"
+        }
+      }
+    },
+    {
+      "world": "VALID_HETEROGENEOUS",
+      "threshold": 4,
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "3",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 1,
+          "mean": "-2",
+          "variance": "4",
+          "bias": "-3",
+          "mse": "13"
+        }
+      }
+    },
+    {
+      "world": "VALID_HETEROGENEOUS",
+      "threshold": "ALL",
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "3",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 1,
+          "mean": "-2",
+          "variance": "4",
+          "bias": "-3",
+          "mse": "13"
+        }
+      }
+    },
+    {
+      "world": "VALID_DYNAMIC",
+      "threshold": 0,
+      "accepted": 576,
+      "source_count": 4096,
+      "acceptance_probability": "9/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 4,
+          "mean": "4",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "L_k0_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 4,
+          "mean": "3",
+          "variance": "34/9",
+          "bias": "-1",
+          "mse": "43/9"
+        }
+      }
+    },
+    {
+      "world": "VALID_DYNAMIC",
+      "threshold": 1,
+      "accepted": 576,
+      "source_count": 4096,
+      "acceptance_probability": "9/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 4,
+          "mean": "4",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "L_k0_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "10/3",
+          "bias": "0",
+          "mse": "10/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 4,
+          "mean": "3",
+          "variance": "34/9",
+          "bias": "-1",
+          "mse": "43/9"
+        }
+      }
+    },
+    {
+      "world": "VALID_DYNAMIC",
+      "threshold": 2,
+      "accepted": 3136,
+      "source_count": 4096,
+      "acceptance_probability": "49/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 4,
+          "mean": "4",
+          "variance": "26/7",
+          "bias": "0",
+          "mse": "26/7"
+        },
+        "L_k0_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "26/7",
+          "bias": "0",
+          "mse": "26/7"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 4,
+          "mean": "3",
+          "variance": "194/49",
+          "bias": "-1",
+          "mse": "243/49"
+        }
+      }
+    },
+    {
+      "world": "VALID_DYNAMIC",
+      "threshold": 4,
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 4,
+          "mean": "4",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "L_k0_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 4,
+          "mean": "3",
+          "variance": "4",
+          "bias": "-1",
+          "mse": "5"
+        }
+      }
+    },
+    {
+      "world": "VALID_DYNAMIC",
+      "threshold": "ALL",
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 4,
+          "mean": "4",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "L_k0_clean": {
+          "target": 1,
+          "mean": "1",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 4,
+          "mean": "3",
+          "variance": "4",
+          "bias": "-1",
+          "mse": "5"
+        }
+      }
+    },
+    {
+      "world": "POST_EVENT_SHOCK_MIMIC",
+      "threshold": 0,
+      "accepted": 576,
+      "source_count": 4096,
+      "acceptance_probability": "9/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "4",
+          "variance": "10/3",
+          "bias": "4",
+          "mse": "58/3"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "1",
+          "variance": "10/3",
+          "bias": "1",
+          "mse": "13/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "3",
+          "variance": "34/9",
+          "bias": "3",
+          "mse": "115/9"
+        }
+      }
+    },
+    {
+      "world": "POST_EVENT_SHOCK_MIMIC",
+      "threshold": 1,
+      "accepted": 576,
+      "source_count": 4096,
+      "acceptance_probability": "9/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "4",
+          "variance": "10/3",
+          "bias": "4",
+          "mse": "58/3"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "1",
+          "variance": "10/3",
+          "bias": "1",
+          "mse": "13/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "3",
+          "variance": "34/9",
+          "bias": "3",
+          "mse": "115/9"
+        }
+      }
+    },
+    {
+      "world": "POST_EVENT_SHOCK_MIMIC",
+      "threshold": 2,
+      "accepted": 3136,
+      "source_count": 4096,
+      "acceptance_probability": "49/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "4",
+          "variance": "26/7",
+          "bias": "4",
+          "mse": "138/7"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "1",
+          "variance": "26/7",
+          "bias": "1",
+          "mse": "33/7"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "3",
+          "variance": "194/49",
+          "bias": "3",
+          "mse": "635/49"
+        }
+      }
+    },
+    {
+      "world": "POST_EVENT_SHOCK_MIMIC",
+      "threshold": 4,
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "4",
+          "variance": "4",
+          "bias": "4",
+          "mse": "20"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "1",
+          "variance": "4",
+          "bias": "1",
+          "mse": "5"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "3",
+          "variance": "4",
+          "bias": "3",
+          "mse": "13"
+        }
+      }
+    },
+    {
+      "world": "POST_EVENT_SHOCK_MIMIC",
+      "threshold": "ALL",
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "4",
+          "variance": "4",
+          "bias": "4",
+          "mse": "20"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "1",
+          "variance": "4",
+          "bias": "1",
+          "mse": "5"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "3",
+          "variance": "4",
+          "bias": "3",
+          "mse": "13"
+        }
+      }
+    },
+    {
+      "world": "DIFFERENTIAL_PRETREND",
+      "threshold": 0,
+      "accepted": 0,
+      "source_count": 4096,
+      "acceptance_probability": "0",
+      "pre_E_mean": null,
+      "pre_L_mean": null,
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": null,
+          "variance": null,
+          "bias": null,
+          "mse": null
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": null,
+          "variance": null,
+          "bias": null,
+          "mse": null
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": null,
+          "variance": null,
+          "bias": null,
+          "mse": null
+        }
+      }
+    },
+    {
+      "world": "DIFFERENTIAL_PRETREND",
+      "threshold": 1,
+      "accepted": 960,
+      "source_count": 4096,
+      "acceptance_probability": "15/64",
+      "pre_E_mean": "1/5",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "12/5",
+          "variance": "86/25",
+          "bias": "12/5",
+          "mse": "46/5"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "2/15",
+          "variance": "746/225",
+          "bias": "2/15",
+          "mse": "10/3"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "34/15",
+          "variance": "854/225",
+          "bias": "34/15",
+          "mse": "134/15"
+        }
+      }
+    },
+    {
+      "world": "DIFFERENTIAL_PRETREND",
+      "threshold": 2,
+      "accepted": 2240,
+      "source_count": 4096,
+      "acceptance_probability": "35/64",
+      "pre_E_mean": "1/5",
+      "pre_L_mean": "4/35",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "12/5",
+          "variance": "86/25",
+          "bias": "12/5",
+          "mse": "46/5"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "2/35",
+          "variance": "4546/1225",
+          "bias": "2/35",
+          "mse": "26/7"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "78/35",
+          "variance": "4766/1225",
+          "bias": "78/35",
+          "mse": "62/7"
+        }
+      }
+    },
+    {
+      "world": "DIFFERENTIAL_PRETREND",
+      "threshold": 4,
+      "accepted": 3840,
+      "source_count": 4096,
+      "acceptance_probability": "15/16",
+      "pre_E_mean": "11/15",
+      "pre_L_mean": "1/15",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "32/15",
+          "variance": "866/225",
+          "bias": "32/15",
+          "mse": "42/5"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "0",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "31/15",
+          "variance": "899/225",
+          "bias": "31/15",
+          "mse": "124/15"
+        }
+      }
+    },
+    {
+      "world": "DIFFERENTIAL_PRETREND",
+      "threshold": "ALL",
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "1",
+      "pre_L_mean": "0",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 0,
+          "mean": "2",
+          "variance": "4",
+          "bias": "2",
+          "mse": "8"
+        },
+        "L_k0_clean": {
+          "target": 0,
+          "mean": "0",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 0,
+          "mean": "2",
+          "variance": "4",
+          "bias": "2",
+          "mse": "8"
+        }
+      }
+    },
+    {
+      "world": "LATE_ANTICIPATION",
+      "threshold": 0,
+      "accepted": 0,
+      "source_count": 4096,
+      "acceptance_probability": "0",
+      "pre_E_mean": null,
+      "pre_L_mean": null,
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": null,
+          "variance": null,
+          "bias": null,
+          "mse": null
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": null,
+          "variance": null,
+          "bias": null,
+          "mse": null
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": null,
+          "variance": null,
+          "bias": null,
+          "mse": null
+        }
+      }
+    },
+    {
+      "world": "LATE_ANTICIPATION",
+      "threshold": 1,
+      "accepted": 960,
+      "source_count": 4096,
+      "acceptance_probability": "15/64",
+      "pre_E_mean": "0",
+      "pre_L_mean": "1/5",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "28/15",
+          "variance": "746/225",
+          "bias": "-2/15",
+          "mse": "10/3"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "12/5",
+          "variance": "86/25",
+          "bias": "-3/5",
+          "mse": "19/5"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "-11/15",
+          "variance": "854/225",
+          "bias": "-41/15",
+          "mse": "169/15"
+        }
+      }
+    },
+    {
+      "world": "LATE_ANTICIPATION",
+      "threshold": 2,
+      "accepted": 2240,
+      "source_count": 4096,
+      "acceptance_probability": "35/64",
+      "pre_E_mean": "4/35",
+      "pre_L_mean": "1/5",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "64/35",
+          "variance": "4514/1225",
+          "bias": "-6/35",
+          "mse": "26/7"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "12/5",
+          "variance": "86/25",
+          "bias": "-3/5",
+          "mse": "19/5"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "-27/35",
+          "variance": "4766/1225",
+          "bias": "-97/35",
+          "mse": "81/7"
+        }
+      }
+    },
+    {
+      "world": "LATE_ANTICIPATION",
+      "threshold": 4,
+      "accepted": 3840,
+      "source_count": 4096,
+      "acceptance_probability": "15/16",
+      "pre_E_mean": "1/15",
+      "pre_L_mean": "11/15",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "29/15",
+          "variance": "899/225",
+          "bias": "-1/15",
+          "mse": "4"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "32/15",
+          "variance": "866/225",
+          "bias": "-13/15",
+          "mse": "23/5"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "-14/15",
+          "variance": "899/225",
+          "bias": "-44/15",
+          "mse": "63/5"
+        }
+      }
+    },
+    {
+      "world": "LATE_ANTICIPATION",
+      "threshold": "ALL",
+      "accepted": 4096,
+      "source_count": 4096,
+      "acceptance_probability": "1",
+      "pre_E_mean": "0",
+      "pre_L_mean": "1",
+      "estimators": {
+        "E_k1_clean": {
+          "target": 2,
+          "mean": "2",
+          "variance": "4",
+          "bias": "0",
+          "mse": "4"
+        },
+        "L_k0_clean": {
+          "target": 3,
+          "mean": "2",
+          "variance": "4",
+          "bias": "-1",
+          "mse": "5"
+        },
+        "E_k1_BAD_L_ALREADY_TREATED": {
+          "target": 2,
+          "mean": "-1",
+          "variance": "4",
+          "bias": "-3",
+          "mse": "13"
+        }
+      }
+    }
+  ]
+}
