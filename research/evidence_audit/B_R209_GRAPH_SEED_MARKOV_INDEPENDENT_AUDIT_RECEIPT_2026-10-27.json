@@ -1,0 +1,3913 @@
+{
+  "audit": "B_R209_INDEPENDENT_MARKOV_PATH_ENUMERATION",
+  "evidence": "E1_INTERNAL_ALGORITHMIC_ONLY",
+  "main_receipt_blob": "ce0d7c7769dfddda344d8c197312f78b3037b15b",
+  "original_blob": "427244c57607a599867d129be238dc33f1afc008",
+  "checks": {
+    "independent_training_model_weights": 108,
+    "transfer_logloss_fields": 2160,
+    "transfer_Brier_fields": 2160,
+    "transfer_event_probability": 432,
+    "KL_decomposition": 432,
+    "Brier_variance_decomposition": 432,
+    "oracle_nonnegative_regret": 432
+  },
+  "negatives": {
+    "wrong_graph_logloss_changed": 288,
+    "wrong_graph_Brier_changed": 288,
+    "wrong_seed_zero_support": 324,
+    "oracle_leakage_strict_improvement": 432
+  },
+  "max_abs_difference": 4.991562718714704e-13,
+  "worlds": 432,
+  "rows": [
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 4.8317e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -1.4744e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -1.4744e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -1.4744e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 3.0109e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.6831e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.6831e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 3.0109e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -3.8369e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -3.8325e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -3.8369e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -3.8369e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -1.4078e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -1.199e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -1.199e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -1.199e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.2737e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 3.6993e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 3.7037e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.2693e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -4.9249e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -4.9249e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -4.9249e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -4.9249e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 4.8317e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 3.7126e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 3.7126e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 3.7126e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 1.0036e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": -3.9213e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": -3.9302e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 1.0036e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -1.4522e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -1.4477e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -1.4522e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -1.4522e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 8.793e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.9043e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 4.8939e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 4.8939e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.9043e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -1.1857e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -3.9257e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 6.2617e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 6.2617e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -3.9302e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 5.5511e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 8.793e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.2959e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 4.4098e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 4.4054e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.2959e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 8.793e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.9043e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 4.8939e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 4.8939e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.9043e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -1.1857e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -3.9257e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 6.2617e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 6.2617e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -3.9302e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 5.5511e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 8.793e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.2959e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 4.4098e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 4.4054e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.2959e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 8.793e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -6.5725e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.9043e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 4.8939e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 4.8939e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.9043e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -4.6008e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -1.1857e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.3743e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -3.9257e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 6.2617e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 6.2617e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -3.9302e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 5.5511e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 5.5955e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 8.793e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -1.5055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.2959e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 4.4098e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 4.4054e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.2959e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "STAR",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.2988e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -3.8858e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 4.5342e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 4.5342e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 4.5342e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -2.2427e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 3.7925e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 3.7925e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -2.2427e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -4.3965e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -4.3965e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -4.3965e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -4.3965e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 4.7473e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 6.1728e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 6.1728e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 6.1728e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 1.3944e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.0303e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.0347e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 1.39e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 1.6875e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -3.6859e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -3.6859e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -3.6859e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 3.1708e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.4078e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.3989e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 3.1708e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 1.843e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 1.8519e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 1.843e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 1.843e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 3.4373e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.0634e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.0634e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.0634e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -4.3343e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.7364e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.7364e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -4.3343e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 1.5543e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 1.5987e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 1.5543e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 1.5543e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -1.4033e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.3832e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.3832e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.3832e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -3.6504e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.8785e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.8829e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -3.6504e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -8.6597e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -8.6597e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -8.6597e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -8.6597e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -5.2403e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.0945e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.0945e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.0945e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 4.9472e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 4.4631e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 4.4542e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 4.9472e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -1.7097e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -1.7009e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -1.7097e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -1.7097e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 3.4373e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.0634e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.0634e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.0634e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -4.3343e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.7364e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.7364e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -4.3343e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 1.5543e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 1.5987e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 1.5543e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 1.5543e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -1.4033e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.3832e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.3832e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.3832e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -3.6504e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.8785e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.8829e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -3.6504e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -8.6597e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -8.6597e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -8.6597e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -8.6597e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -5.2403e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -4.0945e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -4.0945e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -4.0945e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 4.9472e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 4.4631e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 4.4542e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 4.9472e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -1.7097e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -1.7009e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -1.7097e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -1.7097e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -3.8858e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 4.5342e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 4.5342e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 4.5342e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -2.2427e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 3.7925e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 3.7925e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -2.2427e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": -4.3965e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": -4.3965e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": -4.3965e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": -4.3965e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 4.7473e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 6.1728e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 6.1728e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 6.1728e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 1.3944e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.0303e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.0347e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 1.39e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.3032e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 1.6875e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -3.6859e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -3.6859e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -3.6859e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 3.1708e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 1.4078e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 1.3989e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 3.1708e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 1.843e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 1.8519e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 1.843e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "PATH",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 1.843e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -8.6153e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 1.7142e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": -2.3892e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": -2.3892e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 1.7142e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 4.5208e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.0695e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 3.1708e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 3.1752e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.065e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 3.1841e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 1.2212e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -2.7711e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 2.629e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 2.6157e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -2.7711e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.2144e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 0,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -8.6153e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 1.7142e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": -2.3892e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": -2.3892e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 1.7142e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 4.5208e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.0695e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 3.1708e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 3.1752e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.065e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 3.1841e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 1.2212e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -2.7711e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 2.629e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 2.6157e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -2.7711e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.2144e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 1,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -8.6153e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 1.7142e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": -2.3892e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": -2.3892e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 1.7142e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 4.5208e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.0695e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 3.1708e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 3.1752e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.065e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 3.1841e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 1.2212e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -2.7711e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 2.629e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 2.6157e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -2.7711e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.2144e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 2,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": -8.6153e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -2.438e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 1.7142e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": -2.3892e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": -2.3892e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 1.7142e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "BASE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 1.4388e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 4.5208e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": 4.6718e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": 2.0695e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 3.1708e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 3.1752e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": 2.065e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 3.1841e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "SIMPLE",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 3.1797e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 0,
+      "logloss_diff": 1.2212e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 1,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 2,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "STAR",
+      "test_seed": 3,
+      "logloss_diff": -7.816e-14,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 0,
+      "logloss_diff": -2.7711e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 1,
+      "logloss_diff": 2.629e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 2,
+      "logloss_diff": 2.6157e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "PATH",
+      "test_seed": 3,
+      "logloss_diff": -2.7711e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 0,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 1,
+      "logloss_diff": 4.2144e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 2,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    },
+    {
+      "train_graph": "CYCLE",
+      "train_seed": 3,
+      "true_model": "COMPLEX",
+      "test_graph": "CYCLE",
+      "test_seed": 3,
+      "logloss_diff": 4.2055e-13,
+      "Brier_diff": 0
+    }
+  ]
+}
