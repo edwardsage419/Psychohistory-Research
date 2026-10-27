@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH077，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH078，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -132,11 +132,13 @@
 | TH076 | 社会风险预警的前瞻性验证、预测干预反馈与政策决策损失 | Lieli与Nieto-Barthaburu2023/2026公开理论全文，Brier1950、Murphy1973、Dawid1984、Vickers与Elkin2006、Lakkaraju等2017原作摘要及公开片段；15项命题、7项人工审计；无前瞻性预测验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH076_PROSPECTIVE_VALIDATION_INTERVENTION_FEEDBACK_POLICY_LOSS_2026-10-27.md) |
 | TH077 | 政策预警的信号博弈、可信承诺与战略性披露 | Morris与Shin2002、Svensson2006及原作者回应、Kamenica与Gentzkow2011正式原刊、Kono与Kandori2021勘误直接审读；Merton1948原刊转录、Crawford与Sobel1982及Bakshi与Pinker2018摘要；16项条件性命题、7项人工审计；无独立实证 | THEORY_NOTE_BOUNDED | [研究笔记](TH077_SIGNAL_GAMES_SELF_FULFILLING_DISCLOSURE_2026-10-27.md) |
 
+| TH078 | 可验证信息披露、审计激励、信息设计与分配公平 | Milgrom1981、Bergemann与Morris2019、Kattwinkel与Knoepfle2023开放正式原刊指定章节直接审读；Grossman1981、Milgrom与Roberts1986、Verrecchia1983、Dye1985、Hotz与Xiao2013原刊摘要及书目；15项条件性命题、8项人工审计；无独立因果或预测验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH078_VERIFIABLE_DISCLOSURE_AUDIT_INFORMATION_DESIGN_DISTRIBUTIVE_FAIRNESS_2026-10-27.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH078 | 信息披露的可信承诺、机制设计与分配公平 | Milgrom1981；Grossman1981；Kartik2009；Bergemann与Morris2016 | QUEUED_UNVERIFIED |
+| 1 | TH079 | 信息披露的隐私保护、差别影响与群体信息外部性 | Blackwell1953；Bergemann与Morris2019；隐私与信息外部性原作待检索 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -415,6 +417,8 @@ C 今日 C004 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | prospective validation / forecast feedback / selective labels / policy loss | [TH076 前瞻性验证、干预反馈与政策决策损失](TH076_PROSPECTIVE_VALIDATION_INTERVENTION_FEEDBACK_POLICY_LOSS_2026-10-27.md)；Brier1950、Murphy1973、Dawid1984、Vickers与Elkin2006、Gneiting与Raftery2007、Lakkaraju等2017、Kleinberg等2018、Lieli与Nieto-Barthaburu2023/2026；预警时域冻结、政策后标签、选择性结果、价值阈值 | 个体、群体、制度、历史、方法论 | 一份开放原作指定章节直接审读，其余原刊公开片段及摘要；7项人工反例；无独立因果或前瞻性预测验证 |
 
 | signal games / self-fulfilling prophecy / credible commitment / disclosure welfare | [TH077 信号博弈、可信承诺与战略性披露](TH077_SIGNAL_GAMES_SELF_FULFILLING_DISCLOSURE_2026-10-27.md)；Merton1948、Diamond与Dybvig1983、Morris与Shin2002、Svensson2006、Morris等2006、Crawford与Sobel1982、Kamenica与Gentzkow2011、Kono与Kandori2021、Bakshi与Pinker2018；自我实现与自我破坏、公开信号协调、贝叶斯劝说与策略性预警 | 个体、群体、制度、历史、方法论 | 四份原刊及一份勘误直接审读，其他原刊转录与摘要；16项命题、7项人工反例与算术复核；无独立社会预测或因果验证 |
+
+| verifiable disclosure / audit incentives / heterogeneous receivers / distributional welfare | [TH078 可验证披露与审计激励](TH078_VERIFIABLE_DISCLOSURE_AUDIT_INFORMATION_DESIGN_DISTRIBUTIVE_FAIRNESS_2026-10-27.md)；Milgrom1981、Bergemann与Morris2019、Kattwinkel与Knoepfle2023、Grossman1981、Milgrom与Roberts1986、Verrecchia1983、Dye1985、Hotz与Xiao2013；信息持有不可观测、核验成本与误报、群体福利权重 | 个体、群体、制度、历史、方法论 | 三份开放正式原刊选页及五份原刊摘要或书目，八项人工审计；无真实因果或预测验证 |
 
 ## 持续执行规则
 
