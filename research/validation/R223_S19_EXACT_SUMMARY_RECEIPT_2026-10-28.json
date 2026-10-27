@@ -1,0 +1,74 @@
+{
+  "research_id": "R223",
+  "supplement": "S19",
+  "evidence": "E1_SYNTHETIC",
+  "input_git_blob": "3a3f2143357832e25ddf483d7ebd4d66298c5dd1",
+  "source_structural_atoms": 448,
+  "worlds": 7,
+  "gamma_grid": [
+    1,
+    2,
+    3,
+    5,
+    7,
+    15
+  ],
+  "conditions": 252,
+  "oracle_covered_conditions": 89,
+  "per_world": [
+    {
+      "world": "NULL_CONFOUNDED",
+      "observed_RR": "11/5",
+      "true_RR": "1",
+      "null_compatible_count": 13,
+      "oracle_covered_count": 8
+    },
+    {
+      "world": "CAUSAL_ALIAS",
+      "observed_RR": "11/5",
+      "true_RR": "11/5",
+      "null_compatible_count": 13,
+      "oracle_covered_count": 36
+    },
+    {
+      "world": "UNCONFOUNDED_CAUSAL",
+      "observed_RR": "9/5",
+      "true_RR": "9/5",
+      "null_compatible_count": 18,
+      "oracle_covered_count": 18
+    },
+    {
+      "world": "CONFOUNDED_CAUSAL",
+      "observed_RR": "3",
+      "true_RR": "9/5",
+      "null_compatible_count": 8,
+      "oracle_covered_count": 12
+    },
+    {
+      "world": "CONFOUNDED_REVERSED",
+      "observed_RR": "1",
+      "true_RR": "3/5",
+      "null_compatible_count": 36,
+      "oracle_covered_count": 12
+    },
+    {
+      "world": "WEAK_OVERLAP",
+      "observed_RR": "93/19",
+      "true_RR": "9/5",
+      "null_compatible_count": 3,
+      "oracle_covered_count": 3
+    },
+    {
+      "world": "NO_POSITIVITY",
+      "observed_RR": "6",
+      "true_RR": "9/5",
+      "null_compatible_count": 1,
+      "oracle_covered_count": 0
+    }
+  ],
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_independent_reproductions": 0
+}
