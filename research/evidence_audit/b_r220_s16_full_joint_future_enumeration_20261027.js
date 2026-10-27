@@ -95,6 +95,6 @@ function audit(receipt){
    comparisons+=4;
   }
  }
- return {research_id:"R220",extension:"S16",audit:"B_DIRECT_FULL_JOINT_ENUMERATION_FLOAT64",evidence:"E1_ARTIFICIAL",status:"INTERNAL_INDEPENDENT_ALGORITHM_CI_NOT_RUN",source_R_receipt_blob:"__R_BLOB__",worlds_verified:6,full_joint_slots_enumerated:393216,comparison_fields_passed:comparisons,max_absolute_difference:maxDiff,tolerance:1e-9,negative_controls:neg,external_replication:0,rows};
+ return {research_id:"R220",extension:"S16",audit:"B_DIRECT_FULL_JOINT_ENUMERATION_FLOAT64",evidence:"E1_ARTIFICIAL",status:"INTERNAL_INDEPENDENT_ALGORITHM_CI_NOT_RUN",source_R_receipt_blob:"a75dd518a1b9094c329ecb4cf37c0c5863d787db",worlds_verified:6,full_joint_slots_enumerated:393216,comparison_fields_passed:comparisons,max_absolute_difference:maxDiff,tolerance:1e-9,negative_controls:neg,external_replication:0,rows};
 }
 console.log(JSON.stringify(audit(receipt),null,2));
