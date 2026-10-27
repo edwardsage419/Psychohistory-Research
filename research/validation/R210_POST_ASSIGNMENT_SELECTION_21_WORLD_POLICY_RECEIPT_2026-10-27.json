@@ -1,0 +1,286 @@
+{
+  "schema": "r210_post_assignment_selection_exact_v1",
+  "date": "2026-10-27",
+  "evidence": "E1_ARTIFICIAL_ONLY",
+  "protocol": "protocols/R210_POST_ASSIGNMENT_SELECTION_THIRD_METHOD_PRESCORE_FREEZE_2026-10-27.md",
+  "original_r210_status": "UNCHANGED_CLOSED_BOUNDED_E1",
+  "assignment_count": 20,
+  "source_probability": "1/20",
+  "world_count": 7,
+  "selection_rules": [
+    "FULL",
+    "SYMMETRIC_TOP",
+    "ASYMMETRIC"
+  ],
+  "row_count": 420,
+  "real_human_E2": 0,
+  "historical_E3": 0,
+  "worlds": [
+    {
+      "world": "RAMP_NULL",
+      "SUTVA_no_interference": true,
+      "finite_ATE": "0",
+      "controlled_direct_effect": "NOT_APPLICABLE",
+      "policies": [
+        {
+          "policy": "FULL",
+          "expected_contrast": "0",
+          "design_variance": "7/3",
+          "design_MSE_to_finite_ATE": "7/3",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "-3",
+          "max_contrast": "3",
+          "assignments": 20
+        },
+        {
+          "policy": "SYMMETRIC_TOP",
+          "expected_contrast": "0",
+          "design_variance": "111/40",
+          "design_MSE_to_finite_ATE": "111/40",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "-3",
+          "max_contrast": "3",
+          "assignments": 20
+        },
+        {
+          "policy": "ASYMMETRIC",
+          "expected_contrast": "-7/4",
+          "design_variance": "43/16",
+          "design_MSE_to_finite_ATE": "23/4",
+          "bias_to_finite_ATE": "-7/4",
+          "min_contrast": "-4",
+          "max_contrast": "2",
+          "assignments": 20
+        }
+      ]
+    },
+    {
+      "world": "OUTLIER_NULL",
+      "SUTVA_no_interference": true,
+      "finite_ATE": "0",
+      "controlled_direct_effect": "NOT_APPLICABLE",
+      "policies": [
+        {
+          "policy": "FULL",
+          "expected_contrast": "0",
+          "design_variance": "16",
+          "design_MSE_to_finite_ATE": "16",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "-4",
+          "max_contrast": "4",
+          "assignments": 20
+        },
+        {
+          "policy": "SYMMETRIC_TOP",
+          "expected_contrast": "0",
+          "design_variance": "0",
+          "design_MSE_to_finite_ATE": "0",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "0",
+          "max_contrast": "0",
+          "assignments": 20
+        },
+        {
+          "policy": "ASYMMETRIC",
+          "expected_contrast": "-3",
+          "design_variance": "9",
+          "design_MSE_to_finite_ATE": "18",
+          "bias_to_finite_ATE": "-3",
+          "min_contrast": "-6",
+          "max_contrast": "0",
+          "assignments": 20
+        }
+      ]
+    },
+    {
+      "world": "RAMP_CONST_TWO",
+      "SUTVA_no_interference": true,
+      "finite_ATE": "2",
+      "controlled_direct_effect": "NOT_APPLICABLE",
+      "policies": [
+        {
+          "policy": "FULL",
+          "expected_contrast": "2",
+          "design_variance": "7/3",
+          "design_MSE_to_finite_ATE": "7/3",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "-1",
+          "max_contrast": "5",
+          "assignments": 20
+        },
+        {
+          "policy": "SYMMETRIC_TOP",
+          "expected_contrast": "2",
+          "design_variance": "111/40",
+          "design_MSE_to_finite_ATE": "111/40",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "-1",
+          "max_contrast": "5",
+          "assignments": 20
+        },
+        {
+          "policy": "ASYMMETRIC",
+          "expected_contrast": "1/4",
+          "design_variance": "43/16",
+          "design_MSE_to_finite_ATE": "23/4",
+          "bias_to_finite_ATE": "-7/4",
+          "min_contrast": "-2",
+          "max_contrast": "4",
+          "assignments": 20
+        }
+      ]
+    },
+    {
+      "world": "RAMP_SINGLE_HET",
+      "SUTVA_no_interference": true,
+      "finite_ATE": "1",
+      "controlled_direct_effect": "NOT_APPLICABLE",
+      "policies": [
+        {
+          "policy": "FULL",
+          "expected_contrast": "1",
+          "design_variance": "16/3",
+          "design_MSE_to_finite_ATE": "16/3",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "-3",
+          "max_contrast": "5",
+          "assignments": 20
+        },
+        {
+          "policy": "SYMMETRIC_TOP",
+          "expected_contrast": "0",
+          "design_variance": "111/40",
+          "design_MSE_to_finite_ATE": "151/40",
+          "bias_to_finite_ATE": "-1",
+          "min_contrast": "-3",
+          "max_contrast": "3",
+          "assignments": 20
+        },
+        {
+          "policy": "ASYMMETRIC",
+          "expected_contrast": "-7/4",
+          "design_variance": "43/16",
+          "design_MSE_to_finite_ATE": "41/4",
+          "bias_to_finite_ATE": "-11/4",
+          "min_contrast": "-4",
+          "max_contrast": "2",
+          "assignments": 20
+        }
+      ]
+    },
+    {
+      "world": "RAMP_ZERO_ATE_HET",
+      "SUTVA_no_interference": true,
+      "finite_ATE": "0",
+      "controlled_direct_effect": "NOT_APPLICABLE",
+      "policies": [
+        {
+          "policy": "FULL",
+          "expected_contrast": "0",
+          "design_variance": "37/15",
+          "design_MSE_to_finite_ATE": "37/15",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "-3",
+          "max_contrast": "3",
+          "assignments": 20
+        },
+        {
+          "policy": "SYMMETRIC_TOP",
+          "expected_contrast": "-1/10",
+          "design_variance": "369/100",
+          "design_MSE_to_finite_ATE": "37/10",
+          "bias_to_finite_ATE": "-1/10",
+          "min_contrast": "-7/2",
+          "max_contrast": "7/2",
+          "assignments": 20
+        },
+        {
+          "policy": "ASYMMETRIC",
+          "expected_contrast": "-37/20",
+          "design_variance": "1611/400",
+          "design_MSE_to_finite_ATE": "149/20",
+          "bias_to_finite_ATE": "-37/20",
+          "min_contrast": "-5",
+          "max_contrast": "2",
+          "assignments": 20
+        }
+      ]
+    },
+    {
+      "world": "OUTLIER_HET",
+      "SUTVA_no_interference": true,
+      "finite_ATE": "5/2",
+      "controlled_direct_effect": "NOT_APPLICABLE",
+      "policies": [
+        {
+          "policy": "FULL",
+          "expected_contrast": "5/2",
+          "design_variance": "247/12",
+          "design_MSE_to_finite_ATE": "247/12",
+          "bias_to_finite_ATE": "0",
+          "min_contrast": "-3",
+          "max_contrast": "8",
+          "assignments": 20
+        },
+        {
+          "policy": "SYMMETRIC_TOP",
+          "expected_contrast": "13/8",
+          "design_variance": "231/320",
+          "design_MSE_to_finite_ATE": "119/80",
+          "bias_to_finite_ATE": "-7/8",
+          "min_contrast": "1/2",
+          "max_contrast": "7/2",
+          "assignments": 20
+        },
+        {
+          "policy": "ASYMMETRIC",
+          "expected_contrast": "-11/8",
+          "design_variance": "3831/320",
+          "design_MSE_to_finite_ATE": "2159/80",
+          "bias_to_finite_ATE": "-31/8",
+          "min_contrast": "-11/2",
+          "max_contrast": "7/2",
+          "assignments": 20
+        }
+      ]
+    },
+    {
+      "world": "PAIR_INTERFERENCE",
+      "SUTVA_no_interference": false,
+      "finite_ATE": "NOT_DEFINED_UNDER_INTERFERENCE",
+      "controlled_direct_effect": "2",
+      "policies": [
+        {
+          "policy": "FULL",
+          "expected_contrast": "7/5",
+          "design_variance": "463/75",
+          "design_MSE_to_finite_ATE": "NOT_DEFINED_UNDER_INTERFERENCE",
+          "bias_to_finite_ATE": "NOT_DEFINED_UNDER_INTERFERENCE",
+          "min_contrast": "-2",
+          "max_contrast": "6",
+          "assignments": 20
+        },
+        {
+          "policy": "SYMMETRIC_TOP",
+          "expected_contrast": "8/5",
+          "design_variance": "1593/200",
+          "design_MSE_to_finite_ATE": "NOT_DEFINED_UNDER_INTERFERENCE",
+          "bias_to_finite_ATE": "NOT_DEFINED_UNDER_INTERFERENCE",
+          "min_contrast": "-2",
+          "max_contrast": "13/2",
+          "assignments": 20
+        },
+        {
+          "policy": "ASYMMETRIC",
+          "expected_contrast": "-7/20",
+          "design_variance": "2501/400",
+          "design_MSE_to_finite_ATE": "NOT_DEFINED_UNDER_INTERFERENCE",
+          "bias_to_finite_ATE": "NOT_DEFINED_UNDER_INTERFERENCE",
+          "min_contrast": "-4",
+          "max_contrast": "4",
+          "assignments": 20
+        }
+      ]
+    }
+  ]
+}

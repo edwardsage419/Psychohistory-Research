@@ -1,0 +1,139 @@
+{
+  "schema": "b_r210_orderstat_internal_exact_audit_v1",
+  "date": "2026-10-27",
+  "evidence": "INTERNAL_INDEPENDENT_ALGORITHM_E1",
+  "analytic_comparisons": 18,
+  "source_integrity_checks": 420,
+  "negative_control_detections": 12,
+  "failures": 0,
+  "external_replications": 0,
+  "world_policy_analytic": [
+    {
+      "world": "RAMP_NULL",
+      "policy": "FULL",
+      "analytic_expected_contrast": "0",
+      "R_enumeration_expected_contrast": "0",
+      "match": true
+    },
+    {
+      "world": "RAMP_NULL",
+      "policy": "SYMMETRIC_TOP",
+      "analytic_expected_contrast": "0",
+      "R_enumeration_expected_contrast": "0",
+      "match": true
+    },
+    {
+      "world": "RAMP_NULL",
+      "policy": "ASYMMETRIC",
+      "analytic_expected_contrast": "-7/4",
+      "R_enumeration_expected_contrast": "-7/4",
+      "match": true
+    },
+    {
+      "world": "OUTLIER_NULL",
+      "policy": "FULL",
+      "analytic_expected_contrast": "0",
+      "R_enumeration_expected_contrast": "0",
+      "match": true
+    },
+    {
+      "world": "OUTLIER_NULL",
+      "policy": "SYMMETRIC_TOP",
+      "analytic_expected_contrast": "0",
+      "R_enumeration_expected_contrast": "0",
+      "match": true
+    },
+    {
+      "world": "OUTLIER_NULL",
+      "policy": "ASYMMETRIC",
+      "analytic_expected_contrast": "-3",
+      "R_enumeration_expected_contrast": "-3",
+      "match": true
+    },
+    {
+      "world": "RAMP_CONST_TWO",
+      "policy": "FULL",
+      "analytic_expected_contrast": "2",
+      "R_enumeration_expected_contrast": "2",
+      "match": true
+    },
+    {
+      "world": "RAMP_CONST_TWO",
+      "policy": "SYMMETRIC_TOP",
+      "analytic_expected_contrast": "2",
+      "R_enumeration_expected_contrast": "2",
+      "match": true
+    },
+    {
+      "world": "RAMP_CONST_TWO",
+      "policy": "ASYMMETRIC",
+      "analytic_expected_contrast": "1/4",
+      "R_enumeration_expected_contrast": "1/4",
+      "match": true
+    },
+    {
+      "world": "RAMP_SINGLE_HET",
+      "policy": "FULL",
+      "analytic_expected_contrast": "1",
+      "R_enumeration_expected_contrast": "1",
+      "match": true
+    },
+    {
+      "world": "RAMP_SINGLE_HET",
+      "policy": "SYMMETRIC_TOP",
+      "analytic_expected_contrast": "0",
+      "R_enumeration_expected_contrast": "0",
+      "match": true
+    },
+    {
+      "world": "RAMP_SINGLE_HET",
+      "policy": "ASYMMETRIC",
+      "analytic_expected_contrast": "-7/4",
+      "R_enumeration_expected_contrast": "-7/4",
+      "match": true
+    },
+    {
+      "world": "RAMP_ZERO_ATE_HET",
+      "policy": "FULL",
+      "analytic_expected_contrast": "0",
+      "R_enumeration_expected_contrast": "0",
+      "match": true
+    },
+    {
+      "world": "RAMP_ZERO_ATE_HET",
+      "policy": "SYMMETRIC_TOP",
+      "analytic_expected_contrast": "-1/10",
+      "R_enumeration_expected_contrast": "-1/10",
+      "match": true
+    },
+    {
+      "world": "RAMP_ZERO_ATE_HET",
+      "policy": "ASYMMETRIC",
+      "analytic_expected_contrast": "-37/20",
+      "R_enumeration_expected_contrast": "-37/20",
+      "match": true
+    },
+    {
+      "world": "OUTLIER_HET",
+      "policy": "FULL",
+      "analytic_expected_contrast": "5/2",
+      "R_enumeration_expected_contrast": "5/2",
+      "match": true
+    },
+    {
+      "world": "OUTLIER_HET",
+      "policy": "SYMMETRIC_TOP",
+      "analytic_expected_contrast": "13/8",
+      "R_enumeration_expected_contrast": "13/8",
+      "match": true
+    },
+    {
+      "world": "OUTLIER_HET",
+      "policy": "ASYMMETRIC",
+      "analytic_expected_contrast": "-11/8",
+      "R_enumeration_expected_contrast": "-11/8",
+      "match": true
+    }
+  ],
+  "scope": "Order statistics analytically check expected contrast only; R enumeration remains sole route for MSE and interference descriptive results; no external reproduction."
+}
