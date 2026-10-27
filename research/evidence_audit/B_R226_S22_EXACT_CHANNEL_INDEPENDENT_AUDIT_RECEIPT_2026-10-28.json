@@ -1,0 +1,29 @@
+{
+  "study": "R226_S22",
+  "scope": "INTERNAL_PROGRAMMATIC_INDEPENDENT_E1_ONLY",
+  "date": "2026-10-28",
+  "frozen_protocol": "protocols/R226_S22_SENDER_MISCLASSIFICATION_PRESCORE_FREEZE_2026-10-28.md",
+  "independent_method": "exact conditional probability convolution of original R226 observable distribution and analytic attenuation, no R S22 compute function",
+  "status": "PASS",
+  "checks": {
+    "field_comparisons": 200,
+    "joint_cell_comparisons": 640,
+    "joint_normalizations": 40,
+    "alias_pair_checks": 10,
+    "randomization_gates": 40,
+    "total": 930
+  },
+  "failed": 0,
+  "mutation_negative_control": {
+    "mutated_field": "PEER_COPY p=0 observed_peer_contrast",
+    "value": "999",
+    "status": "FAIL",
+    "detected": true,
+    "failures": [
+      "field PEER_COPY/0/observed_peer_contrast"
+    ]
+  },
+  "external_independent_replications": 0,
+  "real_human_E2_new": 0,
+  "historical_E3_new": 0
+}
