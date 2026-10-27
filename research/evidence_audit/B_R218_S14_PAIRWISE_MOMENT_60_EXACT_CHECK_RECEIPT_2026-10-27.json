@@ -1,0 +1,196 @@
+{
+  "research": "B_R218_S14",
+  "method": "independent first and second inclusion moment identity; no per-assignment observed outcome estimator",
+  "conditions": [
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "0",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "0",
+      "mse": "0"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/3",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "9/4",
+      "bias": "1/4",
+      "variance": "0",
+      "mse": "1/16"
+    },
+    {
+      "world": "RANDOM_X_CONFOUNDED",
+      "clip": "1/2",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "3",
+      "bias": "1",
+      "variance": "0",
+      "mse": "1"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "0",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "3",
+      "bias": "1",
+      "variance": "3/2",
+      "mse": "5/2"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/3",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "99/32",
+      "bias": "35/32",
+      "variance": "2187/2048",
+      "mse": "4637/2048"
+    },
+    {
+      "world": "HIDDEN_U_BIASED",
+      "clip": "1/2",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "15/4",
+      "bias": "7/4",
+      "variance": "27/32",
+      "mse": "125/32"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "0",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "0",
+      "mse": "0"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/3",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "9/4",
+      "bias": "1/4",
+      "variance": "0",
+      "mse": "1/16"
+    },
+    {
+      "world": "HIDDEN_ASSIGNMENT_NEG_CONTROL",
+      "clip": "1/2",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "3",
+      "bias": "1",
+      "variance": "0",
+      "mse": "1"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "0",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "0",
+      "mse": "0"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/3",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "39/16",
+      "bias": "7/16",
+      "variance": "0",
+      "mse": "49/256"
+    },
+    {
+      "world": "HETEROGENEOUS_EFFECT_X",
+      "clip": "1/2",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "7/2",
+      "bias": "3/2",
+      "variance": "0",
+      "mse": "9/4"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "0",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "3/2",
+      "mse": "3/2"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/3",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "3/2",
+      "mse": "3/2"
+    },
+    {
+      "world": "BALANCED_QUOTA_NEG_CONTROL",
+      "clip": "1/2",
+      "source_mass": "1",
+      "status": "OK",
+      "mean": "2",
+      "bias": "0",
+      "variance": "3/2",
+      "mse": "3/2"
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "0",
+      "source_mass": "1",
+      "status": "NO_COMMON_SUPPORT",
+      "mean": null,
+      "bias": null,
+      "variance": null,
+      "mse": null
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "1/3",
+      "source_mass": "1",
+      "status": "NO_COMMON_SUPPORT",
+      "mean": null,
+      "bias": null,
+      "variance": null,
+      "mse": null
+    },
+    {
+      "world": "POSITIVITY_FAILURE",
+      "clip": "1/2",
+      "source_mass": "1",
+      "status": "NO_COMMON_SUPPORT",
+      "mean": null,
+      "bias": null,
+      "variance": null,
+      "mse": null
+    }
+  ],
+  "checks": {
+    "joint_inclusion_mutation_detected": true
+  },
+  "evidence": "E1_ARTIFICIAL",
+  "cross_checks": {
+    "field_checks": 60,
+    "probability_mass_checks": 18,
+    "support_checks": 18,
+    "all_passed": true
+  }
+}
