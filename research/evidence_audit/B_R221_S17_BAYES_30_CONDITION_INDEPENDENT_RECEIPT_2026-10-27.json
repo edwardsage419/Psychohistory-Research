@@ -1,191 +1,191 @@
 {
   "audit": "B_R221_S17",
-  "cross_algorithm_exact_field_checks": 150,
-  "failures": 0,
-  "independent_method": "Bayes mixture on original T,M,Y law",
-  "negative_control_half_flip_all_NIE_zero": true,
-  "mutation_detected": true,
   "conditions": [
     {
-      "world": "ADDITIVE_BOTH",
-      "flip_rate": "0",
       "bayes_NDE": "1",
-      "bayes_NIE": "1/4"
+      "bayes_NIE": "1/4",
+      "flip_rate": "0",
+      "world": "ADDITIVE_BOTH"
     },
     {
-      "world": "ADDITIVE_BOTH",
-      "flip_rate": "1/8",
       "bayes_NDE": "62/55",
-      "bayes_NIE": "27/220"
+      "bayes_NIE": "27/220",
+      "flip_rate": "1/8",
+      "world": "ADDITIVE_BOTH"
     },
     {
-      "world": "ADDITIVE_BOTH",
-      "flip_rate": "1/4",
       "bayes_NDE": "6/5",
-      "bayes_NIE": "1/20"
+      "bayes_NIE": "1/20",
+      "flip_rate": "1/4",
+      "world": "ADDITIVE_BOTH"
     },
     {
-      "world": "ADDITIVE_BOTH",
-      "flip_rate": "3/8",
       "bayes_NDE": "26/21",
-      "bayes_NIE": "1/84"
+      "bayes_NIE": "1/84",
+      "flip_rate": "3/8",
+      "world": "ADDITIVE_BOTH"
     },
     {
-      "world": "ADDITIVE_BOTH",
-      "flip_rate": "1/2",
       "bayes_NDE": "5/4",
-      "bayes_NIE": "0"
+      "bayes_NIE": "0",
+      "flip_rate": "1/2",
+      "world": "ADDITIVE_BOTH"
     },
     {
-      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION",
-      "flip_rate": "0",
       "bayes_NDE": "0",
-      "bayes_NIE": "1/4"
+      "bayes_NIE": "1/4",
+      "flip_rate": "0",
+      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION"
     },
     {
-      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION",
-      "flip_rate": "1/8",
       "bayes_NDE": "7/55",
-      "bayes_NIE": "27/220"
-    },
-    {
-      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION",
-      "flip_rate": "1/4",
-      "bayes_NDE": "1/5",
-      "bayes_NIE": "1/20"
-    },
-    {
-      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION",
-      "flip_rate": "3/8",
-      "bayes_NDE": "5/21",
-      "bayes_NIE": "1/84"
-    },
-    {
-      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION",
-      "flip_rate": "1/2",
-      "bayes_NDE": "1/4",
-      "bayes_NIE": "0"
-    },
-    {
-      "world": "PURE_DIRECT",
-      "flip_rate": "0",
-      "bayes_NDE": "1",
-      "bayes_NIE": "0"
-    },
-    {
-      "world": "PURE_DIRECT",
+      "bayes_NIE": "27/220",
       "flip_rate": "1/8",
-      "bayes_NDE": "1",
-      "bayes_NIE": "0"
+      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION"
     },
     {
-      "world": "PURE_DIRECT",
+      "bayes_NDE": "1/5",
+      "bayes_NIE": "1/20",
       "flip_rate": "1/4",
-      "bayes_NDE": "1",
-      "bayes_NIE": "0"
+      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION"
     },
     {
-      "world": "PURE_DIRECT",
+      "bayes_NDE": "5/21",
+      "bayes_NIE": "1/84",
       "flip_rate": "3/8",
-      "bayes_NDE": "1",
-      "bayes_NIE": "0"
+      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION"
     },
     {
-      "world": "PURE_DIRECT",
+      "bayes_NDE": "1/4",
+      "bayes_NIE": "0",
       "flip_rate": "1/2",
-      "bayes_NDE": "1",
-      "bayes_NIE": "0"
+      "world": "LATENT_COMMON_CAUSE_NO_MEDIATION"
     },
     {
-      "world": "PURE_INDIRECT",
+      "bayes_NDE": "1",
+      "bayes_NIE": "0",
       "flip_rate": "0",
+      "world": "PURE_DIRECT"
+    },
+    {
+      "bayes_NDE": "1",
+      "bayes_NIE": "0",
+      "flip_rate": "1/8",
+      "world": "PURE_DIRECT"
+    },
+    {
+      "bayes_NDE": "1",
+      "bayes_NIE": "0",
+      "flip_rate": "1/4",
+      "world": "PURE_DIRECT"
+    },
+    {
+      "bayes_NDE": "1",
+      "bayes_NIE": "0",
+      "flip_rate": "3/8",
+      "world": "PURE_DIRECT"
+    },
+    {
+      "bayes_NDE": "1",
+      "bayes_NIE": "0",
+      "flip_rate": "1/2",
+      "world": "PURE_DIRECT"
+    },
+    {
       "bayes_NDE": "0",
-      "bayes_NIE": "1/4"
-    },
-    {
-      "world": "PURE_INDIRECT",
-      "flip_rate": "1/8",
-      "bayes_NDE": "7/55",
-      "bayes_NIE": "27/220"
-    },
-    {
-      "world": "PURE_INDIRECT",
-      "flip_rate": "1/4",
-      "bayes_NDE": "1/5",
-      "bayes_NIE": "1/20"
-    },
-    {
-      "world": "PURE_INDIRECT",
-      "flip_rate": "3/8",
-      "bayes_NDE": "5/21",
-      "bayes_NIE": "1/84"
-    },
-    {
-      "world": "PURE_INDIRECT",
-      "flip_rate": "1/2",
-      "bayes_NDE": "1/4",
-      "bayes_NIE": "0"
-    },
-    {
-      "world": "TREATMENT_MEDIATOR_INTERACTION",
+      "bayes_NIE": "1/4",
       "flip_rate": "0",
+      "world": "PURE_INDIRECT"
+    },
+    {
+      "bayes_NDE": "7/55",
+      "bayes_NIE": "27/220",
+      "flip_rate": "1/8",
+      "world": "PURE_INDIRECT"
+    },
+    {
+      "bayes_NDE": "1/5",
+      "bayes_NIE": "1/20",
+      "flip_rate": "1/4",
+      "world": "PURE_INDIRECT"
+    },
+    {
+      "bayes_NDE": "5/21",
+      "bayes_NIE": "1/84",
+      "flip_rate": "3/8",
+      "world": "PURE_INDIRECT"
+    },
+    {
+      "bayes_NDE": "1/4",
+      "bayes_NIE": "0",
+      "flip_rate": "1/2",
+      "world": "PURE_INDIRECT"
+    },
+    {
       "bayes_NDE": "1/2",
-      "bayes_NIE": "1/4"
-    },
-    {
-      "world": "TREATMENT_MEDIATOR_INTERACTION",
-      "flip_rate": "1/8",
-      "bayes_NDE": "69/110",
-      "bayes_NIE": "27/220"
-    },
-    {
-      "world": "TREATMENT_MEDIATOR_INTERACTION",
-      "flip_rate": "1/4",
-      "bayes_NDE": "7/10",
-      "bayes_NIE": "1/20"
-    },
-    {
-      "world": "TREATMENT_MEDIATOR_INTERACTION",
-      "flip_rate": "3/8",
-      "bayes_NDE": "31/42",
-      "bayes_NIE": "1/84"
-    },
-    {
-      "world": "TREATMENT_MEDIATOR_INTERACTION",
-      "flip_rate": "1/2",
-      "bayes_NDE": "3/4",
-      "bayes_NIE": "0"
-    },
-    {
-      "world": "ZERO_CAUSAL_EFFECT",
+      "bayes_NIE": "1/4",
       "flip_rate": "0",
-      "bayes_NDE": "0",
-      "bayes_NIE": "0"
+      "world": "TREATMENT_MEDIATOR_INTERACTION"
     },
     {
-      "world": "ZERO_CAUSAL_EFFECT",
+      "bayes_NDE": "69/110",
+      "bayes_NIE": "27/220",
       "flip_rate": "1/8",
-      "bayes_NDE": "0",
-      "bayes_NIE": "0"
+      "world": "TREATMENT_MEDIATOR_INTERACTION"
     },
     {
-      "world": "ZERO_CAUSAL_EFFECT",
+      "bayes_NDE": "7/10",
+      "bayes_NIE": "1/20",
       "flip_rate": "1/4",
-      "bayes_NDE": "0",
-      "bayes_NIE": "0"
+      "world": "TREATMENT_MEDIATOR_INTERACTION"
     },
     {
-      "world": "ZERO_CAUSAL_EFFECT",
+      "bayes_NDE": "31/42",
+      "bayes_NIE": "1/84",
       "flip_rate": "3/8",
-      "bayes_NDE": "0",
-      "bayes_NIE": "0"
+      "world": "TREATMENT_MEDIATOR_INTERACTION"
     },
     {
-      "world": "ZERO_CAUSAL_EFFECT",
+      "bayes_NDE": "3/4",
+      "bayes_NIE": "0",
       "flip_rate": "1/2",
+      "world": "TREATMENT_MEDIATOR_INTERACTION"
+    },
+    {
       "bayes_NDE": "0",
-      "bayes_NIE": "0"
+      "bayes_NIE": "0",
+      "flip_rate": "0",
+      "world": "ZERO_CAUSAL_EFFECT"
+    },
+    {
+      "bayes_NDE": "0",
+      "bayes_NIE": "0",
+      "flip_rate": "1/8",
+      "world": "ZERO_CAUSAL_EFFECT"
+    },
+    {
+      "bayes_NDE": "0",
+      "bayes_NIE": "0",
+      "flip_rate": "1/4",
+      "world": "ZERO_CAUSAL_EFFECT"
+    },
+    {
+      "bayes_NDE": "0",
+      "bayes_NIE": "0",
+      "flip_rate": "3/8",
+      "world": "ZERO_CAUSAL_EFFECT"
+    },
+    {
+      "bayes_NDE": "0",
+      "bayes_NIE": "0",
+      "flip_rate": "1/2",
+      "world": "ZERO_CAUSAL_EFFECT"
     }
   ],
-  "external_independent_replication": 0
+  "cross_algorithm_exact_field_checks": 150,
+  "external_independent_replication": 0,
+  "failures": 0,
+  "independent_method": "Bayes mixture on original T,M,Y law",
+  "mutation_detected": true,
+  "negative_control_half_flip_all_NIE_zero": true
 }
