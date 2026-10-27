@@ -1,0 +1,166 @@
+{
+  "study": "B_R208_INDEPENDENT_PARTITION_DP",
+  "status": "INTERNAL_E1_PROCEDURAL_RECOMPUTATION",
+  "source_method": "partition_probability_dynamic_programming",
+  "original_archive": "research/R208/R208_ALL_2048_GRAPH_P_SEED_RANKING_WORLDS.csv",
+  "r_receipt": "research/validation/R208_HETEROGENEOUS_EDGE_ACTIVATION_2048_EXACT_RECEIPT_2026-10-27.json",
+  "worlds": 2048,
+  "checks": {
+    "five_seed_reach": 10240,
+    "source_probability_mass": 2048,
+    "oracle_identity": 2048,
+    "regret": 8192,
+    "seed_identity": 8192,
+    "total": 30720
+  },
+  "partition_states_visited": 115268,
+  "positive_KATZ_regret_worlds": 641,
+  "first_KATZ_counterexamples": [
+    {
+      "graph_mask": 19,
+      "environment": 0,
+      "edges": [
+        "01",
+        "02",
+        "12"
+      ],
+      "seed": 0,
+      "oracle": 1,
+      "regret_num": 8,
+      "den": 64
+    },
+    {
+      "graph_mask": 24,
+      "environment": 0,
+      "edges": [
+        "04",
+        "12"
+      ],
+      "seed": 0,
+      "oracle": 1,
+      "regret_num": 8,
+      "den": 16
+    },
+    {
+      "graph_mask": 25,
+      "environment": 0,
+      "edges": [
+        "01",
+        "04",
+        "12"
+      ],
+      "seed": 0,
+      "oracle": 1,
+      "regret_num": 8,
+      "den": 64
+    },
+    {
+      "graph_mask": 26,
+      "environment": 0,
+      "edges": [
+        "02",
+        "04",
+        "12"
+      ],
+      "seed": 0,
+      "oracle": 2,
+      "regret_num": 24,
+      "den": 64
+    },
+    {
+      "graph_mask": 27,
+      "environment": 0,
+      "edges": [
+        "01",
+        "02",
+        "04",
+        "12"
+      ],
+      "seed": 0,
+      "oracle": 1,
+      "regret_num": 19,
+      "den": 256
+    },
+    {
+      "graph_mask": 37,
+      "environment": 1,
+      "edges": [
+        "01",
+        "03",
+        "13"
+      ],
+      "seed": 0,
+      "oracle": 1,
+      "regret_num": 24,
+      "den": 64
+    },
+    {
+      "graph_mask": 58,
+      "environment": 1,
+      "edges": [
+        "02",
+        "04",
+        "12",
+        "13"
+      ],
+      "seed": 2,
+      "oracle": 0,
+      "regret_num": 20,
+      "den": 256
+    },
+    {
+      "graph_mask": 59,
+      "environment": 0,
+      "edges": [
+        "01",
+        "02",
+        "04",
+        "12",
+        "13"
+      ],
+      "seed": 0,
+      "oracle": 1,
+      "regret_num": 128,
+      "den": 1024
+    }
+  ],
+  "negative_controls": {
+    "single_edge_four_cases": 4,
+    "intentional_receipt_mutation_caught": true
+  },
+  "aggregates": [
+    {
+      "regrets": [
+        49444584,
+        47544040,
+        69230632,
+        48719912
+      ],
+      "optimal": [
+        730,
+        737,
+        702,
+        746
+      ],
+      "oracle": 3303218512
+    },
+    {
+      "regrets": [
+        74976728,
+        67177944,
+        84596632,
+        65030552
+      ],
+      "optimal": [
+        633,
+        654,
+        647,
+        661
+      ],
+      "oracle": 3319229248
+    }
+  ],
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_independent_replication": 0
+}
