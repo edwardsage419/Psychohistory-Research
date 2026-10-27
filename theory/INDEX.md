@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-27（Asia/Shanghai）；已收录 TH071，C004 今日增量与 D002 本周专题
+更新：2026-10-27（Asia/Shanghai）；已收录 TH072，C004 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -123,11 +123,13 @@
 | TH070 | 多层网络、关系类型错配与跨层传播 | De Domenico等2013、Hodas与Lerman2014、Cardillo等2013、Gómez-Gardeñes等2012开放原刊指定章节；Kivelä等2014、Mucha等2010、Battiston等2014、Granell等2013摘要；16项命题、7项人工反例、2项发表数字算术审计；无独立因果或预测验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH070_MULTILAYER_RELATIONAL_MISMATCH_CROSSLAYER_DIFFUSION_2026-10-27.md) |
 | TH071 | 社会资本、强弱关系、桥接闭合与信息带宽 | Granovetter1973、Coleman1988原刊扫描指定页，Portes1998、Levin与Cross2004、Greenberg与Fernandez2016开放原刊指定章节；Burt1992/2004及Aral与Van Alstyne2011书目/摘要；16项命题、7项人工反例、2项原刊数字核对；无独立因果或预测验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH071_SOCIAL_CAPITAL_TIE_STRENGTH_BROKERAGE_CLOSURE_2026-10-27.md) |
 
+| TH072 | 集体行动、互惠规范与制度性信任的竞争机制 | Fehr与Gächter2000正式原刊收益函数、表1/3，Ostrom2000作者预刊稿与1990原著转录指定章节直接审读；Olson1965、Axelrod1981/1984、Herrmann等2008原始书目/作者回顾/机构摘要；16项命题、7项人工与算术审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH072_COLLECTIVE_ACTION_RECIPROCITY_POLYCENTRIC_TRUST_2026-10-27.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH072 | 集体行动、互惠规范与制度性信任的竞争理论 | Olson 1965；Axelrod 1984；Ostrom 1990；Fehr与Gächter 2000，优先核验开放原作 | QUEUED_UNVERIFIED |
+| 1 | TH073 | 共同资源治理的制度失灵、权力不对称与外部干预 | Ostrom1990第5章；Agrawal2001；Baland与Platteau1996 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -383,6 +385,8 @@
 | multiplex / layer aggregation / switching / visibility | De Domenico等2013、Hodas与Lerman2014、Cardillo等2013、Gómez-Gardeñes等2012；层间耦合、重叠接触、注意力与结构聚合 | 个体、群体、制度、历史、方法论 | 四份开放原刊指定章节、四份摘要、七项人工反例、两项数字核验；无独立因果复验 |
 
 | social capital / weak ties / brokerage / closure / bandwidth | Granovetter1973、Coleman1988、Burt1992/2004、Portes1998、Levin与Cross2004、Greenberg与Fernandez2016、Aral与Van Alstyne2011；弱桥、闭合制裁、信任中介、信息带宽及排他损失 | 个体、群体、制度、历史、方法论 | 原作扫描指定页与三份开放原刊指定章节、三份摘要/书目、七项人工反例、两项发表数字核对；无独立因果或预测验证 |
+
+| collective action / conditional reciprocity / graduated sanctions / antisocial punishment | Olson1965、Axelrod与Hamilton1981、Ostrom1990/2000、Fehr与Gächter2000、Herrmann等2008；个人激励、重复互动、监测问责、制裁方向与存活选择偏差 | 个体、群体、制度、历史、方法论 | 两份原作指定章节、一份原著转录指定章节及三份书目/作者回顾/摘要；7项人工与算术审计；无独立因果验证 |
 
 ## C 与 D 研究日历（候选方法储备）
 
