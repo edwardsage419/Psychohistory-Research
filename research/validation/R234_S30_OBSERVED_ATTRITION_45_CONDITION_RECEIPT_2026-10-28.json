@@ -1,0 +1,1032 @@
+{
+  "research_id": "R234",
+  "stage": "S30",
+  "scope": "E1_ARTIFICIAL",
+  "original_source_rows": 2304,
+  "worlds": 9,
+  "selection_rules": [
+    "ALL",
+    "BASELINE_ITEM1_POS",
+    "FOLLOWUP_ITEM1_POS",
+    "FOLLOWUP_ITEM1_NONNEG",
+    "FOLLOWUP_COMPOSITE_GAIN_POS"
+  ],
+  "conditions": 45,
+  "exact_checks": 4095,
+  "failed_checks": 0,
+  "fault_injection_detected": true,
+  "empty_support": [],
+  "observational_alias_pairs": [
+    [
+      "TRUE_LATENT_SHIFT",
+      "UNIFORM_INTERCEPT_DRIFT_ALIAS"
+    ],
+    [
+      "STABLE_BASE",
+      "LATENT_SCALE_REANCHOR_ALIAS"
+    ]
+  ],
+  "world_results": [
+    {
+      "world": "STABLE_BASE",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 127,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "-1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "-1/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "1",
+            "1",
+            "1",
+            "2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "1/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 95,
+          "observed_means": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "2/3",
+            "1/3",
+            "1/3"
+          ],
+          "observed_item_change": [
+            "1/3",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "1/9",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 88,
+          "retention": "11/32",
+          "support": 44,
+          "observed_means": [
+            "-5/11",
+            "-5/11",
+            "-5/11",
+            "5/11",
+            "5/11",
+            "5/11"
+          ],
+          "observed_item_change": [
+            "10/11",
+            "10/11",
+            "10/11"
+          ],
+          "observed_composite_change": "10/11",
+          "oracle_true_latent_change_mean": "0"
+        }
+      }
+    },
+    {
+      "world": "TRUE_LATENT_SHIFT",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 127,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "1",
+            "1",
+            "1"
+          ],
+          "observed_composite_change": "1",
+          "oracle_true_latent_change_mean": "1"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "2",
+            "2",
+            "2"
+          ],
+          "observed_item_change": [
+            "0",
+            "1",
+            "1"
+          ],
+          "observed_composite_change": "2/3",
+          "oracle_true_latent_change_mean": "1"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 95,
+          "observed_means": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "5/3",
+            "4/3",
+            "4/3"
+          ],
+          "observed_item_change": [
+            "4/3",
+            "1",
+            "1"
+          ],
+          "observed_composite_change": "10/9",
+          "oracle_true_latent_change_mean": "1"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 95,
+          "observed_means": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "5/3",
+            "4/3",
+            "4/3"
+          ],
+          "observed_item_change": [
+            "4/3",
+            "1",
+            "1"
+          ],
+          "observed_composite_change": "10/9",
+          "oracle_true_latent_change_mean": "1"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 228,
+          "retention": "57/64",
+          "support": 113,
+          "observed_means": [
+            "-5/57",
+            "-5/57",
+            "-5/57",
+            "62/57",
+            "62/57",
+            "62/57"
+          ],
+          "observed_item_change": [
+            "67/57",
+            "67/57",
+            "67/57"
+          ],
+          "observed_composite_change": "67/57",
+          "oracle_true_latent_change_mean": "1"
+        }
+      }
+    },
+    {
+      "world": "UNIFORM_INTERCEPT_DRIFT_ALIAS",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 127,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "1",
+            "1",
+            "1"
+          ],
+          "observed_composite_change": "1",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "2",
+            "2",
+            "2"
+          ],
+          "observed_item_change": [
+            "0",
+            "1",
+            "1"
+          ],
+          "observed_composite_change": "2/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 95,
+          "observed_means": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "5/3",
+            "4/3",
+            "4/3"
+          ],
+          "observed_item_change": [
+            "4/3",
+            "1",
+            "1"
+          ],
+          "observed_composite_change": "10/9",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 95,
+          "observed_means": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "5/3",
+            "4/3",
+            "4/3"
+          ],
+          "observed_item_change": [
+            "4/3",
+            "1",
+            "1"
+          ],
+          "observed_composite_change": "10/9",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 228,
+          "retention": "57/64",
+          "support": 113,
+          "observed_means": [
+            "-5/57",
+            "-5/57",
+            "-5/57",
+            "62/57",
+            "62/57",
+            "62/57"
+          ],
+          "observed_item_change": [
+            "67/57",
+            "67/57",
+            "67/57"
+          ],
+          "observed_composite_change": "67/57",
+          "oracle_true_latent_change_mean": "0"
+        }
+      }
+    },
+    {
+      "world": "LATENT_INNOVATION",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 232,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 60,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "-1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "-1/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 116,
+          "observed_means": [
+            "1/2",
+            "1/2",
+            "1/2",
+            "3/2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "1",
+            "1/2",
+            "1/2"
+          ],
+          "observed_composite_change": "2/3",
+          "oracle_true_latent_change_mean": "1/2"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 116,
+          "observed_means": [
+            "1/2",
+            "1/2",
+            "1/2",
+            "3/2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "1",
+            "1/2",
+            "1/2"
+          ],
+          "observed_composite_change": "2/3",
+          "oracle_true_latent_change_mean": "1/2"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 116,
+          "observed_means": [
+            "-5/32",
+            "-5/32",
+            "-5/32",
+            "15/16",
+            "15/16",
+            "15/16"
+          ],
+          "observed_item_change": [
+            "35/32",
+            "35/32",
+            "35/32"
+          ],
+          "observed_composite_change": "35/32",
+          "oracle_true_latent_change_mean": "25/32"
+        }
+      }
+    },
+    {
+      "world": "SINGLE_ITEM_INTERCEPT_DRIFT",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 127,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "1/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 95,
+          "observed_means": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "5/3",
+            "1/3",
+            "1/3"
+          ],
+          "observed_item_change": [
+            "4/3",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "4/9",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 95,
+          "observed_means": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "5/3",
+            "1/3",
+            "1/3"
+          ],
+          "observed_item_change": [
+            "4/3",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "4/9",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 168,
+          "retention": "21/32",
+          "support": 83,
+          "observed_means": [
+            "-5/21",
+            "-5/21",
+            "-5/21",
+            "26/21",
+            "5/21",
+            "5/21"
+          ],
+          "observed_item_change": [
+            "31/21",
+            "10/21",
+            "10/21"
+          ],
+          "observed_composite_change": "17/21",
+          "oracle_true_latent_change_mean": "0"
+        }
+      }
+    },
+    {
+      "world": "METRIC_ITEM1_DRIFT",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 128,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 64,
+          "observed_means": [
+            "1",
+            "1",
+            "1",
+            "2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "1/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 64,
+          "observed_means": [
+            "1",
+            "1",
+            "1",
+            "2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "1/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 64,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "15/16",
+            "5/8",
+            "5/8"
+          ],
+          "observed_item_change": [
+            "15/16",
+            "5/8",
+            "5/8"
+          ],
+          "observed_composite_change": "35/48",
+          "oracle_true_latent_change_mean": "0"
+        }
+      }
+    },
+    {
+      "world": "ERROR_VARIANCE_DRIFT",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 128,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "-1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "-1/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 64,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "2",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "2",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "2/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 64,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "2",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "2",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "2/3",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 128,
+          "retention": "1/2",
+          "support": 64,
+          "observed_means": [
+            "-1/4",
+            "-1/4",
+            "-1/4",
+            "5/4",
+            "1/4",
+            "1/4"
+          ],
+          "observed_item_change": [
+            "3/2",
+            "1/2",
+            "1/2"
+          ],
+          "observed_composite_change": "5/6",
+          "oracle_true_latent_change_mean": "0"
+        }
+      }
+    },
+    {
+      "world": "PERSISTENT_FIRST_ITEM_ERROR",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 63,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 16,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 16,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 47,
+          "observed_means": [
+            "2/3",
+            "1/3",
+            "1/3",
+            "2/3",
+            "1/3",
+            "1/3"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 80,
+          "retention": "5/16",
+          "support": 20,
+          "observed_means": [
+            "0",
+            "-3/5",
+            "-3/5",
+            "0",
+            "3/5",
+            "3/5"
+          ],
+          "observed_item_change": [
+            "0",
+            "6/5",
+            "6/5"
+          ],
+          "observed_composite_change": "4/5",
+          "oracle_true_latent_change_mean": "0"
+        }
+      }
+    },
+    {
+      "world": "LATENT_SCALE_REANCHOR_ALIAS",
+      "selection_results": {
+        "ALL": {
+          "status": "OK",
+          "selected": 256,
+          "retention": "1",
+          "support": 127,
+          "observed_means": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_item_change": [
+            "0",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "0",
+          "oracle_true_latent_change_mean": "0"
+        },
+        "BASELINE_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "2",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "-1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "-1/3",
+          "oracle_true_latent_change_mean": "1"
+        },
+        "FOLLOWUP_ITEM1_POS": {
+          "status": "OK",
+          "selected": 64,
+          "retention": "1/4",
+          "support": 32,
+          "observed_means": [
+            "1",
+            "1",
+            "1",
+            "2",
+            "1",
+            "1"
+          ],
+          "observed_item_change": [
+            "1",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "1/3",
+          "oracle_true_latent_change_mean": "1"
+        },
+        "FOLLOWUP_ITEM1_NONNEG": {
+          "status": "OK",
+          "selected": 192,
+          "retention": "3/4",
+          "support": 95,
+          "observed_means": [
+            "1/3",
+            "1/3",
+            "1/3",
+            "2/3",
+            "1/3",
+            "1/3"
+          ],
+          "observed_item_change": [
+            "1/3",
+            "0",
+            "0"
+          ],
+          "observed_composite_change": "1/9",
+          "oracle_true_latent_change_mean": "1/3"
+        },
+        "FOLLOWUP_COMPOSITE_GAIN_POS": {
+          "status": "OK",
+          "selected": 88,
+          "retention": "11/32",
+          "support": 44,
+          "observed_means": [
+            "-5/11",
+            "-5/11",
+            "-5/11",
+            "5/11",
+            "5/11",
+            "5/11"
+          ],
+          "observed_item_change": [
+            "10/11",
+            "10/11",
+            "10/11"
+          ],
+          "observed_composite_change": "10/11",
+          "oracle_true_latent_change_mean": "0"
+        }
+      }
+    }
+  ],
+  "external_independent_replications": 0,
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "provenance": {
+    "prescore_commit": "a96cca29447b50c86cc2151b7a5ef4e5ccebdced",
+    "script_commit": "b05730c956d5e2ac4fb61580a87bc1efc1580145",
+    "original_csv_blob": "45d6145d795ccb7264b14eb24a316ffc043f9eb8",
+    "original_results_blob": "4a4aa8097c4fc7ed88d55156332a2db5744b1e7d"
+  }
+}
