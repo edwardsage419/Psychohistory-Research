@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH098，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH099，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -163,16 +163,20 @@
 | TH097 | 制度信任更新、负面行政经验传播与跨期政策反馈 | Van de Walle与Bouckaert2003、Jacobs与Mettler2018开放原刊重点章节；Soss1999、Mettler与Soss2004、Mikkelsen等2025及其他原刊摘要；16项条件命题、8项人工识别反例，未复算真实因果 | THEORY_NOTE_BOUNDED | [研究笔记](TH097_INSTITUTIONAL_TRUST_NEGATIVE_ADMINISTRATIVE_EXPERIENCES_POLICY_FEEDBACK_2026-10-28.md) |
 
 | TH098 | 危机冲击下的政治信任、程序正义与合法性动态区分 | Bol等2021、Esaiasson等2021两份开放原刊重点章节；Schraff2021、Kritzinger等2021、Tyler2006、Levi与Stoker2000、Easton1975五份原刊摘要或书目；16项条件命题、8项人工识别反例；无独立因果验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH098_CRISIS_POLITICAL_TRUST_PROCEDURAL_JUSTICE_LEGITIMACY_DYNAMIC_IDENTIFICATION_2026-10-28.md) |
+| TH099 | 危机归责、媒体框架与政治信任恢复的跨国识别 | Damstra等2021荷兰开放原刊、Porumbescu等2023美国开放原刊重点章节；Iyengar1996、Lyons与Jaeger2014、Maestas等2008、Chon与Fondren2019、Malhotra与Kuo2008、Hameleers等2023摘要；16项条件命题、8项人工审计；跨国长期恢复未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH099_CRISIS_BLAME_MEDIA_FRAMING_TRUST_RECOVERY_CROSS_NATIONAL_2026-10-28.md) |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH099 | 危机归责、媒体框架与政治信任恢复的跨国识别 | 原始纵向面板、事件研究、时间变动混杂与跨国测量等值待核 | QUEUED_UNVERIFIED |
+| 1 | TH100 | 灾后政治信任恢复的政府更替、幸存者选择与时间变动混杂 | 开放纵向面板、政府更替前后调查、时间变动混杂与负对照待核 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| crisis blame attribution / media framing / trust recovery / cross-national transport | [TH099 危机归责、媒体框架与跨国信任恢复](TH099_CRISIS_BLAME_MEDIA_FRAMING_TRUST_RECOVERY_CROSS_NATIONAL_2026-10-28.md)；Damstra等2021、Porumbescu等2023、Iyengar1996、Lyons与Jaeger2014、Maestas等2008、Chon与Fondren2019；负面归责、选择性暴露、随机文字提示与跨国测量等值 | 个体、群体、制度、历史、方法论 | 两份开放原刊指定章节直接审读，六份原刊摘要或书目，八项人工审计；长期恢复与跨国因果未识别 |
+
 
 | network interference / exposure mapping / graph cluster randomization | Ugander等2013、Aronow与Samii2017、Eckles等2017；全局政策效应、暴露错设、正概率、联合暴露概率及网络依赖 | 个体、群体、制度、历史、方法论 | 三份开放原作重要章节、两份原刊摘要，六项人工反例；无独立因果验证 |
 
