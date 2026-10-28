@@ -1,0 +1,241 @@
+{
+  "research_id": "R238_S34",
+  "evidence": "E1_ONLY",
+  "prescore_protocol_commit": "9cd6087d9e4f8e399eb05c02e66e9cb875af7f7a",
+  "source_csv_sha256_frozen": "a3939283f67d40fc74d289daecde449566870cdeb1943a8431ae6d27457feceb",
+  "original_source_records": 144,
+  "world_count": 9,
+  "anchor_pair_conditions": 27,
+  "source_checks": 378,
+  "worlds": [
+    {
+      "world": "STABLE_BASE",
+      "anchor_consistency": "ANCHOR_CONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "0"
+    },
+    {
+      "world": "GLOBAL_ROTATION",
+      "anchor_consistency": "ANCHOR_CONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "0"
+    },
+    {
+      "world": "TARGET_SEMANTIC_DRIFT",
+      "anchor_consistency": "ANCHOR_CONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "1"
+    },
+    {
+      "world": "ROTATED_TARGET_DRIFT",
+      "anchor_consistency": "ANCHOR_CONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "1"
+    },
+    {
+      "world": "GLOBAL_SCALE_2",
+      "anchor_consistency": "ANCHOR_CONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "0"
+    },
+    {
+      "world": "FREQUENCY_COMPOSITION_ONLY",
+      "anchor_consistency": "ANCHOR_CONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "0"
+    },
+    {
+      "world": "FREQUENCY_PLUS_TARGET_DRIFT",
+      "anchor_consistency": "ANCHOR_CONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "1"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "1"
+    },
+    {
+      "world": "ANCHOR_DRIFT_FALSE_ALIGNMENT",
+      "anchor_consistency": "ANCHOR_INCONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "8/5",
+          "target_D_aligned_displacement_sq": "8/5"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "40",
+          "target_D_aligned_displacement_sq": "80"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "40/49",
+          "target_D_aligned_displacement_sq": "80/49"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "0"
+    },
+    {
+      "world": "SENSE_RECONFIGURATION_ALIAS",
+      "anchor_consistency": "ANCHOR_CONSISTENT",
+      "pairs": [
+        {
+          "pair": "AB",
+          "heldout": "C",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "AC",
+          "heldout": "B",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        },
+        {
+          "pair": "BC",
+          "heldout": "A",
+          "heldout_residual_sq": "0",
+          "target_D_aligned_displacement_sq": "0"
+        }
+      ],
+      "oracle_target_D_semantic_change_sq": "0"
+    }
+  ],
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
