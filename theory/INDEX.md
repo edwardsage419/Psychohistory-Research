@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH096，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH097，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -160,11 +160,13 @@
 
 | TH096 | 行政申诉可达性、选择性进入、复核误差与长期后果 | Greiner与Pattanayak2012、Moynihan等2015、French与Song2014、Autor等2015四份开放原作选段；Deshpande与Li2019机构摘要；16项条件性命题、9项人工审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH096_ADMINISTRATIVE_APPEAL_ACCESS_SELECTION_REVIEW_ERROR_LONG_RUN_2026-10-28.md) |
 
+| TH097 | 制度信任更新、负面行政经验传播与跨期政策反馈 | Van de Walle与Bouckaert2003、Jacobs与Mettler2018开放原刊重点章节；Soss1999、Mettler与Soss2004、Mikkelsen等2025及其他原刊摘要；16项条件命题、8项人工识别反例，未复算真实因果 | THEORY_NOTE_BOUNDED | [研究笔记](TH097_INSTITUTIONAL_TRUST_NEGATIVE_ADMINISTRATIVE_EXPERIENCES_POLICY_FEEDBACK_2026-10-28.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH097 | 制度信任的更新、负面行政经验传播与政策反馈的跨期机制 | 公共管理实验、政策反馈与制度信任的竞争性纵向证据待核 | QUEUED_UNVERIFIED |
+| 1 | TH098 | 政治信任、程序正义与合法性在危机冲击下的动态区分 | 原始实验、跨期测量等值与竞争解释待核 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -472,6 +474,9 @@ C 今日 C005 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | human-algorithm reliance / contestability / selective appeals / post-policy evaluation | [TH095 人机协作依赖、申诉与纠错](TH095_HUMAN_ALGORITHM_RELIANCE_APPEALS_ERROR_CORRECTION_2026-10-28.md)；Dietvorst等2018、Buçinca等2021、Green与Chen2019/2021、Binns2018、Wachter等2018；过度依赖、控制感、风险权重漂移、反事实救济与申诉选择 | 个体、群体、制度、历史、方法论 | 六份开放原作重点章节、三份原刊摘要或出版页、八项人工与原刊数字审计；无真实行政因果或前瞻性评价 |
 
 | administrative appeal access / selective filing / review error / delay decay | [TH096 行政申诉与复核误差](TH096_ADMINISTRATIVE_APPEAL_ACCESS_SELECTION_REVIEW_ERROR_LONG_RUN_2026-10-28.md)；Greiner与Pattanayak2012、Moynihan等2015、French与Song2014、Autor等2015、Deshpande与Li2019；申诉选择、复核真值、法官宽严、等待后果 | 个体、群体、制度、历史、方法论 | 四份原作选段、一份原始机构摘要、九项人工审计；无独立因果验证 |
+
+
+| institutional trust / policy feedback / reversed causality / administrative experience diffusion | [TH097 制度信任更新与政策反馈](TH097_INSTITUTIONAL_TRUST_NEGATIVE_ADMINISTRATIVE_EXPERIENCES_POLICY_FEEDBACK_2026-10-28.md)；Van de Walle与Bouckaert2003、Jacobs与Mettler2018、Soss1999、Mettler与Soss2004、Mikkelsen等2025、Parker等2008；归责、资源与解释性反馈、回忆实验限制、网络传播假说 | 个体、群体、制度、历史、方法论 | 两份开放原作重点章节、六份摘要或书目、八项人工反例；无独立历史因果或预测验证 |
 
 ## 持续执行规则
 
