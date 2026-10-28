@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH104，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH105，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -175,11 +175,13 @@
 
 | TH104 | 住房恢复的竞争风险、重复迁移、保险与援助交互及跨期测量等值 | Putter等2020开放原刊与Sutley等2019 NIST原作指定章节直接审读；Fine与Gray1999、Sutley与Hamideh2020、Merdjanoff等2022/2023、Kousky等2018等原刊摘要核验；16项条件命题、8项数学及原文汇总审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH104_HOUSING_RECOVERY_COMPETING_RISKS_REPEAT_MOVES_INSURANCE_MEASUREMENT_2026-10-28.md) |
 
+| TH105 | 灾后迁移的目的地选择、接收地制度与社会网络重建 | Asad2015与Gray等2014开放原作指定章节直接审读；Sastry与Gregory2014、Curtis等2015、Morris与Deterding2016、Li等2010、Messias等2012、Groen与Polivka2010原刊摘要或公开片段核验；16项条件命题与8项算术及识别审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH105_DISASTER_MIGRATION_DESTINATION_RECEPTION_NETWORK_REBUILDING_2026-10-28.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH105 | 灾后迁移的目的地选择、接收地制度与社会网络重建 | 原始迁移纵向面板、目的地接收政策与网络选择研究 | QUEUED_UNVERIFIED |
+| 1 | TH106 | 接收地住房供给、地方财政压力、学校容量与跨辖区政策溢出 | 开放接收地住房与公共服务政策评价、迁移选择及干扰识别 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -508,6 +510,8 @@ C 今日 C005 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | crisis rally / political trust / legitimacy / procedural fairness | [TH098 危机中的信任与合法性](TH098_CRISIS_POLITICAL_TRUST_PROCEDURAL_JUSTICE_LEGITIMACY_DYNAMIC_IDENTIFICATION_2026-10-28.md)；Bol等2021、Esaiasson等2021、Schraff2021、Kritzinger等2021、Tyler2006、Levi与Stoker2000、Easton1975；政策与危机冲击竞争、短期集结、构念区分与跨期测量 | 个体、群体、制度、历史、方法论 | 两份开放原刊重点章节、五份原刊摘要或书目、八项人工审计；无独立真实因果或预测验证 |
 
 | housing recovery / competing risks / repeat mobility / insurance crowd-out / measurement invariance | [TH104 住房恢复竞争风险与保险交互](TH104_HOUSING_RECOVERY_COMPETING_RISKS_REPEAT_MOVES_INSURANCE_MEASUREMENT_2026-10-28.md)；Putter等2020、Fine与Gray1999、Sutley等2019/2020、Kousky等2018、Merdjanoff等2022/2023、Cheng等2015；累计发生、可逆迁移、理赔与公共援助选择、跨期恢复定义 | 个体、群体、制度、历史、方法论 | 两份开放原作选段直接审读、九份原刊摘要/机构记录，8项人工及原文算术审计；无独立真实因果验证 |
+
+| disaster destination choice / contexts of reception / network rebuilding / return selection | [TH105 灾后目的地选择与接收地制度](TH105_DISASTER_MIGRATION_DESTINATION_RECEPTION_NETWORK_REBUILDING_2026-10-28.md)；Asad2015、Gray等2014、Sastry与Gregory2014、Curtis等2015、Morris与Deterding2016、Li等2010、Messias等2012、Groen与Polivka2010；机会集、制度接收、网络选择、跨期回迁与人口构成 | 个体、群体、制度、历史、方法论 | 两份开放原作重点章节直接审读、六份原始摘要或公开片段，16项条件命题、8项人工与原文比例审计；无独立真实因果估计 |
 
 ## 持续执行规则
 
