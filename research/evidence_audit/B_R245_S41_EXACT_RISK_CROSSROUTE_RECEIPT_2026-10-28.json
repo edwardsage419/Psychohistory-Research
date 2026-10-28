@@ -1,0 +1,124 @@
+{
+  "study": "R245_S41",
+  "protocol_commit": "acef03d691ca17d965a5ac82c8a9cceb68413b98",
+  "original_source_blob": "a4f72966a955609910b81d497469128cde3d7120",
+  "original_observed_pmf_blob": "cf808971dd349afa651073b67971624258755b6f",
+  "source_rows": 4608,
+  "worlds": 9,
+  "R_source_first_checks": 13944,
+  "B_independent_python_checks": 508,
+  "B_archived_observed_pmf_checks": 301,
+  "exact_risk_comparisons": 36,
+  "exact_gain_comparisons": 18,
+  "failures": 0,
+  "source_first_execution": "GitHub fetched CSV, isolated JavaScript V8",
+  "python_execution": "Python standard library local 16-gap route",
+  "node_cli_execution": "local regenerated-source smoke test only; original GitHub CSV CLI not executed",
+  "mutation_test": "altering IID_FAIR F0 risk to 999 rejected",
+  "leakage_control": "future outcome included in features gives Brier zero, excluded",
+  "evidence": "E1 synthetic oracle",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_independent_replications": 0,
+  "results": [
+    {
+      "world": "IID_FAIR",
+      "risks": {
+        "F0": "55/256",
+        "F3": "29/160",
+        "F23": "5/32",
+        "F123": "5/32"
+      },
+      "gain_F0_F123": "15/256",
+      "gain_F3_F123": "1/40"
+    },
+    {
+      "world": "IID_SHORT_3OF4",
+      "risks": {
+        "F0": "10455/65536",
+        "F3": "1755/11264",
+        "F23": "153/1024",
+        "F123": "153/1024"
+      },
+      "gain_F0_F123": "663/65536",
+      "gain_F3_F123": "9/1408"
+    },
+    {
+      "world": "IID_LONG_1OF4",
+      "risks": {
+        "F0": "13575/65536",
+        "F3": "99/1024",
+        "F23": "75/1024",
+        "F123": "75/1024"
+      },
+      "gain_F0_F123": "8775/65536",
+      "gain_F3_F123": "3/128"
+    },
+    {
+      "world": "DETERMINISTIC_UNIT",
+      "risks": {
+        "F0": "0",
+        "F3": "0",
+        "F23": "0",
+        "F123": "0"
+      },
+      "gain_F0_F123": "0",
+      "gain_F3_F123": "0"
+    },
+    {
+      "world": "DETERMINISTIC_TWO",
+      "risks": {
+        "F0": "0",
+        "F3": "0",
+        "F23": "0",
+        "F123": "0"
+      },
+      "gain_F0_F123": "0",
+      "gain_F3_F123": "0"
+    },
+    {
+      "world": "LATENT_RATE_MIXTURE",
+      "risks": {
+        "F0": "12159/65536",
+        "F3": "11139/71680",
+        "F23": "1959/14336",
+        "F123": "1959/14336"
+      },
+      "gain_F0_F123": "22425/458752",
+      "gain_F3_F123": "3/160"
+    },
+    {
+      "world": "ALTERNATING_RATE",
+      "risks": {
+        "F0": "12663/65536",
+        "F3": "6441/44032",
+        "F23": "147/1024",
+        "F123": "147/1024"
+      },
+      "gain_F0_F123": "3255/65536",
+      "gain_F3_F123": "15/5504"
+    },
+    {
+      "world": "COMMON_GAP_SHOCK",
+      "risks": {
+        "F0": "0",
+        "F3": "0",
+        "F23": "0",
+        "F123": "0"
+      },
+      "gain_F0_F123": "0",
+      "gain_F3_F123": "0"
+    },
+    {
+      "world": "STATIC_HIDDEN_EVENT_SENSOR_ALIAS",
+      "risks": {
+        "F0": "55/256",
+        "F3": "29/160",
+        "F23": "5/32",
+        "F123": "5/32"
+      },
+      "gain_F0_F123": "15/256",
+      "gain_F3_F123": "1/40"
+    }
+  ]
+}
