@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH101，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH102，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -169,15 +169,21 @@
 
 | TH101 | 灾后公共救济的多级政府责任归属、援助公平与信任修复 | Mazepus与van Leeuwen2020、Higuchi等2019、Haim等2021三份开放原刊指定章节；Malhotra与Kuo2008、Maestas等2008、Wehde与Nowlin2021、Garrett与Sobel2003、Eisensee与Strömberg2007、Ross等2024原始摘要；16项条件命题、8项数字及人工识别审计；长期信任未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH101_DISASTER_RELIEF_MULTILEVEL_ATTRIBUTION_FAIRNESS_TRUST_2026-10-28.md) |
 
+| TH102 | 灾害援助的选择性申请、信息可达性、行政负担与空间不平等 | Baekgaard与Tankink2022、Howell与Elliott2018开放原刊及GAO2022官方报告指定章节直接审读；Raker2023、Raker与Woods2023、Duffy与Shaefer2022、Moynihan等2015等原刊摘要或公开片段；16项条件命题、8项人工识别审计；未申请者与长期因果未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH102_DISASTER_AID_APPLICATION_INFORMATION_ADMINISTRATIVE_BURDEN_SPATIAL_INEQUALITY_2026-10-28.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH102 | 灾害援助的选择性申请、信息可达性、行政负担与空间不平等 | 优先核验公开的援助申请、审核及空间分配原作与选择偏差识别方法 | QUEUED_UNVERIFIED |
+| 1 | TH103 | 灾害援助申诉、证明负担的政策变更、长期住房稳定与反事实福利识别 | 优先检索公开政策变更、行政申诉与纵向住房研究，核验可识别性 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| disaster aid take-up / administrative burden / spatial inequality / selection | [TH102 灾害援助选择性申请与行政负担](TH102_DISASTER_AID_APPLICATION_INFORMATION_ADMINISTRATIVE_BURDEN_SPATIAL_INEQUALITY_2026-10-28.md)；Baekgaard与Tankink2022、Howell与Elliott2018、GAO2022、Raker2023、Duffy与Shaefer2022；知晓、申请、检查、批准、发放与空间分母、共同原因 | 个体、群体、制度、历史、方法论 | 三份开放原文或官方报告指定章节、五份原始摘要及片段、八项人工审计；未申请者总体及长期因果未识别 |
+
+
 
 | multilevel disaster relief / attribution / distributive justice / targeting measurement | [TH101 多级救济责任、分配公平与信任修复](TH101_DISASTER_RELIEF_MULTILEVEL_ATTRIBUTION_FAIRNESS_TRUST_2026-10-28.md)；Mazepus与van Leeuwen2020、Higuchi等2019、Haim等2021、Malhotra与Kuo2008；分层归责、程序与分配公平、行政与自报偏差、危机合作 | 个体、群体、制度、历史、方法论 | 三份开放原刊指定章节、六份原始摘要、八项发表数字与人工反例；无长期信任因果识别 |
 
