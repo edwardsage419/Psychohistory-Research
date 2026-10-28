@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH112，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH113，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -189,11 +189,13 @@
 
 | TH112 | 风险信息披露的选择性注意、保险退出与迁移负担的分配公平 | Billings等2026、Fairweather等2024、Ortega与Petkov2024/2025、Lauer等2024、Elliott等2023、Tanaka等2024、Michel-Kerjan等2012、Blickle与Santos2022、Ratnadiwakara与Venugopal2023；选择性注意、保险退出、迁移与分配公平 | THEORY_NOTE_BOUNDED | [研究笔记](TH112_FLOOD_DISCLOSURE_SELECTIVE_ATTENTION_INSURANCE_EXIT_DISTRIBUTIONAL_RETREAT_2026-10-29.md)；16项条件命题、8项公开数值与人工审计；2份开放原作指定章节直接审读、7项原始摘要/出版记录；无独立真实因果估计 |
 
+| TH113 | 洪水风险标签阈值、模型分歧、住房信贷筛选与平台信息扩散 | Schubert等2024、Blickle等2024、Arseneau与Kara2025、Chen2026、Billings等2026、Sastry2026、Fairweather等2024、First Street方法说明；标签阈值、模型交并比、贷款选择、动态学习与跨平台干扰 | THEORY_NOTE_BOUNDED | [研究笔记](TH113_FLOOD_RISK_LABEL_THRESHOLDS_MODEL_ERROR_MORTGAGE_SCREENING_PLATFORM_SPILLOVERS_2026-10-29.md)；16项条件命题、8项人工与公开汇总审计；4份开放原作重点章节直接审读、3份原始摘要及1份模型自述；无独立因果估计 |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH113 | 洪水风险标签阈值的可操纵性、风险信息误差、住房信贷筛选与跨平台扩散的动态识别 | 2026风险披露阈值研究、平台展示误差与信贷筛选 | QUEUED_UNVERIFIED |
+| 1 | TH114 | 灾害风险评分的版本漂移、校准审计、算法责任与多主体反馈 | 历史地图和评分版本、公开模型校准原作、风险评分责任制度 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -537,6 +539,9 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | flood map boundary / insurance price reform / geographic RD / sorting / dynamic exposure | [TH111 风险分区边界与居住排序](TH111_FLOOD_MAP_BOUNDARY_INSURANCE_RATE_DISCONTINUITY_RESIDENTIAL_SORTING_2026-10-29.md)；FEMA官方课程、Sun等2026、Hennighausen等2023、Shr与Zipp2019、Keele与Titiunik2015、Fairweather等2024；地形连续性、地图版本、保险退出与风险信息试验 | 个体、群体、制度、历史、方法论 | 两份FEMA官方原文及七份原始摘要/书目，16项条件命题、8项人工及汇总算术；无真实独立因果验证 |
 
 | selective attention / flood disclosure / insurance lapse / sorting / distributive retreat | [TH112 风险披露、保险退出与迁移公平](TH112_FLOOD_DISCLOSURE_SELECTIVE_ATTENTION_INSURANCE_EXIT_DISTRIBUTIONAL_RETREAT_2026-10-29.md)；Billings等2026、Fairweather等2024、Ortega与Petkov2024/2025、Lauer等2024、Elliott等2023；风险信息分配、保费约束、房屋市场排序及社会网络迁移 | 个体、群体、制度、历史、方法论 | 两份开放原作指定章节、七份摘要/书目；16项条件命题、8项公开汇总及人工审计；无独立真实因果或预测验证 |
+
+| flood risk labels / model disagreement / credit screening / platform spillovers | [TH113 风险评分阈值与信贷筛选](TH113_FLOOD_RISK_LABEL_THRESHOLDS_MODEL_ERROR_MORTGAGE_SCREENING_PLATFORM_SPILLOVERS_2026-10-29.md)；Schubert等2024、Blickle等2024、Arseneau与Kara2025、Chen2026、Billings等2026、Sastry2026、Fairweather等2024；风险模型分歧、差分断点、银行风险转移、平台干扰 | 个体、群体、制度、历史、方法论 | 4份开放原作指定章节、3份摘要及1份模型开发者说明，16项命题与8项人工及汇总审计；无独立因果或预测验证 |
+
 
 ## 持续执行规则
 
