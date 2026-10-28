@@ -1,0 +1,511 @@
+{
+  "research_id": "R242",
+  "supplement": "S38",
+  "date": "2026-10-28",
+  "evidence": "E1_ARTIFICIAL",
+  "prescore_protocol_commit": "e813053ac01f0b8691e4e38962a2d5cd7aef2e61",
+  "original_csv_blob_sha": "53fd3047f03cb0f50aa3dc497003b9b87b80cb6f",
+  "original_source_rows": 180,
+  "perturbation_worlds": 2,
+  "perturbations_per_world": 4,
+  "perturbed_timepoints": 40,
+  "exact_linearization_n0": 8,
+  "nonzero_finite_effect_with_zero_linear_derivative": 32,
+  "sign_symmetric_future_pairs": 16,
+  "maxima": [
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/8",
+      "max_absolute_residual": "1/32",
+      "n4_finite_delta": "-1/8589934592"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/16",
+      "max_absolute_residual": "1/128",
+      "n4_finite_delta": "-1/562949953421312"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/16",
+      "max_absolute_residual": "1/128",
+      "n4_finite_delta": "-1/562949953421312"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/8",
+      "max_absolute_residual": "1/32",
+      "n4_finite_delta": "-1/8589934592"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/8",
+      "max_absolute_residual": "212415/262144",
+      "n4_finite_delta": "212415/262144"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/16",
+      "max_absolute_residual": "12205529343/17179869184",
+      "n4_finite_delta": "12205529343/17179869184"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/16",
+      "max_absolute_residual": "12205529343/17179869184",
+      "n4_finite_delta": "12205529343/17179869184"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/8",
+      "max_absolute_residual": "212415/262144",
+      "n4_finite_delta": "212415/262144"
+    }
+  ],
+  "rows": [
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/8",
+      "n": 0,
+      "baseline_y": "1/2",
+      "perturbed_y": "3/8",
+      "baseline_sensitivity": "1",
+      "finite_delta": "-1/8",
+      "linear_delta": "-1/8",
+      "residual": "0"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/8",
+      "n": 1,
+      "baseline_y": "1/2",
+      "perturbed_y": "15/32",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/32",
+      "linear_delta": "0",
+      "residual": "-1/32"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/8",
+      "n": 2,
+      "baseline_y": "1/2",
+      "perturbed_y": "255/512",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/512",
+      "linear_delta": "0",
+      "residual": "-1/512"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/8",
+      "n": 3,
+      "baseline_y": "1/2",
+      "perturbed_y": "65535/131072",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/131072",
+      "linear_delta": "0",
+      "residual": "-1/131072"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/8",
+      "n": 4,
+      "baseline_y": "1/2",
+      "perturbed_y": "4294967295/8589934592",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/8589934592",
+      "linear_delta": "0",
+      "residual": "-1/8589934592"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/16",
+      "n": 0,
+      "baseline_y": "1/2",
+      "perturbed_y": "7/16",
+      "baseline_sensitivity": "1",
+      "finite_delta": "-1/16",
+      "linear_delta": "-1/16",
+      "residual": "0"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/16",
+      "n": 1,
+      "baseline_y": "1/2",
+      "perturbed_y": "63/128",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/128",
+      "linear_delta": "0",
+      "residual": "-1/128"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/16",
+      "n": 2,
+      "baseline_y": "1/2",
+      "perturbed_y": "4095/8192",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/8192",
+      "linear_delta": "0",
+      "residual": "-1/8192"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/16",
+      "n": 3,
+      "baseline_y": "1/2",
+      "perturbed_y": "16777215/33554432",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/33554432",
+      "linear_delta": "0",
+      "residual": "-1/33554432"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "-1/16",
+      "n": 4,
+      "baseline_y": "1/2",
+      "perturbed_y": "281474976710655/562949953421312",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/562949953421312",
+      "linear_delta": "0",
+      "residual": "-1/562949953421312"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/16",
+      "n": 0,
+      "baseline_y": "1/2",
+      "perturbed_y": "9/16",
+      "baseline_sensitivity": "1",
+      "finite_delta": "1/16",
+      "linear_delta": "1/16",
+      "residual": "0"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/16",
+      "n": 1,
+      "baseline_y": "1/2",
+      "perturbed_y": "63/128",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/128",
+      "linear_delta": "0",
+      "residual": "-1/128"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/16",
+      "n": 2,
+      "baseline_y": "1/2",
+      "perturbed_y": "4095/8192",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/8192",
+      "linear_delta": "0",
+      "residual": "-1/8192"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/16",
+      "n": 3,
+      "baseline_y": "1/2",
+      "perturbed_y": "16777215/33554432",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/33554432",
+      "linear_delta": "0",
+      "residual": "-1/33554432"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/16",
+      "n": 4,
+      "baseline_y": "1/2",
+      "perturbed_y": "281474976710655/562949953421312",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/562949953421312",
+      "linear_delta": "0",
+      "residual": "-1/562949953421312"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/8",
+      "n": 0,
+      "baseline_y": "1/2",
+      "perturbed_y": "5/8",
+      "baseline_sensitivity": "1",
+      "finite_delta": "1/8",
+      "linear_delta": "1/8",
+      "residual": "0"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/8",
+      "n": 1,
+      "baseline_y": "1/2",
+      "perturbed_y": "15/32",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/32",
+      "linear_delta": "0",
+      "residual": "-1/32"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/8",
+      "n": 2,
+      "baseline_y": "1/2",
+      "perturbed_y": "255/512",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/512",
+      "linear_delta": "0",
+      "residual": "-1/512"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/8",
+      "n": 3,
+      "baseline_y": "1/2",
+      "perturbed_y": "65535/131072",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/131072",
+      "linear_delta": "0",
+      "residual": "-1/131072"
+    },
+    {
+      "world": "LOGISTIC_R2",
+      "epsilon": "1/8",
+      "n": 4,
+      "baseline_y": "1/2",
+      "perturbed_y": "4294967295/8589934592",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/8589934592",
+      "linear_delta": "0",
+      "residual": "-1/8589934592"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/8",
+      "n": 0,
+      "baseline_y": "1/2",
+      "perturbed_y": "3/8",
+      "baseline_sensitivity": "1",
+      "finite_delta": "-1/8",
+      "linear_delta": "-1/8",
+      "residual": "0"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/8",
+      "n": 1,
+      "baseline_y": "1",
+      "perturbed_y": "15/16",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/16",
+      "linear_delta": "0",
+      "residual": "-1/16"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/8",
+      "n": 2,
+      "baseline_y": "0",
+      "perturbed_y": "15/64",
+      "baseline_sensitivity": "0",
+      "finite_delta": "15/64",
+      "linear_delta": "0",
+      "residual": "15/64"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/8",
+      "n": 3,
+      "baseline_y": "0",
+      "perturbed_y": "735/1024",
+      "baseline_sensitivity": "0",
+      "finite_delta": "735/1024",
+      "linear_delta": "0",
+      "residual": "735/1024"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/8",
+      "n": 4,
+      "baseline_y": "0",
+      "perturbed_y": "212415/262144",
+      "baseline_sensitivity": "0",
+      "finite_delta": "212415/262144",
+      "linear_delta": "0",
+      "residual": "212415/262144"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/16",
+      "n": 0,
+      "baseline_y": "1/2",
+      "perturbed_y": "7/16",
+      "baseline_sensitivity": "1",
+      "finite_delta": "-1/16",
+      "linear_delta": "-1/16",
+      "residual": "0"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/16",
+      "n": 1,
+      "baseline_y": "1",
+      "perturbed_y": "63/64",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/64",
+      "linear_delta": "0",
+      "residual": "-1/64"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/16",
+      "n": 2,
+      "baseline_y": "0",
+      "perturbed_y": "63/1024",
+      "baseline_sensitivity": "0",
+      "finite_delta": "63/1024",
+      "linear_delta": "0",
+      "residual": "63/1024"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/16",
+      "n": 3,
+      "baseline_y": "0",
+      "perturbed_y": "60543/262144",
+      "baseline_sensitivity": "0",
+      "finite_delta": "60543/262144",
+      "linear_delta": "0",
+      "residual": "60543/262144"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "-1/16",
+      "n": 4,
+      "baseline_y": "0",
+      "perturbed_y": "12205529343/17179869184",
+      "baseline_sensitivity": "0",
+      "finite_delta": "12205529343/17179869184",
+      "linear_delta": "0",
+      "residual": "12205529343/17179869184"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/16",
+      "n": 0,
+      "baseline_y": "1/2",
+      "perturbed_y": "9/16",
+      "baseline_sensitivity": "1",
+      "finite_delta": "1/16",
+      "linear_delta": "1/16",
+      "residual": "0"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/16",
+      "n": 1,
+      "baseline_y": "1",
+      "perturbed_y": "63/64",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/64",
+      "linear_delta": "0",
+      "residual": "-1/64"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/16",
+      "n": 2,
+      "baseline_y": "0",
+      "perturbed_y": "63/1024",
+      "baseline_sensitivity": "0",
+      "finite_delta": "63/1024",
+      "linear_delta": "0",
+      "residual": "63/1024"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/16",
+      "n": 3,
+      "baseline_y": "0",
+      "perturbed_y": "60543/262144",
+      "baseline_sensitivity": "0",
+      "finite_delta": "60543/262144",
+      "linear_delta": "0",
+      "residual": "60543/262144"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/16",
+      "n": 4,
+      "baseline_y": "0",
+      "perturbed_y": "12205529343/17179869184",
+      "baseline_sensitivity": "0",
+      "finite_delta": "12205529343/17179869184",
+      "linear_delta": "0",
+      "residual": "12205529343/17179869184"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/8",
+      "n": 0,
+      "baseline_y": "1/2",
+      "perturbed_y": "5/8",
+      "baseline_sensitivity": "1",
+      "finite_delta": "1/8",
+      "linear_delta": "1/8",
+      "residual": "0"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/8",
+      "n": 1,
+      "baseline_y": "1",
+      "perturbed_y": "15/16",
+      "baseline_sensitivity": "0",
+      "finite_delta": "-1/16",
+      "linear_delta": "0",
+      "residual": "-1/16"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/8",
+      "n": 2,
+      "baseline_y": "0",
+      "perturbed_y": "15/64",
+      "baseline_sensitivity": "0",
+      "finite_delta": "15/64",
+      "linear_delta": "0",
+      "residual": "15/64"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/8",
+      "n": 3,
+      "baseline_y": "0",
+      "perturbed_y": "735/1024",
+      "baseline_sensitivity": "0",
+      "finite_delta": "735/1024",
+      "linear_delta": "0",
+      "residual": "735/1024"
+    },
+    {
+      "world": "LOGISTIC_R4",
+      "epsilon": "1/8",
+      "n": 4,
+      "baseline_y": "0",
+      "perturbed_y": "212415/262144",
+      "baseline_sensitivity": "0",
+      "finite_delta": "212415/262144",
+      "linear_delta": "0",
+      "residual": "212415/262144"
+    }
+  ],
+  "new_real_human_E2": 0,
+  "new_real_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
