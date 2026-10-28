@@ -1,0 +1,195 @@
+{
+  "research_id": "R246_S42",
+  "scope": "E1_SYNTHETIC_FOUR_BIN_BERNOULLI_NOT_CONTINUOUS_POISSON_HAWKES",
+  "source": "research/R246/R246_EXACT_RESULTS.json",
+  "source_blob": "8aec1fd3f6dba6073f03e74f8f854f7d6a46a6c3",
+  "world_count": 9,
+  "target": "Y4",
+  "checks": 458,
+  "failures": 0,
+  "worlds": [
+    {
+      "world": "IID_LOW",
+      "risks": {
+        "F0": "3/16",
+        "F3": "3/16",
+        "F23": "3/16",
+        "F123": "3/16"
+      },
+      "history_gains": {
+        "F0_to_F3": "0",
+        "F3_to_F23": "0",
+        "F23_to_F123": "0"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 4,
+        "F123": 8
+      }
+    },
+    {
+      "world": "IID_HIGH",
+      "risks": {
+        "F0": "3/16",
+        "F3": "3/16",
+        "F23": "3/16",
+        "F123": "3/16"
+      },
+      "history_gains": {
+        "F0_to_F3": "0",
+        "F3_to_F23": "0",
+        "F23_to_F123": "0"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 4,
+        "F123": 8
+      }
+    },
+    {
+      "world": "SELF_EXCITING_LAG1",
+      "risks": {
+        "F0": "255/1024",
+        "F3": "3/16",
+        "F23": "3/16",
+        "F123": "3/16"
+      },
+      "history_gains": {
+        "F0_to_F3": "63/1024",
+        "F3_to_F23": "0",
+        "F23_to_F123": "0"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 4,
+        "F123": 8
+      }
+    },
+    {
+      "world": "REFRACTORY_LAG1",
+      "risks": {
+        "F0": "3927/16384",
+        "F3": "115/512",
+        "F23": "115/512",
+        "F123": "115/512"
+      },
+      "history_gains": {
+        "F0_to_F3": "247/16384",
+        "F3_to_F23": "0",
+        "F23_to_F123": "0"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 4,
+        "F123": 8
+      }
+    },
+    {
+      "world": "STATIC_LATENT_RATE_MIXTURE",
+      "risks": {
+        "F0": "1/4",
+        "F3": "15/64",
+        "F23": "9/40",
+        "F123": "195/896"
+      },
+      "history_gains": {
+        "F0_to_F3": "1/64",
+        "F3_to_F23": "3/320",
+        "F23_to_F123": "33/4480"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 4,
+        "F123": 8
+      }
+    },
+    {
+      "world": "ALTERNATING_EXOGENOUS_RATE",
+      "risks": {
+        "F0": "3/16",
+        "F3": "3/16",
+        "F23": "3/16",
+        "F123": "3/16"
+      },
+      "history_gains": {
+        "F0_to_F3": "0",
+        "F3_to_F23": "0",
+        "F23_to_F123": "0"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 4,
+        "F123": 8
+      }
+    },
+    {
+      "world": "COMMON_SHOCK_ALL_BINS",
+      "risks": {
+        "F0": "1/4",
+        "F3": "0",
+        "F23": "0",
+        "F123": "0"
+      },
+      "history_gains": {
+        "F0_to_F3": "1/4",
+        "F3_to_F23": "0",
+        "F23_to_F123": "0"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 2,
+        "F123": 2
+      }
+    },
+    {
+      "world": "STATIC_HIDDEN_SELF_EXCITING_SENSOR_ALIAS",
+      "risks": {
+        "F0": "255/1024",
+        "F3": "3/16",
+        "F23": "3/16",
+        "F123": "3/16"
+      },
+      "history_gains": {
+        "F0_to_F3": "63/1024",
+        "F3_to_F23": "0",
+        "F23_to_F123": "0"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 4,
+        "F123": 8
+      }
+    },
+    {
+      "world": "SELF_EXCITING_TWO_LAG",
+      "risks": {
+        "F0": "16023/65536",
+        "F3": "219959/998400",
+        "F23": "213/1024",
+        "F123": "213/1024"
+      },
+      "history_gains": {
+        "F0_to_F3": "1545049/63897600",
+        "F3_to_F23": "3071/249600",
+        "F23_to_F123": "0"
+      },
+      "positive_support_prefix_groups": {
+        "F0": 1,
+        "F3": 2,
+        "F23": 4,
+        "F123": 8
+      }
+    }
+  ],
+  "real_E2": 0,
+  "historical_E3": 0,
+  "external_replication": 0
+}
