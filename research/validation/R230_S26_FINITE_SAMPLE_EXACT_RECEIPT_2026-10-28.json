@@ -1,0 +1,718 @@
+{
+  "research_id": "R230_S26",
+  "scope": "E1_FINITE_ARTIFICIAL_ONLY",
+  "source_rows": 256,
+  "worlds": 8,
+  "sample_sizes": [
+    2,
+    3
+  ],
+  "ordered_source_sequences": 270336,
+  "method_R": "ordered_original_source_enumeration_integer_centering",
+  "method_B": "unordered_observed_histogram_multinomial_pairwise_difference",
+  "checks_passed": 557,
+  "checks_failed": 0,
+  "external_replications": 0,
+  "E2": 0,
+  "E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "results": {
+    "ONE_COMMON_TRAIT": {
+      "unique_observed_vectors": 15,
+      "n2": {
+        "ordered_draws": 1024,
+        "rank_counts": [
+          72,
+          952,
+          0
+        ],
+        "offdiag_sign_counts": [
+          [
+            64,
+            608,
+            352
+          ],
+          [
+            64,
+            608,
+            352
+          ],
+          [
+            64,
+            608,
+            352
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "1",
+            "1/2",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1"
+          ]
+        ]
+      },
+      "n3": {
+        "ordered_draws": 32768,
+        "rank_counts": [
+          176,
+          7056,
+          25536
+        ],
+        "offdiag_sign_counts": [
+          [
+            3072,
+            10880,
+            18816
+          ],
+          [
+            3072,
+            10880,
+            18816
+          ],
+          [
+            3072,
+            10880,
+            18816
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "4/3",
+            "2/3",
+            "2/3"
+          ],
+          [
+            "2/3",
+            "4/3",
+            "2/3"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "4/3"
+          ]
+        ]
+      }
+    },
+    "COMMON_METHOD_ALIAS": {
+      "unique_observed_vectors": 15,
+      "n2": {
+        "ordered_draws": 1024,
+        "rank_counts": [
+          72,
+          952,
+          0
+        ],
+        "offdiag_sign_counts": [
+          [
+            64,
+            608,
+            352
+          ],
+          [
+            64,
+            608,
+            352
+          ],
+          [
+            64,
+            608,
+            352
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "1",
+            "1/2",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1"
+          ]
+        ]
+      },
+      "n3": {
+        "ordered_draws": 32768,
+        "rank_counts": [
+          176,
+          7056,
+          25536
+        ],
+        "offdiag_sign_counts": [
+          [
+            3072,
+            10880,
+            18816
+          ],
+          [
+            3072,
+            10880,
+            18816
+          ],
+          [
+            3072,
+            10880,
+            18816
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "4/3",
+            "2/3",
+            "2/3"
+          ],
+          [
+            "2/3",
+            "4/3",
+            "2/3"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "4/3"
+          ]
+        ]
+      }
+    },
+    "TWO_FACTOR_BLOCK": {
+      "unique_observed_vectors": 21,
+      "n2": {
+        "ordered_draws": 1024,
+        "rank_counts": [
+          60,
+          964,
+          0
+        ],
+        "offdiag_sign_counts": [
+          [
+            64,
+            608,
+            352
+          ],
+          [
+            200,
+            624,
+            200
+          ],
+          [
+            200,
+            624,
+            200
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "1",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "n3": {
+        "ordered_draws": 32768,
+        "rank_counts": [
+          140,
+          6012,
+          26616
+        ],
+        "offdiag_sign_counts": [
+          [
+            3072,
+            10880,
+            18816
+          ],
+          [
+            10320,
+            12128,
+            10320
+          ],
+          [
+            10320,
+            12128,
+            10320
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "4/3",
+            "2/3",
+            "0"
+          ],
+          [
+            "2/3",
+            "4/3",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "4/3"
+          ]
+        ]
+      }
+    },
+    "CROSS_LOADING": {
+      "unique_observed_vectors": 24,
+      "n2": {
+        "ordered_draws": 1024,
+        "rank_counts": [
+          52,
+          972,
+          0
+        ],
+        "offdiag_sign_counts": [
+          [
+            104,
+            576,
+            344
+          ],
+          [
+            200,
+            624,
+            200
+          ],
+          [
+            104,
+            576,
+            344
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "1",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "3/2",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1"
+          ]
+        ]
+      },
+      "n3": {
+        "ordered_draws": 32768,
+        "rank_counts": [
+          104,
+          5328,
+          27336
+        ],
+        "offdiag_sign_counts": [
+          [
+            4752,
+            10304,
+            17712
+          ],
+          [
+            10320,
+            12128,
+            10320
+          ],
+          [
+            4752,
+            10304,
+            17712
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "4/3",
+            "2/3",
+            "0"
+          ],
+          [
+            "2/3",
+            "2",
+            "2/3"
+          ],
+          [
+            "0",
+            "2/3",
+            "4/3"
+          ]
+        ]
+      }
+    },
+    "NO_COMMON_FACTOR": {
+      "unique_observed_vectors": 8,
+      "n2": {
+        "ordered_draws": 1024,
+        "rank_counts": [
+          128,
+          896,
+          0
+        ],
+        "offdiag_sign_counts": [
+          [
+            128,
+            768,
+            128
+          ],
+          [
+            128,
+            768,
+            128
+          ],
+          [
+            128,
+            768,
+            128
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ]
+      },
+      "n3": {
+        "ordered_draws": 32768,
+        "rank_counts": [
+          512,
+          10752,
+          21504
+        ],
+        "offdiag_sign_counts": [
+          [
+            9216,
+            14336,
+            9216
+          ],
+          [
+            9216,
+            14336,
+            9216
+          ],
+          [
+            9216,
+            14336,
+            9216
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "2/3",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "2/3",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "2/3"
+          ]
+        ]
+      }
+    },
+    "BIPOLAR_LOADING": {
+      "unique_observed_vectors": 15,
+      "n2": {
+        "ordered_draws": 1024,
+        "rank_counts": [
+          72,
+          952,
+          0
+        ],
+        "offdiag_sign_counts": [
+          [
+            352,
+            608,
+            64
+          ],
+          [
+            64,
+            608,
+            352
+          ],
+          [
+            352,
+            608,
+            64
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "1",
+            "-1/2",
+            "1/2"
+          ],
+          [
+            "-1/2",
+            "1",
+            "-1/2"
+          ],
+          [
+            "1/2",
+            "-1/2",
+            "1"
+          ]
+        ]
+      },
+      "n3": {
+        "ordered_draws": 32768,
+        "rank_counts": [
+          176,
+          7056,
+          25536
+        ],
+        "offdiag_sign_counts": [
+          [
+            18816,
+            10880,
+            3072
+          ],
+          [
+            3072,
+            10880,
+            18816
+          ],
+          [
+            18816,
+            10880,
+            3072
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "4/3",
+            "-2/3",
+            "2/3"
+          ],
+          [
+            "-2/3",
+            "4/3",
+            "-2/3"
+          ],
+          [
+            "2/3",
+            "-2/3",
+            "4/3"
+          ]
+        ]
+      }
+    },
+    "ROTATED_CROSS_ALIAS": {
+      "unique_observed_vectors": 24,
+      "n2": {
+        "ordered_draws": 1024,
+        "rank_counts": [
+          52,
+          972,
+          0
+        ],
+        "offdiag_sign_counts": [
+          [
+            104,
+            576,
+            344
+          ],
+          [
+            200,
+            624,
+            200
+          ],
+          [
+            104,
+            576,
+            344
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "1",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "3/2",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1"
+          ]
+        ]
+      },
+      "n3": {
+        "ordered_draws": 32768,
+        "rank_counts": [
+          104,
+          5328,
+          27336
+        ],
+        "offdiag_sign_counts": [
+          [
+            4752,
+            10304,
+            17712
+          ],
+          [
+            10320,
+            12128,
+            10320
+          ],
+          [
+            4752,
+            10304,
+            17712
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "4/3",
+            "2/3",
+            "0"
+          ],
+          [
+            "2/3",
+            "2",
+            "2/3"
+          ],
+          [
+            "0",
+            "2/3",
+            "4/3"
+          ]
+        ]
+      }
+    },
+    "HIGH_UNIQUENESS": {
+      "unique_observed_vectors": 16,
+      "n2": {
+        "ordered_draws": 1024,
+        "rank_counts": [
+          64,
+          960,
+          0
+        ],
+        "offdiag_sign_counts": [
+          [
+            256,
+            384,
+            384
+          ],
+          [
+            256,
+            384,
+            384
+          ],
+          [
+            256,
+            384,
+            384
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "5/2",
+            "1/2",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "5/2",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "5/2"
+          ]
+        ]
+      },
+      "n3": {
+        "ordered_draws": 32768,
+        "rank_counts": [
+          128,
+          6240,
+          26400
+        ],
+        "offdiag_sign_counts": [
+          [
+            8448,
+            9728,
+            14592
+          ],
+          [
+            8448,
+            9728,
+            14592
+          ],
+          [
+            8448,
+            9728,
+            14592
+          ]
+        ],
+        "expected_covariance": [
+          [
+            "10/3",
+            "2/3",
+            "2/3"
+          ],
+          [
+            "2/3",
+            "10/3",
+            "2/3"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "10/3"
+          ]
+        ]
+      }
+    }
+  }
+}
