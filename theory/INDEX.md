@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH114，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH115，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -192,12 +192,13 @@
 | TH113 | 洪水风险标签阈值、模型分歧、住房信贷筛选与平台信息扩散 | Schubert等2024、Blickle等2024、Arseneau与Kara2025、Chen2026、Billings等2026、Sastry2026、Fairweather等2024、First Street方法说明；标签阈值、模型交并比、贷款选择、动态学习与跨平台干扰 | THEORY_NOTE_BOUNDED | [研究笔记](TH113_FLOOD_RISK_LABEL_THRESHOLDS_MODEL_ERROR_MORTGAGE_SCREENING_PLATFORM_SPILLOVERS_2026-10-29.md)；16项条件命题、8项人工与公开汇总审计；4份开放原作重点章节直接审读、3份原始摘要及1份模型自述；无独立因果估计 |
 
 | TH114 | 洪水风险评分版本漂移、预测校准、算法责任与多主体反馈 | Cohen等2025、Nguyen等2025、First Street官方FAQ、Perdomo等2020、Mitchell等2019、NIST2023、Schubert等2024；遥感基准偏差、网格对齐、评分版本、反馈与治理 | THEORY_NOTE_BOUNDED | [研究笔记](TH114_FLOOD_RISK_SCORE_VERSION_DRIFT_CALIBRATION_ACCOUNTABILITY_FEEDBACK_2026-10-29.md)；16项条件命题、8项原刊汇总与人工审计；2份开放原作指定章节直接审读、5份原始摘要或机构说明；无独立因果或预测验证 |
+| TH115 | 历史风险评分快照、地块版本分解与模型更新反事实 | FEMA历史FIRM/FIS与LOMC、USGS STN/FEV、OpenFEMA FAQ、First Street更新日志、Zenodo V1.3/V2.0目录、Croushore与Stark2003、Zheng等2022；历史信息集、版本交互、样本组成与地块真值限制 | THEORY_NOTE_BOUNDED | [研究笔记](TH115_HISTORICAL_RISK_SNAPSHOT_PARCEL_VERSION_COUNTERFACTUAL_2026-10-29.md)；16项条件命题、8项元数据及人工审计；10份原始机构页面或目录、2份论文摘要；无独立因果或预测验证 |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH115 | 风险评分历史快照的可追溯性、地块级版本分解与模型更新后的反事实评价 | 历史模型版本存档、地块风险真值、模型发布后的反馈识别 | QUEUED_UNVERIFIED |
+| 1 | TH116 | 免费区域风险数据版本可比性、空间单元组成效应及历史FIRM修订可行性审计 | 公开聚合统计的版本与授权、FIRM历史有效日期、空间分母与样本组成 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -545,6 +546,7 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | flood risk labels / model disagreement / credit screening / platform spillovers | [TH113 风险评分阈值与信贷筛选](TH113_FLOOD_RISK_LABEL_THRESHOLDS_MODEL_ERROR_MORTGAGE_SCREENING_PLATFORM_SPILLOVERS_2026-10-29.md)；Schubert等2024、Blickle等2024、Arseneau与Kara2025、Chen2026、Billings等2026、Sastry2026、Fairweather等2024；风险模型分歧、差分断点、银行风险转移、平台干扰 | 个体、群体、制度、历史、方法论 | 4份开放原作指定章节、3份摘要及1份模型开发者说明，16项命题与8项人工及汇总审计；无独立因果或预测验证 |
 
 | flood score version drift / benchmark bias / grid alignment / performative feedback | [TH114 洪水风险评分版本与校准](TH114_FLOOD_RISK_SCORE_VERSION_DRIFT_CALIBRATION_ACCOUNTABILITY_FEEDBACK_2026-10-29.md)；Cohen等2025、Nguyen等2025、First Street FAQ、Perdomo等2020、Mitchell等2019、NIST2023；版本变化、独立真值、网格敏感性、反馈与责任 | 个体、群体、制度、历史、方法论 | 两份开放原刊重点章节、五份原始摘要或机构材料、8项人工与原刊数字审计；无独立校准或因果验证 |
+| historical risk vintages / FIRM effective dates / parcel version attribution / public aggregate data / event truth | [TH115 历史风险评分快照与反事实](TH115_HISTORICAL_RISK_SNAPSHOT_PARCEL_VERSION_COUNTERFACTUAL_2026-10-29.md)；FEMA官方历史地图与LOMC、USGS高水位痕迹、OpenFEMA脱敏与选择偏差、First Street版本目录和公开非商业聚合统计、Croushore与Stark数据vintage；历史信息集与模型版本交互 | 个体、群体、制度、历史、方法论 | 10份原始机构网页或数据目录、2份论文摘要、8项人工及元数据审计；地块双版本和独立真值未取得，无因果与预测验证 |
 
 
 
