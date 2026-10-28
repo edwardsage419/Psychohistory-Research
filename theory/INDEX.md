@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH100，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH101，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -167,15 +167,20 @@
 
 | TH100 | 灾后政治信任恢复的政府更替、样本选择与时间变动混杂 | Bechtel与Hainmueller2011、Frost等2024、Arin等2023、Keogh等2021四份开放原作指定章节；Zoch与Wamsler2024、Albrecht2017、Gasper与Reeves2011及德国议会官方资料摘要；16项条件命题、8项人工与原刊数字审计；无独立因果验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH100_DISASTER_TRUST_TURNOVER_ATTRITION_TIME_VARYING_CONFOUNDING_2026-10-28.md) |
 
+| TH101 | 灾后公共救济的多级政府责任归属、援助公平与信任修复 | Mazepus与van Leeuwen2020、Higuchi等2019、Haim等2021三份开放原刊指定章节；Malhotra与Kuo2008、Maestas等2008、Wehde与Nowlin2021、Garrett与Sobel2003、Eisensee与Strömberg2007、Ross等2024原始摘要；16项条件命题、8项数字及人工识别审计；长期信任未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH101_DISASTER_RELIEF_MULTILEVEL_ATTRIBUTION_FAIRNESS_TRUST_2026-10-28.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH101 | 灾后公共救济的多级政府责任归属、援助公平与信任修复 | 联邦与地方责任、NGO执行、援助可见性及公平竞争解释的开放原作待核 | QUEUED_UNVERIFIED |
+| 1 | TH102 | 灾害援助的选择性申请、信息可达性、行政负担与空间不平等 | 优先核验公开的援助申请、审核及空间分配原作与选择偏差识别方法 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| multilevel disaster relief / attribution / distributive justice / targeting measurement | [TH101 多级救济责任、分配公平与信任修复](TH101_DISASTER_RELIEF_MULTILEVEL_ATTRIBUTION_FAIRNESS_TRUST_2026-10-28.md)；Mazepus与van Leeuwen2020、Higuchi等2019、Haim等2021、Malhotra与Kuo2008；分层归责、程序与分配公平、行政与自报偏差、危机合作 | 个体、群体、制度、历史、方法论 | 三份开放原刊指定章节、六份原始摘要、八项发表数字与人工反例；无长期信任因果识别 |
+
 
 | disaster trust recovery / incumbent turnover / repeated cross-section / attrition / time-varying confounding | [TH100 灾后信任恢复与识别边界](TH100_DISASTER_TRUST_TURNOVER_ATTRITION_TIME_VARYING_CONFOUNDING_2026-10-28.md)；Bechtel与Hainmueller2011、Frost等2024、Arin等2023、Keogh等2021、Zoch与Wamsler2024；政府更替、生态选票与个人信任、迁移失访、动态反馈与救济选择 | 个体、群体、制度、历史、方法论 | 四份开放原作重点章节、四份原始摘要或官方材料，八项人工与原刊数字审计；无独立历史因果验证 |
 
