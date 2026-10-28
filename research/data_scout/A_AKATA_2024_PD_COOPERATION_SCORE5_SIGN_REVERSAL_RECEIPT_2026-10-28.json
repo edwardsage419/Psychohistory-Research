@@ -1,0 +1,50 @@
+{
+  "source_repo": "eliaka/repeatedgames",
+  "csv_blob": "2dd67c6ff80f2d7aa07a70b470e26fe3592c6d95",
+  "experiment_script_blob": "4b7be85e8b3b964bfd0722d796f5ed6c2b8f0a19",
+  "analysis_Rmd_blob": "ca9991b6d0917156672e1e2fea923548562d945e",
+  "all_rows": 3900,
+  "unique_participants": 195,
+  "PD_rows": 1950,
+  "BoS_rows": 1950,
+  "each_participant_ten_PD_ten_BoS": true,
+  "PD_groups": {
+    "Base": {
+      "n": 970,
+      "participants": 97,
+      "action1_cooperation": 485,
+      "score5_joint_defection": 362,
+      "action_score_cells": {
+        "0|10": 122,
+        "1|0": 123,
+        "0|5": 362,
+        "1|8": 362,
+        "0|0": 1
+      }
+    },
+    "Prompted": {
+      "n": 980,
+      "participants": 98,
+      "action1_cooperation": 446,
+      "score5_joint_defection": 421,
+      "action_score_cells": {
+        "0|10": 113,
+        "0|5": 421,
+        "1|0": 90,
+        "1|8": 356
+      }
+    }
+  },
+  "PD_action1_and_score5_overlap": 0,
+  "Rmd_cooperated_indicator": "ifelse(score==5,1,0)",
+  "true_action_indicator": "action==1",
+  "prompted_minus_base_action_cooperation_exact": "446/980 - 485/970",
+  "prompted_minus_base_score5_proxy_exact": "421/980 - 362/970",
+  "prompted_minus_base_action_cooperation_decimal": -0.04489795918367345,
+  "prompted_minus_base_score5_proxy_decimal": 0.056395960446034066,
+  "descriptive_sign_reversal": true,
+  "anomalous_PD_action0_score0": 1,
+  "source_data_redistribution_license": "UNVERIFIED",
+  "R073_direct_eligible": false,
+  "evidence": "E2_DESCRIPTIVE_MEASUREMENT_AUDIT_NO_PREDICTIVE_SCORE"
+}
