@@ -7,7 +7,7 @@ const features = {F0:[0], F1:[1], F2:[2], F12:[1,2], LEAK:[3]};
 function gcd(a,b){while(b!==0n){[a,b]=[b,a%b]}return a;}
 function format(n,d){let g=gcd(n,d);n/=g;d/=g;return d===1n?String(n):String(n)+"/"+String(d);}
 function audit(csv,receipt){
-  const lines=csv.trim().split(/\r?\n),header=lines.shift().split(",");
+  const lines=csv.trim().split(/\r?\n/),header=lines.shift().split(",");
   const col=Object.fromEntries(header.map((x,i)=>[x,i]));
   const required=["world","original_source_probability",...Array.from({length:4},(_,i)=>"observed_y"+i),
     "oracle_source_U",...["R11","R12","R21","R22","R31","R32"].map(x=>"oracle_original_"+x)];
