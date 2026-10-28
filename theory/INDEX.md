@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH106，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH107，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -178,6 +178,7 @@
 | TH105 | 灾后迁移的目的地选择、接收地制度与社会网络重建 | Asad2015与Gray等2014开放原作指定章节直接审读；Sastry与Gregory2014、Curtis等2015、Morris与Deterding2016、Li等2010、Messias等2012、Groen与Polivka2010原刊摘要或公开片段核验；16项条件命题与8项算术及识别审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH105_DISASTER_MIGRATION_DESTINATION_RECEPTION_NETWORK_REBUILDING_2026-10-28.md) |
 
 | TH106 | 灾后迁移接收地住房供给、学校容量、财政时滞及跨辖区溢出 | Texas LBB2007官方原始报告、Lai等2019开放原刊及Fed Gagnon与López-Salido2015直接审读；Imberman等2009/2012、Ealey2016、Brennan等2024、Nigg等2006原始摘要核验；16项条件命题与8项汇总及人工识别审计；真实因果未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH106_HOST_HOUSING_SCHOOLS_FISCAL_SPILLOVERS_2026-10-28.md) |
+| TH107 | 接收地政策空间干扰、迁移网络工具变量及财政补偿时滞 | Butts2023、Borusyak/Hull/Jaravel2022、Goldsmith-Pinkham/Sorkin/Swift2020、Texas LBB2007、GAO2011、参院听证2005；空间暴露、shift-share两类外生路径、跨财年结算与重复学生计数 | THEORY_NOTE_BOUNDED | [研究笔记](TH107_HOST_POLICY_SPATIAL_INTERFERENCE_MIGRATION_IV_FISCAL_LAGS_2026-10-28.md)；16项条件命题、8项人工及官方汇总审计，真实因果估计0；下一TH108 |
 
 ## 待研究队列
 
