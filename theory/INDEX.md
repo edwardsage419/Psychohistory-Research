@@ -184,11 +184,14 @@
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH107 | 接收地空间干扰、迁移网络工具变量与跨地区财政补偿时滞 | 公开政策时点、跨辖区流量、可复核识别设计与财政到账原始记录 | QUEUED_UNVERIFIED |
+| 1 | TH108 | 多层级财政转移支付公式、接收地预算博弈与动态政策内生性 | 原始财政联邦主义论文、灾害救助拨款规则及可复核支付时间线 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| spatial interference / shift-share IV / fiscal lag / duplicated enrollment | [TH107 接收地空间干扰与迁移工具变量](TH107_HOST_POLICY_SPATIAL_INTERFERENCE_MIGRATION_IV_FISCAL_LAGS_2026-10-28.md)；Butts2023、Borusyak等2022、Goldsmith-Pinkham等2020、Texas LBB2007、GAO2011；邻域暴露、两类外生路径、财政到账与季度学生计数 | 个体、群体、制度、历史、方法论 | 两份作者开放原作、三份官方原始记录重点章节，其他原始摘要或书目；16项命题与8项人工及公开数字审计；无独立因果估计 |
+
 
 | disaster appeals / proof substitution / housing stability / competing risks | [TH103 灾害申诉与住房恢复](TH103_DISASTER_AID_APPEALS_PROOF_BURDEN_HOUSING_STABILITY_2026-10-28.md)；FEMA2024、GAO2021/2025、Merdjanoff等2022、Fussell与Harris2014、Islah与Zoulati2025；申诉进入、政策共变、住房删失、IA/PA项目错配与福利权重 | 个体、群体、制度、历史、方法论 | 三份官方原作指定章节直接审读，其余原刊摘要与预印本降级；16项命题、8项人工及公开汇总算术审计；无独立因果验证 |
 
