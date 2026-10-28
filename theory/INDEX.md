@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH094，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH095，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -156,11 +156,13 @@
 | TH093 | 行政能力、合规激励与选择性执法 | Besley与Persson2009摘要及作者讲稿、Pepinsky等2016综述、Pokharel等2023开放稿；Kleven等2011和Brehm与Gates1997摘要或书介；16项条件性命题、9项人工审计，无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH093_ADMINISTRATIVE_CAPACITY_COMPLIANCE_SELECTIVE_ENFORCEMENT_2026-10-28.md) |
 | TH094 | 基层执法风险定向、算法治理、程序正义与记录选择 | Lum与Isaac2016及Chouldechova2017开放原刊指定章节、Waldman与Martin2022开放摘要引言、Lakkaraju等2017、Kleinberg等2018、Mohler等2015、Brantingham等2018、Tyler2003原始摘要；16项条件命题、9项人工审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH094_RISK_TARGETING_ALGORITHMIC_GOVERNANCE_PROCEDURAL_JUSTICE_SELECTIVE_RECORDS_2026-10-28.md) |
 
+| TH095 | 人机协作依赖、申诉救济、纠错与事后政策评价 | Dietvorst等2018、Buçinca等2021、Green与Chen2019/2021、Binns2018、Wachter等2018六份开放原文指定章节；Kroll等2017、Kim2017、Dietvorst等2015原刊摘要或页面；16项条件性命题、8项人工与原刊数字核算；无独立行政因果验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH095_HUMAN_ALGORITHM_RELIANCE_APPEALS_ERROR_CORRECTION_2026-10-28.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH095 | 算法建议与人类裁量的依赖、申诉权、错误纠正和事后政策评估 | 原始人工算法协作试验、行政申诉与纠错研究待核 | QUEUED_UNVERIFIED |
+| 1 | TH096 | 行政申诉可达性、选择性进入、复核误差与纠错后的长期后果 | 行政申诉实验、程序正义与法律救济的原始实证研究待核 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -463,6 +465,9 @@ C 今日 C005 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | event time / pretrend contamination / negative control / timing error | [TH091 历史事件时间对齐与识别边界](TH091_EVENT_TIME_PRETRENDS_NEGATIVE_CONTROLS_IDENTIFICATION_2026-10-28.md)；Sun与Abraham2021、Lipsitch等2010、Arnold等2016、Rambachan与Roth2023、Roth2022、Callaway与Sant’Anna2021；队列异质性、日期错置、预期行为与负对照可比性 | 个体、群体、制度、历史、方法论 | 三份开放全文指定章节、三份摘要、九项人工审计；无独立历史因果复验 |
 
 | policy anticipation / announcement / implementation timing / spillovers | [TH092 公告与执行动态识别](TH092_POLICY_ANNOUNCEMENT_IMPLEMENTATION_ANTICIPATION_DYNAMIC_IDENTIFICATION_2026-10-28.md)；Callaway与Sant’Anna2021、Roth等2023、Fiorini等2024、Malani与Reif2015、Mertens与Ravn2012；有限预期窗口、分批处理、实际执行滞后与溢出 | 个体、群体、制度、历史、方法论 | 三份开放原作重点章节、三份原始摘要或片段、九项人工反例；无独立历史因果验证 |
+
+
+| human-algorithm reliance / contestability / selective appeals / post-policy evaluation | [TH095 人机协作依赖、申诉与纠错](TH095_HUMAN_ALGORITHM_RELIANCE_APPEALS_ERROR_CORRECTION_2026-10-28.md)；Dietvorst等2018、Buçinca等2021、Green与Chen2019/2021、Binns2018、Wachter等2018；过度依赖、控制感、风险权重漂移、反事实救济与申诉选择 | 个体、群体、制度、历史、方法论 | 六份开放原作重点章节、三份原刊摘要或出版页、八项人工与原刊数字审计；无真实行政因果或前瞻性评价 |
 
 ## 持续执行规则
 
