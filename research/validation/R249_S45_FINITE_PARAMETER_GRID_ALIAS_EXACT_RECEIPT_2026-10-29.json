@@ -1,0 +1,50 @@
+{
+  "study": "R249_S45",
+  "evidence": "E1_SYNTHETIC_EXACT",
+  "source_rows": 405,
+  "parameter_worlds": 9,
+  "trajectories": 81,
+  "field_comparisons": 3240,
+  "per_world_rows": {
+    "LOGISTIC_R_HALF": 45,
+    "LOGISTIC_R_ONE": 45,
+    "LOGISTIC_R_TWO": 45,
+    "LOGISTIC_R_THREE": 45,
+    "LOGISTIC_R_FOUR": 45,
+    "FOLD_NEG_QUARTER": 45,
+    "FOLD_ZERO": 45,
+    "FOLD_POS_QUARTER": 45,
+    "FOLD_POS_ONE": 45
+  },
+  "sampled_grid_observation_equivalence": true,
+  "logistic_off_grid": {
+    "r": "3/2",
+    "P": "-15/16",
+    "original_multiplier_at_zero": "3/2",
+    "alias_multiplier_at_zero": "1/2",
+    "original": "REPELLER",
+    "alias": "ATTRACTOR"
+  },
+  "fold_off_grid": {
+    "mu": "1/8",
+    "P": "21/4096",
+    "original_constant": "1/8",
+    "alias_constant": "-1/64",
+    "original_fixed_points": 2,
+    "alias_fixed_points": 0,
+    "extra_zero_exists_in": "(1/8,1/4)"
+  },
+  "caveat": "R249 specified-family analytic proof unchanged; off-grid parameter family not identified from finite samples",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replication": 0,
+  "mutation_negative_controls_rejected": 2,
+  "prescore_freeze_commit": "ee83f668daacd33f9740483d69f70d7cfe6fbbfb",
+  "source_csv_blob_sha": "b921ec5af4cba97f94b864c3aeace8d3103ebdf0",
+  "replay_script_blob_sha": "9ba21179cff603f3bd6efcfe35d8b4d69ec30a54",
+  "replay_environment": "isolated V8 JS exact BigInt fractions, remote committed source bytes",
+  "ci_this_increment": "NOT_RUN",
+  "original_R249_acceptance_unchanged": true,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
