@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH097，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH098，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -162,11 +162,13 @@
 
 | TH097 | 制度信任更新、负面行政经验传播与跨期政策反馈 | Van de Walle与Bouckaert2003、Jacobs与Mettler2018开放原刊重点章节；Soss1999、Mettler与Soss2004、Mikkelsen等2025及其他原刊摘要；16项条件命题、8项人工识别反例，未复算真实因果 | THEORY_NOTE_BOUNDED | [研究笔记](TH097_INSTITUTIONAL_TRUST_NEGATIVE_ADMINISTRATIVE_EXPERIENCES_POLICY_FEEDBACK_2026-10-28.md) |
 
+| TH098 | 危机冲击下的政治信任、程序正义与合法性动态区分 | Bol等2021、Esaiasson等2021两份开放原刊重点章节；Schraff2021、Kritzinger等2021、Tyler2006、Levi与Stoker2000、Easton1975五份原刊摘要或书目；16项条件命题、8项人工识别反例；无独立因果验证 | THEORY_NOTE_BOUNDED | [研究笔记](TH098_CRISIS_POLITICAL_TRUST_PROCEDURAL_JUSTICE_LEGITIMACY_DYNAMIC_IDENTIFICATION_2026-10-28.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH098 | 政治信任、程序正义与合法性在危机冲击下的动态区分 | 原始实验、跨期测量等值与竞争解释待核 | QUEUED_UNVERIFIED |
+| 1 | TH099 | 危机归责、媒体框架与政治信任恢复的跨国识别 | 原始纵向面板、事件研究、时间变动混杂与跨国测量等值待核 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -477,6 +479,8 @@ C 今日 C005 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 
 | institutional trust / policy feedback / reversed causality / administrative experience diffusion | [TH097 制度信任更新与政策反馈](TH097_INSTITUTIONAL_TRUST_NEGATIVE_ADMINISTRATIVE_EXPERIENCES_POLICY_FEEDBACK_2026-10-28.md)；Van de Walle与Bouckaert2003、Jacobs与Mettler2018、Soss1999、Mettler与Soss2004、Mikkelsen等2025、Parker等2008；归责、资源与解释性反馈、回忆实验限制、网络传播假说 | 个体、群体、制度、历史、方法论 | 两份开放原作重点章节、六份摘要或书目、八项人工反例；无独立历史因果或预测验证 |
+
+| crisis rally / political trust / legitimacy / procedural fairness | [TH098 危机中的信任与合法性](TH098_CRISIS_POLITICAL_TRUST_PROCEDURAL_JUSTICE_LEGITIMACY_DYNAMIC_IDENTIFICATION_2026-10-28.md)；Bol等2021、Esaiasson等2021、Schraff2021、Kritzinger等2021、Tyler2006、Levi与Stoker2000、Easton1975；政策与危机冲击竞争、短期集结、构念区分与跨期测量 | 个体、群体、制度、历史、方法论 | 两份开放原刊重点章节、五份原刊摘要或书目、八项人工审计；无独立真实因果或预测验证 |
 
 ## 持续执行规则
 
