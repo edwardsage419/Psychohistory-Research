@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH111，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH112，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -187,11 +187,13 @@
 
 | TH111 | 洪水风险分区边界、保险费率断点与居住暴露迁移的因果识别 | FEMA官方FIRM/FIS课程、Sun等2026、Hennighausen等2023、Shr与Zipp2019、Keele与Titiunik2015、Fairweather等2024、Bin等2008、Cattaneo等2020；地理断点、信息资本化、保险退出与动态排序 | THEORY_NOTE_BOUNDED | [研究笔记](TH111_FLOOD_MAP_BOUNDARY_INSURANCE_RATE_DISCONTINUITY_RESIDENTIAL_SORTING_2026-10-29.md)；16项条件命题、8项人工与摘要算术审计；两份FEMA官方原文直接审读，其余七项摘要或原始书目；无独立因果估计 |
 
+| TH112 | 风险信息披露的选择性注意、保险退出与迁移负担的分配公平 | Billings等2026、Fairweather等2024、Ortega与Petkov2024/2025、Lauer等2024、Elliott等2023、Tanaka等2024、Michel-Kerjan等2012、Blickle与Santos2022、Ratnadiwakara与Venugopal2023；选择性注意、保险退出、迁移与分配公平 | THEORY_NOTE_BOUNDED | [研究笔记](TH112_FLOOD_DISCLOSURE_SELECTIVE_ATTENTION_INSURANCE_EXIT_DISTRIBUTIONAL_RETREAT_2026-10-29.md)；16项条件命题、8项公开数值与人工审计；2份开放原作指定章节直接审读、7项原始摘要/出版记录；无独立真实因果估计 |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH112 | 风险信息披露的选择性注意、保险退出与迁移负担的分配公平 | 随机风险披露、长期投保队列与迁移福利分配 | QUEUED_UNVERIFIED |
+| 1 | TH113 | 洪水风险标签阈值的可操纵性、风险信息误差、住房信贷筛选与跨平台扩散的动态识别 | 2026风险披露阈值研究、平台展示误差与信贷筛选 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -533,6 +535,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | host migration / housing supply / school peer effects / fiscal lag / spatial interference | [TH106 接收地住房、学校、财政及跨辖区溢出](TH106_HOST_HOUSING_SCHOOLS_FISCAL_SPILLOVERS_2026-10-28.md)；Texas LBB2007、Lai等2019、Gagnon与López-Salido2015、Imberman等2009/2012、Ealey2016、Brennan等2024、Nigg等2006；租金分位、财政到账、学业同伴效应、学校组成、研究版本与空间干扰 | 个体、群体、制度、历史、方法论 | 三份英文原作指定章节直接审读、五份摘要或出版页；16项条件命题、8项公开汇总及人工反例；无独立因果或前瞻性预测验证 |
 
 | flood map boundary / insurance price reform / geographic RD / sorting / dynamic exposure | [TH111 风险分区边界与居住排序](TH111_FLOOD_MAP_BOUNDARY_INSURANCE_RATE_DISCONTINUITY_RESIDENTIAL_SORTING_2026-10-29.md)；FEMA官方课程、Sun等2026、Hennighausen等2023、Shr与Zipp2019、Keele与Titiunik2015、Fairweather等2024；地形连续性、地图版本、保险退出与风险信息试验 | 个体、群体、制度、历史、方法论 | 两份FEMA官方原文及七份原始摘要/书目，16项条件命题、8项人工及汇总算术；无真实独立因果验证 |
+
+| selective attention / flood disclosure / insurance lapse / sorting / distributive retreat | [TH112 风险披露、保险退出与迁移公平](TH112_FLOOD_DISCLOSURE_SELECTIVE_ATTENTION_INSURANCE_EXIT_DISTRIBUTIONAL_RETREAT_2026-10-29.md)；Billings等2026、Fairweather等2024、Ortega与Petkov2024/2025、Lauer等2024、Elliott等2023；风险信息分配、保费约束、房屋市场排序及社会网络迁移 | 个体、群体、制度、历史、方法论 | 两份开放原作指定章节、七份摘要/书目；16项条件命题、8项公开汇总及人工审计；无独立真实因果或预测验证 |
 
 ## 持续执行规则
 
