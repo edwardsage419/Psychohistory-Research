@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH107，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH108，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -178,17 +178,20 @@
 | TH105 | 灾后迁移的目的地选择、接收地制度与社会网络重建 | Asad2015与Gray等2014开放原作指定章节直接审读；Sastry与Gregory2014、Curtis等2015、Morris与Deterding2016、Li等2010、Messias等2012、Groen与Polivka2010原刊摘要或公开片段核验；16项条件命题与8项算术及识别审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH105_DISASTER_MIGRATION_DESTINATION_RECEPTION_NETWORK_REBUILDING_2026-10-28.md) |
 
 | TH106 | 灾后迁移接收地住房供给、学校容量、财政时滞及跨辖区溢出 | Texas LBB2007官方原始报告、Lai等2019开放原刊及Fed Gagnon与López-Salido2015直接审读；Imberman等2009/2012、Ealey2016、Brennan等2024、Nigg等2006原始摘要核验；16项条件命题与8项汇总及人工识别审计；真实因果未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH106_HOST_HOUSING_SCHOOLS_FISCAL_SPILLOVERS_2026-10-28.md) |
-| TH107 | 接收地政策空间干扰、迁移网络工具变量及财政补偿时滞 | Butts2023、Borusyak/Hull/Jaravel2022、Goldsmith-Pinkham/Sorkin/Swift2020、Texas LBB2007、GAO2011、参院听证2005；空间暴露、shift-share两类外生路径、跨财年结算与重复学生计数 | THEORY_NOTE_BOUNDED | [研究笔记](TH107_HOST_POLICY_SPATIAL_INTERFERENCE_MIGRATION_IV_FISCAL_LAGS_2026-10-28.md)；16项条件命题、8项人工及官方汇总审计，真实因果估计0；下一TH108 |
+| TH107 | 接收地政策空间干扰、迁移网络工具变量及财政补偿时滞 | Butts2023、Borusyak/Hull/Jaravel2022、Goldsmith-Pinkham/Sorkin/Swift2020、Texas LBB2007、GAO2011、参院听证2005；空间暴露、shift-share两类外生路径、跨财年结算与重复学生计数 | THEORY_NOTE_BOUNDED | [研究笔记](TH107_HOST_POLICY_SPATIAL_INTERFERENCE_MIGRATION_IV_FISCAL_LAGS_2026-10-28.md)；16项条件命题、8项人工及官方汇总审计，真实因果估计0 |
+| TH108 | 多层级财政转移支付公式、预算博弈与动态政策内生性 | Huber与Runkel2003/2006、Stafford Act §406、GAO2021/2024、Oates1999、Knight2002、Garrett与Sobel2003、Weingast2008、Nechyba1996；激励相容、成本分担、政治选择、审批与现金时滞 | THEORY_NOTE_BOUNDED | [研究笔记](TH108_FISCAL_FEDERALISM_GRANT_FORMULAS_BUDGET_GAMES_DYNAMIC_ENDOGENEITY_2026-10-28.md)；16项条件命题、8项人工与公开审计算术；无独立真实因果估计 |
 
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH108 | 多层级财政转移支付公式、接收地预算博弈与动态政策内生性 | 原始财政联邦主义论文、灾害救助拨款规则及可复核支付时间线 | QUEUED_UNVERIFIED |
+| 1 | TH109 | 灾害救助软预算约束、风险预防投资与代际财政负担 | 原始软预算约束理论、减灾投资与事后救助经验研究 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
 ## 跨学科概念词条（初始版，尚未统一分类）
+
+| fiscal federalism / asymmetric grants / matching incentives / dynamic endogeneity | [TH108 财政转移支付与预算博弈](TH108_FISCAL_FEDERALISM_GRANT_FORMULAS_BUDGET_GAMES_DYNAMIC_ENDOGENEITY_2026-10-28.md)；Huber与Runkel2003、42 USC §5172、GAO2021/2024、Oates1999、Knight2002、Garrett与Sobel2003、Weingast2008；成本分担、信息不对称、拨款政治选择、审批及现金时滞 | 个体、群体、制度、历史、方法论 | 一份开放工作论文原页重点章节及三份法规/审计原文直接审读，其余原始摘要；16项条件命题、8项人工及原始汇总审计；无独立因果或预测验证 |
 
 | spatial interference / shift-share IV / fiscal lag / duplicated enrollment | [TH107 接收地空间干扰与迁移工具变量](TH107_HOST_POLICY_SPATIAL_INTERFERENCE_MIGRATION_IV_FISCAL_LAGS_2026-10-28.md)；Butts2023、Borusyak等2022、Goldsmith-Pinkham等2020、Texas LBB2007、GAO2011；邻域暴露、两类外生路径、财政到账与季度学生计数 | 个体、群体、制度、历史、方法论 | 两份作者开放原作、三份官方原始记录重点章节，其他原始摘要或书目；16项命题与8项人工及公开数字审计；无独立因果估计 |
 
