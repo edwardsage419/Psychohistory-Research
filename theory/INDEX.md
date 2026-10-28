@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-28（Asia/Singapore）；已收录 TH105，C005 今日增量与 D002 本周专题
+更新：2026-10-28（Asia/Singapore）；已收录 TH106，C005 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -177,11 +177,13 @@
 
 | TH105 | 灾后迁移的目的地选择、接收地制度与社会网络重建 | Asad2015与Gray等2014开放原作指定章节直接审读；Sastry与Gregory2014、Curtis等2015、Morris与Deterding2016、Li等2010、Messias等2012、Groen与Polivka2010原刊摘要或公开片段核验；16项条件命题与8项算术及识别审计；无独立因果复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH105_DISASTER_MIGRATION_DESTINATION_RECEPTION_NETWORK_REBUILDING_2026-10-28.md) |
 
+| TH106 | 灾后迁移接收地住房供给、学校容量、财政时滞及跨辖区溢出 | Texas LBB2007官方原始报告、Lai等2019开放原刊及Fed Gagnon与López-Salido2015直接审读；Imberman等2009/2012、Ealey2016、Brennan等2024、Nigg等2006原始摘要核验；16项条件命题与8项汇总及人工识别审计；真实因果未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH106_HOST_HOUSING_SCHOOLS_FISCAL_SPILLOVERS_2026-10-28.md) |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH106 | 接收地住房供给、地方财政压力、学校容量与跨辖区政策溢出 | 开放接收地住房与公共服务政策评价、迁移选择及干扰识别 | QUEUED_UNVERIFIED |
+| 1 | TH107 | 接收地空间干扰、迁移网络工具变量与跨地区财政补偿时滞 | 公开政策时点、跨辖区流量、可复核识别设计与财政到账原始记录 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -512,6 +514,8 @@ C 今日 C005 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | housing recovery / competing risks / repeat mobility / insurance crowd-out / measurement invariance | [TH104 住房恢复竞争风险与保险交互](TH104_HOUSING_RECOVERY_COMPETING_RISKS_REPEAT_MOVES_INSURANCE_MEASUREMENT_2026-10-28.md)；Putter等2020、Fine与Gray1999、Sutley等2019/2020、Kousky等2018、Merdjanoff等2022/2023、Cheng等2015；累计发生、可逆迁移、理赔与公共援助选择、跨期恢复定义 | 个体、群体、制度、历史、方法论 | 两份开放原作选段直接审读、九份原刊摘要/机构记录，8项人工及原文算术审计；无独立真实因果验证 |
 
 | disaster destination choice / contexts of reception / network rebuilding / return selection | [TH105 灾后目的地选择与接收地制度](TH105_DISASTER_MIGRATION_DESTINATION_RECEPTION_NETWORK_REBUILDING_2026-10-28.md)；Asad2015、Gray等2014、Sastry与Gregory2014、Curtis等2015、Morris与Deterding2016、Li等2010、Messias等2012、Groen与Polivka2010；机会集、制度接收、网络选择、跨期回迁与人口构成 | 个体、群体、制度、历史、方法论 | 两份开放原作重点章节直接审读、六份原始摘要或公开片段，16项条件命题、8项人工与原文比例审计；无独立真实因果估计 |
+
+| host migration / housing supply / school peer effects / fiscal lag / spatial interference | [TH106 接收地住房、学校、财政及跨辖区溢出](TH106_HOST_HOUSING_SCHOOLS_FISCAL_SPILLOVERS_2026-10-28.md)；Texas LBB2007、Lai等2019、Gagnon与López-Salido2015、Imberman等2009/2012、Ealey2016、Brennan等2024、Nigg等2006；租金分位、财政到账、学业同伴效应、学校组成、研究版本与空间干扰 | 个体、群体、制度、历史、方法论 | 三份英文原作指定章节直接审读、五份摘要或出版页；16项条件命题、8项公开汇总及人工反例；无独立因果或前瞻性预测验证 |
 
 ## 持续执行规则
 
