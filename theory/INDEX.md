@@ -609,6 +609,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH138 | SemEval 2020历史语料目标词条件抽样、人工金标准、跨语差异及部分识别 | Schlechtweg等2020原刊PDF第1至9页、Zenodo官方数据目录、Stuttgart英语语料说明；Dubossarsky等2017反证与Pechenick等2015摘要；16项条件命题、8项原刊数字及人工审计；原始ZIP字节未取得、未复算真实标注 | THEORY_NOTE_BOUNDED | [研究笔记](TH138_SEMEVAL_CORPUS_SELECTION_PARTIAL_IDENTIFICATION_2026-10-30.md) |
 
+| TH139 | SemEval 2020四语156词真实金标准、误分类与词表选择联合敏感性 | Schlechtweg等2020、DURel2018、Dawid与Skene1979、Rogan与Gladen1978；固定参赛者Git提交的八份小文件逐行回读，67/156二元变化，四语AUC0.8690/0.8956/0.8984/0.9783，3199个至多两标签翻转的确定性枚举；官方ZIP未核，非盲态，不外推语言总体 | THEORY_NOTE_BOUNDED | [研究笔记](TH139_LEXICAL_GOLD_LABEL_NOISE_TARGET_SELECTION_JOINT_SENSITIVITY_2026-10-30.md) |
+
 C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](../research/decision_methods/C007_MEASUREMENT_REACTIVITY_RESPONSE_SHIFT_MNAR_PREFERENCES_2026-10-30.md)，2026-10-30完成；D002保持只读。
 
-下一研究队列：TH139 历史词义标签误分类与词表选择的联合敏感性；优先取得可直接核验的小型公开表，SemEval官方ZIP获取仍阻塞。C子流程2026-10-30已完成C007，下一C008；D子流程2026-W44已完成D002。
+下一研究队列：TH140 集体记忆、档案存活选择与制度性记录缺失；TH139已取得参赛者公开八份真实小型gold文件并完成条件性标签扰动，官方Zenodo ZIP字节及原始标注者判断仍待核验。C子流程2026-10-30已完成C007，下一研究日检查C008；D子流程2026-W44已完成D002。
