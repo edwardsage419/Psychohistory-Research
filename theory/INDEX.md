@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-30（Asia/Singapore）；已收录 TH138，C007 今日增量与 D002 本周专题
+更新：2026-10-30（Asia/Singapore）；已收录 TH140，C007 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -611,6 +611,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH139 | SemEval 2020四语156词真实金标准、误分类与词表选择联合敏感性 | Schlechtweg等2020、DURel2018、Dawid与Skene1979、Rogan与Gladen1978；固定参赛者Git提交的八份小文件逐行回读，67/156二元变化，四语AUC0.8690/0.8956/0.8984/0.9783，3199个至多两标签翻转的确定性枚举；官方ZIP未核，非盲态，不外推语言总体 | THEORY_NOTE_BOUNDED | [研究笔记](TH139_LEXICAL_GOLD_LABEL_NOISE_TARGET_SELECTION_JOINT_SENSITIVITY_2026-10-30.md) |
 
+| TH140 | 集体记忆、网络对话趋同与历史档案存活选择 | Coman等2016开放PNAS原刊、Pechenick等2015开放PLOS原刊、NARA2007鉴定政策及记录处置规则、Schwartz与Cook2002、Assmann1995、Hirst与Coman2018、Trouillot1995出版资料；16项条件命题、9项原刊数字及人工审计；网络类型交互P=0.054，档案选择人工例观察率0.26至0.74但真实率固定0.5；无真实历史因果或预测 | THEORY_NOTE_BOUNDED | [研究笔记](TH140_COLLECTIVE_MEMORY_ARCHIVAL_SURVIVAL_SELECTION_2026-10-30.md) |
+
 C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](../research/decision_methods/C007_MEASUREMENT_REACTIVITY_RESPONSE_SHIFT_MNAR_PREFERENCES_2026-10-30.md)，2026-10-30完成；D002保持只读。
 
-下一研究队列：TH140 集体记忆、档案存活选择与制度性记录缺失；TH139已取得参赛者公开八份真实小型gold文件并完成条件性标签扰动，官方Zenodo ZIP字节及原始标注者判断仍待核验。C子流程2026-10-30已完成C007，下一研究日检查C008；D子流程2026-W44已完成D002。
+下一研究队列：TH141 档案鉴定政策变迁、跨机构重复记录与可见性负对照；TH140已核对两份开放原刊和NARA官方政策，人工选择界限仍待真实分母。C子流程2026-10-30已完成C007，下一研究日检查C008；D子流程2026-W44已完成D002。
