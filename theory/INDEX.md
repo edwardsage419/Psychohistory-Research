@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH117，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH118，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -196,11 +196,13 @@
 | TH116 | 免费区域洪水风险数据版本可比性、空间单元组成与历史FIRM可行性 | AWS/First Street公开目录、FEMA原始图幅文档、Hallisey等2017开放原刊、Schroeder2017与Fotheringham/Wong1991原刊摘要；16项命题、8项人工及数字审计；尚未下载S3对象或历史图幅 | THEORY_NOTE_BOUNDED | [研究笔记](TH116_FREE_AGGREGATE_RISK_VINTAGES_MAUP_HISTORIC_FIRM_AUDIT_2026-10-29.md) |
 | TH117 | 历史FIRM修订事件时钟、空间对照与分类变化识别 | FEMA官方MSC、Hingham/Exeter原始修订时间线、Gibson与Mullins2020、Keele与Titiunik2015、Sun与Abraham2021；公告与生效、LiMWA与SFHA区别、零变化安慰剂、工程混杂 | THEORY_NOTE_BOUNDED | [研究笔记](TH117_HISTORIC_FIRM_REVISION_EVENT_TIME_SPATIAL_CONTROLS_CLASSIFICATION_2026-10-29.md)；16项命题、8项日期及人工审计；真实地图叠置与因果估计0 |
 
+| TH118 | 历史FIRM零变化安慰剂、公告生效时差与空间选择 | FEMA 2018、2021、2022原始LOMR决定文件与Hingham时间线、Roth2022、Lipsitch等2010；区分SFHA、LiMWA、公告、撤销、重发及条例共同冲击 | THEORY_NOTE_BOUNDED | [研究笔记](TH118_HISTORIC_FIRM_ZERO_CHANGE_PLACEBO_ANNOUNCEMENT_EFFECTIVE_SPATIAL_SELECTION_2026-10-29.md)；16项条件命题、8项日期及人工审计；真实地块叠置与独立因果估计0 |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH118 | 历史地图修订零变化安慰剂、公告与生效时差及空间选择的联合识别 | Hingham历史LOMR、2012/2015图幅、Sun与Abraham事件研究、地理断点与空间干扰 | QUEUED_UNVERIFIED |
+| 1 | TH119 | LiMWA与SFHA结果特异安慰剂、沿海建筑标准及地方条例共同冲击 | FEMA LiMWA指导与44 CFR 60.3、Hingham 2021分区条例、洪水风险住房与保险文献 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -553,6 +555,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 
 | historic FIRM / LOMR / announcement versus effective date / SFHA placebo | [TH117 历史FIRM事件时钟与空间识别](TH117_HISTORIC_FIRM_REVISION_EVENT_TIME_SPATIAL_CONTROLS_CLASSIFICATION_2026-10-29.md)；FEMA、Hingham/Exeter原始时间线、Gibson与Mullins2020、Keele与Titiunik2015、Sun与Abraham2021；零变化修订与工程共同冲击 | 个体、群体、制度、历史、方法论 | 9项英文原始来源线索，16项条件命题、8项人工审计；真实空间叠置与因果估计0 |
+
+| outcome-specific placebo / LiMWA / SFHA / announcement clocks / spatial selection | [TH118 零变化安慰剂与事件时钟](TH118_HISTORIC_FIRM_ZERO_CHANGE_PLACEBO_ANNOUNCEMENT_EFFECTIVE_SPATIAL_SELECTION_2026-10-29.md)；FEMA 2018、2021、2022原始LOMR文件，Hingham行政记录，Roth2022、Lipsitch等2010；SFHA不变不保证房价无效应，跨镇溢出及成交选择需审计 | 个体、群体、制度、历史、方法论 | 10项英文原始来源或机构资料，16项命题、8项日期及人工审计；无地块空间验证或独立因果估计 |
 
 ## 持续执行规则
 
