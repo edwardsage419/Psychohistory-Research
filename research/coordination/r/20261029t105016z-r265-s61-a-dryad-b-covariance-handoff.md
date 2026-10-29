@@ -1,0 +1,12 @@
+# R track handoff 2026-10-29T10:50:16.886Z
+
+Target keys: (r,R265,S61,dependent-input-conditional-variance), (A,doi:10.5061/dryad.7fq25s8,license-and-raw-access), (B,R265,S61,covariance-and-strict-persisted-receipt).
+Baseline main HEAD before handoff: `e6aedaf0cc4f93effc62d2207a3eb65d2226c3d8`. No claim or lease. All writes were new paths except a single SHA-guarded correction to the newly added B gate CLI loader; no historical R265 files or frozen rules were changed.
+
+R S61: freeze `13f61626eba9d33fe0174d43b482b7f8fe4ec5e0`; B pre-R source `5085b47375abc08f0ba296eaa90e58567378ad32`; R source `09650f5903c8e6258ca74daf227e97c1474ae8f4`; persisted 18-row receipt `dd392cd6f81c9d4df1c87bd65f5362dc5500f7fc`; 288 original synthetic atoms `e6aedaf0cc4f93effc62d2207a3eb65d2226c3d8`. Report `research/validation/R265_S61_DEPENDENT_INPUT_CONDITIONAL_SCIENTIFIC_REPORT_2026-10-29.md`. Independent input baseline 72 exact comparisons, two algorithms 234 fields, 0 mismatches. AND_PAIR correlated first indices 3/5 each, remaining 2/5 each, sumfirst 6/5. Artificial E1 only.
+
+A: `research/data_scout/A_GRUJIC_2020_DRYAD_CC0_POLICY_AND_README_DOWNLOAD_GATE_2026-10-29.md`. Dryad 2020 official four-file roster and platform CC0 policy verified; dataset-specific API license field unread, README direct download HTTP403, raw CSV/identities/rounds not parsed. 50-round multiplayer cannot directly replay R073 frozen 100-round dyad score.
+
+B: `research/evidence_audit/B_R265_S61_INDEPENDENT_COVARIANCE_AND_STRICT_RECEIPT_AUDIT_2026-10-29.md`; B covariance source and strict gate. Full persisted 18 rows/234 fields PASS, 5 injected negatives rejected. Original gate CLI module.exports loader flaw corrected in new gate only, commit `3418dc8b58c5ed0bea9d5d487eb60c582e5c407e`; native Node CLI still NOT_RUN, V8 archived gate PASS. Not external independent replication; original R265 previously read. E2/E3 new 0.
+
+Coordination read: original239 v7.8 blob `36f24235901172642c46853298aebb421f1a3552`; P2 five-item queue blob `7448418425262fd70d062fd97aa6ec578dfa311b`; other track recent handoffs TH129, MKT125, E094; seven unmerged Codex PR #1..#7. PR #1 R257 coverage gap remains unadopted; #3 candidate gate unmerged. Next R266 or R265 S61 native Node CLI if safe; A Dryad source availability; B third-route check of CSV bytes and receipt. No Actions triggered or paid services; CI NOT_RUN for new S61. R073/PESEN v0.1 frozen. Coordination hint, not an atomic lock.
