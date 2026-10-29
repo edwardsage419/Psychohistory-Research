@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH120，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH121，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -200,11 +200,13 @@
 
 | TH119 | LiMWA与SFHA结果特异安慰剂、沿海建筑规范与地方条例共同冲击 | Hingham 2021年度正式投票记录、2021会议结果、FEMA LiMWA原始资料、马萨诸塞第九版建筑规范元数据、de Chaisemartin与D'Haultfœuille 2023；发现Article 26与滚动网页Article 27冲突，审计多处理政策包的欠识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH119_LIMWA_SFHA_OUTCOME_SPECIFIC_PLACEBO_COASTAL_BUILDING_CODES_LOCAL_BYLAW_2026-10-29.md)；16项条件性命题、8项原文与人工审计、12项来源；未独立验证历史建筑条文或真实地块因果效应 |
 
+| TH121 | 制度合法性、执行差距与政策遵从的动态社会机制 | Mazerolle等2013开放系统综述、Levi等2009、Tankebe2013、Nagin与Telep2017/2020、Wood等2020、Owens等2018、Lipsky1980、Hupe与Hill2007；区分程序公正、威慑、基层裁量、行为结果 | THEORY_NOTE_BOUNDED | [研究笔记](TH121_LEGITIMACY_IMPLEMENTATION_GAP_DYNAMIC_COMPLIANCE_2026-10-29.md)；16项条件命题、8项数学与证据审计；无独立因果或预测验证 |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH120 | 制度文件版本冲突、行政执行时钟与多处理政策识别的跨领域比较 | 原始立法档案、行政执行记录、文献版本学与多处理因果识别开放原作 | QUEUED_UNVERIFIED |
+| 1 | TH122 | 基层行政裁量、案件积压与执行资源的动态分配 | Lipsky 1980、Hupe与Hill 2007及开放行政执行数据；资源约束、选择性处理与排队机制 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -563,6 +565,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | LiMWA / SFHA / historical code vintage / joint treatments / archival contradiction | [TH119 结果特异安慰剂与地方条例共同冲击](TH119_LIMWA_SFHA_OUTCOME_SPECIFIC_PLACEBO_COASTAL_BUILDING_CODES_LOCAL_BYLAW_2026-10-29.md)；Hingham 2021正式投票Article 26、FEMA LiMWA官方材料、Massachusetts 780 CMR第九版元数据、de Chaisemartin与D'Haultfœuille2023；地图信息、州建筑标准、地方许可、风险信念和文书版本冲突 | 个体、群体、制度、历史、方法论 | 正式投票PDF及地方机构网页直接审读，部分官方PDF仅检索段落；8项审计；历史R322逐条适用性与真实因果未识别 |
 
 | institutional version conflicts / retrospective legal effect / administrative clocks / multiple treatment support | [TH120 制度文件版本与多处理政策识别](TH120_INSTITUTIONAL_DOCUMENT_VERSIONS_LEGAL_CLOCKS_MULTITREATMENT_IDENTIFICATION_2026-10-29.md)；Massachusetts c.40 §32与c.40A §5现行原文、Hingham 2021 Article 26、NARA、Crawford与Ostrom1995、de Chaisemartin与D’Haultfœuille2023、Hall1993；合法时钟与行为时钟分离、行政审批和多处理共同支持 | 个体、群体、制度、历史、方法论 | 11项英文原始法规、机构材料与论文来源，16项条件性命题、8项原文及人工审计；2021历史法规与实际执行未核实，真实因果与预测0 |
+
+| legitimacy / procedural justice / deterrence / street-level discretion / compliance | [TH121 合法性与执行差距](TH121_LEGITIMACY_IMPLEMENTATION_GAP_DYNAMIC_COMPLIANCE_2026-10-29.md)；Mazerolle等2013、Levi等2009、Tankebe2013、Nagin与Telep2020、Wood等2020、Owens等2018、Lipsky1980；态度、行为、执法、法律时钟区分 | 个体、群体、制度、历史、方法论 | 一份开放原作重点章节与九项原始摘要或书目；16项条件命题、8项原刊数字与人工审计；无独立实证复算 |
 
 ## 持续执行规则
 
