@@ -599,4 +599,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH133 | 州级桥接比率运输、NCHS联合误差公式、Poisson计数波动与Joinpoint竞争解释 | NCHS 2000官方51页指南与2001正式原刊公式图像、Wisconsin州级表、CDC双编码报告、Chen等2020 DOI:10.2478/jos-2020-0003；16项条件命题、8项原始汇总算术及人工敏感性；最终XLS与州人口分母未取得 | THEORY_NOTE_BOUNDED | [研究笔记](TH133_STATE_RATIO_TRANSPORT_JOINT_UNCERTAINTY_NCHS_Z_2026-10-29.md) |
 
-下一研究队列：TH134 州级人口暴露量与分层运输验证设计；若最终XLS可得则优先113类逐行审计。
+| TH134 | Wisconsin 1998/1999人口分母版本、ICD编码桥接、年龄标准化与运输临界值 | Census 2002原始州人口表、Wisconsin DHS原始败血症计数、Anderson等2001初步双编码、CDC 2004 bridged-race方法、CDC 2026年龄标准化、FRED WIPOP；16项条件命题、9项公开汇总与人工审计；年龄分层真实死亡数与最终XLS未取得 | THEORY_NOTE_BOUNDED | [研究笔记](TH134_WISCONSIN_POPULATION_EXPOSURE_VINTAGE_AGE_STANDARDIZATION_TRANSPORT_2026-10-29.md) |
+
+下一研究队列：TH135 Wisconsin年龄分层死亡数据与匹配人口版本核查；如仍受阻，转向跨历史测量等值理论。
