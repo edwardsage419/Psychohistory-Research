@@ -589,4 +589,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH128 | 分层链接误差与诊断误分类联合界、双编码桥接与跨期负对照 | Harron等2014、Anderson等2001、CDC最终可比率、van der Stegen等2014、Lipsitch等2010；误链接与结果错分、双编码验证、守恒约束及负对照假设 | THEORY_NOTE_BOUNDED | [研究笔记](TH128_JOINT_LINKAGE_DIAGNOSTIC_ERROR_BRIDGE_NEGATIVE_CONTROLS_2026-10-29.md) |
 
-下一研究队列：TH129 双编码验证样本选择、类别转换矩阵与负对照的目标专属误差。
+| TH129 | 双编码验证样本选择、类别转换矩阵与跨期负对照 | Anderson等2001 CDC官方双编码非随机样本、CDC公开数据目录、Begg与Greenes1983、van der Stegen等2014、Naaktgeboren等2016、Arnold等2016；条件验证、分层运输、公开数据可复算入口及目标特异测量偏差 | THEORY_NOTE_BOUNDED | [研究笔记](TH129_DUAL_CODE_VERIFICATION_SELECTION_TRANSITION_TRANSPORT_NEGATIVE_CONTROLS_2026-10-29.md) |
+
+下一研究队列：TH130 公开双编码文件的原始字节与字段规范核验、分层可运输性及编码员漂移。
