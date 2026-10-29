@@ -1,0 +1,98 @@
+{
+  "study": "R255_S51",
+  "scope": "FINITE_ARTIFICIAL_E1",
+  "frozen_worlds": [
+    "ER_TRIANGLE_P_HALF",
+    "STATIC_EMPTY_TRUE_GRAPH_OBS_REPORT_HALF"
+  ],
+  "source_combinations_per_world": 512,
+  "source_mass_per_world": "1",
+  "source_reconstruction": "FROZEN_SIX_BITS_SEEDS_ONLY_NOT_FULL_ORIGINAL_CSV",
+  "risk_by_world": {
+    "ER_TRIANGLE_P_HALF": {
+      "F0": "1/4",
+      "F1": "5/32",
+      "F2": "1/16",
+      "F3": "1/16",
+      "improvements": [
+        "3/32",
+        "3/32",
+        "0"
+      ],
+      "group_details": {
+        "F0": {
+          "groups": 8,
+          "mixed_label_groups": 8,
+          "max_group_size": 64,
+          "risk": "1/4"
+        },
+        "F1": {
+          "groups": 26,
+          "mixed_label_groups": 14,
+          "max_group_size": 64,
+          "risk": "5/32"
+        },
+        "F2": {
+          "groups": 38,
+          "mixed_label_groups": 2,
+          "max_group_size": 64,
+          "risk": "1/16"
+        },
+        "F3": {
+          "groups": 38,
+          "mixed_label_groups": 2,
+          "max_group_size": 64,
+          "risk": "1/16"
+        }
+      },
+      "leak_target_risk": "0"
+    },
+    "STATIC_EMPTY_TRUE_GRAPH_OBS_REPORT_HALF": {
+      "F0": "0",
+      "F1": "0",
+      "F2": "0",
+      "F3": "0",
+      "improvements": [
+        "0",
+        "0",
+        "0"
+      ],
+      "group_details": {
+        "F0": {
+          "groups": 8,
+          "mixed_label_groups": 0,
+          "max_group_size": 64,
+          "risk": "0"
+        },
+        "F1": {
+          "groups": 26,
+          "mixed_label_groups": 0,
+          "max_group_size": 64,
+          "risk": "0"
+        },
+        "F2": {
+          "groups": 38,
+          "mixed_label_groups": 0,
+          "max_group_size": 64,
+          "risk": "0"
+        },
+        "F3": {
+          "groups": 38,
+          "mixed_label_groups": 0,
+          "max_group_size": 64,
+          "risk": "0"
+        }
+      },
+      "leak_target_risk": "0"
+    }
+  },
+  "observed_paths_equal_across_worlds": true,
+  "real_connected_positive_count": 256,
+  "alias_true_connected_positive_count": 0,
+  "E2_human": 0,
+  "E3_historical": 0,
+  "external_replication": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "reconstructed_csv_sha256": "a603514a2d6424cb5acb344bff8917c9d80e25ed63ef5c4d218bde3b8ad7b163"
+}
