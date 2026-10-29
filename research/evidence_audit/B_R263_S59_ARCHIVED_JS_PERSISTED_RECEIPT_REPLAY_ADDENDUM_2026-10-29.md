@@ -1,0 +1,8 @@
+# R263 S59 archived JavaScript and persisted receipt replay addendum
+Date: 2026-10-29 UTC. Baseline commit ad8a199a521f18e23d5065b34f3b0c9884721e41.
+
+The actual archived JavaScript source was re-fetched from main, Git blob 6aeef16659b1f831ceedfe026dae91ae98feb871. The complete frozen original R263 CSV was re-fetched, 9216 rows, Git blob 514a619e700f98c5c5e0a575c4569810b2fc817d. The persisted R263 S59 JSON was re-fetched, Git blob 8c640e0ed9ae550872f0d6175c4a9cafd3283d1d.
+
+Execution: parse the archived Node.js source after removing only its shebang for V8 Function compatibility; provide a minimal in-memory fs.readFileSync adapter returning the exact fetched CSV and a process.stdout adapter capturing emitted JSON. The archived script completed without exception, generated exactly 5747 characters and matched the persisted JSON's 5747 characters byte-for-byte under ASCII/UTF-8 JSON representation. This is an actual archived-code execution in V8 with an injected file adapter; native Node CLI on local downloaded original CSV remains NOT_RUN. All 9216 original source Y labels were checked inside the script using the integer-mask offspring oracle; zero mismatches. This addendum closes the previously OPEN archived JavaScript receipt-equivalence gate within the V8 adapter scope. The separate archived Python CLI against remote persisted JSON remains OPEN; earlier local B Python Fraction execution was internal and nonblind.
+
+E1 artificial only. No E2, E3, external replication, or CI added. No Actions initiated and no paid services used. The original R263 model and S59 freeze were not modified.
