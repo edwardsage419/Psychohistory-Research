@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH126，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH128，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -587,4 +587,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | linkage quality transport / subgroup error / ICD vintage drift / time-varying bounds | [TH127 分层链接质量外推与历史编码漂移](TH127_LINKAGE_TRANSPORT_HISTORICAL_CODING_DRIFT_TIME_VARYING_BOUNDS_2026-10-29.md)；Randall等2018、CMS/CDC官方ICD版本资料、Yang等2021、Hsu等2021、Pearl与Bareinboim2014；分层链接误差、共同支持、代码断点及联合测量风险 | 个体、群体、制度、历史、方法论 | 一份开放原刊重点章节、两份官方原文、四份摘要及前轮来源；16项条件命题、4项公开汇总算术与4项人工审计；无真实因果或预测验证 |
 
-下一研究队列：TH128 分层链接误差与诊断误分类联合界、双编码桥接样本设计和跨期负对照有效性。
+| TH128 | 分层链接误差与诊断误分类联合界、双编码桥接与跨期负对照 | Harron等2014、Anderson等2001、CDC最终可比率、van der Stegen等2014、Lipsitch等2010；误链接与结果错分、双编码验证、守恒约束及负对照假设 | THEORY_NOTE_BOUNDED | [研究笔记](TH128_JOINT_LINKAGE_DIAGNOSTIC_ERROR_BRIDGE_NEGATIVE_CONTROLS_2026-10-29.md) |
+
+下一研究队列：TH129 双编码验证样本选择、类别转换矩阵与负对照的目标专属误差。
