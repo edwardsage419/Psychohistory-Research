@@ -1,0 +1,9 @@
+# B R275 S71 remote persisted receipt verification addendum
+
+UTC 2026-10-29T20:44:12Z. Frozen protocol commit 8c2964149055b7fa824bd9b10446ffd1e0613768. R/A/B artifact commit 1dc5efb14eeb2f4c140cd03205070c3c5a2a46ff.
+
+Three exact GitHub main files fetched anew: R JavaScript Git blob 9823159c905a244154b1265c535ea3656692ee0b, 3072-source CSV blob bceacf74de761188fe945518d8e5d7cff7d3339e, result JSON blob 4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1.
+
+Actual execution: the archived R source was evaluated in V8 and generated CSV and JSON strings were compared to the remote persisted files; both full-text equal. A separate in-memory strict receipt validator independently reconstructed per-pattern likelihoods from K and epsilon, verified all 3072 unique source identities, true source weights, MAP labels, exact posteriors, four per-mechanism normalization checks per epsilon, all 36 confusion cells and all four average accuracies. PASS. This is a second implementation in the same assistant environment, NONBLIND internal verification. It is not an independent external researcher.
+
+Six actual injected mutations all rejected: duplicate source, missing source, probability weight 1/256 to 1/255, MAP label corruption, posterior 1/17 to 1/18, and E1 evidence falsely promoted to E3. Each rejection was observed in the executed validator. Separate Python combinatorial gate earlier passed against locally independently generated 3072-row sources. The archived Python gate's native CLI against the actual remote persisted bytes is still NOT_RUN; its Git blob differs from the locally executed development copy, so exact source-byte equivalence cannot be claimed. Native Node CLI NOT_RUN; GitHub Actions NOT_RUN. Original R275 formal E1 acceptance unchanged. New E2 predictive tests=0, E3=0, R073 and PESEN v0.1 frozen.
