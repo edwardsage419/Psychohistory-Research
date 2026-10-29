@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/evidence_audit/r270_s66_independent_run_composition_cli.py", line 102, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/s66-replay/research/evidence_audit/r270_s66_independent_run_composition_cli.py", line 99, in main
+    with open(args.check,encoding='utf8') as f:check(json.load(f))
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/s66-replay/research/evidence_audit/r270_s66_independent_run_composition_cli.py", line 66, in check
+    raise ValueError('192 exact tail mismatch')
+ValueError: 192 exact tail mismatch
