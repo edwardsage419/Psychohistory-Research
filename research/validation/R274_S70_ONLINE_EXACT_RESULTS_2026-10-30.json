@@ -1,0 +1,115 @@
+{
+  "research_id": "R274_S70",
+  "original_R274_freeze": "47b75b49afb5c72c5ca2599ab38499e0f2856354",
+  "s70_prescore_freeze_commit": "6783168501b596693ec1b3dae2b215b7174ab3c1",
+  "scope": "NONBLIND_INTERNAL_ARTIFICIAL_E1",
+  "regimes": 3,
+  "policies": 3,
+  "unique_ordered_sources_per_regime": 64,
+  "policy_labelled_source_rows": 576,
+  "scored_time_cells": 18,
+  "results": [
+    {
+      "regime": "STABLE_HALF",
+      "policy": "PAST_FIXED",
+      "source_types": 64,
+      "expected_t5_brier": "5/18",
+      "expected_t6_brier": "5/18",
+      "expected_two_period_brier": "5/18",
+      "future_Y6_used_in_forecast": false
+    },
+    {
+      "regime": "STABLE_HALF",
+      "policy": "ONLINE_ONE_STEP",
+      "source_types": 64,
+      "expected_t5_brier": "5/18",
+      "expected_t6_brier": "27/98",
+      "expected_two_period_brier": "122/441",
+      "future_Y6_used_in_forecast": false
+    },
+    {
+      "regime": "STABLE_HALF",
+      "policy": "PRECOMMITTED_HALF",
+      "source_types": 64,
+      "expected_t5_brier": "1/4",
+      "expected_t6_brier": "1/4",
+      "expected_two_period_brier": "1/4",
+      "future_Y6_used_in_forecast": false
+    },
+    {
+      "regime": "RISING_RATE",
+      "policy": "PAST_FIXED",
+      "source_types": 64,
+      "expected_t5_brier": "55/144",
+      "expected_t6_brier": "55/144",
+      "expected_two_period_brier": "55/144",
+      "future_Y6_used_in_forecast": false
+    },
+    {
+      "regime": "RISING_RATE",
+      "policy": "ONLINE_ONE_STEP",
+      "source_types": 64,
+      "expected_t5_brier": "55/144",
+      "expected_t6_brier": "131/392",
+      "expected_two_period_brier": "5053/14112",
+      "future_Y6_used_in_forecast": false
+    },
+    {
+      "regime": "RISING_RATE",
+      "policy": "PRECOMMITTED_HALF",
+      "source_types": 64,
+      "expected_t5_brier": "1/4",
+      "expected_t6_brier": "1/4",
+      "expected_two_period_brier": "1/4",
+      "future_Y6_used_in_forecast": false
+    },
+    {
+      "regime": "FALLING_RATE",
+      "policy": "PAST_FIXED",
+      "source_types": 64,
+      "expected_t5_brier": "55/144",
+      "expected_t6_brier": "55/144",
+      "expected_two_period_brier": "55/144",
+      "future_Y6_used_in_forecast": false
+    },
+    {
+      "regime": "FALLING_RATE",
+      "policy": "ONLINE_ONE_STEP",
+      "source_types": 64,
+      "expected_t5_brier": "55/144",
+      "expected_t6_brier": "131/392",
+      "expected_two_period_brier": "5053/14112",
+      "future_Y6_used_in_forecast": false
+    },
+    {
+      "regime": "FALLING_RATE",
+      "policy": "PRECOMMITTED_HALF",
+      "source_types": 64,
+      "expected_t5_brier": "1/4",
+      "expected_t6_brier": "1/4",
+      "expected_two_period_brier": "1/4",
+      "future_Y6_used_in_forecast": false
+    }
+  ],
+  "contrasts": [
+    {
+      "regime": "STABLE_HALF",
+      "online_minus_fixed_t6": "-1/441",
+      "online_minus_half_average": "47/1764"
+    },
+    {
+      "regime": "RISING_RATE",
+      "online_minus_fixed_t6": "-337/7056",
+      "online_minus_half_average": "1525/14112"
+    },
+    {
+      "regime": "FALLING_RATE",
+      "online_minus_fixed_t6": "-337/7056",
+      "online_minus_half_average": "1525/14112"
+    }
+  ],
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "new_E2": 0,
+  "new_E3": 0
+}
