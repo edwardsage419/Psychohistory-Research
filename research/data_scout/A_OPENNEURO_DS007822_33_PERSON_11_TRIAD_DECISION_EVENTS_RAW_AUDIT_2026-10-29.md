@@ -17,6 +17,6 @@ G01=(17,20,28)，G02=(40,40,37)，G03=(28,25,27)，G04=(35,35,33)，G05=(11,23,1
 每人40轮且为三人互动，原R073双人100轮冻结评分条件无法直接套用。`R073_DIRECT_REPLAY=NO`。可以作为后续新的三人合作网络研究候选，但必须单独冻结新问题、评分、分组留出及许可；本轮新增正式真人预测E2=0，历史E3=0。文件中的行为记录来自标称真人实验，尚未完成原作者身份和采集机制的外部真实性核验。不得把本次字段审计称为独立人类行为预测复现。
 
 ## 再现路径和来源锚点
-根目录 https://github.com/OpenNeuroDatasets/ds007822/tree/master ，数据集页面 https://openneuro.org/datasets/ds007822 ，单个样例 https://github.com/OpenNeuroDatasets/ds007822/blob/master/sub-G01S01/eeg/sub-G01S01_task-pddecision_events.tsv 。样例Git blob `594269370f3bb11ed54b5c02ff978fb762de5381`，另一组G11S03 blob `bf602f89007953aec862b07855005e97e1a59771`。GitHub源仓库默认分支和具体提交未锁定，本次固定了文本文件Git blob样例，全部33份各自SHA见本轮运行记录；未来应以源仓库固定commit重新核验所有33个blob。GitHub事件文件可读取，EEG原始二进制及授权边界开放。
+根目录 https://github.com/OpenNeuroDatasets/ds007822/tree/main ，数据集页面 https://openneuro.org/datasets/ds007822 ，单个样例 https://github.com/OpenNeuroDatasets/ds007822/blob/main/sub-G01S01/eeg/sub-G01S01_task-pddecision_events.tsv 。样例Git blob `594269370f3bb11ed54b5c02ff978fb762de5381`，另一组G11S03 blob `bf602f89007953aec862b07855005e97e1a59771`。GitHub源仓库默认分支和具体提交未锁定，本次固定了文本文件Git blob样例，全部33份各自SHA见本轮运行记录；未来应以源仓库固定commit重新核验所有33个blob。GitHub事件文件可读取，EEG原始二进制及授权边界开放。
 
 状态：`PUBLIC_TEXT_33_FILES_READ_AND_FIELD_VALIDATED`，`RAW_EEG_UNREAD`，`LICENSE_CONFLICT_OPEN`，`ORIGINAL_STUDY_PROVENANCE_OPEN`，`R073_DIRECT_REPLAY_NO`。
