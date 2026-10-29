@@ -1,0 +1,214 @@
+{
+  "protocol": "R277_S73_TEMPORAL_SUBSAMPLING_IDENTIFIABILITY_PROTOCOL_FREEZE_2026-10-30",
+  "original_R277_freeze": "923a161bbdc012c138e53f1fa316e6085ff2704e",
+  "source_count": 192,
+  "observable_rows": 72,
+  "method": "complete six-bit integration and independent two-step transition product",
+  "evidence": "EXPLORATORY_E1_NONBLIND_INTERNAL",
+  "E2_predictions": 0,
+  "E3_predictions": 0,
+  "external_replication": false,
+  "windows": {
+    "A_ADJACENT": {
+      "macro_accuracy": "13/24",
+      "confusion": {
+        "ANTIPERSISTENT": {
+          "ANTIPERSISTENT": "9/16",
+          "IID_FAIR": "3/8",
+          "PERSISTENT": "1/16"
+        },
+        "IID_FAIR": {
+          "ANTIPERSISTENT": "1/4",
+          "IID_FAIR": "1/2",
+          "PERSISTENT": "1/4"
+        },
+        "PERSISTENT": {
+          "ANTIPERSISTENT": "1/16",
+          "IID_FAIR": "3/8",
+          "PERSISTENT": "9/16"
+        }
+      },
+      "tv": {
+        "ANTIPERSISTENT|IID_FAIR": "5/16",
+        "ANTIPERSISTENT|PERSISTENT": "1/2",
+        "IID_FAIR|PERSISTENT": "5/16"
+      },
+      "map": {
+        "100": "IID_FAIR",
+        "101": "ANTIPERSISTENT",
+        "110": "IID_FAIR",
+        "111": "PERSISTENT",
+        "000": "PERSISTENT",
+        "001": "IID_FAIR",
+        "010": "ANTIPERSISTENT",
+        "011": "IID_FAIR"
+      },
+      "observation_probability": {
+        "ANTIPERSISTENT": {
+          "100": "3/32",
+          "101": "9/32",
+          "110": "3/32",
+          "111": "1/32",
+          "000": "1/32",
+          "001": "3/32",
+          "010": "9/32",
+          "011": "3/32"
+        },
+        "IID_FAIR": {
+          "100": "1/8",
+          "101": "1/8",
+          "110": "1/8",
+          "111": "1/8",
+          "000": "1/8",
+          "001": "1/8",
+          "010": "1/8",
+          "011": "1/8"
+        },
+        "PERSISTENT": {
+          "100": "3/32",
+          "101": "1/32",
+          "110": "3/32",
+          "111": "9/32",
+          "000": "9/32",
+          "001": "3/32",
+          "010": "1/32",
+          "011": "3/32"
+        }
+      }
+    },
+    "B_ODD": {
+      "macro_accuracy": "73/192",
+      "confusion": {
+        "ANTIPERSISTENT": {
+          "ANTIPERSISTENT": "25/64",
+          "IID_FAIR": "39/64",
+          "PERSISTENT": "0"
+        },
+        "IID_FAIR": {
+          "ANTIPERSISTENT": "1/4",
+          "IID_FAIR": "3/4",
+          "PERSISTENT": "0"
+        },
+        "PERSISTENT": {
+          "ANTIPERSISTENT": "25/64",
+          "IID_FAIR": "39/64",
+          "PERSISTENT": "0"
+        }
+      },
+      "tv": {
+        "ANTIPERSISTENT|IID_FAIR": "9/64",
+        "ANTIPERSISTENT|PERSISTENT": "0",
+        "IID_FAIR|PERSISTENT": "9/64"
+      },
+      "map": {
+        "100": "IID_FAIR",
+        "101": "IID_FAIR",
+        "110": "IID_FAIR",
+        "111": "ANTIPERSISTENT",
+        "000": "ANTIPERSISTENT",
+        "001": "IID_FAIR",
+        "010": "IID_FAIR",
+        "011": "IID_FAIR"
+      },
+      "observation_probability": {
+        "ANTIPERSISTENT": {
+          "100": "15/128",
+          "101": "9/128",
+          "110": "15/128",
+          "111": "25/128",
+          "000": "25/128",
+          "001": "15/128",
+          "010": "9/128",
+          "011": "15/128"
+        },
+        "IID_FAIR": {
+          "100": "1/8",
+          "101": "1/8",
+          "110": "1/8",
+          "111": "1/8",
+          "000": "1/8",
+          "001": "1/8",
+          "010": "1/8",
+          "011": "1/8"
+        },
+        "PERSISTENT": {
+          "100": "15/128",
+          "101": "9/128",
+          "110": "15/128",
+          "111": "25/128",
+          "000": "25/128",
+          "001": "15/128",
+          "010": "9/128",
+          "011": "15/128"
+        }
+      }
+    },
+    "C_EVEN": {
+      "macro_accuracy": "73/192",
+      "confusion": {
+        "ANTIPERSISTENT": {
+          "ANTIPERSISTENT": "25/64",
+          "IID_FAIR": "39/64",
+          "PERSISTENT": "0"
+        },
+        "IID_FAIR": {
+          "ANTIPERSISTENT": "1/4",
+          "IID_FAIR": "3/4",
+          "PERSISTENT": "0"
+        },
+        "PERSISTENT": {
+          "ANTIPERSISTENT": "25/64",
+          "IID_FAIR": "39/64",
+          "PERSISTENT": "0"
+        }
+      },
+      "tv": {
+        "ANTIPERSISTENT|IID_FAIR": "9/64",
+        "ANTIPERSISTENT|PERSISTENT": "0",
+        "IID_FAIR|PERSISTENT": "9/64"
+      },
+      "map": {
+        "100": "IID_FAIR",
+        "101": "IID_FAIR",
+        "110": "IID_FAIR",
+        "111": "ANTIPERSISTENT",
+        "000": "ANTIPERSISTENT",
+        "001": "IID_FAIR",
+        "010": "IID_FAIR",
+        "011": "IID_FAIR"
+      },
+      "observation_probability": {
+        "ANTIPERSISTENT": {
+          "100": "15/128",
+          "101": "9/128",
+          "110": "15/128",
+          "111": "25/128",
+          "000": "25/128",
+          "001": "15/128",
+          "010": "9/128",
+          "011": "15/128"
+        },
+        "IID_FAIR": {
+          "100": "1/8",
+          "101": "1/8",
+          "110": "1/8",
+          "111": "1/8",
+          "000": "1/8",
+          "001": "1/8",
+          "010": "1/8",
+          "011": "1/8"
+        },
+        "PERSISTENT": {
+          "100": "15/128",
+          "101": "9/128",
+          "110": "15/128",
+          "111": "25/128",
+          "000": "25/128",
+          "001": "15/128",
+          "010": "9/128",
+          "011": "15/128"
+        }
+      }
+    }
+  }
+}
