@@ -585,4 +585,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | linkage selection / episode deduplication / network interference / partial identification | [TH126 链接选择、去重与逻辑识别界](TH126_LINKAGE_SELECTION_DEDUP_NETWORK_INTERFERENCE_PARTIAL_IDENTIFICATION_2026-10-29.md)；Harron等2017/2014、Murray2016、Aronow与Samii2017、Manski2005、Lee2009、Frangakis与Rubin2002、Fellegi与Sunter1969；误链接与漏链接、blocking支持集、episode单位、网络暴露及缺失界 | 个体、群体、制度、历史、方法论 | 三份开放原作指定章节直接审读、五份原刊摘要或出版记录；2项发表汇总算术与6项人工反例；真实跨院微观链接与因果估计0 |
 
-下一研究队列：TH127 跨机构链接质量的分层可运输性、历史编码漂移与识别集随时间变化的敏感性。
+| linkage quality transport / subgroup error / ICD vintage drift / time-varying bounds | [TH127 分层链接质量外推与历史编码漂移](TH127_LINKAGE_TRANSPORT_HISTORICAL_CODING_DRIFT_TIME_VARYING_BOUNDS_2026-10-29.md)；Randall等2018、CMS/CDC官方ICD版本资料、Yang等2021、Hsu等2021、Pearl与Bareinboim2014；分层链接误差、共同支持、代码断点及联合测量风险 | 个体、群体、制度、历史、方法论 | 一份开放原刊重点章节、两份官方原文、四份摘要及前轮来源；16项条件命题、4项公开汇总算术与4项人工审计；无真实因果或预测验证 |
+
+下一研究队列：TH128 分层链接误差与诊断误分类联合界、双编码桥接样本设计和跨期负对照有效性。
