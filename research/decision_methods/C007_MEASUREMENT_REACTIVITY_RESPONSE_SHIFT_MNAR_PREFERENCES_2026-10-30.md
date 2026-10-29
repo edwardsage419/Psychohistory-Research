@@ -7,14 +7,14 @@
 ## 一、原始来源与读取层级
 
 C1 [A级，开放原刊直接阅读方法、结果及局限章节] De Vuyst H-J, Dejonckheere E, Van der Gucht K, Kuppens P (2019), *Does repeatedly reporting positive or negative emotions in daily life have an impact on the level of emotional experiences and depressive symptoms over time?*, PLOS ONE 14(6):e0219121. DOI:10.1371/journal.pone.0219121。https://pmc.ncbi.nlm.nih.gov/articles/PMC6597111/ 。90名学生随机分为正情绪、负情绪、非情绪内部状态三组，各30人，7天每日10次提示；组间无显著的预设情绪反应性证据。对照组也可能影响情绪，研究时间短、样本窄，不能推断普遍零反应性。
-C2 [A级，开放原刊摘要与研究方法摘要，未逐表复算] Ottenstein C, Hasselhorn K, Lischetzke T (2024), *Measurement reactivity in ambulatory assessment: Increase in emotional clarity over time independent of sampling frequency*, Behavior Research Methods 56:6150–6164. DOI:10.3758/s13428-024-02346-y。https://pubmed.ncbi.nlm.nih.gov/38291223/ 及 https://pmc.ncbi.nlm.nih.gov/articles/PMC11335897/ 。313名学生被随机分为每天3次或9次提示、持续一周；情绪清晰度随时间上升，频率组间变化无显著差异，情绪愉悦度没有系统趋势。不能将组内趋势直接识别为测量因果效应。
-C3 [A级，开放正式原刊直接审读方法摘要及参考文献，全文方法PDF未逐页核] King-Kallimanis BL, Oort FJ, Garst GJA (2010), *Using structural equation modelling to detect measurement bias and response shift in longitudinal data*, AStA Advances in Statistical Analysis 94:139–156. DOI:10.1007/s10182-010-0129-y。https://link.springer.com/article/10.1007/s10182-010-0129-y 。三步：确认测量模型、检验跨期参数等值、检查外生变量对指标的直接作用；模型选择与多重比较风险需审计。
+C2 [B级，原刊摘要与研究方法摘要，未逐表复算] Ottenstein C, Hasselhorn K, Lischetzke T (2024), *Measurement reactivity in ambulatory assessment: Increase in emotional clarity over time independent of sampling frequency*, Behavior Research Methods 56:6150–6164. DOI:10.3758/s13428-024-02346-y。https://pubmed.ncbi.nlm.nih.gov/38291223/ 及 https://pmc.ncbi.nlm.nih.gov/articles/PMC11335897/ 。313名学生被随机分为每天3次或9次提示、持续一周；情绪清晰度随时间上升，频率组间变化无显著差异，情绪愉悦度没有系统趋势。不能将组内趋势直接识别为测量因果效应。
+C3 [B级，开放正式原刊页面的摘要与参考文献，全文方法PDF未逐页核] King-Kallimanis BL, Oort FJ, Garst GJA (2010), *Using structural equation modelling to detect measurement bias and response shift in longitudinal data*, AStA Advances in Statistical Analysis 94:139–156. DOI:10.1007/s10182-010-0129-y。https://link.springer.com/article/10.1007/s10182-010-0129-y 。三步：确认测量模型、检验跨期参数等值、检查外生变量对指标的直接作用；模型选择与多重比较风险需审计。
 C4 [B级，原刊摘要] Sprangers MAG, Schwartz CE (1999), *Integrating response shift into health-related quality of life research: a theoretical model*, Social Science & Medicine 48(11):1507–1515. DOI:10.1016/S0277-9536(99)00045-3。https://pubmed.ncbi.nlm.nih.gov/10400253/ 。重校准、价值重新排序、构念重定义的理论路径；未通读付费全文。
 C5 [A级，开放原刊直接审读摘要、设计和测量反应性段] Wrzus C, Neubauer AB (2023，在线2022), *Ecological Momentary Assessment: A Meta-Analysis on Designs, Samples, and Compliance Across Research Fields*, Assessment 30(3). DOI:10.1177/10731911211067538。https://journals.sagepub.com/doi/full/10.1177/10731911211067538 。477篇、496样本、总N=677536，平均遵从率79%；475项样本约95.8%未报告测量反应性检验。跨研究汇总不能替代某个个体的因果识别。
 C6 [B级，原始同行评审摘要] Eisele G et al. (2023), *A Mixed-Method Investigation Into Measurement Reactivity to the Experience Sampling Method*, Psychological Assessment 35(1):68–81. DOI:10.1037/pas0001177。https://pubmed.ncbi.nlm.nih.gov/36174163/ 。151人随机分配30/60项目与每天3/6/9次，14天；报告习惯化及部分情绪/自我觉察变化，协议与个体调节效应不一致。全文未通读。
-C7 [A级，开放正式综述摘要与讨论] Stinson L, Liu Y, Dallery J (2022), *Ecological Momentary Assessment: A Systematic Review of Validity Research*, Perspectives on Behavior Science 45:469–493. DOI:10.1007/s40614-022-00339-w。https://pmc.ncbi.nlm.nih.gov/articles/PMC9163273/ 。32项与较客观参照比较的研究，符合率跨研究和指标从1.8%到100%；范围不能当作统一测量误差率。
+C7 [B级，开放正式综述摘要与检索到的讨论片段，未完整通读] Stinson L, Liu Y, Dallery J (2022), *Ecological Momentary Assessment: A Systematic Review of Validity Research*, Perspectives on Behavior Science 45:469–493. DOI:10.1007/s40614-022-00339-w。https://pmc.ncbi.nlm.nih.gov/articles/PMC9163273/ 。32项与较客观参照比较的研究，符合率跨研究和指标从1.8%到100%；范围不能当作统一测量误差率。
 C8 [B级，原刊摘要，开放全文未逐页读] Verdam MGE, Oort FJ, Sprangers MAG (2016), *Using structural equation modeling to detect response shifts and true change in discrete variables*, Quality of Life Research 25:1361–1383. DOI:10.1007/s11136-015-1195-0。https://link.springer.com/article/10.1007/s11136-015-1195-0 。离散指标的潜在连续因子方法，案例485名患者；样本外适用性待验。
-所有检索均来自非中文网站，日期2026-10-30。C1、C3、C5指定范围直接审读，其他标明摘要层级；未获取收费文献。
+所有检索均来自非中文网站，日期2026-10-30。C1、C5指定范围直接审读，C3为出版页摘要及参考文献，其余标明摘要或检索片段层级；未获取收费文献。
 
 ## 二、10项候选方法命题
 
@@ -26,7 +26,7 @@ C007-05 [C5,C7] 完成率、符合率及信度是不同指标。高完成率不�
 C007-06 [方法推断] 漏答可能由情绪低落、工作压力、关系事件、提示负担或设备问题驱动；缺失机制应按MAR/MNAR敏感性情景处理，不能仅插补均值。
 C007-07 [方法推断] 若反应性同时改变真实状态与回答阈值，单一观察序列通常不能将两者拆分，需外部结果或设计上的对照。
 C007-08 [C4] 偏好与价值权重会随重大生活事件、学习和适应变化；不同时间的效用函数不可在未确认标尺时直接相减。
-C007-09 [方法推断] 六个候选人生维度分别需要可观察代理量、测量误差、重测信度、内容效度、缺失标记和不可识别清单。隐私优先，未来设计可用模拟数据验证。
+C007-09 [方法推断] 六个候选人生维度（身体和现实条件、财务资源、精神体验、社会关系、能力成长、环境与自由度）分别需要可观察代理量、测量误差、重测信度、内容效度、缺失标记和不可识别清单。隐私优先，未来设计可用模拟数据验证。
 C007-10 [规范边界] 任何效用加权和风险阈值都包含主体的价值选择；不存在经数据证明的普适唯一最优人生。不可逆选择、他人自主性及隐私不得作为自由实验变量。
 
 ## 三、7项人工与原刊数字审计
@@ -44,5 +44,5 @@ E007-07 [人工偏好反转] 两个候选结果A=(1,0),B=(0,1)，权重从(0.8,0
 个体层：觉察、重校准、缺失与偏好学习；群体层：被观察者之间的社会比较、提示互动及干扰；制度层：调查平台、劳动日程、量表规则和隐私制度；历史层：文化语义、技术平台及长期冲击导致的测量等值变化。四层映射是研究假说，未形成因果确认。
 竞争解释：自我报告趋势可由真实情绪变化、测量反应性、题项阈值漂移、季节趋势、非随机漏答、回忆误差和价值重排共同造成。随机化提示频率、外部参照、锚定题、缺失敏感性和预注册可分别提供部分约束，不能假定任何单一方法解决全部问题。
 候选验证顺序：冻结目标维度及主观价值约束；使用模拟数据测试阈值漂移与MNAR联合界；明确计划/完成提示和原因；设计不侵犯隐私的外部锚定与负对照；检验跨期量表参数等值和模型选择敏感性；独立报告状态变化、反应性、偏好权重变化及不可识别范围；评估风险、可逆性与干扰。真实个人资料、N-of-1实验、产品开发均NOT_RUN。
-证据边界：C1/C3/C5部分原文直接审读；其余摘要与机构出版页。人工算术7项，独立个体因果估计0，E1/E2/E3新增0。D002为2026-W44既有专题，只读未修改。
+证据边界：C1/C5部分原文直接审读；其余摘要、检索片段与机构出版页。人工算术7项，独立个体因果估计0，E1/E2/E3新增0。D002为2026-W44既有专题，只读未修改。
 下一C专题C008：动态偏好的跨时自我比较、锚定情景与可逆决策的稳健多目标排序。
