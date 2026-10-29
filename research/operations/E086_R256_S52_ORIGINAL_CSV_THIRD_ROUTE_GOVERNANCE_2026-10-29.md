@@ -1,0 +1,20 @@
+# E086 R256 S52 原始CSV第三路线精确风险审计与治理检查
+
+日期：2026年10月29日。轨道：operations。状态：INTERNAL_E1_SOURCE_FIRST_PASS_WITH_OPEN_EXTERNAL_VALIDATION。只读检查其他研究轨。
+
+## 冻结与更正链
+本轮起点main 3ac13df3b7d35fb95953ef1355559c026f8f6dec。R256 S52冻结提交d078de426aa6c530419f234bd7c019465675d07b先于正式研究。与后续补充归档d2ecae0ea8d497dfea93c8b0c16a1ca2a38ee191比较为ahead 11、behind 0；比较文件列表未出现冻结协议修改。原科学报告和JSON收据的ORIGINAL_CSV_NOT_FULLY_REREAD状态是历史时点信息，随后补充报告及B轨收据已核验原CSV完整重读。旧source_status字段未同步更新，须与补充记录共同解释。
+
+## 本轮第三路线原始来源审计
+GitHub只读连接器完整读取research/R256/R256_ALL_4608_ORIGINAL_FOUR_SLOT_QUEUE_SOURCE_ATOMS.csv，Git blob 5a52e4d2b4e78ef2b29334300aea68e6d721835d，598348字符，44列，4608行；同时读取正式R256_S52_EXACT_RECEIPT_2026-10-29.json。按原CSV列名直接提取Q1、Q2、Q3及第四格拒收标签，独立按每组事件数k、组大小n计算Brier风险Σk(n−k)/(512n)，以BigInt精确有理数逐项核对45个风险、45个组数、45个混合组数。无需调用R轨源重建或B轨动态规划。
+
+检查包含4608行、18432格库存守恒及容量、9个事件总数、45组风险及元数据、45项信息单调关系、512条报告别名对应。合计60605项程序检查，失败0。此前B轨报告独立计算原CSV SHA256为8be5360465497321c15bffc554c7088fad48bcef71847e43e2ee2f714ed5119b。本轮核对Git blob及全部CSV文本，未独立重算SHA256。新增Node标准库脚本可在完整仓库中执行SHA256及来源级核验；该新增脚本独立Node命令行运行仍待验证。
+
+BALANCED_INDEPENDENT_HALF_HALF的F0=847/16384、F123=21/512；ARRIVAL_FIRST_BALANCED_HALF_HALF的F0=847/16384、F123=7/256；SHARED_DEMAND_ENV_HALF_HALF的F0=39/256、F123=3/32。静态真实空队列别名世界与平衡世界512条报告层来源一致，物理层不同。证据仅支持人工报告目标的精确条件预测。
+
+## 跨轨治理
+R主线最新R256 S52，理论TH120已归档。A轨Nay与Vorobeychik 2016真人整合数据仅核验论文与软件元数据，原始168386行未逐行核验，最长双人场次38轮，R073冻结100轮直接复验资格NO。R256空队列服务位有独立更正提交，风险保持一致。本轮未见冻结协议漂移或E1误升E2/E3，历史全仓仍未逐项审计。
+
+继续OPEN：R170跨语言完整收据；R248的486项跨运行时比较；R251、R252 Python完整收据命令行验证；R253 Node验证；R254和R255原始18432行CSV核验；R256 S52新增Node CLI和CI验证。不能把[skip ci]当作CI通过。新增真人E2=0、历史E3=0、外部团队复现=0。无新增付费、无CI启动、无真实敏感数据。账户账单与免费额度未独立核验。
+
+下一项E087：优先执行R256新增Node CLI完整验证，再处理跨运行时缺口。
