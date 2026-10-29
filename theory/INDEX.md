@@ -593,4 +593,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH130 | CDC双编码公开字典、缺失机制与版本总体 | NCHS 2004原始58页数据字典、2001初步报告、CDC 2026可比率说明；确认2,318,212条、21,290条新版缺失、144变量及关键固定宽度字段；2001与2004总体差异仍待核对 | THEORY_NOTE_BOUNDED | [研究笔记](TH130_CDC_PUBLIC_BRIDGE_FILE_DICTIONARY_MISSINGNESS_VINTAGE_AUDIT_2026-10-29.md) |
 
-下一研究队列：TH131 分层缺失上界、历史编码运输与官方可比率交叉表审计。
+| TH131 | CDC双编码初步与最终比率、分层缺失界及历史运输 | Anderson等2001官方113死因表、CDC 2026最终比率、NCHS 2006伤害机制表、Manski2005、Pearl与Bareinboim2014；八类初步/最终差值、1998至1999肺炎调整与选择性缺失 | THEORY_NOTE_BOUNDED | [研究笔记](TH131_CDC_COMPARABILITY_PRELIM_FINAL_SUBGROUP_MISSINGNESS_TRANSPORT_2026-10-29.md) |
+
+下一研究队列：TH132 官方最终113死因计数与误差表、类别重定义及跨期运输条件审计。
