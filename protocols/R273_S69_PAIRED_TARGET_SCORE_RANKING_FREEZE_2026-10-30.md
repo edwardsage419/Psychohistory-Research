@@ -1,0 +1,17 @@
+# R273 S69 两条独立目标测试记录的配对评分排序：研究前评分冻结
+
+Date: 2026-10-30 Asia/Singapore. Track: r. Source model: R273 original frozen commit 91abafbaf627dbf67f86208a82008a5be419e507. This extension is an internal, NONBLIND E1 design because the investigator already read the original R273 27-world expected risks and source code. This document precedes the new S69 numerical ranking computation, but does not claim fully blinded preregistration.
+
+## Question and unchanged inputs
+
+For each of the 9 ordered (a,b) pairs in {1/4,1/2,3/4} squared, enumerate exactly four independent source Bernoulli(a) training bits and two independent target Bernoulli(b) test bits. Keep the original SOURCE_ORACLE qS=a, SOURCE_LAPLACE qL=(K+1)/6, TARGET_ORACLE qT=b, and original Brier score. No fitting to target test labels. SOURCE_ORACLE and TARGET_ORACLE are inaccessible truth-informed mathematical baselines, not deployable models.
+
+Compare the same two target bits with qS and qL. Freeze the three mutually exclusive empirical outcomes: L_BETTER (paired two-bit Brier lower for Laplace), S_BETTER (lower for source oracle), TIE (equal). Freeze the unconditional exact population expected risks R_L and R_S using the R273 analytical formulas. Define WRONG_RANK only when R_L != R_S and the finite paired score strictly favors the higher-population-risk predictor. Ties are separately reported and never counted as correct or wrong. If population risks tie, WRONG_RANK is N/A. Compute nine exact P(L_BETTER), P(S_BETTER), P(TIE), P(WRONG_RANK), population risk difference R_L-R_S, and paired expected empirical score difference. Record target-oracle expected risk lower bound for reference.
+
+## Frozen computational design and checks
+
+Route R: enumerate each of the 64 ordered six-bit states per (a,b), 576 labelled source states total, and compute integer numerator weights over 4^6=4096. Compare exact two-bit scores by integer numerator using common forecast denominator 12. Route B: independently enumerate K=0..4 and J=0..2 (15 grouped states) with binomial coefficients and calculate the same probabilities without importing R ordered-source code or results. Independently derive population risk difference via b(1-b)+a(1-a)/9+((4a+1)/6-b)^2 versus b(1-b)+(a-b)^2. Require exact equality for nine worlds and sum of ranking probabilities=1. Test a=b case SOURCE_ORACLE population risk strictly lower than Laplace. Require nonnegative WRONG_RANK and no E2/E3 claims. Perform mutation tests on duplicate worlds, missing worlds, modified probability, forged E2, and boolean in numeric count. A negative test failing is a blocker; do not adjust criteria after seeing outcomes.
+
+## Boundaries and stopping
+
+Scope is an artificial paired finite-sample ranking experiment, not a population-shift causal mechanism or human forecasting validation. Existing R273 CLOSED_BOUNDED remains unchanged. New S69 is exploratory, internally nonblind, E1 only. Full native CLI and independently reviewed persisted receipt may remain OPEN if unavailable. Preserve R073 frozen scoring and PESEN v0.1. No paid services or Actions. If any unexpected result appears, archive FAIL and retain frozen definition. Outputs only in new R-track-owned paths under research/validation/, research/evidence_audit/, research/data_scout/, research/coordination/r/.
