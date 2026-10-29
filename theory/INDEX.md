@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH122，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH123，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -204,11 +204,13 @@
 
 | TH122 | 基层行政裁量、案件积压、拥堵溢出与资源分配 | Bettinger等2011作者修订稿全文指定章节；Deshpande与Li 2017/2019版本、Moynihan等2015、Heinrich2016、Brodkin2011等原刊摘要；区分申请协助、办公室拥堵、政治性负担与核验成本 | THEORY_NOTE_BOUNDED | [研究笔记](TH122_STREET_LEVEL_CASELOAD_CONGESTION_SELECTION_2026-10-29.md)；16项条件命题、8项原刊数字及人工审计；无独立实证复算 |
 
+| TH123 | 案件优先级、绩效激励、服务质量替代与竞争风险 | Khan等2014开放原作、Putter等2020开放原刊，Bevan与Hood2006、Freeman等2010、Holmström与Milgrom1991、Cox1972、Fine与Gray1999等原始摘要；绩效与贿赂竞争机制、完成者选择、原因别风险及公平权衡 | THEORY_NOTE_BOUNDED | [研究笔记](TH123_CASE_PRIORITY_PERFORMANCE_QUALITY_COMPETING_RISKS_2026-10-29.md)；16项条件命题、8项原刊数字与人工审计；无独立真实因果估计 |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH123 | 案件优先级、绩效激励、服务质量替代与等待生存分析 | Brodkin2011、Lipsky1969/1980、行政队列与服务质量原作；对照质量、速度和复核误差 | QUEUED_UNVERIFIED |
+| 1 | TH124 | 时间目标堆积、非随机退出、动态公平约束与跨办公室转诊 | Bevan与Hood2006、Putter等2020及公开行政队列原始时间戳；检验截点附近的记录与选择机制 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -575,3 +577,4 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 ## 持续执行规则
 
 每次选择新理论后，记录原始出处、可访问范围、核心命题、竞争解释、适用边界、与四层框架的研究问题、证据缺口、下一主题；使用中文笔记保留原文术语。科学证据与理论整理分离。GitHub 写入需回读核验，未经核验不得标注同步成功。
+| performance targets / multitask incentives / priority queues / competing risks | [TH123 绩效激励与竞争风险](TH123_CASE_PRIORITY_PERFORMANCE_QUALITY_COMPETING_RISKS_2026-10-29.md)；Khan等2014/2015/2016、Putter等2020、Bevan与Hood2006、Freeman等2010、Holmström与Milgrom1991；税收与贿赂、质量替代、撤回与拒绝竞争事件 | 个体、群体、制度、历史、方法论 | 两份开放原作指定章节直接审读，七项原刊摘要/书目及作者最终稿元数据；16项命题、8项人工和原始数字审计；无真实独立因果或预测验证 |
