@@ -591,4 +591,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH129 | 双编码验证样本选择、类别转换矩阵与跨期负对照 | Anderson等2001 CDC官方双编码非随机样本、CDC公开数据目录、Begg与Greenes1983、van der Stegen等2014、Naaktgeboren等2016、Arnold等2016；条件验证、分层运输、公开数据可复算入口及目标特异测量偏差 | THEORY_NOTE_BOUNDED | [研究笔记](TH129_DUAL_CODE_VERIFICATION_SELECTION_TRANSITION_TRANSPORT_NEGATIVE_CONTROLS_2026-10-29.md) |
 
-下一研究队列：TH130 公开双编码文件的原始字节与字段规范核验、分层可运输性及编码员漂移。
+| TH130 | CDC双编码公开字典、缺失机制与版本总体 | NCHS 2004原始58页数据字典、2001初步报告、CDC 2026可比率说明；确认2,318,212条、21,290条新版缺失、144变量及关键固定宽度字段；2001与2004总体差异仍待核对 | THEORY_NOTE_BOUNDED | [研究笔记](TH130_CDC_PUBLIC_BRIDGE_FILE_DICTIONARY_MISSINGNESS_VINTAGE_AUDIT_2026-10-29.md) |
+
+下一研究队列：TH131 分层缺失上界、历史编码运输与官方可比率交叉表审计。
