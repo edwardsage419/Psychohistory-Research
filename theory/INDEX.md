@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH121，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH122，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -202,11 +202,13 @@
 
 | TH121 | 制度合法性、执行差距与政策遵从的动态社会机制 | Mazerolle等2013开放系统综述、Levi等2009、Tankebe2013、Nagin与Telep2017/2020、Wood等2020、Owens等2018、Lipsky1980、Hupe与Hill2007；区分程序公正、威慑、基层裁量、行为结果 | THEORY_NOTE_BOUNDED | [研究笔记](TH121_LEGITIMACY_IMPLEMENTATION_GAP_DYNAMIC_COMPLIANCE_2026-10-29.md)；16项条件命题、8项数学与证据审计；无独立因果或预测验证 |
 
+| TH122 | 基层行政裁量、案件积压、拥堵溢出与资源分配 | Bettinger等2011作者修订稿全文指定章节；Deshpande与Li 2017/2019版本、Moynihan等2015、Heinrich2016、Brodkin2011等原刊摘要；区分申请协助、办公室拥堵、政治性负担与核验成本 | THEORY_NOTE_BOUNDED | [研究笔记](TH122_STREET_LEVEL_CASELOAD_CONGESTION_SELECTION_2026-10-29.md)；16项条件命题、8项原刊数字及人工审计；无独立实证复算 |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH122 | 基层行政裁量、案件积压与执行资源的动态分配 | Lipsky 1980、Hupe与Hill 2007及开放行政执行数据；资源约束、选择性处理与排队机制 | QUEUED_UNVERIFIED |
+| 1 | TH123 | 案件优先级、绩效激励、服务质量替代与等待生存分析 | Brodkin2011、Lipsky1969/1980、行政队列与服务质量原作；对照质量、速度和复核误差 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -567,6 +569,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | institutional version conflicts / retrospective legal effect / administrative clocks / multiple treatment support | [TH120 制度文件版本与多处理政策识别](TH120_INSTITUTIONAL_DOCUMENT_VERSIONS_LEGAL_CLOCKS_MULTITREATMENT_IDENTIFICATION_2026-10-29.md)；Massachusetts c.40 §32与c.40A §5现行原文、Hingham 2021 Article 26、NARA、Crawford与Ostrom1995、de Chaisemartin与D’Haultfœuille2023、Hall1993；合法时钟与行为时钟分离、行政审批和多处理共同支持 | 个体、群体、制度、历史、方法论 | 11项英文原始法规、机构材料与论文来源，16项条件性命题、8项原文及人工审计；2021历史法规与实际执行未核实，真实因果与预测0 |
 
 | legitimacy / procedural justice / deterrence / street-level discretion / compliance | [TH121 合法性与执行差距](TH121_LEGITIMACY_IMPLEMENTATION_GAP_DYNAMIC_COMPLIANCE_2026-10-29.md)；Mazerolle等2013、Levi等2009、Tankebe2013、Nagin与Telep2020、Wood等2020、Owens等2018、Lipsky1980；态度、行为、执法、法律时钟区分 | 个体、群体、制度、历史、方法论 | 一份开放原作重点章节与九项原始摘要或书目；16项条件命题、8项原刊数字与人工审计；无独立实证复算 |
+
+| administrative congestion / application assistance / caseworker discretion / office spillover | [TH122 基层行政拥堵与资源分配](TH122_STREET_LEVEL_CASELOAD_CONGESTION_SELECTION_2026-10-29.md)；Bettinger等2011/2012、Deshpande与Li2017/2019、Moynihan等2015、Heinrich2016、Brodkin2011；申请协助、版本差异、跨办公室拥堵与结果选择 | 个体、群体、制度、历史、方法论 | 一份2011开放原作者稿指定章节直接审读、其余原刊摘要与作者机构档案；16项命题、8项数字和人工审计；真实因果与预测新增0 |
 
 ## 持续执行规则
 
