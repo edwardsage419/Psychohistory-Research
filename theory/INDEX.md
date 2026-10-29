@@ -583,4 +583,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | cross-provider referral network / linked episodes / informative loss / multi-state paths | [TH125 跨机构转诊网络与多状态识别](TH125_TRANSFER_NETWORK_FULL_PATH_INFORMATIVE_LOSS_MULTISTATE_2026-10-29.md)；NHS ECDS 2024、Kim等2021、Kindermann等2015、Putter等2007、Seaman与White2013、Hernán与Robins2006；跨院episode、时钟、链接选择、竞争风险及数据访问门槛 | 个体、群体、制度、历史、方法论 | 四项开放原始机构或原刊指定章节直接审读，五项原始摘要/机构门槛；16项条件命题、8项公开数字及人工审计；发现韩国原刊成人样本和双次转诊分母冲突；无独立因果或预测验证 |
 
-| linkage selection / episode deduplication / network interference / partial identification | [TH126 链接选择、去重与逻辑识别界](TH126_LINKAGE_SELECTION_DEDUP_NETWORK_INTERFERENCE_PARTIAL_IDENTIFICATION_2026-10-29.md)；Harron等2017/2014、Murray2016、Aronow与Samii2017、Manski2005、Lee2009、Frangakis与Rubin2002、Fellegi与Sunter1969；误链接与漏链接、blocking支持集、episode单位、网络暴露及缺失界 | 个体、群体、制度、历史、方法论 | 三份开放原作指定章节直接审读、五份原刊摘要或出版记录；2项发表汇总算术与6项人工反例；真实跨院微观链接与因果估计0 |\n\n下一研究队列：TH127 跨机构链接质量的分层可运输性、历史编码漂移与识别集随时间变化的敏感性。
+| linkage selection / episode deduplication / network interference / partial identification | [TH126 链接选择、去重与逻辑识别界](TH126_LINKAGE_SELECTION_DEDUP_NETWORK_INTERFERENCE_PARTIAL_IDENTIFICATION_2026-10-29.md)；Harron等2017/2014、Murray2016、Aronow与Samii2017、Manski2005、Lee2009、Frangakis与Rubin2002、Fellegi与Sunter1969；误链接与漏链接、blocking支持集、episode单位、网络暴露及缺失界 | 个体、群体、制度、历史、方法论 | 三份开放原作指定章节直接审读、五份原刊摘要或出版记录；2项发表汇总算术与6项人工反例；真实跨院微观链接与因果估计0 |
+
+下一研究队列：TH127 跨机构链接质量的分层可运输性、历史编码漂移与识别集随时间变化的敏感性。
