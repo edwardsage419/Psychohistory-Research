@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH133，C006 今日增量与 D002 本周专题
+更新：2026-10-30（Asia/Singapore）；已收录 TH138，C007 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -607,6 +607,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH137 | 历史词义漂移、跨语言锚定、体裁构成与反证对照 | Hamilton等2016与Dubossarsky等2017相反证据；Fourrier与Montariol2022、Kutuzov等2022、Schlechtweg等2020；16项条件命题、8项原刊算术及人工反例，原始语料重训和真实因果0 | THEORY_NOTE_BOUNDED | [研究笔记](TH137_HISTORICAL_SEMANTIC_DRIFT_CROSS_LANGUAGE_ANCHOR_NEGATIVE_CONTROLS_2026-10-30.md) |
 
+| TH138 | SemEval 2020历史语料目标词条件抽样、人工金标准、跨语差异及部分识别 | Schlechtweg等2020原刊PDF第1至9页、Zenodo官方数据目录、Stuttgart英语语料说明；Dubossarsky等2017反证与Pechenick等2015摘要；16项条件命题、8项原刊数字及人工审计；原始ZIP字节未取得、未复算真实标注 | THEORY_NOTE_BOUNDED | [研究笔记](TH138_SEMEVAL_CORPUS_SELECTION_PARTIAL_IDENTIFICATION_2026-10-30.md) |
+
 C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](../research/decision_methods/C007_MEASUREMENT_REACTIVITY_RESPONSE_SHIFT_MNAR_PREFERENCES_2026-10-30.md)，2026-10-30完成；D002保持只读。
 
-下一研究队列：TH138 历史语料抽样偏差、词义漂移部分识别与公开标注基准文件级核验。C子流程2026-10-30已完成C007，下一C008；D子流程2026-W44已完成D002。
+下一研究队列：TH139 历史词义标签误分类与词表选择的联合敏感性；优先取得可直接核验的小型公开表，SemEval官方ZIP获取仍阻塞。C子流程2026-10-30已完成C007，下一C008；D子流程2026-W44已完成D002。
