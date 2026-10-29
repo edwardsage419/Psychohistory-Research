@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH124，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH125，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -581,4 +581,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | threshold bunching / informative exit / queue fairness / cross-provider referral | [TH124 临界时间堆积与公平排队](TH124_THRESHOLD_BUNCHING_INFORMATIVE_EXIT_FAIR_QUEUE_REFERRALS_2026-10-29.md)；NHS Information Centre 2009、Bertsimas等2011、Bobrovitz等2017、Vezyridis与Timmons2014、Kelman与Friedman2009、Mason等2012；时间定义、机构覆盖、转诊选择与公平约束 | 个体、群体、制度、历史、方法论 | 四份官方或开放原作指定章节直接审读，五项原刊摘要或机构入口；16项条件命题、8项公开汇总与人工审计；发现同篇原刊8.3%与9.2%冲突，原始患者级因果与预测验证0 |
 
-下一研究队列：TH125 跨机构转诊网络的完整等待路径、信息性失访与多状态识别。
+| cross-provider referral network / linked episodes / informative loss / multi-state paths | [TH125 跨机构转诊网络与多状态识别](TH125_TRANSFER_NETWORK_FULL_PATH_INFORMATIVE_LOSS_MULTISTATE_2026-10-29.md)；NHS ECDS 2024、Kim等2021、Kindermann等2015、Putter等2007、Seaman与White2013、Hernán与Robins2006；跨院episode、时钟、链接选择、竞争风险及数据访问门槛 | 个体、群体、制度、历史、方法论 | 四项开放原始机构或原刊指定章节直接审读，五项原始摘要/机构门槛；16项条件命题、8项公开数字及人工审计；发现韩国原刊成人样本和双次转诊分母冲突；无独立因果或预测验证 |
+
+下一研究队列：TH126 跨院链接选择、重复episode去重、转诊网络干扰与缺失结果部分识别。
