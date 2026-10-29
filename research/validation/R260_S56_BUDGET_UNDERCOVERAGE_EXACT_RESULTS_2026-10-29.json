@@ -1,0 +1,2900 @@
+{
+  "research_id": "R260",
+  "supplement": "S56",
+  "source_blob": "7a818b12f7a8e1ca974e16854cb146dcd57874f5",
+  "source_rows": 540,
+  "action_rows": 135,
+  "selection_groups": 54,
+  "summary": {
+    "minimax_cost": {
+      "all_zero": 19,
+      "some_zero": 0,
+      "all_positive": 8
+    },
+    "minimax_regret": {
+      "all_zero": 19,
+      "some_zero": 1,
+      "all_positive": 7
+    }
+  },
+  "groups": [
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 1,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 2,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 3,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 12,
+          "regret_U2": 9,
+          "excess_worst_U2": 9,
+          "excess_regret_U2": 6,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 9,
+      "own_excess_max": 9,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 12,
+          "regret_U2": 9,
+          "excess_worst_U2": 9,
+          "excess_regret_U2": 6,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 6,
+      "own_excess_max": 6,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 12,
+          "regret_U2": 9,
+          "excess_worst_U2": 9,
+          "excess_regret_U2": 6,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 9,
+      "own_excess_max": 9,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 12,
+          "regret_U2": 9,
+          "excess_worst_U2": 9,
+          "excess_regret_U2": 6,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 6,
+      "own_excess_max": 6,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 3,
+      "winners": [
+        "C"
+      ],
+      "members": [
+        {
+          "action": "C",
+          "worst_U2": 3,
+          "regret_U2": 3,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 3,
+      "winners": [
+        "B",
+        "C"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 4,
+          "regret_U2": 3,
+          "excess_worst_U2": 1,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 12
+        },
+        {
+          "action": "C",
+          "worst_U2": 3,
+          "regret_U2": 3,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 2
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 8,
+          "regret_U2": 4,
+          "excess_worst_U2": 4,
+          "excess_regret_U2": 2,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 4,
+      "own_excess_max": 4,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 8,
+          "regret_U2": 4,
+          "excess_worst_U2": 4,
+          "excess_regret_U2": 2,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 2,
+      "own_excess_max": 2,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 8,
+          "regret_U2": 4,
+          "excess_worst_U2": 4,
+          "excess_regret_U2": 2,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 4,
+      "own_excess_max": 4,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 8,
+          "regret_U2": 4,
+          "excess_worst_U2": 4,
+          "excess_regret_U2": 2,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 2,
+      "own_excess_max": 2,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 4,
+      "winners": [
+        "C"
+      ],
+      "members": [
+        {
+          "action": "C",
+          "worst_U2": 4,
+          "regret_U2": 4,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 2,
+          "fair_mean_num_over4": 16
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 2,
+      "winners": [
+        "B"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 5,
+          "regret_U2": 2,
+          "excess_worst_U2": 1,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 11
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 2,
+      "winners": [
+        "B"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 2,
+          "regret_U2": 2,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "B"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 2,
+          "regret_U2": 2,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 2,
+      "winners": [
+        "B"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 2,
+          "regret_U2": 2,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 2,
+      "winners": [
+        "A",
+        "B",
+        "C"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 4,
+          "regret_U2": 2,
+          "excess_worst_U2": 2,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        },
+        {
+          "action": "B",
+          "worst_U2": 2,
+          "regret_U2": 2,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        },
+        {
+          "action": "C",
+          "worst_U2": 3,
+          "regret_U2": 3,
+          "excess_worst_U2": 1,
+          "excess_regret_U2": 1,
+          "fair_mean_num_over4": 9
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 1,
+      "own_zero_winners": 2
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 2,
+      "winners": [
+        "B"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 2,
+          "regret_U2": 2,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 2,
+      "winners": [
+        "A",
+        "B"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 4,
+          "regret_U2": 2,
+          "excess_worst_U2": 2,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        },
+        {
+          "action": "B",
+          "worst_U2": 2,
+          "regret_U2": 2,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 2
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 10,
+          "regret_U2": 7,
+          "excess_worst_U2": 7,
+          "excess_regret_U2": 4,
+          "fair_mean_num_over4": 10
+        }
+      ],
+      "own_excess_min": 7,
+      "own_excess_max": 7,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 10,
+          "regret_U2": 7,
+          "excess_worst_U2": 7,
+          "excess_regret_U2": 4,
+          "fair_mean_num_over4": 10
+        }
+      ],
+      "own_excess_min": 4,
+      "own_excess_max": 4,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 10,
+          "regret_U2": 7,
+          "excess_worst_U2": 7,
+          "excess_regret_U2": 4,
+          "fair_mean_num_over4": 10
+        }
+      ],
+      "own_excess_min": 7,
+      "own_excess_max": 7,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 10,
+          "regret_U2": 7,
+          "excess_worst_U2": 7,
+          "excess_regret_U2": 4,
+          "fair_mean_num_over4": 10
+        }
+      ],
+      "own_excess_min": 4,
+      "own_excess_max": 4,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 3,
+      "winners": [
+        "C"
+      ],
+      "members": [
+        {
+          "action": "C",
+          "worst_U2": 3,
+          "regret_U2": 3,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 3,
+      "winners": [
+        "C"
+      ],
+      "members": [
+        {
+          "action": "C",
+          "worst_U2": 3,
+          "regret_U2": 3,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 2,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 3,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 3,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 0,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 0
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 0,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 0
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 0,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 0
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 0,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 0
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 0,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 0
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 0,
+          "regret_U2": 0,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 0
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 2,
+          "regret_U2": 1,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 2,
+          "regret_U2": 1,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 1,
+      "winners": [
+        "B"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 3,
+          "regret_U2": 1,
+          "excess_worst_U2": 1,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 1,
+      "own_excess_max": 1,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 1,
+      "winners": [
+        "A",
+        "B"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 2,
+          "regret_U2": 1,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        },
+        {
+          "action": "B",
+          "worst_U2": 3,
+          "regret_U2": 1,
+          "excess_worst_U2": 1,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 2
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 2,
+      "winners": [
+        "A",
+        "C"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 2,
+          "regret_U2": 1,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        },
+        {
+          "action": "C",
+          "worst_U2": 2,
+          "regret_U2": 2,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 1,
+          "fair_mean_num_over4": 8
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 2
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 1,
+      "winners": [
+        "A",
+        "B"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 2,
+          "regret_U2": 1,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        },
+        {
+          "action": "B",
+          "worst_U2": 3,
+          "regret_U2": 1,
+          "excess_worst_U2": 1,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 6
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 2
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "training_budget": 0,
+      "objective": "minimax_cost",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 6,
+          "regret_U2": 4,
+          "excess_worst_U2": 3,
+          "excess_regret_U2": 2,
+          "fair_mean_num_over4": 18
+        }
+      ],
+      "own_excess_min": 3,
+      "own_excess_max": 3,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "training_budget": 0,
+      "objective": "minimax_regret",
+      "training_optimum": 0,
+      "winners": [
+        "A"
+      ],
+      "members": [
+        {
+          "action": "A",
+          "worst_U2": 6,
+          "regret_U2": 4,
+          "excess_worst_U2": 3,
+          "excess_regret_U2": 2,
+          "fair_mean_num_over4": 18
+        }
+      ],
+      "own_excess_min": 2,
+      "own_excess_max": 2,
+      "own_zero_winners": 0
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "training_budget": 1,
+      "objective": "minimax_cost",
+      "training_optimum": 3,
+      "winners": [
+        "C"
+      ],
+      "members": [
+        {
+          "action": "C",
+          "worst_U2": 3,
+          "regret_U2": 3,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 1,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "training_budget": 1,
+      "objective": "minimax_regret",
+      "training_optimum": 2,
+      "winners": [
+        "B"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 4,
+          "regret_U2": 2,
+          "excess_worst_U2": 1,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "training_budget": 2,
+      "objective": "minimax_cost",
+      "training_optimum": 3,
+      "winners": [
+        "C"
+      ],
+      "members": [
+        {
+          "action": "C",
+          "worst_U2": 3,
+          "regret_U2": 3,
+          "excess_worst_U2": 0,
+          "excess_regret_U2": 1,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "training_budget": 2,
+      "objective": "minimax_regret",
+      "training_optimum": 2,
+      "winners": [
+        "B"
+      ],
+      "members": [
+        {
+          "action": "B",
+          "worst_U2": 4,
+          "regret_U2": 2,
+          "excess_worst_U2": 1,
+          "excess_regret_U2": 0,
+          "fair_mean_num_over4": 12
+        }
+      ],
+      "own_excess_min": 0,
+      "own_excess_max": 0,
+      "own_zero_winners": 1
+    }
+  ],
+  "actions": [
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 1,
+      "training_regret": 0,
+      "worst_U2": 3,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 1,
+      "worst_U2": 4,
+      "regret_U2": 1,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 3,
+      "worst_U2": 6,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 5,
+      "training_regret": 4,
+      "worst_U2": 7,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 2,
+      "training_regret": 0,
+      "worst_U2": 3,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 3,
+      "training_regret": 1,
+      "worst_U2": 4,
+      "regret_U2": 1,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 4,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 3,
+      "worst_U2": 6,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 4,
+      "worst_U2": 7,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 3,
+      "training_regret": 0,
+      "worst_U2": 3,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 4,
+      "training_regret": 1,
+      "worst_U2": 4,
+      "regret_U2": 1,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 5,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 6,
+      "training_regret": 3,
+      "worst_U2": 6,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "ALIGNED_DOMINANCE",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 7,
+      "training_regret": 4,
+      "worst_U2": 7,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 12,
+      "regret_U2": 9,
+      "excess_worst_U2": 9,
+      "excess_regret_U2": 6,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 4,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 12,
+      "regret_U2": 9,
+      "excess_worst_U2": 9,
+      "excess_regret_U2": 6,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 4,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 12,
+      "training_regret": 9,
+      "worst_U2": 12,
+      "regret_U2": 9,
+      "excess_worst_U2": 9,
+      "excess_regret_U2": 6,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 4,
+      "training_regret": 3,
+      "worst_U2": 4,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HIDDEN_JOINT_TAIL",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 8,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 11
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 6,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 8,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 11
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 6,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 8,
+      "training_regret": 4,
+      "worst_U2": 8,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 5,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 11
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "REGRET_VS_WORST",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 6,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 4,
+      "training_regret": 2,
+      "worst_U2": 4,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 0,
+      "worst_U2": 2,
+      "regret_U2": 2,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 1,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 9
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 3,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 10
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 4,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 4,
+      "training_regret": 2,
+      "worst_U2": 4,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 2,
+      "regret_U2": 2,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 2,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 9
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 3,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 10
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 6,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 4,
+      "training_regret": 2,
+      "worst_U2": 4,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 2,
+      "regret_U2": 2,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 9
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 10
+    },
+    {
+      "world": "NONMONOTONE_SHOCK_COST",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 6,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 10,
+      "regret_U2": 7,
+      "excess_worst_U2": 7,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 10
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 1,
+      "training_regret": 1,
+      "worst_U2": 5,
+      "regret_U2": 4,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 14
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 6,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 10,
+      "regret_U2": 7,
+      "excess_worst_U2": 7,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 10
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 5,
+      "regret_U2": 4,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 14
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 6,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 10,
+      "training_regret": 7,
+      "worst_U2": 10,
+      "regret_U2": 7,
+      "excess_worst_U2": 7,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 10
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 5,
+      "training_regret": 4,
+      "worst_U2": 5,
+      "regret_U2": 4,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 14
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "TWO_SHOCK_INTERACTION",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 6,
+      "training_regret": 6,
+      "worst_U2": 6,
+      "regret_U2": 6,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 24
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 3,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 14
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 6,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 18
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 7,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 22
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 8,
+      "regret_U2": 5,
+      "excess_worst_U2": 5,
+      "excess_regret_U2": 5,
+      "fair_mean_num_over4": 26
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 2,
+      "training_regret": 0,
+      "worst_U2": 3,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 4,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 14
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 5,
+      "training_regret": 3,
+      "worst_U2": 6,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 18
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 6,
+      "training_regret": 4,
+      "worst_U2": 7,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 22
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 7,
+      "training_regret": 5,
+      "worst_U2": 8,
+      "regret_U2": 5,
+      "excess_worst_U2": 5,
+      "excess_regret_U2": 5,
+      "fair_mean_num_over4": 26
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 3,
+      "training_regret": 0,
+      "worst_U2": 3,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 5,
+      "training_regret": 2,
+      "worst_U2": 5,
+      "regret_U2": 2,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 14
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 6,
+      "training_regret": 3,
+      "worst_U2": 6,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 18
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 7,
+      "training_regret": 4,
+      "worst_U2": 7,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 22
+    },
+    {
+      "world": "ADDITIVE_COMMON_SHOCK",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 8,
+      "training_regret": 5,
+      "worst_U2": 8,
+      "regret_U2": 5,
+      "excess_worst_U2": 5,
+      "excess_regret_U2": 5,
+      "fair_mean_num_over4": 26
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 0,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 0
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 5,
+      "excess_regret_U2": 5,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 0,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 0
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 5,
+      "excess_regret_U2": 5,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 0,
+      "regret_U2": 0,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 0
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 4,
+      "excess_regret_U2": 4,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HIDDEN_TAIL_ALIAS",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 5,
+      "training_regret": 5,
+      "worst_U2": 5,
+      "regret_U2": 5,
+      "excess_worst_U2": 5,
+      "excess_regret_U2": 5,
+      "fair_mean_num_over4": 20
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 2,
+      "regret_U2": 1,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 1,
+      "training_regret": 1,
+      "worst_U2": 3,
+      "regret_U2": 1,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 2,
+      "regret_U2": 2,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 2,
+      "training_regret": 1,
+      "worst_U2": 2,
+      "regret_U2": 1,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 1,
+      "training_regret": 1,
+      "worst_U2": 3,
+      "regret_U2": 1,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 2,
+      "regret_U2": 2,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 2,
+      "training_regret": 1,
+      "worst_U2": 2,
+      "regret_U2": 1,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 3,
+      "training_regret": 1,
+      "worst_U2": 3,
+      "regret_U2": 1,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 6
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 2,
+      "regret_U2": 2,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 8
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "TIED_WORST_CASE",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 3,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 0,
+      "action": "A",
+      "training_worst": 0,
+      "training_regret": 0,
+      "worst_U2": 6,
+      "regret_U2": 4,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 18
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 0,
+      "action": "B",
+      "training_worst": 2,
+      "training_regret": 2,
+      "worst_U2": 4,
+      "regret_U2": 2,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 0,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 0,
+      "action": "D",
+      "training_worst": 1,
+      "training_regret": 1,
+      "worst_U2": 5,
+      "regret_U2": 3,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 0,
+      "action": "E",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 1,
+      "action": "A",
+      "training_worst": 6,
+      "training_regret": 4,
+      "worst_U2": 6,
+      "regret_U2": 4,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 18
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 1,
+      "action": "B",
+      "training_worst": 4,
+      "training_regret": 2,
+      "worst_U2": 4,
+      "regret_U2": 2,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 1,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 1,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 3,
+      "worst_U2": 5,
+      "regret_U2": 3,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 1,
+      "action": "E",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 2,
+      "action": "A",
+      "training_worst": 6,
+      "training_regret": 4,
+      "worst_U2": 6,
+      "regret_U2": 4,
+      "excess_worst_U2": 3,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 18
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 2,
+      "action": "B",
+      "training_worst": 4,
+      "training_regret": 2,
+      "worst_U2": 4,
+      "regret_U2": 2,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 0,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 2,
+      "action": "C",
+      "training_worst": 3,
+      "training_regret": 3,
+      "worst_U2": 3,
+      "regret_U2": 3,
+      "excess_worst_U2": 0,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 12
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 2,
+      "action": "D",
+      "training_worst": 5,
+      "training_regret": 3,
+      "worst_U2": 5,
+      "regret_U2": 3,
+      "excess_worst_U2": 2,
+      "excess_regret_U2": 1,
+      "fair_mean_num_over4": 16
+    },
+    {
+      "world": "HEDGE_VS_NOMINAL",
+      "budget": 2,
+      "action": "E",
+      "training_worst": 4,
+      "training_regret": 4,
+      "worst_U2": 4,
+      "regret_U2": 4,
+      "excess_worst_U2": 1,
+      "excess_regret_U2": 2,
+      "fair_mean_num_over4": 16
+    }
+  ],
+  "evidence": "E1_SYNTHETIC_INTERNAL",
+  "new_human_E2": 0,
+  "new_historical_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
