@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH119，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH120，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -561,6 +561,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | outcome-specific placebo / LiMWA / SFHA / announcement clocks / spatial selection | [TH118 零变化安慰剂与事件时钟](TH118_HISTORIC_FIRM_ZERO_CHANGE_PLACEBO_ANNOUNCEMENT_EFFECTIVE_SPATIAL_SELECTION_2026-10-29.md)；FEMA 2018、2021、2022原始LOMR文件，Hingham行政记录，Roth2022、Lipsitch等2010；SFHA不变不保证房价无效应，跨镇溢出及成交选择需审计 | 个体、群体、制度、历史、方法论 | 10项英文原始来源或机构资料，16项命题、8项日期及人工审计；无地块空间验证或独立因果估计 |
 
 | LiMWA / SFHA / historical code vintage / joint treatments / archival contradiction | [TH119 结果特异安慰剂与地方条例共同冲击](TH119_LIMWA_SFHA_OUTCOME_SPECIFIC_PLACEBO_COASTAL_BUILDING_CODES_LOCAL_BYLAW_2026-10-29.md)；Hingham 2021正式投票Article 26、FEMA LiMWA官方材料、Massachusetts 780 CMR第九版元数据、de Chaisemartin与D'Haultfœuille2023；地图信息、州建筑标准、地方许可、风险信念和文书版本冲突 | 个体、群体、制度、历史、方法论 | 正式投票PDF及地方机构网页直接审读，部分官方PDF仅检索段落；8项审计；历史R322逐条适用性与真实因果未识别 |
+
+| institutional version conflicts / retrospective legal effect / administrative clocks / multiple treatment support | [TH120 制度文件版本与多处理政策识别](TH120_INSTITUTIONAL_DOCUMENT_VERSIONS_LEGAL_CLOCKS_MULTITREATMENT_IDENTIFICATION_2026-10-29.md)；Massachusetts c.40 §32与c.40A §5现行原文、Hingham 2021 Article 26、NARA、Crawford与Ostrom1995、de Chaisemartin与D’Haultfœuille2023、Hall1993；合法时钟与行为时钟分离、行政审批和多处理共同支持 | 个体、群体、制度、历史、方法论 | 11项英文原始法规、机构材料与论文来源，16项条件性命题、8项原文及人工审计；2021历史法规与实际执行未核实，真实因果与预测0 |
 
 ## 持续执行规则
 
