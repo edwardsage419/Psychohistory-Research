@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH123，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH124，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -578,3 +578,7 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 每次选择新理论后，记录原始出处、可访问范围、核心命题、竞争解释、适用边界、与四层框架的研究问题、证据缺口、下一主题；使用中文笔记保留原文术语。科学证据与理论整理分离。GitHub 写入需回读核验，未经核验不得标注同步成功。
 | performance targets / multitask incentives / priority queues / competing risks | [TH123 绩效激励与竞争风险](TH123_CASE_PRIORITY_PERFORMANCE_QUALITY_COMPETING_RISKS_2026-10-29.md)；Khan等2014/2015/2016、Putter等2020、Bevan与Hood2006、Freeman等2010、Holmström与Milgrom1991；税收与贿赂、质量替代、撤回与拒绝竞争事件 | 个体、群体、制度、历史、方法论 | 两份开放原作指定章节直接审读，七项原刊摘要/书目及作者最终稿元数据；16项命题、8项人工和原始数字审计；无真实独立因果或预测验证 |
+
+| threshold bunching / informative exit / queue fairness / cross-provider referral | [TH124 临界时间堆积与公平排队](TH124_THRESHOLD_BUNCHING_INFORMATIVE_EXIT_FAIR_QUEUE_REFERRALS_2026-10-29.md)；NHS Information Centre 2009、Bertsimas等2011、Bobrovitz等2017、Vezyridis与Timmons2014、Kelman与Friedman2009、Mason等2012；时间定义、机构覆盖、转诊选择与公平约束 | 个体、群体、制度、历史、方法论 | 四份官方或开放原作指定章节直接审读，五项原刊摘要或机构入口；16项条件命题、8项公开汇总与人工审计；发现同篇原刊8.3%与9.2%冲突，原始患者级因果与预测验证0 |
+
+下一研究队列：TH125 跨机构转诊网络的完整等待路径、信息性失访与多状态识别。
