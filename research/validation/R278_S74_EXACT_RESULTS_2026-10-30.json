@@ -1,0 +1,220 @@
+{
+  "research": "R278_S74",
+  "evidence": "E1_ARTIFICIAL_NONBLIND_EXPLORATORY",
+  "original_freeze": "eb1c8df38349c36ed10d7a2103969818b14d7500",
+  "S74_freeze_commit": "56b00cf6d016242e4d35c800c9b4a3162d01ea1e",
+  "true_p_values": [
+    "1/4",
+    "1/2",
+    "3/4"
+  ],
+  "policies": [
+    "BMA_JOINT",
+    "BMA_PRODUCT",
+    "HARD_SELECT",
+    "FIXED_HALF",
+    "TRUTH_ORACLE"
+  ],
+  "primitive_rows": 960,
+  "independent_true_bit_sources_per_p": 64,
+  "same_source_reused_across_policies": true,
+  "score": "joint_four_category_quadratic_Brier",
+  "world_results": [
+    {
+      "true_p": "1/4",
+      "policy": "BMA_JOINT",
+      "expected_joint_brier": "8643/13120"
+    },
+    {
+      "true_p": "1/4",
+      "policy": "BMA_PRODUCT",
+      "expected_joint_brier": "22848069/34460500"
+    },
+    {
+      "true_p": "1/4",
+      "policy": "HARD_SELECT",
+      "expected_joint_brier": "325/512"
+    },
+    {
+      "true_p": "1/4",
+      "policy": "FIXED_HALF",
+      "expected_joint_brier": "3/4"
+    },
+    {
+      "true_p": "1/4",
+      "policy": "TRUTH_ORACLE",
+      "expected_joint_brier": "39/64"
+    },
+    {
+      "true_p": "1/2",
+      "policy": "BMA_JOINT",
+      "expected_joint_brier": "2206809/2689600"
+    },
+    {
+      "true_p": "1/2",
+      "policy": "BMA_PRODUCT",
+      "expected_joint_brier": "5721046563/7064402500"
+    },
+    {
+      "true_p": "1/2",
+      "policy": "HARD_SELECT",
+      "expected_joint_brier": "57/64"
+    },
+    {
+      "true_p": "1/2",
+      "policy": "FIXED_HALF",
+      "expected_joint_brier": "3/4"
+    },
+    {
+      "true_p": "1/2",
+      "policy": "TRUTH_ORACLE",
+      "expected_joint_brier": "3/4"
+    },
+    {
+      "true_p": "3/4",
+      "policy": "BMA_JOINT",
+      "expected_joint_brier": "8643/13120"
+    },
+    {
+      "true_p": "3/4",
+      "policy": "BMA_PRODUCT",
+      "expected_joint_brier": "22848069/34460500"
+    },
+    {
+      "true_p": "3/4",
+      "policy": "HARD_SELECT",
+      "expected_joint_brier": "379/512"
+    },
+    {
+      "true_p": "3/4",
+      "policy": "FIXED_HALF",
+      "expected_joint_brier": "3/4"
+    },
+    {
+      "true_p": "3/4",
+      "policy": "TRUTH_ORACLE",
+      "expected_joint_brier": "39/64"
+    }
+  ],
+  "BMA_joint_minus_product": [
+    {
+      "true_p": "1/4",
+      "delta": "-2347029/551368000"
+    },
+    {
+      "true_p": "1/2",
+      "delta": "1204403217/113030440000"
+    },
+    {
+      "true_p": "3/4",
+      "delta": "-2347029/551368000"
+    }
+  ],
+  "conditional_forecasts": [
+    {
+      "train_successes": 0,
+      "posterior_low": "81/82",
+      "marginal_q": "21/82",
+      "joint_Q": {
+        "10": "3/16",
+        "11": "45/656",
+        "00": "365/656",
+        "01": "3/16"
+      },
+      "product_Q": {
+        "10": "1281/6724",
+        "11": "441/6724",
+        "00": "3721/6724",
+        "01": "1281/6724"
+      },
+      "joint_predictive_covariance": "81/26896"
+    },
+    {
+      "train_successes": 1,
+      "posterior_low": "9/10",
+      "marginal_q": "3/10",
+      "joint_Q": {
+        "10": "3/16",
+        "11": "9/80",
+        "00": "41/80",
+        "01": "3/16"
+      },
+      "product_Q": {
+        "10": "21/100",
+        "11": "9/100",
+        "00": "49/100",
+        "01": "21/100"
+      },
+      "joint_predictive_covariance": "9/400"
+    },
+    {
+      "train_successes": 2,
+      "posterior_low": "1/2",
+      "marginal_q": "1/2",
+      "joint_Q": {
+        "10": "3/16",
+        "11": "5/16",
+        "00": "5/16",
+        "01": "3/16"
+      },
+      "product_Q": {
+        "10": "1/4",
+        "11": "1/4",
+        "00": "1/4",
+        "01": "1/4"
+      },
+      "joint_predictive_covariance": "1/16"
+    },
+    {
+      "train_successes": 3,
+      "posterior_low": "1/10",
+      "marginal_q": "7/10",
+      "joint_Q": {
+        "10": "3/16",
+        "11": "41/80",
+        "00": "9/80",
+        "01": "3/16"
+      },
+      "product_Q": {
+        "10": "21/100",
+        "11": "49/100",
+        "00": "9/100",
+        "01": "21/100"
+      },
+      "joint_predictive_covariance": "9/400"
+    },
+    {
+      "train_successes": 4,
+      "posterior_low": "1/82",
+      "marginal_q": "61/82",
+      "joint_Q": {
+        "10": "3/16",
+        "11": "365/656",
+        "00": "45/656",
+        "01": "3/16"
+      },
+      "product_Q": {
+        "10": "1281/6724",
+        "11": "3721/6724",
+        "00": "441/6724",
+        "01": "1281/6724"
+      },
+      "joint_predictive_covariance": "81/26896"
+    }
+  ],
+  "two_exact_routes_equal": true,
+  "original_R278_marginal_risk_unchanged": true,
+  "mutation_cases_rejected": [
+    "missing_source",
+    "duplicate_source",
+    "posterior_tamper",
+    "future_label_tamper",
+    "joint_probability_tamper",
+    "missing_joint_class"
+  ],
+  "new_E2_predictions": 0,
+  "new_E3_predictions": 0,
+  "external_team_replication": false,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
