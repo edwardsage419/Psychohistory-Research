@@ -601,4 +601,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH134 | Wisconsin 1998/1999人口分母版本、ICD编码桥接、年龄标准化与运输临界值 | Census 2002原始州人口表、Wisconsin DHS原始败血症计数、Anderson等2001初步双编码、CDC 2004 bridged-race方法、CDC 2026年龄标准化、FRED WIPOP；16项条件命题、9项公开汇总与人工审计；年龄分层真实死亡数与最终XLS未取得 | THEORY_NOTE_BOUNDED | [研究笔记](TH134_WISCONSIN_POPULATION_EXPOSURE_VINTAGE_AGE_STANDARDIZATION_TRANSPORT_2026-10-29.md) |
 
-下一研究队列：TH135 Wisconsin年龄分层死亡数据与匹配人口版本核查；如仍受阻，转向跨历史测量等值理论。
+| TH135 | Wisconsin 1998/1999败血症联邦分龄表与州表来源差异 | NCHS 1998/1999原始GMWKIII页图、Wisconsin DHS州表、Census 2002分母、Anderson等2001；原表314/382对州表317/376；同桥接规则下粗率方向依赖计数来源，真实年龄分母和来源差异原因仍待核实 | THEORY_NOTE_BOUNDED | [研究笔记](TH135_WISCONSIN_AGE_STRATIFIED_SOURCE_DISCREPANCY_2026-10-30.md) |
+
+C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](../research/decision_methods/C007_MEASUREMENT_REACTIVITY_RESPONSE_SHIFT_MNAR_PREFERENCES_2026-10-30.md)，2026-10-30完成；D002保持只读。
+
+下一研究队列：TH136 跨历史制度与心理测量等值、潜变量标尺与锚定方法。C子流程2026-10-30已完成C007，下一C008；D子流程2026-W44已完成D002。
