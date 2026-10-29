@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH128，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH132，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -595,4 +595,6 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH131 | CDC双编码初步与最终比率、分层缺失界及历史运输 | Anderson等2001官方113死因表、CDC 2026最终比率、NCHS 2006伤害机制表、Manski2005、Pearl与Bareinboim2014；八类初步/最终差值、1998至1999肺炎调整与选择性缺失 | THEORY_NOTE_BOUNDED | [研究笔记](TH131_CDC_COMPARABILITY_PRELIM_FINAL_SUBGROUP_MISSINGNESS_TRANSPORT_2026-10-29.md) |
 
-下一研究队列：TH132 官方最终113死因计数与误差表、类别重定义及跨期运输条件审计。
+| TH132 | 官方113类桥接比率的州级运输、舍入、置信区间公式与版本边界 | Wisconsin DHS州级1998/1999表、Anderson等2001 NCHS原刊、CDC2026最终精选比率、NCHS2001会议抽样计划、2004 XLS目录；16项条件命题、8项公开汇总及人工审计；最终113类原始XLS仍未取得 | THEORY_NOTE_BOUNDED | [研究笔记](TH132_STATE_BRIDGE_ROUNDING_UNCERTAINTY_113_CAUSE_VINTAGE_2026-10-29.md) |
+
+下一研究队列：TH133 州级比率运输、舍入及区间不确定性联合敏感性，若最终XLS可得则优先逐行复核。
