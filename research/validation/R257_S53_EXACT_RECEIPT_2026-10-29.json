@@ -1,0 +1,541 @@
+{
+  "research_id": "R257_S53",
+  "evidence": "E1",
+  "capacity_evaluations": 40,
+  "one_sided_secants": 32,
+  "baseline_lambdas": 8,
+  "assertions_passed": 127,
+  "nonconvex_negative_control": "KKT_stationary_0_vs_feasible_-1/4",
+  "worlds": [
+    {
+      "world": "INTERIOR_OFF_GRID",
+      "baseline_capacity": "1",
+      "baseline_minimum": "0",
+      "baseline_lambda": "0",
+      "local_derivative": "0",
+      "perturbations": [
+        {
+          "delta": "-1/4",
+          "capacity": "3/4",
+          "minimum": "1/800",
+          "point": [
+            "23/40",
+            "7/40"
+          ]
+        },
+        {
+          "delta": "-1/16",
+          "capacity": "15/16",
+          "minimum": "0",
+          "point": [
+            "3/5",
+            "1/5"
+          ]
+        },
+        {
+          "delta": "0",
+          "capacity": "1",
+          "minimum": "0",
+          "point": [
+            "3/5",
+            "1/5"
+          ]
+        },
+        {
+          "delta": "1/16",
+          "capacity": "17/16",
+          "minimum": "0",
+          "point": [
+            "3/5",
+            "1/5"
+          ]
+        },
+        {
+          "delta": "1/4",
+          "capacity": "5/4",
+          "minimum": "0",
+          "point": [
+            "3/5",
+            "1/5"
+          ]
+        }
+      ],
+      "secants": [
+        {
+          "step": "1/4",
+          "left_secant": "-1/200",
+          "right_secant": "0"
+        },
+        {
+          "step": "1/16",
+          "left_secant": "0",
+          "right_secant": "0"
+        }
+      ]
+    },
+    {
+      "world": "BINDING_SUM_BOTH",
+      "baseline_capacity": "1",
+      "baseline_minimum": "1/8",
+      "baseline_lambda": "1/2",
+      "local_derivative": "-1/2",
+      "perturbations": [
+        {
+          "delta": "-1/4",
+          "capacity": "3/4",
+          "minimum": "9/32",
+          "point": [
+            "3/8",
+            "3/8"
+          ]
+        },
+        {
+          "delta": "-1/16",
+          "capacity": "15/16",
+          "minimum": "81/512",
+          "point": [
+            "15/32",
+            "15/32"
+          ]
+        },
+        {
+          "delta": "0",
+          "capacity": "1",
+          "minimum": "1/8",
+          "point": [
+            "1/2",
+            "1/2"
+          ]
+        },
+        {
+          "delta": "1/16",
+          "capacity": "17/16",
+          "minimum": "49/512",
+          "point": [
+            "17/32",
+            "17/32"
+          ]
+        },
+        {
+          "delta": "1/4",
+          "capacity": "5/4",
+          "minimum": "1/32",
+          "point": [
+            "5/8",
+            "5/8"
+          ]
+        }
+      ],
+      "secants": [
+        {
+          "step": "1/4",
+          "left_secant": "-5/8",
+          "right_secant": "-3/8"
+        },
+        {
+          "step": "1/16",
+          "left_secant": "-17/32",
+          "right_secant": "-15/32"
+        }
+      ]
+    },
+    {
+      "world": "LOWER_X_ACTIVE",
+      "baseline_capacity": "1",
+      "baseline_minimum": "1/4",
+      "baseline_lambda": "0",
+      "local_derivative": "0",
+      "perturbations": [
+        {
+          "delta": "-1/4",
+          "capacity": "3/4",
+          "minimum": "1/4",
+          "point": [
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "delta": "-1/16",
+          "capacity": "15/16",
+          "minimum": "1/4",
+          "point": [
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "delta": "0",
+          "capacity": "1",
+          "minimum": "1/4",
+          "point": [
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "delta": "1/16",
+          "capacity": "17/16",
+          "minimum": "1/4",
+          "point": [
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "delta": "1/4",
+          "capacity": "5/4",
+          "minimum": "1/4",
+          "point": [
+            "0",
+            "1/2"
+          ]
+        }
+      ],
+      "secants": [
+        {
+          "step": "1/4",
+          "left_secant": "0",
+          "right_secant": "0"
+        },
+        {
+          "step": "1/16",
+          "left_secant": "0",
+          "right_secant": "0"
+        }
+      ]
+    },
+    {
+      "world": "LOWER_Y_ACTIVE",
+      "baseline_capacity": "1",
+      "baseline_minimum": "1/4",
+      "baseline_lambda": "0",
+      "local_derivative": "0",
+      "perturbations": [
+        {
+          "delta": "-1/4",
+          "capacity": "3/4",
+          "minimum": "1/4",
+          "point": [
+            "1/2",
+            "0"
+          ]
+        },
+        {
+          "delta": "-1/16",
+          "capacity": "15/16",
+          "minimum": "1/4",
+          "point": [
+            "1/2",
+            "0"
+          ]
+        },
+        {
+          "delta": "0",
+          "capacity": "1",
+          "minimum": "1/4",
+          "point": [
+            "1/2",
+            "0"
+          ]
+        },
+        {
+          "delta": "1/16",
+          "capacity": "17/16",
+          "minimum": "1/4",
+          "point": [
+            "1/2",
+            "0"
+          ]
+        },
+        {
+          "delta": "1/4",
+          "capacity": "5/4",
+          "minimum": "1/4",
+          "point": [
+            "1/2",
+            "0"
+          ]
+        }
+      ],
+      "secants": [
+        {
+          "step": "1/4",
+          "left_secant": "0",
+          "right_secant": "0"
+        },
+        {
+          "step": "1/16",
+          "left_secant": "0",
+          "right_secant": "0"
+        }
+      ]
+    },
+    {
+      "world": "VERTEX_ORIGIN",
+      "baseline_capacity": "1",
+      "baseline_minimum": "1/2",
+      "baseline_lambda": "0",
+      "local_derivative": "0",
+      "perturbations": [
+        {
+          "delta": "-1/4",
+          "capacity": "3/4",
+          "minimum": "1/2",
+          "point": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "delta": "-1/16",
+          "capacity": "15/16",
+          "minimum": "1/2",
+          "point": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "delta": "0",
+          "capacity": "1",
+          "minimum": "1/2",
+          "point": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "delta": "1/16",
+          "capacity": "17/16",
+          "minimum": "1/2",
+          "point": [
+            "0",
+            "0"
+          ]
+        },
+        {
+          "delta": "1/4",
+          "capacity": "5/4",
+          "minimum": "1/2",
+          "point": [
+            "0",
+            "0"
+          ]
+        }
+      ],
+      "secants": [
+        {
+          "step": "1/4",
+          "left_secant": "0",
+          "right_secant": "0"
+        },
+        {
+          "step": "1/16",
+          "left_secant": "0",
+          "right_secant": "0"
+        }
+      ]
+    },
+    {
+      "world": "VERTEX_RIGHT",
+      "baseline_capacity": "1",
+      "baseline_minimum": "17/16",
+      "baseline_lambda": "2",
+      "local_derivative": "-2",
+      "perturbations": [
+        {
+          "delta": "-1/4",
+          "capacity": "3/4",
+          "minimum": "13/8",
+          "point": [
+            "3/4",
+            "0"
+          ]
+        },
+        {
+          "delta": "-1/16",
+          "capacity": "15/16",
+          "minimum": "305/256",
+          "point": [
+            "15/16",
+            "0"
+          ]
+        },
+        {
+          "delta": "0",
+          "capacity": "1",
+          "minimum": "17/16",
+          "point": [
+            "1",
+            "0"
+          ]
+        },
+        {
+          "delta": "1/16",
+          "capacity": "17/16",
+          "minimum": "241/256",
+          "point": [
+            "17/16",
+            "0"
+          ]
+        },
+        {
+          "delta": "1/4",
+          "capacity": "5/4",
+          "minimum": "5/8",
+          "point": [
+            "5/4",
+            "0"
+          ]
+        }
+      ],
+      "secants": [
+        {
+          "step": "1/4",
+          "left_secant": "-9/4",
+          "right_secant": "-7/4"
+        },
+        {
+          "step": "1/16",
+          "left_secant": "-33/16",
+          "right_secant": "-31/16"
+        }
+      ]
+    },
+    {
+      "world": "VERTEX_UPPER",
+      "baseline_capacity": "1",
+      "baseline_minimum": "17/16",
+      "baseline_lambda": "2",
+      "local_derivative": "-2",
+      "perturbations": [
+        {
+          "delta": "-1/4",
+          "capacity": "3/4",
+          "minimum": "13/8",
+          "point": [
+            "0",
+            "3/4"
+          ]
+        },
+        {
+          "delta": "-1/16",
+          "capacity": "15/16",
+          "minimum": "305/256",
+          "point": [
+            "0",
+            "15/16"
+          ]
+        },
+        {
+          "delta": "0",
+          "capacity": "1",
+          "minimum": "17/16",
+          "point": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "delta": "1/16",
+          "capacity": "17/16",
+          "minimum": "241/256",
+          "point": [
+            "0",
+            "17/16"
+          ]
+        },
+        {
+          "delta": "1/4",
+          "capacity": "5/4",
+          "minimum": "5/8",
+          "point": [
+            "0",
+            "5/4"
+          ]
+        }
+      ],
+      "secants": [
+        {
+          "step": "1/4",
+          "left_secant": "-9/4",
+          "right_secant": "-7/4"
+        },
+        {
+          "step": "1/16",
+          "left_secant": "-33/16",
+          "right_secant": "-31/16"
+        }
+      ]
+    },
+    {
+      "world": "CAPACITY_TWO_SLACK",
+      "baseline_capacity": "2",
+      "baseline_minimum": "0",
+      "baseline_lambda": "0",
+      "local_derivative": "0",
+      "perturbations": [
+        {
+          "delta": "-1/4",
+          "capacity": "7/4",
+          "minimum": "0",
+          "point": [
+            "3/4",
+            "3/4"
+          ]
+        },
+        {
+          "delta": "-1/16",
+          "capacity": "31/16",
+          "minimum": "0",
+          "point": [
+            "3/4",
+            "3/4"
+          ]
+        },
+        {
+          "delta": "0",
+          "capacity": "2",
+          "minimum": "0",
+          "point": [
+            "3/4",
+            "3/4"
+          ]
+        },
+        {
+          "delta": "1/16",
+          "capacity": "33/16",
+          "minimum": "0",
+          "point": [
+            "3/4",
+            "3/4"
+          ]
+        },
+        {
+          "delta": "1/4",
+          "capacity": "9/4",
+          "minimum": "0",
+          "point": [
+            "3/4",
+            "3/4"
+          ]
+        }
+      ],
+      "secants": [
+        {
+          "step": "1/4",
+          "left_secant": "0",
+          "right_secant": "0"
+        },
+        {
+          "step": "1/16",
+          "left_secant": "0",
+          "right_secant": "0"
+        }
+      ]
+    }
+  ],
+  "new_human_E2": 0,
+  "new_history_E3": 0
+}
