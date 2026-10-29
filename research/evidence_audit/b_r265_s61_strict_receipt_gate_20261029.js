@@ -33,7 +33,8 @@ if(typeof module!=="undefined"&&require.main===module){
 const fs=require("fs"),path=require("path");
 if(process.argv.length!==4)throw Error("usage receipt.json B_oracle.js");
 const receipt=JSON.parse(fs.readFileSync(process.argv[2],"utf8"));
-const oracle=require(path.resolve(process.argv[3]));
-console.log(JSON.stringify(verify(receipt,oracle.compute())));
+const vm=require("vm");
+const oracle=vm.runInNewContext(fs.readFileSync(process.argv[3],"utf8")+";compute();",{});
+console.log(JSON.stringify(verify(receipt,oracle)));
 }
 if(typeof module!=="undefined")module.exports={verify};
