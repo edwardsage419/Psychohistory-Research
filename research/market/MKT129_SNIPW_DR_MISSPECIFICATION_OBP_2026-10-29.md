@@ -5,7 +5,7 @@
 ## 真实方法来源与产品机制
 
 1. 原始论文：Dudík, Langford, Li (2011), Doubly Robust Policy Evaluation and Learning, https://arxiv.org/abs/1103.4601 。论文为方法来源，不构成本轮人工实验的外部复算。
-2. Open Bandit Pipeline (OBP) 开源仓库 https://github.com/sb-ai-lab/sb-obp ，官方英语文档 https://zr-obp.readthedocs.io/en/latest/_autosummary/obp.ope.estimators.html ，公开论文 https://arxiv.org/abs/2008.07146 。本轮直接阅读官方README及估计器API。README说明Apache 2.0许可证，OBP提供IPW、SNIPW、DR等估计器及公开电商推荐日志示例。
+2. Open Bandit Pipeline (OBP) 开源仓库 https://github.com/st-tech/zr-obp ，官方英语文档 https://zr-obp.readthedocs.io/en/latest/_autosummary/obp.ope.estimators.html ，公开论文 https://arxiv.org/abs/2008.07146 。本轮直接阅读官方README及估计器API。README说明Apache 2.0许可证，OBP提供IPW、SNIPW、DR等估计器及公开电商推荐日志示例。
 3. 原始论文及OBP文档明确要求观察行动、奖励、日志行为策略行动概率、目标策略行动分布；DR还需要各行动条件奖励模型。OBP API支持估计值及自助法区间接口。自助法区间在相关样本、弱重叠或模型误设下的覆盖效果需要单独验证。本轮未安装或运行OBP包、未下载OBD真实数据。
 4. OBP是科研开源框架，状态表达主要是日志轮次、上下文、行动、概率、奖励、回归预测及估计器输出；反馈更新依赖调用方重新采集、拟合和评估。没有发现可直接采用的长期人生状态模型、个人敏感数据授权管理、自动偏好修正、完整决策解释及安全申诉流程。可解释性限于公式、输入与可核验估计步骤。Apache 2.0代码许可允许本地免费方法研究，运行环境及真实数据许可需另行核验；本轮未产生购买、注册或云算力费用。
 
