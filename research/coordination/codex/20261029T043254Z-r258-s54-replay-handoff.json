@@ -1,0 +1,30 @@
+{
+  "track": "codex",
+  "subflow": "R258-S54-archived-replay",
+  "run_date": "2026-10-29",
+  "observed_head": "116385b06abb500ab91dd546b9b57141f6ed3ee3",
+  "target_key": "codex|R258_S54|4e9d863efbaefa706fd1023dacbcd56e981e908f|archived-CLI-and-persisted-receipt",
+  "activity": "completed bounded audit; no active claim",
+  "status": "COMPLETE",
+  "source_links": [
+    "research/operations/E088_R258_S54_ORIGINAL_SOURCE_BYTE_GOVERNANCE_2026-10-29.md"
+  ],
+  "work_performed": "97 archived tests+7 new tests pass; archived3456-policy gate runs; full S54 R JSON and B27 rows equal archive; originalCSV/results/machine regenerate byte-exact in sandbox;4 new corruption controls rejected.",
+  "evidence_scope": "Nonblind internal artificial E1; E2/E3/external teams0. Old gate ignores persisted receipt (sandbox corruption stillPASS), new exact comparison rejects.",
+  "results_seen": true,
+  "output_paths": [
+    "research/codex_audit/r258_s54_replay/REPORT.md",
+    "research/codex_audit/r258_s54_replay/logs/execution.json"
+  ],
+  "commit_sha": null,
+  "pr": null,
+  "delivery_branch": "codex/r258-s54-archived-replay-20261029",
+  "ci_status": "NOT_RUN",
+  "billing_checked": "No new billable operation; billing/quota unverified.",
+  "blockers": [
+    "No complete checkout/full-repo test or CI/external science.",
+    "E088 separate JS executor still unarchived; native regeneration does not replace it.",
+    "Deferred minor: explicit gate status-string enforcement for future changed versions."
+  ],
+  "next_action": "E/B may review fixed-source local CLI evidence, keep historical files. Codex candidate R251/R252 CLI or R248486 cross-runtime after fresh concurrency check."
+}

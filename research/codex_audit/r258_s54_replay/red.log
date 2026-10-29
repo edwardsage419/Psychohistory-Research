@@ -1,0 +1,64 @@
+test_boolean_zero_not_interchangeable (test_replay.Tests.test_boolean_zero_not_interchangeable) ... FAIL
+test_changed_minimizer_count_rejected (test_replay.Tests.test_changed_minimizer_count_rejected) ... FAIL
+test_duplicate_world_rejected (test_replay.Tests.test_duplicate_world_rejected) ... FAIL
+test_evidence_upgrade_rejected (test_replay.Tests.test_evidence_upgrade_rejected) ... FAIL
+test_failed_rerun_removes_old_success (test_replay.Tests.test_failed_rerun_removes_old_success) ... FAIL
+test_real_archive_matches_itself (test_replay.Tests.test_real_archive_matches_itself) ... ok
+test_successful_replay_leaves_sources_unchanged (test_replay.Tests.test_successful_replay_leaves_sources_unchanged) ... FAIL
+
+======================================================================
+FAIL: test_boolean_zero_not_interchangeable (test_replay.Tests.test_boolean_zero_not_interchangeable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s54-replay/research/codex_audit/r258_s54_replay/test_replay.py", line 37, in test_boolean_zero_not_interchangeable
+    with self.assertRaises(ValueError): run_audit.check_archive(other, self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_changed_minimizer_count_rejected (test_replay.Tests.test_changed_minimizer_count_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s54-replay/research/codex_audit/r258_s54_replay/test_replay.py", line 27, in test_changed_minimizer_count_rejected
+    with self.assertRaises(ValueError): run_audit.check_archive(other, self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_world_rejected (test_replay.Tests.test_duplicate_world_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s54-replay/research/codex_audit/r258_s54_replay/test_replay.py", line 42, in test_duplicate_world_rejected
+    with self.assertRaises(ValueError): run_audit.check_archive(other, self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_evidence_upgrade_rejected (test_replay.Tests.test_evidence_upgrade_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s54-replay/research/codex_audit/r258_s54_replay/test_replay.py", line 32, in test_evidence_upgrade_rejected
+    with self.assertRaises(ValueError): run_audit.check_archive(other, self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_failed_rerun_removes_old_success (test_replay.Tests.test_failed_rerun_removes_old_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s54-replay/research/codex_audit/r258_s54_replay/test_replay.py", line 50, in test_failed_rerun_removes_old_success
+    self.assertNotEqual(p.returncode,0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_successful_replay_leaves_sources_unchanged (test_replay.Tests.test_successful_replay_leaves_sources_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s54-replay/research/codex_audit/r258_s54_replay/test_replay.py", line 75, in test_successful_replay_leaves_sources_unchanged
+    self.assertTrue((out/'execution.json').exists())
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.026s
+
+FAILED (failures=6)
