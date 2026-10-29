@@ -1,0 +1,195 @@
+{
+  "research_id": "R268_S64",
+  "frozen_protocol_commit": "a61edfe2f3f479c2309cbc3e5f1e6757730ed7d4",
+  "scope": "E1_ARTIFICIAL_NONBLIND_PROSPECTIVE_ENDPOINT",
+  "source_csv_git_blob": "6296528507012dd1d8d11e3556fcdeb7b6aeb2b5",
+  "original_selection_json_git_blob": "3d407ddcf524bfc55c0a076d57383c6655a36441",
+  "ordered_source_count": 3312,
+  "independent_future_event_types": 6624,
+  "world_count": 9,
+  "exact_risk_comparisons": 36,
+  "paired_AIC_BIC_comparisons": 9,
+  "source_route": "full_ordered_sequence_and_two_future_outcomes_Fraction_V8",
+  "independent_route": "analytic_binomial_and_conditional_Brier_Fraction_V8",
+  "native_python_independent_replay": "9_worlds_36_risks_9_differences_equal_V8",
+  "new_human_E2": 0,
+  "new_historical_E3": 0,
+  "external_team_replications": 0,
+  "ci": "NOT_RUN",
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "results": [
+    {
+      "world": "TRUE_P1OF5_N4",
+      "true_p": "1/5",
+      "n": 4,
+      "ordered_sources": 16,
+      "risk": {
+        "M0_FIXED": "4/25",
+        "M1_MLE": "1/5",
+        "AIC_SELECTED": "2637/15625",
+        "BIC_SELECTED": "3109/15625"
+      },
+      "excess": {
+        "M0_FIXED": "0",
+        "M1_MLE": "1/25",
+        "AIC_SELECTED": "137/15625",
+        "BIC_SELECTED": "609/15625"
+      },
+      "AIC_minus_BIC": "-472/15625"
+    },
+    {
+      "world": "TRUE_P1OF5_N6",
+      "true_p": "1/5",
+      "n": 6,
+      "ordered_sources": 64,
+      "risk": {
+        "M0_FIXED": "4/25",
+        "M1_MLE": "14/75",
+        "AIC_SELECTED": "213118/1171875",
+        "BIC_SELECTED": "213118/1171875"
+      },
+      "excess": {
+        "M0_FIXED": "0",
+        "M1_MLE": "2/75",
+        "AIC_SELECTED": "25618/1171875",
+        "BIC_SELECTED": "25618/1171875"
+      },
+      "AIC_minus_BIC": "0"
+    },
+    {
+      "world": "TRUE_P1OF5_N10",
+      "true_p": "1/5",
+      "n": 10,
+      "ordered_sources": 1024,
+      "risk": {
+        "M0_FIXED": "4/25",
+        "M1_MLE": "22/125",
+        "AIC_SELECTED": "8364374/48828125",
+        "BIC_SELECTED": "8192342/48828125"
+      },
+      "excess": {
+        "M0_FIXED": "0",
+        "M1_MLE": "2/125",
+        "AIC_SELECTED": "551874/48828125",
+        "BIC_SELECTED": "379842/48828125"
+      },
+      "AIC_minus_BIC": "172032/48828125"
+    },
+    {
+      "world": "TRUE_P1OF2_N4",
+      "true_p": "1/2",
+      "n": 4,
+      "ordered_sources": 16,
+      "risk": {
+        "M0_FIXED": "17/50",
+        "M1_MLE": "5/16",
+        "AIC_SELECTED": "549/1600",
+        "BIC_SELECTED": "511/1600"
+      },
+      "excess": {
+        "M0_FIXED": "9/100",
+        "M1_MLE": "1/16",
+        "AIC_SELECTED": "149/1600",
+        "BIC_SELECTED": "111/1600"
+      },
+      "AIC_minus_BIC": "19/800"
+    },
+    {
+      "world": "TRUE_P1OF2_N6",
+      "true_p": "1/2",
+      "n": 6,
+      "ordered_sources": 64,
+      "risk": {
+        "M0_FIXED": "17/50",
+        "M1_MLE": "7/24",
+        "AIC_SELECTED": "2921/9600",
+        "BIC_SELECTED": "2921/9600"
+      },
+      "excess": {
+        "M0_FIXED": "9/100",
+        "M1_MLE": "1/24",
+        "AIC_SELECTED": "521/9600",
+        "BIC_SELECTED": "521/9600"
+      },
+      "AIC_minus_BIC": "0"
+    },
+    {
+      "world": "TRUE_P1OF2_N10",
+      "true_p": "1/2",
+      "n": 10,
+      "ordered_sources": 1024,
+      "risk": {
+        "M0_FIXED": "17/50",
+        "M1_MLE": "11/40",
+        "AIC_SELECTED": "2869/10240",
+        "BIC_SELECTED": "3037/10240"
+      },
+      "excess": {
+        "M0_FIXED": "9/100",
+        "M1_MLE": "1/40",
+        "AIC_SELECTED": "309/10240",
+        "BIC_SELECTED": "477/10240"
+      },
+      "AIC_minus_BIC": "-21/1280"
+    },
+    {
+      "world": "TRUE_P4OF5_N4",
+      "true_p": "4/5",
+      "n": 4,
+      "ordered_sources": 16,
+      "risk": {
+        "M0_FIXED": "13/25",
+        "M1_MLE": "1/5",
+        "AIC_SELECTED": "3789/15625",
+        "BIC_SELECTED": "3148/15625"
+      },
+      "excess": {
+        "M0_FIXED": "9/25",
+        "M1_MLE": "1/25",
+        "AIC_SELECTED": "1289/15625",
+        "BIC_SELECTED": "648/15625"
+      },
+      "AIC_minus_BIC": "641/15625"
+    },
+    {
+      "world": "TRUE_P4OF5_N6",
+      "true_p": "4/5",
+      "n": 6,
+      "ordered_sources": 64,
+      "risk": {
+        "M0_FIXED": "13/25",
+        "M1_MLE": "14/75",
+        "AIC_SELECTED": "221236/1171875",
+        "BIC_SELECTED": "221236/1171875"
+      },
+      "excess": {
+        "M0_FIXED": "9/25",
+        "M1_MLE": "2/75",
+        "AIC_SELECTED": "33736/1171875",
+        "BIC_SELECTED": "33736/1171875"
+      },
+      "AIC_minus_BIC": "0"
+    },
+    {
+      "world": "TRUE_P4OF5_N10",
+      "true_p": "4/5",
+      "n": 10,
+      "ordered_sources": 1024,
+      "risk": {
+        "M0_FIXED": "13/25",
+        "M1_MLE": "22/125",
+        "AIC_SELECTED": "8597948/48828125",
+        "BIC_SELECTED": "8651708/48828125"
+      },
+      "excess": {
+        "M0_FIXED": "9/25",
+        "M1_MLE": "2/125",
+        "AIC_SELECTED": "785448/48828125",
+        "BIC_SELECTED": "839208/48828125"
+      },
+      "AIC_minus_BIC": "-10752/9765625"
+    }
+  ],
+  "strict_receipt_negative_controls_rejected": 5
+}
