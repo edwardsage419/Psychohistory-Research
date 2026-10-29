@@ -1,0 +1,24 @@
+test_failed_rerun_cannot_leave_previous_success_receipt (test_replay_safety.SafetyTests.test_failed_rerun_cannot_leave_previous_success_receipt) ... FAIL
+test_successful_audit_does_not_write_in_source_directories (test_replay_safety.SafetyTests.test_successful_audit_does_not_write_in_source_directories) ... FAIL
+
+======================================================================
+FAIL: test_failed_rerun_cannot_leave_previous_success_receipt (test_replay_safety.SafetyTests.test_failed_rerun_cannot_leave_previous_success_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r256-replay/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 22, in test_failed_rerun_cannot_leave_previous_success_receipt
+    self.assertFalse(receipt.exists(), 'stale success survives failed rerun')
+AssertionError: True is not false : stale success survives failed rerun
+
+======================================================================
+FAIL: test_successful_audit_does_not_write_in_source_directories (test_replay_safety.SafetyTests.test_successful_audit_does_not_write_in_source_directories)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r256-replay/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 38, in test_successful_audit_does_not_write_in_source_directories
+    self.assertEqual(set(before), set(after), 'source tree gained files')
+AssertionError: Items in the second set but not the first:
+'research/R256/__pycache__/r256_exact_finite_queue.cpython-312.pyc' : source tree gained files
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.026s
+
+FAILED (failures=2)
