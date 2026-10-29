@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-29（Asia/Singapore）；已收录 TH118，C006 今日增量与 D002 本周专题
+更新：2026-10-29（Asia/Singapore）；已收录 TH119，C006 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -198,11 +198,13 @@
 
 | TH118 | 历史FIRM零变化安慰剂、公告生效时差与空间选择 | FEMA 2018、2021、2022原始LOMR决定文件与Hingham时间线、Roth2022、Lipsitch等2010；区分SFHA、LiMWA、公告、撤销、重发及条例共同冲击 | THEORY_NOTE_BOUNDED | [研究笔记](TH118_HISTORIC_FIRM_ZERO_CHANGE_PLACEBO_ANNOUNCEMENT_EFFECTIVE_SPATIAL_SELECTION_2026-10-29.md)；16项条件命题、8项日期及人工审计；真实地块叠置与独立因果估计0 |
 
+| TH119 | LiMWA与SFHA结果特异安慰剂、沿海建筑规范与地方条例共同冲击 | Hingham 2021年度正式投票记录、2021会议结果、FEMA LiMWA原始资料、马萨诸塞第九版建筑规范元数据、de Chaisemartin与D'Haultfœuille 2023；发现Article 26与滚动网页Article 27冲突，审计多处理政策包的欠识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH119_LIMWA_SFHA_OUTCOME_SPECIFIC_PLACEBO_COASTAL_BUILDING_CODES_LOCAL_BYLAW_2026-10-29.md)；16项条件性命题、8项原文与人工审计、12项来源；未独立验证历史建筑条文或真实地块因果效应 |
+
 ## 待研究队列
 
 | 优先级 | 编号 | 理论主题 | 首要一手来源线索 | 当前状态 |
 | --- | --- | --- | --- | --- |
-| 1 | TH119 | LiMWA与SFHA结果特异安慰剂、沿海建筑标准及地方条例共同冲击 | FEMA LiMWA指导与44 CFR 60.3、Hingham 2021分区条例、洪水风险住房与保险文献 | QUEUED_UNVERIFIED |
+| 1 | TH120 | 制度文件版本冲突、行政执行时钟与多处理政策识别的跨领域比较 | 原始立法档案、行政执行记录、文献版本学与多处理因果识别开放原作 | QUEUED_UNVERIFIED |
 
 “待研究”中的书目仅是检索线索，尚未核验版本、页码或论证内容。每轮应检查本索引及 GitHub main 后选择新主题，避免重复。
 
@@ -557,6 +559,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 | historic FIRM / LOMR / announcement versus effective date / SFHA placebo | [TH117 历史FIRM事件时钟与空间识别](TH117_HISTORIC_FIRM_REVISION_EVENT_TIME_SPATIAL_CONTROLS_CLASSIFICATION_2026-10-29.md)；FEMA、Hingham/Exeter原始时间线、Gibson与Mullins2020、Keele与Titiunik2015、Sun与Abraham2021；零变化修订与工程共同冲击 | 个体、群体、制度、历史、方法论 | 9项英文原始来源线索，16项条件命题、8项人工审计；真实空间叠置与因果估计0 |
 
 | outcome-specific placebo / LiMWA / SFHA / announcement clocks / spatial selection | [TH118 零变化安慰剂与事件时钟](TH118_HISTORIC_FIRM_ZERO_CHANGE_PLACEBO_ANNOUNCEMENT_EFFECTIVE_SPATIAL_SELECTION_2026-10-29.md)；FEMA 2018、2021、2022原始LOMR文件，Hingham行政记录，Roth2022、Lipsitch等2010；SFHA不变不保证房价无效应，跨镇溢出及成交选择需审计 | 个体、群体、制度、历史、方法论 | 10项英文原始来源或机构资料，16项命题、8项日期及人工审计；无地块空间验证或独立因果估计 |
+
+| LiMWA / SFHA / historical code vintage / joint treatments / archival contradiction | [TH119 结果特异安慰剂与地方条例共同冲击](TH119_LIMWA_SFHA_OUTCOME_SPECIFIC_PLACEBO_COASTAL_BUILDING_CODES_LOCAL_BYLAW_2026-10-29.md)；Hingham 2021正式投票Article 26、FEMA LiMWA官方材料、Massachusetts 780 CMR第九版元数据、de Chaisemartin与D'Haultfœuille2023；地图信息、州建筑标准、地方许可、风险信念和文书版本冲突 | 个体、群体、制度、历史、方法论 | 正式投票PDF及地方机构网页直接审读，部分官方PDF仅检索段落；8项审计；历史R322逐条适用性与真实因果未识别 |
 
 ## 持续执行规则
 
