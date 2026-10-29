@@ -1,0 +1,142 @@
+{
+  "status": "COMPLETE",
+  "pinned_source_baseline": "3d5349f5505679492ee324f8b47d028476b1fc7b",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "node": "v24.19.0",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "N/A; exhaustive finite enumeration",
+  "source_identity": {
+    "research/validation/r266_s62_score_coverage.js": {
+      "bytes": 5335,
+      "git_blob": "07b0ddeabe02415a2545af289ac29678e616f53e",
+      "sha256": "28a7a61e4f69d229a85405e5cbb5ee63d0027ef2a607654ac5ef917d2be98c23"
+    },
+    "research/evidence_audit/r266_s62_independent_convolution_gate.js": {
+      "bytes": 4671,
+      "git_blob": "136b87413c779eb40236e4a5048d400f1120059e",
+      "sha256": "c0908416d79e92d9032813c6a36587611732a111fc2092d8f401c0b6b414bb30"
+    },
+    "research/evidence_audit/r266_s62_original_source_sha_rebuild.py": {
+      "bytes": 2603,
+      "git_blob": "1596c5b9763090ec9edd2fb430fd4a207eb40d85",
+      "sha256": "e7b195ec5a6c7573ab9ad89119a95e5badf1a95649ccd1c2495eef7c72e97803"
+    },
+    "research/R266/R266_ALL_5328_FINITE_MONTE_CARLO_ORIGINAL_SOURCES.csv": {
+      "bytes": 419791,
+      "git_blob": "53a808994300f85826a18723146fdb2fea7c6db2",
+      "sha256": "5e0aac41c960ee21b54d3266064793a7e9a2454dbb4493ae8e4451591d48587a"
+    },
+    "research/R266/R266_EXACT_FINITE_MC_RESULTS.json": {
+      "bytes": 11469,
+      "git_blob": "ec307a45a361d202cae074a45cea5406b2a8e28e",
+      "sha256": "1ce039fd5ce94fb59741ea45fa2e62f052ac7ea28c99b172379ec1f8e195b218"
+    },
+    "research/validation/R266_S62_EXACT_SCORE_COVERAGE_RECEIPT_2026-10-29.json": {
+      "bytes": 7423,
+      "git_blob": "9c7f64d593ac3f9f06472a5f62f19f09fb4582fb",
+      "sha256": "9798a1e41a2b3005d3f0d5770fd0d465a7a632e6bd9d361f6622c6b49d8ef9c0"
+    }
+  },
+  "source_unchanged": true,
+  "positive_original_cli_invocations": 4,
+  "additional_byte_adapter_invocations": 1,
+  "R_receipt_byte_equal": true,
+  "reconstructed_CSV_byte_equal": true,
+  "B_persisted": {
+    "status": "PASS",
+    "worlds": 9,
+    "designs": 18,
+    "fields_compared": 180,
+    "exact_oracle": "independent four-point success-count convolution",
+    "blind": false,
+    "external_replication": false,
+    "negative_controls_rejected": 5
+  },
+  "source_audit": {
+    "status": "COMPLETE",
+    "source_rows": 5328,
+    "source_fields_checked": 58608,
+    "metric_rows": 18,
+    "metric_fields": 180,
+    "baseline_moment_rows": 18,
+    "symmetric_N6_antithetic_coverage": "3/4",
+    "symmetric_N6_antithetic_variance_ratio": "1/3",
+    "evidence": "NONBLIND_INTERNAL_ARTIFICIAL_E1",
+    "external_team_replications": 0
+  },
+  "commands": [
+    {
+      "label": "r_native",
+      "command": [
+        "node",
+        "/workspace/s62-replay/research/validation/r266_s62_score_coverage.js"
+      ],
+      "cwd": "/workspace/s62-replay",
+      "exit_code": 0,
+      "stdout_file": "r_native.stdout",
+      "stderr_file": "r_native.stderr"
+    },
+    {
+      "label": "b_persisted",
+      "command": [
+        "node",
+        "/workspace/s62-replay/research/evidence_audit/r266_s62_independent_convolution_gate.js",
+        "/workspace/s62-replay/research/validation/R266_S62_EXACT_SCORE_COVERAGE_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/s62-replay",
+      "exit_code": 0,
+      "stdout_file": "b_persisted.stdout",
+      "stderr_file": "b_persisted.stderr"
+    },
+    {
+      "label": "rebuild_native",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s62-replay/research/evidence_audit/r266_s62_original_source_sha_rebuild.py"
+      ],
+      "cwd": "/workspace/s62-replay",
+      "exit_code": 0,
+      "stdout_file": "rebuild_native.stdout",
+      "stderr_file": "rebuild_native.stderr"
+    },
+    {
+      "label": "rebuild_bytes_adapter",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-c",
+        "import runpy,sys,json;from pathlib import Path;raw,n=runpy.run_path(sys.argv[1])['regenerate']();Path(sys.argv[2]).write_bytes(raw);print(json.dumps({'rows':n,'bytes':len(raw)}))",
+        "/workspace/s62-replay/research/evidence_audit/r266_s62_original_source_sha_rebuild.py",
+        "/tmp/s62-native-1e_gaszd/regenerated.csv"
+      ],
+      "cwd": "/workspace/s62-replay",
+      "exit_code": 0,
+      "stdout_file": "rebuild_bytes_adapter.stdout",
+      "stderr_file": "rebuild_bytes_adapter.stderr"
+    },
+    {
+      "label": "b_replayed",
+      "command": [
+        "node",
+        "/workspace/s62-replay/research/evidence_audit/r266_s62_independent_convolution_gate.js",
+        "/tmp/s62-native-1e_gaszd/r-replayed.json"
+      ],
+      "cwd": "/workspace/s62-replay",
+      "exit_code": 0,
+      "stdout_file": "b_replayed.stdout",
+      "stderr_file": "b_replayed.stderr"
+    }
+  ],
+  "evidence": "NONBLIND_INTERNAL_ARTIFICIAL_E1",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0,
+  "original_R266_136_test_suites": "NOT_RUN",
+  "full_repo_tests": "NOT_RUN",
+  "ci": "NOT_RUN",
+  "code_sha256": {
+    "run_native.py": "dc204c6e09d3ce6935c53770fae6c38a96ae248df1612e5934f50d7f312900ec",
+    "source_audit.py": "b4ae9d3f49e49b3a51f9415a6215f627cd9c44b47be534bdf0f8d08a0bedee03"
+  }
+}
