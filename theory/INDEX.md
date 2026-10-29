@@ -605,6 +605,8 @@ C 今日 C006 与 D 本周 D002 已形成独立候选方法笔记，后续同日
 
 | TH136 | 跨历史制度与心理测量等值：潜变量标尺、锚定情景、alignment及失败条件 | Meredith1993、Putnick与Bornstein2016、Muthén与Asparouhov2014、King等2004、Heine等2002、Kapteyn等2011、von Davier等2018；16项条件命题、8项原刊汇总与人工审计；与R233/R234互补，非盲态，新增E1/E2/E3均为0 | THEORY_NOTE_BOUNDED | [研究笔记](TH136_CROSS_HISTORICAL_PSYCHOMETRIC_INVARIANCE_ANCHORING_ALIGNMENT_2026-10-30.md) |
 
+| TH137 | 历史词义漂移、跨语言锚定、体裁构成与反证对照 | Hamilton等2016与Dubossarsky等2017相反证据；Fourrier与Montariol2022、Kutuzov等2022、Schlechtweg等2020；16项条件命题、8项原刊算术及人工反例，原始语料重训和真实因果0 | THEORY_NOTE_BOUNDED | [研究笔记](TH137_HISTORICAL_SEMANTIC_DRIFT_CROSS_LANGUAGE_ANCHOR_NEGATIVE_CONTROLS_2026-10-30.md) |
+
 C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](../research/decision_methods/C007_MEASUREMENT_REACTIVITY_RESPONSE_SHIFT_MNAR_PREFERENCES_2026-10-30.md)，2026-10-30完成；D002保持只读。
 
-下一研究队列：TH137 历史词义漂移、跨语言锚定与多群组等值的反证设计。C子流程2026-10-30已完成C007，下一C008；D子流程2026-W44已完成D002。
+下一研究队列：TH138 历史语料抽样偏差、词义漂移部分识别与公开标注基准文件级核验。C子流程2026-10-30已完成C007，下一C008；D子流程2026-W44已完成D002。
