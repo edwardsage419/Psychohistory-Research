@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/r248-replay/research/evidence_audit/b_r248_s44_independent_formula_20261029.py", line 71, in <module>
+    data['cross_runtime_comparisons']=verify(data,source)
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/r248-replay/research/evidence_audit/b_r248_s44_independent_formula_20261029.py", line 62, in verify
+    if F(a)!=F(b): raise AssertionError('distance mismatch '+str(key))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: distance mismatch ('AFFINE_CONTRACT_ZERO', '-1/2')
