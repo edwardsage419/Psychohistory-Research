@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/cli251252-replay/research/evidence_audit/b_r252_s48_independent_numeric_oracle_20261029.py", line 86, in <module>
+    audit(p.parse_args().receipt)
+  File "/workspace/cli251252-replay/research/evidence_audit/b_r252_s48_independent_numeric_oracle_20261029.py", line 65, in audit
+    assert abs(val-rec['metrics'][key]['approx_bits'])<1e-10,(w,rep,n,key,val)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('INDEPENDENT_BITS', 0, 8, 'I_XY', 0.1588680058499301)
