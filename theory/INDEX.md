@@ -628,3 +628,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH144 | 2018年PNAS正式勘误纠正TH143引用的学校行政报告降幅30%为25%，并明确总体效应在5%阈值下不显著；2019勘误仅补资助；ICPSR 37070 V2研究总体、网络暴露正概率、缺失结果部分识别 | Paluck等2018 DOI:10.1073/pnas.1804429115；2019 DOI:10.1073/pnas.1821346116；ICPSR37070.v2；Aronow与Samii2017；16项条件命题、12项原刊/公开目录/人工审计；TH143 A143-07已标记勘误 | THEORY_NOTE_BOUNDED; SOURCE_CORRECTION_MATERIAL | [研究笔记](TH144_PALUCK_CORRECTION_NETWORK_EXPOSURE_MISSINGNESS_2026-10-30.md) |
 
 当前下一专题：TH145 规范干预勘误传播、学校行政结局多结果稳健性与ICPSR版本字典。C007已满足2026-10-30，D002已满足2026-W44。历史队列文字为当时状态。
+
+| TH145 | 学校规范干预勘误传播、ICPSR公开元数据分母与多结果解释 | Paluck等2016 PNAS原刊、2018正式勘误、ICPSR37070 V2、PubMed与Princeton机构书目；16项条件命题、12项来源与人工审计；原论文25%修正传播不一致，24,471/24,191行数差280，499检索条目与482列差17原因未识别；无未成年人微观数据或独立因果复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH145_PALUCK_ERRATUM_PROPAGATION_ICPSR_METADATA_DENOMINATORS_2026-10-30.md) |
+
+当前下一专题：TH146 权威服从、规范内化与制度合法性竞争理论。C007已满足2026-10-30，D002已满足2026-W44。旧队列文字保留为当时状态。
