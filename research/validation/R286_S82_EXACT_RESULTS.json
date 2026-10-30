@@ -1,0 +1,183 @@
+{
+  "research_id": "R286_S82",
+  "freeze_protocol": "research/validation/R286_S82_MARKOV_REWARD_DEPENDENCE_PRESCORE_FREEZE_2026-10-30.md",
+  "original_R286_status": "UNCHANGED_CLOSED_BOUNDED_E1",
+  "scope": "INTERNAL_NONBLIND_ARTIFICIAL_E1_MARKOV_REWARD_DEPENDENCE",
+  "stay_probabilities": [
+    "1/4",
+    "1/2",
+    "3/4"
+  ],
+  "model_labeled_complete_source_types": 576,
+  "independent_analytic_agreement": true,
+  "original_R286_iid_baseline_agreement": true,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "new_E2_predictions": 0,
+  "new_E3_predictions": 0,
+  "external_independent_replication": "NOT_RUN",
+  "results": [
+    {
+      "stay_probability": "1/4",
+      "rho": "-1/2",
+      "policy": "TD0_ONLINE_CORRECT",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "33/128",
+      "independent_covariance_Brier": "33/128",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "1/128",
+      "frozen_original_coefficients": [
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4",
+        "0"
+      ]
+    },
+    {
+      "stay_probability": "1/4",
+      "rho": "-1/2",
+      "policy": "MC_COMPLETE_RETURN",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "205/512",
+      "independent_covariance_Brier": "205/512",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "77/512",
+      "frozen_original_coefficients": [
+        "1/32",
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2"
+      ]
+    },
+    {
+      "stay_probability": "1/4",
+      "rho": "-1/2",
+      "policy": "B_THEN_A_UPDATED_BOOTSTRAP",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "2557/8192",
+      "independent_covariance_Brier": "2557/8192",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "509/8192",
+      "frozen_original_coefficients": [
+        "5/64",
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4"
+      ]
+    },
+    {
+      "stay_probability": "1/2",
+      "rho": "0",
+      "policy": "TD0_ONLINE_CORRECT",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "155/512",
+      "independent_covariance_Brier": "155/512",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "27/512",
+      "frozen_original_coefficients": [
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4",
+        "0"
+      ]
+    },
+    {
+      "stay_probability": "1/2",
+      "rho": "0",
+      "policy": "MC_COMPLETE_RETURN",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "683/2048",
+      "independent_covariance_Brier": "683/2048",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "171/2048",
+      "frozen_original_coefficients": [
+        "1/32",
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2"
+      ]
+    },
+    {
+      "stay_probability": "1/2",
+      "rho": "0",
+      "policy": "B_THEN_A_UPDATED_BOOTSTRAP",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "2445/8192",
+      "independent_covariance_Brier": "2445/8192",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "397/8192",
+      "frozen_original_coefficients": [
+        "5/64",
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4"
+      ]
+    },
+    {
+      "stay_probability": "3/4",
+      "rho": "1/2",
+      "policy": "TD0_ONLINE_CORRECT",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "75/256",
+      "independent_covariance_Brier": "75/256",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "11/256",
+      "frozen_original_coefficients": [
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4",
+        "0"
+      ]
+    },
+    {
+      "stay_probability": "3/4",
+      "rho": "1/2",
+      "policy": "MC_COMPLETE_RETURN",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "227/1024",
+      "independent_covariance_Brier": "227/1024",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "-29/1024",
+      "frozen_original_coefficients": [
+        "1/32",
+        "1/16",
+        "1/8",
+        "1/4",
+        "1/2"
+      ]
+    },
+    {
+      "stay_probability": "3/4",
+      "rho": "1/2",
+      "policy": "B_THEN_A_UPDATED_BOOTSTRAP",
+      "complete_sources": 64,
+      "source_mass": "1",
+      "exact_heldout_Brier": "1957/8192",
+      "independent_covariance_Brier": "1957/8192",
+      "constant_half_baseline_Brier": "1/4",
+      "delta_vs_constant_half": "-91/8192",
+      "frozen_original_coefficients": [
+        "5/64",
+        "1/8",
+        "3/16",
+        "1/4",
+        "1/4"
+      ]
+    }
+  ]
+}
