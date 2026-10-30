@@ -1,0 +1,8 @@
+# F009 第三阶段：墓碑冲突与备份到期证据
+日期：2026-10-30 Asia/Singapore，2026-W44。目标键：(privacy_safety,F009,phase3,tombstone-archive-backup-forget-prune)。状态：COMPLETE_PHASE3_STATIC_AND_SYNTHETIC。
+
+英文原始资料：Syncthing官方 https://docs.syncthing.net/users/versioning.html 说明远端删除或替换可将旧文件存入.stversions；部分cleanoutDays/maxAge设置为0时无限保留，版本清理与活跃文件删除分离。restic官方 https://github.com/restic/restic/blob/master/doc/060_forget.rst 明确forget删除快照引用，prune才回收只被已删快照引用的数据；其他快照仍引用的数据会保留。prune中断及空间不足可能阻碍回收。append-only备份需独立维护权限。这些为官方技术文档机制，本轮未运行真实软件。
+
+人工三设备模型：A/C确认删除epoch2，B离线持有旧epoch1，C有旧版归档，备份仍引用数据。人工规则拒绝旧epoch1写入；B确认后状态从PENDING_REPLICA转为PENDING_ARCHIVE；归档清理后转PENDING_BACKUP_REFERENCE；移除快照引用后仍PENDING_PRUNE；人工prune完成后只称MODEL_SCOPE_COMPLETE。未知设备、共享快照引用、prune中断均阻断完成。源码research/privacy_safety/f009_tombstone_archive_backup_evidence_20261030.js在隔离V8运行11项断言、4项无效输入拒绝PASS。该状态机由本研究定义，未调用Syncthing/restic，不能证明物理擦除、外部云副本清理或法律合规。
+
+零费用候选控制：分别追踪tombstone_epoch、replica_ack_epoch、offline_replica_count、archive_cleanup_receipt、snapshot_reference_count、prune_receipt、unknown_replica_count；任何证据缺失显示PENDING或UNKNOWN；禁止旧版本回放；删除审计元数据最小化。没有接入个人敏感数据，真人E2预测0、E3=0、外部安全审计0，账单/额度NOT_VERIFIED。下一F009阶段制定删除证据清单与失败注入规范；F008仍开放，只有上游实质变化才重复审查。
