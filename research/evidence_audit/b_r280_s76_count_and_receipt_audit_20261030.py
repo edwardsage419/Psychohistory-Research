@@ -161,6 +161,5 @@ def main():
     for p,w in oracle_count().items():
         print(p,w['expectations'])
 
-
 if __name__=='__main__':
     main()
