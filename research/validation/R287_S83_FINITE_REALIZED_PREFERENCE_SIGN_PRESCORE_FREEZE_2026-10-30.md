@@ -1,0 +1,14 @@
+# R287 S83: finite four opportunity realized preference sign, prescore freeze
+Date: 2026-10-30 UTC. Track R. Scope: a complementary artificial E1 question. This does not amend the original R287 freeze, results, or CLOSED_BOUNDED_E1 status.
+Baseline main HEAD observed before freeze: 6dd2e24dc035b1837034d989849ccc9235e436d9.
+Original R287 freeze: protocols/R287_EXPECTED_UTILITY_3_PROFILES_3_COMMON_MIXTURES_2304_FULL_SOURCES_PRESCORE_FREEZE_2026-10-23.md, blob de66aacbaf4afda98b48a9e2c743ca3931c40452.
+Original complete CSV: research/R287/R287_ALL_2304_ORIGINAL_COMMON_CONSEQUENCE_SOURCES.csv, Git blob ddf3ae0b924016a3a8aac7253a1a6a9b44d864d1, SHA256 84d8000d0ed2683a77b12a9e47a43d013960b9a95198457beac9aa5acef1d080.
+
+## Question and fixed inputs
+Original nine artificial worlds: profiles LINEAR u(0,1,4,9)=(0,1,4,9), SQRT_ON_SQUARES=(0,1,2,3), SATURATING=(0,1,3/2,2), each common outcome lambda in {1/4,1/2,3/4}. Four paired opportunities per original 8-bit source M1X1...M4X4. M=1 yields shared outcome 1 and zero paired difference. M=0 yields A=4 and B=0 if X=0, B=9 if X=1. Original mass lambda^sum(M) (1-lambda)^(4-sum(M)) / 16. All 256 sources per world, including zero or tie outcomes, must remain.
+
+For each source compute Dbar=(sum_i [u(A_i)-u(B_i)])/4. The true sign is sign((1-lambda)*(u(4)-(u(0)+u(9))/2)), always nonzero in these nine worlds. Define WRONG as sign(Dbar) strictly opposite true sign, TIE as Dbar=0, CORRECT as matching sign. The three exact probabilities must sum to one. Also report P(WRONG | non-tie) = P(WRONG)/(1-P(TIE)) if denominator positive; report P(all four common) = lambda^4 separately, and P(TIE) without discarding ties. Report source counts, total mass, exact fractions, and decimals for display. No hypothesis test, significance threshold, fitted parameter, or human-choice inference.
+
+## Independent audit, controls, stopping
+R route: enumerate all original 8-bit sources and exact Fraction probabilities, recomputing utility differences from original rules. B route: independent multinomial enumeration of counts (a,b,c) of noncommon B=0, noncommon B=9, common, a+b+c=4, with mass 4!/(a!b!c!) * ((1-lambda)/2)^(a+b) * lambda^c. Use signed sum a*(u4-u0)+b*(u4-u9). Require exact agreement for 9 worlds and affine u'=3u+7 invariance of all sign categories. Negative controls: deleting a source, duplicating a source, changing one mass, changing one sign category must fail a strict checker. Compare against the original persisted R287 CSV at fixed blob when retrievable; record any inability honestly. Independently preserve prior source and acceptance identities. Keep original R287 and R073/PESEN v0.1 frozen.
+Stop after 9 world results, complete source enumeration, independent multinomial equality, strict negative controls and scientific report. A and B have separate outputs. E1 only; E2/E3 and external-team replication remain zero unless new evidence actually appears.
