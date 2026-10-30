@@ -15,7 +15,7 @@ evidence_scope: THEORY_NOTE_BOUNDED; no real microdata replay, no independent hi
 output_paths: theory/TH165_DYNAMIC_POLICY_HISTORY_CAPACITY_TRANSPORT_2026-10-31.md ; theory/th165_temporal_capacity_audit_20261031.py ; theory/INDEX.md ; research/coordination/theory/20261030t221354z-th165-dynamic-capacity-handoff.md
 commit_sha: RESOLVE_FROM_GIT_HISTORY
 PR: NONE
-calendar: C008 2026-10-31 blob 7baa21237c97630f1a5058ab13d36dc0fe2d5d87 read-only; D002 2026-W44 blob b2556a008eca156222acd3f3b85c5fac read-only.
+calendar: C008 2026-10-31 blob 7baa21237c97630f1a5058ab13d36dc0fe2d5d87 read-only; D002 2026-W44 blob b2556a008eca156222acd3f3b85caa50f85c5fac read-only.
 codex: 12 open PRs; PR1 gap and PR3 candidate fix unmerged; PR2 sync protocol unmerged.
 ci_status: NOT_RUN; commit [skip ci].
 billing_checked: NO

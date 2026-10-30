@@ -28,7 +28,7 @@ WORLD_A = F(1, 10)   # adaptation, full/full Y2 = 9/10
 WORLD_B = F(-3, 5)   # repeated saturation congestion, Y2 = 1/5
 assert len(HISTORIES) == 16 and len(SUPPORTED) == 15
 assert len(set(SUPPORTED)) == 15 and FULL not in SUPPORTED
-assert all(y1(h) == y1(h) for h in HISTORIES)
+assert set(y1(h) for h in HISTORIES) == {F(2, 5), F(1, 2), F(3, 5)}
 assert all(y2(h, WORLD_A) == y2(h, WORLD_B) for h in SUPPORTED)
 assert all(F(0) <= y2(h, q) <= F(1)
            for h in HISTORIES for q in (WORLD_A, WORLD_B))
