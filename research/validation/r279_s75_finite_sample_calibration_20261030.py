@@ -177,12 +177,12 @@ def emit(directory):
     directory.mkdir(parents=True, exist_ok=True)
     with (directory / "R279_S75_ALL_144_EMPIRICAL_SOURCE_ATOMS.csv").open(
             "w", encoding="utf-8", newline="") as stream:
-        writer = csv.writer(stream, lineterminator="\\n")
+        writer = csv.writer(stream, lineterminator="\n")
         writer.writerow(FIELDS)
         for row in rows:
             writer.writerow([str(v) for v in row])
     (directory / "R279_S75_EXACT_RESULTS.json").write_text(
-        json.dumps(report, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return report
 
 
