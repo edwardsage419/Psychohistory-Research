@@ -632,3 +632,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH145 | 学校规范干预勘误传播、ICPSR公开元数据分母与多结果解释 | Paluck等2016 PNAS原刊、2018正式勘误、ICPSR37070 V2、PubMed与Princeton机构书目；16项条件命题、12项来源与人工审计；原论文25%修正传播不一致，24,471/24,191行数差280，499检索条目与482列差17原因未识别；无未成年人微观数据或独立因果复算 | THEORY_NOTE_BOUNDED | [研究笔记](TH145_PALUCK_ERRATUM_PROPAGATION_ICPSR_METADATA_DENOMINATORS_2026-10-30.md) |
 
 当前下一专题：TH146 权威服从、规范内化与制度合法性竞争理论。C007已满足2026-10-30，D002已满足2026-W44。旧队列文字保留为当时状态。
+
+| TH146 | 权威服从、认同与内化、程序公正及制度合法性的竞争解释 | Kelman1958原刊表2，Milgram1963摘要，Haslam等2014多条件原刊，Haslam与Reicher2012，Mazerolle等2013系统综述，Nagin与Telep2020修正主义；16项条件命题、14项原始数字及人工审计；Kelman表2共197分析样本，Meta-Milgram 323/740，程序公正合作结局发表状态分层OR 0.94对2.17；无独立因果、跨文化预测及R系列E1/E2/E3新增 | THEORY_NOTE_BOUNDED | [研究笔记](TH146_AUTHORITY_OBEDIENCE_INTERNALIZATION_LEGITIMACY_COMPETING_MECHANISMS_2026-10-30.md) |
+
+当前下一专题：TH147 权威合法性、群体认同与规范内化的可区分干预及历史运输。C007已满足2026-10-30，D002已满足2026-W44，保持只读。之前队列文字作为历史状态保留。
