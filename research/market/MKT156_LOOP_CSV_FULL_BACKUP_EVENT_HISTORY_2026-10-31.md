@@ -1,0 +1,19 @@
+# MKT156: Loop CSV export versus full-backup claims and historical event identity
+
+UTC 2026-10-30. Track market. Target (market,Loop-Habit-Tracker,exporter-eb56a6794d8567240f0e0af5aacff52fb3d9c062,CSV-vs-full-backup-event-history-identifiability). Baseline main 31c3f0898af6888fb5d49b38cd9fa511bb0ee6f9. Status COMPLETE_BOUNDED_PRIMARY_SOURCE_AND_SYNTHETIC_E1.
+
+## Primary English evidence read
+1. Pinned Loop upstream exporter commit 82c1ff287a8ac05321bfa95b61399fa8a2d1da5b, path uhabits-core/src/commonMain/kotlin/org/isoron/uhabits/core/io/HabitsCSVExporter.kt, Git blob eb56a6794d8567240f0e0af5aacff52fb3d9c062. Original source directly fetched again via GitHub connector. Per-habit Checkmarks.csv has Date,Value,Notes, and Scores.csv has Date,Score with four decimal places. Combined checkmarks/scores are derived snapshots of computed entries and scores, rather than an edit-event journal.
+2. Developer's official FAQ https://github.com/iSoron/uhabits/discussions/689 explicitly distinguishes "Export full backup" for restoring app data from "Export as CSV" as a ZIP of spreadsheet-readable files. It warns that app-specific backup folder can disappear on uninstall, and Android cloud backup may depend on OS settings. FAQ is historical documentation and current Android behavior was not independently run.
+3. Backup-location discussion https://github.com/iSoron/uhabits/discussions/1912 reports user concerns about app-specific automatic-backup directory accessibility. Discussion is user report, not independently verified implementation.
+4. Official repository https://github.com/iSoron/uhabits and privacy https://loophabits.org/privacy.html. Free open-source app with no app purchase required. No account, purchase or paid API used.
+
+## Concrete mechanism and bounded test
+Input: dated habits, computed checkmark states, notes, scores. State: CSV date/value/notes and date/score, plus full-backup format documented as separate restore route. Feedback: visual score and checkmarks, historical score recomputation per previous MKT154. Historical revisions: exporter code inspected contains no revision-event timestamp or historical algorithm-version field in the per-habit CSV. Full-backup SQLite schema, actual backup bytes, and restore fidelity were NOT_INSPECTED; do not claim the backup preserves or loses full edit history.
+
+Local Node 22.16.0 executed research/market/mkt156_export_vs_eventlog_20261031.js, 15/15 assertions PASS. Artificial world A records YES_MANUAL at event time 1 then NO at time 2 for one date; world B records only NO at time 2. Both final CSV projections are exactly "Date,Value,Notes\\n2026-10-20,NO,\\n". Their as-of-time-1 histories differ. A hypothetical current-state-only backup snapshot also collides. An append-only revision event log distinguishes the two. This establishes a generic noninjective snapshot projection, not a Loop backup bug or proof about actual SQLite tables.
+
+## Candidate implications and boundaries
+A future decision system could preserve source identity, event time, edit time, immutable revision IDs, rule version, snapshot digest, export scope and deletion/consent status. Separate human-readable export, restoration backup, and replayable event history. Avoid claiming that raw SQLite backup is equivalent to audit-grade event sourcing. Source code gives inspectable mechanisms but no evidence of actual behavior improvement, controlled outcome evaluation, privacy guarantee on user devices, or Android backup correctness. No real user data, Android execution, SQLite schema audit, paid services or CI. Evidence: PRIMARY_PINNED_CODE + HISTORICAL_OFFICIAL_FAQ + INTERNAL_NONBLIND_SYNTHETIC_E1. New E2=0, E3=0.
+
+Next MKT157: inspect pinned SQLite backup implementation/schema only if exact code and bytes become accessible, or select a complementary open-source habit feedback mechanism.
