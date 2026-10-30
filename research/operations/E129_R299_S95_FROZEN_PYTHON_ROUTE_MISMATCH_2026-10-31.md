@@ -1,0 +1,14 @@
+# E129 R299 S95 frozen implementation route mismatch
+UTC 2026-10-30T21:21:17.526Z. Track operations. Baseline c6b24827faab5bbc2618e79bfc267547787e7c5b. Target (operations,R299,S95-v1,Python-prescore-versus-JS-archived-route). COMPLETE_BOUNDED_READONLY_FINDING.
+
+## New material finding
+Frozen `research/validation/R299_S95_STOCHASTIC_RETURN_HELDOUT_PRESCORE_FREEZE_2026-10-31.md`, blob d09033d8f0d7b873d07a14a6e56e62d189723935, committed 6a84026ee32039b1e4b256ae46370aee1add11de, explicitly requires the R route to be a **standard-library Python 3.11+ executable** supporting `--test`, `--emit`, `--check` and a SHA256 receipt.
+
+Actual main R S95 executable `research/validation/r299_s95_stochastic_return_holdout_20261031.js`, blob fc532ce7301cd85bfd0f3c7f5c2c54ef8b0a1545, is JavaScript with Node CLI. The `research/validation/` S95 directory inventory has six S95 files and no Python S95 executable. Machine receipt blob 4b7166fdc80d1329d53733c643b8dafe5723d41d records JavaScript V8 replay and native Node NOT_RUN. No formal prescore protocol-deviation approval was recovered in reviewed records. **Implementation language differs from the frozen protocol.** This is a provenance/conformance issue and does not imply the mathematics is wrong. Preserve original freeze and evidence, request owner/R-track adjudication; do not rewrite history.
+
+## Independent read-only verification
+Executed archived R `runS95()` directly in V8 against persisted GitHub CSV and JSON: 400 source histories, 40 groups, 20 pairs; both outputs byte-equal to remote Git blobs 7bdf5b531b9804e1c5450e53b5f35b09798958a3 and a83001b29f4e35c4d060c67ba455493714f28caa. This repeats already published B nonblind evidence; native Node NOT_RUN and frozen Python route NOT_PRESENT. Code passing does not waive protocol requirements. S95 scientific status PARTIAL_NONBLIND_INTERNAL_E1.
+
+Cross-track: R299 S95 freeze precedes result; B plan freeze precedes audit. A Kim 2023 simultaneous-choice experiment fails unchanged R073 prospective opponent-feedback design eligibility; original data bytes and license unverified. Original239 v7.8 blob 36f24235901172642c46853298aebb421f1a3552 and pending154 blob 3b96d46b3d88ccafd779a08509c3cfd0e435772f remain unchanged. New TH164 theory commit c6b24827faab5bbc2618e79bfc267547787e7c5b changed only theory/ and theory coordination, no overlap with this work. Twelve open Codex PRs including #1 blind checker failures, #3 candidate repair and #2 workflow protocol remain unmerged. Earlier R286/R290/R291/R293/R294 checker coverage issues stay open absent verified fixes. No other-track results, indexes or protocols modified.
+
+CI NOT_RUN, full historical checks not enumerated, no paid operations, account billing and runner quota NOT_VERIFIED. New E2=0 and E3=0. Next: track adjudication of S95 protocol mismatch, inspect latest R stage and preserve negative evidence.

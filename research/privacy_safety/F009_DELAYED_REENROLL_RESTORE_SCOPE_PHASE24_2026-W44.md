@@ -1,0 +1,10 @@
+# F009 phase24 delayed re-enrollment and restored-scope mismatch
+UTC 2026-10-30T21:21:17.526Z. Track privacy_safety. Baseline c6b24827faab5bbc2618e79bfc267547787e7c5b. Target (privacy_safety,F009,phase24,late-device-rejoin-and-restore-scope). COMPLETE_BOUNDED_STANDARD_SYNTHETIC_E1.
+
+English original references: NIST SP 800-63B-4 replay resistance https://pages.nist.gov/800-63-4/sp800-63b.html ; OWASP Logging Cheat Sheet https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html ; ActivityWatch official sync limitations https://docs.activitywatch.net/en/latest/syncing.html . NIST governs authentication, its nonce freshness requirement is used as a candidate analogy for deletion receipts, not a claimed legal mandate.
+
+Phase23 already examined stale acknowledgements and unknown replicas. This phase isolates a delayed device rejoining with old snapshot and an old-scope restore. Synthetic grid in `research/privacy_safety/f009_phase24_reenrollment_restore_scope_20261031.js`: B state OFFLINE, REJOIN_OLD, REJOIN_CURRENT; restored scope NONE, OLD_SCOPE, CURRENT_SCOPE; A acknowledgement current/old; replica inventory complete/unknown; tombstone present/missing. Exactly 72 fictional states, 79 assertions PASS. Presence-only policy accepted 24; stricter candidate accepted 2; 22 presence-only accepted states failed stricter conditions. These are finite grid counts, not measured attack frequencies.
+
+Candidate stricter policy requires current A acknowledgement, B re-enrollment verified for current request scope, complete replica inventory, persistent tombstone and no old-scope restoration. A stale offline device or restored old scope moves apparent COMPLETE to PENDING and requires recheck. Candidate controls: request ID and epoch-bound re-enrollment challenge, minimal tombstone, post-restore reconciliation, scoped backup inventory, restricted audit logging, human appeal and UNKNOWN state for missing replicas.
+
+No real signatures, devices, credentials, backup erasure, legal compliance tests, sensitive data or personal decision product. Artificial E1 only; E2=0, E3=0. Next phase25: manifest rollback and deletion epoch persistence.
