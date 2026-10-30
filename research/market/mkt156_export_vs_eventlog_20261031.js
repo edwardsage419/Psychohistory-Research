@@ -1,0 +1,30 @@
+'use strict';
+// Synthetic export comparison. This is not a claim about Loop's SQLite schema.
+const assert=require('node:assert/strict');
+const date='2026-10-20';
+const A=[{t:1,date,value:'YES_MANUAL',notes:''},{t:2,date,value:'NO',notes:''}];
+const B=[{t:2,date,value:'NO',notes:''}];
+const snapshot=events=>{
+  const m=new Map();for(const e of events)m.set(e.date,{Date:e.date,Value:e.value,Notes:e.notes});
+  return [...m.values()].sort((x,y)=>x.Date.localeCompare(y.Date));
+};
+const asof=(events,t)=>snapshot(events.filter(e=>e.t<=t));
+const csv=rows=>['Date,Value,Notes',...rows.map(r=>[r.Date,r.Value,r.Notes].join(','))].join('\n')+'\n';
+const backupSnapshot=events=>JSON.stringify({currentEntries:snapshot(events)});
+let checks=0;const check=(x,msg)=>{assert.ok(x,msg);checks++};
+check(csv(snapshot(A))===csv(snapshot(B)),'final CSV same');
+check(backupSnapshot(A)===backupSnapshot(B),'hypothetical snapshot backup same');
+check(JSON.stringify(A)!==JSON.stringify(B),'different event histories');
+check(csv(asof(A,1))!==csv(asof(B,1)),'as-of differs');
+check(asof(A,1)[0].Value==='YES_MANUAL','A earlier YES');
+check(asof(B,1).length===0,'B earlier absent');
+check(csv(snapshot(A)).includes('NO'),'final NO');
+check(!csv(snapshot(A)).includes('YES_MANUAL'),'old YES lost');
+check(csv(snapshot(A)).split('\n')[0]==='Date,Value,Notes','no event timestamp header');
+check(JSON.stringify(A).includes('"t":1'),'event log records revision');
+check(A.length===2 && B.length===1,'event counts');
+check(snapshot(A).length===1 && snapshot(B).length===1,'one final record');
+check(new Set([JSON.stringify(A),JSON.stringify(B)]).size===2,'distinct source histories');
+check(new Set([csv(snapshot(A)),csv(snapshot(B))]).size===1,'noninjective final projection');
+check(['Date','Value','Notes'].every(k=>Object.hasOwn(snapshot(A)[0],k)),'known per-habit export fields');
+console.log(JSON.stringify({checks,final_csv:csv(snapshot(A)),historyA:A,historyB:B,asof_t1_A:asof(A,1),asof_t1_B:asof(B),scope:'synthetic snapshots; Loop SQLite backup schema NOT_INSPECTED'},null,2));
