@@ -60,4 +60,4 @@ d['results'][0]=dict(world='MONOTONE_PI1of3_FP1_FN1',m=m,sources=25,training_mas
 cases['noncanonical_world_replaces_canonical']={'normal_accept':verdict(d,False)}
 assert cases['noncanonical_world_replaces_canonical']['normal_accept']
 print(json.dumps({'status':'PASS','original_B_blob':'5f1cf8e8299cfff0276b2bbee3d3af69ef0eb869',
-    'fixture':'synthetic 24 rows, NOT persisted S86','assertions':12,'cases':cases},indent=2))
+    'fixture':'synthetic 24 rows, NOT persisted S86','assertions':7,'subprocess_verifications':10,'cases':cases},indent=2))
