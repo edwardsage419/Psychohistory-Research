@@ -1,0 +1,316 @@
+{
+  "study": "R282_S78",
+  "freeze_commit": "def580607b81df0873fd54cd73ceff991f19e863",
+  "evidence": "E1_INTERNAL_NONBLIND_ARTIFICIAL",
+  "schedules": [
+    "SYNC",
+    "A_THEN_B",
+    "B_THEN_A"
+  ],
+  "source_cases": 192,
+  "source_mass": "1/192",
+  "regimes": [
+    {
+      "name": "TERMINAL",
+      "observations": 4,
+      "accuracy": "1/3",
+      "correct_sources": 64,
+      "tie_mass": "1",
+      "tie_sources": 192,
+      "confusion": [
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          64,
+          0,
+          0
+        ]
+      ],
+      "tv": [
+        {
+          "from": "SYNC",
+          "to": "SYNC",
+          "distance": "0"
+        },
+        {
+          "from": "SYNC",
+          "to": "A_THEN_B",
+          "distance": "0"
+        },
+        {
+          "from": "SYNC",
+          "to": "B_THEN_A",
+          "distance": "0"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "SYNC",
+          "distance": "0"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "A_THEN_B",
+          "distance": "0"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "B_THEN_A",
+          "distance": "0"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "SYNC",
+          "distance": "0"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "A_THEN_B",
+          "distance": "0"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "B_THEN_A",
+          "distance": "0"
+        }
+      ]
+    },
+    {
+      "name": "TRACE",
+      "observations": 64,
+      "accuracy": "1/3",
+      "correct_sources": 64,
+      "tie_mass": "1",
+      "tie_sources": 192,
+      "confusion": [
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          64,
+          0,
+          0
+        ]
+      ],
+      "tv": [
+        {
+          "from": "SYNC",
+          "to": "SYNC",
+          "distance": "0"
+        },
+        {
+          "from": "SYNC",
+          "to": "A_THEN_B",
+          "distance": "0"
+        },
+        {
+          "from": "SYNC",
+          "to": "B_THEN_A",
+          "distance": "0"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "SYNC",
+          "distance": "0"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "A_THEN_B",
+          "distance": "0"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "B_THEN_A",
+          "distance": "0"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "SYNC",
+          "distance": "0"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "A_THEN_B",
+          "distance": "0"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "B_THEN_A",
+          "distance": "0"
+        }
+      ]
+    },
+    {
+      "name": "TRACE_E0",
+      "observations": 128,
+      "accuracy": "2/3",
+      "correct_sources": 128,
+      "tie_mass": "7/12",
+      "tie_sources": 112,
+      "confusion": [
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          32,
+          32,
+          0
+        ],
+        [
+          32,
+          0,
+          32
+        ]
+      ],
+      "tv": [
+        {
+          "from": "SYNC",
+          "to": "SYNC",
+          "distance": "0"
+        },
+        {
+          "from": "SYNC",
+          "to": "A_THEN_B",
+          "distance": "1/2"
+        },
+        {
+          "from": "SYNC",
+          "to": "B_THEN_A",
+          "distance": "1/2"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "SYNC",
+          "distance": "1/2"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "A_THEN_B",
+          "distance": "0"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "B_THEN_A",
+          "distance": "3/4"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "SYNC",
+          "distance": "1/2"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "A_THEN_B",
+          "distance": "3/4"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "B_THEN_A",
+          "distance": "0"
+        }
+      ]
+    },
+    {
+      "name": "TRACE_EALL",
+      "observations": 160,
+      "accuracy": "5/6",
+      "correct_sources": 160,
+      "tie_mass": "5/16",
+      "tie_sources": 60,
+      "confusion": [
+        [
+          64,
+          0,
+          0
+        ],
+        [
+          16,
+          48,
+          0
+        ],
+        [
+          16,
+          0,
+          48
+        ]
+      ],
+      "tv": [
+        {
+          "from": "SYNC",
+          "to": "SYNC",
+          "distance": "0"
+        },
+        {
+          "from": "SYNC",
+          "to": "A_THEN_B",
+          "distance": "3/4"
+        },
+        {
+          "from": "SYNC",
+          "to": "B_THEN_A",
+          "distance": "3/4"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "SYNC",
+          "distance": "3/4"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "A_THEN_B",
+          "distance": "0"
+        },
+        {
+          "from": "A_THEN_B",
+          "to": "B_THEN_A",
+          "distance": "15/16"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "SYNC",
+          "distance": "3/4"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "A_THEN_B",
+          "distance": "15/16"
+        },
+        {
+          "from": "B_THEN_A",
+          "to": "B_THEN_A",
+          "distance": "0"
+        }
+      ]
+    }
+  ],
+  "original_R282_paired_counts": {
+    "A_THEN_B": [
+      32,
+      48
+    ],
+    "B_THEN_A": [
+      32,
+      48
+    ]
+  },
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "new_E2": 0,
+  "new_E3": 0
+}
