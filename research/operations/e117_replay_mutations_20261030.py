@@ -9,7 +9,7 @@ from fractions import Fraction as F
 from pathlib import Path
 
 ROOT=Path(__file__).parent
-src=ROOT/'b_r286_s82_covariance_and_receipt_audit_20261030.py'
+src=ROOT.parent/'evidence_audit'/'b_r286_s82_covariance_and_receipt_audit_20261030.py'
 spec=importlib.util.spec_from_file_location('archived_b',src)
 b=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(b)
