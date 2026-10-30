@@ -1,0 +1,20 @@
+# R289 S85 prescore freeze: finite training selection of aspiration thresholds
+
+Date: 2026-10-30 UTC. Track R. NEW bounded subquestion; original R289 CLOSED_BOUNDED_E1 unchanged.
+Freeze BEFORE computing any S85 numeric outcome. Known original R289 six-world net means are already read, so this is NONBLIND internal E1 analysis, not an external or blind replication.
+Original immutable source: research/R289/R289_ALL_486_ORIGINAL_SEQUENTIAL_OFFER_SOURCES.csv, Git blob 261d821044278d05db1d15e85e20cef8aafbe5a4; original R289 source code blob 426a63a793ca84c474c8a6a1a2c378efde4db601; original freeze commit 27fa695d5e0c612fd77fb3a3fc5af26a543c0a27.
+
+## Question and fixed setup
+Three original iid offer distributions UNIFORM (1/3,1/3,1/3), LOW_HEAVY (1/2,1/4,1/4), HIGH_HEAVY (1/4,1/4,1/2) on offer values 1,3,5. Each episode has four ordered offers. Policies H3 and H5 use the original R289 rule: accept first offer >= threshold, otherwise forced to accept fourth; pay 1/2 for each additional inspected offer.
+New decision experiment: collect m=1 or m=2 independent COMPLETE training episodes. For EACH episode evaluate both fixed threshold policies on that same episode (paired full-offer offline training). Choose H5 only if its sample mean net reward STRICTLY exceeds H3; a tie chooses H3. After choosing, apply the selected threshold to a fresh iid test episode that was not included in training. No test outcome may influence the selection. The full offer sequence is used only for retrospective training evaluation; prospective deployment of chosen threshold observes offers sequentially under its policy. The training information requirement is an explicit limitation.
+No adaptive threshold, no parameter estimation, no post hoc threshold tuning. Frozen original R289 baseline FIRST_ONLY is deployable. Frozen original PERFECT_FORESIGHT_MAX is nondeployable and must be labeled as such.
+
+## Prespecified outcomes and denominator
+For each DGP and m=1,2, compute exact P(select H5), P(select inferior population threshold), expected independent-test net payoff of the selected policy, expected regret relative to the BETTER OF H3/H5 POPULATION MEANS (not the perfect-foresight maximum), and improvement over FIRST_ONLY. All include training ties choosing H3, without deleting ties. Report population E[H3], E[H5], oracle-of-two mean, and FIRST_ONLY as checks against original R289 results. If two population means tie, inferior-selection probability is 0 and both are optimal.
+R route: enumerate 81 four-offer episodes per DGP, then all 81^m ordered training tuples with exact integer source weights; produce a 243-row paired-offer ledger (three DGPs times 81 sequences) with H3/H5 net, signed twice-net difference and source weight, plus exact six-world results.
+B route: independent exact signed-difference frequency polynomial/convolution for m=1 and 2, reconstructing payoffs independently from the four offers. Compare R and B probability and mean/regret as exact fractions, not floating approximations.
+Full source denominator per DGP is 81^m ordered training tuples; probability mass is exactly 1. Explicitly preserve zero signed-difference episodes and training ties. No model selection on heldout episode.
+
+## Precommitted tests and failures
+A01 source key universe exactly 3 x 81, unique, fixed probabilities; A02 compare paired H3/H5 values to original 486-row CSV and its Git blob; A03 exact R direct enumeration versus independent B polynomial, exact fraction identities and archived native runtime replay; A04 reject duplicated, missing, probability-mutated and payoff-mutated paired ledger, and a deliberately incorrect tie decision; A05 E1 artificial only, no human E2 or historical E3; A06 archive scripts, 243 ledger, exact result JSON, scientific report, B audit, commit and actual CI status. Any failed assertion stays FAIL; absent native replay remains OPEN. Original R289 acceptance unchanged. No GitHub Actions until cost is verified; no paid services.
+R073 model/scoring FROZEN; PESEN v0.1 FROZEN. Do not alter original239 crosswalk or pending154 queue.
