@@ -624,3 +624,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH143 | 社会规范干预的学校级效应、网络干扰、惩罚合法性与跨场景外推 | Paluck等2016开放PNAS原刊、Baldassarri与Grossman2011开放PNAS原刊、Rand等2011、Aronow与Samii2017、Gächter与Herrmann2009、Rand与Nowak2011；16项条件命题、11项公开汇总与人工审计；56校仅49校有纪律事件，学校级纪律报告下降30%而平均规范评分未显著变化，四暴露共同正概率子样本2451/24191；无真人微观复算、独立历史因果与预测 | THEORY_NOTE_BOUNDED | [研究笔记](TH143_NETWORK_NORM_INTERVENTION_SANCTION_INTERFERENCE_EXTERNAL_VALIDITY_2026-10-30.md) |
 
 当前下一专题：TH144 社会参照者网络暴露的共同支持、学校记录缺失及多结果反证。C007满足2026-10-30，D002满足2026-W44。历史旧队列文字保留为当时状态。
+
+| TH144 | 2018年PNAS正式勘误纠正TH143引用的学校行政报告降幅30%为25%，并明确总体效应在5%阈值下不显著；2019勘误仅补资助；ICPSR 37070 V2研究总体、网络暴露正概率、缺失结果部分识别 | Paluck等2018 DOI:10.1073/pnas.1804429115；2019 DOI:10.1073/pnas.1821346116；ICPSR37070.v2；Aronow与Samii2017；16项条件命题、12项原刊/公开目录/人工审计；TH143 A143-07已标记勘误 | THEORY_NOTE_BOUNDED; SOURCE_CORRECTION_MATERIAL | [研究笔记](TH144_PALUCK_CORRECTION_NETWORK_EXPOSURE_MISSINGNESS_2026-10-30.md) |
+
+当前下一专题：TH145 规范干预勘误传播、学校行政结局多结果稳健性与ICPSR版本字典。C007已满足2026-10-30，D002已满足2026-W44。历史队列文字为当时状态。

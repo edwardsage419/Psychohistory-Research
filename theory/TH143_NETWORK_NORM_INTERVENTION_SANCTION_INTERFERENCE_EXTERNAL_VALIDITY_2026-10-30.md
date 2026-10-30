@@ -1,5 +1,8 @@
 # TH143 社会规范干预外推、惩罚制度与网络干扰的识别边界
 
+> **2026-10-30 TH144正式勘误警示：** 本文A143-03的“30%”为2016旧版混合口径，作者2018年正式更正为25%；A143-07关于学校行政纪律总体效应“P<0.05”的表述与2018年勘误冲突，作者明确总体效应在α=0.05下未显著。请优先使用[TH144勘误与方法审计](TH144_PALUCK_CORRECTION_NETWORK_EXPOSURE_MISSINGNESS_2026-10-30.md)及原始勘误DOI:10.1073/pnas.1804429115。以下历史审计原文为保留版本证据，已知错误不应继续作为有效结论引用。
+
+
 研究与英文原始来源检索日期：2026-10-30（Asia/Singapore）。状态：THEORY_NOTE_BOUNDED。
 目标键：(theory,PALUCK2016_BALDASSARRI2011_RAND2011_ARONOW2017,theory-v1,cluster-randomization × network-exposure × legitimacy × sanctions × external-validity)。
 承接TH142社会规范和阈值研究，独立审阅真实群体实验的设计与公开汇总结果。既有R071、R222、R307及其他R模型仅用于交叉定位，不复用其冻结实验作为本轮新增验收。已知研究结论的非盲态阅读；本轮未下载受试者级数据，未运行真人数据拟合。
