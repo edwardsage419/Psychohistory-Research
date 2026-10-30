@@ -1,0 +1,20 @@
+# B track: R287 S83 independent multinomial oracle and persisted receipt audit
+Date: 2026-10-30 UTC. Target key (B,R287,S83-v1,finite-four-opportunity-sign-and-persisted-coverage). Status: INTERNAL_NONBLIND_MATHEMATICAL_AUDIT_PASS; FULL_SCIENTIFIC_ACCEPTANCE_PARTIAL.
+Freeze first: 254b5f73c86a18d55a11c68118bd1d0fc77ce80c. Original R287 2304 source CSV blob ddf3ae0b924016a3a8aac7253a1a6a9b44d864d1.
+
+## Scope actually read and methods
+Read the original R287 freeze, report, source code, acceptance record and first source rows; R track read the complete original persisted 2304 CSV. The B method was developed with knowledge of the R mechanism and is NONBLIND within the same research process. B used Python 3.13 local native command to compute a separate multinomial oracle over (a,b,c), where a is noncommon B=0, b noncommon B=9, c common, a+b+c=4. There are 15 multinomial count cells per artificial world and 9 worlds, 135 exact cells. No original eight-bit source enumeration or R implementation was imported by the Python oracle.
+
+Exact multinomial mass: 4!/(a!b!c!) * ((1-lambda)/2)^(a+b) * lambda^c. The realized utility difference is a*(u4-u0)+b*(u4-u9), and the true expected sign is sign(u4-(u0+u9)/2). The Python Fraction native command returned nine complete exact result objects. The independent JS multinomial calculation matched all nine remote persisted R results field-for-field. Separately, the complete remote 2304-row derived CSV was reread and checked for 2304 unique (profile,lambda,8bit) keys, 256 sources per world, nine world probability sums equal one, and exact probability, realized difference and sign category per row. This is internal programmatic verification, not external replication.
+
+## Checks, negative evidence, and limits
+B oracle: PASS 9/9 exact world result objects; 135 multinomial count cells.
+Remote receipt: PASS 2304/2304 unique sources, exact source mass and realized differences; persisted result blob ee59ba2ebb6e5fc48dbeaa75acb4592a6b56ba18; derived CSV blob 8cf3313dcfd67716dd789ad389a4ebe3936681dc.
+R strict negative controls: duplicate, missing, altered mass, altered category: all four rejected. These controls were executed by the R strict checker and are NOT mislabeled as B-independent mutations.
+B native local Python oracle: PASS. Archived B Python script native execution after GitHub upload: NOT_RUN. Archived R Node CLI native execution: NOT_RUN. GitHub Actions for new S83: NOT_RUN. Outside-team independent replication: NOT_RUN.
+
+Implementation failures retained as audit facts: the first R enumeration attempt failed its source-mass check because lambda 1/2 was incorrectly interpreted as numerator 1/4. It was corrected before archiving R results. The first independent JS persisted receipt checker failed on negative rational formatting because the gcd helper was not normalized to a positive divisor. It was corrected, and the full 2304-row persisted audit was rerun successfully. Neither failure was silently treated as a scientific negative result, and the prescore freeze was not changed.
+
+## Scientific limits and follow-up
+This checks an artificial four-opportunity finite-sample statistic, with no estimated human risk preferences, independent human samples, prediction calibration, historical outcomes, or causal inference. For this deterministic exact artificial task, held-out prediction and resampling are NOT_APPLICABLE_WITH_RATIONALE. The main scientific warning is that strict wrong-sign probabilities, tie probabilities and conditional-on-non-tie probabilities answer different questions; ties were preserved. R073 and PESEN v0.1 stay FROZEN. New E2 predictions 0; E3 historical predictions 0.
+Next: run exact archived Node CLI and exact archived Python CLI against actual remote persisted files in a free environment; record byte digests and command outputs, then consider scientific closure without changing original R287 acceptance. No paid Actions or API calls were initiated. Billing/account quota was not independently inspected.
