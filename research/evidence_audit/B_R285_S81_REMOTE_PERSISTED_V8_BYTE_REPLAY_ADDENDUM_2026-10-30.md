@@ -1,0 +1,11 @@
+# B轨 R285 S81 远端持久化收据字节复验补充
+
+日期：2026-10-30 UTC。目标键：(B,R285,S81-v1,remote-persisted-byte-replay)。原先报告中远端字节再生NOT_RUN的缺口在本补充范围内闭合为PASS；原生Node CLI仍NOT_RUN，外部独立团队复现仍NOT_RUN。主线正式科学验收状态不改变。
+
+固定main提交85bd69b18b672a5fa2432e63b3e8679201c17825。实际重新读取GitHub归档的原R JavaScript源码、完整CSV、结果JSON和B Python源码。四份Git blob依次为 b2a16a9ee6ffb1dc27a322502f5296ac0d86ff36、18c43f7f4976dba6b6ace44d7bfd4c0e38b1162e、7cb3aff3b8d920b55e8c6fc6e9e9b955963a892a、eafa3bdfb285dcdb2f0445f8f8766886f2d6d86f。B Python远端Git blob与本地实际执行的Python源 git hash-object 完全一致。
+
+在独立V8运行环境重新执行远端归档R源码compute()，输出CSV完整396732字节、JSON完整4683字节均与远端持久化文件逐字节相等。原CSV为4608条唯一世界政策来源，2490条零质量来源和2118条正质量来源均保留。完整严格逐行重建验证通过，八项实际变异注入全部被拒绝：重复、遗漏、质量、拒绝掩码、FDP、E3错误升级、汇总和删除零质量来源。
+
+另外，将本地Python3.13.5原生命令行执行的独立25计数格Fraction路线输出与远端JSON逐项核对，18组×6项=108项精确有理数完全一致。原R285独立机制的六组五指标也与冻结原结果一致。该Python路线已读原R285研究范围，属于内部非盲态复核。
+
+本轮不启动GitHub Actions。原生Node命令行、外部研究团队独立复现、真实E2/E3预测及一般理论推广继续开放。原R285正式有界E1状态、R073和PESEN v0.1保持冻结。账户账单与免费额度未独立核验。
