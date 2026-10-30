@@ -1,0 +1,3597 @@
+{
+  "research_id": "R298",
+  "extension": "S94",
+  "freeze_commit": "479b96c37c53c4d5f62503f308ab2067daa26933",
+  "original_source_sha256": "10e78b17e24296703b3379997edfb3384991b95e316eaac7fe3c1f557322c326",
+  "evidence": "E1_SYNTHETIC_ONLY",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replication": false,
+  "world_count": 80,
+  "message_branches": 320,
+  "action_rows": 640,
+  "worlds": [
+    {
+      "world": "true=BASELINE|gamma=1/2|e=0|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=0|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=1/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/12",
+      "wrong_choice_probability": "1/6",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=1/4|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=1/2|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/6",
+      "wrong_choice_probability": "1/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=1/2|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=3/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/4",
+      "wrong_choice_probability": "1/2",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=3/4|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=1|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/3",
+      "wrong_choice_probability": "2/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1/2|e=1|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=0|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=0|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=1/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/6",
+      "wrong_choice_probability": "1/6",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=1/4|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=1/2|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/3",
+      "wrong_choice_probability": "1/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=1/2|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=3/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1/2",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=3/4|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=1|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "2/3",
+      "wrong_choice_probability": "2/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BASELINE|gamma=1|e=1|controller=CACHED_VALUES",
+      "true_scenario": "BASELINE",
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=0|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=0|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=1/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/4",
+      "wrong_choice_probability": "1/6",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "3/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=1/4|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=1/2|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/2",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=1/2|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=3/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "3/4",
+      "wrong_choice_probability": "1/2",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=3/4|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=1|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1",
+      "wrong_choice_probability": "2/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1/2|e=1|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=0|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=0|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=1/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1/6",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "3/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=1/4|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=1/2|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1",
+      "wrong_choice_probability": "1/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/2",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=1/2|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=3/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "3/2",
+      "wrong_choice_probability": "1/2",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=3/4|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=1|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "2",
+      "wrong_choice_probability": "2/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=REWARD_SHIFT|gamma=1|e=1|controller=CACHED_VALUES",
+      "true_scenario": "REWARD_SHIFT",
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "3",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "3",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=0|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=0|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=1/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/12",
+      "wrong_choice_probability": "1/6",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "3/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=1/4|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=1/2|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/6",
+      "wrong_choice_probability": "1/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/2",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=1/2|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=3/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/4",
+      "wrong_choice_probability": "1/2",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=3/4|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=1|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/3",
+      "wrong_choice_probability": "2/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1/2|e=1|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1/2",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=0|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=0|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=1/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/6",
+      "wrong_choice_probability": "1/6",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "3/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=1/4|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=1/2|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/3",
+      "wrong_choice_probability": "1/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/2",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=1/2|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=3/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1/2",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=3/4|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=1|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "2/3",
+      "wrong_choice_probability": "2/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "RIGHT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=TRANSITION_SWAP|gamma=1|e=1|controller=CACHED_VALUES",
+      "true_scenario": "TRANSITION_SWAP",
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "1",
+      "wrong_choice_probability": "1",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "RIGHT",
+          "regret": "1",
+          "wrong_choice": true
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=0|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=0|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=1/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/4",
+      "wrong_choice_probability": "1/6",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=1/4|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=1/2|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=1/2|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=3/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "3/4",
+      "wrong_choice_probability": "1/2",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=3/4|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=1|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1",
+      "wrong_choice_probability": "2/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3/2",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1/2|e=1|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=0|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=0|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=1/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1/2",
+      "wrong_choice_probability": "1/6",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=1/4|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/12",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "3/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=1/2|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "1",
+      "wrong_choice_probability": "1/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=1/2|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/6",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/2",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=3/4|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "3/2",
+      "wrong_choice_probability": "1/2",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=3/4|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "1/4",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=1|controller=MODEL_BASED_PLANNER",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "expected_regret": "2",
+      "wrong_choice_probability": "2/3",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "RIGHT",
+          "oracle_action": "LEFT",
+          "regret": "3",
+          "wrong_choice": true
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    },
+    {
+      "world": "true=BOTH|gamma=1|e=1|controller=CACHED_VALUES",
+      "true_scenario": "BOTH",
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "expected_regret": "0",
+      "wrong_choice_probability": "0",
+      "messages": [
+        {
+          "message": "BASELINE",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "REWARD_SHIFT",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "TRANSITION_SWAP",
+          "probability": "1/3",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        },
+        {
+          "message": "BOTH",
+          "probability": "0",
+          "chosen_action": "LEFT",
+          "oracle_action": "LEFT",
+          "regret": "0",
+          "wrong_choice": false
+        }
+      ]
+    }
+  ],
+  "summaries": [
+    {
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "0",
+      "equal_scenario_wrong_probability": "0"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1/2",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "1/6",
+      "equal_scenario_wrong_probability": "1/6"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1/2",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "1/3",
+      "equal_scenario_wrong_probability": "1/3"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1/2",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "1/2",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1/2",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "2/3",
+      "equal_scenario_wrong_probability": "2/3"
+    },
+    {
+      "gamma": "1/2",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1/2",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "0",
+      "equal_scenario_wrong_probability": "0"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "0",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "1/3",
+      "equal_scenario_wrong_probability": "1/6"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "1/4",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "2/3",
+      "equal_scenario_wrong_probability": "1/3"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "1/2",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "1",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "3/4",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1",
+      "equal_scenario_wrong_probability": "1/2"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "MODEL_BASED_PLANNER",
+      "equal_scenario_mean_regret": "4/3",
+      "equal_scenario_wrong_probability": "2/3"
+    },
+    {
+      "gamma": "1",
+      "error_rate": "1",
+      "controller": "CACHED_VALUES",
+      "equal_scenario_mean_regret": "1",
+      "equal_scenario_wrong_probability": "1/2"
+    }
+  ]
+}
