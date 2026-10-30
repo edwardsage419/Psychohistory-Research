@@ -1,0 +1,266 @@
+{
+  "research": "R279_S75",
+  "evidence": "ARTIFICIAL_E1_INTERNAL_NONBLIND_EXPLORATORY",
+  "protocol_path": "research/validation/R279_S75_FINITE_SAMPLE_CALIBRATION_BIAS_FREEZE_2026-10-30.md",
+  "source_atoms": 144,
+  "positive_source_atoms": 99,
+  "original_R279_unchanged": true,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "E2": 0,
+  "E3": 0,
+  "results": [
+    {
+      "regime": "CALIBRATED_RATE",
+      "policy": "ORIGINAL_BUCKETS",
+      "source_atoms": 16,
+      "positive_source_atoms": 16,
+      "population": {
+        "REL": "0",
+        "RES": "1/16",
+        "UNC": "1/4",
+        "Brier": "3/16"
+      },
+      "expected_empirical": {
+        "REL": "3/32",
+        "RES": "7/64",
+        "UNC": "13/64",
+        "Brier": "3/16"
+      },
+      "empirical_minus_population": {
+        "REL": "3/32",
+        "RES": "3/64",
+        "UNC": "-3/64",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "0",
+      "P_empirical_REL_at_most_population_REL": "0",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    },
+    {
+      "regime": "CALIBRATED_RATE",
+      "policy": "FLAT_HALF",
+      "source_atoms": 16,
+      "positive_source_atoms": 16,
+      "population": {
+        "REL": "0",
+        "RES": "0",
+        "UNC": "1/4",
+        "Brier": "1/4"
+      },
+      "expected_empirical": {
+        "REL": "3/64",
+        "RES": "0",
+        "UNC": "13/64",
+        "Brier": "1/4"
+      },
+      "empirical_minus_population": {
+        "REL": "3/64",
+        "RES": "0",
+        "UNC": "-3/64",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "59/128",
+      "P_empirical_REL_at_most_population_REL": "59/128",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    },
+    {
+      "regime": "CALIBRATED_RATE",
+      "policy": "REVERSED_BUCKETS",
+      "source_atoms": 16,
+      "positive_source_atoms": 16,
+      "population": {
+        "REL": "1/4",
+        "RES": "1/16",
+        "UNC": "1/4",
+        "Brier": "7/16"
+      },
+      "expected_empirical": {
+        "REL": "11/32",
+        "RES": "7/64",
+        "UNC": "13/64",
+        "Brier": "7/16"
+      },
+      "empirical_minus_population": {
+        "REL": "3/32",
+        "RES": "3/64",
+        "UNC": "-3/64",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "0",
+      "P_empirical_REL_at_most_population_REL": "49/256",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    },
+    {
+      "regime": "DETERMINISTIC_GROUP",
+      "policy": "ORIGINAL_BUCKETS",
+      "source_atoms": 16,
+      "positive_source_atoms": 1,
+      "population": {
+        "REL": "1/16",
+        "RES": "1/4",
+        "UNC": "1/4",
+        "Brier": "1/16"
+      },
+      "expected_empirical": {
+        "REL": "1/16",
+        "RES": "1/4",
+        "UNC": "1/4",
+        "Brier": "1/16"
+      },
+      "empirical_minus_population": {
+        "REL": "0",
+        "RES": "0",
+        "UNC": "0",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "0",
+      "P_empirical_REL_at_most_population_REL": "1",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    },
+    {
+      "regime": "DETERMINISTIC_GROUP",
+      "policy": "FLAT_HALF",
+      "source_atoms": 16,
+      "positive_source_atoms": 1,
+      "population": {
+        "REL": "0",
+        "RES": "0",
+        "UNC": "1/4",
+        "Brier": "1/4"
+      },
+      "expected_empirical": {
+        "REL": "0",
+        "RES": "0",
+        "UNC": "1/4",
+        "Brier": "1/4"
+      },
+      "empirical_minus_population": {
+        "REL": "0",
+        "RES": "0",
+        "UNC": "0",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "1",
+      "P_empirical_REL_at_most_population_REL": "1",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    },
+    {
+      "regime": "DETERMINISTIC_GROUP",
+      "policy": "REVERSED_BUCKETS",
+      "source_atoms": 16,
+      "positive_source_atoms": 1,
+      "population": {
+        "REL": "9/16",
+        "RES": "1/4",
+        "UNC": "1/4",
+        "Brier": "9/16"
+      },
+      "expected_empirical": {
+        "REL": "9/16",
+        "RES": "1/4",
+        "UNC": "1/4",
+        "Brier": "9/16"
+      },
+      "empirical_minus_population": {
+        "REL": "0",
+        "RES": "0",
+        "UNC": "0",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "0",
+      "P_empirical_REL_at_most_population_REL": "1",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    },
+    {
+      "regime": "INVERTED_RATE",
+      "policy": "ORIGINAL_BUCKETS",
+      "source_atoms": 16,
+      "positive_source_atoms": 16,
+      "population": {
+        "REL": "1/4",
+        "RES": "1/16",
+        "UNC": "1/4",
+        "Brier": "7/16"
+      },
+      "expected_empirical": {
+        "REL": "11/32",
+        "RES": "7/64",
+        "UNC": "13/64",
+        "Brier": "7/16"
+      },
+      "empirical_minus_population": {
+        "REL": "3/32",
+        "RES": "3/64",
+        "UNC": "-3/64",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "0",
+      "P_empirical_REL_at_most_population_REL": "49/256",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    },
+    {
+      "regime": "INVERTED_RATE",
+      "policy": "FLAT_HALF",
+      "source_atoms": 16,
+      "positive_source_atoms": 16,
+      "population": {
+        "REL": "0",
+        "RES": "0",
+        "UNC": "1/4",
+        "Brier": "1/4"
+      },
+      "expected_empirical": {
+        "REL": "3/64",
+        "RES": "0",
+        "UNC": "13/64",
+        "Brier": "1/4"
+      },
+      "empirical_minus_population": {
+        "REL": "3/64",
+        "RES": "0",
+        "UNC": "-3/64",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "59/128",
+      "P_empirical_REL_at_most_population_REL": "59/128",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    },
+    {
+      "regime": "INVERTED_RATE",
+      "policy": "REVERSED_BUCKETS",
+      "source_atoms": 16,
+      "positive_source_atoms": 16,
+      "population": {
+        "REL": "0",
+        "RES": "1/16",
+        "UNC": "1/4",
+        "Brier": "3/16"
+      },
+      "expected_empirical": {
+        "REL": "3/32",
+        "RES": "7/64",
+        "UNC": "13/64",
+        "Brier": "3/16"
+      },
+      "empirical_minus_population": {
+        "REL": "3/32",
+        "RES": "3/64",
+        "UNC": "-3/64",
+        "Brier": "0"
+      },
+      "P_empirical_REL_equals_zero": "0",
+      "P_empirical_REL_at_most_population_REL": "0",
+      "count_oracle_equal": true,
+      "variance_formula_equal": true
+    }
+  ]
+}
