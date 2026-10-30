@@ -1,0 +1,14 @@
+# E117 R286 S82原始Python检查器动态收据覆盖复验及跨轨治理
+日期：2026-10-30 UTC。目标键：(operations,R286,S82-v1,receipt-metadata-dynamic-mutations-synthetic-fixture)。初始main c5b337b3c0ff7870510f9b5765542f63a9f637a0。状态：COMPLETE_BOUNDED_INTERNAL_NONBLIND_ENGINEERING_E1。只读审计原R/B轨，不修改其文件或冻结协议。
+
+## 动态复验及精确范围
+从main读取原B检查器 research/evidence_audit/b_r286_s82_covariance_and_receipt_audit_20261030.py，原Git blob 894c97e7d250afe6fdcf8a8c593fe9b4b599c511。将完整4837字节内容复制到隔离本地Python环境，重新计算Git blob SHA1，与远端完全一致。使用该原始代码的固定三种stay概率、三政策及系数，独立重建576条六位人工来源和9个结果对象，构造字段与远端结果JSON相同的合成fixture。原始 audit(rows,obj) 对基线返回(576,9)，原始 mutations(rows,obj) 的8个已有负控制全部拒绝。
+
+在原始 audit 函数上对E116登记的11个JSON字段分别做单字段错误替换及单字段删除，共22次动态变异。8个顶层字段：research_id、freeze_protocol、original_R286_status、stay_probabilities、model_labeled_complete_source_types、independent_analytic_agreement、original_R286_iid_baseline_agreement、external_independent_replication。3个逐结果字段：rho、source_mass、frozen_original_coefficients（仅改第一个结果对象）。22次全部仍返回(576,9)，其中 external_independent_replication 从 NOT_RUN 改为 VERIFIED_EXTERNALLY 仍被接受。已由原始Python函数实际执行，属于E116静态缺口的动态证实。运行脚本 research/operations/e117_replay_mutations_20261030.py；输出JSON research/operations/E117_MUTATION_RESULTS_2026-10-30.json。
+
+关键边界：原始持久化576行CSV与JSON未在本轮从GitHub下载并原样执行，基线是独立重建的合成人工fixture；检查器源码身份已严格核验。不能称原始落盘收据的完整原生重放或外部独立复现。该缺口限于汇总JSON元数据，行级rho、source_mass及固定系数数值在原检查器中仍受约束。E116-01由STATIC_GAP推进至DYNAMIC_FALSE_ACCEPT_22_OF_22_SYNTHETIC_FIXTURE，仍OPEN，建议R/B轨自身补充字段及类型断言，不擅自修改其程序。E114-01的R284 S80六项元数据缺口独立保留。
+
+## 当日跨轨治理
+实时main检查到R287 S83冻结提交254b5f73c86a18d55a11c68118bd1d0fc77ce80c先于正式结果；九个人工世界、2304来源记录与B轨135个多项式计数单元已经归档。B原生Python本地路线通过，归档后R Node与B Python命令行仍NOT_RUN，S83科研验收PARTIAL，原R287状态保持。A轨DfE-DB仅验证公开元数据，作者说明真人记录尚待文章接收后开放，原始参与者数据未读取；不能视为R073第二独立真人博弈实验。理论TH152为候选知识储备，不改变R主线。12个Codex PR均开放，PR #1 R257 S53盲态失败与严格比较器问题未合并，PR #2同步协议未入main；R267 S63、R281 S77历史失败继续保留。未修改original239、冻结协议、其他轨索引；未将代码运行当作科学验收。
+
+E1工程检查：PASS baseline、8/8旧负控制拒绝、22/22新增元数据篡改错误接受。E2真人样本外预测新增0，E3历史预测新增0。未触发Actions或费用操作；账单未独立核验。下一E118：在R/B独立轨修复后复测22个反例；继续检查R288最新冻结及A轨公开数据授权。
