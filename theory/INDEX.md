@@ -697,3 +697,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH161 | 固定比例分层随机化、同伴暴露正概率与三种完全观测等价机制 | Adhvaryu等2024作者开放稿、Kang与Imbens2016、Aronow与Samii2017、Sävje等2021开放原刊及Basse/Feller2018与Baird等2018摘要；15项条件命题、12项原始汇总与人工枚举；N4/K2六分配下三世界全部可观测结果相同而直接效应负/零/正，EATE与设计条件对比区分；无真实微观复算及新增R E1/E2/E3 | THEORY_NOTE_BOUNDED | [研究笔记](TH161_FIXED_STRATUM_ASSIGNMENT_PEER_DIFFUSION_EXPOSURE_POSITIVITY_2026-10-31.md) |
 
 当前下一专题：TH162 网络暴露正概率、匿名网络误分类与处理版本时间漂移。C008满足2026-10-31，D002满足2026-W44，均保持只读；既有历史队列文字保留。
+
+| TH162 | 网络暴露误分类、联合正概率、时间变化处理版本及竞争性政策估计目标 | Weinstein与Nevo 2023开放预印本第3至5节（正式2026 Biometrics）、Chao等2023开放稿第2至4节（正式2025 Biostatistics）、Auerbach等2024原刊全文；Sävje2024及Yu等2022摘要；12项条件命题、12项人工精确审计；N4 K2六分配中真/错网络边际暴露均5/6而1/3标签不一致，真暴露对比+0.4、错网络对比负0.08，联合零暴露概率为0导致稳健联合权重阻塞；纯人工非盲态，无真人复算及新增R E1/E2/E3 | THEORY_NOTE_BOUNDED | [研究笔记](TH162_NETWORK_EXPOSURE_MISCLASSIFICATION_JOINT_POSITIVITY_TEMPORAL_VERSIONS_2026-10-31.md) |
+
+当前下一专题：TH163 比较网络错设下的设计条件暴露效应、整体政策效应及跨时传播，优先审读Sävje原文与Auerbach等原刊竞争讨论。C008已满足2026-10-31、D002已满足2026-W44，均保持只读。此前下一专题文字保留为历史状态。
