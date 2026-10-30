@@ -40,7 +40,7 @@ TTE_A = y2(FULL, WORLD_A) - y2(ZERO, WORLD_A)
 TTE_B = y2(FULL, WORLD_B) - y2(ZERO, WORLD_B)
 assert (TTE_A, TTE_B) == (F(1, 2), F(-1, 5))
 
-# The two histories adjacent to FULL have K=(1,2) or (2,1).
+# The four histories adjacent to FULL have K=(1,2) or (2,1).
 adjacent = tuple(h for h in SUPPORTED if sum(
     a != b for z, w in zip(h, FULL) for a, b in zip(z, w)
 ) == 1)
