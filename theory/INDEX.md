@@ -693,3 +693,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH160 | WOVO随机鼓励、非依从、个性化鼓励、同伴干扰与回应中介识别 | Adhvaryu等2024作者开放稿、Kang与Imbens2016及Kang与Keele2018原始预印本、Imai等2010开放原刊；12项条件命题、11项公开算术与人工反例；新增264个唯一号码与351案件的单位审计、AEA登记晚于所报随机化月份、个人随机化与簇随机化定理不可直接互换；未恢复登记冻结版本，未做真实微观复算或新增E1/E2/E3 | THEORY_NOTE_BOUNDED | [研究笔记](TH160_RANDOMIZED_ENCOURAGEMENT_NONCOMPLIANCE_PEER_INTERFERENCE_MEDIATION_2026-10-31.md) |
 
 当前下一专题：TH161 个性化鼓励的同伴传播、固定比例分层随机化及跨线扩散敏感性界；C008满足2026-10-31，D002满足2026-W44。历史下一专题文字保留。
+
+| TH161 | 固定比例分层随机化、同伴暴露正概率与三种完全观测等价机制 | Adhvaryu等2024作者开放稿、Kang与Imbens2016、Aronow与Samii2017、Sävje等2021开放原刊及Basse/Feller2018与Baird等2018摘要；15项条件命题、12项原始汇总与人工枚举；N4/K2六分配下三世界全部可观测结果相同而直接效应负/零/正，EATE与设计条件对比区分；无真实微观复算及新增R E1/E2/E3 | THEORY_NOTE_BOUNDED | [研究笔记](TH161_FIXED_STRATUM_ASSIGNMENT_PEER_DIFFUSION_EXPOSURE_POSITIVITY_2026-10-31.md) |
+
+当前下一专题：TH162 网络暴露正概率、匿名网络误分类与处理版本时间漂移。C008满足2026-10-31，D002满足2026-W44，均保持只读；既有历史队列文字保留。
