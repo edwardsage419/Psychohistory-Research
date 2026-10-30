@@ -4,7 +4,7 @@ run_start_utc: 2026-10-30T00:17:21Z
 track: theory
 target_key: (theory,PALUCK2016_BALDASSARRI2011_RAND2011_ARONOW2017,theory-v1,cluster-randomization × network-exposure × legitimacy × sanctions × external-validity)
 baseline_main_head: ad6a550230aab5820228ece8bfdfaee1dc60dfe9
-status: COMPLETED_BOUNDED_PENDING_REMOTE_VERIFY
+status: COMPLETED_BOUNDED_REMOTE_VERIFIED
 claim: NONE
 claim_expires_utc: NONE
 source_scope: S1/S2开放原刊指定章节直接阅读；S3/S5原刊搜索摘录；S4/S6/S7原始摘要；S8既有非盲态作者接受稿
@@ -15,7 +15,16 @@ D_week: D002 existing blob b2556a008eca156222acd3f3b85c5fac unchanged
 R_coordination_seen: R278 S74; A Andreozzi, B R278 bounded, no overlap
 PR_seen: 12 open; #1 and #3 unmerged; Codex sync protocol not on main
 output_paths: theory/TH143_NETWORK_NORM_INTERVENTION_SANCTION_INTERFERENCE_EXTERNAL_VALIDITY_2026-10-30.md; theory/INDEX.md; research/coordination/theory/20261030T001721Z-th143-network-norms-handoff.md
-commit: PENDING_REMOTE_VERIFY
+artifact_commit: 1ff30956db92af2db005a50732e7cf1eda83c9d7
+verified_main_head_at_readback: 1ff30956db92af2db005a50732e7cf1eda83c9d7
+verified_note_blob: 8d53229f591a02ac3568c47a6b1d2e7dcbbc5faa
+verified_index_blob: 0ddb70d5f4dcbf4671cddf375972b72360db69b4
+verified_index_TH143_entries: 1
+verified_C007_blob: a26156efd1822e16bcd01d03e361db7d0de53056
+verified_D002_blob: b2556a008eca156222acd3f3b85c5fac
+workflow_runs_PR_filtered: 0
+commit_statuses: 0
+full_actions_runs: NOT_CHECKED
 evidence_boundary: THEORY_NOTE_BOUNDED, nonblind, original individual-level replication=0, historical causal estimation=0, forward prediction=0, new R E1/E2/E3=0
 cost: no paid sources, no manual CI, GitHub billing not verified
 next_action: TH144 network exposure positivity, missing administrative outcomes and multi-outcome negative controls; C008 next research day; D003 next research week
