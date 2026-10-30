@@ -620,3 +620,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH141 | 档案处置计划版本、跨机构重复与历史可见性负对照 | NARA 2007政策、FTC 2023及FERC 2026原始处置计划、NARA 2024 RMSA官方自评、Lipsitch等2010与Abramitzky等2018；16项条件命题、9项原始汇总及人工集合审计；Q56多选题75次选择与58名应答分母混用，FTC批准日与2026目录更新日不同；无真实逐件历史因果或预测 | THEORY_NOTE_BOUNDED | [研究笔记](TH141_ARCHIVAL_SCHEDULE_VINTAGE_DUPLICATE_CAPTURE_NEGATIVE_CONTROLS_2026-10-30.md) |
 
 | TH142 | 社会规范、偏好伪装、阈值级联与制度性公共沉默 | Centola等2018开放接受稿、Ostrom1999/2000开放工作稿，Kuran1991、Granovetter1978、Bicchieri与Xiao2009、Prentice与Miller1993原始摘要；16项条件命题、9项原刊数字及人工审计；发现Centola接受稿补充第16页策略收益示例标签反转，尚未核对正式版；无真实历史因果或预测 | THEORY_NOTE_BOUNDED | [研究笔记](TH142_SOCIAL_NORMS_PREFERENCE_FALSIFICATION_THRESHOLD_CASCADES_2026-10-30.md) |
+
+| TH143 | 社会规范干预的学校级效应、网络干扰、惩罚合法性与跨场景外推 | Paluck等2016开放PNAS原刊、Baldassarri与Grossman2011开放PNAS原刊、Rand等2011、Aronow与Samii2017、Gächter与Herrmann2009、Rand与Nowak2011；16项条件命题、11项公开汇总与人工审计；56校仅49校有纪律事件，学校级纪律报告下降30%而平均规范评分未显著变化，四暴露共同正概率子样本2451/24191；无真人微观复算、独立历史因果与预测 | THEORY_NOTE_BOUNDED | [研究笔记](TH143_NETWORK_NORM_INTERVENTION_SANCTION_INTERFERENCE_EXTERNAL_VALIDITY_2026-10-30.md) |
+
+当前下一专题：TH144 社会参照者网络暴露的共同支持、学校记录缺失及多结果反证。C007满足2026-10-30，D002满足2026-W44。历史旧队列文字保留为当时状态。
