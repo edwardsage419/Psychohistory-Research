@@ -36,7 +36,7 @@ function compute(originalCSV){
    }
    if(mass!==8||sumc!==0||sum0<sumz||sumz<0)throw Error("mass/risk failure "+key);
    if(sensitive){
-    if(sum0!==32||sumz!==8*e4*(4-e4)||sum0-sumz!==2*(2-e4)**2)throw Error("sensitive formula "+key);
+    if(sum0!==32||sumz!==8*e4*(4-e4)||sum0-sumz!==8*(2-e4)**2)throw Error("sensitive formula "+key);
    }else if(sum0!==0||sumz!==0)throw Error("negative control "+key);
    const row={alpha:a,lambda:l,V:v,n,error_rate:e,cue_sensitive:sensitive,baseline_brier:rat(sum0,128),noisy_brier:rat(sumz,128),oracle_brier:rat(sumc,128),information_gain:rat(sum0-sumz,128)};
    worlds.push(row);
