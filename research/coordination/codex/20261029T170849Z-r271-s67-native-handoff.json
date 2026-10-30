@@ -1,0 +1,38 @@
+{
+  "track": "codex",
+  "status": "COMPLETE",
+  "observed_main": "e2614fec5027247de328a5aeef295c4ed3bc9338",
+  "delivery_base": "e2614fec5027247de328a5aeef295c4ed3bc9338",
+  "target_key": [
+    "codex",
+    "R271",
+    "S67",
+    "native-node-cli-persisted-byte-replay-and-run-length-DP"
+  ],
+  "claim": "none",
+  "lease": "none",
+  "results_seen": "NONBLIND R/B outputs and full protocol read before code",
+  "completed": {
+    "positive_original_clis": 3,
+    "persisted_worlds": 27,
+    "persisted_source_rows": 13584,
+    "regenerated_files_byte_equal": 3,
+    "independent_DP_worlds": 27,
+    "new_tests_unique": 8,
+    "normal_and_optimized_final_executions": 16,
+    "failures": 0,
+    "errors": 0,
+    "original_negative_cli_rejections": 2,
+    "original_builtin_mutations_unique": 6
+  },
+  "finding": "Rehashed result R073=MODIFIED metadata accepted by original B, new oracle rejects. No actual R073/source alteration and no mathematical mismatch.",
+  "source": "five pinned inputs; CSV 1648483bytes Git blob4bfed50d9df756d537d239868771181e07a2c216",
+  "limitations": "Artificial exploratory E1 only; strict blind NO; new E2/E3/external0; historical unarchived Python tests and original full suite NOT_RUN.",
+  "outputs": [
+    "research/codex_audit/r271_s67_native/"
+  ],
+  "ci": "NOT_RUN",
+  "fees": "NO_NEW_CHARGE_ACTION; account billing/free quota NOT_VERIFIED",
+  "next": "Reread latest main and handoffs; R270 S66 native Node gap if still open; do not reconstruct missing historical Python code as authentic original",
+  "delivery": "new independent branch and draft PR, containing commit supplies final SHA; no merge"
+}
