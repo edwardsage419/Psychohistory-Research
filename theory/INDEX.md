@@ -636,3 +636,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH146 | 权威服从、认同与内化、程序公正及制度合法性的竞争解释 | Kelman1958原刊表2，Milgram1963摘要，Haslam等2014多条件原刊，Haslam与Reicher2012，Mazerolle等2013系统综述，Nagin与Telep2020修正主义；16项条件命题、14项原始数字及人工审计；Kelman表2共197分析样本，Meta-Milgram 323/740，程序公正合作结局发表状态分层OR 0.94对2.17；无独立因果、跨文化预测及R系列E1/E2/E3新增 | THEORY_NOTE_BOUNDED | [研究笔记](TH146_AUTHORITY_OBEDIENCE_INTERNALIZATION_LEGITIMACY_COMPETING_MECHANISMS_2026-10-30.md) |
 
 当前下一专题：TH147 权威合法性、群体认同与规范内化的可区分干预及历史运输。C007已满足2026-10-30，D002已满足2026-W44，保持只读。之前队列文字作为历史状态保留。
+
+| TH147 | QCET程序公正与权威认同、问卷选择及因果中介识别 | Mazerolle等2013开放原刊、Imai等2010作者公开原刊、Haslam等2014 PLOS全文、Hollander与Turowetz2017等原刊摘要；16项条件命题、14项原刊数字和人工审计；发现模型3 AIC在原刊两处为205.35和153.35、回复率13.09%、处理与合作意愿r0.02、模型间接效应0.06不可直接视为因果中介；无真实微观复验 | THEORY_NOTE_BOUNDED | [研究笔记](TH147_LEGITIMACY_IDENTITY_QCET_SELECTION_MEDIATION_TRANSPORT_2026-10-30.md) |
+
+当前下一专题：TH148 QCET簇级推断、非回复敏感性及AIC来源核验；C007满足2026-10-30，D002满足2026-W44。此前队列文字为历史状态。
