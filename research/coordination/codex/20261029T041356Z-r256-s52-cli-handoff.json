@@ -1,0 +1,31 @@
+{
+  "track": "codex",
+  "subflow": "R256-S52-archived-Node-CLI-and-Python-cross-runtime",
+  "run_date": "2026-10-29",
+  "observed_head": "51c408124fadffa4f5f15c7ccafa5f198b636e0c",
+  "target_key": "codex|R256_S52|d078de426aa6c530419f234bd7c019465675d07b|archived-cli-replay",
+  "activity": "completed bounded audit; no active claim",
+  "status": "COMPLETE",
+  "source_links": [
+    "research/operations/E086_R256_S52_ORIGINAL_CSV_THIRD_ROUTE_GOVERNANCE_2026-10-29.md"
+  ],
+  "work_performed": "4 archived Node CLIs + 2 sandbox clean controls; native82 tests and safety2 tests pass; Python144 exact comparisons per R/B; 4 negative controls rejected; full source202752 fields/SHA verified.",
+  "evidence_scope": "Nonblind internal finite artificial E1, E2/E3=0, external teams=0. Full R JSON parity false: four archive-only verifier fields; computation fields all match.",
+  "results_seen": true,
+  "output_paths": [
+    "research/codex_audit/r256_s52_replay/REPORT.md",
+    "research/codex_audit/r256_s52_replay/logs/execution.json"
+  ],
+  "commit_sha": null,
+  "pr": null,
+  "delivery_branch": "codex/r256-s52-cli-replay-20261029",
+  "ci_status": "NOT_RUN",
+  "billing_checked": "No new billable action; account billing/quota unverified.",
+  "blockers": [
+    "No complete repository test or CI; no external replication.",
+    "R CLI does not emit four historical extra verifier fields."
+  ],
+  "next_action": "E/ B can review fixed-source local CLI closure without rerunning the implementation. Codex candidate R258 archived scripts/CSV only after fresh concurrent-work check.",
+  "delivery_base_head": "acf61773c4f172d9c586084e842b33998268b674",
+  "sync_adoption": "Actual short handoffs observed from all three tracks; no permanent consistency guarantee"
+}
