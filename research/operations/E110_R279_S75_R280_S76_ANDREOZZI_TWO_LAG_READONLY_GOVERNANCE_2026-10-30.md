@@ -1,0 +1,31 @@
+# E110 R279 S75、R280 S76与Andreozzi双滞后字段治理审计
+
+日期：2026-10-30 UTC。目标键：(operations,R279S75+R280S76+Andreozzi2020,S75-v1+S76-v1+author-522efd459f,remote-receipt-and-two-lag-downstream-scope)。状态：COMPLETE_BOUNDED_READONLY_NONBLIND。本报告只增量登记E轨观察，不修改R/A/B/理论轨原文件、冻结协议或共享索引。
+
+## 同步基线与治理约束
+
+本轮先读取main HEAD 4c939ca29bafb6ce352a369818166bde9c9fe78d、最近20提交、12个开放Codex PR标题摘要、上轮MKT140/E109/F009及市场轨交接、R280 S76 R/B/A交接、README、docs/PROJECT_WORKFLOW_REQUIREMENTS_V2_2026-10-24.md、protocols/RESEARCH_ACCEPTANCE_STANDARD_V1_2026-10-16.md和docs/NEXT_RESEARCH_GATES.md。同步协议仅从开放codex/workflow-sync-20261029分支读取，PR #2仍open，未视为main正式制度。
+
+Original239 v7.8交叉索引Git blob 36f24235901172642c46853298aebb421f1a3552，154项待核队列blob 3b96d46b3d88ccafd779a08509c3cfd0e435772f；本轮只读检查未变化。R280 S76冻结提交468ebb3006e864437fb8fc17cfcb39ed70b1bc1e与B远端复核提交6b49f1b77b6e64d0ae90b325e5c234f5f9eb06a5比较：ahead=10、behind=0，九个新增文件，没有历史R文件覆盖。后续TH145只新增理论报告并更新theory/INDEX.md，未改R冻结协议。完整全仓库逐文件内容扫描NOT_RUN。
+
+## 本轮新执行的原始B收据核验
+
+从GitHub main重新读取R279 S75原始归档B JavaScript源码、144行CSV和完整JSON，Git blob分别为03bceb6b6adf9728535df95840fe2d8994fc7198、4905c6df24a73d8a940b2442c44e91a83f4a0aab、6c47a52eb547901e7f9ed3d006eec35450735e24。将原B函数直接在隔离V8执行，未修改比较算法，输出PASS、144行、9世界、99个正质量来源。另将归档JSON中的E2从0人工篡改为1，原B函数正确拒绝，错误为metadata gate。此负控制是本轮新增的实际执行证据。
+
+这只关闭本轮限定的V8原始B函数再执行观察，原生Node.js命令行与R Python完整CSV/JSON重新生成仍OPEN。此前B/R已有内部非盲态审计，本轮已阅读历史结果，不能称盲态独立复算，也不升级R279原正式科学验收。
+
+R280 S76已有R原生Python及B原生Python执行PASS、768人工来源、75独立计数组合、六类错误注入，B远端补充核验8/8 blob一致。本轮只读核对上述来源、冻结顺序与远端提交，未重复运行R/B原生CLI。R280原研究结题状态保持不变，S76仍是人工E1补充。查询R280 S76报告提交d2194b61b8cb4917ac778b233a20426153ba2779的GitHub Actions head_sha返回0个workflow run，commit combined statuses总数0，不能据此推断全仓库CI均未运行；该提交没有可核验的成功CI证据。
+
+## Andreozzi 2020原作者双滞后字段静态独立复查
+
+直接重新读取英文原作者GitHub仓库 seyhunsaral/stabilitycondcoop 的code/process_raw_data.R，固定Git blob 522efd459f574ccaef3d9ce1dd2b086ffb70370e。第269与270行先正确计算wide_o_lag1与narrow_lag1；第275与276行却使用当前期wide_o与narrow替换对应lag1，构成两处静态可确认的覆盖。原作者code/main.R Git blob 3b4f79ce3ddb2d144ea31ccbed26aa03396c9e3c，第300行使用narrow_lag1构造observed_opp_cond_class，第306和308行的两条glmer公式未显式包含该派生变量。
+
+A轨此前完整CSV行级审计报告wide_o错位813/1206、narrow错位646/1206，646包含于813，并集813。本轮独立核验的是原始R源码的两条覆盖赋值和主分析公式的静态依赖范围，没有重新执行完整1340行CSV、原始六份XLS到CSV的清洗重建或回归。不能据此宣称论文Table 3主回归已受影响。后续应按源码调用链检查其他使用派生变量的分析，并核对六会话处理分配机制。
+
+## 证据等级、并发和费用
+
+R257 S53的PR #1旧检查器假阳性和PR #3拟议严格修复仍open、merged=false；R257原盲态FAIL与R267 S63评分前冻结时序FAIL继续有效。未合并PR只作待审查证据。R280 S76人工E1内部非盲态，Andreozzi为真实来源E2测量审计范围；新增真人样本外预测E2=0，独立新研究E3=0，外部团队复现=0。代码执行不等于科学验收。
+
+本轮没有主动运行GitHub Actions、调用收费API、租赁算力或注册收费服务。GitHub账户账单与免费额度未独立核验。写入范围仅本E轨新增文件，其他轨文件只读。
+
+下一E111：核验R279 S75原生Python/Node门是否由R/B后续真正关闭，跟踪Andreozzi六会话处理分配及两条错误lag变量的实际下游依赖，保留R257 S53与R267 S63失败。
