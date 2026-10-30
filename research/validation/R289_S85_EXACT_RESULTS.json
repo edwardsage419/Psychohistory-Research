@@ -1,0 +1,180 @@
+{
+  "study": "R289_S85",
+  "scope": "E1_ARTIFICIAL_NONBLIND",
+  "freeze_commit": "f018236900fa00368c8980db5402ce4267d59c7c",
+  "original_source_git_blob": "261d821044278d05db1d15e85e20cef8aafbe5a4",
+  "source_rows": 243,
+  "worlds": [
+    {
+      "distribution": "UNIFORM",
+      "training_episodes": 1,
+      "training_source_tuples": 81,
+      "expected_H3": "67/18",
+      "expected_H5": "100/27",
+      "first_only": "3",
+      "probability_select_H5": "25/81",
+      "probability_training_tie": "14/27",
+      "probability_select_inferior": "25/81",
+      "independent_test_expected_net": "8128/2187",
+      "oracle_of_two_thresholds": "67/18",
+      "regret_vs_best_fixed_threshold": "25/4374",
+      "gain_over_first_only": "1567/2187",
+      "evidence": "E1_ARTIFICIAL_NONBLIND"
+    },
+    {
+      "distribution": "UNIFORM",
+      "training_episodes": 2,
+      "training_source_tuples": 6561,
+      "expected_H3": "67/18",
+      "expected_H5": "100/27",
+      "first_only": "3",
+      "probability_select_H5": "2819/6561",
+      "probability_training_tie": "212/729",
+      "probability_select_inferior": "2819/6561",
+      "independent_test_expected_net": "657971/177147",
+      "oracle_of_two_thresholds": "67/18",
+      "regret_vs_best_fixed_threshold": "2819/354294",
+      "gain_over_first_only": "126530/177147",
+      "evidence": "E1_ARTIFICIAL_NONBLIND"
+    },
+    {
+      "distribution": "LOW_HEAVY",
+      "training_episodes": 1,
+      "training_source_tuples": 81,
+      "expected_H3": "27/8",
+      "expected_H5": "197/64",
+      "first_only": "5/2",
+      "probability_select_H5": "55/256",
+      "probability_training_tie": "9/16",
+      "probability_select_inferior": "55/256",
+      "independent_test_expected_net": "54251/16384",
+      "oracle_of_two_thresholds": "27/8",
+      "regret_vs_best_fixed_threshold": "1045/16384",
+      "gain_over_first_only": "13291/16384",
+      "evidence": "E1_ARTIFICIAL_NONBLIND"
+    },
+    {
+      "distribution": "LOW_HEAVY",
+      "training_episodes": 2,
+      "training_source_tuples": 6561,
+      "expected_H3": "27/8",
+      "expected_H5": "197/64",
+      "first_only": "5/2",
+      "probability_select_H5": "19569/65536",
+      "probability_training_tie": "2691/8192",
+      "probability_select_inferior": "19569/65536",
+      "independent_test_expected_net": "13783965/4194304",
+      "oracle_of_two_thresholds": "27/8",
+      "regret_vs_best_fixed_threshold": "371811/4194304",
+      "gain_over_first_only": "3298205/4194304",
+      "evidence": "E1_ARTIFICIAL_NONBLIND"
+    },
+    {
+      "distribution": "HIGH_HEAVY",
+      "training_episodes": 1,
+      "training_source_tuples": 81,
+      "expected_H3": "133/32",
+      "expected_H5": "35/8",
+      "first_only": "7/2",
+      "probability_select_H5": "35/128",
+      "probability_training_tie": "43/64",
+      "probability_select_inferior": "93/128",
+      "independent_test_expected_net": "17269/4096",
+      "oracle_of_two_thresholds": "35/8",
+      "regret_vs_best_fixed_threshold": "651/4096",
+      "gain_over_first_only": "2933/4096",
+      "evidence": "E1_ARTIFICIAL_NONBLIND"
+    },
+    {
+      "distribution": "HIGH_HEAVY",
+      "training_episodes": 2,
+      "training_source_tuples": 6561,
+      "expected_H3": "133/32",
+      "expected_H5": "35/8",
+      "first_only": "7/2",
+      "probability_select_H5": "3659/8192",
+      "probability_training_tie": "469/1024",
+      "probability_select_inferior": "4533/8192",
+      "independent_test_expected_net": "1115149/262144",
+      "oracle_of_two_thresholds": "35/8",
+      "regret_vs_best_fixed_threshold": "31731/262144",
+      "gain_over_first_only": "197645/262144",
+      "evidence": "E1_ARTIFICIAL_NONBLIND"
+    }
+  ],
+  "independent_polynomial": [
+    {
+      "distribution": "UNIFORM",
+      "m": 1,
+      "p5": "25/81",
+      "tie": "14/27",
+      "support": 10
+    },
+    {
+      "distribution": "UNIFORM",
+      "m": 2,
+      "p5": "2819/6561",
+      "tie": "212/729",
+      "support": 21
+    },
+    {
+      "distribution": "LOW_HEAVY",
+      "m": 1,
+      "p5": "55/256",
+      "tie": "9/16",
+      "support": 10
+    },
+    {
+      "distribution": "LOW_HEAVY",
+      "m": 2,
+      "p5": "19569/65536",
+      "tie": "2691/8192",
+      "support": 21
+    },
+    {
+      "distribution": "HIGH_HEAVY",
+      "m": 1,
+      "p5": "35/128",
+      "tie": "43/64",
+      "support": 10
+    },
+    {
+      "distribution": "HIGH_HEAVY",
+      "m": 2,
+      "p5": "3659/8192",
+      "tie": "469/1024",
+      "support": 21
+    }
+  ],
+  "mutation_tests": [
+    {
+      "tag": "duplicate",
+      "rejected": true
+    },
+    {
+      "tag": "missing",
+      "rejected": true
+    },
+    {
+      "tag": "weight_mutation",
+      "rejected": true
+    },
+    {
+      "tag": "payoff_mutation",
+      "rejected": true
+    },
+    {
+      "tag": "difference_mutation",
+      "rejected": true
+    },
+    {
+      "tag": "incorrect_tie_rule",
+      "rejected": true
+    }
+  ],
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_replication": 0
+}
