@@ -1,0 +1,93 @@
+{
+  "research_id": "R284",
+  "extension": "S80-v1",
+  "original_catalogue_id": "12-014",
+  "protocol_freeze_commit": "dd478613b265823f620db2affb69ef94ffb7a955",
+  "evidence": "E1_ARTIFICIAL_NONBLIND",
+  "source_count": 768,
+  "source_probability": "1/256",
+  "threshold": "3/4",
+  "min_published_count": 2,
+  "policy_worlds": [
+    {
+      "policy": "COMPLETE_REGISTRY",
+      "original_source_types": 256,
+      "counts": {
+        "eligible": 256,
+        "alarm": 80,
+        "registry": 80,
+        "false_alarm": 0,
+        "miss_alarm": 0,
+        "none": 0,
+        "cell00": 176,
+        "cell01": 0,
+        "cell10": 0,
+        "cell11": 80
+      },
+      "probabilities": {
+        "eligible": "1",
+        "published_alarm": "5/16",
+        "published_alarm_given_eligible": "5/16",
+        "registry_alarm": "5/16",
+        "published_only_false_alarm": "0",
+        "registry_only_missed_alarm": "0",
+        "no_publication": "0"
+      }
+    },
+    {
+      "policy": "POSITIVE_ONLY",
+      "original_source_types": 256,
+      "counts": {
+        "eligible": 176,
+        "alarm": 176,
+        "registry": 80,
+        "false_alarm": 96,
+        "miss_alarm": 0,
+        "none": 16,
+        "cell00": 80,
+        "cell01": 0,
+        "cell10": 96,
+        "cell11": 80
+      },
+      "probabilities": {
+        "eligible": "11/16",
+        "published_alarm": "11/16",
+        "published_alarm_given_eligible": "1",
+        "registry_alarm": "5/16",
+        "published_only_false_alarm": "3/8",
+        "registry_only_missed_alarm": "0",
+        "no_publication": "1/16"
+      }
+    },
+    {
+      "policy": "POSITIVE_PREFERRED",
+      "original_source_types": 256,
+      "counts": {
+        "eligible": 243,
+        "alarm": 104,
+        "registry": 80,
+        "false_alarm": 24,
+        "miss_alarm": 0,
+        "none": 1,
+        "cell00": 152,
+        "cell01": 0,
+        "cell10": 24,
+        "cell11": 80
+      },
+      "probabilities": {
+        "eligible": "243/256",
+        "published_alarm": "13/32",
+        "published_alarm_given_eligible": "104/243",
+        "registry_alarm": "5/16",
+        "published_only_false_alarm": "3/32",
+        "registry_only_missed_alarm": "0",
+        "no_publication": "1/256"
+      }
+    }
+  ],
+  "real_human_E2_prediction": 0,
+  "real_historical_E3_prediction": 0,
+  "external_team_replication": "NOT_RUN",
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}

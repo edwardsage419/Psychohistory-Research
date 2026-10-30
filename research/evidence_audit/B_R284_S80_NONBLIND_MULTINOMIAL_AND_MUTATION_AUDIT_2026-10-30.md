@@ -1,0 +1,9 @@
+# B track R284 S80 independent multinomial and negative-control audit
+Date UTC: 2026-10-30. Target: (B,R284,S80-v1,multinomial-category-oracle-and-strict-receipt). Status: COMPLETE_INTERNAL_NONBLIND; external replication NOT_RUN.
+Previously read original R284 source/protocol/results and S80 freeze; hence this is nonblind internal verification.
+
+R enumerates all 768 ordered eight-bit sources. B independently enumerates 15 integer triples (published positive i, published negative j, unpublished negative l), i+j+l=4, for each of three policies. Single-study category probability numerators over 4 are (2,2,0), (2,0,2), (2,1,1). Multinomial mass uses 4!/(i!j!l!) a^i b^j c^l over 4^4. B computes all four paired alarm cells, K>=2, K=0, and all aggregate fractions without importing the R algorithm.
+
+Actual V8 audit PASS: 768 distinct source records, exact 8-bit identities, policy flags, source mass, two alarm fields and evidence label; 45 independent category cells; all three policy aggregate tables and probability receipts match exactly. Six mutated receipts were actually rejected: duplicate source, missing source, mass changed, alarm changed, E1 grade falsely upgraded, aggregate alarm count changed. A missing or duplicated row cannot silently pass.
+
+V8 source execution is not a native Node CLI. Native archived CLI and external independent team replay NOT_RUN. No real literature sampling, E2 or E3 predictive evidence. Original R284 bounded acceptance unchanged; S80 exploratory E1 extension PARTIAL scientific acceptance. R073 and PESEN v0.1 frozen. No Actions dispatched or paid service.
