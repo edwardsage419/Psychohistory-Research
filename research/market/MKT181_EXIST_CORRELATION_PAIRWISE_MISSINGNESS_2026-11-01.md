@@ -1,0 +1,15 @@
+# MKT181: Exist correlations, paired missingness and zero fill
+Date: 2026-11-01 Asia/Singapore. Target key: (market,Exist,API2_correlations,paired_coverage_vs_auto_zero). Baseline main 32e870ee2b145b539423a14e30fd20b8ddcfb9a9. Nonblind document review and synthetic E1 only.
+
+## Verified English official sources
+1. https://kb.exist.io/article/18-how-long-does-it-take-to-find-correlations (updated 2023-09-20): at least three weeks of attribute data excluding N/A days before correlations; updates described as visible on Monday.
+2. https://developer.exist.io/reference/correlations/ : GET /api/2/correlations/ yields date, period, offset, attribute pair, value, p, stars and optional rating; results are limited by OAuth read scopes. /combo/ returns one pair or 404. API documentation does not expose the raw paired-day count or exact null handling algorithm. No authenticated API calls were made.
+3. https://developer.exist.io/reference/object_types/ : attributes are day-granularity; null is a possible missing value; correlations are generated weekly, described there as Sundays. This conflicts in weekday wording with the 2023 help page's Monday visibility. Exact current processing timezone was not independently established. It warns correlation does not imply causation.
+4. https://kb.exist.io/article/37-what-are-correlations (updated 2023-09-20): strength and confidence are separate, stars reflect evidence amount; no causal claim.
+5. https://exist.io/ : official public pricing USD 6.99 monthly / USD 62.90 yearly, user-linked tracking and subscription business model. No account, payment or data access.
+
+## Executed synthetic sensitivity check
+Code: research/market/mkt181_exist_pairwise_missingness_20261101.js, executed in V8 using identical function body. Artificial 31 daily pairs: X=1..31; Y=1..21 on days 1..21, N/A on days 22..31. On 21 observed pairs Pearson r=+1, covariance numerator 16170. Replacing 10 missing Y with zero creates 31 pairs and r=-0.19390115071860714, covariance numerator -11935. Eight assertions passed. This constructed missingness mechanism deliberately creates a sign reversal and does not describe Exist's undocumented internal correlation algorithm. 21 observed days meets the public per-attribute three-week count for Y, but the product's full eligibility rules for paired observations remain unverified.
+
+## Candidate knowledge and limitations
+Store observation type, observed paired sample count, total calendar span, zero-imputation provenance, time zone, lag, attribute source and revisions; compare complete-pair and missingness sensitivity results before displaying recommendations. API period is not documented as an exact paired sample count. Weekly feedback may be delayed, and a correlation's star label cannot substitute for causal identification or temporal holdout validation. No independent Exist output or behaviour-improvement validation. Official docs + internal nonblind artificial E1. New human E2=0, historical E3=0. Next: compare publicly documented ARDA/Dcider decision feedback with missingness and multiobjective conflict handling.
