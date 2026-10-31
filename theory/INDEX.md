@@ -774,3 +774,8 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH179 | 学校考试、税收门槛与医院绩效目标的行为反馈及跨版本识别 | Dee等2017作者PDF、Kleven/Waseem2013作者PDF指定节直接审读；Dee等2016/2019、Jacob2002、Jacob/Levitt2003、McCrary2007原作摘要。14项条件命题、22项本地Fraction人工测试；2017毕业率+21.9个百分点与2019约+17个百分点属于不同版本，2017教师激励不是唯一驱动；税收整数堆积可混入门槛效应。无真实微观复算或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; CROSS_VERSION_ESTIMAND_UNKNOWN; NO_REAL_CAUSAL_REESTIMATION | [研究笔记](TH179_CROSS_INSTITUTION_THRESHOLD_BEHAVIOR_RECORDING_VERSIONED_EFFECTS_2026-10-31.md)；[人工审计脚本](th179_threshold_institution_exact_audit.py) |
 
 当前下一理论专题TH180：分类身份与制度规则的反身性、跨群体分类反馈及Hacking原始理论。C008满足2026-10-31，D002满足2026-W44，本轮均只读。此前下一专题文字为历史记录。
+
+
+| TH180 | Hacking互动类别、分类身份与制度反馈的竞争性解释 | Hacking1997原刊指定段落及Vesterinen2020/2021开放全文指定章节直接审读；Hacking1995/1996与2006、Cooper2004、Bowker/Star1999原刊摘要或书目核对；14项条件命题、16项人工Fraction测试；同一报告类别率40%至60%可来自标签反馈、行政假阳性变化、外部冲击或群体构成；无真人微观复算、因果识别、历史预测及R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; REAL_LABEL_CAUSAL_EFFECT_UNIDENTIFIED | [研究笔记](TH180_HACKING_INTERACTIVE_KINDS_CLASSIFICATION_FEEDBACK_2026-10-31.md)；[人工审计脚本](th180_classification_feedback_audit.py) |
+
+当前下一理论专题TH181：标签信息、第三方制度反应与自我选择的可分离因果识别及伦理限制。C008满足2026-10-31，D002满足2026-W44，均保持只读。此前下一专题文字为历史记录。
