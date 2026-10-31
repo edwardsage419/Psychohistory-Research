@@ -766,3 +766,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH177 | 英国NHS急诊四小时绩效与择期名单目标的竞争性原始实证、分钟末位记录与行政分母 | Locker/Mason2005与2006原刊公开全文、Propper等2008 Bristol原始工作论文PDF表5、Kelman/Friedman2009及Freeman等2010正式摘要；16项条件命题、28项本地精确Fraction测试。2006表1四格与正文相差+3/+2/+4/负3；均匀末位下超额2011.8为假设性期望差；2008表5 GMM暂停0.019、移出0.027与第5.4节文字方向冲突；2005急诊与2008择期住院政策不同；无真实微观复算、独立现实因果或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; SOURCE_TABLE_TEXT_CONFLICT; NO_REAL_CAUSAL_REESTIMATION | [研究笔记](TH177_TARGET_INCENTIVES_EMPIRICAL_CONFLICT_DENOMINATOR_IDENTIFICATION_2026-10-31.md)；[精确审计脚本](th177_target_incentives_original_table_audit.py) |
 
 当前下一理论专题TH178：急诊目标阈值前后分钟密度的独立校准、时间戳版本与安慰剂阈值；C008满足2026-10-31，D002满足2026-W44，保持只读。既有下一专题文字为历史记录。
+
+| TH178 | 急诊四小时目标时间戳末位偏好、安慰剂阈值与独立校准 | Locker/Mason2006原刊PDF、Mason等2012、Woodcock等2013原刊摘要、Cattaneo等2020开放原作及Gruber等2018/Freeman等2010摘要；14项条件理论命题、20项本地精确人工测试；原刊123/137与86.9%冲突，639185有效记录中末位0或5为396765（62.0736%），加权Whipple指数310.3679与医院均值316.9权重不同；无真实微观数据、独立时间戳、现实因果估计或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; PUBLISHED_PERCENT_DENOMINATOR_CONFLICT; INDEPENDENT_TIMESTAMP_UNAVAILABLE | [研究笔记](TH178_EMERGENCY_TIMESTAMP_DIGIT_HEAPING_PLACEBO_CALIBRATION_2026-10-31.md)；[精确审计脚本](th178_timestamp_audit.py) |
+
+当前下一理论专题TH179：学校考试、税收阈值与医院目标的分类门槛及制度行为反应。C008满足2026-10-31，D002满足2026-W44，均保持只读。此前下一专题文字保留为历史记录。
