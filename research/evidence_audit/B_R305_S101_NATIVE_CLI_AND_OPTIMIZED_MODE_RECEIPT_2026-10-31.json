@@ -1,0 +1,66 @@
+{
+  "research_id": "R305",
+  "stage": "S101",
+  "track": "B",
+  "run_date_utc": "2026-10-31",
+  "evidence_scope": "E1_SYNTHETIC_INTERNAL_NONBLIND",
+  "runtime": {
+    "node": "v22.16.0",
+    "python": "3.13.5"
+  },
+  "source_blob_shas": {
+    "r_js": "bc7694766dba68a5203c5a7bda3d26eeb550d951",
+    "b_v1": "a39cbba20d93616e3a283eddaffd3d010bcd2122",
+    "b_v2": "cd7ba36240144f17e314a9ce1b00bbd4101d8457"
+  },
+  "archive_blobs": {
+    "csv": "b940c07bfe6d2ef4f29c806f752b6989202af63f",
+    "json": "e3771b29c4e7eeaeef57690ecd9541880881a15c"
+  },
+  "native_cli": {
+    "node_emit": {
+      "command": "node r305_s101_interpolated_context.js --emit <temp_dir>",
+      "exit_code": 0,
+      "generated_csv_blob": "b940c07bfe6d2ef4f29c806f752b6989202af63f",
+      "generated_json_blob": "e3771b29c4e7eeaeef57690ecd9541880881a15c"
+    },
+    "python_v2_check": {
+      "command": "python r305_s101_independent_fraction_audit_v2.py --check <native_csv> <native_json>",
+      "exit_code": 0,
+      "mutations_rejected": 9,
+      "audit": true
+    },
+    "python_v2_optimized_check": {
+      "command": "python -O r305_s101_independent_fraction_audit_v2.py --check <native_csv> <native_json>",
+      "exit_code": 0,
+      "mutations_rejected": 9,
+      "audit": true
+    },
+    "python_v1_optimized": {
+      "command": "python -O r305_s101_independent_fraction_audit.py",
+      "exit_code": 1,
+      "observed_failure": "AssertionError: mutation escaped",
+      "preserved": true
+    }
+  },
+  "counts": {
+    "worlds": 405,
+    "paths": 81,
+    "comparisons": 324,
+    "changes": 36,
+    "change_histogram": {
+      "0": 55,
+      "1": 16,
+      "2": 10,
+      "3": 0,
+      "4": 0
+    }
+  },
+  "source_verification": "All three executed source Git blob SHA1 identities match archived main blobs. Data Git blob SHA1 identities match archived main CSV and JSON.",
+  "ci": "NOT_RUN",
+  "new_e2": 0,
+  "new_e3": 0,
+  "external_replication": "NOT_RUN",
+  "scientific_acceptance": "PARTIAL",
+  "billing": "NO_NEW_CHARGEABLE_ACTIONS_ACCOUNT_BALANCE_NOT_VERIFIED"
+}
