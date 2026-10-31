@@ -1,0 +1,8 @@
+Command: python -O r305_s101_independent_fraction_audit.py
+Source Git blob: a39cbba20d93616e3a283eddaffd3d010bcd2122
+Exit code: 1
+Traceback (most recent call last):
+  File ".../r305_s101_independent_audit.py", line 119, in selftest
+    raise AssertionError("mutation escaped")
+AssertionError: mutation escaped
+Scope: optimized-mode bypass of v1 assert gates. v2 explicit ensure gates reject all nine mutations under both normal and optimized modes.
