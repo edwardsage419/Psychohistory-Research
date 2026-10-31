@@ -21,6 +21,6 @@ function run(){
   }
   if(out.NO_RESTORE!==512||out.UNKNOWN_QUARANTINE!==287||out.REJECT!==224||out.REVIEW_ONLY!==1||weakReview!==8)throw Error("unexpected exact count");
   if(Object.keys(out).some(k=>k.startsWith("AUTO")))throw Error("automatic recovery");
-  return {total:1024,strict:out,weak,strict_review:strictReview,weak_review:weakReview,automatic_restore:0,assertions:7};
+  return {total:1024,strict:out,weak,strict_review:strictReview,weak_review:weakReview,automatic_restore:0,guard_families:4};
 }
 if(typeof require!=="undefined"&&typeof module!=="undefined"&&require.main===module)console.log(JSON.stringify(run(),null,2));
