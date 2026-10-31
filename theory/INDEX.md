@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-31（Asia/Singapore）；已收录 TH177，C008 今日增量与 D002 本周专题
+更新：2026-10-31（Asia/Singapore）；已收录 TH179，C008 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -770,3 +770,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH178 | 急诊四小时目标时间戳末位偏好、安慰剂阈值与独立校准 | Locker/Mason2006原刊PDF、Mason等2012、Woodcock等2013原刊摘要、Cattaneo等2020开放原作及Gruber等2018/Freeman等2010摘要；14项条件理论命题、20项本地精确人工测试；原刊123/137与86.9%冲突，639185有效记录中末位0或5为396765（62.0736%），加权Whipple指数310.3679与医院均值316.9权重不同；无真实微观数据、独立时间戳、现实因果估计或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; PUBLISHED_PERCENT_DENOMINATOR_CONFLICT; INDEPENDENT_TIMESTAMP_UNAVAILABLE | [研究笔记](TH178_EMERGENCY_TIMESTAMP_DIGIT_HEAPING_PLACEBO_CALIBRATION_2026-10-31.md)；[精确审计脚本](th178_timestamp_audit.py) |
 
 当前下一理论专题TH179：学校考试、税收阈值与医院目标的分类门槛及制度行为反应。C008满足2026-10-31，D002满足2026-W44，均保持只读。此前下一专题文字保留为历史记录。
+
+| TH179 | 学校考试、税收门槛与医院绩效目标的行为反馈及跨版本识别 | Dee等2017作者PDF、Kleven/Waseem2013作者PDF指定节直接审读；Dee等2016/2019、Jacob2002、Jacob/Levitt2003、McCrary2007原作摘要。14项条件命题、22项本地Fraction人工测试；2017毕业率+21.9个百分点与2019约+17个百分点属于不同版本，2017教师激励不是唯一驱动；税收整数堆积可混入门槛效应。无真实微观复算或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; CROSS_VERSION_ESTIMAND_UNKNOWN; NO_REAL_CAUSAL_REESTIMATION | [研究笔记](TH179_CROSS_INSTITUTION_THRESHOLD_BEHAVIOR_RECORDING_VERSIONED_EFFECTS_2026-10-31.md)；[人工审计脚本](th179_threshold_institution_exact_audit.py) |
+
+当前下一理论专题TH180：分类身份与制度规则的反身性、跨群体分类反馈及Hacking原始理论。C008满足2026-10-31，D002满足2026-W44，本轮均只读。此前下一专题文字为历史记录。
