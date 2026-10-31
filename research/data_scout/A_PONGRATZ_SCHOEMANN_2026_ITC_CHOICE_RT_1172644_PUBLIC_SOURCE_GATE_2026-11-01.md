@@ -1,0 +1,13 @@
+# A data scout: Pongratz and Schoemann 2026 intertemporal choice and response time database
+
+UTC date: 2026-10-31. Candidate: A, PongratzSchoemann2026, ScientificData_v1_OSF_3wsae, R320_real_choice_RT_and_R319_panel_identity_gate.
+
+Source: Pongratz H and Schoemann M, *A large-scale dataset of choice and response-time data in intertemporal choice*, Scientific Data 13:323, published 2026-03-03, DOI 10.1038/s41597-026-06947-4, https://www.nature.com/articles/s41597-026-06947-4 . Official data: https://osf.io/3wsae/ ; data DOI 10.17605/OSF.IO/3WSAE. The publisher's Data Record states CC BY-NC-SA data license and CSV/RData formats. The article itself has a separate CC BY 4.0 license. Do not conflate these licenses.
+
+Publisher-reported sample: 100 intertemporal-choice studies, 11,852 subjects, 1,172,644 trials. Public schema documents paper, subj_idx, subj_ident (unique across studies), session, sess_ident (unique session), trial_idx (order when available), ss_value, ss_time, ll_value, ll_time, choice (SS=0, LL=1), rt (seconds), exclusion flags, study metadata, time_pressure, and missingness indicators. Delay values are stored in days. These are recorded human choices and response times; no direct latent evidence accumulation trace or model-specific boundary/drift labels is documented.
+
+Critical identity and leakage gates: split heldout studies or subj_ident, never raw trial rows across train/test; group by sess_ident for within-session sequences; do not treat subj_idx as globally unique; preserve trial_idx missingness, study-specific time pressure, exclusion indicators and response-time units. Real reaction times include possible nondecision components. The original R320 discrete step count is not directly comparable to human seconds without a separately prespecified measurement/fit model.
+
+Availability: publisher page and full field descriptions read successfully; OSF project URL access returned HTTP 403 in this run. Raw CSV bytes, exact row count, SHA256, unique ID counts, participant consent/data use detail beyond publisher-stated license, and actual field parsing NOT_VERIFIED. No paywall bypass, account registration, private data access or E2 fit attempted. Reproduction readiness: PUBLIC_METADATA_AND_LICENSE_VERIFIED, RAW_DATA_BLOCKED, EMPIRICAL_REPRO_NOT_READY. R073 eligibility: HARD_NO_BY_TASK_TYPE, as this is intertemporal choice, not continuous dyadic human-human repeated prisoner's dilemma.
+
+Next: retry official free OSF CSV retrieval without registration; if accessible, pin file hash and independently audit identifiers, trial order, RT units and exclusions before freezing any E2 evaluation. New E2=0, E3=0.
