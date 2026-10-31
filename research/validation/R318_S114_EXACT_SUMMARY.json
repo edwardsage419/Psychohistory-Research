@@ -1,0 +1,49 @@
+{
+  "schema": "r318_s114_fosd_exact_v1",
+  "prescore_commit": "c12d3c90d447bd43963332be3f6d3e076a47bf78",
+  "evidence": "E1_SYNTHETIC_ONLY",
+  "lotteries": 18,
+  "ordered_comparisons": 612,
+  "per_transform": {
+    "identity": {
+      "rows": 306,
+      "fosd": 117,
+      "cpt_fosd_violations": 0,
+      "normalized_fosd_violations": 0,
+      "normalized_sign_differences_ordered": 0
+    },
+    "quadratic_asymmetric_noncanonical": {
+      "rows": 306,
+      "fosd": 117,
+      "cpt_fosd_violations": 0,
+      "normalized_fosd_violations": 2,
+      "normalized_sign_differences_ordered": 4
+    }
+  },
+  "rank_comparison": {
+    "unordered_pairs": 153,
+    "strict_reversals": 9,
+    "ties_any": 2,
+    "sign_disagreement": 11
+  },
+  "normalization_negative_control_witnesses": [
+    {
+      "transform": "quadratic_asymmetric_noncanonical",
+      "lottery_a": 5,
+      "lottery_b": 2,
+      "actual_delta": "87/209",
+      "normalized_delta": "-123/2002"
+    },
+    {
+      "transform": "quadratic_asymmetric_noncanonical",
+      "lottery_a": 8,
+      "lottery_b": 2,
+      "actual_delta": "98/209",
+      "normalized_delta": "-1/1001"
+    }
+  ],
+  "real_E2": 0,
+  "historical_E3": 0,
+  "external_independent_replication": "NOT_RUN",
+  "original_R318_status": "UNCHANGED"
+}
