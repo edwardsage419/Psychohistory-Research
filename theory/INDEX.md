@@ -745,3 +745,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH172 | 行政代理指标、群体测量等值性与制度版本漂移 | Oberski等2015开放预印本第1至3节、Muthén/Asparouhov2014开放原刊第2至6节、Imai/Yamamoto2010作者PDF、Meredith1993原刊摘要；14项条件命题、16项人工Fraction单测。相同代理率1/2下真实组差可为±1/2，真实率不变时行政版本漂移造成15个百分点假趋势；误差率均≥3/4时真实比例界[1/3,2/3]、组差界[-1/3,1/3]。无真实Smartcards复算、因果识别及R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; GROUP_CALIBRATION_UNKNOWN | [研究笔记](TH172_ADMIN_PROXY_GROUP_INVARIANCE_VERSION_DRIFT_2026-10-31.md)；[人工审计脚本](th172_proxy_invariance_exact_audit_20261031.py) |
 
 当前下一理论专题TH173：多来源行政测量的三特质双方法识别秩、条件独立破坏与最小校准样本设计。C008满足2026-10-31，D002满足2026-W44，均保持只读。
+
+| TH173 | 多来源行政测量的识别秩、条件依赖与选择性校准 | Oberski等2015开放原作指定节、Hui/Walter1980、Pepe/Janes2007、Allman等2009原作摘要；14项条件命题与21项人工Fraction测试；二代理Jacobian秩3/5且不同潜在率同观测，三特质双方法64格反例，三代理条件独立秩7/7，条件依赖使真值1/3与1/2同观测；无真人微观复算或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; CONDITIONAL_INDEPENDENCE_UNVERIFIED | [研究笔记](TH173_MULTISOURCE_MEASUREMENT_IDENTIFICATION_RANK_DEPENDENCE_CALIBRATION_2026-10-31.md)；[精确脚本](th173_archive_audit.py) |
+
+当前下一理论专题TH174：共同测量误差的负对照、跨地区校准运输与选择性验证的部分识别。C008满足2026-10-31，D002满足2026-W44，保持只读。旧队列文字作为历史记录。
