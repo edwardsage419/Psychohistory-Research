@@ -1,0 +1,13 @@
+# A data scout: Wijenayake et al. 2019 online conformity dataset
+UTC 2026-10-31. Track r, subflow A. Source: Mendeley Data V3 DOI 10.17632/zgd49smpm6.3, https://data.mendeley.com/datasets/zgd49smpm6/3 . Version 1 DOI 10.17632/zgd49smpm6.1, https://data.mendeley.com/datasets/zgd49smpm6/1 . Authors on V3: Senuri Wijenayake, Niels van Berkel, Vassilis Kostakos, Jorge Goncalves. Published 2019-04-15.
+
+## Verified public metadata
+Official V3 page states license CC BY 4.0 and preprocessed online quiz plus Big Five data. Participants answered subjective/objective multiple-choice questions and reported confidence, then saw a fabricated group-answer distribution bar chart placing them in a majority/minority context; they could revise answer and confidence. Group size, number/size of minorities, task type, confidence and personality are mentioned as research dimensions. This is relevant to R307 minority and normative influence, with explicit before/after choice design.
+
+## Unverified original file schema
+Official V1 page describes Data.csv and script.r; V3 page groups files under 'data' but its browser text did not expose per-file download identifiers. An attempted public Mendeley API GET at api.data.mendeley.com/datasets/zgd49smpm6?version=3 and public files endpoint could not be accessed with the available browser. No OAuth token or account registration attempted. No raw CSV bytes downloaded, no field names or row count measured, no participant IDs or question/time keys inspected, no file-level SHA256 calculated. Do not treat the conceptual variables in the description as verified CSV columns.
+
+Unit of analysis: per-question response implied by design, actual row granularity UNKNOWN. Repeated measurements and participant clusters UNKNOWN. Number of independent groups and participants UNKNOWN. Chronology: within-question initial answer then feedback then possible revised answer, as stated by authors; true timestamp fields UNKNOWN. Licensing: dataset landing page CC BY 4.0, file-level restrictions and sensitive columns require inspection before copying. Privacy: no person-level data retrieved or redistributed.
+
+## Eligibility and next reproducibility gate
+A_SOURCE_METADATA_VERIFIED; A_ORIGINAL_ROWS_BLOCKED; A_FIELD_SCHEMA_UNKNOWN; A_REPRODUCTION_NOT_READY. Candidate for future E2 conformity analysis after actual original fields, ID, intervention allocation, independent participant units, attrition and privacy review. It is not a hundred-round dyadic repeated prisoner's dilemma dataset and is R073_DESIGN_INELIGIBLE. No frozen R073 model/scoring change, no empirical scoring. The previously identified R073 independent dataset gap remains OPEN. Zero paid operations.
