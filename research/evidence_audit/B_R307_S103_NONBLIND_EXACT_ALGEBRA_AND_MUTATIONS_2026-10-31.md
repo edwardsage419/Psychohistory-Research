@@ -1,0 +1,14 @@
+# B scientific audit: R307 S103 nonblind exact algebra and falsification
+UTC 2026-10-31. Track r, subflow B. Original R307 freeze 4f74448e261ac61c65cd60926a056d6916a84e34. S103 heldout protocol freeze e3d70b11b9f5f4cb691cee44c1aa1a7d7fe16ad6. E1 artificial only.
+
+## Audited evidence and independent route
+R source research/validation/r307_s103_exact_observation_designs.js was executed inside a V8 runtime. Its CSV and JSON were created in GitHub at new paths. B source research/evidence_audit/r307_s103_independent_algebra_audit.js independently computed the posterior as 1 minus the reciprocal of (1+(1+c*k)^t), and computed the public channel through a separate rational implementation. B imported no R module. The actual remote CSV and JSON were fetched back through GitHub and checked row by row and partition by partition.
+
+Positive gate: 81/81 unique exact worlds, all seven CSV columns per row, 18/18 design summaries, all exact partition members, class histograms, singleton counts, maximum class size, accuracy and scope metadata PASS. Eight effective mutations rejected: duplicate row, missing row, altered private probability, altered partition membership, altered accuracy, altered design label, E1-to-E2 scope escalation, changed prior metadata. All use explicit exceptions.
+
+An initial development mutation used a string replacement that did not match the actual CSV and therefore yielded a false acceptance. This failed attempt was observed before publishing the corrected checker. Corrected third mutation directly edits the first data row's private field. Final eight effective mutation controls were all rejected. The failed test design must remain visible.
+
+A separate local Python 3.13.5 Fraction implementation with independent class construction was run in ordinary and optimized Python mode; both runs reported 81 worlds, 18 designs and 8/8 mutations rejected. The local Python helper is not archived in this commit and its outputs are corroborative only. B archived JS checker is independently replayable with the two archived text files using Node, but the original Node CLI has NOT been executed in this run. No GitHub Actions dispatched and no external-team blind replication.
+
+## Scientific audit scope
+There is no train/test data leakage because no fitted model or human dataset was used; there is also no genuine heldout human prediction. The disjoint p=1/2 grid is confirmatory relative to an explicitly disclosed p=1/4 pilot, yet both are project-invented E1 finite universes. Baseline is zero-exposure D0 and private-only D1. Calibration, sampling uncertainty, bootstrap and out-of-sample generalization to real people are NOT_ESTABLISHED. Exact class counts are finite enumerations, not population estimates. R307 S103 PARTIAL, original R307 bounded E1 status unchanged. R073 and PESEN v0.1 frozen. No paid operations.
