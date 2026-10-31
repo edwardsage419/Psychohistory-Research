@@ -1,0 +1,16 @@
+# R315 S111 prescore freeze: exact identifiability of three rewiring probabilities
+
+Date: 2026-10-31 UTC. Baseline main HEAD: `6934a919d8a790b20d886b6f3c4a7178de6694e6`.
+Target key: (r,R315,original_R315_7cbbc778_plus_S111_v1,three_class_p_identifiability_by_graph_metric_coarsening).
+Status at freeze: PRESCORE_ONLY; no S111 outcome inspected or scored.
+
+## Immutable input
+Use the original R315 finite Watts Strogatz early-edge variant without any parameter change. The original protocol is `protocols/R315_WATTS_STROGATZ_TWO_CLOCKWISE_EDGES_210_ATOMS_PRESCORE_FREEZE_2026-10-24.md` (blob `8d37595d39fa15c8c9d0915bbabac0754b83ff2b`), original result `research/R315/R315_EXACT_180_TWO_EVENT_GRAPH_PATHS.json` (blob `5abbcdbf01e8b31e54671e83d033ab0f1985bd78`), original 210 source atoms (blob `29f2774cfd56ad4ebd65beca9980900e250675af`). The 180 path rows include counterfactual zero-probability rows. Six parameter worlds: N=8/10 and p=0,1/2,1. Only the two clockwise source edges (0,1),(1,2) are processed. No other rewiring sweep.
+
+## Predefined exact calculation
+For each fixed N separately, treat p in {0,1/2,1} as three equally likely hypotheses. The observation is one final graph generated under the selected p. Define five deterministic observation maps: (i) full labeled final edge set; (ii) joint (exact mean local clustering C, exact mean shortest path L, components); (iii) C alone; (iv) L alone, with disconnected graph represented by a distinct null category; (v) connected-component count alone. Parse all fractions exactly, and aggregate probabilities over the original complete paths. The optimal equal-prior 0-1 Bayes classification accuracy for observation O is `sum_o max_p P(O=o | p)/3`. Ties are allowed and do not require post hoc tie-breaking for accuracy. Also record number of distinct positive-mass observation bins, probability normalization per p, and per-p expected C and probability of disconnection. For L report conditional expectation among connected paths and connected mass; never average null as zero.
+
+Ten classification cells (2 N times 5 maps), six p-specific expectation cells. No data fitting, no parameter selection after seeing results, no human forecast. Coarsening inequalities: full graph >= joint C/L/components >= each C,L,components; classification accuracy between 1/3 and 1. For p=0, final graph is exactly baseline. Check source schema and exact 180 path coverage (19 paths per p for N8; 41 for N10), and 210 original atoms as immutable provenance. Independent audit must rebuild C,L,components from edge lists without importing the R scoring implementation, and reject path duplication/omission, wrong mass, corrupted metric, wrong source identity and false evidence upgrades. Run ordinary Python and python -O mutation controls if feasible. All failures retained.
+
+## Evidence boundaries
+S111 is a new limited artificial E1 extension. Original R315 PASS_BOUNDED_E1_ONLY remains unchanged. No full original 1998 Watts Strogatz ensemble, no inferred real-world p, no human E2 or historical E3, no external independent replication, no R073 or PESEN v0.1 modification. Archive exact code, machine summary, negative tests, report, and separate A data source and B audit notes. CI dispatch prohibited unless cost-free status verified. Do not alter original239 crosswalk or pending queue.
