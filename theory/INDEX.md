@@ -821,3 +821,8 @@ C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，本轮均只�
 | TH189 | 中性文化漂变、传递瓶颈、贝叶斯迭代学习与竞争机制 | Kirby/Cornish/Smith2008原刊实验1/2全文，Griffiths/Kalish2007原刊指定章节，Bentley/Hahn/Shennan2004原刊摘要，Kirby2017 SI更正书目；16项条件命题，27项标准库Fraction人工测试普通及优化模式通过；N4中性漂变方差1/16、下一代异质性3/8，后验采样平稳3/4，MAP平局规则改变平稳分布。真实数据复算、独立现实因果估计、历史留出及R E1/E2/E3新增均为0 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; KIRBY_SI_CORRECTION_SCOPE_OPEN | [研究笔记](TH189_CULTURAL_DRIFT_COPYING_ERROR_ITERATED_LEARNING_2026-11-01.md)；[精确审计脚本](th189_cultural_drift_iterated_learning_audit.py) |
 
 C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，均保持只读。下一TH190：文化传递链的偏好复制与中性漂变有限样本区分；继续核验Kirby2017 SI更正及TH187 PDF符号。
+
+
+| TH190 | 文化传递链中中性漂变、内容偏好与复制机制的有限样本区分；Kirby 2017 SI更正明确涉及Supporting Table S7 | Mesoudi/Whiten/Dunbar2006作者原刊PDF实验设计和结果直接审读；Kirby2017正式更正公告全文；Saldana等2019、Yeh等2019原刊摘要。12项条件命题，13项本地Fraction人工单测普通及优化均通过；从0起一步两模型总变差0，两步1/32；从1起四步全1的N=81/256、B=2401/4096；不同潜在复制操作可有相同转移核。无真人复算、现实因果识别或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; SI_S7_CELL_DIFF_OPEN | [研究笔记](TH190_CULTURAL_TRANSMISSION_FINITE_SAMPLE_MECHANISM_IDENTIFICATION_2026-11-01.md)；[人工精确审计脚本](th190_cultural_chain_exact_audit.py) |
+
+C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，均只读。下一TH191：文化特征打包、创新激励与记忆测量的竞争识别设计；Kirby修订SI S7逐格差异待核。R系列顺序不变。
