@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-31（Asia/Singapore）；已收录 TH181，C008 今日增量与 D002 本周专题
+更新：2026-10-31（Asia/Singapore）；已收录 TH182，C008 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -783,3 +783,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH181 | 标签知情、评价者反应、样本选择与社会分类因果识别 | Bertrand与Mullainathan2004原刊Table1及设计局限直接审读；Hoff与Pandey2004、2006及2014原始摘要/书目核验；14项条件命题、18项本地Fraction人工测试。4870份虚构简历回访率9.65%/6.45%，仅识别名字提示对回访的效应；人工2×2四格对比本人知情1/10、评价者知情1/5，选择后差可由+1/5逆转为负1/3，缺失结果差界[负3/5,正1/5]。无真实微观复算、独立中介识别或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; LABEL_MEDIATION_UNIDENTIFIED | [研究笔记](TH181_LABEL_DISCLOSURE_EVALUATOR_SELECTION_CAUSAL_BOUNDARIES_2026-10-31.md)；[人工审计脚本](th181_label_factorial_audit.py) |
 
 当前下一理论专题TH182：分类信息网络干扰、身份反馈与制度裁量的跨群体运输。C008已满足2026-10-31，D002已满足2026-W44，本轮只读。历史队列文字保留。
+
+| TH182 | 社会参照者网络干扰、2018正式效果更正、暴露正概率与跨制度运输 | Paluck/Shepherd/Aronow2016原刊全文指定节、2018与2019两次正式更正全文直接审读；Aronow/Samii2017作者机构原始摘要。14项条件命题、19项标准库Fraction人工测试普通及优化模式均通过；2016原刊30%和P<0.05与2018正式更正25%且整体不显著冲突，2019仅补资助；56校中49校行政记录可用，四暴露正概率子样本2451人，24%邀请者未参与。固定K2六分配的两世界同观测而全员政策差为负3/10或正1/2。无真实微观复算、独立现实因果、历史预测或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; PUBLISHED_CORRECTION_SUPERSEDES_ORIGINAL; REAL_NETWORK_MEDIATION_UNIDENTIFIED | [研究笔记](TH182_NETWORK_SOCIAL_REFERENTS_CORRECTION_TRANSPORT_2026-10-31.md)；[人工审计脚本](th182_network_correction_exact_audit.py) |
+
+当前下一理论专题TH183：Paluck2016与2018正式更正的估计规格、方差、49校缺失与原始公开代码可访问性；C008满足2026-10-31，D002满足2026-W44，均保持只读。此前下一专题文字作为历史记录保留。
