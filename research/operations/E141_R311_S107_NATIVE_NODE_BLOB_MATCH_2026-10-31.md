@@ -1,0 +1,19 @@
+# E141 R311 S107原始Node CLI与远端输出字节一致性审计
+
+UTC 2026-10-31T09:18Z。目标键 (operations,R311,S107,native_node_original_generator_archived_blob_identity)。基线 main ce44abba81d264a244579364f27f8138b9983975，随后理论轨TH176提交3e8171157ef099f13a9dcf1bc0101bb223b85fc3，写前重新核对。已读R311 S107冻结协议、R报告、B原始1944来源审计、B第三Python路线、R交接及12个开放Codex PR。本轮专门补齐原R报告明确保留的原生Node命令行运行关口，非盲态内部复核。
+
+固定原始脚本 research/validation/r311_s107_critical_radius_20261031.js，远端Git blob a0f5ac1edfa108ec7d835097e3898f1b7d035d5c。通过GitHub连接器取得源码并在本地隔离目录重建。首次人工复制末尾多出一换行，git hash-object 为0dbcd4e5be8a8cac93750b723594266c7be7e78a；修正后严格匹配原Git blob。保留此失败与修复事实。
+
+Node.js v22.16.0原生运行 --test exit0，--emit <隔离目录> exit0，输出PASS，81向量、324世界。生成三文件Git blob与远端逐字节一致：
+81临界半径CSV 199157e4c6b62a24a1ce9c76a266cf0182c3f58a
+324阈值预测CSV aef9a2fcbc642e8114752bc0c3f4db03811cc202
+摘要JSON 7859583a72e9275e6bebc0f321c2609176fc9a0f
+本地另算SHA256：81 CSV bd9b7ba62b8ff24d743bf6cbde464f055684087f36557f35bd763ba1d9d4376e；324 CSV b91141c2ec300b25bbd3a9d447a48844282a4f6a6978392c6bbc50a06bbc48d4；JSON 8614d6cfe9b5b3441d0d9a3b54128df18d636ab0cccadad8e4b822c52a2bf38d。
+
+冻结commit 682b2c9b8673ecf22398fc0c92f8bd65674265d2早于生成器commit 3cee2687ba124a27843d4adafdd67bbabf128c8e及结果commit 286addc0acadff7df42549787672461736c88f7c。B轨v1/v2真实失败保留，v3及第三Python路线另有归档。本轮没有重新运行B的1944原始行复验，没有触发GitHub Actions，也没有外部独立复现。R311原验收不变，S107仍PARTIAL_E1_EXTENSION；新增E2=0/E3=0。
+
+跨轨核查：R主线仍在进行，A轨Anwar/Georgalos v3论文已核实但OSF原始逐轮数据受阻，R073固定真人双人连续100轮资格仍OPEN。Codex PR #1 R257 S53覆盖缺口、PR #3候选修复、PR #2同步协议均OPEN未合并；R299 S95冻结语言偏离问题仍开放。original239与pending154不修改。未确认GitHub账户实际免费额度或账单；没有触发付费操作。
+
+证据：https://github.com/edwardsage419/Psychohistory-Research/blob/main/research/validation/r311_s107_critical_radius_20261031.js
+https://github.com/edwardsage419/Psychohistory-Research/blob/main/research/validation/R311_S107_CONNECTIVITY_VS_CLIQUE_CRITICAL_RADIUS_FREEZE_2026-10-31.md
+下一项E142：检查最新R312冻结及来源收据缺口，避免重复B轨已完成工作。
