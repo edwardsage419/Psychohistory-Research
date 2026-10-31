@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-31（Asia/Singapore）；已收录 TH170，C008 今日增量与 D002 本周专题
+更新：2026-10-31（Asia/Singapore）；已收录 TH174，C008 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -749,3 +749,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH173 | 多来源行政测量的识别秩、条件依赖与选择性校准 | Oberski等2015开放原作指定节、Hui/Walter1980、Pepe/Janes2007、Allman等2009原作摘要；14项条件命题与21项人工Fraction测试；二代理Jacobian秩3/5且不同潜在率同观测，三特质双方法64格反例，三代理条件独立秩7/7，条件依赖使真值1/3与1/2同观测；无真人微观复算或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; CONDITIONAL_INDEPENDENCE_UNVERIFIED | [研究笔记](TH173_MULTISOURCE_MEASUREMENT_IDENTIFICATION_RANK_DEPENDENCE_CALIBRATION_2026-10-31.md)；[精确脚本](th173_archive_audit.py) |
 
 当前下一理论专题TH174：共同测量误差的负对照、跨地区校准运输与选择性验证的部分识别。C008满足2026-10-31，D002满足2026-W44，保持只读。旧队列文字作为历史记录。
+
+| TH174 | 共同测量误差负对照、跨地区校准运输与选择性验证 | Lipsitch等2010、Arnold等2016、Elie/Coste2008开放原作指定章节；Begg/Greenes1983摘要；Miao等2018作者开放稿第1至3节。14项条件理论命题、16项人工Fraction测试；相同代理率9/20对应真率1/2或1/4，来源校准运输误差+1/4；校准误差矩阵区间给出真率界[1/8,7/10]；40/100已验证样本下总体真率界[3/10,9/10]；无真实微观复算或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; TARGET_CALIBRATION_UNVERIFIED | [研究笔记](TH174_NEGATIVE_CONTROL_CALIBRATION_TRANSPORT_VERIFICATION_2026-10-31.md)；[精确审计脚本](th174_negative_control_transport_audit.py) |
+
+当前下一理论专题TH175：负对照选择的预注册敏感性、误差矩阵跨时期稳定性与部分验证样本的最小可识别设计。C008满足2026-10-31，D002满足2026-W44，均保持只读。历史队列文字保留。
