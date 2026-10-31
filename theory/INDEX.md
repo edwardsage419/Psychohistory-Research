@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-31（Asia/Singapore）；已收录 TH166，C008 今日增量与 D002 本周专题
+更新：2026-10-31（Asia/Singapore）；已收录 TH168，C008 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -724,3 +724,8 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH167 | Smartcards 2014 NBER rev0与2016作者稿随机化宇宙、地区处理数和家庭样本分母版本审计 | 2014 NBER rev0原文第3.1至3.3节、2016作者开放稿第3节及附录C.1/C.2、AER正式摘要和Atanda2019独立复现摘要；14项条件命题、12项公开算术及人工敏感性审计；2014的113+195+45=353与2016的112+139+45=296差57，处理差1定位Nalgonda；2016正文基线8572与附录8527相差45，附录使7425算术闭合；末次295=287+8；跨版原始单位ID未恢复，真实微观复算与R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; RANDOMIZATION_VINTAGE_ID_UNRESOLVED; BASELINE_MAIN_APPENDIX_DISCREPANCY_LOCATED | [研究笔记](TH167_SMARTCARDS_RANDOMIZATION_UNIVERSE_VINTAGE_DENOMINATOR_2026-10-31.md) |
 
 当前下一专题：TH168 Smartcards随机化名单身份、地区权重与选择性进入的部分识别；C008满足2026-10-31、D002满足2026-W44，均保持只读。此前下一专题文字为历史记录。
+
+
+| TH168 | Smartcards正式AER作者托管出版社排版全文、2016作者附录C.6/C.8、公开复现档案及选择性进入的条件运输界 | Muralidharan/Niehaus/Sukhtankar 2016正式排版原文第2907至2909页及作者附录、openICPSR 2019 V1、Lee 2008原作者开放稿、Horowitz/Manski 2000摘要；12项条件命题与12项公开算术及人工精确审计；正式正文8572与附录8527的45户矛盾确认保留，C.6四项p=0.19/0.74/1/0.37不等于零效应证明，C.8处理主效应与新进入交互需区分；296/353人工嵌套下目标界[-137/1765,433/1765]跨零；未恢复真实mandal ID、未下载复现数据，R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; PUBLISHED_PDF_RECOVERED; RAW_REPLICATION_NOT_RUN | [研究笔记](TH168_SMARTCARDS_PUBLISHED_VINTAGE_SELECTION_TRANSPORT_BOUNDS_2026-10-31.md) |
+
+当前下一专题：TH169 openICPSR公开复现目录与许可、原始mandal随机化ID及2014-10 NBER修订稿恢复；C008满足2026-10-31、D002满足2026-W44，保持只读。此前下一专题文字均为历史状态。
