@@ -1,0 +1,72 @@
+{
+  "schema": "r324_s120_ordinal_observation_e1_v1",
+  "evidence": "E1_SYNTHETIC_ONLY",
+  "source_original_blob": "1b0062eeea020606a3d510d566da43db03ace8d9",
+  "frozen_protocol_commit": "dc2bc2ad22a0130984cf0ecb497c2c54f04803f8",
+  "original_catalogue_id": "01-017",
+  "world_count": 4,
+  "state_count": 16,
+  "atom_count": 64,
+  "atom_mass": "1/64",
+  "policies": [
+    {
+      "policy": "state_only",
+      "observation_groups": 16,
+      "accuracy": "1/4",
+      "accuracy_numerator": 16,
+      "accuracy_denominator": 64
+    },
+    {
+      "policy": "exact_score",
+      "observation_groups": 45,
+      "accuracy": "45/64",
+      "accuracy_numerator": 45,
+      "accuracy_denominator": 64
+    },
+    {
+      "policy": "threshold_ge_4",
+      "observation_groups": 26,
+      "accuracy": "13/32",
+      "accuracy_numerator": 26,
+      "accuracy_denominator": 64
+    },
+    {
+      "policy": "compare_dread",
+      "observation_groups": 30,
+      "accuracy": "15/32",
+      "accuracy_numerator": 30,
+      "accuracy_denominator": 64
+    },
+    {
+      "policy": "compare_unknown",
+      "observation_groups": 30,
+      "accuracy": "15/32",
+      "accuracy_numerator": 30,
+      "accuracy_denominator": 64
+    },
+    {
+      "policy": "compare_both",
+      "observation_groups": 36,
+      "accuracy": "9/16",
+      "accuracy_numerator": 36,
+      "accuracy_denominator": 64
+    }
+  ],
+  "full_ordinal_profile": {
+    "distinct_profiles": 3,
+    "accuracy": "3/4",
+    "profile_groups": [
+      0,
+      1,
+      2,
+      2
+    ]
+  },
+  "witnesses": {
+    "w2_w3_identical_weak_rank": true,
+    "w2_w3_exact_score_differ_count": 15
+  },
+  "human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED",
+  "external_independent_replication": "NOT_RUN"
+}
