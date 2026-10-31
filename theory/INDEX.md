@@ -795,3 +795,8 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | C009 | 等待的信息价值、可逆行动、信号准确率与跨期规范权重 | Ginbo等2020开放综述指定章节直接审读；Eckermann/Willan2008、Kreps/Porteus1978、Devine等2024、Strotz1955原始机构摘要/书目；10项条件方法命题、7项人工精确情景：立即值3，完美信息等待成本1净4.5，等待成本3净2.5，3/4准确信号扣成本1后为3；无个人数据、N-of-1、因果估计、产品开发或R E1/E2/E3新增 | METHOD_NOTE_BOUNDED | [C009研究笔记](../research/decision_methods/C009_OPTION_VALUE_INFORMATION_REVERSIBILITY_2026-11-01.md) |
 
 C今日2026-11-01完成C009，D本周2026-W44已有D002。下一C010：跨期主观价值锚定、可撤销行动的反事实评价与信息性缺失。
+
+
+| TH184 | 校级分块随机化、有限簇Fisher检验、2018正式更正与ICPSR37070 V2版本 | PNAS2016原刊Methods/Results及2018正式更正全文、ICPSR2020 V2方法/版本/许可元数据直接审读；Hagemann2018作者公开稿指定节，Wu/Ding2021、MacKinnon/Webb2018、Aronow/Samii2017摘要。16项条件命题、23项人工精确测试在普通与优化模式均通过；6校极端双侧p=1/10，8校两块各2/4 p=1/18 vs无块p=1/35；ICPSR V2 24471 cases与论文24191 students差280，原因未核实；2018更正调整25%、未调整23%，原刊显著性冲突待独立复算。未下载真实数据、无E1/E2/E3新增 | THEORY_NOTE_BOUNDED; DESIGN_BLOCK_COUNTS_UNVERIFIED; PUBLIC_V2_CASE_SCOPE_UNMAPPED; SIGNIFICANCE_CONFLICT_OPEN | [研究笔记](TH184_SCHOOL_CLUSTER_RANDOMIZATION_BLOCKS_PUBLIC_DATA_VERSION_2026-11-01.md)；[人工审计脚本](th184_cluster_randomization_audit.py) |
+
+C今日2026-11-01已完成C009，D本周2026-W44已完成D002，本轮均只读。下一TH185：ICPSR37070 V2字段字典、真实分块标识及公开复算代码的免费可达性和版本映射；旧队列文字保留历史记录。
