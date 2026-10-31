@@ -4,6 +4,9 @@ track: theory
 target_key: (theory,BentleyHahnShennan2004+KirbyCornishSmith2008+GriffithsKalish2007,theory-v1,neutral_drift_vs_transmission_bottleneck_vs_bayesian_bias)
 baseline_main_head: ca65f321bbc8877caa7cde2c8fdfb7531692a7b3
 status: COMPLETE_ARCHIVE_STAGE; THEORY_NOTE_BOUNDED; NONBLIND; no active claim
+archive_commit: 1f75a0cfaccc4f0ff2d2615460c733dc9fc38d66
+note_fraction_correction_commit: 4d4ab38c3398efebdae6df8facff6f3b72bae85f
+open_codex_prs: #1 #2 #3 remain unmerged
 paths: theory/TH189_CULTURAL_DRIFT_COPYING_ERROR_ITERATED_LEARNING_2026-11-01.md; theory/th189_cultural_drift_iterated_learning_audit.py; theory/INDEX.md; research/coordination/theory/20261031T221421Z-th189-drift-iterated-learning-handoff.md
 sources_seen: Kirby2008 full article methods/results; GriffithsKalish2007 full specified sections; Bentley2004 original abstract; Kirby2017 SI correction bibliographic record only
 result_seen: 16 conditional propositions; 27 synthetic exact unittest PASS normal and optimized in local Python
