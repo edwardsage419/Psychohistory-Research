@@ -1,0 +1,46 @@
+{
+  "status": "COMPLETE",
+  "scope": "nonblind comparator forensic audit, not model acceptance",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "baseline_r_assertions_reported": 127,
+  "baseline_b_comparisons": 72,
+  "r_output_matches_archive": true,
+  "probe_expectations_passed": 7,
+  "probe_expectations_failed": 0,
+  "probes": {
+    "wrong_minimum": {
+      "accepted_by_archived_comparator": false,
+      "expected_for_complete_protocol_gate": false
+    },
+    "duplicate_world_omits_seven_worlds": {
+      "accepted_by_archived_comparator": true,
+      "expected_for_complete_protocol_gate": false
+    },
+    "duplicate_capacity_omits_one_scenario": {
+      "accepted_by_archived_comparator": true,
+      "expected_for_complete_protocol_gate": false
+    },
+    "wrong_baseline_multiplier": {
+      "accepted_by_archived_comparator": true,
+      "expected_for_complete_protocol_gate": false
+    },
+    "wrong_capacity_delta_identity": {
+      "accepted_by_archived_comparator": true,
+      "expected_for_complete_protocol_gate": false
+    },
+    "wrong_local_derivative": {
+      "accepted_by_archived_comparator": true,
+      "expected_for_complete_protocol_gate": false
+    },
+    "wrong_evidence_label": {
+      "accepted_by_archived_comparator": true,
+      "expected_for_complete_protocol_gate": false
+    }
+  },
+  "source_sha256": {
+    "research/evidence_audit/b_r257_s53_independent_1d_20261029.py": "50d314302ecd16f513569427f80134764fac3db0dc20ed9c109eea155d08e9e8",
+    "research/validation/r257_s53_capacity_shadow_20261029.py": "3510b7bd26d910e18fae00e17d042a9a3a381435b4a3d3a4c1b85c35931ce47d",
+    "research/validation/R257_S53_EXACT_RECEIPT_2026-10-29.json": "d4a33b47f4d818a8b4358a809b977c49aaad19c1656570e97947f0f3d30cd8e4"
+  }
+}
