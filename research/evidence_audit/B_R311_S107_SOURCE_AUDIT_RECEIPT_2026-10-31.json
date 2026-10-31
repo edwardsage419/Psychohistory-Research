@@ -1,0 +1,44 @@
+{
+  "run_utc": "2026-10-31T08:44:23.560Z",
+  "stage": "R311_S107",
+  "original_csv_blob": "15f6ea431003489cc4ea880977e9375522abd525",
+  "R_script_blob": "a0f5ac1edfa108ec7d835097e3898f1b7d035d5c",
+  "B_v3_script_blob": "b8e081f8d66ad4df6d2b370f65afeecbb8d43dc9",
+  "audit": {
+    "status": "PASS",
+    "original_rows": 1944,
+    "original_worlds": 324,
+    "profile_rows": 81,
+    "grid_rows": 324,
+    "critical_distribution": {
+      "critical_connected": {
+        "0": 3,
+        "1": 14,
+        "1/2": 64
+      },
+      "critical_clique": {
+        "0": 3,
+        "1": 50,
+        "1/2": 28
+      },
+      "critical_gap": {
+        "0": 45,
+        "1/2": 36
+      }
+    },
+    "positive_gap": 36,
+    "false_positive": 36
+  },
+  "mutation": {
+    "rejected": 8,
+    "total": 8
+  },
+  "execution": "V8_EVAL_OF_REMOTE_GITHUB_SOURCE",
+  "node_native_cli": "NOT_RUN",
+  "github_actions": "NOT_RUN",
+  "evidence": "INTERNAL_NONBLIND_E1",
+  "external_team": "NOT_RUN",
+  "source_level_identity": "PASS",
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN"
+}
