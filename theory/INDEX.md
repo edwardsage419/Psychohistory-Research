@@ -757,3 +757,8 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH175 | 负对照预先选择、跨时期测量漂移与验证样本设计 | Schuemie等2014原刊、Gruber/Tchetgen2016原刊及Schuemie等2016回应直接审读；Engels等2026原刊指定节；Buderer1996、Millsap2010原刊摘要。14项条件命题、24项人工Fraction测试；相同代理率变化可对应真实趋势0或1/14，未校准的n10阈值漂移检出率0.4192且无漂移误报0.3944；四层Hoeffding保守充分验证数每层254。真人微观复算、历史预测、R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; TARGET_EXCHANGEABILITY_UNVERIFIED | [研究笔记](TH175_NEGATIVE_CONTROL_PREREG_TEMPORAL_CALIBRATION_VALIDATION_DESIGN_2026-10-31.md)；[精确脚本](th175_temporal_calibration_prereg_audit.py) |
 
 当前下一理论专题TH176：制度指标成为政策目标后的反身性、Goodhart/Campbell效应、分类权力与跨时期记录行为反馈。C008满足2026-10-31，D002满足2026-W44，均保持只读；历史下一专题文字保留。
+
+
+| TH176 | 制度绩效指标反身性、Goodhart/Campbell效应、多任务激励与行政分母选择 | Campbell1976原稿2011授权再版第34至36页及Holmstrom/Milgrom1991作者原刊第1至4页和第2节直接审读；Espeland/Sauder2007、Bevan/Hood2006正式摘要及Goodhart原始RBA书目；14项条件理论命题、20项人工Fraction测试。κ=4,b=1/10下无审计指标1而真实2/5，审计λ=1时指标17/25真实14/25；相同指标3/5可对应真实3/5或9/20，选择性分母使报告率1/2升至5/6而真率不变。仅理论与人工数学，无真人复算、现实因果识别或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; METRIC_FEEDBACK_REALWORLD_UNIDENTIFIED | [研究笔记](TH176_METRIC_TARGET_REACTIVITY_CLASSIFICATION_FEEDBACK_2026-10-31.md)；[人工审计脚本](th176_metric_feedback_exact_audit.py) |
+
+当前下一理论专题TH177：绩效指标反身性的真实政策识别设计、独立质量结局和分母选择；C008满足2026-10-31，D002满足2026-W44，均保持只读。此前队列文字为历史记录。
