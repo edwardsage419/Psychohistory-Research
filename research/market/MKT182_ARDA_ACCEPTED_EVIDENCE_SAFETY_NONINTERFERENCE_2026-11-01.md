@@ -1,0 +1,17 @@
+# MKT182 ARDA accepted evidence and safety noninterference
+Date: 2026-11-01 Asia/Singapore. Track: market. Target key: (market,ARDA,public-support-2026-11-01,accepted_evidence_vs_unaccepted_AI_and_safety_signal). Baseline HEAD: dfbe7e1e782a2934a16e5bc3a92a58588d4ea671. Status: COMPLETE_BOUNDED_DOCUMENT_AND_SYNTHETIC_E1. Nonblind.
+
+## Official English sources actually read
+ARDA Support states the Life Audit covers 11 life areas, sensitive questions may be declined, and missing information may lower confidence or make a domain unassessable. It describes fact correction, adding evidence, and method challenge as distinct actions. It says safety signals do not automatically lower ratings or drive subscription pressure. The Trust page describes accepted evidence separated from unconfirmed AI output, bounded task context sent to AI, and Apple Health data kept on the iPhone. Privacy Policy (last updated 2026-09-07) lists accepted evidence, confidence, trajectories, correction and deletion history; it says model assumptions are not accepted facts without validation. All are vendor design/policy statements, not independent product verification.
+
+Sources read 2026-11-01: https://www.ardaapp.com/support ; https://www.ardaapp.com/trust ; https://www.ardaapp.com/privacy .
+
+## Inputs, representation, correction, privacy, cost
+Inputs described: audit answers, selected life domains, accepted evidence, plans, conversations and corrections. Optional Apple Health data is described as on-device, while manually pasted health content can be processed in the cloud. State descriptions include ratings, confidence, evidence and history. Internal rating formula, utility weights, revision identity, empirical calibration and independent deletion tests remain unavailable. ARDA claims an evidence review and correction loop, with no independently tested behavior-change effect. The support page still mentions TestFlight and a September 2026 launch target when reviewed in November; this is stale public text and does not establish actual launch status. Pricing and trial terms are unannounced. No account, purchase, API or sensitive data used.
+
+## Executed artificial test
+Program: research/market/mkt182_arda_evidence_safety_noninterference_20261101.js. Node 22.16.0, execution and syntax check PASS. Enumerated 32 combinations of accepted evidence, unaccepted AI proposal, accepted correction, safety signal and missing evidence. Candidate rating gate: 8 UNASSESSABLE, 8 RECONCILE_ORPHAN_CORRECTION, 8 ASSESS_FROM_ACCEPTED_EVIDENCE, 8 REASSESS_FROM_CORRECTED_ACCEPTED_EVIDENCE. All 32 safety toggles and 32 unaccepted AI toggles preserve rating state and confidence. A deliberately defective arithmetic toy proxy changed in 16/32 states relative to the same case with AI and safety off. This is an artificial coverage count, not an ARDA defect rate. Safety is routed separately; missing evidence lowers confidence, accepted correction triggers reassessment. No numerical life utility weights chosen.
+
+## Evidence and boundaries
+MARKET-E1 official vendor documents; MARKET-E0 any unverified life improvement claim; internal nonblind synthetic E1; MARKET-E2 product testing NOT_RUN; MARKET-E3 prospective outcomes NOT_RUN; R human E2 and historical E3 new=0. No real ARDA algorithm, app, security, fairness or scoring validity tested. No paid services or CI triggered. Actual account billing/free quota not inspected.
+Next: MKT183 inspect independently accessible open-source decision-journal as-of records and revision history; preserve R-series-first direction.

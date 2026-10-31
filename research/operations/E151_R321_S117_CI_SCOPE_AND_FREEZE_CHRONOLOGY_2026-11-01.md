@@ -1,0 +1,15 @@
+# E151 R321 CI and S117 freeze chronology: direct read-only governance audit
+Date: 2026-11-01 Asia/Singapore. Target key: (operations,R321,S117_a6a40346,original_R321_CI_scope_and_S117_freeze_chronology). Baseline main dfbe7e1e782a2934a16e5bc3a92a58588d4ea671. Status: COMPLETE_SCOPED_READONLY_AUDIT. Nonblind, complementary to B's mathematical/native CLI audit.
+
+## Direct GitHub verification
+Read original R321 README, scientific report, machine receipt, acceptance, S117 freeze/report/primary source, B native CLI addendum and R handoff. Fetched GitHub Actions run 40013917870 directly: push event, head SHA 1da4a0dfaad4494dd11ce35d128f5a2f05d78007, completed/success. Fetched jobs endpoint: independent job 120620979570 success, unit (3.11) job 120620980035 success, unit (3.12) job 120620980039 success. Unit jobs each ran original --test and --audit, independent job ran independent_r321_sprt_audit.py. These verify original R321 CI receipt metadata; they are not S117 CI evidence. S117 native Python CLI was separately executed by B, reported in commit 5cdd074f6c0e9b927459647f6fd54a830de4f496; no new CI for S117.
+
+Directly fetched S117 freeze commit a6a4034604d21ffc056086aa786ad93c24625d4a, dated 2026-10-31T18:43:06Z and containing only the S117 freeze; outcome commit 5fc4a7cf0eaebb9c3ae663fa60f6b53ce103d6ce dated 2026-10-31T18:44:41Z and containing S117 result JSON. Freeze precedes outcome in Git history. Original R321 status PASS_BOUNDED_E1_FINITE_WALD_INSPIRED_ONLY, S117 PARTIAL_E1_EXTENSION.
+
+Sources: https://github.com/edwardsage419/Psychohistory-Research/actions/runs/40013917870 ; https://github.com/edwardsage419/Psychohistory-Research/commit/a6a4034604d21ffc056086aa786ad93c24625d4a ; https://github.com/edwardsage419/Psychohistory-Research/commit/5fc4a7cf0eaebb9c3ae663fa60f6b53ce103d6ce .
+
+## Cross-track daily review
+Read main HEAD/recent commits; R321/B native addendum; A-track Xie/Xiong/Wilson think-aloud risky-choice source schema gate (raw rows and empirical scoring NOT_RUN, lacks R073 dyad/round eligibility); TH186 handoff (18 synthetic tests, initial failure recorded and corrected, no restricted real data). Read all 12 open codex/* PR titles and #1/#2/#3 bodies. PR #1 R257 S53 comparator false accepts and PR #3 proposed strict gate remain open, unmerged; PR #2 workflow protocol also open, branch copy read as guidance only. R299 S95 historical issue not rechecked. No original239 itemwise re-audit, full frozen-file diff or account billing check; previous E150 index/queue counts not independently recomputed here. No other tracks modified.
+
+## Limits
+Original CI success supports only original artificial finite E1. S117 native replay is a separate internal nonblind E1 gate. Human E2 new=0, historical E3 new=0; external blind validation NOT_RUN. No Actions invoked, no paid service used. Next E152 inspect fresh latest R-stage source identity and B handoff; avoid duplicating S117 CLI or nine prior mutation checks.
