@@ -1,0 +1,71 @@
+{
+  "schema": "r317_s113_temporal_coarsening_exact_v1",
+  "evidence": "E1_FINITE_ARTIFICIAL_ONLY",
+  "source_git_blob": "926c1fee6a473da6bbedb9746cf109f5a3a3eb16",
+  "instances": 162,
+  "schedules": 27,
+  "origins": 3,
+  "ordered_targets_per_origin": 2,
+  "totals": {
+    "positive": 138,
+    "negative": 24
+  },
+  "maps": {
+    "PAIR_ONLY": {
+      "keys": 6,
+      "mixed_keys": 6,
+      "tie_keys": 0,
+      "correct": 138,
+      "accuracy": "23/27",
+      "brier": "92/729"
+    },
+    "FULL": {
+      "keys": 162,
+      "mixed_keys": 0,
+      "tie_keys": 0,
+      "correct": 162,
+      "accuracy": "1/1",
+      "brier": "0/1"
+    },
+    "MULTISET": {
+      "keys": 60,
+      "mixed_keys": 12,
+      "tie_keys": 0,
+      "correct": 150,
+      "accuracy": "25/27",
+      "brier": "4/81"
+    },
+    "STATIC": {
+      "keys": 42,
+      "mixed_keys": 6,
+      "tie_keys": 0,
+      "correct": 150,
+      "accuracy": "25/27",
+      "brier": "4/81"
+    },
+    "FIRST": {
+      "keys": 18,
+      "mixed_keys": 12,
+      "tie_keys": 0,
+      "correct": 138,
+      "accuracy": "23/27",
+      "brier": "26/243"
+    },
+    "LAST": {
+      "keys": 18,
+      "mixed_keys": 12,
+      "tie_keys": 0,
+      "correct": 138,
+      "accuracy": "23/27",
+      "brier": "26/243"
+    },
+    "DISTINCT_COUNT": {
+      "keys": 18,
+      "mixed_keys": 12,
+      "tie_keys": 0,
+      "correct": 144,
+      "accuracy": "8/9",
+      "brier": "22/243"
+    }
+  }
+}
