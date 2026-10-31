@@ -804,3 +804,7 @@ C今日2026-11-01已完成C009，D本周2026-W44已完成D002，本轮均只读�
 | TH185 | ICPSR37070 V2公开元数据与许可边界、校级分块与固定规模种子暴露的合成识别审计 | ICPSR37070 V2研究元数据、2025官方LLM政策/再分发条款、Yale ISPS原刊来源及Dataverse代码DOI、Aronow/Samii2017作者摘要；16项条件命题，20项人工Fraction测试普通及优化模式均通过；24191与24471差280，482+17=499仅候选算术；固定4选2同伴暴露5/6 vs 独立抽签3/4；49/56校行政数据缺失下人工有界校级差区间宽1/4。ICPSR研究数据及代码本未下载，原作者代码清单与真实分块字段未恢复；新E1/E2/E3均0 | THEORY_NOTE_BOUNDED; ICPSR_LLM_REUSE_BLOCKED; CODE_ARCHIVE_UNVERIFIED; NO_REAL_DATA_REESTIMATION | [研究笔记](TH185_ICPSR_PUBLIC_METADATA_DESIGN_LLM_POLICY_2026-11-01.md)；[合成审计脚本](th185_public_metadata_design_audit.py) |
 
 C今日2026-11-01已有C009，D本周2026-W44已有D002，保持只读。下一TH186：许可明确的独立网络干扰研究与固定规模种子抽样正概率，ICPSR数据处理许可仍阻塞。
+
+| TH186 | 两阶段家庭随机化、个体与家庭权重、固定规模暴露正概率及政策支持集 | Basse/Feller2017v2公开全文第1至4及9节、Aronow/Samii2018v4公开全文第1至3节；Hudgens/Halloran2008与Baird等2018正式摘要。16项条件命题，18项标准库人工Fraction测试普通及优化均通过；2户规模2/4的六条非等概率路径，个体直接效应10/3与家庭等权4，简单差异期望4对个体目标偏差2/3；双户全处理超出设计支持集。无真人微观复算、现实因果再估计、历史预测或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; SYNTHETIC_ONLY; FULL_POLICY_OUTSIDE_SUPPORT | [研究笔记](TH186_TWO_STAGE_CLUSTER_WEIGHTS_SPILLOVER_SUPPORT_2026-11-01.md)；[精确脚本](th186_twostage_weight_audit.py) |
+
+C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH187：有限簇精确随机化推断、异质群体权重与暴露误设敏感性。此前下一专题文字保留历史记录。
