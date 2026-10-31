@@ -808,3 +808,8 @@ C今日2026-11-01已有C009，D本周2026-W44已有D002，保持只读。下一T
 | TH186 | 两阶段家庭随机化、个体与家庭权重、固定规模暴露正概率及政策支持集 | Basse/Feller2017v2公开全文第1至4及9节、Aronow/Samii2018v4公开全文第1至3节；Hudgens/Halloran2008与Baird等2018正式摘要。16项条件命题，18项标准库人工Fraction测试普通及优化均通过；2户规模2/4的六条非等概率路径，个体直接效应10/3与家庭等权4，简单差异期望4对个体目标偏差2/3；双户全处理超出设计支持集。无真人微观复算、现实因果再估计、历史预测或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; SYNTHETIC_ONLY; FULL_POLICY_OUTSIDE_SUPPORT | [研究笔记](TH186_TWO_STAGE_CLUSTER_WEIGHTS_SPILLOVER_SUPPORT_2026-11-01.md)；[精确脚本](th186_twostage_weight_audit.py) |
 
 C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH187：有限簇精确随机化推断、异质群体权重与暴露误设敏感性。此前下一专题文字保留历史记录。
+
+
+| TH187 | 有限群体条件随机化、固定名额、平局尾部及错误网络暴露 | Puelz等arXiv:1910.10862开放2026稿、Basse等arXiv:1709.08036、Schröder等arXiv:2602.03459指定章节；18项条件命题、24项Python标准库精确人工测试在普通与优化模式均通过。固定4选2的保守p最小1/6，严格上尾在平局下可能反保守，原稿HTML公式符号待PDF核验；错误暴露映射产生-1/3伪关联。无真实微观复算、独立因果估计、历史预测或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; PDF_SYMBOL_CHECK_OPEN; SYNTHETIC_ONLY | [研究笔记](TH187_CONDITIONAL_EXACT_TEST_TIES_EXPOSURE_MISSPECIFICATION_2026-11-01.md)；[精确脚本](th187_conditional_randomization_audit.py) |
+
+C今日2026-11-01已有C009，D本周2026-W44已有D002，保持只读。下一TH188优先文化演化中的规范传播、身份边界与网络选择；先全R，再分类归纳，最后熔炼。
