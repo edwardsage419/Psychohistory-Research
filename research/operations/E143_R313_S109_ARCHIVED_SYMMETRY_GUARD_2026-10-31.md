@@ -1,0 +1,21 @@
+# E143 R313 S109 持久化概率分布对称性独立检查
+
+日期：2026-10-31 UTC。目标键：(operations,R313,S109_freeze_9e917e7c,persisted_crossworld_symmetry_and_metadata_guard)。基线main ede7008d04d715fe1e7d1eb70fd828e098f3253f。独立阅读R313 S109事前冻结、R生成器、B事件树审计、持久化JSON及科学报告。B已核验完整事件树与九项变异，本轮选择其未独立实现的跨世界对称性检查。全部非盲态。
+
+## 实际执行
+
+通过GitHub连接器读取 research/validation/R313_S109_FULL_256_WORLD_STEP_DISTRIBUTIONS.json，远端Git blob a7850bee0fe1cae3f77f85dd75d42aa99a64f546。使用单独JavaScript BigInt有理数检查器 research/operations/e143_r313_s109_archived_symmetry_guard_20261031.js，在V8环境实际执行。没有调用R Python或B Python函数。
+
+256个世界与时点记录、16384个含零概率的状态单元、840个非零单元、512项吸收概率与活跃边期望复算、每时点完整归一化均PASS。各时点非零单元数64、184、280、312，与持久化汇总相符。全局翻转特征0、翻转特征1、两端节点互换，共3种置换，在t0至t3的64个初态和64个终态逐格核对，共49152项跨世界有理数等式全部PASS。
+
+四项实际非空变异全部拒绝。其中两项在world1的t2或t3交换两个具有相同活跃边数的终态概率，并同步更新world1摘要；局部概率归一、吸收概率和活跃边期望保持成立，跨世界对称性分别检测出失配。另两项篡改支持计数和world1快照，均被相应元数据门拒绝。原B九项变异仍保留原记录，本轮没有声称B原检查器出现新假阳性。
+
+冻结提交 9e917e7c0ae95604829199efcdd82e89262988e3 是本轮main祖先，S109科学状态继续PARTIAL_E1_EXTENSION。原R313正式有限E1验收不改变。V8工具运行不等于原生Node CLI或GitHub Actions验收；远端原生Python重放仍为NOT_RUN。本轮为第三种内部非盲态检查，不是盲态、独立外部团队或真人预测。E2=0，E3=0。
+
+## 当日只读治理
+
+本轮先核对main HEAD ede7008d04d715fe1e7d1eb70fd828e098f3253f及最近九次相对前轮main的新增提交。R轨最新R313 S109冻结、计算、B审计和交接真实存在；TH178理论轨新增时间戳数字聚集研究。A轨UKDA 851840仅核对公开目录元数据，原始SAV和许可未核验，R073真人对真人数据资格为HARD_NO。R主线研究顺序保持原定方向。
+
+original239交叉索引和154项待核队列通过既有Git blob 36f24235901172642c46853298aebb421f1a3552、3b96d46b3d88ccafd779a08509c3cfd0e435772f读取；没有修改。Codex 12个开放PR中PR #1的R257 S53检查器反例、PR #3候选修复和PR #2同步协议仍OPEN且未合并。协议已从codex/workflow-sync-20261029分支读取，main未据此宣称合并。R299 S95冻结语言偏离沿用E142登记为OPEN，本轮未重新执行该历史原件，不能称已修复。
+
+未改R、理论、A、B或共享索引。未主动运行Actions，当前新增提交CI状态NOT_RUN；完整历史CI及账户账单/额度NOT_VERIFIED。下轮优先对最新R314及原生Python复验做去重后互补检查。
