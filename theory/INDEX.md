@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-31（Asia/Singapore）；已收录 TH174，C008 今日增量与 D002 本周专题
+更新：2026-10-31（Asia/Singapore）；已收录 TH175，C008 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -753,3 +753,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH174 | 共同测量误差负对照、跨地区校准运输与选择性验证 | Lipsitch等2010、Arnold等2016、Elie/Coste2008开放原作指定章节；Begg/Greenes1983摘要；Miao等2018作者开放稿第1至3节。14项条件理论命题、16项人工Fraction测试；相同代理率9/20对应真率1/2或1/4，来源校准运输误差+1/4；校准误差矩阵区间给出真率界[1/8,7/10]；40/100已验证样本下总体真率界[3/10,9/10]；无真实微观复算或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; TARGET_CALIBRATION_UNVERIFIED | [研究笔记](TH174_NEGATIVE_CONTROL_CALIBRATION_TRANSPORT_VERIFICATION_2026-10-31.md)；[精确审计脚本](th174_negative_control_transport_audit.py) |
 
 当前下一理论专题TH175：负对照选择的预注册敏感性、误差矩阵跨时期稳定性与部分验证样本的最小可识别设计。C008满足2026-10-31，D002满足2026-W44，均保持只读。历史队列文字保留。
+
+| TH175 | 负对照预先选择、跨时期测量漂移与验证样本设计 | Schuemie等2014原刊、Gruber/Tchetgen2016原刊及Schuemie等2016回应直接审读；Engels等2026原刊指定节；Buderer1996、Millsap2010原刊摘要。14项条件命题、24项人工Fraction测试；相同代理率变化可对应真实趋势0或1/14，未校准的n10阈值漂移检出率0.4192且无漂移误报0.3944；四层Hoeffding保守充分验证数每层254。真人微观复算、历史预测、R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; TARGET_EXCHANGEABILITY_UNVERIFIED | [研究笔记](TH175_NEGATIVE_CONTROL_PREREG_TEMPORAL_CALIBRATION_VALIDATION_DESIGN_2026-10-31.md)；[精确脚本](th175_temporal_calibration_prereg_audit.py) |
+
+当前下一理论专题TH176：制度指标成为政策目标后的反身性、Goodhart/Campbell效应、分类权力与跨时期记录行为反馈。C008满足2026-10-31，D002满足2026-W44，均保持只读；历史下一专题文字保留。
