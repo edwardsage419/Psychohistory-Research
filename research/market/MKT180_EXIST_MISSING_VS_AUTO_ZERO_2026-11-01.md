@@ -1,0 +1,15 @@
+# MKT180 Exist manual attributes: missing observations versus automatic zero
+Date: 2026-11-01 Asia/Singapore. Target key: (market,Exist,API2_manual_tracking,missing_zero_trend_bias). Baseline main 9b01ea93273e6b660686251788f04f8e61ecbc31. Scope: official English documentation and a small synthetic E1 counterexample.
+
+## Verified primary documentation
+1. https://exist.io/page/help-manual-tracking/ explicitly states that quantity and duration manual attributes default to zero on days without entries. Decimal, scale 1-9, time of day and percentage attributes receive no value unless entered. It describes relationships, averages and trends as product capabilities, without supplying independent predictive validation.
+2. https://developer.exist.io/reference/attributes/ describes per-day values, local-date semantics, source service and manual/active metadata; /with-values/ has a documented 31-day maximum per query.
+3. https://developer.exist.io/reference/writing_data/ describes OAuth2 write scope, ownership, day-level updates and overwrite semantics. Non-null existing values cannot be reset to null through the documented update endpoint. This restriction is not evidence that all integrations always fill missing dates with zero.
+4. https://developer.exist.io/reference/object_types/ distinguishes boolean custom tags, for which 0 or null can mean unused on a day, from numeric and scale attributes.
+5. Existing MKT179 records official paid pricing (USD 6.99 monthly or 62.90 annually), 7-day historical correction documentation, and source ownership. No new pricing change was verified this run.
+
+## Executed reproducible synthetic experiment
+Code: research/market/mkt180_missing_zero_20261101.py. Python standard library Fraction, normal and python -O both PASS. Four artificial time indices x=(1,2,3,4). Scale-like observations y=(1,2,null,null), where missing days are excluded from complete-case slope, yield slope +1 on two observed pairs. A quantity-like zero-filled sequence y=(1,2,0,0) yields slope -1/2 on four pairs. Five assertions pass in each run. This is a deterministic illustrative counterexample. Missingness mechanism is chosen by construction, so the complete-case slope is not an unbiased estimate of an underlying population trend. No Exist algorithm, account or API was executed.
+
+## Candidate knowledge and evidence boundary
+Keep original observation state separate from actual zero, platform-generated zero, missing, source not synced, and historical revision. Retain attribute value type, source owner, user-local date, observation coverage, and revision receipt. Report sample sizes for each statistic. Require explicit missingness sensitivity analysis before personal recommendations. An automatic zero may encode absence of a manual entry, which does not establish absence of an underlying activity. Product explanations and causal claims remain unverified. Official documentation + internal nonblind synthetic E1 only. New human E2=0, historical E3=0. No purchase, registration, paid API or personal data. Next: compare Exist correlation API handling of missing pairs and source coverage from public documentation.
