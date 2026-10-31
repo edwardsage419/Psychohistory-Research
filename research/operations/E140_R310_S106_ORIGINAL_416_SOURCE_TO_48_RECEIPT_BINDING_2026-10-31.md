@@ -1,0 +1,15 @@
+# E140 R310 S106 原始416事件与48世界结果的独立来源绑定复核
+UTC 2026-10-31T08:19Z。目标键 (operations,R310,S106,original_416_event_source_to_48_absorption_receipt)。基线main b07b5f943ab7cb173c0be3ed09145a2d0461e1c3。已读R310 S106冻结协议、科学报告、B轨非盲态审计、R轨交接和两份原始CSV。与既有B轨从无向边重新生成事件的验证互补，本轮直接以R310持久化416条定向事件CSV为唯一输入，逐事件重新核对S106的48行结果。
+
+原始R310 CSV Git blob b6244d25a5f78e360548ae3d9d77d0411a37dbd1，S106 CSV Git blob 38ef342a7e1d881e862f94eaeefabcd05eef13fe。独立V8 JavaScript BigInt有理数程序检查每条事件的世界标签、初始状态、图边、度数、目标及邻居、前后意见、转移概率、改变标记、普通及度数加权意见密度，共416×9=3744项来源字段检查。按原始事件概率聚合，对48个世界检查概率归一化，对42个非吸收状态重新核验q与期望吸收时间Bellman递推，6个吸收边界核对。事件数量按PATH4=96、CYCLE4=128、COMPLETE4=192，总计416。原始结果全部PASS，0项不一致。8个有效篡改（概率、后继、目标、重复、遗漏、最终q、最终时间、状态身份）均被拒绝。
+
+重要范围：程序实际在连接器V8运行；未执行原始B轨Python原生命令行，也未在本轮重新计算R310原始CSV的SHA256。Git blob直接从远端读取核对，不能用Git blob相同推断SHA256已重算。R310 S106仍PARTIAL_E1_EXTENSION，原R310 CLOSED_BOUNDED_E1保持不变。B轨历史原生Python成功记录属该轨原先证据，不能归为本轮执行。代码运行只证明人工数学与来源一致，不构成真实人类网络验证。E2/E3新增0。
+
+跨轨治理：本轮main读取至TH175和R310 S106，R冻结2d44da5a1d40582674cdf11cdb05233b13794476早于结果44d6f4e81b312395d21f3062f0ee4180f4a34afd。理论轨TH175，R轨A来源SNAP CollegeMsg仅元数据/许可未核验。original239 v7.8 blob 36f24235901172642c46853298aebb421f1a3552和pending154 blob 3b96d46b3d88ccafd779a08509c3cfd0e435772f沿用已读记录，未修改。12个Codex PR开放，#1的R257 S53覆盖问题与#3候选修复均未合并。R299 S95冻结语言偏离仍开放。没有发现本轮目标路径与其他轨冲突；其他轨科学结论未修改。CI未触发，实际账户账单与免费额度未核验。
+
+来源：
+https://github.com/edwardsage419/Psychohistory-Research/blob/main/research/R310/R310_ALL_416_ORIGINAL_VOTER_DIRECTED_UPDATE_SOURCES.csv
+https://github.com/edwardsage419/Psychohistory-Research/blob/main/research/validation/R310_S106_ALL_48_ABSORPTION_WORLDS.csv
+https://github.com/edwardsage419/Psychohistory-Research/blob/main/research/validation/R310_S106_FULL_ABSORPTION_PRESCORE_FREEZE_2026-10-31.md
+https://github.com/edwardsage419/Psychohistory-Research/blob/main/research/evidence_audit/B_R310_S106_NONBLIND_BELLMAN_AND_EIGHT_MUTATIONS_2026-10-31.md
+复算程序 research/operations/e140_r310_original_source_binding_20261031.js，使用原生Node读取两个本地CSV可再次运行。下一项E141检查R310 S106收据的原生Python复算及真实SHA256，或根据最新R轨HEAD选择互补治理缺口。
