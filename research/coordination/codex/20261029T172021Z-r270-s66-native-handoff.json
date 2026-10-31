@@ -1,0 +1,38 @@
+{
+  "track": "codex",
+  "status": "COMPLETE",
+  "observed_main": "7c5d5650af12cfdd08e0f2d23b73a49e6f506d29",
+  "delivery_base": "7c5d5650af12cfdd08e0f2d23b73a49e6f506d29",
+  "target_key": [
+    "codex",
+    "R270",
+    "S66",
+    "native-node-full-receipt-and-prefix-DP"
+  ],
+  "claim": "none",
+  "lease": "none",
+  "results_seen": "NONBLIND original R/B results read before implementing DP",
+  "completed": {
+    "original_positive_cli_invocations": 5,
+    "tails": 192,
+    "alarm_records": 27,
+    "R_emitted_and_DP_json_byte_equal": true,
+    "receipt_bytes": 7501,
+    "source_pins": 3,
+    "new_tests_unique": 10,
+    "final_normal_and_optimized_executions": 20,
+    "failures": 0,
+    "errors": 0,
+    "builtin_negative_cases_per_original_route": 5
+  },
+  "controls": "Wrong tail rejected by R/B/DP. Reordered top keys rejected only by R. Float count2.0 accepted by R/B and rejected by strict DP. Representation policy boundaries, not mathematical failures.",
+  "evidence": "Internal artificial E1, externalteam/E2/E3 zero, S66 scientific status PARTIAL_BOUNDED_INTERNAL_EXACT unchanged",
+  "outputs": [
+    "research/codex_audit/r270_s66_native/"
+  ],
+  "review": "No Critical/Important; Minor existing output directory reuse replaces logs, documented use fresh evidentiary directory",
+  "ci": "NOT_RUN",
+  "billing": "NO_NEW_CHARGE_ACTION; account billing/free quota NOT_VERIFIED",
+  "next": "Fresh coverage/handoff review, select still-open R-series acceptance/source-identity or archived CLI gap without repeating R270/R271",
+  "delivery": "Separate draft PR; containing commit identifies SHA; no merge"
+}

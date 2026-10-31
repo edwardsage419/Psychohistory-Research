@@ -1,0 +1,226 @@
+{
+  "status": "COMPLETE",
+  "pinned_source_baseline": "7c5d5650af12cfdd08e0f2d23b73a49e6f506d29",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "node": "v24.19.0",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "N/A; exact finite arithmetic",
+  "source_identity": {
+    "research/validation/r270_s66_exact_ppc_alarm.js": {
+      "bytes": 4055,
+      "git_blob": "6408335f61e0638a7b0951a78034c13664f5133d",
+      "sha256": "4a8a9f92ac007a2908e7b574e8436bca32f2a2a171b3476e3b73255291dd6990"
+    },
+    "research/evidence_audit/r270_s66_independent_run_composition_cli.py": {
+      "bytes": 4457,
+      "git_blob": "b79636d2969d353954d997717cddbe7115e8e5cd",
+      "sha256": "986e9a99cb4cf8a4d68401b804ad3eb5eced7fc629e48a161032f1ffbe4badaf"
+    },
+    "research/validation/R270_S66_EXACT_PPC_ALARM_RECEIPT_2026-10-29.json": {
+      "bytes": 7501,
+      "git_blob": "20fc7f616a3ce2e3b9d30714646f3173d1ffea08",
+      "sha256": "d808ac0c30a62c272b800b720e34dea590f932fcd1768a86a276f0a010c8e119"
+    }
+  },
+  "source_unchanged": true,
+  "positive_original_cli_invocations": 5,
+  "original_selftest_negative_controls_per_route": 5,
+  "R_emitted_byte_equal": true,
+  "DP_byte_equal": true,
+  "DP_receipt_sha256": "d808ac0c30a62c272b800b720e34dea590f932fcd1768a86a276f0a010c8e119",
+  "DP_result": {
+    "status": "COMPLETE",
+    "exact_tails": 192,
+    "alarm_probabilities": 27,
+    "method": "prefix-state DP with factorial Beta integration",
+    "predictive_normalizations": 192,
+    "generating_normalizations": 9,
+    "evidence": "NONBLIND_INTERNAL_ARTIFICIAL_E1",
+    "external_team_replications": 0
+  },
+  "controls": [
+    {
+      "case": "wrong_tail",
+      "R_accepted": false,
+      "B_accepted": false,
+      "DP_accepted": false
+    },
+    {
+      "case": "reordered",
+      "R_accepted": false,
+      "B_accepted": true,
+      "DP_accepted": true
+    },
+    {
+      "case": "float_count",
+      "R_accepted": true,
+      "B_accepted": true,
+      "DP_accepted": false
+    }
+  ],
+  "commands": [
+    {
+      "label": "r_original",
+      "command": [
+        "node",
+        "/workspace/s66-replay/research/validation/r270_s66_exact_ppc_alarm.js",
+        "--selftest",
+        "--check",
+        "/workspace/s66-replay/research/validation/R270_S66_EXACT_PPC_ALARM_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 0,
+      "stdout_file": "r_original.stdout",
+      "stderr_file": "r_original.stderr"
+    },
+    {
+      "label": "b_original",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s66-replay/research/evidence_audit/r270_s66_independent_run_composition_cli.py",
+        "--selftest",
+        "--check",
+        "/workspace/s66-replay/research/validation/R270_S66_EXACT_PPC_ALARM_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 0,
+      "stdout_file": "b_original.stdout",
+      "stderr_file": "b_original.stderr"
+    },
+    {
+      "label": "r_emit",
+      "command": [
+        "node",
+        "/workspace/s66-replay/research/validation/r270_s66_exact_ppc_alarm.js",
+        "--emit",
+        "/tmp/s66-native-d9qqc_i7/R_emitted.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 0,
+      "stdout_file": "r_emit.stdout",
+      "stderr_file": "r_emit.stderr"
+    },
+    {
+      "label": "r_regenerated",
+      "command": [
+        "node",
+        "/workspace/s66-replay/research/validation/r270_s66_exact_ppc_alarm.js",
+        "--check",
+        "/tmp/s66-native-d9qqc_i7/R_emitted.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 0,
+      "stdout_file": "r_regenerated.stdout",
+      "stderr_file": "r_regenerated.stderr"
+    },
+    {
+      "label": "b_regenerated",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s66-replay/research/evidence_audit/r270_s66_independent_run_composition_cli.py",
+        "--check",
+        "/tmp/s66-native-d9qqc_i7/R_emitted.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 0,
+      "stdout_file": "b_regenerated.stdout",
+      "stderr_file": "b_regenerated.stderr"
+    },
+    {
+      "label": "wrong_tail_r",
+      "command": [
+        "node",
+        "/workspace/s66-replay/research/validation/r270_s66_exact_ppc_alarm.js",
+        "--check",
+        "/tmp/s66-native-d9qqc_i7/wrong_tail.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 1,
+      "stdout_file": "wrong_tail_r.stdout",
+      "stderr_file": "wrong_tail_r.stderr"
+    },
+    {
+      "label": "wrong_tail_b",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s66-replay/research/evidence_audit/r270_s66_independent_run_composition_cli.py",
+        "--check",
+        "/tmp/s66-native-d9qqc_i7/wrong_tail.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 1,
+      "stdout_file": "wrong_tail_b.stdout",
+      "stderr_file": "wrong_tail_b.stderr"
+    },
+    {
+      "label": "reordered_r",
+      "command": [
+        "node",
+        "/workspace/s66-replay/research/validation/r270_s66_exact_ppc_alarm.js",
+        "--check",
+        "/tmp/s66-native-d9qqc_i7/reordered.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 1,
+      "stdout_file": "reordered_r.stdout",
+      "stderr_file": "reordered_r.stderr"
+    },
+    {
+      "label": "reordered_b",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s66-replay/research/evidence_audit/r270_s66_independent_run_composition_cli.py",
+        "--check",
+        "/tmp/s66-native-d9qqc_i7/reordered.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 0,
+      "stdout_file": "reordered_b.stdout",
+      "stderr_file": "reordered_b.stderr"
+    },
+    {
+      "label": "float_count_r",
+      "command": [
+        "node",
+        "/workspace/s66-replay/research/validation/r270_s66_exact_ppc_alarm.js",
+        "--check",
+        "/tmp/s66-native-d9qqc_i7/float_count.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 0,
+      "stdout_file": "float_count_r.stdout",
+      "stderr_file": "float_count_r.stderr"
+    },
+    {
+      "label": "float_count_b",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s66-replay/research/evidence_audit/r270_s66_independent_run_composition_cli.py",
+        "--check",
+        "/tmp/s66-native-d9qqc_i7/float_count.json"
+      ],
+      "cwd": "/workspace/s66-replay",
+      "exit_code": 0,
+      "stdout_file": "float_count_b.stdout",
+      "stderr_file": "float_count_b.stderr"
+    }
+  ],
+  "evidence": "NONBLIND_INTERNAL_ARTIFICIAL_E1",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0,
+  "S66_scientific_status": "PARTIAL_BOUNDED_INTERNAL_EXACT",
+  "full_repo_tests": "NOT_RUN",
+  "original_R270_83_test_suites": "NOT_RUN",
+  "legacy_nonportable_B_cli": "NOT_RUN",
+  "ci": "NOT_RUN",
+  "code_sha256": {
+    "dp_oracle.py": "195df3cb0ae481da542cbb6bc94e98eb57d7f1f9b9344b282bb86c6acc7a2c48",
+    "run_native.py": "edbf2fbc46edafac416d27cc6c24c31041f29e1452c504dc55b5656dbfef8296"
+  }
+}
