@@ -40,7 +40,7 @@ function exact(csv){
 if(typeof require!=="undefined" && require.main===module){
  const fs=require("fs"),crypto=require("crypto");
  const source=process.argv[2];if(!source)throw Error("usage: node r322_s118_exact.js path/to/original_256.csv");
- const b=fs.readFileSync(source),git=crypto.createHash("sha1").update(Buffer.concat([Buffer.from("blob "+b.length+"\\0"),b])).digest("hex");
+ const b=fs.readFileSync(source),git=crypto.createHash("sha1").update(Buffer.concat([Buffer.from("blob "+b.length+"\0"),b])).digest("hex");
  if(git!=="0cd38ecc22adc5941832c2b00e6928d48be8d896")throw Error("source blob mismatch: "+git);
  console.log(JSON.stringify(exact(b.toString("utf8")),null,2));
 }
