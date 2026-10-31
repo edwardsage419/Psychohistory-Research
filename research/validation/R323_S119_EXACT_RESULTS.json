@@ -1,0 +1,63 @@
+{
+  "schema": "r323_s119_structural_do_norm_e1_v1",
+  "source_blob": "1b92efb314aae036e773be92e28793f8fcd60809",
+  "evidence": "E1_ARTIFICIAL_ONLY",
+  "rows": 256,
+  "worlds": [
+    {
+      "world_id": 0,
+      "policy": "vbn_cascade",
+      "rows": 64,
+      "do0_action_positive": 0,
+      "do1_action_positive": 16,
+      "average_intervention_effect": "1/2"
+    },
+    {
+      "world_id": 1,
+      "policy": "direct_product",
+      "rows": 64,
+      "do0_action_positive": 1,
+      "do1_action_positive": 1,
+      "average_intervention_effect": "0"
+    },
+    {
+      "world_id": 2,
+      "policy": "unconstrained_norm",
+      "rows": 64,
+      "do0_action_positive": 0,
+      "do1_action_positive": 32,
+      "average_intervention_effect": "1"
+    },
+    {
+      "world_id": 3,
+      "policy": "value_feasible",
+      "rows": 64,
+      "do0_action_positive": 8,
+      "do1_action_positive": 8,
+      "average_intervention_effect": "0"
+    }
+  ],
+  "pairwise_action_disagreements": {
+    "vbn_cascade|direct_product": 16,
+    "vbn_cascade|unconstrained_norm": 16,
+    "vbn_cascade|value_feasible": 16,
+    "direct_product|unconstrained_norm": 32,
+    "direct_product|value_feasible": 14,
+    "unconstrained_norm|value_feasible": 32
+  },
+  "cascade_vs_direct": {
+    "observational_disagreements": 0,
+    "do0_disagreements": 1,
+    "do1_disagreements": 15,
+    "total_disagreements": 16,
+    "tv": "1/4",
+    "equal_prior_accuracy": "5/8",
+    "do0_tv": "1/32",
+    "do1_tv": "15/32",
+    "do0_accuracy": "33/64",
+    "do1_accuracy": "47/64"
+  },
+  "real_human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED",
+  "external_independent_replication": "NOT_RUN"
+}
