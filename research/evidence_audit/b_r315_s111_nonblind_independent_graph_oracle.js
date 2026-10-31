@@ -82,7 +82,7 @@ const root=path.resolve(__dirname,"../..");
 const orig=path.join(root,"research/R315/R315_EXACT_180_TWO_EVENT_GRAPH_PATHS.json");
 const summary=path.join(root,"research/validation/R315_S111_THREE_P_CLASSIFICATION_EXACT.json");
 const bytes=fs.readFileSync(orig);
-const blob=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\\0")).update(bytes).digest("hex");
+const blob=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+" ")).update(Buffer.from([0])).update(bytes).digest("hex");
 if(blob!=="5abbcdbf01e8b31e54671e83d033ab0f1985bd78")throw Error("original Git blob changed: "+blob);
 const source=JSON.parse(bytes.toString("utf8")),receipt=JSON.parse(fs.readFileSync(summary,"utf8"));
 const verified=audit(source,receipt);
