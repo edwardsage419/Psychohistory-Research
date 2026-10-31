@@ -1,0 +1,56 @@
+{
+  "schema": "b_r315_s111_nonblind_graph_audit_v1",
+  "date_utc": "2026-10-31",
+  "source_path": "research/R315/R315_EXACT_180_TWO_EVENT_GRAPH_PATHS.json",
+  "source_blob": "5abbcdbf01e8b31e54671e83d033ab0f1985bd78",
+  "source_atoms_path": "research/R315/R315_ALL_210_ORIGINAL_REWIRING_ATOMS.csv",
+  "source_atoms_blob": "29f2774cfd56ad4ebd65beca9980900e250675af",
+  "source_atoms_rows_read": 210,
+  "scoring_path": "research/validation/r315_s111_three_p_exact.js",
+  "audit_path": "research/evidence_audit/b_r315_s111_nonblind_independent_graph_oracle.js",
+  "python_third_route_path": "research/evidence_audit/r315_s111_local_fraction_third_route.py",
+  "independent_js_direct_function_run": {
+    "status": "PASS",
+    "source_paths": 180,
+    "independent_graph_metric_checks": 180,
+    "classification_cells": 10,
+    "world_receipts": 6,
+    "method": "independent event enumeration + BFS + BigInt rational",
+    "nonblind": true
+  },
+  "mutation_tests": {
+    "count": 9,
+    "rejected": 9,
+    "names": [
+      "duplicate_path",
+      "missing_path",
+      "wrong_probability",
+      "wrong_clustering",
+      "wrong_distance",
+      "wrong_component",
+      "wrong_final_graph",
+      "wrong_source_scope",
+      "wrong_receipt_accuracy"
+    ],
+    "execution": "JS direct function, ordinary mode"
+  },
+  "python_local_third_route": {
+    "status": "PASS",
+    "worlds": 6,
+    "classification_cells": 10,
+    "source": "independently recreated R315 two-event process, Fraction and BFS",
+    "execution": "local sandbox python interpreter, not the archived GitHub CLI"
+  },
+  "archived_node_cli": "NOT_RUN",
+  "archived_python_cli": "NOT_RUN",
+  "external_team": "NOT_RUN",
+  "ci": "NOT_RUN",
+  "scientific_acceptance": "PARTIAL_E1_EXTENSION",
+  "human_E2": 0,
+  "historical_E3": 0,
+  "notes": [
+    "The first uploaded JS audit used an incorrect escaped NUL sequence in the Git blob calculation. Corrected in commit 1567e645c82161002a30317e6430f57a08e0530b before any native CLI claim.",
+    "Independent JS and local Python calculations agree exactly. Same agent nonblind, no independent human replication.",
+    "R073 and PESEN v0.1 unchanged."
+  ]
+}
