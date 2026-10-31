@@ -787,3 +787,11 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH182 | 社会参照者网络干扰、2018正式效果更正、暴露正概率与跨制度运输 | Paluck/Shepherd/Aronow2016原刊全文指定节、2018与2019两次正式更正全文直接审读；Aronow/Samii2017作者机构原始摘要。14项条件命题、19项标准库Fraction人工测试普通及优化模式均通过；2016原刊30%和P<0.05与2018正式更正25%且整体不显著冲突，2019仅补资助；56校中49校行政记录可用，四暴露正概率子样本2451人，24%邀请者未参与。固定K2六分配的两世界同观测而全员政策差为负3/10或正1/2。无真实微观复算、独立现实因果、历史预测或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; PUBLISHED_CORRECTION_SUPERSEDES_ORIGINAL; REAL_NETWORK_MEDIATION_UNIDENTIFIED | [研究笔记](TH182_NETWORK_SOCIAL_REFERENTS_CORRECTION_TRANSPORT_2026-10-31.md)；[人工审计脚本](th182_network_correction_exact_audit.py) |
 
 当前下一理论专题TH183：Paluck2016与2018正式更正的估计规格、方差、49校缺失与原始公开代码可访问性；C008满足2026-10-31，D002满足2026-W44，均保持只读。此前下一专题文字作为历史记录保留。
+
+| TH183 | Paluck2016/2018更正的校级事件投影、估计规格与方差冲突、49/56学校行政缺失 | 2016 PNAS原刊Methods/Results/Discussion和2018正式更正全文直接阅读，2019更正沿用TH182核验；12项条件命题、公开2695至2012投影事件数比值683/2695=25.3432%，与2018调整后25%近似但非独立ATE；原刊P<0.05与更正总体不显著的方差来源仍未恢复。人工23/28对26/28校有界缺失情景的差异界[-15/112,13/112]跨零，不能外推至实际可重复事件。17项与C009共用Fraction测试普通及-O均通过；无真实微观复算、独立因果再估计或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; SIGNIFICANCE_SOURCE_CONFLICT_UNRESOLVED; SUPPLEMENT_CODE_BLOCKED | [研究笔记](TH183_PALUCK_CORRECTION_VARIANCE_MISSING_SCHOOLS_2026-11-01.md)；[精确脚本](th183_paluck_correction_audit.py) |
+
+当前下一理论专题TH184：校级随机化推断、有限簇方差与缺失学校敏感性。C009已满足2026-11-01，D002已满足2026-W44，均不重复创建。
+
+| C009 | 等待的信息价值、可逆行动、信号准确率与跨期规范权重 | Ginbo等2020开放综述指定章节直接审读；Eckermann/Willan2008、Kreps/Porteus1978、Devine等2024、Strotz1955原始机构摘要/书目；10项条件方法命题、7项人工精确情景：立即值3，完美信息等待成本1净4.5，等待成本3净2.5，3/4准确信号扣成本1后为3；无个人数据、N-of-1、因果估计、产品开发或R E1/E2/E3新增 | METHOD_NOTE_BOUNDED | [C009研究笔记](../research/decision_methods/C009_OPTION_VALUE_INFORMATION_REVERSIBILITY_2026-11-01.md) |
+
+C今日2026-11-01完成C009，D本周2026-W44已有D002。下一C010：跨期主观价值锚定、可撤销行动的反事实评价与信息性缺失。
