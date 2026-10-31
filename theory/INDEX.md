@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-31（Asia/Singapore）；已收录 TH182，C008 今日增量与 D002 本周专题
+更新：2026-11-01（Asia/Singapore）；已收录 TH188，C009 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -813,3 +813,7 @@ C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH18
 | TH187 | 有限群体条件随机化、固定名额、平局尾部及错误网络暴露 | Puelz等arXiv:1910.10862开放2026稿、Basse等arXiv:1709.08036、Schröder等arXiv:2602.03459指定章节；18项条件命题、24项Python标准库精确人工测试在普通与优化模式均通过。固定4选2的保守p最小1/6，严格上尾在平局下可能反保守，原稿HTML公式符号待PDF核验；错误暴露映射产生-1/3伪关联。无真实微观复算、独立因果估计、历史预测或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; PDF_SYMBOL_CHECK_OPEN; SYNTHETIC_ONLY | [研究笔记](TH187_CONDITIONAL_EXACT_TEST_TIES_EXPOSURE_MISSPECIFICATION_2026-11-01.md)；[精确脚本](th187_conditional_randomization_audit.py) |
 
 C今日2026-11-01已有C009，D本周2026-W44已有D002，保持只读。下一TH188优先文化演化中的规范传播、身份边界与网络选择；先全R，再分类归纳，最后熔炼。
+
+| TH188 | 文化演化的强从众、频率放大、网络同质选择及传播不可识别性 | Efferson等2008原刊模型、实验Table1与讨论，McPherson等2001综述前部，Shalizi/Thomas2011 PMC作者稿指定节，Mesoudi等2006作者PDF前4页直接审读；16项条件理论命题、18项人工Fraction单测在普通及优化模式均通过。三人多数复制p1/4→5/32、p3/4→27/32，五人对应53/512与459/512；同一观察二元分布的共同原因与复制世界干预效应为0或1；纯网络同质选择也可使组内一致率1。无真实微观复算、独立现实因果估计、历史预测或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; OBSERVATIONAL_CAUSAL_NONIDENTIFICATION | [研究笔记](TH188_CULTURAL_CONFORMITY_HOMOPHILY_SELECTION_IDENTIFICATION_2026-11-01.md)；[精确审计脚本](th188_cultural_frequency_selection_audit.py) |
+
+C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，本轮均只读。下一TH189：文化传递随机漂变、复制误差、网络选择与跨代实验识别；TH187原稿PDF符号核验继续开放。先全R系列，再统一归纳分类，最后熔炼。
