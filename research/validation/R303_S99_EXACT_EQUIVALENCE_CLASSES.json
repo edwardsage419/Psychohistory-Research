@@ -1,0 +1,469 @@
+{
+  "research_id": "R303",
+  "extension": "S99-v1",
+  "freeze_commit": "47c82ad9419913b121ae64d655a806eccd071b55",
+  "original_R303_unchanged": true,
+  "scope": "E1_EXACT_FINITE_SYNTHETIC_IDENTIFIABILITY",
+  "new_E2": 0,
+  "new_E3": 0,
+  "R073": "FROZEN",
+  "PESEN_v0_1": "FROZEN",
+  "summary": {
+    "total_worlds": 81,
+    "distinct_observable_classes": 13,
+    "class_size_histogram": {
+      "1": 6,
+      "3": 6,
+      "57": 1
+    },
+    "largest_class_size": 57,
+    "classes_with_multiple_latent_acquisition": 7,
+    "worlds_in_multiple_latent_acquisition_classes": 75,
+    "classes_with_multiple_available_response": 0,
+    "classes_with_multiple_motivation": 1,
+    "largest_latent_acquisition_range": "1",
+    "counterexample": {
+      "first_gates": [
+        "1/2",
+        "1",
+        "1",
+        "1"
+      ],
+      "second_gates": [
+        "1",
+        "1",
+        "1/2",
+        "1"
+      ],
+      "first_latent_acquisition": "1/2",
+      "second_latent_acquisition": "1",
+      "shared_signature": [
+        "1/2",
+        "1/2",
+        "1/4",
+        "1/2",
+        "1/8",
+        "1/2"
+      ]
+    }
+  },
+  "classes": [
+    {
+      "class_id": "C001",
+      "signature": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "member_ids": [
+        "W001",
+        "W002",
+        "W003",
+        "W004",
+        "W005",
+        "W006",
+        "W007",
+        "W008",
+        "W009",
+        "W010",
+        "W011",
+        "W012",
+        "W013",
+        "W014",
+        "W015",
+        "W016",
+        "W017",
+        "W018",
+        "W019",
+        "W020",
+        "W021",
+        "W022",
+        "W023",
+        "W024",
+        "W025",
+        "W026",
+        "W027",
+        "W028",
+        "W029",
+        "W030",
+        "W031",
+        "W032",
+        "W033",
+        "W034",
+        "W035",
+        "W036",
+        "W037",
+        "W038",
+        "W039",
+        "W046",
+        "W047",
+        "W048",
+        "W055",
+        "W056",
+        "W057",
+        "W058",
+        "W059",
+        "W060",
+        "W061",
+        "W062",
+        "W063",
+        "W064",
+        "W065",
+        "W066",
+        "W073",
+        "W074",
+        "W075"
+      ],
+      "size": 57,
+      "latent_acquisition_values": [
+        "0",
+        "1/4",
+        "1/2",
+        "1"
+      ],
+      "available_response_values": [
+        "0"
+      ],
+      "motivation_values": [
+        "0",
+        "1/2",
+        "1"
+      ],
+      "latent_min": "0",
+      "latent_max": "1"
+    },
+    {
+      "class_id": "C002",
+      "signature": [
+        "0",
+        "1/8",
+        "0",
+        "1/8",
+        "0",
+        "1/8"
+      ],
+      "member_ids": [
+        "W040"
+      ],
+      "size": 1,
+      "latent_acquisition_values": [
+        "1/4"
+      ],
+      "available_response_values": [
+        "1/8"
+      ],
+      "motivation_values": [
+        "0"
+      ],
+      "latent_min": "1/4",
+      "latent_max": "1/4"
+    },
+    {
+      "class_id": "C003",
+      "signature": [
+        "0",
+        "1/4",
+        "0",
+        "1/4",
+        "0",
+        "1/4"
+      ],
+      "member_ids": [
+        "W043",
+        "W049",
+        "W067"
+      ],
+      "size": 3,
+      "latent_acquisition_values": [
+        "1/4",
+        "1/2"
+      ],
+      "available_response_values": [
+        "1/4"
+      ],
+      "motivation_values": [
+        "0"
+      ],
+      "latent_min": "1/4",
+      "latent_max": "1/2"
+    },
+    {
+      "class_id": "C004",
+      "signature": [
+        "0",
+        "1/2",
+        "0",
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "member_ids": [
+        "W052",
+        "W070",
+        "W076"
+      ],
+      "size": 3,
+      "latent_acquisition_values": [
+        "1/2",
+        "1"
+      ],
+      "available_response_values": [
+        "1/2"
+      ],
+      "motivation_values": [
+        "0"
+      ],
+      "latent_min": "1/2",
+      "latent_max": "1"
+    },
+    {
+      "class_id": "C005",
+      "signature": [
+        "0",
+        "1",
+        "0",
+        "1",
+        "0",
+        "1"
+      ],
+      "member_ids": [
+        "W079"
+      ],
+      "size": 1,
+      "latent_acquisition_values": [
+        "1"
+      ],
+      "available_response_values": [
+        "1"
+      ],
+      "motivation_values": [
+        "0"
+      ],
+      "latent_min": "1",
+      "latent_max": "1"
+    },
+    {
+      "class_id": "C006",
+      "signature": [
+        "1/16",
+        "1/8",
+        "1/32",
+        "1/8",
+        "1/64",
+        "1/8"
+      ],
+      "member_ids": [
+        "W041"
+      ],
+      "size": 1,
+      "latent_acquisition_values": [
+        "1/4"
+      ],
+      "available_response_values": [
+        "1/8"
+      ],
+      "motivation_values": [
+        "1/2"
+      ],
+      "latent_min": "1/4",
+      "latent_max": "1/4"
+    },
+    {
+      "class_id": "C007",
+      "signature": [
+        "1/8",
+        "1/8",
+        "1/16",
+        "1/8",
+        "1/32",
+        "1/8"
+      ],
+      "member_ids": [
+        "W042"
+      ],
+      "size": 1,
+      "latent_acquisition_values": [
+        "1/4"
+      ],
+      "available_response_values": [
+        "1/8"
+      ],
+      "motivation_values": [
+        "1"
+      ],
+      "latent_min": "1/4",
+      "latent_max": "1/4"
+    },
+    {
+      "class_id": "C008",
+      "signature": [
+        "1/8",
+        "1/4",
+        "1/16",
+        "1/4",
+        "1/32",
+        "1/4"
+      ],
+      "member_ids": [
+        "W044",
+        "W050",
+        "W068"
+      ],
+      "size": 3,
+      "latent_acquisition_values": [
+        "1/4",
+        "1/2"
+      ],
+      "available_response_values": [
+        "1/4"
+      ],
+      "motivation_values": [
+        "1/2"
+      ],
+      "latent_min": "1/4",
+      "latent_max": "1/2"
+    },
+    {
+      "class_id": "C009",
+      "signature": [
+        "1/4",
+        "1/4",
+        "1/8",
+        "1/4",
+        "1/16",
+        "1/4"
+      ],
+      "member_ids": [
+        "W045",
+        "W051",
+        "W069"
+      ],
+      "size": 3,
+      "latent_acquisition_values": [
+        "1/4",
+        "1/2"
+      ],
+      "available_response_values": [
+        "1/4"
+      ],
+      "motivation_values": [
+        "1"
+      ],
+      "latent_min": "1/4",
+      "latent_max": "1/2"
+    },
+    {
+      "class_id": "C010",
+      "signature": [
+        "1/4",
+        "1/2",
+        "1/8",
+        "1/2",
+        "1/16",
+        "1/2"
+      ],
+      "member_ids": [
+        "W053",
+        "W071",
+        "W077"
+      ],
+      "size": 3,
+      "latent_acquisition_values": [
+        "1/2",
+        "1"
+      ],
+      "available_response_values": [
+        "1/2"
+      ],
+      "motivation_values": [
+        "1/2"
+      ],
+      "latent_min": "1/2",
+      "latent_max": "1"
+    },
+    {
+      "class_id": "C011",
+      "signature": [
+        "1/2",
+        "1/2",
+        "1/4",
+        "1/2",
+        "1/8",
+        "1/2"
+      ],
+      "member_ids": [
+        "W054",
+        "W072",
+        "W078"
+      ],
+      "size": 3,
+      "latent_acquisition_values": [
+        "1/2",
+        "1"
+      ],
+      "available_response_values": [
+        "1/2"
+      ],
+      "motivation_values": [
+        "1"
+      ],
+      "latent_min": "1/2",
+      "latent_max": "1"
+    },
+    {
+      "class_id": "C012",
+      "signature": [
+        "1/2",
+        "1",
+        "1/4",
+        "1",
+        "1/8",
+        "1"
+      ],
+      "member_ids": [
+        "W080"
+      ],
+      "size": 1,
+      "latent_acquisition_values": [
+        "1"
+      ],
+      "available_response_values": [
+        "1"
+      ],
+      "motivation_values": [
+        "1/2"
+      ],
+      "latent_min": "1",
+      "latent_max": "1"
+    },
+    {
+      "class_id": "C013",
+      "signature": [
+        "1",
+        "1",
+        "1/2",
+        "1",
+        "1/4",
+        "1"
+      ],
+      "member_ids": [
+        "W081"
+      ],
+      "size": 1,
+      "latent_acquisition_values": [
+        "1"
+      ],
+      "available_response_values": [
+        "1"
+      ],
+      "motivation_values": [
+        "1"
+      ],
+      "latent_min": "1",
+      "latent_max": "1"
+    }
+  ]
+}
