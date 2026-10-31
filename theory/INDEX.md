@@ -737,3 +737,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH170 | Smartcards公开表A8/A9持卡状态缺失、A2/B1结局分母及描述性部分识别 | Atanda2019 3ie原报告表A2/A8/A9/B1与正文、Rubin1976原作指定章节、Manski1989/Little1988/Lee2009原刊摘要；12项条件命题与公开数字精确Fraction审计；NREGS缺失5070/10447、SSP缺失1587/3832，第7地区NREGS全1425持卡状态缺失；两项目持卡率组差均有正负可行界。未取得原始个体数据或重跑Stata，缺失机制未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH170_SMARTCARDS_CARD_STATUS_MISSINGNESS_DENOMINATORS_BOUNDS_2026-10-31.md)；[算术脚本](th170_smartcard_missingness_bounds_audit_20261031.py) |
 
 当前下一专题：TH171 地区7持卡状态缺失的问卷模块与原始变量版本核对；若合法原始数据无法取得，则研究更广泛的测量误差与制度记录理论。C008已满足2026-10-31，D002已满足2026-W44，本轮均保持只读。
+
+| TH171 | Smartcards第7地区个人持卡结构性缺失、GP行政转换代理及跨地区填补识别限制 | Atanda2019 3ie原报告A8/A9与脚注、Gelman/King/Liu1998原刊指定页、Chen/Sadinle2019开放原稿指定节；12项条件命题，NREGS已转卡GP个人持卡界33.29%至77.19%，未转卡12.39%至58.52%，描述差负25.23至正64.80个百分点；SSP描述差负14.04至正53.86个百分点；第7地区NREGS个人字段全缺失而GP状态完整，原始字典未恢复；真人复算与R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; DISTRICT7_VARIABLE_MECHANISM_UNKNOWN | [研究笔记](TH171_DISTRICT7_STRUCTURAL_MISSINGNESS_GP_PROXY_IDENTIFICATION_2026-10-31.md)；[精确脚本](th171_joint_proxy_bounds_20261031.py) |
+
+当前下一理论专题TH172：行政数据代理指标、制度执行版本与跨群体测量等值性的原始理论比较。C008满足2026-10-31，D002满足2026-W44，均保持只读。
