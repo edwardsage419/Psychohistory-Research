@@ -1,0 +1,17 @@
+/workspace/cli251252-replay/research/operations/e082_r252_s48_source_numeric_20261029.js:11
+ function verify(cond,msg){checks++;if(!cond)throw Error(msg)}
+                                             ^
+
+Error: numeric INDEPENDENT_BITS|0|8 I_XY
+    at verify (/workspace/cli251252-replay/research/operations/e082_r252_s48_source_numeric_20261029.js:11:52)
+    at audit (/workspace/cli251252-replay/research/operations/e082_r252_s48_source_numeric_20261029.js:39:38)
+    at Object.<anonymous> (/workspace/cli251252-replay/research/operations/e082_r252_s48_source_numeric_20261029.js:60:29)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.19.0

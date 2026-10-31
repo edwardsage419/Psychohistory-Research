@@ -1,0 +1,31 @@
+{
+  "track": "codex",
+  "subflow": "R251-S47-R252-S48-persisted-receipt-CLI",
+  "run_date": "2026-10-29",
+  "observed_head": "37136650a6c03419a958f6d1551bdda4194af56a",
+  "target_key": "codex|R251_S47+R252_S48|89d53112+c57653fe|full-persisted-receipt-CLI",
+  "activity": "completed bounded audit; no active claim",
+  "status": "COMPLETE",
+  "source_links": [
+    "research/operations/E081_R251_S47_EXACT_RECEIPT_410_GOVERNANCE_2026-10-29.md",
+    "research/operations/E082_R252_S48_SOURCE_NUMERIC_THIRD_ROUTE_GOVERNANCE_2026-10-29.md"
+  ],
+  "work_performed": "6 original CLIs pass;6 real mutation CLI controls rejected;7 new tests pass;12 source blobs exact. R251 full Python compare of9worlds72cohorts; R252 Python288 records1152 metrics and E082 numeric route agree.",
+  "evidence_scope": "Nonblind internal artificial E1, not external science. R251 six calculation fields match but21 historical fields not emitted. R252 entire JSON/bytes match; numeric tolerance1e-10 only.",
+  "results_seen": true,
+  "output_paths": [
+    "research/codex_audit/r251_r252_cli/REPORT.md",
+    "research/codex_audit/r251_r252_cli/logs/execution.json"
+  ],
+  "commit_sha": null,
+  "pr": null,
+  "delivery_branch": "codex/r251-r252-cli-replay-20261029",
+  "ci_status": "NOT_RUN",
+  "billing_checked": "No new billable operation; billing/quota unverified.",
+  "blockers": [
+    "No full checkout, full-repo/native-unit suite or CI this round.",
+    "No external replication, E2/E3 new0; archived metadata retained as history."
+  ],
+  "next_action": "E/B can review paired CLI evidence; Codex next candidate R248486 cross-runtime or R170 receipt after fresh concurrent-work check.",
+  "delivery_base_head": "cb85d70a545518ebc91146cf95cb6e03f193bd86"
+}

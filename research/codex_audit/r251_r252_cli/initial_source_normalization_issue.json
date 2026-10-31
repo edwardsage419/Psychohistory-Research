@@ -1,0 +1,12 @@
+{
+  "status": "PARTIAL",
+  "issue": "Initial API-to-local patch added a final LF to upstream scripts that had no final LF. Detected before publishing by Git blob checks. Removed only added LF and reran against exact original bytes; see final execution manifest.",
+  "mismatches": [
+    {
+      "path": "research/validation/r251_s47_finite_window_exact_20261029.js",
+      "actual": "da7251dad684592b331a52b63d8e928e1928495d",
+      "expected": "000906284d45c1ed2804d6cf034a8dea8b694d76",
+      "remote_ends_with_newline": false
+    }
+  ]
+}

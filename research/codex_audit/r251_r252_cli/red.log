@@ -1,0 +1,93 @@
+test_changed_cohort_rejected (test_replay.Tests.test_changed_cohort_rejected) ... FAIL
+test_failed_rerun_clears_old_success (test_replay.Tests.test_failed_rerun_clears_old_success) ... FAIL
+test_full_boolean_zero_type_change_rejected (test_replay.Tests.test_full_boolean_zero_type_change_rejected) ... FAIL
+test_full_metrics_change_rejected (test_replay.Tests.test_full_metrics_change_rejected) ... FAIL
+test_full_replay_does_not_write_source (test_replay.Tests.test_full_replay_does_not_write_source) ... FAIL
+test_projection_cannot_drop_computation_fields (test_replay.Tests.test_projection_cannot_drop_computation_fields) ... FAIL
+test_projection_returns_explicit_ignored_fields (test_replay.Tests.test_projection_returns_explicit_ignored_fields) ... FAIL
+
+======================================================================
+FAIL: test_changed_cohort_rejected (test_replay.Tests.test_changed_cohort_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/cli251252-replay/research/codex_audit/r251_r252_cli/test_replay.py", line 34, in test_changed_cohort_rejected
+    with self.assertRaises(ValueError):run_audit.check_251(self.projection,self.a)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_failed_rerun_clears_old_success (test_replay.Tests.test_failed_rerun_clears_old_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/cli251252-replay/research/codex_audit/r251_r252_cli/test_replay.py", line 49, in test_failed_rerun_clears_old_success
+    self.assertNotEqual(p.returncode,0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_full_boolean_zero_type_change_rejected (test_replay.Tests.test_full_boolean_zero_type_change_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/cli251252-replay/research/codex_audit/r251_r252_cli/test_replay.py", line 42, in test_full_boolean_zero_type_change_rejected
+    with self.assertRaises(ValueError):run_audit.equal_json(changed,self.b)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_full_metrics_change_rejected (test_replay.Tests.test_full_metrics_change_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/cli251252-replay/research/codex_audit/r251_r252_cli/test_replay.py", line 38, in test_full_metrics_change_rejected
+    with self.assertRaises(ValueError):run_audit.equal_json(changed,self.b)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_full_replay_does_not_write_source (test_replay.Tests.test_full_replay_does_not_write_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/cli251252-replay/research/codex_audit/r251_r252_cli/test_replay.py", line 71, in test_full_replay_does_not_write_source
+    self.assertTrue((out/'execution.json').exists())
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_projection_cannot_drop_computation_fields (test_replay.Tests.test_projection_cannot_drop_computation_fields)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/cli251252-replay/research/codex_audit/r251_r252_cli/test_replay.py", line 29, in test_projection_cannot_drop_computation_fields
+    with self.assertRaises(ValueError):run_audit.check_251(self.projection,self.a)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_projection_returns_explicit_ignored_fields (test_replay.Tests.test_projection_returns_explicit_ignored_fields)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/cli251252-replay/research/codex_audit/r251_r252_cli/test_replay.py", line 25, in test_projection_returns_explicit_ignored_fields
+    self.assertEqual(set(omitted),set(self.a)-set(KEYS))
+AssertionError: Items in the second set but not the first:
+'B_comparison_note'
+'B_local_run_status'
+'B_local_command'
+'new_CI'
+'R_script_blob'
+'B_full_worlds_json_sha256'
+'PESEN_v0_1'
+'original_source_blob'
+'R073'
+'B_method'
+'original_source_sha256'
+'external_replication'
+'negative_control_mutation_rejected'
+'protocol_commit'
+'B_worlds_json_FNV32'
+'R_method'
+'date'
+'original_R251_prescore_commit'
+'E1'
+'new_E3'
+'new_E2'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.060s
+
+FAILED (failures=7)
