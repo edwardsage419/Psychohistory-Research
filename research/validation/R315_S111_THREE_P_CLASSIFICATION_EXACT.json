@@ -1,0 +1,153 @@
+{
+  "schema": "r315_s111_three_p_classification_exact_v1",
+  "freeze_commit": "ec4fb603e3dccb1f35e8cf6b9d31f0c6e1ae5c40",
+  "source_blob": "5abbcdbf01e8b31e54671e83d033ab0f1985bd78",
+  "grade": "E1_SYNTHETIC_NONBLIND",
+  "observation_order": [
+    "full_labeled_graph",
+    "joint_C_L_components",
+    "C",
+    "L",
+    "components"
+  ],
+  "worlds": [
+    {
+      "N": 8,
+      "p": "0",
+      "total_paths": 19,
+      "positive_paths": 1,
+      "mass": "1",
+      "expected_C": "1/2",
+      "connected_probability": "1",
+      "disconnected_probability": "0",
+      "conditional_expected_L": "10/7"
+    },
+    {
+      "N": 8,
+      "p": "1/2",
+      "total_paths": 19,
+      "positive_paths": 19,
+      "mass": "1",
+      "expected_C": "611/1280",
+      "connected_probability": "1",
+      "disconnected_probability": "0",
+      "conditional_expected_L": "10/7"
+    },
+    {
+      "N": 8,
+      "p": "1",
+      "total_paths": 19,
+      "positive_paths": 12,
+      "mass": "1",
+      "expected_C": "1403/2880",
+      "connected_probability": "1",
+      "disconnected_probability": "0",
+      "conditional_expected_L": "10/7"
+    },
+    {
+      "N": 10,
+      "p": "0",
+      "total_paths": 41,
+      "positive_paths": 1,
+      "mass": "1",
+      "expected_C": "1/2",
+      "connected_probability": "1",
+      "disconnected_probability": "0",
+      "conditional_expected_L": "5/3"
+    },
+    {
+      "N": 10,
+      "p": "1/2",
+      "total_paths": 41,
+      "positive_paths": 41,
+      "mass": "1",
+      "expected_C": "3259/7200",
+      "connected_probability": "1",
+      "disconnected_probability": "0",
+      "conditional_expected_L": "4411/2700"
+    },
+    {
+      "N": 10,
+      "p": "1",
+      "total_paths": 41,
+      "positive_paths": 30,
+      "mass": "1",
+      "expected_C": "31/72",
+      "connected_probability": "1",
+      "disconnected_probability": "0",
+      "conditional_expected_L": "1084/675"
+    }
+  ],
+  "classifications": [
+    {
+      "N": 8,
+      "observation": "full_labeled_graph",
+      "positive_bins": 19,
+      "bins_with_tied_max": 0,
+      "equal_prior_optimal_accuracy": "5/6"
+    },
+    {
+      "N": 8,
+      "observation": "joint_C_L_components",
+      "positive_bins": 12,
+      "bins_with_tied_max": 0,
+      "equal_prior_optimal_accuracy": "13/16"
+    },
+    {
+      "N": 8,
+      "observation": "C",
+      "positive_bins": 12,
+      "bins_with_tied_max": 0,
+      "equal_prior_optimal_accuracy": "13/16"
+    },
+    {
+      "N": 8,
+      "observation": "L",
+      "positive_bins": 1,
+      "bins_with_tied_max": 1,
+      "equal_prior_optimal_accuracy": "1/3"
+    },
+    {
+      "N": 8,
+      "observation": "components",
+      "positive_bins": 1,
+      "bins_with_tied_max": 1,
+      "equal_prior_optimal_accuracy": "1/3"
+    },
+    {
+      "N": 10,
+      "observation": "full_labeled_graph",
+      "positive_bins": 41,
+      "bins_with_tied_max": 0,
+      "equal_prior_optimal_accuracy": "5/6"
+    },
+    {
+      "N": 10,
+      "observation": "joint_C_L_components",
+      "positive_bins": 27,
+      "bins_with_tied_max": 0,
+      "equal_prior_optimal_accuracy": "5/6"
+    },
+    {
+      "N": 10,
+      "observation": "C",
+      "positive_bins": 19,
+      "bins_with_tied_max": 0,
+      "equal_prior_optimal_accuracy": "5/6"
+    },
+    {
+      "N": 10,
+      "observation": "L",
+      "positive_bins": 5,
+      "bins_with_tied_max": 0,
+      "equal_prior_optimal_accuracy": "89/120"
+    },
+    {
+      "N": 10,
+      "observation": "components",
+      "positive_bins": 1,
+      "bins_with_tied_max": 1,
+      "equal_prior_optimal_accuracy": "1/3"
+    }
+  ]
+}
