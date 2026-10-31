@@ -741,3 +741,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH171 | Smartcards第7地区个人持卡结构性缺失、GP行政转换代理及跨地区填补识别限制 | Atanda2019 3ie原报告A8/A9与脚注、Gelman/King/Liu1998原刊指定页、Chen/Sadinle2019开放原稿指定节；12项条件命题，NREGS已转卡GP个人持卡界33.29%至77.19%，未转卡12.39%至58.52%，描述差负25.23至正64.80个百分点；SSP描述差负14.04至正53.86个百分点；第7地区NREGS个人字段全缺失而GP状态完整，原始字典未恢复；真人复算与R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; DISTRICT7_VARIABLE_MECHANISM_UNKNOWN | [研究笔记](TH171_DISTRICT7_STRUCTURAL_MISSINGNESS_GP_PROXY_IDENTIFICATION_2026-10-31.md)；[精确脚本](th171_joint_proxy_bounds_20261031.py) |
 
 当前下一理论专题TH172：行政数据代理指标、制度执行版本与跨群体测量等值性的原始理论比较。C008满足2026-10-31，D002满足2026-W44，均保持只读。
+
+| TH172 | 行政代理指标、群体测量等值性与制度版本漂移 | Oberski等2015开放预印本第1至3节、Muthén/Asparouhov2014开放原刊第2至6节、Imai/Yamamoto2010作者PDF、Meredith1993原刊摘要；14项条件命题、16项人工Fraction单测。相同代理率1/2下真实组差可为±1/2，真实率不变时行政版本漂移造成15个百分点假趋势；误差率均≥3/4时真实比例界[1/3,2/3]、组差界[-1/3,1/3]。无真实Smartcards复算、因果识别及R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; GROUP_CALIBRATION_UNKNOWN | [研究笔记](TH172_ADMIN_PROXY_GROUP_INVARIANCE_VERSION_DRIFT_2026-10-31.md)；[人工审计脚本](th172_proxy_invariance_exact_audit_20261031.py) |
+
+当前下一理论专题TH173：多来源行政测量的三特质双方法识别秩、条件独立破坏与最小校准样本设计。C008满足2026-10-31，D002满足2026-W44，均保持只读。
