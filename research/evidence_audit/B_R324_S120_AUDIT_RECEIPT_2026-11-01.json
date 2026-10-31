@@ -1,0 +1,42 @@
+{
+  "schema": "b_r324_s120_nonblind_oracle_receipt_v1",
+  "protocol_commit": "dc2bc2ad22a0130984cf0ecb497c2c54f04803f8",
+  "source_original_blob": "1b0062eeea020606a3d510d566da43db03ace8d9",
+  "r_csv_blob": "eeef39b66165e2ec0a918ccedb4f038b078cd05b",
+  "r_json_blob": "a95be44193a4a7890203049d5615b4f27c93453e",
+  "source_rows_verified": 64,
+  "result_rows_verified": 64,
+  "policies": {
+    "state_only": "1/4",
+    "exact_score": "45/64",
+    "threshold_ge_4": "13/32",
+    "compare_dread": "15/32",
+    "compare_unknown": "15/32",
+    "compare_both": "9/16",
+    "full_ordinal_profile": "3/4"
+  },
+  "mutation_tests": [
+    "missing_atom",
+    "duplicate_atom",
+    "score_tamper",
+    "threshold_tamper",
+    "comparison_tamper",
+    "world_tamper",
+    "accuracy_tamper",
+    "profile_tamper",
+    "evidence_overclaim"
+  ],
+  "mutations_rejected": 9,
+  "mutations_total": 9,
+  "execution": "V8 in-memory with actual GitHub persisted inputs; independent local Python Fraction numeric oracle",
+  "blindness": "NONBLIND",
+  "native_node": "NOT_RUN",
+  "external_replication": "NOT_RUN",
+  "human_E2": "NOT_ESTABLISHED",
+  "historical_E3": "NOT_ESTABLISHED",
+  "development_failures": [
+    "incorrect B group aggregation before correction",
+    "structuredClone unavailable in V8 before correction"
+  ],
+  "status": "PASS_NONBLIND_INTERNAL_E1_WITH_NATIVE_CLI_OPEN"
+}
