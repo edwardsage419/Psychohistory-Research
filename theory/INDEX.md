@@ -719,3 +719,8 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH166 | 制度容量分母、负对照误判、政策版本漂移与地区运输 | Muralidharan/Niehaus/Sukhtankar 2016作者开放全文与2014 NBER摘要、Callaway/Sant'Anna 2020开放v4、Lipsitch等2010原刊开放摘要、Pearl/Bareinboim 2011 AAAI原刊摘要；14项条件命题、8项公开原始汇总审计与6项人工精确反例；2014摘要158与2016稿157的单位差异待恢复，296随机化含139缓冲、112处理、45对照，来源正平均+1/8与目标负平均-1/40可并存；真实微观复算及R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; SOURCE_VINTAGE_DENOMINATOR_UNRESOLVED | [研究笔记](TH166_STATE_CAPACITY_NEGATIVE_CONTROLS_TRANSPORT_VERSION_DRIFT_2026-10-31.md) |
 
 当前下一专题：TH167 核验2014至2016 Smartcards随机化样本分母与政策执行版本的逐单位流转；若历史来源未恢复，则转入跨地区运输中负对照选择与真实公开政策字典。C008满足2026-10-31，D002满足2026-W44，保持只读。此前下一专题文字为历史记录。
+
+
+| TH167 | Smartcards 2014 NBER rev0与2016作者稿随机化宇宙、地区处理数和家庭样本分母版本审计 | 2014 NBER rev0原文第3.1至3.3节、2016作者开放稿第3节及附录C.1/C.2、AER正式摘要和Atanda2019独立复现摘要；14项条件命题、12项公开算术及人工敏感性审计；2014的113+195+45=353与2016的112+139+45=296差57，处理差1定位Nalgonda；2016正文基线8572与附录8527相差45，附录使7425算术闭合；末次295=287+8；跨版原始单位ID未恢复，真实微观复算与R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; RANDOMIZATION_VINTAGE_ID_UNRESOLVED; BASELINE_MAIN_APPENDIX_DISCREPANCY_LOCATED | [研究笔记](TH167_SMARTCARDS_RANDOMIZATION_UNIVERSE_VINTAGE_DENOMINATOR_2026-10-31.md) |
+
+当前下一专题：TH168 Smartcards随机化名单身份、地区权重与选择性进入的部分识别；C008满足2026-10-31、D002满足2026-W44，均保持只读。此前下一专题文字为历史记录。
