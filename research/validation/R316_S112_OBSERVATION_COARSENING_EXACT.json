@@ -1,0 +1,39 @@
+{
+  "schema": "r316_s112_equal_prior_observation_coarsening_E1_v1",
+  "source_blob_sha1": "36da587adbc6e1d92824a5fd39516e506569166c",
+  "freeze_commit": "af948405bc682f10cdf6f3add73ab2f35e10c0b4",
+  "evidence_grade": "E1_SYNTHETIC_ONLY",
+  "graph_count": 128,
+  "observations": {
+    "full": {
+      "bins": 64,
+      "accuracy": "459/512",
+      "total_variation": "203/256"
+    },
+    "within_cross": {
+      "bins": 15,
+      "accuracy": "459/512",
+      "total_variation": "203/256"
+    },
+    "signed_difference": {
+      "bins": 7,
+      "accuracy": "459/512",
+      "total_variation": "203/256"
+    },
+    "within_only": {
+      "bins": 3,
+      "accuracy": "3/4",
+      "total_variation": "1/2"
+    },
+    "cross_only": {
+      "bins": 5,
+      "accuracy": "27/32",
+      "total_variation": "11/16"
+    },
+    "total_only": {
+      "bins": 7,
+      "accuracy": "345/512",
+      "total_variation": "89/256"
+    }
+  }
+}
