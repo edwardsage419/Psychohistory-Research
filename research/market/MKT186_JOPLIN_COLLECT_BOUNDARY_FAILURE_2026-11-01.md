@@ -1,0 +1,19 @@
+# MKT186 Joplin revision collector lifecycle fault injection
+Date: 2026-11-01 Asia/Singapore. Track market. Baseline main: 90fef6727b1d17662d82c10a3e924a1aff01ed98.
+Target: (market,Joplin,upstream-2e1310190489c5325dd69305bb762e887865c6c3,collector-boundary-error-liveness). Status COMPLETE_BOUNDED_SOURCE_AND_SYNTHETIC_E1.
+
+## Primary source, observed mechanism
+Pinned upstream source: https://github.com/laurent22/joplin/blob/2e1310190489c5325dd69305bb762e887865c6c3/packages/lib/services/RevisionService.ts
+Read actual lines 128 to 250, Git blob e2aea82a1f1513a1a6a8c7e1e804fe812711cb9f. Upstream test file lines 78 to 116 and 358 to 390, blob 91658f2a33759476298d398baadd5a4b94fc3783, also inspected. Prior MKT184/185 already addressed generic revision errors and test coverage; this task addresses lifecycle failures outside the inner catch.
+
+At line 131, isCollecting_ becomes true. Line 133 awaits ItemChange.waitForAllSaved() before the try at line 137. The inner try/catch ends at 242. Setting.saveAll() at 244 and ItemChangeUtils.deleteProcessedChanges() at 245 are after that catch. The flag resets to false at 247 without a finally. At line 129 an already-true flag returns immediately. Conditional source-level consequence: if waitForAllSaved, saveAll or deleteProcessedChanges rejects, the flag remains true on this instance and subsequent collection calls return early. Actual rejection frequency and recovery after service recreation are UNKNOWN. This is an additional possible liveness risk, separate from the previously recorded generic-error cursor skip.
+
+## Executed fault model
+Script: research/market/mkt186_joplin_collect_boundary_faults_20261101.js. It faithfully models the relevant placement of try/catch, awaits and flag reset, with injected mock failures. It does not execute original Joplin TypeScript, database, packages or Jest tests. V8 runtime executed 9 assertions, all PASS: normal path resets flag; wait, save and cleanup failures each leave the flag true and block the next call; generic per-change failure advances cursor; encrypted error pauses at prior cursor and releases the flag. No live Joplin instance or real note data.
+
+Input: three artificial change IDs and deterministic error injections. State: isCollecting, last processed cursor, saved IDs and errors. Goal: preserve historical note revisions while allowing subsequent collections. Feedback/retry: specific encrypted errors pause; ordinary per-item errors advance; the three boundary errors have no finally cleanup in this pinned source. Explainability: exact source line branches and a nine-assertion reproducible test. Privacy: notes can contain sensitive decision history; no real data was accessed. Pricing: Joplin open-source local use; hosted synchronization may cost extra; no pricing or current release status reverified and no service purchased.
+
+## Evidence limits and candidate controls
+MARKET source-supported conditional code path plus isolated nonblind synthetic E1. The injection assumes failure of three awaited operations; this run has no evidence that any of them failed in production. No observed user incident, actual data loss, real product effectiveness, or E2/E3. Candidate future decision-log controls: try/finally lifecycle reset, durable failed-event queue, separate processed/archived acknowledgments, visible gap indicator, targeted upstream regression tests. These are unadopted ideas, no product implementation.
+
+Cost: zero new fees; no CI, paid API, subscription or upstream dependency installation. Blocker: full upstream Joplin runtime fault injection NOT_RUN because dependencies and exact runtime were not available in this execution environment. Next: inspect upstream tests for lifecycle rejection cases or run full pinned suite only if local zero-cost dependencies are already available.
