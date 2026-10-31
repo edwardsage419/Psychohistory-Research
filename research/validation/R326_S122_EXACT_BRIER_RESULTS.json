@@ -1,0 +1,37 @@
+{
+  "schema": "r326_s122_exact_predictive_brier_v1",
+  "protocol_commit": "f2e4798fc97697c642cc1fa20fd70cdd987b1c50",
+  "original_model": "R326 original 2026-10-24 fixed E1",
+  "artificial_only": true,
+  "law_definitions": {
+    "H": "shared Z with frozen R326 hierarchy",
+    "I": "independent group theta high probability 1/2"
+  },
+  "atoms": 768,
+  "losses": {
+    "H": {
+      "hierarchical": "2150517/9614080",
+      "independent": "9/40",
+      "constant": "1/4"
+    },
+    "I": {
+      "hierarchical": "16336700817/72211354880",
+      "independent": "9/40",
+      "constant": "1/4"
+    }
+  },
+  "contrasts": {
+    "H_independent_minus_hierarchical": "12651/9614080",
+    "I_hierarchical_minus_independent": "89145969/72211354880",
+    "H_constant_minus_hierarchical": "253003/9614080",
+    "I_constant_minus_independent": "1/40"
+  },
+  "checks": {
+    "atom_count": 768,
+    "group_masses": true,
+    "complement_symmetry": true,
+    "original_csv_match": true,
+    "wrong_uniform_history_weight_detected": true
+  },
+  "scope": "E1_ONLY_NO_HUMAN_E2_NO_HISTORICAL_E3"
+}
