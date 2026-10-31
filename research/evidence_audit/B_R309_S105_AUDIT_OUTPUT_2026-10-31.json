@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "audit": "INTERNAL_NONBLIND_E1",
+  "oracle_method": "microstate contact and recovery masks",
+  "worlds": 189,
+  "two_step_state_cells": 3969,
+  "mutations": {
+    "duplicate_state_cell": "REJECTED",
+    "missing_state_cell": "REJECTED",
+    "altered_state_probability": "REJECTED",
+    "altered_extinction": "REJECTED",
+    "altered_one_step_baseline": "REJECTED",
+    "altered_expected_I2": "REJECTED",
+    "false_E2_promotion": "REJECTED",
+    "corrupted_source_digest": "REJECTED"
+  },
+  "original_source_sha256": "9470c1e1c880f51da5c11377b6cc8be7f799542d0cebd1f82d4fc3539cabd134",
+  "sample_half": {
+    "world": "S=3|I=2|R=0|contact_p=1/2|recovery_q=1/2",
+    "S": 3,
+    "I": 2,
+    "R": 0,
+    "p": "1/2",
+    "q": "1/2",
+    "one_step_extinction": "1/256",
+    "two_step_extinction": "6545/131072",
+    "second_step_extinction_increment": "6033/131072",
+    "second_step_any_new_infection": "4097/8192",
+    "expected_S2": "675/4096",
+    "expected_I2": "9053/4096",
+    "expected_R2": "21/8"
+  }
+}
