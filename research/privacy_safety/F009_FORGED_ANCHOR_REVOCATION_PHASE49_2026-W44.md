@@ -1,0 +1,12 @@
+# F009 phase49 forged evidence anchor and stale revocation status
+Date: 2026-11-01; ISO week 2026-W44. Baseline main 3f5cef26ed8a20da14f2f9d30ff86c11af88508e.
+Target key: (privacy_safety,F009,phase49,forged-anchor-and-stale-revocation).
+Status: COMPLETE_BOUNDED_STANDARDS_AND_SYNTHETIC_E1. No personal data or real cryptography.
+Official primary references:
+NIST SP 800-63B-4 https://pages.nist.gov/800-63-4/sp800-63b.html (saved recovery code invalidation, compromise, recovery notification).
+RFC 9162 https://www.rfc-editor.org/rfc/rfc9162.html (certificate-transparency inclusion, append-only consistency, possible split views). RFC 9162 is a TLS certificate transparency standard; application to private recovery evidence is an analogy and candidate control, not a requirement of RFC 9162.
+Artificial policy has nine binary oracle inputs: request, codePresent, codeUnspent, anchorAuthentic, anchorBound, revocationFresh, logConsistent, independentReview, deletionSafe. Strict outcome is REVIEW_ONLY only when all nine are true; no automatic restoration. All 512 artificial states were enumerated with Node v22.16.0, ten directed assertions PASS. Counts: NO_REQUEST 256, REJECT 243, UNKNOWN_QUARANTINE 12, REVIEW_ONLY 1. A deliberately weak comparator ignores spent-code, account binding, freshness and log consistency: 16 REVIEW_ONLY states, of which 15 fail strict conditions.
+Key counterexample: a historically authentic inclusion proof can coexist with a stale revocation snapshot. The old proof cannot alone establish current authority. Another counterexample is a genuine signed anchor for a different account. Proposed controls: bind issuer, subject, transaction, issuance epoch and status epoch; verify integrity, append-only consistency and freshness separately; quarantine unverifiable histories; keep deletion status and manual appeal separate from account recovery. Do not auto-restore deleted data.
+All nine booleans are stipulated oracle facts. In a real system authenticity, compromise and freshness require independently verifiable evidence and may be UNKNOWN. The state counts are not attack rates. No live device, signature, Merkle tree, legal compliance, external team or real account testing. E2/E3 new evidence 0.
+Cost: Node standard library only, no new subscription, paid API, CI, server or user sensitive data.
+Next: privacy-preserving proof of revocation status with minimal personal-data retention and a demonstrable unknown-state branch.
