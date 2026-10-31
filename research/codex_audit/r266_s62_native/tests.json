@@ -1,0 +1,42 @@
+{
+  "status": "COMPLETE",
+  "unique_tests": 8,
+  "final_normal_and_optimized_executions": 16,
+  "failures": 0,
+  "errors": 0,
+  "red_stub_failures": 8,
+  "runs": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/codex_audit/r266_s62_native",
+        "-v"
+      ],
+      "cwd": "/workspace/s62-replay",
+      "exit_code": 0,
+      "log": "normal.log"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/codex_audit/r266_s62_native",
+        "-v"
+      ],
+      "cwd": "/workspace/s62-replay",
+      "exit_code": 0,
+      "log": "optimized.log"
+    }
+  ],
+  "test_sha256": "6cafc1ae9514d29f2bac094cf05fbef000823ed48662ea45e9d838a3849a4944"
+}
