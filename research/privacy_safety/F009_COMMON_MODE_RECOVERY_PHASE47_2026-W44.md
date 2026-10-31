@@ -1,0 +1,9 @@
+# F009 phase47 common-mode compromise of recovery safeguards
+
+Date: 2026-11-01, 2026-W44. Baseline main c242e9abc98e4edc51170128fad819aad7a63a84. Target (privacy_safety,F009,phase47,common-mode-second-notice-review-anchor). COMPLETE_SYNTHETIC_CANDIDATE_CONTROL. No personal data.
+
+Primary standard: https://pages.nist.gov/800-63-4/sp800-63b.html . NIST SP 800-63B-4 documents recovery methods, account recovery notification, support for at least two notification addresses, and social-engineering risk in human-assisted recovery. Requiring an offline challenge before review of a deleted personal decision backup is a project candidate, not an NIST mandate. Previous F009 phase46 read.
+
+Executed research/privacy_safety/f009_phase47_common_mode_20261101.js in JavaScript V8, 4096 artificial binary states, 9 assertions PASS. Results {"NO_RESTORE":2048,"UNKNOWN_QUARANTINE":1920,"REJECT_OR_REVIEW":120,"REVIEW_ONLY":5,"UNKNOWN_COMMON_MODE":3}; weak comparator {"NO_RESTORE":2048,"UNKNOWN_QUARANTINE":1920,"REJECT_OR_REVIEW":120,"REVIEW_ONLY":8}. Weak rule sends 8 states to REVIEW_ONLY; strict rule sends 5, and quarantines 3 states with shared administrator/device compromise and absent offline challenge. AUTO_RESTORE=0. REVIEW_ONLY is never automatic authorization. Counts represent artificial combinations, not incident probabilities.
+
+Candidate controls: map shared administrator, device, provider and notification transport dependencies; independent-looking channel names are insufficient. Quarantine when a shared control plane is compromised and offline verification absent. Minimize recovery metadata and support human appeal. Unresolved: offline challenge theft, reviewer collusion, forged anchors, coercion, real device recovery, legal deletion exceptions. No cryptography, penetration testing, sensitive data, personal product development, paid service or CI. E1 nonblind only; new E2=0 and E3=0. Next: offline challenge compromise and evidence-anchor provenance.
