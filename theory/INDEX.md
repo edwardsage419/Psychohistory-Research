@@ -729,3 +729,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH168 | Smartcards正式AER作者托管出版社排版全文、2016作者附录C.6/C.8、公开复现档案及选择性进入的条件运输界 | Muralidharan/Niehaus/Sukhtankar 2016正式排版原文第2907至2909页及作者附录、openICPSR 2019 V1、Lee 2008原作者开放稿、Horowitz/Manski 2000摘要；12项条件命题与12项公开算术及人工精确审计；正式正文8572与附录8527的45户矛盾确认保留，C.6四项p=0.19/0.74/1/0.37不等于零效应证明，C.8处理主效应与新进入交互需区分；296/353人工嵌套下目标界[-137/1765,433/1765]跨零；未恢复真实mandal ID、未下载复现数据，R E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; PUBLISHED_PDF_RECOVERED; RAW_REPLICATION_NOT_RUN | [研究笔记](TH168_SMARTCARDS_PUBLISHED_VINTAGE_SELECTION_TRANSPORT_BOUNDS_2026-10-31.md) |
 
 当前下一专题：TH169 openICPSR公开复现目录与许可、原始mandal随机化ID及2014-10 NBER修订稿恢复；C008满足2026-10-31、D002满足2026-W44，保持只读。此前下一专题文字均为历史状态。
+
+| TH169 | Smartcards官方复现目录、3ie独立同源复现与非随机持卡选择的上界问题 | openICPSR V1 2019官方目录（37分析代码、62数据文件、LICENSE/README下载受登录/403阻塞）、Atanda 3ie Replication Paper 23 2019第2至6节与附录表、2019正式复现论文摘要；12项条件理论命题、10项目录/原刊/人工精确审计；第三方报告同源结果可复现并提示缺失改零、对照少量转卡、约90%规格可比；人工相同观察持卡差0.4但真ATE可在[-0.3,0.7]，非随机组差无法无条件作上界；2014/2016行政ID、许可正文及原始微观复算未恢复，E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; INDEPENDENT_REPLICATION_REVIEWED; ARCHIVE_LICENSE_UNREAD | [研究笔记](TH169_SMARTCARDS_REPLICATION_ARCHIVE_INDEPENDENT_REPLICATION_IDENTIFICATION_2026-10-31.md)；[人工审计脚本](th169_replication_selection_bounds_audit_20261031.py) |
+
+当前下一专题：TH170 3ie附录表的实际分母、缺失改零语义与选择性持卡的敏感性界；如可合法获取原始README/随机化名单，则优先恢复行政区ID及2014年10月修订稿。C008满足2026-10-31，D002满足2026-W44，均保持只读。此前下一专题文字为历史记录。
