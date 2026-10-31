@@ -817,3 +817,7 @@ C今日2026-11-01已有C009，D本周2026-W44已有D002，保持只读。下一T
 | TH188 | 文化演化的强从众、频率放大、网络同质选择及传播不可识别性 | Efferson等2008原刊模型、实验Table1与讨论，McPherson等2001综述前部，Shalizi/Thomas2011 PMC作者稿指定节，Mesoudi等2006作者PDF前4页直接审读；16项条件理论命题、18项人工Fraction单测在普通及优化模式均通过。三人多数复制p1/4→5/32、p3/4→27/32，五人对应53/512与459/512；同一观察二元分布的共同原因与复制世界干预效应为0或1；纯网络同质选择也可使组内一致率1。无真实微观复算、独立现实因果估计、历史预测或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; OBSERVATIONAL_CAUSAL_NONIDENTIFICATION | [研究笔记](TH188_CULTURAL_CONFORMITY_HOMOPHILY_SELECTION_IDENTIFICATION_2026-11-01.md)；[精确审计脚本](th188_cultural_frequency_selection_audit.py) |
 
 C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，本轮均只读。下一TH189：文化传递随机漂变、复制误差、网络选择与跨代实验识别；TH187原稿PDF符号核验继续开放。先全R系列，再统一归纳分类，最后熔炼。
+
+| TH189 | 中性文化漂变、传递瓶颈、贝叶斯迭代学习与竞争机制 | Kirby/Cornish/Smith2008原刊实验1/2全文，Griffiths/Kalish2007原刊指定章节，Bentley/Hahn/Shennan2004原刊摘要，Kirby2017 SI更正书目；16项条件命题，27项标准库Fraction人工测试普通及优化模式通过；N4中性漂变方差1/16、下一代异质性3/8，后验采样平稳3/4，MAP平局规则改变平稳分布。真实数据复算、独立现实因果估计、历史留出及R E1/E2/E3新增均为0 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; KIRBY_SI_CORRECTION_SCOPE_OPEN | [研究笔记](TH189_CULTURAL_DRIFT_COPYING_ERROR_ITERATED_LEARNING_2026-11-01.md)；[精确审计脚本](th189_cultural_drift_iterated_learning_audit.py) |
+
+C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，均保持只读。下一TH190：文化传递链的偏好复制与中性漂变有限样本区分；继续核验Kirby2017 SI更正及TH187 PDF符号。
