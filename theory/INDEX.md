@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-31（Asia/Singapore）；已收录 TH179，C008 今日增量与 D002 本周专题
+更新：2026-10-31（Asia/Singapore）；已收录 TH181，C008 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -779,3 +779,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH180 | Hacking互动类别、分类身份与制度反馈的竞争性解释 | Hacking1997原刊指定段落及Vesterinen2020/2021开放全文指定章节直接审读；Hacking1995/1996与2006、Cooper2004、Bowker/Star1999原刊摘要或书目核对；14项条件命题、16项人工Fraction测试；同一报告类别率40%至60%可来自标签反馈、行政假阳性变化、外部冲击或群体构成；无真人微观复算、因果识别、历史预测及R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; REAL_LABEL_CAUSAL_EFFECT_UNIDENTIFIED | [研究笔记](TH180_HACKING_INTERACTIVE_KINDS_CLASSIFICATION_FEEDBACK_2026-10-31.md)；[人工审计脚本](th180_classification_feedback_audit.py) |
 
 当前下一理论专题TH181：标签信息、第三方制度反应与自我选择的可分离因果识别及伦理限制。C008满足2026-10-31，D002满足2026-W44，均保持只读。此前下一专题文字为历史记录。
+
+| TH181 | 标签知情、评价者反应、样本选择与社会分类因果识别 | Bertrand与Mullainathan2004原刊Table1及设计局限直接审读；Hoff与Pandey2004、2006及2014原始摘要/书目核验；14项条件命题、18项本地Fraction人工测试。4870份虚构简历回访率9.65%/6.45%，仅识别名字提示对回访的效应；人工2×2四格对比本人知情1/10、评价者知情1/5，选择后差可由+1/5逆转为负1/3，缺失结果差界[负3/5,正1/5]。无真实微观复算、独立中介识别或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; LABEL_MEDIATION_UNIDENTIFIED | [研究笔记](TH181_LABEL_DISCLOSURE_EVALUATOR_SELECTION_CAUSAL_BOUNDARIES_2026-10-31.md)；[人工审计脚本](th181_label_factorial_audit.py) |
+
+当前下一理论专题TH182：分类信息网络干扰、身份反馈与制度裁量的跨群体运输。C008已满足2026-10-31，D002已满足2026-W44，本轮只读。历史队列文字保留。
