@@ -800,3 +800,7 @@ C今日2026-11-01完成C009，D本周2026-W44已有D002。下一C010：跨期主
 | TH184 | 校级分块随机化、有限簇Fisher检验、2018正式更正与ICPSR37070 V2版本 | PNAS2016原刊Methods/Results及2018正式更正全文、ICPSR2020 V2方法/版本/许可元数据直接审读；Hagemann2018作者公开稿指定节，Wu/Ding2021、MacKinnon/Webb2018、Aronow/Samii2017摘要。16项条件命题、23项人工精确测试在普通与优化模式均通过；6校极端双侧p=1/10，8校两块各2/4 p=1/18 vs无块p=1/35；ICPSR V2 24471 cases与论文24191 students差280，原因未核实；2018更正调整25%、未调整23%，原刊显著性冲突待独立复算。未下载真实数据、无E1/E2/E3新增 | THEORY_NOTE_BOUNDED; DESIGN_BLOCK_COUNTS_UNVERIFIED; PUBLIC_V2_CASE_SCOPE_UNMAPPED; SIGNIFICANCE_CONFLICT_OPEN | [研究笔记](TH184_SCHOOL_CLUSTER_RANDOMIZATION_BLOCKS_PUBLIC_DATA_VERSION_2026-11-01.md)；[人工审计脚本](th184_cluster_randomization_audit.py) |
 
 C今日2026-11-01已完成C009，D本周2026-W44已完成D002，本轮均只读。下一TH185：ICPSR37070 V2字段字典、真实分块标识及公开复算代码的免费可达性和版本映射；旧队列文字保留历史记录。
+
+| TH185 | ICPSR37070 V2公开元数据与许可边界、校级分块与固定规模种子暴露的合成识别审计 | ICPSR37070 V2研究元数据、2025官方LLM政策/再分发条款、Yale ISPS原刊来源及Dataverse代码DOI、Aronow/Samii2017作者摘要；16项条件命题，20项人工Fraction测试普通及优化模式均通过；24191与24471差280，482+17=499仅候选算术；固定4选2同伴暴露5/6 vs 独立抽签3/4；49/56校行政数据缺失下人工有界校级差区间宽1/4。ICPSR研究数据及代码本未下载，原作者代码清单与真实分块字段未恢复；新E1/E2/E3均0 | THEORY_NOTE_BOUNDED; ICPSR_LLM_REUSE_BLOCKED; CODE_ARCHIVE_UNVERIFIED; NO_REAL_DATA_REESTIMATION | [研究笔记](TH185_ICPSR_PUBLIC_METADATA_DESIGN_LLM_POLICY_2026-11-01.md)；[合成审计脚本](th185_public_metadata_design_audit.py) |
+
+C今日2026-11-01已有C009，D本周2026-W44已有D002，保持只读。下一TH186：许可明确的独立网络干扰研究与固定规模种子抽样正概率，ICPSR数据处理许可仍阻塞。
