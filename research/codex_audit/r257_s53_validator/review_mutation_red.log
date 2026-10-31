@@ -1,0 +1,15 @@
+test_complementarity_rejects_objective_consistent_suboptimal_point (test_validate_receipt.ReceiptTests.test_complementarity_rejects_objective_consistent_suboptimal_point) ... FAIL
+
+======================================================================
+FAIL: test_complementarity_rejects_objective_consistent_suboptimal_point (test_validate_receipt.ReceiptTests.test_complementarity_rejects_objective_consistent_suboptimal_point)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 41, in test_complementarity_rejects_objective_consistent_suboptimal_point
+    with self.assertRaisesRegex(ValueError, 'complementarity'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=1)
