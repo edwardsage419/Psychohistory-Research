@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-10-31（Asia/Singapore）；已收录 TH168，C008 今日增量与 D002 本周专题
+更新：2026-10-31（Asia/Singapore）；已收录 TH170，C008 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -733,3 +733,7 @@ C007每日方法增量：[测量反应性、应答转移、MNAR与动态偏好](
 | TH169 | Smartcards官方复现目录、3ie独立同源复现与非随机持卡选择的上界问题 | openICPSR V1 2019官方目录（37分析代码、62数据文件、LICENSE/README下载受登录/403阻塞）、Atanda 3ie Replication Paper 23 2019第2至6节与附录表、2019正式复现论文摘要；12项条件理论命题、10项目录/原刊/人工精确审计；第三方报告同源结果可复现并提示缺失改零、对照少量转卡、约90%规格可比；人工相同观察持卡差0.4但真ATE可在[-0.3,0.7]，非随机组差无法无条件作上界；2014/2016行政ID、许可正文及原始微观复算未恢复，E1/E2/E3新增0 | THEORY_NOTE_BOUNDED; INDEPENDENT_REPLICATION_REVIEWED; ARCHIVE_LICENSE_UNREAD | [研究笔记](TH169_SMARTCARDS_REPLICATION_ARCHIVE_INDEPENDENT_REPLICATION_IDENTIFICATION_2026-10-31.md)；[人工审计脚本](th169_replication_selection_bounds_audit_20261031.py) |
 
 当前下一专题：TH170 3ie附录表的实际分母、缺失改零语义与选择性持卡的敏感性界；如可合法获取原始README/随机化名单，则优先恢复行政区ID及2014年10月修订稿。C008满足2026-10-31，D002满足2026-W44，均保持只读。此前下一专题文字为历史记录。
+
+| TH170 | Smartcards公开表A8/A9持卡状态缺失、A2/B1结局分母及描述性部分识别 | Atanda2019 3ie原报告表A2/A8/A9/B1与正文、Rubin1976原作指定章节、Manski1989/Little1988/Lee2009原刊摘要；12项条件命题与公开数字精确Fraction审计；NREGS缺失5070/10447、SSP缺失1587/3832，第7地区NREGS全1425持卡状态缺失；两项目持卡率组差均有正负可行界。未取得原始个体数据或重跑Stata，缺失机制未识别 | THEORY_NOTE_BOUNDED | [研究笔记](TH170_SMARTCARDS_CARD_STATUS_MISSINGNESS_DENOMINATORS_BOUNDS_2026-10-31.md)；[算术脚本](th170_smartcard_missingness_bounds_audit_20261031.py) |
+
+当前下一专题：TH171 地区7持卡状态缺失的问卷模块与原始变量版本核对；若合法原始数据无法取得，则研究更广泛的测量误差与制度记录理论。C008已满足2026-10-31，D002已满足2026-W44，本轮均保持只读。
