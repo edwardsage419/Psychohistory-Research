@@ -1,0 +1,8 @@
+# R331 S127 prescore freeze: conditional forgetting hazard and survivor composition
+Date 2026-11-01 UTC. Baseline main c664cbe01c3a108e44cf96a049293e7409ea8547. New constructed E1 extension, separate from original R331 accepted 81-atom nine-world protocol. Original protocol Git blob f25b23480d40e6bf2334777ddbe7a4b493331534; original result blob 30317b2e16269d89286c8a75cedb3c483b72c725. Prior R331 results already read: S(t)>Q(t) for t>=2. No claims of blind protocol or human memory fit.
+
+Keep the original three base pairs (a,b)=(1/4,1/2),(1/4,3/4),(1/2,3/4), weights w=1/4,1/2,3/4, and S(t)=w*a^t+(1-w)*b^t. For each of nine worlds and t=0..7, record exact S(t), S(t+1), conditional retention R_t=S(t+1)/S(t), discrete forgetting hazard H_t=1-R_t, posterior share of fast component among retained W_t=w*a^t/S(t), and homogeneous comparator H0=1-[w*a+(1-w)*b]. Exactly 72 rows; no simulation, no fitting, no human data. All fractions canonical strings; deterministic JSON.
+
+Predetermined falsifiers: all nine worlds H_0 equal homogeneous comparator; all 72 hazards strictly between 0 and 1; within each world H_{t+1}<H_t for t=0..6 and W_{t+1}<W_t for t=0..6; all original S(t) for t<=8 match original R331 archived 81-atom values. For a=1/4,b=3/4,w=1/2, require H0=1/2, H1=3/8, H2=3/10, W0=1/2,W1=1/4,W2=1/10. Any failure rejects bounded extension. Independent no-import Fraction route must recompute 72 exact rows. Explicitly retain negative controls, nonblind scope and no external replication.
+
+E1 only. Do not equate survivor selection with empirical human forgetting or interference. No original source files modified, no R073 or PESEN v0.1 changes, no E2/E3. CI skipped unless free quota verified.
