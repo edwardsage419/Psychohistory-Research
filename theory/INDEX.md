@@ -843,3 +843,8 @@ C今日2026-11-01已有C009，D本周2026-W44已有D002，本轮均只读。下�
 | TH194 | 来源谱系依赖、共同回忆污染、档案选择比率与联合敏感性 | Johnson等1993开放原刊第3至5页直接审读；Gabbert等2003、Roediger等2001、Manski1989、Little1993、Horowitz/Manski2000原刊摘要；16项条件命题，23项人工Fraction单测普通及优化模式均通过。来源同源误报双阳性1/4对独立1/16；档案阳性3/8、阴性1/8时总体真率无假设界[3/8,7/8]，存档率比[1,3]时界[1/2,3/4]；额外已知报告机制下双阳性后验[3/4,27/28]，不能当历史真实概率。真人复算、现实因果、历史预测、R E1/E2/E3新增均0 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; SOURCE_LINEAGE_AND_ARCHIVE_SELECTION_UNIDENTIFIED | [研究笔记](TH194_SOURCE_LINEAGE_MEMORY_ARCHIVE_JOINT_SENSITIVITY_2026-11-01.md)；[精确审计脚本](th194_source_archive_sensitivity_audit.py) |
 
 C今日2026-11-01已有C009，D本周2026-W44已有D002，本轮均只读。下一TH195：未知来源谱系下的部分识别与随机化讨论实验最小测量合同。保留TH187 PDF、Kirby2017 S7及Segovia-Martín2020 Equation 2勘误图像核验。
+
+
+| TH195 | 未知来源谱系与潜在真值混杂、来源测验及组级讨论随机化 | Zaragoza/Lane1994作者开放原刊实验1表1、实验2至5指定章节直接审读；Meade/Roediger2002、Gabbert2003、Paterson/Kemp2006正式摘要。14项条件命题，15项人工Fraction测试普通及优化模式通过。配对报告联合(5,3,3,5)/16可来自同源复制或潜在真值混合；四组抽两组讨论6种分配，真ATE1/4、单次观察差-1/2，锐零假设双侧p=1/3。真人复算、历史外推及R E1/E2/E3新增均0 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; LATENT_TRUTH_LINEAGE_NONIDENTIFICATION | [研究笔记](TH195_LATENT_TRUTH_LINEAGE_RANDOMIZED_DISCUSSION_2026-11-01.md)；[精确审计脚本](th195_source_lineage_randomized_discussion_audit.py) |
+
+C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH196：来源测验反应性、事后信息暴露依从性和组级失访的部分识别；TH187 PDF、Kirby2017 S7及Segovia-Martín2020 Equation 2核验继续开放。
