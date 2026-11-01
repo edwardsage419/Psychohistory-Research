@@ -952,3 +952,7 @@ C010（2026-11-02）与D003（2026-W45，2026-11-02）只读COMPLETE。R073、PE
 | TH205 | Kahneman/Klein2009专家直觉效度条件；Gigerenzer/Goldstein1996 TTB模拟；Newell/Shanks及Newell/Weston/Shanks2003真人策略过程反例 | 直接阅读原刊Kahneman/Klein pp515至525、Gigerenzer/Goldstein pp650至659、Newell/Shanks pp53至63指定节、Newell/Weston/Shanks pp82至83及88至92；p655 Table1与p57 Table2图像核验。1996年83城模拟与真人策略采用率不可混同，2003年真人两实验16/48约33%满足TTB三规则（容许10%偏离），信息成本改变额外查询比例；四项Fraction有限N公式检查PASS，原始真人数据与83城模拟复算NOT_RUN。 | THEORY_NOTE_BOUNDED; ORIGINAL_SELECTED_RANGES; NONBLIND; SYNTHETIC_FORMULA_ONLY; NO_E1_E2_E3_UPGRADE | [研究笔记](TH205_INTUITIVE_EXPERTISE_TTB_COMPETING_MECHANISMS_2026-11-02.md) |
 
 C010已于2026-11-02完成，D003已于2026-W45的2026-11-02完成，本轮只读。下一步补读1996年原作pp660至669与独立前瞻专家判断研究。先完成全部R，再统一分类，最后有条件熔炼。
+
+### 2026-11-02 TH205原刊后半与附录勘误核验（沿用TH205）
+
+Gigerenzer与Goldstein1996正式原刊pp660至666、Appendix pp668至669直接审读，p660 Table2、p661试次排序段落及pp668至669两处星号误码图像目视核验。TTB总体正确率0.658与weighted tallying相同，100%线索已知时regression 0.694高于TTB 0.691；Take The Last在按城市大小系统呈现的初始模拟中曾高约10个百分点，作者改用随机配对顺序重跑。附录Dresden的state capital及Krefeld的soccer team两值本应为正，作者实际模拟用负值。固定局部规则下两误码最多触及163/3403城市对；重训排序/权重或跨试次记忆时此界不适用。10项Fraction人工断言PASS，83城逐格转录、作者模拟复算、真人数据、现实因果与R E1/E2/E3新增均NOT_RUN。见[TH205原刊Table2、顺序与附录勘误补记](TH205_GIGERENZER_GOLDSTEIN_1996_TABLE2_ORDER_AND_APPENDIX_ERRATA_ADDENDUM_2026-11-02.md)。C010于2026-11-02及D003于2026-W45的2026-11-02均只读COMPLETE；CI NOT_RUN，账单NOT_VERIFIED。下一步优先独立前瞻专家判断校准原著，保持跨学科广度，先全R后分类再熔炼。
