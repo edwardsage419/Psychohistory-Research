@@ -86,7 +86,7 @@ if(typeof require!=="undefined" && require.main===module){
    [csv.replace(",9/16,",",8/16,"),json],
    [csv.replace(",1/2,3/8,",",3/4,3/8,"),json],
    [csv,JSON.stringify({...JSON.parse(json),evidence_grade:"E2_HUMAN"})],
-   [csv,(()=>{let d=JSON.parse(json);d.worlds[0].chosen_policy="NOISY";return JSON.stringify(d)})()],
+   [csv,(()=>{let d=JSON.parse(json);d.worlds[0].chosen_policy=d.worlds[0].chosen_policy==="PRECISE"?"NOISY":"PRECISE";return JSON.stringify(d)})()],
    [csv,(()=>{let d=JSON.parse(json);d.worlds[0].precise_efe="99.000000000";return JSON.stringify(d)})()],
    [csv,(()=>{let d=JSON.parse(json);d.series[0].values[0].net_advantage_at_zero_cost="0.123456789";return JSON.stringify(d)})()],
    [csv.replace(",0,",",1/9,"),json],
