@@ -826,3 +826,7 @@ C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，均保持只�
 | TH190 | 文化传递链中中性漂变、内容偏好与复制机制的有限样本区分；Kirby 2017 SI更正明确涉及Supporting Table S7 | Mesoudi/Whiten/Dunbar2006作者原刊PDF实验设计和结果直接审读；Kirby2017正式更正公告全文；Saldana等2019、Yeh等2019原刊摘要。12项条件命题，13项本地Fraction人工单测普通及优化均通过；从0起一步两模型总变差0，两步1/32；从1起四步全1的N=81/256、B=2401/4096；不同潜在复制操作可有相同转移核。无真人复算、现实因果识别或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; SI_S7_CELL_DIFF_OPEN | [研究笔记](TH190_CULTURAL_TRANSMISSION_FINITE_SAMPLE_MECHANISM_IDENTIFICATION_2026-11-01.md)；[人工精确审计脚本](th190_cultural_chain_exact_audit.py) |
 
 C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，均只读。下一TH191：文化特征打包、创新激励与记忆测量的竞争识别设计；Kirby修订SI S7逐格差异待核。R系列顺序不变。
+
+| TH191 | 文化特征打包、创新激励、记忆过程与同源/分源识别 | Yeh/Fogarty/Kandler2019及Saldana等2019开放同行评审原刊指定章节直接审读，Dryad2019公开代码档案仅元数据；14项条件命题，20项标准库Fraction人工测试普通及优化均通过。同源00/11与分源的边际相同、协方差1/4对0；独立翻转1/4后联合总变差1/8；共同潜在偏好与来源组成造成不可识别。真实微观复算、独立现实因果及R E1/E2/E3新增均为0 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; PACKAGE_MECHANISM_UNIDENTIFIED | [研究笔记](TH191_CULTURAL_PACKAGE_INNOVATION_MEMORY_IDENTIFICATION_2026-11-01.md)；[精确脚本](th191_package_innovation_exact_audit.py) |
+
+C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH192：文化记忆重构、内容显著性与社会网络选择的竞争解释；Kirby2017 S7逐格差异与TH187 PDF符号仍待核。保持先全R、再分类、最后熔炼。
