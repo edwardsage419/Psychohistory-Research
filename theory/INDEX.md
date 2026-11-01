@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-11-01（Asia/Singapore）；已收录 TH197及正式刊印版核验补记，C009 今日增量与 D002 本周专题
+更新：2026-11-02（Asia/Singapore）；已收录 TH202、C010 与 D003；TH197、C009、D002 历史记录保留
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -908,3 +908,12 @@ C009（2026-11-01）与D002（2026-W44，2026-10-26）只读COMPLETE。R333至R3
 | TH201 | Hoffman等1991工作稿/1996正式原刊、Bohnet与Frey1999正式反驳、List2007正式原刊 | 1991稿印刷pp1至14、1996原刊pp653至659、1999原刊pp335至339、2007原刊pp482至491及p487 Table1直接审读；Bohnet/Frey同为约50%平均赠与条件，严格均分率16%与71%，说明均值无法区分分布；List正向赠与17/24、16/46、5/50、3/47，行动集合与劳动所得影响组间结果。固定效用构造反例说明正向赠与率下降不唯一证明偏好随菜单变化。跨处理随机分配、原始微观数据及独立因果估计未核；1994正式版未对读。 | THEORY_NOTE_BOUNDED; ORIGINAL_SELECTED_RANGES; NONBLIND; CAUSAL_UNIDENTIFIED; SYNTHETIC_COUNTEREXAMPLE | [研究笔记](TH201_ANONYMITY_IDENTIFIABILITY_ACTION_SET_GIVING_2026-11-01.md) |
 
 C009（2026-11-01）与D002（2026-W44，2026-10-26）已完成且只读。R333至R340候选复合验收仍受原生checkout阻塞，R E1/E2/E3无新增。下一主题优先同一社会内随机化操作的原始处理日志或非洲、南亚互惠民族志；旧有文献核验缺口继续开放。先全R，再分类归纳，最后熔炼。
+
+
+### 2026-11-02 TH202 南非家庭内资源分配与养老金政策
+
+| 编号 | 主题 | 来源与审计边界 | 状态 | 后续 |
+| --- | --- | --- | --- | --- |
+| TH202 | 南非养老金领取者身份、家庭议价权重、成员营养结果与同住选择的竞争解释 | Duflo2000 NBER原始工作论文pp1至12、14至19直接阅读；Case/Deaton1996、Browning等1994/1998及Duflo2003正式版仅原始摘要或书目；0.60资格系数与1.19领取IV系数不可混同，家庭同住与同期项目限制因果识别。独立原始微观复算未做 | THEORY_NOTE_BOUNDED; NONBLIND; ORIGINAL_SELECTED_RANGES | [研究笔记](TH202_DUFLO_PENSION_HOUSEHOLD_BARGAINING_IDENTIFICATION_2026-11-02.md) |
+
+C当日2026-11-02已完成[C010 能力集合与自主性测量](../research/decision_methods/C010_CAPABILITY_AGENCY_FEASIBLE_SET_IDENTIFICATION_2026-11-02.md)，直接审读Sen1985原刊指定页，Anand2009仅机构摘要；D本周2026-W45已完成[D003 人口转型与代际财富流向](../research/historical_scenarios/D003_DEMOGRAPHIC_TRANSITION_WEALTH_FLOWS_2026-W45.md)，直接审读Caldwell1976及Lee2003原刊指定页。C009(2026-11-01)、D002(2026-W44)保留为历史成果。真实个体/历史因果复算及R E1/E2/E3新增均0。下一轮优先核验Duflo2003正式版、Anand2009问卷、联合国原始人口表版本；其他既有未闭合勘误不撤销。严格先完成全部R系列，再统一分类，最后有条件熔炼。
