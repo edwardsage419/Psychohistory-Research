@@ -867,3 +867,12 @@ C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，本轮均只�
 ### 2026-11-01 TH197正式刊印版及数字核验补记（不新增TH编号）
 
 Ostrom2010《American Economic Review》正式排版PDF印刷页650、651至653、655至658，与Indiana2009修订讲稿指定页直接比对。五项产权权利、七类规则、229灌溉系统及163森林等关键作者陈述在正式版可核；**印刷页650同时出现47个灌溉系统、12个政府管理且其中7个高绩效却标40%、25个农民管理且18个高绩效**。12+25=37（与47差10），7/12=58.33%（与40%冲突），18/25=72%（与超过70%相容）。两版本PDF页面图像均有相同数字；原始Tang1994:234未审，不能推定正确分母或因果效应。详见[TH197正式版数字核验补记](TH197_2010_PUBLISHED_VERSION_NUMERICAL_AUDIT_ADDENDUM_2026-11-01.md)。本轮无TH198、无R E1/E2/E3升级；C009和D002只读。下一步优先Tang原表分母、行政可读性/权力原著，既有三项公式与勘误待核。
+
+
+### 2026-11-01 TH197原始样本分类跨来源核验补记
+
+NRC2002《The Drama of the Commons》第3章p98公开原文报告Tang的47系统中29农民管理、14机构管理、4其他，合计47；与Ostrom2010 p650的25农民、12政府、10未明确分类不同。Tang1989馆藏摘要证实47案例，Tang1994原章p229/p234仍未取得。7/12=58.33%与原文40%冲突尚未解决；具体子样本缺失机制未知。四项精确算术断言通过，无真实复算。详见[TH197 Tang/NRC交叉核验补记](TH197_TANG_NRC_DENOMINATOR_CROSS_SOURCE_ADDENDUM_2026-11-01.md)。状态PARTIAL。
+
+| TH198 | Mann1984国家专断/基础设施双维与Mitchell1991国家/社会边界生成的竞争解释 | Mann1984原刊PDF pp185–193、205–210及p191 Figure1直接阅读；Mitchell1991原刊PDF pp77–80、87–88、92–95直接阅读；Scott1998仅Yale出版社书介。新增政治社会学国家权力双维与国家边界生产的原著级竞争；无实证复算、无R E1/E2/E3升级 | THEORY_NOTE_BOUNDED; NONBLIND; ORIGINAL_PUBLISHED_SELECTED_PAGES; CAUSAL_IDENTIFICATION_NOT_RUN | [研究笔记](TH198_MANN_MITCHELL_STATE_POWER_BOUNDARY_ORIGINAL_READING_2026-11-01.md) |
+
+C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，两者只读。下一步Tang1994原表分母、Scott1998合法开放原著与国家能力/边界竞争反例；保留TH187正式版、Kirby S7、Segovia-Martín Equation2勘误。先完成全部R系列，再统一分类归纳，最后熔炼。
