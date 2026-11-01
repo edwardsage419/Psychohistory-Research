@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-11-01（Asia/Singapore）；已收录 TH194，C009 今日增量与 D002 本周专题
+更新：2026-11-01（Asia/Singapore）；已收录 TH196，C009 今日增量与 D002 本周专题
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -848,3 +848,7 @@ C今日2026-11-01已有C009，D本周2026-W44已有D002，本轮均只读。下�
 | TH195 | 未知来源谱系与潜在真值混杂、来源测验及组级讨论随机化 | Zaragoza/Lane1994作者开放原刊实验1表1、实验2至5指定章节直接审读；Meade/Roediger2002、Gabbert2003、Paterson/Kemp2006正式摘要。14项条件命题，15项人工Fraction测试普通及优化模式通过。配对报告联合(5,3,3,5)/16可来自同源复制或潜在真值混合；四组抽两组讨论6种分配，真ATE1/4、单次观察差-1/2，锐零假设双侧p=1/3。真人复算、历史外推及R E1/E2/E3新增均0 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; LATENT_TRUTH_LINEAGE_NONIDENTIFICATION | [研究笔记](TH195_LATENT_TRUTH_LINEAGE_RANDOMIZED_DISCUSSION_2026-11-01.md)；[精确审计脚本](th195_source_lineage_randomized_discussion_audit.py) |
 
 C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH196：来源测验反应性、事后信息暴露依从性和组级失访的部分识别；TH187 PDF、Kirby2017 S7及Segovia-Martín2020 Equation 2核验继续开放。
+
+| TH196 | 来源测验反应性、误导暴露依从性、组级失访及部分识别 | Chan/Thomas/Bulevich2009获许可作者原稿PDF第3至15页直接审读，Roediger/Karpicke2006、Angrist/Imbens/Rubin1996、Lee2009正式摘要及书目；16项条件命题，25项标准库Fraction人工测试在普通及优化模式均通过。人工初测与误导交互1/4，邀请排除限制破坏使Wald由1/2变7/10，信息性失访总体ATE锐界[-1/8,5/8]，单调选择下始终可观察者界[0,1/2]。无真人微观复算、现实因果估计或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; COMPLIANCE_EXCLUSION_UNVERIFIED; ATTRITION_SELECTION_UNIDENTIFIED | [研究笔记](TH196_RETRIEVAL_REACTIVITY_COMPLIANCE_ATTRITION_BOUNDS_2026-11-01.md)；[精确脚本](th196_reactivity_compliance_attrition_audit.py) |
+
+C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，本轮均只读。下一TH197：组级网络干扰下的测验反应性与信息性失访联合设计；TH187 PDF、Kirby2017 S7及Segovia-Martín2020 Equation 2勘误图像核验继续开放。先全R、再分类、最后熔炼。
