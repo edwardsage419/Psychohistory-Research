@@ -930,3 +930,10 @@ Duflo2003世界银行馆藏正式期刊排版PDF pp1–5、7–11、14–18、20
 ### 2026-11-02 TH202正式版表格图像核验补记（沿用TH202）
 
 Duflo2003正式期刊PDF印刷p9 Table3、p15 Table5、p21 Table7的图像已直接目视核验：0.61与1.19分属资格OLS和领取2SLS；p15列3的0.40是祖辈存活简约式，列4的1.16是资格IV；p21储蓄2SLS为0.82与0.53。表格脚注显著性阈值不同，所有表未逐格重算，真人微观数据NOT_RUN。详见[TH202表格图像核验](TH202_DUFLO_2003_TABLE_IMAGE_VERIFICATION_2026-11-02.md)。C当日C010(2026-11-02)、D本周D003(2026-W45，2026-11-02)已完成，仅只读；R研究顺序与冻结状态不变。
+
+
+### 2026-11-02 TH204 南亚饥荒的权利集合与粮食供给竞争解释
+
+| TH204 | Sen1981《Poverty and Famines》原著pp45至51、52至68指定段落及附录A pp167至170；Tauger2003仅原刊摘要，Greenough1980仅原刊开头节录。区分禀赋损失、交换权利映射、自然灾害供给冲击及保全生产资产的策略。1943孟加拉粮食总量存在历史统计口径争议；7项有限算术/构造断言PASS，Table6.2视觉、真实历史复算及因果识别NOT_RUN。 | THEORY_NOTE_BOUNDED; ORIGINAL_SELECTED_TEXT; COMPETITOR_ABSTRACT_ONLY; HISTORICAL_CLAIM_CONTESTED | [研究笔记](TH204_SEN_1981_ENTITLEMENT_FAMINE_HISTORICAL_CONTEST_2026-11-02.md) |
+
+C010（2026-11-02）与D003（2026-W45，2026-11-02）只读COMPLETE。R073、PESEN v0.1及R E1/E2/E3不变。下一步1945原始调查表与Tauger2003正文，未进入统一分类或模型熔炼。
