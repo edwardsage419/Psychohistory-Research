@@ -1,0 +1,60 @@
+{
+  "schema": "R334_P0_OPTIMIZED_ASSERT_LOCAL_NONBLIND_v1",
+  "date_utc": "2026-11-01",
+  "python": "CPython 3.13.5",
+  "input_source_git_blob": "7d232a07d9d2979c2fcc8a407dd8bda18cd8ab93",
+  "input_csv_git_blob": "6e3bdcc5ca07d1321a651c29b899798a32f7fb72",
+  "input_json_git_blob": "02883b6b9cfc22b3b855d8a7cbaa5e5ddf6bd86c",
+  "original_render_archive_byte_identity": "PASS",
+  "test_cases": [
+    {
+      "case": "clean",
+      "original_normal_exit": 0,
+      "original_optimized_exit": 0,
+      "strict_normal_exit": 0,
+      "strict_optimized_exit": 0
+    },
+    {
+      "case": "csv_corrupt",
+      "original_normal_exit": 1,
+      "original_optimized_exit": 0,
+      "strict_normal_exit": 1,
+      "strict_optimized_exit": 1
+    },
+    {
+      "case": "json_corrupt",
+      "original_normal_exit": 1,
+      "original_optimized_exit": 0,
+      "strict_normal_exit": 1,
+      "strict_optimized_exit": 1
+    },
+    {
+      "case": "both_missing",
+      "original_normal_exit": 1,
+      "original_optimized_exit": 0,
+      "strict_normal_exit": 1,
+      "strict_optimized_exit": 1
+    },
+    {
+      "case": "source_corrupt",
+      "original_normal_exit": 0,
+      "original_optimized_exit": 0,
+      "strict_normal_exit": 1,
+      "strict_optimized_exit": 1
+    }
+  ],
+  "original_optimized_false_accept_cases": [
+    "csv_corrupt",
+    "json_corrupt",
+    "both_missing"
+  ],
+  "original_optimized_five_unittests_report_OK_in_false_accept_cases": true,
+  "full_local_receipt_sha256": "1cd28fcf3c5a87585034733bc9824bc065c77a46c3e8500c41a4e38fe82aa36c",
+  "test_script": "research/evidence_audit/test_r334_optimized_gate_20261101.py",
+  "strict_checker": "research/evidence_audit/r334_strict_receipt_gate_20261101.py",
+  "new_ci": "NOT_RUN",
+  "scientific_evidence": "E1_CONSTRUCTED_INTERNAL_NONBLIND",
+  "historical_r334_ci_run": 40051279908,
+  "historical_r334_ci_conclusion": "success",
+  "status": "PARTIAL_P0_ADDITIVE_GUARD_ONLY"
+}
