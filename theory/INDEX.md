@@ -917,3 +917,7 @@ C009（2026-11-01）与D002（2026-W44，2026-10-26）已完成且只读。R333�
 | TH202 | 南非养老金领取者身份、家庭议价权重、成员营养结果与同住选择的竞争解释 | Duflo2000 NBER原始工作论文pp1至12、14至19直接阅读；Case/Deaton1996、Browning等1994/1998及Duflo2003正式版仅原始摘要或书目；0.60资格系数与1.19领取IV系数不可混同，家庭同住与同期项目限制因果识别。独立原始微观复算未做 | THEORY_NOTE_BOUNDED; NONBLIND; ORIGINAL_SELECTED_RANGES | [研究笔记](TH202_DUFLO_PENSION_HOUSEHOLD_BARGAINING_IDENTIFICATION_2026-11-02.md) |
 
 C当日2026-11-02已完成[C010 能力集合与自主性测量](../research/decision_methods/C010_CAPABILITY_AGENCY_FEASIBLE_SET_IDENTIFICATION_2026-11-02.md)，直接审读Sen1985原刊指定页，Anand2009仅机构摘要；D本周2026-W45已完成[D003 人口转型与代际财富流向](../research/historical_scenarios/D003_DEMOGRAPHIC_TRANSITION_WEALTH_FLOWS_2026-W45.md)，直接审读Caldwell1976及Lee2003原刊指定页。C009(2026-11-01)、D002(2026-W44)保留为历史成果。真实个体/历史因果复算及R E1/E2/E3新增均0。下一轮优先核验Duflo2003正式版、Anand2009问卷、联合国原始人口表版本；其他既有未闭合勘误不撤销。严格先完成全部R系列，再统一分类，最后有条件熔炼。
+
+### 2026-11-02 TH202正式发表版与祖辈存活工具变量勘误补记（沿用TH202）
+
+Duflo2003世界银行馆藏正式期刊排版PDF pp1–5、7–11、14–18、20–22与Duflo2000 NBER工作稿§2、§5.4及Tables4/7/9直接对照。2003正式版p18明确拒绝将祖辈存活作为养老金领取的替代IV，原因是非同住祖辈跨户转移可能违反排除限制；2000稿Table7的女童1.06(SE0.72)仅是早稿IV，2003 Table5列3的0.40(SE0.27)是祖辈存活简约式比较，列4的1.16(SE0.56)才是资格IV。2003 p10男女资格系数差异F2.50、p0.11，无法在5%/10%阈值拒绝相等；p9 Table3女性资格0.61(SE0.19)，领取IV 1.19(SE0.41)，不能混为同一估计。工作稿与正式版抽查主要数值相同、表号有变；全表图像逐格审计仍开放。6项Decimal人工算术断言PASS，真实微观复算、现实因果重估及R E1/E2/E3新增均NOT_RUN。详见[TH202正式版与IV更正补记](TH202_DUFLO_2003_PUBLISHED_ESTIMAND_AND_IV_CORRECTION_ADDENDUM_2026-11-02.md)。C010（2026-11-02）及D003（2026-W45，2026-11-02）已完成，本轮只读；R冻结不变，CI NOT_RUN，计费NOT_VERIFIED。
