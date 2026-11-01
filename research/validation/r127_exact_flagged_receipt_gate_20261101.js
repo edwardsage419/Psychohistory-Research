@@ -25,10 +25,10 @@ function selftest(){const r=expected(),a=Buffer.from(HEAD+'\n'+r.join('\n')+'\n'
  b=Buffer.from(HEAD+',exact_comparison_flag\n'+r.map(z=>z+',PASS').join('\n')+'\n');
  failIf(blob(a)!==SHA[0]||blob(b)!==SHA[1],'independent full-byte reconstruction');check(a,b);
  const cases=[[Buffer.from(a.toString().replace('2,1|1,1,7|7','2,1|1,1,7|8')),b],
- [a,Buffer.from(b.toString().replace(',PASS',',FAIL')]],
+ [a,Buffer.from(b.toString().replace(',PASS',',FAIL'))],
  [a,Buffer.from(b.toString().replace('2,1|1,1,7|7,PASS\n',''))],
  [a,Buffer.from(b.toString().replace('2,1|2,1,7|6,PASS','2,1|1,1,7|7,PASS'))],
- [a,Buffer.from(b.toString().replace('exact_comparison_flag','flag')]],
+ [a,Buffer.from(b.toString().replace('exact_comparison_flag','flag'))],
  [a,Buffer.from(b.toString().slice(0,-1))]];
  for(let i=0;i<cases.length;i++){let rejected=false;try{check(...cases[i],false)}catch{rejected=true}failIf(!rejected,'mutation '+i+' accepted')}
  console.log(JSON.stringify({status:'PASS',full_byte_reconstruction:2,negative_controls:6,node:process.version}));
