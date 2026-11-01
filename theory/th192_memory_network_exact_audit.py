@@ -126,7 +126,7 @@ class NetworkTests(unittest.TestCase):
 
     def test_invalid_simultaneous_contact(self):
         with self.assertRaises(ValueError):
-            reach_by_rounds((("A", "B"), ("A", "C")))
+            reach_by_rounds(((("A", "B"), ("A", "C")),))
 
 
 if __name__ == "__main__":
