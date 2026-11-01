@@ -89,7 +89,7 @@ if(typeof require!=="undefined" && require.main===module){
    [csv,(()=>{let d=JSON.parse(json);d.worlds[0].chosen_policy=d.worlds[0].chosen_policy==="PRECISE"?"NOISY":"PRECISE";return JSON.stringify(d)})()],
    [csv,(()=>{let d=JSON.parse(json);d.worlds[0].precise_efe="99.000000000";return JSON.stringify(d)})()],
    [csv,(()=>{let d=JSON.parse(json);d.series[0].values[0].net_advantage_at_zero_cost="0.123456789";return JSON.stringify(d)})()],
-   [csv.replace(",0,",",1/9,"),json],
+   [csv.replace("1/4,1/2,1,0,PRECISE,0,1,0,0,1/4,","1/4,1/2,1,0,PRECISE,0,1,0,1/9,1/4,"),json],
    [(()=>{let l=csv.trimEnd().split("\n");[l[1],l[2]]=[l[2],l[1]];return l.join("\n")+"\n"})(),json]
   ];
   for(const [c,j] of mutated){let rejected=false;try{audit(c,j,original)}catch(e){rejected=true}if(!rejected)throw Error("mutation accepted");}
