@@ -876,3 +876,8 @@ NRC2002《The Drama of the Commons》第3章p98公开原文报告Tang的47系统
 | TH198 | Mann1984国家专断/基础设施双维与Mitchell1991国家/社会边界生成的竞争解释 | Mann1984原刊PDF pp185–193、205–210及p191 Figure1直接阅读；Mitchell1991原刊PDF pp77–80、87–88、92–95直接阅读；Scott1998仅Yale出版社书介。新增政治社会学国家权力双维与国家边界生产的原著级竞争；无实证复算、无R E1/E2/E3升级 | THEORY_NOTE_BOUNDED; NONBLIND; ORIGINAL_PUBLISHED_SELECTED_PAGES; CAUSAL_IDENTIFICATION_NOT_RUN | [研究笔记](TH198_MANN_MITCHELL_STATE_POWER_BOUNDARY_ORIGINAL_READING_2026-11-01.md) |
 
 C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，两者只读。下一步Tang1994原表分母、Scott1998合法开放原著与国家能力/边界竞争反例；保留TH187正式版、Kirby S7、Segovia-Martín Equation2勘误。先完成全部R系列，再统一分类归纳，最后熔炼。
+
+
+### 2026-11-01 TH197 Tang1989原始博士论文样本编码核验补记（沿用TH197编号）
+
+Indiana University馆藏1989年Tang原始扫描PDF印刷pp60–68、78–82及Tables3.1–3.3、4.1–4.2直接视觉核验：47条case原始分类29社区、14官僚、4地方政府，独立确认NRC2002转述的29/14/4；42例位于亚洲、29 simple/18 complex，若干case为同一设施的不同时间切片；选样依赖文献资料完整性、五档供水被二值化。表4.1五类计数21+8+4+13+1=47，供水不足仍可有良好规则遵守与维护。5项本地算术断言PASS；Ostrom2010的25/12与7/12对40%冲突、Tang1994 pp229–234仍PARTIAL。无真实因果复算或R E1/E2/E3升级。详见[TH197 Tang1989原始论文编码核验补记](TH197_TANG_1989_DISSERTATION_PRIMARY_CODING_AUDIT_2026-11-01.md)。C009于2026-11-01、D002于2026-10-26（W44）完成，本轮只读；下一步核验1994正式章分母或Scott1998原著。
