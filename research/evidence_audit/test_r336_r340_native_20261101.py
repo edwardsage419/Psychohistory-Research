@@ -29,7 +29,7 @@ def main():
             with tempfile.TemporaryDirectory(prefix='psy_p0_') as tmp:
                 directory=pathlib.Path(tmp)
                 for name in files:
-                    shutil.copyfile(BASE/model/name,directory/name)
+                    shutil.copyfile(BASE.parent/model/name,directory/name)
                 source,csv_name,json_name=files
                 if case=='csv_corrupt':
                     p=directory/csv_name;p.write_bytes(p.read_bytes()+b'\n')
