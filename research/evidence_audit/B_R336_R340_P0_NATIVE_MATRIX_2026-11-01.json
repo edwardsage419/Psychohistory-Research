@@ -1,0 +1,161 @@
+{
+  "schema": "nonblind_r336_r340_p0_native_matrix_v1",
+  "date_utc": "2026-11-01",
+  "track": "r",
+  "subflow": "B",
+  "baseline_main": "a84210f0c2974590c85e6ac66a7d6be8e4933c34",
+  "environment": {
+    "python": "CPython 3.13.5",
+    "dependencies": "stdlib only",
+    "native_cli": "--test --audit",
+    "optimized_flag": "-O",
+    "source_originals_exact_git_blobs": true,
+    "receipts_regenerated_and_matched_remote_git_blobs": true,
+    "random_seed": "N/A deterministic"
+  },
+  "models": {
+    "R336": {
+      "source": "bcbf7b40c1f8ba86d5478d57509a437b5ba0279f",
+      "csv": "efa20e7d6432a1a6c7bd0abd53384b36e23422e5",
+      "json": "2704b6066a7f3842c2273c8262d9fd41e2483d73"
+    },
+    "R340": {
+      "source": "7bd287300825266be1a13fc12229b8c48b01e7a7",
+      "csv": "36ae0a9a11d2f27dacd8948f9617122eade0c40c",
+      "json": "e5615c6d99bd79acac5501bda60976b3f7d3cad2"
+    }
+  },
+  "results": {
+    "R336": {
+      "valid": {
+        "normal": {
+          "original_exit": 0,
+          "strict_exit": 0
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 0
+        }
+      },
+      "csv_corrupt": {
+        "normal": {
+          "original_exit": 1,
+          "strict_exit": 1
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 1
+        }
+      },
+      "json_corrupt": {
+        "normal": {
+          "original_exit": 1,
+          "strict_exit": 1
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 1
+        }
+      },
+      "missing_both": {
+        "normal": {
+          "original_exit": 1,
+          "strict_exit": 1
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 1
+        }
+      },
+      "source_mutation": {
+        "normal": {
+          "original_exit": 0,
+          "strict_exit": 1
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 1
+        }
+      }
+    },
+    "R340": {
+      "valid": {
+        "normal": {
+          "original_exit": 0,
+          "strict_exit": 0
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 0
+        }
+      },
+      "csv_corrupt": {
+        "normal": {
+          "original_exit": 1,
+          "strict_exit": 1
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 1
+        }
+      },
+      "json_corrupt": {
+        "normal": {
+          "original_exit": 1,
+          "strict_exit": 1
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 1
+        }
+      },
+      "missing_both": {
+        "normal": {
+          "original_exit": 1,
+          "strict_exit": 1
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 1
+        }
+      },
+      "source_mutation": {
+        "normal": {
+          "original_exit": 0,
+          "strict_exit": 1
+        },
+        "optimized": {
+          "original_exit": 0,
+          "strict_exit": 1
+        }
+      }
+    }
+  },
+  "counts": {
+    "models": 2,
+    "cases_per_model": 5,
+    "modes": 2,
+    "original_subprocesses": 20,
+    "strict_subprocesses": 20,
+    "optimized_original_corruption_false_acceptances": 6,
+    "original_source_only_acceptances": 4,
+    "strict_negative_rejections": 16
+  },
+  "strict_gate": "research/evidence_audit/r336_r340_strict_receipt_gate_20261101.py",
+  "test_runner": "research/evidence_audit/test_r336_r340_native_20261101.py",
+  "full_native_log": {
+    "sha256": "03619291f9d534d3003880133acb9fa4d465ac213a59253a27fef8ee873f886a",
+    "bytes": 11625,
+    "scope": "original local run JSON, retained as downloadable sandbox artifact; not asserted as remote archive byte identity"
+  },
+  "limits": [
+    "internal nonblind E1 integrity audit",
+    "historical original production entry points unchanged",
+    "original normal-mode tests remain green",
+    "no external independent team",
+    "no new human E2 or historical E3",
+    "Python 3.11/3.12 NOT_RUN",
+    "GitHub CI NOT_RUN"
+  ],
+  "status": "COMPLETE_BOUNDED_NATIVE_P0__PRODUCTION_REMEDIATION_PARTIAL"
+}
