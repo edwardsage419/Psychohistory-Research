@@ -902,3 +902,9 @@ C009（2026-11-01）及D002（2026-W44，实际2026-10-26）本轮均只读COMPL
 | TH200 | Malinowski1922 Kula长期伙伴、定向流通、延迟回赠，与Henrich等2005十五社会最后通牒博弈及Sosis同行方法评论 | Malinowski1922原书第三章pp81至102直接阅读；Henrich等2005正式原刊pp799至803、807至809的Table1/2/5/6指定范围；Sosis2005正式评论pp833至834及作者回应p843指定段落。Kula仪式互赠与普通议价交易并存，伙伴数受地位约束；跨文化平均UG出价26%至58%，MI与匿名程度相关0.934、与社会复杂性相关0.913，不能识别市场净因果。竞争机制为规范内化、声誉关系策略与实验程序语境。无微观复算、无数学测试、无R E1/E2/E3升级。 | THEORY_NOTE_BOUNDED; NONBLIND; ORIGINAL_SELECTED_RANGES; CAUSAL_UNIDENTIFIED | [研究笔记](TH200_MALINOWSKI_KULA_HENRICH_RECIPROCITY_2026-11-01.md) |
 
 C009（2026-11-01）与D002（2026-W44，2026-10-26）只读COMPLETE。R333至R340 P0历史收据门仍PARTIAL。下一专题优先同文化内部匿名、产权和实验说明的随机化竞争证据，或非洲/南亚交换制度原著。历史未完成的Scott1995正式版、Tang1994、TH187正式版、Kirby S7及Segovia Martín勘误继续保留。先完成全部R系列，再统一分类归纳，最后熔炼。
+
+### 2026-11-01 TH201 社会距离、受赠者可识别性及行动集合对互惠测量的竞争解释
+
+| TH201 | Hoffman等1991工作稿/1996正式原刊、Bohnet与Frey1999正式反驳、List2007正式原刊 | 1991稿印刷pp1至14、1996原刊pp653至659、1999原刊pp335至339、2007原刊pp482至491及p487 Table1直接审读；Bohnet/Frey同为约50%平均赠与条件，严格均分率16%与71%，说明均值无法区分分布；List正向赠与17/24、16/46、5/50、3/47，行动集合与劳动所得影响组间结果。固定效用构造反例说明正向赠与率下降不唯一证明偏好随菜单变化。跨处理随机分配、原始微观数据及独立因果估计未核；1994正式版未对读。 | THEORY_NOTE_BOUNDED; ORIGINAL_SELECTED_RANGES; NONBLIND; CAUSAL_UNIDENTIFIED; SYNTHETIC_COUNTEREXAMPLE | [研究笔记](TH201_ANONYMITY_IDENTIFIABILITY_ACTION_SET_GIVING_2026-11-01.md) |
+
+C009（2026-11-01）与D002（2026-W44，2026-10-26）已完成且只读。R333至R340候选复合验收仍受原生checkout阻塞，R E1/E2/E3无新增。下一主题优先同一社会内随机化操作的原始处理日志或非洲、南亚互惠民族志；旧有文献核验缺口继续开放。先全R，再分类归纳，最后熔炼。
