@@ -16,6 +16,9 @@ const expected=new Set();for(let n of [4,8,12])for(let p of ['1/4','1/2'])for(le
 check(d.research_id==='R179'&&d.status==='E1_ARTIFICIAL_EXACT_IID_WORKING_BETA_POSTERIOR','root status');
 check(d.source_frozen_python_git_blob==='2d032513ce84141214b6b3f84df9c0ed9976a02b'&&d.source_frozen_result_sha256==='57410cf2c110ce3117b7af72e4b7473cee0c3ffd013e6fb99fd43de62165a535','source identity');
 check(d.source_count_mechanism_worlds===30&&d.prior_by_source_worlds===90&&d.full_source_count_PMF_cells===810&&d.new_E2===0&&d.new_E3===0&&d.true_real_human_or_historical_data_scored===false,'counts and evidence');
+check(d.all_central_credible_interval_frequentist_coverages_exact===true&&d.all_two_independent_posterior_Beta_integral_and_CDF_routes_equal===true,'root verification flags');
+check(JSON.stringify(d.prior_grid)==='[{"a":1,"b":3,"label":"A"},{"a":2,"b":2,"label":"S"},{"a":1,"b":1,"label":"U"}]'||
+      Array.isArray(d.prior_grid)&&d.prior_grid.length===3&&new Set(d.prior_grid.map(p=>p.label+':'+p.a+':'+p.b)).size===3&&d.prior_grid.every(p=>['U:1:1','S:2:2','A:1:3'].includes(p.label+':'+p.a+':'+p.b)),'prior grid');
 check(Array.isArray(d.worlds)&&d.worlds.length===90,'world count');
 const seen=new Set();let cells=0,maxlog=0;
 for(const w of d.worlds){
@@ -53,6 +56,9 @@ check(seen.size===90&&cells===810,'universe closure');
 const illustration=d.fixed_n8_p_quarter_15_cases;check(Array.isArray(illustration)&&illustration.length===15,'illustration count');
 const keys=illustration.map(w=>[w.sample_size,w.true_marginal_p,w.training_mechanism,w.prior_label].join('|'));
 check(new Set(keys).size===15&&keys.every(k=>k.startsWith('8|1/4|')&&seen.has(k)),'illustration identity');
+const byKey=new Map(d.worlds.map(w=>[[w.sample_size,w.true_marginal_p,w.training_mechanism,w.prior_label].join('|'),w]));
+const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
+for(let i=0;i<15;i++)check(JSON.stringify(canonical(illustration[i]))===JSON.stringify(canonical(byKey.get(keys[i]))),'illustration content '+keys[i]);
 return {status:'PASS_INDEPENDENT_R179_EXACT_E1',worlds:90,source_cells:810,posterior_cells:810,maximum_logloss_absolute_difference:maxlog,evidence:'INTERNAL_NONBLIND_ARTIFICIAL_E1'};
 }
 if(typeof module!=='undefined'&&require.main===module){
