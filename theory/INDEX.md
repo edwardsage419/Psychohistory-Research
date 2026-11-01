@@ -857,3 +857,8 @@ C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，本轮均只�
 ### 2026-11-01 TH187原始PDF核验补记（不新增TH编号）
 
 2021年arXiv v3原始PDF印刷页6、10、11、39直接核验：Theorem 1和Equation (8)使用严格上尾 >，Theorem 2声称任意alpha下拒绝率等于alpha，附录模拟却采用 >=。2019作者早期稿Equation (3)同样为 >，对应定理写拒绝率<=alpha。六分配精确枚举在alpha=1/20时严格尾部拒绝率1/6，包含平局尾部为0；全平局时严格尾部错误拒绝率1。此前TH187的PDF_SYMBOL_CHECK_OPEN对2021 v3稿已关闭，2022正式发表版公式和作者代码仍NOT_VERIFIED。来源版本、数学反例、范围和未读项详见[TH187 PDF符号核验补记](TH187_PDF_SYMBOL_VERIFICATION_ADDENDUM_2026-11-01.md)。本轮无新TH编号、无R E1/E2/E3升级。C009和D002仍只读。
+
+
+| TH197 | Ostrom2009多中心治理原作规则权利分层与2017权力竞争解释 | Ostrom2009 Indiana作者修订稿PDF第2至24页直接审读，Morrison等2017开放综述前半至权力三分类直接审读，Moe2005原刊摘要；区分五项权利与七类规则，审视229灌溉、163森林及实验90%最优收益的原作者报告和选择偏差。无人工测试、原始实证复算或R E1/E2/E3升级。 | THEORY_NOTE_BOUNDED; NONBLIND; ORIGINAL_DRAFT_NOT_PUBLISHED_TEXT; POWER_MECHANISM_UNIDENTIFIED | [研究笔记](TH197_OSTROM_POLYCENTRIC_RULES_POWER_CRITIQUE_2026-11-01.md) |
+
+2026-11-01 C009已完成、2026-W44 D002已完成，本轮只读。下一原著深读优先政治权力与行政可读性原始章节，或核验Ostrom2010正式版差异；TH187的Puelz2022正式公式、Kirby2017 S7和Segovia-Martín2020勘误图像仍开放。
