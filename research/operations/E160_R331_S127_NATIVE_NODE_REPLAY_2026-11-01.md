@@ -1,0 +1,17 @@
+# E160 R331 S127 original Node CLI source and receipt replay
+Date: 2026-11-01 UTC. Track: operations. Key: (operations,R331,S127-v1,native-node-archived-source-and-receipt-gap). Baseline main: caf6d580a54bbc5e0f2c6132f22a9d1833263878. Status: COMPLETE_BOUNDED_READ_ONLY.
+
+## New complementary audit
+Read current main, latest 15 commits, 12 open Codex PR titles and descriptions, R331 S127 freeze, primary scientific report, 72-row JSON receipt, original JavaScript, B independent Fraction addendum, R coordination handoff, and project owner ordering and acceptance standard. B previously verified full Fraction arithmetic, byte-exact receipt and six active negative controls. This audit targeted the explicit original native Node CLI NOT_RUN gap, avoiding duplicated arithmetic work.
+
+Fetched the archived primary JS text through the connected GitHub source and saved exact bytes to a disposable local path. Git 2.47.3 hash-object returned b06ec9c5d25f2751defcb8183834a23c38d64586, exactly the GitHub source blob. Ran Node v22.16.0 original CLI with output file and also via stdout. Both generated exactly 13,960 bytes with Git blob b74142527d87e458fe363c40e50bbc6d8c2eadba, identical to the archived JSON receipt. Exit status 0. This closes the specific original Node CLI execution gap for S127 in this environment. It is not independent science validation; the existing B nonblind Fraction oracle provides the separate internal arithmetic route.
+
+The R331 S127 prescore freeze commit is 200bca2798aa45245f97f7383604415d54d3ec94. The result commit is 0d1cd0d0e9b9c2f2f9f799204359fcdf59eb1b32. GitHub compare freeze to result reports ahead 2, behind 0 and only two newly added validation paths (source JS and receipt JSON). This confirms ancestry in the checked interval, not universal absence of earlier disclosure. The 72 rows cover 9 constructed worlds and t=0..7. No E2/E3 or human memory inference. R331 S127 remains PARTIAL_E1_EXTENSION.
+
+## Cross-track governance and unresolved issues
+At inspection main HEAD caf6d580a54bbc5e0f2c6132f22a9d1833263878, latest R331 S127 coordination was complete, theory TH195 present, R330 S126 B and A handoffs read, original239 and pending154 identifiers reported unchanged in R handoff but not itemwise independently audited. Twelve open Codex PRs were enumerated. PR #1 R257 S53 counterexamples, PR #3 candidate guard and PR #2 sync protocol were individually read and remain OPEN_UNMERGED; no PR adoption claimed. R324 S120 native selftest negative-control defect remains OPEN. A openICPSR 182668 V1 17-study source lineage lacks eligible raw dyadic 100-round rows and E2/E3 remains unavailable.
+
+The result commit combined status returned zero statuses. PR-triggered workflow run first page returned zero runs. This bounded query cannot establish global CI absence; no Actions launched here. No changes to other-track files, original R artifacts, protocols, or shared indices. No new charges, billing/quota NOT_VERIFIED. Remaining R331 S127 limits: external replication NOT_RUN, original E1-only model and no human source. No E2/E3 promotion.
+
+## Next
+E161 target newest R332 or next live R extension, inspect open native execution or source qualification gap after comparing B and Codex records; keep R324 selftest and R257 PR boundary on register.

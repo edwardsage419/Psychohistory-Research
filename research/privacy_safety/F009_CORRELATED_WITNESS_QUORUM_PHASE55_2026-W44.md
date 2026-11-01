@@ -1,0 +1,15 @@
+# F009 phase55 common-operator witness quorum failure
+Date: 2026-11-01 UTC, W44. Track: privacy_safety. Key: (privacy_safety,F009,phase55,correlated-witness-operator-domains). Status: COMPLETE_BOUNDED. Baseline main caf6d580a54bbc5e0f2c6132f22a9d1833263878.
+
+## Original English sources
+Sigstore Rekor architecture https://github.com/sigstore/architecture-docs/blob/main/rekor-spec.md describes independent witnesses and checkpoint distribution; Sigstore threat model https://docs.sigstore.dev/about/threat-model/ explicitly considers component compromise and limitations of signature identity guarantees. RFC 9162 https://www.rfc-editor.org/rfc/rfc9162.html discusses split views and gossip. These sources concern software/certificate transparency, not an existing personal-decision credential deployment. Independence of operators, keys and hardware is a candidate risk requirement, not guaranteed by counting endpoints.
+
+## Synthetic test
+Three witness slots W1 and W2 share OP_X, W3 is OP_Y. Each can return VALID, REVOKED or MISSING. Enumerated 27 ordered states with Node v22.16.0 using research/privacy_safety/f009_phase55_correlated_witnesses_20261101.js. Nine assertions PASS. Naive count-two-matching rule returns REVIEW_ONLY for VALID,VALID,MISSING even though both votes share one operator. Candidate independence-aware rule returns UNKNOWN_QUARANTINE. VALID,MISSING,VALID permits REVIEW_ONLY because the visible labels come from two assumed independent domains. VALID,VALID,REVOKED returns CONFLICT_QUARANTINE despite a numerical majority.
+
+All 27 states: REVIEW_ONLY 3, REJECT 3, CONFLICT_QUARANTINE 12, UNKNOWN_QUARANTINE 9. In four states naive two-VALID acceptance differs from the cautious rule. Automatic high-impact restoration remains zero in both proposed policies. The counts are a constructed combinatorial universe, not breach frequencies or privacy measurements.
+
+## Candidate controls and limits
+Verify authenticated witness operator domain, separate keys and devices, current issuer authority, checkpoint consistency and trusted epoch; do not count two replicas of one operator as independent. Preserve UNKNOWN on insufficient evidence, block automatic high-impact restoration, and offer human dispute. Reduce linkage by avoiding stable personal IDs in checkpoint requests and setting explicit retention periods. Real independence cannot be inferred from operator labels alone; common cloud administrators, software supply chains and signing keys can correlate even nominally separate organizations. The script assumes authenticated domain labels and messages; no real signatures, proofs, networks, user accounts or sensitive data were used. E1 synthetic only, E2=0, E3=0, no user decision product implemented and no paid service.
+
+Next: investigate authenticated operator-independence evidence and quorum compromise when multiple ostensibly distinct domains share infrastructure; retain no automatic restoration.
