@@ -1,0 +1,153 @@
+{
+  "schema": "r333_r340_remote_nonblind_receipt_v1",
+  "run_date_utc": "2026-11-01",
+  "baseline_main": "cc9a66cf623098b86df0edbf5eb06cbb4956f45e",
+  "source": "GitHub connector fetch_file on pinned main SHA",
+  "evidence_grade": "E1_ARTIFICIAL_ONLY",
+  "method": "nonblind independent JavaScript V8 finite enumeration against persisted CSV and JSON; original Python model implementations not imported or executed",
+  "source_identity_check": "GitHub reported Git blob sha matches previously frozen source/CSV/JSON pins; no local recomputation of SHA1 from raw bytes",
+  "models": [
+    {
+      "id": "R333",
+      "rows_checked": 160,
+      "worlds_checked": 32,
+      "source_blob": "c28c82a6a18ababe8da14b0f48c846d940bf32b3",
+      "csv_blob": "8a202f773badb8833992ff0df25c3c90f60b3680",
+      "json_blob": "dd82e1f616528742622ebafc844ec66adadf18b5",
+      "remote_blob_match": [
+        true,
+        true,
+        true
+      ],
+      "row_and_selected_world_arithmetic": "PASS",
+      "independent_method": "XOR triadic state transitions and final states"
+    },
+    {
+      "id": "R334",
+      "rows_checked": 48,
+      "worlds_checked": 16,
+      "source_blob": "7d232a07d9d2979c2fcc8a407dd8bda18cd8ab93",
+      "csv_blob": "6e3bdcc5ca07d1321a651c29b899798a32f7fb72",
+      "json_blob": "02883b6b9cfc22b3b855d8a7cbaa5e5ddf6bd86c",
+      "remote_blob_match": [
+        true,
+        true,
+        true
+      ],
+      "row_and_selected_world_arithmetic": "PASS",
+      "independent_method": "integer rational post-attitude and latent strain"
+    },
+    {
+      "id": "R335",
+      "rows_checked": 384,
+      "worlds_checked": 128,
+      "source_blob": "9c005079716fe38eb4cb6d99730884a55e2795a3",
+      "csv_blob": "f5987d4d9da8ef7532a3615b5f7fb6efbd4701cb",
+      "json_blob": "4ab8f69cbd483099dd2a1be28cb052e1e3bdb279",
+      "remote_blob_match": [
+        true,
+        true,
+        true
+      ],
+      "row_and_selected_world_arithmetic": "PASS",
+      "independent_method": "majority, pressure, audit decisions, all nine JSON world outputs and all frozen aggregate checks"
+    },
+    {
+      "id": "R336",
+      "rows_checked": 96,
+      "worlds_checked": 48,
+      "source_blob": "bcbf7b40c1f8ba86d5478d57509a437b5ba0279f",
+      "csv_blob": "efa20e7d6432a1a6c7bd0abd53384b36e23422e5",
+      "json_blob": "2704b6066a7f3842c2273c8262d9fd41e2483d73",
+      "remote_blob_match": [
+        true,
+        true,
+        true
+      ],
+      "row_and_selected_world_arithmetic": "PASS",
+      "independent_method": "defense, baseline, transfer, support and retained gain"
+    },
+    {
+      "id": "R337",
+      "rows_checked": 64,
+      "worlds_checked": 32,
+      "source_blob": "96e9e2be1b7d7ac0ac7b3cfcf05c7c81e938090d",
+      "csv_blob": "e711da9e296693037e5a87def3604b3fe53025e8",
+      "json_blob": "5061ce0d74a9703e9a11ef2180395066a99aca1f",
+      "remote_blob_match": [
+        true,
+        true,
+        true
+      ],
+      "row_and_selected_world_arithmetic": "PASS",
+      "independent_method": "central gate and two route scores"
+    },
+    {
+      "id": "R338",
+      "rows_checked": 128,
+      "worlds_checked": 64,
+      "source_blob": "1ee4cff348278f208628358b626174fd5fcb5524",
+      "csv_blob": "c434463b5a3c1e4dc4da068dfd6e720466e68ce3",
+      "json_blob": "7f428ceaa0ff89ac359437e4e99768ebe06e4776",
+      "remote_blob_match": [
+        true,
+        true,
+        true
+      ],
+      "row_and_selected_world_arithmetic": "PASS",
+      "independent_method": "reference gap and four gate grievance"
+    },
+    {
+      "id": "R339",
+      "rows_checked": 100,
+      "worlds_checked": 50,
+      "source_blob": "ed769df49658f345e78859f2be733b5b43322791",
+      "csv_blob": "fe06c06c7f158ab174251f1a14d184a4317b3371",
+      "json_blob": "817389e331f07dda90ae291daef9b20df1f65363",
+      "remote_blob_match": [
+        true,
+        true,
+        true
+      ],
+      "row_and_selected_world_arithmetic": "PASS",
+      "independent_method": "similarity and high-score target choices and absolute error"
+    },
+    {
+      "id": "R340",
+      "rows_checked": 48,
+      "worlds_checked": 3,
+      "source_blob": "7bd287300825266be1a13fc12229b8c48b01e7a7",
+      "csv_blob": "36ae0a9a11d2f27dacd8948f9617122eade0c40c",
+      "json_blob": "e5615c6d99bd79acac5501bda60976b3f7d3cad2",
+      "remote_blob_match": [
+        true,
+        true,
+        true
+      ],
+      "row_and_selected_world_arithmetic": "PASS",
+      "independent_method": "two-node SIS generator off-diagonal rates, diagonals, twelve zero row sums and first event probabilities"
+    }
+  ],
+  "totals": {
+    "remote_files_checked": 24,
+    "remote_blob_matches": 24,
+    "csv_rows_checked": 1028,
+    "json_worlds_checked": 373,
+    "r335_additional_json_world_fields_checked": 1152,
+    "r340_generator_zero_row_sums_checked": 12
+  },
+  "limits": [
+    "Frozen JSON aggregate check summaries independently recalculated for R335 only; other model summaries were read but not independently recomputed",
+    "CSV fields were simple comma-separated data, parsed by splitting lines and columns in the ephemeral V8 audit",
+    "No original Python native CLI or eight-model acceptance entrypoint executed against a complete checkout",
+    "No independent SHA1 recomputation from downloaded raw bytes",
+    "No new mutation testing, E2, E3, out-of-sample predictions, or external independent replication",
+    "The executed JavaScript audit code was ephemeral and is not included in this receipt; the archived Python strict validators remain the runnable independent method"
+  ],
+  "acceptance_entrypoint": "research/evidence_audit/r333_r340_acceptance_entry_20261101.py",
+  "acceptance_entrypoint_blob": "9822418253c6a2888119c2a823ffee62dd945d7c",
+  "native_acceptance": "NOT_RUN",
+  "mandatory_production_adoption": "NOT_DONE",
+  "ci": "NOT_RUN",
+  "billing_checked": "NOT_VERIFIED"
+}
