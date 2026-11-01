@@ -889,3 +889,10 @@ Indiana University馆藏Tang与Ostrom1993 *The Governance and Management of Irri
 ### 2026-11-01 TH198 Scott1995原作机构转载阅读与版本边界补记（不新增TH编号）
 
 Roskilde University开放学术期刊系统2014年上架Scott《State Simplifications: Nature, Space and People》同题PDF，直接阅读印刷pp82–95、99–105、109–110、117–120，确认行政分类既可增强疫情监测和公共服务，也可能弱化地方权利、改变被测对象；Scott自己承认地方习俗存在排除与争议，科学农业知识也可供农户自主采用。原文对习惯产权村庄的描述是构造性例子，林业史主要引用Lowood1991，未独立复算。**PDF共39页、末页120正文句中截断**，与1995 Wiley原刊pp191–233版本身份及缺页未核，正式全文仍PARTIAL。与Mann1984、Mitchell1991、Ostrom2009/2010形成明确竞争解释，均未识别现实因果。详见[TH198 Scott原文与截断审计补记](TH198_SCOTT_STATE_SIMPLIFICATIONS_PRIMARY_REPRINT_AUDIT_2026-11-01.md)。C009 2026-11-01、D002 2026-W44（2026-10-26）均只读COMPLETE；R E1/E2/E3无新增，CI NOT_RUN，账户计费NOT_VERIFIED。下一步优先原刊版本与转载缺页核验，或转向弱覆盖独立学科原作。
+
+
+### 2026-11-01 TH199 两篇独立原著：行政信息能力与文书物质实践
+
+| TH199 | Hull2008伊斯兰堡征地民族志与Brambor等2020跨国历史信息能力测量的竞争解释 | Hull2008作者机构正式排版原刊PDF pp501–515、图1/2，目视核验pp508、509、513–515；Brambor等2020 SAGE CC BY开放原刊HTML方法、历史叙述、表1–4及结论直接阅读。Hull记录同一官僚机构两种地籍口径、名单和实物标记操纵；Brambor五指标IRT覆盖85政体，表2普选权变化列4系数2.88(SE0.74,N8158)，表3政治竞争列4为0.26(SE0.61,N7738)。登记制度与实际记录准确性、公共服务和强制能力应分别测量；跨国关联不构成净因果，单个民族志不直接否定跨国模型。无底层数据重估或R E1/E2/E3新增。 | THEORY_NOTE_BOUNDED; ORIGINAL_PUBLISHED_TEXT; NONBLIND; NO_REAL_DATA_REESTIMATION | [研究笔记](TH199_HULL_BRAMBOR_RECORD_MATERIALITY_INFORMATION_CAPACITY_2026-11-01.md) |
+
+C009（2026-11-01）及D002（2026-W44，实际2026-10-26）本轮均只读COMPLETE。下一主题优先经济人类学礼物交换与互惠的跨文化竞争原著；Scott1995正式版、Tang1994、TH187、Kirby S7及Segovia Martín勘误继续PARTIAL。先完成全部R，再分类归纳，最后熔炼。
