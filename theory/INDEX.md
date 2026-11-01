@@ -834,3 +834,8 @@ C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH19
 | TH192 | 文化记忆重构、内容显著性、三阶段传播与网络接触次序的竞争识别 | Stubbersfield/Tehrani/Flynn2015作者稿指定章节、Segovia-Martín等2020开放原刊及正式Equation 2勘误、Wagoner/Gillespie2014摘要；14项条件命题、21项标准库Fraction人工测试普通及优化模式均通过。三种接收/记忆/转发机制末端均1/2，显著内容接收优势可被记忆损失抵消；8人3轮各12次唯一接触的不同日程终点覆盖8对4。真实微观复算、现实因果估计、历史预测及R E1/E2/E3新增均0 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; EQUATION_2_ERRATUM_IMAGE_OPEN | [研究笔记](TH192_CULTURAL_MEMORY_CONTENT_NETWORK_STAGE_IDENTIFICATION_2026-11-01.md)；[人工审计脚本](th192_memory_network_exact_audit.py) |
 
 C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH193：共同回忆的来源监测、错误信息污染与历史档案选择；继续核验2020 Equation 2勘误、Kirby2017 S7、TH187 PDF符号。
+
+
+| TH193 | 来源监测、同伴记忆污染、共同回忆网络收敛与历史档案选择不可识别性 | Johnson等1993开放原作框架、Coman等2016 PNAS开放原刊指定章节、Trouillot1995原书第2章前部直接审读；Gabbert等2003、Roediger等2001原刊摘要及Kipping等2014机构摘要；14项条件命题、22项标准库Fraction人工测试普通与优化模式均通过。共享来源误报两份同时为1/4、独立为1/16；两档案世界可观察概率均(3/8,1/8,1/2)，真实事件率却为1/2与3/4；140人14网络的交互P=0.054。无真人复算、独立现实因果、历史留出或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; SOURCE_AND_ARCHIVE_NONIDENTIFICATION | [研究笔记](TH193_SOURCE_MONITORING_SOCIAL_MEMORY_ARCHIVE_SELECTION_2026-11-01.md)；[精确审计脚本](th193_source_archive_exact_audit.py) |
+
+C今日2026-11-01已有C009，D本周2026-W44已有D002，本轮均只读。下一TH194：来源谱系依赖、记忆污染干预与档案缺失联合敏感性；保留TH187 PDF、Kirby2017 S7及Segovia-Martín2020 Equation 2勘误图像核验。先全R、再分类、最后熔炼。
