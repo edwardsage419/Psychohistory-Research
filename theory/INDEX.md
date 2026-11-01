@@ -852,3 +852,8 @@ C今日2026-11-01已有C009，D本周2026-W44已有D002，均只读。下一TH19
 | TH196 | 来源测验反应性、误导暴露依从性、组级失访及部分识别 | Chan/Thomas/Bulevich2009获许可作者原稿PDF第3至15页直接审读，Roediger/Karpicke2006、Angrist/Imbens/Rubin1996、Lee2009正式摘要及书目；16项条件命题，25项标准库Fraction人工测试在普通及优化模式均通过。人工初测与误导交互1/4，邀请排除限制破坏使Wald由1/2变7/10，信息性失访总体ATE锐界[-1/8,5/8]，单调选择下始终可观察者界[0,1/2]。无真人微观复算、现实因果估计或R E1/E2/E3新增 | THEORY_NOTE_BOUNDED; NONBLIND; SYNTHETIC_ONLY; COMPLIANCE_EXCLUSION_UNVERIFIED; ATTRITION_SELECTION_UNIDENTIFIED | [研究笔记](TH196_RETRIEVAL_REACTIVITY_COMPLIANCE_ATTRITION_BOUNDS_2026-11-01.md)；[精确脚本](th196_reactivity_compliance_attrition_audit.py) |
 
 C今日2026-11-01 C009已完成，D本周2026-W44 D002已完成，本轮均只读。下一TH197：组级网络干扰下的测验反应性与信息性失访联合设计；TH187 PDF、Kirby2017 S7及Segovia-Martín2020 Equation 2勘误图像核验继续开放。先全R、再分类、最后熔炼。
+
+
+### 2026-11-01 TH187原始PDF核验补记（不新增TH编号）
+
+2021年arXiv v3原始PDF印刷页6、10、11、39直接核验：Theorem 1和Equation (8)使用严格上尾 >，Theorem 2声称任意alpha下拒绝率等于alpha，附录模拟却采用 >=。2019作者早期稿Equation (3)同样为 >，对应定理写拒绝率<=alpha。六分配精确枚举在alpha=1/20时严格尾部拒绝率1/6，包含平局尾部为0；全平局时严格尾部错误拒绝率1。此前TH187的PDF_SYMBOL_CHECK_OPEN对2021 v3稿已关闭，2022正式发表版公式和作者代码仍NOT_VERIFIED。来源版本、数学反例、范围和未读项详见[TH187 PDF符号核验补记](TH187_PDF_SYMBOL_VERIFICATION_ADDENDUM_2026-11-01.md)。本轮无新TH编号、无R E1/E2/E3升级。C009和D002仍只读。
