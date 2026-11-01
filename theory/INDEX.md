@@ -937,3 +937,7 @@ Duflo2003正式期刊PDF印刷p9 Table3、p15 Table5、p21 Table7的图像已直
 | TH204 | Sen1981《Poverty and Famines》原著pp45至51、52至68指定段落及附录A pp167至170；Tauger2003仅原刊摘要，Greenough1980仅原刊开头节录。区分禀赋损失、交换权利映射、自然灾害供给冲击及保全生产资产的策略。1943孟加拉粮食总量存在历史统计口径争议；7项有限算术/构造断言PASS，Table6.2视觉、真实历史复算及因果识别NOT_RUN。 | THEORY_NOTE_BOUNDED; ORIGINAL_SELECTED_TEXT; COMPETITOR_ABSTRACT_ONLY; HISTORICAL_CLAIM_CONTESTED | [研究笔记](TH204_SEN_1981_ENTITLEMENT_FAMINE_HISTORICAL_CONTEST_2026-11-02.md) |
 
 C010（2026-11-02）与D003（2026-W45，2026-11-02）只读COMPLETE。R073、PESEN v0.1及R E1/E2/E3不变。下一步1945原始调查表与Tauger2003正文，未进入统一分类或模型熔炼。
+
+### 2026-11-02 TH204 1945年官方原始报告多数与异议核验（沿用TH204）
+
+直接阅读Famine Inquiry Commission (1945) *Report on Bengal* Chapter III pp12至15、Chapter XI p103、Appendix II pp202至203及210至216、Husain独立意见pp187至189；目视核验p14、p189、p212、p216。多数估计1943年当期43周+结转6周=49周，缺3周约58万吨；Husain质疑结转并主张短缺至少150万吨。附录p216当期836万吨与需求1014万吨差178万吨，减结转116万吨得62万吨，与转述58万吨相差4万吨，舍入或口径未闭合。Husain的9个月需求670/720万吨减550万吨得120/170万吨，150万吨非3 seers假设的严格下界。9项Decimal算术PASS；库存原始记录、真实历史复算、因果估计NOT_RUN。C010(2026-11-02)及D003(2026-W45,2026-11-02)只读。见[TH204 1945年调查委员会多数与异议补记](TH204_1945_FAMINE_INQUIRY_MAJORITY_DISSENT_SUPPLY_ADDENDUM_2026-11-02.md)。保留R冻结和证据分级。
