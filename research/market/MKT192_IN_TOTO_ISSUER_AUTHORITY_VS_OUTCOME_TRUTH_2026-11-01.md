@@ -1,0 +1,19 @@
+# MKT192: in-toto and W3C VC issuer authorization versus decision-outcome truth
+Date: 2026-11-01 UTC. Track: market. Key: (market,in-toto-VC2,statement-v1-and-VC2.0,issuer-authority-does-not-prove-outcome). Baseline main: f3c827a1a72af27b60f041d1f3e2f57a5a8b1537. Status: COMPLETE_BOUNDED.
+
+## Original non-Chinese sources and evidence classes
+* in-toto Statement v1 official schema: https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md . Statement binds subject digest to a predicateType and predicate. The format alone does not authorize an issuer or adjudicate empirical truth.
+* W3C Verifiable Credentials Data Model v2.0, Recommendation 2025-05-15: https://www.w3.org/TR/vc-data-model/ . Verifying a current issuer statement and accepting its claims under verifier policy are separate; signature authenticity does not establish truth. Issuer, subject, evidence, status and validity matter independently.
+* Sigstore official threat model: https://docs.sigstore.dev/about/threat-model/ . A valid signature identifies an authenticated signer under explicit trust assumptions, without proving that signer is authorized for this claim or that a signed artifact is good.
+
+## Mechanism, inputs, outputs, limitations, cost
+Candidate open-source provenance pattern, not a purchased personal decision product. Input: synthetic forecast D1 with probability 0.8, asserted SUCCESS or FAILURE outcome, issuer, evidence pointer, revision and digest. State: original forecast record, typed attestation subject, issuer, permission scope, evidence status and revision. in-toto supports typed digest-bound statements. W3C VC represents issuer, subject, validity, status and supporting evidence. Neither specification supplies a universal life-utility objective, empirical outcome oracle, feedback optimizer or automatic calibration. A future evaluator would need a separate policy for outcome confirmation and to report confirmation coverage and disputes.
+
+Explainability: inspectable provenance and explicit policy rejection reasons. Privacy: stable subject IDs, signatures, verifier queries and evidence pointers may link sensitive decisions across contexts. Minimize identifiers and avoid public personal outcomes. Costs: public documents and local Python standard-library test, no accounts, subscriptions, cloud, paid APIs, GPU or CI. Real deployment costs are unassessed.
+
+## Executed artificial policy experiment
+Executable: research/market/mkt192_issuer_claim_policy_synthetic_20261101.py . Local Python standard-library HMAC is an intentionally simplified authenticity stand-in. It does not implement W3C VC, in-toto DSSE, real asymmetric signatures or independent evidence checking. Twelve assertions PASS. A SELF signer can authentically sign a self report but cannot promote it to independent reviewer authority. REVIEWER's statement is eligible for review only with matching subject, revision and independently accepted evidence. Payload tampering and issuer relabeling are rejected. Two mutually contradictory outcome claims can both be correctly authenticated and within reviewer permission scope; empirical truth remains unresolved. No actual third party attested an outcome.
+
+## Candidate controls and boundaries
+Keep AUTHENTICATED, ISSUER_AUTHORIZED, EVIDENCE_CHECKED, OUTCOME_ADJUDICATED, DISPUTED and UNKNOWN distinct. A valid proof must not automatically promote an outcome to E2/E3. Preserve revisions, subject binding, issuer scope, revocation freshness, disputes and appeals. No predefined utility weights or automated high-impact decisions. NONBLIND INTERNAL E1 synthetic engineering only, no human E2, historical E3, or implemented personal decision product.
+Next: documentary audit of offline open-source credential verifier scope and revocation checks; no paid infrastructure.
