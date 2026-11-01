@@ -1,0 +1,348 @@
+{
+  "run_date_utc": "2026-11-01",
+  "environment": "CPython 3.13.5, standard library, isolated temp directories",
+  "source_provenance": "All four original Python sources and eight regenerated receipts were Git-blob-identical to pinned main",
+  "source_blobs": {
+    "R333": "c28c82a6a18ababe8da14b0f48c846d940bf32b3",
+    "R337": "96e9e2be1b7d7ac0ac7b3cfcf05c7c81e938090d",
+    "R338": "1ee4cff348278f208628358b626174fd5fcb5524",
+    "R339": "ed769df49658f345e78859f2be733b5b43322791"
+  },
+  "test_scope": "Original --test --audit and independent strict checker, normal and -O, five input conditions per model",
+  "original_native_subprocesses": 40,
+  "strict_native_subprocesses": 40,
+  "optimized_original_false_accepts": 12,
+  "strict_negative_rejections": 32,
+  "all_40_pairs_expected_matched": true,
+  "negative_controls": "csv_corrupt, json_corrupt, both_missing, source_comment",
+  "code_and_data_scope": "E1 synthetic receipt integrity and independently enumerated finite semantics",
+  "production_entry_repaired": false,
+  "python_311_312": "NOT_RUN",
+  "external_team": "NOT_RUN",
+  "real_human_e2": "NOT_RUN",
+  "historical_e3": "NOT_RUN",
+  "ci": "NOT_RUN",
+  "billing": "NOT_VERIFIED",
+  "rows": [
+    {
+      "model": "R333",
+      "case": "valid",
+      "optimized": false,
+      "original_exit": 0,
+      "strict_exit": 0,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "valid",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 0,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "csv_corrupt",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "csv_corrupt",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "json_corrupt",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "json_corrupt",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "both_missing",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "both_missing",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "source_comment",
+      "optimized": false,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R333",
+      "case": "source_comment",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "valid",
+      "optimized": false,
+      "original_exit": 0,
+      "strict_exit": 0,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "valid",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 0,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "csv_corrupt",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "csv_corrupt",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "json_corrupt",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "json_corrupt",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "both_missing",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "both_missing",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "source_comment",
+      "optimized": false,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R337",
+      "case": "source_comment",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "valid",
+      "optimized": false,
+      "original_exit": 0,
+      "strict_exit": 0,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "valid",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 0,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "csv_corrupt",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "csv_corrupt",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "json_corrupt",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "json_corrupt",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "both_missing",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "both_missing",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "source_comment",
+      "optimized": false,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R338",
+      "case": "source_comment",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "valid",
+      "optimized": false,
+      "original_exit": 0,
+      "strict_exit": 0,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "valid",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 0,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "csv_corrupt",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "csv_corrupt",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "json_corrupt",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "json_corrupt",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "both_missing",
+      "optimized": false,
+      "original_exit": 1,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "both_missing",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "source_comment",
+      "optimized": false,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    },
+    {
+      "model": "R339",
+      "case": "source_comment",
+      "optimized": true,
+      "original_exit": 0,
+      "strict_exit": 1,
+      "observed_expected_match": true
+    }
+  ]
+}
