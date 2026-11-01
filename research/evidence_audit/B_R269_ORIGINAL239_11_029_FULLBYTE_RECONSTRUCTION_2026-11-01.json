@@ -1,0 +1,69 @@
+{
+  "track": "R+B",
+  "subflow": "original239 P0 11-029 itemwise source and exact mathematical audit",
+  "run_date_utc": "2026-11-01",
+  "observed_main_before_work": "3e800f3d2ad0ba7aaf99ad160818bee2f5ce50b2",
+  "model": "R269",
+  "catalogue_id": "11-029",
+  "source_type": "six independent binary groups with two repeated rows each; nine artificial worlds",
+  "frozen_protocol_path": "protocols/R269_GROUP_VS_ROW_CROSS_VALIDATION_576_SOURCE_ATOMS_PRESCORE_FREEZE_2026-10-23.md",
+  "frozen_protocol_blob": "5c34e78a4a846786049a83348437c08eb82454a7",
+  "frozen_protocol_commit": "1ba86be0a35b77c0d5e5f6a72bb102ba08c48795",
+  "source_csv_path": "research/R269/R269_ALL_576_ORIGINAL_CLUSTERED_CV_SOURCE_TYPES.csv",
+  "source_csv_git_blob": "20b33f85a9408655cfbd7bdbfc1de15ec534571e",
+  "source_csv_sha256": "6bc98c0c07c2a6d48184e6a8643dbd515dfa470ba626a10928d90614ce75155d",
+  "source_csv_bytes": 183253,
+  "results_json_path": "research/R269/R269_EXACT_RESULTS.json",
+  "results_json_git_blob": "4947ccb7a53de1343216e1b69773d0a5c4ea1f29",
+  "results_json_sha256": "d7dda54fdd07148713cd8acbaaafb06bc1282a005b48b09f570211e1a7d4193e",
+  "results_json_bytes": 3431,
+  "oracle_path": "research/validation/r269_exact_byte_rebuild_compact_20261101.py",
+  "oracle_git_blob": "1dfea84222c2b8cb3017eb5ff1bace8cd82e803e",
+  "oracle_commit": "e81572ee82e26924a791db52df11ba1866eb222b",
+  "native_environment": "CPython 3.13.5, Linux, standard library, deterministic Fraction; no seed",
+  "native_commands": [
+    "python r269_exact_byte_rebuild_compact_20261101.py",
+    "python -O r269_exact_byte_rebuild_compact_20261101.py"
+  ],
+  "native_execution": {
+    "normal": "PASS",
+    "optimized": "PASS",
+    "outputs_identical": true,
+    "source_rows": 576,
+    "worlds": 9,
+    "prediction_cells": 13824,
+    "loss_cells": 13824,
+    "source_blob_match": true,
+    "results_blob_match": true,
+    "source_sha256_match": true,
+    "results_sha256_match": true
+  },
+  "separate_connector_v8_audit": {
+    "status": "PASS",
+    "source_rows_parsed": 576,
+    "worlds": 9,
+    "individual_prediction_cells": 13824,
+    "individual_loss_cells": 13824,
+    "errors": 0,
+    "independent_method": "BigInt rational CSV parser checks every persisted cell and nine weighted scores"
+  },
+  "negative_controls": {
+    "source_byte_mutation_rejected": true,
+    "results_e2_promotion_byte_mutation_rejected": true
+  },
+  "scientific_scope": "INTERNAL_NONBLIND_FINITE_ARTIFICIAL_E1_ONLY",
+  "new_human_E2": 0,
+  "new_historical_E3": 0,
+  "external_team_replication": "NOT_RUN",
+  "original239_queue_net_closed": 0,
+  "formal_itemwise_acceptance": "PENDING",
+  "main_production_R333_R340_p0": "OPEN",
+  "ci_status": "NOT_RUN",
+  "billing_checked": "NOT_VERIFIED",
+  "new_paid_operations": 0,
+  "limits": [
+    "Rebuilt bytes from frozen mathematical design and prior original code exposure; not a blind independent team.",
+    "No authentic human behavior or external sample evaluated.",
+    "No change to frozen protocol, original artifacts, queue or scientific acceptance status."
+  ]
+}
