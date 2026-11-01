@@ -885,3 +885,7 @@ Indiana University馆藏1989年Tang原始扫描PDF印刷pp60–68、78–82及Ta
 ### 2026-11-01 TH197 Tang/Ostrom1993作者原始工作论文及官僚子样本表核验（沿用TH197）
 
 Indiana University馆藏Tang与Ostrom1993 *The Governance and Management of Irrigation Systems* 原始工作论文印刷pp1–4、7–11、13–20直接审读，p17 Table2目视核验。14个官僚治理案例中8个有地方集体选择机构，6个无；规则遵守和维护两项均良好的分别6/8与0/6。表格独立算术Fisher双侧29/3003、Yates卡方5887/1152约5.11，8项断言PASS。另核对37例中22例固定时段配水、19例中18例水少时收紧规则、11例维护劳动资料7/4两组平均2.3/17.7劳动日；不同分母、选择偏差及同一Tang数据源不能当独立因果复算。1993为工作论文；Tang1994正式章pp229–234及Ostrom2010 p650分母冲突仍PARTIAL。详见[TH197 Tang/Ostrom1993原始论文与Table2核验补记](TH197_TANG_OSTROM_1993_GOVERNANCE_PRIMARY_TABLE_ADDENDUM_2026-11-01.md)。C009于2026-11-01已完成，D002于2026-10-26（W44）已完成，均只读。R E1/E2/E3无新增，CI NOT_RUN，账单NOT_VERIFIED。下一理论优先Scott1995正式原文或1998著作合法开放原著，避免继续围绕灌溉案例增加重复TH编号。
+
+### 2026-11-01 TH198 Scott1995原作机构转载阅读与版本边界补记（不新增TH编号）
+
+Roskilde University开放学术期刊系统2014年上架Scott《State Simplifications: Nature, Space and People》同题PDF，直接阅读印刷pp82–95、99–105、109–110、117–120，确认行政分类既可增强疫情监测和公共服务，也可能弱化地方权利、改变被测对象；Scott自己承认地方习俗存在排除与争议，科学农业知识也可供农户自主采用。原文对习惯产权村庄的描述是构造性例子，林业史主要引用Lowood1991，未独立复算。**PDF共39页、末页120正文句中截断**，与1995 Wiley原刊pp191–233版本身份及缺页未核，正式全文仍PARTIAL。与Mann1984、Mitchell1991、Ostrom2009/2010形成明确竞争解释，均未识别现实因果。详见[TH198 Scott原文与截断审计补记](TH198_SCOTT_STATE_SIMPLIFICATIONS_PRIMARY_REPRINT_AUDIT_2026-11-01.md)。C009 2026-11-01、D002 2026-W44（2026-10-26）均只读COMPLETE；R E1/E2/E3无新增，CI NOT_RUN，账户计费NOT_VERIFIED。下一步优先原刊版本与转载缺页核验，或转向弱覆盖独立学科原作。
