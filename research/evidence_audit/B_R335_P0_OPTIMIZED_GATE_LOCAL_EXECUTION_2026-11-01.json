@@ -1,0 +1,158 @@
+{
+  "cases": {
+    "both_missing": {
+      "normal": {
+        "original": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        },
+        "strict": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        }
+      },
+      "optimized": {
+        "original": {
+          "exit": 0,
+          "pass_claim": true,
+          "strict_claim": false,
+          "unit_ok": true
+        },
+        "strict": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        }
+      }
+    },
+    "clean": {
+      "normal": {
+        "original": {
+          "exit": 0,
+          "pass_claim": true,
+          "strict_claim": false,
+          "unit_ok": true
+        },
+        "strict": {
+          "exit": 0,
+          "pass_claim": false,
+          "strict_claim": true,
+          "unit_ok": false
+        }
+      },
+      "optimized": {
+        "original": {
+          "exit": 0,
+          "pass_claim": true,
+          "strict_claim": false,
+          "unit_ok": true
+        },
+        "strict": {
+          "exit": 0,
+          "pass_claim": false,
+          "strict_claim": true,
+          "unit_ok": false
+        }
+      }
+    },
+    "csv_corrupt": {
+      "normal": {
+        "original": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        },
+        "strict": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        }
+      },
+      "optimized": {
+        "original": {
+          "exit": 0,
+          "pass_claim": true,
+          "strict_claim": false,
+          "unit_ok": true
+        },
+        "strict": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        }
+      }
+    },
+    "json_corrupt": {
+      "normal": {
+        "original": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        },
+        "strict": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        }
+      },
+      "optimized": {
+        "original": {
+          "exit": 0,
+          "pass_claim": true,
+          "strict_claim": false,
+          "unit_ok": true
+        },
+        "strict": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        }
+      }
+    },
+    "source_corrupt": {
+      "normal": {
+        "original": {
+          "exit": 0,
+          "pass_claim": true,
+          "strict_claim": false,
+          "unit_ok": true
+        },
+        "strict": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        }
+      },
+      "optimized": {
+        "original": {
+          "exit": 0,
+          "pass_claim": true,
+          "strict_claim": false,
+          "unit_ok": true
+        },
+        "strict": {
+          "exit": 1,
+          "pass_claim": false,
+          "strict_claim": false,
+          "unit_ok": false
+        }
+      }
+    }
+  },
+  "csv_git_blob": "f5987d4d9da8ef7532a3615b5f7fb6efbd4701cb",
+  "json_git_blob": "4ab8f69cbd483099dd2a1be28cb052e1e3bdb279",
+  "python": "3.13.5",
+  "source_git_blob": "9c005079716fe38eb4cb6d99730884a55e2795a3"
+}
