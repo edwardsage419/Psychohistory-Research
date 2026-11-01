@@ -13,6 +13,7 @@ import tempfile
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
+SOURCE_ROOT=ROOT.parent if (ROOT.parent/'R333').is_dir() else ROOT
 MODELS={
  'R333':('r333_triadic_feedback.py','R333_ALL_160_ARTIFICIAL_TRIADIC_STATES.csv','R333_EXACT_32_TRIADIC_WORLDS.json'),
  'R337':('r337_elm.py','R337_ALL_64_ARTIFICIAL_ARGUMENT_CUE_ATOMS.csv','R337_EXACT_32_CONDITIONS.json'),
@@ -30,7 +31,7 @@ def test():
   for case in CASES:
    with tempfile.TemporaryDirectory(prefix='psy_p0_'+model+'_') as temp:
     folder=Path(temp)
-    for name in (source,csv,json_name):shutil.copyfile(ROOT/model/name,folder/name)
+    for name in (source,csv,json_name):shutil.copyfile(SOURCE_ROOT/model/name,folder/name)
     if case=='csv_corrupt':
      p=folder/csv; b=bytearray(p.read_bytes()); b[len(b)//2]^=1;p.write_bytes(b)
     elif case=='json_corrupt':
