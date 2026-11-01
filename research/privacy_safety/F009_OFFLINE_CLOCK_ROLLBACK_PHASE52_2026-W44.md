@@ -1,0 +1,13 @@
+# F009 phase52 offline clock rollback and authenticated status epoch
+Date 2026-11-01 UTC, W44. Track privacy_safety. Target (privacy_safety,F009,phase52,clock-rollback-epoch-freshness). COMPLETE_BOUNDED; nonblind artificial E1.
+
+## Public sources and scope
+W3C Bitstring Status List v1.0 Recommendation 2025-05-15 https://www.w3.org/TR/vc-bitstring-status-list/ . The optional ttl indicates a refresh interval; it does not prove that a cached active status remains current. IETF RFC 9162 https://www.rfc-editor.org/rfc/rfc9162.html describes signed tree heads and consistency proofs in Certificate Transparency. These are analogical mechanisms for future recovery-status designs; this project has not implemented or validated either standard. No real recovery credential, account, key, sensitive data or device was accessed.
+
+## Artificial rollback counterexample
+Executed research/privacy_safety/f009_phase52_clock_rollback_20261101.js in V8: 14 assertions PASS. Cached authentic-looking active snapshot issued at hour 0 with 24-hour TTL, epoch 4. Actual time hour 30, local wall clock rolled back to hour 6. Naive local age check accepts the old snapshot, even though it is 30 hours old. Strict candidate guard without trusted time/epoch returns UNKNOWN_QUARANTINE. Independently authenticated lower bound hour 28 shows the snapshot stale; a trusted persisted maximum epoch 5 rejects replay of epoch 4. A fresh active snapshot at hour 30, epoch 6, with trusted time and epoch permits REVIEW_ONLY. Revoked, wrong account, invalid signature, future timestamp and no-request cases are also covered.
+
+## Candidate controls and limitations
+For high-impact personal data restoration, require account and authority binding, independently verifiable status freshness, monotonic authenticated epoch or secure time lower bound, protection against rollback of the checkpoint itself, separate deletion evidence and human review. When time/epoch proof is absent or restored from an old backup, remain UNKNOWN and quarantine; do not silently assume freshness. A signed snapshot alone can be authentic and obsolete. Local monotonic clock or locally stored epoch may themselves be rolled back and therefore are not sufficient without protected persistence. RFC 9162 consistency alone cannot establish that a credential is currently unrevoked. These are proposed design principles, not normative claims about the standards or deployed cryptographic verification.
+
+Evidence: W3C Recommendation + IETF RFC + synthetic nonblind E1. No live cryptographic, secure clock, TPM, network or user data tests. E2/E3=0. No fees or CI. Next phase53: authority key rotation and cross-device epoch fork with minimal privacy disclosure.
