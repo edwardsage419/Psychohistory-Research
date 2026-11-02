@@ -1028,3 +1028,8 @@ C010于2026-11-02、D003于2026-W45的2026-11-02均只读COMPLETE；R073/PESEN�
 | TH212 | Kermack/McKendrick1927 *Proc. R. Soc. A* 115:700–721原刊全文及pp713–714公式图像直接核验；式(30)微分应有系数 l³(-q)/(2κ²x₀)，p714式(31)印刷为 l³√(-q)/(2κ²x₀)，少一个√(-q)。Fraction构造x₀=κ=l=1、y₀=1/8，初值导数应1/8，印刷式给1/4；11项有限断言PASS。原著感染年龄卷积为一般理论，常数率SIR仅为特例；1905–1906孟买钟形死亡曲线与1907鼠蚤机制及Bacaër2012季节性解释存在竞争。1907原始表、Bacaër全文及正式勘误未核，真人/历史因果与预测NOT_RUN。 | PRIMARY_PUBLISHED_SCAN; CONSTRUCTIVE_MATH; ERRATUM_PARTIAL; NO_R_UPGRADE | [研究笔记](TH212_KERMACK_MCKENDRICK_1927_EQUATION31_DERIVATIVE_AND_BOMBAY_COMPETING_EXPLANATIONS_2026-11-02.md) |
 
 C010（2026-11-02）与D003（2026-W45，实际2026-11-02）均只读COMPLETE。R073/PESEN v0.1冻结，R E1/E2/E3及MARKET不变；本轮CI NOT_RUN，账单NOT_VERIFIED。下一步优先正式勘误和1907年历史原始表，保留跨学科覆盖广度；全R完成后才统一分类与有条件熔炼。
+
+
+### 2026-11-02 TH212 1907年孟买原始周表与Bacaër2012作者全文补记（沿用TH212）
+
+1907年委员会正式原刊pp752至754、794至795及Chart III、Table XXIV原始影像已直接审读：p753 Table IX列1906年4月22至28日人类鼠疫死亡925，1927年近似拟合峰值890不等于原始观察峰值；鼠感染指数、原始鼠只数与人类死亡数的分母和周长校正不同。p754报告两鼠种流行约十天先后，p795相关及偏相关依赖捕鼠均匀与诊断准确等假设，因果未识别。Bacaër2012作者机构法文全文§2至4、6至7已直接阅读，其A=l³Q²/(2x₀k²)与TH212求导一致，支持1927式(31)印刷不一致；出版社正式勘误及英文正式版逐式核验仍PARTIAL。两组Fraction构造参数精确产生同一(A,B,tanhφ)，8项断言PASS，仅证明近似曲线参数欠识别，无历史实证复算。见[TH212原始表及作者全文补记](TH212_BOMBAY_1907_PRIMARY_TABLE_BACAER_2012_AUTHOR_FULLTEXT_ADDENDUM_2026-11-02.md)。C010(2026-11-02)及D003(2026-W45, 2026-11-02)只读COMPLETE；R073/PESEN冻结，R E1/E2/E3与MARKET不升级；CI NOT_RUN，账户计费NOT_VERIFIED。后续优先1908及1912跨年度原始图表，保持全R完成后分类再有条件熔炼。
