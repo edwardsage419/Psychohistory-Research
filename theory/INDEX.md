@@ -1005,3 +1005,10 @@ C010已于2026-11-02完成，D003已于2026-W45的2026-11-02完成，本轮只�
 | TH210 | Hempel1942《The Function of General Laws in History》正式原刊扫描pp35至48全文直接阅读，p35、p41、p42目视核验；Danto1962《Narrative Sentences》原刊第三方文字转录pp146至147、152至155、168至172、178至179指定段落直接阅读，正式PDF尚未核。Hempel在1942年已明确允许概率假说与解释草图，完整解释的预测同构是有前提的规范条件；Danto指出“历史开端”等叙事句可依赖后来事件，理想同时代记录亦缺未来信息。构造两世界t0记录相同、t1结果不同的逻辑反例，仅证明依赖未来定义的标签无法从t0记录单独推出。真实历史因果、前瞻预测、数学测试与R E1/E2/E3新增均NOT_RUN。与TH206预测能力测量及TH209生态动力学不重复。 | THEORY_NOTE_BOUNDED; PRIMARY_SCAN_AND_TEXT_TRANSCRIPTION; DANTO_FINAL_PDF_UNVERIFIED; CONCEPTUAL_COUNTEREXAMPLE_ONLY | [原著研究笔记](TH210_HEMPEL_1942_DANTO_1962_HISTORICAL_EXPLANATION_NARRATIVE_TIME_2026-11-02.md) |
 
 C010（2026-11-02）及D003（2026-W45，实际完成2026-11-02）均只读COMPLETE。最新R主线仍在逐项有限审查，Codex开放PR不计入main，R073与PESEN v0.1冻结不变，R E1/E2/E3和MARKET无升级。下一步核对Danto1962正式原刊版面与Dray1957原著或转制度经济史，避免将事后叙事标签冒充事前预测目标。严格先完成全部R、再统一分类、最后有条件熔炼。
+
+
+### 2026-11-02 TH211 马格里布商人契约执行史料争议
+
+| TH211 | Greif1993 AER pp525–536指定段落及pp537–540；Edwards/Ogilvie2012 EHR pp421–426、428、436及结论指定范围；Greif2012 EHR pp445–447、449–451、457–458、464–465，正式原刊三方竞争核验。核心增量：Abun1055书信中majlis/法庭、Sicily称号/所在地、赔偿是否发生存在相互冲突释读；6/745=0.805%与3/12=25%分母不同，跨文化1.1%–1.8%人数比与18.3%货值比不能同口径比较；四项Fraction算术断言PASS。原始Geniza书信未读，不能裁定三方争论，真实因果与历史预测NOT_RUN。 | THEORY_NOTE_BOUNDED; PRIMARY_PUBLISHED_SELECTED_PAGES; ORIGINAL_ARCHIVE_NOT_READ; NO_R_EVIDENCE_UPGRADE | [原著笔记](TH211_GREIF_EDWARDS_OGILVIE_MAGHRIBI_COALITION_DOCUMENT_EVIDENCE_CONTEST_2026-11-02.md) |
+
+C010于2026-11-02、D003于2026-W45的2026-11-02均只读COMPLETE；R073/PESEN冻结，R E1/E2/E3及MARKET不变。下一步按文书ID核查原语和存档机制，或转弱覆盖学科。先全R后分类再有条件熔炼。
