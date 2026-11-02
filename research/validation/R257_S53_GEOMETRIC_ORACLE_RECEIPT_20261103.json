@@ -1,0 +1,53 @@
+{
+  "track": "R/B",
+  "research_id": "R257_S53",
+  "date_utc": "2026-11-02",
+  "baseline_main_before_write": "769e3fd87af5e5226e9c0942b3efac83031a6612",
+  "head_before_receipt_write": "ff930a6fd9d4b52829591d8d4b32eaa9fec0e141",
+  "source_git_blob": "7a04a2df3b340aa3689efbfd786e561b37dd01df",
+  "historical_receipt_git_blob": "37f33083b45435e18c66641ef693c6f0c779a680",
+  "codex_pr3_source_git_blob": "75c0870c49c26f175ab678a7600ae4d4b8a5c7f2",
+  "frozen_protocol_git_blob": "2060b7423fed97dcd62f7a53aebea5220b969d2b",
+  "method": "Exact rational BigInt minimization by independently enumerating 3 triangle faces and feasible interior, with symmetric rational difference at epsilon=1/4096",
+  "environment": "GitHub connector read; isolated JavaScript V8 execution of exact committed source with mocked node:fs readFileSync; Node 22.16.0 local analogous selftest; no full Node CLI with authentic JSON checkout",
+  "baseline": {
+    "status": "PASS",
+    "worlds": 8,
+    "coordinate_comparisons": 80,
+    "capacity_comparisons": 48,
+    "minimum_comparisons": 48,
+    "derivative_multiplier_comparisons": 16,
+    "secant_comparisons": 32,
+    "total_exact_comparisons": 232
+  },
+  "closed_form_selftest": {
+    "status": "PASS",
+    "controls": 12
+  },
+  "mutations": {
+    "total": 7,
+    "correctly_rejected": 7,
+    "types": [
+      "duplicate_worlds",
+      "wrong_minimum",
+      "wrong_coordinate",
+      "wrong_derivative",
+      "wrong_secant",
+      "wrong_evidence",
+      "wrong_delta"
+    ]
+  },
+  "science": {
+    "evidence": "INTERNAL_NONBLIND_ARTIFICIAL_E1",
+    "blind_order": "HISTORICAL_FAIL_UNCHANGED",
+    "full_acceptance": "PARTIAL",
+    "source_authentication": "NOT_RUN",
+    "real_human_E2": 0,
+    "historical_E3": 0,
+    "external_team_replication": 0
+  },
+  "ci": "NOT_RUN",
+  "billing_checked": false,
+  "paid_actions": 0,
+  "queue_net_reduction": 0
+}
