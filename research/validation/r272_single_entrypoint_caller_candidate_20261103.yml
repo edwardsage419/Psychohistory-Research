@@ -1,0 +1,39 @@
+# REVIEW CANDIDATE ONLY. Never install until owner approves CI cost and maintenance.
+name: R272 preimage first mandatory E1 acceptance candidate
+on:
+  push:
+    paths:
+      - 'research/R272/**'
+      - 'protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md'
+      - 'research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip'
+      - 'research/validation/r272_preimage_first_readonly_gate_20261102.py'
+      - 'research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py'
+      - 'research/validation/r272_single_entrypoint_failclosed_20261102.py'
+      - 'research/validation/r272_single_entrypoint_workflow_contract_20261103.py'
+      - '.github/workflows/r272-exact-train-test-oos-e1.yml'
+  pull_request:
+    paths:
+      - 'research/R272/**'
+      - 'protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md'
+      - 'research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip'
+      - 'research/validation/r272_preimage_first_readonly_gate_20261102.py'
+      - 'research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py'
+      - 'research/validation/r272_single_entrypoint_failclosed_20261102.py'
+      - 'research/validation/r272_single_entrypoint_workflow_contract_20261103.py'
+      - '.github/workflows/r272-exact-train-test-oos-e1.yml'
+permissions:
+  contents: read
+jobs:
+  r272-mandatory-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Mandatory authenticated preimage and native negative acceptance
+        run: python research/validation/r272_single_entrypoint_failclosed_20261102.py --root .
