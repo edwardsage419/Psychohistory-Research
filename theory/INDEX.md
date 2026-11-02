@@ -956,3 +956,10 @@ C010已于2026-11-02完成，D003已于2026-W45的2026-11-02完成，本轮只�
 ### 2026-11-02 TH205原刊后半与附录勘误核验（沿用TH205）
 
 Gigerenzer与Goldstein1996正式原刊pp660至666、Appendix pp668至669直接审读，p660 Table2、p661试次排序段落及pp668至669两处星号误码图像目视核验。TTB总体正确率0.658与weighted tallying相同，100%线索已知时regression 0.694高于TTB 0.691；Take The Last在按城市大小系统呈现的初始模拟中曾高约10个百分点，作者改用随机配对顺序重跑。附录Dresden的state capital及Krefeld的soccer team两值本应为正，作者实际模拟用负值。固定局部规则下两误码最多触及163/3403城市对；重训排序/权重或跨试次记忆时此界不适用。10项Fraction人工断言PASS，83城逐格转录、作者模拟复算、真人数据、现实因果与R E1/E2/E3新增均NOT_RUN。见[TH205原刊Table2、顺序与附录勘误补记](TH205_GIGERENZER_GOLDSTEIN_1996_TABLE2_ORDER_AND_APPENDIX_ERRATA_ADDENDUM_2026-11-02.md)。C010于2026-11-02及D003于2026-W45的2026-11-02均只读COMPLETE；CI NOT_RUN，账单NOT_VERIFIED。下一步优先独立前瞻专家判断校准原著，保持跨学科广度，先全R后分类再熔炼。
+
+
+### 2026-11-02 TH206：地缘政治预测训练与团队效应的测量争议
+
+| TH206 | Mellers等2014原刊PDF内部pp1至10（正式期刊1106至1115），Hauenstein等2025正式免费全文Method/Results/Tables1至6/Discussion直接审读；Mellers等2015仅正式摘要。2014年随机实验报告训练与团队的Brier改善；2025年对同一竞赛资料的探索性IRT重分析发现选择题目、作答时点与题目难度会显著改变潜在能力估计，首年团队d由M2 +0.766变为M7 −0.285，次年非超级预测者由+0.256变为+0.065。2014结案题目85/114与2025二元分析94/111口径不同，训练总效果与控制后能力效应必须分开。5项合成Fraction断言PASS，公开数据和原作者IRT均未复算。 | THEORY_NOTE_BOUNDED; PRIMARY_PUBLISHED_TEXT; EXPLORATORY_REANALYSIS; SYNTHETIC_ONLY; NO_E1_E2_E3_UPGRADE | [研究笔记](TH206_MELLERS_2014_HAUENSTEIN_2025_FORECAST_SKILL_SELECTION_TIMING_COMPETITION_2026-11-02.md) |
+
+C010（2026-11-02）与D003（2026-W45，2026-11-02）均已完成，仅只读。后续核对Merkle2016/2017和2025补充材料，不重复TH205。R073/PESEN冻结及全部R后分类、再熔炼的顺序不变。
