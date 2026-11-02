@@ -1016,3 +1016,8 @@ C010于2026-11-02、D003于2026-W45的2026-11-02均只读COMPLETE；R073/PESEN�
 ### 2026-11-02 TH211 原始1055年书信公开学术转录与收信地/majlis语义补记（沿用TH211）
 
 已定位三方争论核心手稿 **T-S 13J25.12 / PGPID1070**，直接读Gil学术转录recto1–42、边栏及verso地址，核对Edwards/Ogilvie2012 p424注30。PGP编目及地址指Fustat，Edwards/Ogilvie2012称收信人当时在Alexandria，地理证据冲突待解；Palermitan名号不证明Sicily实际制裁。recto31–33的majlis al-ra'is支持存在传播/议事场景，是否正式法庭尚未识别；未见可据此确定赔偿或全域联合惩罚的独立执行记录。另读T-S12.279(1059)与ENA4100.8a(另一争议)转录，明确分离文书与事件，后者提及av beit din但不能并入1055案例。原始影像NOT_READ，历史因果NOT_RUN，C010/D003只读COMPLETE，CI NOT_RUN。见[TH211 PGP原始转录补记](TH211_PGP_ABUN_1055_ORIGINAL_TRANSCRIPTION_ADDRESS_MAJLIS_ADDENDUM_2026-11-02.md)。
+
+
+### 2026-11-02 TH211 剑桥原始手稿影像可达性与证据链更正（沿用TH211）
+
+本轮经PGP文书PGPID1070的“Image: 1r/1v”链接直接目视Cambridge IIIF托管的T-S 13J25.12正反面约500像素缩略图；更正前次“CUDL查看器403→原件影像未读”的宽泛表述。现在两面原件的**低分辨率图像可达性与版面**已核实；原语逐字校勘、verso地址Fustat的独立字形验证、recto 31至33行majlis的独立语义核验均PARTIAL/NOT_RUN。现代PGP编目Fustat与Edwards/Ogilvie2012的Alexandria解释仍竞争，书面地址不能识别实际所在地。图片©Cambridge，仅在线研究浏览，未复制到公开仓库。详见[TH211剑桥IIIF手稿影像与证据链补记](TH211_CAMBRIDGE_IIIF_MANUSCRIPT_IMAGE_ACCESS_AND_PROVENANCE_ADDENDUM_2026-11-02.md)。C010于2026-11-02、D003于2026-W45的2026-11-02均只读COMPLETE；无新TH、无真实历史因果或R E1/E2/E3提升，CI NOT_RUN，计费NOT_VERIFIED。下轮如可合法取得更高分辨率影像再校勘，随后转弱覆盖学科；先全R后分类再有条件熔炼。
