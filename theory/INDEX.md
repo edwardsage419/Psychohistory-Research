@@ -1033,3 +1033,8 @@ C010（2026-11-02）与D003（2026-W45，实际2026-11-02）均只读COMPLETE。
 ### 2026-11-02 TH212 1907年孟买原始周表与Bacaër2012作者全文补记（沿用TH212）
 
 1907年委员会正式原刊pp752至754、794至795及Chart III、Table XXIV原始影像已直接审读：p753 Table IX列1906年4月22至28日人类鼠疫死亡925，1927年近似拟合峰值890不等于原始观察峰值；鼠感染指数、原始鼠只数与人类死亡数的分母和周长校正不同。p754报告两鼠种流行约十天先后，p795相关及偏相关依赖捕鼠均匀与诊断准确等假设，因果未识别。Bacaër2012作者机构法文全文§2至4、6至7已直接阅读，其A=l³Q²/(2x₀k²)与TH212求导一致，支持1927式(31)印刷不一致；出版社正式勘误及英文正式版逐式核验仍PARTIAL。两组Fraction构造参数精确产生同一(A,B,tanhφ)，8项断言PASS，仅证明近似曲线参数欠识别，无历史实证复算。见[TH212原始表及作者全文补记](TH212_BOMBAY_1907_PRIMARY_TABLE_BACAER_2012_AUTHOR_FULLTEXT_ADDENDUM_2026-11-02.md)。C010(2026-11-02)及D003(2026-W45, 2026-11-02)只读COMPLETE；R073/PESEN冻结，R E1/E2/E3与MARKET不升级；CI NOT_RUN，账户计费NOT_VERIFIED。后续优先1908及1912跨年度原始图表，保持全R完成后分类再有条件熔炼。
+
+
+### 2026-11-02 TH212 1908年温度室实验与1912年地理口径补记（沿用TH212）
+
+直接阅读1908年委员会《On the seasonal prevalence of plague in India》原刊PDF文字层pp267至268、273至279、282至285、299至301指定范围：p283 Table III冷室约70°F与室温80至83°F三组动物传播成功率呈差异，p284 Table IV豚鼠75°F组21/25与85至90°F组8/25，成功率差13/25即52个百分点；p283冷室同时铺石灰保持干燥，温度与湿度等环境因素未完全隔离。Bacaër2012 §4 Table2的连续tanh温度传播函数和π₀=90%为后续模型选择，1908离散实验不能唯一识别函数形状。1912英国殖民行政报告p203机器转录显示Bombay Presidency的1911年10月总死亡峰值22,869与Bombay City春季更活跃存在地理聚合口径差异；1912委员会《Statistics of the occurrence of plague in man and rats in Bombay, 1907–11》pp222至226尚未读。6项Fraction算术核对PASS，PDF表格图像与行政原件视觉核验PARTIAL，历史因果及预测NOT_RUN。见[TH212 1908温度实验与1912地理口径补记](TH212_BOMBAY_1908_TEMPERATURE_CHAMBER_1912_GEOGRAPHIC_DENOMINATOR_ADDENDUM_2026-11-02.md)。C010(2026-11-02)和D003(2026-W45, 2026-11-02)只读COMPLETE；R073/PESEN冻结，R E1/E2/E3与MARKET不升级；CI NOT_RUN，费用账单NOT_VERIFIED。下一步核验1912委员会原始表和1908 Table III图像，随后转弱覆盖学科。
