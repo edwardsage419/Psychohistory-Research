@@ -998,3 +998,10 @@ Powell *War as a Commitment Problem* August 2004作者稿经CORE开放PDF可检�
 | TH209 | May1972正式Nature原刊pp413–414全文及公式(1)–(7)视觉核验；Holling1973正式Annual Review扫描pp1–11、14–16、19–21指定节及pp14/20图文视觉核验。May随机矩阵渐近局部稳定阈值α√(nC)<1与Holling非线性吸引域/持续性是不同结果；May p414文字“mean square value α”与后文α²阈值的符号口径疑点登记PARTIAL，未宣称正式勘误。构造性标量系统f=-kx[1-(x/a)^2]证明局部恢复更快但吸引域更窄，14项Fraction人工断言PASS；真实生态因果、历史预测及R E1/E2/E3新增NOT_RUN。与TH074的2004社会生态框架区别为1972/1973基础原刊及独立反例。 | THEORY_NOTE_BOUNDED; PRIMARY_PUBLISHED_SELECTED_PAGES; SYNTHETIC_ONLY; NO_R_EVIDENCE_UPGRADE | [原著笔记](TH209_MAY_1972_HOLLING_1973_LOCAL_STABILITY_RESILIENCE_PRIMARY_AUDIT_2026-11-02.md) |
 
 C010已于2026-11-02完成，D003已于2026-W45的2026-11-02完成，本轮只读。下一步May1973符号勘误核验或Holling未读章节，再转弱覆盖学科。R073/PESEN v0.1冻结，R272 P0开放；先全部R、再统一分类、最后有条件熔炼。
+
+
+### 2026-11-02 TH210 历史解释的可检验性与叙事句的时间信息边界
+
+| TH210 | Hempel1942《The Function of General Laws in History》正式原刊扫描pp35至48全文直接阅读，p35、p41、p42目视核验；Danto1962《Narrative Sentences》原刊第三方文字转录pp146至147、152至155、168至172、178至179指定段落直接阅读，正式PDF尚未核。Hempel在1942年已明确允许概率假说与解释草图，完整解释的预测同构是有前提的规范条件；Danto指出“历史开端”等叙事句可依赖后来事件，理想同时代记录亦缺未来信息。构造两世界t0记录相同、t1结果不同的逻辑反例，仅证明依赖未来定义的标签无法从t0记录单独推出。真实历史因果、前瞻预测、数学测试与R E1/E2/E3新增均NOT_RUN。与TH206预测能力测量及TH209生态动力学不重复。 | THEORY_NOTE_BOUNDED; PRIMARY_SCAN_AND_TEXT_TRANSCRIPTION; DANTO_FINAL_PDF_UNVERIFIED; CONCEPTUAL_COUNTEREXAMPLE_ONLY | [原著研究笔记](TH210_HEMPEL_1942_DANTO_1962_HISTORICAL_EXPLANATION_NARRATIVE_TIME_2026-11-02.md) |
+
+C010（2026-11-02）及D003（2026-W45，实际完成2026-11-02）均只读COMPLETE。最新R主线仍在逐项有限审查，Codex开放PR不计入main，R073与PESEN v0.1冻结不变，R E1/E2/E3和MARKET无升级。下一步核对Danto1962正式原刊版面与Dray1957原著或转制度经济史，避免将事后叙事标签冒充事前预测目标。严格先完成全部R、再统一分类、最后有条件熔炼。
