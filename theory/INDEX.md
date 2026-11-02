@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-11-02（Asia/Singapore）；已收录至 TH213、C010 与 D003；历史记录保留
+更新：2026-11-03（Asia/Singapore）；已收录至 TH214、C011 与 D003；历史记录保留
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -1047,3 +1047,14 @@ C010（2026-11-02）与D003（2026-W45，实际2026-11-02）均只读COMPLETE。
 ### 2026-11-02 TH213 杜波依斯与伊顿1899年费城城市社会调查原著（有限范围）
 
 直接阅读Du Bois *The Philadelphia Negro* 1899年原著在CUNY开放重刊的Chapter I §§1至3（原版pp1至4）、Chapter X §25及§26开头（pp147至149）、Chapter XVI §47开头（pp322至324）、Appendix A问卷说明（pp400至402），以及Isabel Eaton独立附录I与II指定开头（约pp427至434）。1899原版书目和Chapter I p1扫描转录交叉核对，其余原版图像尚未逐页校勘。原作者区分第七区密集家访与全城较粗调查，承认回忆、观察者与出生死因登记误差；问卷区分实际活动与未实现偏好。Eaton原刊677男加1612女等于2289，除以9675为23.7%，但分子“在区内工作或居住”与分母“区内人口”地理口径不一致，不能直接视为居民就业率。同一访问员群体偏差抵消的现代构造反例仅属逻辑论证。历史职业准入、城市社会分层、女性家务劳动与调查测量覆盖得到补强；真实因果及预测NOT_RUN。详见[TH213原著研究](TH213_DU_BOIS_EATON_1899_SEVENTH_WARD_SURVEY_MEASUREMENT_OPPORTUNITY_PRIMARY_READING_2026-11-02.md)。C010和D003只读COMPLETE；R073/PESEN冻结，证据等级不升级；CI NOT_RUN。
+
+
+### 2026-11-03 TH214 艾宾浩斯1885年记忆实验与1913年原著英译的节省量审计
+
+| 编号 | 主题 | 来源与实际阅读边界 | 状态 | 产物 |
+| --- | --- | --- | --- | --- |
+| TH214 | 艾宾浩斯再学习工作节省、遗忘函数的单人边界与竞争遗忘解释 | 1885年德文原版仅书目及扫描可达性；1913年原著英译Chapter III §§11–14、IV §§17–18开头、VII §§26–30直接阅读。Q=100D/(L−85)是再学习工作节省，原刊经验式为log10(t)的幂函数组合，作者明确不宣称普遍律；德文公式、英译图表逐格尚未校勘，跨人/历史因果与预测NOT_RUN。 | THEORY_NOTE_BOUNDED; TRANSLATED_PRIMARY_TEXT; ORIGINAL_SCAN_COLLATION_PARTIAL; NO_R_UPGRADE | [TH214研究笔记](TH214_EBBINGHAUS_1885_MEMORY_SAVINGS_FORGETTING_BOUNDARIES_2026-11-03.md) |
+
+C011：**COMPLETE**，2026-11-03（Asia/Singapore），[回顾性事件回忆、错误肯定与日记校验方法](../research/decision_methods/C011_RETROSPECTIVE_RECALL_DIARY_VERIFICATION_2026-11-03.md)。Cohen/Java1995正式出版者摘要直接审读，全文及原始数据未读；两世界相同回顾报告率而事件真实频率不同，属于逻辑欠识别。47%自由回忆与29%/6%条件恢复率的组合仅为人工条件算术，不是原刊无条件实验总效应。标准库Fraction六项限定断言PASS，真实行为与因果NOT_RUN。
+
+D003：**COMPLETE**，2026-W45，实际完成2026-11-02，本轮只读。R073/PESEN v0.1继续冻结，R E1/E2/E3及MARKET证据等级不变。无CI触发，新增付费操作0，账单NOT_VERIFIED。后续优先核验1885德文原件与1995论文开放方法，保持跨学科轮换，全部R完成后才分类与有条件熔炼。
