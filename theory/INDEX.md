@@ -1012,3 +1012,7 @@ C010（2026-11-02）及D003（2026-W45，实际完成2026-11-02）均只读COMPL
 | TH211 | Greif1993 AER pp525–536指定段落及pp537–540；Edwards/Ogilvie2012 EHR pp421–426、428、436及结论指定范围；Greif2012 EHR pp445–447、449–451、457–458、464–465，正式原刊三方竞争核验。核心增量：Abun1055书信中majlis/法庭、Sicily称号/所在地、赔偿是否发生存在相互冲突释读；6/745=0.805%与3/12=25%分母不同，跨文化1.1%–1.8%人数比与18.3%货值比不能同口径比较；四项Fraction算术断言PASS。原始Geniza书信未读，不能裁定三方争论，真实因果与历史预测NOT_RUN。 | THEORY_NOTE_BOUNDED; PRIMARY_PUBLISHED_SELECTED_PAGES; ORIGINAL_ARCHIVE_NOT_READ; NO_R_EVIDENCE_UPGRADE | [原著笔记](TH211_GREIF_EDWARDS_OGILVIE_MAGHRIBI_COALITION_DOCUMENT_EVIDENCE_CONTEST_2026-11-02.md) |
 
 C010于2026-11-02、D003于2026-W45的2026-11-02均只读COMPLETE；R073/PESEN冻结，R E1/E2/E3及MARKET不变。下一步按文书ID核查原语和存档机制，或转弱覆盖学科。先全R后分类再有条件熔炼。
+
+### 2026-11-02 TH211 原始1055年书信公开学术转录与收信地/majlis语义补记（沿用TH211）
+
+已定位三方争论核心手稿 **T-S 13J25.12 / PGPID1070**，直接读Gil学术转录recto1–42、边栏及verso地址，核对Edwards/Ogilvie2012 p424注30。PGP编目及地址指Fustat，Edwards/Ogilvie2012称收信人当时在Alexandria，地理证据冲突待解；Palermitan名号不证明Sicily实际制裁。recto31–33的majlis al-ra'is支持存在传播/议事场景，是否正式法庭尚未识别；未见可据此确定赔偿或全域联合惩罚的独立执行记录。另读T-S12.279(1059)与ENA4100.8a(另一争议)转录，明确分离文书与事件，后者提及av beit din但不能并入1055案例。原始影像NOT_READ，历史因果NOT_RUN，C010/D003只读COMPLETE，CI NOT_RUN。见[TH211 PGP原始转录补记](TH211_PGP_ABUN_1055_ORIGINAL_TRANSCRIPTION_ADDRESS_MAJLIS_ADDENDUM_2026-11-02.md)。
