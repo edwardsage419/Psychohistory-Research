@@ -1090,3 +1090,8 @@ Henrich2004 *American Antiquity* 原刊pp197至205及209至210，p201 Figure1和
 ### 2026-11-03 TH217 2016考古争论与2019人口文化实验原始答辩补记
 
 直接阅读Vaesen等2016 *PNAS* 113:E6726至E6727作者保存正式原刊PDF全文、Martens2019 *PNAS* 116:17160正式全文、Fay等2019 *PNAS* 116:17161至17162正式原刊PDF全文，重新核对Fay等2019正式原刊pp6726至6730方法。2016年争论针对把特定人口模型外推解释猎采者考古物质文化，Vaesen等未否定人口规模在所有文化机制中的作用。2019年双方确认声望筛选、双人网络过滤、外部记忆工具是未被原实验单独操纵的竞争机制。原实验1、2、4示范者对应总观看1.5、3、6分钟，每件均1.5分钟，N、F、总观看时长共同变化；随机条件包效应不能拆成固定暴露下候选池独立效应。两人工世界在F=N三点相同而固定F下N效应相反，7项Fraction断言PASS，仅为逻辑反例。真人数据复算、正式勘误、历史因果与预测NOT_RUN。详见[TH217原始答辩与暴露识别补记](TH217_VAESEN_2016_FAY_MARTENS_2019_ORIGINAL_REPLIES_AND_EXPOSURE_IDENTIFICATION_ADDENDUM_2026-11-03.md)。C011 COMPLETE 2026-11-03、D003 COMPLETE 2026-W45实际2026-11-02，只读；R073/PESEN冻结，证据等级不升级；CI NOT_RUN，新增收费操作0，账单NOT_VERIFIED。下一轮轮换其他学科。
+
+
+### 2026-11-03 TH218 Schelling1969隔离动态与容忍乘积等号边界
+
+Schelling1969 *AER* 59(2):488–493正式原刊六页文字及p491–492影像直接核验。p491“does not exceed”容忍上限下，两群体正比例同时满意的数学条件为ab≥1；原刊“must exceed one”若仅指存在含边界的混合比例则过严，ab>1适用于非零宽度的可行比例区间。a=3/2、b=2/3、W=2、B=3给出等号构造。410项Fraction人工断言PASS，未做历史因果、真实人群或独立预测。Sakoda1971仅出版者原始摘要，Hegselmann2017正式论文§1–2指定范围直接阅读，1949先例未读原件，优先权保留待核。Schelling1969一维邻域与1971二维棋盘模型分开，群体分布不能反推个体动机。见[TH218原著研究](TH218_SCHELLING_1969_TOLERANCE_PRODUCT_BOUNDARY_AND_SAKODA_PRIORITY_2026-11-03.md)、[精确阈值检查](th218_tolerance_boundary_audit.py)。C011 2026-11-03及D003 2026-W45实际2026-11-02均只读COMPLETE，R073/PESEN冻结，R E1/E2/E3与MARKET不升级，CI NOT_RUN，费用账户NOT_VERIFIED。继续全R后分类再有条件熔炼。
