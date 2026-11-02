@@ -1070,3 +1070,8 @@ D003：**COMPLETE**，2026-W45，实际完成2026-11-02，本轮只读。R073/PE
 | TH216 | Pyers等2010 *PNAS* 107:12116至12120开放正式全文的摘要、导论、Results、Discussion、Methods、Tables1与2直接审读；Li/Gleitman2002和Ratliff/Newcombe2008仅正式原刊摘要。2010年实际16名不同受试者，失向任务两组各5人、旋转盒任务6人与11人，11人两任务重叠；第二队列另4人因停电被排除，第一队列1人4试次成绩外推8次。作者报告组间P=0.04/0.05，语言相关0.62/0.64，原始逐人数据未复算。构造队列与语言两种因果世界观察等价反例，排除者8试次均值保守界宽32/9；3项人工逻辑算术PASS。语言支持、环境地标、认知负荷及队列共同原因保持竞争；无真实因果与R E1/E2/E3升级。 | THEORY_NOTE_BOUNDED; PRIMARY_PUBLISHED_FULLTEXT; COMPETITOR_ABSTRACT_ONLY; CONSTRUCTIVE_IDENTIFICATION_ONLY | [原著研究笔记](TH216_PYERS_2010_NSL_SPATIAL_COGNITION_COHORT_SELECTION_COMPETING_EXPLANATIONS_2026-11-03.md) |
 
 C011已于2026-11-03完成，D003已于2026-W45的2026-11-02完成，均只读。R073/PESEN v0.1冻结，R272生产P0 OPEN，R E1/E2/E3与MARKET分级不变。CI NOT_RUN，账户计费NOT_VERIFIED。后续核对竞争论文合法开放全文及逐人缺失数据，全部R完成后才统一分类与有条件熔炼。
+
+
+### 2026-11-03 TH216 Li/Gleitman2002竞争原著全文核验
+
+Li与Gleitman（2002）*Cognition* 83:265–294的大学公开原刊排版PDF，直接审读pp.265–282、p.283脚注8、pp.286–289重点段落，目视核验p.279 Fig.7及p.281 Fig.9。Experiment 2a遮帘/开帘/户外n=10/10/20，开帘与遮帘P=0.056、户外与遮帘P=0.035；Experiment 2b鸭子地标相对/绝对位置n=20/20，P=0.003。图纵轴为按0至5次绝对框架选择分组的**受试者百分比**，并非试次正确率。Fig.9图注误称Experiment 2a，与正文2b编号不符，正式勘误未确认。任务歧义澄清询问率亦随地标变化，语言机制和环境机制保持竞争；同语言地标干预无法单独识别语言因果作用，4种人工逻辑条件PASS，真实实验复算NOT_RUN。Levinson等2002仅机构正式摘要（PDF 403），反驳其参照框架混淆；Ratliff/Newcombe2008仅正式摘要。详见[TH216原刊补记](TH216_LI_GLEITMAN_2002_FULLTEXT_FRAME_REFERENCE_FIGURE_AUDIT_ADDENDUM_2026-11-03.md)。C011 COMPLETE 2026-11-03、D003 COMPLETE 2026-W45实际2026-11-02，均只读；R073/PESEN冻结，R E1/E2/E3/MARKET无升级，CI NOT_RUN，新增收费操作0，账单NOT_VERIFIED。下一轮优先转弱覆盖学科或获取竞争作者合法全文。
