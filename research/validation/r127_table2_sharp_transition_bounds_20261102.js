@@ -216,7 +216,7 @@ if(require.main===module){
    const file=path.join(root,'research','R127','r127_van_huyck_1990_min_effort_coordination_selection_exact.py');
    const st=fs.lstatSync(file);requireExact(st.isFile()&&!st.isSymbolicLink(),'unsafe R127 source');
    const b=fs.readFileSync(file);
-   const blob=crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\\0')).update(b).digest('hex');
+   const blob=crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
    requireExact(blob===SOURCE_BLOB,'R127 source Git blob mismatch');
    console.log(JSON.stringify({...test.result,source_blob:SOURCE_BLOB,small_margin_exhaustive_cases:test.brute_force_small_margin_cases,negative_controls:test.invalid_session_rejections}));
   }
