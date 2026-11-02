@@ -1080,3 +1080,8 @@ Li与Gleitman（2002）*Cognition* 83:265–294的大学公开原刊排版PDF，
 ### 2026-11-03 TH216 Levinson等2002正式原刊竞争回应补记
 
 直接阅读Levinson、Kita、Haun、Rasch（2002）*Cognition* 84:155–188正式原刊排版PDF文字层pp.155–163、164–180、182–183指定范围。新增三类空间参照框架在观察者旋转与参照物旋转下的可区分性审计：仅旋转观察者不能区分intrinsic与absolute。原作者实验1户外n20与历史室内n20对照，动物任务所谓absolute均值0.60与0.55，P=0.40；实验2两种记忆负荷n10+10，intrinsic均值3.8与1.0，P<0.01；实验3的90°与180°不同组n10+10，intrinsic均值3.7与3.8，P=0.74，90°单组P=0.11。原作者明确承认语言因果作用仍待进一步证明；未发现差异不能视为等效性证明。Python Fraction与逻辑签名9项限定检查PASS，原始图像截图403故图表目视NOT_RUN；无逐人数据、统计重估或语言因果验证。沿用TH216，无新增编号。详见[Levinson竞争原著补记](TH216_LEVINSON_KITA_HAUN_RASCH_2002_PRIMARY_REPLY_ROTATION_AND_LOAD_ADDENDUM_2026-11-03.md)。C011 2026-11-03及D003 2026-W45（11-02）均COMPLETE只读，R073/PESEN冻结、R证据及MARKET不升级、CI NOT_RUN、费用账单NOT_VERIFIED。下一轮轮换其他学科。
+
+
+### 2026-11-03 TH217 文化人口规模与Henrich2004原刊Gumbel积分校勘
+
+Henrich2004 *American Antiquity* 原刊pp197至205及209至210，p201 Figure1和p210 Appendix A3/A4/A7原始影像直接核验。**p210印刷A3/A7最大值密度积分缺1/β**；iid Gumbel下A4=a+β(γ+lnN)精确成立。人工(a,β,N)=(4,2,100)时印刷A3积分28.7295434而A4为14.3647717，反驳印刷Appendix B对该参数的10^−14误差说法。标准库4组参数8积分及3条件反例检查PASS；正式勘误未确认。直接审读Vaesen等2016正式原刊E2241至E2245、Henrich等2016作者接收稿两页及Fay等2019正式原刊6726至6729。2016考古复杂性定义与有效人口规模存在竞争；2019年543人纸飞机实验在1示范者条件改善而2/4示范者条件未检出改善，原作者记忆负荷解释属探索性。没有本项目真人数据复算、历史因果估计或R E1/E2/E3提升。见[TH217原著审计](TH217_HENRICH_2004_GUMBEL_A3_FACTOR_AND_CULTURAL_DEMOGRAPHY_COMPETITION_2026-11-03.md)、[标准库复算脚本](th217_gumbel_integral_audit.py)。C011于2026-11-03、D003于2026-W45实际2026-11-02均COMPLETE只读；R073/PESEN v0.1冻结，MARKET不升级，CI NOT_RUN，费用账户NOT_VERIFIED。后续核对正式勘误、双方完整回应及Fay2019 SI，随后转弱覆盖学科。全部R完成后才分类与有条件熔炼。
