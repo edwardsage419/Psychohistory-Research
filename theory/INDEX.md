@@ -1075,3 +1075,8 @@ C011已于2026-11-03完成，D003已于2026-W45的2026-11-02完成，均只读�
 ### 2026-11-03 TH216 Li/Gleitman2002竞争原著全文核验
 
 Li与Gleitman（2002）*Cognition* 83:265–294的大学公开原刊排版PDF，直接审读pp.265–282、p.283脚注8、pp.286–289重点段落，目视核验p.279 Fig.7及p.281 Fig.9。Experiment 2a遮帘/开帘/户外n=10/10/20，开帘与遮帘P=0.056、户外与遮帘P=0.035；Experiment 2b鸭子地标相对/绝对位置n=20/20，P=0.003。图纵轴为按0至5次绝对框架选择分组的**受试者百分比**，并非试次正确率。Fig.9图注误称Experiment 2a，与正文2b编号不符，正式勘误未确认。任务歧义澄清询问率亦随地标变化，语言机制和环境机制保持竞争；同语言地标干预无法单独识别语言因果作用，4种人工逻辑条件PASS，真实实验复算NOT_RUN。Levinson等2002仅机构正式摘要（PDF 403），反驳其参照框架混淆；Ratliff/Newcombe2008仅正式摘要。详见[TH216原刊补记](TH216_LI_GLEITMAN_2002_FULLTEXT_FRAME_REFERENCE_FIGURE_AUDIT_ADDENDUM_2026-11-03.md)。C011 COMPLETE 2026-11-03、D003 COMPLETE 2026-W45实际2026-11-02，均只读；R073/PESEN冻结，R E1/E2/E3/MARKET无升级，CI NOT_RUN，新增收费操作0，账单NOT_VERIFIED。下一轮优先转弱覆盖学科或获取竞争作者合法全文。
+
+
+### 2026-11-03 TH216 Levinson等2002正式原刊竞争回应补记
+
+直接阅读Levinson、Kita、Haun、Rasch（2002）*Cognition* 84:155–188正式原刊排版PDF文字层pp.155–163、164–180、182–183指定范围。新增三类空间参照框架在观察者旋转与参照物旋转下的可区分性审计：仅旋转观察者不能区分intrinsic与absolute。原作者实验1户外n20与历史室内n20对照，动物任务所谓absolute均值0.60与0.55，P=0.40；实验2两种记忆负荷n10+10，intrinsic均值3.8与1.0，P<0.01；实验3的90°与180°不同组n10+10，intrinsic均值3.7与3.8，P=0.74，90°单组P=0.11。原作者明确承认语言因果作用仍待进一步证明；未发现差异不能视为等效性证明。Python Fraction与逻辑签名9项限定检查PASS，原始图像截图403故图表目视NOT_RUN；无逐人数据、统计重估或语言因果验证。沿用TH216，无新增编号。详见[Levinson竞争原著补记](TH216_LEVINSON_KITA_HAUN_RASCH_2002_PRIMARY_REPLY_ROTATION_AND_LOAD_ADDENDUM_2026-11-03.md)。C011 2026-11-03及D003 2026-W45（11-02）均COMPLETE只读，R073/PESEN冻结、R证据及MARKET不升级、CI NOT_RUN、费用账单NOT_VERIFIED。下一轮轮换其他学科。
