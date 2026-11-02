@@ -991,3 +991,10 @@ C010(2026-11-02)与D003(2026-W45，2026-11-02)只读COMPLETE；R272生产P0开�
 ### 2026-11-02 TH208 Powell2004作者稿机制与原TH208限定性更正（沿用TH208）
 
 Powell *War as a Commitment Problem* August 2004作者稿经CORE开放PDF可检索文本直接审读，印刷pp1–3、8–9、12–19、25–28、30–34指定范围。2006 *International Organization*正式版仅出版者摘要，不能混同版本。新核验：(1)物理不可分争议仍可能通过可执行无成本随机分配形成帕累托改善，原TH208的X={0,1}无和平例子必须保留“排除随机化及其执行”限制；(2)跨期承诺阈值δM1(t+1)-M1(t)>B-[M1(t)+M2(t)]；(3)国内掌权派系的留任激励可令单一国家原有和平区间消失；(4)持续威慑成本属于另一机制，谈判权影响不连续优势阈值。10项Fraction人工断言PASS；原稿PDF图像访问403、正式2006全文及真实历史复算NOT_RUN。见[TH208 Powell2004作者稿补记](TH208_POWELL_2004_AUTHOR_DRAFT_COMMITMENT_DOMESTIC_FACTION_ADDENDUM_2026-11-02.md)。C010(2026-11-02)、D003(2026-W45,2026-11-02)只读COMPLETE；R272 P0开放、R073/PESEN冻结、E1/E2/E3与MARKET无升级；CI NOT_RUN，账单NOT_VERIFIED。先完成全部R再分类再有条件熔炼。
+
+
+### 2026-11-02 TH209 May1972与Holling1973生态稳定性原始理论对读
+
+| TH209 | May1972正式Nature原刊pp413–414全文及公式(1)–(7)视觉核验；Holling1973正式Annual Review扫描pp1–11、14–16、19–21指定节及pp14/20图文视觉核验。May随机矩阵渐近局部稳定阈值α√(nC)<1与Holling非线性吸引域/持续性是不同结果；May p414文字“mean square value α”与后文α²阈值的符号口径疑点登记PARTIAL，未宣称正式勘误。构造性标量系统f=-kx[1-(x/a)^2]证明局部恢复更快但吸引域更窄，14项Fraction人工断言PASS；真实生态因果、历史预测及R E1/E2/E3新增NOT_RUN。与TH074的2004社会生态框架区别为1972/1973基础原刊及独立反例。 | THEORY_NOTE_BOUNDED; PRIMARY_PUBLISHED_SELECTED_PAGES; SYNTHETIC_ONLY; NO_R_EVIDENCE_UPGRADE | [原著笔记](TH209_MAY_1972_HOLLING_1973_LOCAL_STABILITY_RESILIENCE_PRIMARY_AUDIT_2026-11-02.md) |
+
+C010已于2026-11-02完成，D003已于2026-W45的2026-11-02完成，本轮只读。下一步May1973符号勘误核验或Holling未读章节，再转弱覆盖学科。R073/PESEN v0.1冻结，R272 P0开放；先全部R、再统一分类、最后有条件熔炼。
