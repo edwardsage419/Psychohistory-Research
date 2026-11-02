@@ -963,3 +963,7 @@ Gigerenzer与Goldstein1996正式原刊pp660至666、Appendix pp668至669直接�
 | TH206 | Mellers等2014原刊PDF内部pp1至10（正式期刊1106至1115），Hauenstein等2025正式免费全文Method/Results/Tables1至6/Discussion直接审读；Mellers等2015仅正式摘要。2014年随机实验报告训练与团队的Brier改善；2025年对同一竞赛资料的探索性IRT重分析发现选择题目、作答时点与题目难度会显著改变潜在能力估计，首年团队d由M2 +0.766变为M7 −0.285，次年非超级预测者由+0.256变为+0.065。2014结案题目85/114与2025二元分析94/111口径不同，训练总效果与控制后能力效应必须分开。5项合成Fraction断言PASS，公开数据和原作者IRT均未复算。 | THEORY_NOTE_BOUNDED; PRIMARY_PUBLISHED_TEXT; EXPLORATORY_REANALYSIS; SYNTHETIC_ONLY; NO_E1_E2_E3_UPGRADE | [研究笔记](TH206_MELLERS_2014_HAUENSTEIN_2025_FORECAST_SKILL_SELECTION_TIMING_COMPETITION_2026-11-02.md) |
 
 C010（2026-11-02）与D003（2026-W45，2026-11-02）均已完成，仅只读。后续核对Merkle2016/2017和2025补充材料，不重复TH205。R073/PESEN冻结及全部R后分类、再熔炼的顺序不变。
+
+### 2026-11-02 TH206 Merkle 2016/2017原始IRT模型与表格人数核验（沿用TH206）
+
+直接阅读Merkle等2016 *Decision* 原作者大学公开Online First版内部pp2–7、10–12，及Merkle等2017 *International Journal of Forecasting* 作者公开稿pp2–10、11–16、18–21；2016的指数时间模型与2017线性时间+双潜变量选题模型有实质版本差异。2016只取241/1593高参与者，内部30%留出R²=0.43不代表独立未来验证；2017四年选题DETECT=2.3、单年0.58，能力单维性受挑战；2017模拟选题能力相关0.24包含共享选题信息，独立于选题的MAR参照为0.12。**作者公开稿p9称四题至少作答771人，p10 Table2的13个频数图像核验后合计772人**；四题逐列人数671/595/454/453与Table1两位小数作答率均相容。差1人来源、正式期刊版是否相同及原始记录未核，保持OPEN。Python标准库有限算术检查完成；原始IRT复算、2025补充材料、真实因果和R E1/E2/E3新增均NOT_RUN。详见[TH206 Merkle原始模型与Table2人数审计](TH206_MERKLE_2016_2017_PRIMARY_METHOD_AND_TABLE2_ADDENDUM_2026-11-02.md)。C010(2026-11-02)、D003(2026-W45, 2026-11-02)只读COMPLETE，下一步跨学科轮换，先全R后分类再熔炼。
