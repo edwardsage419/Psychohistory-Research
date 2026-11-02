@@ -986,3 +986,8 @@ Nordholt2026 *Anthropology Today* 42(3):3–6开放获取正式全文**印刷pp3
 | TH208 | Fearon1995正式期刊扫描pp379–414指定模型、附录Claim2及廉价沟通命题；Jervis1978正式扫描pp167–179、186–189、197–199、206–209；Powell2006仅出版社摘要。Fearon的廉价沟通无效结论限定纯策略及无沟通唯一要价，混合要价扩展作者仅列猜想。人工参数下和平区间(3/10,11/20)，均匀私人成本模型最优要价11/20、战争概率3/8；6项Fraction断言PASS，真实战争因果与历史预测NOT_RUN。TH207原田野影像仍未读。 | THEORY_NOTE_BOUNDED; PRIMARY_SELECTED_PAGES; SYNTHETIC_ONLY; NO_R_EVIDENCE_UPGRADE | [研究笔记](TH208_FEARON_1995_JERVIS_1978_WAR_BARGAINING_SECURITY_DILEMMA_PRIMARY_READING_2026-11-02.md) |
 
 C010(2026-11-02)与D003(2026-W45，2026-11-02)只读COMPLETE；R272生产P0开放，R073/PESEN v0.1冻结。下一步Powell2006原刊全文或国内政治战争竞争解释。严格先完成全部R系列，再统一分类，最后有条件熔炼。
+
+
+### 2026-11-02 TH208 Powell2004作者稿机制与原TH208限定性更正（沿用TH208）
+
+Powell *War as a Commitment Problem* August 2004作者稿经CORE开放PDF可检索文本直接审读，印刷pp1–3、8–9、12–19、25–28、30–34指定范围。2006 *International Organization*正式版仅出版者摘要，不能混同版本。新核验：(1)物理不可分争议仍可能通过可执行无成本随机分配形成帕累托改善，原TH208的X={0,1}无和平例子必须保留“排除随机化及其执行”限制；(2)跨期承诺阈值δM1(t+1)-M1(t)>B-[M1(t)+M2(t)]；(3)国内掌权派系的留任激励可令单一国家原有和平区间消失；(4)持续威慑成本属于另一机制，谈判权影响不连续优势阈值。10项Fraction人工断言PASS；原稿PDF图像访问403、正式2006全文及真实历史复算NOT_RUN。见[TH208 Powell2004作者稿补记](TH208_POWELL_2004_AUTHOR_DRAFT_COMMITMENT_DOMESTIC_FACTION_ADDENDUM_2026-11-02.md)。C010(2026-11-02)、D003(2026-W45,2026-11-02)只读COMPLETE；R272 P0开放、R073/PESEN冻结、E1/E2/E3与MARKET无升级；CI NOT_RUN，账单NOT_VERIFIED。先完成全部R再分类再有条件熔炼。
