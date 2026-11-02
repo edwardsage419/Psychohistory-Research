@@ -1,0 +1,87 @@
+# PROPOSAL ONLY. Archived outside .github/workflows and never dispatched.
+# This file must receive independent review and confirmed no-charge CI eligibility.
+name: R272 proposed mandatory preimage-first E1 acceptance
+on:
+  push:
+    paths:
+      - 'research/R272/**'
+      - 'protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md'
+      - 'research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip'
+      - 'research/validation/r272_preimage_first_readonly_gate_20261102.py'
+      - 'research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py'
+      - '.github/workflows/r272-exact-train-test-oos-e1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preimage-first:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify archived checker ZIP before extraction
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, zipfile
+          p=pathlib.Path('research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip')
+          if hashlib.sha256(p.read_bytes()).hexdigest() != 'f23b04706b60ac70bdbee6f051a74551779fb9d9a9b9af08c96cda345b055151':
+              raise SystemExit('FAIL: checker ZIP identity')
+          with zipfile.ZipFile(p) as z:
+              names=z.namelist()
+              if names != ['r272_failclosed_independent_receipt_gate_20261102.py']:
+                  raise SystemExit('FAIL: checker ZIP members')
+              out=pathlib.Path('research/validation/r272_failclosed_independent_receipt_gate_20261102.py')
+              out.write_bytes(z.read(names[0]))
+          PY
+      - name: Mandatory pinned preimage audit and isolated regeneration
+        run: |
+          python research/validation/r272_preimage_first_readonly_gate_20261102.py --root . --gate research/validation/r272_failclosed_independent_receipt_gate_20261102.py --regenerate
+          python -O research/validation/r272_preimage_first_readonly_gate_20261102.py --root . --gate research/validation/r272_failclosed_independent_receipt_gate_20261102.py --regenerate
+          python -OO research/validation/r272_preimage_first_readonly_gate_20261102.py --root . --gate research/validation/r272_failclosed_independent_receipt_gate_20261102.py --regenerate
+      - name: Mandatory original program and scientific regression
+        run: |
+          python research/R272/r272_exact_train_test_prediction.py --test
+          python research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py --root . --wrapper research/validation/r272_preimage_first_readonly_gate_20261102.py --gate research/validation/r272_failclosed_independent_receipt_gate_20261102.py
+  dual-python-tests:
+    needs: preimage-first
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Original 83 unit tests, with independent acceptance prerequisite
+        run: python research/R272/r272_exact_train_test_prediction.py --test
+  independent-sources-and-archive:
+    needs: [preimage-first, dual-python-tests]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm archived preimages without emitting or pushing
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, zipfile
+          p=pathlib.Path('research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip')
+          if hashlib.sha256(p.read_bytes()).hexdigest() != 'f23b04706b60ac70bdbee6f051a74551779fb9d9a9b9af08c96cda345b055151':
+              raise SystemExit('FAIL: checker ZIP identity')
+          with zipfile.ZipFile(p) as z:
+              names=z.namelist()
+              if names != ['r272_failclosed_independent_receipt_gate_20261102.py']:
+                  raise SystemExit('FAIL: checker ZIP members')
+              pathlib.Path('research/validation/r272_failclosed_independent_receipt_gate_20261102.py').write_bytes(z.read(names[0]))
+          PY
+          python research/validation/r272_preimage_first_readonly_gate_20261102.py --root . --gate research/validation/r272_failclosed_independent_receipt_gate_20261102.py --regenerate
