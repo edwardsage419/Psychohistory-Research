@@ -160,7 +160,8 @@ def main():
     check(test_result.wasSuccessful(),'negative controls failed')
     result=audit()
     result['tests_run']=test_result.testsRun
-    result['negative_controls']=6
+    result['negative_rejection_controls']=3
+    result['mathematical_boundary_controls']=3
     result['python_optimization_safe']=True
     print(json.dumps(result,ensure_ascii=False,sort_keys=True,indent=2))
 
