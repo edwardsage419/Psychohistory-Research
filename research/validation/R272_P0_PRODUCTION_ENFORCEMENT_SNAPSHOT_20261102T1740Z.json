@@ -1,0 +1,76 @@
+{
+  "snapshot_utc_date": "2026-11-02",
+  "source_endpoints": [
+    "https://api.github.com/repos/edwardsage419/Psychohistory-Research/branches/main",
+    "https://api.github.com/repos/edwardsage419/Psychohistory-Research/rulesets"
+  ],
+  "main_head": "94ebed32b11f9b88acd8b6041b4801e6a5638936",
+  "branch": {
+    "protected": false,
+    "required_status_checks": {
+      "enforcement_level": "off",
+      "contexts": [],
+      "checks": []
+    }
+  },
+  "rulesets": [],
+  "production": {
+    "blob": "3132b08cf4ee64b55f5112d2249894ea0ec9d42d",
+    "events": [
+      "push",
+      "workflow_dispatch"
+    ],
+    "jobs": [
+      "dual-python-tests",
+      "independent-sources-and-archive"
+    ],
+    "push_paths": [
+      "research/R272/r272_exact_train_test_prediction.py",
+      ".github/workflows/r272-exact-train-test-oos-e1.yml"
+    ]
+  },
+  "candidate": {
+    "blob": "a84b3d13d7d6bc8da45dc523454d7804520ca79c",
+    "events": [
+      "push",
+      "pull_request"
+    ],
+    "jobs": [
+      "r272-mandatory-acceptance"
+    ],
+    "push_paths": [
+      "research/R272/**",
+      "protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md",
+      "research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip",
+      "research/validation/r272_preimage_first_readonly_gate_20261102.py",
+      "research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py",
+      "research/validation/r272_single_entrypoint_failclosed_20261102.py",
+      "research/validation/r272_single_entrypoint_workflow_contract_20261103.py",
+      ".github/workflows/r272-exact-train-test-oos-e1.yml"
+    ],
+    "pull_request_paths": [
+      "research/R272/**",
+      "protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md",
+      "research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip",
+      "research/validation/r272_preimage_first_readonly_gate_20261102.py",
+      "research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py",
+      "research/validation/r272_single_entrypoint_failclosed_20261102.py",
+      "research/validation/r272_single_entrypoint_workflow_contract_20261103.py",
+      ".github/workflows/r272-exact-train-test-oos-e1.yml"
+    ]
+  },
+  "freeze": {
+    "blob": "9fbdb0078a58c4a9c0a548643227e30da5731119",
+    "three_jobs": true
+  },
+  "queue": {
+    "blob": "3b96d46b3d88ccafd779a08509c3cfd0e435772f",
+    "rows": 154,
+    "priority_counts": {
+      "P0": 27,
+      "P1": 82,
+      "P2": 45
+    },
+    "crosswalk_blob": "36f24235901172642c46853298aebb421f1a3552"
+  }
+}
