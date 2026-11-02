@@ -1,0 +1,46 @@
+{
+  "external_data_or_team_reproduction": false,
+  "github_actions_executed": false,
+  "historical_remote_checkout_preimage_downloaded": false,
+  "input_source_blobs": {
+    "protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md": "9fbdb0078a58c4a9c0a548643227e30da5731119",
+    "research/R272/r272_exact_train_test_prediction.py": "13843eecf2f9f05c19ee5545bdb224f58313f367"
+  },
+  "modes": [
+    {
+      "generator_tests": "PASS",
+      "isolated_regeneration": "PASS",
+      "mode": "normal",
+      "native_gate": "PASS",
+      "negative_rejections": 5,
+      "positive": 1
+    },
+    {
+      "generator_tests": "PASS",
+      "isolated_regeneration": "PASS",
+      "mode": "-O",
+      "native_gate": "PASS",
+      "negative_rejections": 5,
+      "positive": 1
+    },
+    {
+      "generator_tests": "PASS",
+      "isolated_regeneration": "PASS",
+      "mode": "-OO",
+      "native_gate": "PASS",
+      "negative_rejections": 5,
+      "positive": 1
+    }
+  ],
+  "negative_rejections_total": 15,
+  "preimage_corruption_rejected_before_emit": true,
+  "python": "3.13.5",
+  "reconstructed_archive_blobs": {
+    "research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv": "8fbbc73d239765f5c66395af1bcf9cf7a8df1f41",
+    "research/R272/R272_EXACT_RESULTS.json": "db3ca11ae224af52c2caf385c898e24aaa0cc54b",
+    "research/R272/R272_MACHINE_RECEIPT.json": "85d36858911a7eb79c73c607cddf45ea88852a60"
+  },
+  "same_corruption_masked_by_original_emit_then_accepted": true,
+  "scope": "INTERNAL_NONBLIND_FINITE_ARTIFICIAL_E1",
+  "status": "PASS"
+}
