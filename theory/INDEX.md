@@ -976,3 +976,7 @@ C010（2026-11-02）与D003（2026-W45，2026-11-02）均已完成，仅只读�
 | TH207 | Geertz1972（2005年授权重刊）地位象征解释、Roseberry1982文化生产与殖民权力竞争、Schulte Nordholt2026田野笔记来源争议 | Geertz2005重刊pp56–83指定段落直接审读；Roseberry1982原刊扫描节录pp1017–1027直接审读；2026竞争论文仅出版者摘要，原田野笔记未读。Geertz57场汇总中21/34和19/29的单侧精确二项p为0.11474/0.06802，原刊约0.08/0.05为正态近似。5组精确尾概率和3项计数断言完成；真实逐场数据与独立因果NOT_RUN。 | THEORY_NOTE_BOUNDED; PRIMARY_REPRINT_AND_EXCERPT; COMPETITOR_ABSTRACT_ONLY; NONBLIND; NO_R_EVIDENCE_UPGRADE | [研究笔记](TH207_GEERTZ_ROSEBERRY_BALINESE_COCKFIGHT_ETHNOGRAPHIC_AUTHORITY_2026-11-02.md) |
 
 C010于2026-11-02、D003于2026-W45的2026-11-02已完成，本轮只读。保留R073/PESEN v0.1冻结、R E1/E2/E3及MARKET分级。下一步寻找2026年档案原文与跨文化独立观察，全部R完成后才统一分类再有条件熔炼。
+
+### 2026-11-02 TH207 Nordholt2026正式开放全文与1958年田野档案补记（沿用TH207）
+
+Nordholt2026 *Anthropology Today* 42(3):3–6开放获取正式全文**印刷pp3–6全部直接审读**，pp4–5版式目视核验，修正TH207初始记录的“2026摘要ONLY”范围。原作者依据1958年Clifford/Hildred笔记转录，区分04-12抵达、04-13 Panasahan斗鸡、04-14 Tihingan斗鸡及**第一场开始前**的警方突袭；Geertz1973将两场合为一场、描述第三场将开始才突袭，另有十天冷落与次日全村接纳的笔记缺证。2026文还记Pan Darsana被捕及300 Rupiah罚款，2016年Hildred邮件称开场依记忆写作。Leiden馆藏号HGZ IV 15/16由2026作者提供；本轮独立读Chicago大学Geertz Papers馆藏清单Box2 Folder3/4及Box27 Folder5–6，**两馆原始田野笔记和2016邮件均未直接读到**，不能将转录提升为原件独立核实。叙事开场与57场下注统计分别保留证据链；无真人复算、现实因果、历史预测、R E1/E2/E3新增。详见[TH207正式全文与馆藏补记](TH207_NORDHOLT_2026_FULLTEXT_FIELDNOTE_CHRONOLOGY_ARCHIVE_ADDENDUM_2026-11-02.md)。C010(2026-11-02)及D003(2026-W45，2026-11-02)只读COMPLETE；未新增TH编号；CI NOT_RUN，费用账户NOT_VERIFIED。下一步合法免费原档案影像或转向其他弱覆盖学科，先全R后分类再熔炼。
