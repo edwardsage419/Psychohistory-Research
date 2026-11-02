@@ -1021,3 +1021,10 @@ C010于2026-11-02、D003于2026-W45的2026-11-02均只读COMPLETE；R073/PESEN�
 ### 2026-11-02 TH211 剑桥原始手稿影像可达性与证据链更正（沿用TH211）
 
 本轮经PGP文书PGPID1070的“Image: 1r/1v”链接直接目视Cambridge IIIF托管的T-S 13J25.12正反面约500像素缩略图；更正前次“CUDL查看器403→原件影像未读”的宽泛表述。现在两面原件的**低分辨率图像可达性与版面**已核实；原语逐字校勘、verso地址Fustat的独立字形验证、recto 31至33行majlis的独立语义核验均PARTIAL/NOT_RUN。现代PGP编目Fustat与Edwards/Ogilvie2012的Alexandria解释仍竞争，书面地址不能识别实际所在地。图片©Cambridge，仅在线研究浏览，未复制到公开仓库。详见[TH211剑桥IIIF手稿影像与证据链补记](TH211_CAMBRIDGE_IIIF_MANUSCRIPT_IMAGE_ACCESS_AND_PROVENANCE_ADDENDUM_2026-11-02.md)。C010于2026-11-02、D003于2026-W45的2026-11-02均只读COMPLETE；无新TH、无真实历史因果或R E1/E2/E3提升，CI NOT_RUN，计费NOT_VERIFIED。下轮如可合法取得更高分辨率影像再校勘，随后转弱覆盖学科；先全R后分类再有条件熔炼。
+
+
+### 2026-11-02 TH212 Kermack与McKendrick 1927原刊流行病数学及式(31)内部不一致
+
+| TH212 | Kermack/McKendrick1927 *Proc. R. Soc. A* 115:700–721原刊全文及pp713–714公式图像直接核验；式(30)微分应有系数 l³(-q)/(2κ²x₀)，p714式(31)印刷为 l³√(-q)/(2κ²x₀)，少一个√(-q)。Fraction构造x₀=κ=l=1、y₀=1/8，初值导数应1/8，印刷式给1/4；11项有限断言PASS。原著感染年龄卷积为一般理论，常数率SIR仅为特例；1905–1906孟买钟形死亡曲线与1907鼠蚤机制及Bacaër2012季节性解释存在竞争。1907原始表、Bacaër全文及正式勘误未核，真人/历史因果与预测NOT_RUN。 | PRIMARY_PUBLISHED_SCAN; CONSTRUCTIVE_MATH; ERRATUM_PARTIAL; NO_R_UPGRADE | [研究笔记](TH212_KERMACK_MCKENDRICK_1927_EQUATION31_DERIVATIVE_AND_BOMBAY_COMPETING_EXPLANATIONS_2026-11-02.md) |
+
+C010（2026-11-02）与D003（2026-W45，实际2026-11-02）均只读COMPLETE。R073/PESEN v0.1冻结，R E1/E2/E3及MARKET不变；本轮CI NOT_RUN，账单NOT_VERIFIED。下一步优先正式勘误和1907年历史原始表，保留跨学科覆盖广度；全R完成后才统一分类与有条件熔炼。
