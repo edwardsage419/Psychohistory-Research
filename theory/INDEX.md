@@ -1063,3 +1063,10 @@ D003：**COMPLETE**，2026-W45，实际完成2026-11-02，本轮只读。R073/PE
 ### 2026-11-03 TH215 Simon1955/1956原始有限理性与环境结构（限定范围）
 
 直接阅读Simon1955 *QJE*原刊重印pp99–114、117–118，附录pp115–116只核文字；p109、110、112图像核对。Simon1956 *Psychological Review*原刊重印pp129–138文字层，p131、134图像核对。1955 Rule E要求行动的所有可能结果逐维达到阈值，存在/唯一性均无保证，顺序搜索与抱负/考虑集合调整是额外机制；1956 p134共同搜索的简化依赖需求点独立。构造R期望90但有10%收益0、S确定收益60、阈值50，期望收益选R而Rule E选S；两需求单边际相同，独立/完全正相关/互斥的首次任一需求几何期望分别4/3、2、1。10项Fraction限定断言PASS，真实人类行为、历史因果与预测NOT_RUN；1955附录公式逐式与1956其他公式影像核对PARTIAL。新覆盖：经济学、认知心理学、组织选择与环境线索，未进行项目级分类或熔炼。详见[TH215原著研究](TH215_SIMON_1955_1956_SATISFICING_ROBUST_THRESHOLDS_ENVIRONMENT_STRUCTURE_2026-11-03.md)。C011于2026-11-03已完成，D003于2026-W45的2026-11-02已完成，本轮均只读。R272生产P0 OPEN，R073/PESEN v0.1冻结，R E1/E2/E3及MARKET不升级；CI NOT_RUN，费用账单NOT_VERIFIED。下一轮轮换弱覆盖学科。
+
+
+### 2026-11-03 TH216 尼加拉瓜手语与空间认知的队列识别边界
+
+| TH216 | Pyers等2010 *PNAS* 107:12116至12120开放正式全文的摘要、导论、Results、Discussion、Methods、Tables1与2直接审读；Li/Gleitman2002和Ratliff/Newcombe2008仅正式原刊摘要。2010年实际16名不同受试者，失向任务两组各5人、旋转盒任务6人与11人，11人两任务重叠；第二队列另4人因停电被排除，第一队列1人4试次成绩外推8次。作者报告组间P=0.04/0.05，语言相关0.62/0.64，原始逐人数据未复算。构造队列与语言两种因果世界观察等价反例，排除者8试次均值保守界宽32/9；3项人工逻辑算术PASS。语言支持、环境地标、认知负荷及队列共同原因保持竞争；无真实因果与R E1/E2/E3升级。 | THEORY_NOTE_BOUNDED; PRIMARY_PUBLISHED_FULLTEXT; COMPETITOR_ABSTRACT_ONLY; CONSTRUCTIVE_IDENTIFICATION_ONLY | [原著研究笔记](TH216_PYERS_2010_NSL_SPATIAL_COGNITION_COHORT_SELECTION_COMPETING_EXPLANATIONS_2026-11-03.md) |
+
+C011已于2026-11-03完成，D003已于2026-W45的2026-11-02完成，均只读。R073/PESEN v0.1冻结，R272生产P0 OPEN，R E1/E2/E3与MARKET分级不变。CI NOT_RUN，账户计费NOT_VERIFIED。后续核对竞争论文合法开放全文及逐人缺失数据，全部R完成后才统一分类与有条件熔炼。
