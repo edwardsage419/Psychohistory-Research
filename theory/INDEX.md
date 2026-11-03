@@ -1,6 +1,6 @@
 # 心理史学纯理论研究索引
 
-更新：2026-11-03（Asia/Singapore）；已收录至 TH217、C011 与 D003；历史记录保留
+更新：2026-11-03（Asia/Singapore）；已收录至 TH219、C011 与 D003；历史记录保留
 轨道：与 R 系列模型研究并行；理论学习、观点争议与原始文献审计。
 阶段：R 系列研究尚在进行；此索引属于理论储备，不是全 R 统一分类或模型熔炼。
 
@@ -1095,3 +1095,8 @@ Henrich2004 *American Antiquity* 原刊pp197至205及209至210，p201 Figure1和
 ### 2026-11-03 TH218 Schelling1969隔离动态与容忍乘积等号边界
 
 Schelling1969 *AER* 59(2):488–493正式原刊六页文字及p491–492影像直接核验。p491“does not exceed”容忍上限下，两群体正比例同时满意的数学条件为ab≥1；原刊“must exceed one”若仅指存在含边界的混合比例则过严，ab>1适用于非零宽度的可行比例区间。a=3/2、b=2/3、W=2、B=3给出等号构造。410项Fraction人工断言PASS，未做历史因果、真实人群或独立预测。Sakoda1971仅出版者原始摘要，Hegselmann2017正式论文§1–2指定范围直接阅读，1949先例未读原件，优先权保留待核。Schelling1969一维邻域与1971二维棋盘模型分开，群体分布不能反推个体动机。见[TH218原著研究](TH218_SCHELLING_1969_TOLERANCE_PRODUCT_BOUNDARY_AND_SAKODA_PRIORITY_2026-11-03.md)、[精确阈值检查](th218_tolerance_boundary_audit.py)。C011 2026-11-03及D003 2026-W45实际2026-11-02均只读COMPLETE，R073/PESEN冻结，R E1/E2/E3与MARKET不升级，CI NOT_RUN，费用账户NOT_VERIFIED。继续全R后分类再有条件熔炼。
+
+
+### 2026-11-03 TH219 Arrow1950与Sen1970原刊：社会选择、无关选项及个人自由
+
+Arrow1950 *JPE* 58:328–346，原刊pp328–344指定范围直接审读，pp337/338/342影像核对；Sen1970 *JPE* 78:152–157原刊全文及pp154/155影像核对。Arrow原始Condition4为非强加，与Condition2/3联合推出严格一致偏好；原刊排序计分示例删除y后唯一胜者x变为x/z并列。Sen最小自由与严格Pareto构成x>y>z>x循环，原著明确无需IIA或社会传递性。普通与优化模式各10项有限算术/逻辑检查PASS，一项篡改被拒；无真人、历史因果或预测验证。Black1948仅正式书目未读全文。C011与D003只读，冻结与证据等级不变。详见[TH219原著笔记](TH219_ARROW_1950_SEN_1970_SOCIAL_CHOICE_LIBERTY_PRIMARY_READING_2026-11-03.md)。
