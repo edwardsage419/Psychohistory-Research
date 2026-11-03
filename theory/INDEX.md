@@ -1100,3 +1100,5 @@ Schelling1969 *AER* 59(2):488–493正式原刊六页文字及p491–492影像�
 ### 2026-11-03 TH219 Arrow1950与Sen1970原刊：社会选择、无关选项及个人自由
 
 Arrow1950 *JPE* 58:328–346，原刊pp328–344指定范围直接审读，pp337/338/342影像核对；Sen1970 *JPE* 78:152–157原刊全文及pp154/155影像核对。Arrow原始Condition4为非强加，与Condition2/3联合推出严格一致偏好；原刊排序计分示例删除y后唯一胜者x变为x/z并列。Sen最小自由与严格Pareto构成x>y>z>x循环，原著明确无需IIA或社会传递性。普通与优化模式各10项有限算术/逻辑检查PASS，一项篡改被拒；无真人、历史因果或预测验证。Black1948仅正式书目未读全文。C011与D003只读，冻结与证据等级不变。详见[TH219原著笔记](TH219_ARROW_1950_SEN_1970_SOCIAL_CHOICE_LIBERTY_PRIMARY_READING_2026-11-03.md)。
+
+| TH219 补记 | Black 1948 单峰多数决策原刊与议程边界 | 原刊 pp.23–34 指定范围直接阅读；偶数平票主席、顺序淘汰、策略投票脚注与非单峰议程循环；图像校勘待补 | THEORY_NOTE_BOUNDED | [原著补记](TH219_BLACK_1948_ORIGINAL_SINGLE_PEAKED_AGENDA_ADDENDUM_2026-11-03.md) |
