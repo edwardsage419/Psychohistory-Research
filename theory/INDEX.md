@@ -1102,3 +1102,8 @@ Schelling1969 *AER* 59(2):488–493正式原刊六页文字及p491–492影像�
 Arrow1950 *JPE* 58:328–346，原刊pp328–344指定范围直接审读，pp337/338/342影像核对；Sen1970 *JPE* 78:152–157原刊全文及pp154/155影像核对。Arrow原始Condition4为非强加，与Condition2/3联合推出严格一致偏好；原刊排序计分示例删除y后唯一胜者x变为x/z并列。Sen最小自由与严格Pareto构成x>y>z>x循环，原著明确无需IIA或社会传递性。普通与优化模式各10项有限算术/逻辑检查PASS，一项篡改被拒；无真人、历史因果或预测验证。Black1948仅正式书目未读全文。C011与D003只读，冻结与证据等级不变。详见[TH219原著笔记](TH219_ARROW_1950_SEN_1970_SOCIAL_CHOICE_LIBERTY_PRIMARY_READING_2026-11-03.md)。
 
 | TH219 补记 | Black 1948 单峰多数决策原刊与议程边界 | 原刊 pp.23–34 指定范围直接阅读；偶数平票主席、顺序淘汰、策略投票脚注与非单峰议程循环；图像校勘待补 | THEORY_NOTE_BOUNDED | [原著补记](TH219_BLACK_1948_ORIGINAL_SINGLE_PEAKED_AGENDA_ADDENDUM_2026-11-03.md) |
+
+
+### 2026-11-03 TH220 技术史QWERTY路径依赖与竞争解释
+
+David 1985 *AER* pp332–336与Liebowitz/Margolis 1990 *JLE* pp1–10原刊文字直接阅读。前者提出技能机器互补、规模收益与学习投资准不可逆，后者区分净转换收益为负的合理维持与净收益为正仍无法协调的过度惯性，并质疑Dvorak速度优势与海军十天回本的证据来源。QWERTY长期存在不能单独证明低效率锁定。David的广义无界收益Polya类比不得与普通线性Polya urn的随机极限混同。1990后半篇、海军原始记录与Arthur原始定理未读，真实因果与预测NOT_RUN。沿TH001理论背景补充独立技术史争论，不进行项目级分类。见[TH220原著竞争研究](TH220_DAVID_1985_LIEBOWITZ_MARGOLIS_1990_QWERTY_PRIMARY_COMPETING_HISTORY_2026-11-03.md)。C011 2026-11-03 COMPLETE，D003 2026-W45实际2026-11-02 COMPLETE，冻结及证据等级不变，CI NOT_RUN，费用账单NOT_VERIFIED。
