@@ -1,0 +1,174 @@
+{
+  "status": "COMPLETE",
+  "full_frozen_extension_acceptance": "PARTIAL",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "node": "v24.19.0",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "N/A; exact finite enumeration",
+  "positive_original_clis": 2,
+  "positive_export_adapters": 2,
+  "full_state_comparison": {
+    "snapshots": 288,
+    "state_mass_comparisons": 23328,
+    "nonzero_entries_per_route": 5099,
+    "exact_normalization_checks": 576,
+    "unreachable_zero_states_included": true
+  },
+  "R_archived_receipt_matches": true,
+  "B_complete_receipt_matches_historical_digest": true,
+  "B_complete_receipt_matches_historical_bytes": true,
+  "B_source_matches_historical_digest": true,
+  "historical_witness": {
+    "graph": "path",
+    "initial": "split",
+    "t": 1,
+    "control_a": [
+      "1/4",
+      "both_confirm"
+    ],
+    "control_b": [
+      "1/4",
+      "listener_only"
+    ],
+    "tv_O1": "0",
+    "tv_O4": "1/12"
+  },
+  "literal_lex_first_witness": {
+    "graph": "complete",
+    "initial": "alternate",
+    "t": 1,
+    "control_a": [
+      "1/2",
+      "both_confirm"
+    ],
+    "control_b": [
+      "1/2",
+      "listener_only"
+    ],
+    "tv_O1": "0",
+    "tv_O4": "1/3"
+  },
+  "numeric_control_lex_first_witness": {
+    "graph": "complete",
+    "initial": "alternate",
+    "t": 1,
+    "control_a": [
+      "1/4",
+      "both_confirm"
+    ],
+    "control_b": [
+      "1/4",
+      "listener_only"
+    ],
+    "tv_O1": "0",
+    "tv_O4": "1/6"
+  },
+  "historical_witness_matches_either_order": false,
+  "witness_order_limit": "Historical witness differs under both tested name-based lexical conventions. Frozen key/type order is unspecified; full compliance is NOT_ESTABLISHED/PARTIAL, not a uniquely proven ordering violation.",
+  "negative_controls": [
+    {
+      "case": "duplicate_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "missing_snapshot",
+      "rejected": true
+    },
+    {
+      "case": "boolean_time",
+      "rejected": true
+    },
+    {
+      "case": "wrong_probability",
+      "rejected": true
+    }
+  ],
+  "commands": [
+    {
+      "label": "original_r_cli",
+      "command": [
+        "node",
+        "/workspace/r170-replay/research/validation/r170_observation_ladder_20261026.js"
+      ],
+      "cwd": "/workspace/r170-replay",
+      "exit_code": 0,
+      "stdout_file": "R_replayed_receipt.json"
+    },
+    {
+      "label": "original_b_cli",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/r170-replay/research/evidence_audit/r170_b_edge_utterance_20261026.py"
+      ],
+      "cwd": "/workspace/r170-replay",
+      "exit_code": 0,
+      "stdout_file": "B_full_receipt.json"
+    },
+    {
+      "label": "js_state_export",
+      "command": [
+        "node",
+        "/workspace/r170-replay/research/codex_audit/r170_full_state/export_js_states.js",
+        "/workspace/r170-replay/research/validation/r170_observation_ladder_20261026.js"
+      ],
+      "cwd": "/workspace/r170-replay",
+      "exit_code": 0,
+      "stdout_file": "JS_full_state_export.json"
+    },
+    {
+      "label": "python_state_export",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/r170-replay/research/codex_audit/r170_full_state/export_python_states.py",
+        "/workspace/r170-replay/research/evidence_audit/r170_b_edge_utterance_20261026.py"
+      ],
+      "cwd": "/workspace/r170-replay",
+      "exit_code": 0,
+      "stdout_file": "Python_full_state_export.json"
+    }
+  ],
+  "source_sha256": {
+    "research/validation/r170_observation_ladder_20261026.js": "1752281be18d042558955162f9174a4879e880b989cc40c7bbe5a0c13f92bba7",
+    "research/evidence_audit/r170_b_edge_utterance_20261026.py": "134cfee8510606fef8f94eb3d9975f1045006bf17360444aeaa1b588d0080423",
+    "research/validation/R170_OBSERVATION_LADDER_EXACT_RECEIPT_2026-10-26.json": "b0ae731555373b0c58b5d26fa806c10f79e7ba8a39b882fd1a4f150c57687400",
+    "research/evidence_audit/B_R170_INDEPENDENT_PYTHON_EXECUTION_SUMMARY_2026-10-26.json": "626b63a463581c1cb012edb6e8540ebdb56a51680dbe00c1a197506212caeaef"
+  },
+  "source_git_blob": {
+    "research/validation/r170_observation_ladder_20261026.js": "3ea018c4a113d95836873fcfd687f9df292aa1b7",
+    "research/evidence_audit/r170_b_edge_utterance_20261026.py": "f6bd8574d6730b9c26708adb9e38ef88562eafbe",
+    "research/validation/R170_OBSERVATION_LADDER_EXACT_RECEIPT_2026-10-26.json": "0d5b10125475a66a243be1632e21bd269027a866",
+    "research/evidence_audit/B_R170_INDEPENDENT_PYTHON_EXECUTION_SUMMARY_2026-10-26.json": "165f14511c7c7ee57b43a18851d2e65729c50044"
+  },
+  "artifact_manifest": {
+    "B_full_receipt.json": {
+      "bytes": 23004,
+      "sha256": "8cdf817c0e32cd48ea1a70dd1f9d0c5fc55022c8d355981157d0181934ab2565"
+    },
+    "R_replayed_receipt.json": {
+      "bytes": 23130,
+      "sha256": "b0ae731555373b0c58b5d26fa806c10f79e7ba8a39b882fd1a4f150c57687400"
+    },
+    "JS_full_state_export.json": {
+      "bytes": 172679,
+      "sha256": "5da1b33016c4507ba134be1619f1950552c8baae1175a079b9b94793a18471dd"
+    },
+    "Python_full_state_export.json": {
+      "bytes": 172682,
+      "sha256": "0139f4711d2088c0648a52c815226f62d929299a7a5d2887677105d921a9c63b"
+    }
+  },
+  "adapter_sha256": {
+    "export_js_states.js": "0a728789f364fef631c11e0292fd6ae0745787eb9a212ba6e85cfd159a008227",
+    "export_python_states.py": "a88bed9ad5ffa0613b08126f15ad8a16e39b9f9eb972e0719c7c80d482414439"
+  },
+  "evidence_scope": "NONBLIND_INTERNAL_ARTIFICIAL_E1; same-project algorithm comparison",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0,
+  "ci_status": "NOT_RUN",
+  "original_111_tests": "NOT_RUN",
+  "original_1MB_result_reaudit": "NOT_RUN",
+  "full_repo_tests": "NOT_RUN"
+}

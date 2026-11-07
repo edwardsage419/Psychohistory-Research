@@ -1,0 +1,103 @@
+test_boolean_time_rejected (test_full_state.Tests.test_boolean_time_rejected) ... FAIL
+test_complete_audit_source_tree_unchanged (test_full_state.Tests.test_complete_audit_source_tree_unchanged) ... FAIL
+test_duplicate_snapshot_rejected (test_full_state.Tests.test_duplicate_snapshot_rejected) ... FAIL
+test_explicit_lexical_conventions_both_start_complete_alternate (test_full_state.Tests.test_explicit_lexical_conventions_both_start_complete_alternate) ... ERROR
+test_failed_rerun_clears_old_success (test_full_state.Tests.test_failed_rerun_clears_old_success) ... FAIL
+test_float_probability_rejected (test_full_state.Tests.test_float_probability_rejected) ... FAIL
+test_invalid_inventory_state_rejected (test_full_state.Tests.test_invalid_inventory_state_rejected) ... FAIL
+test_missing_snapshot_rejected (test_full_state.Tests.test_missing_snapshot_rejected) ... FAIL
+test_normalized_but_different_law_rejected (test_full_state.Tests.test_normalized_but_different_law_rejected) ... FAIL
+test_real_288_laws_and_81_state_universe (test_full_state.Tests.test_real_288_laws_and_81_state_universe) ... ERROR
+
+======================================================================
+ERROR: test_explicit_lexical_conventions_both_start_complete_alternate (test_full_state.Tests.test_explicit_lexical_conventions_both_start_complete_alternate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 63, in test_explicit_lexical_conventions_both_start_complete_alternate
+    self.assertEqual((r['graph'],r['initial'],r['t']),('complete','alternate',1))
+                      ~^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_real_288_laws_and_81_state_universe (test_full_state.Tests.test_real_288_laws_and_81_state_universe)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 28, in test_real_288_laws_and_81_state_universe
+    self.assertEqual(r['snapshots'],288)
+                     ~^^^^^^^^^^^^^
+KeyError: 'snapshots'
+
+======================================================================
+FAIL: test_boolean_time_rejected (test_full_state.Tests.test_boolean_time_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 53, in test_boolean_time_rejected
+    with self.assertRaises(ValueError):run_audit.compare_states(self.js,d)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_complete_audit_source_tree_unchanged (test_full_state.Tests.test_complete_audit_source_tree_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 85, in test_complete_audit_source_tree_unchanged
+    self.assertTrue((out/'execution.json').exists())
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_duplicate_snapshot_rejected (test_full_state.Tests.test_duplicate_snapshot_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 34, in test_duplicate_snapshot_rejected
+    with self.assertRaises(ValueError):run_audit.compare_states(self.js,d)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_failed_rerun_clears_old_success (test_full_state.Tests.test_failed_rerun_clears_old_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 73, in test_failed_rerun_clears_old_success
+    self.assertNotEqual(p.returncode,0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_float_probability_rejected (test_full_state.Tests.test_float_probability_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 57, in test_float_probability_rejected
+    with self.assertRaises(ValueError):run_audit.compare_states(self.js,d)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_inventory_state_rejected (test_full_state.Tests.test_invalid_inventory_state_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 49, in test_invalid_inventory_state_rejected
+    with self.assertRaises(ValueError):run_audit.compare_states(self.js,d)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_snapshot_rejected (test_full_state.Tests.test_missing_snapshot_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 38, in test_missing_snapshot_rejected
+    with self.assertRaises(ValueError):run_audit.compare_states(self.js,d)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_normalized_but_different_law_rejected (test_full_state.Tests.test_normalized_but_different_law_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-replay/research/codex_audit/r170_full_state/test_full_state.py", line 45, in test_normalized_but_different_law_rejected
+    with self.assertRaisesRegex(ValueError,'state mass'):run_audit.compare_states(self.js,d)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.419s
+
+FAILED (failures=8, errors=2)
