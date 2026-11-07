@@ -1,0 +1,181 @@
+{
+  "status": "COMPLETE",
+  "pinned_source_baseline": "e2614fec5027247de328a5aeef295c4ed3bc9338",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "node": "v24.19.0",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "N/A; exact finite computation",
+  "source_identity": {
+    "research/validation/r271_s67_overlapping_families_20261030.js": {
+      "git_blob": "f38992f2bdca575094bc08f28c443d8c4d86e1cf",
+      "bytes": 3251,
+      "sha256": "7756d5471d1423b006e75edeaf633008a47a7475e7ba1f1c5107a8da857ea406"
+    },
+    "research/evidence_audit/b_r271_s67_independent_inclusion_exclusion_20261030.js": {
+      "git_blob": "ccec09f9feda72f5b564b4d27337d178da429979",
+      "bytes": 6006,
+      "sha256": "f3a993d29e374a2d975561e08533ec691cd4d9149342f9431fac6f3d0468e6e9"
+    },
+    "research/validation/R271_S67_ALL_13584_OVERLAPPING_NULL_SOURCE_ROWS.csv": {
+      "git_blob": "4bfed50d9df756d537d239868771181e07a2c216",
+      "bytes": 1648483,
+      "sha256": "9a72624ebcfc77e3eb65cdfe44696efc0d85a282f695a5ad77029753f75db9cb"
+    },
+    "research/validation/R271_S67_EXACT_FAMILYWISE_RISKS.json": {
+      "git_blob": "6b56bd2b82790e531a938106db5eada7da416a18",
+      "bytes": 6102,
+      "sha256": "0f6268f76b705fb69b9aa806ba9551f7eb109dfda8a93eddeceaa4476fc89379"
+    },
+    "research/validation/R271_S67_MACHINE_RECEIPT.json": {
+      "git_blob": "3fb736ad2273408f3dd127e932b239ff06d36915",
+      "bytes": 376,
+      "sha256": "6ee61004401c25070345d1a4962c773bc94785e0093f90a0e3867c7a62b11871"
+    }
+  },
+  "source_unchanged": true,
+  "original_positive_clis": 3,
+  "original_negative_cli_rejections": 2,
+  "metadata_counterexample_acceptances": 1,
+  "B_persisted_result": {
+    "status": "PASS",
+    "worlds": 27,
+    "source_rows": 13584,
+    "route": "independent_inclusion_exclusion_and_full_CSV",
+    "evidence": "NONBLIND_INTERNAL_E1",
+    "mutations_rejected": 6
+  },
+  "regenerated_byte_comparisons": [
+    {
+      "file": "R271_S67_ALL_13584_OVERLAPPING_NULL_SOURCE_ROWS.csv",
+      "byte_equal": true,
+      "bytes": 1648483,
+      "sha256": "9a72624ebcfc77e3eb65cdfe44696efc0d85a282f695a5ad77029753f75db9cb"
+    },
+    {
+      "file": "R271_S67_EXACT_FAMILYWISE_RISKS.json",
+      "byte_equal": true,
+      "bytes": 6102,
+      "sha256": "0f6268f76b705fb69b9aa806ba9551f7eb109dfda8a93eddeceaa4476fc89379"
+    },
+    {
+      "file": "R271_S67_MACHINE_RECEIPT.json",
+      "byte_equal": true,
+      "bytes": 376,
+      "sha256": "6ee61004401c25070345d1a4962c773bc94785e0093f90a0e3867c7a62b11871"
+    }
+  ],
+  "oracle": {
+    "status": "COMPLETE",
+    "worlds_verified": 27,
+    "policy_labelled_sources": 13584,
+    "method": "rolling run-length DP; disjoint complement; no imports from R/B",
+    "evidence": "NONBLIND_INTERNAL_ARTIFICIAL_E1",
+    "external_team_replications": 0
+  },
+  "controls": [
+    {
+      "case": "negative_risk",
+      "B_accepted": false,
+      "oracle_rejected": true,
+      "checksums_recomputed": true
+    },
+    {
+      "case": "negative_csv",
+      "B_accepted": false,
+      "oracle_rejected": "NOT_APPLICABLE; oracle does not read CSV",
+      "checksums_recomputed": true
+    },
+    {
+      "case": "metadata_freeze",
+      "B_accepted": true,
+      "oracle_rejected": true,
+      "checksums_recomputed": true
+    }
+  ],
+  "commands": [
+    {
+      "label": "b_persisted",
+      "command": [
+        "node",
+        "/workspace/s67-replay/research/evidence_audit/b_r271_s67_independent_inclusion_exclusion_20261030.js",
+        "/workspace/s67-replay/research/validation"
+      ],
+      "cwd": "/workspace/s67-replay",
+      "exit_code": 0,
+      "stdout": "b_persisted.stdout",
+      "stderr": "b_persisted.stderr"
+    },
+    {
+      "label": "r_generator",
+      "command": [
+        "node",
+        "/workspace/s67-replay/research/validation/r271_s67_overlapping_families_20261030.js",
+        "/tmp/s67-native-5iuaiuob/generated"
+      ],
+      "cwd": "/workspace/s67-replay",
+      "exit_code": 0,
+      "stdout": "r_generator.stdout",
+      "stderr": "r_generator.stderr"
+    },
+    {
+      "label": "b_regenerated",
+      "command": [
+        "node",
+        "/workspace/s67-replay/research/evidence_audit/b_r271_s67_independent_inclusion_exclusion_20261030.js",
+        "/tmp/s67-native-5iuaiuob/generated"
+      ],
+      "cwd": "/workspace/s67-replay",
+      "exit_code": 0,
+      "stdout": "b_regenerated.stdout",
+      "stderr": "b_regenerated.stderr"
+    },
+    {
+      "label": "negative_risk",
+      "command": [
+        "node",
+        "/workspace/s67-replay/research/evidence_audit/b_r271_s67_independent_inclusion_exclusion_20261030.js",
+        "/tmp/s67-native-5iuaiuob/negative_risk"
+      ],
+      "cwd": "/workspace/s67-replay",
+      "exit_code": 1,
+      "stdout": "negative_risk.stdout",
+      "stderr": "negative_risk.stderr"
+    },
+    {
+      "label": "negative_csv",
+      "command": [
+        "node",
+        "/workspace/s67-replay/research/evidence_audit/b_r271_s67_independent_inclusion_exclusion_20261030.js",
+        "/tmp/s67-native-5iuaiuob/negative_csv"
+      ],
+      "cwd": "/workspace/s67-replay",
+      "exit_code": 1,
+      "stdout": "negative_csv.stdout",
+      "stderr": "negative_csv.stderr"
+    },
+    {
+      "label": "metadata_freeze",
+      "command": [
+        "node",
+        "/workspace/s67-replay/research/evidence_audit/b_r271_s67_independent_inclusion_exclusion_20261030.js",
+        "/tmp/s67-native-5iuaiuob/metadata_freeze"
+      ],
+      "cwd": "/workspace/s67-replay",
+      "exit_code": 0,
+      "stdout": "metadata_freeze.stdout",
+      "stderr": "metadata_freeze.stderr"
+    }
+  ],
+  "evidence": "NONBLIND_INTERNAL_ARTIFICIAL_E1",
+  "strict_blind_prescore_freeze": false,
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0,
+  "full_repo_tests": "NOT_RUN",
+  "historical_unarchived_python_tests": "NOT_RUN",
+  "ci": "NOT_RUN",
+  "code_sha256": {
+    "run_native.py": "8d8e7205bb7c73bde16952405f176313d450214974d62ebe4b0f19e2fe98af58",
+    "oracle.py": "ad1989703302710817931381d602cd73e922789c0cf6d9c13a6643172dcde16d"
+  }
+}
