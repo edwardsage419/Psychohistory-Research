@@ -1,0 +1,117 @@
+test_authentic_bytes (test_identity.IdentityTests.test_authentic_bytes) ... FAIL
+test_changed_historical_summary (test_identity.IdentityTests.test_changed_historical_summary) ... FAIL
+test_changed_js (test_identity.IdentityTests.test_changed_js) ... FAIL
+test_changed_python (test_identity.IdentityTests.test_changed_python) ... FAIL
+test_changed_r_receipt (test_identity.IdentityTests.test_changed_r_receipt) ... FAIL
+test_cli_invalidates_stale_success (test_identity.IdentityTests.test_cli_invalidates_stale_success) ... FAIL
+test_cli_refuses_output_over_input (test_identity.IdentityTests.test_cli_refuses_output_over_input) ... FAIL
+test_missing_receipt (test_identity.IdentityTests.test_missing_receipt) ... FAIL
+test_same_length_wrong_receipt (test_identity.IdentityTests.test_same_length_wrong_receipt) ... FAIL
+test_semantic_equal_receipt_different_bytes (test_identity.IdentityTests.test_semantic_equal_receipt_different_bytes) ... FAIL
+
+======================================================================
+FAIL: test_authentic_bytes (test_identity.IdentityTests.test_authentic_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 32, in test_authentic_bytes
+    self.assertEqual(r.get('status'),'COMPLETE');self.assertEqual(r.get('source_files_verified'),4)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 'COMPLETE'
+
+======================================================================
+FAIL: test_changed_historical_summary (test_identity.IdentityTests.test_changed_historical_summary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 38, in test_changed_historical_summary
+    def test_changed_historical_summary(self):self.reject_source(S)
+                                              ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 29, in reject_source
+    with self.assertRaisesRegex(ValueError,'source identity'):gate.verify(self.root,self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_changed_js (test_identity.IdentityTests.test_changed_js)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 35, in test_changed_js
+    def test_changed_js(self):self.reject_source(JS)
+                              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 29, in reject_source
+    with self.assertRaisesRegex(ValueError,'source identity'):gate.verify(self.root,self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_changed_python (test_identity.IdentityTests.test_changed_python)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 36, in test_changed_python
+    def test_changed_python(self):self.reject_source(PY)
+                                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 29, in reject_source
+    with self.assertRaisesRegex(ValueError,'source identity'):gate.verify(self.root,self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_changed_r_receipt (test_identity.IdentityTests.test_changed_r_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 37, in test_changed_r_receipt
+    def test_changed_r_receipt(self):self.reject_source(R)
+                                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 29, in reject_source
+    with self.assertRaisesRegex(ValueError,'source identity'):gate.verify(self.root,self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_cli_invalidates_stale_success (test_identity.IdentityTests.test_cli_invalidates_stale_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 56, in test_cli_invalidates_stale_success
+    self.assertNotEqual(p.returncode,0);self.assertFalse(output.exists())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_cli_refuses_output_over_input (test_identity.IdentityTests.test_cli_refuses_output_over_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 61, in test_cli_refuses_output_over_input
+    self.assertNotEqual(p.returncode,0);self.assertEqual(self.receipt.read_bytes(),raw)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_missing_receipt (test_identity.IdentityTests.test_missing_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 48, in test_missing_receipt
+    with self.assertRaises((ValueError,FileNotFoundError)):gate.verify(self.root,self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (<class 'ValueError'>, <class 'FileNotFoundError'>) not raised
+
+======================================================================
+FAIL: test_same_length_wrong_receipt (test_identity.IdentityTests.test_same_length_wrong_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 42, in test_same_length_wrong_receipt
+    with self.assertRaisesRegex(ValueError,'receipt digest'):gate.verify(self.root,self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_semantic_equal_receipt_different_bytes (test_identity.IdentityTests.test_semantic_equal_receipt_different_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 45, in test_semantic_equal_receipt_different_bytes
+    with self.assertRaisesRegex(ValueError,'receipt (length|digest)'):gate.verify(self.root,self.receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.083s
+
+FAILED (failures=10)

@@ -1,0 +1,83 @@
+{
+  "status": "COMPLETE",
+  "observed_head": "e2614fec5027247de328a5aeef295c4ed3bc9338",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "N/A; byte identity only",
+  "tests_unique": 11,
+  "test_executions_final_normal_and_optimized": 22,
+  "failures": 0,
+  "errors": 0,
+  "red_stub_failures": 10,
+  "red_stub_errors": 0,
+  "review_regression_initial_failures": 1,
+  "runs": [
+    {
+      "label": "normal",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/codex_audit/r170_identity_gate",
+        "-v"
+      ],
+      "cwd": "/workspace/r170-identity",
+      "environment_override": {
+        "R170_FIXTURE": "/workspace/r170-replay"
+      },
+      "exit_code": 0,
+      "output_file": "normal.log"
+    },
+    {
+      "label": "optimized",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "research/codex_audit/r170_identity_gate",
+        "-v"
+      ],
+      "cwd": "/workspace/r170-identity",
+      "environment_override": {
+        "R170_FIXTURE": "/workspace/r170-replay"
+      },
+      "exit_code": 0,
+      "output_file": "optimized.log"
+    },
+    {
+      "label": "authentic_gate",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "research/codex_audit/r170_identity_gate/identity_gate.py",
+        "/workspace/r170-replay",
+        "/workspace/r170-replay/research/codex_audit/r170_full_state/logs/B_full_receipt.json",
+        "--output",
+        "/workspace/r170-identity/research/codex_audit/r170_identity_gate/identity_result.json"
+      ],
+      "cwd": "/workspace/r170-identity",
+      "environment_override": {
+        "R170_FIXTURE": "/workspace/r170-replay"
+      },
+      "exit_code": 0,
+      "output_file": "authentic_gate.log"
+    }
+  ],
+  "model_execution": "NOT_RUN",
+  "full_repo_tests": "NOT_RUN",
+  "github_actions": "NOT_RUN",
+  "fees": "NO_NEW_CHARGE_ACTION",
+  "billing_account": "NOT_VERIFIED",
+  "review": "fresh reviewer important output policy issue fixed with observed red-green regression",
+  "code_sha256": {
+    "test_identity.py": "c983e995552380d8b0113a6b3ca659bc60c0d7435d223b76aaddf4c40d31553c",
+    "identity_gate.py": "f27a6323d50f981f03eb38676e74f13df1e4861b98ffd14ee9458b6f9b57aaf2"
+  }
+}

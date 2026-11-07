@@ -1,0 +1,32 @@
+{
+  "track": "codex",
+  "status": "COMPLETE",
+  "observed_main": "e2614fec5027247de328a5aeef295c4ed3bc9338",
+  "delivery_base": "e2614fec5027247de328a5aeef295c4ed3bc9338",
+  "target_key": [
+    "codex",
+    "R170",
+    "observation-ladder-third-method",
+    "historical-byte-identity-hard-gate"
+  ],
+  "claim": "none",
+  "results_seen": "NONBLIND: prior R170 results and draft PR8 fully known",
+  "completed": "Four original blob pins, historical B raw receipt byte/hash and Python source SHA enforced as hard failures. Eleven unique tests pass normal and -O. Existing eight draft PR coverage snapshot added. No model rerun.",
+  "tests": {
+    "unique": 11,
+    "final_executions": 22,
+    "failures": 0,
+    "errors": 0
+  },
+  "evidence": "Byte identity only; internal support for bounded artificial E1, not historical execution-time authentication or external replication",
+  "full_frozen_extension_acceptance": "PARTIAL",
+  "outputs": [
+    "research/codex_audit/r170_identity_gate/"
+  ],
+  "prior_prs": "1-8 open draft unmerged; read current API metadata",
+  "review": "Fresh scoped reviewer: output-policy stale success fixed with red-green regression; final artifact regenerated",
+  "ci": "NOT_RUN",
+  "billing": "NO_NEW_CHARGE_ACTION; account billing/free quota NOT_VERIFIED",
+  "next": "Fresh R handoff check, then R271 S67 original native Node CLI and persisted-receipt audit if still open",
+  "delivery": "See containing commit and new draft PR; no merge"
+}
