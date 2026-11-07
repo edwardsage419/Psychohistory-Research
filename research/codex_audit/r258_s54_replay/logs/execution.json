@@ -1,0 +1,183 @@
+{
+  "status": "COMPLETE",
+  "scope": "NONBLIND_INTERNAL_FINITE_ARTIFICIAL_E1_REPLAY",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "N/A; exhaustive",
+  "unittests": {
+    "native_tests": {
+      "passed": 82,
+      "failures": 0,
+      "errors": 0
+    },
+    "r_tests": {
+      "passed": 8,
+      "failures": 0,
+      "errors": 0
+    },
+    "b_tests": {
+      "passed": 7,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "s54_full_receipt_matches_r_emit": true,
+  "all_27_rows_match_b_emit": true,
+  "archived_crossroute_gate": {
+    "status": "PASS",
+    "exact_policy_comparisons": 3456,
+    "complete_world_initial_pairs": 27,
+    "negative_mutations_rejected": 4,
+    "scope": "internal_E1_only_no_external_replication"
+  },
+  "original_native_regeneration": {
+    "research/R258/R258_ALL_1728_ORIGINAL_THREESTEP_CONTROL_SOURCE_ATOMS.csv": {
+      "bytes_equal": true,
+      "sha256": "0af44af9bc97bd2cd8035e8437a58d420ac172cb6657eae969a50968f8be0f54"
+    },
+    "research/R258/R258_EXACT_RESULTS.json": {
+      "bytes_equal": true,
+      "sha256": "48951952d07ac2b610c3f884aa6e0c041b5a8ff6cca45154dd0a11a93916208e"
+    },
+    "research/R258/R258_FINAL_MACHINE_ACCEPTANCE.json": {
+      "bytes_equal": true,
+      "sha256": "7b15f284bbd5488406dc370a1f67c638987948ded3e304f7a6d60913a487d8e5"
+    }
+  },
+  "new_negative_controls": [
+    {
+      "mutation": "gap",
+      "rejected": true
+    },
+    {
+      "mutation": "duplicate_pair",
+      "rejected": true
+    },
+    {
+      "mutation": "evidence",
+      "rejected": true
+    },
+    {
+      "mutation": "boolean_zero",
+      "rejected": true
+    }
+  ],
+  "archived_gate_ignores_persisted_receipt": true,
+  "corrupted_persisted_receipt_rejected_by_new_replay": true,
+  "source_sha256": {
+    "research/R258/r258_exact_finite_stochastic_control.py": "6c443be758249336585b7bde606560e46f30f0a799d4258106d6c3cbf1989d10",
+    "research/R258/R258_ALL_1728_ORIGINAL_THREESTEP_CONTROL_SOURCE_ATOMS.csv": "0af44af9bc97bd2cd8035e8437a58d420ac172cb6657eae969a50968f8be0f54",
+    "research/R258/R258_EXACT_RESULTS.json": "48951952d07ac2b610c3f884aa6e0c041b5a8ff6cca45154dd0a11a93916208e",
+    "research/R258/R258_FINAL_MACHINE_ACCEPTANCE.json": "7b15f284bbd5488406dc370a1f67c638987948ded3e304f7a6d60913a487d8e5",
+    "research/R258/R258_FINAL_ACCEPTANCE_STATUS.json": "db81dfaf07b201fb70e544d3a9213998cc3b7a71bc65b362b2cbd57bc3707e7f",
+    "research/validation/r258_s54_coarse_state_observation_20261029.py": "4e18cdfed336aa49cb047d604bc479ffaeddd71312ae53b2cbcc7fe96bd9a0ad",
+    "research/evidence_audit/b_r258_s54_distribution_oracle_20261029.py": "e68e396854139c2697263011b703ab7b036b375b5b9e83c8c4e4770e2d532e56",
+    "research/evidence_audit/b_r258_s54_crossroute_gate_20261029.py": "2746626bd1a95aaf1e8254816f8c6d308660ff089d780218bf3fa10da629bdf1",
+    "research/validation/R258_S54_COARSE_OBSERVATION_EXACT_RECEIPT_2026-10-29.json": "157bc882883cb4f4ce8678abb473eac31e25c90a7ff48689d47d5c47ca96a7de"
+  },
+  "source_git_blob": {
+    "research/R258/r258_exact_finite_stochastic_control.py": "9eac8883054f1ba94dfb097948fd2f3a796a3c91",
+    "research/R258/R258_ALL_1728_ORIGINAL_THREESTEP_CONTROL_SOURCE_ATOMS.csv": "53ddfc9b55ad391e5ca129b68213a2aed0d32e8c",
+    "research/R258/R258_EXACT_RESULTS.json": "89e139840a29b3ecc66ee6b51d7442b23c6e8340",
+    "research/R258/R258_FINAL_MACHINE_ACCEPTANCE.json": "9acfa81e1ba1a53153a43c4b8721d4aed434a1d3",
+    "research/R258/R258_FINAL_ACCEPTANCE_STATUS.json": "f7b7cb8fb0bdcb1f1b7df07af5754e06563fcc0c",
+    "research/validation/r258_s54_coarse_state_observation_20261029.py": "7d48c76834a630cbdbc5fe8f7213a74decc12bd7",
+    "research/evidence_audit/b_r258_s54_distribution_oracle_20261029.py": "6ffd15ca2124469eea21f290ab734d27b7be15c8",
+    "research/evidence_audit/b_r258_s54_crossroute_gate_20261029.py": "2c98cfe883b0411b97f3a1275325b91c1b6319e6",
+    "research/validation/R258_S54_COARSE_OBSERVATION_EXACT_RECEIPT_2026-10-29.json": "8598ab99284a3fe650eb61056ac2ae5ae51e3b15"
+  },
+  "commands": [
+    {
+      "label": "native_tests",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s54-replay/research/R258/r258_exact_finite_stochastic_control.py",
+        "--test"
+      ],
+      "cwd": "/workspace/s54-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "r_tests",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s54-replay/research/validation/r258_s54_coarse_state_observation_20261029.py",
+        "--test"
+      ],
+      "cwd": "/workspace/s54-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "b_tests",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s54-replay/research/evidence_audit/b_r258_s54_distribution_oracle_20261029.py",
+        "--test"
+      ],
+      "cwd": "/workspace/s54-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "r_emit",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s54-replay/research/validation/r258_s54_coarse_state_observation_20261029.py",
+        "--emit"
+      ],
+      "cwd": "/workspace/s54-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "b_emit",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s54-replay/research/evidence_audit/b_r258_s54_distribution_oracle_20261029.py",
+        "--emit"
+      ],
+      "cwd": "/workspace/s54-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "crossroute_gate",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/s54-replay/research/evidence_audit/b_r258_s54_crossroute_gate_20261029.py"
+      ],
+      "cwd": "/workspace/s54-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "native_emit_sandbox",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/tmp9g2w6t94/research/R258/r258_exact_finite_stochastic_control.py",
+        "--emit"
+      ],
+      "cwd": "/workspace/s54-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "gate_with_corrupted_archive",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/tmp9g2w6t94/research/evidence_audit/b_r258_s54_crossroute_gate_20261029.py"
+      ],
+      "cwd": "/workspace/s54-replay",
+      "exit_code": 0
+    }
+  ],
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0,
+  "blindness": "Results read before this audit; cannot retroactively change historical blind status",
+  "ci_status": "NOT_RUN",
+  "full_repository_checkout": false
+}
