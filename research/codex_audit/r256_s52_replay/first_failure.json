@@ -1,0 +1,7 @@
+{
+  "status": "PARTIAL",
+  "command": "python research/codex_audit/r256_s52_replay/run_audit.py . --output research/codex_audit/r256_s52_replay/logs",
+  "exit_code": 1,
+  "reason": "ValueError: R CLI differs from full archived JSON",
+  "diagnosis": "Archive appends four verifier fields absent from R compute() output; calculation fields equal. No historical edits. Explicitly compare computation fields and disclose full JSON inequality."
+}
