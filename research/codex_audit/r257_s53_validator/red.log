@@ -1,0 +1,312 @@
+test_archive_passes_with_limits (test_validate_receipt.ReceiptTests.test_archive_passes_with_limits) ... ERROR
+test_cli_archive (test_validate_receipt.ReceiptTests.test_cli_archive) ... ERROR
+test_cli_optimized_rejects_wrong_multiplier (test_validate_receipt.ReceiptTests.test_cli_optimized_rejects_wrong_multiplier) ... FAIL
+test_cli_rejects_duplicate_json_keys (test_validate_receipt.ReceiptTests.test_cli_rejects_duplicate_json_keys) ... FAIL
+test_reject_boolean_count (test_validate_receipt.ReceiptTests.test_reject_boolean_count) ... FAIL
+test_reject_decimal_string (test_validate_receipt.ReceiptTests.test_reject_decimal_string) ... FAIL
+test_reject_duplicate_capacity (test_validate_receipt.ReceiptTests.test_reject_duplicate_capacity) ... FAIL
+test_reject_duplicate_step (test_validate_receipt.ReceiptTests.test_reject_duplicate_step) ... FAIL
+test_reject_duplicate_worlds (test_validate_receipt.ReceiptTests.test_reject_duplicate_worlds) ... FAIL
+test_reject_evidence_upgrade (test_validate_receipt.ReceiptTests.test_reject_evidence_upgrade) ... FAIL
+test_reject_feasible_nonoptimal_point (test_validate_receipt.ReceiptTests.test_reject_feasible_nonoptimal_point) ... FAIL
+test_reject_float_rational (test_validate_receipt.ReceiptTests.test_reject_float_rational) ... FAIL
+test_reject_infeasible_point (test_validate_receipt.ReceiptTests.test_reject_infeasible_point) ... FAIL
+test_reject_invalid_world_object (test_validate_receipt.ReceiptTests.test_reject_invalid_world_object) ... FAIL
+test_reject_missing_field (test_validate_receipt.ReceiptTests.test_reject_missing_field) ... FAIL
+test_reject_missing_world (test_validate_receipt.ReceiptTests.test_reject_missing_world) ... FAIL
+test_reject_missing_world_list (test_validate_receipt.ReceiptTests.test_reject_missing_world_list) ... FAIL
+test_reject_unexpected_field (test_validate_receipt.ReceiptTests.test_reject_unexpected_field) ... FAIL
+test_reject_unknown_world (test_validate_receipt.ReceiptTests.test_reject_unknown_world) ... FAIL
+test_reject_wrong_baseline_value (test_validate_receipt.ReceiptTests.test_reject_wrong_baseline_value) ... FAIL
+test_reject_wrong_capacity (test_validate_receipt.ReceiptTests.test_reject_wrong_capacity) ... FAIL
+test_reject_wrong_count (test_validate_receipt.ReceiptTests.test_reject_wrong_count) ... FAIL
+test_reject_wrong_delta (test_validate_receipt.ReceiptTests.test_reject_wrong_delta) ... FAIL
+test_reject_wrong_derivative (test_validate_receipt.ReceiptTests.test_reject_wrong_derivative) ... FAIL
+test_reject_wrong_minimum (test_validate_receipt.ReceiptTests.test_reject_wrong_minimum) ... FAIL
+test_reject_wrong_multiplier (test_validate_receipt.ReceiptTests.test_reject_wrong_multiplier) ... FAIL
+test_reject_wrong_nonconvex_control (test_validate_receipt.ReceiptTests.test_reject_wrong_nonconvex_control) ... FAIL
+test_reject_wrong_point_arity (test_validate_receipt.ReceiptTests.test_reject_wrong_point_arity) ... FAIL
+test_reject_wrong_secant (test_validate_receipt.ReceiptTests.test_reject_wrong_secant) ... FAIL
+test_reject_zero_denominator (test_validate_receipt.ReceiptTests.test_reject_zero_denominator) ... FAIL
+test_reordering_does_not_change_scientific_identity (test_validate_receipt.ReceiptTests.test_reordering_does_not_change_scientific_identity) ... ok
+
+======================================================================
+ERROR: test_archive_passes_with_limits (test_validate_receipt.ReceiptTests.test_archive_passes_with_limits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 22, in test_archive_passes_with_limits
+    self.assertEqual(result['capacity_certificates'], 40)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'capacity_certificates'
+
+======================================================================
+ERROR: test_cli_archive (test_validate_receipt.ReceiptTests.test_cli_archive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 39, in test_cli_archive
+    self.assertEqual(json.loads(p.stdout)['capacity_certificates'], 40)
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+FAIL: test_cli_optimized_rejects_wrong_multiplier (test_validate_receipt.ReceiptTests.test_cli_optimized_rejects_wrong_multiplier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 47, in test_cli_optimized_rejects_wrong_multiplier
+    self.assertEqual(p.returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_cli_rejects_duplicate_json_keys (test_validate_receipt.ReceiptTests.test_cli_rejects_duplicate_json_keys)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 56, in test_cli_rejects_duplicate_json_keys
+    self.assertEqual(p.returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_reject_boolean_count (test_validate_receipt.ReceiptTests.test_reject_boolean_count)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_decimal_string (test_validate_receipt.ReceiptTests.test_reject_decimal_string)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_duplicate_capacity (test_validate_receipt.ReceiptTests.test_reject_duplicate_capacity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_duplicate_step (test_validate_receipt.ReceiptTests.test_reject_duplicate_step)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_duplicate_worlds (test_validate_receipt.ReceiptTests.test_reject_duplicate_worlds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_evidence_upgrade (test_validate_receipt.ReceiptTests.test_reject_evidence_upgrade)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_feasible_nonoptimal_point (test_validate_receipt.ReceiptTests.test_reject_feasible_nonoptimal_point)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_float_rational (test_validate_receipt.ReceiptTests.test_reject_float_rational)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_infeasible_point (test_validate_receipt.ReceiptTests.test_reject_infeasible_point)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_invalid_world_object (test_validate_receipt.ReceiptTests.test_reject_invalid_world_object)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_missing_field (test_validate_receipt.ReceiptTests.test_reject_missing_field)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_missing_world (test_validate_receipt.ReceiptTests.test_reject_missing_world)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_missing_world_list (test_validate_receipt.ReceiptTests.test_reject_missing_world_list)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unexpected_field (test_validate_receipt.ReceiptTests.test_reject_unexpected_field)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unknown_world (test_validate_receipt.ReceiptTests.test_reject_unknown_world)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_baseline_value (test_validate_receipt.ReceiptTests.test_reject_wrong_baseline_value)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_capacity (test_validate_receipt.ReceiptTests.test_reject_wrong_capacity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_count (test_validate_receipt.ReceiptTests.test_reject_wrong_count)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_delta (test_validate_receipt.ReceiptTests.test_reject_wrong_delta)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_derivative (test_validate_receipt.ReceiptTests.test_reject_wrong_derivative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_minimum (test_validate_receipt.ReceiptTests.test_reject_wrong_minimum)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_multiplier (test_validate_receipt.ReceiptTests.test_reject_wrong_multiplier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_nonconvex_control (test_validate_receipt.ReceiptTests.test_reject_wrong_nonconvex_control)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_point_arity (test_validate_receipt.ReceiptTests.test_reject_wrong_point_arity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_wrong_secant (test_validate_receipt.ReceiptTests.test_reject_wrong_secant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_zero_denominator (test_validate_receipt.ReceiptTests.test_reject_zero_denominator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/strict-s53/research/codex_audit/r257_s53_validator/test_validate_receipt.py", line 95, in test
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.045s
+
+FAILED (failures=28, errors=2)
