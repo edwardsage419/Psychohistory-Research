@@ -1,0 +1,205 @@
+{
+  "status": "COMPLETE",
+  "scope": "NONBLIND_INTERNAL_FINITE_ARTIFICIAL_E1",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "node": "v24.19.0",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "N/A; deterministic exact rational trajectories",
+  "positive_archived_clis": 3,
+  "positive_cli_failures": 0,
+  "B_full_receipt_comparisons": 486,
+  "R_assertions": 1313,
+  "E078_result": {
+    "study": "E078_R248_S44",
+    "evidence": "E1_SYNTHETIC",
+    "source_rows": 405,
+    "trajectories": 81,
+    "points": 405,
+    "assertions": 2886,
+    "failures": 0,
+    "summary": {
+      "AFFINE_CONTRACT_ZERO": {
+        "SHRINK": 8,
+        "TIE": 0,
+        "EXPAND": 0,
+        "AT_FIXED_EXCLUDED": 1
+      },
+      "AFFINE_CONTRACT_ONE": {
+        "SHRINK": 8,
+        "TIE": 0,
+        "EXPAND": 0,
+        "AT_FIXED_EXCLUDED": 1
+      },
+      "AFFINE_ALTERNATE_CONTRACT": {
+        "SHRINK": 8,
+        "TIE": 0,
+        "EXPAND": 0,
+        "AT_FIXED_EXCLUDED": 1
+      },
+      "AFFINE_EXPAND_ZERO": {
+        "SHRINK": 0,
+        "TIE": 0,
+        "EXPAND": 8,
+        "AT_FIXED_EXCLUDED": 1
+      },
+      "IDENTITY_EVERY_POINT_FIXED": {
+        "SHRINK": 0,
+        "TIE": 8,
+        "EXPAND": 0,
+        "AT_FIXED_EXCLUDED": 1
+      },
+      "LOGISTIC_R2": {
+        "SHRINK": 3,
+        "TIE": 2,
+        "EXPAND": 3,
+        "AT_FIXED_EXCLUDED": 1
+      },
+      "LOGISTIC_R3_BORDER": {
+        "SHRINK": 3,
+        "TIE": 1,
+        "EXPAND": 4,
+        "AT_FIXED_EXCLUDED": 1
+      },
+      "LOGISTIC_R4_REPELLER": {
+        "SHRINK": 1,
+        "TIE": 1,
+        "EXPAND": 6,
+        "AT_FIXED_EXCLUDED": 1
+      },
+      "CUBIC_NONHYPERBOLIC_ATTRACTOR": {
+        "SHRINK": 8,
+        "TIE": 0,
+        "EXPAND": 0,
+        "AT_FIXED_EXCLUDED": 1
+      }
+    },
+    "new_E2": 0,
+    "new_E3": 0
+  },
+  "computed_JSON_matches_archive": true,
+  "archive_metadata_verified": {
+    "prescore_freeze_commit": "57e1f35d4263839178c6e86a4a314f92a32546d2",
+    "source_git_blob": "c5eec783ab4199a1824a7fe36b0dfef1bde2b18b"
+  },
+  "raw_R_full_JSON_match": false,
+  "metadata_note": "R does not emit the two archive-only provenance fields; explicitly verified separately",
+  "old_B_false_acceptance_characterizations": [
+    {
+      "case": "truncated",
+      "old_B_exit_code": 0,
+      "old_B_comparisons": 485,
+      "mutant_rows": 81,
+      "first_distance_length": 4,
+      "new_guard_rejected": true
+    },
+    {
+      "case": "duplicate",
+      "old_B_exit_code": 0,
+      "old_B_comparisons": 486,
+      "mutant_rows": 82,
+      "first_distance_length": 5,
+      "new_guard_rejected": true
+    }
+  ],
+  "incorrect_distance_negative_clis_rejected": 2,
+  "source_sha256": {
+    "research/validation/r248_s44_finite_trajectory_exact_20261029.js": "24a4baefa1feb7b9abb49f63ef753ead13050459be183fa3ee81a3a0452ec0cf",
+    "research/evidence_audit/b_r248_s44_independent_formula_20261029.py": "02b6572f65c5ecd858cf877362ffdbe00bf3b88fec20b094745c34097b27f838",
+    "research/operations/e078_r248_s44_source_receipt_third_route_20261029.js": "1c94191a53a67ffc35bee09e0855f62c30037e86fe75c2f76a3b440a9d940c6a",
+    "research/R248/R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv": "cb7fdcc35c212995a2c9d6f520c23d6f351d3b0c834bd6da50343884b553995b",
+    "research/validation/R248_S44_FINITE_TRAJECTORY_EXACT_RECEIPT_2026-10-29.json": "4d704cb240f8485e277a86879ac14a5aec31da3b86cbe505fe450eaa0e557bd1",
+    "research/R248/R248_FINAL_ACCEPTANCE_STATUS.json": "a7927f26c17b3d012b4a49b9ceba5f264f221215f8a4ae5479bf0cc821fa6bea"
+  },
+  "source_git_blob": {
+    "research/validation/r248_s44_finite_trajectory_exact_20261029.js": "5dcceb1bb6e416c7b96901b29008da304269036a",
+    "research/evidence_audit/b_r248_s44_independent_formula_20261029.py": "74d5793b3835d2a9dcce843dc3fe0f8d13da9cc9",
+    "research/operations/e078_r248_s44_source_receipt_third_route_20261029.js": "69b8de58c10a0e225c675051c6ef4ec43d1560d6",
+    "research/R248/R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv": "c5eec783ab4199a1824a7fe36b0dfef1bde2b18b",
+    "research/validation/R248_S44_FINITE_TRAJECTORY_EXACT_RECEIPT_2026-10-29.json": "baa652af827ef25f50d89bcc3d0865fdff09c283",
+    "research/R248/R248_FINAL_ACCEPTANCE_STATUS.json": "6e6c528c9e744176e41ff728d29a83d8641bea9d"
+  },
+  "commands": [
+    {
+      "label": "r_node",
+      "command": [
+        "node",
+        "/workspace/r248-replay/research/validation/r248_s44_finite_trajectory_exact_20261029.js",
+        "/workspace/r248-replay/research/R248/R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv"
+      ],
+      "cwd": "/workspace/r248-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "b_python_full_receipt",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/r248-replay/research/evidence_audit/b_r248_s44_independent_formula_20261029.py",
+        "/workspace/r248-replay/research/validation/R248_S44_FINITE_TRAJECTORY_EXACT_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/r248-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "e078_node",
+      "command": [
+        "node",
+        "/workspace/r248-replay/research/operations/e078_r248_s44_source_receipt_third_route_20261029.js",
+        "/workspace/r248-replay/research/R248/R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv",
+        "/workspace/r248-replay/research/validation/R248_S44_FINITE_TRAJECTORY_EXACT_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/r248-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "old_b_accepts_truncated",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/r248-replay/research/evidence_audit/b_r248_s44_independent_formula_20261029.py",
+        "/tmp/tmp2cc_nhkk/truncated.json"
+      ],
+      "cwd": "/workspace/r248-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "old_b_accepts_duplicate",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/r248-replay/research/evidence_audit/b_r248_s44_independent_formula_20261029.py",
+        "/tmp/tmp2cc_nhkk/duplicate.json"
+      ],
+      "cwd": "/workspace/r248-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "negative_b_distance",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/r248-replay/research/evidence_audit/b_r248_s44_independent_formula_20261029.py",
+        "/tmp/tmp2cc_nhkk/bad_value.json"
+      ],
+      "cwd": "/workspace/r248-replay",
+      "exit_code": 1
+    },
+    {
+      "label": "negative_e078_distance",
+      "command": [
+        "node",
+        "/workspace/r248-replay/research/operations/e078_r248_s44_source_receipt_third_route_20261029.js",
+        "/workspace/r248-replay/research/R248/R248_ALL_405_EXACT_MAP_IVP_TIME_SOURCES.csv",
+        "/tmp/tmp2cc_nhkk/bad_value.json"
+      ],
+      "cwd": "/workspace/r248-replay",
+      "exit_code": 1
+    }
+  ],
+  "full_repository_tests": "NOT_RUN",
+  "native_original_model_unittests": "NOT_RUN",
+  "ci_status": "NOT_RUN",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0
+}

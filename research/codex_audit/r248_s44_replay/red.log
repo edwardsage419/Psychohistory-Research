@@ -1,0 +1,74 @@
+test_boolean_zero_alias_rejected (test_replay.Tests.test_boolean_zero_alias_rejected) ... FAIL
+test_changed_distance_rejected (test_replay.Tests.test_changed_distance_rejected) ... FAIL
+test_duplicate_row_rejected (test_replay.Tests.test_duplicate_row_rejected) ... FAIL
+test_failed_rerun_removes_success (test_replay.Tests.test_failed_rerun_removes_success) ... FAIL
+test_forged_source_identity_rejected (test_replay.Tests.test_forged_source_identity_rejected) ... FAIL
+test_genuine_receipt_passes (test_replay.Tests.test_genuine_receipt_passes) ... ok
+test_successful_audit_leaves_sources_unchanged (test_replay.Tests.test_successful_audit_leaves_sources_unchanged) ... FAIL
+test_truncated_distance_rejected (test_replay.Tests.test_truncated_distance_rejected) ... FAIL
+
+======================================================================
+FAIL: test_boolean_zero_alias_rejected (test_replay.Tests.test_boolean_zero_alias_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r248-replay/research/codex_audit/r248_s44_replay/test_replay.py", line 42, in test_boolean_zero_alias_rejected
+    with self.assertRaises(ValueError):run_audit.check_receipt(self.generated,self.archive)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_changed_distance_rejected (test_replay.Tests.test_changed_distance_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r248-replay/research/codex_audit/r248_s44_replay/test_replay.py", line 34, in test_changed_distance_rejected
+    with self.assertRaises(ValueError):run_audit.check_receipt(self.generated,self.archive)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_row_rejected (test_replay.Tests.test_duplicate_row_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r248-replay/research/codex_audit/r248_s44_replay/test_replay.py", line 30, in test_duplicate_row_rejected
+    with self.assertRaises(ValueError):run_audit.check_receipt(self.generated,self.archive)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_failed_rerun_removes_success (test_replay.Tests.test_failed_rerun_removes_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r248-replay/research/codex_audit/r248_s44_replay/test_replay.py", line 48, in test_failed_rerun_removes_success
+    self.assertNotEqual(p.returncode,0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_forged_source_identity_rejected (test_replay.Tests.test_forged_source_identity_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r248-replay/research/codex_audit/r248_s44_replay/test_replay.py", line 38, in test_forged_source_identity_rejected
+    with self.assertRaises(ValueError):run_audit.check_receipt(self.generated,self.archive)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_successful_audit_leaves_sources_unchanged (test_replay.Tests.test_successful_audit_leaves_sources_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r248-replay/research/codex_audit/r248_s44_replay/test_replay.py", line 65, in test_successful_audit_leaves_sources_unchanged
+    self.assertTrue((out/'execution.json').exists())
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_truncated_distance_rejected (test_replay.Tests.test_truncated_distance_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r248-replay/research/codex_audit/r248_s44_replay/test_replay.py", line 26, in test_truncated_distance_rejected
+    with self.assertRaises(ValueError):run_audit.check_receipt(self.generated,self.archive)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.035s
+
+FAILED (failures=7)
