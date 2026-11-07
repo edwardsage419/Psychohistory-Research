@@ -1,0 +1,249 @@
+{
+  "status": "COMPLETE",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "node": "v24.19.0",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "R251 N/A; R252 frozen deterministic xorshift32, 8 replicates",
+  "archived_clis_passed": 6,
+  "archived_clis_failed": 0,
+  "negative_cli_controls_rejected": 6,
+  "R251": {
+    "computed_fields_match_archive": true,
+    "full_json_match": false,
+    "archive_only_fields": [
+      "B_comparison_note",
+      "B_full_worlds_json_sha256",
+      "B_local_command",
+      "B_local_run_status",
+      "B_method",
+      "B_worlds_json_FNV32",
+      "E1",
+      "PESEN_v0_1",
+      "R073",
+      "R_method",
+      "R_script_blob",
+      "date",
+      "external_replication",
+      "negative_control_mutation_rejected",
+      "new_CI",
+      "new_E2",
+      "new_E3",
+      "original_R251_prescore_commit",
+      "original_source_blob",
+      "original_source_sha256",
+      "protocol_commit"
+    ],
+    "source_field_checks": 2835,
+    "B_cli": {
+      "status": "PASS",
+      "worlds": 9,
+      "cohorts": 72,
+      "source_atoms_reconstructed": 405,
+      "cross_route_comparisons": 333,
+      "mutation_rejected": true
+    },
+    "E081_cli": {
+      "status": "PASS",
+      "checks": 410,
+      "failures": 0,
+      "source_atoms": 405,
+      "cohorts": 72,
+      "worlds": 9,
+      "mutation_rejected": true
+    }
+  },
+  "R252": {
+    "full_json_match": true,
+    "generated_bytes_equal": true,
+    "generated_sha256": "4b4b6416f3173ddba814111cf73e08af97e50521500e3fc936139cec82d0f802",
+    "B_cli": {
+      "audit": "B_R252_S48",
+      "records_checked": 288,
+      "independent_numeric_metric_comparisons": 1152,
+      "integer_count_and_source_index_checks": 576,
+      "mutant_rejected": true,
+      "external_independent_replication": false
+    },
+    "E082_cli": {
+      "study": "E082_R252_S48",
+      "source_rows": 576,
+      "records": 288,
+      "metric_checks": 1152,
+      "index_checks": 288,
+      "count_record_checks": 288,
+      "assertions": 4489,
+      "max_absolute_error": 5.00155472593633e-13,
+      "independent_bits_positive_subsamples": 21,
+      "mutant_rejected": true,
+      "evidence": "E1_ARTIFICIAL_ONLY"
+    },
+    "approximation_tolerance_bits": 1e-10
+  },
+  "source_sha256": {
+    "research/validation/r251_s47_finite_window_exact_20261029.js": "9e74aeec447d58c90b298de4ed50bf618b4556b903a4cb91fb0396562fdc68f6",
+    "research/evidence_audit/b_r251_s47_independent_fraction_20261029.py": "ef033532f7d6bba29a3afca28ebf86eaf1129d736b344a16fec479ff3fb21949",
+    "research/operations/e081_r251_s47_exact_receipt_20261029.js": "71e3b40b185ad267d4720fc391a0966f056fe36d49fab2b402fe020cc8fec697",
+    "research/validation/r252_s48_exact_source_information_20261029.js": "c6bca26122bd654c4ff34ac1edd0f333676520d10a68adb849cd718a7060172f",
+    "research/evidence_audit/b_r252_s48_independent_numeric_oracle_20261029.py": "6d408ab0e1f2ce41edba70ae7de134e8eabcc03ef81e3744a39642d4353b3af4",
+    "research/operations/e082_r252_s48_source_numeric_20261029.js": "c64785b63241c0a95bad5d614e8d37985fb3216c988b0c8e15945fd6c6c54e3c",
+    "research/R251/R251_ALL_405_ORIGINAL_LYAPUNOV_SOURCE_ATOMS.csv": "5b43196a7714336294dbdd332b5c3cb14d6eea8ee269ebc7baa479d8cc5ec25e",
+    "research/R252/R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv": "febd739ed17cbdac2dff13e32429e8250bfc13f067b31bf641c9679c241d3061",
+    "research/validation/R251_S47_FINITE_WINDOW_EXACT_RECEIPT_2026-10-29.json": "44d7bd1a59c0b3fdfd149d3d2e58b03bfc805a9e0a08bc5443ea8f9ae7fa3736",
+    "research/validation/R252_S48_FINITE_SAMPLE_INFORMATION_RECEIPT_2026-10-29.json": "4b4b6416f3173ddba814111cf73e08af97e50521500e3fc936139cec82d0f802",
+    "research/R251/R251_FINAL_ACCEPTANCE_STATUS.json": "fe9171f7cdd1a5b16d1735ac3a6a9b95f2eca7a379f4be615e7a16cc705bb76d",
+    "research/R252/R252_FINAL_ACCEPTANCE_STATUS.json": "76ed463e3c72f33db8a7c8018eccb20c579c60c63c8aa7ebb9d4158d9a883d40"
+  },
+  "source_git_blob": {
+    "research/validation/r251_s47_finite_window_exact_20261029.js": "000906284d45c1ed2804d6cf034a8dea8b694d76",
+    "research/evidence_audit/b_r251_s47_independent_fraction_20261029.py": "d12116635e60562e66e8ea964947a7b4f0aabde4",
+    "research/operations/e081_r251_s47_exact_receipt_20261029.js": "a8c61c8f86df515235190411d464f290ba4f013d",
+    "research/validation/r252_s48_exact_source_information_20261029.js": "b2128ffe0da2fc4f98543230d4a65ee3fe6178cc",
+    "research/evidence_audit/b_r252_s48_independent_numeric_oracle_20261029.py": "fa007d9aac4d05b3456310141cb9d9a81715b866",
+    "research/operations/e082_r252_s48_source_numeric_20261029.js": "688ff110ccf5c32d2b94c546dc841cc314501644",
+    "research/R251/R251_ALL_405_ORIGINAL_LYAPUNOV_SOURCE_ATOMS.csv": "b8ca35f1e7779f38bcbd60051973819aa3b29061",
+    "research/R252/R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv": "d830affa2734305c113bea37d32c4a4b44c45ca0",
+    "research/validation/R251_S47_FINITE_WINDOW_EXACT_RECEIPT_2026-10-29.json": "ddd580eba8c50897fff594f876f31aa7b056ccfa",
+    "research/validation/R252_S48_FINITE_SAMPLE_INFORMATION_RECEIPT_2026-10-29.json": "57421be4742147c0be482441c462088d0f82e2b2",
+    "research/R251/R251_FINAL_ACCEPTANCE_STATUS.json": "bd0e083db3f99bf21ae2f450bc1b34cfcc3af1c2",
+    "research/R252/R252_FINAL_ACCEPTANCE_STATUS.json": "c678930ab9ef1bc9eef585b4672d256ca97b43b1"
+  },
+  "commands": [
+    {
+      "label": "r251",
+      "command": [
+        "node",
+        "/workspace/cli251252-replay/research/validation/r251_s47_finite_window_exact_20261029.js",
+        "/workspace/cli251252-replay/research/R251/R251_ALL_405_ORIGINAL_LYAPUNOV_SOURCE_ATOMS.csv"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "b251_full_receipt",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/cli251252-replay/research/evidence_audit/b_r251_s47_independent_fraction_20261029.py",
+        "/workspace/cli251252-replay/research/validation/R251_S47_FINITE_WINDOW_EXACT_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "e081_full_receipt",
+      "command": [
+        "node",
+        "/workspace/cli251252-replay/research/operations/e081_r251_s47_exact_receipt_20261029.js",
+        "/workspace/cli251252-replay/research/validation/R251_S47_FINITE_WINDOW_EXACT_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "r252",
+      "command": [
+        "node",
+        "/workspace/cli251252-replay/research/validation/r252_s48_exact_source_information_20261029.js",
+        "/workspace/cli251252-replay/research/R252/R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv",
+        "/tmp/tmpuw2y8e7m/r252_generated.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "b252_full_receipt",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/cli251252-replay/research/evidence_audit/b_r252_s48_independent_numeric_oracle_20261029.py",
+        "--receipt",
+        "/workspace/cli251252-replay/research/validation/R252_S48_FINITE_SAMPLE_INFORMATION_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "e082_full_receipt",
+      "command": [
+        "node",
+        "/workspace/cli251252-replay/research/operations/e082_r252_s48_source_numeric_20261029.js",
+        "/workspace/cli251252-replay/research/R252/R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv",
+        "/workspace/cli251252-replay/research/validation/R252_S48_FINITE_SAMPLE_INFORMATION_RECEIPT_2026-10-29.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 0
+    },
+    {
+      "label": "negative_b251",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/cli251252-replay/research/evidence_audit/b_r251_s47_independent_fraction_20261029.py",
+        "/tmp/tmpuw2y8e7m/bad251.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 1
+    },
+    {
+      "label": "negative_e081",
+      "command": [
+        "node",
+        "/workspace/cli251252-replay/research/operations/e081_r251_s47_exact_receipt_20261029.js",
+        "/tmp/tmpuw2y8e7m/bad251.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 1
+    },
+    {
+      "label": "negative_b252",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/workspace/cli251252-replay/research/evidence_audit/b_r252_s48_independent_numeric_oracle_20261029.py",
+        "--receipt",
+        "/tmp/tmpuw2y8e7m/bad252.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 1
+    },
+    {
+      "label": "negative_e082",
+      "command": [
+        "node",
+        "/workspace/cli251252-replay/research/operations/e082_r252_s48_source_numeric_20261029.js",
+        "/workspace/cli251252-replay/research/R252/R252_ALL_576_ORIGINAL_SIXBIT_INFORMATION_SOURCES.csv",
+        "/tmp/tmpuw2y8e7m/bad252.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 1
+    },
+    {
+      "label": "negative_r251_source",
+      "command": [
+        "node",
+        "/workspace/cli251252-replay/research/validation/r251_s47_finite_window_exact_20261029.js",
+        "/tmp/tmpuw2y8e7m/bad251.csv"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 1
+    },
+    {
+      "label": "negative_r252_source",
+      "command": [
+        "node",
+        "/workspace/cli251252-replay/research/validation/r252_s48_exact_source_information_20261029.js",
+        "/tmp/tmpuw2y8e7m/bad252.csv",
+        "/tmp/tmpuw2y8e7m/must_not_exist.json"
+      ],
+      "cwd": "/workspace/cli251252-replay",
+      "exit_code": 1
+    }
+  ],
+  "evidence_scope": "NONBLIND_INTERNAL_ARTIFICIAL_E1; independent numeric is not exact prime-log proof",
+  "new_E2": 0,
+  "new_E3": 0,
+  "external_team_replications": 0,
+  "ci_status": "NOT_RUN",
+  "full_repo_tests": "NOT_RUN",
+  "original_native_model_unit_tests": "NOT_RUN"
+}
