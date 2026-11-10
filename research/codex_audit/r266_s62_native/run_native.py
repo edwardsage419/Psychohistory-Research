@@ -7,6 +7,7 @@ import hashlib
 import json
 from pathlib import Path
 import platform
+import stat
 import subprocess
 import sys
 import tempfile
@@ -25,6 +26,30 @@ PINS={R:'07b0ddeabe02415a2545af289ac29678e616f53e',B:'136b87413c779eb40236e4a504
 def require(ok,message):
     if not ok:raise ValueError(message)
 
+def check_output_target(path):
+    try:
+        info = path.lstat()
+    except FileNotFoundError:
+        return
+    require(stat.S_ISREG(info.st_mode) and info.st_nlink == 1, 'unsafe output: ' + str(path))
+
+
+def atomic_output(path, content):
+    # Refuse aliases again immediately before writing; replace avoids following a
+    # target symlink introduced after that check. Output directories must be stable.
+    check_output_target(path)
+    staged = None
+    try:
+        raw = content.encode('utf-8') if isinstance(content, str) else content
+        with tempfile.NamedTemporaryFile(mode='wb', dir=path.parent, delete=False) as stream:
+            staged = Path(stream.name)
+            stream.write(raw)
+        staged.replace(path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
+
+
 def identity(root):
     out={}
     for path,pin in PINS.items():
@@ -39,11 +64,13 @@ def main():
     targets=[out/'execution.json']+[out/(label+suffix) for label in labels for suffix in ('.stdout','.stderr')]
     protected=[root/path for path in PINS]+[Path(__file__).resolve(),Path(__file__).with_name('source_audit.py').resolve()]
     require(not any(t==s.resolve() or (t.exists() and s.exists() and t.samefile(s)) for t in targets for s in protected),'output aliases input')
+    for target in targets:
+        check_output_target(target)
     out.mkdir(parents=True,exist_ok=True);(out/'execution.json').unlink(missing_ok=True)
     before=identity(root);commands=[]
     def run(label,cmd):
         r=subprocess.run(cmd,cwd=root,capture_output=True,timeout=60)
-        (out/(label+'.stdout')).write_bytes(r.stdout);(out/(label+'.stderr')).write_bytes(r.stderr)
+        atomic_output(out / (label + '.stdout'), r.stdout);atomic_output(out / (label + '.stderr'), r.stderr)
         commands.append({'label':label,'command':cmd,'cwd':str(root),'exit_code':r.returncode,'stdout_file':label+'.stdout','stderr_file':label+'.stderr'})
         require(r.returncode==0,'CLI failed '+label)
         return r.stdout
@@ -71,9 +98,7 @@ def main():
             'commands':commands,'evidence':'NONBLIND_INTERNAL_ARTIFICIAL_E1','new_E2':0,'new_E3':0,'external_team_replications':0,
             'original_R266_136_test_suites':'NOT_RUN','full_repo_tests':'NOT_RUN','ci':'NOT_RUN',
             'code_sha256':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('run_native.py','source_audit.py')}}
-    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=out,delete=False) as f:
-        staged=Path(f.name);f.write(json.dumps(result,indent=2)+'\n')
-    staged.replace(out/'execution.json')
+    atomic_output(out / 'execution.json', json.dumps(result, indent=2) + '\n')
     print(json.dumps({'status':'COMPLETE','source_rows':5328,'metric_fields':180,'R_and_rebuilt_CSV_bytes_equal':True,'original_positive_clis':4,'byte_adapters':1}))
 
 if __name__=='__main__':main()
