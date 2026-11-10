@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/tmp/codex-b-r290-native-iaftio1x/original_B.py", line 78, in <module>
+    print(json.dumps({'status':'PASS','world_sample_combinations':verify(doc),'rejected_mutations':negatives(doc)},indent=2))
+                                                                  ^^^^^^^^^^^
+  File "/tmp/codex-b-r290-native-iaftio1x/original_B.py", line 54, in verify
+    raise ValueError('regret or oracle')
+ValueError: regret or oracle
