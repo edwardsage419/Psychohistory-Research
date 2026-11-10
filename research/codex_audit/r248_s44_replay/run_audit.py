@@ -10,6 +10,7 @@ import hashlib
 import json
 from pathlib import Path
 import platform
+import stat
 import subprocess
 import sys
 import tempfile
@@ -35,6 +36,35 @@ def require(ok,message):
     if not ok:raise ValueError(message)
 
 
+# Reuse PR4 output policy without a cross-PR runtime dependency.
+OUTPUT_LABELS = ('r_node', 'b_python_full_receipt', 'e078_node', 'old_b_accepts_truncated', 'old_b_accepts_duplicate', 'negative_b_distance', 'negative_e078_distance')
+OUTPUT_NAMES = ('execution.json', *(label + suffix for label in OUTPUT_LABELS for suffix in ('.stdout', '.stderr')))
+
+
+def check_output_target(path):
+    try:
+        info = path.lstat()
+    except FileNotFoundError:
+        return
+    require(stat.S_ISREG(info.st_mode) and info.st_nlink == 1, 'unsafe output: ' + str(path))
+
+
+def atomic_output(path, content):
+    # Refuse aliases again immediately before writing; replace avoids following a
+    # target symlink introduced after that check. Output directories must be stable.
+    check_output_target(path)
+    staged = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w', dir=path.parent, delete=False,
+                                         encoding='utf-8') as stream:
+            staged = Path(stream.name)
+            stream.write(content)
+        staged.replace(path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
+
+
 def check_receipt(generated,archive):
     require(type(generated) is dict and set(generated)==KEYS,'computed field coverage')
     require(type(archive) is dict and set(archive)==KEYS|set(META),'archive field coverage')
@@ -56,11 +86,14 @@ def check_receipt(generated,archive):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('root',type=Path);p.add_argument('--output',type=Path,required=True)
-    a=p.parse_args();root,out=a.root.resolve(),a.output.resolve();out.mkdir(parents=True,exist_ok=True)
+    a=p.parse_args();root,out=a.root.resolve(),a.output.resolve()
+    for name in OUTPUT_NAMES:
+        check_output_target(out / name)
+    out.mkdir(parents=True,exist_ok=True)
     (out/'execution.json').unlink(missing_ok=True);commands=[]
     def run(label,command,diagnostic=None):
         proc=subprocess.run(command,cwd=root,text=True,capture_output=True,timeout=60)
-        (out/(label+'.stdout')).write_text(proc.stdout);(out/(label+'.stderr')).write_text(proc.stderr)
+        atomic_output(out / (label + '.stdout'), proc.stdout);atomic_output(out / (label + '.stderr'), proc.stderr)
         commands.append({'label':label,'command':command,'cwd':str(root),'exit_code':proc.returncode})
         if diagnostic is None:require(proc.returncode==0,label+' failed; see stderr')
         else:require(proc.returncode!=0 and diagnostic in proc.stderr,label+' unexpected failure')
@@ -116,9 +149,7 @@ def main():
             'source_sha256':hashes,'source_git_blob':blobs,'commands':commands,
             'full_repository_tests':'NOT_RUN','native_original_model_unittests':'NOT_RUN',
             'ci_status':'NOT_RUN','new_E2':0,'new_E3':0,'external_team_replications':0}
-    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=out,delete=False) as tmp:
-        tmp.write(json.dumps(result,indent=2)+'\n');staged=Path(tmp.name)
-    staged.replace(out/'execution.json')
+    atomic_output(out / 'execution.json', json.dumps(result, indent=2) + '\n')
     print(json.dumps({'status':'COMPLETE','B_cross_runtime_comparisons':486,
                       'positive_archived_clis':3,'old_B_false_acceptances_confirmed':2,
                       'new_guard_rejects_both':True,'wrong_distance_clis_rejected':2},indent=2))

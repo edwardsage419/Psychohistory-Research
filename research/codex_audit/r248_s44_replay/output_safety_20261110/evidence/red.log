@@ -1,0 +1,66 @@
+test_dangling_output_symlink_rejected (test_replay.OutputAliasTests.test_dangling_output_symlink_rejected) ... FAIL
+test_execution_alias_rejected_before_stale_unlink (test_replay.OutputAliasTests.test_execution_alias_rejected_before_stale_unlink) ... FAIL
+test_stderr_symlink_cannot_overwrite_source (test_replay.OutputAliasTests.test_stderr_symlink_cannot_overwrite_source) ... FAIL
+test_stdout_hardlink_cannot_overwrite_source (test_replay.OutputAliasTests.test_stdout_hardlink_cannot_overwrite_source) ... FAIL
+test_stdout_symlink_cannot_truncate_source (test_replay.OutputAliasTests.test_stdout_symlink_cannot_truncate_source) ... FAIL
+test_boolean_zero_alias_rejected (test_replay.Tests.test_boolean_zero_alias_rejected) ... ok
+test_changed_distance_rejected (test_replay.Tests.test_changed_distance_rejected) ... ok
+test_duplicate_row_rejected (test_replay.Tests.test_duplicate_row_rejected) ... ok
+test_failed_rerun_removes_success (test_replay.Tests.test_failed_rerun_removes_success) ... ok
+test_forged_source_identity_rejected (test_replay.Tests.test_forged_source_identity_rejected) ... ok
+test_genuine_receipt_passes (test_replay.Tests.test_genuine_receipt_passes) ... ok
+test_successful_audit_leaves_sources_unchanged (test_replay.Tests.test_successful_audit_leaves_sources_unchanged) ... ok
+test_truncated_distance_rejected (test_replay.Tests.test_truncated_distance_rejected) ... ok
+
+======================================================================
+FAIL: test_dangling_output_symlink_rejected (test_replay.OutputAliasTests.test_dangling_output_symlink_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 120, in test_dangling_output_symlink_rejected
+    self.assertFalse(target.exists(), 'source root gained a file through a dangling alias')
+AssertionError: True is not false : source root gained a file through a dangling alias
+
+======================================================================
+FAIL: test_execution_alias_rejected_before_stale_unlink (test_replay.OutputAliasTests.test_execution_alias_rejected_before_stale_unlink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 113, in test_execution_alias_rejected_before_stale_unlink
+    self.check_alias('execution.json')
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 99, in check_alias
+    self.assertNotEqual(result.returncode, 0, 'output alias must be rejected')
+AssertionError: 0 == 0 : output alias must be rejected
+
+======================================================================
+FAIL: test_stderr_symlink_cannot_overwrite_source (test_replay.OutputAliasTests.test_stderr_symlink_cannot_overwrite_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 107, in test_stderr_symlink_cannot_overwrite_source
+    self.check_alias('r_node.stderr')
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 98, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'' != b'{\n  "research_id": "R248_S44",\n  "evide[31678 chars]n}\n' : protected input changed through output alias
+
+======================================================================
+FAIL: test_stdout_hardlink_cannot_overwrite_source (test_replay.OutputAliasTests.test_stdout_hardlink_cannot_overwrite_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 110, in test_stdout_hardlink_cannot_overwrite_source
+    self.check_alias('r_node.stdout', hard=True)
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 98, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'{\n[31571 chars]OZEN"\n}\n' != b'{\n[31571 chars]OZEN",\n  "prescore_freeze_commit": "57e1f35d4[99 chars]n}\n' : protected input changed through output alias
+
+======================================================================
+FAIL: test_stdout_symlink_cannot_truncate_source (test_replay.OutputAliasTests.test_stdout_symlink_cannot_truncate_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 104, in test_stdout_symlink_cannot_truncate_source
+    self.check_alias('r_node.stdout')
+  File "/workspace/codex-a/r248-output-safety/research/codex_audit/r248_s44_replay/test_replay.py", line 98, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'{\n[31571 chars]OZEN"\n}\n' != b'{\n[31571 chars]OZEN",\n  "prescore_freeze_commit": "57e1f35d4[99 chars]n}\n' : protected input changed through output alias
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.662s
+
+FAILED (failures=5)
