@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/evidence_audit/b_r278_s74_receipt_check_20261030.py", line 57, in <module>
+    print(json.dumps(check(a.csv,a.json),indent=2))
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Psychohistory-Research/research/evidence_audit/b_r278_s74_receipt_check_20261030.py", line 47, in check
+    if F(r['source_probability'])!=w:raise ValueError('source mass')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/fractions.py", line 281, in __new__
+    raise ZeroDivisionError('Fraction(%s, 0)' % numerator)
+ZeroDivisionError: Fraction(1, 0)

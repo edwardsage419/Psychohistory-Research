@@ -1,0 +1,123 @@
+test_all_conditional_marginals_and_covariance_identity (test_complete_receipt.CompleteReceiptTests.test_all_conditional_marginals_and_covariance_identity) ... ERROR
+test_corrupt_csv_is_still_rejected_by_existing_source_route (test_complete_receipt.CompleteReceiptTests.test_corrupt_csv_is_still_rejected_by_existing_source_route) ... FAIL
+test_covariance_and_delta_tampering_rejected (test_complete_receipt.CompleteReceiptTests.test_covariance_and_delta_tampering_rejected) ... FAIL
+test_duplicate_and_missing_identity_records_rejected (test_complete_receipt.CompleteReceiptTests.test_duplicate_and_missing_identity_records_rejected) ... FAIL
+test_duplicate_json_keys_and_nonstandard_constants_rejected (test_complete_receipt.CompleteReceiptTests.test_duplicate_json_keys_and_nonstandard_constants_rejected) ... FAIL
+test_hand_central_comparison_and_risk (test_complete_receipt.CompleteReceiptTests.test_hand_central_comparison_and_risk) ... ERROR
+test_hand_k2_joint_product_and_covariance (test_complete_receipt.CompleteReceiptTests.test_hand_k2_joint_product_and_covariance) ... ERROR
+test_missing_and_extra_fields_fail_closed (test_complete_receipt.CompleteReceiptTests.test_missing_and_extra_fields_fail_closed) ... FAIL
+test_numeric_bool_and_float_substitutions_rejected (test_complete_receipt.CompleteReceiptTests.test_numeric_bool_and_float_substitutions_rejected) ... FAIL
+test_original_full_receipt_and_native_csv_pass (test_complete_receipt.CompleteReceiptTests.test_original_full_receipt_and_native_csv_pass) ... FAIL
+test_record_reordering_and_equivalent_fraction_are_valid (test_complete_receipt.CompleteReceiptTests.test_record_reordering_and_equivalent_fraction_are_valid) ... FAIL
+test_scope_and_nonfinite_or_wrong_fraction_types_rejected (test_complete_receipt.CompleteReceiptTests.test_scope_and_nonfinite_or_wrong_fraction_types_rejected) ... FAIL
+
+======================================================================
+ERROR: test_all_conditional_marginals_and_covariance_identity (test_complete_receipt.CompleteReceiptTests.test_all_conditional_marginals_and_covariance_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 29, in test_all_conditional_marginals_and_covariance_identity
+    rows = gate.expected_receipt()["conditional_forecasts"]
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'conditional_forecasts'
+
+======================================================================
+ERROR: test_hand_central_comparison_and_risk (test_complete_receipt.CompleteReceiptTests.test_hand_central_comparison_and_risk)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 43, in test_hand_central_comparison_and_risk
+    self.assertEqual(expected["world_results"][("1/2", "BMA_JOINT")]["expected_joint_brier"], F(2206809, 2689600))
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'world_results'
+
+======================================================================
+ERROR: test_hand_k2_joint_product_and_covariance (test_complete_receipt.CompleteReceiptTests.test_hand_k2_joint_product_and_covariance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 21, in test_hand_k2_joint_product_and_covariance
+    row = gate.expected_receipt()["conditional_forecasts"][2]
+          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'conditional_forecasts'
+
+======================================================================
+FAIL: test_corrupt_csv_is_still_rejected_by_existing_source_route (test_complete_receipt.CompleteReceiptTests.test_corrupt_csv_is_still_rejected_by_existing_source_route)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 111, in test_corrupt_csv_is_still_rejected_by_existing_source_route
+    with self.assertRaises(ValueError): gate.check(path, JSON_PATH)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_covariance_and_delta_tampering_rejected (test_complete_receipt.CompleteReceiptTests.test_covariance_and_delta_tampering_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 73, in test_covariance_and_delta_tampering_rejected
+    with self.assertRaisesRegex(ValueError, "RECEIPT_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_and_missing_identity_records_rejected (test_complete_receipt.CompleteReceiptTests.test_duplicate_and_missing_identity_records_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 79, in test_duplicate_and_missing_identity_records_rejected
+    with self.assertRaises(ValueError): gate.validate_receipt(receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_json_keys_and_nonstandard_constants_rejected (test_complete_receipt.CompleteReceiptTests.test_duplicate_json_keys_and_nonstandard_constants_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 101, in test_duplicate_json_keys_and_nonstandard_constants_rejected
+    with self.assertRaises(ValueError): gate.loads_strict(raw)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_and_extra_fields_fail_closed (test_complete_receipt.CompleteReceiptTests.test_missing_and_extra_fields_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 61, in test_missing_and_extra_fields_fail_closed
+    with self.assertRaises(ValueError): gate.validate_receipt(receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_numeric_bool_and_float_substitutions_rejected (test_complete_receipt.CompleteReceiptTests.test_numeric_bool_and_float_substitutions_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 87, in test_numeric_bool_and_float_substitutions_rejected
+    with self.assertRaises(ValueError): gate.validate_receipt(receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_original_full_receipt_and_native_csv_pass (test_complete_receipt.CompleteReceiptTests.test_original_full_receipt_and_native_csv_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 47, in test_original_full_receipt_and_native_csv_pass
+    self.assertEqual(gate.validate_receipt(original()), 140)
+AssertionError: 0 != 140
+
+======================================================================
+FAIL: test_record_reordering_and_equivalent_fraction_are_valid (test_complete_receipt.CompleteReceiptTests.test_record_reordering_and_equivalent_fraction_are_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 56, in test_record_reordering_and_equivalent_fraction_are_valid
+    self.assertEqual(gate.validate_receipt(receipt), 140)
+AssertionError: 0 != 140
+
+======================================================================
+FAIL: test_scope_and_nonfinite_or_wrong_fraction_types_rejected (test_complete_receipt.CompleteReceiptTests.test_scope_and_nonfinite_or_wrong_fraction_types_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r278-complete-receipt/test_complete_receipt.py", line 94, in test_scope_and_nonfinite_or_wrong_fraction_types_rejected
+    with self.assertRaises(ValueError): gate.validate_receipt(receipt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.004s
+
+FAILED (failures=9, errors=3)

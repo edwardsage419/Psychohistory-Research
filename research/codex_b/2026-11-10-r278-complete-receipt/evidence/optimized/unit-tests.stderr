@@ -1,0 +1,23 @@
+test_all_conditional_marginals_and_covariance_identity (test_complete_receipt.CompleteReceiptTests.test_all_conditional_marginals_and_covariance_identity) ... ok
+test_corrupt_csv_is_still_rejected_by_existing_source_route (test_complete_receipt.CompleteReceiptTests.test_corrupt_csv_is_still_rejected_by_existing_source_route) ... /workspace/Psychohistory-Research/research/evidence_audit/b_r278_s74_receipt_check_20261030.py:37: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/codex-b-s74-snapshot-1mkey9u1/source.csv' mode='r' encoding='UTF-8'>
+  rows=list(csv.DictReader(open(csvpath,newline='')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_covariance_and_delta_tampering_rejected (test_complete_receipt.CompleteReceiptTests.test_covariance_and_delta_tampering_rejected) ... ok
+test_duplicate_and_missing_identity_records_rejected (test_complete_receipt.CompleteReceiptTests.test_duplicate_and_missing_identity_records_rejected) ... ok
+test_duplicate_json_keys_and_nonstandard_constants_rejected (test_complete_receipt.CompleteReceiptTests.test_duplicate_json_keys_and_nonstandard_constants_rejected) ... ok
+test_hand_central_comparison_and_risk (test_complete_receipt.CompleteReceiptTests.test_hand_central_comparison_and_risk) ... ok
+test_hand_k2_joint_product_and_covariance (test_complete_receipt.CompleteReceiptTests.test_hand_k2_joint_product_and_covariance) ... ok
+test_missing_and_extra_fields_fail_closed (test_complete_receipt.CompleteReceiptTests.test_missing_and_extra_fields_fail_closed) ... ok
+test_numeric_bool_and_float_substitutions_rejected (test_complete_receipt.CompleteReceiptTests.test_numeric_bool_and_float_substitutions_rejected) ... ok
+test_original_full_receipt_and_native_csv_pass (test_complete_receipt.CompleteReceiptTests.test_original_full_receipt_and_native_csv_pass) ... /workspace/Psychohistory-Research/research/evidence_audit/b_r278_s74_receipt_check_20261030.py:37: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/codex-b-s74-snapshot-zdf9m8ik/source.csv' mode='r' encoding='UTF-8'>
+  rows=list(csv.DictReader(open(csvpath,newline='')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_record_reordering_and_equivalent_fraction_are_valid (test_complete_receipt.CompleteReceiptTests.test_record_reordering_and_equivalent_fraction_are_valid) ... ok
+test_scope_and_nonfinite_or_wrong_fraction_types_rejected (test_complete_receipt.CompleteReceiptTests.test_scope_and_nonfinite_or_wrong_fraction_types_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.370s
+
+OK
