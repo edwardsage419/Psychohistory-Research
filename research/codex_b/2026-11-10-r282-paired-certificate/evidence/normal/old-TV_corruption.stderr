@@ -1,0 +1,16 @@
+/tmp/codex-b-r282-native-6n6et52y/original_B.js:33
+ if(JSON.stringify(o.regimes)!==JSON.stringify(inverseOracle()))throw Error("INVERSE_ORACLE_MISMATCH");
+                                                                ^
+
+Error: INVERSE_ORACLE_MISMATCH
+    at strictGate (/tmp/codex-b-r282-native-6n6et52y/original_B.js:33:71)
+    at Object.<anonymous> (/tmp/codex-b-r282-native-6n6et52y/original_B.js:36:171)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.22.1

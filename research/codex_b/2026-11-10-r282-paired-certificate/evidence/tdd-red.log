@@ -1,0 +1,249 @@
+test_exact_count_formula (test_certificate.AlgebraTests.test_exact_count_formula) ... FAIL
+test_hand_transforms (test_certificate.AlgebraTests.test_hand_transforms) ... FAIL
+test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) ... 
+  test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value=[True]) ... FAIL
+  test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value=[-1]) ... FAIL
+  test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value=[64]) ... FAIL
+  test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value=[1.0]) ... FAIL
+  test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value='1') ... FAIL
+test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) ... FAIL
+test_named_source_witness (test_certificate.AlgebraTests.test_named_source_witness) ... FAIL
+test_rank_against_exhaustive_kernel (test_certificate.AlgebraTests.test_rank_against_exhaustive_kernel) ... FAIL
+test_rank_hand (test_certificate.AlgebraTests.test_rank_hand) ... FAIL
+test_rank_row_operations (test_certificate.AlgebraTests.test_rank_row_operations) ... FAIL
+test_archive (test_certificate.AuditTests.test_archive) ... ERROR
+test_duplicate_paired_key (test_certificate.AuditTests.test_duplicate_paired_key) ... FAIL
+test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) ... 
+  test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_zero') ... FAIL
+  test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_missing') ... FAIL
+  test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_999') ... FAIL
+  test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_bool') ... FAIL
+  test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_stages') ... FAIL
+  test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_schedule_missing') ... FAIL
+test_schedule_declaration (test_certificate.AuditTests.test_schedule_declaration) ... FAIL
+test_source_and_summary_controls (test_certificate.AuditTests.test_source_and_summary_controls) ... 
+  test_source_and_summary_controls (test_certificate.AuditTests.test_source_and_summary_controls) (name='CSV_transition') ... FAIL
+  test_source_and_summary_controls (test_certificate.AuditTests.test_source_and_summary_controls) (name='TV_corruption') ... FAIL
+
+======================================================================
+ERROR: test_archive (test_certificate.AuditTests.test_archive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 76, in test_archive
+    self.assertEqual(result["status"],"PASS_PAIRED_GF2_SUPPLEMENT")
+                     ~~~~~~^^^^^^^^^^
+KeyError: 'status'
+
+======================================================================
+FAIL: test_exact_count_formula (test_certificate.AlgebraTests.test_exact_count_formula)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 58, in test_exact_count_formula
+    self.assertEqual(paired_counts(),{s:[32,48] for s in SCHEDULES[1:]})
+AssertionError: {} != {'A_THEN_B': [32, 48], 'B_THEN_A': [32, 48]}
+- {}
++ {'A_THEN_B': [32, 48], 'B_THEN_A': [32, 48]}
+
+======================================================================
+FAIL: test_hand_transforms (test_certificate.AlgebraTests.test_hand_transforms)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 53, in test_hand_transforms
+    for s in SCHEDULES:self.assertEqual(linear_states(s),expected[s])
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: () != ((1, 2), (6, 9), (25, 38))
+
+Second tuple contains 3 additional elements.
+First extra element 0:
+(1, 2)
+
+- ()
++ ((1, 2), (6, 9), (25, 38))
+
+======================================================================
+FAIL: test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value=[True])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 67, in test_invalid_inputs
+    with self.subTest(value=value),self.assertRaises(ValueError):rank(value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value=[-1])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 67, in test_invalid_inputs
+    with self.subTest(value=value),self.assertRaises(ValueError):rank(value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value=[64])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 67, in test_invalid_inputs
+    with self.subTest(value=value),self.assertRaises(ValueError):rank(value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value=[1.0])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 67, in test_invalid_inputs
+    with self.subTest(value=value),self.assertRaises(ValueError):rank(value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs) (value='1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 67, in test_invalid_inputs
+    with self.subTest(value=value),self.assertRaises(ValueError):rank(value)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_inputs (test_certificate.AlgebraTests.test_invalid_inputs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 68, in test_invalid_inputs
+    with self.assertRaises(ValueError):linear_states("UNKNOWN")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_named_source_witness (test_certificate.AlgebraTests.test_named_source_witness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 56, in test_named_source_witness
+    self.assertEqual(tuple(''.join(str(evaluate(mask,"100000")) for mask in state) for state in linear_states(s)),expected)
+AssertionError: Tuples differ: () != ('10', '01', '10')
+
+Second tuple contains 3 additional elements.
+First extra element 0:
+'10'
+
+- ()
++ ('10', '01', '10')
+
+======================================================================
+FAIL: test_rank_against_exhaustive_kernel (test_certificate.AlgebraTests.test_rank_against_exhaustive_kernel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 64, in test_rank_against_exhaustive_kernel
+    self.assertEqual(zero,64>>rank(rows))
+AssertionError: 32 != 64
+
+======================================================================
+FAIL: test_rank_hand (test_certificate.AlgebraTests.test_rank_hand)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 46, in test_rank_hand
+    self.assertEqual(rank(rows),expected)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_rank_row_operations (test_certificate.AlgebraTests.test_rank_row_operations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 50, in test_rank_row_operations
+    self.assertEqual(rank([7,24]),2)
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_duplicate_paired_key (test_certificate.AuditTests.test_duplicate_paired_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 92, in test_duplicate_paired_key
+    with self.assertRaisesRegex(ValueError,"DUPLICATE_JSON_KEY"):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_zero')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 84, in test_paired_bad_controls
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 84, in test_paired_bad_controls
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_999')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 84, in test_paired_bad_controls
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_bool')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 84, in test_paired_bad_controls
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_stages')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 84, in test_paired_bad_controls
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_paired_bad_controls (test_certificate.AuditTests.test_paired_bad_controls) (name='paired_schedule_missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 84, in test_paired_bad_controls
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_schedule_declaration (test_certificate.AuditTests.test_schedule_declaration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 88, in test_schedule_declaration
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_source_and_summary_controls (test_certificate.AuditTests.test_source_and_summary_controls) (name='CSV_transition')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 97, in test_source_and_summary_controls
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_source_and_summary_controls (test_certificate.AuditTests.test_source_and_summary_controls) (name='TV_corruption')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r282-paired-certificate/test_certificate.py", line 97, in test_source_and_summary_controls
+    with self.assertRaises(ValueError):audit(*write_case(Path(d),data,raw))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.023s
+
+FAILED (failures=22, errors=1)
