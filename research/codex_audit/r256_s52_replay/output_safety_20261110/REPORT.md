@@ -51,3 +51,11 @@ python3 -B research/codex_audit/r256_s52_replay/run_audit.py . --output /tmp/new
 需在连接/环境设置恢复 GitHub 授权后，先重新读取 main 和 #4 当前 head。只有确认没有并发改动，才能快进同步本地增量。当前未声称远端 PR 已包含此修复，现有 #4 的实时合并/CI状态也无法重验。
 
 工程边界：NONBLIND_INTERNAL_ARTIFICIAL_E1；新E2/E3/外部团队复现均0。此修复保护重放输出写入，不提升数学结论或预测有效性。Python3.11/全仓库测试未运行；没有 CI dispatch。剩余是认证恢复和远端交付，不再扩写同一审计报告替代同步。
+
+## 授权恢复后的交付确认
+
+用户恢复 GitHub 授权后，Git 与 REST 只读操作均成功。远端 #4 head 仍为原基线 039e7d26，无并发改动。最新 main 为 0d086e5565d93438e67e45b2901b5adc35841412，新增一份理论文档；本补丁使用的七份历史来源 blob 全部未变，与该 main 的 merge-tree 模拟 exit0。
+
+已普通快进推送实现提交 `423b1f7968d68d380f9b6ce267189016a67155fc` 到原 #4 分支；经 Git fetch 回读确认 runner 内容逐字节一致，SHA256 `4d084dc0396d6b628d36d80b325b10577b7554a81c16b527ce60deb653a565fa`。REST 回读 #4 为 OPEN/DRAFT、head 匹配实现提交。未新建重复 PR，未合并、关闭、强推或触发 CI。当前运行列表为空，不是 CI PASS。
+
+本节使交付状态更新为 COMPLETE_REMOTE_SYNC_VERIFIED，取代前节当时的认证阻塞现状；历史401记录保留，不追认之前已经同步。PR 地址：https://github.com/edwardsage419/Psychohistory-Research/pull/4 。生产科研程序、冻结协议和科学验收不变。剩余为独立审阅/owner采用决定；CI免费额度仍未确认，不自动执行。
