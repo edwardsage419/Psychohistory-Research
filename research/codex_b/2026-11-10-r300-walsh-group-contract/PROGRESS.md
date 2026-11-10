@@ -1,0 +1,20 @@
+# Progress
+
+Read latestmainb8b0ea2e,5openPR21–25 (A24reviewsolderB21–23, noS96scope), R300
+S96 source/Bmodule/Rfreeze/Bplan/reports, plusR301/S97/R302/S98/R297sources.
+Main recentR127closure/theorywork separate. Oldnative export audit acceptsone/
+all18duplicate groups and persistenttrue label1/4, source288remainscorrect.
+Unique result groupcoverage missing; archived calculation numericvalues correct.
+Exploratory independent Walsh expansion matched1152mass/forecast values, anchors
+P(0000)=99/1024 andP(next1|0000)=9/22 atstay=emission=3/4. New method not original
+algorithm; no existingWalsh/moment implementation found in scopedR300archives.
+Nativeexport adapter needed because originalmodules have no authorCLI; preserve
+that distinction, no no-op script invocation counted as PASS.
+
+Primaryordinary/-Oreplayexit0,new12methods each=24.8badartifactCLIs eachmode
+newreject8,oldexport5falseaccept/3correctreject. Originalmodules have NO authorCLI;
+newexplicitnativeadapter calls originalexports and reproducesCSV24066/JSON6094
+byte-identical. Wrongnoise-moment mutant assertionfails. Old32t4prefix/64scalar
+parity agrees.14input/codefingerprints stable.176JSONleaves/2016sourcefractions
+allchecked. FutureheldoutY5 retains conditionalhistorydependence (notiid).
+Report/handoff/contextmanifest archived; onefreshreview next.

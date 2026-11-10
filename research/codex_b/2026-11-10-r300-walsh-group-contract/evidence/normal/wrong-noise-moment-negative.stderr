@@ -1,0 +1,14 @@
+test_hand_anchors (test_contract.MomentTests.test_hand_anchors) ... FAIL
+
+======================================================================
+FAIL: test_hand_anchors (test_contract.MomentTests.test_hand_anchors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/codex-b-r300-native-pvkhlsdp/mutant/test_contract.py", line 40, in test_hand_anchors
+    self.assertEqual(probability(F(3,4),F(3,4),'11'),F(9,32))
+AssertionError: Fraction(5, 16) != Fraction(9, 32)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
