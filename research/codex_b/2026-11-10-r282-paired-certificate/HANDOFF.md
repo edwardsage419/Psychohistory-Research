@@ -11,4 +11,8 @@
 旧B原方法信用保留，新GF(2)补充是本包算法。历史冻结失败和验收不改。
 
 原调用接入/完整R282协议/其他平台/全仓库/科学重新验收NOT_RUN；新真人/E2/E3/
-外部团队复现0。R073/PESEN冻结。PR待创建，保持draft，不自动合并。
+外部团队复现0。R073/PESEN冻结。
+PR：[22](https://github.com/edwardsage419/Psychohistory-Research/pull/22)，
+已创建并关联任务，open/draft/unmerged。main558ef502已包含，behind0。
+初次推送两个提交的all-events Actions均0记录，CI NOT_RUN。最终文档头另查。
+保持draft，不自动合并。

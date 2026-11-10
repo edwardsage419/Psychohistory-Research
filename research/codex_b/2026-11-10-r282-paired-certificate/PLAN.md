@@ -33,5 +33,5 @@ models, splits or historical files. Independent algorithm is ours, not original.
 - [x] RED/GREEN12 tests, exact GF2 proof and paired-field repair.
 - [x] Native execution, archive identities, old/new bad cases, ordinary/-O.
 - [x] One fresh-context review, fix issues with regression if needed.
-- [ ] Refresh main/PR scopes, draft independent PR [skip ci], attach and inspect
+- [x] Refresh main/PR scopes, draft independent PR [skip ci], attach and inspect
   all-events CI status; no automatic merge/paid operations/scientific closure.
