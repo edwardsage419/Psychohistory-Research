@@ -19,3 +19,13 @@ mode, old B four controls executed. All12 code/input fingerprints stable.
 Fresh main b3b3b9a1 adds only Meyer–Rowan theory document; safe to retain by
 rebasing this unpublished independent branch. No overlapping scope among19 PRs.
 REPORT/HANDOFF added; one fresh-context read-only review is next.
+
+One fresh-context read-only review completed at600ba872: no actionable Critical,
+Important or Minor findings. Reviewer repeated both full replays in /tmp (196
+additional methods), checked all23 likelihood ratios with integer closed form,
+directly enumerated36 risks, checked12 fingerprints and command stream hashes.
+Explicit out-of-scope rulings preserved in evidence/independent-review.md.
+All12 primary execution fingerprints match rebased sources, behind-main0;
+no code changed after primary runs. Conservative CI trigger-text scan finds no
+own paths in quoted trigger globs; all commits [skip ci], no workflow dispatch.
+Publishing only an independent draft PR; no merge/adoption or scientific closure.

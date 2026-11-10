@@ -116,4 +116,8 @@ CSV、选择 JSON、机器收据三份均与归档逐字节相同（普通/-O �
   无付费 API、购买计算资源、workflow dispatch、自动合并；账单及免费 CI 额度
   NOT_VERIFIED。GitHub Actions 运行状态在发布记录中单独核验，不以空列表当测试通过。
 
-独立审查、最终分支与 PR 状态见 `PROGRESS.md`、`HANDOFF.md`。
+一次 fresh-context 只读审查未发现可执行 Critical/Important/Minor 问题。
+审查者在 /tmp 重跑两模式（另196项）、整数闭式复核全部23似然比、直接枚举36风险，
+均通过；明确保留上述未判断项。详见 `evidence/independent-review.md`。
+主线同步后12份执行指纹全部匹配，未改 Python；不因纯文档提交重复数值计算。
+最终分支与 PR 状态见 `PROGRESS.md`、`HANDOFF.md`。
