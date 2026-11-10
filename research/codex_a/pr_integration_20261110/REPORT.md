@@ -85,3 +85,9 @@ python3 -B -O -m unittest discover -s research/codex_a/pr_integration_20261110 -
 ## 内部工程审阅
 
 按 requesting-code-review 技能进行独立上下文只读审阅；审阅者实际重跑新增 5 测试两模式，并独立核对 197 条来源的 blob/SHA256，无 Important 发现。Minor：网页 OPEN/DRAFT 证据缺离线摘录；已补 evidence/web_status_excerpts.json，含 12 页面可见文字摘录及原 HTML SHA256。此为内部工程代码审阅，不是外部科研复现或正式科学验收。
+
+## 远端交付回执
+
+实现提交 `2c9efe0aff8dbe7e6d70560b23fd64de8fcfcb26` 已推送并经 `git ls-remote` + `git fetch` 回读确认，专用分支 `codex-a/pr-integration-audit`。测试文件 Git blob `8133c091b80f06df1af8e04bd334b7ec821544a8`，SHA256 `3a80e41308413c3d0ccda16a298d10823e1ab846340ec77ff6ba9d180cf0614b`。main 仍为本轮固定 SHA。
+
+尝试 `gh pr create --draft --base main --head codex-a/pr-integration-audit ... --body-file /workspace/codex-a/pr-body.md`，exit 1，精确错误：`Post "https://api.github.com/graphql": Forbidden`。未创建新 PR，未将失败记作同步成功；分支推送成功与 PR 创建失败分别记录。API 写操作停止，不重复索取或提取凭证。可从 https://github.com/edwardsage419/Psychohistory-Research/pull/new/codex-a/pr-integration-audit 创建草稿 PR（这是创建入口，不是已存在的 PR）。现有 #1–#12 未修改；所有成果仍 OPEN_BRANCH_UNMERGED，不属于 main 已采用成果。CI 在线实际状态仍 UNKNOWN，本轮没有 dispatch。
