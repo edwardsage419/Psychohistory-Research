@@ -11,5 +11,8 @@ UNIFORMm1错误收益331/81或P5=67/81；正确为8128/2187和25/81。原档案�
 14执行输入/代码指纹不变；全命令、版本、反例和边界见REPORT/evidence。
 
 不改冻结模型/指标/训练测试规则/历史文件，不执行真人评分。E1人工非盲态，E2/E3/
-外部团队0；原生产绑定/原R289全协议/科学重新验收NOT_RUN。PR待创建，保持draft，
-不自动合并。R073/PESEN冻结。
+外部团队0；原生产绑定/原R289全协议/科学重新验收NOT_RUN。
+PR：[23](https://github.com/edwardsage419/Psychohistory-Research/pull/23)，已创建并关联
+任务，open/draft/unmerged。已同步远端整合后的main25bcd51d，behind0，保留旧工程成果。
+初次两个推送提交all-events Actions均0运行，CI NOT_RUN。最终文档头另查。
+保持draft，不自动合并。R073/PESEN冻结。

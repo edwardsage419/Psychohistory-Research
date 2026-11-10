@@ -34,4 +34,4 @@ attach/no automaticmerge/paidAPI/resources/workflowdispatch.
 - [x] RED/GREEN independent DP and full artifact contract.
 - [x] Ordinary/-O actual replay, source mutants/controls and native identities.
 - [x] Review, necessary fixes, source/scientific limitations and handoff.
-- [ ] Latestmain/PR refresh, draft delivery and all-events Actions observation.
+- [x] Latestmain/PR refresh, draft delivery and all-events Actions observation.
