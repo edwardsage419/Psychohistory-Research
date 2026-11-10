@@ -1,0 +1,102 @@
+test_boolean_source_count_rejected (test_dp.DPTests.test_boolean_source_count_rejected) ... FAIL
+test_changed_tail_rejected (test_dp.DPTests.test_changed_tail_rejected) ... FAIL
+test_dp_count_edge_cases (test_dp.DPTests.test_dp_count_edge_cases) ... FAIL
+test_evidence_promotion_rejected (test_dp.DPTests.test_evidence_promotion_rejected) ... FAIL
+test_float_alarm_count_rejected (test_dp.DPTests.test_float_alarm_count_rejected) ... FAIL
+test_known_alarm_risk (test_dp.DPTests.test_known_alarm_risk) ... FAIL
+test_missing_tail_rejected (test_dp.DPTests.test_missing_tail_rejected) ... FAIL
+test_original_alternating_tails (test_dp.DPTests.test_original_alternating_tails) ... FAIL
+test_original_receipt (test_dp.DPTests.test_original_receipt) ... FAIL
+test_semantic_key_reorder_allowed (test_dp.DPTests.test_semantic_key_reorder_allowed) ... FAIL
+
+======================================================================
+FAIL: test_boolean_source_count_rejected (test_dp.DPTests.test_boolean_source_count_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 33, in test_boolean_source_count_rejected
+    with self.assertRaises(ValueError):oracle.verify(self.data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_changed_tail_rejected (test_dp.DPTests.test_changed_tail_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 27, in test_changed_tail_rejected
+    with self.assertRaises(ValueError):oracle.verify(self.data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_dp_count_edge_cases (test_dp.DPTests.test_dp_count_edge_cases)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 15, in test_dp_count_edge_cases
+    c=oracle.counts();self.assertEqual(sum(c.values()),64)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 64
+
+======================================================================
+FAIL: test_evidence_promotion_rejected (test_dp.DPTests.test_evidence_promotion_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 39, in test_evidence_promotion_rejected
+    with self.assertRaises(ValueError):oracle.verify(self.data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_float_alarm_count_rejected (test_dp.DPTests.test_float_alarm_count_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 30, in test_float_alarm_count_rejected
+    with self.assertRaises(ValueError):oracle.verify(self.data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_known_alarm_risk (test_dp.DPTests.test_known_alarm_risk)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 23, in test_known_alarm_risk
+    self.assertEqual(a.get('1,1|1/4|1/20',{}).get('alarm_probability'),'27/2048')
+AssertionError: None != '27/2048'
+
+======================================================================
+FAIL: test_missing_tail_rejected (test_dp.DPTests.test_missing_tail_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 36, in test_missing_tail_rejected
+    with self.assertRaises(ValueError):oracle.verify(self.data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_original_alternating_tails (test_dp.DPTests.test_original_alternating_tails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 20, in test_original_alternating_tails
+    self.assertEqual(d.get('lower_tails',{}).get(prior,[None]*64)[21],want)
+AssertionError: None != '10/429'
+
+======================================================================
+FAIL: test_original_receipt (test_dp.DPTests.test_original_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 13, in test_original_receipt
+    def test_original_receipt(self):self.assertEqual(oracle.verify(self.data).get('exact_tails'),192)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 192
+
+======================================================================
+FAIL: test_semantic_key_reorder_allowed (test_dp.DPTests.test_semantic_key_reorder_allowed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s66-replay/research/codex_audit/r270_s66_native/test_dp.py", line 42, in test_semantic_key_reorder_allowed
+    self.assertEqual(oracle.verify(reordered).get('alarm_probabilities'),27)
+AssertionError: None != 27
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.003s
+
+FAILED (failures=10)
