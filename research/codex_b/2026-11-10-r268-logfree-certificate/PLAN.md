@@ -39,5 +39,5 @@ resource purchase, CI dispatch, model/metric/split change or automatic merge.
 - [x] Scoped native auditor and deliberate input mutation rejections.
 - [x] Original84 tests, new scoped tests and native replay ordinary/-O; inputs,
   actual commands, all derived certificates and source identities recorded.
-- [ ] One fresh-context review, necessary fixes, refresh latestmain/open PRs and
+- [x] One fresh-context review, necessary fixes, refresh latestmain/open PRs and
   deliver independent draft PR [skip ci], preserving original scientific status.

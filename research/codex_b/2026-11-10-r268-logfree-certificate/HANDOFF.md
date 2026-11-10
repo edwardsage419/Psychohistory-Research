@@ -10,4 +10,7 @@
 浮点标量误差界、未归档 S64 R 原 CLI、外部验证和生产接入仍 NOT_RUN。
 请按冻结协议独立审查本补充；无自动合并请求。A 可引用本包，避免重复实现选择证明。
 
-PR：待创建，保持 draft；R073/PESEN v0.1 冻结。
+PR：[20](https://github.com/edwardsage419/Psychohistory-Research/pull/20)，
+已创建并关联本任务；open/draft/unmerged。最新 main b3b3b9a1 已包含，behind=0。
+初次推送两提交的 all-events Actions 查询均0记录，CI NOT_RUN。最终纯文档头另查。
+R073/PESEN v0.1 冻结。

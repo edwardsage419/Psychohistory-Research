@@ -29,3 +29,11 @@ All12 primary execution fingerprints match rebased sources, behind-main0;
 no code changed after primary runs. Conservative CI trigger-text scan finds no
 own paths in quoted trigger globs; all commits [skip ci], no workflow dispatch.
 Publishing only an independent draft PR; no merge/adoption or scientific closure.
+
+Delivered PR20 https://github.com/edwardsage419/Psychohistory-Research/pull/20,
+attached to task; observed open/draft/unmerged, mergeable=true. Refreshed20 PRs,
+all19 other heads unchanged. main remainsb3b3b9a1, behind0, worktree clean before
+this publication-doc-only update. All-events GitHub Actions queries for600ba872
+and1705f622 return0runs; CI NOT_RUN, not PASS. Final doc head checked after push.
+No more numeric testing: only review/publication documentation added, code/input
+fingerprints unchanged. Full repo/production/scientific reacceptance NOT_RUN.
