@@ -13,4 +13,9 @@ JSON6094字节一致；不把新桥叫原CLI。原B隐藏路径冻结方法保�
 
 全命令、版本、反例及证明见REPORT/evidence。原生产绑定/原R300全协议/全仓库/
 科学重新验收NOT_RUN，新真人/E2/E3/外部团队0，R073/PESEN冻结。
-PR待创建，保持独立draft，不自动合并。
+PR https://github.com/edwardsage419/Psychohistory-Research/pull/27 已创建，open/draft，
+未合并。最新main3221a84f仅新增理论文档28行，本分支behind1，14固定指纹及
+96流哈希最终复核一致。六PR21–26无观察到同一S96范围。
+三个发布提交all-events Actions均0运行，CI NOT_RUN，不计PASS。
+附件登记工具调用后数分钟无返回，状态BLOCKED/结果未知；GitHub PR创建已确认。
+最终文档提交和远端状态见最终交付消息；evidence/publication.json保留观察边界。

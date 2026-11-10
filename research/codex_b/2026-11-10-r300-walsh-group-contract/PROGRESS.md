@@ -30,3 +30,10 @@ CItriggertextcheck nohits/otherautomatic-events, nodispatch, owncommits skipci.
 Final refresh: A26 new standalone R127 local gates, no S96 overlap; six open
 PR21–26 snapshot archived. main3221a84f adds only one theory document/28 lines,
 behind1 after publication, no pinned execution input changed. No rebase/force.
+
+Draft PR27 created and GitHub confirmed; not merged. Attachment registration
+called immediately but no tool result after several minutes, execution stopped:
+BLOCKED/unknown attachment outcome, no success claim. Three pushed commit SHAs
+each all-events Actions total_count0 (CI NOT_RUN). Final capture14fingerprints
+matches both primary summaries, all48commands/96streamhashes verified. Onlyown
+69paths before this final publication-doc commit. No new scientific execution.
