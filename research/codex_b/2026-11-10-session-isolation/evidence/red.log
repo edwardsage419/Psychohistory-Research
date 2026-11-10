@@ -1,0 +1,113 @@
+test_bool_float_and_nonfinite_fit_values_are_rejected (test_fit_oracle.ExactFitOracleTests.test_bool_float_and_nonfinite_fit_values_are_rejected) ... FAIL
+test_corrupt_state_count_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_state_count_is_rejected) ... FAIL
+test_exact_smoothing_and_unseen_state (test_fit_oracle.ExactFitOracleTests.test_exact_smoothing_and_unseen_state) ... FAIL
+test_hand_calculated_prevalence_and_joint_counts (test_fit_oracle.ExactFitOracleTests.test_hand_calculated_prevalence_and_joint_counts) ... ERROR
+test_invalid_binary_or_missing_fold_is_rejected (test_fit_oracle.ExactFitOracleTests.test_invalid_binary_or_missing_fold_is_rejected) ... FAIL
+test_missing_or_extra_fit_fields_are_rejected (test_fit_oracle.ExactFitOracleTests.test_missing_or_extra_fit_fields_are_rejected) ... FAIL
+test_oracle_heldout_and_foreign_treatment_invariance (test_fit_oracle.ExactFitOracleTests.test_oracle_heldout_and_foreign_treatment_invariance) ... ok
+test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) ... 
+  test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) (equal_size=False, module='r074_dalbo_external_human_e3') ... FAIL
+  test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) (equal_size=False, module='r075_coauthor_real_human_e3') ... FAIL
+  test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) (equal_size=True, module='r074_dalbo_external_human_e3') ... FAIL
+  test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) (equal_size=True, module='r075_coauthor_real_human_e3') ... FAIL
+test_permutation_invariance (test_fit_oracle.ExactFitOracleTests.test_permutation_invariance) ... ok
+test_repeated_donor_is_detectable_even_when_total_is_preserved (test_fit_oracle.ExactFitOracleTests.test_repeated_donor_is_detectable_even_when_total_is_preserved) ... ERROR
+
+======================================================================
+ERROR: test_hand_calculated_prevalence_and_joint_counts (test_fit_oracle.ExactFitOracleTests.test_hand_calculated_prevalence_and_joint_counts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 45, in test_hand_calculated_prevalence_and_joint_counts
+    self.assertEqual(oracle["train_only_prevalence"], Fraction(3, 8))
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'train_only_prevalence'
+
+======================================================================
+ERROR: test_repeated_donor_is_detectable_even_when_total_is_preserved (test_fit_oracle.ExactFitOracleTests.test_repeated_donor_is_detectable_even_when_total_is_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 94, in test_repeated_donor_is_detectable_even_when_total_is_preserved
+    self.assertEqual(fitted["train_target_count"], oracle["train_target_count"])
+                                                   ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'train_target_count'
+
+======================================================================
+FAIL: test_bool_float_and_nonfinite_fit_values_are_rejected (test_fit_oracle.ExactFitOracleTests.test_bool_float_and_nonfinite_fit_values_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 123, in test_bool_float_and_nonfinite_fit_values_are_rejected
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_corrupt_state_count_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_state_count_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 103, in test_corrupt_state_count_is_rejected
+    with self.assertRaisesRegex(ValueError, "FIT_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_smoothing_and_unseen_state (test_fit_oracle.ExactFitOracleTests.test_exact_smoothing_and_unseen_state)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 59, in test_exact_smoothing_and_unseen_state
+    self.assertEqual(gate.probability(oracle, "M1_OWN_LAST", (0, 0, 0, 0, 0)), Fraction(17, 48))
+AssertionError: None != Fraction(17, 48)
+
+======================================================================
+FAIL: test_invalid_binary_or_missing_fold_is_rejected (test_fit_oracle.ExactFitOracleTests.test_invalid_binary_or_missing_fold_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 139, in test_invalid_binary_or_missing_fold_is_rejected
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_or_extra_fit_fields_are_rejected (test_fit_oracle.ExactFitOracleTests.test_missing_or_extra_fit_fields_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 111, in test_missing_or_extra_fit_fields_are_rejected
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) (equal_size=False, module='r074_dalbo_external_human_e3')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 69, in test_original_trainers_all_folds_and_states
+    self.assertEqual(n, {"folds": 6, "prediction_comparisons": 1344})
+AssertionError: None != {'folds': 6, 'prediction_comparisons': 1344}
+
+======================================================================
+FAIL: test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) (equal_size=False, module='r075_coauthor_real_human_e3')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 69, in test_original_trainers_all_folds_and_states
+    self.assertEqual(n, {"folds": 6, "prediction_comparisons": 1344})
+AssertionError: None != {'folds': 6, 'prediction_comparisons': 1344}
+
+======================================================================
+FAIL: test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) (equal_size=True, module='r074_dalbo_external_human_e3')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 69, in test_original_trainers_all_folds_and_states
+    self.assertEqual(n, {"folds": 6, "prediction_comparisons": 1344})
+AssertionError: None != {'folds': 6, 'prediction_comparisons': 1344}
+
+======================================================================
+FAIL: test_original_trainers_all_folds_and_states (test_fit_oracle.ExactFitOracleTests.test_original_trainers_all_folds_and_states) (equal_size=True, module='r075_coauthor_real_human_e3')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 69, in test_original_trainers_all_folds_and_states
+    self.assertEqual(n, {"folds": 6, "prediction_comparisons": 1344})
+AssertionError: None != {'folds': 6, 'prediction_comparisons': 1344}
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.004s
+
+FAILED (failures=9, errors=2)

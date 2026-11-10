@@ -1,0 +1,76 @@
+test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) ... 
+  test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=True) ... FAIL
+  test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=1) ... FAIL
+  test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=nan) ... FAIL
+  test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=inf) ... FAIL
+  test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=0.0) ... FAIL
+  test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=1.0) ... FAIL
+  test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=0.5) ... FAIL
+
+======================================================================
+FAIL: test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 50, in test_corrupt_predictor_is_rejected
+    with self.assertRaisesRegex(ValueError, "PREDICTION_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 50, in test_corrupt_predictor_is_rejected
+    with self.assertRaisesRegex(ValueError, "PREDICTION_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=nan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 50, in test_corrupt_predictor_is_rejected
+    with self.assertRaisesRegex(ValueError, "PREDICTION_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=inf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 50, in test_corrupt_predictor_is_rejected
+    with self.assertRaisesRegex(ValueError, "PREDICTION_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=0.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 50, in test_corrupt_predictor_is_rejected
+    with self.assertRaisesRegex(ValueError, "PREDICTION_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=1.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 50, in test_corrupt_predictor_is_rejected
+    with self.assertRaisesRegex(ValueError, "PREDICTION_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_corrupt_predictor_is_rejected (test_fit_oracle.ExactFitOracleTests.test_corrupt_predictor_is_rejected) (wrong=0.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation/test_fit_oracle.py", line 50, in test_corrupt_predictor_is_rejected
+    with self.assertRaisesRegex(ValueError, "PREDICTION_MISMATCH"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.056s
+
+FAILED (failures=7)
