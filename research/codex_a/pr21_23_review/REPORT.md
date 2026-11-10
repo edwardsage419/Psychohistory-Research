@@ -1,3 +1,5 @@
+> Historical scope at commit f804fe1f. Current A1 v2.0 coverage and PR dispositions are recorded in [A1_V2_REVIEW.md](A1_V2_REVIEW.md).
+
 # Independent engineering review of PRs 21–23
 
 Base main: `25bcd51dd58bf0c245ae84c563406e679a966b5a`.

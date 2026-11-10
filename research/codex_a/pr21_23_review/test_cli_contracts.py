@@ -1,4 +1,4 @@
-"""Independent real-CLI regressions for fixed S78/S85 proposed gates.
+"""Independent real-CLI regressions for fixed S78/S85/S86/S96 proposed gates.
 
 Run from any checkout containing the fixed Git objects; no candidate checkout
 or third-party Python package is needed. Never fetches or writes research files.
@@ -17,13 +17,23 @@ import unittest
 REPO = Path(__file__).resolve().parents[3]
 BASE = '25bcd51dd58bf0c245ae84c563406e679a966b5a'
 HEADS = {22: 'c4aa392a39e6cddad9857febfed29f3b00e41dd9',
-         23: '30050722a94ad68640b9a12cbeeb2a0a7e3e014c'}
+         23: '30050722a94ad68640b9a12cbeeb2a0a7e3e014c',
+         25: '067a50790567ba0f62757723cc1126afb8171104',
+         27: '84044bce396b6a7d2337eeaf9e16efae3769c8dc'}
 MODULES = {22: 'research/codex_b/2026-11-10-r282-paired-certificate',
-           23: 'research/codex_b/2026-11-10-r289-holdout-contract'}
+           23: 'research/codex_b/2026-11-10-r289-holdout-contract',
+           25: 'research/codex_b/2026-11-10-r290-bayes-certificate',
+           27: 'research/codex_b/2026-11-10-r300-walsh-group-contract'}
 ARTIFACTS = {22: ('research/validation/R282_S78_ALL_192_SOURCE_OBSERVATIONS.csv',
                   'research/validation/R282_S78_EXACT_RESULTS.json'),
              23: ('research/validation/R289_S85_ALL_243_PAIRED_OFFERS.csv',
-                  'research/validation/R289_S85_EXACT_RESULTS.json')}
+                  'research/validation/R289_S85_EXACT_RESULTS.json'),
+             25: ('research/validation/R290_S86_ALL_1950_TRAINING_SOURCES.csv',
+                  'research/validation/R290_S86_EXACT_RESULTS.json'),
+             27: ('research/validation/R300_S96_ALL_288_MISSPECIFIED_HMM_PREFIX_SOURCES.csv',
+                  'research/validation/R300_S96_EXACT_MISSPECIFICATION_BRIER_RESULTS.json')}
+DEPENDENCIES = {22: ('audit.py', 'algebra.py'), 23: ('audit.py', 'stopping.py'),
+                25: ('audit.py', 'certificate.py'), 27: ('audit.py', 'moments.py')}
 B_PATH = 'research/evidence_audit/b_r282_s78_strict_remote_receipt_gate_20261030.js'
 RECORDS = []
 
@@ -33,7 +43,7 @@ def export(repo, root):
     identities = []
     entries = [(BASE, B_PATH)]
     for number in HEADS:
-        names = ('audit.py', 'algebra.py') if number == 22 else ('audit.py', 'stopping.py')
+        names = DEPENDENCIES[number]
         entries += [(HEADS[number], MODULES[number]+'/'+name) for name in names]
         entries += [(BASE, name) for name in ARTIFACTS[number]]
     for commit, name in entries:
@@ -76,7 +86,9 @@ class CLIContracts(unittest.TestCase):
             if reason is None:
                 self.assertEqual(child.returncode, 0)
                 expected = {22: 'PASS_PAIRED_GF2_SUPPLEMENT',
-                            23: 'PASS_INDEPENDENT_STOPPING_HOLDOUT_CONTRACT'}[number]
+                            23: 'PASS_INDEPENDENT_STOPPING_HOLDOUT_CONTRACT',
+                            25: 'PASS_COMPLETE_BAYES_AND_RULE_LAW_CERTIFICATE',
+                            27: 'PASS_WALSH_HMM_COMPLETE_GROUP_CONTRACT'}[number]
                 self.assertEqual(result['status'], expected)
             else:
                 self.assertEqual(child.returncode, 2)
@@ -101,6 +113,9 @@ class CLIContracts(unittest.TestCase):
         self.assertEqual((a['source_rows'], a['paired_integer_fields']), (192, 4))
         self.assertEqual(a['paired_counts_from_GF2'], a['paired_counts_from_CSV'])
         self.assertEqual((b['source_rows'], b['result_leaf_checks']), (243, 136))
+        c, d = self.call(25), self.call(27)
+        self.assertEqual((c['source_rows'], c['result_leaf_checks']), (1950, 273))
+        self.assertEqual((d['source_rows'], d['result_leaf_checks'], d['unique_model_groups']), (288, 176, 18))
 
     def test_csv_reordering_preserves_identity(self):
         for number in HEADS:
@@ -141,7 +156,8 @@ class CLIContracts(unittest.TestCase):
     def test_duplicate_json_keys_at_root_and_nested_depth(self):
         for number in HEADS:
             text = json.dumps(self.document(number), separators=(',', ':'))
-            nested = ('"A_THEN_B":[32,48]' if number == 22 else '"training_episodes":1')
+            nested = {22: '"A_THEN_B":[32,48]', 23: '"training_episodes":1',
+                      25: '"m":1', 27: '"prefixes":16'}[number]
             for needle in ('"new_E2":0', nested):
                 with self.subTest(pr=number, needle=needle):
                     self.assertIn(needle, text)
@@ -179,10 +195,29 @@ class CLIContracts(unittest.TestCase):
                 with self.subTest(pr=number, missing=missing):
                     doc = self.document(number)
                     if missing:
-                        del doc['study']
+                        del doc['study' if number in (22, 23) else 'research_id']
                     else:
                         doc['status'] = 'PASS'
                     self.call(number, document=doc, reason='SCHEMA')
+
+    def test_s86_s96_metadata_type_confusion_rejected(self):
+        for number in (25, 27):
+            for value in (False, 0.0):
+                with self.subTest(pr=number, value=value):
+                    doc = self.document(number)
+                    doc['new_E2'] = value
+                    self.call(number, document=doc, reason='FIELD_TYPE')
+
+    def test_s86_s96_result_identities_are_unique_and_order_free(self):
+        for number, reason in ((25, 'FROZEN_WORLD_KEY_OR_DUPLICATE'), (27, 'DUPLICATE_GROUP')):
+            with self.subTest(pr=number, case='independent_result_order'):
+                doc = self.document(number)
+                doc['results'].reverse()
+                self.call(number, document=doc)
+            with self.subTest(pr=number, case='duplicate_result_identity'):
+                doc = self.document(number)
+                doc['results'][-1] = doc['results'][0]
+                self.call(number, document=doc, reason=reason)
 
     def test_s78_original_executable_identity_is_mandatory(self):
         path = self.root/B_PATH
