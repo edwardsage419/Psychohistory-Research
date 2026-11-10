@@ -12,7 +12,8 @@ R074 原 `fabricate()` 的三个训练候选场次复制相同的六条事件；
 `sessions[training[0]]`），会重复首个合格 donor，遗漏其它 donor。
 由于测试输入完全相同，p0、状态计数、训练目标数乃至整个模型输出仍相同：
 原 R074 **20/20**、R075 **24/24** 测试全部通过。实际源文件变异行和
-SHA256、真实子进程命令及 stdout/stderr 见 `evidence/{normal,optimized}/`。
+SHA256、真实子进程命令及 stdout/stderr 见
+`evidence/{final-normal,final-optimized}/`。
 
 这是可复现的测试假阴性（错误实现得到 PASS），不是发现原实现已在历史
 真人数据上重复了场次。原训练代码实际使用 `sessions[s]`，本次未发现其
@@ -38,7 +39,8 @@ alpha=20 平滑概率用 Python `Fraction` 精确运算，TFT/WSLS 固定噪声�
 再用两种互不相同的合成场次设计（场次行数相等/不等，两个处理标签反转）
 检查两个原训练器每折的全部充分统计量，以及全部32事件的七模型概率，
 浮点比较绝对容差 **1e-15**。同时拒绝缺字段、多字段、计数 bool/float、
-NaN/Inf、非法二元值、篡改状态计数；保持留出与异处理标签翻转不影响训练。
+NaN/Inf、非法二元值、篡改状态计数、空折集合和损坏预测输出；保持留出
+与异处理标签翻转不影响训练。
 本 oracle 只验证提供的合成输入上的训练/预测行为，不能检测真实数据中
 统计上无法区分的重复身份，也不声称验证了源文件资格、伙伴历史映射或
 跨场次现实参与者身份。新 gate 尚未接入生产/CI，原冻结文件全保留。
@@ -54,8 +56,8 @@ python -O -B research/codex_b/2026-11-10-session-isolation/replay.py --output /t
 ```
 
 本轮实际 replay 的输出路径为
-`research/codex_b/2026-11-10-session-isolation/evidence/normal` 与
-`evidence/optimized`，目录必须不存在。完整展开的可执行 argv/cwd/退出码在
+`research/codex_b/2026-11-10-session-isolation/evidence/final-normal` 与
+`evidence/final-optimized`，目录必须不存在。完整展开的可执行 argv/cwd/退出码在
 各自 `commands.json`；临时变异目录已自动清理，可由 replay 重新生成。
 全部 Python 源在前后计算 Git blob 和 SHA256；历史源码 blob 与 HEAD 树
 独立核对一致。`context-manifest.json` 固定协议、结果档案、队列和近期交接。
@@ -66,16 +68,21 @@ python -O -B research/codex_b/2026-11-10-session-isolation/replay.py --output /t
 | R074 原合成测试 | 20 PASS | 20 PASS |
 | R075 原合成测试 | 24 PASS | 24 PASS |
 | R077 原合成测试 | 24 PASS | 24 PASS |
-| 新独立核验测试 | 10 PASS | 10 PASS |
+| 新独立核验测试 | 12 PASS | 12 PASS |
 | 重复 donor 变异上的旧测试 | R074 20、R075 24 仍 PASS | 同左 |
 | 故意 heldout 泄漏控制上的旧测试 | 两者均断言失败、非导入错误 | 同左 |
 | 新 gate 对两个研究×两种变异 | 4/4 拒绝，exit=42/FIT_MISMATCH | 4/4 拒绝 |
 
-原始正向91项 + 新10项 = **101 个不同测试方法**，两种模式共 **202 次
+最终原始正向91项 + 新12项 = **103 个不同测试方法**，两种模式共 **206 次
 正向测试执行，零失败/错误**。变异套件单独计数，不能并入正向通过数。
 单次完整合成核验覆盖 **24折、5376次概率比较**，这些内部比较不称为单测。
 `red.log` 保留未实现 oracle 骨架下10个方法的初始结果：9个断言失败、
-2个 KeyError（含 subtest）；`green.log` 保留实现后10方法全通过。
+2个 KeyError（含 subtest）；`green.log` 保留实现后初版10方法全通过。
+初版 `normal/optimized` 日志保留，最终验证以 `final-*` 为准。
+独立上下文审查发现新 gate 空输入可返回零折成功；先以
+`review-red.log` 复现单一失败，再修复为明确拒绝，`review-green.log`
+12方法通过。另补损坏 predictor 回归，刻意移除概率比较后7个子反例全部
+断言失败（`predictor-guard-mutation.*`），证明新拒绝守卫的测试敏感性。
 
 ## 首轮范围核对与科研边界
 
@@ -100,6 +107,8 @@ GitHub Actions：**NOT_RUN**。未调用收费API、购买资源、安装依赖�
 触发工作流或自动合并；账户账单/剩余免费CI额度 **NOT_VERIFIED**。
 R073 和 PESEN v0.1 继续冻结。
 
-审查与 PR：发布前进行 fresh-context 工程审查，结果记入 `PROGRESS.md`。
+审查与 PR：已完成一次 fresh-context 工程审查及上述修复验证，详细结果记入
+`PROGRESS.md`。无未处理阻断项；修复后依靠失败回归与完整 scoped replay
+验收，没有追加第二次审查。
 仅提交本 Codex B 专用目录的增量 draft PR，标题/提交含 `[skip ci]`。
 PR URL 与最终 head 以交付消息为准；未合并候选不记作 main 已采用。

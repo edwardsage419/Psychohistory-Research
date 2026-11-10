@@ -1,0 +1,242 @@
+[
+  {
+    "tag": "original-R073",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/R073",
+      "-p",
+      "test_r073_human_ipd_memory_loso.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-R074",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/R074",
+      "-p",
+      "test_r074_dalbo_external_human_e3.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-R075",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/R075",
+      "-p",
+      "test_r075_coauthor_real_human_e3.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-R077",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/R077",
+      "-p",
+      "test_r077_fourth_real_human_source_only_e3.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "new-gate-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation",
+      "-p",
+      "test_fit_oracle.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-R074-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib, json, sys\nfrom pathlib import Path\nsys.path.insert(0, str(Path.cwd()/\"research/codex_b/2026-11-10-session-isolation\"))\nfrom test_fit_oracle import fictional_sessions, TRAINERS\nfrom fit_oracle import check_trainer\nmodule = next(m for m in TRAINERS if m.__name__.startswith(sys.argv[1].lower()+\"_\"))\ntry:\n    checks = [check_trainer(module.fit_other_sessions, module.predict, fictional_sessions(equal))\n              for equal in (False, True)]\nexcept ValueError as exc:\n    if str(exc) not in (\"FIT_MISMATCH\", \"PREDICTION_MISMATCH\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\", \"reason\":str(exc)}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\", \"checks\":checks}))\n",
+      "R074"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-R075-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib, json, sys\nfrom pathlib import Path\nsys.path.insert(0, str(Path.cwd()/\"research/codex_b/2026-11-10-session-isolation\"))\nfrom test_fit_oracle import fictional_sessions, TRAINERS\nfrom fit_oracle import check_trainer\nmodule = next(m for m in TRAINERS if m.__name__.startswith(sys.argv[1].lower()+\"_\"))\ntry:\n    checks = [check_trainer(module.fit_other_sessions, module.predict, fictional_sessions(equal))\n              for equal in (False, True)]\nexcept ValueError as exc:\n    if str(exc) not in (\"FIT_MISMATCH\", \"PREDICTION_MISMATCH\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\", \"reason\":str(exc)}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\", \"checks\":checks}))\n",
+      "R075"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "R074-duplicate_donor-old-suite",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/codex-b-R074-duplicate_donor-4bnt7js9/research/R074",
+      "-p",
+      "test_r074_dalbo_external_human_e3.py",
+      "-v"
+    ],
+    "cwd": "/tmp/codex-b-R074-duplicate_donor-4bnt7js9",
+    "exit_code": 0
+  },
+  {
+    "tag": "R074-duplicate_donor-new-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib, json, sys\nfrom pathlib import Path\nsys.path.insert(0, str(Path.cwd()/\"research/codex_b/2026-11-10-session-isolation\"))\nfrom test_fit_oracle import fictional_sessions, TRAINERS\nfrom fit_oracle import check_trainer\nmodule = next(m for m in TRAINERS if m.__name__.startswith(sys.argv[1].lower()+\"_\"))\ntry:\n    checks = [check_trainer(module.fit_other_sessions, module.predict, fictional_sessions(equal))\n              for equal in (False, True)]\nexcept ValueError as exc:\n    if str(exc) not in (\"FIT_MISMATCH\", \"PREDICTION_MISMATCH\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\", \"reason\":str(exc)}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\", \"checks\":checks}))\n",
+      "R074"
+    ],
+    "cwd": "/tmp/codex-b-R074-duplicate_donor-4bnt7js9",
+    "exit_code": 42
+  },
+  {
+    "tag": "R074-heldout_leak-old-suite",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/codex-b-R074-heldout_leak-x4rvdi5e/research/R074",
+      "-p",
+      "test_r074_dalbo_external_human_e3.py",
+      "-v"
+    ],
+    "cwd": "/tmp/codex-b-R074-heldout_leak-x4rvdi5e",
+    "exit_code": 1
+  },
+  {
+    "tag": "R074-heldout_leak-new-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib, json, sys\nfrom pathlib import Path\nsys.path.insert(0, str(Path.cwd()/\"research/codex_b/2026-11-10-session-isolation\"))\nfrom test_fit_oracle import fictional_sessions, TRAINERS\nfrom fit_oracle import check_trainer\nmodule = next(m for m in TRAINERS if m.__name__.startswith(sys.argv[1].lower()+\"_\"))\ntry:\n    checks = [check_trainer(module.fit_other_sessions, module.predict, fictional_sessions(equal))\n              for equal in (False, True)]\nexcept ValueError as exc:\n    if str(exc) not in (\"FIT_MISMATCH\", \"PREDICTION_MISMATCH\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\", \"reason\":str(exc)}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\", \"checks\":checks}))\n",
+      "R074"
+    ],
+    "cwd": "/tmp/codex-b-R074-heldout_leak-x4rvdi5e",
+    "exit_code": 42
+  },
+  {
+    "tag": "R075-duplicate_donor-old-suite",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/codex-b-R075-duplicate_donor-4pv_jz8w/research/R075",
+      "-p",
+      "test_r075_coauthor_real_human_e3.py",
+      "-v"
+    ],
+    "cwd": "/tmp/codex-b-R075-duplicate_donor-4pv_jz8w",
+    "exit_code": 0
+  },
+  {
+    "tag": "R075-duplicate_donor-new-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib, json, sys\nfrom pathlib import Path\nsys.path.insert(0, str(Path.cwd()/\"research/codex_b/2026-11-10-session-isolation\"))\nfrom test_fit_oracle import fictional_sessions, TRAINERS\nfrom fit_oracle import check_trainer\nmodule = next(m for m in TRAINERS if m.__name__.startswith(sys.argv[1].lower()+\"_\"))\ntry:\n    checks = [check_trainer(module.fit_other_sessions, module.predict, fictional_sessions(equal))\n              for equal in (False, True)]\nexcept ValueError as exc:\n    if str(exc) not in (\"FIT_MISMATCH\", \"PREDICTION_MISMATCH\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\", \"reason\":str(exc)}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\", \"checks\":checks}))\n",
+      "R075"
+    ],
+    "cwd": "/tmp/codex-b-R075-duplicate_donor-4pv_jz8w",
+    "exit_code": 42
+  },
+  {
+    "tag": "R075-heldout_leak-old-suite",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/codex-b-R075-heldout_leak-cs2elmp9/research/R075",
+      "-p",
+      "test_r075_coauthor_real_human_e3.py",
+      "-v"
+    ],
+    "cwd": "/tmp/codex-b-R075-heldout_leak-cs2elmp9",
+    "exit_code": 1
+  },
+  {
+    "tag": "R075-heldout_leak-new-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib, json, sys\nfrom pathlib import Path\nsys.path.insert(0, str(Path.cwd()/\"research/codex_b/2026-11-10-session-isolation\"))\nfrom test_fit_oracle import fictional_sessions, TRAINERS\nfrom fit_oracle import check_trainer\nmodule = next(m for m in TRAINERS if m.__name__.startswith(sys.argv[1].lower()+\"_\"))\ntry:\n    checks = [check_trainer(module.fit_other_sessions, module.predict, fictional_sessions(equal))\n              for equal in (False, True)]\nexcept ValueError as exc:\n    if str(exc) not in (\"FIT_MISMATCH\", \"PREDICTION_MISMATCH\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\", \"reason\":str(exc)}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\", \"checks\":checks}))\n",
+      "R075"
+    ],
+    "cwd": "/tmp/codex-b-R075-heldout_leak-cs2elmp9",
+    "exit_code": 42
+  }
+]

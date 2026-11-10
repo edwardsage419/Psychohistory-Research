@@ -27,11 +27,11 @@ Review focus: equal-total omitted/duplicated sessions; foreign-treatment/heldout
 contamination; all conditional states including unseen; malformed numerical
 types/NaN; distinguishing mutation survival from an actual historical model bug.
 
-- [ ] Write failing tests for hand-derived 3/8 prevalence, full state counts,
+- [x] Write failing tests for hand-derived 3/8 prevalence, full state counts,
   malformed fit values, and counterexamples; preserve RED execution.
-- [ ] Implement exact oracle and cross-check frozen trainers on every fold,
+- [x] Implement exact oracle and cross-check frozen trainers on every fold,
   all 32 binary events, and label-flip prediction invariance; verify GREEN/-O.
-- [ ] Replay four archived synthetic suites; run duplicate and heldout mutants
+- [x] Replay four archived synthetic suites; run duplicate and heldout mutants
   of R074/R075 as actual subprocesses; require old-suite survival only for the
   duplicate mutant, and new guard rejection for both mutations.
 - [ ] Record sources/commands/environment, review branch, refresh main and open

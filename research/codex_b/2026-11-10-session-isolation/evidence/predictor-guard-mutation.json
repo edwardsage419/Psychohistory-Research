@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-B",
+    "-c",
+    "import sys,unittest\nfrom pathlib import Path\nsys.path.insert(0,sys.argv[1])\nimport fit_oracle\nsys.path.insert(0,sys.argv[2])\nfrom test_fit_oracle import ExactFitOracleTests\nsuite=unittest.TestSuite([ExactFitOracleTests(\"test_corrupt_predictor_is_rejected\")])\nr=unittest.TextTestRunner(verbosity=2).run(suite)\nsys.exit(0 if r.wasSuccessful() else 1)\n",
+    "/tmp/codex-b-predictor-guard-8r8x_kdz",
+    "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-session-isolation"
+  ],
+  "exit_code": 1,
+  "mutation": "replace probability comparison with if False in disposable oracle",
+  "result": "expected 7 assertion failures"
+}

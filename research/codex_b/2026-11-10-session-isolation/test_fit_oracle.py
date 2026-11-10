@@ -40,6 +40,17 @@ def fictional_sessions(equal_size=False):
 
 
 class ExactFitOracleTests(unittest.TestCase):
+    def test_empty_trainer_input_cannot_report_vacuous_success(self):
+        with self.assertRaisesRegex(ValueError, "ORACLE_EMPTY_SESSIONS"):
+            gate.check_trainer(None, None, {})
+
+    def test_corrupt_predictor_is_rejected(self):
+        for wrong in (True, 1, math.nan, math.inf, 0.0, 1.0, 0.5):
+            with self.subTest(wrong=wrong):
+                with self.assertRaisesRegex(ValueError, "PREDICTION_MISMATCH"):
+                    gate.check_trainer(TRAINERS[0].fit_other_sessions,
+                                       lambda *args: wrong, fictional_sessions())
+
     def test_hand_calculated_prevalence_and_joint_counts(self):
         oracle = gate.expected_fit(fictional_sessions(), "FICTIONAL_A_0")
         self.assertEqual(oracle["train_only_prevalence"], Fraction(3, 8))

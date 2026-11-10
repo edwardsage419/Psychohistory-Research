@@ -116,6 +116,8 @@ Every fold is checked before predictions. Flipping heldout and foreign-treatment
 labels must leave its fit unchanged. All 32 events cover both current labels for
 each feature state, so exact-oracle agreement also tests label independence.
 """
+    if not isinstance(sessions, dict) or not sessions:
+        raise ValueError("ORACLE_EMPTY_SESSIONS")
     comparisons = 0
     for heldout, info in sessions.items():
         oracle = expected_fit(sessions, heldout)

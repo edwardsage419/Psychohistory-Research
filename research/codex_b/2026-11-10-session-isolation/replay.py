@@ -101,7 +101,7 @@ def run(output):
 
     originals = {study: suite(f"original-{study}", ROOT, study, count)
                  for study, (_, count) in SUITES.items()}
-    added = suite("new-gate-tests", ROOT, "new", 10)
+    added = suite("new-gate-tests", ROOT, "new", 12)
     positive = {}
     for study in MUTATIONS:
         probe = execute(f"original-{study}-gate", python+["-c", PROBE, study], ROOT)
