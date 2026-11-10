@@ -97,3 +97,13 @@ python3 -B -O -m unittest discover -s research/codex_a/pr_integration_20261110 -
 用户授权继续后，重新确认 main 和工程分支 SHA 未变。`gh pr list --head codex-a/pr-integration-audit` 仍报 GraphQL Forbidden。进一步只读 HEAD 请求 `https://api.github.com/repos/edwardsage419/Psychohistory-Research/pulls` 返回代理 CONNECT 403（envoy），请求未到达 GitHub；当前 enforced 网络白名单无 api.github.com。故先前 API-403 不能解释为已确认 GitHub 账号写权限不足。网页创建入口返回登录页，当前无已认证网页会话。
 
 已通过环境配置工具仅保存新增允许域名 api.github.com 的草稿，保留 package_managers 预设，不添加秘密或改写安装/启动说明。草稿状态 saved，requires_publish=true；保存本身不应用运行时网络，未发布环境。须由用户在环境设置审阅、保存并按平台要求发布后，重新读取生效状态、请求 API，再验证是否还有身份/写权限阻塞。未重复创建 PR、未触发 CI；本轮新增代码不变。
+
+## 网络生效后的 PR 交付确认
+
+用户发布新环境后继续授权。本轮确认环境 observations_current=true、network_policy.state=enforced，api.github.com 已在有效白名单。专用分支和 main SHA 与此前一致，查询该 head 的全部状态 PR 为空，随后成功创建草稿 PR：https://github.com/edwardsage419/Psychohistory-Research/pull/14 。回读确认 OPEN、isDraft=true、base=main、head=54c7ad68314f3129d93861a08053373940188a3b、MERGEABLE/CLEAN。此次状态读取取代此前“当前 API 不可用”的运行时阻塞，但不改写历史失败记录。
+
+现在 API 可读取 #1–#12：全部仍为 OPEN DRAFT，服务端 MERGEABLE/CLEAN，statusCheckRollup=[]。#14 同样无检查项；按工程分支查询 Actions runs 返回 []。这些空记录不是 CI PASS，不证明免费额度或保护规则已满足；没有触发任何 CI。
+
+另观察到并行主体 Codex B 新建 #13（R074/R075 session-isolation，head 91aa5ec254bc4dc561e78b908bda77d6477e1746）。已读取说明，验证对象与本轮两组契约测试不同；它在最初 12 PR 冻结清点之外，未纳入本轮 66 对冲突矩阵或测试计数，后续工程队列应加入 #13 联动检查，不重复其 donor/heldout 验证器。未修改、合并或关闭 #13。
+
+本次仅补充实际远端状态证据，无实现改动或科研结果变化。完整 API 状态存于 evidence/live_pr_status_after_network_update.json；该文件是读取时快照，后续状态变化需重新读取。
