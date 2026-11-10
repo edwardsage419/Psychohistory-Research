@@ -1,0 +1,65 @@
+test_dangling_output_symlink_rejected (test_replay.OutputAliasTests.test_dangling_output_symlink_rejected) ... FAIL
+test_execution_alias_rejected_before_stale_unlink (test_replay.OutputAliasTests.test_execution_alias_rejected_before_stale_unlink) ... FAIL
+test_stderr_symlink_cannot_overwrite_source (test_replay.OutputAliasTests.test_stderr_symlink_cannot_overwrite_source) ... FAIL
+test_stdout_hardlink_cannot_overwrite_source (test_replay.OutputAliasTests.test_stdout_hardlink_cannot_overwrite_source) ... FAIL
+test_stdout_symlink_cannot_truncate_source (test_replay.OutputAliasTests.test_stdout_symlink_cannot_truncate_source) ... FAIL
+test_changed_cohort_rejected (test_replay.Tests.test_changed_cohort_rejected) ... ok
+test_failed_rerun_clears_old_success (test_replay.Tests.test_failed_rerun_clears_old_success) ... ok
+test_full_boolean_zero_type_change_rejected (test_replay.Tests.test_full_boolean_zero_type_change_rejected) ... ok
+test_full_metrics_change_rejected (test_replay.Tests.test_full_metrics_change_rejected) ... ok
+test_full_replay_does_not_write_source (test_replay.Tests.test_full_replay_does_not_write_source) ... ok
+test_projection_cannot_drop_computation_fields (test_replay.Tests.test_projection_cannot_drop_computation_fields) ... ok
+test_projection_returns_explicit_ignored_fields (test_replay.Tests.test_projection_returns_explicit_ignored_fields) ... ok
+
+======================================================================
+FAIL: test_dangling_output_symlink_rejected (test_replay.OutputAliasTests.test_dangling_output_symlink_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 126, in test_dangling_output_symlink_rejected
+    self.assertFalse(target.exists(), 'source root gained a file through a dangling alias')
+AssertionError: True is not false : source root gained a file through a dangling alias
+
+======================================================================
+FAIL: test_execution_alias_rejected_before_stale_unlink (test_replay.OutputAliasTests.test_execution_alias_rejected_before_stale_unlink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 119, in test_execution_alias_rejected_before_stale_unlink
+    self.check_alias('execution.json')
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 105, in check_alias
+    self.assertNotEqual(result.returncode, 0, 'output alias must be rejected')
+AssertionError: 0 == 0 : output alias must be rejected
+
+======================================================================
+FAIL: test_stderr_symlink_cannot_overwrite_source (test_replay.OutputAliasTests.test_stderr_symlink_cannot_overwrite_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 113, in test_stderr_symlink_cannot_overwrite_source
+    self.check_alias('r251.stderr')
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 104, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'' != b'{\n  "date": "2026-10-29",\n  "protocol_c[15625 chars]n}\n' : protected input changed through output alias
+
+======================================================================
+FAIL: test_stdout_hardlink_cannot_overwrite_source (test_replay.OutputAliasTests.test_stdout_hardlink_cannot_overwrite_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 116, in test_stdout_hardlink_cannot_overwrite_source
+    self.check_alias('r251.stdout', hard=True)
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 104, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'{\n  "research_id": "R251_S47",\n  "source_rows[14417 chars]n}\n' != b'{\n  "date": "2026-10-29",\n  "protocol_commit"[15619 chars]n}\n' : protected input changed through output alias
+
+======================================================================
+FAIL: test_stdout_symlink_cannot_truncate_source (test_replay.OutputAliasTests.test_stdout_symlink_cannot_truncate_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 110, in test_stdout_symlink_cannot_truncate_source
+    self.check_alias('r251.stdout')
+  File "/workspace/codex-a/repo/research/codex_audit/r251_r252_cli/test_replay.py", line 104, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'{\n  "research_id": "R251_S47",\n  "source_rows[14417 chars]n}\n' != b'{\n  "date": "2026-10-29",\n  "protocol_commit"[15619 chars]n}\n' : protected input changed through output alias
+
+----------------------------------------------------------------------
+Ran 12 tests in 3.624s
+
+FAILED (failures=5)
