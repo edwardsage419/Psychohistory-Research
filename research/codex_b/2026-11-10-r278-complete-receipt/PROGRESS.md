@@ -46,3 +46,9 @@ e5f2baa7->0d086e55 adding only theory/DiMaggio-Powell primary-reading document.
 Ruling: rebase this unpublished B branch onto latestmain; no force push, no PR
 merge, no scientific input/code change. Verify final8input hashes against new
 tree; no unnecessary numerical rerun when only unrelated theory text changed.
+
+Publication complete: unpublished branch rebased onto0d086e55 and all8final
+input/code blobs verified equal to current committed bytes; preserved the new
+theory document. Pushed without force, created and attached independent draft
+https://github.com/edwardsage419/Psychohistory-Research/pull/19 . No automatic
+merge or workflow dispatch; final PR/current-main metadata checked separately.

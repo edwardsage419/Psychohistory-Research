@@ -122,4 +122,6 @@ R073/PESEN冻结不变，原研究结论和负结果不改。
 篡改均拒绝，核对两份原生输出字节/摘要以及8份输入指纹；元数据不升级科学
 证据的边界保持。审查后没有第二轮重复审查，依靠失败回归与完整重放验证修复。
 审查与交付记录见 `PROGRESS.md`。仅新增本Codex B目录，通过独立draft PR
-交付，使用 `[skip ci]`，不自动合并。PR最终URL/状态见交付消息。
+交付，使用 `[skip ci]`，不自动合并。已创建独立
+[Draft PR #19](https://github.com/edwardsage419/Psychohistory-Research/pull/19)，
+最终head及远端状态见交付消息。
