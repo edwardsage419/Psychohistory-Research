@@ -9,6 +9,7 @@ import hashlib
 import json
 from pathlib import Path
 import platform
+import stat
 import shutil
 import subprocess
 import sys
@@ -28,6 +29,30 @@ PINS={R:'f38992f2bdca575094bc08f28c443d8c4d86e1cf',B:'ccec09f9feda72f5b564b4d273
 def require(ok,message):
     if not ok:raise ValueError(message)
 
+def check_output_target(path):
+    try:
+        info = path.lstat()
+    except FileNotFoundError:
+        return
+    require(stat.S_ISREG(info.st_mode) and info.st_nlink == 1, 'unsafe output: ' + str(path))
+
+
+def atomic_output(path, content):
+    # Refuse aliases again immediately before writing; replace avoids following a
+    # target symlink introduced after that check. Output directories must be stable.
+    check_output_target(path)
+    staged = None
+    try:
+        raw = content.encode('utf-8') if isinstance(content, str) else content
+        with tempfile.NamedTemporaryFile(mode='wb', dir=path.parent, delete=False) as stream:
+            staged = Path(stream.name)
+            stream.write(raw)
+        staged.replace(path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
+
+
 def identity(root):
     result={}
     for path,pin in PINS.items():
@@ -43,11 +68,13 @@ def main():
     targets=[out/'execution.json']+[out/(label+suffix) for label in ('r_generator','b_persisted','b_regenerated','negative_risk','negative_csv','metadata_freeze') for suffix in ('.stdout','.stderr')]
     protected=[root/path for path in PINS]+[Path(__file__).resolve(),Path(__file__).with_name('oracle.py').resolve()]
     require(not any(t==s.resolve() or (t.exists() and s.exists() and t.samefile(s)) for t in targets for s in protected),'output aliases input')
+    for target in targets:
+        check_output_target(target)
     out.mkdir(parents=True,exist_ok=True);(out/'execution.json').unlink(missing_ok=True)
     before=identity(root);archive=root/'research/validation';commands=[]
     def run(label,cmd,expected_zero=True):
         r=subprocess.run(cmd,cwd=root,capture_output=True,text=True,timeout=60)
-        (out/(label+'.stdout')).write_text(r.stdout);(out/(label+'.stderr')).write_text(r.stderr)
+        atomic_output(out / (label + '.stdout'), r.stdout);atomic_output(out / (label + '.stderr'), r.stderr)
         commands.append({'label':label,'command':cmd,'cwd':str(root),'exit_code':r.returncode,'stdout':label+'.stdout','stderr':label+'.stderr'})
         require((r.returncode==0)==expected_zero,'unexpected CLI acceptance/rejection '+label)
         return json.loads(r.stdout) if r.returncode==0 else None
@@ -96,9 +123,7 @@ def main():
             'strict_blind_prescore_freeze':False,'new_E2':0,'new_E3':0,'external_team_replications':0,
             'full_repo_tests':'NOT_RUN','historical_unarchived_python_tests':'NOT_RUN','ci':'NOT_RUN',
             'code_sha256':{name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('run_native.py','oracle.py')}}
-    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=out,delete=False) as f:
-        staged=Path(f.name);f.write(json.dumps(result,indent=2)+'\n')
-    staged.replace(out/'execution.json')
+    atomic_output(out / 'execution.json', json.dumps(result, indent=2) + '\n')
     print(json.dumps({'status':'COMPLETE','original_positive_clis':3,'worlds':27,'rows':13584,'regenerated_files_byte_equal':3,'metadata_gap_reproduced':True}))
 
 if __name__=='__main__':main()
