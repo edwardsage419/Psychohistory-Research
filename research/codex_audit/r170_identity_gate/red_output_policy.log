@@ -1,0 +1,15 @@
+test_cli_invalidates_stale_success_under_root (test_identity.IdentityTests.test_cli_invalidates_stale_success_under_root) ... FAIL
+
+======================================================================
+FAIL: test_cli_invalidates_stale_success_under_root (test_identity.IdentityTests.test_cli_invalidates_stale_success_under_root)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/r170-identity/research/codex_audit/r170_identity_gate/test_identity.py", line 66, in test_cli_invalidates_stale_success_under_root
+    self.assertNotEqual(p.returncode,0);self.assertFalse(output.exists())
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.030s
+
+FAILED (failures=1)
