@@ -106,4 +106,10 @@ A14最新4adfb225仅整合收据/来源上下文，其他A/B历史工作不修�
 正常固定输入/稳定全新输出目录内有证据，不承诺敌对并发环境的保护。
 无付费API、资源购买、依赖安装、workflow dispatch或自动合并；账单/免费CI额度
 NOT_VERIFIED。发布后all-events Actions观察另列，空列表不是测试PASS。
-一次独立审查及最终main/PR状态见PROGRESS.md、HANDOFF.md。
+一次fresh-context只读审查无Critical/Important/需修正Minor，另重跑两模式并复核
+两个16命令清单、每模式32条流哈希及14指纹，验证结论一致；边界在independent-review.md。
+期间远端main已整合旧工程PR至25bcd51dd58bf0c245ae84c563406e679a966b5a，
+1284个增量路径无R289输入/AGENTS变动。保留远端已有成果，将本未发布分支衔接到
+新main；全部14执行指纹/流哈希仍相同，behind=0。此工作未执行merge或forcepush。
+发布前开放PR只剩21/22，均与S85不重叠；原22PR快照保留为历史观察。
+原生产采用/科学边界不因工程PR整合自动升级。最终状态见PROGRESS.md、HANDOFF.md。

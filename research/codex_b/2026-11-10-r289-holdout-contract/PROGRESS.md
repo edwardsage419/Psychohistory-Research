@@ -18,3 +18,12 @@ Original R --emit in temporarycwd reproducesCSV6689/JSON5043 byte-identical;
 oldBnative --test selfreported9 notunittest, -Oasserts disabled;48fractionoutputs
 matchnewDP. Original486↔243 parity and12baselinefields agree.14fingerprints
 before/after stable. No original numeric discrepancy. Report/handoff archived.
+
+One fresh-context review at71ec4138 completed: no Critical/Important/required
+Minor; repeated both modes, all16commands/32streams per mode and14fingerprints
+verified, original archives correct. No code changes needed. During work remote
+main integrated prior engineeringPRs to25bcd51d,1284paths noR289/AGENTS changes;
+9historical input pins match newmain. Rebased unpublished own branch without
+forcepush, all14execution fingerprints/streams unchanged,behind0,onlyowndir.
+OpenPRs now21/22, no S85scope. No merge performed by this work. Scientific scope
+unchanged. Conservative CIpreflight noowntriggertextmatches,dispatchnone.
