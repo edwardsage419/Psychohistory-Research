@@ -1,0 +1,30 @@
+{
+  "track": "codex",
+  "subflow": "R248-S44-full-cross-runtime-receipt",
+  "run_date": "2026-10-29",
+  "observed_head": "b465af9b435ce6ea4ce3dd9498eac8f8d110c026",
+  "target_key": "codex|R248_S44|57e1f35d4263839178c6e86a4a314f92a32546d2|486-full-receipt-and-coverage",
+  "activity": "completed bounded audit; no active claim",
+  "status": "COMPLETE",
+  "source_links": [
+    "research/operations/E078_R248_S44_SOURCE_RECEIPT_THIRD_ROUTE_GOVERNANCE_2026-10-29.md"
+  ],
+  "work_performed": "Three archivedCLIs exit0;486 true Python-vs-R persisted checks;R1313/E0782886 checks;8 new tests pass;6sourceblobs exact. Two oldB structural false acceptances reproduced and rejected by new guard;two wrong-distance CLI rejects.",
+  "evidence_scope": "Nonblind internal artificial E1; E2/E3/externalteams0. OldB remains unfixed onmain; new guard explicit. FullRcomputedJSON match, two metadatafields separately verified.",
+  "results_seen": true,
+  "output_paths": [
+    "research/codex_audit/r248_s44_replay/REPORT.md",
+    "research/codex_audit/r248_s44_replay/logs/execution.json"
+  ],
+  "commit_sha": null,
+  "pr": null,
+  "delivery_branch": "codex/r248-s44-replay-20261029",
+  "ci_status": "NOT_RUN",
+  "billing_checked": "No new billable action;billing/quota unverified.",
+  "blockers": [
+    "No completecheckout/fullrepo/native-original suite/CI this round.",
+    "OldB zip truncation/dict duplicate overwrite remain in historical code;not silently edited.",
+    "No external scientific replication."
+  ],
+  "next_action": "E/B may review486fixedversionCLI evidence and structure guards;Codex nextcandidate R170fullstate/receipt after concurrency check."
+}
