@@ -21,7 +21,7 @@ cat > /tmp/r127_assert_probe.py <<'PY'
 import re
 log = 'Ran 59 tests in 1.0s\n\nFAILED (failures=1)\n'
 assert re.findall(r'Ran (\d+) tests? in', log) == ['60'], 'R127_REQUIRE_ALL_60_TRUE_TESTS'
-assert re.search(r'\nOK\s*
+assert re.search(r'\nOK\s*$', log), 'R127_TRUE_TESTS_NOT_ALL_PASS'
 print('R127_60_REAL_TESTS_SUCCESS')
 PY
 python /tmp/r127_assert_probe.py; echo "normal_exit:$?"
