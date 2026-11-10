@@ -1,0 +1,175 @@
+{
+  "time": "2026-11-10T18:06:04.768968+08:00",
+  "base_pr8": "fd0d2c65084d1ef99b6040ce0464b237c38431b5",
+  "last_fetched_main": "0d086e5565d93438e67e45b2901b5adc35841412",
+  "before_sha256": {
+    "research/validation/r170_observation_ladder_20261026.js": "1752281be18d042558955162f9174a4879e880b989cc40c7bbe5a0c13f92bba7",
+    "research/evidence_audit/r170_b_edge_utterance_20261026.py": "134cfee8510606fef8f94eb3d9975f1045006bf17360444aeaa1b588d0080423",
+    "research/validation/R170_OBSERVATION_LADDER_EXACT_RECEIPT_2026-10-26.json": "b0ae731555373b0c58b5d26fa806c10f79e7ba8a39b882fd1a4f150c57687400",
+    "research/evidence_audit/B_R170_INDEPENDENT_PYTHON_EXECUTION_SUMMARY_2026-10-26.json": "626b63a463581c1cb012edb6e8540ebdb56a51680dbe00c1a197506212caeaef"
+  },
+  "after_sha256": {
+    "research/validation/r170_observation_ladder_20261026.js": "1752281be18d042558955162f9174a4879e880b989cc40c7bbe5a0c13f92bba7",
+    "research/evidence_audit/r170_b_edge_utterance_20261026.py": "134cfee8510606fef8f94eb3d9975f1045006bf17360444aeaa1b588d0080423",
+    "research/validation/R170_OBSERVATION_LADDER_EXACT_RECEIPT_2026-10-26.json": "b0ae731555373b0c58b5d26fa806c10f79e7ba8a39b882fd1a4f150c57687400",
+    "research/evidence_audit/B_R170_INDEPENDENT_PYTHON_EXECUTION_SUMMARY_2026-10-26.json": "626b63a463581c1cb012edb6e8540ebdb56a51680dbe00c1a197506212caeaef"
+  },
+  "source_identity": [
+    {
+      "path": "research/validation/r170_observation_ladder_20261026.js",
+      "git_blob": "3ea018c4a113d95836873fcfd687f9df292aa1b7",
+      "main_git_blob": "3ea018c4a113d95836873fcfd687f9df292aa1b7",
+      "sha256": "1752281be18d042558955162f9174a4879e880b989cc40c7bbe5a0c13f92bba7",
+      "matches_last_fetched_main": true
+    },
+    {
+      "path": "research/evidence_audit/r170_b_edge_utterance_20261026.py",
+      "git_blob": "f6bd8574d6730b9c26708adb9e38ef88562eafbe",
+      "main_git_blob": "f6bd8574d6730b9c26708adb9e38ef88562eafbe",
+      "sha256": "134cfee8510606fef8f94eb3d9975f1045006bf17360444aeaa1b588d0080423",
+      "matches_last_fetched_main": true
+    },
+    {
+      "path": "research/validation/R170_OBSERVATION_LADDER_EXACT_RECEIPT_2026-10-26.json",
+      "git_blob": "0d5b10125475a66a243be1632e21bd269027a866",
+      "main_git_blob": "0d5b10125475a66a243be1632e21bd269027a866",
+      "sha256": "b0ae731555373b0c58b5d26fa806c10f79e7ba8a39b882fd1a4f150c57687400",
+      "matches_last_fetched_main": true
+    },
+    {
+      "path": "research/evidence_audit/B_R170_INDEPENDENT_PYTHON_EXECUTION_SUMMARY_2026-10-26.json",
+      "git_blob": "165f14511c7c7ee57b43a18851d2e65729c50044",
+      "main_git_blob": "165f14511c7c7ee57b43a18851d2e65729c50044",
+      "sha256": "626b63a463581c1cb012edb6e8540ebdb56a51680dbe00c1a197506212caeaef",
+      "matches_last_fetched_main": true
+    }
+  ],
+  "commands": [
+    {
+      "label": "replay",
+      "command": [
+        "python3",
+        "-B",
+        "research/codex_audit/r170_full_state/run_audit.py",
+        ".",
+        "--output",
+        "/tmp/r170-safe-replay-8t46bayg/out"
+      ],
+      "cwd": "/workspace/codex-a/repo",
+      "exit": 0
+    },
+    {
+      "label": "identity-after-replay",
+      "command": [
+        "python3",
+        "-B",
+        "/tmp/r170-safe-replay-8t46bayg/identity_gate.py",
+        ".",
+        "/tmp/r170-safe-replay-8t46bayg/out/B_full_receipt.json",
+        "--output",
+        "/tmp/r170-safe-replay-8t46bayg/identity.json"
+      ],
+      "cwd": "/workspace/codex-a/repo",
+      "exit": 0
+    },
+    {
+      "label": "pr17-old-pins",
+      "command": [
+        "python3",
+        "-B",
+        "/tmp/r170-safe-replay-8t46bayg/compose.py",
+        ".",
+        "--pr8-dir",
+        "/tmp/r170-safe-replay-8t46bayg/old_pr8",
+        "--identity-gate",
+        "/tmp/r170-safe-replay-8t46bayg/identity_gate.py"
+      ],
+      "cwd": "/workspace/codex-a/repo",
+      "exit": 0
+    },
+    {
+      "label": "pr17-refuses-new-runner",
+      "command": [
+        "python3",
+        "-B",
+        "/tmp/r170-safe-replay-8t46bayg/compose.py",
+        ".",
+        "--pr8-dir",
+        "/tmp/r170-safe-replay-8t46bayg/new_pr8",
+        "--identity-gate",
+        "/tmp/r170-safe-replay-8t46bayg/identity_gate.py"
+      ],
+      "cwd": "/workspace/codex-a/repo",
+      "exit": 1
+    }
+  ],
+  "output_manifest": {
+    "execution.json": {
+      "bytes": 5875,
+      "sha256": "a21ac3c8aed3c813dee8193d813778e1df6f2797ac430b7d4f2fcd7ea0e8d54a"
+    },
+    "B_full_receipt.json": {
+      "bytes": 23004,
+      "sha256": "8cdf817c0e32cd48ea1a70dd1f9d0c5fc55022c8d355981157d0181934ab2565"
+    },
+    "original_b_cli.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Python_full_state_export.json": {
+      "bytes": 172682,
+      "sha256": "0139f4711d2088c0648a52c815226f62d929299a7a5d2887677105d921a9c63b"
+    },
+    "JS_full_state_export.json": {
+      "bytes": 172679,
+      "sha256": "5da1b33016c4507ba134be1619f1950552c8baae1175a079b9b94793a18471dd"
+    },
+    "js_state_export.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "original_r_cli.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "python_state_export.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "R_replayed_receipt.json": {
+      "bytes": 23130,
+      "sha256": "b0ae731555373b0c58b5d26fa806c10f79e7ba8a39b882fd1a4f150c57687400"
+    }
+  },
+  "compatibility_tools": [
+    {
+      "path": "run_audit.py",
+      "old_sha256": "20920a42956f2ff0821ad1aa90329045318ed1cb171343b8e22e3d6447e62ead",
+      "new_sha256": "58318bfe802d7e5b77fb5f75093398afe89cd9820c004bbacc7b3a8c835fab27"
+    },
+    {
+      "path": "export_js_states.js",
+      "old_sha256": "0a728789f364fef631c11e0292fd6ae0745787eb9a212ba6e85cfd159a008227",
+      "new_sha256": "0a728789f364fef631c11e0292fd6ae0745787eb9a212ba6e85cfd159a008227"
+    },
+    {
+      "path": "export_python_states.py",
+      "old_sha256": "a88bed9ad5ffa0613b08126f15ad8a16e39b9f9eb972e0719c7c80d482414439",
+      "new_sha256": "a88bed9ad5ffa0613b08126f15ad8a16e39b9f9eb972e0719c7c80d482414439"
+    },
+    {
+      "path": "PR9_identity_gate.py",
+      "sha256": "f27a6323d50f981f03eb38676e74f13df1e4861b98ffd14ee9458b6f9b57aaf2"
+    },
+    {
+      "path": "PR17_compose.py",
+      "sha256": "5de5dfa8636a0b2c87fd6a42913aa6d1a975f1d5b9028389401a68b6bebc400a"
+    }
+  ],
+  "code_sha256": {
+    "research/codex_audit/r170_full_state/run_audit.py": "58318bfe802d7e5b77fb5f75093398afe89cd9820c004bbacc7b3a8c835fab27",
+    "research/codex_audit/r170_full_state/test_full_state.py": "1b66d355a4f1d8c36ffc01a05b04d8eb520a55d65f910c9247658c56f4f60a48"
+  },
+  "helper_provenance": "9ba7e2ad24a0936e7893e9721e1c806e29053286; check renamed require; nine explicit output names",
+  "ci": "NOT_DISPATCHED"
+}

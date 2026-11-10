@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 import platform
 import re
+import stat
 import subprocess
 import sys
 import tempfile
@@ -32,6 +33,37 @@ UNIVERSE=set(product(GRAPHS,INITIALS,NOISES,MODES,range(4)))
 
 def require(ok,message):
     if not ok:raise ValueError(message)
+
+
+# Fixed JSON/stdout and stderr names; retain standalone PR8 execution.
+OUTPUT_NAMES = ('R_replayed_receipt.json', 'B_full_receipt.json',
+                'JS_full_state_export.json', 'Python_full_state_export.json',
+                'original_r_cli.stderr', 'original_b_cli.stderr',
+                'js_state_export.stderr', 'python_state_export.stderr', 'execution.json')
+
+
+def check_output_target(path):
+    try:
+        info = path.lstat()
+    except FileNotFoundError:
+        return
+    require(stat.S_ISREG(info.st_mode) and info.st_nlink == 1, 'unsafe output: ' + str(path))
+
+
+def atomic_output(path, content):
+    # Refuse aliases again immediately before writing; replace avoids following a
+    # target symlink introduced after that check. Output directories must be stable.
+    check_output_target(path)
+    staged = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w', dir=path.parent, delete=False,
+                                         encoding='utf-8') as stream:
+            staged = Path(stream.name)
+            stream.write(content)
+        staged.replace(path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
 
 
 def index_export(export):
@@ -100,11 +132,13 @@ def lex_witness(export,numeric=False):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('root',type=Path);parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args();root,out=args.root.resolve(),args.output.resolve()
+    for name in OUTPUT_NAMES:
+        check_output_target(out / name)
     out.mkdir(parents=True,exist_ok=True);(out/'execution.json').unlink(missing_ok=True)
     here=Path(__file__).resolve().parent;commands=[]
     def run(label,command,filename):
         p=subprocess.run(command,cwd=root,text=True,capture_output=True,timeout=60)
-        (out/filename).write_text(p.stdout);(out/(label+'.stderr')).write_text(p.stderr)
+        atomic_output(out / filename, p.stdout);atomic_output(out / (label + '.stderr'), p.stderr)
         commands.append({'label':label,'command':command,'cwd':str(root),'exit_code':p.returncode,'stdout_file':filename})
         require(p.returncode==0,label+' failed; see stderr')
         return json.loads(p.stdout)
@@ -162,9 +196,7 @@ def main():
             'evidence_scope':'NONBLIND_INTERNAL_ARTIFICIAL_E1; same-project algorithm comparison',
             'new_E2':0,'new_E3':0,'external_team_replications':0,'ci_status':'NOT_RUN',
             'original_111_tests':'NOT_RUN','original_1MB_result_reaudit':'NOT_RUN','full_repo_tests':'NOT_RUN'}
-    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=out,delete=False) as tmp:
-        tmp.write(json.dumps(result,indent=2)+'\n');staged=Path(tmp.name)
-    staged.replace(out/'execution.json')
+    atomic_output(out / 'execution.json', json.dumps(result, indent=2) + '\n')
     print(json.dumps({'status':'COMPLETE','protocol_acceptance':'PARTIAL',
                       'snapshots':288,'state_mass_comparisons':exact['state_mass_comparisons'],
                       'nonzero_entries':exact['nonzero_entries_per_route'],
