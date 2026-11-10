@@ -1,0 +1,52 @@
+[
+  {
+    "name": "pr1-probe",
+    "command": [
+      "python3",
+      "-B",
+      "research/codex_audit/2026-10-29-r257-s53/probe_comparator.py",
+      "."
+    ],
+    "exit": 0,
+    "tail": "b0dc20ed9c109eea155d08e9e8\",\n    \"research/validation/r257_s53_capacity_shadow_20261029.py\": \"3510b7bd26d910e18fae00e17d042a9a3a381435b4a3d3a4c1b85c35931ce47d\",\n    \"research/validation/R257_S53_EXACT_RECEIPT_2026-10-29.json\": \"d4a33b47f4d818a8b4358a809b977c49aaad19c1656570e97947f0f3d30cd8e4\"\n  }\n}\n"
+  },
+  {
+    "name": "pr10-native",
+    "command": [
+      "python3",
+      "-B",
+      "research/codex_audit/r271_s67_native/run_native.py",
+      ".",
+      "--output",
+      "/workspace/codex-a/results/pr10-native-output"
+    ],
+    "exit": 0,
+    "tail": "{\"status\": \"COMPLETE\", \"original_positive_clis\": 3, \"worlds\": 27, \"rows\": 13584, \"regenerated_files_byte_equal\": 3, \"metadata_gap_reproduced\": true}\n"
+  },
+  {
+    "name": "pr11-native",
+    "command": [
+      "python3",
+      "-B",
+      "research/codex_audit/r270_s66_native/run_native.py",
+      ".",
+      "--output",
+      "/workspace/codex-a/results/pr11-native-output"
+    ],
+    "exit": 0,
+    "tail": "and_DP_byte_equal\": true, \"controls\": [{\"case\": \"wrong_tail\", \"R_accepted\": false, \"B_accepted\": false, \"DP_accepted\": false}, {\"case\": \"reordered\", \"R_accepted\": false, \"B_accepted\": true, \"DP_accepted\": true}, {\"case\": \"float_count\", \"R_accepted\": true, \"B_accepted\": true, \"DP_accepted\": false}]}\n"
+  },
+  {
+    "name": "pr12-native",
+    "command": [
+      "python3",
+      "-B",
+      "research/codex_audit/r266_s62_native/run_native.py",
+      ".",
+      "--output",
+      "/workspace/codex-a/results/pr12-native-output"
+    ],
+    "exit": 0,
+    "tail": "{\"status\": \"COMPLETE\", \"source_rows\": 5328, \"metric_fields\": 180, \"R_and_rebuilt_CSV_bytes_equal\": true, \"original_positive_clis\": 4, \"byte_adapters\": 1}\n"
+  }
+]

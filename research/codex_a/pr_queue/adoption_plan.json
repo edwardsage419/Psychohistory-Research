@@ -1,0 +1,149 @@
+{
+  "basis_main": "b3b3b9a1af020130e7c0e1a9cc0b58021be08e8e",
+  "mode": "REVIEW_PLAN_ONLY_NO_MERGE_OR_PRODUCTION_ADOPTION",
+  "review_groups": [
+    {
+      "priority": "P0",
+      "prs": [
+        1,
+        3,
+        15
+      ],
+      "purpose": "S53 counterexamples + math gate + authenticated source/math composition",
+      "limits": [
+        "blind order FAIL",
+        "scientific PARTIAL",
+        "production caller unbound"
+      ]
+    },
+    {
+      "priority": "P1",
+      "prs": [
+        7,
+        5
+      ],
+      "purpose": "Missing/duplicate coverage and persisted-receipt guards"
+    },
+    {
+      "priority": "P1",
+      "prs": [
+        8,
+        9,
+        17
+      ],
+      "purpose": "R170 exact states + historical byte identity + mandatory composition",
+      "limits": [
+        "witness ordering NOT_ESTABLISHED",
+        "scientific PARTIAL",
+        "production caller unbound"
+      ]
+    },
+    {
+      "priority": "P1-independent",
+      "prs": [
+        13,
+        16,
+        18
+      ],
+      "purpose": "Session isolation, score leakage, and exact paired-tie supplement; original R077 regression remains failing"
+    },
+    {
+      "priority": "P1-independent",
+      "prs": [
+        19,
+        20
+      ],
+      "purpose": "R278 complete receipt/covariance; R268 log-free decision certificate; distinct fixed finite-model targets"
+    },
+    {
+      "priority": "P2",
+      "prs": [
+        4,
+        6,
+        10,
+        11,
+        12
+      ],
+      "purpose": "Bounded archived CLI replay and receipt audits"
+    },
+    {
+      "priority": "governance",
+      "prs": [
+        2
+      ],
+      "purpose": "Separate coordination-policy review"
+    },
+    {
+      "priority": "supporting",
+      "prs": [
+        14
+      ],
+      "purpose": "Inventory and offline tooling, not scientific adoption"
+    }
+  ],
+  "relations": [
+    {
+      "consumer": 3,
+      "provider": 1,
+      "kind": "counterexample_evidence",
+      "requires_merge": false
+    },
+    {
+      "consumer": 9,
+      "provider": 8,
+      "kind": "default_receipt_fixture",
+      "requires_merge": false,
+      "alternative": "regenerate raw stdout using archived B CLI"
+    },
+    {
+      "consumer": 14,
+      "providers": [
+        3,
+        8,
+        9
+      ],
+      "kind": "pinned_git_object_test_inputs",
+      "requires_merge": false
+    },
+    {
+      "consumer": 15,
+      "provider": 3,
+      "kind": "pinned_executable_bytes",
+      "requires_merge": false,
+      "commit": "97d5f74df5d84916917db943156120f08144f445"
+    },
+    {
+      "consumer": 17,
+      "provider": 8,
+      "kind": "pinned_runner_and_adapters",
+      "requires_merge": false,
+      "commit": "1d8294ee81c7e23cb16bb8882ebc619089a35c65"
+    },
+    {
+      "consumer": 17,
+      "provider": 9,
+      "kind": "pinned_identity_executable",
+      "requires_merge": false,
+      "commit": "89a64ecd2975a7fa0409f000cef45b1b2792a8b4"
+    },
+    {
+      "consumer": 18,
+      "provider": 16,
+      "kind": "complementary_scoring_evidence_only",
+      "requires_merge": false
+    }
+  ],
+  "shared_test_warning": "PR13 and PR16 both rerun baseline R073/R077 tests; repeated baseline runs are not new independent scientific evidence.",
+  "remaining": [
+    "owner/reviewer disposition",
+    "whole-queue sequential integration not executed",
+    "production binding requires separate reviewed change",
+    "Python 3.11 and full repository tests not run",
+    "no CI quota verification or dispatch"
+  ],
+  "snapshot_pr_count": 20,
+  "pair_count": 190,
+  "validation": "230 scoped positive methods per mode; 460 executions; R077 known regression separately fails 11 subcases per mode",
+  "snapshot_evidence": "final_sync_20261110/evidence/inventory.json",
+  "main_adoption": "BLOCKED_BY_USER_NO_AUTOMERGE_REQUIREMENT"
+}

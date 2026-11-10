@@ -1,0 +1,33 @@
+{
+  "time": "2026-11-10T19:30:25.530534+08:00",
+  "prior_commit": "19957c794e6dbf152ffce58d3e34c74b88037eae",
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "research/codex_a/pr_queue/receipt_context.py",
+        "/tmp/receipt-context-7amdcx2i/git",
+        "19957c794e6dbf152ffce58d3e34c74b88037eae",
+        "/tmp/receipt-context-7amdcx2i/old-inventory.json"
+      ],
+      "exit": 0,
+      "meaning": "restored Git-ref context only; not a new test execution"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "research/codex_a/pr_queue/receipt_context.py",
+        ".",
+        "19957c794e6dbf152ffce58d3e34c74b88037eae",
+        "/workspace/codex-a/results/incremental-inventory.json"
+      ],
+      "exit": 2,
+      "meaning": "expected source-context change refusal"
+    }
+  ],
+  "current_inventory_sha256": "c8ff776b51649b5aa23c119152200229641b99be04822c6f8f5c21a27c97093d",
+  "code_sha256": "196ba470dc6ec4c0baa620fc5d6fc011cbe897750647fcc07d0c2a2ce21d5fa7",
+  "ci": "NOT_DISPATCHED"
+}

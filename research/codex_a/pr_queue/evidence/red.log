@@ -1,0 +1,94 @@
+test_boolean_pr_number_rejected (test_audit_queue.QueueTests.test_boolean_pr_number_rejected) ... FAIL
+test_cli_duplicate_json_key_rejected (test_audit_queue.QueueTests.test_cli_duplicate_json_key_rejected) ... FAIL
+test_duplicate_pr_rejected (test_audit_queue.QueueTests.test_duplicate_pr_rejected) ... FAIL
+test_empty_snapshot_rejected (test_audit_queue.QueueTests.test_empty_snapshot_rejected) ... FAIL
+test_missing_field_rejected (test_audit_queue.QueueTests.test_missing_field_rejected) ... FAIL
+test_missing_ref_rejected (test_audit_queue.QueueTests.test_missing_ref_rejected) ... FAIL
+test_other_base_requires_explicit_handling (test_audit_queue.QueueTests.test_other_base_requires_explicit_handling) ... FAIL
+test_real_conflict_and_unchanged_checkout (test_audit_queue.QueueTests.test_real_conflict_and_unchanged_checkout) ... ERROR
+test_snapshot_head_mismatch_rejected (test_audit_queue.QueueTests.test_snapshot_head_mismatch_rejected) ... FAIL
+
+======================================================================
+ERROR: test_real_conflict_and_unchanged_checkout (test_audit_queue.QueueTests.test_real_conflict_and_unchanged_checkout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 41, in test_real_conflict_and_unchanged_checkout
+    self.assertEqual(len(result['prs']),2)
+                         ~~~~~~^^^^^^^
+KeyError: 'prs'
+
+======================================================================
+FAIL: test_boolean_pr_number_rejected (test_audit_queue.QueueTests.test_boolean_pr_number_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 53, in test_boolean_pr_number_rejected
+    with self.assertRaises(ValueError):audit.audit(self.repo,rows)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_cli_duplicate_json_key_rejected (test_audit_queue.QueueTests.test_cli_duplicate_json_key_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 81, in test_cli_duplicate_json_key_rejected
+    self.assertNotEqual(p.returncode,0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_duplicate_pr_rejected (test_audit_queue.QueueTests.test_duplicate_pr_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 49, in test_duplicate_pr_rejected
+    with self.assertRaisesRegex(ValueError,'duplicate'):audit.audit(self.repo,[self.rows[0],self.rows[0]])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_empty_snapshot_rejected (test_audit_queue.QueueTests.test_empty_snapshot_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 64, in test_empty_snapshot_rejected
+    with self.assertRaises(ValueError):audit.audit(self.repo,[])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_field_rejected (test_audit_queue.QueueTests.test_missing_field_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 61, in test_missing_field_rejected
+    with self.assertRaises(ValueError):audit.audit(self.repo,rows)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_ref_rejected (test_audit_queue.QueueTests.test_missing_ref_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 72, in test_missing_ref_rejected
+    with self.assertRaises(ValueError):audit.audit(self.repo,self.rows)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_other_base_requires_explicit_handling (test_audit_queue.QueueTests.test_other_base_requires_explicit_handling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 68, in test_other_base_requires_explicit_handling
+    with self.assertRaisesRegex(ValueError,'base'):audit.audit(self.repo,rows)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_snapshot_head_mismatch_rejected (test_audit_queue.QueueTests.test_snapshot_head_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 57, in test_snapshot_head_mismatch_rejected
+    with self.assertRaisesRegex(ValueError,'head mismatch'):audit.audit(self.repo,rows)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.541s
+
+FAILED (failures=8, errors=1)

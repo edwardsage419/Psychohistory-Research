@@ -1,0 +1,147 @@
+test_boolean_count_rejected (test_receipt_context.ReceiptContextTests.test_boolean_count_rejected) ... FAIL
+test_changed_main_requires_rerun (test_receipt_context.ReceiptContextTests.test_changed_main_requires_rerun) ... FAIL
+test_changed_pr_requires_rerun (test_receipt_context.ReceiptContextTests.test_changed_pr_requires_rerun) ... ERROR
+test_corrupt_log_rejected (test_receipt_context.ReceiptContextTests.test_corrupt_log_rejected) ... FAIL
+test_duplicate_pr_number_rejected (test_receipt_context.ReceiptContextTests.test_duplicate_pr_number_rejected) ... FAIL
+test_duplicate_scope_mode_rejected (test_receipt_context.ReceiptContextTests.test_duplicate_scope_mode_rejected) ... FAIL
+test_failed_log_with_coherent_hash_rejected (test_receipt_context.ReceiptContextTests.test_failed_log_with_coherent_hash_rejected) ... FAIL
+test_forged_aggregate_rejected (test_receipt_context.ReceiptContextTests.test_forged_aggregate_rejected) ... FAIL
+test_missing_hash_rejected (test_receipt_context.ReceiptContextTests.test_missing_hash_rejected) ... FAIL
+test_missing_mode_rejected (test_receipt_context.ReceiptContextTests.test_missing_mode_rejected) ... FAIL
+test_new_pr_requires_rerun (test_receipt_context.ReceiptContextTests.test_new_pr_requires_rerun) ... ERROR
+test_same_source_is_not_a_claim_of_new_execution (test_receipt_context.ReceiptContextTests.test_same_source_is_not_a_claim_of_new_execution) ... ERROR
+test_traversal_log_path_rejected (test_receipt_context.ReceiptContextTests.test_traversal_log_path_rejected) ... FAIL
+test_zero_tests_rejected (test_receipt_context.ReceiptContextTests.test_zero_tests_rejected) ... FAIL
+
+======================================================================
+ERROR: test_changed_pr_requires_rerun (test_receipt_context.ReceiptContextTests.test_changed_pr_requires_rerun)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 32, in test_changed_pr_requires_rerun
+    self.assertEqual(self.verify()['changed_prs'],[1])
+                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'changed_prs'
+
+======================================================================
+ERROR: test_new_pr_requires_rerun (test_receipt_context.ReceiptContextTests.test_new_pr_requires_rerun)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 36, in test_new_pr_requires_rerun
+    self.assertEqual(self.verify()['new_prs'],[2])
+                     ~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'new_prs'
+
+======================================================================
+ERROR: test_same_source_is_not_a_claim_of_new_execution (test_receipt_context.ReceiptContextTests.test_same_source_is_not_a_claim_of_new_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 23, in test_same_source_is_not_a_claim_of_new_execution
+    self.assertEqual(r['verified_prior_method_executions'],4)
+                     ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'verified_prior_method_executions'
+
+======================================================================
+FAIL: test_boolean_count_rejected (test_receipt_context.ReceiptContextTests.test_boolean_count_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 52, in test_boolean_count_rejected
+    with self.assertRaises(ValueError):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_changed_main_requires_rerun (test_receipt_context.ReceiptContextTests.test_changed_main_requires_rerun)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 28, in test_changed_main_requires_rerun
+    self.assertEqual(self.verify()['status'],'RERUN_REQUIRED')
+AssertionError: 'SOURCE_CONTEXT_MATCHES' != 'RERUN_REQUIRED'
+- SOURCE_CONTEXT_MATCHES
++ RERUN_REQUIRED
+
+
+======================================================================
+FAIL: test_corrupt_log_rejected (test_receipt_context.ReceiptContextTests.test_corrupt_log_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 40, in test_corrupt_log_rejected
+    with self.assertRaisesRegex(ValueError,'log hash'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_pr_number_rejected (test_receipt_context.ReceiptContextTests.test_duplicate_pr_number_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 78, in test_duplicate_pr_number_rejected
+    with self.assertRaises(ValueError):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_scope_mode_rejected (test_receipt_context.ReceiptContextTests.test_duplicate_scope_mode_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 48, in test_duplicate_scope_mode_rejected
+    with self.assertRaisesRegex(ValueError,'duplicate'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_failed_log_with_coherent_hash_rejected (test_receipt_context.ReceiptContextTests.test_failed_log_with_coherent_hash_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 70, in test_failed_log_with_coherent_hash_rejected
+    with self.assertRaisesRegex(ValueError,'log outcome'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_forged_aggregate_rejected (test_receipt_context.ReceiptContextTests.test_forged_aggregate_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 44, in test_forged_aggregate_rejected
+    with self.assertRaisesRegex(ValueError,'aggregate'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_hash_rejected (test_receipt_context.ReceiptContextTests.test_missing_hash_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 60, in test_missing_hash_rejected
+    with self.assertRaises(ValueError):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_mode_rejected (test_receipt_context.ReceiptContextTests.test_missing_mode_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 64, in test_missing_mode_rejected
+    with self.assertRaisesRegex(ValueError,'both modes'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_traversal_log_path_rejected (test_receipt_context.ReceiptContextTests.test_traversal_log_path_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 74, in test_traversal_log_path_rejected
+    with self.assertRaises(ValueError):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zero_tests_rejected (test_receipt_context.ReceiptContextTests.test_zero_tests_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_receipt_context.py", line 56, in test_zero_tests_rejected
+    with self.assertRaises(ValueError):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+FAILED (failures=11, errors=3)
