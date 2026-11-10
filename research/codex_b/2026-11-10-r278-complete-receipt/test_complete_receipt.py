@@ -3,6 +3,8 @@ import copy
 from fractions import Fraction as F
 import json
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -121,6 +123,18 @@ class CompleteReceiptTests(unittest.TestCase):
             rows[1].append("999")
             path.write_text("\n".join(",".join(row) for row in rows)+"\n")
             with self.assertRaisesRegex(ValueError, "CSV_ROW_SCHEMA"): gate.check(path, JSON_PATH)
+
+    def test_zero_denominator_csv_has_structured_cli_rejection(self):
+        with tempfile.TemporaryDirectory(prefix="s74-zero-denominator-") as tmp:
+            path = Path(tmp)/"bad.csv"
+            lines = CSV_PATH.read_text().splitlines()
+            cells = lines[1].split(","); cells[7] = "1/0"; lines[1] = ",".join(cells)
+            path.write_text("\n".join(lines)+"\n")
+            python = [sys.executable, "-B"]+(["-O"] if sys.flags.optimize else [])
+            result = subprocess.run(python+[str(Path(gate.__file__)), str(path), str(JSON_PATH)], capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertEqual(json.loads(result.stdout), {"status": "REJECTED", "reason": "ZeroDivisionError"})
+            self.assertNotIn("Traceback", result.stderr)
 
 
 if __name__ == "__main__": unittest.main()

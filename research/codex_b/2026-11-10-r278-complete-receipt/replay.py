@@ -87,7 +87,7 @@ def run(output):
         return child
 
     tests = execute("unit-tests", python+["-m", "unittest", "discover", "-s", str(HERE), "-p", "test_complete_receipt.py", "-v"])
-    if tests.returncode or re.search(r"Ran (\d+) tests? in", tests.stderr)[1] != "13":
+    if tests.returncode or re.search(r"Ran (\d+) tests? in", tests.stderr)[1] != "14":
         raise RuntimeError("UNIT_TEST_FAILURE")
     archived = execute("original-B-archive", python+[str(B_PATH), str(CSV_PATH), str(JSON_PATH)])
     if archived.returncode or json.loads(archived.stdout)["status"] != "PASS": raise RuntimeError("ORIGINAL_B_FAIL")
@@ -124,18 +124,20 @@ def run(output):
                                "old_exit_code": old.returncode, "complete_exit_code": new.returncode,
                                "complete_reason": rejection["reason"]}
         source_rows = [line.split(",") for line in CSV_PATH.read_text().splitlines()]
-        for label in ("duplicate_csv_mass_column", "extra_csv_cell"):
+        for label in ("duplicate_csv_mass_column", "extra_csv_cell", "zero_denominator_mass"):
             rows = [list(row) for row in source_rows]
             if label == "duplicate_csv_mass_column":
                 rows = [row[:7]+(["source_probability"] if i == 0 else ["999"])+row[7:] for i, row in enumerate(rows)]
-            else: rows[1].append("999")
+            elif label == "extra_csv_cell": rows[1].append("999")
+            else: rows[1][7] = "1/0"
             text = "\n".join(",".join(row) for row in rows)+"\n"
             target = sandbox/(label+".csv"); target.write_text(text)
             old = execute(label+"-old", python+[str(B_PATH), str(target), str(JSON_PATH)])
             new = execute(label+"-complete", python+[str(HERE/"complete_receipt.py"), str(target), str(JSON_PATH)])
             rejection = json.loads(new.stdout)
-            expected_reason = "CSV_HEADER_SCHEMA" if label == "duplicate_csv_mass_column" else "CSV_ROW_SCHEMA"
-            if old.returncode or json.loads(old.stdout)["status"] != "PASS" or new.returncode != 2 or rejection != {"status": "REJECTED", "reason": expected_reason}:
+            expected_reason = {"duplicate_csv_mass_column": "CSV_HEADER_SCHEMA", "extra_csv_cell": "CSV_ROW_SCHEMA", "zero_denominator_mass": "ZeroDivisionError"}[label]
+            old_ok = (old.returncode != 0 and "ZeroDivisionError" in old.stderr) if label == "zero_denominator_mass" else (old.returncode == 0 and json.loads(old.stdout)["status"] == "PASS")
+            if not old_ok or new.returncode != 2 or rejection != {"status": "REJECTED", "reason": expected_reason}:
                 raise RuntimeError("CSV_SCHEMA_COUNTEREXAMPLE_NOT_REPRODUCED:"+label)
             outcomes[label] = {"mutant_sha256": hashlib.sha256(text.encode()).hexdigest(),
                                "old_exit_code": old.returncode, "complete_exit_code": new.returncode,
@@ -148,7 +150,7 @@ def run(output):
         "data_class": "ARCHIVED_ARTIFICIAL_E1_ONLY", "python": sys.version, "optimized": bool(sys.flags.optimize),
         "node": node_version.stdout.strip(), "platform": platform.platform(),
         "source_head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
-        "unit_tests": {"methods": 13, "exit_code": 0,
+        "unit_tests": {"methods": 14, "exit_code": 0,
                        "inherited_ResourceWarning_recorded": "ResourceWarning" in tests.stderr}, "receipt_leaves": 140,
         "conditional_forecast_records": 5, "worlds": 15, "source_rows": 960,
         "native_identity": native_identity, "mutations": outcomes,

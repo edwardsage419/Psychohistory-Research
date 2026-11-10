@@ -170,7 +170,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     try:
         result = check(args.csv, args.json)
-    except (OSError, ValueError, UnicodeError, TypeError, KeyError) as exc:
+    except (OSError, ValueError, UnicodeError, TypeError, KeyError, ZeroDivisionError) as exc:
         print(json.dumps({"status": "REJECTED", "reason": str(exc)[:120] if isinstance(exc, ValueError) else type(exc).__name__}))
         raise SystemExit(2)
     print(json.dumps(result, indent=2))

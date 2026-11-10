@@ -1,6 +1,7 @@
 # R278 S74 完整收据字段、类型与条件协方差验证
 
-2026-11-10。基线main `e5f2baa7f6b13b1a2bf95f48ed49571f732e7611`；
+2026-11-10。初始main `e5f2baa7f6b13b1a2bf95f48ed49571f732e7611`；
+发布前同步main `0d086e5565d93438e67e45b2901b5adc35841412`（仅新增一份理论文档）；
 独立分支 `codex-b/r278-s74-complete-receipt-20261110`。
 范围：补全持久化机器检查，复用既有B数值路线，保留所有历史程序/协议/收据。
 
@@ -20,8 +21,10 @@
 9. CSV一行多出一个999单元格，被DictReader忽略。
 
 第10项控制改错一个世界风险，旧门正确拒绝，说明不是所有校验都失效。
-新门对以上10项均明确拒绝，exit2；旧门9个PASS、1个exit1/`world risk`。
-完整真实argv/cwd/退出码、stdout/stderr和变异SHA在 `evidence/final-*`。
+第11项为CSV质量字段1/0，旧数值检查也拒绝；本次审查后补齐新CLI的
+结构化异常输出，避免ZeroDivisionError直接抛traceback。
+新门对以上11项均明确拒绝，exit2；旧门9个PASS、2个非零退出。
+完整真实argv/cwd/退出码、stdout/stderr和变异SHA在 `evidence/review-final-*`。
 这些变异发生在临时副本，原文件没有变化。
 
 这是**持久化程序覆盖边界**；原B报告曾手工逐项核过3个比较差，本包不
@@ -81,16 +84,18 @@ Git树独立匹配。R278原核心研究、历史S74协议和所有主线收据�
 
 ```bash
 python -B -m unittest discover -s research/codex_b/2026-11-10-r278-complete-receipt -p 'test_complete_receipt.py' -v
-python -B research/codex_b/2026-11-10-r278-complete-receipt/replay.py --output research/codex_b/2026-11-10-r278-complete-receipt/evidence/final-normal
-python -O -B research/codex_b/2026-11-10-r278-complete-receipt/replay.py --output research/codex_b/2026-11-10-r278-complete-receipt/evidence/final-optimized
+python -B research/codex_b/2026-11-10-r278-complete-receipt/replay.py --output research/codex_b/2026-11-10-r278-complete-receipt/evidence/review-final-normal
+python -O -B research/codex_b/2026-11-10-r278-complete-receipt/replay.py --output research/codex_b/2026-11-10-r278-complete-receipt/evidence/review-final-optimized
 ```
 
-Python3.12.14标准库，未安装依赖。**13个正向测试方法普通/-O各通过，合计
-26次最终执行、零失败/错误**。10个实际CLI拒绝案例单独计数，不当作20个
+Python3.12.14标准库，未安装依赖。**14个正向测试方法普通/-O各通过，合计
+28次最终执行、零失败/错误**。11个实际CLI拒绝案例单独计数，不当作22个
 额外unittest。140个内部字段比较也不称为140个单元测试。
 初版 `red.log` 12方法9失败/3错误，`green.log` 12通过；CSV歧义回归
 `csv-shape-red.log` 13方法1失败，随后 `csv-shape-green.log` 13通过。
-初版 `normal/optimized` 保存，最终以 `final-*` 为准。
+审查指出零分母拒绝虽非零退出，却缺结构化JSON；`review-red.log` 14方法1失败，
+仅补CLI捕获ZeroDivisionError后 `review-green.log` 14通过，再完整重放两模式。
+初版 `normal/optimized`、`final-*` 保存，最终以 `review-final-*` 为准。
 
 原B第37行无with的CSV读取在unittest环境出现 **ResourceWarning**；真实
 警告已保留于stderr和summary，未将警告抹除或声称输出无警告。本轮未改
@@ -112,5 +117,9 @@ Python3.12.14标准库，未安装依赖。**13个正向测试方法普通/-O各
 购买资源、依赖安装或workflow dispatch；账单/免费CI额度 **NOT_VERIFIED**。
 R073/PESEN冻结不变，原研究结论和负结果不改。
 
+独立上下文审查无Critical/Important问题，一项结构化异常Minor已按上述回归
+修复。审查者重跑两模式，独立六bit枚举核对15风险/3差值，140个叶字段逐一
+篡改均拒绝，核对两份原生输出字节/摘要以及8份输入指纹；元数据不升级科学
+证据的边界保持。审查后没有第二轮重复审查，依靠失败回归与完整重放验证修复。
 审查与交付记录见 `PROGRESS.md`。仅新增本Codex B目录，通过独立draft PR
 交付，使用 `[skip ci]`，不自动合并。PR最终URL/状态见交付消息。

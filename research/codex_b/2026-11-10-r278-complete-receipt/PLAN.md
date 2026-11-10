@@ -36,9 +36,9 @@ fields/duplicate records; False vs0 and numeric strings; duplicate JSON keys;
 snapshot consistency and no stale output. Standard library Python plus existing
 Node; no installation, CI dispatch, paid APIs/resources or automatic merge.
 
-- [ ] Write RED regressions for exact K2/central delta, schema/type/JSON mutations.
-- [ ] Implement full logical receipt and conditional math supplement; GREEN/-O.
-- [ ] Exact original Node/B CLI replay, byte identities, old/new mutation runs,
+- [x] Write RED regressions for exact K2/central delta, schema/type/JSON mutations.
+- [x] Implement full logical receipt and conditional math supplement; GREEN/-O.
+- [x] Exact original Node/B CLI replay, byte identities, old/new mutation runs,
   source hashes and raw command logs.
 - [ ] Fresh engineering review, necessary corrections and final verification;
   refresh main/PR scopes, publish/attach independent draft PR with [skip ci].

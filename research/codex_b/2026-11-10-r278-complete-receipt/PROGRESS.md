@@ -25,3 +25,24 @@ mode (Node emit, B archive/emitted, new archive/emitted) all succeed. All8code/
 source/protocol fingerprints unchanged before/after and match current bytes.
 Original B emits ResourceWarning for its pre-existing unclosed CSV reader in
 unittest context; warnings are captured, not hidden, and historical code is kept.
+
+Fresh-context reviewer r278_receipt_review read e5f2baa7..72fb2dcc, reran both
+full scoped replays13/13, byte identities,9old false accepts/10new rejections.
+No Critical/Important; one Minor: zero CSV denominator escaped structured CLI
+rejection though it still failed closed. Addressed because malformed-number
+response is within this task's explicit contract: review-red14methods1failure,
+add onlyZeroDivisionError catch, review-green14/14. Final ordinary/-O full replay
+in review-final-* each14positive methods,9old false accepts/2correct old rejections,
+new11/11reject. Underlying covariance and risk mathematics unchanged.
+Reviewer independently enumerated all64sources for15risks/3deltas, changed all
+140leaves individually (all rejected), checked reversed source row/reordered
+receipt and equivalent fractions, native identities and8-source fingerprints.
+Review boundaries retained: original R278 core/full repo/production/CI/billing/
+other platforms/human qualifications/external replication not established here.
+Historical ResourceWarning explicitly preserved as pre-existing, no cleanup edit.
+
+Prepublish refresh18PRs: A changed PR4/5 output safety, not R278. Main advanced
+e5f2baa7->0d086e55 adding only theory/DiMaggio-Powell primary-reading document.
+Ruling: rebase this unpublished B branch onto latestmain; no force push, no PR
+merge, no scientific input/code change. Verify final8input hashes against new
+tree; no unnecessary numerical rerun when only unrelated theory text changed.
