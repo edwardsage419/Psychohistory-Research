@@ -31,7 +31,8 @@ directions through tolerance or float conversion. Test each in the candidate sui
   verify frozen inputs unchanged. Original R073/R077 suites; root unittest discover
   reported literally (repository has no global Python test configuration).
 - [x] One fresh-context read-only review; no actionable findings.
-- [ ] Refresh main/PR scope, draft PR, remote readback; no merge/CI dispatch/cost.
+- [x] Refresh main/PR scope, draft PR28; readback after final docs push separately.
+  Attachment attempted, BLOCKED/no response; no merge/CI dispatch/cost.
 
 Historical human impact UNKNOWN: archived aggregate means/votes do not identify
 per-session exact margins. Rev002 freezes original model blob and scoring; do not
