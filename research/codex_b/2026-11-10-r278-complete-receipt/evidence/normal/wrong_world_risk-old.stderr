@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/evidence_audit/b_r278_s74_receipt_check_20261030.py", line 57, in <module>
+    print(json.dumps(check(a.csv,a.json),indent=2))
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Psychohistory-Research/research/evidence_audit/b_r278_s74_receipt_check_20261030.py", line 34, in check
+    if key in seen or key not in expected or F(r['expected_joint_brier'])!=expected[key]:raise ValueError('world risk')
+                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: world risk
