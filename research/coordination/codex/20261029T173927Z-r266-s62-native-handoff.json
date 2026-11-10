@@ -1,0 +1,43 @@
+{
+  "track": "codex",
+  "status": "COMPLETE",
+  "observed_main": "3d5349f5505679492ee324f8b47d028476b1fc7b",
+  "delivery_base": "3d5349f5505679492ee324f8b47d028476b1fc7b",
+  "target_key": [
+    "codex",
+    "R266",
+    "S62",
+    "native-cli-source-byte-reconstruction-and-row-audit"
+  ],
+  "claim": "none",
+  "lease": "none",
+  "results_seen": "NONBLIND original R266/S62 R/B/E096 results read",
+  "completed": {
+    "original_positive_clis": 4,
+    "additional_byte_adapter": 1,
+    "source_pins": 6,
+    "source_rows": 5328,
+    "source_fields_checked": 58608,
+    "metric_rows": 18,
+    "metric_fields": 180,
+    "baseline_moment_rows": 18,
+    "R_receipt_bytes_equal": 7423,
+    "reconstructed_CSV_bytes_equal": 419791,
+    "new_tests_total": 8,
+    "new_mutation_cases": 6,
+    "final_test_executions_normal_and_optimized": 16,
+    "failures": 0,
+    "errors": 0,
+    "original_B_builtin_mutations": 5
+  },
+  "findings": "No new numerical discrepancy in scoped audit; confirms previously frozen antithetic symmetric coverage3/4 and variance ratio1/3. No new discovery claimed.",
+  "review": "Fresh internal reviewer reran tests and pipeline; no Critical/Important findings; test wording corrected",
+  "evidence": "Internal artificial E1 only; full scientific verification PARTIAL; E2/E3/external0; original R266/R073/PESEN unchanged",
+  "outputs": [
+    "research/codex_audit/r266_s62_native/"
+  ],
+  "ci": "NOT_RUN",
+  "billing": "NO_NEW_CHARGE_ACTION; account billing/free quota NOT_VERIFIED",
+  "next": "Fresh source/handoff read, R267 S63 native replay if still open while retaining FAIL_TIMING",
+  "delivery": "Independent draft PR; containing commit gives SHA; no merge"
+}

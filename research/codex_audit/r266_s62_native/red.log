@@ -1,0 +1,85 @@
+test_all_sources_and_metrics (test_source.SourceTests.test_all_sources_and_metrics) ... FAIL
+test_changed_baseline_variance (test_source.SourceTests.test_changed_baseline_variance) ... FAIL
+test_duplicate_source (test_source.SourceTests.test_duplicate_source) ... FAIL
+test_frozen_counterexample (test_source.SourceTests.test_frozen_counterexample) ... FAIL
+test_missing_source (test_source.SourceTests.test_missing_source) ... FAIL
+test_self_consistent_wrong_hit (test_source.SourceTests.test_self_consistent_wrong_hit) ... FAIL
+test_wrong_coverage (test_source.SourceTests.test_wrong_coverage) ... FAIL
+test_zero_variance_ratio_must_be_null (test_source.SourceTests.test_zero_variance_ratio_must_be_null) ... FAIL
+
+======================================================================
+FAIL: test_all_sources_and_metrics (test_source.SourceTests.test_all_sources_and_metrics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s62-replay/research/codex_audit/r266_s62_native/test_source.py", line 15, in test_all_sources_and_metrics
+    r=self.run_audit();self.assertEqual(r.get('source_rows'),5328);self.assertEqual(r.get('metric_fields'),180)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 5328
+
+======================================================================
+FAIL: test_changed_baseline_variance (test_source.SourceTests.test_changed_baseline_variance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s62-replay/research/codex_audit/r266_s62_native/test_source.py", line 32, in test_changed_baseline_variance
+    with self.assertRaises(ValueError):self.run_audit()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_source (test_source.SourceTests.test_duplicate_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s62-replay/research/codex_audit/r266_s62_native/test_source.py", line 24, in test_duplicate_source
+    with self.assertRaises(ValueError):self.run_audit()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_frozen_counterexample (test_source.SourceTests.test_frozen_counterexample)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s62-replay/research/codex_audit/r266_s62_native/test_source.py", line 17, in test_frozen_counterexample
+    r=self.run_audit();self.assertEqual(r.get('symmetric_N6_antithetic_coverage'),'3/4')
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != '3/4'
+
+======================================================================
+FAIL: test_missing_source (test_source.SourceTests.test_missing_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s62-replay/research/codex_audit/r266_s62_native/test_source.py", line 21, in test_missing_source
+    with self.assertRaises(ValueError):self.run_audit()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_self_consistent_wrong_hit (test_source.SourceTests.test_self_consistent_wrong_hit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s62-replay/research/codex_audit/r266_s62_native/test_source.py", line 29, in test_self_consistent_wrong_hit
+    with self.assertRaises(ValueError):self.run_audit()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_wrong_coverage (test_source.SourceTests.test_wrong_coverage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s62-replay/research/codex_audit/r266_s62_native/test_source.py", line 35, in test_wrong_coverage
+    with self.assertRaises(ValueError):self.run_audit()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zero_variance_ratio_must_be_null (test_source.SourceTests.test_zero_variance_ratio_must_be_null)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/s62-replay/research/codex_audit/r266_s62_native/test_source.py", line 38, in test_zero_variance_ratio_must_be_null
+    with self.assertRaises(ValueError):self.run_audit()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.006s
+
+FAILED (failures=8)
