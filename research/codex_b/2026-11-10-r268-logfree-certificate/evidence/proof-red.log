@@ -1,0 +1,122 @@
+test_all23_states_are_strictly_certified (test_certificate.CertificateTests.test_all23_states_are_strictly_certified) ... ERROR
+test_exact_decision_sequences_match_hand_frozen_grid (test_certificate.CertificateTests.test_exact_decision_sequences_match_hand_frozen_grid) ... ERROR
+test_exponential_series_bounds_have_hand_values (test_certificate.CertificateTests.test_exponential_series_bounds_have_hand_values) ... FAIL
+test_future_risk_identity_and_range (test_certificate.CertificateTests.test_future_risk_identity_and_range) ... ERROR
+test_hand_independent_future_risk (test_certificate.CertificateTests.test_hand_independent_future_risk) ... ERROR
+test_hand_reversed_penalty_decisions (test_certificate.CertificateTests.test_hand_reversed_penalty_decisions) ... ERROR
+test_hand_selection_probabilities (test_certificate.CertificateTests.test_hand_selection_probabilities) ... ERROR
+test_invalid_state_types_and_worlds_fail_closed (test_certificate.CertificateTests.test_invalid_state_types_and_worlds_fail_closed) ... FAIL
+test_likelihood_ratio_endpoints_and_hand_interior (test_certificate.CertificateTests.test_likelihood_ratio_endpoints_and_hand_interior) ... FAIL
+test_polynomial_count_distribution_hand_binomial (test_certificate.CertificateTests.test_polynomial_count_distribution_hand_binomial) ... FAIL
+
+======================================================================
+ERROR: test_all23_states_are_strictly_certified (test_certificate.CertificateTests.test_all23_states_are_strictly_certified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 28, in test_all23_states_are_strictly_certified
+    self.assertEqual(min(r["AIC_margin_lower_bound"] for r in rows), F(73309, 1245184))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 28, in <genexpr>
+    self.assertEqual(min(r["AIC_margin_lower_bound"] for r in rows), F(73309, 1245184))
+                         ~^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'AIC_margin_lower_bound'
+
+======================================================================
+ERROR: test_exact_decision_sequences_match_hand_frozen_grid (test_certificate.CertificateTests.test_exact_decision_sequences_match_hand_frozen_grid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 37, in test_exact_decision_sequences_match_hand_frozen_grid
+    got = tuple("".join(str(int(m.certify(n, k)[criterion] == "M1_FITTED")) for k in range(n+1))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 37, in <genexpr>
+    got = tuple("".join(str(int(m.certify(n, k)[criterion] == "M1_FITTED")) for k in range(n+1))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 37, in <genexpr>
+    got = tuple("".join(str(int(m.certify(n, k)[criterion] == "M1_FITTED")) for k in range(n+1))
+                                ~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'AIC'
+
+======================================================================
+ERROR: test_future_risk_identity_and_range (test_certificate.CertificateTests.test_future_risk_identity_and_range)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 61, in test_future_risk_identity_and_range
+    self.assertTrue(all(F(0) <= v <= F(1) for v in result["risk"].values()))
+                                                   ~~~~~~^^^^^^^^
+KeyError: 'risk'
+
+======================================================================
+ERROR: test_hand_independent_future_risk (test_certificate.CertificateTests.test_hand_independent_future_risk)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 53, in test_hand_independent_future_risk
+    self.assertEqual(result["risk"], {"M0_FIXED": F(4, 25), "M1_MLE": F(1, 5),
+                     ~~~~~~^^^^^^^^
+KeyError: 'risk'
+
+======================================================================
+ERROR: test_hand_reversed_penalty_decisions (test_certificate.CertificateTests.test_hand_reversed_penalty_decisions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 22, in test_hand_reversed_penalty_decisions
+    self.assertEqual((a["AIC"], a["BIC"]), ("M0_FIXED", "M1_FITTED"))
+                      ~^^^^^^^
+KeyError: 'AIC'
+
+======================================================================
+ERROR: test_hand_selection_probabilities (test_certificate.CertificateTests.test_hand_selection_probabilities)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 48, in test_hand_selection_probabilities
+    self.assertEqual(result["selection"], {"AIC": F(5, 16), "BIC": F(3, 4), "disagree": F(7, 16)})
+                     ~~~~~~^^^^^^^^^^^^^
+KeyError: 'selection'
+
+======================================================================
+FAIL: test_exponential_series_bounds_have_hand_values (test_certificate.CertificateTests.test_exponential_series_bounds_have_hand_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 10, in test_exponential_series_bounds_have_hand_values
+    self.assertEqual(m.e2_bounds(3), (F(19, 3), F(67, 9)))
+AssertionError: None != (Fraction(19, 3), Fraction(67, 9))
+
+======================================================================
+FAIL: test_invalid_state_types_and_worlds_fail_closed (test_certificate.CertificateTests.test_invalid_state_types_and_worlds_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 67, in test_invalid_state_types_and_worlds_fail_closed
+    with self.assertRaises(ValueError): m.certify(n, k)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_likelihood_ratio_endpoints_and_hand_interior (test_certificate.CertificateTests.test_likelihood_ratio_endpoints_and_hand_interior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 15, in test_likelihood_ratio_endpoints_and_hand_interior
+    self.assertEqual(m.likelihood_ratio_squared(4, 0), F(390625, 65536))
+AssertionError: None != Fraction(390625, 65536)
+
+======================================================================
+FAIL: test_polynomial_count_distribution_hand_binomial (test_certificate.CertificateTests.test_polynomial_count_distribution_hand_binomial)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 42, in test_polynomial_count_distribution_hand_binomial
+    self.assertEqual(m.count_distribution(F(1, 2), 4), [F(v, 16) for v in (1, 4, 6, 4, 1)])
+AssertionError: Lists differ: [] != [Fraction(1, 16), Fraction(1, 4), Fraction[35 chars] 16)]
+
+Second list contains 5 additional elements.
+First extra element 0:
+Fraction(1, 16)
+
+- []
++ [Fraction(1, 16),
++  Fraction(1, 4),
++  Fraction(3, 8),
++  Fraction(1, 4),
++  Fraction(1, 16)]
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.002s
+
+FAILED (failures=4, errors=6)

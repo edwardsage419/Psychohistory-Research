@@ -1,0 +1,25 @@
+test_hand_reversed_penalty_decisions (test_certificate.CertificateTests.test_hand_reversed_penalty_decisions) ... FAIL
+
+======================================================================
+FAIL: test_hand_reversed_penalty_decisions (test_certificate.CertificateTests.test_hand_reversed_penalty_decisions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/codex-b-r268-native-lsa9n94g/research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py", line 68, in test_hand_reversed_penalty_decisions
+    self.assertEqual((a["AIC"], a["BIC"]), ("M0_FIXED", "M1_FITTED"))
+AssertionError: Tuples differ: ('M0_FIXED', 'M0_FIXED') != ('M0_FIXED', 'M1_FITTED')
+
+First differing element 1:
+'M0_FIXED'
+'M1_FITTED'
+
+- ('M0_FIXED', 'M0_FIXED')
+?                ^   ^
+
++ ('M0_FIXED', 'M1_FITTED')
+?                ^   ^^
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
