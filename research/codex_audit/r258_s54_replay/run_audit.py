@@ -13,6 +13,7 @@ from pathlib import Path
 import platform
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -34,6 +35,37 @@ def require(condition, message):
         raise ValueError(message)
 
 
+# Keep this runner standalone; reuse PR4's reviewed output-target/write policy.
+OUTPUT_LABELS = ('native_tests', 'r_tests', 'b_tests', 'r_emit', 'b_emit',
+                 'crossroute_gate', 'native_emit_sandbox', 'gate_with_corrupted_archive')
+OUTPUT_NAMES = ('execution.json',
+                *(label + suffix for label in OUTPUT_LABELS for suffix in ('.stdout', '.stderr')))
+
+
+def check_output_target(path):
+    try:
+        info = path.lstat()
+    except FileNotFoundError:
+        return
+    require(stat.S_ISREG(info.st_mode) and info.st_nlink == 1, 'unsafe output: ' + str(path))
+
+
+def atomic_output(path, content):
+    # Refuse aliases again immediately before writing; replace avoids following a
+    # target symlink introduced after that check. Output directories must be stable.
+    check_output_target(path)
+    staged = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w', dir=path.parent, delete=False,
+                                         encoding='utf-8') as stream:
+            staged = Path(stream.name)
+            stream.write(content)
+        staged.replace(path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
+
+
 def check_archive(actual, archived):
     # Unlike Python ==, serialized JSON distinguishes false from 0.
     def canonical(value):
@@ -47,6 +79,8 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     root, out = args.root.resolve(), args.output.resolve()
+    for name in OUTPUT_NAMES:
+        check_output_target(out / name)
     out.mkdir(parents=True, exist_ok=True)
     (out / "execution.json").unlink(missing_ok=True)
     commands = []
@@ -54,8 +88,8 @@ def main():
     def run(label, script, *arguments):
         command = [sys.executable, "-B", str(script), *arguments]
         p = subprocess.run(command, cwd=root, text=True, capture_output=True, timeout=90)
-        (out / (label + ".stdout")).write_text(p.stdout)
-        (out / (label + ".stderr")).write_text(p.stderr)
+        atomic_output(out / (label + ".stdout"), p.stdout)
+        atomic_output(out / (label + ".stderr"), p.stderr)
         commands.append({"label": label, "command": command, "cwd": str(root), "exit_code": p.returncode})
         require(p.returncode == 0, label + " failed; see stderr log")
         return p
@@ -141,10 +175,7 @@ def main():
         "blindness": "Results read before this audit; cannot retroactively change historical blind status",
         "ci_status": "NOT_RUN", "full_repository_checkout": False,
     }
-    with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=out, delete=False) as tmp:
-        tmp.write(json.dumps(result, indent=2) + "\n")
-        staged = Path(tmp.name)
-    staged.replace(out / "execution.json")
+    atomic_output(out / "execution.json", json.dumps(result, indent=2) + "\n")
     print(json.dumps({"status": "COMPLETE", "archived_tests_passed": 97,
                       "policy_comparisons": 3456, "new_negative_controls_rejected": 4,
                       "full_s54_receipt_matches": True, "original_files_regenerated_exactly": 3,
