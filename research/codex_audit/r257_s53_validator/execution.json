@@ -1,0 +1,55 @@
+{
+  "status": "COMPLETE",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "seed": "N/A; deterministic exact rationals",
+  "runs": [
+    {
+      "command": "python -m unittest discover -v",
+      "phase": "RED, no-op skeleton",
+      "exit_code": 1,
+      "tests": 31,
+      "failures": 28,
+      "errors": 2,
+      "passed": 1,
+      "log": "red.log"
+    },
+    {
+      "command": "python -m unittest test_validate_receipt.ReceiptTests.test_complementarity_rejects_objective_consistent_suboptimal_point -v",
+      "phase": "RED review mutation; guard temporarily removed then restored",
+      "exit_code": 1,
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "passed": 0,
+      "log": "review_mutation_red.log"
+    },
+    {
+      "command": "python -m unittest discover -v",
+      "phase": "GREEN final after review",
+      "exit_code": 0,
+      "tests": 32,
+      "failures": 0,
+      "errors": 0,
+      "passed": 32,
+      "log": "green.log"
+    },
+    {
+      "command": "python -O -m unittest discover -v",
+      "phase": "GREEN final optimized after review",
+      "exit_code": 0,
+      "tests": 32,
+      "failures": 0,
+      "errors": 0,
+      "passed": 32,
+      "log": "optimized.log"
+    }
+  ],
+  "cwd": "research/codex_audit/r257_s53_validator",
+  "sha256": {
+    "research/codex_audit/r257_s53_validator/validate_receipt.py": "9850be7142765edc1620f557f937cf2215b5dd6275aaba8282b8188ea6ff6964",
+    "research/codex_audit/r257_s53_validator/test_validate_receipt.py": "5c85a099aa6d769a40cffb1bc5c2c5e513f896ead7ef08c2373062c302268a76",
+    "research/validation/R257_S53_EXACT_RECEIPT_2026-10-29.json": "d4a33b47f4d818a8b4358a809b977c49aaad19c1656570e97947f0f3d30cd8e4"
+  },
+  "scientific_limits": "Nonblind E1 algorithm check; no authentication, no blind-order recovery, no E2/E3."
+}
