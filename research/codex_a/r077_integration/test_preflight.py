@@ -112,4 +112,40 @@ class SourceBoundaryTests(unittest.TestCase):
             subprocess.run(['git', 'update-ref', 'HEAD', self.head], cwd=self.repo, check=True, capture_output=True)
 
 
+class CandidateShadowTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.original = json.loads(subprocess.check_output(['git', '-C', str(ROOT), 'show', COMMIT+':'+DIAGNOSTIC]))
+        head = '02989a4944d0f100035927883762d83e4dba4925'
+        prefix = 'research/codex_b/2026-11-10-r077-exact-score-candidate/evidence/py312/'
+        rows = json.loads(subprocess.check_output(['git', '-C', str(ROOT), 'show', head+':'+prefix+'synthetic35-diagnostics.json']))
+        summary = json.loads(subprocess.check_output(['git', '-C', str(ROOT), 'show', head+':'+prefix+'summary.json']))
+        cls.shadow = {'rows': rows, 'tiny': {'original_equal_sessions': 2, 'candidate_worse_sessions': 2,
+                      'expected_delta': summary['tiny_true_delta'], 'actual_delta': summary['tiny_true_delta']}}
+
+    def test_candidate_can_pass_synthetic_shadow_without_production_approval(self):
+        result = preflight.validate_shadow(copy.deepcopy(self.shadow), self.original)
+        self.assertEqual(result['corrected_orders'], 35)
+        self.assertIs(result['production_ready'], False)
+
+    def test_missing_or_duplicate_shadow_case_rejected(self):
+        for duplicate in (False, True):
+            doc = copy.deepcopy(self.shadow)
+            if duplicate:doc['rows'][-1] = doc['rows'][0]
+            else:doc['rows'].pop()
+            with self.subTest(duplicate=duplicate), self.assertRaises(ValueError):preflight.validate_shadow(doc, self.original)
+
+    def test_wrong_votes_exact_delta_and_original_identity_rejected(self):
+        for field in ('vote', 'delta', 'original'):
+            doc = copy.deepcopy(self.shadow)
+            if field == 'vote':doc['rows'][0]['corrected_pair']['sessions_equal'] = True
+            elif field == 'delta':doc['rows'][0]['exact_pair']['Brier_delta_all_original_sessions_equal'] = '1/100'
+            else:doc['rows'][0]['old_pair']['sessions_equal'] = 99
+            with self.subTest(field=field), self.assertRaises(ValueError):preflight.validate_shadow(doc, self.original)
+
+    def test_tiny_nonzero_must_not_become_a_tie(self):
+        doc = copy.deepcopy(self.shadow);doc['tiny']['candidate_worse_sessions'] = 0
+        with self.assertRaises(ValueError):preflight.validate_shadow(doc, self.original)
+
+
 if __name__ == '__main__':unittest.main()

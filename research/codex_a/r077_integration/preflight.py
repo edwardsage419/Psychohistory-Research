@@ -10,6 +10,7 @@ import hashlib
 from itertools import combinations
 import json
 from pathlib import Path, PurePosixPath
+import re
 import subprocess
 import sys
 import tempfile
@@ -17,6 +18,8 @@ import tempfile
 SOURCE_COMMIT = '9de51508daa160d33d0d05b13ba1454f8333f21d'
 OWN = 'research/codex_b/2026-11-10-r077-exact-paired-ties'
 MANIFEST = OWN+'/evidence/py312/summary.json'
+CANDIDATE_COMMIT = '02989a4944d0f100035927883762d83e4dba4925'
+CANDIDATE_DIR = 'research/codex_b/2026-11-10-r077-exact-score-candidate'
 
 
 def require(ok, reason):
@@ -72,6 +75,41 @@ def classify(data):
             'human_rescoring': 'NOT_RUN', 'scientific_reacceptance': 'NOT_RUN'}
 
 
+def validate_shadow(data, original):
+    require(type(data) is dict and set(data) == {'rows', 'tiny'}, 'SHADOW_SCHEMA')
+    require(type(data['rows']) is list and len(data['rows']) == 35, 'SHADOW_COVERAGE')
+    indexed = {tuple(row['positive_positions']): row for row in original['permutations']}
+    seen = set()
+    for row in data['rows']:
+        require(type(row) is dict and set(row) == {'positive_positions', 'old_pair',
+                'corrected_pair', 'exact_pair', 'integer_witness'}, 'SHADOW_CASE_SCHEMA')
+        positions = row['positive_positions']
+        require(type(positions) is list and all(type(i) is int for i in positions), 'SHADOW_CASE_ID')
+        key = tuple(positions)
+        require(key in indexed and key not in seen, 'SHADOW_CASE_UNIVERSE')
+        seen.add(key)
+        for field, source in (('old_pair', 'original'), ('integer_witness', 'integer_witness')):
+            require(json.dumps(row[field], sort_keys=True) == json.dumps(indexed[key][source], sort_keys=True),
+                    'SHADOW_ORIGINAL_BINDING')
+        for field in ('corrected_pair', 'exact_pair'):
+            pair = row[field]
+            require(type(pair) is dict and type(pair.get('sessions')) is int and pair['sessions'] == 2,
+                    'SHADOW_PAIR_SHAPE')
+            for name, expected in (('sessions_better', 0), ('sessions_equal', 2), ('sessions_worse', 0)):
+                require(type(pair.get(name)) is int and pair[name] == expected, 'SHADOW_TIE_VOTE')
+        require(row['exact_pair'].get('Brier_delta_all_original_sessions_equal') == '0', 'SHADOW_EXACT_DELTA')
+    require(seen == set(indexed), 'SHADOW_CASE_UNIVERSE')
+    tiny = data['tiny']
+    require(type(tiny) is dict and set(tiny) == {'original_equal_sessions', 'candidate_worse_sessions',
+            'expected_delta', 'actual_delta'}, 'SHADOW_TINY_SCHEMA')
+    require(type(tiny['original_equal_sessions']) is int and tiny['original_equal_sessions'] == 2 and
+            type(tiny['candidate_worse_sessions']) is int and tiny['candidate_worse_sessions'] == 2 and
+            type(tiny['actual_delta']) is str and tiny['actual_delta'] == tiny['expected_delta'] and
+            tiny['actual_delta'] != '0', 'SHADOW_TINY_DIRECTION')
+    return {'corrected_orders': len(seen), 'production_ready': False,
+            'status': 'PASS_ARTIFICIAL_SHADOW_ONLY_UNMERGED_CANDIDATE', 'tiny': tiny}
+
+
 def git(repo, *args):
     try:
         return subprocess.check_output(['git', '-C', str(repo), *args], stderr=subprocess.PIPE)
@@ -102,7 +140,67 @@ def capture(repo, snapshot):
     return head, pins, identity(manifest_raw)
 
 
-def verify(repo):
+def candidate_shadow(repo, snapshot, head, original, python):
+    manifest_raw = git(repo, 'show', CANDIDATE_COMMIT+':'+CANDIDATE_DIR+'/pins.json')
+    pins = load_json(manifest_raw)
+    sources = {}
+    for name, blob in pins.items():
+        raw = git(repo, 'show', CANDIDATE_COMMIT+':'+name)
+        fp = identity(raw)
+        require(fp['git_blob'] == blob and identity((Path(repo)/name).read_bytes()) == fp and
+                git(repo, 'rev-parse', head+':'+name).decode().strip() == blob, 'CANDIDATE_INPUT_IDENTITY:'+name)
+        target = snapshot/name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw)
+        sources[name] = fp
+    for name in ('candidate.py', 'test_candidate.py', 'pins.json'):
+        path = CANDIDATE_DIR+'/'+name
+        raw = git(repo, 'show', CANDIDATE_COMMIT+':'+path)
+        target = snapshot/path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw)
+        sources[path] = identity(raw)
+    test_code = ('import sys,unittest;sys.path.insert(0,sys.argv[1]);'
+                 'unittest.main(module="test_candidate",argv=["R077-shadow"],verbosity=2)')
+    tests_command = python+['-c', test_code, str(snapshot/CANDIDATE_DIR)]
+    tests = subprocess.run(tests_command, cwd=snapshot, capture_output=True, timeout=60)
+    require(tests.returncode == 0 and not tests.stdout and
+            re.findall(rb'(?m)^Ran ([0-9]+) tests? in', tests.stderr) == [b'12'] and
+            tests.stderr.rstrip().endswith(b'\n\nOK'), 'CANDIDATE_TEST_FAILURE')
+    code = '''import sys,json
+sys.path.insert(0,sys.argv[1])
+from candidate import score_exact_brier,original
+from case import legacy_fit,target_cases,integer_witness
+from test_candidate import tiny_case,PAIR
+rows=[]
+for positions,sessions in target_cases():
+ old=original.score_with_frozen_source(legacy_fit(),sessions)['paired_differences'][PAIR]
+ out=score_exact_brier(legacy_fit(),sessions)
+ rows.append({'positive_positions':positions,'old_pair':old,
+ 'corrected_pair':out['scores']['paired_differences'][PAIR],
+ 'exact_pair':out['exact_Brier']['paired_differences'][PAIR],
+ 'integer_witness':integer_witness([e[4] for e in next(iter(sessions.values()))['events']])})
+fit,sessions,delta=tiny_case();out=score_exact_brier(fit,sessions)
+tiny={'original_equal_sessions':original.score_with_frozen_source(fit,sessions)['paired_differences'][PAIR]['sessions_equal'],
+'candidate_worse_sessions':out['scores']['paired_differences'][PAIR]['sessions_worse'],
+'expected_delta':str(delta),'actual_delta':out['exact_Brier']['paired_differences'][PAIR]['Brier_delta_all_original_sessions_equal']}
+print(json.dumps({'rows':rows,'tiny':tiny},indent=2))
+'''
+    command = python+['-c', code, str(snapshot/CANDIDATE_DIR)]
+    child = subprocess.run(command, cwd=snapshot, capture_output=True, timeout=60)
+    require(child.returncode == 0 and not child.stderr, 'CANDIDATE_SHADOW_CHILD_FAILURE')
+    data = load_json(child.stdout)
+    result = validate_shadow(data, original)
+    result.update(candidate_commit=CANDIDATE_COMMIT, sources=sources, data=data,
+                  tests_command=tests_command, tests_exit=tests.returncode,
+                  tests_stderr=tests.stderr.decode(), tests_stderr_sha256=hashlib.sha256(tests.stderr).hexdigest(),
+                  command=command, child_exit=child.returncode,
+                  stdout_sha256=hashlib.sha256(child.stdout).hexdigest(),
+                  scientific_adoption='NOT_AUTHORIZED', original_scorer_hook='NOT_INSTALLED')
+    return result
+
+
+def verify(repo, shadow=False):
     own_raw = Path(__file__).read_bytes()
     with tempfile.TemporaryDirectory(prefix='r077-preflight-') as directory:
         snapshot = Path(directory)
@@ -112,12 +210,14 @@ def verify(repo):
         bootstrap = ('import runpy,sys;sys.path.insert(0,sys.argv[1]);'
                      'd=runpy.run_path(sys.argv[1]+"/replay.py",run_name="B18_PINNED_DIAGNOSTIC");'
                      'exec(d["DIAGNOSTICS"])')
-        command = [sys.executable, '-I', '-B']+(['-O'] if sys.flags.optimize else [])+[
-            '-c', bootstrap, str(snapshot/OWN)]
+        python = [sys.executable, '-I', '-B']+(['-O'] if sys.flags.optimize else [])
+        command = python+['-c', bootstrap, str(snapshot/OWN)]
         child = subprocess.run(command, cwd=snapshot, capture_output=True, timeout=60)
         require(child.returncode == 0 and not child.stderr, 'PINNED_DIAGNOSTIC_CHILD_FAILURE')
         diagnostic = load_json(child.stdout)
         result = classify(diagnostic)
+        if shadow:
+            result['candidate_shadow'] = candidate_shadow(repo, snapshot, head, diagnostic, python)
     require(Path(__file__).read_bytes() == own_raw, 'PREFLIGHT_SOURCE_CHANGED_DURING_EXECUTION')
     result.update(tested_checkout_sha=head, source_commit=SOURCE_COMMIT, sources=identities,
                   manifest_identity=manifest_identity, adapter_identity=identity(own_raw),
@@ -136,8 +236,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('repo', type=Path)
     parser.add_argument('--artificial-preflight', action='store_true', required=True)
+    parser.add_argument('--candidate-shadow', action='store_true', help='Opt in to fixed unmerged PR28 synthetic shadow; never enables production.')
     args = parser.parse_args()
-    try:result = verify(args.repo)
+    try:result = verify(args.repo, shadow=args.candidate_shadow)
     except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as exc:
         print(json.dumps({'status': 'BLOCKED_INVALID_PREFLIGHT', 'reason': str(exc)[:240]}))
         return 1

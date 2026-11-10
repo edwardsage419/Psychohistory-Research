@@ -1,3 +1,5 @@
+> Initial preflight report at commit8e50c7e2. B subsequently published callable PR28; see [CANDIDATE_SHADOW.md](CANDIDATE_SHADOW.md) for current opt-in integration and unchanged production veto.
+
 # A2 — R077 fail-closed integration preflight
 
 track: Codex A engineering
