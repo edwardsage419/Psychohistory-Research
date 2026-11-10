@@ -1,0 +1,390 @@
+[
+  {
+    "pr": 1,
+    "runs": []
+  },
+  {
+    "pr": 2,
+    "runs": []
+  },
+  {
+    "pr": 3,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r257_s53_validator",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr3-normal.log",
+        "tail": "iptTests.test_reject_wrong_nonconvex_control) ... ok\ntest_reject_wrong_point_arity (test_validate_receipt.ReceiptTests.test_reject_wrong_point_arity) ... ok\ntest_reject_wrong_secant (test_validate_receipt.ReceiptTests.test_reject_wrong_secant) ... ok\ntest_reject_zero_denominator (test_validate_receipt.ReceiptTests.test_reject_zero_denominator) ... ok\ntest_reordering_does_not_change_scientific_identity (test_validate_receipt.ReceiptTests.test_reordering_does_not_change_scientific_identity) ... ok\n\n----------------------------------------------------------------------\nRan 32 tests in 0.249s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r257_s53_validator",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr3-optimized.log",
+        "tail": "iptTests.test_reject_wrong_nonconvex_control) ... ok\ntest_reject_wrong_point_arity (test_validate_receipt.ReceiptTests.test_reject_wrong_point_arity) ... ok\ntest_reject_wrong_secant (test_validate_receipt.ReceiptTests.test_reject_wrong_secant) ... ok\ntest_reject_zero_denominator (test_validate_receipt.ReceiptTests.test_reject_zero_denominator) ... ok\ntest_reordering_does_not_change_scientific_identity (test_validate_receipt.ReceiptTests.test_reordering_does_not_change_scientific_identity) ... ok\n\n----------------------------------------------------------------------\nRan 32 tests in 0.475s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 4,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r256_s52_replay",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr4-normal.log",
+        "tail": "test_failed_rerun_cannot_leave_previous_success_receipt (test_replay_safety.SafetyTests.test_failed_rerun_cannot_leave_previous_success_receipt) ... ok\ntest_successful_audit_does_not_write_in_source_directories (test_replay_safety.SafetyTests.test_successful_audit_does_not_write_in_source_directories) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 3.155s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r256_s52_replay",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr4-optimized.log",
+        "tail": "test_failed_rerun_cannot_leave_previous_success_receipt (test_replay_safety.SafetyTests.test_failed_rerun_cannot_leave_previous_success_receipt) ... ok\ntest_successful_audit_does_not_write_in_source_directories (test_replay_safety.SafetyTests.test_successful_audit_does_not_write_in_source_directories) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 2.687s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 5,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r258_s54_replay",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr5-normal.log",
+        "tail": ".. ok\ntest_duplicate_world_rejected (test_replay.Tests.test_duplicate_world_rejected) ... ok\ntest_evidence_upgrade_rejected (test_replay.Tests.test_evidence_upgrade_rejected) ... ok\ntest_failed_rerun_removes_old_success (test_replay.Tests.test_failed_rerun_removes_old_success) ... ok\ntest_real_archive_matches_itself (test_replay.Tests.test_real_archive_matches_itself) ... ok\ntest_successful_replay_leaves_sources_unchanged (test_replay.Tests.test_successful_replay_leaves_sources_unchanged) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 10.469s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r258_s54_replay",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr5-optimized.log",
+        "tail": "... ok\ntest_duplicate_world_rejected (test_replay.Tests.test_duplicate_world_rejected) ... ok\ntest_evidence_upgrade_rejected (test_replay.Tests.test_evidence_upgrade_rejected) ... ok\ntest_failed_rerun_removes_old_success (test_replay.Tests.test_failed_rerun_removes_old_success) ... ok\ntest_real_archive_matches_itself (test_replay.Tests.test_real_archive_matches_itself) ... ok\ntest_successful_replay_leaves_sources_unchanged (test_replay.Tests.test_successful_replay_leaves_sources_unchanged) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 8.035s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 6,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r251_r252_cli",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr6-normal.log",
+        "tail": "Tests.test_full_boolean_zero_type_change_rejected) ... ok\ntest_full_metrics_change_rejected (test_replay.Tests.test_full_metrics_change_rejected) ... ok\ntest_full_replay_does_not_write_source (test_replay.Tests.test_full_replay_does_not_write_source) ... ok\ntest_projection_cannot_drop_computation_fields (test_replay.Tests.test_projection_cannot_drop_computation_fields) ... ok\ntest_projection_returns_explicit_ignored_fields (test_replay.Tests.test_projection_returns_explicit_ignored_fields) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 1.456s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r251_r252_cli",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr6-optimized.log",
+        "tail": "Tests.test_full_boolean_zero_type_change_rejected) ... ok\ntest_full_metrics_change_rejected (test_replay.Tests.test_full_metrics_change_rejected) ... ok\ntest_full_replay_does_not_write_source (test_replay.Tests.test_full_replay_does_not_write_source) ... ok\ntest_projection_cannot_drop_computation_fields (test_replay.Tests.test_projection_cannot_drop_computation_fields) ... ok\ntest_projection_returns_explicit_ignored_fields (test_replay.Tests.test_projection_returns_explicit_ignored_fields) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 1.353s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 7,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r248_s44_replay",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr7-normal.log",
+        "tail": ") ... ok\ntest_failed_rerun_removes_success (test_replay.Tests.test_failed_rerun_removes_success) ... ok\ntest_forged_source_identity_rejected (test_replay.Tests.test_forged_source_identity_rejected) ... ok\ntest_genuine_receipt_passes (test_replay.Tests.test_genuine_receipt_passes) ... ok\ntest_successful_audit_leaves_sources_unchanged (test_replay.Tests.test_successful_audit_leaves_sources_unchanged) ... ok\ntest_truncated_distance_rejected (test_replay.Tests.test_truncated_distance_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.597s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r248_s44_replay",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr7-optimized.log",
+        "tail": ") ... ok\ntest_failed_rerun_removes_success (test_replay.Tests.test_failed_rerun_removes_success) ... ok\ntest_forged_source_identity_rejected (test_replay.Tests.test_forged_source_identity_rejected) ... ok\ntest_genuine_receipt_passes (test_replay.Tests.test_genuine_receipt_passes) ... ok\ntest_successful_audit_leaves_sources_unchanged (test_replay.Tests.test_successful_audit_leaves_sources_unchanged) ... ok\ntest_truncated_distance_rejected (test_replay.Tests.test_truncated_distance_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.610s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 8,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r170_full_state",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr8-normal.log",
+        "tail": "ejected (test_full_state.Tests.test_float_probability_rejected) ... ok\ntest_invalid_inventory_state_rejected (test_full_state.Tests.test_invalid_inventory_state_rejected) ... ok\ntest_missing_snapshot_rejected (test_full_state.Tests.test_missing_snapshot_rejected) ... ok\ntest_normalized_but_different_law_rejected (test_full_state.Tests.test_normalized_but_different_law_rejected) ... ok\ntest_real_288_laws_and_81_state_universe (test_full_state.Tests.test_real_288_laws_and_81_state_universe) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 3.521s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r170_full_state",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr8-optimized.log",
+        "tail": "ejected (test_full_state.Tests.test_float_probability_rejected) ... ok\ntest_invalid_inventory_state_rejected (test_full_state.Tests.test_invalid_inventory_state_rejected) ... ok\ntest_missing_snapshot_rejected (test_full_state.Tests.test_missing_snapshot_rejected) ... ok\ntest_normalized_but_different_law_rejected (test_full_state.Tests.test_normalized_but_different_law_rejected) ... ok\ntest_real_288_laws_and_81_state_universe (test_full_state.Tests.test_real_288_laws_and_81_state_universe) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 2.384s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 9,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r170_identity_gate",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr9-normal.log",
+        "tail": "er_root (test_identity.IdentityTests.test_cli_invalidates_stale_success_under_root) ... ok\ntest_cli_refuses_output_over_input (test_identity.IdentityTests.test_cli_refuses_output_over_input) ... ok\ntest_missing_receipt (test_identity.IdentityTests.test_missing_receipt) ... ok\ntest_same_length_wrong_receipt (test_identity.IdentityTests.test_same_length_wrong_receipt) ... ok\ntest_semantic_equal_receipt_different_bytes (test_identity.IdentityTests.test_semantic_equal_receipt_different_bytes) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.293s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r170_identity_gate",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr9-optimized.log",
+        "tail": "er_root (test_identity.IdentityTests.test_cli_invalidates_stale_success_under_root) ... ok\ntest_cli_refuses_output_over_input (test_identity.IdentityTests.test_cli_refuses_output_over_input) ... ok\ntest_missing_receipt (test_identity.IdentityTests.test_missing_receipt) ... ok\ntest_same_length_wrong_receipt (test_identity.IdentityTests.test_same_length_wrong_receipt) ... ok\ntest_semantic_equal_receipt_different_bytes (test_identity.IdentityTests.test_semantic_equal_receipt_different_bytes) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.298s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 10,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r271_s67_native",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr10-normal.log",
+        "tail": "ived_overlap_contrasts (test_oracle.OracleTests.test_hand_derived_overlap_contrasts) ... ok\ntest_missing_world_rejected (test_oracle.OracleTests.test_missing_world_rejected) ... ok\ntest_original_freeze_claim_change_rejected (test_oracle.OracleTests.test_original_freeze_claim_change_rejected) ... ok\ntest_promotion_to_blind_rejected (test_oracle.OracleTests.test_promotion_to_blind_rejected) ... ok\ntest_wrong_exact_fraction_rejected (test_oracle.OracleTests.test_wrong_exact_fraction_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r271_s67_native",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr10-optimized.log",
+        "tail": "ived_overlap_contrasts (test_oracle.OracleTests.test_hand_derived_overlap_contrasts) ... ok\ntest_missing_world_rejected (test_oracle.OracleTests.test_missing_world_rejected) ... ok\ntest_original_freeze_claim_change_rejected (test_oracle.OracleTests.test_original_freeze_claim_change_rejected) ... ok\ntest_promotion_to_blind_rejected (test_oracle.OracleTests.test_promotion_to_blind_rejected) ... ok\ntest_wrong_exact_fraction_rejected (test_oracle.OracleTests.test_wrong_exact_fraction_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 11,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r270_s66_native",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr11-normal.log",
+        "tail": "cted) ... ok\ntest_float_alarm_count_rejected (test_dp.DPTests.test_float_alarm_count_rejected) ... ok\ntest_known_alarm_risk (test_dp.DPTests.test_known_alarm_risk) ... ok\ntest_missing_tail_rejected (test_dp.DPTests.test_missing_tail_rejected) ... ok\ntest_original_alternating_tails (test_dp.DPTests.test_original_alternating_tails) ... ok\ntest_original_receipt (test_dp.DPTests.test_original_receipt) ... ok\ntest_semantic_key_reorder_allowed (test_dp.DPTests.test_semantic_key_reorder_allowed) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.191s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r270_s66_native",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr11-optimized.log",
+        "tail": "cted) ... ok\ntest_float_alarm_count_rejected (test_dp.DPTests.test_float_alarm_count_rejected) ... ok\ntest_known_alarm_risk (test_dp.DPTests.test_known_alarm_risk) ... ok\ntest_missing_tail_rejected (test_dp.DPTests.test_missing_tail_rejected) ... ok\ntest_original_alternating_tails (test_dp.DPTests.test_original_alternating_tails) ... ok\ntest_original_receipt (test_dp.DPTests.test_original_receipt) ... ok\ntest_semantic_key_reorder_allowed (test_dp.DPTests.test_semantic_key_reorder_allowed) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.207s\n\nOK\n"
+      }
+    ]
+  },
+  {
+    "pr": 12,
+    "runs": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r266_s62_native",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr12-normal.log",
+        "tail": "te_source (test_source.SourceTests.test_duplicate_source) ... ok\ntest_frozen_counterexample (test_source.SourceTests.test_frozen_counterexample) ... ok\ntest_missing_source (test_source.SourceTests.test_missing_source) ... ok\ntest_self_consistent_wrong_hit (test_source.SourceTests.test_self_consistent_wrong_hit) ... ok\ntest_wrong_coverage (test_source.SourceTests.test_wrong_coverage) ... ok\ntest_zero_variance_ratio_must_be_null (test_source.SourceTests.test_zero_variance_ratio_must_be_null) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.927s\n\nOK\n"
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "research/codex_audit/r266_s62_native",
+          "-v"
+        ],
+        "cwd": "/workspace/codex-a/current",
+        "exit": 0,
+        "log": "current-pr12-optimized.log",
+        "tail": "te_source (test_source.SourceTests.test_duplicate_source) ... ok\ntest_frozen_counterexample (test_source.SourceTests.test_frozen_counterexample) ... ok\ntest_missing_source (test_source.SourceTests.test_missing_source) ... ok\ntest_self_consistent_wrong_hit (test_source.SourceTests.test_self_consistent_wrong_hit) ... ok\ntest_wrong_coverage (test_source.SourceTests.test_wrong_coverage) ... ok\ntest_zero_variance_ratio_must_be_null (test_source.SourceTests.test_zero_variance_ratio_must_be_null) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 1.498s\n\nOK\n"
+      }
+    ]
+  }
+]
