@@ -35,5 +35,5 @@ main before delivery; one fresh-context review; draft PR [skip ci], no merge.
 - [x] Actual native executions, all5byte identities,36population links and
   nine negative controls ordinary/-O; command/version/input hash records.
 - [x] Scope/report/handoff and one fresh-context review; fixes if required.
-- [ ] Refresh latestmain/PRs, deliver/attach independent draft PR, inspect all
+- [x] Refresh latestmain/PRs, deliver/attach independent draft PR, inspect all
   pushed heads' all-events workflow runs; preserve historical scientific status.

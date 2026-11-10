@@ -11,4 +11,7 @@ R/B/E109/E110 明示的 S75 原生 Python/Node 及字节再生 OPEN 已有本轮
 冻结协议不变；全仓库/其他环境/生产接入及原 A 数据资格工作 NOT_RUN。
 重放命令、版本、指纹、错误控制见 REPORT.md 和 evidence/。
 
-PR 待创建；保持独立 draft，不自动合并。
+PR：[21](https://github.com/edwardsage419/Psychohistory-Research/pull/21)，
+已创建并关联任务，open/draft/unmerged。当前 main b3b3b9a1，behind0。
+初次推送两提交的 all-events Actions 均0运行，CI NOT_RUN。最终文档头另查。
+保持独立 draft，不自动合并。

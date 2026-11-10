@@ -30,3 +30,11 @@ read updated body, no S75 native scope; A17 remains23cf1dfb. No other overlap.
 Conservative workflow trigger-text scan has no own quoted-glob matches/other
 automatic-event text; no dispatch; all commits skip ci. All12 code/input hashes
 and retained stream hashes match. Ready to deliver draft, no scientific upgrade.
+
+Delivered/attached independent PR21:
+https://github.com/edwardsage419/Psychohistory-Research/pull/21
+Observed open/draft/unmerged, published head687cbf27, mainb3b3b9a1/behind0.
+All-events Actions for061fbdc5 and687cbf27 each0runs; CI NOT_RUN, notPASS. Final
+publication-doc-only head separately checked after push. No code change after
+primary execution; no unnecessary numerical reruns. Scientific reacceptance,
+production/fullrepo/other-platform tests remain NOT_RUN. R073/PESEN frozen.
