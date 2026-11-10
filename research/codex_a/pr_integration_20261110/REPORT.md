@@ -91,3 +91,9 @@ python3 -B -O -m unittest discover -s research/codex_a/pr_integration_20261110 -
 实现提交 `2c9efe0aff8dbe7e6d70560b23fd64de8fcfcb26` 已推送并经 `git ls-remote` + `git fetch` 回读确认，专用分支 `codex-a/pr-integration-audit`。测试文件 Git blob `8133c091b80f06df1af8e04bd334b7ec821544a8`，SHA256 `3a80e41308413c3d0ccda16a298d10823e1ab846340ec77ff6ba9d180cf0614b`。main 仍为本轮固定 SHA。
 
 尝试 `gh pr create --draft --base main --head codex-a/pr-integration-audit ... --body-file /workspace/codex-a/pr-body.md`，exit 1，精确错误：`Post "https://api.github.com/graphql": Forbidden`。未创建新 PR，未将失败记作同步成功；分支推送成功与 PR 创建失败分别记录。API 写操作停止，不重复索取或提取凭证。可从 https://github.com/edwardsage419/Psychohistory-Research/pull/new/codex-a/pr-integration-audit 创建草稿 PR（这是创建入口，不是已存在的 PR）。现有 #1–#12 未修改；所有成果仍 OPEN_BRANCH_UNMERGED，不属于 main 已采用成果。CI 在线实际状态仍 UNKNOWN，本轮没有 dispatch。
+
+## 后续授权后的 API 阻塞定位
+
+用户授权继续后，重新确认 main 和工程分支 SHA 未变。`gh pr list --head codex-a/pr-integration-audit` 仍报 GraphQL Forbidden。进一步只读 HEAD 请求 `https://api.github.com/repos/edwardsage419/Psychohistory-Research/pulls` 返回代理 CONNECT 403（envoy），请求未到达 GitHub；当前 enforced 网络白名单无 api.github.com。故先前 API-403 不能解释为已确认 GitHub 账号写权限不足。网页创建入口返回登录页，当前无已认证网页会话。
+
+已通过环境配置工具仅保存新增允许域名 api.github.com 的草稿，保留 package_managers 预设，不添加秘密或改写安装/启动说明。草稿状态 saved，requires_publish=true；保存本身不应用运行时网络，未发布环境。须由用户在环境设置审阅、保存并按平台要求发布后，重新读取生效状态、请求 API，再验证是否还有身份/写权限阻塞。未重复创建 PR、未触发 CI；本轮新增代码不变。
