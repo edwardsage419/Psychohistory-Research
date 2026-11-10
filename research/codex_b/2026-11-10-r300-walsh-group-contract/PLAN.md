@@ -30,5 +30,5 @@ No merge,forcepush,paidAPI/resource/CI dispatch/scientific formalclosure.
 
 - [x] RED/GREEN moment proof and complete group/source contract.
 - [x] Real ordinary/-O replay, native exported-function adapters and badcases.
-- [ ] One fresh-context review; report scope, failures and reproducibility.
+- [x] One fresh-context review; report scope, failures and reproducibility.
 - [ ] Refreshmain/PRs, independentdraftdelivery/attach, all-eventsActionsread.

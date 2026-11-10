@@ -114,4 +114,10 @@ R冻结/B预案/报告、原R300冻结/基线和近期主线/队列，背景指�
 任意程序所有数据流或外部科学有效性；稳定全新输出目录外敌对并发不在证据范围。
 没有付费API/购买资源/依赖安装/workflow dispatch/自动合并，账单/免费CI额度
 NOT_VERIFIED；发布后all-events Actions另查，空列表不计测试PASS。
-独立审查及最终main/PR状态见PROGRESS.md、HANDOFF.md。
+一次fresh-context只读审查无Critical/Important/已证实Minor，额外重跑两模式并
+核对96条流记录/14指纹。审查者另探测bool元数据、缺失/额外字段、非有限JSON，
+均拒绝；将这些追加为永久回归的建议记录为后续覆盖改进，未伪称现有测试已逐项覆盖。
+E130已有正确原值的额外聚合审计，本包不是推翻它；新缺口是可执行旧门的模型汇总
+身份漏检。R交接和E130完整读取，背景指纹已补入context-manifest。
+发布前main仍b8b0ea2e，5开放PR21–25无S96重叠，14执行指纹/全部流哈希匹配，
+只新增本目录、behind0。详细审查边界在independent-review.md；最终状态见交接。
