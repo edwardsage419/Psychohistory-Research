@@ -20,3 +20,13 @@ outputs all byte-identical. OriginalB Node CLI passes archive and regenerated
 rejected exit1 at exact expected domain errors.36population fields linked;12
 code/input fingerprints before/after stable. No numerical discrepancy found.
 REPORT/HANDOFF/context manifest added. Fresh-context review next.
+
+Fresh-context read-only review complete: no Critical/Important. Both full modes
+replayed again; stream hashes,12 fingerprints and context hashes verified. Minor
+REPORT wording corrected: runtime versions recorded, Node availability checked,
+not strict Python/Node version enforcement. Code/primary evidence unchanged.
+main remainsb3b3b9a1, behind0. A14 now19957c79 has20PR integration snapshot only;
+read updated body, no S75 native scope; A17 remains23cf1dfb. No other overlap.
+Conservative workflow trigger-text scan has no own quoted-glob matches/other
+automatic-event text; no dispatch; all commits skip ci. All12 code/input hashes
+and retained stream hashes match. Ready to deliver draft, no scientific upgrade.

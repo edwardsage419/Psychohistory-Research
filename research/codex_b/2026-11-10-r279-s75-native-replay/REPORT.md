@@ -36,7 +36,8 @@ python -O -B research/codex_b/2026-11-10-r279-s75-native-replay/replay.py --outp
 **84 个 unittest 方法**，共 **168 次正向执行**、0失败/错误。S75 `--selftest`
 各一次，**不是额外 unittest 数量**；原 R279 `--emit`、S75 `--emit` 各一次。
 旧 Python 的 `assert` 在 -O 下禁用，不能称这些内部断言仍有效。新入口的显式
-版本/字节/跨文件/子进程检查和旧 Node B 门在两模式均实际运行。
+源码身份/字节/跨文件/子进程检查和旧 Node B 门在两模式均实际运行。运行时版本
+如实记录，并检查 Node 可用性；不强制要求 Python/Node 恰为本次版本。
 
 所有子命令实际 argv、cwd、退出码、stdout/stderr 原始字节及 SHA256 见两模式
 `commands.json` 和非空流文件。空流以0字节/哈希记录，不制造空日志文件。
@@ -96,4 +97,6 @@ R073/PESEN v0.1、冻结模型、参数、划分、指标、历史程序和结�
 
 没有付费 API、购买资源、依赖安装、workflow dispatch 或自动合并；实际账户账单
 及免费 CI 额度 NOT_VERIFIED。发布前后 Actions 观察单列，空列表不算 CI PASS。
-一次 fresh-context 工程审查、最终 main/PR 状态见 PROGRESS.md、HANDOFF.md。
+一次 fresh-context 只读审查无 Critical/Important；重跑两模式并复核全部运行和
+背景指纹、命令流哈希。Minor“版本检查”措辞已修正为版本记录/可用性检查，
+没有改动程序或数据。详细审查边界及最终 main/PR 状态见 PROGRESS.md、HANDOFF.md。
