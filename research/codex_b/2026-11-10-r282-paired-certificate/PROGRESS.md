@@ -19,3 +19,12 @@ scientific numeric discrepancy; new validation coverage closes field blind spot.
 main advanced558ef502 onlyTolbert–Zucker theory doc; inspect/retain disjoint
 change on unpublished branch, then verify all13 run fingerprints. A10/11/12
 updated bodies read: output alias protection, distinct from scientific pairing.
+
+Rebased unpublished branch onto558ef502, no force push. All13 execution input/
+code fingerprints and all saved stream hashes match current tree. Only own78
+newfiles; behindmain0. Refreshed21PRheads unchanged, no matching scope. Conservative
+CI trigger-text check no quoted-glob matches/other automatic-event text, no
+dispatch; all commits skipci. One fresh-context review at430aebf4 found no
+Critical/Important/Minor, repeated both full replays, verified every stream in
+both30-command manifests, row-reversal pair invariance and32.0 rejection. No
+code changes needed. Scientific/production/otherplatform/fullrepo NOT_RUN.

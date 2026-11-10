@@ -96,7 +96,8 @@ KeyError（12方法及子例），GREEN通过，日志均保留；不改写历�
 ## 协作、冻结与未验证范围
 
 初始main `b3b3b9a1`；复算后main新至 `558ef502ed2e06e76bb35bffdde785075b04f71e`，
-仅新增Tolbert–Zucker理论文档。独立未发布分支将保留该主线增量；代码输入指纹另查。
+仅新增Tolbert–Zucker理论文档。独立未发布分支已衔接该主线增量；13份代码/输入
+指纹及全部日志流哈希核对一致，behind main=0，见rebase-verification.json。
 初读21个开放PR，A10/11/12新增输出别名保护与本配对门无重叠，A14整合工作不碰。
 R280时间隔离已有充分保护，R281同分冻结失败已登记，均不重复处理。
 读取原R282协议/ODD、S78冻结、R/B报告/补充/交接/E112；参考指纹在context manifest。
@@ -110,4 +111,6 @@ R280时间隔离已有充分保护，R281同分冻结失败已登记，均不重
 敌对并发写入/运行时安全；需全新、稳定输出目录。字节一致不等于外部有效性。
 无付费API、资源购买、依赖安装、workflow dispatch或自动合并，账单/免费CI额度
 NOT_VERIFIED；Actions状态发布后单列，0条记录不计为测试通过。
-审查及PR/main最终状态见PROGRESS.md、HANDOFF.md。
+一次fresh-context只读审查无Critical/Important/Minor；额外重跑两模式、核对两个
+30命令清单的全部流哈希，反序CSV保持正确同源配对，32.0计数明确拒绝。
+审查边界见independent-review.md；PR/main最终状态见PROGRESS.md、HANDOFF.md。
