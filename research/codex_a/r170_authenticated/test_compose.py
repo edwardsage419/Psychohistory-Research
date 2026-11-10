@@ -10,7 +10,7 @@ from unittest.mock import patch
 import compose as gate
 
 ROOT = Path(__file__).resolve().parents[3]
-P8 = 'fd0d2c65084d1ef99b6040ce0464b237c38431b5'
+P8 = '1d8294ee81c7e23cb16bb8882ebc619089a35c65'
 P9 = '89a64ecd2975a7fa0409f000cef45b1b2792a8b4'
 
 
@@ -41,6 +41,8 @@ class CompositionTests(unittest.TestCase):
         before = {str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
         result = self.verify()
         self.assertEqual(result['status'],'COMPLETE_PINNED_R170_COMPOSITION')
+        self.assertEqual(result['pinned_pr8_commit'],P8)
+        self.assertEqual(result['pinned_pr9_commit'],P9)
         self.assertEqual(result['full_state_comparison']['state_mass_comparisons'],23328)
         self.assertEqual(result['identity_gate']['B_receipt_bytes'],23004)
         self.assertEqual(result['full_frozen_extension_acceptance'],'PARTIAL')
@@ -63,6 +65,12 @@ class CompositionTests(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
                     child.assert_not_called()
                 p.write_bytes(raw)
+
+    def test_old_runner_is_not_silently_accepted_after_pin_upgrade(self):
+        raw=subprocess.check_output(['git','-C',str(ROOT),'show',
+            'fd0d2c65084d1ef99b6040ce0464b237c38431b5:research/codex_audit/r170_full_state/run_audit.py'])
+        (self.pr8/'run_audit.py').write_bytes(raw)
+        with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
 
     def test_missing_dependency_blocks(self):
         self.identity.unlink()

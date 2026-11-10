@@ -1,3 +1,5 @@
+> 当前依赖与复现命令已升级，见 [PIN_REFRESH_20261110.md](PIN_REFRESH_20261110.md)。下文保留首次交付的历史版本记录。
+
 # R170 #8/#9 强制组合入口
 
 track: Codex A engineering

@@ -21,14 +21,16 @@ SOURCES = {'research/validation/r170_observation_ladder_20261026.js': {'git_blob
                                                                                          'sha256': '626b63a463581c1cb012edb6e8540ebdb56a51680dbe00c1a197506212caeaef'},
  'protocols/R170_OBSERVATION_LADDER_THIRD_METHOD_FREEZE_2026-10-26.md': {'git_blob': '3a85af7291f5c916d26734fd54773aa347a5e027',
                                                                          'sha256': '4d98db52333758b4775c371eb41e0388327febbeb16471dc67f06896b3d08e7d'}}
-CODE = {'run_audit.py': {'git_blob': '59973c7ecbec2da0b49fc3b5542b1d2a9eb977d3',
-                  'sha256': '20920a42956f2ff0821ad1aa90329045318ed1cb171343b8e22e3d6447e62ead'},
+CODE = {'run_audit.py': {'git_blob': '2573ba5d823449dff43c038bce61754baeea8184',
+                  'sha256': '58318bfe802d7e5b77fb5f75093398afe89cd9820c004bbacc7b3a8c835fab27'},
  'export_js_states.js': {'git_blob': '5e7c17c3a876811ceb1f3c09df93faacd9c99cc8',
                          'sha256': '0a728789f364fef631c11e0292fd6ae0745787eb9a212ba6e85cfd159a008227'},
  'export_python_states.py': {'git_blob': '5360fcaca008865a8148122684b8b28edcd94e6d',
                              'sha256': 'a88bed9ad5ffa0613b08126f15ad8a16e39b9f9eb972e0719c7c80d482414439'},
  'identity_gate.py': {'git_blob': '8e62bc3f227d61c57854b958b41c64cdc58c83b1',
                       'sha256': 'f27a6323d50f981f03eb38676e74f13df1e4861b98ffd14ee9458b6f9b57aaf2'}}
+PR8_CODE_COMMIT = '1d8294ee81c7e23cb16bb8882ebc619089a35c65'
+PR9_CODE_COMMIT = '89a64ecd2975a7fa0409f000cef45b1b2792a8b4'
 COMPARE = {'snapshots':288, 'state_mass_comparisons':23328,
            'nonzero_entries_per_route':5099, 'exact_normalization_checks':576,
            'unreachable_zero_states_included':True}
@@ -118,6 +120,7 @@ def verify(root, pr8_dir, identity_gate):
                               'new_E2':0,'new_E3':0,'external_team_replications':0},'identity result')
     return {'status':'COMPLETE_PINNED_R170_COMPOSITION',
             'scope':'NONBLIND_INTERNAL_ARTIFICIAL_E1_EXISTING_GATES',
+            'pinned_pr8_commit':PR8_CODE_COMMIT,'pinned_pr9_commit':PR9_CODE_COMMIT,
             'full_state_comparison':execution['full_state_comparison'],
             'identity_gate':authenticated,'comparison_execution':execution,
             'commands':[comparison_command,identity_command],'identities':identities,
