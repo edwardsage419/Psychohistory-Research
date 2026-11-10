@@ -26,3 +26,7 @@ coverage improvement. No code changes needed. ReadRhandoff/E130fully,context
 hashesadded; E130positiveoriginalaggregate audit notcontradicted. mainb8b0ea2e
 and5PRs unchanged,noS96overlap. All14inputs/code/streamhashes match. Conservative
 CItriggertextcheck nohits/otherautomatic-events, nodispatch, owncommits skipci.
+
+Final refresh: A26 new standalone R127 local gates, no S96 overlap; six open
+PR21–26 snapshot archived. main3221a84f adds only one theory document/28 lines,
+behind1 after publication, no pinned execution input changed. No rebase/force.

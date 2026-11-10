@@ -121,3 +121,8 @@ E130已有正确原值的额外聚合审计，本包不是推翻它；新缺口�
 身份漏检。R交接和E130完整读取，背景指纹已补入context-manifest。
 发布前main仍b8b0ea2e，5开放PR21–25无S96重叠，14执行指纹/全部流哈希匹配，
 只新增本目录、behind0。详细审查边界在independent-review.md；最终状态见交接。
+
+最后发布刷新发现新增A26，仅处理R127本地fail-closed门，与S96无重叠；
+六个开放PR21–26完整正文/提交快照见evidence/open-pr-scope.json。
+main随后前进至3221a84fba91731071b8931447837e07578210be，只增加一份Bratman
+理论文档28行；本分支behind1，无执行输入变化。保留已发布提交，不改写历史。
