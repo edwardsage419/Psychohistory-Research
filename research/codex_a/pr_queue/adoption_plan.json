@@ -1,5 +1,5 @@
 {
-  "basis_main": "e5f2baa7f6b13b1a2bf95f48ed49571f732e7611",
+  "basis_main": "b3b3b9a1af020130e7c0e1a9cc0b58021be08e8e",
   "mode": "REVIEW_PLAN_ONLY_NO_MERGE_OR_PRODUCTION_ADOPTION",
   "review_groups": [
     {
@@ -42,9 +42,18 @@
       "priority": "P1-independent",
       "prs": [
         13,
-        16
+        16,
+        18
       ],
-      "purpose": "R074/R075 donor isolation and R077 scoring leakage, distinct scopes"
+      "purpose": "Session isolation, score leakage, and exact paired-tie supplement; original R077 regression remains failing"
+    },
+    {
+      "priority": "P1-independent",
+      "prs": [
+        19,
+        20
+      ],
+      "purpose": "R278 complete receipt/covariance; R268 log-free decision certificate; distinct fixed finite-model targets"
     },
     {
       "priority": "P2",
@@ -108,7 +117,7 @@
       "provider": 8,
       "kind": "pinned_runner_and_adapters",
       "requires_merge": false,
-      "commit": "fd0d2c65084d1ef99b6040ce0464b237c38431b5"
+      "commit": "1d8294ee81c7e23cb16bb8882ebc619089a35c65"
     },
     {
       "consumer": 17,
@@ -116,6 +125,12 @@
       "kind": "pinned_identity_executable",
       "requires_merge": false,
       "commit": "89a64ecd2975a7fa0409f000cef45b1b2792a8b4"
+    },
+    {
+      "consumer": 18,
+      "provider": 16,
+      "kind": "complementary_scoring_evidence_only",
+      "requires_merge": false
     }
   ],
   "shared_test_warning": "PR13 and PR16 both rerun baseline R073/R077 tests; repeated baseline runs are not new independent scientific evidence.",
@@ -125,5 +140,10 @@
     "production binding requires separate reviewed change",
     "Python 3.11 and full repository tests not run",
     "no CI quota verification or dispatch"
-  ]
+  ],
+  "snapshot_pr_count": 20,
+  "pair_count": 190,
+  "validation": "230 scoped positive methods per mode; 460 executions; R077 known regression separately fails 11 subcases per mode",
+  "snapshot_evidence": "final_sync_20261110/evidence/inventory.json",
+  "main_adoption": "BLOCKED_BY_USER_NO_AUTOMERGE_REQUIREMENT"
 }

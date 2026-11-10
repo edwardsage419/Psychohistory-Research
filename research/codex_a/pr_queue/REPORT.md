@@ -1,3 +1,5 @@
+> 最新20项快照与main兼容验证见 [final_sync_20261110/REPORT.md](final_sync_20261110/REPORT.md)；本文件保留17项历史清点。
+
 # 开放 PR 工程队列刷新与可复用 Git 审计
 
 track: Codex A engineering
