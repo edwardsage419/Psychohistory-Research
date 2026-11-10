@@ -1,0 +1,158 @@
+[
+  {
+    "tag": "original-r073",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/R073",
+      "-p",
+      "test_r073_human_ipd_memory_loso.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-r077",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/R077",
+      "-p",
+      "test_r077_fourth_real_human_source_only_e3.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-new",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-score-leakage",
+      "-p",
+      "test_score_oracle.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-numeric-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import json,sys\nfrom pathlib import Path\nsys.path.insert(0,str(Path.cwd()/\"research/codex_b/2026-11-10-r077-score-leakage\"))\nfrom test_score_oracle import run_contract,score_with_frozen_source\nimport test_r077_fourth_real_human_source_only_e3 as legacy\nscore=score_with_frozen_source(legacy.fake_fit(),legacy.cases())\nm0=score[\"models\"][\"M0_TREATMENT_PREVALENCE\"]\nexample={\"data_class\":\"ARTIFICIAL_LEGACY_TEST_FIXTURE_ONLY\",\n         \"M0_Brier\":m0[\"all_original_sessions_equal_Brier\"],\n         \"M0_log_loss\":m0[\"all_original_sessions_equal_log_loss\"],\n         \"declared_target_labels_used_in_training\":score[\"target_labels_used_in_training\"]}\ntry:\n    checks=run_contract(score_with_frozen_source)\nexcept ValueError as exc:\n    if not str(exc).startswith(\"SCORE_MISMATCH:\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\",\"reason\":str(exc),\"counterexample\":example}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\",\"checks\":checks,\"counterexample\":example}))\n"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "current_label_leak-old-suite",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/codex-b-r077-current_label_leak-0aqd8x48/research/R077",
+      "-p",
+      "test_r077_fourth_real_human_source_only_e3.py",
+      "-v"
+    ],
+    "cwd": "/tmp/codex-b-r077-current_label_leak-0aqd8x48",
+    "exit_code": 0
+  },
+  {
+    "tag": "current_label_leak-new-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import json,sys\nfrom pathlib import Path\nsys.path.insert(0,str(Path.cwd()/\"research/codex_b/2026-11-10-r077-score-leakage\"))\nfrom test_score_oracle import run_contract,score_with_frozen_source\nimport test_r077_fourth_real_human_source_only_e3 as legacy\nscore=score_with_frozen_source(legacy.fake_fit(),legacy.cases())\nm0=score[\"models\"][\"M0_TREATMENT_PREVALENCE\"]\nexample={\"data_class\":\"ARTIFICIAL_LEGACY_TEST_FIXTURE_ONLY\",\n         \"M0_Brier\":m0[\"all_original_sessions_equal_Brier\"],\n         \"M0_log_loss\":m0[\"all_original_sessions_equal_log_loss\"],\n         \"declared_target_labels_used_in_training\":score[\"target_labels_used_in_training\"]}\ntry:\n    checks=run_contract(score_with_frozen_source)\nexcept ValueError as exc:\n    if not str(exc).startswith(\"SCORE_MISMATCH:\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\",\"reason\":str(exc),\"counterexample\":example}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\",\"checks\":checks,\"counterexample\":example}))\n"
+    ],
+    "cwd": "/tmp/codex-b-r077-current_label_leak-0aqd8x48",
+    "exit_code": 42
+  },
+  {
+    "tag": "brier_as_log_loss-old-suite",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/codex-b-r077-brier_as_log_loss-tywnxu3_/research/R077",
+      "-p",
+      "test_r077_fourth_real_human_source_only_e3.py",
+      "-v"
+    ],
+    "cwd": "/tmp/codex-b-r077-brier_as_log_loss-tywnxu3_",
+    "exit_code": 0
+  },
+  {
+    "tag": "brier_as_log_loss-new-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import json,sys\nfrom pathlib import Path\nsys.path.insert(0,str(Path.cwd()/\"research/codex_b/2026-11-10-r077-score-leakage\"))\nfrom test_score_oracle import run_contract,score_with_frozen_source\nimport test_r077_fourth_real_human_source_only_e3 as legacy\nscore=score_with_frozen_source(legacy.fake_fit(),legacy.cases())\nm0=score[\"models\"][\"M0_TREATMENT_PREVALENCE\"]\nexample={\"data_class\":\"ARTIFICIAL_LEGACY_TEST_FIXTURE_ONLY\",\n         \"M0_Brier\":m0[\"all_original_sessions_equal_Brier\"],\n         \"M0_log_loss\":m0[\"all_original_sessions_equal_log_loss\"],\n         \"declared_target_labels_used_in_training\":score[\"target_labels_used_in_training\"]}\ntry:\n    checks=run_contract(score_with_frozen_source)\nexcept ValueError as exc:\n    if not str(exc).startswith(\"SCORE_MISMATCH:\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\",\"reason\":str(exc),\"counterexample\":example}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\",\"checks\":checks,\"counterexample\":example}))\n"
+    ],
+    "cwd": "/tmp/codex-b-r077-brier_as_log_loss-tywnxu3_",
+    "exit_code": 42
+  },
+  {
+    "tag": "row_weighted_macro-old-suite",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/codex-b-r077-row_weighted_macro-v8zhtvbe/research/R077",
+      "-p",
+      "test_r077_fourth_real_human_source_only_e3.py",
+      "-v"
+    ],
+    "cwd": "/tmp/codex-b-r077-row_weighted_macro-v8zhtvbe",
+    "exit_code": 1
+  },
+  {
+    "tag": "row_weighted_macro-new-gate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import json,sys\nfrom pathlib import Path\nsys.path.insert(0,str(Path.cwd()/\"research/codex_b/2026-11-10-r077-score-leakage\"))\nfrom test_score_oracle import run_contract,score_with_frozen_source\nimport test_r077_fourth_real_human_source_only_e3 as legacy\nscore=score_with_frozen_source(legacy.fake_fit(),legacy.cases())\nm0=score[\"models\"][\"M0_TREATMENT_PREVALENCE\"]\nexample={\"data_class\":\"ARTIFICIAL_LEGACY_TEST_FIXTURE_ONLY\",\n         \"M0_Brier\":m0[\"all_original_sessions_equal_Brier\"],\n         \"M0_log_loss\":m0[\"all_original_sessions_equal_log_loss\"],\n         \"declared_target_labels_used_in_training\":score[\"target_labels_used_in_training\"]}\ntry:\n    checks=run_contract(score_with_frozen_source)\nexcept ValueError as exc:\n    if not str(exc).startswith(\"SCORE_MISMATCH:\"):\n        raise\n    print(json.dumps({\"status\":\"REJECTED\",\"reason\":str(exc),\"counterexample\":example}))\n    sys.exit(42)\nprint(json.dumps({\"status\":\"PASS\",\"checks\":checks,\"counterexample\":example}))\n"
+    ],
+    "cwd": "/tmp/codex-b-r077-row_weighted_macro-v8zhtvbe",
+    "exit_code": 42
+  }
+]
