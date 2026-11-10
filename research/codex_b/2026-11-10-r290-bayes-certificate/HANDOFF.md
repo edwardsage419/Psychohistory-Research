@@ -13,4 +13,6 @@
 
 命令、输入版本、证书和原始流见REPORT/evidence。新真人/E2/E3/外部团队0，原
 生产绑定/原R290全协议/科学重新验收NOT_RUN，R073/PESEN冻结。
-PR待创建；保持独立draft，不自动合并。
+PR：[25](https://github.com/edwardsage419/Psychohistory-Research/pull/25)，已创建并关联
+任务，open/draft/unmerged。main25bcd51d已包含，behind0。初次两提交all-events
+Actions均0运行，CI NOT_RUN。最终纯文档头另查。保持独立draft，不自动合并。

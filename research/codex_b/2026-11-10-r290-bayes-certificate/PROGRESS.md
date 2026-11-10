@@ -26,3 +26,10 @@ main remains25bcd51d,behind0. NewA24 f804fe1f bodyread: prior21–23 CLI contrac
 noS86scope;4openPRs. All14fingerprints/streams match. Conservative triggertext
 check noownglobhits/otherautomatic-event text, no dispatch, owncommits skipci.
 Ready for independentdraft delivery; science/production/fullrepo NOT_RUN.
+
+Delivered/attached PR25 https://github.com/edwardsage419/Psychohistory-Research/pull/25
+Observed open/draft/unmerged at31ff566b,main25bcd51d/behind0. Initial092295b1 and
+31ff566b both0all-eventsActions; CI NOT_RUN,nottestPASS. Final doc-onlyhead checked
+afterpush. No executedcode changes since primary/review; pure documentation
+updates only. Originalproduction/scientificadoption/fullrepo/otherplatformNOT_RUN.
+No merge/forcepush/paidresources/dispatch; R073/PESEN/frozenresearch unchanged.
