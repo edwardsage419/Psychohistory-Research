@@ -1,0 +1,60 @@
+test_dangling_output_symlink_rejected (test_replay_safety.OutputAliasTests.test_dangling_output_symlink_rejected) ... FAIL
+test_execution_alias_rejected_before_stale_unlink (test_replay_safety.OutputAliasTests.test_execution_alias_rejected_before_stale_unlink) ... FAIL
+test_stderr_symlink_cannot_overwrite_source (test_replay_safety.OutputAliasTests.test_stderr_symlink_cannot_overwrite_source) ... FAIL
+test_stdout_hardlink_cannot_overwrite_source (test_replay_safety.OutputAliasTests.test_stdout_hardlink_cannot_overwrite_source) ... FAIL
+test_stdout_symlink_cannot_truncate_source (test_replay_safety.OutputAliasTests.test_stdout_symlink_cannot_truncate_source) ... FAIL
+test_failed_rerun_cannot_leave_previous_success_receipt (test_replay_safety.SafetyTests.test_failed_rerun_cannot_leave_previous_success_receipt) ... ok
+test_successful_audit_does_not_write_in_source_directories (test_replay_safety.SafetyTests.test_successful_audit_does_not_write_in_source_directories) ... ok
+
+======================================================================
+FAIL: test_dangling_output_symlink_rejected (test_replay_safety.OutputAliasTests.test_dangling_output_symlink_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 96, in test_dangling_output_symlink_rejected
+    self.assertFalse(target.exists(), 'source root gained a file through a dangling alias')
+AssertionError: True is not false : source root gained a file through a dangling alias
+
+======================================================================
+FAIL: test_execution_alias_rejected_before_stale_unlink (test_replay_safety.OutputAliasTests.test_execution_alias_rejected_before_stale_unlink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 89, in test_execution_alias_rejected_before_stale_unlink
+    self.check_alias('execution.json')
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 75, in check_alias
+    self.assertNotEqual(result.returncode, 0, 'output alias must be rejected')
+AssertionError: 0 == 0 : output alias must be rejected
+
+======================================================================
+FAIL: test_stderr_symlink_cannot_overwrite_source (test_replay_safety.OutputAliasTests.test_stderr_symlink_cannot_overwrite_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 83, in test_stderr_symlink_cannot_overwrite_source
+    self.check_alias('native_tests.stderr')
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 74, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'test_4608 (__main__.Tests.test_4608) ... [8431 chars]OK\n' != b'{\n  "research_id": "R256_S52",\n  "freez[6546 chars]n}\n' : protected input changed through output alias
+
+======================================================================
+FAIL: test_stdout_hardlink_cannot_overwrite_source (test_replay_safety.OutputAliasTests.test_stdout_hardlink_cannot_overwrite_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 86, in test_stdout_hardlink_cannot_overwrite_source
+    self.check_alias('native_tests.stdout', hard=True)
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 74, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'' != b'{\n  "research_id": "R256_S52",\n  "freez[6546 chars]n}\n' : protected input changed through output alias
+
+======================================================================
+FAIL: test_stdout_symlink_cannot_truncate_source (test_replay_safety.OutputAliasTests.test_stdout_symlink_cannot_truncate_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 80, in test_stdout_symlink_cannot_truncate_source
+    self.check_alias('native_tests.stdout')
+  File "/workspace/codex-a/repo/research/codex_audit/r256_s52_replay/test_replay_safety.py", line 74, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'' != b'{\n  "research_id": "R256_S52",\n  "freez[6546 chars]n}\n' : protected input changed through output alias
+
+----------------------------------------------------------------------
+Ran 7 tests in 18.417s
+
+FAILED (failures=5)
