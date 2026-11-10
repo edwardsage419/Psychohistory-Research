@@ -1,0 +1,17 @@
+/workspace/cli251252-replay/research/operations/e081_r251_s47_exact_receipt_20261029.js:17
+function verify(r){let a=compute(),checks=0;function ck(x,y){checks++;if(JSON.stringify(x)!==JSON.stringify(y))throw Error('mismatch at check '+checks)}
+                                                                                                               ^
+
+Error: mismatch at check 7
+    at ck (/workspace/cli251252-replay/research/operations/e081_r251_s47_exact_receipt_20261029.js:17:118)
+    at verify (/workspace/cli251252-replay/research/operations/e081_r251_s47_exact_receipt_20261029.js:19:109)
+    at main (/workspace/cli251252-replay/research/operations/e081_r251_s47_exact_receipt_20261029.js:21:29)
+    at Object.<anonymous> (/workspace/cli251252-replay/research/operations/e081_r251_s47_exact_receipt_20261029.js:22:53)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+
+Node.js v24.19.0
