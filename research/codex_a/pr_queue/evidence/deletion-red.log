@@ -1,0 +1,33 @@
+test_boolean_pr_number_rejected (test_audit_queue.QueueTests.test_boolean_pr_number_rejected) ... ok
+test_cli_duplicate_json_key_rejected (test_audit_queue.QueueTests.test_cli_duplicate_json_key_rejected) ... ok
+test_deleted_code_is_recorded_without_reading_missing_blob (test_audit_queue.QueueTests.test_deleted_code_is_recorded_without_reading_missing_blob) ... fatal: path 'old.py' does not exist in '10689cf624459e56f249d844492c7f44370379bd'
+ERROR
+test_duplicate_pr_rejected (test_audit_queue.QueueTests.test_duplicate_pr_rejected) ... ok
+test_empty_snapshot_rejected (test_audit_queue.QueueTests.test_empty_snapshot_rejected) ... ok
+test_missing_field_rejected (test_audit_queue.QueueTests.test_missing_field_rejected) ... ok
+test_missing_ref_rejected (test_audit_queue.QueueTests.test_missing_ref_rejected) ... ok
+test_other_base_requires_explicit_handling (test_audit_queue.QueueTests.test_other_base_requires_explicit_handling) ... ok
+test_real_conflict_and_unchanged_checkout (test_audit_queue.QueueTests.test_real_conflict_and_unchanged_checkout) ... ok
+test_snapshot_head_mismatch_rejected (test_audit_queue.QueueTests.test_snapshot_head_mismatch_rejected) ... ok
+
+======================================================================
+ERROR: test_deleted_code_is_recorded_without_reading_missing_blob (test_audit_queue.QueueTests.test_deleted_code_is_recorded_without_reading_missing_blob)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/test_audit_queue.py", line 57, in test_deleted_code_is_recorded_without_reading_missing_blob
+    result=audit.audit(self.repo,[row])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/codex-a/repo/research/codex_a/pr_queue/audit_queue.py", line 71, in audit
+    raw=subprocess.check_output(['git','-C',str(repo),'show',head+':'+path])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', '-C', '/tmp/tmpp1o_u2q4', 'show', '10689cf624459e56f249d844492c7f44370379bd:old.py']' returned non-zero exit status 128.
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.943s
+
+FAILED (errors=1)

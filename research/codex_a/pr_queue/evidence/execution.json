@@ -1,0 +1,81 @@
+{
+  "time": "2026-11-10T16:48:13.341681+08:00",
+  "main": "e5f2baa7f6b13b1a2bf95f48ed49571f732e7611",
+  "runs": [
+    {
+      "label": "s53",
+      "command": [
+        "python3",
+        "-B",
+        "/tmp/psychohistory-candidates-rgr9hl69/s53.py",
+        ".",
+        "--validator",
+        "/tmp/psychohistory-candidates-rgr9hl69/validator.py"
+      ],
+      "cwd": "/workspace/codex-a/repo",
+      "exit": 0
+    },
+    {
+      "label": "r170",
+      "command": [
+        "python3",
+        "-B",
+        "/tmp/psychohistory-candidates-rgr9hl69/r170.py",
+        ".",
+        "--pr8-dir",
+        "/tmp/psychohistory-candidates-rgr9hl69/r170",
+        "--identity-gate",
+        "/tmp/psychohistory-candidates-rgr9hl69/identity.py"
+      ],
+      "cwd": "/workspace/codex-a/repo",
+      "exit": 0
+    }
+  ],
+  "code_identity": [
+    {
+      "commit": "48b9bea24a6394ae7a9cbb7d4739f151d3b85877",
+      "path": "research/codex_a/r257_s53_authenticated/authenticate.py",
+      "sha256": "42c8a198ac54c33b80fc69088a1edee58ff596e3d0369d750b229ad00bb01596",
+      "git_blob": "d29ad83dd61ea5ab3e0487032a577dc233ca7090"
+    },
+    {
+      "commit": "97d5f74df5d84916917db943156120f08144f445",
+      "path": "research/codex_audit/r257_s53_validator/validate_receipt.py",
+      "sha256": "9850be7142765edc1620f557f937cf2215b5dd6275aaba8282b8188ea6ff6964",
+      "git_blob": "75c0870c49c26f175ab678a7600ae4d4b8a5c7f2"
+    },
+    {
+      "commit": "c37470c24bc3e85059c768ed7cb15a235cc50552",
+      "path": "research/codex_a/r170_authenticated/compose.py",
+      "sha256": "5de5dfa8636a0b2c87fd6a42913aa6d1a975f1d5b9028389401a68b6bebc400a",
+      "git_blob": "faa8c075909470afdd86091f6b64a9ab8e4b9916"
+    },
+    {
+      "commit": "89a64ecd2975a7fa0409f000cef45b1b2792a8b4",
+      "path": "research/codex_audit/r170_identity_gate/identity_gate.py",
+      "sha256": "f27a6323d50f981f03eb38676e74f13df1e4861b98ffd14ee9458b6f9b57aaf2",
+      "git_blob": "8e62bc3f227d61c57854b958b41c64cdc58c83b1"
+    },
+    {
+      "commit": "fd0d2c65084d1ef99b6040ce0464b237c38431b5",
+      "path": "research/codex_audit/r170_full_state/run_audit.py",
+      "sha256": "20920a42956f2ff0821ad1aa90329045318ed1cb171343b8e22e3d6447e62ead",
+      "git_blob": "59973c7ecbec2da0b49fc3b5542b1d2a9eb977d3"
+    },
+    {
+      "commit": "fd0d2c65084d1ef99b6040ce0464b237c38431b5",
+      "path": "research/codex_audit/r170_full_state/export_js_states.js",
+      "sha256": "0a728789f364fef631c11e0292fd6ae0745787eb9a212ba6e85cfd159a008227",
+      "git_blob": "5e7c17c3a876811ceb1f3c09df93faacd9c99cc8"
+    },
+    {
+      "commit": "fd0d2c65084d1ef99b6040ce0464b237c38431b5",
+      "path": "research/codex_audit/r170_full_state/export_python_states.py",
+      "sha256": "a88bed9ad5ffa0613b08126f15ad8a16e39b9f9eb972e0719c7c80d482414439",
+      "git_blob": "5360fcaca008865a8148122684b8b28edcd94e6d"
+    }
+  ],
+  "queue_script_sha256": "2118b7ab3e366b72b757289bc512cdc29708bbbeb7bdcfaee0275c4e0cbd1ca8",
+  "snapshot_sha256": "b28526613fdef3cf9a9a132606c941de95fc53c44f6a681ba4c9061c0cc9ce64",
+  "ci": "NOT_DISPATCHED"
+}
