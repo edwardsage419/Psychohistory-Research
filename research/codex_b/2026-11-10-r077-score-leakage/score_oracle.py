@@ -151,7 +151,12 @@ loss bins. This does not authenticate a source dataset or reconstruct timelines.
 
 
 def validate_scores(actual, expected):
-    """Exact keys/counts/types, absolute numeric tolerance 2e-12, never NaN PASS."""
+    """Compare with a trusted full tree returned by expected_scores().
+
+    This low-level helper does not authenticate an externally supplied expectation
+    or establish its completeness. Use check_scorer() as the acceptance entry.
+    Exact keys/counts/types; absolute numeric tolerance 2e-12; never NaN PASS.
+    """
     _require(type(expected) is dict and set(expected) == PUBLIC_FIELDS
              and expected["original_session_count"] > 0, "EMPTY_OR_INVALID_EXPECTATION")
 

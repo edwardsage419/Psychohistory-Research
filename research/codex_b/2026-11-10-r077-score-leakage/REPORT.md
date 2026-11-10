@@ -98,12 +98,14 @@ python -O -B research/codex_b/2026-11-10-r077-score-leakage/replay.py --output r
 正向 **59个不同测试方法**，两模式 **118次正向执行，零失败/错误**。
 独立数值契约每模式68次人工评分函数调用、**10,200个输出叶字段比较**，
 这些内部字段比较不称为单元测试。变异套件另计，不混入正向通过数。
-`red.log` 保留初始12方法在no-op骨架下9个断言失败/2个KeyError（含subtests）
-的真实记录；`green-attempt.log` 为实现后12方法全部通过。
+`red.log` 保留初始12方法在no-op骨架下9个断言失败、1个KeyError和1个
+TypeError的真实记录（没有subtests）；`green-attempt.log` 为实现后12方法全部通过。
 
 ## 分轨、版本和科学边界
 
-已刷新 main、13个开放PR、近期 R 交接及既有 R077 匿名宏/sign审计。
+初始读取 main、13个开放PR、近期 R 交接及既有 R077 匿名宏/sign审计；
+发布前刷新观察到15个开放PR，新 A轨 #14为原12个PR整合审计、#15为
+R257 S53来源认证组合，已读说明，均不与本R077数值评分工作重复。
 PR #13处理 R074/R075训练场次重复/遗漏，本包独立从main分支，不依赖或
 重做其代码；既有R077归档sign数学复核与本人工评分测试不同。R272和
 R333–R340生产验收继续留给已有轨道。未提交并行聊天活动不可观测。
@@ -116,5 +118,13 @@ Actions均 **NOT_RUN**。无计费API、购买资源、依赖安装或workflow d
 账户账单/免费CI额度 **NOT_VERIFIED**。R073/PESEN v0.1冻结，Rev001历史
 失败和Rev002语义修订保留，原程序、协议、真实宏结果完全不改。
 
-审查记录在 `PROGRESS.md`；将发布仅含本目录增量的独立 draft PR，
+独立上下文工程审查无Critical/Important问题，额外逐一篡改150叶字段均拒绝，
+验证了来源统计与64个虚构源行一致及旧输出目录复用会在写入前拒绝。
+两项Minor按建议修正文档：上述RED错误类别，以及底层 `validate_scores`
+的可信期望前提。该helper不认证调用者自造的期望树：若直接传入两份匹配的
+空models/pairs结构，它可能仅比较4个metadata字段；验收必须用
+`check_scorer` 生成完整oracle期望，并由 `run_contract` 强制68次/10200叶比较。
+本轮不将底层helper升级为任意外部期望文件的schema/来源认证器。
+修正文档后最终重放保存在 `evidence/final-normal` 和 `evidence/final-optimized`，
+此前初版日志保留。审查记录在 `PROGRESS.md`；将发布仅含本目录增量的独立 draft PR，
 提交和标题使用 `[skip ci]`，不自动合并。PR最终状态与URL见交付消息。

@@ -39,9 +39,9 @@ row weighting; correct log loss and finite numerical types; paired signs/ties;
 vacuous acceptance and stale success artifacts. Evidence is internal nonblind
 artificial program verification, not new empirical E2/E3 or external replication.
 
-- [ ] Write regressions and record RED with a no-op oracle.
-- [ ] Implement independent scoring and full typed output comparison; GREEN/-O.
-- [ ] Run pinned original and actual-file mutant suites with numerical guard;
+- [x] Write regressions and record RED with a no-op oracle.
+- [x] Implement independent scoring and full typed output comparison; GREEN/-O.
+- [x] Run pinned original and actual-file mutant suites with numerical guard;
   record full commands, outputs, code/protocol hashes and counterexample.
 - [ ] Fresh-context review, RED/GREEN fixes as needed, final scoped replay,
   refresh remote state, push [skip ci] and create/attach a draft PR; never merge.
