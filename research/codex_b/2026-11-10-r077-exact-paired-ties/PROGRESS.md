@@ -41,3 +41,8 @@ adoption, scientific acceptance, other platforms or billing certification.
 The author separately refreshes remote status/CI metadata before delivery.
 Prepublish main remains e5f2baa7;17 open PRs scope re-read, no overlapping exact-tie
 fix observed. A's integration/source authentication work left untouched.
+
+Publication: pushed own branch without force; created and attached independent
+draft https://github.com/edwardsage419/Psychohistory-Research/pull/18 . Main still
+e5f2baa7, original programs and freezes unchanged. All4 final source-hash sets
+match current code; no implementation change after review. No merge/CI dispatch.

@@ -125,4 +125,5 @@ R170来源认证，B#13处理donor重复，B#16已披露未验证任意精确/�
 独立上下文工程审查已通过，无需要修改的问题；审查者重跑四组runtime/mode，
 复核整数证明、完整来源状态表及额外输入边界。审查与交付状态见
 `PROGRESS.md`；仅在本Codex B专用目录增量，
-通过独立draft PR提交，使用 `[skip ci]`，不自动合并。PR URL见交付消息。
+已通过独立 [Draft PR #18](https://github.com/edwardsage419/Psychohistory-Research/pull/18)
+提交，使用 `[skip ci]`，不自动合并。最终head及远端状态见交付消息。

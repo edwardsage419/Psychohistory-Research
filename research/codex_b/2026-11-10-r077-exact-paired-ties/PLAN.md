@@ -41,5 +41,5 @@ success and preserving expected FAIL of the original regression in reports.
 - [x] Implement exact supplement; GREEN and meaningful negative controls.
 - [x] Original23+24 and new scoped tests, integer proof and35 permutations in
   available Python3.12/3.13 normal/-O, authentic source hashes and raw logs.
-- [ ] Fresh-context review, necessary corrections, final replay, latest main/PR
+- [x] Fresh-context review, necessary corrections, final replay, latest main/PR
   scope refresh and dedicated draft PR with [skip ci]; never merge.
