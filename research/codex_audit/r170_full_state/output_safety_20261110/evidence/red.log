@@ -1,0 +1,68 @@
+test_dangling_output_symlink_rejected (test_full_state.OutputAliasTests.test_dangling_output_symlink_rejected) ... FAIL
+test_execution_alias_rejected_before_stale_unlink (test_full_state.OutputAliasTests.test_execution_alias_rejected_before_stale_unlink) ... FAIL
+test_stderr_symlink_cannot_overwrite_source (test_full_state.OutputAliasTests.test_stderr_symlink_cannot_overwrite_source) ... FAIL
+test_stdout_hardlink_cannot_overwrite_source (test_full_state.OutputAliasTests.test_stdout_hardlink_cannot_overwrite_source) ... FAIL
+test_stdout_symlink_cannot_truncate_source (test_full_state.OutputAliasTests.test_stdout_symlink_cannot_truncate_source) ... FAIL
+test_boolean_time_rejected (test_full_state.Tests.test_boolean_time_rejected) ... ok
+test_complete_audit_source_tree_unchanged (test_full_state.Tests.test_complete_audit_source_tree_unchanged) ... ok
+test_duplicate_snapshot_rejected (test_full_state.Tests.test_duplicate_snapshot_rejected) ... ok
+test_explicit_lexical_conventions_both_start_complete_alternate (test_full_state.Tests.test_explicit_lexical_conventions_both_start_complete_alternate) ... ok
+test_failed_rerun_clears_old_success (test_full_state.Tests.test_failed_rerun_clears_old_success) ... ok
+test_float_probability_rejected (test_full_state.Tests.test_float_probability_rejected) ... ok
+test_invalid_inventory_state_rejected (test_full_state.Tests.test_invalid_inventory_state_rejected) ... ok
+test_missing_snapshot_rejected (test_full_state.Tests.test_missing_snapshot_rejected) ... ok
+test_normalized_but_different_law_rejected (test_full_state.Tests.test_normalized_but_different_law_rejected) ... ok
+test_real_288_laws_and_81_state_universe (test_full_state.Tests.test_real_288_laws_and_81_state_universe) ... ok
+
+======================================================================
+FAIL: test_dangling_output_symlink_rejected (test_full_state.OutputAliasTests.test_dangling_output_symlink_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 140, in test_dangling_output_symlink_rejected
+    self.assertFalse(target.exists(), 'source root gained a file through a dangling alias')
+AssertionError: True is not false : source root gained a file through a dangling alias
+
+======================================================================
+FAIL: test_execution_alias_rejected_before_stale_unlink (test_full_state.OutputAliasTests.test_execution_alias_rejected_before_stale_unlink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 133, in test_execution_alias_rejected_before_stale_unlink
+    self.check_alias('execution.json')
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 119, in check_alias
+    self.assertNotEqual(result.returncode, 0, 'output alias must be rejected')
+AssertionError: 0 == 0 : output alias must be rejected
+
+======================================================================
+FAIL: test_stderr_symlink_cannot_overwrite_source (test_full_state.OutputAliasTests.test_stderr_symlink_cannot_overwrite_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 127, in test_stderr_symlink_cannot_overwrite_source
+    self.check_alias('original_r_cli.stderr')
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 118, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'' != b'{\n  "schema": "r170_B_independent_python[2364 chars]n}\n' : protected input changed through output alias
+
+======================================================================
+FAIL: test_stdout_hardlink_cannot_overwrite_source (test_full_state.OutputAliasTests.test_stdout_hardlink_cannot_overwrite_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 130, in test_stdout_hardlink_cannot_overwrite_source
+    self.check_alias('R_replayed_receipt.json', hard=True)
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 118, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'{\n[13 chars]r170_observation_ladder_exact_v1",\n  "date": [24214 chars]n}\n' != b'{\n[13 chars]r170_B_independent_python_local_execution_summ[2343 chars]n}\n' : protected input changed through output alias
+
+======================================================================
+FAIL: test_stdout_symlink_cannot_truncate_source (test_full_state.OutputAliasTests.test_stdout_symlink_cannot_truncate_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 124, in test_stdout_symlink_cannot_truncate_source
+    self.check_alias('R_replayed_receipt.json')
+  File "/workspace/codex-a/repo/research/codex_audit/r170_full_state/test_full_state.py", line 118, in check_alias
+    self.assertEqual(self.target.read_bytes(), before, 'protected input changed through output alias')
+AssertionError: b'{\n[13 chars]r170_observation_ladder_exact_v1",\n  "date": [24214 chars]n}\n' != b'{\n[13 chars]r170_B_independent_python_local_execution_summ[2343 chars]n}\n' : protected input changed through output alias
+
+----------------------------------------------------------------------
+Ran 15 tests in 7.032s
+
+FAILED (failures=5)
