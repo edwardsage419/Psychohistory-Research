@@ -1,0 +1,87 @@
+test_boolean_source_count_rejected (test_dp.DPTests.test_boolean_source_count_rejected) ... ok
+test_changed_tail_rejected (test_dp.DPTests.test_changed_tail_rejected) ... ok
+test_dp_count_edge_cases (test_dp.DPTests.test_dp_count_edge_cases) ... ok
+test_evidence_promotion_rejected (test_dp.DPTests.test_evidence_promotion_rejected) ... ok
+test_float_alarm_count_rejected (test_dp.DPTests.test_float_alarm_count_rejected) ... ok
+test_known_alarm_risk (test_dp.DPTests.test_known_alarm_risk) ... ok
+test_missing_tail_rejected (test_dp.DPTests.test_missing_tail_rejected) ... ok
+test_original_alternating_tails (test_dp.DPTests.test_original_alternating_tails) ... ok
+test_original_receipt (test_dp.DPTests.test_original_receipt) ... ok
+test_semantic_key_reorder_allowed (test_dp.DPTests.test_semantic_key_reorder_allowed) ... ok
+test_dangling_log_alias_cannot_create_source_file (test_output_safety.OutputSafetyTests.test_dangling_log_alias_cannot_create_source_file) ... FAIL
+test_declared_input_protection_is_preserved (test_output_safety.OutputSafetyTests.test_declared_input_protection_is_preserved) ... ok
+test_dp_output_alias_preserves_unlisted_source (test_output_safety.OutputSafetyTests.test_dp_output_alias_preserves_unlisted_source) ... FAIL
+test_execution_alias_rejected_before_unlink (test_output_safety.OutputSafetyTests.test_execution_alias_rejected_before_unlink) ... FAIL
+test_full_replay_preserves_entire_source_snapshot (test_output_safety.OutputSafetyTests.test_full_replay_preserves_entire_source_snapshot) ... ok
+test_stderr_symlink_preserves_unlisted_source (test_output_safety.OutputSafetyTests.test_stderr_symlink_preserves_unlisted_source) ... FAIL
+test_stdout_hardlink_preserves_unlisted_source (test_output_safety.OutputSafetyTests.test_stdout_hardlink_preserves_unlisted_source) ... FAIL
+test_stdout_symlink_preserves_unlisted_source (test_output_safety.OutputSafetyTests.test_stdout_symlink_preserves_unlisted_source) ... FAIL
+
+======================================================================
+FAIL: test_dangling_log_alias_cannot_create_source_file (test_output_safety.OutputSafetyTests.test_dangling_log_alias_cannot_create_source_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 50, in test_dangling_log_alias_cannot_create_source_file
+    self.assertFalse(target.exists());self.assertTrue(path.is_symlink())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_dp_output_alias_preserves_unlisted_source (test_output_safety.OutputSafetyTests.test_dp_output_alias_preserves_unlisted_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 66, in test_dp_output_alias_preserves_unlisted_source
+    def test_dp_output_alias_preserves_unlisted_source(self):self.alias('DP_full_receipt.json')
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 37, in alias
+    self.assertEqual(self.note.read_bytes(),before,'unlisted source file overwritten')
+AssertionError: b'{\n  "research": "R270_S66",\n  "evidence[7815 chars]n}\n' != b'Preserve source-local notes outside the d[27 chars]t.\n' : unlisted source file overwritten
+
+======================================================================
+FAIL: test_execution_alias_rejected_before_unlink (test_output_safety.OutputSafetyTests.test_execution_alias_rejected_before_unlink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 45, in test_execution_alias_rejected_before_unlink
+    def test_execution_alias_rejected_before_unlink(self):self.alias('execution.json')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 38, in alias
+    self.assertNotEqual(p.returncode,0,'unsafe output accepted')
+AssertionError: 0 == 0 : unsafe output accepted
+
+======================================================================
+FAIL: test_stderr_symlink_preserves_unlisted_source (test_output_safety.OutputSafetyTests.test_stderr_symlink_preserves_unlisted_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 43, in test_stderr_symlink_preserves_unlisted_source
+    def test_stderr_symlink_preserves_unlisted_source(self):self.alias(FIRST+'.stderr')
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 37, in alias
+    self.assertEqual(self.note.read_bytes(),before,'unlisted source file overwritten')
+AssertionError: b'' != b'Preserve source-local notes outside the declared scientific input set.\n' : unlisted source file overwritten
+
+======================================================================
+FAIL: test_stdout_hardlink_preserves_unlisted_source (test_output_safety.OutputSafetyTests.test_stdout_hardlink_preserves_unlisted_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 44, in test_stdout_hardlink_preserves_unlisted_source
+    def test_stdout_hardlink_preserves_unlisted_source(self):self.alias(FIRST+'.stdout',True)
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 37, in alias
+    self.assertEqual(self.note.read_bytes(),before,'unlisted source file overwritten')
+AssertionError: b'{"pass":true,"negative_controls_rejected"[74 chars]pt\n' != b'Preserve source-local notes outside the d[27 chars]t.\n' : unlisted source file overwritten
+
+======================================================================
+FAIL: test_stdout_symlink_preserves_unlisted_source (test_output_safety.OutputSafetyTests.test_stdout_symlink_preserves_unlisted_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 42, in test_stdout_symlink_preserves_unlisted_source
+    def test_stdout_symlink_preserves_unlisted_source(self):self.alias(FIRST+'.stdout')
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/codex-a/r270-output-safety/research/codex_audit/r270_s66_native/test_output_safety.py", line 37, in alias
+    self.assertEqual(self.note.read_bytes(),before,'unlisted source file overwritten')
+AssertionError: b'{"pass":true,"negative_controls_rejected"[74 chars]pt\n' != b'Preserve source-local notes outside the d[27 chars]t.\n' : unlisted source file overwritten
+
+----------------------------------------------------------------------
+Ran 18 tests in 6.756s
+
+FAILED (failures=6)

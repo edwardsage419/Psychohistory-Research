@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import platform
+import stat
 import subprocess
 import sys
 import tempfile
@@ -17,6 +18,30 @@ PINS={R:'6408335f61e0638a7b0951a78034c13664f5133d',B:'b79636d2969d353954d997717c
 
 def require(ok,message):
     if not ok:raise ValueError(message)
+
+def check_output_target(path):
+    try:
+        info = path.lstat()
+    except FileNotFoundError:
+        return
+    require(stat.S_ISREG(info.st_mode) and info.st_nlink == 1, 'unsafe output: ' + str(path))
+
+
+def atomic_output(path, content):
+    # Refuse aliases again immediately before writing; replace avoids following a
+    # target symlink introduced after that check. Output directories must be stable.
+    check_output_target(path)
+    staged = None
+    try:
+        raw = content.encode('utf-8') if isinstance(content, str) else content
+        with tempfile.NamedTemporaryFile(mode='wb', dir=path.parent, delete=False) as stream:
+            staged = Path(stream.name)
+            stream.write(raw)
+        staged.replace(path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
+
 
 def identity(root):
     out={}
@@ -32,11 +57,13 @@ def main():
     targets=[out/'execution.json',out/'DP_full_receipt.json']+[out/(label+suffix) for label in labels for suffix in ('.stdout','.stderr')]
     protected=[root/path for path in PINS]+[Path(__file__).resolve(),Path(__file__).with_name('dp_oracle.py').resolve()]
     require(not any(t==s.resolve() or (t.exists() and s.exists() and t.samefile(s)) for t in targets for s in protected),'output aliases input')
+    for target in targets:
+        check_output_target(target)
     out.mkdir(parents=True,exist_ok=True);(out/'execution.json').unlink(missing_ok=True)
     before=identity(root);data=json.loads((root/RECEIPT).read_text());commands=[]
     def run(label,cmd,success=True):
         r=subprocess.run(cmd,cwd=root,capture_output=True,text=True,timeout=60)
-        (out/(label+'.stdout')).write_text(r.stdout);(out/(label+'.stderr')).write_text(r.stderr)
+        atomic_output(out / (label + '.stdout'), r.stdout);atomic_output(out / (label + '.stderr'), r.stderr)
         commands.append({'label':label,'command':cmd,'cwd':str(root),'exit_code':r.returncode,'stdout_file':label+'.stdout','stderr_file':label+'.stderr'})
         require((r.returncode==0)==success,'unexpected CLI outcome '+label)
         return r.stdout
@@ -46,7 +73,7 @@ def main():
     require('5 negative controls' in bs and 'PASS: archived receipt' in bs,'B selftest coverage')
     dp=verify(data);dp_bytes=(json.dumps(calculate(),indent=2)+'\n').encode()
     require(dp_bytes==(root/RECEIPT).read_bytes(),'DP full bytes mismatch')
-    (out/'DP_full_receipt.json').write_bytes(dp_bytes)
+    atomic_output(out / 'DP_full_receipt.json', dp_bytes)
     controls=[]
     with tempfile.TemporaryDirectory(prefix='s66-native-') as tmp:
         tmp=Path(tmp);emitted=tmp/'R_emitted.json'
@@ -79,9 +106,7 @@ def main():
             'S66_scientific_status':'PARTIAL_BOUNDED_INTERNAL_EXACT','full_repo_tests':'NOT_RUN',
             'original_R270_83_test_suites':'NOT_RUN','legacy_nonportable_B_cli':'NOT_RUN','ci':'NOT_RUN',
             'code_sha256':{n:hashlib.sha256(Path(__file__).with_name(n).read_bytes()).hexdigest() for n in ('dp_oracle.py','run_native.py')}}
-    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=out,delete=False) as f:
-        stage=Path(f.name);f.write(json.dumps(result,indent=2)+'\n')
-    stage.replace(out/'execution.json')
+    atomic_output(out / 'execution.json', json.dumps(result, indent=2) + '\n')
     print(json.dumps({'status':'COMPLETE','tails':192,'alarms':27,'R_and_DP_byte_equal':True,'controls':controls}))
 
 if __name__=='__main__':main()

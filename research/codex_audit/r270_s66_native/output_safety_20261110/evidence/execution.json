@@ -1,0 +1,153 @@
+{
+  "time": "2026-11-10T19:01:03.131125+08:00",
+  "base_pr_head": "c1ee936c33aa9ca35d16b76fbe264b897f62c968",
+  "last_fetched_main": "b3b3b9a1af020130e7c0e1a9cc0b58021be08e8e",
+  "command": [
+    "python3",
+    "-B",
+    "research/codex_audit/r270_s66_native/run_native.py",
+    ".",
+    "--output",
+    "/tmp/pr11-native-safe-wne9x698/out"
+  ],
+  "cwd": "/workspace/codex-a/r270-output-safety",
+  "exit": 0,
+  "before_sha256": {
+    "research/validation/r270_s66_exact_ppc_alarm.js": "4a8a9f92ac007a2908e7b574e8436bca32f2a2a171b3476e3b73255291dd6990",
+    "research/evidence_audit/r270_s66_independent_run_composition_cli.py": "986e9a99cb4cf8a4d68401b804ad3eb5eced7fc629e48a161032f1ffbe4badaf",
+    "research/validation/R270_S66_EXACT_PPC_ALARM_RECEIPT_2026-10-29.json": "d808ac0c30a62c272b800b720e34dea590f932fcd1768a86a276f0a010c8e119"
+  },
+  "after_sha256": {
+    "research/validation/r270_s66_exact_ppc_alarm.js": "4a8a9f92ac007a2908e7b574e8436bca32f2a2a171b3476e3b73255291dd6990",
+    "research/evidence_audit/r270_s66_independent_run_composition_cli.py": "986e9a99cb4cf8a4d68401b804ad3eb5eced7fc629e48a161032f1ffbe4badaf",
+    "research/validation/R270_S66_EXACT_PPC_ALARM_RECEIPT_2026-10-29.json": "d808ac0c30a62c272b800b720e34dea590f932fcd1768a86a276f0a010c8e119"
+  },
+  "source_identity": [
+    {
+      "path": "research/validation/r270_s66_exact_ppc_alarm.js",
+      "git_blob": "6408335f61e0638a7b0951a78034c13664f5133d",
+      "main_git_blob": "6408335f61e0638a7b0951a78034c13664f5133d",
+      "sha256": "4a8a9f92ac007a2908e7b574e8436bca32f2a2a171b3476e3b73255291dd6990"
+    },
+    {
+      "path": "research/evidence_audit/r270_s66_independent_run_composition_cli.py",
+      "git_blob": "b79636d2969d353954d997717cddbe7115e8e5cd",
+      "main_git_blob": "b79636d2969d353954d997717cddbe7115e8e5cd",
+      "sha256": "986e9a99cb4cf8a4d68401b804ad3eb5eced7fc629e48a161032f1ffbe4badaf"
+    },
+    {
+      "path": "research/validation/R270_S66_EXACT_PPC_ALARM_RECEIPT_2026-10-29.json",
+      "git_blob": "20fc7f616a3ce2e3b9d30714646f3173d1ffea08",
+      "main_git_blob": "20fc7f616a3ce2e3b9d30714646f3173d1ffea08",
+      "sha256": "d808ac0c30a62c272b800b720e34dea590f932fcd1768a86a276f0a010c8e119"
+    }
+  ],
+  "published_bytes_match_archive": true,
+  "output_manifest": {
+    "float_count_r.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "execution.json": {
+      "bytes": 7819,
+      "sha256": "d04308a9672b461d0ed57c8fb3b7e367ae2e06eb7962041f06eddcbdf5dfa822"
+    },
+    "r_original.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "float_count_b.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "float_count_r.stdout": {
+      "bytes": 29,
+      "sha256": "8f13a8b34e268f9a1552f8e81f2da788472e8bd54704daa229cf730abf53facd"
+    },
+    "r_regenerated.stdout": {
+      "bytes": 29,
+      "sha256": "8f13a8b34e268f9a1552f8e81f2da788472e8bd54704daa229cf730abf53facd"
+    },
+    "r_original.stdout": {
+      "bytes": 117,
+      "sha256": "f7786cfddc41107850a751a9e162ad7b62467646ca33cb93c18d65679e5db923"
+    },
+    "b_regenerated.stdout": {
+      "bytes": 72,
+      "sha256": "e51575309a8ffd94b6c548a50dda90470bc3d07b39ebd6c501473e5139554613"
+    },
+    "b_regenerated.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reordered_b.stdout": {
+      "bytes": 72,
+      "sha256": "e51575309a8ffd94b6c548a50dda90470bc3d07b39ebd6c501473e5139554613"
+    },
+    "r_regenerated.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "wrong_tail_b.stderr": {
+      "bytes": 728,
+      "sha256": "609362aa8e78387baaada2a9f06eacce46861ad1b99a5767e302159cab032f73"
+    },
+    "DP_full_receipt.json": {
+      "bytes": 7501,
+      "sha256": "d808ac0c30a62c272b800b720e34dea590f932fcd1768a86a276f0a010c8e119"
+    },
+    "r_emit.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "float_count_b.stdout": {
+      "bytes": 72,
+      "sha256": "e51575309a8ffd94b6c548a50dda90470bc3d07b39ebd6c501473e5139554613"
+    },
+    "reordered_b.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reordered_r.stderr": {
+      "bytes": 973,
+      "sha256": "5f2b90f2031b9725e6c6f267cbdebc14f034fa21aaa7c2c1eaae1cdcc33341e0"
+    },
+    "wrong_tail_r.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "wrong_tail_r.stderr": {
+      "bytes": 973,
+      "sha256": "5f2b90f2031b9725e6c6f267cbdebc14f034fa21aaa7c2c1eaae1cdcc33341e0"
+    },
+    "reordered_r.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "r_emit.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "b_original.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "b_original.stdout": {
+      "bytes": 145,
+      "sha256": "172cd677fea3d4ef7369fa06bf98c75d92febc04ca18bbb501ab809eb4615f47"
+    },
+    "wrong_tail_b.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "helper_provenance": {
+    "commit": "9ba7e2ad24a0936e7893e9721e1c806e29053286",
+    "adaptation": "require + binary temporary stream; UTF8 strings/raw bytes; reuse existing targets"
+  },
+  "code_sha256": {
+    "research/codex_audit/r270_s66_native/run_native.py": "dc93575ef745dcda6f18cc58d781c73a6bd0dbf91afdd319179db34746192a12",
+    "research/codex_audit/r270_s66_native/test_output_safety.py": "ff8f4de18ee453d957dda5fe528c2b2dd5d3c16752c2106e5ccac876acccf0cf"
+  },
+  "ci": "NOT_DISPATCHED"
+}
