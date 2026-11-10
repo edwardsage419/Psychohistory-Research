@@ -1,0 +1,92 @@
+[
+  {
+    "tag": "r073",
+    "argv": [
+      "/usr/bin/python3.13",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/R073",
+      "-p",
+      "test_r073_human_ipd_memory_loso.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "r077",
+    "argv": [
+      "/usr/bin/python3.13",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/R077",
+      "-p",
+      "test_r077_fourth_real_human_source_only_e3.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "new",
+    "argv": [
+      "/usr/bin/python3.13",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties",
+      "-p",
+      "test_exact_pair.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "original-regression-expected-fail",
+    "argv": [
+      "/usr/bin/python3.13",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1
+  },
+  {
+    "tag": "permutation-diagnostics",
+    "argv": [
+      "/usr/bin/python3.13",
+      "-B",
+      "-c",
+      "import json,sys\nsys.path.insert(0,sys.argv[1])\nfrom case import legacy_fit,target_cases,exact_sessions,integer_witness\nfrom exact_pair import summarize,validate_legacy_pair\nfrom legacy_regression import score_with_frozen_source\nfrom collections import Counter\nrecords=[];histogram=Counter();blocked=0\nfor positions,sessions in target_cases():\n    expected=summarize(exact_sessions(sessions))\n    proof=integer_witness([e[4] for e in next(iter(sessions.values()))[\"events\"]])\n    if proof!={\"integer_squared_sums\":{\"candidate\":343,\"reference\":343},\"denominator\":1372,\"risks\":{\"candidate\":\"1/4\",\"reference\":\"1/4\"}}:\n        raise RuntimeError(\"INTEGER_PROOF_MISMATCH\")\n    if str(expected[\"candidate_macro_Brier\"])!=\"1/4\" or str(expected[\"reference_macro_Brier\"])!=\"1/4\":\n        raise RuntimeError(\"EXACT_SUPPLEMENT_MISMATCH\")\n    pair=score_with_frozen_source(legacy_fit(),sessions)[\"paired_differences\"][\"M3_JOINT_LAST_VS_M1_OWN_LAST\"]\n    votes=(pair[\"sessions_better\"],pair[\"sessions_equal\"],pair[\"sessions_worse\"])\n    histogram[str(votes)]+=1\n    rejected=False\n    try:validate_legacy_pair(pair,expected[\"paired\"])\n    except ValueError as exc:\n        if str(exc)!=\"PAIRED_DIRECTION_MISMATCH\":raise\n        rejected=True;blocked+=1\n    if rejected!=(votes!=(0,2,0)):raise RuntimeError(\"WRONG_GUARD_CLASSIFICATION\")\n    records.append({\"positive_positions\":positions,\"original\":pair,\"exact\":expected,\n                    \"integer_witness\":proof,\"original_rejected_by_exact_votes\":rejected})\nif len(records)!=35 or len(histogram)<2 or blocked==0:raise RuntimeError(\"ORDER_DEFECT_NOT_REPRODUCED\")\nprint(json.dumps({\"data_class\":\"ARTIFICIAL_ONLY\",\"permutations\":records,\n                  \"original_vote_histogram\":dict(histogram),\"guard_rejections\":blocked,\n                  \"exact_ties\":35,\"integer_proofs\":35},default=str,indent=2))\n",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0
+  },
+  {
+    "tag": "rounded-delta-negative",
+    "argv": [
+      "/usr/bin/python3.13",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/tmp/codex-b-exact-delta-mutation-1gnzhddw",
+      "-p",
+      "test_exact_pair.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1
+  }
+]
