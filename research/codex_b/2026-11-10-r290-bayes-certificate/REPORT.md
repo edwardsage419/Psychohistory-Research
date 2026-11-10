@@ -111,4 +111,9 @@ R073/PESEN冻结。原R290全套协议/测试/CI、全仓库、其他环境、�
 正常固定字节/稳定全新输出目录内有证据，不承诺敌对并发环境安全。
 没有付费API/计算资源购买/依赖安装/workflow dispatch/自动合并；账单/免费CI额度
 NOT_VERIFIED，all-events Actions发布后另查，空列表不计测试PASS。
-一次独立审查与最终main/PR状态见PROGRESS.md、HANDOFF.md。
+一次fresh-context只读审查无Critical/Important/可执行Minor；额外重跑两模式、
+以二项边际法独立复算24风险一致，并核对每模式24命令/48流哈希/14指纹。
+审查边界在independent-review.md。发布前main仍25bcd51d，behind0；A新增PR24
+仅独立审查既有21–23，不涉及本S86，当前4开放PR无观察到范围重叠。
+全部执行代码/输入指纹、流哈希仍匹配，未因纯文档更新重复数值运行。
+最终main/PR状态见PROGRESS.md、HANDOFF.md。

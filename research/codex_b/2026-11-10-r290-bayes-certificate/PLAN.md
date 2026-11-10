@@ -31,5 +31,5 @@ Onefreshreview, latestmain/PRscope,independentdraft[skipci],no merge/paid/CI dis
 
 - [x] RED/GREEN32-rule optimizer, learned-law and full result contract.
 - [x] Real normal/-O replay, originaltests/nativeJSON and old/new badcases.
-- [ ] Onefreshreview and fixes if required; scope/report/handoff.
+- [x] Onefreshreview and fixes if required; scope/report/handoff.
 - [ ] Refreshmain/PRs, draft delivery/attach and all-eventsCI observations.

@@ -18,3 +18,11 @@ CSV emitter absent notclaimed. Legacy12controls actualpass. Original120cells,
 384rulelosses,132baselinefields agree.14before/after fingerprints stable.32-rule
 optimality already in originalfreeze; newwork binds S86 fields/rule-law, not a
 new Bayes discovery or redoing formalacceptance. Report/handoff archived.
+
+Onefreshcontext review at092295b1 complete:noCritical/Important/actionableMinor.
+Reviewer repeated normal/-O, independently binomial-recomputed24risks, verified
+both24command/48stream manifests and14fingerprints. No code changes needed.
+main remains25bcd51d,behind0. NewA24 f804fe1f bodyread: prior21–23 CLI contracts,
+noS86scope;4openPRs. All14fingerprints/streams match. Conservative triggertext
+check noownglobhits/otherautomatic-event text, no dispatch, owncommits skipci.
+Ready for independentdraft delivery; science/production/fullrepo NOT_RUN.
