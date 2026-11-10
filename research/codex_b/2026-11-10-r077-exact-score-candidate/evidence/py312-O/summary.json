@@ -1,0 +1,132 @@
+{
+  "status": "COMPLETE_SYNTHETIC_EXACT_BRIER_CANDIDATE",
+  "utc": "2026-11-10T23:41:17.067633+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "optimized": true,
+  "source_head": "3221a84fba91731071b8931447837e07578210be",
+  "positive_unittest_method_executions": 71,
+  "candidate_methods": 12,
+  "original_R073_R077_methods": 47,
+  "existing_kernel_methods": 12,
+  "original_regression": "FAIL_RETAINED_11_OF_35",
+  "corrected_tie_orders": 35,
+  "original_false_improvement_orders": 11,
+  "tiny_true_delta": "9223372036854775829/85070591730234616234778533332133085584",
+  "tiny_corrected_worse_sessions": 2,
+  "bad_repairs_detected": [
+    {
+      "name": "rounded_conditional",
+      "old": "return (c+20*p0)/(n+20)",
+      "new": "return F(float((c+20*p0)/(n+20)))",
+      "sha256": "a6bb1cb1e5a75a06bbda6244658ae601568806e515139e0d4bcb21fe861eb81b",
+      "exit_code": 1
+    },
+    {
+      "name": "decimal_prevalence",
+      "old": "exact=F(positive,count)",
+      "new": "exact=F(str(fit['train_only_prevalence']))",
+      "sha256": "af6f2ae380c2af14c738ba238eb019840e7902a46261d7e636244bdb1de15039",
+      "exit_code": 1
+    }
+  ],
+  "root_discovery": "NOT_A_PASS_EXIT5_NO_TESTS_RAN",
+  "full_repository_tests": "NOT_RUN_NO_GLOBAL_SUITE",
+  "sources_before_after_equal": true,
+  "sources": {
+    "research/R073/r073_human_ipd_memory_loso.py": {
+      "git_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a",
+      "bytes": 12712,
+      "sha256": "7d1461c6379d1c95d2da25486adebb2e7dae05236fa071f0d16a548248fb0fee"
+    },
+    "research/R077/r077_fourth_real_human_source_only_e3.py": {
+      "git_blob": "70889bd15c6fd943bdb07ab3ae1f60c943ebc538",
+      "bytes": 13972,
+      "sha256": "247e682681bd606db3967732aae3cbfc4af41766ffd31c45adcdc839016d593a"
+    },
+    "research/R077/test_r077_fourth_real_human_source_only_e3.py": {
+      "git_blob": "8c7bd50ce842255fd7e4ed592ab6a5852266ce29",
+      "bytes": 5340,
+      "sha256": "6223730e3659055a5ff86079addcc2ee2fdcdb9342c234e663033d5fc0c89141"
+    },
+    "research/codex_b/2026-11-10-r077-exact-paired-ties/exact_pair.py": {
+      "git_blob": "e0495679f36d87fb606b3a48c70da8771f3db704",
+      "bytes": 4926,
+      "sha256": "0702ae5221e67f2ca49980efe30eff80b305dfeff64942dd6840119ba9315ebb"
+    },
+    "research/codex_b/2026-11-10-r077-exact-paired-ties/case.py": {
+      "git_blob": "d2fdad34503400886e4ce04d822f1d21006c2821",
+      "bytes": 2395,
+      "sha256": "b3f12ab04917853688bee1076de128c9cc45bd7aade8155e3e03c1d8544054a3"
+    },
+    "research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py": {
+      "git_blob": "4b229c3113271c88e853c0037b444c28a80b39e2",
+      "bytes": 1146,
+      "sha256": "550c5a9d4f40fbaf52260a246487b17fb173b832116a7e0860a021fb8e146bfa"
+    },
+    "research/codex_b/2026-11-10-r077-score-leakage/score_oracle.py": {
+      "git_blob": "c06710924ba5ff83e5eb3f9f46c8c2d4683c1c33",
+      "bytes": 8356,
+      "sha256": "6e6a8e6f55ee997acede97b66d7ca4b3546de05c31ae39f5f941952430417ba9"
+    },
+    "protocols/R077_ZENODO_FOURTH_AUTHOR_TRUE_HUMAN_PROSPECTIVE_MODEL_SCORE_FREEZE_2026-10-17.md": {
+      "git_blob": "a027cf088f504bd65f50f748a51b618c3e3652d0",
+      "bytes": 7285,
+      "sha256": "06ad264a920e3a8d3ce40d53451dfe26a607bee3b7e1a135dc5676b8b0398714"
+    },
+    "protocols/R077_PRE_FIRST_TARGET_MODEL_SCORE_SOURCE_SEMANTICS_AMENDMENT_REV002_2026-10-17.md": {
+      "git_blob": "ffd0228461f9cbf46e1d08a68c959fa450337bb1",
+      "bytes": 5554,
+      "sha256": "093418ee28ee31912267cc7ee1f25b0203f21cbccd92925ea3b1c2cfe9bc9cbd"
+    },
+    "research/R077/R077_FINAL_ACCEPTANCE_STATUS.json": {
+      "git_blob": "24e45b65878ca400cb7f149ad863dd74e7fd5cd9",
+      "bytes": 9040,
+      "sha256": "8f5aff7b7e87af8aff4544766f8f0b009577709c811807991992284afa984da8"
+    },
+    "research/R077/R077_FOURTH_INDEPENDENT_HUMAN_SOURCE_ONLY_E3_RESULTS.json": {
+      "git_blob": "13946754afc06e529f2d3a2072a7bae297453fa9",
+      "bytes": 9835,
+      "sha256": "8d8b8413e3e55cb5d856f34b873ee20c2ba470e04190bb8577f931d25ba509a4"
+    },
+    "docs/PROJECT_WORKFLOW_REQUIREMENTS_V2_2026-10-24.md": {
+      "git_blob": "d4b8548ba45961f5aa0bdcafefdb226d7cd2fc9e",
+      "bytes": 9276,
+      "sha256": "856d908a6db40edc861350ba21c2c0ce49f993cb99d03d18c79e68832d332991"
+    },
+    "docs/RESEARCH_SYNC_WORKFLOW_2026-10-15.md": {
+      "git_blob": "75d45f853bc82f8afb81d7ed40d5067f5c90dbaa",
+      "bytes": 2504,
+      "sha256": "b18be961d5b337cc98c902042c697a0a5d7cb62918ba1bd2f50afa107ed1d131"
+    },
+    "docs/ORIGINAL_239_PENDING_154_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv": {
+      "git_blob": "3b96d46b3d88ccafd779a08509c3cfd0e435772f",
+      "bytes": 22780,
+      "sha256": "ffb95422df5403518f638fe567d490276fd607ba74b8c39bc9f923913fd1c960"
+    },
+    "research/codex_b/2026-11-10-r077-exact-score-candidate/pins.json": {
+      "bytes": 1581,
+      "sha256": "34909d7f4a94a60f9b78b2d104edf16251598c0cd564021c5b519e5c8e63b7c8"
+    },
+    "research/codex_b/2026-11-10-r077-exact-score-candidate/candidate.py": {
+      "bytes": 5900,
+      "sha256": "9be76dbf2441ecd842f8b51f613847299b80408cdef644ff9060ace6948f5f53"
+    },
+    "research/codex_b/2026-11-10-r077-exact-score-candidate/replay.py": {
+      "bytes": 7315,
+      "sha256": "2fb657df7f2dad82c818cf24b48628f41507e8d8a4de5f2062f939059d91bb16"
+    },
+    "research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py": {
+      "bytes": 8129,
+      "sha256": "b13fad5277eb770614f3f7c2b6f27db0abfe0d90326a5c421dbc4bd2b9409bfa"
+    }
+  },
+  "historical_human_impact": "UNKNOWN",
+  "human_rescoring": "NOT_RUN",
+  "production_adoption": "NOT_RUN_REQUIRES_OWNER_AND_CHATGPT_REVIEW",
+  "new_human_scores": 0,
+  "new_E2_E3": 0,
+  "external_team_replications": 0,
+  "scientific_queue_closures": 0,
+  "CI": "NOT_RUN",
+  "R073_PESEN_protocols": "FROZEN_UNCHANGED"
+}

@@ -1,0 +1,15 @@
+test_tiny_genuine_direction_not_rounded_or_toleranced (test_candidate.CandidateTests.test_tiny_genuine_direction_not_rounded_or_toleranced) ... FAIL
+
+======================================================================
+FAIL: test_tiny_genuine_direction_not_rounded_or_toleranced (test_candidate.CandidateTests.test_tiny_genuine_direction_not_rounded_or_toleranced)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 61, in test_tiny_genuine_direction_not_rounded_or_toleranced
+    self.assertEqual(out['scores']['paired_differences'][PAIR]['sessions_worse'],2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+----------------------------------------------------------------------
+Ran 1 test in 0.039s
+
+FAILED (failures=1)

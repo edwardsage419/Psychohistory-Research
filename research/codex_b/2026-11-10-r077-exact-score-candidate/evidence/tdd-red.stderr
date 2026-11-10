@@ -1,0 +1,182 @@
+test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) ... 
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(0, 4, 5)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(0, 4, 6)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(0, 5, 6)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(1, 4, 5)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(1, 4, 6)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(1, 5, 6)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(2, 4, 5)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(2, 4, 6)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(2, 5, 6)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(3, 5, 6)) ... FAIL
+  test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(4, 5, 6)) ... FAIL
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(0, 4, 5))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(0, 4, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(0, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(1, 4, 5))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(1, 4, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(1, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(2, 4, 5))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(2, 4, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(2, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(3, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_exact_tie_in_all35_orders (__main__.CandidateTests.test_exact_tie_in_all35_orders) (positions=(4, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py", line 15, in test_exact_tie_in_all35_orders
+    self.assertEqual((pair['sessions_better'],pair['sessions_equal'],pair['sessions_worse']),(0,2,0))
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.014s
+
+FAILED (failures=11)

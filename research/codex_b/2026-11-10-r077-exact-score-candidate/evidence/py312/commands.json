@@ -1,0 +1,189 @@
+[
+  {
+    "tag": "candidate12",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "candidate12.stderr",
+        "bytes": 1629,
+        "sha256": "c1f541429e3125198aa6dc1ddf166b258a4e0878d0075088e46dbf83a18ea2c3"
+      }
+    }
+  },
+  {
+    "tag": "originalR073",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/Psychohistory-Research/research/R073/test_r073_human_ipd_memory_loso.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "originalR073.stderr",
+        "bytes": 122,
+        "sha256": "ec4c657416abbb4a2ae4c44944d6c47d1d49a319c58b3ae65832aebc08dcca22"
+      }
+    }
+  },
+  {
+    "tag": "originalR077",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/Psychohistory-Research/research/R077/test_r077_fourth_real_human_source_only_e3.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "originalR077.stderr",
+        "bytes": 123,
+        "sha256": "f4f6d0a43e7982b8c072e18cfaa1b4b704a163a99cd9bb56597062d945f7e643"
+      }
+    }
+  },
+  {
+    "tag": "existing_exact_kernel",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/test_exact_pair.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "existing_exact_kernel.stderr",
+        "bytes": 111,
+        "sha256": "a9a62c93b51eee640410bdd1924c2eb7632ed5f8a5eac2ea425b405c1a8a196c"
+      }
+    }
+  },
+  {
+    "tag": "original_regression_FAIL_RETAINED",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "original_regression_FAIL_RETAINED.stderr",
+        "bytes": 10299,
+        "sha256": "b755cffd6140e65e42cafbef60a3b123b84e3c1fbbc354d584ff84a3fd477049"
+      }
+    }
+  },
+  {
+    "tag": "bad_repair_rounded_conditional",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-c",
+      "import sys,types,unittest;from pathlib import Path;m=types.ModuleType('candidate');m.__file__=sys.argv[2];sys.modules['candidate']=m;exec(compile(Path(sys.argv[1]).read_text(),sys.argv[2],'exec'),m.__dict__);sys.path.insert(0,str(Path(sys.argv[2]).parent));from test_candidate import CandidateTests;r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite([CandidateTests(sys.argv[3])]));sys.exit(0 if r.wasSuccessful() else 1)",
+      "/tmp/r077-exact-candidate-o2jp5_of/rounded_conditional.py",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/candidate.py",
+      "test_tiny_genuine_direction_not_rounded_or_toleranced"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "bad_repair_rounded_conditional.stderr",
+        "bytes": 877,
+        "sha256": "0712e77f3a338e736bca53b19157801a7d38279f301e9ed053c955723166dbec"
+      }
+    }
+  },
+  {
+    "tag": "bad_repair_decimal_prevalence",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-c",
+      "import sys,types,unittest;from pathlib import Path;m=types.ModuleType('candidate');m.__file__=sys.argv[2];sys.modules['candidate']=m;exec(compile(Path(sys.argv[1]).read_text(),sys.argv[2],'exec'),m.__dict__);sys.path.insert(0,str(Path(sys.argv[2]).parent));from test_candidate import CandidateTests;r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite([CandidateTests(sys.argv[3])]));sys.exit(0 if r.wasSuccessful() else 1)",
+      "/tmp/r077-exact-candidate-o2jp5_of/decimal_prevalence.py",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/candidate.py",
+      "test_exact_source_ratio_and_unseen_state"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "bad_repair_decimal_prevalence.stderr",
+        "bytes": 865,
+        "sha256": "9951939d1b8da86a8317d75e06c502850c9c454c2c77b77b1f956c4eaed37300"
+      }
+    }
+  },
+  {
+    "tag": "root_unittest_discovery",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 5,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "root_unittest_discovery.stderr",
+        "bytes": 108,
+        "sha256": "e70fec2825d9bf206d27463a792768195039599cb39bcca66339f47283f84cce"
+      }
+    }
+  }
+]
