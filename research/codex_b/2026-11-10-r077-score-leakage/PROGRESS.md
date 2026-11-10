@@ -48,3 +48,9 @@ authentication, arbitrary future near-zero sign proof, CI/billing certification.
 Remote/PR freshness is separately checked by the author. No second review needed;
 only docs/docstring changed after the reviewed algorithm. Final replay records new
 source fingerprint including clarified docstring in evidence/final-*.
+
+Final verification: final-normal and final-optimized each59/59 positive methods,
+68 contract calls/10200 leaves,3/3 mutant rejections, all38 current fingerprints
+match; diff whitespace check passes. Dedicated branch pushed without force.
+Draft PR created: https://github.com/edwardsage419/Psychohistory-Research/pull/16
+and attached to this chat. Main e5f2baa7, no merge or workflow dispatch requested.

@@ -127,4 +127,6 @@ Actions均 **NOT_RUN**。无计费API、购买资源、依赖安装或workflow d
 本轮不将底层helper升级为任意外部期望文件的schema/来源认证器。
 修正文档后最终重放保存在 `evidence/final-normal` 和 `evidence/final-optimized`，
 此前初版日志保留。审查记录在 `PROGRESS.md`；将发布仅含本目录增量的独立 draft PR，
-提交和标题使用 `[skip ci]`，不自动合并。PR最终状态与URL见交付消息。
+提交和标题使用 `[skip ci]`，不自动合并。已创建独立
+[Draft PR #16](https://github.com/edwardsage419/Psychohistory-Research/pull/16)，
+最终head与远端状态见交付消息。
