@@ -1,0 +1,156 @@
+{
+  "status": "PASS_INDEPENDENT_LOGFREE_CERTIFICATE_NO_NUMERICAL_DISCREPANCY_FOUND",
+  "utc": "2026-11-10T10:23:47.632440+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "optimized": true,
+  "source_head": "0d086e5565d93438e67e45b2901b5adc35841412",
+  "positive_tests": {
+    "original": 84,
+    "new": 14
+  },
+  "certificate_counts": {
+    "states": 23,
+    "source_rows": 3312,
+    "core_decision_records": 69,
+    "selection_probabilities": 27,
+    "S64_fraction_checks": 81
+  },
+  "native_identity": {
+    "R268_ALL_3312_BERNOULLI_ORDERED_SOURCE_TYPES.csv": {
+      "bytes": 666285,
+      "sha256": "a4b6ece370f8d03585634a21476cb9b906c92362a769bf36fd4c88e4503c3751",
+      "byte_equal": true
+    },
+    "R268_EXACT_RESULTS.json": {
+      "bytes": 13686,
+      "sha256": "0ecde5588400bcff11f71403b526afa8b260bab01e4bc32a94b8934dfbcfef90",
+      "byte_equal": true
+    },
+    "R268_MACHINE_RECEIPT.json": {
+      "bytes": 425,
+      "sha256": "b7d25dcb57acbcd1f0d5596248771868a4c20e62aa7899306e11279cf1318623",
+      "byte_equal": true
+    }
+  },
+  "original_B_risk_checks": 81,
+  "original_B_shared_decision_bits_checked": 46,
+  "original_B_negative_controls": 4,
+  "new_negative_controls": {
+    "coordinated_wrong_labels": {
+      "exit_code": 2,
+      "reason": "CSV_DECISION_CERTIFICATE",
+      "sha256": [
+        "e7a67614093472c8e34a38b92c6d03ec07846a5624dbbbf4ff91ea71dec1e534",
+        "e1e889c646153d5f8de4cf5f56757eb2cff31fdd35dc8c01611cd832f501f6ed",
+        "cbb00847985af821a2f3c0f2029076347c8b8c274a9bd56f38574c763a7e223d"
+      ]
+    },
+    "S64_risk_999": {
+      "exit_code": 2,
+      "reason": "S64_RISK_CERTIFICATE",
+      "sha256": [
+        "a4b6ece370f8d03585634a21476cb9b906c92362a769bf36fd4c88e4503c3751",
+        "4ebf494b759fa707cf7c6db3d20e01a874f4346afc8369871751547d7674ed84",
+        "ed059d94c7e5403a180c650fb193dae7dab72c6cb8364f647880eaedb71290d4"
+      ]
+    },
+    "missing_source": {
+      "exit_code": 2,
+      "reason": "CSV_HEADER_OR_COUNT",
+      "sha256": [
+        "45b0c2729b6f3dae36a39e2ea9abe559c1173402e716af18236fb692a0955fca",
+        "4ebf494b759fa707cf7c6db3d20e01a874f4346afc8369871751547d7674ed84",
+        "d55e60b5eb8037aa3910a94b0a24a331121942f2b9f7de0e29089e6d380d6498"
+      ]
+    },
+    "E2_bool": {
+      "exit_code": 2,
+      "reason": "FROZEN_METADATA",
+      "sha256": [
+        "a4b6ece370f8d03585634a21476cb9b906c92362a769bf36fd4c88e4503c3751",
+        "bb53f00f2d1f4643c1c3b5c3850ccda91b7cf647078efe64b017a7e95c8aa1f2",
+        "d55e60b5eb8037aa3910a94b0a24a331121942f2b9f7de0e29089e6d380d6498"
+      ]
+    },
+    "wrong_BIC_total_n": {
+      "exit_code": 1,
+      "old": "bic = \"M1_FITTED\" if r > n else \"M0_FIXED\"",
+      "new": "bic = \"M1_FITTED\" if r > 3312 else \"M0_FIXED\"",
+      "mutant_sha256": "b593830301f95b1f28ecd587d5b86f1c249f67a796ecb3f88d0f268056d772aa"
+    }
+  },
+  "sources_before_after_equal": true,
+  "sources": {
+    "research/R268/r268_exact_aic_bic_bernoulli.py": {
+      "bytes": 11117,
+      "sha256": "0fa35cce5fe78bd0c892ec82457736c13ad88f3b9f5d6c879f6806164ba58fc1",
+      "git_blob": "c173a250ed231cf92641f29aa1e11afe52e78c0b"
+    },
+    "research/R268/R268_ALL_3312_BERNOULLI_ORDERED_SOURCE_TYPES.csv": {
+      "bytes": 666285,
+      "sha256": "a4b6ece370f8d03585634a21476cb9b906c92362a769bf36fd4c88e4503c3751",
+      "git_blob": "6296528507012dd1d8d11e3556fcdeb7b6aeb2b5"
+    },
+    "research/R268/R268_EXACT_RESULTS.json": {
+      "bytes": 13686,
+      "sha256": "0ecde5588400bcff11f71403b526afa8b260bab01e4bc32a94b8934dfbcfef90",
+      "git_blob": "3d407ddcf524bfc55c0a076d57383c6655a36441"
+    },
+    "research/validation/R268_S64_ONE_STEP_BRIER_EXACT_RECEIPT_2026-10-29.json": {
+      "bytes": 5089,
+      "sha256": "262111dd2bf64581bf22d9ff4741ec1f47a99ba246846b545c7d8f0231c40279",
+      "git_blob": "7dd11a986ceda4c48b1414af2042d1d521eb49c5"
+    },
+    "research/R268/R268_MACHINE_RECEIPT.json": {
+      "bytes": 425,
+      "sha256": "b7d25dcb57acbcd1f0d5596248771868a4c20e62aa7899306e11279cf1318623",
+      "git_blob": "9dbdec7f6b7114ba1eecf998695142587c036635"
+    },
+    "research/validation/r268_s64_independent_binomial.py": {
+      "bytes": 3294,
+      "sha256": "147c728cbe5d0859e6413482831c40dacafa608c41dcaaaeb054b7032f769f15",
+      "git_blob": "2f6fbcacfa4e37f1747f6a91b886ad71be2cfc58"
+    },
+    "protocols/R268_AIC_BIC_NINE_BERNOULLI_WORLDS_3312_COMPLETE_SOURCE_PRESCORE_FREEZE_2026-10-23.md": {
+      "bytes": 4008,
+      "sha256": "5eab61e74a550866f796814383aa0159e993c1fbb1e942a0edd6325354a1bff8",
+      "git_blob": "bac5812ecf596a0e3eb1dbb186f5a10cdf84f282"
+    },
+    "protocols/R268_S64_ONE_STEP_HOLDOUT_BRIER_PRESCORE_FREEZE_2026-10-29.md": {
+      "bytes": 3691,
+      "sha256": "86da7080d8847c151799eaec9be1c2287d95c625e4bc37938b5547f8f15935aa",
+      "git_blob": "bf36bdfd1ddcda2bf9203f53775a1c2a38870b90"
+    },
+    "research/codex_b/2026-11-10-r268-logfree-certificate/audit.py": {
+      "bytes": 10574,
+      "sha256": "7b441009e57457ccfc131a86145b2aa64b5be5488429865326784770d9c4e0b3",
+      "git_blob": "af0ea576acb7a7fac29a2b6840fbc9c7e1d4ae4c"
+    },
+    "research/codex_b/2026-11-10-r268-logfree-certificate/certificate.py": {
+      "bytes": 3726,
+      "sha256": "820233a60a64250fb248e4f85bff05a92b8fe30e22e7029c79c48b2fac60206a",
+      "git_blob": "bdf4e7a0b693820940131d7c57096ca2c7210533"
+    },
+    "research/codex_b/2026-11-10-r268-logfree-certificate/replay.py": {
+      "bytes": 10920,
+      "sha256": "31d16a53bc9d702744c26520442e69831c40a4314ec94ff39dde275641af02b1",
+      "git_blob": "348532bbc93bce3700620764fd82a56c0aae1a02"
+    },
+    "research/codex_b/2026-11-10-r268-logfree-certificate/test_certificate.py": {
+      "bytes": 8122,
+      "sha256": "b752d87ba4ecc00a52ce0f160cef9cca4aaacf2a0c55205fe9cec480c6fadb9a",
+      "git_blob": "c3d510234353f8ad557234f5c419daa399e51dfd"
+    }
+  },
+  "scalar_log_value_error_certification": "NOT_RUN_FINITE_REPRESENTATION_AND_NATIVE_BYTE_REPLAY_ONLY",
+  "original_S64_R_source_CLI": "NOT_RUN_NOT_ARCHIVED",
+  "original_asserts_under_optimized_python": "DISABLED_NOT_CLAIMED_AS_INDEPENDENT_CHECKS",
+  "new_human_scores": 0,
+  "new_E2_E3": 0,
+  "external_team_replications": 0,
+  "full_repository_tests": "NOT_RUN",
+  "production_adoption": "NOT_RUN",
+  "github_actions": "NOT_RUN",
+  "R073": "FROZEN_UNCHANGED",
+  "PESEN_v0.1": "FROZEN_UNCHANGED"
+}
