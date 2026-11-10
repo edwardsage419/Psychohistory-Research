@@ -34,7 +34,7 @@ types/NaN; distinguishing mutation survival from an actual historical model bug.
 - [x] Replay four archived synthetic suites; run duplicate and heldout mutants
   of R074/R075 as actual subprocesses; require old-suite survival only for the
   duplicate mutant, and new guard rejection for both mutations.
-- [ ] Record sources/commands/environment, review branch, refresh main and open
+- [x] Record sources/commands/environment, review branch, refresh main and open
   PR scope, and publish a draft incremental PR with [skip ci]. Do not merge.
 
 Scientific acceptance unchanged; new human E2/E3 and external-team replication=0.

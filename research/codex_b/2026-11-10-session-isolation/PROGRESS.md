@@ -39,3 +39,9 @@ Final fixed sources rerun in evidence/final-normal and evidence/final-optimized:
 103/103 positive methods each (206 final executions), four mutation rejections
 per mode, correct heldout positive controls, all source fingerprints stable.
 No second review dispatch: fixes are verified by RED/GREEN and scoped replay.
+
+Publication: own branch pushed without force, commits 488423de and d48f71f0.
+Main re-fetch remains e5f2baa7, no historical changes. Raw unittest stderr has
+trailing spaces; preserve exact captures and disable whitespace lint only for
+*.stderr and *.log in this directory via .gitattributes. Code diff is clean.
+Independent draft PR is the authorized integration route; no automatic merge.
