@@ -1,0 +1,17 @@
+/tmp/codex-b-r289-native-rzgofk1x/single_route_tie_control/mutant.js:102
+  if(good[i].probability_select_H5!==oracle[i].p5||good[i].probability_training_tie!==oracle[i].tie)throw Error("route mismatch "+i);
+                                                                                                    ^
+
+Error: route mismatch 0
+    at selftest (/tmp/codex-b-r289-native-rzgofk1x/single_route_tie_control/mutant.js:102:107)
+    at Object.compute (/tmp/codex-b-r289-native-rzgofk1x/single_route_tie_control/mutant.js:122:49)
+    at Object.<anonymous> (/tmp/codex-b-r289-native-rzgofk1x/single_route_tie_control/mutant.js:129:141)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.22.1
