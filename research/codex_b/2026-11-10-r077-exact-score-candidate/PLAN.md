@@ -23,14 +23,14 @@ Review focus: wrong float rounding masquerading as exact; inconsistent source
 marginals; target label leakage; treatment/session weighting; loss of tiny genuine
 directions through tolerance or float conversion. Test each in the candidate suite.
 
-- [ ] Reproduce original 35/11 failure; first failing candidate tie regression.
-- [ ] Implement minimum exact probability/Brier adapter with strict source counts.
-- [ ] Check independent integer tie witness, Decimal oracle, complete score shape,
+- [x] Reproduce original 35/11 failure; first failing candidate tie regression.
+- [x] Implement minimum exact probability/Brier adapter with strict source counts.
+- [x] Check independent integer tie witness, Decimal oracle, complete score shape,
   independent permutations, near-zero nonzero effects and malformed sources.
-- [ ] Replay ordinary/-O and existing second Python; preserve original FAIL and
+- [x] Replay ordinary/-O and existing second Python; preserve original FAIL and
   verify frozen inputs unchanged. Original R073/R077 suites; root unittest discover
   reported literally (repository has no global Python test configuration).
-- [ ] One fresh-context read-only review; handle actionable findings once.
+- [x] One fresh-context read-only review; no actionable findings.
 - [ ] Refresh main/PR scope, draft PR, remote readback; no merge/CI dispatch/cost.
 
 Historical human impact UNKNOWN: archived aggregate means/votes do not identify
