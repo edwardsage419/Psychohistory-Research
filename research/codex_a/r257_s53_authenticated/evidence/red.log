@@ -1,0 +1,166 @@
+test_authentic_composition_preserves_limits (test_authenticated.AuthenticatedTests.test_authentic_composition_preserves_limits) ... FAIL
+test_changed_validator_rejected_before_execution (test_authenticated.AuthenticatedTests.test_changed_validator_rejected_before_execution) ... FAIL
+test_child_failure_is_not_accepted (test_authenticated.AuthenticatedTests.test_child_failure_is_not_accepted) ... FAIL
+test_cli_and_sources_unchanged (test_authenticated.AuthenticatedTests.test_cli_and_sources_unchanged) ... ERROR
+test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) ... 
+  test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/R257/R257_ALL_225_ORIGINAL_GRID_CANDIDATE_SOURCE_ATOMS.csv') ... FAIL
+  test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/R257/R257_EXACT_RESULTS.json') ... FAIL
+  test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/validation/r257_s53_capacity_shadow_20261029.py') ... FAIL
+  test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/validation/R257_S53_EXACT_RECEIPT_2026-10-29.json') ... FAIL
+  test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/validation/r257_s53_original225_source_link_gate_20261102.js') ... FAIL
+  test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='protocols/R257_S53_CAPACITY_SHADOW_PRICE_PRESCORE_FREEZE_2026-10-29.md') ... FAIL
+  test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/evidence_audit/B_R257_S53_PROTOCOL_ORDER_DEVIATION_ADDENDUM_2026-10-29.md') ... FAIL
+test_missing_receipt_rejected (test_authenticated.AuthenticatedTests.test_missing_receipt_rejected) ... FAIL
+test_missing_validator_rejected (test_authenticated.AuthenticatedTests.test_missing_validator_rejected) ... FAIL
+test_semantic_receipt_reserialization_is_rejected (test_authenticated.AuthenticatedTests.test_semantic_receipt_reserialization_is_rejected) ... FAIL
+test_untrusted_child_success_is_rejected (test_authenticated.AuthenticatedTests.test_untrusted_child_success_is_rejected) ... FAIL
+
+======================================================================
+ERROR: test_cli_and_sources_unchanged (test_authenticated.AuthenticatedTests.test_cli_and_sources_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 93, in test_cli_and_sources_unchanged
+    self.assertEqual(json.loads(good.stdout)['status'], 'COMPLETE_PINNED_COMPOSITION')
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+FAIL: test_authentic_composition_preserves_limits (test_authenticated.AuthenticatedTests.test_authentic_composition_preserves_limits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 33, in test_authentic_composition_preserves_limits
+    self.assertEqual(result['status'], 'COMPLETE_PINNED_COMPOSITION')
+AssertionError: 'COMPLETE' != 'COMPLETE_PINNED_COMPOSITION'
+- COMPLETE
++ COMPLETE_PINNED_COMPOSITION
+
+
+======================================================================
+FAIL: test_changed_validator_rejected_before_execution (test_authenticated.AuthenticatedTests.test_changed_validator_rejected_before_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 60, in test_changed_validator_rejected_before_execution
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_child_failure_is_not_accepted (test_authenticated.AuthenticatedTests.test_child_failure_is_not_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 83, in test_child_failure_is_not_accepted
+    with self.assertRaisesRegex(ValueError, 'child exit'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/R257/R257_ALL_225_ORIGINAL_GRID_CANDIDATE_SOURCE_ATOMS.csv')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 47, in test_every_changed_pinned_input_is_rejected
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/R257/R257_EXACT_RESULTS.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 47, in test_every_changed_pinned_input_is_rejected
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/validation/r257_s53_capacity_shadow_20261029.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 47, in test_every_changed_pinned_input_is_rejected
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/validation/R257_S53_EXACT_RECEIPT_2026-10-29.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 47, in test_every_changed_pinned_input_is_rejected
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/validation/r257_s53_original225_source_link_gate_20261102.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 47, in test_every_changed_pinned_input_is_rejected
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='protocols/R257_S53_CAPACITY_SHADOW_PRICE_PRESCORE_FREEZE_2026-10-29.md')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 47, in test_every_changed_pinned_input_is_rejected
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_every_changed_pinned_input_is_rejected (test_authenticated.AuthenticatedTests.test_every_changed_pinned_input_is_rejected) (path='research/evidence_audit/B_R257_S53_PROTOCOL_ORDER_DEVIATION_ADDENDUM_2026-10-29.md')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 47, in test_every_changed_pinned_input_is_rejected
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_receipt_rejected (test_authenticated.AuthenticatedTests.test_missing_receipt_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 71, in test_missing_receipt_rejected
+    with self.assertRaises(OSError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: OSError not raised
+
+======================================================================
+FAIL: test_missing_validator_rejected (test_authenticated.AuthenticatedTests.test_missing_validator_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 66, in test_missing_validator_rejected
+    with self.assertRaises(OSError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: OSError not raised
+
+======================================================================
+FAIL: test_semantic_receipt_reserialization_is_rejected (test_authenticated.AuthenticatedTests.test_semantic_receipt_reserialization_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 54, in test_semantic_receipt_reserialization_is_rejected
+    with self.assertRaisesRegex(ValueError, 'identity mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_untrusted_child_success_is_rejected (test_authenticated.AuthenticatedTests.test_untrusted_child_success_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r257_s53_authenticated/test_authenticated.py", line 77, in test_untrusted_child_success_is_rejected
+    with self.assertRaisesRegex(ValueError, 'summary mismatch'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.092s
+
+FAILED (failures=14, errors=1)
