@@ -1,0 +1,158 @@
+test_child_failure_blocks (test_compose.CompositionTests.test_child_failure_blocks) ... FAIL
+test_cli_missing_dependency_returns_blocked (test_compose.CompositionTests.test_cli_missing_dependency_returns_blocked) ... FAIL
+test_duplicate_summary_key_blocks (test_compose.CompositionTests.test_duplicate_summary_key_blocks) ... FAIL
+test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) ... 
+  test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) (name='run_audit.py') ... FAIL
+  test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) (name='export_js_states.js') ... FAIL
+  test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) (name='export_python_states.py') ... FAIL
+  test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) (name='identity_gate.py') ... FAIL
+test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) ... 
+  test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='research/validation/r170_observation_ladder_20261026.js') ... FAIL
+  test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='research/evidence_audit/r170_b_edge_utterance_20261026.py') ... FAIL
+  test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='research/validation/R170_OBSERVATION_LADDER_EXACT_RECEIPT_2026-10-26.json') ... FAIL
+  test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='research/evidence_audit/B_R170_INDEPENDENT_PYTHON_EXECUTION_SUMMARY_2026-10-26.json') ... FAIL
+  test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='protocols/R170_OBSERVATION_LADDER_THIRD_METHOD_FREEZE_2026-10-26.md') ... FAIL
+test_forged_child_success_blocks (test_compose.CompositionTests.test_forged_child_success_blocks) ... FAIL
+test_missing_dependency_blocks (test_compose.CompositionTests.test_missing_dependency_blocks) ... FAIL
+test_real_composition_and_source_stability (test_compose.CompositionTests.test_real_composition_and_source_stability) ... FAIL
+
+======================================================================
+FAIL: test_child_failure_blocks (test_compose.CompositionTests.test_child_failure_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 74, in test_child_failure_blocks
+    with self.assertRaisesRegex(ValueError,'child exit'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_cli_missing_dependency_returns_blocked (test_compose.CompositionTests.test_cli_missing_dependency_returns_blocked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 91, in test_cli_missing_dependency_returns_blocked
+    self.assertNotEqual(p.returncode,0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_duplicate_summary_key_blocks (test_compose.CompositionTests.test_duplicate_summary_key_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 84, in test_duplicate_summary_key_blocks
+    with self.assertRaisesRegex(ValueError,'duplicate JSON key'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) (name='run_audit.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 63, in test_each_executable_change_blocks_before_execution
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) (name='export_js_states.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 63, in test_each_executable_change_blocks_before_execution
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) (name='export_python_states.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 63, in test_each_executable_change_blocks_before_execution
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_executable_change_blocks_before_execution (test_compose.CompositionTests.test_each_executable_change_blocks_before_execution) (name='identity_gate.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 63, in test_each_executable_change_blocks_before_execution
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='research/validation/r170_observation_ladder_20261026.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 54, in test_each_source_change_blocks
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='research/evidence_audit/r170_b_edge_utterance_20261026.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 54, in test_each_source_change_blocks
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='research/validation/R170_OBSERVATION_LADDER_EXACT_RECEIPT_2026-10-26.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 54, in test_each_source_change_blocks
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='research/evidence_audit/B_R170_INDEPENDENT_PYTHON_EXECUTION_SUMMARY_2026-10-26.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 54, in test_each_source_change_blocks
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_each_source_change_blocks (test_compose.CompositionTests.test_each_source_change_blocks) (path='protocols/R170_OBSERVATION_LADDER_THIRD_METHOD_FREEZE_2026-10-26.md')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 54, in test_each_source_change_blocks
+    with self.assertRaisesRegex(ValueError,'identity mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_forged_child_success_blocks (test_compose.CompositionTests.test_forged_child_success_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 79, in test_forged_child_success_blocks
+    with self.assertRaisesRegex(ValueError,'summary mismatch'):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_dependency_blocks (test_compose.CompositionTests.test_missing_dependency_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 69, in test_missing_dependency_blocks
+    with self.assertRaises(OSError):self.verify()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: OSError not raised
+
+======================================================================
+FAIL: test_real_composition_and_source_stability (test_compose.CompositionTests.test_real_composition_and_source_stability)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/codex-a/repo/research/codex_a/r170_authenticated/test_compose.py", line 43, in test_real_composition_and_source_stability
+    self.assertEqual(result['status'],'COMPLETE_PINNED_R170_COMPOSITION')
+AssertionError: 'COMPLETE' != 'COMPLETE_PINNED_R170_COMPOSITION'
+- COMPLETE
++ COMPLETE_PINNED_R170_COMPOSITION
+
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.127s
+
+FAILED (failures=15)

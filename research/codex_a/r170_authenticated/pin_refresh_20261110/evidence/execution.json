@@ -1,0 +1,69 @@
+{
+  "time": "2026-11-10T18:35:46.334513+08:00",
+  "main": "b3b3b9a1af020130e7c0e1a9cc0b58021be08e8e",
+  "base_pr17": "c37470c24bc3e85059c768ed7cb15a235cc50552",
+  "new_pr8": "1d8294ee81c7e23cb16bb8882ebc619089a35c65",
+  "commands": [
+    {
+      "label": "normal",
+      "command": [
+        "python3",
+        "-B",
+        "research/codex_a/r170_authenticated/compose.py",
+        ".",
+        "--pr8-dir",
+        "/tmp/r170-repin-yxxz1pl3/tools",
+        "--identity-gate",
+        "/tmp/r170-repin-yxxz1pl3/identity_gate.py"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "optimized",
+      "command": [
+        "python3",
+        "-B",
+        "-O",
+        "research/codex_a/r170_authenticated/compose.py",
+        ".",
+        "--pr8-dir",
+        "/tmp/r170-repin-yxxz1pl3/tools",
+        "--identity-gate",
+        "/tmp/r170-repin-yxxz1pl3/identity_gate.py"
+      ],
+      "exit": 0
+    }
+  ],
+  "source_identity": [
+    {
+      "path": "research/validation/r170_observation_ladder_20261026.js",
+      "git_blob": "3ea018c4a113d95836873fcfd687f9df292aa1b7",
+      "sha256": "1752281be18d042558955162f9174a4879e880b989cc40c7bbe5a0c13f92bba7"
+    },
+    {
+      "path": "research/evidence_audit/r170_b_edge_utterance_20261026.py",
+      "git_blob": "f6bd8574d6730b9c26708adb9e38ef88562eafbe",
+      "sha256": "134cfee8510606fef8f94eb3d9975f1045006bf17360444aeaa1b588d0080423"
+    },
+    {
+      "path": "research/validation/R170_OBSERVATION_LADDER_EXACT_RECEIPT_2026-10-26.json",
+      "git_blob": "0d5b10125475a66a243be1632e21bd269027a866",
+      "sha256": "b0ae731555373b0c58b5d26fa806c10f79e7ba8a39b882fd1a4f150c57687400"
+    },
+    {
+      "path": "research/evidence_audit/B_R170_INDEPENDENT_PYTHON_EXECUTION_SUMMARY_2026-10-26.json",
+      "git_blob": "165f14511c7c7ee57b43a18851d2e65729c50044",
+      "sha256": "626b63a463581c1cb012edb6e8540ebdb56a51680dbe00c1a197506212caeaef"
+    },
+    {
+      "path": "protocols/R170_OBSERVATION_LADDER_THIRD_METHOD_FREEZE_2026-10-26.md",
+      "git_blob": "3a85af7291f5c916d26734fd54773aa347a5e027",
+      "sha256": "4d98db52333758b4775c371eb41e0388327febbeb16471dc67f06896b3d08e7d"
+    }
+  ],
+  "code_sha256": {
+    "research/codex_a/r170_authenticated/compose.py": "187ad0b8cfc577b2e3c413f83364c1da7d6be51793fb0010d1f99254f16fb89e",
+    "research/codex_a/r170_authenticated/test_compose.py": "9748837bea67840da94e6fe01d2f047963e1c5186f46341e504ff350f4afdb1f"
+  },
+  "ci": "NOT_DISPATCHED"
+}
