@@ -16,6 +16,7 @@ from pathlib import Path
 import platform
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -36,6 +37,37 @@ SHA = "8be5360465497321c15bffc554c7088fad48bcef71847e43e2ee2f714ed5119b"
 def check(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+# Fixed outputs are checked before deleting stale success or running any child.
+OUTPUT_LABELS = ('native_tests', *SCRIPTS, 'clean_sandbox_source_replay',
+                 'clean_sandbox_third_route', 'negative_wrong_risk', 'negative_csv_byte')
+OUTPUT_NAMES = ('execution.json', 'python_expected.json',
+                *(label + suffix for label in OUTPUT_LABELS for suffix in ('.stdout', '.stderr')))
+
+
+def check_output_target(path):
+    try:
+        info = path.lstat()
+    except FileNotFoundError:
+        return
+    check(stat.S_ISREG(info.st_mode) and info.st_nlink == 1, 'unsafe output: ' + str(path))
+
+
+def atomic_output(path, content):
+    # Refuse aliases again immediately before writing; replace avoids following a
+    # target symlink introduced after that check. Output directories must be stable.
+    check_output_target(path)
+    staged = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w', dir=path.parent, delete=False,
+                                         encoding='utf-8') as stream:
+            staged = Path(stream.name)
+            stream.write(content)
+        staged.replace(path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
 
 
 def index(rows, expected):
@@ -69,6 +101,8 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     root, out = args.root.resolve(), args.output.resolve()
+    for name in OUTPUT_NAMES:
+        check_output_target(out / name)
     out.mkdir(parents=True, exist_ok=True)
     # A failed rerun must not leave a prior COMPLETE receipt next to new logs.
     (out / 'execution.json').unlink(missing_ok=True)
@@ -76,8 +110,8 @@ def main():
 
     def run(label, command, cwd, ok=True):
         proc = subprocess.run(command, cwd=cwd, text=True, capture_output=True, timeout=60)
-        (out / (label + ".stdout")).write_text(proc.stdout)
-        (out / (label + ".stderr")).write_text(proc.stderr)
+        atomic_output(out / (label + ".stdout"), proc.stdout)
+        atomic_output(out / (label + ".stderr"), proc.stderr)
         commands.append({"label": label, "command": command, "cwd": str(cwd),
                          "exit_code": proc.returncode})
         check((proc.returncode == 0) if ok else (proc.returncode != 0), label + ": unexpected exit")
@@ -131,7 +165,7 @@ def main():
                            "features": scores}
     comparisons = {label: compare(rows, expected) for label, rows in
                    (("r", outputs["r"]["results"]), ("b", outputs["b"]["worlds"]))}
-    (out / "python_expected.json").write_text(json.dumps(expected, indent=2) + "\n")
+    atomic_output(out / "python_expected.json", json.dumps(expected, indent=2) + "\n")
 
     # Real CLI corruption probes use isolated copies; archived source is untouched.
     with tempfile.TemporaryDirectory() as tmp:
@@ -187,10 +221,7 @@ def main():
         "historical_source_status": "Original R receipt kept unchanged; read with source audit addendum",
     }
     # Same-directory replace prevents readers seeing a truncated success receipt.
-    with tempfile.NamedTemporaryFile(mode='w', dir=out, delete=False, encoding='utf-8') as tmp:
-        tmp.write(json.dumps(result, indent=2) + '\n')
-        receipt_tmp = Path(tmp.name)
-    receipt_tmp.replace(out / 'execution.json')
+    atomic_output(out / 'execution.json', json.dumps(result, indent=2) + '\n')
     print(json.dumps({"status": "COMPLETE", "native_unittests": 82, "node_clis": 4,
                       "cross_runtime": comparisons, "negative_controls": 4}, indent=2))
 
