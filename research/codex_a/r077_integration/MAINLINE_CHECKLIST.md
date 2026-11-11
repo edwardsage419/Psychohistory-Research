@@ -35,6 +35,9 @@ identity+veto checks; forged success/erased original failure rejection; retained
 input-identity mismatch rejection. Python3.12.14. Initial missing implementation
 caused an import error; this was a RED scaffold, not a discovered R077 defect.
 Existing R077 numerical failures remain unfixed in the original scorer.
+Additional disposable combined-PR test: this checklist on exact PR30 head, normal
+and optimized, both expected exit2 with11 original failures/35 corrections and
+the reviewed PR30 adapter hash. No mathematical program executed.
 
 If source bytes change, first review the change and update the explicitly pinned
 versions; the checklist fails closed on unreviewed adapter identity. Only then
@@ -119,5 +122,8 @@ Next task: independent engineering review of B31 source/receipt interfaces and
 its qualified double-run plan, keeping mathematical ownership with B and actual
 human scoring/frozen scientific adoption blocked pending mainline decisions.
 No arbitrary queue closure: R-series scientific acceptance remains separate.
-Delivery is an independent draft PR; GitHub commit/PR and subsequent readback
-identify the final version. No production merge is performed.
+Delivery: [draft PR33](https://github.com/edwardsage419/Psychohistory-Research/pull/33),
+implementation commit `f51adc6aeb18e884c5045b8e0beb84238b8a0f76`.
+`CHECKLIST_DELIVERY.json` records remote head plus3 critical blob readbacks,
+empty Actions/check lists as NOT_RUN and unchanged main. Later delivery commits
+only update evidence/documentation. No production merge performed.
