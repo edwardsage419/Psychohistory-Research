@@ -22,7 +22,8 @@ No new scorer, no generic framework, no repeat of35 permutations/71-method suite
   selected hashes before/after; one fresh read-only review.
 - [x] Document current source metadata/rights/access, old receipts, explicit
   not-authorized human scoring and predeclared anonymous double-run plan.
-- [ ] Refresh queue/scope, draft independent PR/readback, no merge or paid CI.
+- [x] Refresh queue/scope; draft PR31 created/attached, final readback after docs
+  commit recorded in delivery. No merge or paid CI.
 
 Only synthetic timelines/events permitted as numeric inputs. Count-shaped is
 NOT frozen-byte-qualified or real R073/R077 data. Historical human impact UNKNOWN;
