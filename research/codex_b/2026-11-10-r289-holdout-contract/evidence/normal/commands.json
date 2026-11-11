@@ -1,0 +1,377 @@
+[
+  {
+    "tag": "new-12-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract",
+      "-p",
+      "test_contract.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 1324,
+        "sha256": "48bcaef6abdbb57cb4c0f796cc6ba511db6da4816bd13c9944f33ed72ba92b76",
+        "file": "new-12-tests.stderr"
+      }
+    }
+  },
+  {
+    "tag": "audit-archive",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract/audit.py",
+      "/workspace/Psychohistory-Research/research/validation/R289_S85_ALL_243_PAIRED_OFFERS.csv",
+      "/workspace/Psychohistory-Research/research/validation/R289_S85_EXACT_RESULTS.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 562,
+        "sha256": "1480bc34d0ab2a2b77cf091c4d06a90102ccf4e3c348a326f5d7bbb3ada4ae88",
+        "file": "audit-archive.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "node-version",
+    "argv": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 9,
+        "sha256": "249baf635bb43877fcb9422efa1a4904b702d0ddf14d3949b7cd0950d5229c81",
+        "file": "node-version.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "original-R-emit",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r289-native-rzgofk1x/original_R.js",
+      "--emit"
+    ],
+    "cwd": "/tmp/codex-b-r289-native-rzgofk1x/emitted",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "audit-emitted",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract/audit.py",
+      "/tmp/codex-b-r289-native-rzgofk1x/emitted/R289_S85_ALL_243_PAIRED_OFFERS.csv",
+      "/tmp/codex-b-r289-native-rzgofk1x/emitted/R289_S85_EXACT_RESULTS.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 562,
+        "sha256": "1480bc34d0ab2a2b77cf091c4d06a90102ccf4e3c348a326f5d7bbb3ada4ae88",
+        "file": "audit-emitted.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "original-B-test",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/tmp/codex-b-r289-native-rzgofk1x/original_B.py",
+      "--test"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 52,
+        "sha256": "0b3bf2e4f523239bcd4aefb7694fa18ab6e7555b913baa7a1585dbdd7df1a419",
+        "file": "original-B-test.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "original-B-worlds",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/tmp/codex-b-r289-native-rzgofk1x/original_B.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 2426,
+        "sha256": "2f2da96306d92021257d11105ea36ff3baaef0a96e7591b89b3ece08aff26af8",
+        "file": "original-B-worlds.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "source-hindsight_evaluation",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r289-native-rzgofk1x/hindsight_evaluation/mutant.js",
+      "--emit"
+    ],
+    "cwd": "/tmp/codex-b-r289-native-rzgofk1x/hindsight_evaluation",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-hindsight_evaluation",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract/audit.py",
+      "/tmp/codex-b-r289-native-rzgofk1x/hindsight_evaluation/R289_S85_ALL_243_PAIRED_OFFERS.csv",
+      "/tmp/codex-b-r289-native-rzgofk1x/hindsight_evaluation/R289_S85_EXACT_RESULTS.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 100,
+        "sha256": "1429b4027100a485abf4c407501724d57be6246f54171bc17f9fcbf76cfd89c5",
+        "file": "new-hindsight_evaluation.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "source-ties_choose_H5",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r289-native-rzgofk1x/ties_choose_H5/mutant.js",
+      "--emit"
+    ],
+    "cwd": "/tmp/codex-b-r289-native-rzgofk1x/ties_choose_H5",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-ties_choose_H5",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract/audit.py",
+      "/tmp/codex-b-r289-native-rzgofk1x/ties_choose_H5/R289_S85_ALL_243_PAIRED_OFFERS.csv",
+      "/tmp/codex-b-r289-native-rzgofk1x/ties_choose_H5/R289_S85_EXACT_RESULTS.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 92,
+        "sha256": "f4c64495111c6828e913b871f92fe44e58fdc81d83b81c17d0f211562ce49b6f",
+        "file": "new-ties_choose_H5.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "source-single_route_tie_control",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r289-native-rzgofk1x/single_route_tie_control/mutant.js",
+      "--emit"
+    ],
+    "cwd": "/tmp/codex-b-r289-native-rzgofk1x/single_route_tie_control",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 1104,
+        "sha256": "cf9ae9c1b34f6b8ce6f49e52ddf38e2e800366fea46b3faa369eba8746278301",
+        "file": "source-single_route_tie_control.stderr"
+      }
+    }
+  },
+  {
+    "tag": "duplicate_source",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract/audit.py",
+      "/tmp/codex-b-r289-native-rzgofk1x/bad.csv",
+      "/tmp/codex-b-r289-native-rzgofk1x/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 53,
+        "sha256": "d857b95b442e820b33420fe5723cc6de30a8ab194cb4f1bac5e5b985d24ca741",
+        "file": "duplicate_source.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "weight_999",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract/audit.py",
+      "/tmp/codex-b-r289-native-rzgofk1x/bad.csv",
+      "/tmp/codex-b-r289-native-rzgofk1x/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 58,
+        "sha256": "2b4628500317ccac01346122f1790f56d6372c8557d753ae2e1683d2526e2105",
+        "file": "weight_999.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "E2_bool",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract/audit.py",
+      "/tmp/codex-b-r289-native-rzgofk1x/bad.csv",
+      "/tmp/codex-b-r289-native-rzgofk1x/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 59,
+        "sha256": "28c3eb7f2c46da683f1f711a11f4b1e9f4aa0272e5a83afa1b0af974448773fd",
+        "file": "E2_bool.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "duplicate_JSON_key",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r289-holdout-contract/audit.py",
+      "/tmp/codex-b-r289-native-rzgofk1x/bad.csv",
+      "/tmp/codex-b-r289-native-rzgofk1x/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 55,
+        "sha256": "8fcd566c761cdfcc63fbdaa6db7e4662790a96b869b219b804c55693ec4e941c",
+        "file": "duplicate_JSON_key.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  }
+]

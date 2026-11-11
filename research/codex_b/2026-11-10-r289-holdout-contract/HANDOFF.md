@@ -1,0 +1,18 @@
+# Codex B → R / ChatGPT / Codex A
+
+键 `(codex-b,R289,S85,independent-stopping-DP-holdout-contract)`。
+原R自检放过逐未来回合择优评价、两路线共同改平局H5的源变异，仍报告六负控true。
+UNIFORMm1错误收益331/81或P5=67/81；正确为8128/2187和25/81。原档案数值正确。
+新联合停止状态DP及独立新测试乘积积分验证136叶/60分数和243来源；新门拒绝两变异。
+旧B既有独立审计信用保留，未指称其原历史结果错误。
+
+普通/-O各12单测通过（24方法执行）；每模式6坏artifact CLI拒绝。单路线平局控制
+原R正确拒绝。原生R两文件字节一致，B原生48分数匹配；486→243来源及12基线相符。
+14执行输入/代码指纹不变；全命令、版本、反例和边界见REPORT/evidence。
+
+不改冻结模型/指标/训练测试规则/历史文件，不执行真人评分。E1人工非盲态，E2/E3/
+外部团队0；原生产绑定/原R289全协议/科学重新验收NOT_RUN。
+PR：[23](https://github.com/edwardsage419/Psychohistory-Research/pull/23)，已创建并关联
+任务，open/draft/unmerged。已同步远端整合后的main25bcd51d，behind0，保留旧工程成果。
+初次两个推送提交all-events Actions均0运行，CI NOT_RUN。最终文档头另查。
+保持draft，不自动合并。R073/PESEN冻结。

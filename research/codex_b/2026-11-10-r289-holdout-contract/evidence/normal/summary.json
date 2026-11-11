@@ -1,0 +1,217 @@
+{
+  "status": "PASS_INDEPENDENT_HOLDOUT_CONTRACT_AND_SOURCE_MUTANTS",
+  "utc": "2026-11-10T11:51:13.012136+00:00",
+  "source_head": "81188642a7d32d94d8cc4773785a3d2b89349ebb",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "optimized": false,
+  "node": "v24.22.1",
+  "new_unittest_methods": 12,
+  "result_leaf_checks": 136,
+  "world_fraction_fields": 60,
+  "native_identity": {
+    "R289_S85_ALL_243_PAIRED_OFFERS.csv": {
+      "bytes": 6689,
+      "sha256": "85dcb3ecbeafff62efe73fd654a3b698d6c9b748bce9078e430a3f05f08126aa",
+      "byte_equal": true
+    },
+    "R289_S85_EXACT_RESULTS.json": {
+      "bytes": 5043,
+      "sha256": "272c3c44ca64279c25cf1c8f0f40a696037c07a383604a8aebf9a87e7efe6267",
+      "byte_equal": true
+    }
+  },
+  "source_mutants": [
+    {
+      "name": "hindsight_evaluation",
+      "original_exit": 0,
+      "reported_negative_controls_all_true": true,
+      "new_exit": 2,
+      "reason": "FIELD_VALUE:root.worlds.UNIFORM|1.independent_test_expected_net",
+      "source_sha256": "9f31f93feb227fd14a7de0dc6db3926be79304c1bcf8037836bf9d776fef6da4",
+      "edits": [
+        [
+          "const net=add(e3,mul(p5,sub(e5,e3)));",
+          "const net=f(rr.reduce((s,z)=>s+BigInt(z.weight*Math.max(z.h3net2,z.h5net2)),0n),2n*den);"
+        ]
+      ],
+      "uniform_m1": {
+        "distribution": "UNIFORM",
+        "training_episodes": 1,
+        "training_source_tuples": 81,
+        "expected_H3": "67/18",
+        "expected_H5": "100/27",
+        "first_only": "3",
+        "probability_select_H5": "25/81",
+        "probability_training_tie": "14/27",
+        "probability_select_inferior": "25/81",
+        "independent_test_expected_net": "331/81",
+        "oracle_of_two_thresholds": "67/18",
+        "regret_vs_best_fixed_threshold": "-59/162",
+        "gain_over_first_only": "88/81",
+        "evidence": "E1_ARTIFICIAL_NONBLIND"
+      }
+    },
+    {
+      "name": "ties_choose_H5",
+      "original_exit": 0,
+      "reported_negative_controls_all_true": true,
+      "new_exit": 2,
+      "reason": "FIELD_VALUE:root.worlds.UNIFORM|1.probability_select_H5",
+      "source_sha256": "d0fe68115556332ab27f05265951f5c0b52e4a88c848c8ce916b3e3345078fb6",
+      "edits": [
+        [
+          "if(x.difference2>0)win",
+          "if(x.difference2>=0)win"
+        ],
+        [
+          "if(d>0)win",
+          "if(d>=0)win"
+        ],
+        [
+          "if(d>0)positive",
+          "if(d>=0)positive"
+        ]
+      ],
+      "uniform_m1": {
+        "distribution": "UNIFORM",
+        "training_episodes": 1,
+        "training_source_tuples": 81,
+        "expected_H3": "67/18",
+        "expected_H5": "100/27",
+        "first_only": "3",
+        "probability_select_H5": "67/81",
+        "probability_training_tie": "14/27",
+        "probability_select_inferior": "67/81",
+        "independent_test_expected_net": "8107/2187",
+        "oracle_of_two_thresholds": "67/18",
+        "regret_vs_best_fixed_threshold": "67/4374",
+        "gain_over_first_only": "1546/2187",
+        "evidence": "E1_ARTIFICIAL_NONBLIND"
+      }
+    },
+    {
+      "name": "single_route_tie_control",
+      "original_exit": 1,
+      "old_correct_rejection": true,
+      "new_artifact_gate": "NOT_RUN_SOURCE_DID_NOT_EMIT"
+    }
+  ],
+  "persisted_bad_controls": [
+    {
+      "name": "duplicate_source",
+      "exit_code": 2,
+      "reason": "DUPLICATE_SOURCE",
+      "csv_sha256": "366166645a3eabecdc875b468b9949465a5a20abdbd79daa0cd76b050f90cb2f",
+      "json_sha256": "819737090c713e3de83037e32f134715d82eda5eae678bc13d0031e19a167ee0"
+    },
+    {
+      "name": "weight_999",
+      "exit_code": 2,
+      "reason": "LEDGER_MASS_OR_PAYOFF",
+      "csv_sha256": "909c0e9d2a0aa8f2de23550078c7e62834efc77bf48a45fe2110c041696961dd",
+      "json_sha256": "819737090c713e3de83037e32f134715d82eda5eae678bc13d0031e19a167ee0"
+    },
+    {
+      "name": "E2_bool",
+      "exit_code": 2,
+      "reason": "FIELD_TYPE:root.new_E2",
+      "csv_sha256": "85dcb3ecbeafff62efe73fd654a3b698d6c9b748bce9078e430a3f05f08126aa",
+      "json_sha256": "2966932946a1f88e3ad0adc5be2d5b684cfedd00a5a9d73223c57946b3e17e54"
+    },
+    {
+      "name": "duplicate_JSON_key",
+      "exit_code": 2,
+      "reason": "DUPLICATE_JSON_KEY",
+      "csv_sha256": "85dcb3ecbeafff62efe73fd654a3b698d6c9b748bce9078e430a3f05f08126aa",
+      "json_sha256": "ff4a174f94cae1f3fc37bde1458f9492a4fd14c7ea2a143a225e3b0ff2a867d5"
+    }
+  ],
+  "source_parity": {
+    "original_rows": 486,
+    "paired_rows": 243,
+    "population_fields": 12
+  },
+  "old_B_fraction_fields_checked": 48,
+  "old_B_selfreported_tests": 9,
+  "old_B_asserts_under_O": "DISABLED_NOT_UNITTEST_EXECUTIONS",
+  "sources_before_after_equal": true,
+  "sources": {
+    "research/validation/r289_s85_train_selected_aspiration_20261030.js": {
+      "bytes": 7054,
+      "sha256": "834b05c5e7f8b864469e2d0f873b68734ae48f9d8a89d671b51f8c3eafa05e74",
+      "git_blob": "89470060567b42ecb1483b35eb00320a17563ba8"
+    },
+    "research/evidence_audit/b_r289_s85_independent_convolution_20261030.py": {
+      "bytes": 3998,
+      "sha256": "2c52bc11fbc9179e4c88b6c924699c35ea3310d6902017b75a00d5cdb85eda1c",
+      "git_blob": "bed482d31e3ffe445f26ca2661d21260c3bc2496"
+    },
+    "research/validation/R289_S85_ALL_243_PAIRED_OFFERS.csv": {
+      "bytes": 6689,
+      "sha256": "85dcb3ecbeafff62efe73fd654a3b698d6c9b748bce9078e430a3f05f08126aa",
+      "git_blob": "62a2bd969497fb9abd6ffa772d55016d22ce0da3"
+    },
+    "research/validation/R289_S85_EXACT_RESULTS.json": {
+      "bytes": 5043,
+      "sha256": "272c3c44ca64279c25cf1c8f0f40a696037c07a383604a8aebf9a87e7efe6267",
+      "git_blob": "76b288491d7eaabe92dbfae7f9746baa9d41a06a"
+    },
+    "research/R289/r289_exact_satisficing.py": {
+      "bytes": 8003,
+      "sha256": "80d52570b0534a887d11707ac506272ec5529ea139d56da65afc51be75116f1a",
+      "git_blob": "426a63a793ca84c474c8a6a1a2c378efde4db601"
+    },
+    "research/R289/R289_ALL_486_ORIGINAL_SEQUENTIAL_OFFER_SOURCES.csv": {
+      "bytes": 25214,
+      "sha256": "df97e2f058f5c79d70b6d2edecad6a8d75dc227f659a69b19dca3bf73cef285a",
+      "git_blob": "261d821044278d05db1d15e85e20cef8aafbe5a4"
+    },
+    "research/R289/R289_EXACT_SATISFICING_RESULTS.json": {
+      "bytes": 2745,
+      "sha256": "519f77466a6013d6eda99c11fc5266ca70cf426f5f18250f68012d3407aeae3b",
+      "git_blob": "4b245b160db5e9808916dc9251e888f8683c6ee2"
+    },
+    "protocols/R289_SIMON_SATISFICING_3_DGPS_2_THRESHOLDS_486_FULL_SOURCES_PRESCORE_FREEZE_2026-10-23.md": {
+      "bytes": 2532,
+      "sha256": "0b4fe2b042c34ed66a4d18d03f408a98754c70d0ab1df89d0b2bc76b6484ad3c",
+      "git_blob": "895ca0123f0f694251405e43b800f19633ac0c3c"
+    },
+    "research/validation/R289_S85_TRAIN_SELECTED_ASPIRATION_PRESCORE_FREEZE_2026-10-30.md": {
+      "bytes": 4083,
+      "sha256": "65fd243a7540db59524d5360ef3ddcfa2c55dc42db5a1779fbea10689b06d3e1",
+      "git_blob": "bc9f2d9ff18087819383110cfdad6599b9db401b"
+    },
+    "research/codex_b/2026-11-10-r289-holdout-contract/pins.json": {
+      "bytes": 1025,
+      "sha256": "fe2ab597282865232058ec3c8968e72817c6eaca2d1848d93e24d1543c212cde"
+    },
+    "research/codex_b/2026-11-10-r289-holdout-contract/audit.py": {
+      "bytes": 4671,
+      "sha256": "46aeb3ff87af7e2201eaba2aca162001e895d5f2b53042adf8621127afa13009"
+    },
+    "research/codex_b/2026-11-10-r289-holdout-contract/replay.py": {
+      "bytes": 11024,
+      "sha256": "9c51c8495cb6d625fc45724e7a940488c330f2da6df8184fbf432bfcba07cc56"
+    },
+    "research/codex_b/2026-11-10-r289-holdout-contract/stopping.py": {
+      "bytes": 4582,
+      "sha256": "60783e811f67cdde4748dbfde470479b15c3c1fd9d63c3a94db20e4a1f51e0c7"
+    },
+    "research/codex_b/2026-11-10-r289-holdout-contract/test_contract.py": {
+      "bytes": 5485,
+      "sha256": "a6bcb62eaf7f6a19a0eebf0f47f73f0dcfff132c931f0560c5b715cc249c6c75"
+    }
+  },
+  "original_numerical_discrepancy_found": false,
+  "original_production_adoption": "NOT_RUN",
+  "full_repository_tests": "NOT_RUN",
+  "original_R289_test_suite": "NOT_RUN",
+  "other_platforms": "NOT_RUN",
+  "CI": "NOT_RUN",
+  "new_human_scores": 0,
+  "new_E2_E3": 0,
+  "external_team_replications": 0,
+  "formal_queue_closures": 0,
+  "R073": "FROZEN_UNCHANGED",
+  "PESEN_v0.1": "FROZEN_UNCHANGED"
+}
