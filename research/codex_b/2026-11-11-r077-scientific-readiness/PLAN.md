@@ -10,17 +10,17 @@ independent INTEGER/common-denominator certificate replaces shared Fraction math
 complete synthetic R073 timelines → original donor fit → unchanged B28 candidate.
 No new scorer, no generic framework, no repeat of35 permutations/71-method suite.
 
-- [ ] First RED hand probability anchor for independent integer route.
-- [ ] Build synthetic12-session/188-person/100-round reciprocal timelines;
+- [x] First RED hand probability anchor for independent integer route.
+- [x] Build synthetic12-session/188-person/100-round reciprocal timelines;
   independently reconstruct18424 histories, compare source fit count tables.
-- [ ] Verify seven models/six pairs/equal sessions with integer sums and LCM,
+- [x] Verify seven models/six pairs/equal sessions with integer sums and LCM,
   unequal groups, all16histories, count-shaped15-session/1040target control.
-- [ ] Reproduce N9/C1 false worse and N18424/C5 false better on one event/session;
+- [x] Reproduce N9/C1 false worse and N18424/C5 false better on one event/session;
   exact mathematical probabilities identical, no summation order needed.
-- [ ] Mutation-check alpha/history changes on disposable candidate only.
-- [ ] Save real ordinary/-O commands, integer certificates, original FAIL signs,
+- [x] Mutation-check alpha/history changes on disposable candidate only.
+- [x] Save real ordinary/-O commands, integer certificates, original FAIL signs,
   selected hashes before/after; one fresh read-only review.
-- [ ] Document current source metadata/rights/access, old receipts, explicit
+- [x] Document current source metadata/rights/access, old receipts, explicit
   not-authorized human scoring and predeclared anonymous double-run plan.
 - [ ] Refresh queue/scope, draft independent PR/readback, no merge or paid CI.
 

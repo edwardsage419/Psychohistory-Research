@@ -151,3 +151,17 @@ interface/dimensions; two previously uncovered scalar vote boundaries; explicit
 source/authorization/output contract for a future comparison. Formal154queue
 scientific net closures0, new E2/E3/human scores/external-team evidence0.
 R073/PESEN freezes unchanged; overall historical impact/readinessPARTIAL/UNKNOWN.
+
+One fresh-context read-only review found no actionable findings. It independently
+reran normal/-O, reproduced byte-identical boundary/certificate JSON, and verified
+source/stream/archive hashes. Review network/real data tests were NOT_RUN; detail
+in evidence/independent-review.md. Final primary22fingerprints/12streamrecords
+match. Main remainsce6ae2db; only openA30metadata PR, no math overlap observed.
+
+After human work remains blocked, refreshed154formalqueue (27/82/45) and read
+P0 R210/R211 numerical paths. Exact rational randomized-assignment, complement
+symmetry and compatible-potential-outcome enumeration already guard the scoped
+paths; no concrete new frozen-domain failure demonstrated in these limited
+reads. No redundant verifier or false scientific closure added. This is bounded
+triage, not a full acceptance audit; next B target needs a real counterexample
+or unowned documented computing blocker. See evidence/queue-continuation.json.
