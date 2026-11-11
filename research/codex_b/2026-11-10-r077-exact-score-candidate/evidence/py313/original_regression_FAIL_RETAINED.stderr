@@ -1,0 +1,215 @@
+test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) ... 
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(0, 4, 5)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(0, 4, 6)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(0, 5, 6)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(1, 4, 5)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(1, 4, 6)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(1, 5, 6)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(2, 4, 5)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(2, 4, 6)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(2, 5, 6)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(3, 5, 6)) ... FAIL
+  test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(4, 5, 6)) ... FAIL
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(0, 4, 5))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(0, 4, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(0, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(1, 4, 5))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(1, 4, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(1, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(2, 4, 5))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(2, 4, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(2, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(3, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+======================================================================
+FAIL: test_same_exact_tie_for_every_record_permutation (__main__.OriginalExactTieRegression.test_same_exact_tie_for_every_record_permutation) (positive_positions=(4, 5, 6))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-paired-ties/legacy_regression.py", line 24, in test_same_exact_tie_for_every_record_permutation
+    self.assertEqual((pair["sessions_better"], pair["sessions_equal"], pair["sessions_worse"]),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (0, 2, 0))
+                     ^^^^^^^^^^
+AssertionError: Tuples differ: (2, 0, 0) != (0, 2, 0)
+
+First differing element 0:
+2
+0
+
+- (2, 0, 0)
++ (0, 2, 0)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.055s
+
+FAILED (failures=11)
