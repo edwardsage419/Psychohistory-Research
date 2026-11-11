@@ -1,0 +1,16 @@
+/tmp/codex-b-r300-native-pvkhlsdp/original_B.js:37
+ if(results.source_rows!==288||results.distinct_true_prefixes!==32||results.group_count!==18||results.results.length!==18)throw Error("result cardinality");
+                                                                                                                          ^
+
+Error: result cardinality
+    at Object.audit (/tmp/codex-b-r300-native-pvkhlsdp/original_B.js:37:129)
+    at Object.<anonymous> (/tmp/codex-b-r300-native-pvkhlsdp/new_adapter.js:15:21)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.22.1

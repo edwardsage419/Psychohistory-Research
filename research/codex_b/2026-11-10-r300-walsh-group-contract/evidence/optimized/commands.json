@@ -1,0 +1,602 @@
+[
+  {
+    "tag": "new-12-tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract",
+      "-p",
+      "test_contract.py",
+      "-v"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 1212,
+        "sha256": "f5cdb6d2c9272f58d8d3435ff81348ea53be84f0a5fd7a88b5a09aab21fd3479",
+        "file": "new-12-tests.stderr"
+      }
+    }
+  },
+  {
+    "tag": "new-audit-archive",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/workspace/Psychohistory-Research/research/validation/R300_S96_ALL_288_MISSPECIFIED_HMM_PREFIX_SOURCES.csv",
+      "/workspace/Psychohistory-Research/research/validation/R300_S96_EXACT_MISSPECIFICATION_BRIER_RESULTS.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 6278,
+        "sha256": "8e925e805b8e5e8c9b52d53e89ac5da25eac5a788c4337be84b02237448bbbdd",
+        "file": "new-audit-archive.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "node-version",
+    "argv": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 9,
+        "sha256": "249baf635bb43877fcb9422efa1a4904b702d0ddf14d3949b7cd0950d5229c81",
+        "file": "node-version.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-adapter-original-R-export",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "emit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_R.js",
+      "/tmp/codex-b-r300-native-beqdonsi/emitted"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 71,
+        "sha256": "44246852228f032dabf9870b03e7a47485e7b418afd0443dafbace3172d9c598",
+        "file": "new-adapter-original-R-export.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-adapter-old-B-archive",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/workspace/Psychohistory-Research/research/validation/R300_S96_ALL_288_MISSPECIFIED_HMM_PREFIX_SOURCES.csv",
+      "/workspace/Psychohistory-Research/research/validation/R300_S96_EXACT_MISSPECIFICATION_BRIER_RESULTS.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 170,
+        "sha256": "ba82b9c1e58ddd2d3e44f9ba47dcb87e400b374ce6159f24c1b4c1f98ee517c8",
+        "file": "new-adapter-old-B-archive.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-adapter-old-B-emitted",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/emitted/R300_S96_ALL_288_MISSPECIFIED_HMM_PREFIX_SOURCES.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/emitted/R300_S96_EXACT_MISSPECIFICATION_BRIER_RESULTS.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 170,
+        "sha256": "ba82b9c1e58ddd2d3e44f9ba47dcb87e400b374ce6159f24c1b4c1f98ee517c8",
+        "file": "new-adapter-old-B-emitted.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-audit-emitted",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/emitted/R300_S96_ALL_288_MISSPECIFIED_HMM_PREFIX_SOURCES.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/emitted/R300_S96_EXACT_MISSPECIFICATION_BRIER_RESULTS.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 6278,
+        "sha256": "8e925e805b8e5e8c9b52d53e89ac5da25eac5a788c4337be84b02237448bbbdd",
+        "file": "new-audit-emitted.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "old-one_group_duplicate",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 170,
+        "sha256": "ba82b9c1e58ddd2d3e44f9ba47dcb87e400b374ce6159f24c1b4c1f98ee517c8",
+        "file": "old-one_group_duplicate.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-one_group_duplicate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 52,
+        "sha256": "b988506e193bebed1b6843c1124cdbecb9a2d32f79598af772577a50b2b14116",
+        "file": "new-one_group_duplicate.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "old-all_groups_identical",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 170,
+        "sha256": "ba82b9c1e58ddd2d3e44f9ba47dcb87e400b374ce6159f24c1b4c1f98ee517c8",
+        "file": "old-all_groups_identical.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-all_groups_identical",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 52,
+        "sha256": "b988506e193bebed1b6843c1124cdbecb9a2d32f79598af772577a50b2b14116",
+        "file": "new-all_groups_identical.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "old-antipersistent_true_label",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 170,
+        "sha256": "ba82b9c1e58ddd2d3e44f9ba47dcb87e400b374ce6159f24c1b4c1f98ee517c8",
+        "file": "old-antipersistent_true_label.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-antipersistent_true_label",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 52,
+        "sha256": "0fc066005e9c372a82d5bacb0046eddd0d94e6d82e2a0a6ed7d90729f467ebba",
+        "file": "new-antipersistent_true_label.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "old-R073_changed",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 170,
+        "sha256": "ba82b9c1e58ddd2d3e44f9ba47dcb87e400b374ce6159f24c1b4c1f98ee517c8",
+        "file": "old-R073_changed.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-R073_changed",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 58,
+        "sha256": "ad55b175eb6c8c2889cbab2287d51e485ab9433d3e8557db92c0fa320c35f192",
+        "file": "new-R073_changed.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "old-duplicate_JSON_key",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "bytes": 170,
+        "sha256": "ba82b9c1e58ddd2d3e44f9ba47dcb87e400b374ce6159f24c1b4c1f98ee517c8",
+        "file": "old-duplicate_JSON_key.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "new-duplicate_JSON_key",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 55,
+        "sha256": "8fcd566c761cdfcc63fbdaa6db7e4662790a96b869b219b804c55693ec4e941c",
+        "file": "new-duplicate_JSON_key.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "old-missing_group",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 989,
+        "sha256": "308a9d544e6448f849a1aa2d604ca198a9447746ce065d46060b63904a1691ff",
+        "file": "old-missing_group.stderr"
+      }
+    }
+  },
+  {
+    "tag": "new-missing_group",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 54,
+        "sha256": "feeefe146d5ffc70b70dc11dea5e24ab6bf9c09b172e87eb0ee3463adba6cf11",
+        "file": "new-missing_group.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "old-source_mass",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 875,
+        "sha256": "e49b80ed8d9880f82581a4cd4360dbac86f73853cb7abd5e3dd7514ffe15c44c",
+        "file": "old-source_mass.stderr"
+      }
+    }
+  },
+  {
+    "tag": "new-source_mass",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 57,
+        "sha256": "f569a58f6a07f9876f5596a58b41aface346ccffa40bb749dcceb8c18eb42912",
+        "file": "new-source_mass.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "old-group_risk",
+    "argv": [
+      "node",
+      "/tmp/codex-b-r300-native-beqdonsi/new_adapter.js",
+      "audit",
+      "/tmp/codex-b-r300-native-beqdonsi/original_B.js",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 1033,
+        "sha256": "6df5a7c78c1c977a4015a7da4e807ea8cf6a1781baad3a780618e4e256531425",
+        "file": "old-group_risk.stderr"
+      }
+    }
+  },
+  {
+    "tag": "new-group_risk",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r300-walsh-group-contract/audit.py",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.csv",
+      "/tmp/codex-b-r300-native-beqdonsi/bad.json"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 2,
+    "streams": {
+      "stdout": {
+        "bytes": 116,
+        "sha256": "2662b408155a6549a3b460eb9045e69b0223356e7b78c73c0976a38ba5042319",
+        "file": "new-group_risk.stdout"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      }
+    }
+  },
+  {
+    "tag": "wrong-noise-moment-negative",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "import sys,unittest;sys.path.insert(0,sys.argv[1]);from test_contract import MomentTests;r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite([MomentTests(\"test_hand_anchors\")]));sys.exit(0 if r.wasSuccessful() else 1)",
+      "/tmp/codex-b-r300-native-beqdonsi/mutant"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "file": null
+      },
+      "stderr": {
+        "bytes": 646,
+        "sha256": "03fc2140465b2f315cc607d53bd7720b431c45db601ad4efa1d533c72dd2d640",
+        "file": "wrong-noise-moment-negative.stderr"
+      }
+    }
+  }
+]
