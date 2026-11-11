@@ -1,0 +1,196 @@
+{
+  "status": "PASS_COMPLETE_BAYES_RULE_LAW_AND_FALSE_OPTIMALITY_REPLAY",
+  "utc": "2026-11-10T12:27:12.679036+00:00",
+  "source_head": "25bcd51dd58bf0c245ae84c563406e679a966b5a",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "optimized": false,
+  "positive_unittest_methods": {
+    "original": 4,
+    "new": 12
+  },
+  "result_leaf_checks": 273,
+  "scientific_fraction_fields": 144,
+  "native_JSON": {
+    "bytes": 8706,
+    "sha256": "06f4992d2e958198a1c0e7b18b58a5e69fec526983b135288d093230d46a7f22",
+    "byte_equal": true
+  },
+  "native_training_CSV_emitter": "NOT_ARCHIVED_NOT_CLAIMED",
+  "original_parity": {
+    "source_cells": 120,
+    "rule_loss_values": 384,
+    "baseline_fields": 132
+  },
+  "old_false_accepts": 5,
+  "old_correct_rejections": 3,
+  "new_bad_inputs_rejected": 8,
+  "negative_controls": [
+    {
+      "case": "false_optimality",
+      "old_exit": 0,
+      "old_false_accept": true,
+      "old_gate": "binomial_result",
+      "new_exit": 2,
+      "reason": "FIELD_VALUE:root.results.MONOTONE_PI1of2_FP1_FN1|1.oracle_risk",
+      "csv_sha256": "ecba722d4d8273d798fed48681b855b3074e64b786d4537da03bc01f106f558a",
+      "json_sha256": "3546f1ebcf2ac9aed30e278dd21addadcd2a27172abcc847d85c7b846c07f90a"
+    },
+    {
+      "case": "zero_oracle",
+      "old_exit": 0,
+      "old_false_accept": true,
+      "old_gate": "binomial_result",
+      "new_exit": 2,
+      "reason": "FIELD_VALUE:root.results.MONOTONE_PI1of2_FP1_FN1|1.oracle_risk",
+      "csv_sha256": "ecba722d4d8273d798fed48681b855b3074e64b786d4537da03bc01f106f558a",
+      "json_sha256": "a232df24901fe7ab932014062c782dc4e6cd3057e614325e63b5af11a674ff58"
+    },
+    {
+      "case": "cutoff_corruption",
+      "old_exit": 0,
+      "old_false_accept": true,
+      "old_gate": "binomial_result",
+      "new_exit": 2,
+      "reason": "FIELD_VALUE:root.results.MONOTONE_PI1of2_FP1_FN1|1.best_fixed_cutoff_risk",
+      "csv_sha256": "ecba722d4d8273d798fed48681b855b3074e64b786d4537da03bc01f106f558a",
+      "json_sha256": "7581408a2cd3cb019d5fa3b0a4341744f3b719c7a49aaac6c6864d6520eb64e6"
+    },
+    {
+      "case": "baseline_corruption",
+      "old_exit": 0,
+      "old_false_accept": true,
+      "old_gate": "binomial_result",
+      "new_exit": 2,
+      "reason": "FIELD_VALUE:root.results.MONOTONE_PI1of2_FP1_FN1|1.fixed_t3_risk",
+      "csv_sha256": "ecba722d4d8273d798fed48681b855b3074e64b786d4537da03bc01f106f558a",
+      "json_sha256": "5472fbb26cc75dcdc4a27c0da26571354931d99ce0ef5d504635ea624f804b22"
+    },
+    {
+      "case": "missing_baselines",
+      "old_exit": 0,
+      "old_false_accept": true,
+      "old_gate": "binomial_result",
+      "new_exit": 2,
+      "reason": "FIELD_SCHEMA:root.results.MONOTONE_PI1of2_FP1_FN1|1",
+      "csv_sha256": "ecba722d4d8273d798fed48681b855b3074e64b786d4537da03bc01f106f558a",
+      "json_sha256": "c6ef9393cf4c50edff712a0bad83569a015b7dec27d34d9a7734bd8106fdb921"
+    },
+    {
+      "case": "risk_zero",
+      "old_exit": 1,
+      "old_false_accept": false,
+      "old_gate": "binomial_result",
+      "new_exit": 2,
+      "reason": "FIELD_VALUE:root.results.MONOTONE_PI1of2_FP1_FN1|1.expected_heldout_risk",
+      "csv_sha256": "ecba722d4d8273d798fed48681b855b3074e64b786d4537da03bc01f106f558a",
+      "json_sha256": "7d7393fa33b6e26266f5d8964ee98c8a022b4220fdd45ac5a988315bf801500b"
+    },
+    {
+      "case": "regret_negative",
+      "old_exit": 1,
+      "old_false_accept": false,
+      "old_gate": "binomial_result",
+      "new_exit": 2,
+      "reason": "FIELD_VALUE:root.results.MONOTONE_PI1of2_FP1_FN1|1.regret",
+      "csv_sha256": "ecba722d4d8273d798fed48681b855b3074e64b786d4537da03bc01f106f558a",
+      "json_sha256": "99f66705680dcc56763e1c64f4d7383917bd68eb5ca117a9dd1193ff3840d938"
+    },
+    {
+      "case": "source_mass",
+      "old_exit": 1,
+      "old_false_accept": false,
+      "old_gate": "source_ledger",
+      "new_exit": 2,
+      "reason": "LEDGER_PROBABILITY",
+      "csv_sha256": "e2f8753dbc0a9d18aaf1800227e092cfc83283d83f89b4d7e3242554b968f014",
+      "json_sha256": "06f4992d2e958198a1c0e7b18b58a5e69fec526983b135288d093230d46a7f22"
+    }
+  ],
+  "legacy_B_mode": "NORMAL_ISOLATED_I_B_NO_O_EVEN_IF_PARENT_OPTIMIZED",
+  "legacy_12_negative_controls_run": true,
+  "legacy_class_swap_control": "RISK_ZERO_NOT_ACTUAL_CLASS_COUNT_SWAP",
+  "own_optimizer_mutant": {
+    "exit_code": 1,
+    "sha256": "4f24556795c2db0e502000cfa6ed234e3ec1f42aaf776e603c2222a6f7bcf767"
+  },
+  "sources_before_after_equal": true,
+  "sources": {
+    "research/validation/r290_s86_finite_likelihood_20261030.py": {
+      "bytes": 4671,
+      "sha256": "9d14de732b14c3a9a24c096ca85f51b04e8e686e271d2e4b07bff661e5a44cf7",
+      "git_blob": "ab79477e17d47cc57f9dc88f97cb85d714361a50"
+    },
+    "research/evidence_audit/b_r290_s86_independent_binomial_oracle_20261030.py": {
+      "bytes": 3161,
+      "sha256": "3c545914162d046055f6932f4ed3a2a8bb9d3061c8af134fd594abff42362bb3",
+      "git_blob": "5f1cf8e8299cfff0276b2bbee3d3af69ef0eb869"
+    },
+    "research/evidence_audit/b_r290_s86_source_ledger_gate_20261030.py": {
+      "bytes": 2714,
+      "sha256": "559c5aeccfae5eb66db87001e0f34d22474b5eb305cef4db18f57f633b80fb99",
+      "git_blob": "08dc8d1d586baef0621649c3c3149138fb355b9a"
+    },
+    "research/validation/R290_S86_ALL_1950_TRAINING_SOURCES.csv": {
+      "bytes": 50213,
+      "sha256": "ecba722d4d8273d798fed48681b855b3074e64b786d4537da03bc01f106f558a",
+      "git_blob": "fb295926e26304042cf886dfa3285bb013596c4e"
+    },
+    "research/validation/R290_S86_EXACT_RESULTS.json": {
+      "bytes": 8706,
+      "sha256": "06f4992d2e958198a1c0e7b18b58a5e69fec526983b135288d093230d46a7f22",
+      "git_blob": "f72cb9c9ac317e8673a215ca7a73429ce31c687e"
+    },
+    "research/validation/R290_S86_FINITE_LIKELIHOOD_TRAINING_PRESCORE_FREEZE_2026-10-30.md": {
+      "bytes": 4077,
+      "sha256": "3c00b21daf0757da71c8cdc13592893ad2ef403fca0eef4a80e3cef201eb82b5",
+      "git_blob": "3cf836a0dcc65665a1f688e0d5599b6089468bb3"
+    },
+    "protocols/R290_SIGNAL_DETECTION_3_DGPS_2_PRIORS_2_COSTS_120_CELL_PRESCORE_FREEZE_2026-10-23.md": {
+      "bytes": 4683,
+      "sha256": "00560cb431cecea01d29471eceafd538af5ece190ac62cc2cd655aaebf609b99",
+      "git_blob": "96e1441a4b0690a9d12f2a7bb6bedfb673ee347c"
+    },
+    "research/R290/R290_ALL_120_ORIGINAL_LABELED_SIGNAL_SOURCE_CELLS.csv": {
+      "bytes": 9084,
+      "sha256": "c7347228d65ce74c47b6aca6fbef68ca4b8b7f07e813a31996d2c78cda9b575e",
+      "git_blob": "59c489976f5a1a8b39aaac420dcd9656fe5b91ae"
+    },
+    "research/R290/R290_EXACT_SIGNAL_DETECTION_RESULTS.json": {
+      "bytes": 17700,
+      "sha256": "23fc6696c3afdff34f1e674387a8899d423ae4ca520b2f58636aa1e4927fd18a",
+      "git_blob": "f2cbc4eabb39b5f564063ce6232878a26122cf07"
+    },
+    "research/codex_b/2026-11-10-r290-bayes-certificate/pins.json": {
+      "bytes": 1055,
+      "sha256": "8f1ca36b6f77672f2c1fdb610ec3d96d800203a6e9bd368900da558892812675"
+    },
+    "research/codex_b/2026-11-10-r290-bayes-certificate/audit.py": {
+      "bytes": 2831,
+      "sha256": "1588aa30816db2213d9df5cc49c9a9f6ef0c619a51ec729f8486d6bca2243134"
+    },
+    "research/codex_b/2026-11-10-r290-bayes-certificate/certificate.py": {
+      "bytes": 5445,
+      "sha256": "fe5f4fb61f84507d9e771571b6bc51c574aaead29d0c5dc1953f7a84fea1269c"
+    },
+    "research/codex_b/2026-11-10-r290-bayes-certificate/replay.py": {
+      "bytes": 11155,
+      "sha256": "63dda2b675f05211d52582f86c89da14fa3d444f58fc1fe148bf243ca4b127de"
+    },
+    "research/codex_b/2026-11-10-r290-bayes-certificate/test_certificate.py": {
+      "bytes": 6316,
+      "sha256": "dbbf9027147d75c710ba76667cf68909f03d0b181d97948efb15e85e49ad8693"
+    }
+  },
+  "original_numerical_discrepancy_found": false,
+  "original_R290_full_suite": "NOT_RUN",
+  "full_repository_tests": "NOT_RUN",
+  "other_platforms": "NOT_RUN",
+  "production_adoption": "NOT_RUN",
+  "CI": "NOT_RUN",
+  "new_human_scores": 0,
+  "new_E2_E3": 0,
+  "external_team_replications": 0,
+  "formal_queue_closures": 0,
+  "R073": "FROZEN_UNCHANGED",
+  "PESEN_v0.1": "FROZEN_UNCHANGED"
+}

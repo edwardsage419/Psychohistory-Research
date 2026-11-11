@@ -1,0 +1,15 @@
+test_first_world_minimum_and_witnesses (test_certificate.CertificateTests.test_first_world_minimum_and_witnesses) ... FAIL
+
+======================================================================
+FAIL: test_first_world_minimum_and_witnesses (test_certificate.CertificateTests.test_first_world_minimum_and_witnesses)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/codex-b-r290-native-iaftio1x/mutant/test_certificate.py", line 35, in test_first_world_minimum_and_witnesses
+    self.assertEqual(c["denominator"],42);self.assertEqual(c["minimum_numerator"],10)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 32 != 10
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

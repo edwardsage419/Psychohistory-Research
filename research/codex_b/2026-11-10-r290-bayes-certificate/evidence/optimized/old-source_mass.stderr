@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/codex-b-r290-native-iaftio1x/original_ledger_B.py", line 61, in <module>
+    print(json.dumps({'status':'PASS','verified_sources':check(rows),'rejected_mutations':mutations(rows)},indent=2))
+                                                         ^^^^^^^^^^^
+  File "/tmp/codex-b-r290-native-iaftio1x/original_ledger_B.py", line 33, in check
+    if F(row['probability'])!=p:raise ValueError('source mass mismatch')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: source mass mismatch
