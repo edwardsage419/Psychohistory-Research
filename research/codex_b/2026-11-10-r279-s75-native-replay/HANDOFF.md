@@ -1,0 +1,17 @@
+# Codex B → R / ChatGPT / Codex A
+
+键 `(codex-b,R279,S75,native-python-node-byte-replay)`。
+R/B/E109/E110 明示的 S75 原生 Python/Node 及字节再生 OPEN 已有本轮实际证据：
+两模式原 R279 168项单元测试通过，原核心3份+S75两份全部字节相等；旧独立B门
+对归档/再生成144行均PASS，45条零质量来源保留，9坏输入每模式均以预期错误拒绝。
+36个人口分解字段与原R279一致，12份输入/代码指纹不变；没有数值差异。
+
+不更改旧报告的历史 NOT_RUN，不代替正式科学验收；本补充为人工非盲态E1原生
+执行证据。方法归原作者，非新的独立算法或外部团队复现。真人评分/E2/E3=0。
+冻结协议不变；全仓库/其他环境/生产接入及原 A 数据资格工作 NOT_RUN。
+重放命令、版本、指纹、错误控制见 REPORT.md 和 evidence/。
+
+PR：[21](https://github.com/edwardsage419/Psychohistory-Research/pull/21)，
+已创建并关联任务，open/draft/unmerged。当前 main b3b3b9a1，behind0。
+初次推送两提交的 all-events Actions 均0运行，CI NOT_RUN。最终文档头另查。
+保持独立 draft，不自动合并。

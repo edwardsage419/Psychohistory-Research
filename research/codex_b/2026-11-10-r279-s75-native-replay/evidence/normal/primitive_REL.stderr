@@ -1,0 +1,16 @@
+/tmp/codex-b-r279-native-rnik8i4g/original_B.js:39
+    const v=[rel,res,unc,brier];for(let i=0;i<4;i++)if(!equal(parse(c[i+4]),v[i]))throw Error("primitive "+names[i]);
+                                                                                  ^
+
+Error: primitive REL
+    at audit (/tmp/codex-b-r279-native-rnik8i4g/original_B.js:39:89)
+    at Object.<anonymous> (/tmp/codex-b-r279-native-rnik8i4g/original_B.js:65:184)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.22.1
