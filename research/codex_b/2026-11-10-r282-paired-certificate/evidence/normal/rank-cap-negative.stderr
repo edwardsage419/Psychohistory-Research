@@ -1,0 +1,20 @@
+test_exact_count_formula (test_certificate.AlgebraTests.test_exact_count_formula) ... FAIL
+
+======================================================================
+FAIL: test_exact_count_formula (test_certificate.AlgebraTests.test_exact_count_formula)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/codex-b-r282-native-6n6et52y/mutant/test_certificate.py", line 58, in test_exact_count_formula
+    self.assertEqual(paired_counts(),{s:[32,48] for s in SCHEDULES[1:]})
+AssertionError: {'A_THEN_B': [32, 32], 'B_THEN_A': [32, 32]} != {'A_THEN_B': [32, 48], 'B_THEN_A': [32, 48]}
+- {'A_THEN_B': [32, 32], 'B_THEN_A': [32, 32]}
+?                   ^^                    ^^
+
++ {'A_THEN_B': [32, 48], 'B_THEN_A': [32, 48]}
+?                   ^^                    ^^
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)

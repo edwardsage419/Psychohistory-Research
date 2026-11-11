@@ -1,0 +1,138 @@
+{
+  "status": "PASS_PAIRED_GF2_SUPPLEMENT",
+  "source_rows": 192,
+  "symbolic_output_bit_checks": 768,
+  "paired_integer_fields": 4,
+  "paired_counts_from_GF2": {
+    "A_THEN_B": [
+      32,
+      48
+    ],
+    "B_THEN_A": [
+      32,
+      48
+    ]
+  },
+  "paired_counts_from_CSV": {
+    "A_THEN_B": [
+      32,
+      48
+    ],
+    "B_THEN_A": [
+      32,
+      48
+    ]
+  },
+  "certificate": [
+    {
+      "schedule": "A_THEN_B",
+      "compared_to": "SYNC",
+      "time": 1,
+      "difference_masks": [
+        0,
+        7
+      ],
+      "rank": 1,
+      "equal_count": 32,
+      "disagreement_count": 32,
+      "source_count": 64
+    },
+    {
+      "schedule": "A_THEN_B",
+      "compared_to": "SYNC",
+      "time": 2,
+      "difference_masks": [
+        7,
+        24
+      ],
+      "rank": 2,
+      "equal_count": 16,
+      "disagreement_count": 48,
+      "source_count": 64
+    },
+    {
+      "schedule": "B_THEN_A",
+      "compared_to": "SYNC",
+      "time": 1,
+      "difference_masks": [
+        11,
+        0
+      ],
+      "rank": 1,
+      "equal_count": 32,
+      "disagreement_count": 32,
+      "source_count": 64
+    },
+    {
+      "schedule": "B_THEN_A",
+      "compared_to": "SYNC",
+      "time": 2,
+      "difference_masks": [
+        36,
+        11
+      ],
+      "rank": 2,
+      "equal_count": 16,
+      "disagreement_count": 48,
+      "source_count": 64
+    }
+  ],
+  "linear_state_masks": {
+    "SYNC": [
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        25,
+        38
+      ]
+    ],
+    "A_THEN_B": [
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        30,
+        62
+      ]
+    ],
+    "B_THEN_A": [
+      [
+        1,
+        2
+      ],
+      [
+        13,
+        9
+      ],
+      [
+        61,
+        45
+      ]
+    ]
+  },
+  "original_B": {
+    "rows": 192,
+    "regimes": 4,
+    "independent_schedule_state_triples": 192,
+    "tv_cells": 36
+  },
+  "snapshot_sha256": {
+    "csv": "910875ab4ac50873819b67b76702999c386a2411c9f1eea2b25d8bdba4fc5e43",
+    "json": "ff12fbed817500fffd48036084d3adfe78bfdb13d8e51da9b3e06b07b42c7668",
+    "original_B": "255b268094e9c9534ed130a331de757632984f084d1990cd127f3fd506128feb"
+  },
+  "new_human_scores": 0,
+  "new_E2_E3": 0,
+  "formal_scientific_reacceptance": "NOT_RUN"
+}
