@@ -141,5 +141,9 @@ CI and test the actual Python3.11 runner only after approval. Separate R077
 checklist package closes adoption/evidence checks without scoring data. PR30
 metadata review is acceptable but unmerged/unauthorized. Newly observed B PR31
 owns its scalar/independent-integer readiness audit; do not duplicate that math.
-Delivery is an independent draft PR (commit/URL recorded by GitHub and delivery
-readback); no main merge is requested or performed.
+Delivery: [draft PR32](https://github.com/edwardsage419/Psychohistory-Research/pull/32),
+implementation commit `41b13d97882fec225ec9d6b88311e1cec2ed83b0`.
+`DELIVERY.json` records remote commit and5 critical blob readbacks, empty Actions
+run/check lists (NOT_RUN), unchanged main and no merge. Later metadata-only
+delivery commits do not replace the locally bundled candidate test identity.
+Companion R077 checklist is independent draft PR33. No main merge performed.
