@@ -58,3 +58,9 @@ R077 human source/license/session mapping barriers remain unchanged; no network
 probes, real data, human fit or human scoring. Historical vote impactUNKNOWN.
 This closes only the known metadata-source dependency in the combined proposal.
 New evidence in this subdirectory, old scientific evidence unchanged.
+
+One fresh read-only review found no actionable issue and independently ran the
+complete helper with source-only captures. Details/command/limits are in the
+new independent-review note. PR31 is updated incrementally without rebase or
+force; Codex A is notified with the new fixed head and manifest identity after
+remote readback. Do not apply A35's old pin patch a second time after this change.
