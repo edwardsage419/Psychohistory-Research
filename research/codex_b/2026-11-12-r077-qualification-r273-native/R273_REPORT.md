@@ -113,3 +113,14 @@ R077 stays BLOCKED with historical vote impactUNKNOWN; see R077_QUALIFICATION.md
 andDOUBLE_RUN_CHECKLIST.md. Do not revisit the same blocked endpoints without new
 evidence. Next B task needs a fresh queue/claim check and another real unowned
 numeric counterexample or documented computing gap; A owns caller integration.
+
+One fresh-context read-only review found no actionable issue. It independently
+reran ordinary/-O, checked the five artifacts,22fingerprints/64streamrecords,
+source joins and27risks. No network/human access was performed by reviewer;
+source qualification remains BLOCKED rather than independently reconfirmed.
+Review commands/limits are in evidence/independent-review.md.
+
+Final refresh:main remainsd4740c2c; A35now coordinates R127 and existing A30–33
+engineering, including a proposed B31pin refresh for A30's text change. It does
+not cover this R273 native/source matching. New code remains B-only. Latest
+formal154queue is unchanged,27/82/45; no itemwise scientific status was edited.

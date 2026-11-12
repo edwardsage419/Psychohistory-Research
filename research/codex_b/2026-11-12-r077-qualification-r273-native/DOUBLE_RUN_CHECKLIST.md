@@ -46,3 +46,9 @@ permanently; any scientific corrigendum requires separate review.
 This round executed zero real scoring calls, zero real fits and zero raw-human
 downloads. The eight readiness conditions remain a static checklist. No new
 runner, protocol amendment, production hook or A-owned schema tool is created.
+
+Final PR refresh also found A35's proposed coordinated A30→B31preflight pin
+refresh. That engineering dependency is separate from data qualification or
+scientific scoring permission. We do not edit B31's manifest or approve/apply
+A's patch here. Any future changed execution snapshot needs explicit identity
+review rather than silent pin refresh. Current main identities above still match.
