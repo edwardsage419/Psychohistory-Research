@@ -21,8 +21,9 @@ R077 math already verified in18/28/31; do not rerun those suites.31 still draft;
   rejected domain error required, not SyntaxError/import failure. Add source-join
   corruption tests. Ordinary/-O harness evidence, selected hashes unchanged.
 - [x] One fresh read-only review, no actionable findings; main/PR refresh next.
-- [ ] Independent draft PR,
-  attach/readback, no merge, paid resources or CI dispatch.
+- [x] Independent draftPR36 created; attachment attempted/no tool response within
+ 20seconds (outcomeunknown). Final readback after documentation push in delivery.
+ No merge, paid resources or CI dispatch.
 
 R273 is artificial E1, internal nonblind original program replay + existing
 independent grouped algorithm execution + new cross-source matching. Not new

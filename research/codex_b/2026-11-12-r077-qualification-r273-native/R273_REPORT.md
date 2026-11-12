@@ -1,6 +1,7 @@
 # R273 P0/S69 native replay and original source identity
 
 track:Codex B; subflow:original23912-003 Cross Population Validation(P0)
+run_date:2026-11-12 task round; actual UTC timestamps in evidence summaries
 observed_head:d4740c2cd999b8da06a25b0ef407aeaf8a56ab6c
 status:COMPLETE_BOUNDED_NATIVE_AND_SOURCE_IDENTITY; scientific acceptanceUNCHANGED
 source_links:original R273/R & B S69 sources/protocols/archives in pins.json;
@@ -124,3 +125,6 @@ Final refresh:main remainsd4740c2c; A35now coordinates R127 and existing A30–3
 engineering, including a proposed B31pin refresh for A30's text change. It does
 not cover this R273 native/source matching. New code remains B-only. Latest
 formal154queue is unchanged,27/82/45; no itemwise scientific status was edited.
+
+Delivered independent draftPR36; remote final state inHANDOFF/final message.
+Initial published head's all-events Actions query0runs, NOT_RUN rather thanPASS.
