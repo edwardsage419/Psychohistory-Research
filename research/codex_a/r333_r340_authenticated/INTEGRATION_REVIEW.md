@@ -118,3 +118,7 @@ PARTIAL: mainline/production integration. NOT_RUN: real CI, human scoring, forma
 scientific reacceptance, new E2/E3. R073/R077/R127/PESEN/frozen history unchanged.
 The real next deployment action needs owner approval; independent local P0 work
 continues in the accompanying authenticated R333–R340 entry, without new math.
+
+Final queue observation also found B PR38 (R275 S71 optimized guards), head
+fbf71dcaee98508a0a861518bfcc6bb768da5a81. Like37 it is a separate, unreviewed B
+package; this report does not award it acceptance or perform its computation.

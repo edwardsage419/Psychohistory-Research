@@ -116,3 +116,11 @@ R073/R077/R127/PESEN and all historical model/data/result/protocol files are
 unchanged. P0 production closure and scientific acceptance remain open; successful
 finite artificial E1 checks do not establish human prediction or E2/E3.
 For six-PR acceptance and exact R127 deployment conditions, see INTEGRATION_REVIEW.md.
+
+## Delivery
+
+Independent [draft PR39](https://github.com/edwardsage419/Psychohistory-Research/pull/39),
+implementation commit `a187eb8c74df1959f94cfcf4f7cf079cc0d60811`.
+DELIVERY.json records5 critical GitHub blob readbacks, unchanged main and reviewed
+PR heads, empty Actions/check lists and no production/merge action. Later metadata
+commits preserve the tested implementation and fixed local fixture identities.
