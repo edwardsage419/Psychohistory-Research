@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py", line 27, in capture
+    require(blob==want['git_blob']==subprocess.check_output(['git','rev-parse','HEAD:'+path],cwd=ROOT,text=True).strip(),'SOURCE_BLOB:'+path)
+  File "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py", line 16, in require
+    if not ok:raise ValueError(reason)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: SOURCE_BLOB:research/codex_a/r077_integration/preflight.py
