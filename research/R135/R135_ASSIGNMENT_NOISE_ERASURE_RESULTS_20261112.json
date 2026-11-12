@@ -1,0 +1,57 @@
+{
+  "b2_c1_exact_bound_threshold": "sqrt(6)-2",
+  "bound_margins_cma2_minus_b1minus2ma": {
+    "1/2": "1/4",
+    "11/25": "-29/625",
+    "2/5": "-6/25",
+    "23/50": "129/2500",
+    "49/100": "2001/10000",
+    "9/20": "1/400"
+  },
+  "checked_directed_invasions": 61440,
+  "checked_norms": 256,
+  "checked_residents": 4096,
+  "evidence": "internal exact mathematical E1; no new observational E2/E3",
+  "exact_eq3_transition_erasure_checks": 36864,
+  "exact_eq5_to_eq9_vs_algebra_checks": 61440,
+  "min_strict_AllD_win_intended_payoff": "1/4",
+  "mirror_ESS_orbits_at_half_assignment_error": 136,
+  "mirror_involution_fixed_norms": 16,
+  "mirror_involution_fixed_total_pairs": 64,
+  "mirror_orbits_all_4096_pairs": 2080,
+  "notes": [
+    "At mu_a=1/2 the H-score of every resident and mutant converges to 1/2.",
+    "For any b>0,c>0 and mu_e<1, only AllD can be a strict ESS.",
+    "For b=2,c=1, the sufficient universal exclusion bound is positive for mu_a>sqrt(6)-2; it may be conservative.",
+    "The original 2026-10-20 mu_a=.02 frozen R135 results are untouched."
+  ],
+  "parameters": {
+    "b": "2",
+    "c": "1",
+    "mu_a": "1/2",
+    "mu_e": "1/50"
+  },
+  "raw_strict_ESS_pairs": 256,
+  "source": "Ohtsuki & Iwasa (2004) DOI 10.1016/j.jtbi.2004.06.005 Eq.3-10",
+  "strict_ESS_by_strategy_ascending_binary_id": [
+    256,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "study": "R135 post-freeze signal-erasure and universal noncooperation bound",
+  "uniform_sufficient_bound": "c*mu_a^2 > b*(1-2*mu_a)",
+  "zero_payoff_gap_mutant_comparisons": 13824
+}
