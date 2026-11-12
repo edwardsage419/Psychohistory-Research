@@ -239,3 +239,12 @@ Highest-value next work is owner-reviewed R127 integration plus actual external
 run identity/readback after authorization, and B-reviewed pin adoption before the
 combined PR30/31 run. No other confirmed current-main engineering defect justifies
 building a new framework. Maintain R073/R077/PESEN and all frozen boundaries.
+
+## GitHub delivery
+
+Independent [draft PR35](https://github.com/edwardsage419/Psychohistory-Research/pull/35),
+implementation commit `f0c1f46d9a4a2c96eda12eeefb885ccb31ea04a3`.
+`DELIVERY.json` records5 remote Git blob byte/hash readbacks, unchanged main,
+unchanged OPEN heads30–33 and empty actual Actions/check lists. Subsequent
+delivery-only commits retain the implementation and local fixture identities.
+No merge or production integration is performed.
