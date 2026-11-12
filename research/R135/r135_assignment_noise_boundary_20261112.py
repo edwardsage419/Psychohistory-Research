@@ -40,7 +40,8 @@ def assignment_expectation(norm_bits, action_bits, own_good, opp_good,
 
     Eq. (3), using conditional intended action and executed defection noise.
     """
-    assert len(norm_bits) == 8 and len(action_bits) == 4
+    if len(norm_bits) != 8 or len(action_bits) != 4:
+        raise ValueError("norm must have 8 bits and strategy 4 bits")
     total = F(0)
     for k, weight in enumerate(cell_weights(own_good, opp_good)):
         dc, dd = norm_bits[2 * k], norm_bits[2 * k + 1]
@@ -86,7 +87,8 @@ def uniform_exclusion_margin(ma, b=B, c=C):
     in benefits is <= b(1-2ma). AllD's payoff gain is at least
     c ma^2 - b(1-2ma) (intentional payoff units).
     """
-    assert F(0) < ma <= HALF
+    if not F(0) < ma <= HALF:
+        raise ValueError("assignment error outside audited bound")
     return c * ma * ma - b * (1 - 2 * ma)
 
 
@@ -103,12 +105,14 @@ def audit():
     fixed_norms = sum(mirror_norm(d)==d for d in norms)
     fixed_pairs = sum(mirror_norm(d)==d for d in norms) * sum(mirror_action(p)==p for p in strategies)
     for norm in norms:
-        assert mirror_norm(mirror_norm(norm)) == norm
+        if mirror_norm(mirror_norm(norm)) != norm:
+            raise AssertionError("mirror is not involution")
         for p_num, resident in enumerate(strategies):
             # At ma=1/2 every update map is exactly 1/2 regardless
             # of original label, recipient label or eight-bit norm.
             for h_old, h_peer in product((F(0), HALF, F(1)), repeat=2):
-                assert assignment_expectation(norm, resident, h_old, h_peer) == HALF
+                if assignment_expectation(norm, resident, h_old, h_peer) != HALF:
+                    raise AssertionError("reputation not erased")
                 stationary_checks += 1
             all_win = True
             for m_num, mutant in enumerate(strategies):
@@ -135,8 +139,8 @@ def audit():
         for m_num, mutant in enumerate(strategies):
             wr, wm = direct_payoffs(resident,mutant)
             k, km = F(sum(resident),4),F(sum(mutant),4)
-            assert wr == (B-C)*k
-            assert wm == B*k-C*km
+            if wr != (B-C)*k or wm != B*k-C*km:
+                raise AssertionError("independent cardinality oracle mismatch")
 
     # Compare exact closed-form sufficient condition without claiming necessity.
     margins={str(v):str(uniform_exclusion_margin(v)) for v in
