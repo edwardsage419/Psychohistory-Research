@@ -1,0 +1,68 @@
+{
+  "PESEN_v0_1": "FROZEN",
+  "R073": "FROZEN",
+  "artificial_rows_total": 2880,
+  "correction": "full_se^2 = naive_se^2 * (N-1)/(N-3)",
+  "external_history_E3_added": 0,
+  "fixed_artificial_world_cases": {
+    "BALANCED": {
+      "N": "8",
+      "SSE": "1/2",
+      "Sxx": "2",
+      "beta_x": "1/4",
+      "corrected_se_squared": "1/20",
+      "full_df": "5",
+      "naive_df": "7",
+      "naive_over_corrected_se_squared": "5/7",
+      "naive_se_squared": "1/28"
+    },
+    "NEGATIVE": {
+      "N": "12",
+      "SSE": "3/4",
+      "Sxx": "8/3",
+      "beta_x": "1/4",
+      "corrected_se_squared": "1/32",
+      "full_df": "9",
+      "naive_df": "11",
+      "naive_over_corrected_se_squared": "9/11",
+      "naive_se_squared": "9/352"
+    },
+    "POSITIVE": {
+      "N": "12",
+      "SSE": "3/4",
+      "Sxx": "8/3",
+      "beta_x": "1/4",
+      "corrected_se_squared": "1/32",
+      "full_df": "9",
+      "naive_df": "11",
+      "naive_over_corrected_se_squared": "9/11",
+      "naive_se_squared": "9/352"
+    },
+    "STRONG_POSITIVE": {
+      "N": "16",
+      "SSE": "1",
+      "Sxx": "3",
+      "beta_x": "1/4",
+      "corrected_se_squared": "1/39",
+      "full_df": "13",
+      "naive_df": "15",
+      "naive_over_corrected_se_squared": "13/15",
+      "naive_se_squared": "1/45"
+    }
+  },
+  "full_design_rank": 3,
+  "naive_residualized_design_rank": 1,
+  "primary_reference": "Lovell (1963) JASA 58:993-1010, sect.4 Eq.(4.5); Cowles 1963 discussion pp32-33 Eq.(5.10)",
+  "real_behavior_E2_added": 0,
+  "scope": "postscore independent E1 degrees-of-freedom arithmetic, no inference validity claim",
+  "source": "R182 prescore frozen 2026-10-21 artificial count and coefficient grids",
+  "worlds": 240,
+  "worlds_nonzero_residual": 160,
+  "worlds_per_design": {
+    "BALANCED": 60,
+    "NEGATIVE": 60,
+    "POSITIVE": 60,
+    "STRONG_POSITIVE": 60
+  },
+  "worlds_zero_residual_undefined_se_ratio": 80
+}
