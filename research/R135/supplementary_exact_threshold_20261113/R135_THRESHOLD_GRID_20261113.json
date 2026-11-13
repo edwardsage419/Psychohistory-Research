@@ -1,0 +1,164 @@
+{
+  "run_date": "2026-11-13",
+  "study": "R135 postfreeze, supplementary floating-point exploratory grid",
+  "original_eq": "Ohtsuki and Iwasa 2004 JTB 231 107-120 equations (3)-(10)",
+  "source": "https://doi.org/10.1016/j.jtbi.2004.06.005",
+  "grade": "internal E1 mathematical modelling only",
+  "execution_error": "1/50",
+  "benefit_for_noise_grid": "2",
+  "cost": "1",
+  "strategy_space": "256 binary norms by 16 binary strategies with all 15 distinct strategy mutants",
+  "strict_tolerance": "1e-12 (exploratory float grid only; exact threshold uses separate Fraction and symbolic certificates)",
+  "original_source_benefit_count_crosscheck": [
+    {
+      "benefit": "4",
+      "published_2004_nontrivial_ESS": 73,
+      "recomputed": 73
+    },
+    {
+      "benefit": "3",
+      "published_2004_nontrivial_ESS": 59,
+      "recomputed": 59
+    },
+    {
+      "benefit": "2",
+      "published_2004_nontrivial_ESS": 25,
+      "recomputed": 25
+    },
+    {
+      "benefit": "1.2",
+      "published_2004_nontrivial_ESS": 15,
+      "recomputed": 15
+    },
+    {
+      "benefit": "1.1",
+      "published_2004_nontrivial_ESS": 13,
+      "recomputed": 13
+    }
+  ],
+  "rates": [
+    {
+      "assignment_error": "0.02",
+      "cooperative_mirror_ESS": 25,
+      "raw_cooperative": 50,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.08",
+      "cooperative_mirror_ESS": 25,
+      "raw_cooperative": 50,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.12",
+      "cooperative_mirror_ESS": 23,
+      "raw_cooperative": 46,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.20",
+      "cooperative_mirror_ESS": 9,
+      "raw_cooperative": 18,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.21",
+      "cooperative_mirror_ESS": 9,
+      "raw_cooperative": 18,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.22",
+      "cooperative_mirror_ESS": 7,
+      "raw_cooperative": 14,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.23",
+      "cooperative_mirror_ESS": 7,
+      "raw_cooperative": 14,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.24",
+      "cooperative_mirror_ESS": 7,
+      "raw_cooperative": 14,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.245",
+      "cooperative_mirror_ESS": 2,
+      "raw_cooperative": 4,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.25",
+      "cooperative_mirror_ESS": 2,
+      "raw_cooperative": 4,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.26",
+      "cooperative_mirror_ESS": 2,
+      "raw_cooperative": 4,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.27",
+      "cooperative_mirror_ESS": 2,
+      "raw_cooperative": 4,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.28",
+      "cooperative_mirror_ESS": 2,
+      "raw_cooperative": 4,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.282",
+      "cooperative_mirror_ESS": 2,
+      "raw_cooperative": 4,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.2824",
+      "cooperative_mirror_ESS": 2,
+      "raw_cooperative": 4,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.283",
+      "cooperative_mirror_ESS": 0,
+      "raw_cooperative": 0,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.29",
+      "cooperative_mirror_ESS": 0,
+      "raw_cooperative": 0,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.30",
+      "cooperative_mirror_ESS": 0,
+      "raw_cooperative": 0,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.40",
+      "cooperative_mirror_ESS": 0,
+      "raw_cooperative": 0,
+      "allD_raw_ESS": 256
+    },
+    {
+      "assignment_error": "0.50",
+      "cooperative_mirror_ESS": 0,
+      "raw_cooperative": 0,
+      "allD_raw_ESS": 256
+    }
+  ],
+  "proof_statement": "The exact threshold is supported by the separate interval and symbolic certificates; this floating point grid is not itself a global proof.",
+  "human_E2": 0,
+  "historical_E3": 0
+}

@@ -1,0 +1,73 @@
+{
+  "project": "R135 postfreeze AllD invasion interval certificate",
+  "evidence": "math E1; not a new human/animal source or a change to prior frozen score",
+  "first_party_equations": "Ohtsuki Iwasa (2004) JTB 231:107-120 Eq 3-10",
+  "parameters": {
+    "b": 2,
+    "c": 1,
+    "execution_error": "1/50",
+    "assignment_error_range": [
+      "2401/8502",
+      "1/2"
+    ]
+  },
+  "mathematical_competing_inequality": "Gap = resident-intended payoff - AllD-intended payoff = theta(p,h,h)-2*theta(p,h,h_m)",
+  "exceptional_equality_pairs": [
+    {
+      "norm": 81,
+      "resident_strategy": 5
+    },
+    {
+      "norm": 89,
+      "resident_strategy": 5
+    },
+    {
+      "norm": 152,
+      "resident_strategy": 10
+    },
+    {
+      "norm": 154,
+      "resident_strategy": 10
+    },
+    {
+      "norm": 184,
+      "resident_strategy": 10
+    },
+    {
+      "norm": 186,
+      "resident_strategy": 10
+    },
+    {
+      "norm": 209,
+      "resident_strategy": 5
+    },
+    {
+      "norm": 217,
+      "resident_strategy": 5
+    }
+  ],
+  "exceptional_algebraic_resultant": "a*(2*a-1)^2*(8502*a-2401)/1250",
+  "candidate_exact_threshold": "2401/8502",
+  "input_complete_norm_count": 256,
+  "input_cooperative_strategy_count": 15,
+  "sampled_intervals": 48,
+  "nonexception_pairs_per_interval": 3832,
+  "exact_fraction_evaluations": 183936,
+  "resident_root_bracket_bisections": 10,
+  "x_root_enclosure_max_halfwidth": "1/2048",
+  "uniform_abs_derivative_in_a_bound": "19",
+  "uniform_abs_derivative_in_h_bound": "6",
+  "uniform_parameter_halfwidth": "925/408096",
+  "a_midpoint_extension_error_bound": "17575/408096",
+  "h_bracket_error_bound": "3/1024",
+  "maximum_certified_upper_resident_margin": "-801049/26118144",
+  "maximum_certified_upper_resident_margin_approx": -0.03067021148210225,
+  "maximum_raw_midpoint_margin": "-2002367/26118144",
+  "maximum_upper_location": {
+    "interval": 0,
+    "norm": 85,
+    "strategy": 5
+  },
+  "all_remaining_cooperative_residents_are_beaten_by_AllD_on_interval": true,
+  "note": "Eight exceptional pairs require the separate symbolic-resultant argument and endpoint evaluation; this finite certificate excludes them."
+}
