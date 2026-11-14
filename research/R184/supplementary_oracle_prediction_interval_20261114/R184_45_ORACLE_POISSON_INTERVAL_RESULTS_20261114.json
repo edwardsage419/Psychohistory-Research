@@ -1,0 +1,1148 @@
+{
+  "Poisson_CDF_bound_method": "positive rational Taylor partial sum plus geometric-tail bound for exp(mu)",
+  "all_assumed_Poisson_coverage_certified_at_least_95": true,
+  "all_source_true_oracle_coverage_at_least_95": true,
+  "date": "2026-11-14",
+  "evidence_grade": "INTERNAL_SYNTHETIC_MATHEMATICAL_E1",
+  "frozen_protocol_changed": false,
+  "future_event_source": "one independent finite count source unit",
+  "interval_rule": "[smallest k with CDF_Pois(np)(k)>=1/40, smallest k with CDF_Pois(np)(k)>=39/40]",
+  "n_taylor_exponential_certificate_terms": 57,
+  "new_E2": 0,
+  "new_E3": 0,
+  "oracle_mean_known": true,
+  "original_R184_two_group_marginals_with_repeats": 90,
+  "rows": [
+    {
+      "dispersion": "7/8",
+      "family": "BIN",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "49611444413282815245034117412085806837995064467686329484658097524751315353416499200000000000000/50335657645745487175092035600049564504048477435604198175708628327835865322122515542434921460143",
+      "poisson_assumed_coverage_rational_upper_bound": "4381756702766959474048539014275513872238513863619973698913959394373635785359360000000000000/4445720294698304700517984596736482472556371205521266850799268630665177394061164004711422667",
+      "poisson_interval": [
+        0,
+        2
+      ],
+      "poisson_interval_true_coverage": "4067/4096",
+      "poisson_interval_true_coverage_float": 0.992919921875,
+      "source_P0": "2401/4096",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "4067/4096",
+      "source_oracle_interval": [
+        0,
+        2
+      ],
+      "true_mean": "1/2",
+      "true_variance": "7/16"
+    },
+    {
+      "dispersion": "7/4",
+      "family": "BB_C2",
+      "n": 4,
+      "nominal_95_undercovered": true,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "49611444413282815245034117412085806837995064467686329484658097524751315353416499200000000000000/50335657645745487175092035600049564504048477435604198175708628327835865322122515542434921460143",
+      "poisson_assumed_coverage_rational_upper_bound": "4381756702766959474048539014275513872238513863619973698913959394373635785359360000000000000/4445720294698304700517984596736482472556371205521266850799268630665177394061164004711422667",
+      "poisson_interval": [
+        0,
+        2
+      ],
+      "poisson_interval_true_coverage": "1925/2048",
+      "poisson_interval_true_coverage_float": 0.93994140625,
+      "source_P0": "1463/2048",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "2009/2048",
+      "source_oracle_interval": [
+        0,
+        3
+      ],
+      "true_mean": "1/2",
+      "true_variance": "7/8"
+    },
+    {
+      "dispersion": "7/6",
+      "family": "BB_C8",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "49611444413282815245034117412085806837995064467686329484658097524751315353416499200000000000000/50335657645745487175092035600049564504048477435604198175708628327835865322122515542434921460143",
+      "poisson_assumed_coverage_rational_upper_bound": "4381756702766959474048539014275513872238513863619973698913959394373635785359360000000000000/4445720294698304700517984596736482472556371205521266850799268630665177394061164004711422667",
+      "poisson_interval": [
+        0,
+        2
+      ],
+      "poisson_interval_true_coverage": "161/165",
+      "poisson_interval_true_coverage_float": 0.975757575758,
+      "source_P0": "7/11",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "161/165",
+      "source_oracle_interval": [
+        0,
+        2
+      ],
+      "true_mean": "1/2",
+      "true_variance": "7/12"
+    },
+    {
+      "dispersion": "13/14",
+      "family": "ZIB_1_8",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "49611444413282815245034117412085806837995064467686329484658097524751315353416499200000000000000/50335657645745487175092035600049564504048477435604198175708628327835865322122515542434921460143",
+      "poisson_assumed_coverage_rational_upper_bound": "4381756702766959474048539014275513872238513863619973698913959394373635785359360000000000000/4445720294698304700517984596736482472556371205521266850799268630665177394061164004711422667",
+      "poisson_interval": [
+        0,
+        2
+      ],
+      "poisson_interval_true_coverage": "2719/2744",
+      "poisson_interval_true_coverage_float": 0.990889212828,
+      "source_P0": "1639/2744",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "2719/2744",
+      "source_oracle_interval": [
+        0,
+        2
+      ],
+      "true_mean": "1/2",
+      "true_variance": "13/28"
+    },
+    {
+      "dispersion": "1",
+      "family": "ZIB_1_4",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "49611444413282815245034117412085806837995064467686329484658097524751315353416499200000000000000/50335657645745487175092035600049564504048477435604198175708628327835865322122515542434921460143",
+      "poisson_assumed_coverage_rational_upper_bound": "4381756702766959474048539014275513872238513863619973698913959394373635785359360000000000000/4445720294698304700517984596736482472556371205521266850799268630665177394061164004711422667",
+      "poisson_interval": [
+        0,
+        2
+      ],
+      "poisson_interval_true_coverage": "569/576",
+      "poisson_interval_true_coverage_float": 0.987847222222,
+      "source_P0": "1057/1728",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "569/576",
+      "source_oracle_interval": [
+        0,
+        2
+      ],
+      "true_mean": "1/2",
+      "true_variance": "1/2"
+    },
+    {
+      "dispersion": "3/4",
+      "family": "BIN",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "255/256",
+      "poisson_interval_true_coverage_float": 0.99609375,
+      "source_P0": "81/256",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "255/256",
+      "source_oracle_interval": [
+        0,
+        3
+      ],
+      "true_mean": "1",
+      "true_variance": "3/4"
+    },
+    {
+      "dispersion": "3/2",
+      "family": "BB_C2",
+      "n": 4,
+      "nominal_95_undercovered": true,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "121/128",
+      "poisson_interval_true_coverage_float": 0.9453125,
+      "source_P0": "63/128",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "1",
+      "true_variance": "3/2"
+    },
+    {
+      "dispersion": "1",
+      "family": "BB_C8",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "65/66",
+      "poisson_interval_true_coverage_float": 0.984848484848,
+      "source_P0": "21/55",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "65/66",
+      "source_oracle_interval": [
+        0,
+        3
+      ],
+      "true_mean": "1",
+      "true_variance": "1"
+    },
+    {
+      "dispersion": "6/7",
+      "family": "ZIB_1_8",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "341/343",
+      "poisson_interval_true_coverage_float": 0.99416909621,
+      "source_P0": "121/343",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "341/343",
+      "source_oracle_interval": [
+        0,
+        3
+      ],
+      "true_mean": "1",
+      "true_variance": "6/7"
+    },
+    {
+      "dispersion": "1",
+      "family": "ZIB_1_4",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "107/108",
+      "poisson_interval_true_coverage_float": 0.990740740741,
+      "source_P0": "43/108",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "107/108",
+      "source_oracle_interval": [
+        0,
+        3
+      ],
+      "true_mean": "1",
+      "true_variance": "1"
+    },
+    {
+      "dispersion": "1/2",
+      "family": "BIN",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "1",
+      "poisson_interval_true_coverage_float": 1.0,
+      "source_P0": "1/16",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "2",
+      "true_variance": "1"
+    },
+    {
+      "dispersion": "1",
+      "family": "BB_C2",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "1",
+      "poisson_interval_true_coverage_float": 1.0,
+      "source_P0": "1/5",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "2",
+      "true_variance": "2"
+    },
+    {
+      "dispersion": "2/3",
+      "family": "BB_C8",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "1",
+      "poisson_interval_true_coverage_float": 1.0,
+      "source_P0": "7/66",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "2",
+      "true_variance": "4/3"
+    },
+    {
+      "dispersion": "5/7",
+      "family": "ZIB_1_8",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "1",
+      "poisson_interval_true_coverage_float": 1.0,
+      "source_P0": "53/343",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "2",
+      "true_variance": "10/7"
+    },
+    {
+      "dispersion": "1",
+      "family": "ZIB_1_4",
+      "n": 4,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "1",
+      "poisson_interval_true_coverage_float": 1.0,
+      "source_P0": "7/27",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "2",
+      "true_variance": "2"
+    },
+    {
+      "dispersion": "7/8",
+      "family": "BIN",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "16588509/16777216",
+      "poisson_interval_true_coverage_float": 0.988752186298,
+      "source_P0": "5764801/16777216",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "16588509/16777216",
+      "source_oracle_interval": [
+        0,
+        3
+      ],
+      "true_mean": "1",
+      "true_variance": "7/8"
+    },
+    {
+      "dispersion": "35/12",
+      "family": "BB_C2",
+      "n": 8,
+      "nominal_95_undercovered": true,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "22588093/25165824",
+      "poisson_interval_true_coverage_float": 0.897570172946,
+      "source_P0": "5215595/8388608",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "24696199/25165824",
+      "source_oracle_interval": [
+        0,
+        6
+      ],
+      "true_mean": "1",
+      "true_variance": "35/12"
+    },
+    {
+      "dispersion": "14/9",
+      "family": "BB_C8",
+      "n": 8,
+      "nominal_95_undercovered": true,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "37/39",
+      "poisson_interval_true_coverage_float": 0.948717948718,
+      "source_P0": "7/15",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "421/429",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "1",
+      "true_variance": "14/9"
+    },
+    {
+      "dispersion": "1",
+      "family": "ZIB_1_8",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "926353/941192",
+      "poisson_interval_true_coverage_float": 0.984233822642,
+      "source_P0": "2503159/6588344",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "926353/941192",
+      "source_oracle_interval": [
+        0,
+        3
+      ],
+      "true_mean": "1",
+      "true_variance": "1"
+    },
+    {
+      "dispersion": "7/6",
+      "family": "ZIB_1_4",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "560008342249212449714859226329610269501547135366040320551640104960000000000000/570847687695565503991042411357337668665981067411464025788160907975293872552641",
+      "poisson_assumed_coverage_rational_upper_bound": "145845864165100195252111927684866656356204713616649940243578880000000000000/148668810868461788098147750193685970957354730248978485301270686548008442789",
+      "poisson_interval": [
+        0,
+        3
+      ],
+      "poisson_interval_true_coverage": "2187997/2239488",
+      "poisson_interval_true_coverage_float": 0.977007691044,
+      "source_P0": "950497/2239488",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "2187997/2239488",
+      "source_oracle_interval": [
+        0,
+        3
+      ],
+      "true_mean": "1",
+      "true_variance": "7/6"
+    },
+    {
+      "dispersion": "3/4",
+      "family": "BIN",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "65259/65536",
+      "poisson_interval_true_coverage_float": 0.99577331543,
+      "source_P0": "6561/65536",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "65259/65536",
+      "source_oracle_interval": [
+        0,
+        5
+      ],
+      "true_mean": "2",
+      "true_variance": "3/2"
+    },
+    {
+      "dispersion": "5/2",
+      "family": "BB_C2",
+      "n": 8,
+      "nominal_95_undercovered": true,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "29369/32768",
+      "poisson_interval_true_coverage_float": 0.896270751953,
+      "source_P0": "12155/32768",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "32053/32768",
+      "source_oracle_interval": [
+        0,
+        7
+      ],
+      "true_mean": "2",
+      "true_variance": "5"
+    },
+    {
+      "dispersion": "4/3",
+      "family": "BB_C8",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "2077/2145",
+      "poisson_interval_true_coverage_float": 0.968298368298,
+      "source_P0": "1/5",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "2126/2145",
+      "source_oracle_interval": [
+        0,
+        6
+      ],
+      "true_mean": "2",
+      "true_variance": "8/3"
+    },
+    {
+      "dispersion": "1",
+      "family": "ZIB_1_8",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "16679/16807",
+      "poisson_interval_true_coverage_float": 0.992384125662,
+      "source_P0": "151771/823543",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "16679/16807",
+      "source_oracle_interval": [
+        0,
+        5
+      ],
+      "true_mean": "2",
+      "true_variance": "2"
+    },
+    {
+      "dispersion": "4/3",
+      "family": "ZIB_1_4",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "228869068750350412012120043831622697634964573861544571044921875/232723814904544266378921742481698919313943400485498132757178629",
+      "poisson_assumed_coverage_rational_upper_bound": "573606688597369453664461262735896485300663092384823486328125/583267706527679865611332687924057441889582457357138177336287",
+      "poisson_interval": [
+        0,
+        5
+      ],
+      "poisson_interval_true_coverage": "2873/2916",
+      "poisson_interval_true_coverage_float": 0.985253772291,
+      "source_P0": "2443/8748",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "2873/2916",
+      "source_oracle_interval": [
+        0,
+        5
+      ],
+      "true_mean": "2",
+      "true_variance": "8/3"
+    },
+    {
+      "dispersion": "1/2",
+      "family": "BIN",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "5490334432259230711660903979732996144516924416137707141258927787537242370338069162661987889686379024439291600688266601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_assumed_coverage_rational_upper_bound": "5490334432259230711660903979732996144516924473600795384428609848815845905938272200289369492185250675912608820221066601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_interval": [
+        1,
+        8
+      ],
+      "poisson_interval_true_coverage": "255/256",
+      "poisson_interval_true_coverage_float": 0.99609375,
+      "source_P0": "1/256",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "127/128",
+      "source_oracle_interval": [
+        1,
+        7
+      ],
+      "true_mean": "4",
+      "true_variance": "2"
+    },
+    {
+      "dispersion": "5/3",
+      "family": "BB_C2",
+      "n": 8,
+      "nominal_95_undercovered": true,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "5490334432259230711660903979732996144516924416137707141258927787537242370338069162661987889686379024439291600688266601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_assumed_coverage_rational_upper_bound": "5490334432259230711660903979732996144516924473600795384428609848815845905938272200289369492185250675912608820221066601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_interval": [
+        1,
+        8
+      ],
+      "poisson_interval_true_coverage": "8/9",
+      "poisson_interval_true_coverage_float": 0.888888888889,
+      "source_P0": "1/9",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        8
+      ],
+      "true_mean": "4",
+      "true_variance": "20/3"
+    },
+    {
+      "dispersion": "8/9",
+      "family": "BB_C8",
+      "n": 8,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "5490334432259230711660903979732996144516924416137707141258927787537242370338069162661987889686379024439291600688266601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_assumed_coverage_rational_upper_bound": "5490334432259230711660903979732996144516924473600795384428609848815845905938272200289369492185250675912608820221066601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_interval": [
+        1,
+        8
+      ],
+      "poisson_interval_true_coverage": "38/39",
+      "poisson_interval_true_coverage_float": 0.974358974359,
+      "source_P0": "1/39",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        8
+      ],
+      "true_mean": "4",
+      "true_variance": "32/9"
+    },
+    {
+      "dispersion": "1",
+      "family": "ZIB_1_8",
+      "n": 8,
+      "nominal_95_undercovered": true,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "5490334432259230711660903979732996144516924416137707141258927787537242370338069162661987889686379024439291600688266601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_assumed_coverage_rational_upper_bound": "5490334432259230711660903979732996144516924473600795384428609848815845905938272200289369492185250675912608820221066601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_interval": [
+        1,
+        8
+      ],
+      "poisson_interval_true_coverage": "719780/823543",
+      "poisson_interval_true_coverage_float": 0.87400415036,
+      "source_P0": "103763/823543",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "815351/823543",
+      "source_oracle_interval": [
+        0,
+        7
+      ],
+      "true_mean": "4",
+      "true_variance": "4"
+    },
+    {
+      "dispersion": "5/3",
+      "family": "ZIB_1_4",
+      "n": 8,
+      "nominal_95_undercovered": true,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "5490334432259230711660903979732996144516924416137707141258927787537242370338069162661987889686379024439291600688266601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_assumed_coverage_rational_upper_bound": "5490334432259230711660903979732996144516924473600795384428609848815845905938272200289369492185250675912608820221066601562500/5717187119481568867235201657301104017566086414378210538690993826167364824279294950270433741973671415349214812248882386493823",
+      "poisson_interval": [
+        1,
+        8
+      ],
+      "poisson_interval_true_coverage": "1640/2187",
+      "poisson_interval_true_coverage_float": 0.749885688157,
+      "source_P0": "547/2187",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        8
+      ],
+      "true_mean": "4",
+      "true_variance": "20/3"
+    },
+    {
+      "dispersion": "7/8",
+      "family": "BIN",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "3884456498548005901509949577764648080748588513160947358299611390279680000000000000/3957979676588849339380102738077892371210507295957613243361096328421369780293896533",
+      "poisson_assumed_coverage_rational_upper_bound": "3546127031743871246837215264284448178047151134511158277721117058662400000000000/3613246467682414860356311768343115532171678761097774549132626364091945552840977",
+      "poisson_interval": [
+        0,
+        4
+      ],
+      "poisson_interval_true_coverage": "33971972293/34359738368",
+      "poisson_interval_true_coverage_float": 0.988714521896,
+      "source_P0": "13841287201/68719476736",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "33971972293/34359738368",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "3/2",
+      "true_variance": "21/16"
+    },
+    {
+      "dispersion": "49/12",
+      "family": "BB_C2",
+      "n": 12,
+      "nominal_95_undercovered": true,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "3884456498548005901509949577764648080748588513160947358299611390279680000000000000/3957979676588849339380102738077892371210507295957613243361096328421369780293896533",
+      "poisson_assumed_coverage_rational_upper_bound": "3546127031743871246837215264284448178047151134511158277721117058662400000000000/3613246467682414860356311768343115532171678761097774549132626364091945552840977",
+      "poisson_interval": [
+        0,
+        4
+      ],
+      "poisson_interval_true_coverage": "7531224351/8589934592",
+      "poisson_interval_true_coverage_float": 0.876749906573,
+      "source_P0": "9774119859/17179869184",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "16864573499/17179869184",
+      "source_oracle_interval": [
+        0,
+        9
+      ],
+      "true_mean": "3/2",
+      "true_variance": "49/8"
+    },
+    {
+      "dispersion": "35/18",
+      "family": "BB_C8",
+      "n": 12,
+      "nominal_95_undercovered": true,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "3884456498548005901509949577764648080748588513160947358299611390279680000000000000/3957979676588849339380102738077892371210507295957613243361096328421369780293896533",
+      "poisson_assumed_coverage_rational_upper_bound": "3546127031743871246837215264284448178047151134511158277721117058662400000000000/3613246467682414860356311768343115532171678761097774549132626364091945552840977",
+      "poisson_interval": [
+        0,
+        4
+      ],
+      "poisson_interval_true_coverage": "301/323",
+      "poisson_interval_true_coverage_float": 0.931888544892,
+      "source_P0": "7/19",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "4133/4199",
+      "source_oracle_interval": [
+        0,
+        6
+      ],
+      "true_mean": "3/2",
+      "true_variance": "35/12"
+    },
+    {
+      "dispersion": "15/14",
+      "family": "ZIB_1_8",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "3884456498548005901509949577764648080748588513160947358299611390279680000000000000/3957979676588849339380102738077892371210507295957613243361096328421369780293896533",
+      "poisson_assumed_coverage_rational_upper_bound": "3546127031743871246837215264284448178047151134511158277721117058662400000000000/3613246467682414860356311768343115532171678761097774549132626364091945552840977",
+      "poisson_interval": [
+        0,
+        4
+      ],
+      "poisson_interval_true_coverage": "15546944407/15818613944",
+      "poisson_interval_true_coverage_float": 0.982825958206,
+      "source_P0": "4154109079/15818613944",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "15546944407/15818613944",
+      "source_oracle_interval": [
+        0,
+        4
+      ],
+      "true_mean": "3/2",
+      "true_variance": "45/28"
+    },
+    {
+      "dispersion": "4/3",
+      "family": "ZIB_1_4",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/8",
+      "poisson_assumed_coverage_rational_lower_bound": "3884456498548005901509949577764648080748588513160947358299611390279680000000000000/3957979676588849339380102738077892371210507295957613243361096328421369780293896533",
+      "poisson_assumed_coverage_rational_upper_bound": "3546127031743871246837215264284448178047151134511158277721117058662400000000000/3613246467682414860356311768343115532171678761097774549132626364091945552840977",
+      "poisson_interval": [
+        0,
+        4
+      ],
+      "poisson_interval_true_coverage": "470541727/483729408",
+      "poisson_interval_true_coverage_float": 0.972737483432,
+      "source_P0": "969734737/2902376448",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "480854227/483729408",
+      "source_oracle_interval": [
+        0,
+        5
+      ],
+      "true_mean": "3/2",
+      "true_variance": "2"
+    },
+    {
+      "dispersion": "3/4",
+      "family": "BIN",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "5801159032015492320655175312101177703820082178141716480000000000000/5871050981060396643325072794259877380883624646046583525726433724807",
+      "poisson_assumed_coverage_rational_upper_bound": "5551348355995686431248971590527442778775198256594944000000000000/5618230603885547027105332817473566871658970953154613956019877737",
+      "poisson_interval": [
+        0,
+        7
+      ],
+      "poisson_interval_true_coverage": "8365275/8388608",
+      "poisson_interval_true_coverage_float": 0.997218489647,
+      "source_P0": "531441/16777216",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "8269047/8388608",
+      "source_oracle_interval": [
+        0,
+        6
+      ],
+      "true_mean": "3",
+      "true_variance": "9/4"
+    },
+    {
+      "dispersion": "7/2",
+      "family": "BB_C2",
+      "n": 12,
+      "nominal_95_undercovered": true,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "5801159032015492320655175312101177703820082178141716480000000000000/5871050981060396643325072794259877380883624646046583525726433724807",
+      "poisson_assumed_coverage_rational_upper_bound": "5551348355995686431248971590527442778775198256594944000000000000/5618230603885547027105332817473566871658970953154613956019877737",
+      "poisson_interval": [
+        0,
+        7
+      ],
+      "poisson_interval_true_coverage": "1833745/2097152",
+      "poisson_interval_true_coverage_float": 0.874397754669,
+      "source_P0": "1300075/4194304",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "4142301/4194304",
+      "source_oracle_interval": [
+        0,
+        11
+      ],
+      "true_mean": "3",
+      "true_variance": "21/2"
+    },
+    {
+      "dispersion": "5/3",
+      "family": "BB_C8",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "5801159032015492320655175312101177703820082178141716480000000000000/5871050981060396643325072794259877380883624646046583525726433724807",
+      "poisson_assumed_coverage_rational_upper_bound": "5551348355995686431248971590527442778775198256594944000000000000/5618230603885547027105332817473566871658970953154613956019877737",
+      "poisson_interval": [
+        0,
+        7
+      ],
+      "poisson_interval_true_coverage": "8063/8398",
+      "poisson_interval_true_coverage_float": 0.960109549893,
+      "source_P0": "7/57",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "4126/4199",
+      "source_oracle_interval": [
+        0,
+        8
+      ],
+      "true_mean": "3",
+      "true_variance": "5"
+    },
+    {
+      "dispersion": "8/7",
+      "family": "ZIB_1_8",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "5801159032015492320655175312101177703820082178141716480000000000000/5871050981060396643325072794259877380883624646046583525726433724807",
+      "poisson_assumed_coverage_rational_upper_bound": "5551348355995686431248971590527442778775198256594944000000000000/5618230603885547027105332817473566871658970953154613956019877737",
+      "poisson_interval": [
+        0,
+        7
+      ],
+      "poisson_interval_true_coverage": "1965439671/1977326743",
+      "poisson_interval_true_coverage_float": 0.993988311723,
+      "source_P0": "277683421/1977326743",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1965439671/1977326743",
+      "source_oracle_interval": [
+        0,
+        7
+      ],
+      "true_mean": "3",
+      "true_variance": "24/7"
+    },
+    {
+      "dispersion": "5/3",
+      "family": "ZIB_1_4",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/4",
+      "poisson_assumed_coverage_rational_lower_bound": "5801159032015492320655175312101177703820082178141716480000000000000/5871050981060396643325072794259877380883624646046583525726433724807",
+      "poisson_assumed_coverage_rational_upper_bound": "5551348355995686431248971590527442778775198256594944000000000000/5618230603885547027105332817473566871658970953154613956019877737",
+      "poisson_interval": [
+        0,
+        7
+      ],
+      "poisson_interval_true_coverage": "232873/236196",
+      "poisson_interval_true_coverage_float": 0.985931175803,
+      "source_P0": "181243/708588",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "232873/236196",
+      "source_oracle_interval": [
+        0,
+        7
+      ],
+      "true_mean": "3",
+      "true_variance": "5"
+    },
+    {
+      "dispersion": "1/2",
+      "family": "BIN",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "82743376309623218059266226421173172057337011255643283476028632310859775303813841960238573144531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_assumed_coverage_rational_upper_bound": "82743376309623218059266226421173173380612953890025639867234952534792784546844614793805001269531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_interval": [
+        2,
+        11
+      ],
+      "poisson_interval_true_coverage": "2041/2048",
+      "poisson_interval_true_coverage_float": 0.99658203125,
+      "source_P0": "1/4096",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1969/2048",
+      "source_oracle_interval": [
+        3,
+        9
+      ],
+      "true_mean": "6",
+      "true_variance": "3"
+    },
+    {
+      "dispersion": "7/3",
+      "family": "BB_C2",
+      "n": 12,
+      "nominal_95_undercovered": true,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "82743376309623218059266226421173172057337011255643283476028632310859775303813841960238573144531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_assumed_coverage_rational_upper_bound": "82743376309623218059266226421173173380612953890025639867234952534792784546844614793805001269531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_interval": [
+        2,
+        11
+      ],
+      "poisson_interval_true_coverage": "10/13",
+      "poisson_interval_true_coverage_float": 0.769230769231,
+      "source_P0": "1/13",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1",
+      "source_oracle_interval": [
+        0,
+        12
+      ],
+      "true_mean": "6",
+      "true_variance": "14"
+    },
+    {
+      "dispersion": "10/9",
+      "family": "BB_C8",
+      "n": 12,
+      "nominal_95_undercovered": false,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "82743376309623218059266226421173172057337011255643283476028632310859775303813841960238573144531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_assumed_coverage_rational_upper_bound": "82743376309623218059266226421173173380612953890025639867234952534792784546844614793805001269531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_interval": [
+        2,
+        11
+      ],
+      "poisson_interval_true_coverage": "1847/1938",
+      "poisson_interval_true_coverage_float": 0.953044375645,
+      "source_P0": "35/3876",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1903/1938",
+      "source_oracle_interval": [
+        1,
+        11
+      ],
+      "true_mean": "6",
+      "true_variance": "20/3"
+    },
+    {
+      "dispersion": "9/7",
+      "family": "ZIB_1_8",
+      "n": 12,
+      "nominal_95_undercovered": true,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "82743376309623218059266226421173172057337011255643283476028632310859775303813841960238573144531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_assumed_coverage_rational_upper_bound": "82743376309623218059266226421173173380612953890025639867234952534792784546844614793805001269531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_interval": [
+        2,
+        11
+      ],
+      "poisson_interval_true_coverage": "1726934436/1977326743",
+      "poisson_interval_true_coverage_float": 0.873368269616,
+      "source_P0": "247232273/1977326743",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "1956355223/1977326743",
+      "source_oracle_interval": [
+        0,
+        10
+      ],
+      "true_mean": "6",
+      "true_variance": "54/7"
+    },
+    {
+      "dispersion": "7/3",
+      "family": "ZIB_1_4",
+      "n": 12,
+      "nominal_95_undercovered": true,
+      "p": "1/2",
+      "poisson_assumed_coverage_rational_lower_bound": "82743376309623218059266226421173172057337011255643283476028632310859775303813841960238573144531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_assumed_coverage_rational_upper_bound": "82743376309623218059266226421173173380612953890025639867234952534792784546844614793805001269531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+      "poisson_interval": [
+        2,
+        11
+      ],
+      "poisson_interval_true_coverage": "131830/177147",
+      "poisson_interval_true_coverage_float": 0.744184208595,
+      "source_P0": "44287/177147",
+      "source_closed_vs_DP_exact": true,
+      "source_oracle_coverage": "176123/177147",
+      "source_oracle_interval": [
+        0,
+        11
+      ],
+      "true_mean": "6",
+      "true_variance": "14"
+    }
+  ],
+  "source_R177_git_blob_sha1": "2d032513ce84141214b6b3f84df9c0ed9976a02b",
+  "source_R184_results_git_blob_sha1": "f7d8ee20f9885594097de9cb6284bb48e7b6642b",
+  "study": "R184 post-freeze oracle Poisson prediction interval calibration",
+  "total_distinct_marginal_designs": 45,
+  "undercovered_by_family": {
+    "BB_C2": {
+      "min_coverage": "10/13",
+      "undercovered": 8
+    },
+    "BB_C8": {
+      "min_coverage": "301/323",
+      "undercovered": 2
+    },
+    "BIN": {
+      "min_coverage": "33971972293/34359738368",
+      "undercovered": 0
+    },
+    "ZIB_1_4": {
+      "min_coverage": "131830/177147",
+      "undercovered": 2
+    },
+    "ZIB_1_8": {
+      "min_coverage": "1726934436/1977326743",
+      "undercovered": 2
+    }
+  },
+  "undercovered_total": 14,
+  "worst_case": {
+    "dispersion": "7/3",
+    "family": "ZIB_1_4",
+    "n": 12,
+    "nominal_95_undercovered": true,
+    "p": "1/2",
+    "poisson_assumed_coverage_rational_lower_bound": "82743376309623218059266226421173172057337011255643283476028632310859775303813841960238573144531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+    "poisson_assumed_coverage_rational_upper_bound": "82743376309623218059266226421173173380612953890025639867234952534792784546844614793805001269531250/85962073909069317523037324110175103591050827330627156358116950119819118477342056073175411249979869",
+    "poisson_interval": [
+      2,
+      11
+    ],
+    "poisson_interval_true_coverage": "131830/177147",
+    "poisson_interval_true_coverage_float": 0.744184208595,
+    "source_P0": "44287/177147",
+    "source_closed_vs_DP_exact": true,
+    "source_oracle_coverage": "176123/177147",
+    "source_oracle_interval": [
+      0,
+      11
+    ],
+    "true_mean": "6",
+    "true_variance": "14"
+  }
+}
