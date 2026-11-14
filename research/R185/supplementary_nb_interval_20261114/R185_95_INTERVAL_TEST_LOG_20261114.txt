@@ -1,0 +1,9 @@
+Execution: standard-library Python on actual local environment\npython --test\n....................
+----------------------------------------------------------------------
+Ran 20 tests in 0.155s
+
+OK\n\npython -O --test\n....................
+----------------------------------------------------------------------
+Ran 20 tests in 0.158s
+
+OK\n\nJSON normal SHA256: a6cf58f5276fe98be76dd3486a606cbf92d257705dfb14e8fc388506b819a363\nJSON optimized SHA256: a6cf58f5276fe98be76dd3486a606cbf92d257705dfb14e8fc388506b819a363\nNormal / optimized JSON byte parity: PASS\n
