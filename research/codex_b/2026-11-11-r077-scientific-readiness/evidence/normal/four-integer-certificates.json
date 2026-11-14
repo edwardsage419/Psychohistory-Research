@@ -1,0 +1,846 @@
+[
+  {
+    "source": "identity",
+    "target": "15_sessions_1040_events",
+    "source_shape": {
+      "sessions": 12,
+      "humans": 188,
+      "individual_source_decisions": 18800,
+      "individual_scorable_outcomes": 18424,
+      "score_rounds_from": 3,
+      "score_rounds_through": 100,
+      "fixed_sessions": 6,
+      "shuffled_sessions": 6,
+      "individual_record_or_ID_exported": false
+    },
+    "target_sessions": 15,
+    "target_events": 1040,
+    "certificate": {
+      "models": {
+        "M0_TREATMENT_PREVALENCE": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "3893407631/7807206848",
+            "1": "1954276573/3903603424"
+          }
+        },
+        "M1_OWN_LAST": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "3893407631/7807206848",
+            "1": "1954276573/3903603424"
+          }
+        },
+        "M2_OPPONENT_LAST": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "3893407631/7807206848",
+            "1": "1954276573/3903603424"
+          }
+        },
+        "M3_JOINT_LAST": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "3893407631/7807206848",
+            "1": "1954276573/3903603424"
+          }
+        },
+        "M4_JOINT_TWO_LAGS": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "3893407631/7807206848",
+            "1": "1954276573/3903603424"
+          }
+        },
+        "M5_TFT_NOISY": {
+          "all_original_sessions_equal_Brier": "181/400",
+          "per_treatment_Brier": {
+            "0": "29081/64400",
+            "1": "8341/18400"
+          }
+        },
+        "M6_WSLS_NOISY": {
+          "all_original_sessions_equal_Brier": "181/400",
+          "per_treatment_Brier": {
+            "0": "29081/64400",
+            "1": "8341/18400"
+          }
+        }
+      },
+      "paired_differences": {
+        "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+          "Brier_delta_all_original_sessions_equal": "0",
+          "sessions_better": 0,
+          "sessions_equal": 15,
+          "sessions_worse": 0,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 7,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 8,
+              "worse": 0
+            }
+          }
+        },
+        "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+          "Brier_delta_all_original_sessions_equal": "0",
+          "sessions_better": 0,
+          "sessions_equal": 15,
+          "sessions_worse": 0,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 7,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 8,
+              "worse": 0
+            }
+          }
+        },
+        "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "0",
+          "sessions_better": 0,
+          "sessions_equal": 15,
+          "sessions_worse": 0,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 7,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 8,
+              "worse": 0
+            }
+          }
+        },
+        "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "0",
+          "sessions_better": 0,
+          "sessions_equal": 15,
+          "sessions_worse": 0,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 7,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 8,
+              "worse": 0
+            }
+          }
+        },
+        "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "-400787109/8486094400",
+          "sessions_better": 15,
+          "sessions_equal": 0,
+          "sessions_worse": 0,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "-9198008187/195180171200",
+              "better": 7,
+              "equal": 0,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "-144307608/3049690175",
+              "better": 8,
+              "equal": 0,
+              "worse": 0
+            }
+          }
+        },
+        "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "-400787109/8486094400",
+          "sessions_better": 15,
+          "sessions_equal": 0,
+          "sessions_worse": 0,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "-9198008187/195180171200",
+              "better": 7,
+              "equal": 0,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "-144307608/3049690175",
+              "better": 8,
+              "equal": 0,
+              "worse": 0
+            }
+          }
+        }
+      },
+      "source_prevalence": "5/18424"
+    }
+  },
+  {
+    "source": "identity",
+    "target": "five_unequal_sessions",
+    "source_shape": {
+      "sessions": 12,
+      "humans": 188,
+      "individual_source_decisions": 18800,
+      "individual_scorable_outcomes": 18424,
+      "score_rounds_from": 3,
+      "score_rounds_through": 100,
+      "fixed_sessions": 6,
+      "shuffled_sessions": 6,
+      "individual_record_or_ID_exported": false
+    },
+    "target_sessions": 5,
+    "target_events": 350,
+    "certificate": {
+      "models": {
+        "M0_TREATMENT_PREVALENCE": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "169629793/339443776",
+            "1": "169629793/339443776"
+          }
+        },
+        "M1_OWN_LAST": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "169629793/339443776",
+            "1": "169629793/339443776"
+          }
+        },
+        "M2_OPPONENT_LAST": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "169629793/339443776",
+            "1": "169629793/339443776"
+          }
+        },
+        "M3_JOINT_LAST": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "169629793/339443776",
+            "1": "169629793/339443776"
+          }
+        },
+        "M4_JOINT_TWO_LAGS": {
+          "all_original_sessions_equal_Brier": "169629793/339443776",
+          "per_treatment_Brier": {
+            "0": "169629793/339443776",
+            "1": "169629793/339443776"
+          }
+        },
+        "M5_TFT_NOISY": {
+          "all_original_sessions_equal_Brier": "181/400",
+          "per_treatment_Brier": {
+            "0": "181/400",
+            "1": "181/400"
+          }
+        },
+        "M6_WSLS_NOISY": {
+          "all_original_sessions_equal_Brier": "181/400",
+          "per_treatment_Brier": {
+            "0": "181/400",
+            "1": "181/400"
+          }
+        }
+      },
+      "paired_differences": {
+        "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+          "Brier_delta_all_original_sessions_equal": "0",
+          "sessions_better": 0,
+          "sessions_equal": 5,
+          "sessions_worse": 0,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 2,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 3,
+              "worse": 0
+            }
+          }
+        },
+        "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+          "Brier_delta_all_original_sessions_equal": "0",
+          "sessions_better": 0,
+          "sessions_equal": 5,
+          "sessions_worse": 0,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 2,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 3,
+              "worse": 0
+            }
+          }
+        },
+        "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "0",
+          "sessions_better": 0,
+          "sessions_equal": 5,
+          "sessions_worse": 0,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 2,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 3,
+              "worse": 0
+            }
+          }
+        },
+        "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "0",
+          "sessions_better": 0,
+          "sessions_equal": 5,
+          "sessions_worse": 0,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 2,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "0",
+              "better": 0,
+              "equal": 3,
+              "worse": 0
+            }
+          }
+        },
+        "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "-400787109/8486094400",
+          "sessions_better": 5,
+          "sessions_equal": 0,
+          "sessions_worse": 0,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "-400787109/8486094400",
+              "better": 2,
+              "equal": 0,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "-400787109/8486094400",
+              "better": 3,
+              "equal": 0,
+              "worse": 0
+            }
+          }
+        },
+        "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "-400787109/8486094400",
+          "sessions_better": 5,
+          "sessions_equal": 0,
+          "sessions_worse": 0,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "-400787109/8486094400",
+              "better": 2,
+              "equal": 0,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "-400787109/8486094400",
+              "better": 3,
+              "equal": 0,
+              "worse": 0
+            }
+          }
+        }
+      },
+      "source_prevalence": "5/18424"
+    }
+  },
+  {
+    "source": "varied",
+    "target": "15_sessions_1040_events",
+    "source_shape": {
+      "sessions": 12,
+      "humans": 188,
+      "individual_source_decisions": 18800,
+      "individual_scorable_outcomes": 18424,
+      "score_rounds_from": 3,
+      "score_rounds_through": 100,
+      "fixed_sessions": 6,
+      "shuffled_sessions": 6,
+      "individual_record_or_ID_exported": false
+    },
+    "target_sessions": 15,
+    "target_events": 1040,
+    "certificate": {
+      "models": {
+        "M0_TREATMENT_PREVALENCE": {
+          "all_original_sessions_equal_Brier": "465005/1731856",
+          "per_treatment_Brier": {
+            "0": "32051693/119498064",
+            "1": "64229581/238996128"
+          }
+        },
+        "M1_OWN_LAST": {
+          "all_original_sessions_equal_Brier": "99140461483873363919969/339955611117435487872180",
+          "per_treatment_Brier": {
+            "0": "1119229992954083646991/3879373340078843405148",
+            "1": "253506765917067730191851/861220881497503235942856"
+          }
+        },
+        "M2_OPPONENT_LAST": {
+          "all_original_sessions_equal_Brier": "9085968416890209259229/33995561111743548787218",
+          "per_treatment_Brier": {
+            "0": "776494851810468876242/2909530005059132553861",
+            "1": "6680328498068797126571/24962924101376905389648"
+          }
+        },
+        "M3_JOINT_LAST": {
+          "all_original_sessions_equal_Brier": "1859661789187238372489263/6435801276437108599584750",
+          "per_treatment_Brier": {
+            "0": "1074942881418949415517307/3757116420838960695973800",
+            "1": "324120213409157334067538699/1112106460568332366008244800"
+          }
+        },
+        "M4_JOINT_TWO_LAGS": {
+          "all_original_sessions_equal_Brier": "65757937832525340268351687250157643059112573567702854132457349878986416797/172177038955466748130164045848053984828693578569560182158823481143433800960",
+          "per_treatment_Brier": {
+            "0": "356972246711854782613420314756812672318427322402029188952336939040027285/930686697056577016919805653232724242317262586862487471128775573748290816",
+            "1": "13102250199900704013522400028557305880858130525122875307339597803199022947/34435407791093349626032809169610796965738715713912036431764696228686760192"
+          }
+        },
+        "M5_TFT_NOISY": {
+          "all_original_sessions_equal_Brier": "181/400",
+          "per_treatment_Brier": {
+            "0": "29081/64400",
+            "1": "8341/18400"
+          }
+        },
+        "M6_WSLS_NOISY": {
+          "all_original_sessions_equal_Brier": "181/400",
+          "per_treatment_Brier": {
+            "0": "29081/64400",
+            "1": "8341/18400"
+          }
+        }
+      },
+      "paired_differences": {
+        "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+          "Brier_delta_all_original_sessions_equal": "-56411060706873984327178033609/21112591536274448770207737799500",
+          "sessions_better": 15,
+          "sessions_equal": 0,
+          "sessions_worse": 0,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "-310523821451678688668346830423/129414480011541756245489592781800",
+              "better": 7,
+              "equal": 0,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "-692451917818636734881725722101/237929727226188570488601984244800",
+              "better": 8,
+              "equal": 0,
+              "worse": 0
+            }
+          }
+        },
+        "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+          "Brier_delta_all_original_sessions_equal": "591715467426001109686141855614092139562447838532052242176558596384542667908600950761273/6364945657532044579439701188961154079030195038002978293349532477010844903651320053664000",
+          "sessions_better": 0,
+          "sessions_equal": 0,
+          "sessions_worse": 15,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "90524479143904002781717155608826228293140748925952877100626290554199436907944353540843/928938014883055154837145578929465730453055492032867102272634469617798985938300764588800",
+              "better": 0,
+              "equal": 0,
+              "worse": 7
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "3060389095404369145514093375256933772079352618659304555904879631701287742679886180573097/34370706550673040728974386420390232026763053205216082784087475375858562479717128289785600",
+              "better": 0,
+              "equal": 0,
+              "worse": 8
+            }
+          }
+        },
+        "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "4492601864606328044093/194260349209963135926960",
+          "sessions_better": 0,
+          "sessions_equal": 0,
+          "sessions_worse": 15,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "314827995879663861085/15517493360315373620592",
+              "better": 0,
+              "equal": 0,
+              "worse": 7
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "1800483138745626580619/70303745428367611097376",
+              "better": 0,
+              "equal": 0,
+              "worse": 8
+            }
+          }
+        },
+        "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "-47854177361165400059/38852069841992627185392",
+          "sessions_better": 15,
+          "sessions_equal": 0,
+          "sessions_worse": 0,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "-62358298842510160765/46552480080946120861776",
+              "better": 7,
+              "equal": 0,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "-186574149344819754775/164042072666191092560544",
+              "better": 8,
+              "equal": 0,
+              "worse": 0
+            }
+          }
+        },
+        "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "497906/2706025",
+          "sessions_better": 0,
+          "sessions_equal": 0,
+          "sessions_worse": 15,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "68468273/373431450",
+              "better": 0,
+              "equal": 0,
+              "worse": 7
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "551387509/2987451600",
+              "better": 0,
+              "equal": 0,
+              "worse": 8
+            }
+          }
+        },
+        "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "497906/2706025",
+          "sessions_better": 0,
+          "sessions_equal": 0,
+          "sessions_worse": 15,
+          "sessions": 15,
+          "per_treatment": {
+            "0": {
+              "sessions": 7,
+              "Brier_delta": "68468273/373431450",
+              "better": 0,
+              "equal": 0,
+              "worse": 7
+            },
+            "1": {
+              "sessions": 8,
+              "Brier_delta": "551387509/2987451600",
+              "better": 0,
+              "equal": 0,
+              "worse": 8
+            }
+          }
+        }
+      },
+      "source_prevalence": "479/1316"
+    }
+  },
+  {
+    "source": "varied",
+    "target": "five_unequal_sessions",
+    "source_shape": {
+      "sessions": 12,
+      "humans": 188,
+      "individual_source_decisions": 18800,
+      "individual_scorable_outcomes": 18424,
+      "score_rounds_from": 3,
+      "score_rounds_through": 100,
+      "fixed_sessions": 6,
+      "shuffled_sessions": 6,
+      "individual_record_or_ID_exported": false
+    },
+    "target_sessions": 5,
+    "target_events": 350,
+    "certificate": {
+      "models": {
+        "M0_TREATMENT_PREVALENCE": {
+          "all_original_sessions_equal_Brier": "465005/1731856",
+          "per_treatment_Brier": {
+            "0": "465005/1731856",
+            "1": "465005/1731856"
+          }
+        },
+        "M1_OWN_LAST": {
+          "all_original_sessions_equal_Brier": "626770535316346031477329/2153052203743758089857140",
+          "per_treatment_Brier": {
+            "0": "3362657598122560793753/11638120020236530215444",
+            "1": "41992652561697392526623/143536813582917205990476"
+          }
+        },
+        "M2_OPPONENT_LAST": {
+          "all_original_sessions_equal_Brier": "57639140511360584978317/215305220374375808985714",
+          "per_treatment_Brier": {
+            "0": "1558915984823439630121/5819060010118265107722",
+            "1": "57611973226622797420877/215305220374375808985714"
+          }
+        },
+        "M3_JOINT_LAST": {
+          "all_original_sessions_equal_Brier": "8715887336817524128288937/30220284254574249076311000",
+          "per_treatment_Brier": {
+            "0": "179244900640677519006403/626186070139826782662300",
+            "1": "120880672862342236511802619/417039922713124637253091800"
+          }
+        },
+        "M4_JOINT_TWO_LAGS": {
+          "all_original_sessions_equal_Brier": "970788251283866915247420765227022189709436689376882087035285004005194991/2532015278756863943090647733059617423951376155434708561159168840344614720",
+          "per_treatment_Brier": {
+            "0": "30024425593657193824352271634173251582314248045087531016068100554703631/77557224754714751409983804436060353526438548905207289260731297812357568",
+            "1": "317354122259156146135482216324932753993118085593469793355894411127229315/833114704623226200629826028297035410461420541465613784639468457145647424"
+          }
+        },
+        "M5_TFT_NOISY": {
+          "all_original_sessions_equal_Brier": "181/400",
+          "per_treatment_Brier": {
+            "0": "181/400",
+            "1": "181/400"
+          }
+        },
+        "M6_WSLS_NOISY": {
+          "all_original_sessions_equal_Brier": "181/400",
+          "per_treatment_Brier": {
+            "0": "181/400",
+            "1": "181/400"
+          }
+        }
+      },
+      "paired_differences": {
+        "M3_JOINT_LAST_VS_M1_OWN_LAST": {
+          "Brier_delta_all_original_sessions_equal": "-1317324276423687859202843929211/488605689839494385824807646217000",
+          "sessions_better": 5,
+          "sessions_equal": 0,
+          "sessions_worse": 0,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "-2069208298267752867453637664/770324285782986644318390433225",
+              "better": 2,
+              "equal": 0,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "-5546355997242285921822247013213/2052143897325876420464192114111400",
+              "better": 3,
+              "equal": 0,
+              "worse": 0
+            }
+          }
+        },
+        "M4_JOINT_TWO_LAGS_VS_M3_JOINT_LAST": {
+          "Brier_delta_all_original_sessions_equal": "240073177085892201120163829193006502806993392140620458645387300125396239144633635602793/2527257834608311818306940177969870001967871559207064910594667307048423711743906491896000",
+          "sessions_better": 0,
+          "sessions_equal": 0,
+          "sessions_worse": 5,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "7809076544373445690322506281732736902949218219903964920065879964479210904271434136961/77411501240254596236428798244122144204421291002738925189386205801483248828191730382400",
+              "better": 0,
+              "equal": 0,
+              "worse": 2
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "75729968309976208896489958120530417911747136179737664023127701613462943377758497640069/831549352032412275700993219848150774841041609803614906066632468770771672896382136043200",
+              "better": 0,
+              "equal": 0,
+              "worse": 3
+            }
+          }
+        },
+        "M1_OWN_LAST_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "3973383666764750678059/175759363570919027743440",
+          "sessions_better": 0,
+          "sessions_equal": 0,
+          "sessions_worse": 5,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "135892108893269223701/6650354297278017265968",
+              "better": 0,
+              "equal": 0,
+              "worse": 2
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "1973074401027925799171/82021036333095546280272",
+              "better": 0,
+              "equal": 0,
+              "worse": 3
+            }
+          }
+        },
+        "M2_OPPONENT_LAST_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "-194877746842512672907/246063108999286638840816",
+          "sessions_better": 5,
+          "sessions_equal": 0,
+          "sessions_worse": 0,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "-4008250235691652591/6650354297278017265968",
+              "better": 2,
+              "equal": 0,
+              "worse": 0
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "-225926072257127024267/246063108999286638840816",
+              "better": 3,
+              "equal": 0,
+              "worse": 0
+            }
+          }
+        },
+        "M5_TFT_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "497906/2706025",
+          "sessions_better": 0,
+          "sessions_equal": 0,
+          "sessions_worse": 5,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "497906/2706025",
+              "better": 0,
+              "equal": 0,
+              "worse": 2
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "497906/2706025",
+              "better": 0,
+              "equal": 0,
+              "worse": 3
+            }
+          }
+        },
+        "M6_WSLS_NOISY_VS_M0_TREATMENT_PREVALENCE": {
+          "Brier_delta_all_original_sessions_equal": "497906/2706025",
+          "sessions_better": 0,
+          "sessions_equal": 0,
+          "sessions_worse": 5,
+          "sessions": 5,
+          "per_treatment": {
+            "0": {
+              "sessions": 2,
+              "Brier_delta": "497906/2706025",
+              "better": 0,
+              "equal": 0,
+              "worse": 2
+            },
+            "1": {
+              "sessions": 3,
+              "Brier_delta": "497906/2706025",
+              "better": 0,
+              "equal": 0,
+              "worse": 3
+            }
+          }
+        }
+      },
+      "source_prevalence": "479/1316"
+    }
+  }
+]

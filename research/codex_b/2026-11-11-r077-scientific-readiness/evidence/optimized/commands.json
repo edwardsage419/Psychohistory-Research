@@ -1,0 +1,79 @@
+[
+  {
+    "tag": "new7",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "new7.stderr",
+        "bytes": 1063,
+        "sha256": "d6f761d908e1a0dd17cb95df668e07e8989ad3879f953335cf79c3c472acc654"
+      }
+    }
+  },
+  {
+    "tag": "bad_alpha21",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-O",
+      "-c",
+      "import sys,types,unittest;from pathlib import Path;m=types.ModuleType('candidate');m.__file__=sys.argv[2];sys.modules['candidate']=m;exec(compile(Path(sys.argv[1]).read_text(),sys.argv[2],'exec'),m.__dict__);sys.path.insert(0,sys.argv[3]);from test_readiness import ReadinessTests;r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite([ReadinessTests('test_integer_whole_scores_match_candidate_at_frozen_dimensions')]));sys.exit(0 if r.wasSuccessful() else 1)",
+      "/tmp/r077-readiness-jcnuandy/alpha21.py",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/candidate.py",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "bad_alpha21.stderr",
+        "bytes": 2615,
+        "sha256": "2cdcebfb56a60c29ae167bd50ac19d5e7988ede2a63e7570b5b9dfc2a478137a"
+      }
+    }
+  },
+  {
+    "tag": "bad_wrong_history",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-O",
+      "-c",
+      "import sys,types,unittest;from pathlib import Path;m=types.ModuleType('candidate');m.__file__=sys.argv[2];sys.modules['candidate']=m;exec(compile(Path(sys.argv[1]).read_text(),sys.argv[2],'exec'),m.__dict__);sys.path.insert(0,sys.argv[3]);from test_readiness import ReadinessTests;r=unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite([ReadinessTests('test_integer_whole_scores_match_candidate_at_frozen_dimensions')]));sys.exit(0 if r.wasSuccessful() else 1)",
+      "/tmp/r077-readiness-jcnuandy/wrong_history.py",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-10-r077-exact-score-candidate/candidate.py",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "bad_wrong_history.stderr",
+        "bytes": 2615,
+        "sha256": "c38a6cd8291af7a3565b3ef305aa3cb8fdbc658253596b92a1241dad010baadd"
+      }
+    }
+  }
+]

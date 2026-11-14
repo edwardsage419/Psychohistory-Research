@@ -1,0 +1,86 @@
+test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) ... 
+  test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=0) ... FAIL
+  test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=1) ... FAIL
+  test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=2) ... FAIL
+  test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=3) ... FAIL
+  test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=4) ... FAIL
+
+======================================================================
+FAIL: test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py", line 10, in test_hand_source_probability_identity
+    self.assertEqual(probability(source,model,(0,0,0,0,0)),(1,9))
+AssertionError: Tuples differ: (0, 1) != (1, 9)
+
+First differing element 0:
+0
+1
+
+- (0, 1)
++ (1, 9)
+
+======================================================================
+FAIL: test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py", line 10, in test_hand_source_probability_identity
+    self.assertEqual(probability(source,model,(0,0,0,0,0)),(1,9))
+AssertionError: Tuples differ: (0, 1) != (1, 9)
+
+First differing element 0:
+0
+1
+
+- (0, 1)
++ (1, 9)
+
+======================================================================
+FAIL: test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py", line 10, in test_hand_source_probability_identity
+    self.assertEqual(probability(source,model,(0,0,0,0,0)),(1,9))
+AssertionError: Tuples differ: (0, 1) != (1, 9)
+
+First differing element 0:
+0
+1
+
+- (0, 1)
++ (1, 9)
+
+======================================================================
+FAIL: test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py", line 10, in test_hand_source_probability_identity
+    self.assertEqual(probability(source,model,(0,0,0,0,0)),(1,9))
+AssertionError: Tuples differ: (0, 1) != (1, 9)
+
+First differing element 0:
+0
+1
+
+- (0, 1)
++ (1, 9)
+
+======================================================================
+FAIL: test_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) (model=4)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py", line 10, in test_hand_source_probability_identity
+    self.assertEqual(probability(source,model,(0,0,0,0,0)),(1,9))
+AssertionError: Tuples differ: (0, 1) != (1, 9)
+
+First differing element 0:
+0
+1
+
+- (0, 1)
++ (1, 9)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=5)

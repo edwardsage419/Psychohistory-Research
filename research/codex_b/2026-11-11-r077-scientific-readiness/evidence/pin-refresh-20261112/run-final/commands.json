@@ -1,0 +1,232 @@
+[
+  {
+    "tag": "old-pins-red-normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-c",
+      "import importlib.util,json,sys;s=importlib.util.spec_from_file_location(\"capture_only\",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);print(json.dumps(m.capture(),sort_keys=True))",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "old-pins-red-normal.stderr",
+        "bytes": 641,
+        "sha256": "e9f4c075409a64440af9b12799519f7f27c36ef72995c8df5a5e0f7b1e36160b"
+      }
+    }
+  },
+  {
+    "tag": "old-pins-red-optimized",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib.util,json,sys;s=importlib.util.spec_from_file_location(\"capture_only\",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);print(json.dumps(m.capture(),sort_keys=True))",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "old-pins-red-optimized.stderr",
+        "bytes": 641,
+        "sha256": "e9f4c075409a64440af9b12799519f7f27c36ef72995c8df5a5e0f7b1e36160b"
+      }
+    }
+  },
+  {
+    "tag": "new-pins-green-normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-c",
+      "import importlib.util,json,sys;s=importlib.util.spec_from_file_location(\"capture_only\",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);print(json.dumps(m.capture(),sort_keys=True))",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "streams": {
+      "stdout": {
+        "file": "new-pins-green-normal.stdout",
+        "bytes": 4521,
+        "sha256": "d8c2d1c8d1bfce99d7aa5c0644ff080c08f9330af71fa31c60afb661e2bd0bb1"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "retained-validator-regression-normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-c",
+      "import importlib.util,json,sys,tarfile;s=importlib.util.spec_from_file_location('preflight',sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);t=tarfile.open(sys.argv[2],'r:gz');d=json.loads(t.extractfile('normal-shadow.stdout').read());base=m.classify(d['diagnostic']);shadow=m.validate_shadow(d['candidate_shadow']['data'],d['diagnostic']);m.require(base['exit_code']==2 and base['production_ready']is False and base['original_failure_cases']==11,'VETO');m.require(shadow['status']=='PASS_ARTIFICIAL_SHADOW_ONLY_PINNED_CANDIDATE' and shadow['corrected_orders']==35 and shadow['production_ready']is False,'METADATA');d['candidate_shadow']['data']['tiny']['candidate_worse_sessions']=0;rejected=False\ntry:m.validate_shadow(d['candidate_shadow']['data'],d['diagnostic'])\nexcept ValueError:rejected=True\nm.require(rejected,'REGRESSION_REJECTION');print(json.dumps({'production_ready':False,'original_failures_retained':11,'retained_corrected_cases':35,'corrupt_retained_shadow_rejected':True,'mathematical_programs_rerun':False}))",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_a/r077_integration/preflight.py",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_a/r077_integration/shadow_evidence.tar.gz"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "streams": {
+      "stdout": {
+        "file": "retained-validator-regression-normal.stdout",
+        "bytes": 174,
+        "sha256": "e8cacbbc6618d1f8e6464d4e364e0b139cb4ad665e19e348817b7f473a78382f"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "new-pins-green-optimized",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib.util,json,sys;s=importlib.util.spec_from_file_location(\"capture_only\",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);print(json.dumps(m.capture(),sort_keys=True))",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "streams": {
+      "stdout": {
+        "file": "new-pins-green-optimized.stdout",
+        "bytes": 4521,
+        "sha256": "d8c2d1c8d1bfce99d7aa5c0644ff080c08f9330af71fa31c60afb661e2bd0bb1"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "retained-validator-regression-optimized",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib.util,json,sys,tarfile;s=importlib.util.spec_from_file_location('preflight',sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);t=tarfile.open(sys.argv[2],'r:gz');d=json.loads(t.extractfile('normal-shadow.stdout').read());base=m.classify(d['diagnostic']);shadow=m.validate_shadow(d['candidate_shadow']['data'],d['diagnostic']);m.require(base['exit_code']==2 and base['production_ready']is False and base['original_failure_cases']==11,'VETO');m.require(shadow['status']=='PASS_ARTIFICIAL_SHADOW_ONLY_PINNED_CANDIDATE' and shadow['corrected_orders']==35 and shadow['production_ready']is False,'METADATA');d['candidate_shadow']['data']['tiny']['candidate_worse_sessions']=0;rejected=False\ntry:m.validate_shadow(d['candidate_shadow']['data'],d['diagnostic'])\nexcept ValueError:rejected=True\nm.require(rejected,'REGRESSION_REJECTION');print(json.dumps({'production_ready':False,'original_failures_retained':11,'retained_corrected_cases':35,'corrupt_retained_shadow_rejected':True,'mathematical_programs_rerun':False}))",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_a/r077_integration/preflight.py",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_a/r077_integration/shadow_evidence.tar.gz"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "streams": {
+      "stdout": {
+        "file": "retained-validator-regression-optimized.stdout",
+        "bytes": 174,
+        "sha256": "e8cacbbc6618d1f8e6464d4e364e0b139cb4ad665e19e348817b7f473a78382f"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "unexpected-source-rejected-normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-c",
+      "import importlib.util,json,sys;s=importlib.util.spec_from_file_location(\"capture_only\",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);print(json.dumps(m.capture(),sort_keys=True))",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "unexpected-source-rejected-normal.stderr",
+        "bytes": 662,
+        "sha256": "b6b60b4ace1368accf6316eee5a3aa985e3d3e5b208073f16b22ddd00e5b1816"
+      }
+    }
+  },
+  {
+    "tag": "unexpected-source-rejected-optimized",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib.util,json,sys;s=importlib.util.spec_from_file_location(\"capture_only\",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);print(json.dumps(m.capture(),sort_keys=True))",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "unexpected-source-rejected-optimized.stderr",
+        "bytes": 662,
+        "sha256": "b6b60b4ace1368accf6316eee5a3aa985e3d3e5b208073f16b22ddd00e5b1816"
+      }
+    }
+  },
+  {
+    "tag": "native-help",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/tmp/b31-pin-qualification-6luefom0/repo/research/codex_a/r077_integration/preflight.py",
+      "--help"
+    ],
+    "cwd": "/tmp/b31-pin-qualification-6luefom0/repo",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "streams": {
+      "stdout": {
+        "file": "native-help.stdout",
+        "bytes": 535,
+        "sha256": "21f7b5c215c948e704cfd8d8b23dfc2f9c4c88d3a87d9e458270e7a7bc567d98"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  }
+]
