@@ -107,7 +107,7 @@ def validate_shadow(data, original):
             type(tiny['actual_delta']) is str and tiny['actual_delta'] == tiny['expected_delta'] and
             tiny['actual_delta'] != '0', 'SHADOW_TINY_DIRECTION')
     return {'corrected_orders': len(seen), 'production_ready': False,
-            'status': 'PASS_ARTIFICIAL_SHADOW_ONLY_UNMERGED_CANDIDATE', 'tiny': tiny}
+            'status': 'PASS_ARTIFICIAL_SHADOW_ONLY_PINNED_CANDIDATE', 'tiny': tiny}
 
 
 def git(repo, *args):
@@ -236,7 +236,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('repo', type=Path)
     parser.add_argument('--artificial-preflight', action='store_true', required=True)
-    parser.add_argument('--candidate-shadow', action='store_true', help='Opt in to fixed unmerged PR28 synthetic shadow; never enables production.')
+    parser.add_argument('--candidate-shadow', action='store_true', help='Opt in to pinned PR28 synthetic shadow; never enables production.')
     args = parser.parse_args()
     try:result = verify(args.repo, shadow=args.candidate_shadow)
     except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as exc:
