@@ -1,0 +1,92 @@
+[
+  {
+    "line": 24,
+    "label": "normalization",
+    "condition": "all(sum(row.values()) == 1 for row in conf.values())"
+  },
+  {
+    "line": 30,
+    "label": "research_id",
+    "condition": "data['research_id']=='R275_S71'"
+  },
+  {
+    "line": 31,
+    "label": "evidence",
+    "condition": "data['evidence']=='E1_ARTIFICIAL_NONBLIND'"
+  },
+  {
+    "line": 32,
+    "label": "source_count_and_scope",
+    "condition": "data['source_rows']==3072 and data['new_E2']==data['new_E3']==0"
+  },
+  {
+    "line": 33,
+    "label": "summary_count",
+    "condition": "len(data['summary'])==4"
+  },
+  {
+    "line": 38,
+    "label": "CSV_schema",
+    "condition": "set(reader.fieldnames)==expected"
+  },
+  {
+    "line": 41,
+    "label": "source_key_domain",
+    "condition": "e in E and true in M and len(code)==4 and all(c in '0123' for c in code)"
+  },
+  {
+    "line": 43,
+    "label": "duplicate source",
+    "condition": "key not in observed"
+  },
+  {
+    "line": 46,
+    "label": "equal_pair_count",
+    "condition": "int(row['equal_pair_count'])==k"
+  },
+  {
+    "line": 49,
+    "label": "source_probability",
+    "condition": "F(row['true_source_probability'])==q[M.index(true)]"
+  },
+  {
+    "line": 51,
+    "label": "MAP_and_correct",
+    "condition": "row['MAP_selected']==choice and int(row['correct'])==int(choice==true)"
+  },
+  {
+    "line": 53,
+    "label": "posterior",
+    "condition": "sum(post)==1 and post==[x/sum(p) for x in p]"
+  },
+  {
+    "line": 54,
+    "label": "complete_source_keys",
+    "condition": "len(observed)==3072 and all(n==256 for n in counts.values())"
+  },
+  {
+    "line": 57,
+    "label": "epsilon_and_accuracy",
+    "condition": "F(s['epsilon'])==e and F(s['average_MAP_correct'])==avg"
+  },
+  {
+    "line": 58,
+    "label": "K_decisions",
+    "condition": "s['K_decisions']==labels"
+  },
+  {
+    "line": 60,
+    "label": "confusion",
+    "condition": "F(s['confusion'][m][n])==conf[m][n]"
+  },
+  {
+    "line": 61,
+    "label": "noiseless_endpoint",
+    "condition": "oracle(F(0))[1]==F(23,24)"
+  },
+  {
+    "line": 62,
+    "label": "full_noise_endpoint",
+    "condition": "oracle(F(1,2))[1]==F(1,3)"
+  }
+]
