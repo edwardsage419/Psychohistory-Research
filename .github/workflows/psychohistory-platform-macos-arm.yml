@@ -68,3 +68,26 @@ jobs:
           bash scripts/run.sh --data "$DATA_ROOT" demo --seed 123 --rounds 6 --population 16
           bash scripts/run.sh --data "$DATA_ROOT" backup "$BACKUP_ROOT"
           bash scripts/run.sh --data "$RESTORED_ROOT" restore "$BACKUP_ROOT"
+
+      - name: Native Chromium Web workflow
+        timeout-minutes: 8
+        run: |
+          set -euo pipefail
+          .venv/bin/python -m pip install --index-url https://pypi.org/simple --only-binary=:all: -r requirements-browser.lock
+          .venv/bin/python -m playwright install chromium
+          CANONICAL_TEMP="$(cd "$RUNNER_TEMP" && pwd -P)"
+          DATA_ROOT="$(mktemp -d "$CANONICAL_TEMP/psychohistory-browser.XXXXXXXX")"
+          SERVICE_PID=""
+          cleanup() {
+            if [ -n "$SERVICE_PID" ]; then kill "$SERVICE_PID" 2>/dev/null || true; wait "$SERVICE_PID" 2>/dev/null || true; fi
+            rm -rf "$DATA_ROOT"
+          }
+          trap cleanup EXIT
+          bash scripts/run.sh --data "$DATA_ROOT" serve --port 8765 > "$DATA_ROOT/server.log" 2>&1 &
+          SERVICE_PID=$!
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:8765/api/v1/health >/dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8765/api/v1/health
+          PH_TEST_DATA="$DATA_ROOT" PH_BROWSER_REPORT="$DATA_ROOT/browser.json" .venv/bin/python scripts/browser_check.py
