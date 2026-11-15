@@ -1,0 +1,44 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+__________________ test_asset_scan_dedup_and_frozen_namespace __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-0/test_asset_scan_dedup_and_froz0')
+
+    def test_asset_scan_dedup_and_frozen_namespace(tmp_path):
+>       from psychohistory.evidence import scan_asset, Admission
+E       ModuleNotFoundError: No module named 'psychohistory.evidence'
+
+platform/future_model/tests/test_storage.py:8: ModuleNotFoundError
+_________________ test_content_addressed_storage_and_security __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-0/test_content_addressed_storage0')
+
+    def test_content_addressed_storage_and_security(tmp_path):
+>       from psychohistory.storage import Store
+E       ModuleNotFoundError: No module named 'psychohistory.storage'
+
+platform/future_model/tests/test_storage.py:29: ModuleNotFoundError
+_______________ test_backup_restore_integrity_and_failure_audit ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-0/test_backup_restore_integrity_0')
+
+    def test_backup_restore_integrity_and_failure_audit(tmp_path):
+>       from psychohistory.storage import Store, restore_backup
+E       ModuleNotFoundError: No module named 'psychohistory.storage'
+
+platform/future_model/tests/test_storage.py:44: ModuleNotFoundError
+__________________ test_migration_and_future_schema_rejection __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-0/test_migration_and_future_sche0')
+
+    def test_migration_and_future_schema_rejection(tmp_path):
+>       from psychohistory.storage import Store
+E       ModuleNotFoundError: No module named 'psychohistory.storage'
+
+platform/future_model/tests/test_storage.py:60: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED platform/future_model/tests/test_storage.py::test_asset_scan_dedup_and_frozen_namespace
+FAILED platform/future_model/tests/test_storage.py::test_content_addressed_storage_and_security
+FAILED platform/future_model/tests/test_storage.py::test_backup_restore_integrity_and_failure_audit
+FAILED platform/future_model/tests/test_storage.py::test_migration_and_future_schema_rejection
+4 failed in 0.03s

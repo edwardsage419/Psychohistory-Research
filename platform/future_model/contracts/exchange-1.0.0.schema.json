@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:psychohistory:exchange:1.0.0",
+  "title": "Psychohistory minimum exchange contract 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_id",
+    "record_type",
+    "subject_ref",
+    "time_context",
+    "payload",
+    "units",
+    "uncertainty",
+    "provenance",
+    "access_policy",
+    "dependencies"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ref": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "payload": {
+      "type": "object"
+    },
+    "units": {
+      "type": "string",
+      "minLength": 1
+    },
+    "time_context": {
+      "type": "object",
+      "required": [
+        "simulation_time",
+        "round",
+        "event_time",
+        "observed_at",
+        "available_at",
+        "cutoff",
+        "target_time"
+      ],
+      "properties": {
+        "simulation_time": {
+          "type": "number"
+        },
+        "event_time": {
+          "type": "number"
+        },
+        "observed_at": {
+          "type": "number"
+        },
+        "available_at": {
+          "type": "number"
+        },
+        "cutoff": {
+          "type": "number"
+        },
+        "target_time": {
+          "type": "number"
+        },
+        "round": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "required": [
+        "kind",
+        "conditions",
+        "target",
+        "units",
+        "method",
+        "dependencies",
+        "interpretation",
+        "source"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "POINT",
+            "DISCRETE",
+            "DISTRIBUTION",
+            "PREDICTION_INTERVAL",
+            "CONFIDENCE_INTERVAL",
+            "CREDIBLE_INTERVAL",
+            "POSTERIOR_SAMPLES",
+            "PARTIAL_IDENTIFICATION",
+            "MODEL_SET",
+            "UNKNOWN",
+            "UNIDENTIFIABLE"
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "access_policy": {
+      "enum": [
+        "PUBLIC_SYNTHETIC",
+        "METADATA_ONLY",
+        "RESTRICTED"
+      ]
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9_.-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+      }
+    }
+  },
+  "$comment": "Semantic validation additionally enforces time ordering, units/target/dependence consistency, uncertainty mass, and adapter-specific payload."
+}

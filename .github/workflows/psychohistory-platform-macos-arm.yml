@@ -1,0 +1,93 @@
+name: Psychohistory Platform macOS ARM64 compatibility
+# One bounded, no-cost public-repository compatibility check for PR 40.
+
+on:
+  pull_request:
+    types: [synchronize]
+    branches: [main]
+    paths:
+      - 'platform/future_model/**'
+      - '.github/workflows/psychohistory-platform-macos-arm.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: psychohistory-platform-macos-arm-pr${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  macos-arm64:
+    if: github.event.pull_request.number == 40
+    runs-on: macos-15
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+        working-directory: platform/future_model
+    steps:
+      - name: Check out PR snapshot
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Record native macOS platform
+        run: |
+          set -euo pipefail
+          sw_vers
+          uname -a
+          test "$(uname -s)" = Darwin
+          test "$(uname -m)" = arm64
+          python3.12 --version
+          node --version
+          npm --version
+      - name: Install locked dependencies
+        run: |
+          set -euo pipefail
+          bash scripts/install.sh
+      - name: Run complete engineering verification
+        run: |
+          set -euo pipefail
+          bash scripts/verify.sh
+      - name: Reproduce synthetic experiment and backup on macOS
+        run: |
+          set -euo pipefail
+          # macOS /tmp and /var may be symlinks; use a canonical trusted runner path.
+          CANONICAL_TEMP="$(cd "$RUNNER_TEMP" && pwd -P)"
+          DATA_ROOT="$(mktemp -d "$CANONICAL_TEMP/psychohistory-macos.XXXXXXXX")"
+          BACKUP_ROOT="$DATA_ROOT.backup"
+          RESTORED_ROOT="$DATA_ROOT.restored"
+          trap 'rm -rf "$DATA_ROOT" "$BACKUP_ROOT" "$RESTORED_ROOT"' EXIT
+          bash scripts/run.sh --data "$DATA_ROOT" demo --seed 123 --rounds 6 --population 16
+          bash scripts/run.sh --data "$DATA_ROOT" backup "$BACKUP_ROOT"
+          bash scripts/run.sh --data "$RESTORED_ROOT" restore "$BACKUP_ROOT"
+
+      - name: Native Chromium Web workflow
+        timeout-minutes: 8
+        run: |
+          set -euo pipefail
+          .venv/bin/python -m pip install --index-url https://pypi.org/simple --only-binary=:all: -r requirements-browser.lock
+          .venv/bin/python -m playwright install chromium
+          CANONICAL_TEMP="$(cd "$RUNNER_TEMP" && pwd -P)"
+          DATA_ROOT="$(mktemp -d "$CANONICAL_TEMP/psychohistory-browser.XXXXXXXX")"
+          SERVICE_PID=""
+          cleanup() {
+            if [ -n "$SERVICE_PID" ]; then kill "$SERVICE_PID" 2>/dev/null || true; wait "$SERVICE_PID" 2>/dev/null || true; fi
+            rm -rf "$DATA_ROOT"
+          }
+          trap cleanup EXIT
+          bash scripts/run.sh --data "$DATA_ROOT" serve --port 8765 > "$DATA_ROOT/server.log" 2>&1 &
+          SERVICE_PID=$!
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:8765/api/v1/health >/dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8765/api/v1/health
+          PH_TEST_DATA="$DATA_ROOT" PH_BROWSER_REPORT="$DATA_ROOT/browser.json" .venv/bin/python scripts/browser_check.py

@@ -1,0 +1,201 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+_____ test_short_cli_commands_never_dispatch_unrelated_approved_work[runs] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-15/test_short_cli_commands_never_0')
+command = 'runs'
+
+    @pytest.mark.parametrize('command',['runs','status','result','submit'])
+    def test_short_cli_commands_never_dispatch_unrelated_approved_work(tmp_path,command):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        with Scheduler(s) as q:r=q.submit({'rounds':100,'population':100})
+        s.update_run(r['id'],status='APPROVED')
+        s.create_run('complete',{});s.update_run('complete',status='APPROVED');s.update_run('complete',status='RUNNING');s.update_run('complete',status='COMPLETED',result_hash=s.put({'synthetic':True}))
+        before=s.get_run(r['id'])
+        args=[command]+([r['id']] if command=='status' else ['complete'] if command=='result' else [])
+        result=cli(s.root,*args)
+        assert result.returncode==0,result.stderr
+>       assert s.get_run(r['id'])==before
+E       AssertionError: assert {'code_sha256....0038524, ...} == {'code_sha256....0038524, ...}
+E         
+E         Omitting 15 identical items, use -vv to show
+E         Differing items:
+E         {'ended_at': 1794746090.2529466} != {'ended_at': None}
+E         {'logs': ['Submitted: awaiting explicit synthetic approval', 'Spawned isolated trusted worker', 'Canceled; worker terminated if active']} != {'logs': ['Submitted: awaiting explicit synthetic approval']}
+E         {'started_at': 1794746090.2471807} != {'started_at': None}
+E         {'status': 'CANCELED'} != {'status': 'APPROVED'}...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/test_pr40_review.py:74: AssertionError
+____ test_short_cli_commands_never_dispatch_unrelated_approved_work[status] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-15/test_short_cli_commands_never_1')
+command = 'status'
+
+    @pytest.mark.parametrize('command',['runs','status','result','submit'])
+    def test_short_cli_commands_never_dispatch_unrelated_approved_work(tmp_path,command):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        with Scheduler(s) as q:r=q.submit({'rounds':100,'population':100})
+        s.update_run(r['id'],status='APPROVED')
+        s.create_run('complete',{});s.update_run('complete',status='APPROVED');s.update_run('complete',status='RUNNING');s.update_run('complete',status='COMPLETED',result_hash=s.put({'synthetic':True}))
+        before=s.get_run(r['id'])
+        args=[command]+([r['id']] if command=='status' else ['complete'] if command=='result' else [])
+        result=cli(s.root,*args)
+        assert result.returncode==0,result.stderr
+>       assert s.get_run(r['id'])==before
+E       AssertionError: assert {'code_sha256....3501377, ...} == {'code_sha256....3501377, ...}
+E         
+E         Omitting 15 identical items, use -vv to show
+E         Differing items:
+E         {'ended_at': 1794746090.5560834} != {'ended_at': None}
+E         {'logs': ['Submitted: awaiting explicit synthetic approval', 'Spawned isolated trusted worker', 'Canceled; worker terminated if active']} != {'logs': ['Submitted: awaiting explicit synthetic approval']}
+E         {'started_at': 1794746090.5496516} != {'started_at': None}
+E         {'status': 'CANCELED'} != {'status': 'APPROVED'}...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/test_pr40_review.py:74: AssertionError
+____ test_short_cli_commands_never_dispatch_unrelated_approved_work[result] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-15/test_short_cli_commands_never_2')
+command = 'result'
+
+    @pytest.mark.parametrize('command',['runs','status','result','submit'])
+    def test_short_cli_commands_never_dispatch_unrelated_approved_work(tmp_path,command):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        with Scheduler(s) as q:r=q.submit({'rounds':100,'population':100})
+        s.update_run(r['id'],status='APPROVED')
+        s.create_run('complete',{});s.update_run('complete',status='APPROVED');s.update_run('complete',status='RUNNING');s.update_run('complete',status='COMPLETED',result_hash=s.put({'synthetic':True}))
+        before=s.get_run(r['id'])
+        args=[command]+([r['id']] if command=='status' else ['complete'] if command=='result' else [])
+        result=cli(s.root,*args)
+        assert result.returncode==0,result.stderr
+>       assert s.get_run(r['id'])==before
+E       AssertionError: assert {'code_sha256....6435215, ...} == {'code_sha256....6435215, ...}
+E         
+E         Omitting 15 identical items, use -vv to show
+E         Differing items:
+E         {'ended_at': 1794746090.825366} != {'ended_at': None}
+E         {'logs': ['Submitted: awaiting explicit synthetic approval', 'Spawned isolated trusted worker', 'Canceled; worker terminated if active']} != {'logs': ['Submitted: awaiting explicit synthetic approval']}
+E         {'started_at': 1794746090.819648} != {'started_at': None}
+E         {'status': 'CANCELED'} != {'status': 'APPROVED'}...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/test_pr40_review.py:74: AssertionError
+____ test_short_cli_commands_never_dispatch_unrelated_approved_work[submit] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-15/test_short_cli_commands_never_3')
+command = 'submit'
+
+    @pytest.mark.parametrize('command',['runs','status','result','submit'])
+    def test_short_cli_commands_never_dispatch_unrelated_approved_work(tmp_path,command):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        with Scheduler(s) as q:r=q.submit({'rounds':100,'population':100})
+        s.update_run(r['id'],status='APPROVED')
+        s.create_run('complete',{});s.update_run('complete',status='APPROVED');s.update_run('complete',status='RUNNING');s.update_run('complete',status='COMPLETED',result_hash=s.put({'synthetic':True}))
+        before=s.get_run(r['id'])
+        args=[command]+([r['id']] if command=='status' else ['complete'] if command=='result' else [])
+        result=cli(s.root,*args)
+        assert result.returncode==0,result.stderr
+>       assert s.get_run(r['id'])==before
+E       AssertionError: assert {'code_sha256....9212487, ...} == {'code_sha256....9212487, ...}
+E         
+E         Omitting 15 identical items, use -vv to show
+E         Differing items:
+E         {'ended_at': 1794746091.160032} != {'ended_at': None}
+E         {'logs': ['Submitted: awaiting explicit synthetic approval', 'Spawned isolated trusted worker', 'Canceled; worker terminated if active']} != {'logs': ['Submitted: awaiting explicit synthetic approval']}
+E         {'started_at': 1794746091.1457756} != {'started_at': None}
+E         {'status': 'CANCELED'} != {'status': 'APPROVED'}...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/test_pr40_review.py:74: AssertionError
+______________ test_cli_read_works_while_web_scheduler_owns_root _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-15/test_cli_read_works_while_web_0')
+
+    def test_cli_read_works_while_web_scheduler_owns_root(tmp_path):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        with Scheduler(s) as q:
+            r=q.submit({})
+            result=cli(s.root,'status',r['id'])
+>           assert result.returncode==0,result.stderr
+E           AssertionError: {"status": "FAILED", "error": "Another scheduler already owns this data root"}
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/workspace/.psychohistory-env/venv/bin/python', '-m', 'psychohistory.cli', '--data', '/tmp/pyt...'], returncode=1, stdout='', stderr='{"status": "FAILED", "error": "Another scheduler already owns this data root"}\n').returncode
+
+tests/test_pr40_review.py:84: AssertionError
+_____ test_cli_explicit_approval_preserves_unrelated_queue_and_exit_truth ______
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-15/test_cli_explicit_approval_pre0')
+
+    def test_cli_explicit_approval_preserves_unrelated_queue_and_exit_truth(tmp_path):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        with Scheduler(s) as q:
+            old=q.submit({'rounds':100,'population':100});target=q.submit({'rounds':1,'population':2});bad=q.submit({})
+        s.update_run(old['id'],status='APPROVED');s.update_run(bad['id'],code_sha256='0'*64)
+        before=s.get_run(old['id'])
+        result=cli(s.root,'approve',target['id'])
+        assert result.returncode==0,result.stderr
+        assert json.loads(result.stdout)['status']=='COMPLETED'
+>       assert s.get_run(old['id'])==before
+E       AssertionError: assert {'code_sha256....4209056, ...} == {'code_sha256....4209056, ...}
+E         
+E         Omitting 14 identical items, use -vv to show
+E         Differing items:
+E         {'ended_at': 1794746092.2655764} != {'ended_at': None}
+E         {'logs': ['Submitted: awaiting explicit synthetic approval', 'Spawned isolated trusted worker', 'baseline:1: individua...: individual advanced; group updated; snapshot bdf68d552d1786d6d9b51a11f755d4d12782fae7916726db13250e795f1b3da1', ...]} != {'logs': ['Submitted: awaiting explicit synthetic approval']}
+E         {'result_hash': '631ec69741b3149e6c1a326a0f39c76e8083cd81b4aaec5b6b95c48366d3bf40'} != {'result_hash': None}
+E         {'status': 'COMPLETED'} != {'status': 'APPROVED'}...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/test_pr40_review.py:99: AssertionError
+_________________ test_active_api_never_loses_old_pending_work _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-15/test_active_api_never_loses_ol0')
+
+    def test_active_api_never_loses_old_pending_work(tmp_path):
+        from fastapi.testclient import TestClient
+        from psychohistory.api import create_app
+        from psychohistory.storage import Store
+        from pathlib import Path
+        root=tmp_path/'data';s=Store(root);s.create_run('old-pending',{})
+        for i in range(201):s.create_run(f'terminal-{i}',{});s.update_run(f'terminal-{i}',status='CANCELED')
+        with TestClient(create_app(root,Path(__file__).resolve().parents[3],'test-token')) as c:
+            active=c.get('/api/v1/runs/active',headers={'Authorization':'Bearer test-token'})
+>           assert active.status_code==200
+E           assert 404 == 200
+E            +  where 404 = <Response [404 Not Found]>.status_code
+
+tests/test_pr40_review.py:114: AssertionError
+=============================== warnings summary ===============================
+tests/test_pr40_review.py::test_active_api_never_loses_old_pending_work
+  /workspace/.psychohistory-env/venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_pr40_review.py::test_short_cli_commands_never_dispatch_unrelated_approved_work[runs]
+FAILED tests/test_pr40_review.py::test_short_cli_commands_never_dispatch_unrelated_approved_work[status]
+FAILED tests/test_pr40_review.py::test_short_cli_commands_never_dispatch_unrelated_approved_work[result]
+FAILED tests/test_pr40_review.py::test_short_cli_commands_never_dispatch_unrelated_approved_work[submit]
+FAILED tests/test_pr40_review.py::test_cli_read_works_while_web_scheduler_owns_root
+FAILED tests/test_pr40_review.py::test_cli_explicit_approval_preserves_unrelated_queue_and_exit_truth
+FAILED tests/test_pr40_review.py::test_active_api_never_loses_old_pending_work
+7 failed, 9 deselected, 1 warning in 3.96s

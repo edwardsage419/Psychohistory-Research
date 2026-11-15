@@ -1,0 +1,80 @@
+FFFFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+________________ test_engine_reproducibility_branches_and_time _________________
+
+    def test_engine_reproducibility_branches_and_time():
+>       from psychohistory.engine import run_experiment
+E       ModuleNotFoundError: No module named 'psychohistory.engine'
+
+platform/future_model/tests/test_core.py:7: ModuleNotFoundError
+_________________________ test_uncertainty_and_refusal _________________________
+
+    def test_uncertainty_and_refusal():
+>       from psychohistory.contracts import uncertainty, convert_uncertainty
+E       ModuleNotFoundError: No module named 'psychohistory.contracts'
+
+platform/future_model/tests/test_core.py:27: ModuleNotFoundError
+__________ test_adapter_contracts_reject_future_identity_unit_version __________
+
+    def test_adapter_contracts_reject_future_identity_unit_version():
+>       from psychohistory.adapters import PopulationAdapter
+E       ModuleNotFoundError: No module named 'psychohistory.adapters'
+
+platform/future_model/tests/test_core.py:44: ModuleNotFoundError
+______________________ test_registry_snapshots_and_cycles ______________________
+
+    def test_registry_snapshots_and_cycles():
+>       from psychohistory.plugins import registry
+E       ModuleNotFoundError: No module named 'psychohistory.plugins'
+
+platform/future_model/tests/test_core.py:58: ModuleNotFoundError
+__________________________ test_bounded_engine[args0] __________________________
+
+args = {'rounds': 0}
+
+    @pytest.mark.parametrize('args',[{'rounds':0},{'population':100001},{'seed':-1},{'intervention':float('nan')}])
+    def test_bounded_engine(args):
+>       from psychohistory.engine import run_experiment
+E       ModuleNotFoundError: No module named 'psychohistory.engine'
+
+platform/future_model/tests/test_core.py:78: ModuleNotFoundError
+__________________________ test_bounded_engine[args1] __________________________
+
+args = {'population': 100001}
+
+    @pytest.mark.parametrize('args',[{'rounds':0},{'population':100001},{'seed':-1},{'intervention':float('nan')}])
+    def test_bounded_engine(args):
+>       from psychohistory.engine import run_experiment
+E       ModuleNotFoundError: No module named 'psychohistory.engine'
+
+platform/future_model/tests/test_core.py:78: ModuleNotFoundError
+__________________________ test_bounded_engine[args2] __________________________
+
+args = {'seed': -1}
+
+    @pytest.mark.parametrize('args',[{'rounds':0},{'population':100001},{'seed':-1},{'intervention':float('nan')}])
+    def test_bounded_engine(args):
+>       from psychohistory.engine import run_experiment
+E       ModuleNotFoundError: No module named 'psychohistory.engine'
+
+platform/future_model/tests/test_core.py:78: ModuleNotFoundError
+__________________________ test_bounded_engine[args3] __________________________
+
+args = {'intervention': nan}
+
+    @pytest.mark.parametrize('args',[{'rounds':0},{'population':100001},{'seed':-1},{'intervention':float('nan')}])
+    def test_bounded_engine(args):
+>       from psychohistory.engine import run_experiment
+E       ModuleNotFoundError: No module named 'psychohistory.engine'
+
+platform/future_model/tests/test_core.py:78: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED platform/future_model/tests/test_core.py::test_engine_reproducibility_branches_and_time
+FAILED platform/future_model/tests/test_core.py::test_uncertainty_and_refusal
+FAILED platform/future_model/tests/test_core.py::test_adapter_contracts_reject_future_identity_unit_version
+FAILED platform/future_model/tests/test_core.py::test_registry_snapshots_and_cycles
+FAILED platform/future_model/tests/test_core.py::test_bounded_engine[args0]
+FAILED platform/future_model/tests/test_core.py::test_bounded_engine[args1]
+FAILED platform/future_model/tests/test_core.py::test_bounded_engine[args2]
+FAILED platform/future_model/tests/test_core.py::test_bounded_engine[args3]
+8 failed in 0.04s

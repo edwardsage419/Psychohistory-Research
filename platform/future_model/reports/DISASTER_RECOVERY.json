@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "expected_sha": "eaafc58ece6a8f9a8d34f3fb5d1d632395fa21ec",
+  "steps": [
+    {
+      "command": [
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "--single-branch",
+        "--branch",
+        "feat/psychohistory-platform-v0.1",
+        "https://github.com/edwardsage419/Psychohistory-Research.git",
+        "/tmp/psychohistory-disaster-recovery-01/checkout"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/install.sh"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/verify.sh"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run.sh",
+        "--data",
+        "/tmp/psychohistory-disaster-recovery-01/data",
+        "--repo",
+        "/tmp/psychohistory-disaster-recovery-01/checkout",
+        "demo",
+        "--seed",
+        "123",
+        "--rounds",
+        "6",
+        "--population",
+        "16"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run.sh",
+        "--data",
+        "/tmp/psychohistory-disaster-recovery-01/data",
+        "--repo",
+        "/tmp/psychohistory-disaster-recovery-01/checkout",
+        "backup",
+        "/tmp/psychohistory-disaster-recovery-01/backup"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run.sh",
+        "--data",
+        "/tmp/psychohistory-disaster-recovery-01/restored-data",
+        "restore",
+        "/tmp/psychohistory-disaster-recovery-01/backup"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run.sh",
+        "--data",
+        "/tmp/psychohistory-disaster-recovery-01/restored-data",
+        "result",
+        "273da0bf1423460d9e481a127f191c7e"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "restored_sha": "eaafc58ece6a8f9a8d34f3fb5d1d632395fa21ec",
+  "new_venv": true,
+  "npm_ci": true,
+  "remote_clone": true,
+  "experiment_reproduced": true,
+  "sqlite_backup_restore": true,
+  "artifact_integrity": true,
+  "result_sha256": "0c73f57111a60a9dd1b028c8b88fa7989ae19f401ce0dd479b7d0cd2e1e6a397",
+  "log_sha256": "1f178c2668e082d1363f66f5db471f230e13c1784b620cc38c2f202a0ef6e0b1"
+}

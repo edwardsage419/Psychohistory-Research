@@ -1,0 +1,30 @@
+........FF                                                               [100%]
+=================================== FAILURES ===================================
+__________ test_plugin_capabilities_are_real_and_state_is_restorable ___________
+
+    def test_plugin_capabilities_are_real_and_state_is_restorable():
+        from psychohistory.plugins import registry
+        for model in registry.describe():
+            plugin=registry.get(model['model_id'],model['version'])
+            for capability in model['capabilities']:
+>               assert callable(getattr(plugin,capability,None)),(model['model_id'],capability)
+E               AssertionError: ('individual', 'simulate')
+E               assert False
+E                +  where False = callable(None)
+E                +    where None = getattr(<psychohistory.plugins.Individual object at 0x7fe8e2064d70>, 'simulate', None)
+
+platform/future_model/tests/test_core.py:87: AssertionError
+________ test_unknown_payload_fields_do_not_smuggle_future_information _________
+
+    def test_unknown_payload_fields_do_not_smuggle_future_information():
+        from psychohistory.adapters import PopulationAdapter
+        r=record();r['payload']['tomorrow_states']=[1,1]
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_core.py:93: Failed
+=========================== short test summary info ============================
+FAILED platform/future_model/tests/test_core.py::test_plugin_capabilities_are_real_and_state_is_restorable
+FAILED platform/future_model/tests/test_core.py::test_unknown_payload_fields_do_not_smuggle_future_information
+2 failed, 8 passed in 0.06s

@@ -1,0 +1,42 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_killed_scheduler_cannot_leave_worker_publishing_results _________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-16/test_killed_scheduler_cannot_l0')
+
+    @pytest.mark.skipif(__import__('sys').platform!='linux',reason='Linux parent-death guard; native macOS NOT_RUN')
+    def test_killed_scheduler_cannot_leave_worker_publishing_results(tmp_path):
+        import os,signal,subprocess,sys,time
+        from pathlib import Path
+        root=tmp_path/'data';helper=tmp_path/'owner.py'
+        helper.write_text('''from psychohistory.storage import Store
+    from psychohistory.runtime import Scheduler
+    import sys,time
+    if __name__=='__main__':
+        q=Scheduler(Store(sys.argv[1]));r=q.submit({'rounds':100,'population':100})
+        q.approve(r['id'])
+        while q.get(r['id'])['status']!='RUNNING':time.sleep(.001)
+        print(q.get(r['id'])['worker_pid'],flush=True)
+        while True:time.sleep(1)
+    ''')
+        env=os.environ.copy();env['PYTHONPATH']=str(Path(__file__).resolve().parents[1]/'src')
+        owner=subprocess.Popen([sys.executable,str(helper),str(root)],env=env,text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        worker=None
+        try:
+            worker=int(owner.stdout.readline().strip());owner.kill();owner.wait(timeout=5)
+            until=time.monotonic()+5
+            while time.monotonic()<until:
+                stat=Path(f'/proc/{worker}/stat')
+                if not stat.exists() or stat.read_text().split()[2]=='Z':break
+                time.sleep(.02)
+>           assert not list((root/'staging').glob('*.json')),'Worker published after its scheduler was killed'
+E           AssertionError: Worker published after its scheduler was killed
+E           assert not [PosixPath('/tmp/pytest-of-agent/pytest-16/test_killed_scheduler_cannot_l0/data/staging/9bbee2649c424f64bf3b56a28d3277c5.json')]
+E            +  where [PosixPath('/tmp/pytest-of-agent/pytest-16/test_killed_scheduler_cannot_l0/data/staging/9bbee2649c424f64bf3b56a28d3277c5.json')] = list(<generator object Path.glob at 0x7f5db9c8ace0>)
+E            +    where <generator object Path.glob at 0x7f5db9c8ace0> = glob('*.json')
+E            +      where glob = (PosixPath('/tmp/pytest-of-agent/pytest-16/test_killed_scheduler_cannot_l0/data') / 'staging').glob
+
+tests/test_pr40_review.py:143: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_pr40_review.py::test_killed_scheduler_cannot_leave_worker_publishing_results
+1 failed, 16 deselected in 0.90s

@@ -1,0 +1,129 @@
+FFFFFFFFF                                                                [100%]
+=================================== FAILURES ===================================
+___________ test_discrete_probability_contract_requires_json_arrays ____________
+
+    def test_discrete_probability_contract_requires_json_arrays():
+        from psychohistory.contracts import uncertainty
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_pr40_review.py:11: Failed
+_____________ test_plugin_restore_validates_individual_state[None] _____________
+
+state = None
+
+    @pytest.mark.parametrize('state',[None,[],{'states':[0,None]},{'states':'01'},{'states':[False,1]}])
+    def test_plugin_restore_validates_individual_state(state):
+        from psychohistory.plugins import Individual
+        raw=json.dumps({'schema_version':'1.0.0','model_id':'individual','model_version':'1.0.0','state':state})
+>       with pytest.raises(ValueError):Individual().restore_state(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_pr40_review.py:23: Failed
+____________ test_plugin_restore_validates_individual_state[state1] ____________
+
+state = []
+
+    @pytest.mark.parametrize('state',[None,[],{'states':[0,None]},{'states':'01'},{'states':[False,1]}])
+    def test_plugin_restore_validates_individual_state(state):
+        from psychohistory.plugins import Individual
+        raw=json.dumps({'schema_version':'1.0.0','model_id':'individual','model_version':'1.0.0','state':state})
+>       with pytest.raises(ValueError):Individual().restore_state(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_pr40_review.py:23: Failed
+____________ test_plugin_restore_validates_individual_state[state2] ____________
+
+state = {'states': [0, None]}
+
+    @pytest.mark.parametrize('state',[None,[],{'states':[0,None]},{'states':'01'},{'states':[False,1]}])
+    def test_plugin_restore_validates_individual_state(state):
+        from psychohistory.plugins import Individual
+        raw=json.dumps({'schema_version':'1.0.0','model_id':'individual','model_version':'1.0.0','state':state})
+>       with pytest.raises(ValueError):Individual().restore_state(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_pr40_review.py:23: Failed
+____________ test_plugin_restore_validates_individual_state[state3] ____________
+
+state = {'states': '01'}
+
+    @pytest.mark.parametrize('state',[None,[],{'states':[0,None]},{'states':'01'},{'states':[False,1]}])
+    def test_plugin_restore_validates_individual_state(state):
+        from psychohistory.plugins import Individual
+        raw=json.dumps({'schema_version':'1.0.0','model_id':'individual','model_version':'1.0.0','state':state})
+>       with pytest.raises(ValueError):Individual().restore_state(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_pr40_review.py:23: Failed
+____________ test_plugin_restore_validates_individual_state[state4] ____________
+
+state = {'states': [False, 1]}
+
+    @pytest.mark.parametrize('state',[None,[],{'states':[0,None]},{'states':'01'},{'states':[False,1]}])
+    def test_plugin_restore_validates_individual_state(state):
+        from psychohistory.plugins import Individual
+        raw=json.dumps({'schema_version':'1.0.0','model_id':'individual','model_version':'1.0.0','state':state})
+>       with pytest.raises(ValueError):Individual().restore_state(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_pr40_review.py:23: Failed
+_________ test_group_restore_validates_proportion_and_valid_roundtrips _________
+
+    def test_group_restore_validates_proportion_and_valid_roundtrips():
+        from psychohistory.plugins import Individual,Group
+        for plugin,state in [(Individual(),{'states':[0,1]}),(Group(),{'exposure':.3})]:
+            assert plugin.restore_state(plugin.serialize_state(state))==state
+        for state in [{'exposure':2},{'exposure':float('nan')},[]]:
+>           with pytest.raises(ValueError):Group().restore_state(json.dumps({'schema_version':'1.0.0','model_id':'group','model_version':'1.0.0','state':state}))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ValueError
+
+tests/test_pr40_review.py:31: Failed
+_______ test_correct_snapshot_hash_does_not_replace_envelope_validation ________
+
+    def test_correct_snapshot_hash_does_not_replace_envelope_validation():
+        from psychohistory.state import Snapshot
+        from psychohistory.contracts import canonical
+        valid=Snapshot.create('individual','1.0.0',{'states':[1]},'main',None,[],{'python':'3.12'}).restore()
+        for mutation in [lambda v:v.pop('model_id'),lambda v:v.update(parent_hash='not-a-sha'),lambda v:v.update(branch=''),lambda v:v.update(events={})]:
+            value=json.loads(canonical(valid));mutation(value);raw=canonical(value)
+            snap=Snapshot(raw,hashlib.sha256(raw.encode()).hexdigest())
+>           with pytest.raises(ValueError):snap.restore()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ValueError
+
+tests/test_pr40_review.py:41: Failed
+________ test_restore_streams_objects_instead_of_materializing_archive _________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-13/test_restore_streams_objects_i0')
+
+    def test_restore_streams_objects_instead_of_materializing_archive(tmp_path):
+        from psychohistory.storage import Store,restore_backup
+        s=Store(tmp_path/'data')
+        ids=[s.put({'index':i,'payload':'x'*(2*1024**2)}) for i in range(8)]
+        s.backup(tmp_path/'backup');gc.collect();tracemalloc.start()
+        restored=restore_backup(tmp_path/'backup',tmp_path/'restored')
+        _,peak=tracemalloc.get_traced_memory();tracemalloc.stop()
+>       assert peak<10*1024**2, f'Restore buffered archive: peak={peak}'
+E       AssertionError: Restore buffered archive: peak=16829155
+E       assert 16829155 < (10 * (1024 ** 2))
+
+tests/test_pr40_review.py:51: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_pr40_review.py::test_discrete_probability_contract_requires_json_arrays
+FAILED tests/test_pr40_review.py::test_plugin_restore_validates_individual_state[None]
+FAILED tests/test_pr40_review.py::test_plugin_restore_validates_individual_state[state1]
+FAILED tests/test_pr40_review.py::test_plugin_restore_validates_individual_state[state2]
+FAILED tests/test_pr40_review.py::test_plugin_restore_validates_individual_state[state3]
+FAILED tests/test_pr40_review.py::test_plugin_restore_validates_individual_state[state4]
+FAILED tests/test_pr40_review.py::test_group_restore_validates_proportion_and_valid_roundtrips
+FAILED tests/test_pr40_review.py::test_correct_snapshot_hash_does_not_replace_envelope_validation
+FAILED tests/test_pr40_review.py::test_restore_streams_objects_instead_of_materializing_archive
+9 failed in 0.36s
