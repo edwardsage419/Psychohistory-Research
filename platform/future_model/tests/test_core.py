@@ -77,3 +77,17 @@ def test_registry_snapshots_and_cycles():
 def test_bounded_engine(args):
     from psychohistory.engine import run_experiment
     with pytest.raises(ValueError):run_experiment(**args)
+
+
+def test_plugin_capabilities_are_real_and_state_is_restorable():
+    from psychohistory.plugins import registry
+    for model in registry.describe():
+        plugin=registry.get(model['model_id'],model['version'])
+        for capability in model['capabilities']:
+            assert callable(getattr(plugin,capability,None)),(model['model_id'],capability)
+
+
+def test_unknown_payload_fields_do_not_smuggle_future_information():
+    from psychohistory.adapters import PopulationAdapter
+    r=record();r['payload']['tomorrow_states']=[1,1]
+    with pytest.raises(ValueError):PopulationAdapter().adapt(r)

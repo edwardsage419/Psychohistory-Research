@@ -7,6 +7,7 @@ class PopulationAdapter:
     def adapt(self, record):
         validate_record(record)
         states=record['payload'].get('states',[])
+        if set(record['payload'])!={'states'}:raise ValueError('Unexpected payload field; use a separately versioned adapter')
         if record['record_type']!='individual.states' or record['units']!='binary' or not states or len(states)!=len(record['subject_ref']) or any(type(x)!=int or x not in (0,1) for x in states):
             raise ValueError('Incompatible state/unit/identity or missing values')
         result=json.loads(canonical(record))

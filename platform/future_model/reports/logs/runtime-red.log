@@ -1,0 +1,36 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_______________ test_scheduler_execution_failure_cancel_timeout ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-2/test_scheduler_execution_failu0')
+
+    def test_scheduler_execution_failure_cancel_timeout(tmp_path):
+        from psychohistory.storage import Store
+>       from psychohistory.runtime import Scheduler
+E       ModuleNotFoundError: No module named 'psychohistory.runtime'
+
+platform/future_model/tests/test_runtime_api.py:8: ModuleNotFoundError
+__________________ test_service_auth_admission_and_provenance __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-2/test_service_auth_admission_an0')
+
+    def test_service_auth_admission_and_provenance(tmp_path):
+>       from psychohistory.api import create_app
+E       ModuleNotFoundError: No module named 'psychohistory.api'
+
+platform/future_model/tests/test_runtime_api.py:33: ModuleNotFoundError
+__________________ test_crash_recovery_blocks_unowned_worker ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-2/test_crash_recovery_blocks_uno0')
+
+    def test_crash_recovery_blocks_unowned_worker(tmp_path):
+        from psychohistory.storage import Store
+>       from psychohistory.runtime import Scheduler
+E       ModuleNotFoundError: No module named 'psychohistory.runtime'
+
+platform/future_model/tests/test_runtime_api.py:65: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED platform/future_model/tests/test_runtime_api.py::test_scheduler_execution_failure_cancel_timeout
+FAILED platform/future_model/tests/test_runtime_api.py::test_service_auth_admission_and_provenance
+FAILED platform/future_model/tests/test_runtime_api.py::test_crash_recovery_blocks_unowned_worker
+3 failed in 0.03s
