@@ -1,0 +1,29 @@
+No broken requirements found.
+.....................................                                    [100%]
+=============================== warnings summary ===============================
+tests/test_runtime_api.py::test_service_auth_admission_and_provenance
+  /workspace/.psychohistory-env/venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+37 passed, 1 warning in 2.55s
+
+> psychohistory-console@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 16 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:  0.32 kB
+dist/assets/index-BzJ4yJkF.css    7.13 kB │ gzip:  2.34 kB
+dist/assets/index-C8Due4_f.js   235.13 kB │ gzip: 74.09 kB
+
+✓ built in 131ms
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+Independent stdlib-only core: PASS

@@ -67,3 +67,28 @@ def test_crash_recovery_blocks_unowned_worker(tmp_path):
     with Scheduler(s) as q:
         assert q.get('lost')['status']=='FAILED'
         assert 'restart' in q.get('lost')['error']
+
+
+def test_api_rejects_oversize_undeclared_fields_and_traversal(tmp_path):
+    from psychohistory.api import create_app
+    from fastapi.testclient import TestClient
+    repo=Path(__file__).resolve().parents[3]
+    with TestClient(create_app(tmp_path/'api',repo,'local-test-token')) as c:
+        headers={'Authorization':'Bearer local-test-token'}
+        assert c.post('/api/v1/runs',headers=headers,json={'frozen_protocol_change':True}).status_code==422
+        assert c.post('/api/v1/runs',headers=headers,content='x'*17000).status_code==413
+        assert c.get('/api/v1/runs/../../token',headers=headers).status_code!=200
+        assert c.get('/api/v1/assets',headers={'Authorization':'Bearer wrong'}).status_code==401
+        assert c.get('/api/v1/runs?limit=0',headers=headers).status_code==422
+        assert c.get('/api/v1/runs?offset=-1',headers=headers).status_code==422
+
+
+def test_scheduler_single_owner_and_backup_refuses_running(tmp_path):
+    from psychohistory.storage import Store
+    from psychohistory.runtime import Scheduler
+    s=Store(tmp_path/'data')
+    with Scheduler(s) as q:
+        with pytest.raises(ValueError):Scheduler(Store(s.root))
+        r=q.submit({'rounds':100,'population':1000});q.approve(r['id'])
+        with pytest.raises(ValueError):q.backup(tmp_path/'backup')
+        q.cancel(r['id'])

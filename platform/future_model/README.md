@@ -38,7 +38,7 @@ API v1：`GET /health`（仅公开健康状态）、`GET /models`、`GET/POST /r
 ## 验证与证据
 
 - `bash scripts/verify.sh`：完整本工程 pytest、pip check、严格 TypeScript/Vite 构建、`python -S` 无第三方包核心运行。
-- 在服务启动后运行 `python scripts/browser_check.py`：真实 Chromium 页面操作。需测试用 Python 中安装 Playwright 1.62.0、系统 Chromium；设置 `PH_TEST_DATA` 指向独立测试数据目录，勿用于个人数据。
+- 在服务启动后运行 `python scripts/browser_check.py`：真实 Chromium 页面操作。需系统 Chromium，并在测试用 venv 执行 `python -m pip install --index-url https://pypi.org/simple -r requirements-browser.lock`；设置 `PH_TEST_DATA` 指向独立测试数据目录，勿用于个人数据。
 - [逐门验收](reports/ACCEPTANCE.md)、[进度账本](reports/PROGRESS.md)、[失败记录](reports/FAILURES.md)、[浏览器截图](reports/console.png)。以实际报告为准；未执行项目明确 NOT_RUN。
 
 ## 安装布局与持久化

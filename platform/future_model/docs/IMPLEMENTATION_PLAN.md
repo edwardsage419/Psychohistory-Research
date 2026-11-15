@@ -24,38 +24,38 @@
 ## Task 1: Contracts and independent mechanism engine
 Files: src/psychohistory/{contracts,plugins,adapters,state,engine,relations}.py; tests/test_core.py.
 Interfaces: run_experiment(seed:int, rounds:int, population:int, intervention:float)->dict; Registry.get(model_id,version); record/uncertainty validation; Snapshot.create/restore/fork.
-- [ ] Write tests for deterministic two-model delayed synchronization, independent branches, probabilities, UNKNOWN, future-time/unit/identity rejection, capabilities/version compatibility, cycles, tampering.
-- [ ] Run RED test suite before implementation.
-- [ ] Implement bounded individual-state and group-spread plugins, explicit adapter, event ordering, immutable snapshots and relationship validation; no API/storage imports in core.
-- [ ] Run tests GREEN; commit and push checkpoint with SHA readback.
+- [x] Write tests for deterministic two-model delayed synchronization, independent branches, probabilities, UNKNOWN, future-time/unit/identity rejection, capabilities/version compatibility, cycles, tampering.
+- [x] Run RED test suite before implementation.
+- [x] Implement bounded individual-state and group-spread plugins, explicit adapter, event ordering, immutable snapshots and relationship validation; no API/storage imports in core.
+- [x] Run tests GREEN; commit and push checkpoint with SHA readback.
 
 ## Task 2: Provenance, storage, admission and recovery
 Files: evidence.py, storage.py; tests/test_storage.py.
 Interfaces: Store(root:Path), create/update/get/list run/asset records; put/get artifacts; backup(destination), restore_backup(source,new_root); scan_asset(repo,path); immutable evidence admission.
-- [ ] RED tests: read-only real asset discovery/dedup, namespace preservation, invalid provenance/missing file, restricted-data rejection; SQL consistency, immutable CAS, safe paths/symlinks, backup/restore/tampering, schema migration and preserved failure journal.
-- [ ] Implement SQLite v2 migrations, manifest-verified consistent backup and restore, metadata-only scanner and explicit synthetic approval.
-- [ ] Run full platform suite GREEN; checkpoint commit/push/readback.
+- [x] RED tests: read-only real asset discovery/dedup, namespace preservation, invalid provenance/missing file, restricted-data rejection; SQL consistency, immutable CAS, safe paths/symlinks, backup/restore/tampering, schema migration and preserved failure journal.
+- [x] Implement SQLite v2 migrations, manifest-verified consistent backup and restore, metadata-only scanner and explicit synthetic approval.
+- [x] Run full platform suite GREEN; checkpoint commit/push/readback.
 
 ## Task 3: Isolated scheduler, shared service, API and CLI
 Files: runtime.py, service.py, api.py, cli.py; tests/test_runtime_api.py.
 Interfaces: Scheduler.submit/approve/get/cancel/wait/close; Service.submit synthetic run; create_app(root,repo,token); python -m psychohistory.cli.
-- [ ] RED tests: PENDING→APPROVED→RUNNING→COMPLETED, failure, cancel, timeout, resource/size/concurrency budgets, process isolation, truthful persisted logs; token auth, CSRF/cross-origin rejection, no real-data execution, CLI parity.
-- [ ] Implement spawn processes with POSIX resource limits, bounded queue/runtime, default loopback server, protected writes/read scope; secrets never persisted.
-- [ ] Full suite GREEN; real CLI/API/backup operations; checkpoint commit/push/readback.
+- [x] RED tests: PENDING→APPROVED→RUNNING→COMPLETED, failure, cancel, timeout, resource/size/concurrency budgets, process isolation, truthful persisted logs; token auth, CSRF/cross-origin rejection, no real-data execution, CLI parity.
+- [x] Implement spawn processes with POSIX resource limits, bounded queue/runtime, default loopback server, protected writes/read scope; secrets never persisted.
+- [x] Full suite GREEN; real CLI/API/backup operations; checkpoint commit/push/readback.
 
 ## Task 4: Interactive console and real browser flow
 Files: web/{src,package.json,package-lock.json,index.html,vite.config.ts}, tests browser script; README and scripts.
-- [ ] Build Chinese research dashboard, model browser, parameterized experiment form, submit/approve/cancel workflow, evidence/provenance center, logs/results/branch history. API-only mathematics.
-- [ ] Verify strict TypeScript and production Vite build; real browser exercise actual API submission/approval/results and error display. Use an installed free browser if available; report actual blockers.
-- [ ] Lock all dependencies; Linux startup/shutdown on loopback; checkpoint commit/push/readback.
+- [x] Build Chinese research dashboard, model browser, parameterized experiment form, submit/approve/cancel workflow, evidence/provenance center, logs/results/branch history. API-only mathematics.
+- [x] Verify strict TypeScript and production Vite build; real browser exercise actual API submission/approval/results and error display. Use an installed free browser if available; report actual blockers.
+- [x] Lock all dependencies; Linux startup/shutdown on loopback; checkpoint commit/push/readback.
 
 ## Task 5: Integration, disaster recovery, security review and PR
 Files: scripts/{install,verify,disaster_recovery}.*, docs/{CONTRACTS,SECURITY,RECOVERY,VERSIONING}.md, reports/*, examples/*.
-- [ ] Run complete platform suite; run pure core with python -S; record current environmental facts and all failures.
-- [ ] Fresh clone from actual pushed branch, create a new venv and npm ci from locks, rerun synthetic experiment and compare deterministic scientific payload. Actual SQLite/artifact backup and restore checks.
-- [ ] Fresh whole-branch review and correct important defects with regression tests.
-- [ ] Gates 01–11 report with precise COMPLETE/PARTIAL/BLOCKED/NOT_RUN statuses, truthful PR/push/network evidence and native macOS NOT_RUN.
-- [ ] Publish code checkpoints only to independent engineering branch; verify SHA after each push; create PR if GitHub API available. Do not merge or deploy. Preserve unresolved failure records and actionable resume commands.
+- [x] Run complete platform suite; run pure core with python -S; record current environmental facts and all failures.
+- [x] Fresh clone from actual pushed branch, create a new venv and npm ci from locks, rerun synthetic experiment and compare deterministic scientific payload. Actual SQLite/artifact backup and restore checks.
+- [x] Fresh whole-branch review and correct important defects with regression tests.
+- [x] Gates 01–11 report with precise COMPLETE/PARTIAL/BLOCKED/NOT_RUN statuses, truthful PR/push/network evidence and native macOS NOT_RUN.
+- [ ] PR BLOCKED by current-instance api.github.com policy; code checkpoints verified. Publish code checkpoints only to independent engineering branch; verify SHA after each push; create PR if GitHub API available. Do not merge or deploy. Preserve unresolved failure records and actionable resume commands.
 
 ## Interface conflict scan / rulings
 Task 1→2: canonical JSON + sha256 snapshot payloads stored without mutation.

@@ -66,3 +66,28 @@ def test_migration_and_future_schema_rejection(tmp_path):
     assert s.schema_version()==2
     with sqlite3.connect(s.root/'metadata.sqlite') as db:db.execute('PRAGMA user_version=99')
     with pytest.raises(ValueError):Store(root)
+
+
+def test_restore_rejects_manifest_traversal_and_source_anomalies(tmp_path):
+    from psychohistory.storage import Store,restore_backup
+    from psychohistory.evidence import scan_asset
+    s=Store(tmp_path/'data');s.backup(tmp_path/'backup')
+    path=tmp_path/'backup/manifest.json';m=json.loads(path.read_text());m['files']['../../outside']='0'*64;path.write_text(json.dumps(m))
+    with pytest.raises(ValueError):restore_backup(tmp_path/'backup',tmp_path/'restore')
+    repo=tmp_path/'repo';(repo/'research').mkdir(parents=True)
+    (repo/'research/broken.json').write_text('{invalid')
+    with pytest.raises(ValueError):scan_asset(repo,'research/broken.json')
+    (repo/'research/link.json').symlink_to(path)
+    with pytest.raises(ValueError):scan_asset(repo,'research/link.json')
+
+
+def test_registry_coexists_versions_and_frozen_state_roundtrip():
+    from psychohistory.plugins import Registry,Individual
+    class NewIndividual(Individual):version='1.1.0'
+    registry=Registry();registry.register(Individual());registry.register(NewIndividual())
+    assert registry.get('individual','1.0.0').version=='1.0.0'
+    assert registry.get('individual','1.1.0').version=='1.1.0'
+    old=registry.get('individual','1.0.0');new=registry.get('individual','1.1.0')
+    raw=old.serialize_state({'states':[0,1]})
+    assert old.restore_state(raw)=={'states':[0,1]}
+    with pytest.raises(ValueError):new.restore_state(raw)
