@@ -1,13 +1,16 @@
 """Real loopback browser acceptance. Token stays in memory; never written to report."""
 import json
 import os
+import sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 url=os.environ.get('PH_TEST_URL','http://127.0.0.1:8765')
 token=Path(os.environ.get('PH_TEST_DATA','/tmp/psychohistory-web-check'),'token').read_text().strip()
 with sync_playwright() as p:
-    browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
+    chromium_executable = os.environ.get('PH_CHROMIUM_EXECUTABLE') or ('/usr/bin/chromium' if sys.platform.startswith('linux') else None)
+    chromium_args = ['--no-sandbox', '--disable-dev-shm-usage'] if sys.platform.startswith('linux') else []
+    browser=p.chromium.launch(executable_path=chromium_executable,headless=True,args=chromium_args)
     page=browser.new_page(viewport={'width':1440,'height':1000})
     errors=[]
     page.on('pageerror',lambda error:errors.append(str(error)))
