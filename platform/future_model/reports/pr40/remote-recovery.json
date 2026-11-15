@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "expected_sha": "92fad11dc748367310e9a2f670b6861c977b49e3",
+  "steps": [
+    {
+      "command": [
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "--single-branch",
+        "--branch",
+        "feat/psychohistory-platform-v0.1",
+        "https://github.com/edwardsage419/Psychohistory-Research.git",
+        "/tmp/pr40-remote-recovery/checkout"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/install.sh"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/verify.sh"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run.sh",
+        "--data",
+        "/tmp/pr40-remote-recovery/data",
+        "--repo",
+        "/tmp/pr40-remote-recovery/checkout",
+        "demo",
+        "--seed",
+        "123",
+        "--rounds",
+        "6",
+        "--population",
+        "16"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run.sh",
+        "--data",
+        "/tmp/pr40-remote-recovery/data",
+        "--repo",
+        "/tmp/pr40-remote-recovery/checkout",
+        "backup",
+        "/tmp/pr40-remote-recovery/backup"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run.sh",
+        "--data",
+        "/tmp/pr40-remote-recovery/restored-data",
+        "restore",
+        "/tmp/pr40-remote-recovery/backup"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run.sh",
+        "--data",
+        "/tmp/pr40-remote-recovery/restored-data",
+        "result",
+        "5b67ab8da7cd410cad5c391e7ea5e42f"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "restored_sha": "92fad11dc748367310e9a2f670b6861c977b49e3",
+  "new_venv": true,
+  "npm_ci": true,
+  "remote_clone": true,
+  "experiment_reproduced": true,
+  "sqlite_backup_restore": true,
+  "artifact_integrity": true,
+  "result_sha256": "2310400d7dd7f3de6df17df8a09392bb80253e3de008d59584953a473d286f8e",
+  "log_sha256": "874cec096025677cf1d0844de65887ffeea12a2b921c644817497cb55e8505cd"
+}

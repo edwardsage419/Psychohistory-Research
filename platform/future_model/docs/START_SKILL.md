@@ -8,3 +8,5 @@
 6. 优先完成已有工程，不重跑研究线程。冻结 R073/PESEN 和其他协议；只读登记不是执行准入；合成结果不是科学预测或因果验证。
 7. 每个合理工程检查点使用 [skip ci] 提交，仅推送独立工程分支并核验远端 SHA。受限/大型资料 BLOCKED。不能依赖任务 VM 作为唯一副本；按 docs/RECOVERY.md 备份与恢复。
 8. GitHub API 需要当前运行实例允许 api.github.com。源配置草稿保存不等于当前实例已应用；以 environment_status 与实际请求为准。不要索取/打印原始 token。仍受阻则保存全部独立工作并明确标记 PR BLOCKED，不虚构 PR。
+
+PR #40 审查后：CLI 的 runs/status/result/discover 只访问 Store，不启动调度器，可与 Web owner 并存；其他离线命令保持排他 owner。approve/demo 只执行显式目标，不调度邻近已批准任务。Web 控制台单独加载全部活动任务并提供 50 条历史分页；源代码/环境身份仍必须精确锁定。
