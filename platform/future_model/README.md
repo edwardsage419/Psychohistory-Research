@@ -4,7 +4,7 @@
 
 ## 云端安装与启动
 
-要求 Python 3.12、Node.js 24 LTS、npm、Git。Linux 已实测，macOS 原生 **NOT_RUN**；不要求个人电脑在线。所有命令从 `platform/future_model/` 执行。
+要求 Python 3.12、Node.js 24 LTS、npm、Git。Linux 已实测，GitHub 托管 macOS 15 Apple Silicon ARM64 已原生实测（53 项通过、1 项 Linux 专用跳过；浏览器 9 步和备份恢复成功），用户 M4 MacBook Air 实机仍 **NOT_RUN**；不要求个人电脑在线。所有命令从 `platform/future_model/` 执行。macOS 使用不含符号链接的规范化工作路径作为 `--data` 目录，避免直接使用经 `/var` 或 `/tmp` 符号链接的路径。详细记录见 [逐门验收](reports/ACCEPTANCE.md)。
 
 ```bash
 bash scripts/install.sh
