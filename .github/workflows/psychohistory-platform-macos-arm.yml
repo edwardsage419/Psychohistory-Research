@@ -59,10 +59,12 @@ jobs:
       - name: Reproduce synthetic experiment and backup on macOS
         run: |
           set -euo pipefail
-          DATA_ROOT="$(mktemp -d)"
-          BACKUP_ROOT="$(mktemp -d)"
-          rm -rf "$BACKUP_ROOT"
-          trap 'rm -rf "$DATA_ROOT" "$BACKUP_ROOT" "$DATA_ROOT-restored"' EXIT
+          # macOS /tmp and /var may be symlinks; use a canonical trusted runner path.
+          CANONICAL_TEMP="$(cd "$RUNNER_TEMP" && pwd -P)"
+          DATA_ROOT="$(mktemp -d "$CANONICAL_TEMP/psychohistory-macos.XXXXXXXX")"
+          BACKUP_ROOT="$DATA_ROOT.backup"
+          RESTORED_ROOT="$DATA_ROOT.restored"
+          trap 'rm -rf "$DATA_ROOT" "$BACKUP_ROOT" "$RESTORED_ROOT"' EXIT
           bash scripts/run.sh --data "$DATA_ROOT" demo --seed 123 --rounds 6 --population 16
           bash scripts/run.sh --data "$DATA_ROOT" backup "$BACKUP_ROOT"
-          bash scripts/run.sh --data "$DATA_ROOT-restored" restore "$BACKUP_ROOT"
+          bash scripts/run.sh --data "$RESTORED_ROOT" restore "$BACKUP_ROOT"
