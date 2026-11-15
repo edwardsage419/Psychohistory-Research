@@ -1,0 +1,67 @@
+name: Psychohistory Platform macOS ARM64 compatibility
+
+on:
+  pull_request:
+    types: [synchronize]
+    branches: [main]
+    paths:
+      - 'platform/future_model/**'
+      - '.github/workflows/psychohistory-platform-macos-arm.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: psychohistory-platform-macos-arm-pr${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  macos-arm64:
+    if: github.event.pull_request.number == 40
+    runs-on: macos-15
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+        working-directory: platform/future_model
+    steps:
+      - name: Check out PR snapshot
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Record native macOS platform
+        run: |
+          set -euo pipefail
+          sw_vers
+          uname -a
+          test "$(uname -s)" = Darwin
+          test "$(uname -m)" = arm64
+          python3.12 --version
+          node --version
+          npm --version
+      - name: Install locked dependencies
+        run: |
+          set -euo pipefail
+          bash scripts/install.sh
+      - name: Run complete engineering verification
+        run: |
+          set -euo pipefail
+          bash scripts/verify.sh
+      - name: Reproduce synthetic experiment and backup on macOS
+        run: |
+          set -euo pipefail
+          DATA_ROOT="$(mktemp -d)"
+          BACKUP_ROOT="$(mktemp -d)"
+          rm -rf "$BACKUP_ROOT"
+          trap 'rm -rf "$DATA_ROOT" "$BACKUP_ROOT"' EXIT
+          bash scripts/run.sh --data "$DATA_ROOT" demo --seed 123 --rounds 6 --population 16
+          bash scripts/run.sh --data "$DATA_ROOT" backup "$BACKUP_ROOT"
+          bash scripts/run.sh --data "$DATA_ROOT-restored" restore "$BACKUP_ROOT"
