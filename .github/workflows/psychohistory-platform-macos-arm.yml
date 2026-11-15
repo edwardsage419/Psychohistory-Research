@@ -1,4 +1,5 @@
 name: Psychohistory Platform macOS ARM64 compatibility
+# One bounded, no-cost public-repository compatibility check for PR 40.
 
 on:
   pull_request:
@@ -61,7 +62,7 @@ jobs:
           DATA_ROOT="$(mktemp -d)"
           BACKUP_ROOT="$(mktemp -d)"
           rm -rf "$BACKUP_ROOT"
-          trap 'rm -rf "$DATA_ROOT" "$BACKUP_ROOT"' EXIT
+          trap 'rm -rf "$DATA_ROOT" "$BACKUP_ROOT" "$DATA_ROOT-restored"' EXIT
           bash scripts/run.sh --data "$DATA_ROOT" demo --seed 123 --rounds 6 --population 16
           bash scripts/run.sh --data "$DATA_ROOT" backup "$BACKUP_ROOT"
           bash scripts/run.sh --data "$DATA_ROOT-restored" restore "$BACKUP_ROOT"
