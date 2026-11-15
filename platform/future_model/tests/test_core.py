@@ -36,7 +36,7 @@ def test_uncertainty_and_refusal():
 def record():
     return {'schema_version':'1.0.0','record_id':'input-1','record_type':'individual.states',
       'subject_ref':['person-0','person-1'],'time_context':{'simulation_time':0,'round':0,'event_time':0,'observed_at':0,'available_at':0,'cutoff':0,'target_time':1},
-      'payload':{'states':[0,1]},'units':'binary','uncertainty':{'kind':'UNKNOWN'},
+      'payload':{'states':[0,1]},'units':'binary','uncertainty':__import__('psychohistory.contracts',fromlist=['uncertainty']).uncertainty('UNKNOWN',units='binary',target='individual.states'),
       'provenance':{'source':'SYNTHETIC','seed':1},'access_policy':'PUBLIC_SYNTHETIC','dependencies':['joint-population-state']}
 
 
@@ -91,3 +91,11 @@ def test_unknown_payload_fields_do_not_smuggle_future_information():
     from psychohistory.adapters import PopulationAdapter
     r=record();r['payload']['tomorrow_states']=[1,1]
     with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+
+
+def test_synthetic_relations_never_become_identified_causal():
+    from psychohistory.engine import run_experiment
+    from psychohistory.relations import CausalAnalysisPlugin
+    result=run_experiment(rounds=1,population=2)
+    assert {r['kind'] for r in result['mechanism_relations']}=={'DYNAMIC_FEEDBACK','CANDIDATE_CAUSAL'}
+    assert all(r['verification']=='SYNTHETIC_ONLY' for r in result['mechanism_relations'])

@@ -111,8 +111,14 @@ class Store:
         if not r:raise KeyError('Run not found')
         return json.loads(r[0])
 
-    def runs(self):
-        with self.db() as db:return [json.loads(x[0]) for x in db.execute('SELECT payload FROM runs ORDER BY rowid DESC LIMIT 200')]
+    def runs(self,limit=200,offset=0):
+        if type(limit)!=int or not 1<=limit<=200 or type(offset)!=int or offset<0:raise ValueError('Invalid history page')
+        with self.db() as db:return [json.loads(x[0]) for x in db.execute('SELECT payload FROM runs ORDER BY rowid DESC LIMIT ? OFFSET ?',(limit,offset))]
+
+    def active_runs(self):
+        with self.db() as db:
+            return [json.loads(x[0]) for x in db.execute("SELECT payload FROM runs WHERE json_extract(payload,'$.status') IN ('PENDING','APPROVED','RUNNING') ORDER BY rowid")]
+
 
     def update_run(self,run_id,**changes):
         with self.db() as db:
@@ -139,22 +145,33 @@ class Store:
         dest=checked_path(destination)
         if dest.exists():raise ValueError('Backup destination must be new')
         with self.lock:
-            if any(x['status'] in {'APPROVED','RUNNING'} for x in self.runs()):raise ValueError('Backup requires quiescent scheduler')
-            dest.mkdir(parents=True,mode=0o700);(dest/'objects').mkdir(mode=0o700)
+            if any(x['status'] in {'APPROVED','RUNNING'} for x in self.active_runs()):
+                self.audit({'backup':'FAILED','reason':'active tasks'})
+                raise ValueError('Backup requires quiescent scheduler')
+            dest.parent.mkdir(parents=True,exist_ok=True)
+            stage=Path(tempfile.mkdtemp(prefix='.backup-',dir=dest.parent));(stage/'objects').mkdir(mode=0o700)
             try:
                 with self.db() as db:
-                    with sqlite3.connect(dest/'metadata.sqlite') as target:db.backup(target)
+                    with sqlite3.connect(stage/'metadata.sqlite') as target:db.backup(target)
                 for p in (self.root/'objects').iterdir():
                     checked_path(p)
-                    if not re.fullmatch('[0-9a-f]{64}\\.json',p.name):raise ValueError('Unexpected object file')
+                    if not re.fullmatch(r'[0-9a-f]{64}\.json',p.name):raise ValueError('Unexpected object file')
                     raw=p.read_bytes()
                     if digest(raw)!=p.stem:raise ValueError('Cannot back up corrupt object')
-                    write_new(dest/'objects'/p.name,raw)
+                    write_new(stage/'objects'/p.name,raw)
+                with sqlite3.connect(stage/'metadata.sqlite') as db:
+                    if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise ValueError('SQLite backup integrity failure')
+                    for row in db.execute('SELECT payload FROM runs'):
+                        run=json.loads(row[0]);h=run.get('result_hash')
+                        if run['status']=='COMPLETED' and not h:raise ValueError('Completed run missing result reference')
+                        if h and (not HASH.fullmatch(h) or not (stage/'objects'/f'{h}.json').is_file()):raise ValueError('Missing referenced run artifact')
                 journal=checked_path(self.root/'audit.jsonl')
-                write_new(dest/'audit.jsonl',journal.read_bytes() if journal.exists() else b'')
-                manifest={'backup_version':'1.0.0','schema_version':SCHEMA,'files':{p.relative_to(dest).as_posix():digest(p.read_bytes()) for p in sorted(dest.rglob('*')) if p.is_file()}}
-                write_new(dest/'manifest.json',canonical(manifest).encode())
+                write_new(stage/'audit.jsonl',journal.read_bytes() if journal.exists() else b'')
+                manifest={'backup_version':'1.0.0','schema_version':SCHEMA,'files':{p.relative_to(stage).as_posix():digest(p.read_bytes()) for p in sorted(stage.rglob('*')) if p.is_file()}}
+                write_new(stage/'manifest.json',canonical(manifest).encode())
+                stage.rename(dest)
             except BaseException:
+                shutil.rmtree(stage)
                 self.audit({'backup':'FAILED','destination_name':dest.name});raise
         self.audit({'backup':'COMPLETED','manifest_sha256':digest(canonical(manifest).encode())})
         return manifest

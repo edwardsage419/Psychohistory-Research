@@ -63,7 +63,7 @@ def create_app(root,repo,token=None):
     @app.get('/api/v1/models')
     def models():return registry.describe()
     @app.get('/api/v1/runs')
-    def runs():return app.state.service.store.runs()
+    def runs(limit:int=200,offset:int=0):return app.state.service.store.runs(limit,offset)
     @app.post('/api/v1/runs',status_code=201)
     def submit(data:ExperimentInput):return app.state.service.submit(data)
     @app.get('/api/v1/runs/{run_id}')

@@ -1,0 +1,13 @@
+..........F                                                              [100%]
+=================================== FAILURES ===================================
+___________ test_synthetic_relations_never_become_identified_causal ____________
+
+    def test_synthetic_relations_never_become_identified_causal():
+        from psychohistory.engine import run_experiment
+>       from psychohistory.relations import CausalAnalysisPlugin
+E       ImportError: cannot import name 'CausalAnalysisPlugin' from 'psychohistory.relations' (/workspace/Psychohistory-Research/platform/future_model/src/psychohistory/relations.py)
+
+platform/future_model/tests/test_core.py:98: ImportError
+=========================== short test summary info ============================
+FAILED platform/future_model/tests/test_core.py::test_synthetic_relations_never_become_identified_causal
+1 failed, 10 passed in 0.05s

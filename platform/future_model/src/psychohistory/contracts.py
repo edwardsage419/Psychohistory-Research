@@ -39,24 +39,36 @@ def convert_uncertainty(value, target):
 
 def validate_record(record):
     required={'schema_version','record_id','record_type','subject_ref','time_context','payload','units','uncertainty','provenance','access_policy','dependencies'}
-    if not required <= record.keys() or record['schema_version'] != SCHEMA_VERSION:
+    if not isinstance(record,dict) or not required<=record.keys() or record['schema_version']!=SCHEMA_VERSION:
         raise ValueError('Missing fields or incompatible contract version')
-    canonical(record)
-    subjects=record['subject_ref']
-    if not subjects or not all(isinstance(x,str) and x for x in subjects) or len(subjects)!=len(set(subjects)):
-        raise ValueError('Missing or ambiguous subject identity')
-    if not record['dependencies'] or not record['units'] or not record['provenance'].get('source'):
-        raise ValueError('Units, joint dependence and provenance required')
+    try:canonical(record)
+    except (ValueError,TypeError) as exc:raise ValueError('Record must be finite JSON') from exc
+    for field in ['record_id','record_type','units']:
+        if not isinstance(record[field],str) or not record[field].strip():raise ValueError('Nonempty scalar identity/type/unit required')
+    for field in ['subject_ref','dependencies']:
+        values=record[field]
+        if not isinstance(values,list) or not values or not all(isinstance(x,str) and x.strip() for x in values) or len(values)!=len(set(values)):
+            raise ValueError('Explicit nonempty unique identity/dependency list required')
+    if not isinstance(record['payload'],dict) or not isinstance(record['provenance'],dict) or not isinstance(record['provenance'].get('source'),str) or not record['provenance']['source']:
+        raise ValueError('Structured payload and provenance required')
+    extensions=record.get('extensions',{})
+    import re
+    if not isinstance(extensions,dict) or any(not re.fullmatch(r'[a-z][a-z0-9_.-]+@[0-9]+\.[0-9]+\.[0-9]+',k) for k in extensions):raise ValueError('Extensions require namespace@version')
+    if set(record)-required-{'extensions'}:raise ValueError('Undeclared record fields')
     t=record['time_context']
+    if not isinstance(t,dict):raise ValueError('Structured time_context required')
     for k in ['simulation_time','round','event_time','observed_at','available_at','cutoff','target_time']:
-        if type(t.get(k)) not in (int,float) or not math.isfinite(t[k]):
-            raise ValueError('Explicit finite time semantics required')
-    if not t['event_time'] <= t['observed_at'] <= t['available_at'] <= t['cutoff'] < t['target_time']:
+        if type(t.get(k)) not in (int,float) or not math.isfinite(t[k]):raise ValueError('Explicit finite time semantics required')
+    if not t['event_time']<=t['observed_at']<=t['available_at']<=t['cutoff']<t['target_time']:
         raise ValueError('Future information or inconsistent time order')
-    if t['simulation_time'] > t['cutoff'] or t['round'] < 0:
-        raise ValueError('Invalid simulation time')
-    if record['access_policy'] not in {'PUBLIC_SYNTHETIC','METADATA_ONLY','RESTRICTED'}:
-        raise ValueError('Unknown access policy')
+    if t['simulation_time']<0 or t['simulation_time']>t['cutoff'] or type(t['round'])!=int or t['round']<0:raise ValueError('Invalid discrete round or simulation time')
+    if record['access_policy'] not in {'PUBLIC_SYNTHETIC','METADATA_ONLY','RESTRICTED'}:raise ValueError('Unknown access policy')
     u=record['uncertainty']
-    uncertainty(u['kind'], **{k:v for k,v in u.items() if k!='kind'})
+    metadata={'kind','conditions','target','units','method','dependencies','interpretation','source'}
+    if not isinstance(u,dict) or not metadata<=u.keys():raise ValueError('Complete uncertainty interpretation required')
+    if any(not isinstance(u[k],str) or not u[k].strip() for k in ['kind','target','units','method','interpretation','source']):raise ValueError('Invalid uncertainty metadata')
+    if not isinstance(u['conditions'],list) or not all(isinstance(x,str) for x in u['conditions']):raise ValueError('Invalid uncertainty conditions')
+    if u['units']!=record['units'] or u['target']!=record['record_type'] or u['dependencies']!=record['dependencies']:
+        raise ValueError('Uncertainty target/unit/joint-dependency mismatch')
+    uncertainty(u['kind'],**{k:v for k,v in u.items() if k!='kind'})
     return record

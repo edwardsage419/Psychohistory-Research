@@ -1,0 +1,291 @@
+FFFFFFFFFFFFFFF                                                          [100%]
+=================================== FAILURES ===================================
+____________ test_old_live_tasks_remain_authoritative_and_paginated ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-6/test_old_live_tasks_remain_aut0')
+
+    def test_old_live_tasks_remain_authoritative_and_paginated(tmp_path):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        s.create_run('old',{'rounds':1,'population':2})
+        fill_terminal(s)
+>       assert any(r['id']=='old' for r in s.runs(limit=100,offset=200))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Store.runs() got an unexpected keyword argument 'limit'
+
+platform/future_model/tests/test_review_regressions.py:18: TypeError
+__________ test_old_running_recovered_and_old_approved_blocks_backup ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-6/test_old_running_recovered_and0')
+
+    def test_old_running_recovered_and_old_approved_blocks_backup(tmp_path):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        s.create_run('old',{});s.update_run('old',status='APPROVED');s.update_run('old',status='RUNNING')
+        fill_terminal(s)
+>       with Scheduler(s) as q:assert q.get('old')['status']=='FAILED'
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'RUNNING' == 'FAILED'
+E         
+E         - FAILED
+E         + RUNNING
+
+platform/future_model/tests/test_review_regressions.py:32: AssertionError
+____________ test_missing_referenced_object_fails_backup_truthfully ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-6/test_missing_referenced_object0')
+
+    def test_missing_referenced_object_fails_backup_truthfully(tmp_path):
+        from psychohistory.storage import Store
+        s=Store(tmp_path/'data');h=s.put({'a':1});s.create_run('r',{})
+        s.update_run('r',status='APPROVED');s.update_run('r',status='RUNNING');s.update_run('r',status='COMPLETED',result_hash=h)
+        (s.root/'objects'/f'{h}.json').unlink();s.put({'unrelated':True})
+>       with pytest.raises(ValueError):s.backup(tmp_path/'backup')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:42: Failed
+___________________ test_code_pin_changes_block_old_approval ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-6/test_code_pin_changes_block_ol0')
+
+    def test_code_pin_changes_block_old_approval(tmp_path):
+        from psychohistory.storage import Store
+        from psychohistory.runtime import Scheduler
+        s=Store(tmp_path/'data')
+        with Scheduler(s) as q:
+            r=q.submit({'rounds':1,'population':2});s.update_run(r['id'],code_sha256='0'*64)
+            q.approve(r['id']);done=q.wait(r['id'],10)
+>           assert done['status']=='BLOCKED'
+E           AssertionError: assert 'COMPLETED' == 'BLOCKED'
+E             
+E             - BLOCKED
+E             + COMPLETED
+
+platform/future_model/tests/test_review_regressions.py:54: AssertionError
+_____________ test_pin_check_rejects_worker_output_from_other_code _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-6/test_pin_check_rejects_worker_0')
+
+    def test_pin_check_rejects_worker_output_from_other_code(tmp_path):
+>       from psychohistory.runtime import validate_execution_identity
+E       ImportError: cannot import name 'validate_execution_identity' from 'psychohistory.runtime' (/workspace/Psychohistory-Research/platform/future_model/src/psychohistory/runtime.py)
+
+platform/future_model/tests/test_review_regressions.py:60: ImportError
+________________ test_malformed_exchange_is_rejected[<lambda>0] ________________
+
+mutation = <function <lambda> at 0x7f66d74d6200>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:86: Failed
+________________ test_malformed_exchange_is_rejected[<lambda>1] ________________
+
+mutation = <function <lambda> at 0x7f66d74d62a0>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:86: Failed
+________________ test_malformed_exchange_is_rejected[<lambda>2] ________________
+
+mutation = <function <lambda> at 0x7f66d74d6340>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:86: Failed
+________________ test_malformed_exchange_is_rejected[<lambda>3] ________________
+
+mutation = <function <lambda> at 0x7f66d74d63e0>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:86: Failed
+________________ test_malformed_exchange_is_rejected[<lambda>4] ________________
+
+mutation = <function <lambda> at 0x7f66d74d6480>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:86: Failed
+________________ test_malformed_exchange_is_rejected[<lambda>5] ________________
+
+mutation = <function <lambda> at 0x7f66d74d6520>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:86: Failed
+________________ test_malformed_exchange_is_rejected[<lambda>6] ________________
+
+mutation = <function <lambda> at 0x7f66d74d65c0>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:86: Failed
+________________ test_malformed_exchange_is_rejected[<lambda>7] ________________
+
+mutation = <function <lambda> at 0x7f66d74d6660>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+platform/future_model/tests/test_review_regressions.py:86: Failed
+________________ test_malformed_exchange_is_rejected[<lambda>8] ________________
+
+mutation = <function <lambda> at 0x7f66d74d6700>
+
+    @pytest.mark.parametrize('mutation',[
+        lambda r:r.update(subject_ref='ab'),lambda r:r.update(dependencies='unknown'),
+        lambda r:r['uncertainty'].update(units='kg'),lambda r:r['uncertainty'].update(dependencies=['different-joint-state']),
+        lambda r:r['uncertainty'].pop('source'),lambda r:r['uncertainty'].update(kind='DISCRETE',values=[0,1],probabilities=[.5,.5]),
+        lambda r:r.update(record_id=''),lambda r:r['time_context'].update(round=.5),lambda r:r.update(provenance=[]),
+    ])
+    def test_malformed_exchange_is_rejected(mutation):
+        from psychohistory.adapters import PopulationAdapter
+        r=good_record();mutation(r)
+>       with pytest.raises(ValueError):PopulationAdapter().adapt(r)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+platform/future_model/tests/test_review_regressions.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+platform/future_model/src/psychohistory/adapters.py:8: in adapt
+    validate_record(record)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+record = {'schema_version': '1.0.0', 'record_id': 'test', 'record_type': 'individual.states', 'subject_ref': ['a', 'b'], ...}
+
+    def validate_record(record):
+        required={'schema_version','record_id','record_type','subject_ref','time_context','payload','units','uncertainty','provenance','access_policy','dependencies'}
+        if not required <= record.keys() or record['schema_version'] != SCHEMA_VERSION:
+            raise ValueError('Missing fields or incompatible contract version')
+        canonical(record)
+        subjects=record['subject_ref']
+        if not subjects or not all(isinstance(x,str) and x for x in subjects) or len(subjects)!=len(set(subjects)):
+            raise ValueError('Missing or ambiguous subject identity')
+>       if not record['dependencies'] or not record['units'] or not record['provenance'].get('source'):
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'list' object has no attribute 'get'
+
+platform/future_model/src/psychohistory/contracts.py:48: AttributeError
+_____________ test_every_snapshot_parent_resolves_after_roundtrip ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-6/test_every_snapshot_parent_res0')
+
+    def test_every_snapshot_parent_resolves_after_roundtrip(tmp_path):
+        from psychohistory.engine import run_experiment
+        from psychohistory.storage import Store,restore_backup
+        from psychohistory.state import Snapshot
+        s=Store(tmp_path/'data');h=s.put(run_experiment(rounds=2,population=4));s.backup(tmp_path/'backup')
+        value=restore_backup(tmp_path/'backup',tmp_path/'restored').get(h)
+        snapshots=[value['root_snapshot']]
+        for branch in value['branches'].values():
+>           snapshots.append(branch['initial_snapshot']);snapshots.extend(x['snapshot'] for x in branch['history'])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'initial_snapshot'
+
+platform/future_model/tests/test_review_regressions.py:97: KeyError
+=========================== short test summary info ============================
+FAILED platform/future_model/tests/test_review_regressions.py::test_old_live_tasks_remain_authoritative_and_paginated
+FAILED platform/future_model/tests/test_review_regressions.py::test_old_running_recovered_and_old_approved_blocks_backup
+FAILED platform/future_model/tests/test_review_regressions.py::test_missing_referenced_object_fails_backup_truthfully
+FAILED platform/future_model/tests/test_review_regressions.py::test_code_pin_changes_block_old_approval
+FAILED platform/future_model/tests/test_review_regressions.py::test_pin_check_rejects_worker_output_from_other_code
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>0]
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>1]
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>2]
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>3]
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>4]
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>5]
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>6]
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>7]
+FAILED platform/future_model/tests/test_review_regressions.py::test_malformed_exchange_is_rejected[<lambda>8]
+FAILED platform/future_model/tests/test_review_regressions.py::test_every_snapshot_parent_resolves_after_roundtrip
+15 failed in 1.48s

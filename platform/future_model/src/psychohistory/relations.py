@@ -29,3 +29,14 @@ class ContinuousIntegrator:
     """Extension boundary; no continuous solver is falsely advertised."""
     def advance(self, state, dt):
         raise NotImplementedError('Provide a separately versioned, validated continuous integrator')
+
+# Computational causal-analysis modules must be independently versioned and admitted.
+# This is a Python structural contract, not an executable estimator or causal claim.
+from typing import Protocol
+
+class CausalAnalysisPlugin(Protocol):
+    model_id: str
+    version: str
+    def describe(self) -> dict: ...
+    def validate_input(self, record: dict, identification_protocol: dict) -> None: ...
+    def estimate(self, record: dict, identification_protocol: dict) -> dict: ...
