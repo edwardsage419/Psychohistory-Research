@@ -4,6 +4,7 @@ Use a dedicated synthetic fixture root created by --prepare before starting API.
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
 
 parser=argparse.ArgumentParser()
@@ -28,7 +29,10 @@ else:
     from playwright.sync_api import sync_playwright
     token=(args.data/'token').read_text().strip()
     with sync_playwright() as p:
-        browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
+        linux = sys.platform.startswith('linux')
+        executable = os.environ.get('PH_CHROMIUM_EXECUTABLE') or ('/usr/bin/chromium' if linux else None)
+        launch_args = ['--no-sandbox', '--disable-dev-shm-usage'] if linux else []
+        browser = p.chromium.launch(executable_path=executable, headless=True, args=launch_args)
         page=browser.new_page(viewport={'width':1440,'height':1000});errors=[]
         page.on('pageerror',lambda e:errors.append(str(e)))
         page.goto(args.url);page.get_by_label('本地访问令牌').fill(token)
