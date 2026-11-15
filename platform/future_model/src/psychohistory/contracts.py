@@ -20,10 +20,12 @@ def uncertainty(kind, **kwargs):
     canonical(result)
     if kind == 'DISCRETE':
         p, values = kwargs.get('probabilities', []), kwargs.get('values', [])
-        if not p or len(p) != len(values) or any(type(x) not in (float,int) or not math.isfinite(x) or x < 0 or x > 1 for x in p) or not math.isclose(sum(p), 1, abs_tol=1e-12):
+        if not isinstance(p,list) or not isinstance(values,list) or not p or len(p) != len(values) or any(type(x) not in (float,int) or not math.isfinite(x) or x < 0 or x > 1 for x in p) or not math.isclose(sum(p), 1, abs_tol=1e-12):
             raise ValueError('Invalid discrete probability mass')
         if len({canonical(x) for x in values}) != len(values):
             raise ValueError('Duplicate outcomes')
+    if kind in {'UNKNOWN','UNIDENTIFIABLE'} and any(k in kwargs for k in ['value','values','probabilities','bounds','samples','distribution','models']):
+        raise ValueError('Unknown uncertainty cannot carry quantified estimates')
     if kind.endswith('INTERVAL'):
         bounds=kwargs.get('bounds')
         if not bounds or len(bounds)!=2 or any(type(x) not in (int,float) or not math.isfinite(x) for x in bounds) or bounds[0]>bounds[1]:

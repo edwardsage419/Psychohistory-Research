@@ -33,12 +33,17 @@ bash scripts/run.sh --data /workspace/psychohistory-data cancel RUN_ID
 
 `demo` 明确执行已批准的内置合成协议并等待结果；`submit` 保留 PENDING，需后续批准。使用 API 时传 `Authorization: Bearer <本地令牌>`，勿把带令牌的示例命令记入持久日志。
 
-API v1：`GET /health`（仅公开健康状态）、`GET /models`、`GET/POST /runs`、`GET /runs/{id}`、`POST /runs/{id}/approve`、`POST /runs/{id}/cancel`、`GET /runs/{id}/result`、`GET /assets`、`POST /assets/discover`，均位于 `/api/v1` 前缀。写请求为 JSON；除健康状态外全部要求令牌；无多用户账号体系。
+CLI 的 runs/status/result/discover 不启动调度器，可在 Web 运行时查询。submit/cancel/backup 等离线维护命令保留排他所有权且不执行邻近队列；approve/demo 只执行明确目标。Web 拥有调度器时，审批/取消应通过同源 API 或页面进行。CLI 批准后若结果为 FAILED/BLOCKED/CANCELED，返回非零退出码并保留真实结果。
+
+控制台历史按 50 条分页，活动任务单独查询并始终可见；选中实验按 ID 独立读取，翻页不丢失结果。
+
+API v1：`GET /health`（仅公开健康状态）、`GET /models`、`GET/POST /runs`、`GET /runs/active`、`GET /runs/{id}`、`POST /runs/{id}/approve`、`POST /runs/{id}/cancel`、`GET /runs/{id}/result`、`GET /assets`、`POST /assets/discover`，均位于 `/api/v1` 前缀。写请求为 JSON；除健康状态外全部要求令牌；无多用户账号体系。
 
 ## 验证与证据
 
 - `bash scripts/verify.sh`：完整本工程 pytest、pip check、严格 TypeScript/Vite 构建、`python -S` 无第三方包核心运行。
 - 在服务启动后运行 `python scripts/browser_check.py`：真实 Chromium 页面操作。需系统 Chromium，并在测试用 venv 执行 `python -m pip install --index-url https://pypi.org/simple -r requirements-browser.lock`；设置 `PH_TEST_DATA` 指向独立测试数据目录，勿用于个人数据。
+- 本次自主审查与修复见 [PR #40 审查报告](reports/PR40_ENGINEERING_REVIEW.md)。
 - [逐门验收](reports/ACCEPTANCE.md)、[进度账本](reports/PROGRESS.md)、[失败记录](reports/FAILURES.md)、[浏览器截图](reports/console.png)。以实际报告为准；未执行项目明确 NOT_RUN。
 
 ## 安装布局与持久化

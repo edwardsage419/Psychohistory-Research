@@ -7,13 +7,17 @@ from .contracts import canonical
 from .contracts import uncertainty
 
 class StateCapability:
+    def validate_state(self,state):
+        raise NotImplementedError('Plugin must declare a state validator')
     def inspect(self, state):
+        self.validate_state(state)
         return json.loads(canonical(state))
     def serialize_state(self, state):
+        self.validate_state(state)
         return canonical({'schema_version':'1.0.0','model_id':self.model_id,'model_version':self.version,'state':state})
     def restore_state(self, serialized):
         value=json.loads(serialized)
-        if value.get('schema_version')!='1.0.0' or value.get('model_id')!=self.model_id or value.get('model_version')!=self.version:
+        if not isinstance(value,dict) or 'state' not in value or value.get('schema_version')!='1.0.0' or value.get('model_id')!=self.model_id or value.get('model_version')!=self.version:
             raise ValueError('Incompatible plugin state identity')
         return self.inspect(value['state'])
 
@@ -27,6 +31,10 @@ class Individual(StateCapability):
                 'dependency_identity':'python-stdlib-random','assumptions':['Bernoulli innovations conditional on supplied exposure','No empirical calibration'],
                 'scale':'individual / discrete tick','input':'binary states, exposure, intervention','output':'binary states and conditional probabilities',
                 'parameters':{'base':0.08,'influence':0.5},'evidence':'SYNTHETIC_ONLY','permission':'SYNTHETIC_ONLY'}
+
+    def validate_state(self,state):
+        if not isinstance(state,dict) or set(state)!={'states'} or not isinstance(state['states'],list) or not state['states'] or any(type(x)!=int or x not in (0,1) for x in state['states']):
+            raise ValueError('Individual state requires a nonempty binary states array')
 
     def validate_input(self, states, exposure, intervention):
         if not states or any(type(x)!=int or x not in (0,1) for x in states):
@@ -52,6 +60,10 @@ class Group(StateCapability):
                 'dependency_identity':'python-stdlib','assumptions':['Complete synthetic population observed','Two-tick update; exposure held between updates'],
                 'scale':'group / every two ticks','input':'population prevalence','output':'held group exposure',
                 'parameters':{'period':2},'evidence':'SYNTHETIC_ONLY','permission':'SYNTHETIC_ONLY'}
+    def validate_state(self,state):
+        if not isinstance(state,dict) or set(state)!={'exposure'} or type(state['exposure']) not in (int,float) or not math.isfinite(state['exposure']) or not 0<=state['exposure']<=1:
+            raise ValueError('Group state requires a finite exposure in [0,1]')
+
     def validate_input(self, record):
         from .contracts import validate_record
         validate_record(record)

@@ -15,7 +15,7 @@ bash scripts/run.sh --data /workspace/psychohistory-data backup /workspace/psych
 bash scripts/run.sh --data /workspace/psychohistory-restored restore /workspace/psychohistory-backup-001
 ```
 
-`sqlite3.Connection.backup` 生成一致数据库；全部对象、审计日志和 SHA-256 清单一起保存。恢复逐文件核验清单、对象身份、SQLite integrity_check、schema_version 和运行产物引用，然后从暂存目录原子迁移到**全新**数据根。令牌、staging、锁文件不进入备份。哈希可检测意外损坏；对能同时篡改清单和数据的恶意写入者，不宣称提供数字签名级身份认证。
+`sqlite3.Connection.backup` 生成一致数据库；全部对象、审计日志和 SHA-256 清单一起保存。恢复按 256 KiB 块流式复制，不把整个档案载入内存；逐文件核验清单、对象身份、SQLite integrity_check、schema_version 和运行产物引用，然后从暂存目录原子迁移到**全新**数据根。令牌、staging、锁文件不进入备份。哈希可检测意外损坏；对能同时篡改清单和数据的恶意写入者，不宣称提供数字签名级身份认证。
 
 恢复后生成新令牌。回滚时切换到恢复的新根，保留旧根及其全部失败/取消日志；恢复不覆盖现有数据根，不抹去真实失败。
 

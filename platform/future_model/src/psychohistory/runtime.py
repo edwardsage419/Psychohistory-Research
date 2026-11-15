@@ -12,10 +12,15 @@ from .engine import code_identity, run_experiment
 from .storage import TERMINAL, checked_path, write_new
 
 
-def _worker(config, output, memory_mb, cpu_seconds, expected_code):
-    limits={'memory':'NOT_ENFORCED','cpu':'NOT_ENFORCED','hostile_code_sandbox':False}
+def _worker(config, output, memory_mb, cpu_seconds, expected_code, expected_parent):
+    limits={'memory':'NOT_ENFORCED','cpu':'NOT_ENFORCED','parent_death':'NOT_ENFORCED','hostile_code_sandbox':False}
     try:
         if platform.system()=='Linux':
+            import ctypes,signal
+            libc=ctypes.CDLL(None,use_errno=True)
+            if libc.prctl(1,signal.SIGTERM,0,0,0)!=0:raise OSError(ctypes.get_errno(),'Cannot install parent-death guard')
+            if os.getppid()!=expected_parent:return
+            limits['parent_death']='PR_SET_PDEATHSIG'
             import resource
             resource.setrlimit(resource.RLIMIT_AS,(memory_mb*1024**2,memory_mb*1024**2))
             resource.setrlimit(resource.RLIMIT_CPU,(cpu_seconds,cpu_seconds+1))
@@ -36,8 +41,9 @@ def validate_execution_identity(run,result=None):
         raise ValueError('Worker result identity differs from approved run')
 
 class Scheduler:
-    def __init__(self,store,max_concurrency=1,max_queue=16):
+    def __init__(self,store,max_concurrency=1,max_queue=16,dispatch=True):
         if max_concurrency!=1 or not 1<=max_queue<=16:raise ValueError('v0.1 uses one trusted worker and at most 16 queued tasks')
+        self.dispatch_targets=None if dispatch else set()
         self.store=store;self.max_queue=max_queue;self.active={};self.lock=threading.RLock();self.closed=False
         self.staging=checked_path(store.root/'staging');self.staging.mkdir(exist_ok=True,mode=0o700)
         # Prevent two schedulers owning one database. POSIX flock is available on Linux/macOS.
@@ -68,6 +74,12 @@ class Scheduler:
             r=self.get(run_id)
             if r['status']!='PENDING':raise ValueError('Only pending task can be approved')
             return self.store.update_run(run_id,status='APPROVED',logs=r['logs']+['Approved for built-in synthetic protocol only'])
+
+    def execute_approved(self,run_id):
+        """Opt one explicit CLI target into dispatch, without running its neighbors."""
+        with self.lock:
+            if self.closed or self.get(run_id)['status']!='APPROVED':raise ValueError('Approved task required')
+            if self.dispatch_targets is not None:self.dispatch_targets.add(run_id)
 
     def get(self,run_id):return self.store.get_run(run_id)
 
@@ -108,7 +120,7 @@ class Scheduler:
                     finally:self.active.pop(run_id,None);checked_path(output).unlink(missing_ok=True)
             if self.closed:return
             if not self.active:
-                queued=[r for r in self.store.active_runs() if r['status']=='APPROVED']
+                queued=[r for r in self.store.active_runs() if r['status']=='APPROVED' and (self.dispatch_targets is None or r['id'] in self.dispatch_targets)]
                 if queued:
                     r=queued[0]
                     try:validate_execution_identity(r)
@@ -116,7 +128,7 @@ class Scheduler:
                         self.store.update_run(r['id'],status='BLOCKED',error=str(exc),logs=r['logs']+['Compatibility check blocked execution'])
                         return
                     output=self.staging/f"{r['id']}.json"
-                    p=mp.get_context('spawn').Process(target=_worker,args=(r['config'],str(output),r['memory_mb'],r['cpu_seconds'],r['code_sha256']),daemon=True)
+                    p=mp.get_context('spawn').Process(target=_worker,args=(r['config'],str(output),r['memory_mb'],r['cpu_seconds'],r['code_sha256'],os.getpid()),daemon=True)
                     try:
                         p.start();self.active[r['id']]=(p,time.monotonic(),output)
                         self.store.update_run(r['id'],status='RUNNING',started_at=time.time(),worker_pid=p.pid,logs=r['logs']+['Spawned isolated trusted worker'])

@@ -183,25 +183,34 @@ def restore_backup(source,destination):
     manifest=json.loads(checked_path(source/'manifest.json').read_bytes())
     if manifest.get('backup_version')!='1.0.0' or manifest.get('schema_version')!=SCHEMA:raise ValueError('Incompatible backup format')
     files=manifest.get('files',{})
-    if not {'metadata.sqlite','audit.jsonl'}<=files.keys():raise ValueError('Incomplete backup')
-    contents={}
+    if not isinstance(files,dict) or not {'metadata.sqlite','audit.jsonl'}<=files.keys():raise ValueError('Incomplete backup')
+    if not isinstance(files,dict):raise ValueError('Invalid backup file index')
     for relative,h in files.items():
         if relative not in {'metadata.sqlite','audit.jsonl'} and not re.fullmatch(r'objects/[0-9a-f]{64}\.json',relative):raise ValueError('Unsafe backup manifest path')
-        if not HASH.fullmatch(h):raise ValueError('Invalid manifest digest')
-        raw=checked_path(source/relative).read_bytes()
-        if digest(raw)!=h:raise ValueError('Backup integrity failure')
+        if not isinstance(h,str) or not HASH.fullmatch(h):raise ValueError('Invalid manifest digest')
         if relative.startswith('objects/') and Path(relative).stem!=h:raise ValueError('Object identity mismatch')
-        contents[relative]=raw
     dest.parent.mkdir(parents=True,exist_ok=True)
     stage=Path(tempfile.mkdtemp(prefix='.restore-',dir=dest.parent))
     try:
         (stage/'objects').mkdir()
-        for relative,raw in contents.items():write_new(stage/relative,raw)
+        for relative,expected in files.items():
+            source_file=checked_path(source/relative)
+            target=stage/relative
+            fd=os.open(target,os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0),0o600)
+            sha=hashlib.sha256();size=0
+            with os.fdopen(fd,'wb') as outgoing,source_file.open('rb') as incoming:
+                while chunk:=incoming.read(256*1024):
+                    size+=len(chunk)
+                    if relative.startswith('objects/') and size>32*1024**2:raise ValueError('Backup object exceeds artifact budget')
+                    sha.update(chunk);outgoing.write(chunk)
+                if sha.hexdigest()!=expected:raise ValueError('Backup integrity failure')
+                outgoing.flush();os.fsync(outgoing.fileno())
         with sqlite3.connect(stage/'metadata.sqlite') as db:
             if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or db.execute('PRAGMA user_version').fetchone()[0]!=SCHEMA:raise ValueError('SQLite restore validation failed')
             for row in db.execute('SELECT payload FROM runs'):
                 run=json.loads(row[0]);h=run.get('result_hash')
-                if h and f'objects/{h}.json' not in contents:raise ValueError('Missing run artifact')
+                if run.get('status')=='COMPLETED' and not h:raise ValueError('Completed run missing result reference')
+                if h and f'objects/{h}.json' not in files:raise ValueError('Missing run artifact')
         stage.rename(dest)
     except BaseException:
         shutil.rmtree(stage);raise

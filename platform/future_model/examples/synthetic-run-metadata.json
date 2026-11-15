@@ -1,5 +1,5 @@
 {
-  "code_sha256": "62dd225bf818b93bd8d668168d1ba3ce01b4b4edd32e5784d49a9d38b8a5e109",
+  "code_sha256": "9361c86f2305056d9bf7d13ccc99ffc3c9ff8e8e9aec53fb47b0cdd0c7c612a2",
   "config": {
     "intervention": 0.2,
     "population": 16,
@@ -7,45 +7,46 @@
     "seed": 123
   },
   "cpu_seconds": 5,
-  "created_at": 1794743907.314864,
+  "created_at": 1794746424.755299,
   "data_version": "generated-1.0.0",
-  "ended_at": 1794743907.4515934,
+  "ended_at": 1794746424.9317503,
   "environment": {
     "machine": "x86_64",
     "os": "Linux",
     "python": "3.12.14"
   },
   "error": null,
-  "id": "0d99b02749af4c19aa578750a625d49d",
+  "id": "1286af7cdf544d33930161e24cef5f73",
   "limits": {
     "cpu": "RLIMIT_CPU",
     "hostile_code_sandbox": false,
-    "memory": "RLIMIT_AS"
+    "memory": "RLIMIT_AS",
+    "parent_death": "PR_SET_PDEATHSIG"
   },
   "logs": [
     "Submitted: awaiting explicit synthetic approval",
     "Approved for built-in synthetic protocol only",
     "Spawned isolated trusted worker",
-    "baseline:1: individual advanced; group held; snapshot 38ed46afc2bda6b0bdc2cee438c7102eaebe2d8edfc64f8a106794d0a976adc9",
-    "baseline:2: individual advanced; group updated; snapshot c5630ff2fce4faa42920ababcf20451dc763ea459bb508a73a2ba5bc8c299915",
-    "baseline:3: individual advanced; group held; snapshot ca247848781f735501decacdec93a3f0a1d1f4a2f1a4a04e926898c086fc7943",
-    "baseline:4: individual advanced; group updated; snapshot 7acb2ce10dc593cc03dc33ec7e668d5b317233c74de3832965317b029746ff53",
-    "baseline:5: individual advanced; group held; snapshot 63ce527bc32bcac1d9de0241c86455b86c8b129c2741f165665da170511eee49",
-    "baseline:6: individual advanced; group updated; snapshot 3ffeb0b789387494e7046a4287215d136e811771599bae8e7f2b496854c8e4bf",
-    "scenario:1: individual advanced; group held; snapshot 8a51c3203f7fac7167d1931caeb7491cc924583fba7377dc260c3203c421bd2f",
-    "scenario:2: individual advanced; group updated; snapshot 7e24e67e806fb58a3f08e244132b004bf7303c53f389c598ad6a68f315e91d1a",
-    "scenario:3: individual advanced; group held; snapshot e489ec085832c70846c7e99118ccd24113dfc02820c07fe3f65474c1064f5cc5",
-    "scenario:4: individual advanced; group updated; snapshot 7f17d0b1b9849629d82b5297d1d129dc81ac0d8c7fc1bafc895efde8821620c7",
-    "scenario:5: individual advanced; group held; snapshot 3f51257eb08523d24a5799b7b62b711a4ffd9ac97e5c4110e93d27b6b9cb0e33",
-    "scenario:6: individual advanced; group updated; snapshot e46c49b620d152a32fe9c0de7ef474c8ebfe2a28edcb5762cf581ed7f6353355",
+    "baseline:1: individual advanced; group held; snapshot 2d92d77d44429eba5e6d62ec34c28b4fae078cd6166122e8d8f874cd11d91eee",
+    "baseline:2: individual advanced; group updated; snapshot 7d153a5380d879ebe99a3d197b14e52d67c8f632f99c6160f17e447d5accd73d",
+    "baseline:3: individual advanced; group held; snapshot 05bf83708ba96892ec21437b4464c7dba067335c6d8a3cc01d0977262f064410",
+    "baseline:4: individual advanced; group updated; snapshot e08654d7a90c598126cd65215595f0ce0d3f67bcdf9c5c04b71e3fc25849edae",
+    "baseline:5: individual advanced; group held; snapshot bf3aa978a965b11897b9dad1125a58357e162c9a496a7d706a9a4db72680a66b",
+    "baseline:6: individual advanced; group updated; snapshot fbc6fc37e7610ac9858b85cfe574870d9e6d40e325026f8783cfa2c8c9d0fbcf",
+    "scenario:1: individual advanced; group held; snapshot e6fc980b1984fc8e6205966c998af8f33b53db8d01c0eb7e179cc14697732728",
+    "scenario:2: individual advanced; group updated; snapshot 272fc8952dcb4717332f7baf73f74948fa65fbcdcbe081ee4de5f719fd57da3c",
+    "scenario:3: individual advanced; group held; snapshot a4287a6758a267bcbbf400dd2e36291033b5db77edfd0ad88ba9cf2cf61c4d28",
+    "scenario:4: individual advanced; group updated; snapshot 84f487396cde5b45f38d12179477719f369ef25e2d3c872865adbe95a3d2673a",
+    "scenario:5: individual advanced; group held; snapshot 550bce6ba508d217abe3eb545c6ab10b7cbdc1129090007316ebf3a7c72852dc",
+    "scenario:6: individual advanced; group updated; snapshot d630a06186248ca224e0c132e240b564cf9d4beb2cb4daca66ceded245cbcf1f",
     "Completed; content hash verified"
   ],
   "memory_mb": 512,
   "permission": "SYNTHETIC_ONLY",
   "platform_version": "0.1.0",
   "protocol": "synthetic-paired-1.0.0",
-  "result_hash": "0c73f57111a60a9dd1b028c8b88fa7989ae19f401ce0dd479b7d0cd2e1e6a397",
-  "started_at": 1794743907.341702,
+  "result_hash": "2310400d7dd7f3de6df17df8a09392bb80253e3de008d59584953a473d286f8e",
+  "started_at": 1794746424.7854414,
   "status": "COMPLETED",
   "timeout": 15,
   "versions": {
@@ -57,5 +58,5 @@
     "platform": "0.1.0",
     "protocol": "synthetic-paired-1.0.0"
   },
-  "worker_pid": 4358
+  "worker_pid": 2844
 }

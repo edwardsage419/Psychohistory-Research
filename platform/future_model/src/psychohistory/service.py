@@ -16,8 +16,8 @@ class ExperimentInput(BaseModel):
     permission:str='SYNTHETIC_ONLY'
 
 class Service:
-    def __init__(self,root,repo):
-        self.store=Store(root);self.repo=Path(repo).resolve();self.scheduler=Scheduler(self.store)
+    def __init__(self,root,repo,dispatch=True):
+        self.store=Store(root);self.repo=Path(repo).resolve();self.scheduler=Scheduler(self.store,dispatch=dispatch)
     def submit(self,request):
         Admission.require(request.permission)
         config=request.model_dump(exclude={'permission'})
