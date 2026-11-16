@@ -44,3 +44,15 @@ Next: 核查WPP2024 Section E其余预测步骤和人口残差法限制，并找
 5. **可证伪/敏感性检查**：固定各国参考期、Table II.3目标和原始轨迹，比较平衡前后各国净值差异；分别更改专家恢复年份和长期目标，检查区间宽度及跨国相关性；对有独立移入/移出登记的国家比较模型拆分误差。尚未取得国家级原始轨迹、登记资料或开展样本外检验。预测校准、模型参数和许可细节仍待核实。
 
 状态：D005 PARTIAL；原始报告Section II.E pp.48–53指定内容阅读COMPLETE；独立数据验证NOT_RUN；R验收关闭0；C当日合格归档仍未核实。未触发CI/收费资源。此记录为理论D轨补强，不构成R轨科学验收。
+
+
+## 2026-11-16 独立统计机构口径审查：Eurostat 与 OECD（原始官方方法网页）
+本次直接阅读公开官方方法网页，不涉及国家级原始数据下载或计算。来源：Eurostat, *International migration and citizenship: Methodology*, https://ec.europa.eu/eurostat/web/migration-asylum/international-migration-citizenship/methodology ；Eurostat, *Information on data*, https://ec.europa.eu/eurostat/en/web/migration-asylum/international-migration-citizenship/information-data ；OECD, *International Migration Outlook 2024*, Statistical Annex, https://www.oecd.org/en/publications/international-migration-outlook-2024_50b0353e-en/full-report/statistical-annex_dab396da.html 。阅读范围为Eurostat定义、数据来源与两套年度数据收集说明，以及OECD附录中美国、瑞典、瑞士等国的来源和口径注释。均为官方方法说明，非独立历史预测实验。
+
+1. Eurostat入境与出境通常以在另一国家建立或终止至少12个月的通常居住地为口径。国家统计机构可用人口登记、税务、医保、普查、镜像流量、抽样等不同来源。统一定义无法自动消除来源差异与登记遗漏。
+2. Eurostat区分人口平衡表（demo_gind）中的“净迁移加统计调整”与更详细的国际移入/移出流量采集。前者包含统计调整，不能直接以其数值等同于详细流量表的移入减移出，差额也不能未经核查归因于迁移行为。
+3. OECD附录列明美国永久迁移采用合法永久居民身份，包括已在美国境内转换身份者，且按财政年度；瑞典以至少一年居留意图及登记为主，瑞士部分流出含行政更正。这些与Eurostat通常居住地口径以及UN WPP人口净迁移估计不完全同构。直接跨表比较存在事件定义、年份、身份与行政更正的混杂。
+
+构造性口径反例：同一人在t年已居住于美国，t+1年转为永久居民。OECD美国永久居民批准数可于t+1年增加1，但当年跨境实际入境人数增加0。此为定义推导，不代表对真实行政记录的单人核查。故“OECD永久移入数减Eurostat移出数等于UN净迁移”没有一般会计恒等式基础。
+
+新的比较准入条件：预先固定国家、日历年/财政年、居留时长、国籍/出生地、境内身份转换、难民/临时迁移、行政注销、人口普查修订及统计调整；对每组指标逐项证明相同事件总体和时间口径后才可做数量差或误差比较。若无法建立映射，标记NONCOMPARABLE，不以相关系数或残差当作UN模型错误。真实国家级对照、独立登记核验和样本外检验均NOT_RUN。D005继续PARTIAL，R科学验收关闭0，C当日完成仍待核验，CI NOT_RUN，未调用收费资源。
