@@ -21,3 +21,15 @@ Garrett Hardin (1968), “The Tragedy of the Commons,” Science 162(3859):1243�
 证据等级：原著署名转录的直接文本阅读、出版社书目信息、构造性数学反例；无原刊影像逐页校勘、原作者实证复算、历史因果识别或R科学验收。TH新编号0，R关闭条件0。R073/PESEN v0.1冻结，R E1/E2/E3/MARKET不升级。Tests: NOT_RUN（逻辑反例可手工核查）；CI: NOT_RUN；费用账单NOT_VERIFIED，未调用付费资源。
 
 下一步：核对Science原刊排版中“maximize for two (or more) variables”准确上下文与von Neumann/Morgenstern引用；检索Ostrom 2009支持材料及相关原始田野数据，审查制度规则的操作化；C当日合格成果另行核实。
+
+
+## 2026-11-17 原著独立补读：Conscience Is Self-Eliminating（署名转录）
+来源同上，实际读取 Garrett Hardin Society 英文转录 “Conscience Is Self-Eliminating” 全节及 “Pathogenic Effects of Conscience” 前三段，另读取 “Mutual Coercion Mutually Agreed Upon” 关于社会安排的段落。原刊逐页校勘仍未完成。任务键：(theory,Hardin-1968,author-transcription-2005,conscience-selection-versus-horizontal-transmission)。
+
+原文提出：若节制繁殖的倾向可遗传且较少生育，则仅依赖良心劝说的群体，节制倾向可能在代际选择中下降。原文特别承认传递可通过生殖细胞或文化途径（exosomatic）。这一论证依赖传递与繁殖差异持续存在，不能直接当作历史人口规律或任何特定群体的事实。
+
+独立构造性反例：令 p_t 为第 t 代具有节制规范的比例，具有规范与不具有规范者的预期子代数分别为 f_C 与 f_N，且 f_C<f_N。若完全垂直继承且无突变，则 p_(t+1)=p_t f_C/[p_t f_C+(1-p_t)f_N]，当0<p_t<1时比例下降。若下一代经普遍制度教育、水平学习以概率1采用该规范，则 p_(t+1)=1，尽管 f_C<f_N。更一般地，先经垂直选择得 q_t，再以独立概率 h 将未采用者转化，则 p_(t+1)=q_t+h(1-q_t)。当 h>0 且 q_t<1 时，文化传播可以抵消部分选择；是否持续下降取决于 h、两组生育率及代际机制。此为数学构造，非原作者原式、非人口历史验证。
+
+竞争解释：生育差异的文化/经济共同原因、代际价值转变、制度教育、迁移、选择性参与及测量误差，均可产生类似的规范比例轨迹。候选可观测量：分组生育率、代际规范测量、父母子女配对、同伴传播、教育政策与人口迁移。若无跨代配对及传播机制测量，单看群体规范下降无法识别遗传选择。尤其不能由此支持强制性人口政策；原文规范主张需要独立的伦理与人权评估。
+
+证据级别：作者署名转录直接文本、独立代数反例；没有原刊影像核对、纵向人口实证、因果识别或R验收。新TH编号0；C当日与D本周验收仍待核实；CI NOT_RUN，未触发收费资源。下一步优先查文化传递经典原著中垂直、水平与斜向传播的定量条件，避免继续停留在Hardin单文献。
