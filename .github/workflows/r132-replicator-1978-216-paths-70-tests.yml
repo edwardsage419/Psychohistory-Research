@@ -37,7 +37,7 @@ jobs:
       - name: Verify optimization-resistant Phase B integrity controls
         run: |
           set -euo pipefail
-          python -B -m unittest -v research/R132/test_r132_phase_b_attestation_integrity.py
+          PYTHONPATH=research/R132 python -B -m unittest -v research/R132/test_r132_phase_b_attestation_integrity.py
       - name: Run Phase B v2 checker with disposable local-style receipt
         run: |
           set -euo pipefail
