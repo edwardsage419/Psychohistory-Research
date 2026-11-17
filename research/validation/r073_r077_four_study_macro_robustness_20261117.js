@@ -70,7 +70,7 @@ function readStudy(input,raw) {
     m=key=>names[key].all_original_sessions_equal_Brier;
     session=j.results.original_session_count;
     const r=j.results.paired_differences;
-    const parsed=v=>({delta:v.Brier_delta_all_original_sessions_equal,better:v.better,worse:v.worse,equal:v.equal});
+    const parsed=v=>({delta:v.Brier_delta_all_original_sessions_equal,better:v.sessions_better,worse:v.sessions_worse,equal:v.sessions_equal});
     p31=parsed(r[NAME31]);p43=parsed(r[NAME43]);
     requireTrue(j.results.scored_t3_human_events===1040 && j.results.target_labels_used_in_training===0,"R077_COUNT");
   } else throw Error("unknown study");
