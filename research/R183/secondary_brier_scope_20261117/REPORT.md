@@ -95,6 +95,8 @@ node research/R183/secondary_brier_scope_20261117/independent_brier.js
 
 本轮**已真实执行**：使用 GitHub 连接器读取归档 JSON，在隔离 V8 JavaScript 执行环境完成独立有理数验证、90 个 PMF 检验、45 个双路线风险差比较、网格外二项反例、两项篡改负控制。
 
+本轮另用本机隔离 Python 3 标准库的 `fractions.Fraction` 独立计算三个二项测试用例，全部 PASS：`(n=4,p=1/100)` 的网格外负差值，`(n=4,p=1/4)` 的历史冻结主对照单组分数，以及 `(n=12,p=1/8)` 的解析方差检查。代码及实际执行结果对应 `python_crosscheck.py`，文件 SHA256 `32c52e46c47332c9c4a1009957dd99f044192f75bb4b179fbf2260c2e59074f2`。这三项仅是抽样交叉验算，45 世界的完整复核由前述 V8 执行完成。
+
 **尚未真实执行**：上述新提交的 Node 命令本身、GitHub CI、原 4125 行 CSV 的逐行重新扫描、任何真人样本评价或外部研究团队复现。两种 JavaScript 运行环境不能被自动视为外部独立研究者。原 ZIP、科学历史收据和冻结协议保留原 SHA。
 
 机器级定量记录见本目录 `receipt.json`。归档文件存在和代码可运行的预期不等于已经通过 Node 或 CI 验收。
