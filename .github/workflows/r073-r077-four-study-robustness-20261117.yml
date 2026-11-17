@@ -66,10 +66,25 @@ jobs:
           d["results"]["model_macro"]["M3_JOINT_LAST"]["all_sessions_equal_weight_Brier"]+=0.03
           with open(sys.argv[1],"w",encoding="utf8") as f: json.dump(d,f)
           PY
-          # The full study source cannot be substituted: its exact Git blob
-          # remains pinned in the source verifier, independent of scoring.
-          if grep -q 'contents: write' .github/workflows/r073-r077-four-study-robustness-20261117.yml; then
-            echo "R073_R077_READONLY_PERMISSION_FAILED"
-            exit 1
-          fi
+          node - "$RUNNER_TEMP/r074-mutated.json" <<'JS'
+          const fs=require("node:fs");
+          const v=require("./research/validation/r073_r077_four_study_macro_robustness_20261117.js");
+          const mutated=fs.readFileSync(process.argv[2],"utf8");
+          let rejected=false;
+          try {
+             v.readStudy({id:"R074",class:"independent_author_study_refit_within_treatment_E3"},mutated);
+          } catch(e) {
+             rejected=String(e.message)==="FAIL_CLOSED_R073_R077_MACRO_PAIRED_MISMATCH_R074";
+          }
+          if(!rejected)throw Error("R073_R077_MUTATED_MACRO_SCORE_ACCEPTED");
+          console.log("R073_R077_SYNTHETIC_MACRO_MUTANT_FAIL_CLOSED");
+          JS
+          python3 - <<'PY'
+          from pathlib import Path
+          txt=Path(".github/workflows/r073-r077-four-study-robustness-20261117.yml").read_text()
+          if "\npermissions:\n  contents: read\n" not in txt or "\n  contents: write\n" in txt:
+              raise SystemExit("R073_R077_AUDIT_NOT_READ_ONLY")
+          print("R073_R077_READONLY_WORKFLOW_CONFIRMED")
+          PY
+          git diff --exit-code HEAD
           echo "R073_R077_SCIENCE_ARTIFACTS_UNCHANGED"
