@@ -1,0 +1,28 @@
+# Merton (1948) banking averages versus contemporary Federal Reserve suspension series
+
+track: theory
+date: 2026-11-17
+source key: Merton 1948 DOI 10.2307/4609267, pp.208-209; Federal Reserve Bulletin December 1937 pp.1204ff; Federal Reserve Board Annual Report 1937 table 76.
+prior main HEAD at selection: f1761b89af48bc38f70c04b1369ce76ecb6492e9
+prior overlap: theory/MERTON_1948_PP208_210_INSTITUTIONAL_FEEDBACK_HISTORICAL_IDENTIFICATION_2026-11-17.md
+question: can Merton's three quoted period means be directly reconstructed from contemporary official suspension counts?
+
+## Sources actually inspected
+Merton's pp.208-209 and their scope are recorded in the existing repository primary-source reading; this run did not repeat visual inspection of his scan.
+Federal Reserve Bulletin, December 1937, 'Bank Suspensions, 1921–1936', p.1204 introduction and Table 1 searchable transcription: https://fraser.stlouisfed.org/files/docs/historical/banksusp/frbull_banksus_193712.pdf
+Board of Governors, Annual Report 1937, Table 76 'Bank Suspensions, 1921–1937' searchable transcription: https://fraser.stlouisfed.org/files/docs/publications/arfr/1930s/arfr_1937.pdf
+Federal Reserve Bulletin February 1943, 'Bank Suspensions' 1934–1942 and licensed-bank scope: https://fraser.stlouisfed.org/title/federal-reserve-bulletin-62/february-1943-21054/fulltext
+Original printed table images were not visually collated this run. Text extraction may have OCR errors.
+
+## Independently surfaced scope conflict
+The December 1937 Bulletin reports 5,712 suspensions in 1921–1929 (nine years), average 634.67, matching Merton's approximately 635 if the '1920s' means 1921–1929 rather than calendar 1920–1929.
+It reports 9,096 suspensions in 1930–1933 (four years), average 2,274, close to but not identical with Merton's 2,276. The 1937 Annual Report Table 76 reports 1930=1352, 1931=2294, 1932=1456, 1933=4004, totaling 9106, mean 2276.5. Contemporary official revisions / differing suspension definitions are a plausible explanation of the discrepancy; no reconciliation has been established. Do not label one version erroneous.
+The December 1937 Bulletin reports 135 suspensions in 1934–1936, average 45, with individual years 57, 34, 44. Merton reports 28 per year for a twelve-year post-legislation window. These are different windows and 45 cannot refute a twelve-year mean. A twelve-year period after the 1934 insurance start might extend beyond the 1937 bulletin. No verified full matching twelve-year series or precise endpoints have been established, so 28 remains unreconstructed.
+A February 1943 Bulletin specifies that its suspension figures concern licensed banks, excluding nonlicensed banks placed into liquidation or receivership after the banking holiday. The official source definition explicitly changes the risk of comparing pre- and post-1933 counts without a scope audit.
+
+## Scientific interpretation
+These are contemporaneous official descriptive records, stronger for establishing period counts than Merton's unsupported quoted means, but neither alone identifies a causal FDIC effect. The post-1933 change is confounded by bank holiday, licensing, regulation, monetary recovery, population of operating banks, and definition changes. A historical counterfactual cannot be inferred from the observed period averages.
+New contribution relative to prior Merton note: a directly identified official source series, a near-match for 635, a documented revision discrepancy for the four-year mean, and an unresolved post-law window mismatch. No R or D completion.
+C daily status: no C result produced by this audit. D W47: this audit is theory evidence; D005 migration is separate and no D completion is claimed.
+Evidence: primary government tabular transcriptions, original journal Merton as prior archived reading, independent arithmetic. NOT_RUN: scan-image collation, bank-level data reconstruction, causal estimates, CI, tests. No fee-bearing service used. R073/PESEN v0.1 frozen.
+Next: visually verify official 1937 table, reconstruct full 1934–1945 licensed-bank annual series with fixed inclusion rules and exact Merton window; retain both official versions until their differences are explained.
