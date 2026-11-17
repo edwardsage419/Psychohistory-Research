@@ -81,3 +81,9 @@ python research/engineering_integrity_20261117/verify_archive_combination.py --r
 ```
 
 后两类仅工程/归档复验；不要执行历史 production publisher 或套用 R127 candidate.patch。`*_as_run.py.txt` 是本轮真实交付命令原文（包括独立分支保存），不是自动测试入口。文件身份总表保留在 ARTIFACT_HASHES.json；最终工程修复提交及 PR URL 在 DELIVERY.json/最终回复中，以 GitHub 回读为准。
+
+## 实际交付链接
+
+- 完整性修复与审查：[PR #42](https://github.com/edwardsage419/Psychohistory-Research/pull/42)，测试源码提交 `38e324ae6ba39934c770ca0b93761ddb72d09486`。
+- 互斥的九 PR 归档组合选择：[PR #43](https://github.com/edwardsage419/Psychohistory-Research/pull/43)，`a3a76adf8ffba0c0a27fee69aef49cb8588ee2e8`。
+- 两者均未合并；两个交付分支 GitHub Actions total_count 均0。最终元数据提交只补交付回读记录，数学/测试源码不变；最新精确头见 GitHub 和最终回复。
