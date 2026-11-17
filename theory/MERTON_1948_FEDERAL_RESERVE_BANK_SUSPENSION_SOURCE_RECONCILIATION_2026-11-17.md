@@ -38,3 +38,28 @@ The 1945 Bulletin reports annual counts 1934=57, 1935=34, 1936=44, 1937=59, 1938
 The July 1946 table defines suspensions as temporary or permanent closings due to financial difficulty, explicitly excluding closings with deposit liabilities assumed by another bank at closure, sometimes with FDIC assistance. Therefore the series is not a census of every bank exit or every FDIC intervention. Both official tables have been read as searchable transcriptions; visual scan-by-scan collation is still pending. 1930–33 official cross-version discrepancy remains open. Numerical reconciliation is descriptive only, and does not identify the causal effect of FDIC insurance, bank licensing, wartime conditions, or other institutional changes. No R, C, or D scientific acceptance is claimed.
 
 Status: COMPLETE for 1934–1945 arithmetic reconstruction and source-period match; PARTIAL for image collation, source genealogy and cross-era comparability; NOT_RUN for causal analysis, code tests and CI. No new fee-bearing services were used.
+
+## 2026-11-17 follow-up: exact allocation of the ten-bank 1930–1933 difference
+
+Question key: theory / Federal Reserve Bulletin December 1937 Table 1 versus Federal Reserve Board 1937 Annual Report Table 76 / 1930–1933 yearly revision discrepancy / arithmetic reconciliation only.
+
+Original publications, actually inspected as publicly accessible FRASER full-text table transcriptions:
+* Federal Reserve Bulletin, December 1937, pp.1204–1205, Table 1, 'Bank Suspensions, 1921–1936': https://fraser.stlouisfed.org/files/docs/historical/banksusp/frbull_banksus_193712.pdf
+* Twenty-fourth Annual Report of the Board of Governors of the Federal Reserve System, 1937, printed p.164, Table 76, 'Bank Suspensions, 1921–1937': https://fraser.stlouisfed.org/files/docs/publications/arfr/1930s/arfr_1937.pdf
+* Federal Reserve Bulletin, September 1937, printed p.866, suspension definitions and special 1933 bank holiday treatment: https://fraser.stlouisfed.org/files/docs/publications/FRB/1930s/frb_091937.pdf
+
+| Year | December 1937 Bulletin Table 1 | 1937 Annual Report Table 76 | Annual Report minus Bulletin |
+| --- | ---: | ---: | ---: |
+| 1930 | 1,350 | 1,352 | +2 |
+| 1931 | 2,293 | 2,294 | +1 |
+| 1932 | 1,453 | 1,456 | +3 |
+| 1933 | 4,000 | 4,004 | +4 |
+| **Total** | **9,096** | **9,106** | **+10** |
+
+Independent arithmetic: 1350+2293+1453+4000=9096; 1352+2294+1456+4004=9106; differences 2+1+3+4=10. The Annual Report four-year average is 2276.5, while the Bulletin average is 2274. Thus the two official published tables disagree in *each* of the four years, rather than solely in 1933. This closes the allocation question and establishes the published-year discrepancy, but does not identify which individual banks or revisions account for it.
+
+The December Bulletin Table 1 excludes mutual savings banks; the 1937 Annual Report Table 76 has a shorter header definition. The September Bulletin discusses special holiday exemptions, unlicensed banks and reporting treatment in 1933. These facts do not establish a causal explanation for the four-year differences. A later revision, bank-class inclusion difference or extraction issue remains possible until primary printed scans and source footnotes are collated. Do not label either series erroneous or equate the ten-bank difference with a single named bank category.
+
+Implication for Merton (1948, p.209): a quoted annual 2,276 is close to the Annual Report's 2,276.5 and further from the December Bulletin's 2,274. Rounding convention and precise source genealogy are still unresolved. This is descriptive official historical evidence plus independently checkable arithmetic, not a causal FDIC test or human-behavior prediction.
+
+C 2026-11-17: no formal new C acceptance established by this note. D week 47: D005 migration remains separate; no new D acceptance claimed. No TH identifier issued. Program tests NOT_RUN; image-by-image original scan collation NOT_RUN; CI NOT_RUN; fee-bearing service NOT_RUN. Frozen R073/PESEN v0.1 unchanged. Next priority: original scan footnotes and revision genealogy; otherwise shift to a less covered discipline.
