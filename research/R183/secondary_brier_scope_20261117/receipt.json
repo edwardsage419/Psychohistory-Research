@@ -1,0 +1,98 @@
+{
+  "study": "R183",
+  "date": "2026-11-17",
+  "type": "exploratory_secondary_analysis",
+  "evidence_scope": "E1_ARTIFICIAL_ONLY_NO_SCIENCE_GRADE_UPGRADE",
+  "observed_main": "cd2d1e9bfa02089c7261252604be4c8d197b42c7",
+  "input": {
+    "path": "research/R183/R183_EXACT_RESULTS.json",
+    "git_blob_sha1": "81f8fa790f0dea2715d99e1384ec33a6d2cf7a64",
+    "expected_sha256": "40927bae4616a9d9fc91ed964257a9d436372d9196abd8fabceb40740189a000",
+    "status": "READ_FROM_LIVE_GITHUB"
+  },
+  "execution": {
+    "host": "GitHub connector + V8 isolated exact-fraction verifier",
+    "status": "ACTUALLY_EXECUTED",
+    "frozen_archived_source_recomputed": false,
+    "node_cli_from_committed_file": "NOT_RUN",
+    "github_actions": "NOT_RUN",
+    "full_raw_4125_csv_row_by_row": "NOT_RUN"
+  },
+  "checked": {
+    "worlds": 45,
+    "analytic_fraction_and_pmf_enumeration": 45,
+    "pmf_normalized": 90,
+    "marginal_mean_EK_equal_np": 90,
+    "archived_brier_mle_exact": 45,
+    "archived_brier_half_exact": 45,
+    "positive_gain_count": 45,
+    "zero_gain_count": 0,
+    "negative_gain_count": 0,
+    "total_pairs_implied_by_design": 4125
+  },
+  "delta_definition": "expected_MLE_Brier_minus_expected_halfcount_Brier",
+  "delta_formula": "[ (2n+1) Var(K/n) - (1/2-p)^2 ]/(n+1)^2, conditioned on E[K]=np",
+  "extrema": {
+    "min": {
+      "n": 12,
+      "p0": "1/8",
+      "p1": "1/4",
+      "mechanism": "IID_BIN",
+      "exact": "319/259584",
+      "approx": 0.0012288892998027613
+    },
+    "max": {
+      "n": 4,
+      "p0": "1/4",
+      "p1": "1/2",
+      "mechanism": "CLUSTERED_BB_C2",
+      "exact": "61/1600",
+      "approx": 0.038125
+    }
+  },
+  "by_n": [
+    {
+      "n": 4,
+      "count": 15,
+      "all_positive": true,
+      "min": "119/12800",
+      "max": "61/1600"
+    },
+    {
+      "n": 8,
+      "count": 15,
+      "all_positive": true,
+      "min": "73/27648",
+      "max": "583/31104"
+    },
+    {
+      "n": 12,
+      "count": 15,
+      "all_positive": true,
+      "min": "319/259584",
+      "max": "1207/97344"
+    }
+  ],
+  "outside_frozen_domain_counterexample": {
+    "family": "IID_BIN",
+    "n": 4,
+    "p": "1/100",
+    "expected_mle_brier": "99/8000",
+    "expected_halfcount_brier": "659/31250",
+    "delta": "-8713/1000000",
+    "status": "EXPLORATORY_OFF_GRID"
+  },
+  "negative_controls": {
+    "non_normalized_pmf": "REJECTED_PMFF_INVALID",
+    "altered_archived_half_risk": "REJECTED_ARCHIVED_HALF_MISMATCH",
+    "num_controls": 2
+  },
+  "limitations": [
+    "All 45 worlds are artificial and fixed by an earlier freeze. This is a retrospective algebraic extension, not a preregistered scoring result.",
+    "The counterexample lies outside frozen p values; it does not change the original 45 results.",
+    "Expected unconditional logloss of boundary MLE remains infinite; Brier comparisons do not imply logloss superiority.",
+    "No independent real-human source, new E2/E3, cross-environment validation or new production eligibility."
+  ],
+  "new_E2": 0,
+  "new_E3": 0
+}
