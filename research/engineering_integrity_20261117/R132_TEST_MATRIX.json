@@ -1,0 +1,115 @@
+{
+  "rows": [
+    {
+      "name": "r132-phase-a-normal",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "research/R132/test_r132_replicator_1978_exact_invariants_and_trajectories.py"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "8998157207240fc8ebadec02120643d1ddfc1a7e83d0dbc17bb577bfa28e89a7"
+    },
+    {
+      "name": "r132-phase-b-normal",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "research/R132/r132_phase_b_ci_attest.py",
+        "--output",
+        "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/logs/r132-phase-b-normal.json"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "787d3bc3ba8dbffca169ecb49a4d98053b30a5dfa8a86cbd79f822478ac56581",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_tests": 70,
+      "receipt": "r132-phase-b-normal.json",
+      "receipt_sha256": "66c19c1773ad64b24e1427f026252c27396044b7a52afed357b5b5b8d9c11a4d",
+      "optimization_level": 0
+    },
+    {
+      "name": "r132-phase-a-optimized",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-O",
+        "-m",
+        "unittest",
+        "-v",
+        "research/R132/test_r132_replicator_1978_exact_invariants_and_trajectories.py"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "33387a15ef6d0462bdd1a823f7a0e4c38478aa675a033b076ef12c30e319b87b"
+    },
+    {
+      "name": "r132-phase-b-optimized",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-O",
+        "research/R132/r132_phase_b_ci_attest.py",
+        "--output",
+        "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/logs/r132-phase-b-optimized.json"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "a8002593dcb78d48b02d5abb8b5bcf348751bbb668e18943b974b17b9a201deb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_tests": 70,
+      "receipt": "r132-phase-b-optimized.json",
+      "receipt_sha256": "2d3da88e47ede7611b03d340298e9ce7699cab9ceaf1c641e5d5c2c1bdf7c8a8",
+      "optimization_level": 1
+    },
+    {
+      "name": "r132-phase-a-environment",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "research/R132/test_r132_replicator_1978_exact_invariants_and_trajectories.py"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f250eea6f59655b5421d6d9574de689b0189ce39d3080383eb3aba280c7d8d15"
+    },
+    {
+      "name": "r132-phase-b-environment",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "research/R132/r132_phase_b_ci_attest.py",
+        "--output",
+        "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/logs/r132-phase-b-environment.json"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "b0a399f4e3a2224651ed360633032b7673394b45574a98e0080d9a626d2820ef",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_tests": 70,
+      "receipt": "r132-phase-b-environment.json",
+      "receipt_sha256": "96847aadfd2e3b610bd2d51e0b43fd76fc14b2e8ac5749818b41b3de9c14cc19",
+      "optimization_level": 1
+    },
+    {
+      "name": "r132-integrity-controls",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "research/R132/test_r132_phase_b_attestation_integrity.py"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3d809907e51dd7f43ae525fb1ac47208486d2110951c32b8a79c71d69ae9bbd7"
+    }
+  ],
+  "phase_a_tests_per_mode": 70,
+  "phase_b_native_tests_per_mode": 70,
+  "fault_injection_modes": [
+    "normal",
+    "python -O",
+    "PYTHONOPTIMIZE=1"
+  ],
+  "fault_injection_cases_per_mode": 24,
+  "new_empirical_evidence": 0
+}

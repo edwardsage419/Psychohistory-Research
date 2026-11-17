@@ -1,0 +1,113 @@
+{
+  "status": "PASS_ENGINEERING_COMBINATION_PRODUCTION_BLOCKED",
+  "head": "a3a76adf8ffba0c0a27fee69aef49cb8588ee2e8",
+  "rows": [
+    {
+      "tag": "b31-capture-normal",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-c",
+        "import importlib.util,json;from pathlib import Path;p=Path('research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py');s=importlib.util.spec_from_file_location('b31_capture',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);r=m.capture();print(json.dumps({'source_fingerprints':len(r),'sources':r},sort_keys=True))"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "stdout_sha256": "bdf4f61a454c8b0932b7bfacbb54d2ad1333d2b9894f072af2c044d9998eda17",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "tag": "a33-production-veto-normal",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "research/codex_a/r077_integration/mainline_checklist.py",
+        "."
+      ],
+      "exit_code": 2,
+      "expected_exit": 2,
+      "stdout_sha256": "2dbb241300baf2d1fd22b974b4663272e8df2d080a78b8407fe5533510b0c950",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "tag": "a39-source-capture-normal",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-c",
+        "import importlib.util,json;from pathlib import Path;p=Path('research/codex_a/r333_r340_authenticated/replay.py');s=importlib.util.spec_from_file_location('a39_capture',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);h,raw,ids,helper=m.capture(Path('.'));print(json.dumps({'head':h,'fingerprints':len(ids),'source_only':True},sort_keys=True))"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "stdout_sha256": "d70eebc98114023226a583283ec67d423e1771771d42f08af1ae0a4b9162cf12",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "tag": "b31-capture-optimized",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "-c",
+        "import importlib.util,json;from pathlib import Path;p=Path('research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py');s=importlib.util.spec_from_file_location('b31_capture',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);r=m.capture();print(json.dumps({'source_fingerprints':len(r),'sources':r},sort_keys=True))"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "stdout_sha256": "bdf4f61a454c8b0932b7bfacbb54d2ad1333d2b9894f072af2c044d9998eda17",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "tag": "a33-production-veto-optimized",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "research/codex_a/r077_integration/mainline_checklist.py",
+        "."
+      ],
+      "exit_code": 2,
+      "expected_exit": 2,
+      "stdout_sha256": "2dbb241300baf2d1fd22b974b4663272e8df2d080a78b8407fe5533510b0c950",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "tag": "a39-source-capture-optimized",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "-c",
+        "import importlib.util,json;from pathlib import Path;p=Path('research/codex_a/r333_r340_authenticated/replay.py');s=importlib.util.spec_from_file_location('a39_capture',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);h,raw,ids,helper=m.capture(Path('.'));print(json.dumps({'head':h,'fingerprints':len(ids),'source_only':True},sort_keys=True))"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "stdout_sha256": "d70eebc98114023226a583283ec67d423e1771771d42f08af1ae0a4b9162cf12",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "tag": "a32-prepare",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "research/codex_a/r127_workflow_candidate/prepare.py",
+        "."
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "stdout_sha256": "ed2b03c7985d93db9c915abaa4e3bffeae665803dbd00db8364eba14a62cf44e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "B31_fingerprints": 22,
+  "A33_expected_veto_exit": 2,
+  "production_ready": false,
+  "A33_original_failures": 11,
+  "A33_candidate_correct_orders": 35,
+  "A39_source_fingerprints": 56,
+  "R127_patch_generated_only": true,
+  "R127_patch_bytes": 9448,
+  "R127_patch_sha256": "ed2b03c7985d93db9c915abaa4e3bffeae665803dbd00db8364eba14a62cf44e",
+  "worktree_clean": true,
+  "new_empirical_evidence": 0,
+  "new_math_campaigns": 0,
+  "workflow_dispatches": 0
+}

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 72, in <module>
+    print(json.dumps(check(sys.argv[1],sys.argv[2])))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 36, in check
+    require(data['evidence']=='E1_ARTIFICIAL_NONBLIND', 'evidence')
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 15, in require
+    raise ValueError("R275_S71:" + message)
+ValueError: R275_S71:evidence

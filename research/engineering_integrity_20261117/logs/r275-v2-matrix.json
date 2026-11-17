@@ -1,0 +1,691 @@
+[
+  {
+    "label": "new-good",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 0,
+    "stdout": "{\"archive_receipt\": {\"MAP_values\": 4, \"confusion_cells\": 36, \"epsilons\": 4, \"source_rows\": 3072, \"status\": \"PASS\"}, \"authenticated_sha256\": {\"results_json\": \"632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532\", \"rows_csv\": \"71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab\", \"source\": \"d6da1a90f84a81a5a0c1a9db252cdb4b977ffa47903a0929ed5281bc604a39ed\"}, \"evidence\": \"E1_ARTIFICIAL_NONBLIND\", \"explicit_guards\": 18, \"legacy_callable\": \"STILL_BLOCKED_FOR_PRODUCTION_PENDING_OWNER_APPROVED_ROUTING\", \"new_E2\": 0, \"new_E3\": 0, \"production_ready\": false, \"research_id\": \"R275_S71\", \"scientific_acceptance\": \"UNCHANGED\", \"scope\": \"opt_in_engineering_archive_only\", \"status\": \"PASS_BOUNDED_ARCHIVE_REVALIDATION\", \"workflow_adopted\": false}\n",
+    "stderr": ""
+  },
+  {
+    "label": "new-good",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 0,
+    "stdout": "{\"archive_receipt\": {\"MAP_values\": 4, \"confusion_cells\": 36, \"epsilons\": 4, \"source_rows\": 3072, \"status\": \"PASS\"}, \"authenticated_sha256\": {\"results_json\": \"632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532\", \"rows_csv\": \"71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab\", \"source\": \"d6da1a90f84a81a5a0c1a9db252cdb4b977ffa47903a0929ed5281bc604a39ed\"}, \"evidence\": \"E1_ARTIFICIAL_NONBLIND\", \"explicit_guards\": 18, \"legacy_callable\": \"STILL_BLOCKED_FOR_PRODUCTION_PENDING_OWNER_APPROVED_ROUTING\", \"new_E2\": 0, \"new_E3\": 0, \"production_ready\": false, \"research_id\": \"R275_S71\", \"scientific_acceptance\": \"UNCHANGED\", \"scope\": \"opt_in_engineering_archive_only\", \"status\": \"PASS_BOUNDED_ARCHIVE_REVALIDATION\", \"workflow_adopted\": false}\n",
+    "stderr": ""
+  },
+  {
+    "label": "new-good",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 0,
+    "stdout": "{\"archive_receipt\": {\"MAP_values\": 4, \"confusion_cells\": 36, \"epsilons\": 4, \"source_rows\": 3072, \"status\": \"PASS\"}, \"authenticated_sha256\": {\"results_json\": \"632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532\", \"rows_csv\": \"71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab\", \"source\": \"d6da1a90f84a81a5a0c1a9db252cdb4b977ffa47903a0929ed5281bc604a39ed\"}, \"evidence\": \"E1_ARTIFICIAL_NONBLIND\", \"explicit_guards\": 18, \"legacy_callable\": \"STILL_BLOCKED_FOR_PRODUCTION_PENDING_OWNER_APPROVED_ROUTING\", \"new_E2\": 0, \"new_E3\": 0, \"production_ready\": false, \"research_id\": \"R275_S71\", \"scientific_acceptance\": \"UNCHANGED\", \"scope\": \"opt_in_engineering_archive_only\", \"status\": \"PASS_BOUNDED_ARCHIVE_REVALIDATION\", \"workflow_adopted\": false}\n",
+    "stderr": ""
+  },
+  {
+    "label": "legacy-RED-evidence",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/legacy.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/tmp/r275-archive-v2-tests-rbzi3cw6/legacy.py\", line 67, in <module>\n    print(json.dumps(check(sys.argv[1],sys.argv[2])))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/r275-archive-v2-tests-rbzi3cw6/legacy.py\", line 31, in check\n    assert data['evidence']=='E1_ARTIFICIAL_NONBLIND'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+  },
+  {
+    "label": "legacy-RED-evidence",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/legacy.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 0,
+    "stdout": "{\"source_rows\": 3072, \"epsilons\": 4, \"confusion_cells\": 36, \"MAP_values\": 4, \"status\": \"PASS\"}\n",
+    "stderr": ""
+  },
+  {
+    "label": "legacy-RED-evidence",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/legacy.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 0,
+    "stdout": "{\"source_rows\": 3072, \"epsilons\": 4, \"confusion_cells\": 36, \"MAP_values\": 4, \"status\": \"PASS\"}\n",
+    "stderr": ""
+  },
+  {
+    "label": "new-missing-file",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/absent.json",
+      "/workspace/Psychohistory-Research/research/validation/R275_S71_ALL_3072_NOISY_PAIR_ROWS_2026-10-30.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED FileNotFoundError: [Errno 2] No such file or directory: '/tmp/r275-archive-v2-tests-rbzi3cw6/absent.json'\n"
+  },
+  {
+    "label": "new-semantic-duplicate",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:duplicate source\n"
+  },
+  {
+    "label": "new-semantic-duplicate",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:duplicate source\n"
+  },
+  {
+    "label": "new-semantic-duplicate",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:duplicate source\n"
+  },
+  {
+    "label": "new-semantic-missing",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_54\n"
+  },
+  {
+    "label": "new-semantic-missing",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_54\n"
+  },
+  {
+    "label": "new-semantic-missing",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_54\n"
+  },
+  {
+    "label": "new-semantic-probability",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_49\n"
+  },
+  {
+    "label": "new-semantic-probability",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_49\n"
+  },
+  {
+    "label": "new-semantic-probability",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_49\n"
+  },
+  {
+    "label": "new-semantic-MAP",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_51\n"
+  },
+  {
+    "label": "new-semantic-MAP",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_51\n"
+  },
+  {
+    "label": "new-semantic-MAP",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_51\n"
+  },
+  {
+    "label": "new-semantic-posterior",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_53\n"
+  },
+  {
+    "label": "new-semantic-posterior",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_53\n"
+  },
+  {
+    "label": "new-semantic-posterior",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_53\n"
+  },
+  {
+    "label": "new-semantic-evidence",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_31\n"
+  },
+  {
+    "label": "new-semantic-evidence",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_31\n"
+  },
+  {
+    "label": "new-semantic-evidence",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-c",
+      "\nimport sys\nsys.path.insert(0, sys.argv[1])\nimport r275_archive_gate_v2 as gate\ntry:\n    check = gate._build_checker(gate._read_pinned(gate.SOURCE, 'source'))\n    print(__import__('json').dumps(check(sys.argv[2], sys.argv[3])))\nexcept gate.ArchiveGateError as error:\n    print('BLOCKED ' + str(error), file=sys.stderr)\n    raise SystemExit(1)\n",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED R275_ARCHIVE_V2:original_guard_line_31\n"
+  },
+  {
+    "label": "new-identity-duplicate",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-duplicate",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-duplicate",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/duplicate.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-missing",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-missing",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-missing",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/missing.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-probability",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-probability",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-probability",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/probability.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-MAP",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-MAP",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-MAP",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/MAP.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-posterior",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-posterior",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-posterior",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/posterior.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:rows_csv\n"
+  },
+  {
+    "label": "new-identity-evidence",
+    "mode": "normal",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:results_json\n"
+  },
+  {
+    "label": "new-identity-evidence",
+    "mode": "O",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": null,
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:results_json\n"
+  },
+  {
+    "label": "new-identity-evidence",
+    "mode": "env1",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-B",
+      "/workspace/Psychohistory-Research/research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.json",
+      "/tmp/r275-archive-v2-tests-rbzi3cw6/evidence.csv"
+    ],
+    "PYTHONOPTIMIZE": "1",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "BLOCKED ArchiveGateError: R275_ARCHIVE_V2:IDENTITY:results_json\n"
+  }
+]

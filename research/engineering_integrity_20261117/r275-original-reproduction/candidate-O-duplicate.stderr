@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 72, in <module>
+    print(json.dumps(check(sys.argv[1],sys.argv[2])))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 48, in check
+    require(key not in observed, 'duplicate source');observed.add(key)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 15, in require
+    raise ValueError("R275_S71:" + message)
+ValueError: R275_S71:duplicate source
