@@ -1,0 +1,117 @@
+name: R272 full-checkout unadopted-candidate integrity qualification
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r272-full-checkout-unadopted-candidate-20261117.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-checkout-candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute archived candidate in actual full read-only checkout
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONNOUSERSITE: '1'
+        run: |
+          set -euo pipefail
+          python --version
+          python -B -I -S research/validation/r272_single_entrypoint_failclosed_20261102.py --root . \
+            > "$RUNNER_TEMP/r272-candidate.json"
+          python -I -S - "$RUNNER_TEMP/r272-candidate.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: obj=json.load(h)
+          def gate(test,code):
+              if test is not True:
+                  raise SystemExit("R272_FULL_CHECKOUT_FAIL_CLOSED_"+code)
+          gate(obj.get("status")=="PASS","STATUS")
+          gate(obj.get("scope")=="INTERNAL_NONBLIND_ARTIFICIAL_E1","SCOPE")
+          gate(obj.get("workflow_adopted") is False,"NOT_PRODUCTION")
+          gate(obj.get("actions_executed") is False,"NESTED_CI_CLAIM")
+          gate(obj.get("archive_bytes_preserved") is True,"ARCHIVE_INTEGRITY")
+          observed=obj.get("modes",[])
+          gate(len(observed)==3,"THREE_MODES")
+          for i,(mode,item) in enumerate(zip(("normal","optimized","double_optimized"),observed)):
+              gate(item.get("mode")==mode,"MODE_"+str(i))
+              gate(item.get("preimage")=="PASS","PREIMAGE_"+str(i))
+              gate(item.get("isolated_regeneration")=="PASS","REGEN_"+str(i))
+              gate(item.get("native_negatives")==15,"MUTATIONS_"+str(i))
+              gate(item.get("original_tests_exit")==0,"NATIVE_83_"+str(i))
+          print("R272_FULL_CHECKOUT_CANDIDATE_THREE_MODES_PASS")
+          PY
+      - name: Verify no tracked or untracked local science evidence modified
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code HEAD
+          git diff --cached --exit-code
+          if test -n "$(git status --porcelain --untracked-files=all)"; then
+            git status --short
+            exit 1
+          fi
+          echo 'R272_CHECKOUT_ARCHIVES_REMAIN_UNMODIFIED'
+
+  actual-candidate-import-shadow-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce unisolated import shadow with EXACT archived candidate copy
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/r272-shadow"
+          cp research/validation/r272_single_entrypoint_failclosed_20261102.py "$RUNNER_TEMP/r272-shadow/candidate.py"
+          cat > "$RUNNER_TEMP/r272-shadow/json.py" <<'PY'
+          print("R272_SYNTHETIC_JSON_MODULE_PRECHECK_EXIT")
+          raise SystemExit(0)
+          PY
+          python "$RUNNER_TEMP/r272-shadow/candidate.py" --selftest \
+            > "$RUNNER_TEMP/shadow-unisolated.log"
+          grep -Fx "R272_SYNTHETIC_JSON_MODULE_PRECHECK_EXIT" "$RUNNER_TEMP/shadow-unisolated.log"
+          if grep -q '"status": "PASS"' "$RUNNER_TEMP/shadow-unisolated.log"; then
+            echo "R272_SHADOW_TEST_UNEXPECTED_NATIVE_AUDIT"
+            exit 1
+          fi
+          python -I -S "$RUNNER_TEMP/r272-shadow/candidate.py" --selftest \
+            > "$RUNNER_TEMP/shadow-isolated.log"
+          python -I -S - "$RUNNER_TEMP/shadow-isolated.log" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: d=json.load(h)
+          if d.get("status")!="PASS" or d.get("negative_controls_rejected")!=5:
+              raise SystemExit("R272_ISOLATED_ENTRY_SELFTEST_FAIL")
+          print("R272_ACTUAL_SOURCE_IMPORT_SHADOW_REPRODUCED_AND_BLOCKED_FOR_PARENT")
+          PY
+      - name: Enforce candidate is not installed as active production entrypoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -q 'r272_single_entrypoint_failclosed_20261102.py' \
+            .github/workflows/r272-exact-train-test-oos-e1.yml; then
+            echo 'R272_PRODUCTION_ALREADY_CHANGED_RECHECK_REQUIRED'
+            exit 1
+          fi
+          echo 'R272_UNSAFE_OLD_PRODUCTION_STILL_PRESENT_AND_NOT_ACTIVATED'
