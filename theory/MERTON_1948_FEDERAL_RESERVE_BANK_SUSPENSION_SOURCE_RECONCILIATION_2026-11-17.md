@@ -26,3 +26,15 @@ New contribution relative to prior Merton note: a directly identified official s
 C daily status: no C result produced by this audit. D W47: this audit is theory evidence; D005 migration is separate and no D completion is claimed.
 Evidence: primary government tabular transcriptions, original journal Merton as prior archived reading, independent arithmetic. NOT_RUN: scan-image collation, bank-level data reconstruction, causal estimates, CI, tests. No fee-bearing service used. R073/PESEN v0.1 frozen.
 Next: visually verify official 1937 table, reconstruct full 1934–1945 licensed-bank annual series with fixed inclusion rules and exact Merton window; retain both official versions until their differences are explained.
+
+## 2026-11-17 follow-up: the twelve-year mean reconstructed from 1945–46 Federal Reserve originals
+
+New primary sources inspected via FRASER searchable historical tables:
+* Federal Reserve Bulletin January 1945, BANK SUSPENSIONS table (1934–1944 annual figures): https://fraser.stlouisfed.org/files/docs/publications/FRB/1940s/frb_011945.pdf
+* Federal Reserve Bulletin July 1946, BANK SUSPENSIONS table (1934–39 aggregate and 1940–45 annual figures), printed p. 771: https://fraser.stlouisfed.org/files/docs/publications/FRB/1940s/frb_071946.pdf
+
+The 1945 Bulletin reports annual counts 1934=57, 1935=34, 1936=44, 1937=59, 1938=55, 1939=42, 1940=22, 1941=8, 1942=9, 1943=4, 1944=1. The July 1946 Bulletin supplies 1945=0, and aggregates 1934–39=291, independently consistent with 57+34+44+59+55+42=291. Hence 1934–1945 inclusive is exactly twelve years, with 291+22+8+9+4+1+0=335 suspensions, and 335/12=27.9166667 per year, rounding to 28. This reconstructs the numerical value and a plausible twelve-year window quoted by Merton (1948, p. 209). It does not prove Merton consulted these specific tables or uniquely establish his source.
+
+The July 1946 table defines suspensions as temporary or permanent closings due to financial difficulty, explicitly excluding closings with deposit liabilities assumed by another bank at closure, sometimes with FDIC assistance. Therefore the series is not a census of every bank exit or every FDIC intervention. Both official tables have been read as searchable transcriptions; visual scan-by-scan collation is still pending. 1930–33 official cross-version discrepancy remains open. Numerical reconciliation is descriptive only, and does not identify the causal effect of FDIC insurance, bank licensing, wartime conditions, or other institutional changes. No R, C, or D scientific acceptance is claimed.
+
+Status: COMPLETE for 1934–1945 arithmetic reconstruction and source-period match; PARTIAL for image collation, source genealogy and cross-era comparability; NOT_RUN for causal analysis, code tests and CI. No new fee-bearing services were used.
