@@ -1,0 +1,108 @@
+{
+  "research_id": "R269",
+  "original_catalogue_id": "11-029",
+  "date_utc": "2026-11-17",
+  "kind": "POST_HOC_SECONDARY_EXPLORATORY_E1_MATHEMATICAL_BOUNDARY",
+  "status": "COMPLETE_BOUNDED_NATIVE_EXACT",
+  "historical_freeze": "1ba86be0a35b77c0d5e5f6a72bb102ba08c48795",
+  "base_main": "f1761b89af48bc38f70c04b1369ce76ecb6492e9",
+  "input_source": {
+    "file": "research/R269/R269_ALL_576_ORIGINAL_CLUSTERED_CV_SOURCE_TYPES.csv",
+    "blob_sha1": "20b33f85a9408655cfbd7bdbfc1de15ec534571e",
+    "sha256": "6bc98c0c07c2a6d48184e6a8643dbd515dfa470ba626a10928d90614ce75155d",
+    "rows": 576,
+    "unique_six_group_sequences_per_p": 64,
+    "latent_group_count": 6,
+    "repeated_rows_per_group": 2
+  },
+  "input_results": {
+    "file": "research/R269/R269_EXACT_RESULTS.json",
+    "blob_sha1": "4947ccb7a53de1343216e1b69773d0a5c4ea1f29",
+    "sha256": "d7dda54fdd07148713cd8acbaaafb06bc1282a005b48b09f570211e1a7d4193e"
+  },
+  "selection_policy": {
+    "score": "empirical LOOR or LOGO Brier on realized six-group source",
+    "tie_order": [
+      "GLOBAL_LAPLACE",
+      "CONSTANT_HALF",
+      "GROUP_ID_MEMORIZER"
+    ],
+    "refit": "all 12 rows after selection",
+    "test": "independent seventh Bernoulli-p group",
+    "p_uses_truth_only_for_scoring_and_oracle": true
+  },
+  "result_rows": [
+    {
+      "p": "1/4",
+      "loor_future": "1/4",
+      "logo_future": "3209/14336",
+      "global_full_future": "83/392",
+      "oracle": "83/392",
+      "loor_regret": "15/392",
+      "logo_regret": "1215/100352",
+      "logo_laplace_choice_probability": "1103/2048"
+    },
+    {
+      "p": "1/2",
+      "loor_future": "1/4",
+      "logo_future": "425/1568",
+      "global_full_future": "55/196",
+      "oracle": "1/4",
+      "loor_regret": "0",
+      "logo_regret": "33/1568",
+      "logo_laplace_choice_probability": "7/32"
+    },
+    {
+      "p": "3/4",
+      "loor_future": "1/4",
+      "logo_future": "3209/14336",
+      "global_full_future": "83/392",
+      "oracle": "83/392",
+      "loor_regret": "15/392",
+      "logo_regret": "1215/100352",
+      "logo_laplace_choice_probability": "1103/2048"
+    }
+  ],
+  "independent_exact_checks": [
+    "576_SOURCE_ROWS_ALL_RECALCULATED",
+    "NINE_ARCHIVED_FREEZE_CV_SCORES_EXACT",
+    "192_UNIQUE_LATENT_SIX_GROUP_SEQUENCES",
+    "ANALYTIC_FULL_TRAIN_LAPLACE",
+    "BINOMIAL_K_SELECTOR_ALTERNATE_PATH",
+    "INPUT_SCORE_MUTANT_REJECTED",
+    "INPUT_MASS_MUTANT_REJECTED",
+    "EXTERNAL_SOURCE_SHA_MUTANT_REJECTED"
+  ],
+  "actual_ci": {
+    "run_id": 44033850606,
+    "job_id": 133871890831,
+    "head_sha": "c45869f8154df20dc813b21c53e2fc9d13de5f13",
+    "status": "completed",
+    "conclusion": "success",
+    "runner": "ubuntu-24.04",
+    "python": "3.11",
+    "normal_mode": "PASS",
+    "optimized_mode": "PASS",
+    "both_mode_outputs_identical": true,
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44033850606",
+    "log_markers": [
+      "R269_POSTSELECTION_NATIVE_64x3_EXACT_ALL_CHECKS_PASS 3209/14336",
+      "R269_OPTIMIZED_AND_NORMAL_IDENTICAL",
+      "R269_TAMPERED_SOURCE_SHA_REJECTED"
+    ]
+  },
+  "evidence_boundaries": {
+    "original_frozen_results_modified": false,
+    "original_source_modified": false,
+    "real_human_data_used": false,
+    "new_E2": 0,
+    "new_E3": 0,
+    "formal_original_catalogue_P0_closed": false,
+    "independent_external_researcher_replication": false,
+    "model_fusion_started": false,
+    "R073": "FROZEN",
+    "PESEN_v0_1": "FROZEN",
+    "new_paid_service_cost": 0,
+    "account_invoice_checked": false
+  }
+}
