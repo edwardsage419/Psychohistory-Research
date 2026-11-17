@@ -173,7 +173,7 @@ function main(){
  }
  const result=compute(blobs[0].toString("utf8"),blobs[1].toString("utf8"));
  result.input_sha256=PINS[0];result.result_json_sha256=PINS[1];
- const mutated=blobs[0].toString("utf8").replace("729/4096","728/4096");
+ const mutated=blobs[0].toString("utf8").replace("729/4096","731/4096");
  requireTrue(mutated!==blobs[0].toString("utf8"),"NEGATIVE_CONTROL_PREIMAGE");
  let rejected=false;
  try{compute(mutated,blobs[1].toString("utf8"));}catch(error){rejected=error.message==="R273_FAIL_CLOSED_SOURCE_MASS";}
