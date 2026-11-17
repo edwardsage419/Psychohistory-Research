@@ -1,0 +1,221 @@
+{
+  "research_id": "R127",
+  "catalogue_id": "05-003",
+  "priority": "P0",
+  "run_date": "2026-11-17",
+  "track": "R+B",
+  "status": "COMPLETE_BOUNDED_AGGREGATE_SHARP_IDENTIFICATION",
+  "observed_main": "cd2d1e9bfa02089c7261252604be4c8d197b42c7",
+  "source_path": "research/validation/r127_primary_table2_70_periods_source_audit_20261103.js",
+  "source_git_blob_sha1": "aa575a803e5547afe24eabc1f232f2b539ef1709",
+  "original_publication": "Van Huyck Battalio Beil 1990 AER 80(1):234-248 printed pp.240-241 Table 2",
+  "evidence_scope": "PUBLISHED_HUMAN_AGGREGATE_SECONDARY_NONBLIND_MATH_NOT_INDIVIDUAL_PREDICTION",
+  "initial_end_final_periods": 10,
+  "groups": 7,
+  "subjects_original_paper": 107,
+  "cells": 490,
+  "adjacent_pairs": 63,
+  "individual_transition_opportunities": 963,
+  "sharp_total_changed_events": {
+    "lower": 262,
+    "upper": 857
+  },
+  "sharp_minimum_abs_effort_unit_movements": 552,
+  "previously_verified_endpoint_only_sharp_changes": {
+    "lower": 89,
+    "upper": 107
+  },
+  "effort1": {
+    "counts_by_period": [
+      2,
+      5,
+      15,
+      25,
+      37,
+      50,
+      47,
+      70,
+      72,
+      77
+    ],
+    "minimum_entries": 98,
+    "minimum_exits": 23,
+    "net_change": 75,
+    "strictly_absorbing_hypothesis_compatible": false
+  },
+  "sessions": [
+    {
+      "session": 1,
+      "n": 16,
+      "minimum_changes": 36,
+      "maximum_changes": 130,
+      "minimum_abs_effort": 90,
+      "endpoint_min_changed": 13
+    },
+    {
+      "session": 2,
+      "n": 16,
+      "minimum_changes": 42,
+      "maximum_changes": 122,
+      "minimum_abs_effort": 81,
+      "endpoint_min_changed": 13
+    },
+    {
+      "session": 3,
+      "n": 14,
+      "minimum_changes": 41,
+      "maximum_changes": 109,
+      "minimum_abs_effort": 92,
+      "endpoint_min_changed": 11
+    },
+    {
+      "session": 4,
+      "n": 15,
+      "minimum_changes": 46,
+      "maximum_changes": 122,
+      "minimum_abs_effort": 87,
+      "endpoint_min_changed": 15
+    },
+    {
+      "session": 5,
+      "n": 16,
+      "minimum_changes": 43,
+      "maximum_changes": 129,
+      "minimum_abs_effort": 74,
+      "endpoint_min_changed": 14
+    },
+    {
+      "session": 6,
+      "n": 16,
+      "minimum_changes": 33,
+      "maximum_changes": 139,
+      "minimum_abs_effort": 79,
+      "endpoint_min_changed": 12
+    },
+    {
+      "session": 7,
+      "n": 14,
+      "minimum_changes": 21,
+      "maximum_changes": 106,
+      "minimum_abs_effort": 49,
+      "endpoint_min_changed": 11
+    }
+  ],
+  "transitions": [
+    {
+      "start": 1,
+      "end": 2,
+      "minimum_changes": 45,
+      "maximum_changes": 107,
+      "minimum_abs_effort": 110,
+      "min_enter1": 3,
+      "min_exit1": 0
+    },
+    {
+      "start": 2,
+      "end": 3,
+      "minimum_changes": 40,
+      "maximum_changes": 107,
+      "minimum_abs_effort": 93,
+      "min_enter1": 10,
+      "min_exit1": 0
+    },
+    {
+      "start": 3,
+      "end": 4,
+      "minimum_changes": 30,
+      "maximum_changes": 105,
+      "minimum_abs_effort": 75,
+      "min_enter1": 10,
+      "min_exit1": 0
+    },
+    {
+      "start": 4,
+      "end": 5,
+      "minimum_changes": 31,
+      "maximum_changes": 105,
+      "minimum_abs_effort": 72,
+      "min_enter1": 13,
+      "min_exit1": 1
+    },
+    {
+      "start": 5,
+      "end": 6,
+      "minimum_changes": 31,
+      "maximum_changes": 103,
+      "minimum_abs_effort": 53,
+      "min_enter1": 16,
+      "min_exit1": 3
+    },
+    {
+      "start": 6,
+      "end": 7,
+      "minimum_changes": 26,
+      "maximum_changes": 103,
+      "minimum_abs_effort": 30,
+      "min_enter1": 7,
+      "min_exit1": 10
+    },
+    {
+      "start": 7,
+      "end": 8,
+      "minimum_changes": 26,
+      "maximum_changes": 91,
+      "minimum_abs_effort": 52,
+      "min_enter1": 23,
+      "min_exit1": 0
+    },
+    {
+      "start": 8,
+      "end": 9,
+      "minimum_changes": 16,
+      "maximum_changes": 72,
+      "minimum_abs_effort": 22,
+      "min_enter1": 8,
+      "min_exit1": 6
+    },
+    {
+      "start": 9,
+      "end": 10,
+      "minimum_changes": 17,
+      "maximum_changes": 64,
+      "minimum_abs_effort": 45,
+      "min_enter1": 8,
+      "min_exit1": 3
+    }
+  ],
+  "methods": {
+    "closed_form_switch_bounds": "n-SUM min(a_i,b_i), n-max(0,max_i(a_i+b_i-n))",
+    "min_cost_flow": "BIPARTITE_INTEGER_7X7_RESIDUAL_BELLMAN_FORD_MIN_AND_MAX_SWITCH",
+    "min_abs_effort": "SUM ABS(PREFIX_COUNT_DIFFERENCE) crosscheck quantile matching",
+    "longitudinal_sharpness": "TEN_PERIOD_SYNTHETIC_PATH_DECOMPOSITION_FOR_EACH_OF_THREE_SEPARATE_EXTREMA",
+    "negative_controls": [
+      "NONCONSERVING_INPUT_REJECTED",
+      "PINNED_SOURCE_BLOB_MISMATCH_REJECTED_BY_DESIGN"
+    ],
+    "seed": "N/A_DETERMINISTIC"
+  },
+  "actual_execution": {
+    "connector_v8": "COMPLETE_63_PAIRS_AND_SYNTHETIC_PATHS",
+    "github_actions": "SUCCESS",
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44024706230",
+    "run_id": 44024706230,
+    "node_runtime": "v22.23.4",
+    "runner": "ubuntu-24.04",
+    "ci_log_marker": "R127_ADJACENT_SHARP_BOUNDS_VERIFIED 262 857",
+    "actual_independent_pdf_read": "NOT_RUN",
+    "personal_level_data": "NOT_LOADED"
+  },
+  "scope_limits": {
+    "real_individual_actions_identified": false,
+    "external_team_independent_replication": "NOT_RUN",
+    "new_E2_predictions": 0,
+    "new_E3_predictions": 0,
+    "original239_queue_decrement": 0,
+    "frozen_protocols_changed": false,
+    "R073": "FROZEN",
+    "PESEN_v0_1": "FROZEN"
+  },
+  "new_paid_services": 0,
+  "github_account_invoice_checked": false
+}
