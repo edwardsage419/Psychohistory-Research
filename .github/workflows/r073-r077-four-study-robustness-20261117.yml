@@ -1,0 +1,75 @@
+name: R073-R077 frozen human macro study robustness (read only)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r073-r077-four-study-robustness-20261117.yml'
+      - 'research/validation/r073_r077_four_study_macro_robustness_20261117.js'
+      - 'research/R073/R073_E2_HUMAN_12_SESSION_MEMORY_LOSO_RESULTS.json'
+      - 'research/R074/R074_EXTERNAL_REAL_HUMAN_18_SESSION_E3_RESULTS.json'
+      - 'research/R075/R075_REAL_THIRD_HUMAN_18_SESSION_E3_RESULTS.json'
+      - 'research/R077/R077_FOURTH_INDEPENDENT_HUMAN_SOURCE_ONLY_E3_RESULTS.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  study-level-macro-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Real read of four pinned anonymous archived human macros
+        shell: bash
+        run: |
+          set -euo pipefail
+          node research/validation/r073_r077_four_study_macro_robustness_20261117.js \
+            > "$RUNNER_TEMP/r073-r077-macro-audit.json"
+          node - "$RUNNER_TEMP/r073-r077-macro-audit.json" <<'JS'
+          const fs=require("node:fs");
+          const d=JSON.parse(fs.readFileSync(process.argv[2],"utf8"));
+          const gate=(ok,code)=>{if(ok!==true)throw Error("R073_R077_FAIL_CLOSED_"+code);};
+          const close=(a,b)=>typeof a==="number"&&Number.isFinite(a)&&Math.abs(a-b)<=1e-12;
+          gate(d.status==="PASS_FOUR_DISTINCT_STUDY_ARCHIVED_MACRO_ROBUSTNESS","STATUS");
+          gate(d.original_study_count===4 && d.sum_of_reported_sessions_descriptive_only===63,"STUDY_COUNT");
+          gate(d.studies.map(x=>x.study).join(",")==="R073,R074,R075,R077","STUDY_IDS");
+          gate(d.studies.every(x=>x.M3_minus_M1<0),"M3_DIRECTION");
+          gate(d.studies.filter(x=>x.M4_minus_M3>0).map(x=>x.study).join(",")==="R074","M4_COUNTEREXAMPLE");
+          gate(close(d.equal_four_study_average_Brier_delta.M3_minus_M1,-0.02292064209105447),"STUDY_EQUAL_M3");
+          gate(close(d.equal_four_study_average_Brier_delta.M4_minus_M3,-0.003844153052689897),"STUDY_EQUAL_M4");
+          gate(close(d.R074_weight_cutoff_with_three_other_studies_equal,0.6610131093053971),"WEIGHT_FLIP");
+          gate(d.exact_leave_one_study_out_equal_others.length===4,"LEAVE_STUDY_OUT");
+          gate(d.exact_leave_one_study_out_equal_others.every(x=>x.M3_minus_M1<0&&x.M4_minus_M3<0),"LOSO_DIRECTIONS");
+          const wins31=d.studies.map(x=>x.M3_vs_M1_session_better).join(",");
+          const wins43=d.studies.map(x=>x.M4_vs_M3_session_better).join(",");
+          gate(wins31==="10,16,18,14"&&wins43==="10,5,15,8","ARCHIVED_SIGN_COUNTS");
+          gate(d.negative_controls.join(",")==="R074_MACRO_SCORE_MUTATION_REJECTED,ALL_FOUR_GIT_BLOB_SHA1_PINNED","NEGATIVE_CONTROLS");
+          gate(d.new_real_human_E2===0&&d.new_historical_E3===0,"NO_SCIENCE_UPGRADE");
+          gate(d.participant_level_original_data_accessed===false&&d.descriptive_sensitivity_only_no_independence_based_p_values===true,"PRIVACY");
+          console.log("R073_R077_FOUR_REAL_STUDY_MACRO_RECEIPTS_CONFIRMED");
+          console.log("R073_R077_WEIGHTED_CONVEX_BOUND_AND_LOO_PASS");
+          JS
+      - name: Verify script rejects a mutated anonymous source with fixed Git blob
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp research/R074/R074_EXTERNAL_REAL_HUMAN_18_SESSION_E3_RESULTS.json "$RUNNER_TEMP/r074-mutated.json"
+          python3 - "$RUNNER_TEMP/r074-mutated.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf8") as f: d=json.load(f)
+          d["results"]["model_macro"]["M3_JOINT_LAST"]["all_sessions_equal_weight_Brier"]+=0.03
+          with open(sys.argv[1],"w",encoding="utf8") as f: json.dump(d,f)
+          PY
+          # The full study source cannot be substituted: its exact Git blob
+          # remains pinned in the source verifier, independent of scoring.
+          if grep -q 'contents: write' .github/workflows/r073-r077-four-study-robustness-20261117.yml; then
+            echo "R073_R077_READONLY_PERMISSION_FAILED"
+            exit 1
+          fi
+          echo "R073_R077_SCIENCE_ARTIFACTS_UNCHANGED"
