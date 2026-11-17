@@ -1,0 +1,98 @@
+name: R273 source-only target-shift minimax synthetic proof
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r273-source-only-minimax-20261117.yml'
+      - 'research/R273/secondary_source_only_minimax_20261117/verify.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-exact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recheck all 1728 archived source rows and original 27 world risks
+        shell: bash
+        run: |
+          set -euo pipefail
+          node research/R273/secondary_source_only_minimax_20261117/verify.js > "$RUNNER_TEMP/r273-minimax.json"
+          python - "$RUNNER_TEMP/r273-minimax.json" <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          from math import comb
+          with open(sys.argv[1],encoding="utf-8") as f:
+              d=json.load(f)
+          def gate(ok,reason):
+              if ok is not True:
+                  raise SystemExit("R273_FAIL_CLOSED_"+reason)
+          gate(d.get("status")=="PASS_R273_SOURCE_ONLY_TARGET_INDISCERNIBILITY_MINIMAX_BOUND","STATUS")
+          gate(d.get("archived_source_rows")==1728 and d.get("archived_frozen_worlds")==27,"ARCHIVE_COUNT")
+          gate(d.get("identical_source_marginal_checks")==144,"MARGINAL_IDENTITY")
+          gate(d.get("minimax_excess_lower_bound")=="1/16","MINIMAX_FLOOR")
+          gate(d.get("new_real_human_E2")==0 and d.get("new_real_historical_E3")==0,"EVIDENCE")
+          gate(d.get("negative_controls")==["SOURCE_MASS_MUTATION_REJECTED","ARCHIVE_INPUT_SHA256_PINNED"],"NEGATIVE")
+          expected={
+             "1/4":{"SOURCE_ORACLE":("0","1/4","1/4"),"SOURCE_LAPLACE":("1/36","7/36","7/36"),"CONSTANT_HALF":("1/16","1/16","1/16")},
+             "1/2":{"SOURCE_ORACLE":("1/16","1/16","1/16"),"SOURCE_LAPLACE":("13/144","13/144","13/144"),"CONSTANT_HALF":("1/16","1/16","1/16")},
+             "3/4":{"SOURCE_ORACLE":("1/4","0","1/4"),"SOURCE_LAPLACE":("7/36","1/36","7/36"),"CONSTANT_HALF":("1/16","1/16","1/16")}
+          }
+          gate(len(d.get("source_target_pairs",[]))==3,"GROUP_COUNT")
+          for line in d["source_target_pairs"]:
+              a=line["source_p"]
+              gate(a in expected,"P_RANGE")
+              found={x["name"]:x for x in line["predictors"]}
+              gate(set(found)==set(expected[a]),"METHODS")
+              for model,(one,three,worst) in expected[a].items():
+                  obs=found[model]
+                  gate(obs["target_one_quarter_excess_brier"]==one,"TARGET_QUARTER_"+model)
+                  gate(obs["target_three_quarters_excess_brier"]==three,"TARGET_THREEQUARTERS_"+model)
+                  gate(obs["worst_two_target_excess_brier"]==worst,"WORST_"+model)
+                  gate(obs["theorem_average_identity_holds"] is True,"THEOREM_"+model)
+                  mean=(F(one)+F(three))/2
+                  gate(F(obs["average_two_target_excess_brier"])==mean,"AVERAGE_"+model)
+                  gate(F(worst)>=F(1,16),"MINIMAX_"+model)
+              # Independent closed-form Binomial(4,a) calculation.
+              af=F(a)
+              for model in expected[a]:
+                  for b in (F(1,4),F(3,4)):
+                      loss=F(0)
+                      for k in range(5):
+                          mass=F(comb(4,k))*af**k*(1-af)**(4-k)
+                          q=(F(k+1,6) if model=="SOURCE_LAPLACE" else
+                             af if model=="SOURCE_ORACLE" else F(1,2))
+                          loss+=mass*(q-b)**2
+                      target=found[model]["target_one_quarter_excess_brier" if b==F(1,4) else "target_three_quarters_excess_brier"]
+                      gate(loss==F(target),"BINOMIAL_INDEPENDENT_"+model)
+          print("R273_MINIMAX_1728_SOURCE_27_FROZEN_WORLDS_PASS")
+          print("R273_SOURCE_ONLY_TWO_TARGET_1OF16_SHARP_BOUND_PASS")
+          PY
+      - name: Require full input SHA to reject independent mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - "$RUNNER_TEMP/r273-bad.csv" <<'PY'
+          import sys
+          raw=open("research/R273/R273_ALL_1728_ORIGINAL_CROSS_POPULATION_SOURCES.csv",encoding="utf-8").read()
+          bad=raw.replace("729/4096","728/4096",1)
+          if bad==raw: raise SystemExit("R273_MUTATION_NOT_APPLIED")
+          open(sys.argv[1],"w",encoding="utf-8").write(bad)
+          PY
+          if node research/R273/secondary_source_only_minimax_20261117/verify.js "$RUNNER_TEMP/r273-bad.csv" 2>"$RUNNER_TEMP/r273-reject.log"; then
+            echo 'R273_INVALID_ARCHIVE_ACCEPTED'
+            exit 1
+          fi
+          grep -q "R273_FAIL_CLOSED_ARCHIVE_SHA256_0" "$RUNNER_TEMP/r273-reject.log"
+          echo 'R273_SOURCE_SHA256_MUTATION_REJECTED'
