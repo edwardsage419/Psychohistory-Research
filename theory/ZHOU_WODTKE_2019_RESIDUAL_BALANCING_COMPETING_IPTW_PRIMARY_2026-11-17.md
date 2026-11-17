@@ -29,3 +29,18 @@ Program tests NOT_RUN; real behavior validation NOT_RUN; CI NOT_RUN; billing NOT
 
 ## 下一步
 核读 §3.2 至结论的熵优化目标、可行性、仿真设计和实证数据来源；检查权重平衡是否存在不可行或近正值性失败的具体反例。若无独立证据，转向欠覆盖历史或人类学原著。
+
+## 2026-11-17 补充：精确平衡可行性与严格正权重的独立数学审查
+
+status: COMPLETE for the mathematical derivation; PARTIAL for primary-source attribution.
+source_identity: Zhou and Wodtke, arXiv:1807.10869, prior manuscript §§1–3.1. The 2020 author supplement URL https://scholar.harvard.edu/sites/scholar.harvard.edu/files/xzhou/files/zhou-wodtke2020_rbw.pdf returned HTTP 503 in this run; its Appendix A text and equation numbering were NOT verified anew. The following is an independent generic entropy-balancing argument, not a quotation or claim of an author's original theorem.
+
+Let each sample i have a finite-dimensional moment vector a_i in R^k, and require w_i >= 0, sum_i w_i = n, sum_i w_i a_i = 0. Set lambda_i=w_i/n. Such weights exist if and only if the origin lies in conv{a_1,...,a_n}. Necessity follows from convex combination; sufficiency follows by setting w_i=n lambda_i. This criterion concerns the chosen finite set of moments only.
+
+A strictly positive solution (w_i>0 for every i) exists if and only if the origin belongs to the relative interior of conv{a_i}, where relative interior is taken in the affine hull of the observed moment vectors. Boundary feasibility can therefore force some weights to zero. Example a=(0,1,2), n=3: constraints imply w_2+2w_3=0; with nonnegative weights, w=(3,0,0) is the only feasible vector. Exact balance is feasible, but all-positive weights are impossible. With a=(1,2,3), no feasible weights exist. With a=(-1,0,1), w=(1,1,1) is feasible and strictly positive.
+
+For positive baseline weights b_i, minimization of sum_i w_i log(w_i/b_i) subject to these constraints can only select among feasible vectors. When the feasible set forces zeros, a finite-parameter exponential tilt with all weights strictly positive cannot attain the boundary solution; an appropriate dual parameter may diverge. Entropy regularization does not repair infeasible balance. This is a mathematical boundary statement, not a numeric algorithm performance claim.
+
+The convex-hull criterion neither establishes causal exchangeability nor guarantees overlap of treatment assignments in the population. Conversely, sample convex-hull failure can occur from finite sampling, choice of moment functions, or data coding even where population positivity holds. Therefore report sample balance feasibility and causal identification assumptions separately.
+
+Evidence: constructive proofs and counterexamples only; no program tests, human experiments, or historical prediction. No TH/C/D number added. R073 and PESEN v0.1 unchanged. CI NOT_RUN; billing NOT_VERIFIED. Next: verify the supplement's exact primal/dual formulas against an accessible original page and compare with already archived C014 before any formal C acceptance.
