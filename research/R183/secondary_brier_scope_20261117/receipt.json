@@ -16,7 +16,8 @@
     "frozen_archived_source_recomputed": false,
     "node_cli_from_committed_file": "NOT_RUN",
     "github_actions": "NOT_RUN",
-    "full_raw_4125_csv_row_by_row": "NOT_RUN"
+    "full_raw_4125_csv_row_by_row": "NOT_RUN",
+    "python_fraction_spotcheck": "COMPLETE_3_ACTUAL_EXECUTIONS"
   },
   "checked": {
     "worlds": 45,
@@ -94,5 +95,28 @@
     "No independent real-human source, new E2/E3, cross-environment validation or new production eligibility."
   ],
   "new_E2": 0,
-  "new_E3": 0
+  "new_E3": 0,
+  "python_fraction_check": {
+    "cases": 3,
+    "status": "PASS",
+    "script": "python_crosscheck.py",
+    "script_sha256": "32c52e46c47332c9c4a1009957dd99f044192f75bb4b179fbf2260c2e59074f2",
+    "results": [
+      {
+        "n": 4,
+        "p": "1/100",
+        "delta": "-8713/1000000"
+      },
+      {
+        "n": 4,
+        "p": "1/4",
+        "delta": "23/1600"
+      },
+      {
+        "n": 12,
+        "p": "1/8",
+        "delta": "67/129792"
+      }
+    ]
+  }
 }
