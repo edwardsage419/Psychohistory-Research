@@ -4,7 +4,33 @@ on:
   push:
     paths:
       - '.github/workflows/r272-full-checkout-unadopted-candidate-20261117.yml'
+      - '.github/workflows/r272-exact-train-test-oos-e1.yml'
+      - 'research/validation/r272_single_entrypoint_failclosed_20261102.py'
+      - 'research/validation/r272_preimage_first_readonly_gate_20261102.py'
+      - 'research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py'
+      - 'research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip'
+      - 'research/validation/r272_quarantined_candidate_v2_20261117.py'
       - 'research/validation/r272_frozen_independent_third_source_20261117.py'
+      - 'research/R272/r272_exact_train_test_prediction.py'
+      - 'research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv'
+      - 'research/R272/R272_EXACT_RESULTS.json'
+      - 'research/R272/R272_MACHINE_RECEIPT.json'
+      - 'protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md'
+  pull_request:
+    paths:
+      - '.github/workflows/r272-full-checkout-unadopted-candidate-20261117.yml'
+      - '.github/workflows/r272-exact-train-test-oos-e1.yml'
+      - 'research/validation/r272_single_entrypoint_failclosed_20261102.py'
+      - 'research/validation/r272_preimage_first_readonly_gate_20261102.py'
+      - 'research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py'
+      - 'research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip'
+      - 'research/validation/r272_quarantined_candidate_v2_20261117.py'
+      - 'research/validation/r272_frozen_independent_third_source_20261117.py'
+      - 'research/R272/r272_exact_train_test_prediction.py'
+      - 'research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv'
+      - 'research/R272/R272_EXACT_RESULTS.json'
+      - 'research/R272/R272_MACHINE_RECEIPT.json'
+      - 'protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md'
   workflow_dispatch:
 
 permissions:
@@ -19,10 +45,10 @@ jobs:
       matrix:
         python-version: ['3.11', '3.12']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Execute archived candidate in actual full read-only checkout
@@ -98,10 +124,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 6
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: '3.12'
       - name: Strict third-source replay of all 576 pinned original atoms
@@ -171,10 +197,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: '3.11'
       - name: Reproduce unisolated import shadow with EXACT archived candidate copy
@@ -290,6 +316,21 @@ jobs:
           fi
           grep -q 'R272_QUARANTINE_SOURCE_IDENTITY_MISMATCH_' "$RUNNER_TEMP/r272-forged-bad-error.log"
           echo 'R272_QUARANTINED_V2_CORRUPTED_PREIMAGE_REJECTED'
+
+      - name: Recheck exact historical production workflow identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -I -S - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p=Path(".github/workflows/r272-exact-train-test-oos-e1.yml")
+          raw=p.read_bytes()
+          actual=hashlib.sha1(b"blob "+str(len(raw)).encode("ascii")+b"\0"+raw).hexdigest()
+          if actual!="3132b08cf4ee64b55f5112d2249894ea0ec9d42d":
+              raise SystemExit("R272_LEGACY_PRODUCTION_WORKFLOW_CHANGED_REQUIRES_OWNER_REVIEW")
+          print("R272_LEGACY_PRODUCTION_IDENTITY_UNCHANGED")
+          PY
 
       - name: Enforce candidate is not installed as active production entrypoint
         shell: bash
