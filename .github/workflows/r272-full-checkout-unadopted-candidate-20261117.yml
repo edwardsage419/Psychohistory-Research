@@ -140,6 +140,7 @@ jobs:
           import pathlib,shutil,sys
           root=pathlib.Path(sys.argv[1])
           tracked=[
+              "research/validation/r272_single_entrypoint_failclosed_20261102.py",
               "research/validation/r272_preimage_first_readonly_gate_20261102.py",
               "research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py",
               "research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip",
