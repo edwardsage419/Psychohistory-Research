@@ -1,0 +1,138 @@
+{
+  "track": "R+B",
+  "research_id": "R127",
+  "catalogue_id": "05-003",
+  "date_utc": "2026-11-17",
+  "start_main": "cd2d1e9bfa02089c7261252604be4c8d197b42c7",
+  "scientific_status": "COMPLETE_BOUNDED_AGGREGATE_PARTIAL_IDENTIFICATION_ONLY",
+  "original_scientific_acceptance": "UNCHANGED",
+  "source_table": {
+    "path": "research/validation/r127_primary_table2_70_periods_source_audit_20261103.js",
+    "blob_sha1": "aa575a803e5547afe24eabc1f232f2b539ef1709",
+    "published_cells": 490,
+    "sessions": 7,
+    "periods": 10,
+    "original_human_subjects": 107
+  },
+  "sharp_distinct_ever_changed": {
+    "minimum": 100,
+    "maximum_always_constant": 7,
+    "minimum_different_first_last": 89,
+    "incremental_minimum": 11,
+    "unit": "distinct_human_identifiers_under_stable_roster",
+    "witness": "synthetic_10_round_7_category_paths_individually_reaggregated"
+  },
+  "sharp_ever_exit_effort1": {
+    "minimum_distinct": 17,
+    "minimum_exit_events_from_prior_audit": 23,
+    "formula": "max over s<t of max(0,effort1_count_s-effort1_count_t), per session",
+    "witness": "synthetic_risky_vs_irreversible_participants_ten_rounds"
+  },
+  "by_session": [
+    {
+      "g": 1,
+      "n": 16,
+      "unchanged_max": 1,
+      "ever_change_min": 15,
+      "endpoint_min": 13,
+      "ever_exit1_min": 2
+    },
+    {
+      "g": 2,
+      "n": 16,
+      "unchanged_max": 1,
+      "ever_change_min": 15,
+      "endpoint_min": 13,
+      "ever_exit1_min": 3
+    },
+    {
+      "g": 3,
+      "n": 14,
+      "unchanged_max": 0,
+      "ever_change_min": 14,
+      "endpoint_min": 11,
+      "ever_exit1_min": 3
+    },
+    {
+      "g": 4,
+      "n": 15,
+      "unchanged_max": 0,
+      "ever_change_min": 15,
+      "endpoint_min": 15,
+      "ever_exit1_min": 3
+    },
+    {
+      "g": 5,
+      "n": 16,
+      "unchanged_max": 0,
+      "ever_change_min": 16,
+      "endpoint_min": 14,
+      "ever_exit1_min": 2
+    },
+    {
+      "g": 6,
+      "n": 16,
+      "unchanged_max": 2,
+      "ever_change_min": 14,
+      "endpoint_min": 12,
+      "ever_exit1_min": 3
+    },
+    {
+      "g": 7,
+      "n": 14,
+      "unchanged_max": 3,
+      "ever_change_min": 11,
+      "endpoint_min": 11,
+      "ever_exit1_min": 1
+    }
+  ],
+  "previous_PR46_repeat_event_bounds": {
+    "min": 262,
+    "max": 857,
+    "distinct_from_person_count": true,
+    "absolute_effort_distance_min": 552
+  },
+  "execution": {
+    "github_actions_run": 44028319251,
+    "github_actions_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44028319251",
+    "ci_head_sha": "a09682d093f89656d7c8e4196712c94b3cd46849",
+    "ci_status": "completed",
+    "ci_conclusion": "success",
+    "node_version": "v22.23.4",
+    "min_distinct_log_marker": "R127_DISTINCT_SHARP_BOUNDS_VERIFIED 100 17",
+    "prior_event_log_marker": "R127_ADJACENT_SHARP_BOUNDS_VERIFIED 262 857",
+    "mutant_nonconserving_count": "REJECTED"
+  },
+  "formal_itemwise_gate": {
+    "queue_original_blob": "3b96d46b3d88ccafd779a08509c3cfd0e435772f",
+    "queue_total_rows": 154,
+    "queue_P0_row": "05-003",
+    "queue_net_reduction": 0,
+    "third_method_freeze_blob": "40d5a1eb20214bb39b890292fbf2ed92ab16b72a",
+    "original_csv_blob": "2a6706dcb047a5bf64f91651a8217d1d8009aa2c",
+    "supplement_csv_blob": "07021ecb761de86d9ae71061dbd17f2f0f40dc8d",
+    "original_csv_rows": 2793,
+    "original_csv_exact_comparison_flag_present": false,
+    "supplement_csv_rows": 2793,
+    "supplement_csv_all_flags_pass": true,
+    "supplement_base_columns_equal_original": 2793,
+    "independent_integer_payoff_formula_row_errors": 0,
+    "mutated_flag": "REJECTED",
+    "original_workflow_blob": "4b22f653dc7516bb31ead23e45dcf7f62261d79d",
+    "python_assert_lines": 33,
+    "historical_receipt_workflow_rewrite": true,
+    "workflow_push_main": true,
+    "default_disposition": "RETAIN_PROVISIONAL_WITH_EXPLICIT_PROTOCOL_DEVIATION_AND_PRODUCTION_GATE_OPEN"
+  },
+  "limits": {
+    "real_individual_paths_loaded": false,
+    "individual_learning_causally_identified": false,
+    "source_new_blind_read": false,
+    "external_team_replication": "NOT_RUN",
+    "E2_new_predictions": 0,
+    "E3_new_predictions": 0,
+    "frozen_protocols_modified": false,
+    "account_billing_checked": false,
+    "added_expense": 0
+  }
+}
