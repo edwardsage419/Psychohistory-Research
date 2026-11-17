@@ -1,0 +1,1314 @@
+{
+  "status": "COMPLETE_BOUNDED_PATCH_CANDIDATE",
+  "main": "d4740c2cd999b8da06a25b0ef407aeaf8a56ab6c",
+  "S71_freeze": "8c2964149055b7fa824bd9b10446ffd1e0613768",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "commands": [
+    {
+      "label": "node-version",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--version"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "node-version.stdout",
+          "bytes": 9,
+          "sha256": "249baf635bb43877fcb9422efa1a4904b702d0ddf14d3949b7cd0950d5229c81",
+          "git_blob": "474d750b50427c62736f866748c104870c431cd4"
+        },
+        "stderr": {
+          "member": "node-version.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "patch-check",
+      "argv": [
+        "git",
+        "-C",
+        "/tmp/r275-s71-native-x65_qm8u",
+        "apply",
+        "--check",
+        "/workspace/Psychohistory-Research/research/codex_b/2026-11-12-r275-s71-native-guards/explicit-guards.patch"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "patch-check.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "patch-check.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "patch-apply",
+      "argv": [
+        "git",
+        "-C",
+        "/tmp/r275-s71-native-x65_qm8u",
+        "apply",
+        "/workspace/Psychohistory-Research/research/codex_b/2026-11-12-r275-s71-native-guards/explicit-guards.patch"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "patch-apply.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "patch-apply.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "R-emit",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/tmp/r275-s71-native-x65_qm8u/R.js",
+        "--emit",
+        "/tmp/r275-s71-native-x65_qm8u/emitted"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "R-emit.stdout",
+          "bytes": 91,
+          "sha256": "cee0d054d6f491351b8f37d38692b90dce8fa86e6bb75f412d2de34122e50826",
+          "git_blob": "d60a12c60b6c9ffd3affcddb8193a1a914a97673"
+        },
+        "stderr": {
+          "member": "R-emit.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "original-normal-archive",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/archive.json",
+        "/tmp/r275-s71-native-x65_qm8u/archive.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-normal-archive.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-normal-archive.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "original-normal-generated",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/emitted/R275_S71_EXACT_RESULTS.json",
+        "/tmp/r275-s71-native-x65_qm8u/emitted/R275_S71_ALL_3072_NOISY_PAIR_ROWS.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-normal-generated.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-normal-generated.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-normal-archive",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/archive.json",
+        "/tmp/r275-s71-native-x65_qm8u/archive.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "candidate-normal-archive.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "candidate-normal-archive.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-normal-generated",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/emitted/R275_S71_EXACT_RESULTS.json",
+        "/tmp/r275-s71-native-x65_qm8u/emitted/R275_S71_ALL_3072_NOISY_PAIR_ROWS.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "candidate-normal-generated.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "candidate-normal-generated.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "original-optimized-archive",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/archive.json",
+        "/tmp/r275-s71-native-x65_qm8u/archive.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-optimized-archive.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-optimized-archive.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "original-optimized-generated",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/emitted/R275_S71_EXACT_RESULTS.json",
+        "/tmp/r275-s71-native-x65_qm8u/emitted/R275_S71_ALL_3072_NOISY_PAIR_ROWS.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-optimized-generated.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-optimized-generated.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-optimized-archive",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/archive.json",
+        "/tmp/r275-s71-native-x65_qm8u/archive.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "candidate-optimized-archive.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "candidate-optimized-archive.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-optimized-generated",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/emitted/R275_S71_EXACT_RESULTS.json",
+        "/tmp/r275-s71-native-x65_qm8u/emitted/R275_S71_ALL_3072_NOISY_PAIR_ROWS.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "candidate-optimized-generated.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "candidate-optimized-generated.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "original-normal-bad-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/duplicate.json",
+        "/tmp/r275-s71-native-x65_qm8u/duplicate.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "AssertionError",
+      "streams": {
+        "stdout": {
+          "member": "original-normal-bad-duplicate.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "original-normal-bad-duplicate.stderr",
+          "bytes": 416,
+          "sha256": "52b274e54214aed9b89b38d44e6b005ef5e949915a25cba88bd78fe5f2e3927f",
+          "git_blob": "e19c065b1c69d894294153240a8a303215c156c0"
+        }
+      }
+    },
+    {
+      "label": "candidate-normal-reject-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/duplicate.json",
+        "/tmp/r275-s71-native-x65_qm8u/duplicate.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:duplicate source",
+      "streams": {
+        "stdout": {
+          "member": "candidate-normal-reject-duplicate.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-normal-reject-duplicate.stderr",
+          "bytes": 718,
+          "sha256": "48b9d1b839bd51a7738ce9c3765d548e33ea95157d96fb4ded50c1ee6117a154",
+          "git_blob": "4396934aed81897c94b476f31d3c4403ab5db27d"
+        }
+      }
+    },
+    {
+      "label": "original-optimized-bad-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/duplicate.json",
+        "/tmp/r275-s71-native-x65_qm8u/duplicate.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-optimized-bad-duplicate.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-optimized-bad-duplicate.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-optimized-reject-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/duplicate.json",
+        "/tmp/r275-s71-native-x65_qm8u/duplicate.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:duplicate source",
+      "streams": {
+        "stdout": {
+          "member": "candidate-optimized-reject-duplicate.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-optimized-reject-duplicate.stderr",
+          "bytes": 718,
+          "sha256": "48b9d1b839bd51a7738ce9c3765d548e33ea95157d96fb4ded50c1ee6117a154",
+          "git_blob": "4396934aed81897c94b476f31d3c4403ab5db27d"
+        }
+      }
+    },
+    {
+      "label": "original-normal-bad-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/missing.json",
+        "/tmp/r275-s71-native-x65_qm8u/missing.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "AssertionError",
+      "streams": {
+        "stdout": {
+          "member": "original-normal-bad-missing.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "original-normal-bad-missing.stderr",
+          "bytes": 443,
+          "sha256": "1781cb5bbd3e9c011a69e837410eda850577a205f079b6d15695fd3182784c05",
+          "git_blob": "f1b67da75f18041e601a7a826c41876d2049f880"
+        }
+      }
+    },
+    {
+      "label": "candidate-normal-reject-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/missing.json",
+        "/tmp/r275-s71-native-x65_qm8u/missing.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:complete_source_keys",
+      "streams": {
+        "stdout": {
+          "member": "candidate-normal-reject-missing.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-normal-reject-missing.stderr",
+          "bytes": 696,
+          "sha256": "3547ac041f7b7e3d96f5c2bee9a819fc4728f40974d3e50b2ccdca91bbdaf59e",
+          "git_blob": "c98c65a94b3c0329f3e04f47e44ce5efd02984fb"
+        }
+      }
+    },
+    {
+      "label": "original-optimized-bad-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/missing.json",
+        "/tmp/r275-s71-native-x65_qm8u/missing.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-optimized-bad-missing.stdout",
+          "bytes": 95,
+          "sha256": "778e585b50e22c580e5e8714ec60a9f026cfa1c9a04ecf3610e574f2b0af7483",
+          "git_blob": "1ecf0202cdf20e9182fcc2649acc81ce8bbdef5b"
+        },
+        "stderr": {
+          "member": "original-optimized-bad-missing.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-optimized-reject-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/missing.json",
+        "/tmp/r275-s71-native-x65_qm8u/missing.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:complete_source_keys",
+      "streams": {
+        "stdout": {
+          "member": "candidate-optimized-reject-missing.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-optimized-reject-missing.stderr",
+          "bytes": 696,
+          "sha256": "3547ac041f7b7e3d96f5c2bee9a819fc4728f40974d3e50b2ccdca91bbdaf59e",
+          "git_blob": "c98c65a94b3c0329f3e04f47e44ce5efd02984fb"
+        }
+      }
+    },
+    {
+      "label": "original-normal-bad-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/probability.json",
+        "/tmp/r275-s71-native-x65_qm8u/probability.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "AssertionError",
+      "streams": {
+        "stdout": {
+          "member": "original-normal-bad-probability.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "original-normal-bad-probability.stderr",
+          "bytes": 425,
+          "sha256": "a1ffed3891a4041fde2540431ce1d0bcb8f6a32192574c5afece7a601aa1d29d",
+          "git_blob": "0b1fb830c54b7a65e674e8e226d7f1a3e0b51bdd"
+        }
+      }
+    },
+    {
+      "label": "candidate-normal-reject-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/probability.json",
+        "/tmp/r275-s71-native-x65_qm8u/probability.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:source_probability",
+      "streams": {
+        "stdout": {
+          "member": "candidate-normal-reject-probability.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-normal-reject-probability.stderr",
+          "bytes": 683,
+          "sha256": "f382a4a56bf51b6073c2de620a51303c1ee02ad522cf5b8682808b51f2b90053",
+          "git_blob": "333d6e50793d0613a29d39a1eb9d24d6b4c6ea9e"
+        }
+      }
+    },
+    {
+      "label": "original-optimized-bad-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/probability.json",
+        "/tmp/r275-s71-native-x65_qm8u/probability.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-optimized-bad-probability.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-optimized-bad-probability.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-optimized-reject-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/probability.json",
+        "/tmp/r275-s71-native-x65_qm8u/probability.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:source_probability",
+      "streams": {
+        "stdout": {
+          "member": "candidate-optimized-reject-probability.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-optimized-reject-probability.stderr",
+          "bytes": 683,
+          "sha256": "f382a4a56bf51b6073c2de620a51303c1ee02ad522cf5b8682808b51f2b90053",
+          "git_blob": "333d6e50793d0613a29d39a1eb9d24d6b4c6ea9e"
+        }
+      }
+    },
+    {
+      "label": "original-normal-bad-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/MAP.json",
+        "/tmp/r275-s71-native-x65_qm8u/MAP.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "AssertionError",
+      "streams": {
+        "stdout": {
+          "member": "original-normal-bad-MAP.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "original-normal-bad-MAP.stderr",
+          "bytes": 463,
+          "sha256": "418e8d5430e7aa580f47ef234c4c98f09fcc3ec2abc2789255af624e9c37bdd0",
+          "git_blob": "4f40cdb7d9f8f97f7946e7d42c1b11bc8d81ecf7"
+        }
+      }
+    },
+    {
+      "label": "candidate-normal-reject-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/MAP.json",
+        "/tmp/r275-s71-native-x65_qm8u/MAP.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:MAP_and_correct",
+      "streams": {
+        "stdout": {
+          "member": "candidate-normal-reject-MAP.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-normal-reject-MAP.stderr",
+          "bytes": 696,
+          "sha256": "4b6436248c154110d1eabb5d5cba7287e40f2420b8158cbe2233e9f2c8a7fa96",
+          "git_blob": "9eafff7979b66d31a00da49cdace7e8647b70a00"
+        }
+      }
+    },
+    {
+      "label": "original-optimized-bad-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/MAP.json",
+        "/tmp/r275-s71-native-x65_qm8u/MAP.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-optimized-bad-MAP.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-optimized-bad-MAP.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-optimized-reject-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/MAP.json",
+        "/tmp/r275-s71-native-x65_qm8u/MAP.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:MAP_and_correct",
+      "streams": {
+        "stdout": {
+          "member": "candidate-optimized-reject-MAP.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-optimized-reject-MAP.stderr",
+          "bytes": 696,
+          "sha256": "4b6436248c154110d1eabb5d5cba7287e40f2420b8158cbe2233e9f2c8a7fa96",
+          "git_blob": "9eafff7979b66d31a00da49cdace7e8647b70a00"
+        }
+      }
+    },
+    {
+      "label": "original-normal-bad-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/posterior.json",
+        "/tmp/r275-s71-native-x65_qm8u/posterior.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "AssertionError",
+      "streams": {
+        "stdout": {
+          "member": "original-normal-bad-posterior.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "original-normal-bad-posterior.stderr",
+          "bytes": 411,
+          "sha256": "9142915ed4bb9bd2264974fdfe1601988757f34db949292901f3b8e230de32b2",
+          "git_blob": "33c72ed14a472061cc943820c3a72ead4bcabc80"
+        }
+      }
+    },
+    {
+      "label": "candidate-normal-reject-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/posterior.json",
+        "/tmp/r275-s71-native-x65_qm8u/posterior.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:posterior",
+      "streams": {
+        "stdout": {
+          "member": "candidate-normal-reject-posterior.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-normal-reject-posterior.stderr",
+          "bytes": 658,
+          "sha256": "6bcfd1e298c6be3de22838407e4aa4d40a91d08a69c456deda7e6795856d24aa",
+          "git_blob": "170e84e3798375554b13aef6eed587762a879abd"
+        }
+      }
+    },
+    {
+      "label": "original-optimized-bad-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/posterior.json",
+        "/tmp/r275-s71-native-x65_qm8u/posterior.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-optimized-bad-posterior.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-optimized-bad-posterior.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-optimized-reject-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/posterior.json",
+        "/tmp/r275-s71-native-x65_qm8u/posterior.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:posterior",
+      "streams": {
+        "stdout": {
+          "member": "candidate-optimized-reject-posterior.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-optimized-reject-posterior.stderr",
+          "bytes": 658,
+          "sha256": "6bcfd1e298c6be3de22838407e4aa4d40a91d08a69c456deda7e6795856d24aa",
+          "git_blob": "170e84e3798375554b13aef6eed587762a879abd"
+        }
+      }
+    },
+    {
+      "label": "original-normal-bad-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/evidence.json",
+        "/tmp/r275-s71-native-x65_qm8u/evidence.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "AssertionError",
+      "streams": {
+        "stdout": {
+          "member": "original-normal-bad-evidence.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "original-normal-bad-evidence.stderr",
+          "bytes": 407,
+          "sha256": "a41abc9e365a5be1005f27d8af25594024787cd6ba094e589d0377e53bfd39b5",
+          "git_blob": "8fb1800816fda9e925eebe0ec8a13a9b2ac710e5"
+        }
+      }
+    },
+    {
+      "label": "candidate-normal-reject-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/evidence.json",
+        "/tmp/r275-s71-native-x65_qm8u/evidence.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:evidence",
+      "streams": {
+        "stdout": {
+          "member": "candidate-normal-reject-evidence.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-normal-reject-evidence.stderr",
+          "bytes": 654,
+          "sha256": "50ff6e1d41faff2ab180dbec32a7a6b7e529ffc83cc2c0059991d4427fc87a9a",
+          "git_blob": "6db28a00756edc0f11638d9d4b5f858c250a32c0"
+        }
+      }
+    },
+    {
+      "label": "original-optimized-bad-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/original.py",
+        "/tmp/r275-s71-native-x65_qm8u/evidence.json",
+        "/tmp/r275-s71-native-x65_qm8u/evidence.csv"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "expected_error": null,
+      "streams": {
+        "stdout": {
+          "member": "original-optimized-bad-evidence.stdout",
+          "bytes": 95,
+          "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8",
+          "git_blob": "5e84a8c8052bcae588c657d6d03d9e69baa6bc06"
+        },
+        "stderr": {
+          "member": "original-optimized-bad-evidence.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      }
+    },
+    {
+      "label": "candidate-optimized-reject-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-native-x65_qm8u/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-s71-native-x65_qm8u/evidence.json",
+        "/tmp/r275-s71-native-x65_qm8u/evidence.csv"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "expected_error": "ValueError: R275_S71:evidence",
+      "streams": {
+        "stdout": {
+          "member": "candidate-optimized-reject-evidence.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        "stderr": {
+          "member": "candidate-optimized-reject-evidence.stderr",
+          "bytes": 654,
+          "sha256": "50ff6e1d41faff2ab180dbec32a7a6b7e529ffc83cc2c0059991d4427fc87a9a",
+          "git_blob": "6db28a00756edc0f11638d9d4b5f858c250a32c0"
+        }
+      }
+    }
+  ],
+  "harness": {
+    "bytes": 13120,
+    "sha256": "769cf8207b80537f8e181acfff0f670df70cf764874c13686def4e72e194882d",
+    "git_blob": "da348b0fcd2acb78db7921e330389b4154185a40"
+  },
+  "package_inputs": {
+    "pins.json": {
+      "bytes": 2690,
+      "sha256": "5f22af311b923f89b12dba3753d36bfd57ab351c9293ee0df18f07ec61c9f7a2",
+      "git_blob": "6e096111f1b4dc173e3a66ec3a9cbd84f8edf0db"
+    },
+    "explicit-guards.patch": {
+      "bytes": 4322,
+      "sha256": "374660614e08909cb16b4aa5daac177cf786e3145c60e9484220e144c1dcbdb4",
+      "git_blob": "70b76ca1e3817c00908e0732090777d166342b53"
+    },
+    "guard-inventory.json": {
+      "bytes": 2138,
+      "sha256": "ebd9a9f8e9fd17d4fed2fee431f513db7c06a6233b03222dfb251e9b09f29eb9",
+      "git_blob": "1c7d306fc5ed726626ae754c685fbd00868a92a8"
+    }
+  },
+  "bad_inputs": [
+    {
+      "label": "duplicate",
+      "candidate_guard": "duplicate source",
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532",
+        "git_blob": "4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1"
+      },
+      "csv": {
+        "bytes": 159484,
+        "sha256": "dc23938910c780348c0822557eed82abd5bdb21875219acf24712b08fa3591b5",
+        "git_blob": "709a1d749d5c85e932ba7d4d417bb82d39cb595a"
+      }
+    },
+    {
+      "label": "missing",
+      "candidate_guard": "complete_source_keys",
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532",
+        "git_blob": "4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1"
+      },
+      "csv": {
+        "bytes": 159385,
+        "sha256": "de6dbef5abe4e3f058e7630f8891078e340593b348bc72e45a777acae42e6691",
+        "git_blob": "db9e455b0090bdfb88cb5c2214efe89304ab61c2"
+      }
+    },
+    {
+      "label": "probability",
+      "candidate_guard": "source_probability",
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532",
+        "git_blob": "4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "129ef338b4467b48c24e0f55d133fa06eeb8c791876504f59178a4d0ed8543fd",
+        "git_blob": "b2d13f63bdb9fd4e9652fa8e5c4635934fdc4d20"
+      }
+    },
+    {
+      "label": "MAP",
+      "candidate_guard": "MAP_and_correct",
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532",
+        "git_blob": "4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "b177f647643946211853b64e2b3eae9e6f3be27fa049791b157156132a65c025",
+        "git_blob": "409616a8d1f192ddc1d23ce4744a33e8996a08ac"
+      }
+    },
+    {
+      "label": "posterior",
+      "candidate_guard": "posterior",
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532",
+        "git_blob": "4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "0f63f4e237ebcf60a481cb0aa4d7ede5507649d8f47a49f26825a8c4df30de38",
+        "git_blob": "46065699583a7a2de5e44feb82eb499a98259f23"
+      }
+    },
+    {
+      "label": "evidence",
+      "candidate_guard": "evidence",
+      "json": {
+        "bytes": 2557,
+        "sha256": "dd477a57abcc656f04b026417c4354cd84678d544479df21daffd448e84202bc",
+        "git_blob": "b9cabe552854c1a7fc858c205839e981aa5c239a"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab",
+        "git_blob": "bceacf74de761188fe945518d8e5d7cff7d3339e"
+      }
+    }
+  ],
+  "artifact_comparisons": [
+    {
+      "generated": "R275_S71_EXACT_RESULTS.json",
+      "identity": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532",
+        "git_blob": "4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1"
+      },
+      "byte_identical": true
+    },
+    {
+      "generated": "R275_S71_ALL_3072_NOISY_PAIR_ROWS.csv",
+      "identity": {
+        "bytes": 159435,
+        "sha256": "71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab",
+        "git_blob": "bceacf74de761188fe945518d8e5d7cff7d3339e"
+      },
+      "byte_identical": true
+    }
+  ],
+  "sources_before": {
+    "research/validation/r275_s71_noisy_pair_exact_20261030.js": {
+      "bytes": 2759,
+      "sha256": "b32e8b24a34566527c2446247c7aa924db339f09415b85e487a36b94d171690b",
+      "git_blob": "9823159c905a244154b1265c535ea3656692ee0b"
+    },
+    "research/evidence_audit/b_r275_s71_independent_gate_20261030.py": {
+      "bytes": 3109,
+      "sha256": "d6da1a90f84a81a5a0c1a9db252cdb4b977ffa47903a0929ed5281bc604a39ed",
+      "git_blob": "687aebf163193a4fb8f4667ec01774fcc047b2f4"
+    },
+    "research/validation/R275_S71_ALL_3072_NOISY_PAIR_ROWS_2026-10-30.csv": {
+      "bytes": 159435,
+      "sha256": "71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab",
+      "git_blob": "bceacf74de761188fe945518d8e5d7cff7d3339e"
+    },
+    "research/validation/R275_S71_EXACT_RESULTS_2026-10-30.json": {
+      "bytes": 2577,
+      "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532",
+      "git_blob": "4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1"
+    },
+    "protocols/R275_S71_NOISY_PAIR_MECHANISM_IDENTIFICATION_FREEZE_2026-10-30.md": {
+      "bytes": 3299,
+      "sha256": "7c305f2d3799284b033093693eb2bb6770386da5c04daa6c5ed580b8b549d32e",
+      "git_blob": "7effe22da29e27a06e804fbac8f6e695b67875ea"
+    },
+    "protocols/R275_EQUIFINALITY_3_MECHANISMS_768_COMPLETE_PAIR_SOURCE_TYPES_PRESCORE_FREEZE_2026-10-23.md": {
+      "bytes": 4557,
+      "sha256": "623932e2263dc090d9fbb06b6faa1e22a9e770f03aa77936708a49382a6ece53",
+      "git_blob": "c9bc30d37fd7b6421c67c795f05fc1b3bb653842"
+    },
+    "research/validation/R275_S71_NOISY_PAIR_SCIENTIFIC_REPORT_2026-10-30.md": {
+      "bytes": 3043,
+      "sha256": "61f928957282148be1a5b19ac220a4c32c8f4462d0690265547029066b94524e",
+      "git_blob": "c75d26cda265f0850222cb5b0811d1b11da63126"
+    },
+    "research/evidence_audit/B_R275_S71_NONBLIND_K_COUNT_AUDIT_2026-10-30.md": {
+      "bytes": 2020,
+      "sha256": "9d6d075a93b2b0515dff0b52de4ff19de0c5bb13c949a54bc25354c0f2c4bbad",
+      "git_blob": "7691b994ae0f79b8b7c35f9f4c581ad9f0867b04"
+    },
+    "research/evidence_audit/B_R275_S71_REMOTE_PERSISTED_RECEIPT_AND_MUTATION_ADDENDUM_2026-10-30.md": {
+      "bytes": 1817,
+      "sha256": "d6e44ae20987d1ac2fc2e8d92ce005e3bfef133569d8b93fb9cca300a1682825",
+      "git_blob": "b0e48073231ae014412dfed59ac8276fa3e22959"
+    },
+    "research/R275/R275_FINAL_ACCEPTANCE_STATUS.json": {
+      "bytes": 1572,
+      "sha256": "39a5d7dc62f764951edcd3142af8166ad422c398dc1940791e4c42ab84dc7c93",
+      "git_blob": "671a72e6de2f5ed78091128f54a2b77838c8cdea"
+    },
+    "docs/ORIGINAL_239_PENDING_154_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv": {
+      "bytes": 22780,
+      "sha256": "ffb95422df5403518f638fe567d490276fd607ba74b8c39bc9f923913fd1c960",
+      "git_blob": "3b96d46b3d88ccafd779a08509c3cfd0e435772f"
+    }
+  },
+  "node": "v24.22.1",
+  "patch_scope": {
+    "guards": 18,
+    "other_original_AST_unchanged": true,
+    "candidate": {
+      "bytes": 3568,
+      "sha256": "27ee7c88b02f70fb989f1dddea23279f7dbd18996c75c73462792e3ceebcacf0",
+      "git_blob": "556848c45030e49b7d7610fcb062e2f759b9e18b"
+    }
+  },
+  "scope_mutations_rejected": [
+    "changed_likelihood",
+    "disabled_evidence_guard"
+  ],
+  "emitter_output": {
+    "rows": 3072,
+    "summary": [
+      [
+        "0",
+        "23/24"
+      ],
+      [
+        "1/8",
+        "4541/6144"
+      ],
+      [
+        "1/4",
+        "79/128"
+      ],
+      [
+        "1/2",
+        "1/3"
+      ]
+    ]
+  },
+  "zero_probability_rows": 480,
+  "sources_after": {
+    "research/validation/r275_s71_noisy_pair_exact_20261030.js": {
+      "bytes": 2759,
+      "sha256": "b32e8b24a34566527c2446247c7aa924db339f09415b85e487a36b94d171690b",
+      "git_blob": "9823159c905a244154b1265c535ea3656692ee0b"
+    },
+    "research/evidence_audit/b_r275_s71_independent_gate_20261030.py": {
+      "bytes": 3109,
+      "sha256": "d6da1a90f84a81a5a0c1a9db252cdb4b977ffa47903a0929ed5281bc604a39ed",
+      "git_blob": "687aebf163193a4fb8f4667ec01774fcc047b2f4"
+    },
+    "research/validation/R275_S71_ALL_3072_NOISY_PAIR_ROWS_2026-10-30.csv": {
+      "bytes": 159435,
+      "sha256": "71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab",
+      "git_blob": "bceacf74de761188fe945518d8e5d7cff7d3339e"
+    },
+    "research/validation/R275_S71_EXACT_RESULTS_2026-10-30.json": {
+      "bytes": 2577,
+      "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532",
+      "git_blob": "4d8900e0e91a7c9941fe6a2ac5a27a2cae57a1f1"
+    },
+    "protocols/R275_S71_NOISY_PAIR_MECHANISM_IDENTIFICATION_FREEZE_2026-10-30.md": {
+      "bytes": 3299,
+      "sha256": "7c305f2d3799284b033093693eb2bb6770386da5c04daa6c5ed580b8b549d32e",
+      "git_blob": "7effe22da29e27a06e804fbac8f6e695b67875ea"
+    },
+    "protocols/R275_EQUIFINALITY_3_MECHANISMS_768_COMPLETE_PAIR_SOURCE_TYPES_PRESCORE_FREEZE_2026-10-23.md": {
+      "bytes": 4557,
+      "sha256": "623932e2263dc090d9fbb06b6faa1e22a9e770f03aa77936708a49382a6ece53",
+      "git_blob": "c9bc30d37fd7b6421c67c795f05fc1b3bb653842"
+    },
+    "research/validation/R275_S71_NOISY_PAIR_SCIENTIFIC_REPORT_2026-10-30.md": {
+      "bytes": 3043,
+      "sha256": "61f928957282148be1a5b19ac220a4c32c8f4462d0690265547029066b94524e",
+      "git_blob": "c75d26cda265f0850222cb5b0811d1b11da63126"
+    },
+    "research/evidence_audit/B_R275_S71_NONBLIND_K_COUNT_AUDIT_2026-10-30.md": {
+      "bytes": 2020,
+      "sha256": "9d6d075a93b2b0515dff0b52de4ff19de0c5bb13c949a54bc25354c0f2c4bbad",
+      "git_blob": "7691b994ae0f79b8b7c35f9f4c581ad9f0867b04"
+    },
+    "research/evidence_audit/B_R275_S71_REMOTE_PERSISTED_RECEIPT_AND_MUTATION_ADDENDUM_2026-10-30.md": {
+      "bytes": 1817,
+      "sha256": "d6e44ae20987d1ac2fc2e8d92ce005e3bfef133569d8b93fb9cca300a1682825",
+      "git_blob": "b0e48073231ae014412dfed59ac8276fa3e22959"
+    },
+    "research/R275/R275_FINAL_ACCEPTANCE_STATUS.json": {
+      "bytes": 1572,
+      "sha256": "39a5d7dc62f764951edcd3142af8166ad422c398dc1940791e4c42ab84dc7c93",
+      "git_blob": "671a72e6de2f5ed78091128f54a2b77838c8cdea"
+    },
+    "docs/ORIGINAL_239_PENDING_154_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv": {
+      "bytes": 22780,
+      "sha256": "ffb95422df5403518f638fe567d490276fd607ba74b8c39bc9f923913fd1c960",
+      "git_blob": "3b96d46b3d88ccafd779a08509c3cfd0e435772f"
+    }
+  },
+  "original_optimized_false_acceptances": 6,
+  "candidate_bad_files_rejected": 12,
+  "scientific_status": "UNCHANGED_E1_ARTIFICIAL_NONBLIND",
+  "production_patch": "NOT_APPLIED",
+  "human_scoring": "NOT_RUN",
+  "stream_archive": {
+    "bytes": 2100,
+    "sha256": "82222571fa1e73b00ad999fa9776bc7bb1087b5e894fba51aa464994d9c58961",
+    "git_blob": "b4e2cc9d9406b83699506597e35a7156cae5da87"
+  }
+}

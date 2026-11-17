@@ -1,0 +1,366 @@
+[
+  {
+    "tag": "new5tests",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-O",
+      "/workspace/Psychohistory-Research/research/codex_b/2026-11-12-r077-qualification-r273-native/test_source_join.py"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "new5tests.stderr",
+        "bytes": 634,
+        "sha256": "f3e517acae2cafced56b9ad97f8a853ed7c2d1dbea15f6a9c2a40c6398b39249"
+      }
+    }
+  },
+  {
+    "tag": "node_version",
+    "argv": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/workspace/Psychohistory-Research",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": "node_version.stdout",
+        "bytes": 9,
+        "sha256": "249baf635bb43877fcb9422efa1a4904b702d0ddf14d3949b7cd0950d5229c81"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "original_R273_emit",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-I",
+      "-B",
+      "/tmp/r273-native-ofcmnejl/r273_exact_cross_population_prediction.py",
+      "--emit"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": "original_R273_emit.stdout",
+        "bytes": 405,
+        "sha256": "d604aa410596da37ac09f34cbbbd25830527c69cf072f0846266acddb9869e36"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "original_S69_selftest",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/r273_s69_paired_target_rank_20261030.js",
+      "--selftest"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": "original_S69_selftest.stdout",
+        "bytes": 48,
+        "sha256": "0de1ddf5289a2646e68718bd3c24d6ce74527d3053565ecf0d31b7310fc010eb"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "S69_csv",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/r273_s69_paired_target_rank_20261030.js",
+      "--csv"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": "S69_csv.stdout",
+        "bytes": 23635,
+        "sha256": "c8906fcb0a81e975470aa9ef2d65e2dff900ee3663fe18f6a3edf6d8ea77347d"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "S69_json",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/r273_s69_paired_target_rank_20261030.js",
+      "--json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": "S69_json.stdout",
+        "bytes": 5761,
+        "sha256": "e05288c769ab66bf6579a4713eef6e35eb838d2cf022d800cf219ade52f99e2a"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "original_B_archive",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/archived.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": "original_B_archive.stdout",
+        "bytes": 55,
+        "sha256": "e0f3483d369726b8a250cad974f56aab6a948d8d25523d5920210563a2fe35e6"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "original_B_regenerated",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/R273_S69_PAIRED_TARGET_RANK_EXACT_RESULTS_2026-10-30.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "file": "original_B_regenerated.stdout",
+        "bytes": 55,
+        "sha256": "e0f3483d369726b8a250cad974f56aab6a948d8d25523d5920210563a2fe35e6"
+      },
+      "stderr": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "tag": "reject_duplicate_world",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/duplicate_world.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "reject_duplicate_world.stderr",
+        "bytes": 929,
+        "sha256": "50032413d73d077f74cf41b054c4e23e6b1b21455038c3b42cb28a22d4a021c9"
+      }
+    }
+  },
+  {
+    "tag": "reject_missing_world",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/missing_world.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "reject_missing_world.stderr",
+        "bytes": 905,
+        "sha256": "b816cf6ccfc293339b579d7414ee0a114d4da7eeb2aa73582c3eb293d3ae864d"
+      }
+    }
+  },
+  {
+    "tag": "reject_wrong_probability",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/wrong_probability.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "reject_wrong_probability.stderr",
+        "bytes": 961,
+        "sha256": "a7c3cfd4780664c51886de8440ac4cd1868ae47fe8ba556b068d3424aec8c910"
+      }
+    }
+  },
+  {
+    "tag": "reject_false_E2",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/false_E2.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "reject_false_E2.stderr",
+        "bytes": 944,
+        "sha256": "51a1661770e7527e6e31103b21857557198d5209e93e7820e422e85c85b303d0"
+      }
+    }
+  },
+  {
+    "tag": "reject_boolean_count",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/boolean_count.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "reject_boolean_count.stderr",
+        "bytes": 947,
+        "sha256": "e1e3d1deff0c461f4ca2870b438bbd25a1dc34e4772e737a7675a935b3f1d5c2"
+      }
+    }
+  },
+  {
+    "tag": "reject_wrong_rank",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/wrong_rank.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "reject_wrong_rank.stderr",
+        "bytes": 952,
+        "sha256": "a91d15e013f0fbb0e6952db8d2b80397320f088f71941d9a77a515e0c56549a2"
+      }
+    }
+  },
+  {
+    "tag": "reject_wrong_freeze",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/wrong_freeze.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "reject_wrong_freeze.stderr",
+        "bytes": 950,
+        "sha256": "1bcb0baa90055b1b5e3cba2f250a8cf4159741f65378dbb701f80cd6d9d7ae62"
+      }
+    }
+  },
+  {
+    "tag": "reject_wrong_tie",
+    "argv": [
+      "node",
+      "/tmp/r273-native-ofcmnejl/b_r273_s69_grouped_oracle_20261030.js",
+      "--check",
+      "/tmp/r273-native-ofcmnejl/wrong_tie.json"
+    ],
+    "cwd": "/tmp/r273-native-ofcmnejl",
+    "exit_code": 1,
+    "streams": {
+      "stdout": {
+        "file": null,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "reject_wrong_tie.stderr",
+        "bytes": 945,
+        "sha256": "9f573d0993f3ecf8a4a6f497e8f03709753d1a31508c2dc7411a269bd76f7a51"
+      }
+    }
+  }
+]
