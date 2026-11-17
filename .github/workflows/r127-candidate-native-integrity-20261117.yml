@@ -1,0 +1,99 @@
+name: R127 candidate integration safety CI (read-only, local-only publication)
+on:
+  push:
+    paths:
+      - '.github/workflows/r127-candidate-native-integrity-20261117.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate pinned predecessor and candidate unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -s research/codex_a/r127_workflow_candidate -p test_candidate.py -v
+          python -B -O -m unittest discover -s research/codex_a/r127_workflow_candidate -p test_candidate.py -v
+          python -B research/codex_a/r127_local_gates/gate.py . > "$RUNNER_TEMP/r127-old-pinned-gate.json"
+          python -B -O research/codex_a/r127_local_gates/gate.py . > "$RUNNER_TEMP/r127-old-pinned-gate-optimized.json"
+          python - "$RUNNER_TEMP/r127-old-pinned-gate.json" "$RUNNER_TEMP/r127-old-pinned-gate-optimized.json" <<'PY'
+          import json,sys
+          for expected_opt,path in enumerate(sys.argv[1:]):
+              with open(path,encoding='utf-8') as file: data=json.load(file)
+              if (data.get('status')!='COMPLETE_LOCAL_R127_ENGINEERING_REPLAY' or
+                  data.get('unittest',{}).get('tests')!=60 or
+                  data.get('stage2',{}).get('checked_leaf_fields')!=138 or
+                  data.get('optimized') is not bool(expected_opt) or
+                  data.get('new_E2')!=0 or data.get('new_E3')!=0):
+                  raise SystemExit('R127_PREDECESSOR_GATE_FAIL_CLOSED')
+          print('R127_PINNED_GATE_BOTH_MODES_60_TESTS_138_FIELDS_PASS')
+          PY
+      - name: Exercise candidate source-locked workflow in disposable LOCAL repositories
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B research/codex_a/r127_workflow_candidate/exercise.py . \
+            --output "$RUNNER_TEMP/r127-candidate-exercise" > "$RUNNER_TEMP/r127-candidate-exercise-stdout.json"
+          python - "$RUNNER_TEMP/r127-candidate-exercise/result.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding='utf-8') as file: d=json.load(file)
+          if (d.get('all_expectations_match') is not True or
+              d.get('publication_remote_kind')!='TEMP_LOCAL_BARE_ONLY' or
+              d.get('CI')!='NOT_RUN_LOCAL_SHELL_SIMULATION_ONLY' or
+              len(d.get('modes',[]))!=2):
+              raise SystemExit('R127_CANDIDATE_SCOPE_OR_COVERAGE_FAIL')
+          for index,x in enumerate(d['modes']):
+              if (x.get('optimized') is not bool(index) or
+                  x.get('native_original_methods')!=60 or
+                  x.get('stage2_fields')!=138 or
+                  x.get('adversarial_rejections')!=9 or
+                  x.get('historical_receipt_unchanged') is not True or
+                  x.get('noop_commit_unchanged') is not True):
+                  raise SystemExit('R127_CANDIDATE_NEGATIVE_CONTROLS_FAIL')
+          print('R127_CANDIDATE_DISPOSABLE_BOTH_MODES_PASS')
+          PY
+      - name: Reproduce old optimized-mode false acceptance in synthetic stubs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B research/codex_a/r127_workflow_candidate/historical_controls.py . \
+            --receipt "$RUNNER_TEMP/r127-candidate-exercise/normal-sidecar.json" \
+            --output "$RUNNER_TEMP/r127-historical-controls" > "$RUNNER_TEMP/r127-old-controls-stdout.json"
+          python - "$RUNNER_TEMP/r127-historical-controls/result.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding='utf-8') as file: r=json.load(file)
+          controls=r.get('controls',[])
+          if len(controls)!=16 or r.get('CI')!='NOT_RUN':
+              raise SystemExit('R127_HISTORICAL_CONTROLS_INCOMPLETE')
+          for item in controls:
+              if item.get('exit')!=item.get('expected_exit'):
+                  raise SystemExit('R127_HISTORICAL_UNEXPECTED_RESULT')
+          print('R127_HISTORICAL_SYNTHETIC_CONTROLS_16_PASS')
+          PY
+      - name: Assert production and frozen files were never modified
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code HEAD -- \
+            .github/workflows/r127-van-huyck-1990-coordination-source-table-60-tests.yml \
+            research/codex_a/r127_local_gates/gate.py \
+            research/codex_a/r127_local_gates/pins.json \
+            research/R127 \
+            protocols/R127_VAN_HUYCK_1990_MINIMUM_EFFORT_ORIGINAL_TABLE2_AND_2X2_RISK_SELECTION_FREEZE_2026-10-20.md
+          if test -n "$(git status --porcelain --untracked-files=all | grep -v -E '(^|/)__pycache__/|\.pyc$' || true)"; then
+            echo 'R127_UNEXPECTED_WORKSPACE_WRITE'
+            exit 1
+          fi
+          echo 'R127_REAL_PRODUCTION_UNCHANGED'
