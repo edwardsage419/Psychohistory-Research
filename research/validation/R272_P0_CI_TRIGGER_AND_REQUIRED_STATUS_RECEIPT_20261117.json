@@ -1,0 +1,84 @@
+{
+  "research_id": "R272",
+  "catalogue_id": "12-002",
+  "date_utc": "2026-11-17",
+  "task": "P0_READONLY_AUDIT_TRIGGER_COVERAGE_DEPENDENCY_PIN_REQUIRED_STATUS_BOUNDARY",
+  "source_pr": 51,
+  "base_main_at_test": "073496bed7b0e1ab0bafef7739fc02f8a4a004c4",
+  "workflow": {
+    "path": ".github/workflows/r272-full-checkout-unadopted-candidate-20261117.yml",
+    "before_blob": "7e8186bcf2499c49a50abccfab66e802102d38d4",
+    "after_blob": "70931c3b3bd8c1eb66967ae51308d8350af0b63c",
+    "permissions": "contents:read",
+    "credentials_persisted": false,
+    "push_path_filter_count": 13,
+    "pull_request_path_filter_count": 13,
+    "path_lists_exactly_equal": true,
+    "action_sha": {
+      "actions/checkout": "34e114876b0b11c390a56381ad16ebd13914f8d5",
+      "actions/setup-python": "a26af69be951a213d495a4c3e4e4022e16d87065"
+    },
+    "action_occurrences_each": 3,
+    "unpinned_action_refs_remaining": 0,
+    "unchanged_legacy_production_blob_gate": "3132b08cf4ee64b55f5112d2249894ea0ec9d42d"
+  },
+  "run": {
+    "id": 44043516100,
+    "head_sha": "72c67d846e7bee8f15f14e5a9f877d7bc71031fd",
+    "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44043516100",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 133903524212,
+        "label": "full-checkout-candidate (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "id": 133903524648,
+        "label": "full-checkout-candidate (3.12)",
+        "conclusion": "success"
+      },
+      {
+        "id": 133903978212,
+        "label": "frozen-third-independent-source",
+        "conclusion": "success"
+      },
+      {
+        "id": 133903524832,
+        "label": "actual-candidate-import-shadow-controls",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "security_and_governance": {
+    "repository_visibility": "public",
+    "main_protected": false,
+    "repository_rulesets_count": 0,
+    "production_r272_workflow_changed": false,
+    "owner_production_activation_approved": false,
+    "required_status_check_enforced": false,
+    "audit_workflow_safe_as_global_required_check": false,
+    "reason": "paths filtering may leave skipped required checks pending for unrelated PRs",
+    "future_design": "unfiltered light always-on summary check and conditional detailed R272 review; subject to owner approval",
+    "primary_docs": [
+      "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+      "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches"
+    ]
+  },
+  "science": {
+    "evidence": "BOUNDED_SYNTHETIC_E1_ENGINEERING",
+    "R272_frozen_original_acceptance_changed": false,
+    "original239_pending_queue_changed": false,
+    "external_team_reproduction": "NOT_RUN",
+    "new_real_human_E2": 0,
+    "new_real_historical_E3": 0,
+    "R073": "FROZEN",
+    "PESEN_v0_1": "FROZEN"
+  },
+  "cost": {
+    "added_paid_services": 0,
+    "public_standard_hosted_ci": true,
+    "account_invoice_checked": false
+  }
+}
