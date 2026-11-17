@@ -1,0 +1,30 @@
+import hashlib,json,os,subprocess,sys
+from pathlib import Path
+import argparse
+p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();root=a.repo.resolve();out=a.output;out.mkdir(parents=True,exist_ok=False)
+rows=[]
+def run(tag,args,want=0):
+ p=subprocess.run(args,cwd=root,capture_output=True,timeout=90)
+ (out/(tag+'.stdout')).write_bytes(p.stdout);(out/(tag+'.stderr')).write_bytes(p.stderr)
+ row={'tag':tag,'argv':args,'exit_code':p.returncode,'expected_exit':want,'stdout_sha256':hashlib.sha256(p.stdout).hexdigest(),'stderr_sha256':hashlib.sha256(p.stderr).hexdigest()};rows.append(row)
+ if p.returncode!=want:raise RuntimeError((row,p.stderr[-1000:]))
+ return p.stdout
+capture="import importlib.util,json;from pathlib import Path;p=Path('research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py');s=importlib.util.spec_from_file_location('b31_capture',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);r=m.capture();print(json.dumps({'source_fingerprints':len(r),'sources':r},sort_keys=True))"
+composite="import importlib.util,json;from pathlib import Path;p=Path('research/codex_a/r333_r340_authenticated/replay.py');s=importlib.util.spec_from_file_location('a39_capture',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);h,raw,ids,helper=m.capture(Path('.'));print(json.dumps({'head':h,'fingerprints':len(ids),'source_only':True},sort_keys=True))"
+for mode in ['normal','optimized']:
+ cmd=[sys.executable,'-B']+(['-O'] if mode=='optimized' else [])
+ b=json.loads(run('b31-capture-'+mode,cmd+['-c',capture]))
+ if b['source_fingerprints']!=22:raise ValueError('B31 source fingerprint count')
+ a=json.loads(run('a33-production-veto-'+mode,cmd+['research/codex_a/r077_integration/mainline_checklist.py','.'],2))
+ if not (a['production_ready'] is False and a['original_failure_cases']==11 and a['candidate_correct_orders']==35 and a['mathematical_programs_rerun'] is False):raise ValueError('production veto or retained evidence changed')
+ c=json.loads(run('a39-source-capture-'+mode,cmd+['-c',composite]))
+ if c['fingerprints']!=56:raise ValueError('A39 source fingerprint count')
+patch=run('a32-prepare',[sys.executable,'-B','research/codex_a/r127_workflow_candidate/prepare.py','.'])
+original=(root/'research/codex_a/r127_workflow_candidate/candidate.patch').read_bytes()
+if patch!=original or len(patch)!=9448:raise ValueError('R127 candidate patch identity changed')
+# No workflow or early candidate pin patch is applied anywhere in this verification.
+status=subprocess.check_output(['git','status','--porcelain=v1'],cwd=root,text=True)
+if status:raise ValueError('Combination worktree changed: '+status)
+head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+(out/'result.json').write_text(json.dumps({'status':'PASS_ENGINEERING_COMBINATION_PRODUCTION_BLOCKED','head':head,'rows':rows,'B31_fingerprints':22,'A33_expected_veto_exit':2,'production_ready':False,'A33_original_failures':11,'A33_candidate_correct_orders':35,'A39_source_fingerprints':56,'R127_patch_generated_only':True,'R127_patch_bytes':len(patch),'R127_patch_sha256':hashlib.sha256(patch).hexdigest(),'worktree_clean':not status,'new_empirical_evidence':0,'new_math_campaigns':0,'workflow_dispatches':0},indent=2))
+print('Full nine-head committed combination: PASS; seven targeted commands, production veto retained',head)

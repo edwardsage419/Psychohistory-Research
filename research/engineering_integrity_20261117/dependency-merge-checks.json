@@ -1,0 +1,133 @@
+{
+  "main": "1e839d3b02cae02833b282c309f5abd58559949e",
+  "test_scope": "No commits; only git apply and source-only entrypoints in isolated checkout",
+  "commands": [
+    {
+      "check": "combined apply-check PR30",
+      "exit": 0
+    },
+    {
+      "check": "combined apply-check PR31",
+      "exit": 0
+    },
+    {
+      "check": "combined apply-check PR32",
+      "exit": 0
+    },
+    {
+      "check": "combined apply-check PR33",
+      "exit": 0
+    },
+    {
+      "check": "combined apply-check PR35",
+      "exit": 0
+    },
+    {
+      "check": "combined apply-check PR39",
+      "exit": 0
+    }
+  ],
+  "all_nine_pairwise_overlaps": {
+    "30/31": [],
+    "30/32": [],
+    "30/33": [],
+    "30/35": [],
+    "30/36": [],
+    "30/37": [],
+    "30/38": [],
+    "30/39": [],
+    "31/32": [],
+    "31/33": [],
+    "31/35": [],
+    "31/36": [],
+    "31/37": [],
+    "31/38": [],
+    "31/39": [],
+    "32/33": [],
+    "32/35": [],
+    "32/36": [],
+    "32/37": [],
+    "32/38": [],
+    "32/39": [],
+    "33/35": [],
+    "33/36": [],
+    "33/37": [],
+    "33/38": [],
+    "33/39": [],
+    "35/36": [],
+    "35/37": [],
+    "35/38": [],
+    "35/39": [],
+    "36/37": [],
+    "36/38": [],
+    "36/39": [],
+    "37/38": [],
+    "37/39": [],
+    "38/39": []
+  },
+  "individual_apply_check": {
+    "30": {
+      "exit": 0,
+      "stderr": ""
+    },
+    "31": {
+      "exit": 0,
+      "stderr": "<stdin>:572: trailing whitespace.\ntest_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) ... \n<stdin>:604: trailing whitespace.\ntest_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) ... \n<stdin>:1948: trailing whitespace.\ntest_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) ... \n<stdin>:1980: trailing whitespace.\ntest_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) ... \n<stdin>:4366: trailing whitespace.\ntest_hand_source_probability_identity (__main__.ReadinessTests.test_hand_source_probability_identity) ... \nwarning: 5 lines add whitespace errors.\n"
+    },
+    "32": {
+      "exit": 0,
+      "stderr": "<stdin>:377: trailing whitespace.\n \n<stdin>:507: trailing whitespace.\n \nwarning: 2 lines add whitespace errors.\n"
+    },
+    "33": {
+      "exit": 0,
+      "stderr": ""
+    },
+    "35": {
+      "exit": 0,
+      "stderr": ""
+    },
+    "39": {
+      "exit": 0,
+      "stderr": ""
+    }
+  },
+  "R127_prepare": {
+    "exit": 0,
+    "bytes": 9448,
+    "sha256": "ed2b03c7985d93db9c915abaa4e3bffeae665803dbd00db8364eba14a62cf44e",
+    "equals_fixed_candidate": true
+  },
+  "PR39_source_capture_normal": {
+    "exit": 0,
+    "inputs": 56,
+    "source_head": "1e839d3b02cae02833b282c309f5abd58559949e",
+    "entrypoint_external_overlay": true,
+    "math_rerun": false,
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-I",
+      "-B",
+      "-c",
+      "import importlib.util,json,sys;s=importlib.util.spec_from_file_location(\"source_only\",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);h,r,i,c=m.capture(sys.argv[2]);print(json.dumps({\"head\":h,\"inputs\":i},sort_keys=True))",
+      "/tmp/r-series-review-20261117/dependencies-checkout/research/codex_a/r333_r340_authenticated/replay.py",
+      "/tmp/r-series-review-20261117/dependencies-checkout"
+    ]
+  },
+  "PR39_source_capture_optimized": {
+    "exit": 0,
+    "inputs": 56,
+    "source_head": "1e839d3b02cae02833b282c309f5abd58559949e",
+    "entrypoint_external_overlay": true,
+    "math_rerun": false,
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "-I",
+      "-B",
+      "-O",
+      "-c",
+      "import importlib.util,json,sys;s=importlib.util.spec_from_file_location(\"source_only\",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);h,r,i,c=m.capture(sys.argv[2]);print(json.dumps({\"head\":h,\"inputs\":i},sort_keys=True))",
+      "/tmp/r-series-review-20261117/dependencies-checkout/research/codex_a/r333_r340_authenticated/replay.py",
+      "/tmp/r-series-review-20261117/dependencies-checkout"
+    ]
+  }
+}

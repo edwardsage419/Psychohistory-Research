@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 72, in <module>
+    print(json.dumps(check(sys.argv[1],sys.argv[2])))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 56, in check
+    require(row['MAP_selected']==choice and int(row['correct'])==int(choice==true), 'MAP_and_correct')
+  File "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py", line 15, in require
+    raise ValueError("R275_S71:" + message)
+ValueError: R275_S71:MAP_and_correct

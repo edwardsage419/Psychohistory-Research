@@ -1,0 +1,1043 @@
+{
+  "main": "1e839d3b02cae02833b282c309f5abd58559949e",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "sources": {
+    "research/evidence_audit/b_r275_s71_independent_gate_20261030.py": {
+      "bytes": 3109,
+      "sha256": "d6da1a90f84a81a5a0c1a9db252cdb4b977ffa47903a0929ed5281bc604a39ed"
+    },
+    "research/validation/R275_S71_ALL_3072_NOISY_PAIR_ROWS_2026-10-30.csv": {
+      "bytes": 159435,
+      "sha256": "71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab"
+    },
+    "research/validation/R275_S71_EXACT_RESULTS_2026-10-30.json": {
+      "bytes": 2577,
+      "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532"
+    }
+  },
+  "commands": [
+    {
+      "label": "patch-check",
+      "argv": [
+        "git",
+        "-C",
+        "/tmp/r275-readonly-audit-ga0uh3zp",
+        "apply",
+        "--check",
+        "/tmp/r-series-review-20261117/native-audit/research/codex_b/2026-11-12-r275-s71-native-guards/explicit-guards.patch"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "patch-apply",
+      "argv": [
+        "git",
+        "-C",
+        "/tmp/r275-readonly-audit-ga0uh3zp",
+        "apply",
+        "/tmp/r-series-review-20261117/native-audit/research/codex_b/2026-11-12-r275-s71-native-guards/explicit-guards.patch"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-normal-good",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-O-good",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-env1-good",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-normal-good",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-O-good",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-env1-good",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/good.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-normal-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 424,
+        "sha256": "401427bef6537ea1876cae6e889826f8819f62f876d930a6cc6e12b7db5bcf69"
+      }
+    },
+    {
+      "label": "original-O-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-env1-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-normal-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 730,
+        "sha256": "4e5f93b095e42c78121d2813a98192075a78a80d161918beba05e52f9d60b856"
+      }
+    },
+    {
+      "label": "candidate-O-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 730,
+        "sha256": "4e5f93b095e42c78121d2813a98192075a78a80d161918beba05e52f9d60b856"
+      }
+    },
+    {
+      "label": "candidate-env1-duplicate",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/duplicate.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 730,
+        "sha256": "4e5f93b095e42c78121d2813a98192075a78a80d161918beba05e52f9d60b856"
+      }
+    },
+    {
+      "label": "original-normal-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 451,
+        "sha256": "040c1673a811ab6ed7f8ce274f94734b7f5f4f497a7a25d6a7f4e4e7f0a9331d"
+      }
+    },
+    {
+      "label": "original-O-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "778e585b50e22c580e5e8714ec60a9f026cfa1c9a04ecf3610e574f2b0af7483"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-env1-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "778e585b50e22c580e5e8714ec60a9f026cfa1c9a04ecf3610e574f2b0af7483"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-normal-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 708,
+        "sha256": "0e22cba2f55a3097874a993864ed0c67adb2407d59b7dd467ed42cc5a34e0715"
+      }
+    },
+    {
+      "label": "candidate-O-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 708,
+        "sha256": "0e22cba2f55a3097874a993864ed0c67adb2407d59b7dd467ed42cc5a34e0715"
+      }
+    },
+    {
+      "label": "candidate-env1-missing",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/missing.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 708,
+        "sha256": "0e22cba2f55a3097874a993864ed0c67adb2407d59b7dd467ed42cc5a34e0715"
+      }
+    },
+    {
+      "label": "original-normal-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 433,
+        "sha256": "cdcde305fe33b1e5bf0b2b9d0e2ff193946f4c091dd307d14b4a4c2bb99e734a"
+      }
+    },
+    {
+      "label": "original-O-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-env1-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-normal-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 695,
+        "sha256": "8b0a304d2e4087a0b24954fe626339506022f53e2cbac5290942a7dc21a04aa2"
+      }
+    },
+    {
+      "label": "candidate-O-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 695,
+        "sha256": "8b0a304d2e4087a0b24954fe626339506022f53e2cbac5290942a7dc21a04aa2"
+      }
+    },
+    {
+      "label": "candidate-env1-probability",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/probability.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 695,
+        "sha256": "8b0a304d2e4087a0b24954fe626339506022f53e2cbac5290942a7dc21a04aa2"
+      }
+    },
+    {
+      "label": "original-normal-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 471,
+        "sha256": "be3b368e21f8bd65c6404ecd3ff6d2207e4377efc1739abc54ec75f94d43c7fb"
+      }
+    },
+    {
+      "label": "original-O-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-env1-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-normal-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 708,
+        "sha256": "b7e5d9c725c517c360394133353e62439f608456990408f1fc57a256c31b7216"
+      }
+    },
+    {
+      "label": "candidate-O-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 708,
+        "sha256": "b7e5d9c725c517c360394133353e62439f608456990408f1fc57a256c31b7216"
+      }
+    },
+    {
+      "label": "candidate-env1-MAP",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/MAP.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 708,
+        "sha256": "b7e5d9c725c517c360394133353e62439f608456990408f1fc57a256c31b7216"
+      }
+    },
+    {
+      "label": "original-normal-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 419,
+        "sha256": "20131f6426c3427a11874475176c27c5a3d942b35bca5f088b46e37e2251e4f1"
+      }
+    },
+    {
+      "label": "original-O-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-env1-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-normal-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 670,
+        "sha256": "cf2a0cb410d83bb4c549f5634b3ccdde74073afb6e8a7e4e2fe2f6772ca6141b"
+      }
+    },
+    {
+      "label": "candidate-O-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 670,
+        "sha256": "cf2a0cb410d83bb4c549f5634b3ccdde74073afb6e8a7e4e2fe2f6772ca6141b"
+      }
+    },
+    {
+      "label": "candidate-env1-posterior",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/posterior.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 670,
+        "sha256": "cf2a0cb410d83bb4c549f5634b3ccdde74073afb6e8a7e4e2fe2f6772ca6141b"
+      }
+    },
+    {
+      "label": "original-normal-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 415,
+        "sha256": "13eddde807519d87751297cee2d35bf10352059b2d7a47178011596730f02def"
+      }
+    },
+    {
+      "label": "original-O-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "original-env1-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/original.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 95,
+        "sha256": "47ca63f569927f22d25c57020066e462a657e5bcf9a309c6f830431a321b85e8"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "candidate-normal-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 666,
+        "sha256": "e2c9417eb2f0e8276fce42ae22a7929eb02a63b4302981b7674bae96b0edccb1"
+      }
+    },
+    {
+      "label": "candidate-O-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-O",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": null,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 666,
+        "sha256": "e2c9417eb2f0e8276fce42ae22a7929eb02a63b4302981b7674bae96b0edccb1"
+      }
+    },
+    {
+      "label": "candidate-env1-evidence",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "/tmp/r275-readonly-audit-ga0uh3zp/research/evidence_audit/b_r275_s71_independent_gate_20261030.py",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.json",
+        "/tmp/r275-readonly-audit-ga0uh3zp/evidence.csv"
+      ],
+      "cwd": "/tmp/r275-readonly-audit-ga0uh3zp",
+      "PYTHONOPTIMIZE": "1",
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 666,
+        "sha256": "e2c9417eb2f0e8276fce42ae22a7929eb02a63b4302981b7674bae96b0edccb1"
+      }
+    }
+  ],
+  "candidate": {
+    "bytes": 3568,
+    "sha256": "27ee7c88b02f70fb989f1dddea23279f7dbd18996c75c73462792e3ceebcacf0"
+  },
+  "AST_scope": "18 assert conditions preserved, only explicit require + helper",
+  "asserts_original": 18,
+  "asserts_candidate": 0,
+  "cases": {
+    "good": {
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab"
+      }
+    },
+    "duplicate": {
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532"
+      },
+      "csv": {
+        "bytes": 159484,
+        "sha256": "dc23938910c780348c0822557eed82abd5bdb21875219acf24712b08fa3591b5"
+      }
+    },
+    "missing": {
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532"
+      },
+      "csv": {
+        "bytes": 159385,
+        "sha256": "de6dbef5abe4e3f058e7630f8891078e340593b348bc72e45a777acae42e6691"
+      }
+    },
+    "probability": {
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "129ef338b4467b48c24e0f55d133fa06eeb8c791876504f59178a4d0ed8543fd"
+      }
+    },
+    "MAP": {
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "b177f647643946211853b64e2b3eae9e6f3be27fa049791b157156132a65c025"
+      }
+    },
+    "posterior": {
+      "json": {
+        "bytes": 2577,
+        "sha256": "632da3835df48660dac38d9e69d8e0679382f34d1de8b38f487ad51efc120532"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "0f63f4e237ebcf60a481cb0aa4d7ede5507649d8f47a49f26825a8c4df30de38"
+      }
+    },
+    "evidence": {
+      "json": {
+        "bytes": 2557,
+        "sha256": "dd477a57abcc656f04b026417c4354cd84678d544479df21daffd448e84202bc"
+      },
+      "csv": {
+        "bytes": 159435,
+        "sha256": "71f25b29b294dc8827ba2803e80ae89c446550134d0009ea4ae7b7c5cef88fab"
+      }
+    }
+  },
+  "result": "REPRODUCED_6_ORIGINAL_FALSE_ACCEPTANCES_IN_EACH_OPTIMIZATION_MODE;CANDIDATE_REJECTS_ALL_6_IN_ALL_3_MODES",
+  "original_false_acceptances": 12,
+  "candidate_rejections": 18,
+  "positive_acceptances": 6
+}

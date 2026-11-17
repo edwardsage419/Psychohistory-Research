@@ -1,0 +1,91 @@
+{
+  "main": "1e839d3b02cae02833b282c309f5abd58559949e",
+  "mode": "READONLY_HISTORICAL_REVIEW_PLUS_AUTHORIZED_TWO_NEW_ENGINEERING_FILES",
+  "prs": {
+    "36": {
+      "head": "211f90b2509a9e958b560780bc30d7a488a518b9",
+      "archive_disposition": "QUALIFIED_BOUNDED",
+      "pins_latest_main": 18,
+      "verified_streams": 64,
+      "new_math_rerun": false,
+      "production_scientific_acceptance": false
+    },
+    "37": {
+      "head": "a6f51d4b4805ce585f791ecb1cade7b6528bd594",
+      "archive_disposition": "QUALIFIED_BOUNDED",
+      "pins_latest_main": 12,
+      "verified_streams": 30,
+      "new_math_rerun": false,
+      "protocol_language_mismatch": "FROZEN_PYTHON_VS_ARCHIVED_NODE_REQUIRES_SCIENTIFIC_OWNER",
+      "production_scientific_acceptance": false
+    },
+    "38": {
+      "head": "fbf71dcaee98508a0a861518bfcc6bb768da5a81",
+      "archive_disposition": "QUALIFIED_DEFECT_EVIDENCE_AND_CANDIDATE_ONLY",
+      "pins_latest_main": 11,
+      "verified_streams": 72,
+      "original_optimized_checker_status": "DEFECT_REPRODUCED_UNFIXED_ON_MAIN",
+      "production_scientific_acceptance": false
+    }
+  },
+  "r275_independent_reproduction": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "modes": [
+      "normal",
+      "-O",
+      "PYTHONOPTIMIZE=1"
+    ],
+    "categories": [
+      "duplicate",
+      "missing",
+      "probability",
+      "MAP",
+      "posterior",
+      "evidence"
+    ],
+    "original_false_acceptances": 12,
+    "original_normal_rejections": 6,
+    "candidate_rejections": 18,
+    "total_good_acceptances": 6,
+    "python_subprocesses": 42,
+    "candidate": {
+      "bytes": 3568,
+      "sha256": "27ee7c88b02f70fb989f1dddea23279f7dbd18996c75c73462792e3ceebcacf0"
+    },
+    "historical_source_modified": false,
+    "recommended_fix": "NEW_VERSIONED_ARCHIVAL_EXPLICIT_GUARD_CHECKER_WITH_AUTHENTICATED_INPUTS"
+  },
+  "current_main_conflicts": false,
+  "path_overlaps_with_other_reviewed_prs": false,
+  "additional_dependencies": [],
+  "unrelated_existing_dependency": "PR30 before updated PR31",
+  "workflows_enabled": false,
+  "ci_dispatched": false,
+  "human_data_downloaded_or_scored": false,
+  "report": "/tmp/r-series-review-20261117/pr-native-report.md",
+  "details": "/tmp/r-series-review-20261117/native-audit",
+  "r275_versioned_helper": {
+    "path": "research/engineering_integrity_20261117/r275_archive_gate_v2.py",
+    "tests_path": "research/engineering_integrity_20261117/test_r275_archive_gate_v2.py",
+    "status": "IMPLEMENTED_OPT_IN_ARCHIVE_ONLY",
+    "test_methods_passed": 6,
+    "recorded_subprocesses": 43,
+    "public_good_passes": 3,
+    "public_bad_identity_rejections": 18,
+    "private_engine_bad_semantic_rejections": 18,
+    "legacy_red_optimized_false_passes": 2,
+    "production_ready": false,
+    "workflow_adopted": false,
+    "legacy_callable": "STILL_BLOCKED_FOR_PRODUCTION_UNTIL_OWNER_APPROVED_ROUTING"
+  },
+  "new_files": {
+    "research/engineering_integrity_20261117/r275_archive_gate_v2.py": {
+      "bytes": 5199,
+      "sha256": "41d4cf6b0fec28b8da888ac774a41571f8f839c2b107a6080be7691afc11d63e"
+    },
+    "research/engineering_integrity_20261117/test_r275_archive_gate_v2.py": {
+      "bytes": 7504,
+      "sha256": "5633b8c3ec03ab986563dc56b675003109d3383cd6392186faf66ffde6d73b1d"
+    }
+  }
+}

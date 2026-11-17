@@ -1,0 +1,27 @@
+import json,subprocess
+from pathlib import Path
+source=Path('/workspace/Psychohistory-Research');tmp=Path('/tmp/r-series-review-20261117/full-combination')
+base='1e839d3b02cae02833b282c309f5abd58559949e';order=[30,31,32,33,35,36,37,38,39]
+log=[]
+def run(args,cwd=tmp,input=None):
+ p=subprocess.run(args,cwd=cwd,input=input,capture_output=True)
+ log.append({'argv':args,'returncode':p.returncode,'stdout':p.stdout.decode(errors='replace'),'stderr':p.stderr.decode(errors='replace')})
+ if p.returncode:raise RuntimeError(log[-1])
+ return p.stdout
+run(['git','clone','--shared','--no-checkout',str(source),str(tmp)],cwd=source)
+run(['git','checkout','-b','integration/r-series-nine-archives-20261117',base])
+run(['git','config','user.name','Codex']);run(['git','config','user.email','codex@openai.com'])
+heads={}
+for n in order:
+ d=json.loads(Path(f'/tmp/r-series-review-20261117/pr{n}-meta.json').read_text());sha=d['head']['sha'];heads[str(n)]=sha
+ mergebase=run(['git','merge-base',base,sha]).decode().strip()
+ patch=run(['git','diff','--binary',mergebase,sha])
+ run(['git','apply','--check','--whitespace=nowarn','-'],input=patch)
+ run(['git','apply','--index','--whitespace=nowarn','-'],input=patch)
+run(['git','commit','-m','chore(research): assemble reviewed nine-PR engineering archives [skip ci]'])
+sha=run(['git','rev-parse','HEAD']).decode().strip()
+run(['git','push','https://github.com/edwardsage419/Psychohistory-Research.git','HEAD:refs/heads/integration/r-series-nine-archives-20261117'])
+remote=run(['git','ls-remote','https://github.com/edwardsage419/Psychohistory-Research.git','refs/heads/integration/r-series-nine-archives-20261117']).decode().split()[0]
+if remote!=sha:raise RuntimeError('remote SHA mismatch')
+Path('/tmp/r-series-review-20261117/full-combination.json').write_text(json.dumps({'base':base,'head':sha,'verified_remote':remote,'heads':heads,'order':order,'commands':log},indent=2))
+print('Combined archive branch saved and verified',sha)
