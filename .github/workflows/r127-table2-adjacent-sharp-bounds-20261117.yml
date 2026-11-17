@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/r127-table2-adjacent-sharp-bounds-20261117.yml'
       - 'research/validation/r127_table2_full_ten_period_sharp_transitions_20261117.js'
+      - 'research/validation/r127_table2_distinct_ever_change_sharp_20261117.js'
   workflow_dispatch:
 
 permissions:
@@ -47,4 +48,33 @@ jobs:
           if data['individual_real_actions_identified'] is not False:
               raise SystemExit('R127_IDENTIFICATION_OVERCLAIM')
           print('R127_ADJACENT_SHARP_BOUNDS_VERIFIED',data['minimum_total_switches'],data['maximum_total_switches'])
+          PY
+      - name: Verify sharp distinct-ever-changed participant bounds
+        shell: bash
+        run: |
+          set -euo pipefail
+          node research/validation/r127_table2_distinct_ever_change_sharp_20261117.js > "$RUNNER_TEMP/r127-distinct-summary.json"
+          python - "$RUNNER_TEMP/r127-distinct-summary.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding='utf-8') as f:
+              x=json.load(f)
+          expected={
+              'status':'PASS_R127_DISTINCT_PARTICIPANT_SHARP_BOUNDS',
+              'published_cells_verified':490,
+              'published_group_subject_count':107,
+              'maximum_always_unchanged_participants':7,
+              'minimum_distinct_participants_ever_changed':100,
+              'minimum_distinct_participants_ever_exited_effort1':17,
+              'endpoint_only_minimum_distinct_different':89,
+              'additional_over_endpoint':11,
+              'real_individual_sequences_identified':False,
+              'additional_human_E2_prediction':0,
+              'historical_E3_prediction':0,
+          }
+          for key,want in expected.items():
+              if x.get(key)!=want:
+                  raise SystemExit('R127_DISTINCT_BOUND_GATE_'+key)
+          if len(x['groups'])!=7 or len(x.get('negative_controls',[]))!=2:
+              raise SystemExit('R127_DISTINCT_COVERAGE_GATE')
+          print('R127_DISTINCT_SHARP_BOUNDS_VERIFIED',x['minimum_distinct_participants_ever_changed'],x['minimum_distinct_participants_ever_exited_effort1'])
           PY
