@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/r272-full-checkout-unadopted-candidate-20261117.yml'
+      - 'research/validation/r272_frozen_independent_third_source_20261117.py'
   workflow_dispatch:
 
 permissions:
@@ -91,6 +92,80 @@ jobs:
           gate(x.get("new_E2")==0 and x.get("new_E3")==0,"SCIENCE")
           print("R272_QUARANTINED_V2_REAL_CHECKOUT_3_MODES_PASS")
           PY
+
+  frozen-third-independent-source:
+    needs: full-checkout-candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict third-source replay of all 576 pinned original atoms
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          for mode in normal optimized double-optimized; do
+            case "$mode" in
+              normal) set -- ;;
+              optimized) set -- -O ;;
+              double-optimized) set -- -OO ;;
+            esac
+            python -B -I -S "$@" research/validation/r272_frozen_independent_third_source_20261117.py \
+              --root . > "$RUNNER_TEMP/r272-independent-$mode.json"
+            python -I -S - "$RUNNER_TEMP/r272-independent-$mode.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: a=json.load(h)
+          expected={
+              "status":"PASS_R272_PRESCORE_FROZEN_THIRD_SOURCE_AUDIT",
+              "archived_original_sources":576,
+              "separate_worlds":9,
+              "independent_source_bits_per_world":64,
+              "analytic_binomial_worlds":9,
+              "in_memory_mutations_rejected":3,
+              "frozen_science_changed":False,
+              "new_E2":0,
+              "new_E3":0,
+          }
+          for k,v in expected.items():
+              if a.get(k)!=v:
+                  raise SystemExit("R272_THIRD_SOURCE_FAIL_CLOSED_"+k)
+          print("R272_FROZEN_THIRD_SOURCE_576_ROWS_9_WORLDS_PASS")
+          PY
+          done
+          cmp "$RUNNER_TEMP/r272-independent-normal.json" \
+              "$RUNNER_TEMP/r272-independent-optimized.json"
+          cmp "$RUNNER_TEMP/r272-independent-normal.json" \
+              "$RUNNER_TEMP/r272-independent-double-optimized.json"
+          echo 'R272_THIRD_SOURCE_ALL_THREE_PYTHON_MODES_IDENTICAL'
+      - name: Verify frozen source tampering is rejected before a score
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/fake-root/research/R272"
+          cp research/R272/R272_EXACT_RESULTS.json "$RUNNER_TEMP/fake-root/research/R272/"
+          cp research/R272/R272_MACHINE_RECEIPT.json "$RUNNER_TEMP/fake-root/research/R272/"
+          python - "$RUNNER_TEMP/fake-root/research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv" <<'PY'
+          import sys
+          p="research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv"
+          with open(p,encoding="utf-8") as f: x=f.read()
+          y=x.replace("729/4096","731/4096",1)
+          if x==y: raise SystemExit("R272_MISSING_MUTATION_PREIMAGE")
+          with open(sys.argv[1],"w",encoding="utf-8") as f: f.write(y)
+          PY
+          if python -B -I -S research/validation/r272_frozen_independent_third_source_20261117.py \
+             --root "$RUNNER_TEMP/fake-root" > "$RUNNER_TEMP/unexpected-success.log" \
+             2> "$RUNNER_TEMP/r272-third-negative.log"; then
+            echo 'R272_THIRD_GATE_ACCEPTED_MUTATED_SOURCE'
+            exit 1
+          fi
+          grep -q 'R272_SOURCE_GATE_ARCHIVE_HASH_' "$RUNNER_TEMP/r272-third-negative.log"
+          echo 'R272_FROZEN_THIRD_SOURCE_SHA256_NEGATIVE_REJECTED'
 
   actual-candidate-import-shadow-controls:
     runs-on: ubuntu-24.04
