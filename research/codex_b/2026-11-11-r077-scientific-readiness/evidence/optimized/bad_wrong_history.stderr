@@ -1,0 +1,26 @@
+test_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) ... 
+  test_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) (kind='varied', target='15/1040 count-shaped') ... FAIL
+  test_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) (kind='varied', target='unequal five sessions') ... FAIL
+
+======================================================================
+FAIL: test_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) (kind='varied', target='15/1040 count-shaped')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py", line 52, in test_integer_whole_scores_match_candidate_at_frozen_dimensions
+    self.assertEqual(candidate.score_exact_brier(fit,sessions)['exact_Brier'],integer_scores(source,sessions)['exact_Brier'])
+AssertionError: {'mod[300 chars]0': '3395417631355251871997/116381200202365302[4625 chars]316'} != {'mod[300 chars]0': '1119229992954083646991/387937334007884340[4610 chars]316'}
+Diff is 18776 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_integer_whole_scores_match_candidate_at_frozen_dimensions (test_readiness.ReadinessTests.test_integer_whole_scores_match_candidate_at_frozen_dimensions) (kind='varied', target='unequal five sessions')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Psychohistory-Research/research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py", line 52, in test_integer_whole_scores_match_candidate_at_frozen_dimensions
+    self.assertEqual(candidate.score_exact_brier(fit,sessions)['exact_Brier'],integer_scores(source,sessions)['exact_Brier'])
+AssertionError: {'mod[213 chars]: '623836322645907480097297/215305220374375808[4640 chars]316'} != {'mod[213 chars]: '626770535316346031477329/215305220374375808[4631 chars]316'}
+Diff is 18755 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 1 test in 1.403s
+
+FAILED (failures=2)

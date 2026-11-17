@@ -1,0 +1,41 @@
+name: R127 Van Huyck 1990 original minimum-effort and exact 2x2 coordination selection
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r127-van-huyck-1990-coordination-source-table-60-tests.yml'
+      - 'research/R127/r127_van_huyck_1990_min_effort_coordination_selection_exact.py'
+      - 'research/R127/test_r127_van_huyck_1990_min_effort_coordination_selection_exact.py'
+      - 'research/codex_a/r127_local_gates/**'
+      - 'research/codex_a/r127_workflow_candidate/*.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  firstparty-1990-minimum-effort-and-2x2-risk-selection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run authenticated original tests and explicit stage-two gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B research/codex_a/r127_workflow_candidate/run_workflow.py . \
+            --run-id "$GITHUB_RUN_ID" --attempt "$GITHUB_RUN_ATTEMPT" --job-key "$GITHUB_JOB" \
+            --context github-actions
+      - name: Publish immutable run sidecar without changing historical receipt
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python -B research/codex_a/r127_workflow_candidate/publish.py . \
+            --receipt "research/codex_a/r127_workflow_candidate/receipts/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${GITHUB_JOB}.json" \
+            --expected-head "$GITHUB_SHA" --remote origin --allow-push

@@ -1,0 +1,94 @@
+{
+  "observed_main": "d4740c2cd999b8da06a25b0ef407aeaf8a56ab6c",
+  "task_round": "2026-11-12",
+  "status": "BLOCKED",
+  "human_data_downloaded": false,
+  "human_scoring_executed": false,
+  "historical_human_vote_impact": "UNKNOWN",
+  "source": {
+    "doi": "10.5281/zenodo.15462528",
+    "official_record": "https://zenodo.org/records/15462528",
+    "official_version": "v1",
+    "published": "2025-05-19",
+    "DTA": {
+      "filename": "cleandata.dta",
+      "official_listed_MD5": "4cce04ea68b7a0492c242b206efebe53",
+      "historical_frozen_bytes": 1514315,
+      "historical_frozen_SHA256": "1cc9a4f68a51992808d966b118226bb5a66ee3ee6054843a132157df8eeb1985",
+      "current_binary_recovered": false,
+      "current_MD5_SHA256_recomputed": false
+    },
+    "dataset_or_code_license_scope": "UNKNOWN_SPECIFIC_TERMS_NOT_VISIBLE; NOT inferred from Open",
+    "paper_license": {
+      "value": "CC BY 4.0",
+      "scope": "ARTICLE_ONLY",
+      "publisher_pdf": "https://pure-oai.bham.ac.uk/ws/portalfiles/portal/268946923/DrouvelisM2025Intelligence.pdf"
+    }
+  },
+  "bounded_checks": [
+    {
+      "url": "https://zenodo.org/records/15462528",
+      "tool": "web reader",
+      "result": "official landing readable; v1 and file MD5 list"
+    },
+    {
+      "url": "https://zenodo.org/api/records/15462528",
+      "tool": "web reader",
+      "result": "not accessible"
+    },
+    {
+      "url": "https://zenodo.org/records/15462528/export/json",
+      "tool": "web reader",
+      "result": "not accessible"
+    },
+    {
+      "url": "https://api.datacite.org/dois/10.5281/zenodo.15462528",
+      "tool": "web reader and one runtime GET",
+      "result": "web not accessible; runtime tunnel403"
+    },
+    {
+      "url": "https://zenodo.org/records/15462528/files/cleandata.dta?download=1",
+      "tool": "one web download and one runtime HEAD",
+      "result": "web timeout; runtime tunnel403; no raw data recovered"
+    },
+    {
+      "url": "https://zenodo.org/records/15462528/files/number%202.do?download=1",
+      "tool": "web reader",
+      "result": "static author code readable; not run or copied"
+    },
+    {
+      "url": "https://zenodo.org/records/15462528/files/number%201.do?download=1",
+      "tool": "web reader",
+      "result": "not accessible"
+    },
+    {
+      "url": "https://zenodo.org/records/15462528/files/power.do?download=1",
+      "tool": "web reader",
+      "result": "not accessible"
+    }
+  ],
+  "verified_free_alternative": "Institutional publisher PDF for article and method/license facts; no verified alternate exact DTA and applicable data reuse license.",
+  "R073": {
+    "commit": "4743f74d8a03a031b8f70aff64956f8ad5155182",
+    "current_tree_metadata_only": true,
+    "files": [
+      {
+        "path": "fix.csv",
+        "git_blob": "3bf78bf85f6642afee18d6f1965dca7272582f40",
+        "bytes": 988279
+      },
+      {
+        "path": "rand.csv",
+        "git_blob": "f5a86cd033b739da45d3fc7c5019068f612146a2",
+        "bytes": 1112614
+      }
+    ]
+  },
+  "specific_scientific_mapping_question": "Paper26sessions versus frozen15Session/26sessionid coding requires scientific reconciliation; no regrouping or new human conclusions here.",
+  "missing_decisions": [
+    "Permitted-use scope and matching current bytes",
+    "Qualified original same-risk-set mapping including session interpretation",
+    "Separate owner/ChatGPT real dual-run authorization; any CI must be confirmed no-added-cost"
+  ],
+  "stop_rule": "Bounded audit closed for this round; no retry without new evidence. Proceed R273 P0 native/byte gap."
+}

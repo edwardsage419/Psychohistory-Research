@@ -1,0 +1,146 @@
+{
+  "status": "COMPLETE_SYNTHETIC_READINESS_MATH_AUDIT",
+  "utc": "2026-11-11T03:29:54.891221+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "optimized": false,
+  "new_methods": 7,
+  "new_single_event_boundaries": 2,
+  "full_certificates": 4,
+  "methods_not_repeated": "PR18_35_order_campaign_PR28_71_method_campaign_PR29_engineering_suite",
+  "independent_route": "INTEGER_SOURCE_COUNTS_LCM_SQUARED_LOSS_CROSS_PRODUCTS_NO_FRACTION_OR_ORIGINAL_IMPORTS",
+  "bad_candidate_controls": [
+    {
+      "case": "alpha21",
+      "old": "return (c+20*p0)/(n+20)",
+      "new": "return (c+21*p0)/(n+21)",
+      "sha256": "9a047a9d214cbd48c8e22e4c03ad11e95e3632664965f046551fe28bc883d57e",
+      "exit_code": 1
+    },
+    {
+      "case": "wrong_history",
+      "old": "key=tuple(event[i] for i in INDICES[model])",
+      "new": "key=tuple(event[(i+1)%4] for i in INDICES[model])",
+      "sha256": "5fd303a4c41bf9192eeeb5c19cbb5df3bd5d6ddbf849dc65df2a4c5712083877",
+      "exit_code": 1
+    }
+  ],
+  "sources_before_after_equal": true,
+  "sources": {
+    "research/R073/r073_human_ipd_memory_loso.py": {
+      "git_blob": "c8a0b47fd27bf05e7be5b87419a0824355fc911a",
+      "bytes": 12712,
+      "sha256": "7d1461c6379d1c95d2da25486adebb2e7dae05236fa071f0d16a548248fb0fee"
+    },
+    "research/R076/r076_source_only_cross_study_transfer.py": {
+      "git_blob": "1f5a59473d3de33eb991dd0a370d0382487c7b5f",
+      "bytes": 12610,
+      "sha256": "3b62ec53ad68002d4a4848b54877535ca55fbb3ce555de769461373716b203c2"
+    },
+    "research/R077/r077_fourth_real_human_source_only_e3.py": {
+      "git_blob": "70889bd15c6fd943bdb07ab3ae1f60c943ebc538",
+      "bytes": 13972,
+      "sha256": "247e682681bd606db3967732aae3cbfc4af41766ffd31c45adcdc839016d593a"
+    },
+    "research/R077/r077_zenodo_fourth_human_partner_time_audit.py": {
+      "git_blob": "167bccd16874e84340efdf13137604898b7d9554",
+      "bytes": 8604,
+      "sha256": "15aa2fc74b4d1d1c615c3589e5c404ee27a46c2a9072ee840cadc811bf6246a1"
+    },
+    "research/R077/R077_FINAL_ACCEPTANCE_STATUS.json": {
+      "git_blob": "24e45b65878ca400cb7f149ad863dd74e7fd5cd9",
+      "bytes": 9040,
+      "sha256": "8f5aff7b7e87af8aff4544766f8f0b009577709c811807991992284afa984da8"
+    },
+    "research/R077/R077_FOURTH_INDEPENDENT_HUMAN_SOURCE_ONLY_E3_RESULTS.json": {
+      "git_blob": "13946754afc06e529f2d3a2072a7bae297453fa9",
+      "bytes": 9835,
+      "sha256": "8d8b8413e3e55cb5d856f34b873ee20c2ba470e04190bb8577f931d25ba509a4"
+    },
+    "research/codex_b/2026-11-10-r077-exact-score-candidate/candidate.py": {
+      "git_blob": "b050fcf14c3507bdb044365047e939cca14cccac",
+      "bytes": 5900,
+      "sha256": "9be76dbf2441ecd842f8b51f613847299b80408cdef644ff9060ace6948f5f53"
+    },
+    "research/codex_b/2026-11-10-r077-exact-score-candidate/test_candidate.py": {
+      "git_blob": "4eb09c75f72c4598aa30caec674d8909efbb323a",
+      "bytes": 8129,
+      "sha256": "b13fad5277eb770614f3f7c2b6f27db0abfe0d90326a5c421dbc4bd2b9409bfa"
+    },
+    "research/codex_b/2026-11-10-r077-exact-paired-ties/exact_pair.py": {
+      "git_blob": "e0495679f36d87fb606b3a48c70da8771f3db704",
+      "bytes": 4926,
+      "sha256": "0702ae5221e67f2ca49980efe30eff80b305dfeff64942dd6840119ba9315ebb"
+    },
+    "protocols/R073_HUMAN_IPD_LAGGED_SOCIAL_MEMORY_LOSO_2026-10-17.md": {
+      "git_blob": "2f910c92436927f1488510af4ca98b665fa0d123",
+      "bytes": 7231,
+      "sha256": "b389c21184a6ee4d554b45ec3fcb7a6fe0f4865f480746587c45d6fedc0e5b0a"
+    },
+    "protocols/R077_ZENODO_FOURTH_AUTHOR_TRUE_HUMAN_PROSPECTIVE_MODEL_SCORE_FREEZE_2026-10-17.md": {
+      "git_blob": "a027cf088f504bd65f50f748a51b618c3e3652d0",
+      "bytes": 7285,
+      "sha256": "06ad264a920e3a8d3ce40d53451dfe26a607bee3b7e1a135dc5676b8b0398714"
+    },
+    "protocols/R077_PRE_FIRST_TARGET_MODEL_SCORE_SOURCE_SEMANTICS_AMENDMENT_REV002_2026-10-17.md": {
+      "git_blob": "ffd0228461f9cbf46e1d08a68c959fa450337bb1",
+      "bytes": 5554,
+      "sha256": "093418ee28ee31912267cc7ee1f25b0203f21cbccd92925ea3b1c2cfe9bc9cbd"
+    },
+    "research/codex_a/r077_integration/preflight.py": {
+      "git_blob": "2a6d2e6a45e5bce1d2f676613a57ab7668f4ed39",
+      "bytes": 13845,
+      "sha256": "101adc1271e7ccbcf10f02e62afc0916bccd96d80278e9258cc9bfae6f45baaf"
+    },
+    "research/codex_a/r077_integration/CANDIDATE_SHADOW.md": {
+      "git_blob": "e3d8133396cac2e00e4270b427fd143731cfb19b",
+      "bytes": 5857,
+      "sha256": "c3f902db4adf47c6ad4faec1f2d721ed1d5bf2814af95e4ed9d095dbd69bc0cc"
+    },
+    "docs/PROJECT_WORKFLOW_REQUIREMENTS_V2_2026-10-24.md": {
+      "git_blob": "d4b8548ba45961f5aa0bdcafefdb226d7cd2fc9e",
+      "bytes": 9276,
+      "sha256": "856d908a6db40edc861350ba21c2c0ce49f993cb99d03d18c79e68832d332991"
+    },
+    "docs/RESEARCH_SYNC_WORKFLOW_2026-10-15.md": {
+      "git_blob": "75d45f853bc82f8afb81d7ed40d5067f5c90dbaa",
+      "bytes": 2504,
+      "sha256": "b18be961d5b337cc98c902042c697a0a5d7cb62918ba1bd2f50afa107ed1d131"
+    },
+    "docs/ORIGINAL_239_PENDING_154_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv": {
+      "git_blob": "3b96d46b3d88ccafd779a08509c3cfd0e435772f",
+      "bytes": 22780,
+      "sha256": "ffb95422df5403518f638fe567d490276fd607ba74b8c39bc9f923913fd1c960"
+    },
+    "research/codex_b/2026-11-11-r077-scientific-readiness/pins.json": {
+      "bytes": 3993,
+      "sha256": "d73283f7d67addb5ebf15974d1c4962aeef5736b631b958eb152900e5a601b48"
+    },
+    "research/codex_b/2026-11-11-r077-scientific-readiness/fixtures.py": {
+      "bytes": 2488,
+      "sha256": "9b1ec7dc45267c505ed7d542c6a4d2566409c013150f0467797b50dd93daf201"
+    },
+    "research/codex_b/2026-11-11-r077-scientific-readiness/integer_certificate.py": {
+      "bytes": 4673,
+      "sha256": "f5ba03812ecf81705afe16abc036c2e8a82f0ad676076d1443909aea5d324fef"
+    },
+    "research/codex_b/2026-11-11-r077-scientific-readiness/run_audit.py": {
+      "bytes": 7245,
+      "sha256": "721d6aa93e707f4e19a825791c4b3fd3e805f03f2e3cef56fcead1f116bad2b6"
+    },
+    "research/codex_b/2026-11-11-r077-scientific-readiness/test_readiness.py": {
+      "bytes": 5297,
+      "sha256": "daa2737542cfd33fb4beae966791a6ddd1ef6988a84ae3599c9fe304d5e46f35"
+    }
+  },
+  "synthetic_count_shape_is_real_data_qualification": false,
+  "historical_human_vote_impact": "UNKNOWN",
+  "human_scoring": "NOT_RUN_NOT_AUTHORIZED",
+  "production_adoption": "NOT_RUN",
+  "new_E2_E3": 0,
+  "formal_queue_closures": 0,
+  "external_team_replication": false,
+  "CI": "NOT_RUN",
+  "full_repository_tests": "NOT_RUN",
+  "other_platforms": "NOT_RUN",
+  "frozen_originals_and_results": "UNCHANGED"
+}

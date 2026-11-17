@@ -1,0 +1,78 @@
+--- a/research/evidence_audit/b_r275_s71_independent_gate_20261030.py
++++ b/research/evidence_audit/b_r275_s71_independent_gate_20261030.py
+@@ -8,6 +8,11 @@
+ import sys
+ from fractions import Fraction as F
+ from math import comb
++
++
++def require(condition, message):
++    if not condition:
++        raise ValueError("R275_S71:" + message)
+ 
+ M = ('IID_PAIR', 'COPY_PAIR', 'FLIP_PAIR')
+ E = (F(0), F(1,8), F(1,4), F(1,2))
+@@ -21,45 +26,45 @@
+         decisions.append(decision)
+         for i,m in enumerate(M):
+             conf[m][decision] += comb(4,k)*p[i]
+-    assert all(sum(row.values()) == 1 for row in conf.values())
++    require(all(sum(row.values()) == 1 for row in conf.values()), 'normalization')
+     avg = sum(conf[m][m] for m in M)/3
+     return conf, avg, decisions
+ 
+ def check(result_path, csv_path):
+     data=json.load(open(result_path, encoding='utf-8'))
+-    assert data['research_id']=='R275_S71'
+-    assert data['evidence']=='E1_ARTIFICIAL_NONBLIND'
+-    assert data['source_rows']==3072 and data['new_E2']==data['new_E3']==0
+-    assert len(data['summary'])==4
++    require(data['research_id']=='R275_S71', 'research_id')
++    require(data['evidence']=='E1_ARTIFICIAL_NONBLIND', 'evidence')
++    require(data['source_rows']==3072 and data['new_E2']==data['new_E3']==0, 'source_count_and_scope')
++    require(len(data['summary'])==4, 'summary_count')
+     observed=set(); counts={(str(e),m):0 for e in E for m in M}
+     with open(csv_path, newline='', encoding='utf-8') as f:
+         reader=csv.DictReader(f)
+         expected={'epsilon','true_mechanism','pair_code','equal_pair_count','true_source_probability','MAP_selected','correct','posterior_IID','posterior_COPY','posterior_FLIP'}
+-        assert set(reader.fieldnames)==expected
++        require(set(reader.fieldnames)==expected, 'CSV_schema')
+         for row in reader:
+             e=F(row['epsilon']);true=row['true_mechanism'];code=row['pair_code']
+-            assert e in E and true in M and len(code)==4 and all(c in '0123' for c in code)
++            require(e in E and true in M and len(code)==4 and all(c in '0123' for c in code), 'source_key_domain')
+             key=(str(e),true,code)
+-            assert key not in observed,'duplicate source';observed.add(key)
++            require(key not in observed, 'duplicate source');observed.add(key)
+             counts[(str(e),true)]+=1
+             k=sum(c in '03' for c in code)
+-            assert int(row['equal_pair_count'])==k
++            require(int(row['equal_pair_count'])==k, 'equal_pair_count')
+             p=(F(1,16),(1-e)**k*e**(4-k),e**k*(1-e)**(4-k))
+             q=tuple(x/F(16) for x in p)
+-            assert F(row['true_source_probability'])==q[M.index(true)]
++            require(F(row['true_source_probability'])==q[M.index(true)], 'source_probability')
+             choice=M[p.index(max(p))]
+-            assert row['MAP_selected']==choice and int(row['correct'])==int(choice==true)
++            require(row['MAP_selected']==choice and int(row['correct'])==int(choice==true), 'MAP_and_correct')
+             post=[F(row['posterior_IID']),F(row['posterior_COPY']),F(row['posterior_FLIP'])]
+-            assert sum(post)==1 and post==[x/sum(p) for x in p]
+-    assert len(observed)==3072 and all(n==256 for n in counts.values())
++            require(sum(post)==1 and post==[x/sum(p) for x in p], 'posterior')
++    require(len(observed)==3072 and all(n==256 for n in counts.values()), 'complete_source_keys')
+     for s,e in zip(data['summary'],E):
+         conf,avg,labels=oracle(e)
+-        assert F(s['epsilon'])==e and F(s['average_MAP_correct'])==avg
+-        assert s['K_decisions']==labels
++        require(F(s['epsilon'])==e and F(s['average_MAP_correct'])==avg, 'epsilon_and_accuracy')
++        require(s['K_decisions']==labels, 'K_decisions')
+         for m in M:
+-            for n in M:assert F(s['confusion'][m][n])==conf[m][n]
+-    assert oracle(F(0))[1]==F(23,24)
+-    assert oracle(F(1,2))[1]==F(1,3)
++            for n in M:require(F(s['confusion'][m][n])==conf[m][n], 'confusion')
++    require(oracle(F(0))[1]==F(23,24), 'noiseless_endpoint')
++    require(oracle(F(1,2))[1]==F(1,3), 'full_noise_endpoint')
+     return {'source_rows':len(observed),'epsilons':4,'confusion_cells':36,'MAP_values':4,'status':'PASS'}
+ 
+ if __name__=='__main__':

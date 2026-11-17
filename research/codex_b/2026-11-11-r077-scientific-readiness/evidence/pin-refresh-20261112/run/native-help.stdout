@@ -1,0 +1,14 @@
+usage: preflight.py [-h] --artificial-preflight [--candidate-shadow] repo
+
+Run existing B18 artificial diagnostic behind an explicit production veto. No
+new probability/scoring mathematics. No human-data scoring, original-file
+writes, network, Git mutations or silent promotion of a diagnostic PASS.
+
+positional arguments:
+  repo
+
+options:
+  -h, --help            show this help message and exit
+  --artificial-preflight
+  --candidate-shadow    Opt in to pinned PR28 synthetic shadow; never enables
+                        production.

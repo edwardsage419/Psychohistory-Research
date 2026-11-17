@@ -1,0 +1,77 @@
+{
+  "track": "Codex A engineering",
+  "subflow": "A4 deployment metadata accuracy",
+  "run_date": "2026-11-11T01:20:21.393819+00:00",
+  "observed_head": "ce6ae2dbf96f5346cf5062de3773b72c0ab90446",
+  "status": "COMPLETE_BOUNDED_METADATA_CORRECTION",
+  "source_links": [
+    "https://github.com/edwardsage419/Psychohistory-Research/pull/28",
+    "https://github.com/edwardsage419/Psychohistory-Research/pull/29"
+  ],
+  "work_performed": "Replaced stale UNMERGED runtime label with PINNED after authorized engineering adoption; CLI help likewise neutral.",
+  "evidence_scope": "Native metadata regression only; no new mathematical/scientific evidence",
+  "before_stdout_sha256": "e13e2c00b8827fb1b5919c7cbd371a5dce2edcd000ad76582d47452286dc9575",
+  "before_shadow_status": "PASS_ARTIFICIAL_SHADOW_ONLY_UNMERGED_CANDIDATE",
+  "source_commit": "9de51508daa160d33d0d05b13ba1454f8333f21d",
+  "candidate_commit": "02989a4944d0f100035927883762d83e4dba4925",
+  "runs": [
+    {
+      "mode": "normal",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "research/codex_a/r077_integration/preflight.py",
+        ".",
+        "--artificial-preflight",
+        "--candidate-shadow"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "status": "BLOCKED_ORIGINAL_R077_UNREPAIRED",
+      "shadow_status": "PASS_ARTIFICIAL_SHADOW_ONLY_PINNED_CANDIDATE",
+      "production_ready": false,
+      "original_failures": 11,
+      "corrected_orders": 35,
+      "numerical_diagnostics_equal_before": true,
+      "source_identities_equal_before": true,
+      "stdout_sha256": "c08864cda896d7055ba4ab06483d82e78982fd2616c43e9816dfec5c45743db4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "mode": "optimized",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-O",
+        "-B",
+        "research/codex_a/r077_integration/preflight.py",
+        ".",
+        "--artificial-preflight",
+        "--candidate-shadow"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "status": "BLOCKED_ORIGINAL_R077_UNREPAIRED",
+      "shadow_status": "PASS_ARTIFICIAL_SHADOW_ONLY_PINNED_CANDIDATE",
+      "production_ready": false,
+      "original_failures": 11,
+      "corrected_orders": 35,
+      "numerical_diagnostics_equal_before": true,
+      "source_identities_equal_before": true,
+      "stdout_sha256": "a409e35b939258479381ae46042750bd40b41f28b8551c1df9686feb7e5f8fce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ci_status": "NOT_RUN",
+  "billing_checked": "Existing local environment only; no paid resource or dispatch",
+  "production_ready": false,
+  "scientific_adoption": "NOT_AUTHORIZED",
+  "blockers": [
+    "Separate authorization required to merge this follow-up PR",
+    "Human rescoring/frozen-source adoption not authorized"
+  ],
+  "next_action": "Owner engineering review of the two-line metadata change",
+  "output_paths": [
+    "research/codex_a/r077_integration/deployment_metadata_20261111.json"
+  ],
+  "commit_sha": "Recorded by delivery PR"
+}

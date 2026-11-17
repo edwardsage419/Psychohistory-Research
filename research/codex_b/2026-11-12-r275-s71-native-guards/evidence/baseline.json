@@ -1,0 +1,33 @@
+{
+  "main": "d4740c2cd999b8da06a25b0ef407aeaf8a56ab6c",
+  "mutation": "Only receipt evidence field changed from E1_ARTIFICIAL_NONBLIND to E3",
+  "commands": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/r275-s71-original-red-bxnph8l7/original.py",
+        "/tmp/r275-s71-original-red-bxnph8l7/promoted.json",
+        "/workspace/Psychohistory-Research/research/validation/R275_S71_ALL_3072_NOISY_PAIR_ROWS_2026-10-30.csv"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "label": "normal"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-B",
+        "-O",
+        "/tmp/r275-s71-original-red-bxnph8l7/original.py",
+        "/tmp/r275-s71-original-red-bxnph8l7/promoted.json",
+        "/workspace/Psychohistory-Research/research/validation/R275_S71_ALL_3072_NOISY_PAIR_ROWS_2026-10-30.csv"
+      ],
+      "exit": 0,
+      "stdout": "{\"source_rows\": 3072, \"epsilons\": 4, \"confusion_cells\": 36, \"MAP_values\": 4, \"status\": \"PASS\"}\n",
+      "label": "optimized"
+    }
+  ]
+}
