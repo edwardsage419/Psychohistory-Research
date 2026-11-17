@@ -67,6 +67,31 @@ jobs:
           fi
           echo 'R272_CHECKOUT_ARCHIVES_REMAIN_UNMODIFIED'
 
+      - name: Verify isolated v2 quarantine replays all science controls on actual checkout
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python -B -I -S research/validation/r272_quarantined_candidate_v2_20261117.py \
+            --root . > "$RUNNER_TEMP/r272-quarantine.json"
+          python -I -S - "$RUNNER_TEMP/r272-quarantine.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: x=json.load(h)
+          def gate(ok,tag):
+              if ok is not True: raise SystemExit("R272_QUARANTINE_RECEIPT_FAIL_"+tag)
+          gate(x.get("status")=="PASS_BOUNDED_QUARANTINED_R272_CANDIDATE","STATUS")
+          gate(x.get("archive_source_identities_pinned")==8,"PINS")
+          gate(x.get("complete_allowlist_files")==9,"ALLOWLIST")
+          gate(x.get("ordinary_optimized_double_optimized")==["normal","optimized","double_optimized"],"MODES")
+          gate(x.get("original_native_tests_each_mode")==83,"TEST_COUNT")
+          gate(x.get("native_negative_controls_each_mode")==15,"NEGATIVES")
+          gate(x.get("untrusted_neighbor_modules_excluded") is True,"NEIGHBOR_ISOLATION")
+          gate(x.get("archive_modified") is False,"ARCHIVE")
+          gate(x.get("new_E2")==0 and x.get("new_E3")==0,"SCIENCE")
+          print("R272_QUARANTINED_V2_REAL_CHECKOUT_3_MODES_PASS")
+          PY
+
   actual-candidate-import-shadow-controls:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
@@ -160,6 +185,36 @@ jobs:
           PY
           # This is a deliberate negative result. It is a release blocker,
           # never an endorsement of the current unadopted candidate.
+      - name: Quarantine v2 excludes injected modules and rejects modified original source
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          PYTHONPATH="$RUNNER_TEMP/r272-forgery/research/validation" \
+            python -B -I -S research/validation/r272_quarantined_candidate_v2_20261117.py \
+              --root "$RUNNER_TEMP/r272-forgery" > "$RUNNER_TEMP/r272-safe-replay.json"
+          python -I -S - "$RUNNER_TEMP/r272-safe-replay.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: x=json.load(h)
+          if (x.get("status")!="PASS_BOUNDED_QUARANTINED_R272_CANDIDATE"
+              or x.get("untrusted_neighbor_modules_excluded") is not True
+              or x.get("original_native_tests_each_mode")!=83
+              or x.get("native_negative_controls_each_mode")!=15):
+              raise SystemExit("R272_QUARANTINE_FORGED_INPUT_NOT_ISOLATED")
+          print("R272_QUARANTINED_V2_BLOCKS_TWO_MODULE_INJECTION")
+          PY
+          cp -a "$RUNNER_TEMP/r272-forgery" "$RUNNER_TEMP/r272-forgery-bad-preimage"
+          printf '\n' >> "$RUNNER_TEMP/r272-forgery-bad-preimage/research/R272/R272_EXACT_RESULTS.json"
+          if python -B -I -S research/validation/r272_quarantined_candidate_v2_20261117.py \
+              --root "$RUNNER_TEMP/r272-forgery-bad-preimage" \
+              2> "$RUNNER_TEMP/r272-forged-bad-error.log"; then
+            echo 'R272_QUARANTINE_ACCEPTED_CORRUPT_FROZEN_RESULT'
+            exit 1
+          fi
+          grep -q 'R272_QUARANTINE_SOURCE_IDENTITY_MISMATCH_' "$RUNNER_TEMP/r272-forged-bad-error.log"
+          echo 'R272_QUARANTINED_V2_CORRUPTED_PREIMAGE_REJECTED'
+
       - name: Enforce candidate is not installed as active production entrypoint
         shell: bash
         run: |
