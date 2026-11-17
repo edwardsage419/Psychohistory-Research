@@ -77,7 +77,7 @@ d_{M4-M3}(w)=w(0.003170501040435799)+(1-w)(-0.006182371083731796).
 
 ## 5. 原生执行
 
-[真实 GitHub Actions 成功运行 44047084034](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44047084034)，只读工作流 `.github/workflows/r073-r077-four-study-robustness-20261117.yml`，标准公开 `ubuntu-24.04`，Node 22，六个外部运行器 Action 均无需付费服务。实际脚本直接读取四份归档 Git blob，核对四个研究的主比较值、各研究场次成败、两项研究级等权均值、四项留一均值、凸组合区间及 R074 权重阈值。另一条命令将 R074 宏收据在 runner 临时文件内故意篡改并确认明确拒绝。
+[真实 GitHub Actions 成功运行 44047084034](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44047084034)，只读工作流 `.github/workflows/r073-r077-four-study-robustness-20261117.yml`，标准公开 `ubuntu-24.04`，Node 22，两个由 SHA 固定的公开 GitHub Actions 依赖，不调用额外付费服务。实际脚本直接读取四份归档 Git blob，核对四个研究的主比较值、各研究场次成败、两项研究级等权均值、四项留一均值、凸组合区间及 R074 权重阈值。另一条命令将 R074 宏收据在 runner 临时文件内故意篡改并确认明确拒绝。
 
 首次 [GitHub Actions 44046897632](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44046897632) **failure**：前半实际计算与真值矩阵全部成功；末尾一个 `grep` 安全测试误匹配到 workflow 自己包含的字符串，造成假失败。修订测试语义，改用真正的宏分数恶意改动拒绝和严格的权限段校验，然后在 run 44047084034 **completed/success**。失败历史保留，不追认首次全通过。
 
