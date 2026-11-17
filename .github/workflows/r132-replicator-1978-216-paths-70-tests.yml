@@ -1,5 +1,7 @@
 name: R132 Taylor Jonker 1978 Replicator Verification
 
+# R132 Phase B v2 only writes an ephemeral engineering receipt. Historical CI
+# receipts remain immutable and the workflow never pushes into main.
 on:
   push:
     paths:
@@ -7,34 +9,56 @@ on:
       - 'research/R132/r132_taylor_jonker_1978_replicator_trajectories.py'
       - 'research/R132/test_r132_taylor_jonker_1978_replicator_trajectories.py'
       - 'research/R132/r132_phase_b_ci_attest.py'
+      - 'research/R132/test_r132_phase_b_attestation_integrity.py'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   verification:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Run all original paper and trajectory tests
+      - name: Run original Phase B math and trajectory tests
         run: |
-          PYTHONPATH=research/R132 python -m unittest -v research/R132/test_r132_taylor_jonker_1978_replicator_trajectories.py
-      - name: Independent source equation and trajectory replay
+          set -euo pipefail
+          PYTHONPATH=research/R132 python -B -m unittest -v research/R132/test_r132_taylor_jonker_1978_replicator_trajectories.py
+      - name: Replay original source equations and trajectories
         run: |
-          PYTHONPATH=research/R132 python research/R132/r132_taylor_jonker_1978_replicator_trajectories.py
-      - name: Generate strict Phase B source SHA256 acceptance receipt
+          set -euo pipefail
+          PYTHONPATH=research/R132 python -B research/R132/r132_taylor_jonker_1978_replicator_trajectories.py
+      - name: Verify optimization-resistant Phase B integrity controls
         run: |
-          PYTHONPATH=research/R132 python research/R132/r132_phase_b_ci_attest.py
-      - name: Preserve actual Phase B evidence on main
+          set -euo pipefail
+          python -B -m unittest -v research/R132/test_r132_phase_b_attestation_integrity.py
+      - name: Run Phase B v2 checker with disposable local-style receipt
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add research/R132/R132_PHASE_B_70_TEST_216_TRAJECTORIES_CI_ACCEPTANCE.json
-          git commit -m "results(R132 phase B): 70 tests and 216 analytic RK4 paths verified"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          set -euo pipefail
+          RECEIPT="$(mktemp "$RUNNER_TEMP/r132-phase-b-v2.XXXXXXXX")"
+          rm -f "$RECEIPT"
+          trap 'rm -f "$RECEIPT"' EXIT
+          PYTHONPATH=research/R132 python -B research/R132/r132_phase_b_ci_attest.py --output "$RECEIPT"
+          python - "$RECEIPT" <<'PY'
+          import json, pathlib, sys
+          r = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          assert r['attestation_format_version'] == 2
+          assert r['receipt_kind'] == 'ENGINEERING_REVALIDATION'
+          assert r['research_id'] == 'R132' and r['phase'] == 'B'
+          assert r['evidence_grade_unchanged'] is True
+          assert r['new_real_human_E2_prediction_scores'] == 0
+          assert r['new_real_historical_E3_prediction_scores'] == 0
+          tests = r['actual_native_test_run']
+          assert tests['tests_run'] == 70 and tests['failures'] == 0
+          assert tests['errors'] == 0 and tests['returncode'] == 0
+          # The checker explicitly labels its own receipt as LOCAL. The GitHub
+          # workflow run, job and logs provide actual CI provenance separately.
+          print('R132_PHASE_B_V2_EPHEMERAL_ENGINEERING_CHECK_SUCCESS')
+          PY
+          sha256sum "$RECEIPT"
