@@ -62,9 +62,23 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -B research/R183/secondary_brier_scope_20261117/python_crosscheck.py > "$RUNNER_TEMP/r183-python-check.log"
-          grep -Fx "PYTHON_FRACTION_SPOT_CHECK_PASS 3" "$RUNNER_TEMP/r183-python-check.log"
-          test "$(grep -c '^PASS n=' "$RUNNER_TEMP/r183-python-check.log")" -eq 3
+          sha256sum research/R183/secondary_brier_scope_20261117/python_crosscheck.py
+          for optimization in 0 1; do
+            PYTHONOPTIMIZE="$optimization" python -B research/R183/secondary_brier_scope_20261117/python_crosscheck.py > "$RUNNER_TEMP/r183-python-check-$optimization.log"
+            grep -Fx "PYTHON_FRACTION_SPOT_CHECK_PASS 3" "$RUNNER_TEMP/r183-python-check-$optimization.log"
+            test "$(grep -c '^PASS n=' "$RUNNER_TEMP/r183-python-check-$optimization.log")" -eq 3
+            PYTHONOPTIMIZE="$optimization" python -B - <<'PY'
+          from fractions import Fraction as F
+          import sys
+          sys.path.insert(0,"research/R183/secondary_brier_scope_20261117")
+          from python_crosscheck import evaluate
+          for n,p in ((0,F(1,4)),(4,F(-1,100)),(4,F(101,100))):
+              try: evaluate(n,p)
+              except ValueError: continue
+              raise SystemExit("R183_PYTHON_OPTIMIZED_INVALID_INPUT_ACCEPTED")
+          print("R183_PYTHON_NEGATIVE_CONTROLS_PASS")
+          PY
+          done
       - name: SHA pin rejects substituted source before computing
         shell: bash
         run: |
