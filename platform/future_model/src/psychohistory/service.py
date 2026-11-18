@@ -17,7 +17,11 @@ class ExperimentInput(BaseModel):
 
 class Service:
     def __init__(self,root,repo,dispatch=True):
-        self.store=Store(root);self.repo=Path(repo).resolve();self.scheduler=Scheduler(self.store,dispatch=dispatch)
+        self.store = Store(root)
+        self.repo = Path(repo).resolve()
+        from .workflow import Workflow
+        self.workflow = Workflow(self.store, self.repo)
+        self.scheduler = Scheduler(self.store, dispatch=dispatch, comparison_verifier=self.workflow.verify_config)
     def submit(self,request):
         Admission.require(request.permission)
         config=request.model_dump(exclude={'permission'})

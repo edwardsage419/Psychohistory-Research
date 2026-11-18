@@ -24,10 +24,24 @@ def main(argv=None):
     restore=sub.add_parser('restore');restore.add_argument('source',type=Path)
     serve=sub.add_parser('serve');serve.add_argument('--port',type=int,default=8765)
     sub.add_parser('token')
+    research = sub.add_parser("research", help="v0.2 sources, protocols and experiments")
+    actions = research.add_subparsers(dest="action", required=True)
+    for name in ("catalog", "models", "sources", "protocols", "experiments"):
+        actions.add_parser(name)
+    register = actions.add_parser("register")
+    register.add_argument("research_id")
+    register.add_argument("--commit")
+    protocol = actions.add_parser("protocol")
+    protocol.add_argument("source_id")
+    protocol.add_argument("--seed", type=int, default=7)
+    for name in ("verify", "approve-protocol", "submit", "retry", "status", "approve", "cancel", "result"):
+        actions.add_parser(name).add_argument("identity")
     args=parser.parse_args(argv)
     exit_code=0
     try:
-        if args.command=='models':
+        if args.command == "research":
+            output, exit_code = research_command(args)
+        elif args.command=='models':
             from .plugins import registry
             output=registry.describe()
         elif args.command=='restore':
@@ -45,10 +59,10 @@ def main(argv=None):
         elif args.command in {'runs','status','result','discover'}:
             from .storage import Store
             store=Store(args.data)
-            if args.command=='runs':output=store.runs()
-            elif args.command=='status':output=store.get_run(args.run_id)
+            if args.command=='runs':output=store.runs(kind="legacy")
+            elif args.command=='status':output=legacy_run(store, args.run_id)
             elif args.command=='result':
-                run=store.get_run(args.run_id)
+                run=legacy_run(store, args.run_id)
                 if run['status']!='COMPLETED':raise ValueError('No completed result available')
                 output=store.get(run['result_hash'])
             else:
@@ -70,13 +84,72 @@ def main(argv=None):
                 elif args.command=='backup':output=service.scheduler.backup(args.destination)
                 elif args.command=='status':output=service.scheduler.get(args.run_id)
                 elif args.command=='approve':
+                    legacy_run(service.store, args.run_id)
                     service.scheduler.approve(args.run_id);service.scheduler.execute_approved(args.run_id);output=service.scheduler.wait(args.run_id,30)
                     if output['status']!='COMPLETED':exit_code=1
-                elif args.command=='cancel':output=service.scheduler.cancel(args.run_id)
+                elif args.command=='cancel':
+                    legacy_run(service.store, args.run_id)
+                    output=service.scheduler.cancel(args.run_id)
                 elif args.command=='result':output=service.store.get(service.scheduler.get(args.run_id)['result_hash'])
             finally:service.close()
         print(canonical(output));return exit_code
     except (ValueError,PermissionError,KeyError,OSError,TimeoutError) as exc:
         print(json.dumps({'status':'FAILED','error':str(exc)},ensure_ascii=False),file=sys.stderr);return 1
+
+def legacy_run(store, identity):
+    from .v02_execution import RUN_KIND
+    run = store.get_run(identity)
+    if run.get("kind") == RUN_KIND:
+        raise KeyError("Use the research command for v0.2 experiment IDs")
+    return run
+
+
+def research_command(args):
+    from . import sources
+    from .service import Service
+    from .storage import Store
+    from .v02_execution import RUN_KIND
+    from .workflow import Workflow, models
+
+    action = args.action
+    if action == "catalog":
+        return sources.catalog(), 0
+    if action == "models":
+        return models(), 0
+    store = Store(args.data)
+    workflow = Workflow(store, args.repo)
+    if action in {"sources", "protocols"}:
+        return store.research_records(action), 0
+    if action == "register":
+        return workflow.register_source(args.research_id, args.commit), 0
+    if action == "verify":
+        return workflow.verify_source(args.identity), 0
+    if action == "protocol":
+        return workflow.create_protocol(args.source_id, args.seed, "r123-degroot", "1.0.0"), 0
+    if action == "approve-protocol":
+        return workflow.approve_protocol(args.identity), 0
+    if action == "experiments":
+        return store.runs(kind=RUN_KIND), 0
+    if action == "status":
+        return workflow.run(args.identity), 0
+    if action == "result":
+        return workflow.result(args.identity), 0
+    service = Service(args.data, args.repo, dispatch=False)
+    scheduler = service.scheduler
+    try:
+        if action == "submit":
+            return workflow.submit(scheduler, args.identity), 0
+        if action == "retry":
+            return workflow.retry(scheduler, args.identity), 0
+        workflow.run(args.identity)
+        if action == "cancel":
+            return scheduler.cancel(args.identity), 0
+        scheduler.approve(args.identity)
+        scheduler.execute_approved(args.identity)
+        result = scheduler.wait(args.identity)
+        return result, int(result["status"] != "COMPLETED")
+    finally:
+        service.close()
+
 
 if __name__=='__main__':raise SystemExit(main())

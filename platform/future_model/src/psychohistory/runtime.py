@@ -10,6 +10,7 @@ import uuid
 from .contracts import canonical
 from .engine import code_identity, run_experiment
 from .storage import TERMINAL, checked_path, write_new
+from .v02_execution import ComparisonProcess, RUN_KIND, digest, source_snapshot, validate_result
 
 
 def _worker(config, output, memory_mb, cpu_seconds, expected_code, expected_parent):
@@ -41,8 +42,9 @@ def validate_execution_identity(run,result=None):
         raise ValueError('Worker result identity differs from approved run')
 
 class Scheduler:
-    def __init__(self,store,max_concurrency=1,max_queue=16,dispatch=True):
+    def __init__(self,store,max_concurrency=1,max_queue=16,dispatch=True,comparison_verifier=None):
         if max_concurrency!=1 or not 1<=max_queue<=16:raise ValueError('v0.1 uses one trusted worker and at most 16 queued tasks')
+        self.comparison_verifier = comparison_verifier
         self.dispatch_targets=None if dispatch else set()
         self.store=store;self.max_queue=max_queue;self.active={};self.lock=threading.RLock();self.closed=False
         self.staging=checked_path(store.root/'staging');self.staging.mkdir(exist_ok=True,mode=0o700)
@@ -53,7 +55,9 @@ class Scheduler:
         except BlockingIOError:
             self._owner_file.close();raise ValueError('Another scheduler already owns this data root') from None
         for run in self.store.active_runs():
-            if run['status']=='RUNNING':self.store.update_run(run['id'],status='FAILED',error='Worker lost after scheduler restart; no result claimed')
+            if run['status']=='RUNNING' or run.get("holdout_started_at") is not None:
+                self.store.update_run(run['id'], status='FAILED',
+                                      error='Worker lost after scheduler restart; no result claimed')
         self.thread=threading.Thread(target=self._monitor,name='psychohistory-scheduler',daemon=True);self.thread.start()
 
     def submit(self,config,timeout=15):
@@ -68,6 +72,46 @@ class Scheduler:
                 versions={'platform':'0.1.0','contract':'1.0.0','individual':'1.0.0','group':'1.0.0','adapter':'1.0.0','protocol':'synthetic-paired-1.0.0','dataset':'generated-1.0.0'},
                 environment={'python':platform.python_version(),'os':platform.system(),'machine':platform.machine()},
                 logs=['Submitted: awaiting explicit synthetic approval'])
+
+    def submit_comparison(self, config, holdout_id, code_sha256, *, retry_of=None):
+        with self.lock:
+            if self.closed or not self.comparison_verifier:
+                raise ValueError("Comparison scheduler is unavailable")
+            previous = self.store.holdout_runs(holdout_id)
+            if any(run["config"]["protocol_id"] != config["protocol_id"] for run in previous):
+                raise ValueError("This holdout already belongs to another experiment")
+            for run in previous:
+                if run["status"] not in {"FAILED", "CANCELED", "BLOCKED"}:
+                    return run
+            if previous and retry_of != previous[0]["id"]:
+                return previous[0]
+            if previous and any(run.get("holdout_started_at") is not None for run in previous):
+                raise ValueError("Holdout already used by a dispatched run. Use a different seed.")
+            if len(self.store.active_runs()) >= self.max_queue:
+                raise ValueError("Queue budget exhausted")
+            return self.store.create_run(
+                uuid.uuid4().hex, config, kind=RUN_KIND, holdout_id=holdout_id,
+                code_sha256=code_sha256, config_sha256=digest(config),
+                platform_version="0.2.0", timeout=15, retry_of=retry_of,
+                versions={"platform": "0.2.0", "protocol": config["spec"]["protocol_version"],
+                          "dataset": config["spec"]["dataset_version"], "r123-degroot": "1.0.0"},
+                environment={"python": platform.python_version(),
+                             "os": platform.system(), "machine": platform.machine()},
+                logs=["Approved protocol pinned. Experiment awaiting execution approval."],
+            )
+
+    def _verify_run(self, run, result=None):
+        if run.get("kind") != RUN_KIND:
+            validate_execution_identity(run, result)
+            return
+        if not self.comparison_verifier:
+            raise ValueError("Comparison source verification unavailable")
+        if (run["code_sha256"] != digest(source_snapshot())
+                or run["config_sha256"] != digest(run["config"])
+                or run["environment"] != {"python": platform.python_version(),
+                                           "os": platform.system(), "machine": platform.machine()}):
+            raise ValueError("Comparison code, input or environment identity changed")
+        self.comparison_verifier(run["config"])
 
     def approve(self,run_id):
         with self.lock:
@@ -112,9 +156,15 @@ class Scheduler:
                         import json
                         data=json.loads(checked_path(output).read_bytes())
                         if not data['ok']:raise ValueError(data['error'])
-                        result=data['result'];validate_execution_identity(r,result);h=self.store.put(result);self.store.lock_versions(result['versions'])
+                        if process.exitcode != 0:raise ValueError(f'Worker exited with {process.exitcode}')
+                        result = data['result']
+                        self._verify_run(r, result)
+                        if r.get("kind") == RUN_KIND:
+                            validate_result(r, result)
+                        h = self.store.put(result)
+                        self.store.lock_versions(r['versions'])
                         self.store.update_run(run_id,status='COMPLETED',result_hash=h,worker_pid=data['worker_pid'],limits=data['limits'],
-                                              logs=r['logs']+result['logs']+['Completed; content hash verified'])
+                                              logs=r['logs']+result.get('logs',[])+['Completed; content hash verified'])
                     except Exception as exc:
                         self.store.update_run(run_id,status='FAILED',error=f'{type(exc).__name__}: {str(exc)[:500]}',logs=r['logs']+['Worker failed; error retained'])
                     finally:self.active.pop(run_id,None);checked_path(output).unlink(missing_ok=True)
@@ -123,12 +173,24 @@ class Scheduler:
                 queued=[r for r in self.store.active_runs() if r['status']=='APPROVED' and (self.dispatch_targets is None or r['id'] in self.dispatch_targets)]
                 if queued:
                     r=queued[0]
-                    try:validate_execution_identity(r)
-                    except ValueError as exc:
+                    try:self._verify_run(r)
+                    except (ValueError, PermissionError, KeyError, OSError) as exc:
                         self.store.update_run(r['id'],status='BLOCKED',error=str(exc),logs=r['logs']+['Compatibility check blocked execution'])
                         return
                     output=self.staging/f"{r['id']}.json"
-                    p=mp.get_context('spawn').Process(target=_worker,args=(r['config'],str(output),r['memory_mb'],r['cpu_seconds'],r['code_sha256'],os.getpid()),daemon=True)
+                    if r.get("kind") == RUN_KIND:
+                        if r.get("holdout_started_at") is not None:
+                            self.store.update_run(r["id"], status="FAILED",
+                                                  error="Interrupted dispatch already reserved the holdout")
+                            return
+                        # Commit the reservation before the process can read held-out labels.
+                        r = self.store.update_run(r["id"], holdout_started_at=time.time())
+                        p = ComparisonProcess(r, output)
+                    else:
+                        p = mp.get_context('spawn').Process(
+                            target=_worker,
+                            args=(r['config'],str(output),r['memory_mb'],r['cpu_seconds'],r['code_sha256'],os.getpid()),
+                            daemon=True)
                     try:
                         p.start();self.active[r['id']]=(p,time.monotonic(),output)
                         self.store.update_run(r['id'],status='RUNNING',started_at=time.time(),worker_pid=p.pid,logs=r['logs']+['Spawned isolated trusted worker'])

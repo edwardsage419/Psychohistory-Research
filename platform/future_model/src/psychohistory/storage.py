@@ -48,6 +48,9 @@ class Store:
             db.execute('CREATE TABLE IF NOT EXISTS runs (id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS approvals (id INTEGER PRIMARY KEY, run_id TEXT NOT NULL, decision TEXT NOT NULL, at REAL NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS versions (identity TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+            db.execute('CREATE TABLE IF NOT EXISTS sources_v2 (id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+            db.execute('CREATE TABLE IF NOT EXISTS protocols_v2 (id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+            db.execute("CREATE INDEX IF NOT EXISTS runs_v2_holdout ON runs (json_extract(payload, '$.holdout_id'))")
             db.execute('PRAGMA user_version=2')
 
     @contextmanager
@@ -82,6 +85,45 @@ class Store:
     def assets(self):
         with self.db() as db:return [json.loads(x[0]) for x in db.execute('SELECT payload FROM assets ORDER BY sha256')]
 
+    def research_records(self, collection):
+        table = {"sources": "sources_v2", "protocols": "protocols_v2"}[collection]
+        with self.db() as db:
+            return [json.loads(row[0]) for row in db.execute(
+                f"SELECT payload FROM {table} ORDER BY rowid DESC")]
+
+    def research_record(self, collection, identity):
+        table = {"sources": "sources_v2", "protocols": "protocols_v2"}[collection]
+        with self.db() as db:
+            row = db.execute(f"SELECT payload FROM {table} WHERE id=?", (identity,)).fetchone()
+        if not row:
+            raise KeyError(f"Unknown {collection} identity")
+        return json.loads(row[0])
+
+    def register_research_record(self, collection, identity, record):
+        table = {"sources": "sources_v2", "protocols": "protocols_v2"}[collection]
+        with self.db() as db:
+            cursor = db.execute(f"INSERT OR IGNORE INTO {table} VALUES (?,?)",
+                                (identity, canonical(record)))
+            return cursor.rowcount == 1
+
+    def approve_protocol(self, identity, source_verifier):
+        with self.db() as db:
+            row = db.execute("SELECT payload FROM protocols_v2 WHERE id=?", (identity,)).fetchone()
+            if row is None:
+                raise KeyError("Unknown protocol")
+            record = json.loads(row[0])
+            source_verifier(record)
+            if record["status"] != "APPROVED":
+                record.update(status="APPROVED", approved_at=time.time())
+                db.execute("UPDATE protocols_v2 SET payload=? WHERE id=?", (canonical(record), identity))
+        return record
+
+    def holdout_runs(self, identity):
+        with self.db() as db:
+            return [json.loads(row[0]) for row in db.execute(
+                "SELECT payload FROM runs WHERE json_extract(payload, '$.holdout_id')=? ORDER BY rowid DESC",
+                (identity,))]
+
     def put(self,value,access='PUBLIC_SYNTHETIC'):
         if access!='PUBLIC_SYNTHETIC':raise PermissionError('BLOCKED: nonpublic data persistence requires separate storage approval')
         raw=canonical(value).encode()
@@ -99,9 +141,9 @@ class Store:
         if digest(raw)!=h:raise ValueError('Artifact hash mismatch')
         return json.loads(raw)
 
-    def create_run(self,run_id,config):
+    def create_run(self,run_id,config,**identity):
         data={'id':run_id,'status':'PENDING','config':config,'created_at':time.time(),'started_at':None,'ended_at':None,
-              'logs':[],'error':None,'result_hash':None,'permission':'SYNTHETIC_ONLY'}
+              'logs':[],'error':None,'result_hash':None,'permission':'SYNTHETIC_ONLY',**identity}
         with self.db() as db:db.execute('INSERT INTO runs VALUES (?,?)',(run_id,canonical(data)))
         self.audit({'run_id':run_id,'status':'PENDING'})
         return data
@@ -111,13 +153,16 @@ class Store:
         if not r:raise KeyError('Run not found')
         return json.loads(r[0])
 
-    def runs(self,limit=200,offset=0):
+    def runs(self,limit=200,offset=0,kind=None):
         if type(limit)!=int or not 1<=limit<=200 or type(offset)!=int or offset<0:raise ValueError('Invalid history page')
-        with self.db() as db:return [json.loads(x[0]) for x in db.execute('SELECT payload FROM runs ORDER BY rowid DESC LIMIT ? OFFSET ?',(limit,offset))]
-
-    def active_runs(self):
         with self.db() as db:
-            return [json.loads(x[0]) for x in db.execute("SELECT payload FROM runs WHERE json_extract(payload,'$.status') IN ('PENDING','APPROVED','RUNNING') ORDER BY rowid")]
+            return [json.loads(row[0]) for row in db.execute(
+                "SELECT payload FROM runs WHERE (? IS NULL OR COALESCE(json_extract(payload,'$.kind'),'legacy')=?) ORDER BY rowid DESC LIMIT ? OFFSET ?",
+                (kind,kind,limit,offset))]
+
+    def active_runs(self,kind=None):
+        with self.db() as db:
+            return [json.loads(x[0]) for x in db.execute("SELECT payload FROM runs WHERE json_extract(payload,'$.status') IN ('PENDING','APPROVED','RUNNING') AND (? IS NULL OR COALESCE(json_extract(payload,'$.kind'),'legacy')=?) ORDER BY rowid",(kind,kind))]
 
 
     def update_run(self,run_id,**changes):
@@ -126,13 +171,14 @@ class Store:
             if not row:raise KeyError('Run not found')
             data=json.loads(row[0])
             if data['status'] in TERMINAL:raise ValueError('Terminal run history is immutable')
-            new=changes.get('status',data['status'])
+            previous = data['status']
+            new=changes.get('status',previous)
             allowed={'PENDING':{'PENDING','APPROVED','CANCELED','BLOCKED','FAILED'},'APPROVED':{'APPROVED','RUNNING','CANCELED','BLOCKED','FAILED'},'RUNNING':{'RUNNING','COMPLETED','FAILED','CANCELED'}}
             if new not in allowed[data['status']]:raise ValueError('Illegal task transition')
             if new in TERMINAL:changes['ended_at']=time.time()
             data.update(changes)
             db.execute('UPDATE runs SET payload=? WHERE id=?',(canonical(data),run_id))
-            if new=='APPROVED':db.execute('INSERT INTO approvals(run_id,decision,at) VALUES (?,?,?)',(run_id,'APPROVED_SYNTHETIC',time.time()))
+            if new=='APPROVED' and previous!='APPROVED':db.execute('INSERT INTO approvals(run_id,decision,at) VALUES (?,?,?)',(run_id,'APPROVED_SYNTHETIC',time.time()))
         self.audit({'run_id':run_id,'status':data['status'],'error':data['error']})
         return data
 
