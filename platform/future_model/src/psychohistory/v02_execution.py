@@ -77,7 +77,8 @@ def validate_result(run, result):
     import math
     import re
 
-    from .degroot import source_reference
+    from .degroot import DeGroot, source_reference
+    from .prediction import aggregate
     from .state import Snapshot
 
     required = {"input", "protocol_id", "source_id", "code_sha256", "scope", "evidence",
@@ -120,24 +121,54 @@ def validate_result(run, result):
                     raise ValueError("Comparison score outside finite bounds")
 
     metrics(result["metrics"])
-    for label in ("study_results", "weight_sensitivity"):
-        entries = result[label]
-        if not isinstance(entries, list) or len(entries) < 2:
-            raise ValueError(f"Incomplete comparison {label}")
-        for entry in entries:
-            if not isinstance(entry, dict) or entry.get("evidence") != evidence:
-                raise ValueError(f"Invalid comparison {label} evidence")
-            metrics(entry.get("metrics"))
+    studies = result["study_results"]
+    scenarios = result["weight_sensitivity"]
+    expected_studies = spec["dataset"]["studies"]
+    expected_scenarios = spec["weight_sensitivity"]
+    if not isinstance(studies, list) or len(studies) != len(expected_studies):
+        raise ValueError("Incomplete comparison study results")
+    if not isinstance(scenarios, list) or len(scenarios) != len(expected_scenarios):
+        raise ValueError("Incomplete weight sensitivity scenarios")
+    for study, expected in zip(studies, expected_studies, strict=True):
+        identifier = expected["study_id"]
+        n_train, n_test = (
+            spec["budget"]["trials_per_session"] * sum(
+                session.startswith(identifier + ":") for session in spec["split"][split]["session_groups"])
+            for split in ("train", "test")
+        )
+        if (not isinstance(study, dict) or study.get("study_id") != identifier
+                or study.get("study_label") != expected["label"] or study.get("n") != n_test):
+            raise ValueError("Invalid comparison study identity or observations")
+        baseline = study.get("baseline")
+        if (not isinstance(baseline, dict) or baseline.get("training_n") != n_train
+                or type(baseline.get("training_events")) is not int
+                or not 0 <= baseline["training_events"] <= n_train
+                or type(baseline.get("prevalence")) not in (float, int)
+                or baseline["prevalence"] != baseline["training_events"] / n_train):
+            raise ValueError("Invalid comparison study baseline")
+        metrics(study.get("metrics"))
+    for scenario, expected in zip(scenarios, expected_scenarios, strict=True):
+        calculated = aggregate(studies, expected["weights"])
+        if scenario != {"label": expected["label"], **calculated}:
+            raise ValueError("Weight sensitivity does not match the protocol and study scores")
+    if any(study["evidence"] != evidence for study in studies):
+        raise ValueError("Study and result evidence disagree")
     if result["weight_sensitivity"][0]["metrics"] != result["metrics"]:
         raise ValueError("Comparison summary disagrees with equal-study scores")
     trajectory = result["trajectory"]
     if not isinstance(trajectory, dict) or not isinstance(trajectory.get("branches"), list):
         raise ValueError("Incomplete comparison branch snapshots")
     root = Snapshot.from_dict(trajectory.get("base"))
+    root_payload = root.restore()
     branches = [Snapshot.from_dict(branch).restore() for branch in trajectory["branches"]]
     if (len(branches) != 2 or len({branch["branch"] for branch in branches}) != 2
             or any(branch["parent_hash"] != root.content_hash for branch in branches)):
         raise ValueError("Comparison branch lineage mismatch")
+    model = DeGroot()
+    for payload in (root_payload, *branches):
+        if payload["model_id"] != spec["candidate"] or payload["model_version"] != spec["model_version"]:
+            raise ValueError("Snapshot model identity mismatch")
+        model.validate_state(payload["state"])
     if not isinstance(result["mathematical_verification"], dict):
         raise ValueError("Missing mathematical verification")
     if not isinstance(result["limitations"], list) or not result["limitations"]:

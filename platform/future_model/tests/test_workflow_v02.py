@@ -134,3 +134,32 @@ def test_incomplete_comparison_result_cannot_pass_validation():
     incomplete = {"input": config, "protocol_id": "p", "source_id": "s", "code_sha256": "c"}
     with pytest.raises(ValueError, match="Incomplete comparison"):
         validate_result(run, incomplete)
+
+
+def test_detailed_result_schema_and_source_database_key(tmp_path):
+    import pytest
+    from psychohistory.prediction import protocol_spec, run_comparison
+    from psychohistory.storage import Store
+    from psychohistory.v02_execution import validate_result
+    from psychohistory.workflow import Workflow
+
+    spec = protocol_spec(1)
+    config = {"protocol_id": "p", "source_id": "s", "spec": spec}
+    run = {"config": config, "code_sha256": "c"}
+    result = run_comparison(spec)
+    result.update(input=config, protocol_id="p", source_id="s", code_sha256="c")
+    validate_result(run, result)
+    baseline = result["study_results"][0].pop("baseline")
+    with pytest.raises(ValueError, match="study"):
+        validate_result(run, result)
+    result["study_results"][0]["baseline"] = baseline
+    result["weight_sensitivity"].pop()
+    with pytest.raises(ValueError, match="scenarios"):
+        validate_result(run, result)
+
+    store = Store(tmp_path / "sources")
+    workflow = Workflow(store, REPO)
+    source = workflow.register_source("R123")
+    store.register_research_record("sources", "misbound", source)
+    with pytest.raises(ValueError, match="Source record identity"):
+        workflow.verify_source("misbound")

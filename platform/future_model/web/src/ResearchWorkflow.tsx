@@ -110,9 +110,9 @@ function SourceCard({ source, busy, verify }: { source: Source; busy: boolean; v
       {source.original_metadata === null ? <p>该固定提交没有可展示的原始状态记录。</p> : <Json value={source.original_metadata}/>}
       <div className="table-wrap">
         <table className="source-file-table">
-          <thead><tr><th>文件用途</th><th>仓库路径</th><th>SHA-256</th><th>字节数</th></tr></thead>
+          <thead><tr><th>文件用途</th><th>仓库路径</th><th>Git blob</th><th>SHA-256</th><th>字节数</th></tr></thead>
           <tbody>{source.files.map(file => <tr key={file.path}>
-            <td>{file.role}</td><td><code>{file.path}</code></td><td><code>{file.sha256}</code></td><td>{file.size}</td>
+            <td>{file.role}</td><td><code>{file.path}</code></td><td><code>{file.blob}</code></td><td><code>{file.sha256}</code></td><td>{file.size}</td>
           </tr>)}</tbody>
         </table>
       </div>

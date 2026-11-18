@@ -1,13 +1,17 @@
 """Shared v0.2 registration, protocol approval and comparison operations."""
 from . import sources
 from .degroot import DeGroot
-from .plugins import registry
+from .plugins import Registry, registry
 from .prediction import protocol_spec
 from .v02_execution import RUN_KIND, digest, source_snapshot, validate_result
 
 
+comparison_registry = Registry()
+comparison_registry.register(DeGroot())
+
+
 def models():
-    return [*registry.describe(), DeGroot().describe()]
+    return [*registry.describe(), *comparison_registry.describe()]
 
 
 class Workflow:
@@ -37,7 +41,10 @@ class Workflow:
 
 
     def source(self, identity):
-        return self.store.research_record("sources", identity)
+        record = self.store.research_record("sources", identity)
+        if record.get("source_id") != identity:
+            raise ValueError("Source record identity does not match its registration key")
+        return record
 
     def verify_source(self, identity):
         try:
@@ -48,8 +55,7 @@ class Workflow:
             raise
 
     def create_protocol(self, source_id, seed, model_id, model_version):
-        if model_id != DeGroot.model_id or model_version != DeGroot.version:
-            raise ValueError("Select the registered R123 DeGroot 1.0.0 comparison model")
+        comparison_registry.get(model_id, model_version)
         self._execution_source(source_id)
         body = {"source_id": source_id, "spec": protocol_spec(seed, model_id),
                 "code_sha256": digest(source_snapshot())}
