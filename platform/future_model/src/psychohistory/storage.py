@@ -1,5 +1,6 @@
 """SQLite metadata, immutable objects and verified consistent disaster recovery."""
 from contextlib import contextmanager
+import ctypes
 import fcntl
 import hashlib
 import json
@@ -8,6 +9,7 @@ from pathlib import Path
 import re
 import shutil
 import sqlite3
+import sys
 import tempfile
 import threading
 import time
@@ -16,6 +18,8 @@ from .contracts import canonical
 SCHEMA=2
 HASH=re.compile(r'^[0-9a-f]{64}$')
 TERMINAL={'COMPLETED','FAILED','CANCELED','BLOCKED'}
+AUDIT_BATCH_ROWS = 256
+AUDIT_BATCH_BYTES = 1024 * 1024
 
 
 def checked_path(path):
@@ -27,20 +31,66 @@ def checked_path(path):
 def digest(raw):return hashlib.sha256(raw).hexdigest()
 
 
+def file_digest(path):
+    with checked_path(path).open('rb') as incoming:
+        return hashlib.file_digest(incoming, 'sha256').hexdigest()
+
+
+def fsync_directory(path):
+    fd = os.open(checked_path(path), os.O_RDONLY | getattr(os, 'O_DIRECTORY', 0))
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
 def write_new(path, raw):
-    checked_path(path)
-    fd=os.open(path,os.O_WRONLY|os.O_CREAT|os.O_EXCL|getattr(os,'O_NOFOLLOW',0),0o600)
-    with os.fdopen(fd,'wb') as f:
-        f.write(raw);f.flush();os.fsync(f.fileno())
+    """Publish complete, flushed bytes exclusively; never expose a partial file."""
+    path = checked_path(path)
+    fd, temporary = tempfile.mkstemp(prefix='.publish-', dir=path.parent)
+    try:
+        with os.fdopen(fd, 'wb') as f:
+            f.write(raw); f.flush(); os.fsync(f.fileno())
+        os.link(temporary, path, follow_symlinks=False)
+        fsync_directory(path.parent)
+    finally:
+        Path(temporary).unlink(missing_ok=True)
+
+
+def publish_directory(source, destination):
+    """Atomic no-replace directory publication on supported POSIX platforms."""
+    source, destination = checked_path(source), checked_path(destination)
+    if (source / 'objects').is_dir():
+        fsync_directory(source / 'objects')
+    fsync_directory(source)
+    libc = ctypes.CDLL(None, use_errno=True)
+    if sys.platform.startswith('linux') and hasattr(libc, 'renameat2'):
+        rename = libc.renameat2
+        rename.argtypes = [ctypes.c_int, ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_uint]
+        rename.restype = ctypes.c_int
+        result = rename(-100, os.fsencode(source), -100, os.fsencode(destination), 1)
+    elif sys.platform == 'darwin' and hasattr(libc, 'renamex_np'):
+        rename = libc.renamex_np
+        rename.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_uint]
+        rename.restype = ctypes.c_int
+        result = rename(os.fsencode(source), os.fsencode(destination), 4)
+    else:
+        raise OSError('Exclusive directory publication unsupported on this platform')
+    if result:
+        error = ctypes.get_errno()
+        raise OSError(error, os.strerror(error), str(destination))
+    fsync_directory(destination.parent)
 
 class Store:
     def __init__(self,root):
         self.root=checked_path(root)
         self.root.mkdir(parents=True,exist_ok=True,mode=0o700)
         self.lock=threading.RLock()
+        self.audit_mirror_error = None
         checked_path(self.root/'objects').mkdir(exist_ok=True,mode=0o700)
         for n in ['metadata.sqlite','audit.jsonl']:checked_path(self.root/n)
         with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
             version=db.execute('PRAGMA user_version').fetchone()[0]
             if version>SCHEMA:raise ValueError('Future metadata schema rejected')
             db.execute('CREATE TABLE IF NOT EXISTS assets (sha256 TEXT PRIMARY KEY, payload TEXT NOT NULL)')
@@ -52,7 +102,27 @@ class Store:
             db.execute('CREATE TABLE IF NOT EXISTS sources_v2 (id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS protocols_v2 (id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
             db.execute("CREATE INDEX IF NOT EXISTS runs_v2_holdout ON runs (json_extract(payload, '$.holdout_id'))")
+            db.execute('CREATE TABLE IF NOT EXISTS audit_events (seq INTEGER PRIMARY KEY AUTOINCREMENT, payload TEXT NOT NULL)')
+            db.execute('CREATE TABLE IF NOT EXISTS audit_mirror (id INTEGER PRIMARY KEY CHECK(id=1), last_seq INTEGER NOT NULL, byte_offset INTEGER NOT NULL)')
+            # Import legacy JSONL once, in this same migration transaction. Keep
+            # original event text, ordering and failure evidence; do not alter objects.
+            if db.execute('SELECT 1 FROM audit_mirror WHERE id=1').fetchone() is None:
+                last_seq = offset = 0
+                journal = checked_path(self.root / 'audit.jsonl')
+                if journal.exists():
+                    with journal.open('rb') as incoming:
+                        while raw := incoming.readline(AUDIT_BATCH_BYTES + 1):
+                            if len(raw) > AUDIT_BATCH_BYTES or not raw.endswith(b'\n'):
+                                raise ValueError('Legacy audit contains an oversized or incomplete event; preserve and repair before migration')
+                            payload = raw[:-1].decode('utf-8')
+                            if not isinstance(json.loads(payload), dict):
+                                raise ValueError('Legacy audit event must be an object')
+                            last_seq = db.execute('INSERT INTO audit_events(payload) VALUES (?)', (payload,)).lastrowid
+                            offset += len(raw)
+                db.execute('INSERT INTO audit_mirror VALUES (1,?,?)', (last_seq, offset))
             db.execute('PRAGMA user_version=2')
+        fsync_directory(self.root)
+        self._mirror_after_commit()
 
     @contextmanager
     def db(self):
@@ -67,12 +137,105 @@ class Store:
                 db.rollback();raise
             finally:db.close()
 
+    @staticmethod
+    def _insert_audit(db, event):
+        payload = canonical({'at': time.time(), **event})
+        if len(payload.encode()) + 1 > AUDIT_BATCH_BYTES:
+            raise ValueError('Audit event exceeds 1 MiB budget')
+        db.execute('INSERT INTO audit_events(payload) VALUES (?)', (payload,))
+
     def audit(self,event):
-        raw=(canonical({'at':time.time(),**event})+'\n').encode()
+        with self.db() as db:
+            self._insert_audit(db, event)
+        self._mirror_after_commit()
+
+    def _mirror_after_commit(self):
+        # The SQLite commit is the operation's truth. A derivative mirror failure
+        # must never turn a committed source or terminal task into an apparent failure.
+        try:
+            self._sync_audit_mirror()
+            self.audit_mirror_error = None
+        except (OSError, sqlite3.Error, ValueError) as error:
+            self.audit_mirror_error = f'{type(error).__name__}: {error}'
+
+    @staticmethod
+    def _validate_audit_tail(db, journal, seq, offset):
+        if os.fstat(journal.fileno()).st_size <= offset:
+            return
+        # Only our own interrupted append is safely recoverable from SQLite.
+        # Unknown bytes can contain old-binary failure evidence not in SQLite.
+        journal.seek(offset)
+        tail = journal.read(AUDIT_BATCH_BYTES + 1)
+        expected = bytearray()
+        for _, payload in db.execute('SELECT seq,payload FROM audit_events WHERE seq>? ORDER BY seq LIMIT ?', (seq, AUDIT_BATCH_ROWS)):
+            raw = (payload + '\n').encode()
+            if len(expected) + len(raw) > AUDIT_BATCH_BYTES:
+                break
+            expected.extend(raw)
+        if len(tail) > AUDIT_BATCH_BYTES or not expected.startswith(tail):
+            raise ValueError('Unrecognized audit mirror tail preserved; archive and reconcile legacy writes before mirror repair or backup')
+
+    def _validate_backup_audit(self):
+        """Reject evidence outside SQLite; do not silently omit a legacy tail."""
+        fd = os.open(checked_path(self.root / 'audit.lock'), os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600)
+        with os.fdopen(fd, 'rb') as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                raise ValueError('Backup audit mirror is busy; retry after its checkpoint completes') from None
+            with self.db() as db:
+                seq, offset = db.execute('SELECT last_seq,byte_offset FROM audit_mirror WHERE id=1').fetchone()
+                path = checked_path(self.root / 'audit.jsonl')
+                if path.exists():
+                    with path.open('rb') as journal:
+                        self._validate_audit_tail(db, journal, seq, offset)
+
+    def _sync_audit_mirror(self):
+        """At most 256 events / 1 MiB per call, serialized across Store instances.
+
+        The mirror checkpoint commits only after file fsync. An interrupted append
+        is truncated to the old checkpoint then replayed from committed SQLite.
+        """
         with self.lock:
-            path=checked_path(self.root/'audit.jsonl')
-            fd=os.open(path,os.O_WRONLY|os.O_APPEND|os.O_CREAT|getattr(os,'O_NOFOLLOW',0),0o600)
-            with os.fdopen(fd,'ab') as f:f.write(raw);f.flush();os.fsync(f.fileno())
+            fd = os.open(checked_path(self.root / 'audit.lock'), os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600)
+            with os.fdopen(fd, 'rb') as lock:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                with self.db() as db:
+                    db.execute('PRAGMA busy_timeout=0')
+                    db.execute('BEGIN IMMEDIATE')
+                    seq, offset = db.execute('SELECT last_seq,byte_offset FROM audit_mirror WHERE id=1').fetchone()
+                    path = checked_path(self.root / 'audit.jsonl')
+                    fd = os.open(path, os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600)
+                    with os.fdopen(fd, 'r+b') as outgoing:
+                        current_size = os.fstat(outgoing.fileno()).st_size
+                        if current_size < offset:
+                            seq = offset = 0  # Missing/truncated derivative: rebuild incrementally.
+                        elif current_size > offset:
+                            self._validate_audit_tail(db, outgoing, seq, offset)
+                        outgoing.truncate(offset)
+                        outgoing.seek(offset)
+                        size = 0
+                        for next_seq, payload in db.execute('SELECT seq,payload FROM audit_events WHERE seq>? ORDER BY seq LIMIT ?', (seq, AUDIT_BATCH_ROWS)):
+                            raw = (payload + '\n').encode()
+                            if size + len(raw) > AUDIT_BATCH_BYTES:
+                                break
+                            outgoing.write(raw)
+                            size += len(raw); seq = next_seq
+                        outgoing.flush(); os.fsync(outgoing.fileno())
+                        fsync_directory(self.root)
+                        db.execute('UPDATE audit_mirror SET last_seq=?,byte_offset=? WHERE id=1', (seq, offset + size))
+
+    @staticmethod
+    def _export_audit(db, destination):
+        """Stream only the audit events belonging to this SQLite backup snapshot."""
+        fd = os.open(destination, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+        seq = offset = 0
+        with os.fdopen(fd, 'wb') as outgoing:
+            for seq, payload in db.execute('SELECT seq,payload FROM audit_events ORDER BY seq'):
+                raw = (payload + '\n').encode()
+                outgoing.write(raw); offset += len(raw)
+            outgoing.flush(); os.fsync(outgoing.fileno())
+        db.execute('UPDATE audit_mirror SET last_seq=?,byte_offset=? WHERE id=1', (seq, offset))
 
     @contextmanager
     def snapshot_lock(self):
@@ -117,6 +280,20 @@ class Store:
                                 (identity, canonical(record)))
             return cursor.rowcount == 1
 
+    def register_source(self, record, warnings=None):
+        """Register an immutable source and its audit event in one transaction."""
+        with self.db() as db:
+            cursor = db.execute('INSERT OR IGNORE INTO sources_v2 VALUES (?,?)',
+                                (record['source_id'], canonical(record)))
+            inserted = cursor.rowcount == 1
+            messages = list(record.get('warnings', []) if warnings is None else warnings)
+            if not inserted and 'DUPLICATE_SOURCE_ID' not in messages:
+                messages.append('DUPLICATE_SOURCE_ID')
+            self._insert_audit(db, {'event': 'SOURCE_REGISTERED' if inserted else 'SOURCE_DUPLICATE',
+                                   'source_id': record['source_id'], 'warnings': messages})
+        self._mirror_after_commit()
+        return inserted
+
     def approve_protocol(self, identity, source_verifier):
         with self.db() as db:
             row = db.execute("SELECT payload FROM protocols_v2 WHERE id=?", (identity,)).fetchone()
@@ -154,6 +331,9 @@ class Store:
                         pass  # Verify the winning writer's object below.
             if digest(checked_path(p).read_bytes()) != h:
                 raise ValueError('Existing immutable object corrupted')
+            # A previous attempt may have linked successfully and failed its
+            # directory flush; deduplication must not bypass durability on retry.
+            fsync_directory(p.parent)
         return h
 
     def get(self,h):
@@ -165,8 +345,10 @@ class Store:
     def create_run(self,run_id,config,**identity):
         data={'id':run_id,'status':'PENDING','config':config,'created_at':time.time(),'started_at':None,'ended_at':None,
               'logs':[],'error':None,'result_hash':None,'permission':'SYNTHETIC_ONLY',**identity}
-        with self.db() as db:db.execute('INSERT INTO runs VALUES (?,?)',(run_id,canonical(data)))
-        self.audit({'run_id':run_id,'status':'PENDING'})
+        with self.db() as db:
+            db.execute('INSERT INTO runs VALUES (?,?)',(run_id,canonical(data)))
+            self._insert_audit(db, {'run_id':run_id,'status':'PENDING'})
+        self._mirror_after_commit()
         return data
 
     def get_run(self,run_id):
@@ -188,6 +370,7 @@ class Store:
 
     def update_run(self,run_id,**changes):
         with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
             row=db.execute('SELECT payload FROM runs WHERE id=?',(run_id,)).fetchone()
             if not row:raise KeyError('Run not found')
             data=json.loads(row[0])
@@ -200,7 +383,8 @@ class Store:
             data.update(changes)
             db.execute('UPDATE runs SET payload=? WHERE id=?',(canonical(data),run_id))
             if new=='APPROVED' and previous!='APPROVED':db.execute('INSERT INTO approvals(run_id,decision,at) VALUES (?,?,?)',(run_id,'APPROVED_SYNTHETIC',time.time()))
-        self.audit({'run_id':run_id,'status':data['status'],'error':data['error']})
+            self._insert_audit(db, {'run_id':run_id,'status':data['status'],'error':data['error']})
+        self._mirror_after_commit()
         return data
 
     def lock_versions(self,versions):
@@ -218,6 +402,7 @@ class Store:
             dest.parent.mkdir(parents=True,exist_ok=True)
             stage=Path(tempfile.mkdtemp(prefix='.backup-',dir=dest.parent));(stage/'objects').mkdir(mode=0o700)
             try:
+                self._validate_backup_audit()
                 with self.db() as db:
                     with sqlite3.connect(stage/'metadata.sqlite') as target:db.backup(target)
                 for p in (self.root/'objects').iterdir():
@@ -232,13 +417,15 @@ class Store:
                         run=json.loads(row[0]);h=run.get('result_hash')
                         if run['status']=='COMPLETED' and not h:raise ValueError('Completed run missing result reference')
                         if h and (not HASH.fullmatch(h) or not (stage/'objects'/f'{h}.json').is_file()):raise ValueError('Missing referenced run artifact')
-                journal=checked_path(self.root/'audit.jsonl')
-                write_new(stage/'audit.jsonl',journal.read_bytes() if journal.exists() else b'')
-                manifest={'backup_version':'1.0.0','schema_version':SCHEMA,'files':{p.relative_to(stage).as_posix():digest(p.read_bytes()) for p in sorted(stage.rglob('*')) if p.is_file()}}
+                    self._export_audit(db, stage / 'audit.jsonl')
+                with (stage / 'metadata.sqlite').open('rb') as database:
+                    os.fsync(database.fileno())
+                manifest={'backup_version':'1.0.0','schema_version':SCHEMA,'files':{p.relative_to(stage).as_posix():file_digest(p) for p in sorted(stage.rglob('*')) if p.is_file()}}
                 write_new(stage/'manifest.json',canonical(manifest).encode())
-                stage.rename(dest)
+                self._validate_backup_audit()
+                publish_directory(stage, dest)
             except BaseException:
-                shutil.rmtree(stage)
+                shutil.rmtree(stage, ignore_errors=True)
                 self.audit({'backup':'FAILED','destination_name':dest.name});raise
         self.audit({'backup':'COMPLETED','manifest_sha256':digest(canonical(manifest).encode())})
         return manifest
@@ -278,8 +465,13 @@ def restore_backup(source,destination):
                 run=json.loads(row[0]);h=run.get('result_hash')
                 if run.get('status')=='COMPLETED' and not h:raise ValueError('Completed run missing result reference')
                 if h and f'objects/{h}.json' not in files:raise ValueError('Missing run artifact')
-        stage.rename(dest)
+        # Migration (including historical JSONL import) may still reject a
+        # checksummed backup. Finish every fallible initialization step before
+        # publishing the destination, so failure leaves retries possible.
+        restored = Store(stage)
+        restored.audit({'restore':'COMPLETED','backup_manifest_sha256':digest(canonical(manifest).encode())})
+        publish_directory(stage, dest)
     except BaseException:
-        shutil.rmtree(stage);raise
-    restored=Store(dest);restored.audit({'restore':'COMPLETED','backup_manifest_sha256':digest(canonical(manifest).encode())})
+        shutil.rmtree(stage, ignore_errors=True);raise
+    restored.root = dest
     return restored

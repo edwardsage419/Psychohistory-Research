@@ -3,6 +3,7 @@ import hashlib
 import os
 from pathlib import Path
 import subprocess
+import signal
 import sys
 import tempfile
 
@@ -10,6 +11,7 @@ from .contracts import canonical
 
 
 RUN_KIND = "prediction-comparison-v1"
+RUN_KIND_TRAJECTORY = "mechanism-trajectory-v1"
 
 
 def digest(value):
@@ -43,10 +45,11 @@ class ComparisonProcess:
                    "-c", bytes.fromhex(files["v02_worker.py"]).decode(), str(self.output),
                    str(os.getpid()), expected]
         with tempfile.TemporaryFile() as payload:
-            payload.write(canonical({"config": self.run["config"], "files": files}).encode())
+            payload.write(canonical({"config": self.run["config"], "files": files, "kind": self.run.get("kind", RUN_KIND)}).encode())
             payload.seek(0)
             self.process = subprocess.Popen(command, stdin=payload, stdout=subprocess.DEVNULL,
-                                            stderr=subprocess.DEVNULL, env={"LC_ALL": "C.UTF-8"})
+                                            stderr=subprocess.DEVNULL, env={"LC_ALL": "C.UTF-8"},
+                                            start_new_session=True)
 
     @property
     def pid(self):
@@ -66,10 +69,12 @@ class ComparisonProcess:
             pass
 
     def terminate(self):
-        self.process.terminate()
+        from .worker_lifecycle import terminate_owned_group
+        terminate_owned_group(self.process, signal.SIGTERM)
 
     def kill(self):
-        self.process.kill()
+        from .worker_lifecycle import terminate_owned_group
+        terminate_owned_group(self.process, signal.SIGKILL)
 
 
 def validate_result(run, result):

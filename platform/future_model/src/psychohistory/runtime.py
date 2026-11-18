@@ -4,33 +4,28 @@ import multiprocessing as mp
 import os
 from pathlib import Path
 import platform
+import signal
 import threading
 import time
 import uuid
 from .contracts import canonical
 from .engine import code_identity, run_experiment
 from .storage import TERMINAL, checked_path, write_new
-from .v02_execution import ComparisonProcess, RUN_KIND, digest, source_snapshot, validate_result
+from .v02_execution import ComparisonProcess, RUN_KIND, digest, source_snapshot, validate_result, RUN_KIND_TRAJECTORY
 
 
 def _worker(config, output, memory_mb, cpu_seconds, expected_code, expected_parent):
     limits={'memory':'NOT_ENFORCED','cpu':'NOT_ENFORCED','parent_death':'NOT_ENFORCED','hostile_code_sandbox':False}
     try:
-        if platform.system()=='Linux':
-            import ctypes,signal
-            libc=ctypes.CDLL(None,use_errno=True)
-            if libc.prctl(1,signal.SIGTERM,0,0,0)!=0:raise OSError(ctypes.get_errno(),'Cannot install parent-death guard')
-            if os.getppid()!=expected_parent:return
-            limits['parent_death']='PR_SET_PDEATHSIG'
-            import resource
-            resource.setrlimit(resource.RLIMIT_AS,(memory_mb*1024**2,memory_mb*1024**2))
-            resource.setrlimit(resource.RLIMIT_CPU,(cpu_seconds,cpu_seconds+1))
-            limits.update(memory='RLIMIT_AS',cpu='RLIMIT_CPU')
+        from .worker_lifecycle import configure_worker
+        limits.update(configure_worker(expected_parent, memory_mb=memory_mb,
+                                       cpu_seconds=cpu_seconds, establish_session=True))
         if code_identity()!=expected_code:raise ValueError("Worker code identity changed before execution")
         result=run_experiment(**config)
         data={'ok':True,'result':result,'worker_pid':os.getpid(),'limits':limits}
     except BaseException as exc:
         data={'ok':False,'error':f'{type(exc).__name__}: {str(exc)[:500]}','worker_pid':os.getpid(),'limits':limits}
+    if os.getppid() != expected_parent:return
     write_new(Path(output),canonical(data).encode())
 
 def validate_execution_identity(run,result=None):
@@ -42,9 +37,10 @@ def validate_execution_identity(run,result=None):
         raise ValueError('Worker result identity differs from approved run')
 
 class Scheduler:
-    def __init__(self,store,max_concurrency=1,max_queue=16,dispatch=True,comparison_verifier=None):
+    def __init__(self,store,max_concurrency=1,max_queue=16,dispatch=True,comparison_verifier=None,trajectory_verifier=None):
         if max_concurrency!=1 or not 1<=max_queue<=16:raise ValueError('v0.1 uses one trusted worker and at most 16 queued tasks')
         self.comparison_verifier = comparison_verifier
+        self.trajectory_verifier = trajectory_verifier
         self.dispatch_targets=None if dispatch else set()
         self.store=store;self.max_queue=max_queue;self.active={};self.lock=threading.RLock();self.closed=False
         self.staging=checked_path(store.root/'staging');self.staging.mkdir(exist_ok=True,mode=0o700)
@@ -100,18 +96,38 @@ class Scheduler:
                 logs=["Approved protocol pinned. Experiment awaiting execution approval."],
             )
 
+    def submit_trajectory(self, config, code_sha256, *, timeout=15):
+        if type(timeout) not in (int,float) or not math.isfinite(timeout) or not 0 < timeout <= 60:
+            raise ValueError('Wall timeout must be (0,60] seconds')
+        with self.lock:
+            if self.closed or not self.trajectory_verifier:
+                raise ValueError('Trajectory scheduler is unavailable')
+            if len(self.store.active_runs()) >= self.max_queue:
+                raise ValueError('Queue budget exhausted')
+            return self.store.create_run(
+                uuid.uuid4().hex, config, kind=RUN_KIND_TRAJECTORY,
+                code_sha256=code_sha256, config_sha256=digest(config),
+                platform_version='0.3.0', timeout=timeout, memory_mb=512, cpu_seconds=5,
+                versions={'platform':'0.3.0', config['model_id']:config['model_version']},
+                environment={'python':platform.python_version(),'os':platform.system(),
+                             'machine':platform.machine()},
+                logs=['Mechanism trajectory pinned; awaiting synthetic execution approval.'])
+
     def _verify_run(self, run, result=None):
-        if run.get("kind") != RUN_KIND:
+        kind = run.get('kind')
+        if kind not in {RUN_KIND, RUN_KIND_TRAJECTORY}:
             validate_execution_identity(run, result)
             return
-        if not self.comparison_verifier:
-            raise ValueError("Comparison source verification unavailable")
-        if (run["code_sha256"] != digest(source_snapshot())
-                or run["config_sha256"] != digest(run["config"])
-                or run["environment"] != {"python": platform.python_version(),
-                                           "os": platform.system(), "machine": platform.machine()}):
-            raise ValueError("Comparison code, input or environment identity changed")
-        self.comparison_verifier(run["config"])
+        verifier = self.trajectory_verifier if kind == RUN_KIND_TRAJECTORY else self.comparison_verifier
+        if not verifier:
+            raise ValueError('Trajectory source verification unavailable' if kind == RUN_KIND_TRAJECTORY
+                             else 'Comparison source verification unavailable')
+        if (run['code_sha256'] != digest(source_snapshot())
+                or run['config_sha256'] != digest(run['config'])
+                or run['environment'] != {'python':platform.python_version(),
+                                         'os':platform.system(),'machine':platform.machine()}):
+            raise ValueError('Worker code, input or environment identity changed')
+        verifier(run['config'])
 
     def approve(self,run_id):
         with self.lock:
@@ -127,13 +143,28 @@ class Scheduler:
 
     def get(self,run_id):return self.store.get_run(run_id)
 
+    @staticmethod
+    def _signal_legacy(process, sig):
+        if not process.is_alive():return
+        try:
+            if os.getpgid(process.pid) == process.pid and os.getsid(process.pid) == process.pid:
+                os.killpg(process.pid, sig)
+            elif sig == signal.SIGKILL:process.kill()
+            else:process.terminate()  # Session not established yet; no computation/descendants.
+        except ProcessLookupError:pass
+
     def _stop(self,run_id):
         active=self.active.pop(run_id,None)
         if active:
             process,_,output=active
-            if process.is_alive():process.terminate()
+            if process.is_alive():
+                if isinstance(process, ComparisonProcess):process.terminate()
+                else:self._signal_legacy(process, signal.SIGTERM)
             process.join(1)
-            if process.is_alive():process.kill();process.join(1)
+            if process.is_alive():
+                if isinstance(process, ComparisonProcess):process.kill()
+                else:self._signal_legacy(process, signal.SIGKILL)
+                process.join(1)
             checked_path(output).unlink(missing_ok=True)
 
     def cancel(self,run_id):
@@ -151,6 +182,7 @@ class Scheduler:
                     self._stop(run_id);self.store.update_run(run_id,status='FAILED',error='Wall timeout exceeded',logs=r['logs']+['Timeout: worker terminated']);continue
                 if not process.is_alive():
                     process.join()
+                    data = None
                     try:
                         if not output.is_file() or output.stat().st_size>32*1024**2:raise ValueError(f'Worker exit {process.exitcode}, missing/oversized output')
                         import json
@@ -161,12 +193,19 @@ class Scheduler:
                         self._verify_run(r, result)
                         if r.get("kind") == RUN_KIND:
                             validate_result(r, result)
+                        elif r.get("kind") == RUN_KIND_TRAJECTORY:
+                            from .trajectories import validate_result as validate_trajectory
+                            validate_trajectory(r, result, replay=True)
                         h = self.store.put(result)
                         self.store.lock_versions(r['versions'])
                         self.store.update_run(run_id,status='COMPLETED',result_hash=h,worker_pid=data['worker_pid'],limits=data['limits'],
                                               logs=r['logs']+result.get('logs',[])+['Completed; content hash verified'])
                     except Exception as exc:
-                        self.store.update_run(run_id,status='FAILED',error=f'{type(exc).__name__}: {str(exc)[:500]}',logs=r['logs']+['Worker failed; error retained'])
+                        receipt = {}
+                        if (isinstance(data,dict) and data.get('worker_pid') == process.pid
+                                and isinstance(data.get('limits'),dict)):
+                            receipt['limits'] = data['limits']
+                        self.store.update_run(run_id,status='FAILED',error=f'{type(exc).__name__}: {str(exc)[:500]}',logs=r['logs']+['Worker failed; error retained'],**receipt)
                     finally:self.active.pop(run_id,None);checked_path(output).unlink(missing_ok=True)
             if self.closed:return
             if not self.active:
@@ -185,6 +224,8 @@ class Scheduler:
                             return
                         # Commit the reservation before the process can read held-out labels.
                         r = self.store.update_run(r["id"], holdout_started_at=time.time())
+                        p = ComparisonProcess(r, output)
+                    elif r.get("kind") == RUN_KIND_TRAJECTORY:
                         p = ComparisonProcess(r, output)
                     else:
                         p = mp.get_context('spawn').Process(

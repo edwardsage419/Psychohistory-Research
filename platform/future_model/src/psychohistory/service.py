@@ -19,9 +19,14 @@ class Service:
     def __init__(self,root,repo,dispatch=True):
         self.store = Store(root)
         self.repo = Path(repo).resolve()
+        from .mechanisms import Mechanisms
         from .workflow import Workflow
         self.workflow = Workflow(self.store, self.repo)
-        self.scheduler = Scheduler(self.store, dispatch=dispatch, comparison_verifier=self.workflow.verify_config)
+        self.mechanisms = Mechanisms(self.store, self.repo)
+        self.scheduler = Scheduler(
+            self.store, dispatch=dispatch, comparison_verifier=self.workflow.verify_config,
+            trajectory_verifier=self.mechanisms.verify_config,
+        )
     def submit(self,request):
         Admission.require(request.permission)
         config=request.model_dump(exclude={'permission'})

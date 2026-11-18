@@ -18,3 +18,38 @@
   .research-lookup{display:block}
   .research-lookup button{margin-top:0}
 }
+
+.mechanism-workflow .section-heading{margin-bottom:11px}
+.mechanism-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.mechanism-grid-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mechanism-fields{border:0;margin:0;padding:0;min-width:0}
+.mechanism-fields textarea{display:block;resize:vertical;width:100%;min-height:90px;padding:11px 12px;
+  background:#fff;color:#203240;border:1px solid #d7e0e6;border-radius:6px;margin:8px 0 15px;
+  font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace}
+.mechanism-fields textarea:focus-visible{outline:3px solid #74b8cf;outline-offset:3px}
+.mechanism-fields input[readonly]{background:#f4f7f8}
+.mechanism-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mechanism-controls:empty{display:none}
+.mechanism-controls .quiet,.mechanism-branch .quiet{margin-left:0}
+.mechanism-verified{font-size:12px;color:#167d6a}
+.mechanism-branch{background:#edf5f7;border:1px solid #d9e9ee;border-radius:7px;padding:14px;margin-bottom:19px;font-size:13px}
+.mechanism-result-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:14px 0}
+.mechanism-result-facts small{display:block;color:#667d89;font-size:11px;margin-bottom:6px}
+.mechanism-result-facts strong{font-size:15px;font-weight:600}
+.mechanism-warnings{background:#fff7e8;border:1px solid #efdfb5;border-radius:7px;padding:9px 14px;margin:8px 0 14px;list-style:none}
+.mechanism-warnings li{color:#7d591f}
+.mechanism-plot{margin:12px 0 19px;padding:12px;border:1px solid #e2e9ed;border-radius:8px;background:#f9fbfb}
+.mechanism-plot canvas{display:block;width:100%;height:auto}
+.mechanism-plot figcaption{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;font-size:12px;color:#576777}
+.mechanism-plot figcaption span span{display:inline-block;width:13px;height:3px;margin-right:5px;vertical-align:middle}
+.mechanism-trajectory-table td,.mechanism-trajectory-table th{padding:10px 9px}
+.mechanism-trajectory-table td{min-width:120px;overflow-wrap:anywhere}
+.mechanism-result .table-wrap+.mechanism-controls{margin-top:12px}
+.mechanism-active-row{background:#eef6f4}
+.mechanism-history-table .text-button{white-space:normal;overflow-wrap:anywhere;text-align:left}
+.mechanism-feedback,.mechanism-compare-result{margin-top:14px}
+@media(max-width:720px){
+  .mechanism-grid,.mechanism-grid-three{grid-template-columns:1fr;gap:0}
+  .mechanism-result-facts{grid-template-columns:1fr;gap:11px}
+  .mechanism-plot{padding:6px}
+}

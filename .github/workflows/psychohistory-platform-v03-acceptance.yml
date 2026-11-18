@@ -1,0 +1,149 @@
+name: Psychohistory Platform v0.3 cross-platform acceptance
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+    paths:
+      - 'platform/future_model/**'
+      - '.github/workflows/psychohistory-platform-v03-acceptance.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: psychohistory-platform-v03-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  acceptance:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.head_ref == 'feat/psychohistory-platform-v0.3'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            system: Linux
+            architecture: x86_64
+          - runner: macos-15
+            system: Darwin
+            architecture: arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+        working-directory: platform/future_model
+    steps:
+      - name: Check out exact Draft PR head
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - name: Verify source and native execution identities
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_SYSTEM: ${{ matrix.system }}
+          EXPECTED_ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(uname -s)" = "$EXPECTED_SYSTEM"
+          test "$(uname -m)" = "$EXPECTED_ARCHITECTURE"
+          git fetch --no-tags origin refs/heads/main:refs/remotes/origin/main
+          # Canonicalize /var and /tmp on macOS before initializing test data roots.
+          TEMP_ROOT="$(cd "$RUNNER_TEMP" && pwd -P)"
+          RECEIPTS="$(mktemp -d "$TEMP_ROOT/psychohistory-v03.XXXXXXXX")"
+          printf 'TMPDIR=%s\nPH_RECEIPTS=%s\n' "$TEMP_ROOT" "$RECEIPTS" >> "$GITHUB_ENV"
+          {
+            uname -a
+            python3.12 -c 'import platform, sqlite3; print(platform.platform(), platform.python_version(), sqlite3.sqlite_version)'
+            node --version
+            npm --version
+            git --version
+            git rev-parse HEAD refs/remotes/origin/main
+            git status --porcelain
+            shasum -a 256 requirements.lock requirements-browser.lock web/package-lock.json \
+              src/psychohistory/{replicator,degroot,trajectories,worker_lifecycle,storage}.py
+          } | tee "$RECEIPTS/platform.txt"
+      - name: Install Python and Node from locks
+        run: |
+          set -o pipefail
+          bash scripts/install.sh 2>&1 | tee "$PH_RECEIPTS/install.txt"
+      - name: Run complete pytest and TypeScript production build
+        run: |
+          set -o pipefail
+          bash scripts/verify.sh 2>&1 | tee "$PH_RECEIPTS/verify.txt"
+      - name: Recompute scientific guards in three interpreter modes
+        run: |
+          set -euxo pipefail
+          PYTHONPATH=src .venv/bin/python -S scripts/verify_v03_guards.py > "$PH_RECEIPTS/guards-normal.json"
+          PYTHONPATH=src .venv/bin/python -O -S scripts/verify_v03_guards.py > "$PH_RECEIPTS/guards-flag.json"
+          PYTHONPATH=src PYTHONOPTIMIZE=1 .venv/bin/python -S scripts/verify_v03_guards.py > "$PH_RECEIPTS/guards-env.json"
+      - name: Exercise CLI with locked trajectories and v0.1, v0.2 and v0.3 restores
+        run: |
+          set -euxo pipefail
+          PYTHONPATH=src .venv/bin/python scripts/verify_v03_cli.py --repo "$GITHUB_WORKSPACE" --report "$PH_RECEIPTS/cli.json"
+      - name: Install Chromium from the locked Playwright distribution
+        run: |
+          set -euo pipefail
+          .venv/bin/python -m pip install --index-url https://pypi.org/simple --only-binary=:all: -r requirements-browser.lock
+          if [ "$(uname -s)" = Linux ]; then
+            .venv/bin/python -m playwright install --with-deps chromium
+          else
+            .venv/bin/python -m playwright install chromium
+          fi
+          .venv/bin/python -c 'from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); print(b.version); b.close(); p.stop()' | tee "$PH_RECEIPTS/chromium.txt"
+      - name: Test v0.1, v0.2 and v0.3 Chromium workflows against loopback API
+        run: |
+          set -euo pipefail
+          export PH_TEST_DATA="$(mktemp -d "$TMPDIR/psychohistory-web.XXXXXXXX")"
+          export PH_TEST_URL=http://127.0.0.1:8765
+          export PH_CHROMIUM_EXECUTABLE="$(.venv/bin/python -c 'from playwright.sync_api import sync_playwright; p=sync_playwright().start(); print(p.chromium.executable_path); p.stop()')"
+          bash scripts/run.sh --repo "$GITHUB_WORKSPACE" --data "$PH_TEST_DATA" serve --port 8765 > "$PH_RECEIPTS/server.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true; wait "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in {1..40}; do
+            if curl --silent --fail "$PH_TEST_URL/api/v1/health" > /dev/null; then break; fi
+            sleep 1
+          done
+          set -x
+          curl --fail --show-error "$PH_TEST_URL/api/v1/health"
+          PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v01.json" .venv/bin/python scripts/browser_check.py
+          PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v02.json" .venv/bin/python scripts/browser_v02.py
+          PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v03.json" .venv/bin/python scripts/browser_v03.py
+          test -z "$(git status --porcelain)"
+      - name: Preserve text receipts in GitHub Checks
+        if: always() && env.PH_RECEIPTS != ''
+        run: |
+          python3.12 - <<'PY'
+          import base64, gzip, hashlib, json, os
+          from pathlib import Path
+
+          path = Path(os.environ['PH_RECEIPTS'])
+          files = {p.name: p.read_text(encoding='utf-8') for p in sorted(path.iterdir())
+                   if p.suffix in {'.json', '.txt', '.log'}}
+          raw = json.dumps(files, ensure_ascii=True, sort_keys=True).encode()
+          compressed = base64.b64encode(gzip.compress(raw, mtime=0)).decode()
+          size = 4000
+          chunks = [compressed[i:i + size] for i in range(0, len(compressed), size)]
+          print(f'::notice title=v03 receipts SHA256::{hashlib.sha256(raw).hexdigest()}')
+          for index, chunk in enumerate(chunks, 1):
+              print(f'::notice title=v03 receipts {index:02}/{len(chunks):02}::{chunk}')
+          PY
+      - name: Upload verification logs and Chromium captures
+        if: always() && env.PH_RECEIPTS != ''
+        uses: actions/upload-artifact@v5
+        with:
+          name: v03-${{ matrix.runner }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.PH_RECEIPTS }}
+          retention-days: 7
