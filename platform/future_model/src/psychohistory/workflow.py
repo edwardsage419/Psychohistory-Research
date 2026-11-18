@@ -26,17 +26,18 @@ class Workflow:
             self.store.audit({"event": "SOURCE_REGISTRATION_REJECTED", "research_id": research_id,
                               "reason": str(error)})
             raise
-        previous = self.store.research_records("sources")
-        other_version = any(row["research_id"] == research_id and row["source_id"] != record["source_id"]
-                            for row in previous)
-        is_new = self.store.register_research_record("sources", record["source_id"], record)
-        warnings = list(record["warnings"])
-        if other_version:
-            warnings.append("OTHER_SOURCE_VERSION_REGISTERED")
-        if not is_new:
-            warnings.append("DUPLICATE_SOURCE_ID")
-        self.store.audit({"event": "SOURCE_REGISTERED" if is_new else "SOURCE_DUPLICATE",
-                          "source_id": record["source_id"], "warnings": warnings})
+        with self.store.snapshot_lock():
+            previous = self.store.research_records("sources")
+            other_version = any(row["research_id"] == research_id and row["source_id"] != record["source_id"]
+                                for row in previous)
+            is_new = self.store.register_research_record("sources", record["source_id"], record)
+            warnings = list(record["warnings"])
+            if other_version:
+                warnings.append("OTHER_SOURCE_VERSION_REGISTERED")
+            if not is_new:
+                warnings.append("DUPLICATE_SOURCE_ID")
+            self.store.audit({"event": "SOURCE_REGISTERED" if is_new else "SOURCE_DUPLICATE",
+                              "source_id": record["source_id"], "warnings": warnings})
         return {**record, "warnings": warnings}
 
 

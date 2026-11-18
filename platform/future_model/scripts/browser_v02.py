@@ -143,6 +143,14 @@ def run():
             assert denied.status == 403, denied.status
 
         assert not errors, errors
+        artifact_path = os.environ.get('PH_BROWSER_ARTIFACT')
+        if artifact_path:
+            response = page.request.get(f'{url}/api/v2/experiments/{run_id}', headers=headers)
+            assert response.ok, response.status
+            Path(artifact_path).write_text(json.dumps({
+                'artifact': artifact_record,
+                'run': response.json(),
+            }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         page.evaluate('window.scrollTo(0, 0)')
         page.screenshot(path=str(report.with_suffix('.png')), full_page=True)
         report.write_text(json.dumps({

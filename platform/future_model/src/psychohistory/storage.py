@@ -1,5 +1,6 @@
 """SQLite metadata, immutable objects and verified consistent disaster recovery."""
 from contextlib import contextmanager
+import fcntl
 import hashlib
 import json
 import os
@@ -73,6 +74,16 @@ class Store:
             fd=os.open(path,os.O_WRONLY|os.O_APPEND|os.O_CREAT|getattr(os,'O_NOFOLLOW',0),0o600)
             with os.fdopen(fd,'ab') as f:f.write(raw);f.flush();os.fsync(f.fileno())
 
+    @contextmanager
+    def snapshot_lock(self):
+        """Keep backup snapshots and audited source registration mutually exclusive."""
+        with self.lock:
+            path = checked_path(self.root / 'backup.lock')
+            fd = os.open(path, os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600)
+            with os.fdopen(fd, 'rb') as lock:
+                fcntl.flock(lock, fcntl.LOCK_EX)
+                yield
+
     def schema_version(self):
         with self.db() as db:return db.execute('PRAGMA user_version').fetchone()[0]
 
@@ -130,9 +141,19 @@ class Store:
         if len(raw)>32*1024*1024:raise ValueError('Artifact budget exceeded')
         h=digest(raw);p=checked_path(self.root/'objects'/f'{h}.json')
         with self.lock:
-            if p.exists():
-                if digest(p.read_bytes())!=h:raise ValueError('Existing immutable object corrupted')
-            else:write_new(p,raw)
+            if not p.exists():
+                # A killed writer can leave staging bytes, which backup never treats as objects.
+                staging = checked_path(self.root / 'artifact-staging')
+                staging.mkdir(exist_ok=True, mode=0o700)
+                with tempfile.TemporaryDirectory(dir=staging) as temporary:
+                    pending = Path(temporary) / 'payload'
+                    write_new(pending, raw)
+                    try:
+                        os.link(pending, p, follow_symlinks=False)
+                    except FileExistsError:
+                        pass  # Verify the winning writer's object below.
+            if digest(checked_path(p).read_bytes()) != h:
+                raise ValueError('Existing immutable object corrupted')
         return h
 
     def get(self,h):
@@ -190,7 +211,7 @@ class Store:
     def backup(self,destination):
         dest=checked_path(destination)
         if dest.exists():raise ValueError('Backup destination must be new')
-        with self.lock:
+        with self.snapshot_lock():
             if any(x['status'] in {'APPROVED','RUNNING'} for x in self.active_runs()):
                 self.audit({'backup':'FAILED','reason':'active tasks'})
                 raise ValueError('Backup requires quiescent scheduler')

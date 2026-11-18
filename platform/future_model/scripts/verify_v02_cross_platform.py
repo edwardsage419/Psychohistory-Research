@@ -6,6 +6,7 @@ import json
 import math
 import platform
 import sqlite3
+import subprocess
 from fractions import Fraction
 from itertools import combinations
 from pathlib import Path
@@ -197,7 +198,54 @@ def verify(receipts):
                       if k not in ('exact_trajectory', 'scientific_result')}, sort_keys=True))
 
 
+def verify_worker(receipts):
+    native = read(receipts / 'cross-platform.json')['scientific_result']
+    record = read(receipts / 'browser-v02-worker.json')
+    completed = record['run']
+    artifact = record['artifact']
+    output = artifact['result']
+    identity = digest(canonical(output).encode())
+    require(identity == artifact['artifact_sha256'] == completed['result_hash'],
+            'Browser, artifact bytes and terminal run disagree')
+    require(completed['status'] == 'COMPLETED' and completed['holdout_started_at'] is not None,
+            'Browser did not complete a reserved holdout')
+    require(completed['code_sha256'] == output['code_sha256']
+            and completed['config'] == output['input'], 'Worker provenance differs from its run')
+    require(native == {key: output[key] for key in native},
+            'Sealed worker differs from independent native comparison')
+    linux = read(LINUX / 'browser-synthetic-result.json')
+    different_metadata = sorted(key for key in linux if key not in native and linux[key] != output[key])
+    require(set(different_metadata) <= {'code_sha256', 'protocol_id', 'input'},
+            'Unexpected worker identity difference from Linux')
+    require(linux['source_id'] == output['source_id']
+            and linux['input']['spec'] == output['input']['spec'],
+            'Frozen input or source identity changed')
+    limits = completed['limits']
+    if platform.system() == 'Darwin':
+        require(all(limits[name] == 'NOT_ENFORCED' for name in ('cpu', 'memory', 'parent_death')),
+                'macOS resource limit receipt differs from implemented guarantees')
+    require(limits['isolated_python'] is True, 'Comparison worker was not isolated')
+    summary = {
+        'status': 'PASS',
+        'tested_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=PROJECT, text=True).strip(),
+        'native_worker_artifact_sha256': identity,
+        'archived_linux_worker_artifact_sha256': digest(canonical(linux).encode()),
+        'native_worker_code_sha256': output['code_sha256'],
+        'archived_linux_worker_code_sha256': linux['code_sha256'],
+        'different_identity_fields': different_metadata,
+        'native_limits': limits,
+        'environment': completed['environment'],
+    }
+    (receipts / 'worker-parity.json').write_text(json.dumps(summary, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps(summary, sort_keys=True))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('receipts', type=Path)
-    verify(parser.parse_args().receipts)
+    parser.add_argument('--worker', action='store_true')
+    args = parser.parse_args()
+    if args.worker:
+        verify_worker(args.receipts)
+    else:
+        verify(args.receipts)
