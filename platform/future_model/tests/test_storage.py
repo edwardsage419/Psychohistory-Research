@@ -91,3 +91,75 @@ def test_registry_coexists_versions_and_frozen_state_roundtrip():
     raw=old.serialize_state({'states':[0,1]})
     assert old.restore_state(raw)=={'states':[0,1]}
     with pytest.raises(ValueError):new.restore_state(raw)
+
+
+def test_failed_object_flush_leaves_no_partial_publication(tmp_path, monkeypatch):
+    import errno
+    from psychohistory import storage
+
+    store = storage.Store(tmp_path / 'data')
+    payload = {'synthetic': True}
+    expected = storage.digest(storage.canonical(payload).encode())
+    path = store.root / 'objects' / f'{expected}.json'
+
+    def fail_flush(fd):
+        assert not path.exists(), 'Artifact was published before the file was flushed'
+        raise OSError(errno.EIO, 'injected artifact flush failure')
+
+    with monkeypatch.context() as patch:
+        patch.setattr(storage.os, 'fsync', fail_flush)
+        with pytest.raises(OSError, match='injected artifact flush failure'):
+            store.put(payload)
+    assert not path.exists()
+    assert store.put(payload) == expected
+    assert store.get(expected) == payload
+    assert store.backup(tmp_path / 'backup')['files'][f'objects/{expected}.json'] == expected
+
+
+def test_backup_source_registration_snapshot_is_consistent(tmp_path, monkeypatch):
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Event
+
+    from psychohistory import sources, storage
+    from psychohistory.workflow import Workflow
+
+    origin = storage.Store(tmp_path / 'data')
+    second_connection = storage.Store(origin.root)
+    repo = Path(__file__).resolve().parents[3]
+    registration_started = Event()
+    capture = sources.capture
+    connect = sqlite3.connect
+
+    def observe_capture(*args, **kwargs):
+        record = capture(*args, **kwargs)
+        registration_started.set()
+        return record
+
+    class SnapshotProbe(sqlite3.Connection):
+        def backup(self, target, **kwargs):
+            super().backup(target, **kwargs)
+            filling = pool.submit(Workflow(second_connection, repo).register_source, 'R123')
+            future.append(filling)
+            assert registration_started.wait(timeout=10)
+            # With the snapshot locked the other Store can only commit after backup.
+            from concurrent.futures import TimeoutError
+            try:
+                filling.result(timeout=0.3)
+            except TimeoutError:
+                pass
+
+    def connect_with_probe(database, *args, **kwargs):
+        if database == origin.root / 'metadata.sqlite':
+            kwargs['factory'] = SnapshotProbe
+        return connect(database, *args, **kwargs)
+
+    future = []
+    monkeypatch.setattr(sources, 'capture', observe_capture)
+    monkeypatch.setattr(sqlite3, 'connect', connect_with_probe)
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        origin.backup(tmp_path / 'backup')
+        registered = future[0].result(timeout=10)
+    restored = storage.restore_backup(tmp_path / 'backup', tmp_path / 'restored')
+    assert restored.research_records('sources') == []
+    assert registered['source_id'] not in (restored.root / 'audit.jsonl').read_text()
+    assert origin.research_record('sources', registered['source_id'])['research_id'] == 'R123'

@@ -1,0 +1,102 @@
+{
+  "baseline": "7ea6eab94433e3669b6f492d802bb35316dc90d6",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "archive",
+        "7ea6eab94433e3669b6f492d802bb35316dc90d6",
+        "platform/future_model/src"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "b654bb0241a6825c42e134d2109aa64931e07f1fd03d0d8dc1b131bedff31807"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-legacy-u4295638/legacy-data",
+        "demo",
+        "--seed",
+        "123",
+        "--rounds",
+        "6",
+        "--population",
+        "16"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "10280222a7529d22a77e9c7ff02096e8ce579f79e64976aae7289dc91c802c01"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-legacy-u4295638/legacy-data",
+        "backup",
+        "/tmp/ph-v02-legacy-u4295638/legacy-backup"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "dc5848329e2e2a25f7aa6a3959a032125b7efcee2c071c451992230862ba5807"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-legacy-u4295638/restored-with-v02",
+        "restore",
+        "/tmp/ph-v02-legacy-u4295638/legacy-backup"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "79595da72c2613c1d6b197628d746ceafbd5087a83d0b14b099d98cb17c7a5db"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-legacy-u4295638/restored-with-v02",
+        "result",
+        "67ed4c70280f428489a3f98ca8188579"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "0ddad1edd62e5ae9adc3f0ce53df8e752f579c17a05623408257c72e41e3e8dd"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-legacy-u4295638/restored-with-v02",
+        "runs"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "6896117f1d08422e25793a1e9f59a80c3f4cf735928699f9d2cb0bf4c7fbbd99"
+    }
+  ],
+  "status": "PASS",
+  "v01_artifact_sha256": "2310400d7dd7f3de6df17df8a09392bb80253e3de008d59584953a473d286f8e"
+}

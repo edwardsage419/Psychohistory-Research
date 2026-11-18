@@ -1,0 +1,107 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+____________ test_failed_object_flush_leaves_no_partial_publication ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-44/test_failed_object_flush_leave0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f44771f8920>
+
+    def test_failed_object_flush_leaves_no_partial_publication(tmp_path, monkeypatch):
+        import errno
+        from psychohistory import storage
+
+        store = storage.Store(tmp_path / 'data')
+        payload = {'synthetic': True}
+        expected = storage.digest(storage.canonical(payload).encode())
+        path = store.root / 'objects' / f'{expected}.json'
+
+        def fail_flush(fd):
+            assert not path.exists(), 'Artifact was published before the file was flushed'
+            raise OSError(errno.EIO, 'injected artifact flush failure')
+
+        with monkeypatch.context() as patch:
+            patch.setattr(storage.os, 'fsync', fail_flush)
+            with pytest.raises(OSError, match='injected artifact flush failure'):
+>               store.put(payload)
+
+tests/test_storage.py:112:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/tmp/psychohistory-v02-final/checkout/platform/future_model/src/psychohistory/storage.py:135: in put
+    else:write_new(p,raw)
+         ^^^^^^^^^^^^^^^^
+/tmp/psychohistory-v02-final/checkout/platform/future_model/src/psychohistory/storage.py:33: in write_new
+    f.write(raw);f.flush();os.fsync(f.fileno())
+                           ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+fd = 11
+
+    def fail_flush(fd):
+>       assert not path.exists(), 'Artifact was published before the file was flushed'
+E       AssertionError: Artifact was published before the file was flushed
+E       assert not True
+E        +  where True = exists()
+E        +    where exists = PosixPath('/tmp/pytest-of-agent/pytest-44/test_failed_object_flush_leave0/data/objects/a8198524f58e72b56283ab71ebddada22840f108b46ef7165bb3fca9919c5558.json').exists
+
+tests/test_storage.py:106: AssertionError
+____________ test_backup_source_registration_snapshot_is_consistent ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-44/test_backup_source_registratio0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f44771f3d40>
+
+    def test_backup_source_registration_snapshot_is_consistent(tmp_path, monkeypatch):
+        from concurrent.futures import ThreadPoolExecutor
+        from threading import Event
+
+        from psychohistory import sources, storage
+        from psychohistory.workflow import Workflow
+
+        origin = storage.Store(tmp_path / 'data')
+        second_connection = storage.Store(origin.root)
+        repo = Path(__file__).resolve().parents[3]
+        registration_started = Event()
+        capture = sources.capture
+        connect = sqlite3.connect
+
+        def observe_capture(*args, **kwargs):
+            record = capture(*args, **kwargs)
+            registration_started.set()
+            return record
+
+        class SnapshotProbe(sqlite3.Connection):
+            def backup(self, target, **kwargs):
+                super().backup(target, **kwargs)
+                filling = pool.submit(Workflow(second_connection, repo).register_source, 'R123')
+                future.append(filling)
+                assert registration_started.wait(timeout=10)
+                # With the snapshot locked the other Store can only commit after backup.
+                from concurrent.futures import TimeoutError
+                try:
+                    filling.result(timeout=0.3)
+                except TimeoutError:
+                    pass
+
+        def connect_with_probe(database, *args, **kwargs):
+            if database == origin.root / 'metadata.sqlite':
+                kwargs['factory'] = SnapshotProbe
+            return connect(database, *args, **kwargs)
+
+        future = []
+        monkeypatch.setattr(sources, 'capture', observe_capture)
+        monkeypatch.setattr(sqlite3, 'connect', connect_with_probe)
+        with ThreadPoolExecutor(max_workers=1) as pool:
+            origin.backup(tmp_path / 'backup')
+            registered = future[0].result(timeout=10)
+        restored = storage.restore_backup(tmp_path / 'backup', tmp_path / 'restored')
+        assert restored.research_records('sources') == []
+>       assert registered['source_id'] not in (restored.root / 'audit.jsonl').read_text()
+E       assert '97b6fc64315...f82a5ee57514' not in '{"at":17949...OMPLETED"}\n'
+E
+E         '97b6fc6431517a40d2...edca09bf82a5ee57514' is contained here:
+E           urce_id":"97b6fc6431517a40d222ed6f0e67e456c0f1a21349d59edca09bf82a5ee57514","warnings":[]}
+E           {"at":1794970820.9047167,"backup_manifest_sha256":"ebdef11285786b9f42b078580b4d782bde0557da0b86b33f1a224922fee9153d","restore":"COMPLETED"}
+
+tests/test_storage.py:164: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_storage.py::test_failed_object_flush_leaves_no_partial_publication
+FAILED tests/test_storage.py::test_backup_source_registration_snapshot_is_consistent
+2 failed, 6 deselected in 0.18s

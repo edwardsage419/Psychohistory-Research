@@ -1,0 +1,134 @@
+name: Psychohistory Platform v0.2 macOS ARM64 acceptance
+
+on:
+  pull_request:
+    types: [synchronize]
+    branches: [main]
+    paths:
+      - 'platform/future_model/**'
+      - '.github/workflows/psychohistory-platform-v02-macos.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: psychohistory-platform-v02-macos-pr${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  macos-arm64:
+    if: >-
+      github.event.pull_request.number == 53 &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.head_ref == 'feat/psychohistory-platform-v0.2'
+    runs-on: macos-15
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+        working-directory: platform/future_model
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Record native platform and checkout provenance
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          test "$(uname -s)" = Darwin
+          test "$(uname -m)" = arm64
+          git fetch --no-tags origin refs/heads/main:refs/remotes/origin/main refs/pull/44/head:refs/remotes/origin/v02-candidate-44
+          CANONICAL_TEMP="$(cd "$RUNNER_TEMP" && pwd -P)"
+          RECEIPTS="$(mktemp -d "$CANONICAL_TEMP/psychohistory-v02.XXXXXXXX")"
+          printf 'TMPDIR=%s\nPH_RECEIPTS=%s\n' "$CANONICAL_TEMP" "$RECEIPTS" >> "$GITHUB_ENV"
+          {
+            sw_vers
+            uname -a
+            sysctl -n machdep.cpu.brand_string hw.ncpu hw.memsize
+            df -h .
+            python3.12 -c 'import platform, sqlite3; print(platform.python_version(), sqlite3.sqlite_version)'
+            node --version
+            npm --version
+            git --version
+            git rev-parse HEAD refs/remotes/origin/main refs/remotes/origin/v02-candidate-44
+            shasum -a 256 requirements.lock requirements-browser.lock web/package-lock.json src/psychohistory/{degroot,prediction,storage,workflow}.py
+          } | tee "$RECEIPTS/platform.txt"
+      - name: Install locked dependencies
+        run: set -o pipefail; bash scripts/install.sh 2>&1 | tee "$PH_RECEIPTS/install.txt"
+      - name: Run complete pytest, strict TypeScript, Vite and stdlib verification
+        run: set -o pipefail; bash scripts/verify.sh 2>&1 | tee "$PH_RECEIPTS/verify.txt"
+      - name: Execute scientific checks and CLI and restore both versions
+        run: |
+          set -euxo pipefail
+          PYTHONPATH=src .venv/bin/python -S scripts/verify_v02_optimized.py > "$PH_RECEIPTS/guards-normal.json"
+          PYTHONPATH=src .venv/bin/python -O -S scripts/verify_v02_optimized.py > "$PH_RECEIPTS/guards-flag.json"
+          PYTHONPATH=src PYTHONOPTIMIZE=1 .venv/bin/python -S scripts/verify_v02_optimized.py > "$PH_RECEIPTS/guards-env.json"
+          .venv/bin/python scripts/verify_v02_cli.py --repo "$GITHUB_WORKSPACE" --report "$PH_RECEIPTS/cli.json"
+          PYTHONOPTIMIZE=1 .venv/bin/python scripts/verify_v02_cli.py --repo "$GITHUB_WORKSPACE" --report "$PH_RECEIPTS/cli-optimize.json"
+          .venv/bin/python scripts/verify_v02_legacy.py --repo "$GITHUB_WORKSPACE" --baseline 7ea6eab94433e3669b6f492d802bb35316dc90d6 --report "$PH_RECEIPTS/old-backup.json"
+          PYTHONPATH=src .venv/bin/python -S scripts/verify_v02_cross_platform.py "$PH_RECEIPTS"
+      - name: Install locked Playwright and native Chromium
+        run: |
+          set -euxo pipefail
+          .venv/bin/python -m pip install --index-url https://pypi.org/simple --only-binary=:all: -r requirements-browser.lock
+          .venv/bin/python -m playwright install chromium
+          .venv/bin/python -c 'from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); print("Chromium", b.version); b.close(); p.stop()' | tee "$PH_RECEIPTS/chromium.txt"
+      - name: Exercise native loopback API and both Chinese browser workflows
+        timeout-minutes: 8
+        run: |
+          set -eo pipefail
+          export PH_TEST_DATA="$(mktemp -d "$TMPDIR/psychohistory-web.XXXXXXXX")"
+          export PH_TEST_URL=http://127.0.0.1:8765
+          bash scripts/run.sh --repo "$GITHUB_WORKSPACE" --data "$PH_TEST_DATA" serve --port 8765 > "$PH_RECEIPTS/server.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true; wait "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in {1..40}; do
+            if curl --silent --fail "$PH_TEST_URL/api/v1/health" > /dev/null; then break; fi
+            sleep 1
+          done
+          set -x
+          curl --show-error --fail "$PH_TEST_URL/api/v1/health"
+          PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v02.json" PH_TEST_CANDIDATE_ID=R123 \
+            PH_BROWSER_ARTIFACT="$PH_RECEIPTS/browser-v02-worker.json" \
+            PH_TEST_CANDIDATE_COMMIT=d80739906b7d0134634eafa2f3362e93150f2ec3 .venv/bin/python scripts/browser_v02.py
+          PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v01.json" .venv/bin/python scripts/browser_check.py
+          PYTHONPATH=src .venv/bin/python -S scripts/verify_v02_cross_platform.py "$PH_RECEIPTS" --worker
+          git status --porcelain
+          test -z "$(git status --porcelain)"
+      - name: Expose text receipts through GitHub Checks API
+        if: always() && env.PH_RECEIPTS != ''
+        run: |
+          python3.12 - <<'PY'
+          import base64, gzip, hashlib, json, os
+          from pathlib import Path
+
+          root = Path(os.environ['PH_RECEIPTS'])
+          files = {p.name: p.read_text(encoding='utf-8') for p in sorted(root.iterdir())
+                   if p.suffix in {'.json', '.txt', '.log'}}
+          raw = json.dumps(files, ensure_ascii=True, sort_keys=True).encode()
+          encoded = base64.b64encode(gzip.compress(raw, mtime=0)).decode()
+          chunks = [encoded[i:i + 4000] for i in range(0, len(encoded), 4000)]
+          print(f'::notice title=Native receipts SHA256::{hashlib.sha256(raw).hexdigest()}')
+          for index, chunk in enumerate(chunks, 1):
+              print(f'::notice title=Native receipts {index:02d}/{len(chunks):02d}::{chunk}')
+          PY
+      - name: Preserve verification receipts and first failure evidence
+        if: always() && env.PH_RECEIPTS != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: psychohistory-v02-macos-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.PH_RECEIPTS }}
+          retention-days: 7

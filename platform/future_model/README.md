@@ -57,3 +57,7 @@ API v1：`GET /health`（仅公开健康状态）、`GET /models`、`GET/POST /r
 R073、PESEN v0.1 及原冻结协议不变；没有全库分类、原创熔炼、真人社会预测或个人决策 App。`UNKNOWN` 保持未知，不强行转成概率；区间、模型分歧不自动平均。独立进程仅隔离受信任内置插件，**不是恶意代码安全沙箱**。
 
 详见 [契约](docs/CONTRACTS.md)、[科学准入/安全](docs/SECURITY.md)、[版本与迁移](docs/VERSIONING.md)、[原始交接规范](docs/OWNER_SPEC.md)。当前用户任务的明确开发/分支/推送/PR授权优先于附件中历史“待批准”状态。合并、公开部署、费用调整仍需另行授权。
+
+## v0.2 研究工作流
+
+使用 [v0.2 操作指南](docs/V02_WORKFLOW.md) 登记来源、批准协议、运行 DeGroot 合成比较并核验历史结果。数学与评价口径见 [数学说明](docs/MATHEMATICS_V02.md)。

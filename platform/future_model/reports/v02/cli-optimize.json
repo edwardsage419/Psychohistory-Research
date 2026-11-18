@@ -1,0 +1,341 @@
+{
+  "status": "PASS",
+  "artifact_sha256": "c0d83967b445f68b790e14bae9e1f60014003d8d98bdaec3be7452671e548b08",
+  "protocol_id": "079bcb849bad2645590f9719ef33bbfb8ff9bf4c232420945b99ecd1ad817316",
+  "metrics": {
+    "r123-degroot": {
+      "brier": 0.2772395833333333,
+      "log_loss": 0.7608675063755046
+    },
+    "train-prevalence": {
+      "brier": 0.248046875,
+      "log_loss": 0.6892479916421119
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "register",
+        "R123"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "889a00e268df170b5d19194d8ff98e71d2b75f54477be034a4270e7d882a429f"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "verify",
+        "97b6fc6431517a40d222ed6f0e67e456c0f1a21349d59edca09bf82a5ee57514"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "889a00e268df170b5d19194d8ff98e71d2b75f54477be034a4270e7d882a429f"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "register",
+        "R132"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "7dcb24f0641390e9c600d321120284394df1c16b99596793420e4e3183c37d99"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "verify",
+        "720d7e7ed6b6cb66b57b2a94bb785484e516638f8a797111f672f6be4e39e27f"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "7dcb24f0641390e9c600d321120284394df1c16b99596793420e4e3183c37d99"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "register",
+        "R233"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "74711f27c1dff790d0e33af1e66555960cf28e21f209cd2719fac794e7fa5574"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "verify",
+        "cab5b6587a2e68be84c76d68dc7cd630298de7caee37c7f494f545318f410292"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "74711f27c1dff790d0e33af1e66555960cf28e21f209cd2719fac794e7fa5574"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "protocol",
+        "97b6fc6431517a40d222ed6f0e67e456c0f1a21349d59edca09bf82a5ee57514",
+        "--seed",
+        "829"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "63dfe646a2593deb8df315006bd3986bd877699b11fab13345e09a24ef243bfa"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "submit",
+        "079bcb849bad2645590f9719ef33bbfb8ff9bf4c232420945b99ecd1ad817316"
+      ],
+      "exit": 1,
+      "stderr": "{\"status\": \"FAILED\", \"error\": \"Approve the immutable protocol before execution\"}\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "approve-protocol",
+        "079bcb849bad2645590f9719ef33bbfb8ff9bf4c232420945b99ecd1ad817316"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "b30cc758379d8861c25c95bcbf44a5a40bfd01cd3bea8944cfa6dfd601b97035"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "submit",
+        "079bcb849bad2645590f9719ef33bbfb8ff9bf4c232420945b99ecd1ad817316"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "20b119572e0209e19b908a5815791a9a30247f420f6e527bad6be1a50e10a51b"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "cancel",
+        "ac05b8ddd38c47c381de130b7c847684"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "bf4a442c1e8b48b7ccf441ae688d6d169ce514bc31381a3f0c7cbc7ebf69f834"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "retry",
+        "ac05b8ddd38c47c381de130b7c847684"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "bfaa593ceba3ef4f47b0a0d80d664793fba429500d4800037251eaf7e4490a7e"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "approve",
+        "4df277b3732f415880d8386fb4abdca8"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "10924737602b77f205d077e862b3ea5da1044d2c1167c5d4e23141c3e2b238a8"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "result",
+        "4df277b3732f415880d8386fb4abdca8"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "1070ef7a8347a1bd2bb5e85a2345caacb1233eb976f0fce2316c3146947136ff"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "research",
+        "submit",
+        "079bcb849bad2645590f9719ef33bbfb8ff9bf4c232420945b99ecd1ad817316"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "10924737602b77f205d077e862b3ea5da1044d2c1167c5d4e23141c3e2b238a8"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/data",
+        "backup",
+        "/tmp/ph-v02-cli-co2mss8_/backup"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "7b4477412ef7af85d8926e5f3177c4017c5882d2ee99a3a2caf836ec9a528474"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/restored",
+        "restore",
+        "/tmp/ph-v02-cli-co2mss8_/backup"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "bcba2a1b9c6c7c74770b46541e102fa3afcbc0ff6b25ff8e056b2e00da7ef981"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/restored",
+        "research",
+        "result",
+        "4df277b3732f415880d8386fb4abdca8"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "1070ef7a8347a1bd2bb5e85a2345caacb1233eb976f0fce2316c3146947136ff"
+    },
+    {
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/ph-v02-cli-co2mss8_/restored",
+        "research",
+        "submit",
+        "079bcb849bad2645590f9719ef33bbfb8ff9bf4c232420945b99ecd1ad817316"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout_sha256": "10924737602b77f205d077e862b3ea5da1044d2c1167c5d4e23141c3e2b238a8"
+    }
+  ],
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+}
