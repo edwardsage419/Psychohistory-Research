@@ -26,7 +26,7 @@ export type Config = {
   branch_from: string | null;
 };
 
-type Point = { time: string; values: (string | number)[] };
+type Point = { time: string; values: (string | number)[]; exact_values?: string[] };
 type NumericValue = string | number;
 type Diagnostic = {
   code: string;
@@ -76,8 +76,10 @@ const pageSize = 25;
 function plottedNumber(value: string | number) {
   if (typeof value === 'number' || !value.includes('/')) return Number(value);
   const [numerator, denominator] = value.split('/');
-  const ratio = Number(numerator) / Number(denominator);
-  if (Number.isFinite(ratio)) return ratio;
+  const numericNumerator = Number(numerator), numericDenominator = Number(denominator);
+  if (Number.isFinite(numericNumerator) && Number.isFinite(numericDenominator)) {
+    return numericNumerator / numericDenominator;
+  }
   // Exact Eq. 3 can produce fractions larger than the float range.
   const digits = numerator.replace(/^-/, '');
   const significant = (text: string) => Number(`${text[0]}.${text.slice(1, 16)}`);
@@ -154,7 +156,8 @@ function TrajectoryTable({ data, labels, timeKind }: { data: Point[]; labels: st
         <thead><tr><th>{timeLabel(timeKind)}</th>{labels.map(label => <th key={label}>{label}</th>)}</tr></thead>
         <tbody>{data.slice(page * pageSize, (page + 1) * pageSize).map(point => <tr key={point.time}>
           <th scope="row"><code>{point.time}</code></th>
-          {point.values.map((value, column) => <td key={column}><code>{String(value)}</code></td>)}
+          {(point.exact_values ?? point.values).map((value, column) =>
+            <td key={column}><code>{String(value)}</code></td>)}
         </tr>)}</tbody>
       </table>
     </div>

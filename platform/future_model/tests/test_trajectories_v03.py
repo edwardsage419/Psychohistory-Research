@@ -112,6 +112,7 @@ def test_publication_rejects_forged_checkpoint_and_interior_trajectory():
 
     altered = deepcopy(complete)
     altered['trajectory'][1]['values'] = [1, 0]
+    altered['trajectory'][1]['exact_values'] = ['1', '0']
     with pytest.raises(ValueError, match='replay'):
         trajectories.validate_result(run, altered, replay=True)
     with pytest.raises(ValueError, match='diagnostics'):
@@ -132,7 +133,7 @@ def test_comparison_rejects_distinct_exact_origins_with_equal_plot_values():
         config = {'model_id': 'r132-replicator', 'model_version': '1.0.0', 'source_id': 'a' * 64,
                   'source': {}, 'parameters': parameters, 'start': None, 'branch_from': None}
         records.append({**compute(config), 'input': config})
-    assert records[0]['trajectory'][0] == records[1]['trajectory'][0]
+    assert records[0]['trajectory'][0]['values'] == records[1]['trajectory'][0]['values']
     with pytest.raises(ValueError, match='exact initial state'):
         compare(*records, 'trajectory')
     branches = []
@@ -140,6 +141,22 @@ def test_comparison_rejects_distinct_exact_origins_with_equal_plot_values():
         checkpoint = {'state': record['state'], 'snapshot_hash': record['snapshot']['content_hash']}
         config = {**record['input'], 'start': checkpoint, 'branch_from': 'a' * 32}
         branches.append({**compute(config), 'input': config})
-    assert branches[0]['trajectory'][0] == branches[1]['trajectory'][0]
+    assert branches[0]['trajectory'][0]['values'] == branches[1]['trajectory'][0]['values']
     with pytest.raises(ValueError, match='exact initial state'):
         compare(*branches, 'trajectory')
+
+
+def test_comparison_measures_below_plot_precision_against_exact_decimal_path():
+    from psychohistory.trajectories import compare, compute
+
+    parameters = {**LOGISTIC, 'steps': 1, 'step_size': '1/1000000000'}
+    records = []
+    for method in ('euler', 'rk4'):
+        config = {'model_id': 'r132-replicator', 'model_version': '1.0.0', 'source_id': 'a' * 64,
+                  'source': {}, 'parameters': {**parameters, 'method': method},
+                  'start': None, 'branch_from': None}
+        records.append({**compute(config), 'input': config})
+    assert records[0]['trajectory'][-1]['values'] == records[1]['trajectory'][-1]['values']
+    result = compare(*records, 'trajectory')
+    assert 4.68e-20 < result['max_abs_difference'] < 4.70e-20
+    assert result['max_abs_difference_decimal'] == '4.6874999996093749995117E-20'

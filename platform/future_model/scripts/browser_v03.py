@@ -119,7 +119,7 @@ def run():
         right.select_option(rk4_id)
         comparison = posted(page, compare_button, 'v3/compare')
         assert comparison['samples'] > 0 and comparison['max_abs_difference'] > 0, comparison
-        expect(compare.get_by_label('最大绝对差', exact=True)).to_have_text(str(comparison['max_abs_difference']))
+        expect(compare.get_by_label('最大绝对差', exact=True)).to_have_text(comparison['max_abs_difference_decimal'])
 
         history.get_by_role('button', name=euler_id, exact=True).click()
         expect(result_hash).to_have_text(euler['artifact_sha256'])
@@ -183,7 +183,8 @@ def run():
             'artifact_sha256': {name: artifact['artifact_sha256'] for name, artifact in (
                 ('eq3', exact), ('euler', euler), ('rk4', rk4), ('branch', branch), ('degroot', degroot), ('hawk_dove', hawk))},
             'numerical_warning': 'FALSE_EXTINCTION',
-            'comparison': {'max_abs_difference': comparison['max_abs_difference'], 'samples': comparison['samples']},
+            'comparison': {key: comparison[key] for key in (
+                'max_abs_difference', 'max_abs_difference_decimal', 'samples')},
             'rejected_comparisons': {'cross_model': rejected, 'incompatible_clocks': clock_rejected, 'brier': brier_rejected},
             'page_errors': page_errors,
         }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

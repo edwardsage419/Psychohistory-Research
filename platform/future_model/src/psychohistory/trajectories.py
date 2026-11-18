@@ -1,5 +1,6 @@
 """Deterministic trajectory envelopes executed using sealed model source bytes."""
 
+from decimal import Context, Decimal, localcontext
 from fractions import Fraction
 import json
 import math
@@ -96,7 +97,7 @@ def _snapshot(config, state, time_kind, samples):
 
 
 def _sample(point, dimensions):
-    if not isinstance(point, dict) or point.keys() != {'time', 'values'}:
+    if not isinstance(point, dict) or point.keys() not in ({'time', 'values'}, {'time', 'values', 'exact_values'}):
         raise ValueError('Trajectory contains an invalid observation')
     if not isinstance(point['time'], str) or len(point['time']) > 60:
         raise ValueError('Trajectory observation time is invalid')
@@ -109,6 +110,16 @@ def _sample(point, dimensions):
     fractions = [Fraction(str(x)) for x in values]
     if any(not 0 <= x <= 1 for x in fractions):
         raise ValueError('Trajectory escaped its unit interval')
+    if 'exact_values' in point:
+        scientific = point['exact_values']
+        if (not isinstance(scientific, list) or len(scientific) != dimensions
+                or any(type(x) is not str or len(x) > 60 for x in scientific)):
+            raise ValueError('Trajectory canonical decimals are invalid')
+        decoded = [Fraction(x) for x in scientific]
+        if any(not 0 <= x <= 1 or abs(x - y) > Fraction('1e-15')
+               for x, y in zip(decoded, fractions, strict=True)):
+            raise ValueError('Trajectory plot values differ from canonical decimals')
+        fractions = decoded
     return Fraction(point['time']), fractions
 
 
@@ -162,6 +173,8 @@ def validate_result(run, result, *, replay=False):
     tolerance = Fraction('1e-12') if time_kind == 'continuous-ode' else Fraction(0)
     for index, point in enumerate(points):
         time, values = _sample(point, dimensions)
+        if ('exact_values' in point) != (time_kind == 'continuous-ode'):
+            raise ValueError('Trajectory is missing canonical values for its time semantics')
         if time != first_time + index * step:
             raise ValueError('Trajectory time grid mismatch')
         if model_id == R132 and abs(sum(values) - 1) > tolerance:
@@ -222,17 +235,21 @@ def compare(left, right, metric):
     if len(first) != len(second) or _exact_origin(left) != _exact_origin(right):
         raise ValueError('Trajectory comparison requires the same exact initial state and observation times')
     points = []
+    maximum = Fraction(0)
     for a, b in zip(first, second, strict=True):
         time_a, values_a = _sample(a, dimensions)
         time_b, values_b = _sample(b, dimensions)
         if time_a != time_b:
             raise ValueError('Trajectory observation grids are incompatible')
         difference = max(abs(x - y) for x, y in zip(values_a, values_b, strict=True))
+        maximum = max(maximum, difference)
         points.append({'time': a['time'], 'max_abs_difference': float(difference)})
+    with localcontext(Context(prec=42)):
+        maximum_decimal = Decimal(maximum.numerator) / Decimal(maximum.denominator)
     return {
         'metric': 'trajectory', 'model_id': left['model_id'], 'time_kind': left['time_kind'],
         'methods': [left['method'], right['method']], 'samples': len(points), 'points': points,
-        'max_abs_difference': max(p['max_abs_difference'] for p in points),
+        'max_abs_difference': float(maximum), 'max_abs_difference_decimal': str(maximum_decimal),
         'diagnostics': [left['diagnostics'], right['diagnostics']],
         'scope': 'SYNTHETIC_ONLY',
     }

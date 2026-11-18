@@ -290,6 +290,9 @@ def _trajectory_report(states, first_time, step, method, matrix):
     path = [{'time': str(first_time + index * step),
              'values': [str(value) if exact else _reported_number(value) for value in shares]}
             for index, shares in enumerate(states)]
+    if not exact:
+        for point, shares in zip(path, states, strict=True):
+            point['exact_values'] = [_decimal_text(value) for value in shares]
     diagnostics = {'max_mass_error': float(max(abs(sum(shares) - 1) for shares in states)), 'warnings': []}
     if exact:
         diagnostics.update(arithmetic='exact-fraction', source_equation='Eq3', increment_equation='Eq4')

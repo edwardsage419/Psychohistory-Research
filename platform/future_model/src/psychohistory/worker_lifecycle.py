@@ -30,6 +30,24 @@ def watch_parent(expected_parent):
     threading.Thread(target=watch, name='worker-parent-watch', daemon=True).start()
 
 
+def watch_cpu(hard_seconds):
+    """Bound this trusted process's measured CPU, independently of SIGXCPU handling.
+
+    Darwin's configured RLIMIT_CPU hard limit is not a demonstrated SIGKILL
+    guarantee. The fixed Python mechanisms yield the GIL, allowing this watchdog
+    to enforce the deadline against the native process CPU clock. It is not a
+    kernel guarantee for arbitrary extensions that hold the GIL indefinitely.
+    """
+    _require_session()
+
+    def watch():
+        while time.process_time() < hard_seconds:
+            time.sleep(.01)
+        os.killpg(os.getpgrp(), signal.SIGKILL)
+
+    threading.Thread(target=watch, name='worker-cpu-watch', daemon=True).start()
+
+
 def configure_worker(expected_parent, *, memory_mb=512, cpu_seconds=5, establish_session=False):
     if establish_session:
         os.setsid()
@@ -47,7 +65,7 @@ def configure_worker(expected_parent, *, memory_mb=512, cpu_seconds=5, establish
         limits['parent_death'] = 'PR_SET_PDEATHSIG'
     require_parent(expected_parent)  # Closes death-before-guard installation race.
     import resource
-    # Darwin enforces RLIMIT_CPU; RLIMIT_AS is deliberately not claimed there.
+    # Keep native POSIX limits configured; Darwin needs an independent hard cap.
     if platform.system() in {'Linux', 'Darwin'}:
         resource.setrlimit(resource.RLIMIT_CPU, (cpu_seconds, cpu_seconds + 1))
         limits.update(cpu='RLIMIT_CPU', cpu_soft_seconds=cpu_seconds,
@@ -55,6 +73,14 @@ def configure_worker(expected_parent, *, memory_mb=512, cpu_seconds=5, establish
     if platform.system() == 'Linux':
         resource.setrlimit(resource.RLIMIT_AS, (memory_mb * 1024**2,) * 2)
         limits['memory'] = 'RLIMIT_AS'
+    if platform.system() == 'Darwin':
+        signal.signal(signal.SIGXCPU, lambda *_: os.killpg(os.getpgrp(), signal.SIGKILL))
+        watch_cpu(cpu_seconds + 1)
+        limits.update(cpu='DARWIN_PROCESS_CPU_WATCHDOG',
+                      cpu_kernel_limit='RLIMIT_CPU_CONFIGURED_ONLY',
+                      cpu_watchdog_clock='time.process_time',
+                      cpu_soft_action='SIGXCPU_KILLPG',
+                      cpu_hard_action='PROCESS_CPU_WATCHDOG_KILLPG')
     watch_parent(expected_parent)
     return limits
 

@@ -51,8 +51,13 @@ while True:pass
                               start_new_session=True, env=ENV, stderr=subprocess.PIPE, text=True)
     try:
         limits = json.loads(wait_file(ready, worker))
-        assert limits['cpu'] == 'RLIMIT_CPU'
+        assert limits['cpu'] == ('RLIMIT_CPU' if sys.platform == 'linux' else 'DARWIN_PROCESS_CPU_WATCHDOG')
         assert limits['cpu_hard_seconds'] == 2
+        if sys.platform == 'darwin':
+            assert limits['cpu_kernel_limit'] == 'RLIMIT_CPU_CONFIGURED_ONLY'
+            assert limits['cpu_watchdog_clock'] == 'time.process_time'
+            assert limits['cpu_soft_action'] == 'SIGXCPU_KILLPG'
+            assert limits['cpu_hard_action'] == 'PROCESS_CPU_WATCHDOG_KILLPG'
         assert limits['memory'] == ('RLIMIT_AS' if sys.platform == 'linux' else 'NOT_ENFORCED')
         worker.wait(timeout=8)
         assert worker.returncode == -signal.SIGKILL
@@ -184,9 +189,13 @@ def test_sealed_worker_retains_v2_result_and_enforces_native_limits(tmp_path):
     assert {key:payload['result'][key] for key in expected} == expected
     assert payload['result']['input'] == config
     assert payload['limits']['isolated_python'] is True
-    assert payload['limits']['cpu'] == 'RLIMIT_CPU'
+    assert payload['limits']['cpu'] == ('RLIMIT_CPU' if sys.platform == 'linux' else 'DARWIN_PROCESS_CPU_WATCHDOG')
     assert payload['limits']['memory'] == ('RLIMIT_AS' if sys.platform == 'linux' else 'NOT_ENFORCED')
     assert payload['limits']['process_group'] == 'OWNED_SESSION'
+    if sys.platform == 'darwin':
+        assert payload['limits']['cpu_kernel_limit'] == 'RLIMIT_CPU_CONFIGURED_ONLY'
+        assert payload['limits']['cpu_watchdog_clock'] == 'time.process_time'
+        assert payload['limits']['cpu_hard_action'] == 'PROCESS_CPU_WATCHDOG_KILLPG'
 
 
 @pytest.mark.parametrize('case',['fingerprint','kind','checkout-import'])
@@ -303,7 +312,7 @@ def test_failed_sealed_computation_retains_confirmed_control_receipt(tmp_path):
         scheduler.approve(run['id'])
         outcome=scheduler.wait(run['id'],5)
         assert outcome['status']=='FAILED'
-        assert outcome.get('limits',{}).get('cpu')=='RLIMIT_CPU'
+        assert outcome.get('limits',{}).get('cpu')==('RLIMIT_CPU' if sys.platform == 'linux' else 'DARWIN_PROCESS_CPU_WATCHDOG')
         assert outcome['limits']['process_group']=='OWNED_SESSION'
 
 
@@ -342,3 +351,32 @@ def test_real_trajectory_worker_publishes_pinned_envelope_and_independent_contin
         assert branch['trajectory'][0]==result['trajectory'][-1]
         assert branch['snapshot']['payload']['parent_hash']==result['snapshot']['content_hash']
         assert store.get(done['result_hash'])==result
+
+
+def test_measured_cpu_watchdog_uses_process_cpu_and_kills_owned_descendants(tmp_path):
+    """Exercises the fallback itself on Linux; native Darwin proof is separate."""
+    ready=tmp_path/'measured-cpu.json'
+    code='''import json,os,signal,subprocess,sys,time
+from pathlib import Path
+from psychohistory.worker_lifecycle import watch_cpu
+signal.signal(signal.SIGXCPU,signal.SIG_IGN)
+child=subprocess.Popen([sys.executable,'-c','import time;time.sleep(60)'])
+watch_cpu(.5)
+Path(sys.argv[1]).write_text(json.dumps({'child':child.pid}))
+time.sleep(.6)
+while True:pass
+'''
+    worker=subprocess.Popen([sys.executable,'-c',code,str(ready)],start_new_session=True,
+                            env=ENV,stderr=subprocess.PIPE,text=True)
+    child=None
+    try:
+        child=json.loads(wait_file(ready,worker))['child']
+        time.sleep(.3)
+        assert worker.poll() is None,'Watchdog incorrectly counted sleeping wall time as CPU'
+        worker.wait(timeout=8)
+        assert worker.returncode == -signal.SIGKILL
+        await_gone(child)
+    finally:
+        if worker.poll() is None:os.killpg(worker.pid,signal.SIGKILL)
+        worker.wait()
+        if child and alive(child):os.kill(child,signal.SIGKILL)

@@ -129,7 +129,7 @@ def test_euler_large_step_exposes_false_extinction_without_clipping():
     from psychohistory.replicator import run_trajectory
 
     report = run_trajectory(parameters(HAWK, ['1/2', '1/2'], 'euler', 1, '4'))
-    assert report['trajectory'][-1] == {'time': '4', 'values': [0, 1]}
+    assert report['trajectory'][-1] == {'time': '4', 'values': [0, 1], 'exact_values': ['0', '1']}
     reference = report['diagnostics']['analytic_reference']
     assert math.isclose(reference['final_first_share'], 0.343202279538, abs_tol=1e-12)
     warnings = report['diagnostics']['warnings']

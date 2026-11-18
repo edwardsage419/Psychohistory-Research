@@ -8,7 +8,7 @@ type Run = {
   id: string; status: string; config: Config; logs: string[]; error: string | null;
   config_sha256: string; code_sha256: string;
 };
-type Comparison = { samples: number; max_abs_difference: number; points: unknown };
+type Comparison = { samples: number; max_abs_difference: number; max_abs_difference_decimal: string; points: unknown };
 type Draft = { vector: string; matrix: string; method: Method; steps: string; stepSize: string };
 type Branch = { runId: string; snapshot: string; time: string; timeKind: string; values: string };
 
@@ -122,7 +122,7 @@ function CompareRuns({ request, runs }: { request: <T>(path: string, body?: unkn
     {error && <p className="error mechanism-feedback" role="alert">比较未完成。{error}</p>}
     {comparison && <>
       <dl className="research-details mechanism-compare-result">
-        <dt>最大绝对差</dt><dd><code aria-label="最大绝对差">{comparison.max_abs_difference}</code></dd>
+        <dt>最大绝对差</dt><dd><code aria-label="最大绝对差">{comparison.max_abs_difference_decimal}</code></dd>
         <dt>匹配时间点</dt><dd>{comparison.samples}</dd>
       </dl>
       <details><summary>查看逐时间点比较</summary><pre>{JSON.stringify(comparison.points, null, 2)}</pre></details>
