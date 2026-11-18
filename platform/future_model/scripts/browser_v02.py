@@ -56,6 +56,7 @@ def run():
         assert verified['commit'] == source['commit']
         source_card.get_by_text('查看原始科研记录', exact=True).click()
         expect(source_card.locator('pre').filter(has_text='R123').first).to_be_visible()
+        expect(source_card.get_by_text(source['files'][0]['blob'], exact=True)).to_be_visible()
 
         page.get_by_role('combobox', name='协议来源', exact=True).select_option(source_id)
         page.get_by_role('combobox', name='模型版本', exact=True).select_option('r123-degroot@1.0.0')

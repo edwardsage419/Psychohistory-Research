@@ -9,7 +9,7 @@ type Source = CatalogEntry & {
   permission: string;
   engineering_status: string;
   warnings: string[];
-  files: { role: string; path: string; sha256: string; size: number }[];
+  files: { role: string; path: string; blob: string; sha256: string; size: number }[];
   scientific_status: string;
   original_metadata: unknown;
 };
