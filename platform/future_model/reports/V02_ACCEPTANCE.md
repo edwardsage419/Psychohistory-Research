@@ -1,5 +1,7 @@
 # Psychohistory Platform v0.2 验收
 
+本页保留首轮 Linux 交付结果。后续 macOS ARM64 实测和修复版见 [跨平台定版验收](V02_CROSS_PLATFORM_ACCEPTANCE.md)。
+
 本轮从 GitHub main `7ea6eab94433e3669b6f492d802bb35316dc90d6` 开始。在改动前回读了指定规范、最新 R 系列队列及冻结记录。GitHub 文件清单显示，审查中的 #44–#52 均与平台目录无重叠。#44 的 R132 Phase A 加固与 #51 的 R272 修复仍是候选。浏览器用 #44 的显式提交验证了候选来源的只读准入。历史 GitHub 数据与开放 PR 头见 [范围记录](v02/OPEN_PR_SCOPE.json)。
 
 R123 既有原始来源和审计已进入 main。平台选择 DeGroot 固定行随机矩阵的离散更新，沿用矩阵、初始条件和时间步的定义。R132 与 R233 独立登记，分别验证双阶段收据和 CSV/结果联合身份。v0.2 新增的预测任务只读取内置生成器的合成场次。R123 的理论意见更新与对合成 Bernoulli 事件的评分属于不同层，真实预测和因果证据为 UNKNOWN。具体推导与误差口径见 [数学说明](../docs/MATHEMATICS_V02.md)。

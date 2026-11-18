@@ -1,0 +1,791 @@
+{
+  "linux": {
+    "status": "PASS",
+    "tested_head": "50bdd07d9b776b5ca052efc6943cec0bc5ed6aa7",
+    "native_worker_artifact_sha256": "712c8ad4ccd1d61ee42be92e0e40704685583fc4d6ed01d2677fad60bfc8d566",
+    "archived_linux_worker_artifact_sha256": "93f2601af124987e394ef11c7673ba3358897d565b2ebf81d23ef6534267ce37",
+    "native_worker_code_sha256": "63a1ad9555791206918f85df984783cc436906628edd4f8ec2140ac3d98f5f8c",
+    "archived_linux_worker_code_sha256": "6b7a48781c6e9ea3f10585fb350044f43a9af81659e227ae33c4a116541a9072",
+    "different_identity_fields": [
+      "code_sha256",
+      "input",
+      "protocol_id"
+    ],
+    "native_limits": {
+      "cpu": "RLIMIT_CPU",
+      "isolated_python": true,
+      "memory": "RLIMIT_AS",
+      "optimization": 0,
+      "parent_death": "PR_SET_PDEATHSIG"
+    },
+    "environment": {
+      "machine": "x86_64",
+      "os": "Linux",
+      "python": "3.12.14"
+    }
+  },
+  "macos": {
+    "status": "PASS",
+    "tested_head": "50bdd07d9b776b5ca052efc6943cec0bc5ed6aa7",
+    "native_worker_artifact_sha256": "712c8ad4ccd1d61ee42be92e0e40704685583fc4d6ed01d2677fad60bfc8d566",
+    "archived_linux_worker_artifact_sha256": "93f2601af124987e394ef11c7673ba3358897d565b2ebf81d23ef6534267ce37",
+    "native_worker_code_sha256": "63a1ad9555791206918f85df984783cc436906628edd4f8ec2140ac3d98f5f8c",
+    "archived_linux_worker_code_sha256": "6b7a48781c6e9ea3f10585fb350044f43a9af81659e227ae33c4a116541a9072",
+    "different_identity_fields": [
+      "code_sha256",
+      "input",
+      "protocol_id"
+    ],
+    "native_limits": {
+      "cpu": "NOT_ENFORCED",
+      "isolated_python": true,
+      "memory": "NOT_ENFORCED",
+      "optimization": 0,
+      "parent_death": "NOT_ENFORCED"
+    },
+    "environment": {
+      "machine": "arm64",
+      "os": "Darwin",
+      "python": "3.12.10"
+    }
+  },
+  "scientific_result": {
+    "scope": "SYNTHETIC_ONLY",
+    "evidence": {
+      "kind": "UNKNOWN",
+      "scope": "EMPIRICAL",
+      "interpretation": "Empirical predictive validity remains unknown."
+    },
+    "metrics": {
+      "r123-degroot": {
+        "brier": 0.27705729166666665,
+        "log_loss": 0.7649447100018056
+      },
+      "train-prevalence": {
+        "brier": 0.23676215277777776,
+        "log_loss": 0.6665050427393477
+      }
+    },
+    "study_results": [
+      {
+        "study_id": "aligned-signal",
+        "study_label": "Aligned signal",
+        "split": "test",
+        "n": 48,
+        "target": "simulated-agent-event",
+        "units": "binary-indicator",
+        "window": [
+          20,
+          20
+        ],
+        "semantics": "synthetic-bernoulli-event-per-session-trial",
+        "scope": "SYNTHETIC_ONLY",
+        "evidence": {
+          "kind": "UNKNOWN",
+          "scope": "EMPIRICAL",
+          "interpretation": "Empirical predictive validity remains unknown."
+        },
+        "baseline": {
+          "prevalence": 0.5208333333333334,
+          "training_n": 48,
+          "training_events": 25
+        },
+        "metrics": {
+          "r123-degroot": {
+            "brier": 0.20651041666666667,
+            "log_loss": 0.5973105643998173
+          },
+          "train-prevalence": {
+            "brier": 0.24435763888888887,
+            "log_loss": 0.6818561725389375
+          }
+        }
+      },
+      {
+        "study_id": "weak-reversed-signal",
+        "study_label": "Weak reversed signal",
+        "split": "test",
+        "n": 48,
+        "target": "simulated-agent-event",
+        "units": "binary-indicator",
+        "window": [
+          20,
+          20
+        ],
+        "semantics": "synthetic-bernoulli-event-per-session-trial",
+        "scope": "SYNTHETIC_ONLY",
+        "evidence": {
+          "kind": "UNKNOWN",
+          "scope": "EMPIRICAL",
+          "interpretation": "Empirical predictive validity remains unknown."
+        },
+        "baseline": {
+          "prevalence": 0.5833333333333334,
+          "training_n": 48,
+          "training_events": 28
+        },
+        "metrics": {
+          "r123-degroot": {
+            "brier": 0.34760416666666666,
+            "log_loss": 0.9325788556037939
+          },
+          "train-prevalence": {
+            "brier": 0.22916666666666666,
+            "log_loss": 0.651153912939758
+          }
+        }
+      }
+    ],
+    "weight_sensitivity": [
+      {
+        "label": "Equal study weights",
+        "weights": {
+          "aligned-signal": 0.5,
+          "weak-reversed-signal": 0.5
+        },
+        "metrics": {
+          "r123-degroot": {
+            "brier": 0.27705729166666665,
+            "log_loss": 0.7649447100018056
+          },
+          "train-prevalence": {
+            "brier": 0.23676215277777776,
+            "log_loss": 0.6665050427393477
+          }
+        },
+        "evidence": {
+          "kind": "UNKNOWN",
+          "scope": "EMPIRICAL",
+          "interpretation": "Empirical predictive validity remains unknown."
+        }
+      },
+      {
+        "label": "Emphasize aligned signal",
+        "weights": {
+          "aligned-signal": 0.8,
+          "weak-reversed-signal": 0.2
+        },
+        "metrics": {
+          "r123-degroot": {
+            "brier": 0.23472916666666668,
+            "log_loss": 0.6643642226406127
+          },
+          "train-prevalence": {
+            "brier": 0.24131944444444445,
+            "log_loss": 0.6757157206191017
+          }
+        },
+        "evidence": {
+          "kind": "UNKNOWN",
+          "scope": "EMPIRICAL",
+          "interpretation": "Empirical predictive validity remains unknown."
+        }
+      },
+      {
+        "label": "Emphasize weak reversed signal",
+        "weights": {
+          "aligned-signal": 0.2,
+          "weak-reversed-signal": 0.8
+        },
+        "metrics": {
+          "r123-degroot": {
+            "brier": 0.3193854166666667,
+            "log_loss": 0.8655251973629986
+          },
+          "train-prevalence": {
+            "brier": 0.23220486111111113,
+            "log_loss": 0.6572943648595939
+          }
+        },
+        "evidence": {
+          "kind": "UNKNOWN",
+          "scope": "EMPIRICAL",
+          "interpretation": "Empirical predictive validity remains unknown."
+        }
+      }
+    ],
+    "selection": {
+      "split": "validation",
+      "horizon": 1,
+      "test_used_for_selection": false,
+      "metric": "brier",
+      "validation_scores": [
+        {
+          "horizon": 1,
+          "study_brier": {
+            "aligned-signal": 0.20114583333333336,
+            "weak-reversed-signal": 0.30875
+          },
+          "brier": 0.2549479166666667
+        },
+        {
+          "horizon": 2,
+          "study_brier": {
+            "aligned-signal": 0.19939453124999998,
+            "weak-reversed-signal": 0.3223697916666667
+          },
+          "brier": 0.2608821614583333
+        },
+        {
+          "horizon": 3,
+          "study_brier": {
+            "aligned-signal": 0.19940226236979167,
+            "weak-reversed-signal": 0.32628743489583334
+          },
+          "brier": 0.2628448486328125
+        }
+      ]
+    },
+    "trajectory": {
+      "base": {
+        "content_hash": "b76d68005340d0e93b616b124843b5ffd82bb2f8dd414bf62967898c740211c4",
+        "payload": {
+          "branch": "base",
+          "environment": {
+            "protocol_version": "synthetic-degroot-comparison-1.0.0",
+            "scope": "THEORETICAL",
+            "time_unit": "discrete-round"
+          },
+          "events": [],
+          "model_id": "r123-degroot",
+          "model_version": "1.0.0",
+          "parent_hash": null,
+          "random_state": null,
+          "snapshot_version": "1.0.0",
+          "state": {
+            "opinions": [
+              "0",
+              "1"
+            ],
+            "time": 0,
+            "weights": [
+              [
+                "1/2",
+                "1/2"
+              ],
+              [
+                "1/4",
+                "3/4"
+              ]
+            ]
+          }
+        }
+      },
+      "branches": [
+        {
+          "content_hash": "039e6126a326fd69ddf29c33faf153c78231457d543080e04afaa968025995e1",
+          "payload": {
+            "branch": "published-weights",
+            "environment": {
+              "protocol_version": "synthetic-degroot-comparison-1.0.0",
+              "scope": "THEORETICAL",
+              "time_unit": "discrete-round"
+            },
+            "events": [
+              {
+                "state": {
+                  "opinions": [
+                    "0",
+                    "1"
+                  ],
+                  "time": 0,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/4",
+                      "3/4"
+                    ]
+                  ]
+                },
+                "time": 0,
+                "type": "branch_initialization"
+              },
+              {
+                "state": {
+                  "opinions": [
+                    "1/2",
+                    "3/4"
+                  ],
+                  "time": 1,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/4",
+                      "3/4"
+                    ]
+                  ]
+                },
+                "time": 1,
+                "type": "opinion_update"
+              },
+              {
+                "state": {
+                  "opinions": [
+                    "5/8",
+                    "11/16"
+                  ],
+                  "time": 2,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/4",
+                      "3/4"
+                    ]
+                  ]
+                },
+                "time": 2,
+                "type": "opinion_update"
+              },
+              {
+                "state": {
+                  "opinions": [
+                    "21/32",
+                    "43/64"
+                  ],
+                  "time": 3,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/4",
+                      "3/4"
+                    ]
+                  ]
+                },
+                "time": 3,
+                "type": "opinion_update"
+              },
+              {
+                "state": {
+                  "opinions": [
+                    "85/128",
+                    "171/256"
+                  ],
+                  "time": 4,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/4",
+                      "3/4"
+                    ]
+                  ]
+                },
+                "time": 4,
+                "type": "opinion_update"
+              }
+            ],
+            "model_id": "r123-degroot",
+            "model_version": "1.0.0",
+            "parent_hash": "b76d68005340d0e93b616b124843b5ffd82bb2f8dd414bf62967898c740211c4",
+            "random_state": null,
+            "snapshot_version": "1.0.0",
+            "state": {
+              "opinions": [
+                "85/128",
+                "171/256"
+              ],
+              "time": 4,
+              "weights": [
+                [
+                  "1/2",
+                  "1/2"
+                ],
+                [
+                  "1/4",
+                  "3/4"
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "content_hash": "516c47097381d06c2d64ca4ca09926219468892a1edca9a4ee504bd2425dd550",
+          "payload": {
+            "branch": "equal-weights",
+            "environment": {
+              "protocol_version": "synthetic-degroot-comparison-1.0.0",
+              "scope": "THEORETICAL",
+              "time_unit": "discrete-round"
+            },
+            "events": [
+              {
+                "state": {
+                  "opinions": [
+                    "0",
+                    "1"
+                  ],
+                  "time": 0,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/2",
+                      "1/2"
+                    ]
+                  ]
+                },
+                "time": 0,
+                "type": "branch_initialization"
+              },
+              {
+                "state": {
+                  "opinions": [
+                    "1/2",
+                    "1/2"
+                  ],
+                  "time": 1,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/2",
+                      "1/2"
+                    ]
+                  ]
+                },
+                "time": 1,
+                "type": "opinion_update"
+              },
+              {
+                "state": {
+                  "opinions": [
+                    "1/2",
+                    "1/2"
+                  ],
+                  "time": 2,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/2",
+                      "1/2"
+                    ]
+                  ]
+                },
+                "time": 2,
+                "type": "opinion_update"
+              },
+              {
+                "state": {
+                  "opinions": [
+                    "1/2",
+                    "1/2"
+                  ],
+                  "time": 3,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/2",
+                      "1/2"
+                    ]
+                  ]
+                },
+                "time": 3,
+                "type": "opinion_update"
+              },
+              {
+                "state": {
+                  "opinions": [
+                    "1/2",
+                    "1/2"
+                  ],
+                  "time": 4,
+                  "weights": [
+                    [
+                      "1/2",
+                      "1/2"
+                    ],
+                    [
+                      "1/2",
+                      "1/2"
+                    ]
+                  ]
+                },
+                "time": 4,
+                "type": "opinion_update"
+              }
+            ],
+            "model_id": "r123-degroot",
+            "model_version": "1.0.0",
+            "parent_hash": "b76d68005340d0e93b616b124843b5ffd82bb2f8dd414bf62967898c740211c4",
+            "random_state": null,
+            "snapshot_version": "1.0.0",
+            "state": {
+              "opinions": [
+                "1/2",
+                "1/2"
+              ],
+              "time": 4,
+              "weights": [
+                [
+                  "1/2",
+                  "1/2"
+                ],
+                [
+                  "1/2",
+                  "1/2"
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "mathematical_verification": {
+      "scope": "THEORETICAL",
+      "method": "iterative fractions and independent gap recurrence",
+      "stationary_weights": [
+        "1/3",
+        "2/3"
+      ],
+      "consensus_limit": "2/3",
+      "checked_through_round": 32,
+      "source_reference": {
+        "research_id": "R123",
+        "commit": "7ea6eab94433e3669b6f492d802bb35316dc90d6",
+        "path": "research/R123/R123_PHASE_A_ORIGINAL_DEGROOT_BERGER_58_TEST_226_MATRIX_CI_ACCEPTANCE.json",
+        "sha256": "d4f8a676c9976e11dfb7dc15a13fd3c1798a911b5bb7f12f1d309ea94d41566f",
+        "doi": "10.1080/01621459.1974.10480137",
+        "publication": "Morris H. DeGroot (1974), Reaching a Consensus, JASA 69(345), 118–121",
+        "example_page": 120,
+        "scope": "THEORETICAL"
+      }
+    },
+    "provenance": {
+      "protocol_version": "synthetic-degroot-comparison-1.0.0",
+      "protocol_sha256": "fa01f7882b3bec1d397d813dfd923d6a22277d4ba8ff91cc1063baf398164ba0",
+      "dataset_version": "synthetic-two-study-sessions-1.0.0",
+      "input_sha256": "bca44dad51cecfb46e59ec569f55e2dae64d102b304ed35d6a66dd0ab2aadf83",
+      "seed": 207,
+      "source_reference": {
+        "research_id": "R123",
+        "commit": "7ea6eab94433e3669b6f492d802bb35316dc90d6",
+        "path": "research/R123/R123_PHASE_A_ORIGINAL_DEGROOT_BERGER_58_TEST_226_MATRIX_CI_ACCEPTANCE.json",
+        "sha256": "d4f8a676c9976e11dfb7dc15a13fd3c1798a911b5bb7f12f1d309ea94d41566f",
+        "doi": "10.1080/01621459.1974.10480137",
+        "publication": "Morris H. DeGroot (1974), Reaching a Consensus, JASA 69(345), 118–121",
+        "example_page": 120,
+        "scope": "THEORETICAL"
+      },
+      "budget": {
+        "studies": 2,
+        "session_groups": 40,
+        "trials_per_session": 6,
+        "rows": 240,
+        "candidate_configurations": 3,
+        "test_evaluations_per_model_and_study": 1
+      },
+      "split_counts": {
+        "train": 96,
+        "validation": 48,
+        "test": 96
+      }
+    },
+    "limitations": [
+      "The two fixtures contain synthetic session outcomes generated from distinct, declared mechanisms.",
+      "DeGroot supplies a scalar opinion update. The benchmark uses agent 0’s finite-round opinion as a Bernoulli forecast.",
+      "Weight sensitivity describes these two studies under declared weights. Sampling uncertainty is unestimated.",
+      "The trajectory branches illustrate theoretical weight scenarios. Empirical forecasting and causal effects remain unknown."
+    ]
+  },
+  "independent_study_scores": {
+    "aligned-signal": {
+      "r123-degroot": {
+        "brier": 0.20651041666666667,
+        "log_loss": 0.5973105643998173
+      },
+      "train-prevalence": {
+        "brier": 0.2443576388888889,
+        "log_loss": 0.6818561725389375
+      }
+    },
+    "weak-reversed-signal": {
+      "r123-degroot": {
+        "brier": 0.34760416666666666,
+        "log_loss": 0.9325788556037939
+      },
+      "train-prevalence": {
+        "brier": 0.22916666666666666,
+        "log_loss": 0.6511539129397579
+      }
+    }
+  },
+  "exact_math_trajectory": [
+    [
+      "0",
+      "1"
+    ],
+    [
+      "1/2",
+      "3/4"
+    ],
+    [
+      "5/8",
+      "11/16"
+    ],
+    [
+      "21/32",
+      "43/64"
+    ],
+    [
+      "85/128",
+      "171/256"
+    ],
+    [
+      "341/512",
+      "683/1024"
+    ],
+    [
+      "1365/2048",
+      "2731/4096"
+    ],
+    [
+      "5461/8192",
+      "10923/16384"
+    ],
+    [
+      "21845/32768",
+      "43691/65536"
+    ],
+    [
+      "87381/131072",
+      "174763/262144"
+    ],
+    [
+      "349525/524288",
+      "699051/1048576"
+    ],
+    [
+      "1398101/2097152",
+      "2796203/4194304"
+    ],
+    [
+      "5592405/8388608",
+      "11184811/16777216"
+    ],
+    [
+      "22369621/33554432",
+      "44739243/67108864"
+    ],
+    [
+      "89478485/134217728",
+      "178956971/268435456"
+    ],
+    [
+      "357913941/536870912",
+      "715827883/1073741824"
+    ],
+    [
+      "1431655765/2147483648",
+      "2863311531/4294967296"
+    ],
+    [
+      "5726623061/8589934592",
+      "11453246123/17179869184"
+    ],
+    [
+      "22906492245/34359738368",
+      "45812984491/68719476736"
+    ],
+    [
+      "91625968981/137438953472",
+      "183251937963/274877906944"
+    ],
+    [
+      "366503875925/549755813888",
+      "733007751851/1099511627776"
+    ],
+    [
+      "1466015503701/2199023255552",
+      "2932031007403/4398046511104"
+    ],
+    [
+      "5864062014805/8796093022208",
+      "11728124029611/17592186044416"
+    ],
+    [
+      "23456248059221/35184372088832",
+      "46912496118443/70368744177664"
+    ],
+    [
+      "93824992236885/140737488355328",
+      "187649984473771/281474976710656"
+    ],
+    [
+      "375299968947541/562949953421312",
+      "750599937895083/1125899906842624"
+    ],
+    [
+      "1501199875790165/2251799813685248",
+      "3002399751580331/4503599627370496"
+    ],
+    [
+      "6004799503160661/9007199254740992",
+      "12009599006321323/18014398509481984"
+    ],
+    [
+      "24019198012642645/36028797018963968",
+      "48038396025285291/72057594037927936"
+    ],
+    [
+      "96076792050570581/144115188075855872",
+      "192153584101141163/288230376151711744"
+    ],
+    [
+      "384307168202282325/576460752303423488",
+      "768614336404564651/1152921504606846976"
+    ],
+    [
+      "1537228672809129301/2305843009213693952",
+      "3074457345618258603/4611686018427387904"
+    ],
+    [
+      "6148914691236517205/9223372036854775808",
+      "12297829382473034411/18446744073709551616"
+    ]
+  ],
+  "scientific_projection_sha256": "2d57bde43e7b34d34d07a15484b67e31bc487c8dd69317ebd4b5bd27a11a684c",
+  "floating_point_differences_from_archived_linux": [],
+  "locked_cli_seed_829_sha256": "106a34318f686facb552fb61e4b480118b33c4d83570cd700eff4d1b9f335316",
+  "old_backup_hash_provenance": {
+    "status": "PASS",
+    "diagnostic_executed_on": "Linux",
+    "varied_field": "platform.python_version()",
+    "source_commit": "7ea6eab94433e3669b6f492d802bb35316dc90d6",
+    "results": [
+      {
+        "recorded_platform": "linux",
+        "recorded_python": "3.12.14",
+        "identified_sha256": "2310400d7dd7f3de6df17df8a09392bb80253e3de008d59584953a473d286f8e"
+      },
+      {
+        "recorded_platform": "macos",
+        "recorded_python": "3.12.10",
+        "identified_sha256": "4a006aab61367e1c6aea6dd4408e4316041c1c13ce59ea1e511e6cd67c1ed08b"
+      }
+    ]
+  }
+}
