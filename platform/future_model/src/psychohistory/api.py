@@ -43,6 +43,22 @@ class ComparisonInput(BaseModel):
     protocol_id: str = Field(pattern=r"^[a-f0-9]{64}$")
 
 
+class TrajectoryInput(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    model_id: str
+    model_version: str
+    source_id: str = Field(pattern=r"^[a-f0-9]{64}$")
+    parameters: dict
+    branch_from: str | None = Field(default=None, pattern=r"^[a-f0-9]{32}$")
+
+
+class TrajectoryComparisonInput(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    left: str = Field(pattern=r"^[a-f0-9]{32}$")
+    right: str = Field(pattern=r"^[a-f0-9]{32}$")
+    metric: str = "trajectory"
+
+
 def create_app(root,repo,token=None):
     token=token or local_token(root)
     @asynccontextmanager
@@ -50,7 +66,7 @@ def create_app(root,repo,token=None):
         app.state.service=Service(root,repo)
         try:yield
         finally:app.state.service.close()
-    app=FastAPI(title='Psychohistory Platform v0.2',version='0.2.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
+    app=FastAPI(title='Psychohistory Platform v0.3',version='0.3.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
 
     @app.middleware('http')
     async def security(request:Request,call_next):
@@ -88,9 +104,8 @@ def create_app(root,repo,token=None):
     @app.post('/api/v1/runs',status_code=201)
     def submit(data:ExperimentInput):return app.state.service.submit(data)
     def legacy_run(run_id):
-        from .v02_execution import RUN_KIND
         item = app.state.service.store.get_run(run_id)
-        if item.get("kind") == RUN_KIND:
+        if item.get("kind", "legacy") != "legacy":
             raise KeyError("Unknown v1 run")
         return item
 
@@ -114,8 +129,9 @@ def create_app(root,repo,token=None):
     @app.post('/api/v1/assets/discover')
     def discover(data:AssetInput):return app.state.service.discover(data.path)
     from . import sources
-    from .v02_execution import RUN_KIND
+    from .v02_execution import RUN_KIND, RUN_KIND_TRAJECTORY
     from .workflow import models as comparison_models
+    from .mechanisms import models as mechanism_models
 
     @app.get("/api/v2/source-catalog")
     def source_catalog():
@@ -182,6 +198,43 @@ def create_app(root,repo,token=None):
     @app.get("/api/v2/experiments/{identity}/result")
     def comparison_result(identity: str):
         return app.state.service.workflow.result(identity)
+
+    @app.get("/api/v3/models")
+    def models_v3():
+        return mechanism_models()
+
+    @app.get("/api/v3/experiments")
+    def trajectories(limit: int = Query(50, ge=1, le=200), offset: int = Query(0, ge=0)):
+        return app.state.service.store.runs(limit, offset, kind=RUN_KIND_TRAJECTORY)
+
+    @app.post("/api/v3/experiments", status_code=201)
+    def submit_trajectory(data: TrajectoryInput):
+        service = app.state.service
+        return service.mechanisms.submit(service.scheduler, **data.model_dump())
+
+    @app.get("/api/v3/experiments/{identity}")
+    def trajectory(identity: str):
+        return app.state.service.mechanisms.run(identity)
+
+    @app.post("/api/v3/experiments/{identity}/approve")
+    def approve_trajectory(identity: str):
+        service = app.state.service
+        service.mechanisms.run(identity)
+        return service.scheduler.approve(identity)
+
+    @app.post("/api/v3/experiments/{identity}/cancel")
+    def cancel_trajectory(identity: str):
+        service = app.state.service
+        service.mechanisms.run(identity)
+        return service.scheduler.cancel(identity)
+
+    @app.get("/api/v3/experiments/{identity}/result")
+    def trajectory_result(identity: str):
+        return app.state.service.mechanisms.result(identity)
+
+    @app.post("/api/v3/compare")
+    def compare_trajectories(data: TrajectoryComparisonInput):
+        return app.state.service.mechanisms.compare(**data.model_dump())
 
     dist=Path(__file__).resolve().parents[2]/'web/dist'
     if dist.is_dir():app.mount('/',StaticFiles(directory=dist,html=True),name='console')

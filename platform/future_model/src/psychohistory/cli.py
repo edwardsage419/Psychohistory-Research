@@ -36,11 +36,29 @@ def main(argv=None):
     protocol.add_argument("--seed", type=int, default=7)
     for name in ("verify", "approve-protocol", "submit", "retry", "status", "approve", "cancel", "result"):
         actions.add_parser(name).add_argument("identity")
+    mechanism = sub.add_parser("mechanism", help="v0.3 synthetic trajectories and checkpoints")
+    actions = mechanism.add_subparsers(dest="action", required=True)
+    for name in ("models", "experiments"):
+        actions.add_parser(name)
+    for name in ("status", "approve", "cancel", "result"):
+        actions.add_parser(name).add_argument("identity")
+    trajectory = actions.add_parser("submit")
+    trajectory.add_argument("model_id")
+    trajectory.add_argument("model_version")
+    trajectory.add_argument("source_id")
+    trajectory.add_argument("--parameters", required=True, help="Bounded JSON method parameters")
+    trajectory.add_argument("--branch-from")
+    comparison = actions.add_parser("compare")
+    comparison.add_argument("left")
+    comparison.add_argument("right")
+    comparison.add_argument("--metric", default="trajectory")
     args=parser.parse_args(argv)
     exit_code=0
     try:
         if args.command == "research":
             output, exit_code = research_command(args)
+        elif args.command == "mechanism":
+            output, exit_code = mechanism_command(args)
         elif args.command=='models':
             from .plugins import registry
             output=registry.describe()
@@ -97,10 +115,9 @@ def main(argv=None):
         print(json.dumps({'status':'FAILED','error':str(exc)},ensure_ascii=False),file=sys.stderr);return 1
 
 def legacy_run(store, identity):
-    from .v02_execution import RUN_KIND
     run = store.get_run(identity)
-    if run.get("kind") == RUN_KIND:
-        raise KeyError("Use the research command for v0.2 experiment IDs")
+    if run.get("kind", "legacy") != "legacy":
+        raise KeyError("Use the matching versioned experiment command")
     return run
 
 
@@ -142,6 +159,46 @@ def research_command(args):
         if action == "retry":
             return workflow.retry(scheduler, args.identity), 0
         workflow.run(args.identity)
+        if action == "cancel":
+            return scheduler.cancel(args.identity), 0
+        scheduler.approve(args.identity)
+        scheduler.execute_approved(args.identity)
+        result = scheduler.wait(args.identity)
+        return result, int(result["status"] != "COMPLETED")
+    finally:
+        service.close()
+
+
+def mechanism_command(args):
+    from .mechanisms import Mechanisms, models
+    from .service import Service
+    from .storage import Store
+    from .v02_execution import RUN_KIND_TRAJECTORY
+
+    action = args.action
+    if action == "models":
+        return models(), 0
+    store = Store(args.data)
+    mechanisms = Mechanisms(store, args.repo)
+    if action == "experiments":
+        return store.runs(kind=RUN_KIND_TRAJECTORY), 0
+    if action == "status":
+        return mechanisms.run(args.identity), 0
+    if action == "result":
+        return mechanisms.result(args.identity), 0
+    if action == "compare":
+        return mechanisms.compare(args.left, args.right, args.metric), 0
+
+    service = Service(args.data, args.repo, dispatch=False)
+    scheduler = service.scheduler
+    try:
+        if action == "submit":
+            if len(args.parameters.encode()) > 16384:
+                raise ValueError("Parameters exceed 16 KiB")
+            parameters = json.loads(args.parameters)
+            return mechanisms.submit(scheduler, args.model_id, args.model_version,
+                                     args.source_id, parameters, args.branch_from), 0
+        mechanisms.run(args.identity)
         if action == "cancel":
             return scheduler.cancel(args.identity), 0
         scheduler.approve(args.identity)
