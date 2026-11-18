@@ -1,0 +1,474 @@
+{
+  "status": "PASS",
+  "tested_commit": "98798a098ea23f97164a519ee9bab24be47910c4",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "commands": [
+    {
+      "name": "clone",
+      "argv": [
+        "git",
+        "clone",
+        "--single-branch",
+        "--branch",
+        "feat/psychohistory-platform-v0.2",
+        "--no-tags",
+        "https://github.com/edwardsage419/Psychohistory-Research.git",
+        "/tmp/psychohistory-v02-final/checkout"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "clone.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "clone.stderr",
+        "sha256": "c17ee9524f5222e2b0945affff589f0b1cceefe1f6718171679ef19b9960a4af"
+      }
+    },
+    {
+      "name": "head",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "head.stdout",
+        "sha256": "8dca6d3564f866135d0e11748147102f9e5b0c675d16d939fb57b687b09c0a4b"
+      },
+      "stderr": {
+        "file": "head.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "fetch-references",
+      "argv": [
+        "git",
+        "fetch",
+        "origin",
+        "refs/heads/main:refs/remotes/origin/main",
+        "refs/pull/44/head:refs/remotes/origin/v02-candidate-44"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "fetch-references.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "fetch-references.stderr",
+        "sha256": "5d59b6b7f3a4b4346b2553f1676a8776d6af7f93079b07070f85508f2a6100f5"
+      }
+    },
+    {
+      "name": "install",
+      "argv": [
+        "bash",
+        "scripts/install.sh"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "install.stdout",
+        "sha256": "4c467abb690ae9d9ed4a545834bd6d57bd24eceff9c4c97e9f46de127c2125f1"
+      },
+      "stderr": {
+        "file": "install.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "verify",
+      "argv": [
+        "bash",
+        "scripts/verify.sh"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "verify.stdout",
+        "sha256": "4c89235d3692775a25fd17edba0737eb7ad3e5453d17734e697eb182f5666aef"
+      },
+      "stderr": {
+        "file": "verify.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "browser-deps",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--index-url",
+        "https://pypi.org/simple",
+        "--only-binary=:all:",
+        "-r",
+        "requirements-browser.lock"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "browser-deps.stdout",
+        "sha256": "36332185a081db296796b80c34d6eb1a064d535036e134b52fc75fc41f318288"
+      },
+      "stderr": {
+        "file": "browser-deps.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "python-version",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-c",
+        "import sys,sqlite3;print(sys.version);print(sqlite3.sqlite_version)"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "python-version.stdout",
+        "sha256": "8e02cde82b00ba58a6d822655eae0de80fc0961a0f2ace70a7c5a859b6a92e5e"
+      },
+      "stderr": {
+        "file": "python-version.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "node-version",
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "node-version.stdout",
+        "sha256": "249baf635bb43877fcb9422efa1a4904b702d0ddf14d3949b7cd0950d5229c81"
+      },
+      "stderr": {
+        "file": "node-version.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "chromium-version",
+      "argv": [
+        "chromium",
+        "--version"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "chromium-version.stdout",
+        "sha256": "bfc2c7b1a858116fb29c798136ab51f73d6ac1e93ad21caec0f93a22a52e17ac"
+      },
+      "stderr": {
+        "file": "chromium-version.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "guards-normal",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-S",
+        "scripts/verify_v02_optimized.py"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {
+        "PYTHONPATH": "src"
+      },
+      "exit_code": 0,
+      "stdout": {
+        "file": "guards-normal.stdout",
+        "sha256": "8adefdc757451f2b7c7c9abf3e77babbc6b31b4857acd0ab17e45fbba6665985"
+      },
+      "stderr": {
+        "file": "guards-normal.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "guards-flag",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-O",
+        "-S",
+        "scripts/verify_v02_optimized.py"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {
+        "PYTHONPATH": "src"
+      },
+      "exit_code": 0,
+      "stdout": {
+        "file": "guards-flag.stdout",
+        "sha256": "4e28ffe54fc464a55f2c9d8ca2a6381e34ec18f6c7940b2f7ef7a0446389935f"
+      },
+      "stderr": {
+        "file": "guards-flag.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "guards-env",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-S",
+        "scripts/verify_v02_optimized.py"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {
+        "PYTHONOPTIMIZE": "1",
+        "PYTHONPATH": "src"
+      },
+      "exit_code": 0,
+      "stdout": {
+        "file": "guards-env.stdout",
+        "sha256": "4e28ffe54fc464a55f2c9d8ca2a6381e34ec18f6c7940b2f7ef7a0446389935f"
+      },
+      "stderr": {
+        "file": "guards-env.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "cli",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "scripts/verify_v02_cli.py",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--report",
+        "/tmp/psychohistory-v02-final/cli.json"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "cli.stdout",
+        "sha256": "d7af041444b56b5bfc353e27298d43ba72b2eca64ca60777797a8792c39169e7"
+      },
+      "stderr": {
+        "file": "cli.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "cli-optimize",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "scripts/verify_v02_cli.py",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--report",
+        "/tmp/psychohistory-v02-final/cli-optimize.json"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {
+        "PYTHONOPTIMIZE": "1"
+      },
+      "exit_code": 0,
+      "stdout": {
+        "file": "cli-optimize.stdout",
+        "sha256": "d7af041444b56b5bfc353e27298d43ba72b2eca64ca60777797a8792c39169e7"
+      },
+      "stderr": {
+        "file": "cli-optimize.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "old-backup",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "scripts/verify_v02_legacy.py",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--baseline",
+        "7ea6eab94433e3669b6f492d802bb35316dc90d6",
+        "--report",
+        "/tmp/psychohistory-v02-final/old-backup.json"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "old-backup.stdout",
+        "sha256": "6edc4a749354c62572e558af2473642531433378ac8a1c98ccfb1eff28bc4cd5"
+      },
+      "stderr": {
+        "file": "old-backup.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "browser-v02",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "scripts/browser_v02.py"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {
+        "PH_TEST_URL": "http://127.0.0.1:34433",
+        "PH_TEST_DATA": "/tmp/psychohistory-v02-final/browser-data",
+        "PH_TEST_CANDIDATE_ID": "R123",
+        "PH_TEST_CANDIDATE_COMMIT": "d80739906b7d0134634eafa2f3362e93150f2ec3",
+        "PH_BROWSER_REPORT": "/tmp/psychohistory-v02-final/browser-v02.json"
+      },
+      "exit_code": 0,
+      "stdout": {
+        "file": "browser-v02.stdout",
+        "sha256": "314ffe34c8cbf9d3eaeb665dc99c1e4017f9122f2ca2d95a6972a0179b14e506"
+      },
+      "stderr": {
+        "file": "browser-v02.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "browser-v01",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "scripts/browser_check.py"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {
+        "PH_TEST_URL": "http://127.0.0.1:34433",
+        "PH_TEST_DATA": "/tmp/psychohistory-v02-final/browser-data",
+        "PH_BROWSER_REPORT": "/tmp/psychohistory-v02-final/browser-v01.json"
+      },
+      "exit_code": 0,
+      "stdout": {
+        "file": "browser-v01.stdout",
+        "sha256": "cd79816efcd5c5bbc9bcb2376c9a9ac09573f60f8ea459c2b2f54980e54b9769"
+      },
+      "stderr": {
+        "file": "browser-v01.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "browser-server",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/psychohistory-v02-final/browser-data",
+        "serve",
+        "--port",
+        "34433"
+      ],
+      "exit_code": -15,
+      "shutdown": "SIGTERM",
+      "log": "browser-server.log",
+      "log_sha256": "eb541cb249ff16a8086c2185d99ce7e3fe812e4a784f954723e85b96457fe74f"
+    },
+    {
+      "name": "prepare-history",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "scripts/browser_history_check.py",
+        "--prepare",
+        "--data",
+        "/tmp/psychohistory-v02-final/history-data"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {
+        "PYTHONPATH": "src"
+      },
+      "exit_code": 0,
+      "stdout": {
+        "file": "prepare-history.stdout",
+        "sha256": "a83165f2909e68ca5588d1e55449f6a0dfa9a9557ad66f0f4acff4cb3d727700"
+      },
+      "stderr": {
+        "file": "prepare-history.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "browser-history",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "scripts/browser_history_check.py",
+        "--data",
+        "/tmp/psychohistory-v02-final/history-data",
+        "--url",
+        "http://127.0.0.1:59559",
+        "--report",
+        "/tmp/psychohistory-v02-final/browser-history.json"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout/platform/future_model",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "browser-history.stdout",
+        "sha256": "2d4d4ea4292bfeeea29b82f02486b61d4deee132669183cab4cab3b316edbec6"
+      },
+      "stderr": {
+        "file": "browser-history.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "history-server",
+      "argv": [
+        "/tmp/psychohistory-v02-final/checkout/platform/future_model/.venv/bin/python",
+        "-m",
+        "psychohistory.cli",
+        "--repo",
+        "/tmp/psychohistory-v02-final/checkout",
+        "--data",
+        "/tmp/psychohistory-v02-final/history-data",
+        "serve",
+        "--port",
+        "59559"
+      ],
+      "exit_code": -15,
+      "shutdown": "SIGTERM",
+      "log": "history-server.log",
+      "log_sha256": "e0afba8d5827025148ec284beb6c92f3ff1621ce8a667158a4f30fa2095b7435"
+    },
+    {
+      "name": "status",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/tmp/psychohistory-v02-final/checkout",
+      "extra_environment": {},
+      "exit_code": 0,
+      "stdout": {
+        "file": "status.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "status.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "reproducible_artifact_sha256": "c0d83967b445f68b790e14bae9e1f60014003d8d98bdaec3be7452671e548b08"
+}
