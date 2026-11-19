@@ -1,0 +1,37 @@
+# 个人决策工作台沿用清单与旧成果封存索引
+
+整理日期：2026 年 11 月 19 日。生效的项目方向见 [v3.0 规程](PROJECT_WORKFLOW_REQUIREMENTS_V3_2026-11-18.md)。
+
+## 版本与范围
+
+转向前的仓库快照为 [`52d84e6c420cc745de43e5e369db4efde6527475`](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475)，即 v3.0 转向提交的第一父提交。Git 树完整返回 9,459 个文件对象条目，含代码、测试、证据、镜像和归档物。这个数字是文件路径计数，不代表独立数据或研究数量。本索引按资产组归类，并对下表代表性条目核读内容。其余项目按固定快照和原有目录索引查找。开放 PR 保持原状态；快照后的增量单列。
+
+「沿用」表示纳入新方向的材料队列，使用时遵循表列用途和证据边界。「暂封存」表示退出默认开发队列并在原址可查，所列条件出现后可提取。保持旧文件、冻结协议、历史 CI、证据等级和未结事项的身份。本次只有整理和归档，不构成版本开发授权。
+
+## 沿用清单
+
+| 决策能力 | 沿用材料 | 使用范围与验收 |
+| --- | --- | --- |
+| 工作台基础 | [平台 v0.3 验收](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/platform/future_model/reports/V03_ACCEPTANCE.md)、[平台源代码与测试](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/platform/future_model) | 复用已有运行记录、版本/来源标识、受控任务、记录与恢复能力。原研究模式及合成案例用于工程回归。 |
+| 可选方案、底线与等待 | [C010 可行集与自主性](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/decision_methods/C010_CAPABILITY_AGENCY_FEASIBLE_SET_IDENTIFICATION_2026-11-02.md)、[C009 等待与可逆性](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/decision_methods/C009_OPTION_VALUE_INFORMATION_REVERSIBILITY_2026-11-01.md) | 区分已知、可行和已选择的方案，保留硬约束、撤回代价、截止日和未知信息。用同一结果但可行集不同的合成反例测试；等待成本高于信息改善时须可解释。 |
+| 事前记录与事后回访 | [C011 日记与回忆测量](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/decision_methods/C011_RETROSPECTIVE_RECALL_DIARY_VERIFICATION_2026-11-03.md)、[MKT038 记录质量与结果](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/market/MKT038_DECISIONOS_RECORD_QUALITY_VS_OUTCOME_AND_MAGIC_LINK_REVIEW_2026-10-26.md)、[MKT039 版本与复查](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/market/MKT039_DECISIONOS_REVIEW_HISTORY_EXPORT_PROVENANCE_INFORMATION_LOSS_2026-10-26.md) | 分开保存当时信息、实际行动、结果来源、回访时间和更正。字段齐全、主观满意或一键确认均可作为记录属性，实际效果仍须独立评价。未选方案保持未观察。 |
+| 解释、隐私与恢复 | [F001 否决权和最小化](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/privacy_safety/F001_HUMAN_OVERRIDE_AND_DATA_MINIMIZATION_2026-W43.md)、[F002 撤回与备份](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/privacy_safety/F002_CONSENT_REVOCATION_DERIVED_DATA_BACKUP_LIFECYCLE_2026-W44.md)、[F003 记忆依据](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/privacy_safety/F003_EVIDENCE_ENTAILMENT_AND_MEMORY_CONTESTABILITY_2026-W44.md)、[MKT035 授权与记忆](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/market/MKT035_DECISION_JOURNAL_LOCAL_FIRST_MEMORY_CONSENT_AND_PROPOSAL_GATE_2026-10-26.md)、[MKT036 备份一致性](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/market/MKT036_DECISION_JOURNAL_WAL_BACKUP_RESTORE_MEMORY_LIFECYCLE_2026-10-26.md) | 纳入确认、纠错、删除、撤回及恢复检查。用独立合成例子验证旧备份、过期授权或不充分来源不能自动恢复权限及改写已确认偏好。竞品结论只作为设计参考。 |
+| 独立验收与模型更新 | [R269 分组交叉验证](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/docs/R269_GROUP_CV_INDEPENDENT_E1_CLOSURE_INDEX_2026-10-23.md)、[R278 至 R281 预测校准](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/docs/R278_R281_ENSEMBLE_CALIBRATION_BRIER_LOG_SCORE_FOUR_MODEL_E1_CLOSURE_2026-10-23.md)、[C015 单案例区间核验](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/decision_methods/C015_CHEN_CHEN_2014_N_OF_1_INTERVAL_CONSISTENCY_2026-11-10.md) | 复用分组泄漏反例、概率评分及区间报告检查，保留原验证任务和证据层级。没有可核实的预测及结果时，只用情景范围和定性证据。 |
+
+首批可直接转成合成验收案例：硬约束排除、缺条件时不强行排序、等待成本改变建议、区分记录与结果、恢复时保持撤销、避免同一用户或案例的训练与留出重叠。这里的「直接」指可用于编写验收，真实个人决策效果仍待检验。
+
+## 暂封存目录及重新启用条件
+
+| 归档组 | 原位置与身份 | 何时提取 |
+| --- | --- | --- |
+| R 系列原模型、实验、研究包与旧研究路线 | [研究快照](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/research)、[冻结协议](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/protocols)、[旧归档包](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/archives)、[早期恢复记录](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/manifests/FULL_LIBRARY_RECOVERY_2026-10-15.md) | 工作台出现能由具体方法解决的缺口，或已有重大科研完整性问题需要复查时。R073、PESEN v0.1 和各研究历史结论继续按原规程。 |
+| 重复博弈、社会网络、人口与历史制度原始材料 | [数据侦察](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/research/data_scout)、[理论](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/theory) | 在相关决策场景出现，且完成版本、许可、实际字段、决策时点和外部适用性核验后使用。可沿用审计方法；例如 [Cason 资料门槛](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/research/data_scout/CASON_2026_CRSU_PREDECISION_LICENSE_DOWNLOAD_ADDENDUM_2026-10-26.md) 记录原始下载受阻与文件特定许可待核，不能登记为可执行工作台数据。 |
+| 专项数值再验、合成机制结果、旧治理记录 | [验证](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/research/validation)、[治理](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/research/operations)、[旧交接](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/research/coordination) | 出现对应复算、回归或历史审计需求时按原任务键提取。当前沿用表中的代表性测试设计优先，其余结果保留原边界。 |
+| 竞品专题与隐私研究的剩余材料 | [市场研究](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/research/market)、[隐私安全](https://github.com/edwardsage419/Psychohistory-Research/tree/52d84e6c420cc745de43e5e369db4efde6527475/research/privacy_safety) | 工作台功能、授权或部署对象对应到具体专题时提取。沿用表所列内容优先。 |
+| 旧队列和未决 PR | [正式 154 项待核文件](https://github.com/edwardsage419/Psychohistory-Research/blob/52d84e6c420cc745de43e5e369db4efde6527475/docs/ORIGINAL_239_PENDING_154_ITEMWISE_EVIDENCE_TRIAGE_QUEUE_2026-10-25.csv)、[开放 PR](https://github.com/edwardsage419/Psychohistory-Research/pulls) | 按实际影响和重大科研风险决定审阅顺序。待核文件是管理基线，开放 PR 和历史收据不能作为已关闭或已部署的证明。 |
+
+重新提取时，使用固定提交查找路径，再对照最新 `main`、开放 PR、来源许可和最新待办。记录决策能力、版本、用途、限制及验收方法后才进入当前开发队列。尚未审到的材料按原址保留，后续可重新判定。
+
+## 转向后已经出现的研究
+
+截至审阅版本 [`e7e34554`](https://github.com/edwardsage419/Psychohistory-Research/commit/e7e3455427488d37b9cd1f87f2981352bf414c9c)，C019 至 C021 已用于补充工作台候选设计。[C019 决策冲突与延迟](https://github.com/edwardsage419/Psychohistory-Research/blob/e7e3455427488d37b9cd1f87f2981352bf414c9c/research/decision_methods/C019_CHOICE_CONFLICT_DEFERRAL_2026-11-18.md) 可辅助处理等待及截止日；[C020 流动性和承诺](https://github.com/edwardsage419/Psychohistory-Research/blob/e7e3455427488d37b9cd1f87f2981352bf414c9c/research/decision_methods/C020_LAIBSON_1997_LIQUIDITY_COMMITMENT_COMPETING_MECHANISMS_2026-11-19.md) 提供不能凭消费联动推断自控机制的反例；[C021 重复任务排序](https://github.com/edwardsage419/Psychohistory-Research/blob/e7e3455427488d37b9cd1f87f2981352bf414c9c/research/decision_methods/C021_ODONOGHUE_RABIN_1999_REPEATED_TASK_PROOF_BOUNDARIES_2026-11-19.md) 适合后续任务排序，须保留学习、疲劳、依赖或选择集变化等失效条件。这些增量各自保留研究证据身份；本次不新开开发任务或触发 CI。
