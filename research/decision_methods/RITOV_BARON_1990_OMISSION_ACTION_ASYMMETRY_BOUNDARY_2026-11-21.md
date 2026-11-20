@@ -1,0 +1,24 @@
+# Ritov and Baron (1990): omission versus action, decision boundary
+
+Actual review date: 2026-11-21 (Asia/Singapore). Track: personal decision theory v3.0. Status: candidate research rule, not validated product capability.
+
+## Source and actual scope
+Ilana Ritov and Jonathan Baron (1990), “Reluctance to vaccinate: Omission bias and ambiguity,” Journal of Behavioral Decision Making 3(4):263–277, DOI https://doi.org/10.1002/bdm.3960030404 . Publisher original abstract and bibliographic metadata inspected: https://onlinelibrary.wiley.com/doi/abs/10.1002/bdm.3960030404 . No full experimental tables, participant-level data, or original statistical reanalysis inspected. Publisher abstract reports hypothetical vaccination decisions, reluctance to act despite lower described risk, and additional reluctance when an untestable risk-group distinction is made salient despite constant overall probability. These are reported findings, not independently replicated here.
+
+## Distinct decision gap and transfer boundary
+A user may describe staying put as “doing nothing,” omitting its possible consequences. Previous repository work covers status-quo framing (Samuelson and Zeckhauser 1988), conflict/deferral (Tversky and Shafir 1992), and ambiguity identification (Ellsberg 1961). This entry isolates **commission/omission asymmetry and the consequences of inaction**, without treating any preference for inaction as irrational by default. Original vaccination study is hypothetical and cannot identify personal career, housing or financial outcome probabilities; no medical recommendation follows from this record.
+
+## Candidate elicitation and explanation rule
+Ask: “If you take no action until [specified date], what can change, what opportunities expire, and what harms or benefits might follow? Which outcomes would occur if you act? Are you treating a harm from your action differently from the same harm caused by inaction, and is that distinction part of your values?” Record: action A, inaction/status quo S, observation window, objective outcomes, transition costs, reversibility, accountability/ethical preferences, uncertainty source, and explicit user value judgments. Compare action and inaction on matched outcome definitions and horizons. Preserve the user's moral distinction between doing and allowing, when affirmed; do not silently force equal utility. An untestable subgroup label with unchanged marginal outcome distribution must not alter calculated objective risk on its own.
+
+## Synthetic failure tests (invented numbers, not empirical estimates)
+1. A move option incurs a hypothetical 10-unit relocation cost and 4-unit expected loss, while remaining incurs 0 relocation cost and 12-unit expected loss over the same period. The engine silently reports remaining as zero cost/zero risk merely because it requires no new action: FAIL. Values and estimates are hypothetical; real-world expected losses require evidence.
+2. Two descriptions of the same synthetic outcome distribution differ only by saying that a subgroup at risk exists but membership cannot be tested. Overall marginal probabilities are stipulated unchanged. The system increases the numerical risk of the action solely from that wording: FAIL. Subjective ambiguity concern may be recorded separately.
+3. User explicitly assigns a moral cost to personally causing harm, even when outcome distributions are matched. System deletes this value as “bias” without permission: FAIL.
+4. Decision deadline passes during a “wait” action; system assumes the expired alternative remains available: FAIL.
+
+## Competing explanations and limitations
+Status quo preference may arise from actual switching costs, asymmetric legal responsibility, ethical commitments, regret anticipation, loss aversion, information distrust, or an objectively beneficial default. Hypothetical vaccination framing, perceived responsibility, and ambiguity are entangled; the publisher abstract does not provide effect sizes or a general correction coefficient. No individual diagnosis of bias or probability calibration is warranted.
+
+## Handoff and execution ledger
+Theory review and candidate acceptance counterexamples: COMPLETE within publisher abstract scope. Cross-track semantic deduplication: PARTIAL (directory filenames and known adjacent work inspected). Full-text statistical audit: NOT RUN. Numerical independent replication, software tests, personal predictive validation, scientific acceptance: NOT RUN. Model track: optional action/inaction paired display, subject to owner authorization. Independent acceptance track: four synthetic failure cases. Data track: qualification of opportunity expiry, observation horizon, and outcome evidence. No private records, paid API, CI, or PR merge used. Historical frozen R073/PESEN v0.1 unchanged.
