@@ -129,7 +129,11 @@ def test_holdout_revocation_rejects_original_and_regenerated_authorization(tmp_p
     assert not (tmp_path / "private_personal").exists()
     old = store.grant()["epoch"]
     state = baseline()
-    store.save(old, state, DecisionHub().analyze(state))
+    # Use the public service input contract: normalize schema defaults before saving.
+    # DecisionRecords is a lower-level store, and its snapshot hash binds canonical state.
+    from psychohistory.decision_state import DecisionState
+    normalized = DecisionState.model_validate(state).model_dump(mode="json")
+    store.save(old, normalized, DecisionHub().analyze(normalized))
     exported = store.export(old)
     assert exported["signature"]
     assert store.revoke(old)["authorized"] is False
