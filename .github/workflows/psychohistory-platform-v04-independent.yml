@@ -1,0 +1,106 @@
+name: Psychohistory v0.4 independent holdout and native acceptance
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+    paths:
+      - 'platform/future_model/**'
+      - '.github/workflows/psychohistory-platform-v04-independent.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: psychohistory-v04-independent-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  holdout-and-regression:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.head_ref == 'feat/psychohistory-platform-v0.4'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            system: Linux
+            architecture: x86_64
+          - runner: macos-15
+            system: Darwin
+            architecture: arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 25
+    defaults:
+      run:
+        shell: bash
+        working-directory: platform/future_model
+    steps:
+      - name: Checkout exact PR head, without credential retention
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - name: Confirm immutable source identity and native runner
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_SYSTEM: ${{ matrix.system }}
+          EXPECTED_ARCH: ${{ matrix.architecture }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(uname -s)" = "$EXPECTED_SYSTEM"
+          test "$(uname -m)" = "$EXPECTED_ARCH"
+          echo "HEAD=$(git rev-parse HEAD)"
+          python3.12 -c 'import platform,sqlite3; print(platform.platform(),platform.python_version(),sqlite3.sqlite_version)'
+          node --version
+          npm --version
+          TEMP_ROOT="$(cd "$RUNNER_TEMP" && pwd -P)"
+          echo "TMPDIR=$TEMP_ROOT" >> "$GITHUB_ENV"
+      - name: Install locked Python and JavaScript dependencies
+        run: bash scripts/install.sh
+      - name: Independent frozen eight-case acceptance
+        run: |
+          set -euo pipefail
+          PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_independent_pr56_holdout.py
+      - name: Complete v0.4 and legacy regression suite
+        run: bash scripts/verify.sh
+      - name: Legacy mathematical guard modes
+        run: |
+          set -euo pipefail
+          PYTHONPATH=src .venv/bin/python -S scripts/verify_v03_guards.py
+          PYTHONPATH=src .venv/bin/python -O -S scripts/verify_v03_guards.py
+          PYTHONPATH=src PYTHONOPTIMIZE=1 .venv/bin/python -S scripts/verify_v03_guards.py
+      - name: Legacy CLI and versioned recovery regression
+        run: |
+          set -euo pipefail
+          PYTHONPATH=src .venv/bin/python scripts/verify_v03_cli.py --repo "$GITHUB_WORKSPACE" --report "$RUNNER_TEMP/v03_cli.json"
+      - name: Install real Chromium for native browser evaluation
+        run: |
+          set -euo pipefail
+          .venv/bin/python -m pip install --index-url https://pypi.org/simple --only-binary=:all: -r requirements-browser.lock
+          if [ "$(uname -s)" = Linux ]; then
+            .venv/bin/python -m playwright install --with-deps chromium
+          else
+            .venv/bin/python -m playwright install chromium
+          fi
+      - name: Test v0.4 personal decision workbench in real Chromium
+        run: |
+          set -euo pipefail
+          .venv/bin/python scripts/browser_v04.py
+      - name: Preserve native CLI receipt
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: v04-independent-${{ matrix.runner }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v03_cli.json
+          if-no-files-found: ignore
+          retention-days: 7
