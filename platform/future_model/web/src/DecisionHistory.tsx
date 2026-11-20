@@ -131,6 +131,7 @@ export function DecisionHistory({ api, state, analysis, savedRevision, onSave, o
   return <section className="card decision-history" aria-labelledby="decision-history-title">
     <div className="decision-section-heading"><h2 id="decision-history-title">本地决策记录</h2><span className="pill">{epoch ? '已授权' : '仅在页面内存中'}</span></div>
     <p className="muted">需要授权才会把已确认修订、实际行动和观察保存到本机。导出的文件由你保管；删除或撤回只覆盖应用的本地存储。</p>
+    <p className="muted">导出的备份文件未经加密，包含个人决策内容。请仅在自己控制的安全位置保存。若本机授权账本完全丢失，当前版本无法将导出自动恢复为可编辑历史，只能人工查阅。删除或撤回也不会清除自行保存的外部副本。</p>
     {notice && <p role={notice.error ? 'alert' : 'status'} className={notice.error ? 'error' : 'decision-notice'}>{notice.text}</p>}
     {!epoch && <button type="button" disabled={consent === null || busy} onClick={() => void run(async () => {
       const next = await api<Consent>(endpoint('consent'), {}, 'v4');
