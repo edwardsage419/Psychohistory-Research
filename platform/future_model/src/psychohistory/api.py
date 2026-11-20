@@ -5,10 +5,14 @@ from pathlib import Path
 import secrets
 from urllib.parse import urlsplit
 from fastapi import FastAPI, Query, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from .plugins import registry
+from .decision_api import MAX_DECISION_REQUEST, MAX_RESTORE_REQUEST
+from .decision_api import PREFIX as DECISION_PREFIX, router as decision_router
 from .service import Service, ExperimentInput
 from .storage import checked_path, write_new
 
@@ -66,7 +70,7 @@ def create_app(root,repo,token=None):
         app.state.service=Service(root,repo)
         try:yield
         finally:app.state.service.close()
-    app=FastAPI(title='Psychohistory Platform v0.3',version='0.3.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
+    app=FastAPI(title='Psychohistory Platform v0.4',version='0.4.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
 
     @app.middleware('http')
     async def security(request:Request,call_next):
@@ -78,13 +82,25 @@ def create_app(root,repo,token=None):
             if request.method=='POST':
                 length=request.headers.get('content-length')
                 if length is None:return JSONResponse({'detail':'Content-Length required'},status_code=411)
-                if not length.isdecimal() or int(length)>16384:return JSONResponse({'detail':'Request exceeds 16 KiB'},status_code=413)
+                limit = 16384
+                if request.url.path.startswith(DECISION_PREFIX + "/"):
+                    limit = MAX_RESTORE_REQUEST if request.url.path == DECISION_PREFIX + "/restore" else MAX_DECISION_REQUEST
+                if not length.isascii() or not length.isdecimal() or len(length) > 9 or int(length) > limit:
+                    detail = 'Request exceeds 16 KiB' if limit == 16384 else 'Request exceeds the endpoint limit'
+                    return JSONResponse({'detail':detail},status_code=413)
         response=await call_next(request)
         response.headers['X-Content-Type-Options']='nosniff'
         response.headers['Referrer-Policy']='no-referrer'
         response.headers['Content-Security-Policy']="default-src 'self'; connect-src 'self'; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'"
         response.headers['Cache-Control']='no-store'
         return response
+
+    @app.exception_handler(RequestValidationError)
+    async def validation_error(request, exc):
+        if request.url.path.startswith(DECISION_PREFIX + "/"):
+            detail = [{"msg": "个人决策请求字段缺失或格式无效。"}]
+            return JSONResponse({"detail": detail}, status_code=422)
+        return await request_validation_exception_handler(request, exc)
 
     @app.exception_handler(ValueError)
     async def invalid(request,exc):return JSONResponse({'detail':str(exc)},status_code=422)
@@ -235,6 +251,8 @@ def create_app(root,repo,token=None):
     @app.post("/api/v3/compare")
     def compare_trajectories(data: TrajectoryComparisonInput):
         return app.state.service.mechanisms.compare(**data.model_dump())
+
+    app.include_router(decision_router(root))
 
     dist=Path(__file__).resolve().parents[2]/'web/dist'
     if dist.is_dir():app.mount('/',StaticFiles(directory=dist,html=True),name='console')
