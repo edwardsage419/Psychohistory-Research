@@ -145,6 +145,7 @@ def connect(page, url, token):
     button(page, '连接工作空间').click()
     expect(page.get_by_text('工作空间已连接', exact=True)).to_be_visible()
     button(page, '个人决策工作台').click()
+    expect(page.get_by_text('导出的备份文件未经加密', exact=False)).to_be_visible()
 
 
 def career_decision(page):
