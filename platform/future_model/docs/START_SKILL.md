@@ -1,6 +1,6 @@
 # Codex Cloud 安装与启动规程
 
-适用于现有 `Psychohistory-Platform` 环境及通过该环境启动的任务。仓库为 `edwardsage419/Psychohistory-Research`，代码工作目录为 `platform/future_model/`。从任务指定的已推送版本工作；未指定时以可核实的 `main` 为准备基线。启动前阅读根目录 [AGENTS.md](../../../AGENTS.md) 和 [项目规程 v3.0](../../../docs/PROJECT_WORKFLOW_REQUIREMENTS_V3_2026-11-18.md)。个人决策系统是主线，本规程用于环境准备和任务恢复。
+适用于现有 `Psychohistory-Platform` 环境及通过该环境启动的任务。仓库为 `edwardsage419/Psychohistory-Research`，代码工作目录为 `platform/future_model/`。从任务指定的已推送版本工作；未指定时以可核实的 `main` 为准备基线。启动前阅读根目录 [AGENTS.md](../../../AGENTS.md) 和 [项目规程 v3.1](../../../docs/PROJECT_WORKFLOW_REQUIREMENTS_V3_1_2026-11-20.md)。个人决策系统是主线，本规程用于环境准备和任务恢复。
 
 ## Install script
 
