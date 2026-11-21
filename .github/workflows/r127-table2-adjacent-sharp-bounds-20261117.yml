@@ -1,0 +1,80 @@
+name: R127 published Table2 adjacent-period sharp bounds
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r127-table2-adjacent-sharp-bounds-20261117.yml'
+      - 'research/validation/r127_table2_full_ten_period_sharp_transitions_20261117.js'
+      - 'research/validation/r127_table2_distinct_ever_change_sharp_20261117.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-flow-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run synthetic-witness flow and full-path proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --version
+          node research/validation/r127_table2_full_ten_period_sharp_transitions_20261117.js > "$RUNNER_TEMP/r127-sharp-summary.json"
+          python - "$RUNNER_TEMP/r127-sharp-summary.json" <<'PY'
+          import json,sys
+          data=json.load(open(sys.argv[1],encoding='utf-8'))
+          expect={
+              'status':'PASS_BOUNDED_SHARP_AGGREGATE_IDENTIFICATION',
+              'source_cells':490,'independent_adjacent_pairs':63,
+              'participant_round_transitions':963,
+              'minimum_total_switches':262,
+              'maximum_total_switches':857,
+              'minimum_absolute_effort_distance':552,
+              'endpoint_only_minimum_switches':89,
+              'minimum_enter_effort1':98,
+              'minimum_exit_effort1':23,
+              'new_E2_predictions':0,'new_E3_predictions':0,
+          }
+          for key,want in expect.items():
+              if data.get(key)!=want:
+                  raise SystemExit('R127_FAIL_CLOSED:'+key)
+          if len(data['session_rows'])!=7 or len(data['adjacent_period_rows'])!=9:
+              raise SystemExit('R127_COVERAGE_MISMATCH')
+          if data['individual_real_actions_identified'] is not False:
+              raise SystemExit('R127_IDENTIFICATION_OVERCLAIM')
+          print('R127_ADJACENT_SHARP_BOUNDS_VERIFIED',data['minimum_total_switches'],data['maximum_total_switches'])
+          PY
+      - name: Verify sharp distinct-ever-changed participant bounds
+        shell: bash
+        run: |
+          set -euo pipefail
+          node research/validation/r127_table2_distinct_ever_change_sharp_20261117.js > "$RUNNER_TEMP/r127-distinct-summary.json"
+          python - "$RUNNER_TEMP/r127-distinct-summary.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding='utf-8') as f:
+              x=json.load(f)
+          expected={
+              'status':'PASS_R127_DISTINCT_PARTICIPANT_SHARP_BOUNDS',
+              'published_cells_verified':490,
+              'published_group_subject_count':107,
+              'maximum_always_unchanged_participants':7,
+              'minimum_distinct_participants_ever_changed':100,
+              'minimum_distinct_participants_ever_exited_effort1':17,
+              'endpoint_only_minimum_distinct_different':89,
+              'additional_over_endpoint':11,
+              'real_individual_sequences_identified':False,
+              'additional_human_E2_prediction':0,
+              'historical_E3_prediction':0,
+          }
+          for key,want in expected.items():
+              if x.get(key)!=want:
+                  raise SystemExit('R127_DISTINCT_BOUND_GATE_'+key)
+          if len(x['groups'])!=7 or len(x.get('negative_controls',[]))!=2:
+              raise SystemExit('R127_DISTINCT_COVERAGE_GATE')
+          print('R127_DISTINCT_SHARP_BOUNDS_VERIFIED',x['minimum_distinct_participants_ever_changed'],x['minimum_distinct_participants_ever_exited_effort1'])
+          PY
