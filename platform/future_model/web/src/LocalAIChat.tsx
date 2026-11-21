@@ -15,7 +15,7 @@ type Reply = {
   candidate_method?: Method | null; evidence?: string;
 };
 
-export function LocalAIChat({ api, onOpenWorkbench }: { api: Api; onOpenWorkbench: () => void }) {
+export function LocalAIChat({ api, onOpenWorkbench }: { api: Api; onOpenWorkbench: (question: string) => void }) {
   const [status, setStatus] = useState<LocalStatus | null>(null);
   const [question, setQuestion] = useState('');
   const [reply, setReply] = useState<Reply | null>(null);
@@ -66,7 +66,7 @@ export function LocalAIChat({ api, onOpenWorkbench }: { api: Api; onOpenWorkbenc
           placeholder="比如：我有两个工作选择，收入提高但工时增加，应该怎么比较？"/>
         <div className="actions">
           <button type="submit" disabled={!status?.enabled || !question.trim() || loading}>{loading ? '正在分析' : '开始分析'}</button>
-          <button className="quiet" type="button" onClick={onOpenWorkbench}>打开数学决策工作台</button>
+          <button className="quiet" type="button" onClick={() => onOpenWorkbench(question)}>打开数学决策工作台</button>
         </div>
       </form>
       {error && <p role="alert" className="error">{error}</p>}
@@ -87,7 +87,7 @@ export function LocalAIChat({ api, onOpenWorkbench }: { api: Api; onOpenWorkbenc
       </>}
       {reply.proposal.ask && <p><strong>下一项最关键的信息：</strong>{reply.proposal.ask}</p>}
       <p className="muted">这次生成的是待确认的理解和方法建议。没有执行数值计算，也没有保存你的问题。</p>
-      <button className="quiet" type="button" onClick={onOpenWorkbench}>进入数学工作台核对并计算</button>
+      <button className="quiet" type="button" onClick={() => onOpenWorkbench(question)}>进入数学工作台核对并计算</button>
     </section>}
   </div>;
 }
