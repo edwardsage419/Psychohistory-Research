@@ -347,7 +347,6 @@ try {
   await visible(page.locator('#runtime-status').filter({ hasText: '本机离线资源已准备。' }));
   await closeServer();
   await assert.rejects(fetch(origin.href), error => error.cause?.code === 'ECONNREFUSED', 'The origin must be unavailable');
-  await context.setOffline(true);
   await offlineReload(page);
   const previousDraft = 'BROWSER_HISTORY_FIXTURE_ONLY';
   await page.locator('#question').fill(previousDraft);
