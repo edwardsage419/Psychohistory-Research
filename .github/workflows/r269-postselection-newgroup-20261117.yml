@@ -1,0 +1,78 @@
+name: R269 secondary new-group post-selection exact risk
+on:
+  push:
+    paths:
+      - '.github/workflows/r269-postselection-newgroup-20261117.yml'
+      - 'research/R269/secondary_new_group_risk_20261117/independent_postselection.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-postselection:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay all frozen 576 rows and test two optimization modes
+        shell: bash
+        run: |
+          set -euo pipefail
+          for optimization in 0 1; do
+            PYTHONOPTIMIZE="$optimization" python -B research/R269/secondary_new_group_risk_20261117/independent_postselection.py > "$RUNNER_TEMP/r269-$optimization.json"
+            python - "$RUNNER_TEMP/r269-$optimization.json" <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          with open(sys.argv[1],encoding="utf-8") as h: data=json.load(h)
+          def gate(test,key):
+              if test is not True: raise SystemExit("R269_POSTSELECTION_FAIL_"+key)
+          gate(data.get("status")=="PASS_R269_SECONDARY_EXACT_NEW_GROUP_POST_SELECTION_RISK","STATUS")
+          gate(data.get("published_source_rows")==576,"ROWS")
+          gate(data.get("mutation_controls")==["source_score_REJECTED","source_probability_REJECTED"],"MUTANTS")
+          gate(data.get("new_real_human_E2")==0 and data.get("new_historical_E3")==0,"SCIENCE_GRADE")
+          expected={
+              "1/4":("3209/14336","1103/2048","83/392","15/392","1215/100352"),
+              "1/2":("425/1568","7/32","55/196","0","33/1568"),
+              "3/4":("3209/14336","1103/2048","83/392","15/392","1215/100352")
+          }
+          gate(len(data.get("results",[]))==3,"WORLD_COUNT")
+          for row in data["results"]:
+              q,m,g,reg_row,reg_group=expected[row["p"]]
+              gate(row["new_group_expected_Brier_after_LOOR_model_choice"]=="1/4","LOOR")
+              gate(row["new_group_expected_Brier_after_LOGO_model_choice"]==q,"LOGO")
+              gate(row["LOGO_global_selection_probability"]==m,"SELECTOR_MASS")
+              gate(row["new_group_expected_Brier_full_train_Laplace"]==g,"FULL_TRAIN")
+              gate(row["LOOR_selection_regret_vs_oracle"]==reg_row,"ROW_REGRET")
+              gate(row["LOGO_selection_regret_vs_oracle"]==reg_group,"GROUP_REGRET")
+              gate(row["LOOR_selected_models_by_source"]=={"GROUP_ID_MEMORIZER":64},"LOOR_SOURCE_CHOICES")
+              gate(row["LOGO_selected_models_by_source"]=={"GLOBAL_LAPLACE":14,"CONSTANT_HALF":50},"LOGO_SOURCE_CHOICES")
+              gate(F(row["new_group_expected_Brier_after_LOGO_model_choice"]) >=
+                   F(row["oracle_minimum_expected_Brier_among_three_candidates"]),"NONNEGATIVE_REGRET")
+          print("R269_POSTSELECTION_NATIVE_64x3_EXACT_ALL_CHECKS_PASS",data["results"][0]["new_group_expected_Brier_after_LOGO_model_choice"])
+          PY
+          done
+          cmp "$RUNNER_TEMP/r269-0.json" "$RUNNER_TEMP/r269-1.json"
+          echo 'R269_OPTIMIZED_AND_NORMAL_IDENTICAL'
+      - name: Archive source and result SHA guard negative controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - "$RUNNER_TEMP/r269-mutated-source.csv" <<'PY'
+          import sys
+          text=open("research/R269/R269_ALL_576_ORIGINAL_CLUSTERED_CV_SOURCE_TYPES.csv",encoding="utf-8").read()
+          text=text.replace("729/4096","728/4096",1)
+          open(sys.argv[1],"w",encoding="utf-8").write(text)
+          PY
+          if python -B research/R269/secondary_new_group_risk_20261117/independent_postselection.py \
+              --source "$RUNNER_TEMP/r269-mutated-source.csv" 2>"$RUNNER_TEMP/r269-fail.log"; then
+            echo 'R269_TAMPERED_SOURCE_ACCEPTED'
+            exit 1
+          fi
+          grep -q 'ARCHIVED_SOURCE_SHA256' "$RUNNER_TEMP/r269-fail.log"
+          echo 'R269_TAMPERED_SOURCE_SHA_REJECTED'
