@@ -27,6 +27,16 @@ npm run preview
 
 静态地址需要直接提供清单及资产。安装器省略登录凭据并拒绝重定向。请采用专用且受控的 HTTPS 源，避免同源运行其他不受信的脚本。项目的授权仅覆盖本地和用户控制的交付包，公网托管需要所有者另行批准。
 
+## iPhone 私人 HTTPS 安装与真实设备验收
+
+在 Mac 和自己的 iPhone 连接到同一免费私人 Tailscale 网络后，在 `platform/mobile/` 中执行：
+
+~~~sh
+bash scripts/iphone-private-install.sh
+~~~
+
+该脚本仅临时提供公开静态包，经 tailnet 内 HTTPS 安装到 iPhone。**不会启用公开 Funnel**。请先在 iPhone Safari 添加到主屏幕，再从主屏幕应用确认离线资源就绪，之后关闭 Mac 与手机网络进行冷启动测试。详见 [私人安装和真机验收清单](docs/IOS_PRIVATE_INSTALL_AND_TEST.md)。当前真实 iPhone 测试仍为 `BLOCKED / NOT_RUN`。
+
 ## 从问题到复盘
 
 1. 自由描述职业、学习、生活或其他选择。确定性引导可以从明确的原文句式中提取选项，按证据提出带理由的补充问题。核对目标、单位、期限、底线和实际可行的替代方案。没有硬约束时可明确确认。来源或区间未知可以留空。
