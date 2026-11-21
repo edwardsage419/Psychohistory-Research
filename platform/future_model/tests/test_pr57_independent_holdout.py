@@ -5,6 +5,7 @@ Original numerical reference is a separate Fraction-based joint-event enumeratio
 A passing run establishes engineering behavior, not empirical scientific validity.
 """
 from fractions import Fraction as F
+from decimal import Decimal
 
 from psychohistory.decision_registry import Context
 from psychohistory.decision_state import Option, Quantity, Scenario
@@ -13,8 +14,9 @@ from psychohistory.decision_voi import InformationInput, METHODS
 
 
 def _probability(numerator, denominator=10, *, kind="fact", source="fictional self-report"):
-    value = F(numerator, denominator)
-    return {"lower": str(value), "upper": str(value), "kind": kind, "source": source}
+    # Pydantic accepts decimal text, not Fraction's "3/10" formatting.
+    value = str(Decimal(numerator) / Decimal(denominator))
+    return {"lower": value, "upper": value, "kind": kind, "source": source}
 
 
 def _quantity(amount, *, kind, source="fictional self-report"):
@@ -129,3 +131,55 @@ def test_holdout_relabeling_signals_preserves_expected_value():
     result = _run(ctx)
     assert F(result["net_value"]) == F(1, 5)
     assert result["baseline_actions"] == ["safe"]
+
+
+def _timing_point(value):
+    return {"lower": str(value), "upper": str(value), "kind": "synthetic", "source": "independent synthetic boundary"}
+
+
+def _timing_cutoff(value, *, inclusive):
+    return {"at": str(value), "inclusive": inclusive,
+            "kind": "synthetic", "source": "independent synthetic deadline"}
+
+
+def _timed_context(duration, *, inclusive):
+    from psychohistory.decision_timing import TimingInput
+
+    ctx = _context(kind="synthetic")
+    actions = {}
+    for option in ("safe", "risky"):
+        actions[option] = {
+            "switching_cost": _timing_point("0"),
+            "delay_losses": {state: _timing_point("0") for state in ("wet", "dry")},
+        }
+    actions["risky"]["cutoff"] = _timing_cutoff("0.25", inclusive=inclusive)
+    ctx.state.timing = TimingInput.model_validate({
+        "confirmed": True, "time_unit": "days", "time_origin": "decision time",
+        "horizon": _timing_cutoff("1", inclusive=True), "actions": actions,
+        "investigation": {
+            "mode": "deterministic", "kind": "synthetic", "source": "unseen joint-event case",
+            "cost": _timing_point("0.3"), "duration": _timing_point(duration),
+        },
+    })
+    return ctx
+
+
+def _timing_run(ctx):
+    from psychohistory.decision_v05 import v05_registry
+
+    method = v05_registry().get("timing_investigation", "1.0.0")
+    assert method.validate(ctx) == []
+    return method.execute(ctx)
+
+
+def test_holdout_timing_new_payoffs_before_opportunity_expires():
+    result = _timing_run(_timed_context("0.2", inclusive=False))
+    assert F(result["net_value"]) == F(1, 5)
+    assert result["status"] == "INVESTIGATE"
+
+
+def test_holdout_timing_strict_cutoff_at_equality_excludes_signal_action():
+    result = _timing_run(_timed_context("0.25", inclusive=False))
+    assert F(result["net_value"]) == -F(3, 10)
+    assert result["status"] == "ACT_NOW"
+    assert all("risky" not in row["eligible_option_ids"] for row in result["policy"])
