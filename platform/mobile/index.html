@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#153d40"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css">
+<title>心理史学 · 离线决策开发版</title></head>
+<body><header class="mast"><span class="identity">心理史学 <span class="version">Mobile v0.1 开发版</span></span><span id="network" role="status" class="network">检测网络中</span></header>
+<main>
+<section class="intro"><p class="eyebrow">本机独立计算 · 工程样机</p><h1>向决策模型提出你的问题</h1><p>所有示例数字均为虚构。当前离线版本仅实现有限场景后悔与点值信息价值计算；完整 v0.5 功能移植和 iPhone 真机验收仍未完成。</p></section>
+<section class="panel"><h2>决策问题</h2><label for="question">你正在考虑什么？</label><textarea id="question" rows="3" autocomplete="off" placeholder="例如：我是否该继续学习，还是接受另一项工作机会？"></textarea>
+<p class="help">当前系统会保留原始问题；自动识别候选方案仍在开发。下方以结构化资料作为透明降级。</p>
+<label for="matrix">确认的方案、情景与证据（JSON）</label><textarea id="matrix" class="code-field" rows="12" spellcheck="false" autocomplete="off"></textarea>
+<div class="controls"><button id="demo" type="button" class="secondary">加载虚构示例</button><button id="analyze" type="button">在手机本地计算</button></div><p class="help">无调查概率时只计算情景后悔；缺少关键事实时保持 UNKNOWN。当前阶段不执行现实行动。</p></section>
+<section id="results" class="panel" aria-live="polite"><h2>分析结果</h2><p>请输入或加载虚构资料并确认后计算。</p></section>
+<section class="panel"><h2>加密本地记录</h2><p class="help">仅在主动授权后加密保存到手机 IndexedDB。口令留在当前会话，不会上传；若忘记口令，数据无法解密。浏览器可能清理应用数据，必须妥善保管独立备份。</p>
+<label for="passphrase">本地加密口令（至少 12 字符）</label><input type="password" id="passphrase" autocomplete="new-password" placeholder="自行设置并妥善保存">
+<label class="check"><input type="checkbox" id="saveConsent">我授权将当前问题及结构化资料加密保存到本机</label>
+<div class="controls"><button type="button" id="save" class="secondary">加密保存</button><button type="button" id="load" class="secondary">解锁本地记录</button><button type="button" id="export" class="secondary">导出加密副本</button><button type="button" id="delete" class="danger">删除本机记录</button><button type="button" id="endSession" class="secondary">结束本机会话</button></div>
+<p class="help">工程限制：此阶段尚未实现可信备份恢复、撤回账本及与 v0.5 的旧备份兼容，禁止将其视为正式个人档案系统。</p></section>
+<p id="message" role="status" class="message"></p>
+<footer>仅本机计算，不启用云端推理、自动检索或外部真实行动。<a href="./README.md">查看开发与隐私边界</a></footer>
+</main><script type="module" src="./src/app.mjs"></script></body></html>
