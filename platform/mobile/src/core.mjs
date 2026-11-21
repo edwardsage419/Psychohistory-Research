@@ -4,7 +4,10 @@
  * No claim of full parity with Platform v0.5 and no empirical predictions.
  */
 export const ENGINE_VERSION = '0.1.0-dev';
-const DECIMAL = /^([+-]?)(\d*)(?:\.(\d{1,12}))?$/;
+export function stripText(value) {
+  return typeof value === 'string' ? value.replace(/^[\p{White_Space}\u001C-\u001F]+|[\p{White_Space}\u001C-\u001F]+$/gu, '') : '';
+}
+const DECIMAL = /^([+-]?)(\d*)(?:\.(\d*))?(?:[Ee]([+-]?\d+))?$/;
 function abs(n) { return n < 0n ? -n : n; }
 function gcd(a, b) { a = abs(a); b = abs(b); while (b) [a, b] = [b, a % b]; return a || 1n; }
 export function rat(n, d = 1n) {
@@ -19,12 +22,14 @@ export function decimal(value) {
     value = String(value);
   }
   if (typeof value !== 'string') throw new Error('数值需要十进制文字');
-  const m = DECIMAL.exec(value.trim());
+  const m = DECIMAL.exec(stripText(value));
   if (!m || (!m[2] && !m[3]) || value.length > 42) throw new Error(`无效十进制数值：${String(value).slice(0, 35)}`);
   const digits = m[3] || '';
-  const scale = 10n ** BigInt(digits.length);
   const numerator = BigInt((m[2] || '0') + digits) * (m[1] === '-' ? -1n : 1n);
-  return rat(numerator, scale);
+  if (numerator === 0n) return rat(0);
+  const shift = Number(m[4] ?? 0) - digits.length;
+  if (!Number.isSafeInteger(shift) || Math.abs(shift) > 64) throw new Error('数值精度超出范围');
+  return shift < 0 ? rat(numerator, 10n ** BigInt(-shift)) : rat(numerator * 10n ** BigInt(shift));
 }
 export function plus(a, b) { return rat(a.n * b.d + b.n * a.d, a.d * b.d); }
 export function minus(a, b) { return rat(a.n * b.d - b.n * a.d, a.d * b.d); }
@@ -46,7 +51,7 @@ export function exact(a) {
 }
 export function maxValue(values) { return values.reduce((best, x) => best === null || cmp(x, best) > 0 ? x : best, null); }
 function point(q, label, unit) {
-  if (!q || !['fact', 'estimate', 'assumption', 'synthetic'].includes(q.kind) || !q.source?.trim() || q.lower == null || q.upper == null) throw new Error(`${label}：缺少有来源的点值`);
+  if (!q || !['fact', 'estimate', 'assumption', 'synthetic'].includes(q.kind) || !stripText(q.source) || q.lower == null || q.upper == null) throw new Error(`${label}：缺少有来源的点值`);
   if (q.unit !== unit) throw new Error(`${label}：单位不一致`);
   const lo = decimal(q.lower), hi = decimal(q.upper);
   if (cmp(lo, hi) !== 0) throw new Error(`${label}：当前工程样机仅支持点效用`);
@@ -54,7 +59,7 @@ function point(q, label, unit) {
 }
 function checkOne(option, constraint) {
   const q = option.measurements?.[constraint.id];
-  if (!q || !['fact', 'estimate', 'assumption', 'synthetic'].includes(q.kind) || !q.source?.trim() || q.lower == null || q.upper == null) return 'UNRESOLVED';
+  if (!q || !['fact', 'estimate', 'assumption', 'synthetic'].includes(q.kind) || !stripText(q.source) || q.lower == null || q.upper == null) return 'UNRESOLVED';
   if (q.unit !== constraint.unit) throw new Error(`约束「${constraint.id}」与「${option.id}」单位冲突`);
   const lower = decimal(q.lower), upper = decimal(q.upper), limit = decimal(constraint.threshold);
   if (cmp(lower, upper) > 0) throw new Error('无效区间');
@@ -80,7 +85,7 @@ export function feasibility(state) {
 function payoffMatrix(state, accepted) {
   if (!Array.isArray(state.scenarios) || !state.scenarios.length) throw new Error('需要情景');
   const unit = state.utility_unit;
-  if (typeof unit !== 'string' || !unit.trim()) throw new Error('需要共同效用单位');
+  if (typeof unit !== 'string' || !stripText(unit)) throw new Error('需要共同效用单位');
   const matrix = {};
   for (const scenario of state.scenarios) {
     if (!scenario.id || Object.hasOwn(matrix, scenario.id)) throw new Error('情景标识必须唯一');
@@ -109,7 +114,7 @@ export function minimaxRegret(state) {
   } catch (e) { return { status: 'UNKNOWN', reason: e.message, checks }; }
 }
 function prob(q, label) {
-  if (!q || !['fact', 'estimate', 'assumption', 'synthetic'].includes(q.kind) || !q.source?.trim()) throw new Error(`${label} 缺少来源`);
+  if (!q || !['fact', 'estimate', 'assumption', 'synthetic'].includes(q.kind) || !stripText(q.source)) throw new Error(`${label} 缺少来源`);
   const p = point({ ...q, unit: 'probability' }, label, 'probability');
   if (cmp(p, rat(0)) < 0 || cmp(p, rat(1)) > 0) throw new Error(`${label} 超出 [0,1]`);
   return p;

@@ -1,49 +1,61 @@
-# Psychohistory Mobile v0.1 engineering bootstrap
+# Psychohistory Mobile v0.1
 
-Status: **PARTIAL / NOT ACCEPTED**. Owner-authorized full development is tracked in GitHub issue #58. This folder is an independently runnable offline architecture and two initial mathematical candidate methods, **not a fully portable Platform v0.5**.
+心理史学离线决策工作台。用 Safari 添加到 iPhone 主屏幕后，应用在设备内执行决策分析、查看和复盘。首次安装需要 iPhone 信任的 HTTPS，之后可在断网时使用已成功缓存的版本。工程、真机和科研验收状态见 [验收报告](ACCEPTANCE.md)。
 
-## Goal
+## 构建和预览
 
-An independent iPhone-local personal intelligent decision assistant. After an initial secure HTTPS installation, computation and explicitly authorized personal records must work even when the phone is offline and the Mac is powered down. Its architecture must reuse Platform v0.5 model identities and reproducible contracts. Future upgrades must preserve the user's final choice, privacy and permission boundaries.
+需要 Node.js 22 或更新版本。应用构建和运行均无需安装 npm 依赖。`dist/` 是可独立分发的静态包，由服务工作线程、完整性清单和带版本的公开资源组成。
 
-## What works in this bootstrap
+```sh
+cd platform/mobile
+npm run build
+npm run preview
+```
 
-* No dependency on Python, remote API, installed npm dependencies, or a running Mac for **prototype** mathematical operations.
-* Browser-local rational arithmetic for finite point-utility scenario minimax regret and two-stage finite-signal information value, conditional on user-supplied data. Hard constraints distinguish ACCEPT, REJECT and UNRESOLVED.
-* An open natural-language question field with explicitly labeled, manual structured JSON fallback. **No autonomous NLP and no full model orchestration yet.**
-* Local password-protected AES-GCM encryption and IndexedDB storage after explicit consent; encrypted export. No plaintext records are written into CacheStorage.
-* Service Worker precaches public application files for offline Home Screen use after successful HTTPS installation.
+在同一台电脑打开 `http://127.0.0.1:8766/`。预览会构建并提供该次构建的文件；重启预览可读取新版本。iPhone 无法用自己的 `127.0.0.1` 访问电脑。
 
-## Known gaps blocking release
+### 在用户控制的设备上安装
 
-* Mobile-ported full Platform v0.5 decision contract, model registry, interval and dependency robust analysis, deadline/time, full UI workflow, historical review/restore and preferences are NOT implemented. The present point-utility math is an engineering candidate pending cross-language independent parity.
-* **Do not use as a production personal archive.** Revocation ledger, rollback rejection, signed backup migration from Platform v0.5, secured encrypted import/restore, session cleanup/OS caching boundaries and comprehensive storage eviction handling are pending. An exported ciphertext blob currently has no safe app import path.
-* Browser responsive checks, real iPhone Safari installed-app tests, offline cold-start and corrupted cache acceptance are NOT_RUN.
-* PWA service workers and crypto require a secure context (HTTPS, or localhost for laptop preview). One-time app distribution on a trustworthy HTTPS origin requires separate owner approval. Do not publish, merge to main or transmit private data without authorization.
-* Android, WKWebView, native SwiftUI, cross-device synchronization, external autonomous inference, internet retrieval, action execution and empirical personal effectiveness are out of scope of the bootstrap.
+1. 用现有可信 HTTPS 服务提供整个 `dist/`，也可以在私有局域网上用以下预览命令。证书的名称或 IP 必须匹配 iPhone 打开的地址，而且须已获设备信任。证书及私钥放在静态目录外。选择不同的其他路径时，用以 `/` 结尾的 `--base-path`，如 `/mobile/`。
 
-## Local preview and tests
+   ```sh
+   npm run preview -- --host <局域网地址> --port 8766 --cert <证书文件> --key <私钥文件>
+   ```
 
-Requires Node.js 22 or newer for Node built-in test runner. No extra npm dependencies.
+2. 用 iPhone Safari 打开完整 HTTPS 地址，等待状态显示「本机离线资源已准备。」。在分享菜单中选择「添加到主屏幕」，从主屏幕打开应用，等它独立显示离线就绪。Safari 标签页与独立应用的存储行为取决于 iOS，应在主屏幕打开的应用里完成最终确认和授权。
+3. 首次先用虚构记录测试。关闭电脑，打开飞行模式并确认 Wi-Fi 已关闭，结束应用进程后从主屏幕再打开。确认新建、计算、修改重算、解锁历史与复盘均可运行。
 
+静态地址需要直接提供清单及资产。安装器省略登录凭据并拒绝重定向。请采用专用且受控的 HTTPS 源，避免同源运行其他不受信的脚本。项目的授权仅覆盖本地和用户控制的交付包，公网托管需要所有者另行批准。
 
-test:
+## 从问题到复盘
 
-    cd platform/mobile
-    npm test
+1. 自由描述职业、学习、生活或其他选择。确定性引导可以从明确的原文句式中提取选项，按证据提出带理由的补充问题。核对目标、单位、期限、底线和实际可行的替代方案。没有硬约束时可明确确认。来源或区间未知可以留空。
+2. 填写有依据的指标和情景效用。按需加入权重、时间窗口、调查信号、概率及调查时长。在「高级输入」可编辑或导入 v0.5 决策状态 JSON，并重新核对后计算。应用不会根据问题文本产生事实、权重或概率。
+3. 检查逐项底线、方法适用性、条件性建议、表格及区间图。编辑数值、单位或时间条件后重新确认并计算。图表提供等价数据表。不同可行集和模型假设可能给出不同结论，最终选择留给用户。
+4. 想长期保留时，在应用内明确授权并使用至少 12 个字符的口令加密。历史可保存事前版本、计划、后来实际采取的行动、后续证据和复盘。未选方案的结果为 `NOT_OBSERVED`。需要时可单独确认将事后偏好采用到未来的决策。
 
-preview (localhost is a potentially trustworthy origin):
+移动端只使用确定性引导和本机有限分析。证据保持 `UNKNOWN`、`SYNTHETIC` 或 `USER_ATTESTED` 等对应等级。外部模型、在线检索、账号同步、外部行动、实际效果和因果预测需要各自的授权与证据。
 
-    npm run preview
+## 本机隐私和备份
 
-Then open http://127.0.0.1:8766 on the **same** computer. On iPhone an actual secure HTTPS origin is needed for reliable installation and service worker operation. A localhost URL on Mac is not accessible through iPhone's own localhost.
+- 未授权草稿只在本次会话中。切换到后台、结束会话或浏览器返回后恢复页面时，工作台主动清理私有界面和口令。多标签同步会话结束及授权变更。系统级键盘、画面快照、下载、文件副本或其他同源脚本超出浏览器应用可控制的范围。
+- 已授权记录在写入 IndexedDB 之前用 WebCrypto 加密。PBKDF2-SHA256 派生口令密钥，AES-256-GCM 校验密文。密码管理、iOS 存储保留情况以及导出的文件由用户控制。忘记口令无法解锁。
+- 导出是当前授权版本的密文。恢复须在同一安装、同一源和原授权账本仍存在时单独确认，并核对版本、摘要与口令。每次写入更新授权代次。删除或撤回后，旧备份无法恢复。样机备份和桌面备份没有可验证的移动授权账本，也会被拒绝。应用无法检测人为完整回滚浏览器配置文件和授权账本。
+- 若浏览器逐出整个站点，或者用户清除站点数据、重置设备或更换安装源，原授权账本随之丢失，应用内恢复关闭。密文导出可以帮助修复保有当前账本的局部密文丢失。请避免把它当成换机迁移。已导出的密文文件须由用户自行保管或删除。
+- Service Worker 只缓存已列入构建清单的公开资源。个人记录、请求内容和密文备份从不进入应用缓存。
 
-The app's initial demo numbers are **synthetic**. If a user replaces them with their own values, these remain unverified user inputs; the app makes no empirical probability claims. No confidential data may be included in public test fixtures or GitHub.
+## 更新和回退
 
-## Governance
+使用与上次相同的应用地址，按静态包整体替换。新版本经过清单、内容类型与 SHA-256 验证后才成为可用候选。完全关闭该应用范围内的页面，使已验证的新版本可以激活，再从主屏幕重开并确认离线就绪。下载中断或资源损坏时，已有版本可继续工作。如果当前缓存之后损坏，应用会尝试修复并在可用时使用上一份已验证的同兼容系列发布。所有缓存丢失时需连接原可信安装源重新获得公开包。
 
-* Parent project: edwardsage419/Psychohistory-Research.
-* Fixed baseline: merge of Platform v0.5, commit 0e574a7c7077824bb700d5fa9c5654e39348fe79.
-* Full task: https://github.com/edwardsage419/Psychohistory-Research/issues/58
-* Free tools and no paid API or deployment. R073, PESEN v0.1 and frozen research unaffected.
-* Once Codex picks up this branch, the entire v0.1 acceptance contract in issue #58 remains binding. The bootstrap passes only local self-tests.
+人为回退时，从受控的同兼容系列构建取出完整旧静态包，在原地址整体替换并在线重新验证。保留当前授权账本；切勿恢复旧浏览器配置、覆盖账本或把样机包当成回退目标。缓存只支持应用启动，私有记录的恢复遵循上节授权边界。
+
+## 工程复核
+
+```sh
+npm test
+python scripts/export-contract.py --check
+python scripts/verify-parity.py
+```
+
+Python 两条命令使用 3.12 和 `../future_model/requirements.lock` 中的既有开发依赖。用 `python scripts/verify-parity.py --print-cases` 导出共享合成复算案例及 Python 参照。完整浏览器验收见 [验收报告](ACCEPTANCE.md)。桌面与移动共享决策状态及受支持方法版本。私有存储权限彼此独立。

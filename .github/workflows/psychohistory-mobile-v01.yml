@@ -1,4 +1,4 @@
-name: Psychohistory Mobile v0.1 bootstrap verification
+name: Psychohistory Mobile v0.1 engineering verification
 
 on:
   pull_request:
@@ -6,6 +6,8 @@ on:
     branches: [main]
     paths:
       - 'platform/mobile/**'
+      - 'platform/future_model/src/psychohistory/decision_*.py'
+      - 'platform/future_model/tests/test_decision_*.py'
       - '.github/workflows/psychohistory-mobile-v01.yml'
 
 permissions:
@@ -16,13 +18,17 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  mobile-bootstrap:
+  mobile-engineering:
     strategy:
       fail-fast: false
       matrix:
-        runner: [ubuntu-24.04, macos-15]
+        include:
+          - runner: ubuntu-24.04
+            browser: chromium
+          - runner: macos-15
+            browser: webkit
     runs-on: ${{ matrix.runner }}
-    timeout-minutes: 10
+    timeout-minutes: 15
     defaults:
       run:
         shell: bash
@@ -32,31 +38,38 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version: '24'
-      - name: Check dependency-free mobile sources
+      - name: Install pinned development verification tools
+        env:
+          MOBILE_BROWSER: ${{ matrix.browser }}
         run: |
           set -euo pipefail
-          node --check src/core.mjs
-          node --check src/vault.mjs
-          node --check src/app.mjs
-          node --check sw.js
-          node --test tests/*.test.mjs
-      - name: Verify public offline asset manifest and no remote script dependency
+          python -m pip install --requirement ../future_model/requirements.lock
+          npm install --prefix "$RUNNER_TEMP/mobile-browser" --no-save --no-audit --no-fund playwright@1.62.1
+          browser_root="$RUNNER_TEMP/mobile-browser/node_modules/playwright"
+          if [[ "$MOBILE_BROWSER" == chromium ]]; then
+            node "$browser_root/cli.js" install --with-deps chromium
+          else
+            node "$browser_root/cli.js" install chromium webkit
+          fi
+          echo "PLAYWRIGHT_MODULE=$browser_root/index.mjs" >> "$GITHUB_ENV"
+          echo "CHROMIUM_BIN=$(node -e 'console.log(require(process.argv[1]).chromium.executablePath())' "$browser_root")" >> "$GITHUB_ENV"
+      - name: Verify contract, build, math, packaging and local storage
         run: |
           set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          import json
-          manifest = json.loads(Path('manifest.webmanifest').read_text())
-          assert manifest['display'] == 'standalone'
-          assets = ['index.html', 'styles.css', 'src/core.mjs', 'src/vault.mjs',
-                    'src/app.mjs', 'sw.js', 'manifest.webmanifest', 'assets/icon.svg']
-          assert all(Path(path).is_file() for path in assets)
-          page = Path('index.html').read_text()
-          assert 'http://' not in page and 'https://' not in page
-          worker = Path('sw.js').read_text()
-          assert all(path in worker for path in assets if path != 'sw.js')
-          print('Offline static bundle: PASS (does not establish iPhone Safari parity)')
-          PY
+          python scripts/export-contract.py --check
+          npm run build
+          npm test
+      - name: Compare fixed Python engine with Node and the browser bundle
+        env:
+          MOBILE_PARITY_BROWSER: ${{ matrix.browser }}
+        run: python scripts/verify-parity.py
+      - name: Exercise the installed offline workbench in a real browser
+        env:
+          MOBILE_BROWSER: ${{ matrix.browser }}
+        run: node tests/workbench.browser.mjs
