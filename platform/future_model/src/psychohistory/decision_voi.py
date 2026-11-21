@@ -196,8 +196,10 @@ def _prepare(ctx: Context) -> tuple[list[str], Problem | None, str]:
     evidence = 'CONDITIONAL'
     if 'synthetic' in kinds:
         evidence = 'SYNTHETIC'
-    elif info.verification_source and kinds <= {'fact', 'estimate'} and problem.point:
-        evidence = 'VERIFIED'
+    elif (info.verification_source and info.verification_source.strip()
+          and kinds <= {'fact', 'estimate'} and problem.point):
+        # A user-supplied receipt is an assertion, never independent source verification.
+        evidence = 'USER_ATTESTED'
     return [], problem, evidence
 
 
@@ -274,7 +276,7 @@ def _evidence_text(status: str) -> str:
     return {
         'SYNTHETIC': '含合成输入，输出用于数学演示。',
         'CONDITIONAL': '结果为给定假设和来源的条件计算。',
-        'VERIFIED': '用户提供了点值核验记录，结果仍以所列模型为条件。',
+        'USER_ATTESTED': '用户声明已核对所填点值。系统没有独立核实来源、准确性或现实适用性。',
     }[status]
 
 
@@ -485,7 +487,7 @@ def _method(model_id, title, mode, execute, outputs, assumptions, sources, repla
         inputs=('先验和条件信号概率', '通过硬约束的立即行动和调查后行动', '效用、时限和成本的证据'),
         outputs=outputs, units='概率为比例，效用和调查成本采用确认的同一量纲。',
         assumptions=assumptions,
-        uncertainty='仅比较当前问题的期望效用。不为区间参数补造分布。经用户提供核验记录的点值、条件计算和合成演示分别标明。',
+        uncertainty='仅比较当前问题的期望效用。不为区间参数补造分布。用户提交的核对声明不等于系统独立核验，条件计算与合成演示分别标明。',
         sources=sources,
         failure_conditions='缺少来源或行动，归一化冲突，效用或成本不可比较，时序未确认，或超出声明的参数范围。',
         replay=replay, baseline='同一参数点下，从全部通过硬约束的立即行动中选取期望效用最大的免费行动。',

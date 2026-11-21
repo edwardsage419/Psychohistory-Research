@@ -41,6 +41,8 @@ bash scripts/run.sh --data /workspace/psychohistory-data decision-v05 models
 
 当前没有经核实并启用的免费外部推理或检索服务。实际使用确定性语义线索、按证据状态组织的追问和已有确定性模型。使用者可提供来源及适用范围供确认。
 
+信息价值模型结果的证据状态为：`SYNTHETIC` 表示使用合成数据；`CONDITIONAL` 表示仅依据所列假设和来源得出的条件计算；`USER_ATTESTED` 表示用户自行填写了点值核对声明，**系统没有独立验证来源、准确性或现实适用性**。用户所填写的 `verification_source` 不能使结果获得第三方或系统独立核验资格。旧版出现的 `VERIFIED` 标签也应按历史用户声明理解，不可视为外部审计。真实科研独立验证另立验收记录。
+
 ## 数学口径
 
 ### 有限调查

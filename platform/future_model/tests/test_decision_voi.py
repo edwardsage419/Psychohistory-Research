@@ -199,11 +199,13 @@ def test_randomized_optimum_remains_unknown_when_witness_bounds_do_not_match():
     assert randomized['unique_policy'] is None
 
 
-def test_reported_evidence_needs_an_explicit_receipt_for_verified_points():
+def test_user_reported_receipt_cannot_claim_independent_verification():
     ctx = fixture(verified=True)
     assert run('voi_point', ctx)['evidence_status'] == 'CONDITIONAL'
-    ctx.state.information.verification_source = '用户复核凭据'
-    assert run('voi_point', ctx)['evidence_status'] == 'VERIFIED'
+    ctx.state.information.verification_source = '用户自行填写的核对声明'
+    result = run('voi_point', ctx)
+    assert result['evidence_status'] == 'USER_ATTESTED'
+    assert '没有独立核实' in result['summary']
     ctx.state.information.cost.kind = 'assumption'
     assert run('voi_point', ctx)['evidence_status'] == 'CONDITIONAL'
 

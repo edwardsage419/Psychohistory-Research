@@ -6,7 +6,8 @@ const statusText: Record<string, string> = {
   supportive: '支持', selected: '已选用', computed: '已计算', applied: '已应用',
   skipped: '未调用', rejected: '排除', blocked: '待补条件', insufficient: '信息不足',
   unconfirmed: '待确认', clarification: '待澄清', ready: '已分析', complete: '已完成',
-  conditional: '有条件', conflict: '存在分歧', undecided: '待比较',
+  conditional: '有条件', synthetic: '合成演示', user_attested: '用户声明核对，系统未独立验证',
+  verified: '旧版用户声明核对，系统未独立验证', conflict: '存在分歧', undecided: '待比较',
   accept: '可行', reject: '不可行', unresolved: '待核实', certain: '证实满足', possible: '可能满足',
   executed: '已执行', ineligible: '不适用', failed: '执行失败', clarify: '待澄清', analyzed: '已分析',
 };
