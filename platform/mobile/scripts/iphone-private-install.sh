@@ -17,7 +17,7 @@ valid_port "$LOCAL_PORT" || fail "本地端口必须在 1024 至 65535 之间。
 valid_port "$HTTPS_PORT" || fail "HTTPS 端口必须在 1024 至 65535 之间。"
 
 for program in node curl tailscale; do
-  command -v "$program" >/dev/null 2>&1 || fail "请先安装并配置 $program。"
+  command -v "$program" >/dev/null 2>&1 || fail "请先安装并配置 ${program}。"
 done
 node -e 'if (Number(process.versions.node.split(".")[0]) < 22) process.exit(1)' ||
   fail "需要 Node.js 22 或更新版本。"

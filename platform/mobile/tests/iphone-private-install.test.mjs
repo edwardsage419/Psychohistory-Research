@@ -17,6 +17,13 @@ test('private install helper binds loopback and never uses public funnel', () =>
   assert.doesNotMatch(source, /tailscale serve --bg/);
   assert.match(source, /trap cleanup EXIT/);
 });
+test('Bash variables before Chinese punctuation use explicit braces', () => {
+  // macOS Bash may extend variable-name parsing into full-width punctuation.
+  // bash -n only checks syntax, so this test guards the reported runtime failure.
+  assert.match(source, /\$\{program\}/);
+  assert.doesNotMatch(source, /\$[A-Za-z_][A-Za-z0-9_]*[\u3001-\u303f\uff00-\uffef]/u);
+});
+
 test('private install helper checks port ownership and fails closed', () => {
   assert.match(source, /tailscale serve status/);
   assert.match(source, /已配置/);
