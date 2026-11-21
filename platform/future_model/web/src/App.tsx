@@ -3,6 +3,7 @@ import { flushSync } from 'react-dom';
 import { MechanismWorkflow } from './MechanismWorkflow';
 import { ResearchWorkflow } from './ResearchWorkflow';
 import { DecisionWorkbench } from './DecisionWorkbench';
+import { LocalAIChat } from './LocalAIChat';
 import { DecisionApiError } from './decisionTypes';
 
 type Run={id:string;status:string;created_at:number;logs:string[];error:string|null;result_hash:string|null;kind?:string;protocol:string;code_sha256:string;config:Record<string,number>};
@@ -10,12 +11,13 @@ type Model={model_id:string;version:string;capabilities:string[];source_sha256:s
 type Asset={path:string;sha256:string;permission:string;scientific_status:{namespace:string;original_record:unknown}};
 type History={tick:number;prevalence:number;exposure_used:number;group_updated:boolean;snapshot_hash:string};
 type Result={scientific_status:string;versions:Record<string,string>;input:Record<string,number>;uncertainty:{kind:string};logs:string[];branches:Record<string,{parent_hash:string;history:History[];final_snapshot:{content_hash:string}}> ;comparison:{scenario_minus_baseline:number;interpretation:string}};
-const sections=['研究看板','研究工作流','机制实验','模型注册','实验工作台','情景历史','审批与证据','个人决策工作台'] as const;
+const sections=['研究看板','研究工作流','机制实验','模型注册','实验工作台','情景历史','审批与证据','个人决策工作台','本地智能助手'] as const;
 const labels:Record<string,string>={PENDING:'待审批',APPROVED:'已批准',RUNNING:'运行中',COMPLETED:'已完成',FAILED:'失败',CANCELED:'已取消',BLOCKED:'已阻塞'};
 
 export function App(){
  const [section,setSection]=useState<string>('研究看板');const [token,setToken]=useState('');const [connected,setConnected]=useState(false);
  const [visitedPersonal,setVisitedPersonal]=useState(false);
+ const [localPrompt,setLocalPrompt]=useState('');
  const [legacy]=useState(()=>new URLSearchParams(window.location.search).get('workflow')==='v04');
  const [session,setSession] = useState(()=>new AbortController());
  const [runs,setRuns]=useState<Run[]>([]);const [models,setModels]=useState<Model[]>([]);const [assets,setAssets]=useState<Asset[]>([]);
@@ -39,7 +41,7 @@ export function App(){
    session.abort();
    setSession(new AbortController());
    refreshSequence.current+=1;
-   setConnected(false);setToken('');setVisitedPersonal(false);setBusy(false);setError('');
+   setConnected(false);setToken('');setVisitedPersonal(false);setLocalPrompt('');setBusy(false);setError('');
    setRuns([]);setModels([]);setAssets([]);setSelectedRun(null);setSelected('');setResult(null);setHistoryOffset(0);setMoreHistory(false);
  },[session]);
  useEffect(()=>{
@@ -52,7 +54,7 @@ export function App(){
  useEffect(()=>{if(!connected)return;let active=true;refresh().catch(e=>{if(active)setError(String(e));});const interval=setInterval(()=>{refresh().catch(e=>{if(active)setError(String(e));});},700);return()=>{active=false;clearInterval(interval);};},[connected,refresh]);
  const current=runs.find(r=>r.id===selected)||(selectedRun?.id===selected&&(!selectedRun.kind||selectedRun.kind==='legacy')?selectedRun:undefined);
  useEffect(()=>{let active=true;setResult(null);if(connected&&current?.status==='COMPLETED')api<Result>(`runs/${current.id}/result`).then(x=>{if(active)setResult(x);}).catch(e=>{if(active)setError(String(e));});return()=>{active=false;};},[connected,current?.id,current?.status,api]);
- const personal=section==='个人决策工作台';
+ const personal=section==='个人决策工作台'||section==='本地智能助手';
  const choose=(r:Run)=>{setSelected(r.id);setSection('实验工作台');};
  const status=(r:Run)=><span className={`status ${r.status.toLowerCase()}`}><span>{labels[r.status]}</span> <small>{r.status}</small></span>;
  const historyControls=<div className="actions" aria-label="实验历史分页"><button className="quiet" disabled={historyOffset===0||busy} onClick={()=>setHistoryOffset(Math.max(0,historyOffset-50))}>较新一页</button><span className="muted">历史第 {historyOffset/50+1} 页 · 活动任务始终显示</span><button className="quiet" disabled={!moreHistory||busy} onClick={()=>setHistoryOffset(historyOffset+50)}>较早一页</button></div>;
@@ -71,7 +73,8 @@ export function App(){
  {!connected&&<section className="card connection"><h2>连接本地科研会话</h2><p className="muted">使用服务启动时生成的本地令牌。令牌仅保留在当前页面内存，不写入浏览器存储。</p><form onSubmit={e=>{e.preventDefault();action(async()=>{const current=session;await refresh();if(!current.signal.aborted)setConnected(true);});}}><label>本地访问令牌<input type="password" autoComplete="off" value={token} onChange={e=>setToken(e.target.value)} required/></label><button type="submit" disabled={busy}>连接工作空间</button></form></section>}
  {error&&<div role="alert" className="error">操作未完成：{error}</div>}
  {section==='研究看板'&&<><div className="metric-grid"><section className="card"><span>已注册机制</span><strong>{models.length.toString().padStart(2,'0')}</strong><small>版本锁定 · 独立能力</small></section><section className="card"><span>本页及活动实验</span><strong>{runs.length.toString().padStart(2,'0')}</strong><small>{runs.filter(r=>r.status==='COMPLETED').length} 个完成 · 失败与取消均保留</small></section><section className="card"><span>来源记录</span><strong>{assets.length.toString().padStart(2,'0')}</strong><small>只读登记 · 不自动执行</small></section></div><section className="banner"><div><span className="eyebrow">REPRODUCIBLE BY DESIGN</span><h2>每一次运行，都有来处与版本。</h2><p>个体状态更新 → 版本化适配器 → 双时间尺度群体传播。<br/>独立情景分支、显式不确定性与完整来源记录。</p></div><button onClick={()=>setSection('实验工作台')}>进入实验工作台 →</button></section><section className="card"><h2>近期实验与真实状态</h2>{taskTable}</section></>}
- {connected&&(personal||(legacy&&visitedPersonal))&&<div hidden={!personal}><DecisionWorkbench api={api} version={legacy?'v4':'v5'}/></div>}
+ {connected&&(section==='个人决策工作台'||(legacy&&visitedPersonal))&&<div hidden={section!=='个人决策工作台'}><DecisionWorkbench api={api} version={legacy?'v4':'v5'} initialQuestion={localPrompt}/></div>}
+ {section==='本地智能助手'&&connected&&<LocalAIChat api={api} onOpenWorkbench={value=>{setLocalPrompt(value);setVisitedPersonal(true);setSection('个人决策工作台');}}/>}
  {section==='研究工作流'&&connected&&<ResearchWorkflow api={api}/>}
  {section==='机制实验'&&connected&&<MechanismWorkflow api={api}/>}
  {section==='模型注册'&&<div className="two-col">{models.map(m=><section className="card" key={m.model_id}><span className="eyebrow">VERSIONED MECHANISM</span><h2>{m.model_id}</h2><span className="pill">{m.version}</span><p>{m.scale}</p><dl><dt>输入</dt><dd>{m.input}</dd><dt>输出</dt><dd>{m.output}</dd><dt>证据边界</dt><dd>{m.evidence} / {m.permission}</dd></dl><h3>数学假设</h3><ul>{m.assumptions.map(a=><li key={a}>{a}</li>)}</ul><h3>声明能力</h3><p className="muted">{m.capabilities.join(' · ')}</p><h3>源码身份 SHA-256</h3><code className="hash">{m.source_sha256}</code></section>)}</div>}
