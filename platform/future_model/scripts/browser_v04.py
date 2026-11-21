@@ -140,7 +140,7 @@ def save_revision(page, analysis):
 
 
 def connect(page, url, token):
-    page.goto(url)
+    page.goto(f"{url}/?workflow=v04")
     field(page, '本地访问令牌').fill(token)
     button(page, '连接工作空间').click()
     expect(page.get_by_text('工作空间已连接', exact=True)).to_be_visible()

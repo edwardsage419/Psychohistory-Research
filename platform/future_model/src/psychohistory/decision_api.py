@@ -8,6 +8,8 @@ from .decision_service import DecisionService
 from .decision_state import DecisionState, Identity, InputModel, Key, Original, Text
 
 PREFIX = "/api/v4/decisions"
+PREFIX_V05 = "/api/v5/decisions"
+DECISION_ROUTES = (PREFIX + "/", PREFIX_V05 + "/")
 MAX_DECISION_REQUEST = 256 * 1024
 MAX_RESTORE_REQUEST = 32 * 1024 * 1024
 EpochToken = Annotated[str, StringConstraints(min_length=1, max_length=128)]
@@ -50,9 +52,31 @@ class RestoreInput(Epoch):
     confirm: bool = Field(default=False, strict=True)
 
 
-def router(root):
-    routes = APIRouter(prefix=PREFIX)
-    service = DecisionService(root)
+class AdoptInput(RecordInput):
+    review_index: int = Field(ge=1, strict=True)
+    confirmed: bool = Field(default=False, strict=True)
+
+
+def advanced_schemas():
+    from .decision_preferences import Hindsight
+    from .decision_v05 import DecisionStateV05
+
+    class AdvancedAnalysis(InputModel):
+        state: DecisionStateV05
+
+    class AdvancedSave(Epoch):
+        state: DecisionStateV05
+
+    class AdvancedReview(ReviewInput):
+        hindsight: Hindsight | None = None
+
+    return AdvancedAnalysis, AdvancedSave, AdvancedReview
+
+
+def router(root, *, advanced=False):
+    routes = APIRouter(prefix=PREFIX_V05 if advanced else PREFIX)
+    service = DecisionService(root, advanced=advanced)
+    analysis_schema, save_schema, review_schema = advanced_schemas() if advanced else (AnalysisInput, SaveInput, ReviewInput)
     hub, records = service.hub, service.records
 
     @routes.get("/models")
@@ -64,7 +88,7 @@ def router(root):
         return hub.start(data.question)
 
     @routes.post("/analyze")
-    def analyze(data: AnalysisInput):
+    def analyze(data: analysis_schema):
         return hub.analyze(data.state)
 
     @routes.get("/consent")
@@ -80,7 +104,7 @@ def router(root):
         return records.revoke(data.epoch)
 
     @routes.post("/save")
-    def save(data: SaveInput):
+    def save(data: save_schema):
         return service.save(data.epoch, data.state)
 
     @routes.post("/history")
@@ -93,11 +117,12 @@ def router(root):
 
     @routes.post("/action")
     def action(data: ActionInput):
-        return records.action(data.epoch, data.decision_id, data.option_id, data.occurred_at, data.revision)
+        return service.action(data.epoch, data.decision_id, data.option_id, data.occurred_at, data.revision)
 
     @routes.post("/review")
-    def review(data: ReviewInput):
-        return records.review(data.epoch, data.decision_id, data.observation, data.observed_at, data.kind)
+    def review(data: review_schema):
+        return service.review(data.epoch, data.decision_id, data.observation, data.observed_at,
+                              data.kind, hindsight=getattr(data, "hindsight", None))
 
     @routes.post("/export")
     def export(data: Epoch):
@@ -110,5 +135,14 @@ def router(root):
     @routes.post("/restore")
     def restore(data: RestoreInput):
         return records.restore(data.epoch, data.backup, data.confirm)
+
+    if advanced:
+        @routes.post("/preferences")
+        def preferences(data: Epoch):
+            return records.preferences(data.epoch)
+
+        @routes.post("/adopt-preferences")
+        def adopt(data: AdoptInput):
+            return records.adopt_preferences(data.epoch, data.decision_id, data.review_index, data.confirmed)
 
     return routes

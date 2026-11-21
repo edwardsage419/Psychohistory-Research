@@ -178,8 +178,11 @@ class Scheduler:
         with self.lock:
             for run_id,(process,started,output) in list(self.active.items()):
                 r=self.get(run_id)
-                if process.is_alive() and time.monotonic()-started>r['timeout']:
-                    self._stop(run_id);self.store.update_run(run_id,status='FAILED',error='Wall timeout exceeded',logs=r['logs']+['Timeout: worker terminated']);continue
+                # A worker can exit after its deadline between monitor polls.
+                # Enforce the wall limit before accepting its output even if it has exited.
+                # For an unobserved completion time, prefer a failed run to false success.
+                if time.monotonic()-started>r['timeout']:
+                    self._stop(run_id);self.store.update_run(run_id,status='FAILED',error='Wall timeout exceeded',logs=r['logs']+['Timeout: worker terminated or late output discarded']);continue
                 if not process.is_alive():
                     process.join()
                     data = None

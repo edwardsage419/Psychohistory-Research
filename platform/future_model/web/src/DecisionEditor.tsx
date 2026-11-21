@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { emptyQuantity, kindLabels, newId } from './decisionTypes';
-import type { DecisionState, Quantity, Question, Understanding, ValueKind } from './decisionTypes';
+import type { DecisionState, PlanItem, Quantity, Question, Understanding, ValueKind, WorkflowPlan } from './decisionTypes';
+import { DecisionPlan } from './DecisionPlan';
+import { InformationFields, IntentFields, PreferenceInput, TimingFields } from './DecisionWorkflowInputs';
 
-const steps = ['问题与时限', '底线与方案', '目标与权重', '评分与误差', '情景与参考'] as const;
+const legacySteps = ['问题与时限', '底线与方案', '目标与权重', '评分与误差', '情景与参考'] as const;
+const steps = ['决策意图与证据', ...legacySteps, '信息价值', '时机与行动', '决策偏好'] as const;
 type Step = typeof steps[number];
 type Update = (patch: Partial<Omit<DecisionState, 'question' | 'decision_id' | 'revision' | 'confirmed'>>) => void;
 const nullable = (value: string) => value.trim() === '' ? null : value;
@@ -10,6 +13,10 @@ const omit = <T,>(entries: Record<string, T>, key: string) => Object.fromEntries
 const operatorLabels = { '>=': '≥', '>': '>', '<=': '≤', '<': '<' };
 
 function questionStep(field: string): Step {
+  if (/^intent$|evidence/i.test(field)) return '决策意图与证据';
+  if (/information|probability/i.test(field)) return '信息价值';
+  if (/timing|plan_note|intended_option/i.test(field)) return '时机与行动';
+  if (/preference/i.test(field)) return '决策偏好';
   if (/scenario|precision|reference/i.test(field)) return '情景与参考';
   if (/score|offset|dependence/i.test(field)) return '评分与误差';
   if (/objective|weight/i.test(field)) return '目标与权重';
@@ -20,7 +27,7 @@ function questionStep(field: string): Step {
 function QuantityEditor({ label, value, unit, onChange }: { label: string; value?: Quantity; unit: string; onChange: (value: Quantity) => void }) {
   const quantity = value ?? emptyQuantity(unit);
   const set = (patch: Partial<Quantity>) => onChange({ ...quantity, ...patch });
-  return <fieldset className="decision-quantity">
+  return <fieldset className="decision-quantity" data-quantity-label={label}>
     <legend>{label}</legend>
     <div className="decision-fields">
       <label>数据性质<select aria-label={`${label}数据性质`} value={quantity.kind} onChange={event => {
@@ -45,13 +52,37 @@ function Dependence({ label, value, source, additional, onChange }: { label: str
   </div>;
 }
 
-export function DecisionEditor({ state, questions, understanding, update, confirm, reset }: {
-  state: DecisionState; questions: Question[]; understanding: Understanding | null; update: Update; confirm: () => void; reset: () => void;
+export function DecisionEditor({ state, questions, understanding, plan, guided, update, confirm, reset }: {
+  state: DecisionState; questions: Question[]; understanding: Understanding | null; plan?: WorkflowPlan; guided: boolean; update: Update; confirm: () => void; reset: () => void;
 }) {
-  const [step, setStep] = useState<Step>('底线与方案');
-  function goTo(next: Step) {
+  const [selection, setStep] = useState<Step>(guided ? '决策意图与证据' : '底线与方案');
+  const [showAll, setShowAll] = useState(false);
+  const relevant = new Set<Step>(['决策意图与证据', '问题与时限', '底线与方案', '目标与权重']);
+  if (state.objectives.length && state.options.length >= 2) relevant.add('评分与误差');
+  if (state.scenarios.length || state.information || state.timing) relevant.add('情景与参考');
+  if (state.information) relevant.add('信息价值');
+  if (state.timing || state.confirmed || state.intended_option_id || state.plan_note) relevant.add('时机与行动');
+  if (state.preferences || state.confirmed) relevant.add('决策偏好');
+  for (const item of plan?.items ?? []) if (item.priority !== 'DEFERRED') relevant.add(questionStep(item.target.field));
+  const visibleSteps = guided ? steps.filter(name => showAll || relevant.has(name)) : legacySteps;
+  const step = visibleSteps.some(name => name === selection) ? selection : visibleSteps[0];
+  function goTo(next: Step, quantity?: string) {
+    if (guided && !relevant.has(next)) setShowAll(true);
     setStep(next);
-    requestAnimationFrame(() => document.getElementById('decision-editor-step')?.focus());
+    requestAnimationFrame(() => {
+      const heading = document.getElementById('decision-editor-step');
+      const target = quantity && Array.from(document.querySelectorAll<HTMLElement>('[data-quantity-label]')).find(node => node.dataset.quantityLabel === quantity);
+      (target ? target.querySelector('select,input') as HTMLElement | null : heading)?.focus();
+    });
+  }
+  function navigate(item: PlanItem) {
+    if (item.target.field === 'methods') {
+      document.getElementById('decision-methods-title')?.focus();
+      return;
+    }
+    const option = state.options.find(candidate => candidate.id === item.target.option_id);
+    const criterion = item.target.field === 'measurements' ? state.constraints.find(entry => entry.id === item.target.constraint_id) : state.objectives.find(entry => entry.id === item.target.objective_id);
+    goTo(questionStep(item.target.field), option && criterion ? `${option.label} · ${criterion.label}` : undefined);
   }
   const constraintStep = <>
     <label className="decision-check"><input type="checkbox" checked={state.constraints_confirmed} onChange={event => update({ constraints_confirmed: event.target.checked })}/>我确认底线清单完整（也可确认没有硬约束）</label>
@@ -86,6 +117,15 @@ export function DecisionEditor({ state, questions, understanding, update, confir
           options: state.options.filter(item => item.id !== option.id),
           scenarios: state.scenarios.map(scenario => ({ ...scenario, utilities: omit(scenario.utilities, option.id) })),
           reference_option_id: state.reference_option_id === option.id ? null : state.reference_option_id,
+          ...(state.intended_option_id === option.id ? { intended_option_id: null, plan_note: null } : {}),
+          ...(state.information ? { information: { ...state.information,
+            actions_by_signal: Object.fromEntries(Object.entries(state.information.actions_by_signal).map(([key, values]) => [key, { ...values, option_ids: values.option_ids.filter(id => id !== option.id) }])),
+            fixed_policy: Object.fromEntries(Object.entries(state.information.fixed_policy ?? {}).filter(([, id]) => id !== option.id)),
+          } } : {}),
+          ...(state.timing ? { timing: { ...state.timing, actions: omit(state.timing.actions, option.id),
+            status_quo_option_id: state.timing.status_quo_option_id === option.id ? null : state.timing.status_quo_option_id,
+            fallback_option_id: state.timing.fallback_option_id === option.id ? null : state.timing.fallback_option_id,
+          } } : {}),
         })}>移除方案 {index + 1}</button>
       </fieldset>;
     })}
@@ -161,7 +201,14 @@ export function DecisionEditor({ state, questions, understanding, update, confir
         </div>
         <label>情景来源或假设<input value={scenario.source} onChange={event => set({ source: event.target.value })}/></label>
         {state.options.map(option => <QuantityEditor key={option.id} label={`${scenario.label || '情景'} · ${option.label || '方案'}效用`} unit="效用" value={scenario.utilities[option.id]} onChange={value => set({ utilities: { ...scenario.utilities, [option.id]: value } })}/>)}
-        <button type="button" className="quiet" onClick={() => update({ scenarios: state.scenarios.filter(item => item.id !== scenario.id) })}>移除情景 {index + 1}</button>
+        <button type="button" className="quiet" onClick={() => update({
+          scenarios: state.scenarios.filter(item => item.id !== scenario.id),
+          ...(state.information ? { information: { ...state.information, prior: omit(state.information.prior, scenario.id), likelihoods: omit(state.information.likelihoods, scenario.id) } } : {}),
+          ...(state.timing ? { timing: { ...state.timing,
+            actions: Object.fromEntries(Object.entries(state.timing.actions).map(([key, value]) => [key, { ...value, delay_losses: omit(value.delay_losses, scenario.id) }])),
+            investigation: state.timing.investigation && { ...state.timing.investigation, joint: state.timing.investigation.joint.filter(row => row.scenario_id !== scenario.id), completion_by_state: omit(state.timing.investigation.completion_by_state, scenario.id) },
+          } } : {}),
+        })}>移除情景 {index + 1}</button>
       </fieldset>;
     })}
     <button type="button" className="quiet" onClick={() => update({ scenarios: [...state.scenarios, { id: newId(), label: '', utilities: {}, kind: 'unknown', source: '', probability: null }] })}>添加情景</button>
@@ -180,8 +227,10 @@ export function DecisionEditor({ state, questions, understanding, update, confir
         }}>采用为方案</button>}
       </li>)}</ul>
     </div>}
-    {questions.length > 0 && <div className="decision-prompts"><h3>接下来请补充</h3><ol>{questions.map((question, index) => <li key={`${question.field}-${index}`}><span>{question.prompt}</span><button type="button" className="text-button" onClick={() => goTo(questionStep(question.field))}>填写{questionStep(question.field)}</button></li>)}</ol></div>}
-    <nav className="decision-steps" aria-label="决策编辑步骤">{steps.map(name => <button type="button" key={name} className={step === name ? 'selected' : ''} aria-current={step === name ? 'step' : undefined} onClick={() => goTo(name)}>{name}</button>)}</nav>
+    {guided && plan && <DecisionPlan plan={plan} navigate={navigate}/>}
+    {(!guided || !plan) && questions.length > 0 && <div className="decision-prompts"><h3>接下来请补充</h3><ol>{questions.map((question, index) => <li key={`${question.field}-${index}`}><span>{question.prompt}</span><button type="button" className="text-button" onClick={() => goTo(questionStep(question.field))}>填写{questionStep(question.field)}</button></li>)}</ol></div>}
+    <nav className="decision-steps" aria-label="决策编辑步骤">{visibleSteps.map(name => <button type="button" key={name} className={step === name ? 'selected' : ''} aria-current={step === name ? 'step' : undefined} onClick={() => goTo(name)}>{name}</button>)}</nav>
+    {guided && <button type="button" className="text-button decision-show-tools" aria-expanded={showAll} onClick={() => setShowAll(value => !value)}>{showAll ? '收起非相关编辑项' : '显示全部编辑项'}</button>}
     <div className="decision-edit-area"><h3 id="decision-editor-step" tabIndex={-1}>{step}</h3>
       {step === '问题与时限' && <>
         <label>决策问题<textarea value={state.question} readOnly/></label>
@@ -191,6 +240,10 @@ export function DecisionEditor({ state, questions, understanding, update, confir
       {step === '目标与权重' && objectiveStep}
       {step === '评分与误差' && scoreStep}
       {step === '情景与参考' && scenarioStep}
+      {step === '决策意图与证据' && <IntentFields state={state} update={update}/>}
+      {step === '信息价值' && <InformationFields state={state} update={update}/>}
+      {step === '时机与行动' && <TimingFields state={state} update={update}/>}
+      {step === '决策偏好' && <PreferenceInput state={state} update={update}/>}
     </div>
     <div className="decision-actions decision-editor-actions">
       {!state.confirmed && <button type="button" onClick={confirm} disabled={!state.question.trim()}>确认并分析</button>}

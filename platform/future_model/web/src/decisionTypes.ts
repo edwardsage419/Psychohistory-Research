@@ -1,4 +1,5 @@
-export type Api = <T>(path: string, body?: unknown, version?: 'v4') => Promise<T>;
+export type DecisionVersion = 'v4' | 'v5';
+export type Api = <T>(path: string, body?: unknown, version?: DecisionVersion, signal?: AbortSignal) => Promise<T>;
 export const decisionPath = 'decisions';
 
 export class DecisionApiError extends Error {
@@ -15,6 +16,37 @@ export type Objective = { id: string; label: string; unit: string; direction: 'm
 export type Constraint = { id: string; label: string; unit: string; operator: '>=' | '>' | '<=' | '<'; threshold: number | string; source: string; horizon?: string | null };
 export type Option = { id: string; label: string; measurements: Record<string, Quantity>; scores: Record<string, Quantity> };
 export type Scenario = { id: string; label: string; utilities: Record<string, Quantity>; kind: ValueKind; source: string; probability: null };
+export type Numeric = number | string;
+export type EvidenceItem = { id: string; label: string; kind: ValueKind; source: string; verification: 'user_supplied' | 'user_confirmed' | 'unverified'; scope: string };
+export type SourcedRange = { lower: Numeric | null; upper: Numeric | null; kind: ValueKind; source: string };
+export type InformationInput = {
+  signals: { id: string; label: string }[];
+  prior: Record<string, SourcedRange>;
+  likelihoods: Record<string, Record<string, SourcedRange>>;
+  cost: Quantity | null;
+  actions_by_signal: Record<string, { option_ids: string[]; kind: ValueKind; source: string }>;
+  unrestricted_actions: boolean;
+  action_source: string;
+  parameter_domain: 'unknown' | 'rectangle' | 'constrained';
+  parameter_domain_source: string;
+  timing_basis: string | null;
+  fixed_policy?: Record<string, string>;
+  verification_source?: string | null;
+};
+export type Cutoff = { at: Numeric; inclusive: boolean; kind: ValueKind; source: string };
+export type TimingAction = { cutoff: Cutoff | null; switching_cost: SourcedRange | null; delay_losses: Record<string, SourcedRange>; reversibility: { description: string; kind: ValueKind; source: string } | null };
+export type Investigation = {
+  mode: 'deterministic' | 'joint' | 'conditional'; cost: SourcedRange | null; duration: SourcedRange | null; kind: ValueKind; source: string;
+  joint: { scenario_id: string; signal_id: string; duration: Numeric; probability: Numeric }[];
+  completion_by_state: Record<string, { duration: Numeric; probability: Numeric }[]>;
+};
+export type TimingInput = {
+  confirmed: boolean; time_unit: string | null; time_origin: string | null; horizon: Cutoff | null; decision_deadline: Cutoff | null; desired_time: SourcedRange | null;
+  predicted_completion: SourcedRange | null; wait_duration: SourcedRange | null; actions: Record<string, TimingAction>;
+  status_quo_option_id: string | null; fallback_option_id: string | null; investigation: Investigation | null;
+};
+export type PreferenceSnapshot = { values: { label: string; value: string }[]; applicability: string; provenance: string; adopted_version_id: string | null };
+export type PreferenceVersion = { version_id: string; adopted_at: string; decision_id: string; review_index: number; source_kind: string; preferences: PreferenceSnapshot };
 export type DecisionState = {
   schema_version: '1.0.0'; decision_id: string; revision: number; question: string; confirmed: boolean;
   deadline: string | null; constraints_confirmed: boolean; objectives: Objective[]; constraints: Constraint[];
@@ -23,10 +55,17 @@ export type DecisionState = {
   shared_offset_dependence: string; scenarios: Scenario[]; scenario_basis: string | null;
   scenario_dependence: string; scenario_dependence_source: string | null;
   precision_radius: number | string | null; reference_option_id: string | null;
+  workflow_version?: '0.5.0'; intent?: string | null; evidence?: EvidenceItem[]; information?: InformationInput | null; timing?: TimingInput | null;
+  intended_option_id?: string | null; plan_note?: string | null; preferences?: PreferenceSnapshot | null;
 };
 export type Question = { field: string; prompt: string };
 export type Understanding = { mode: string; message: string; suggestions: { field: string; value: string; source: string }[] };
-export type StartResponse = { state: DecisionState; questions: Question[]; understanding: Understanding };
+export type PlanItem = {
+  id: string; category: string; action: string; priority: string; prompt: string; reason: string;
+  target: { field: string; [key: string]: unknown }; evidence_status: string;
+};
+export type WorkflowPlan = { intent?: { description: string | null; hints: { domain: string; prompt: string; evidence_status: string }[] }; steps: { stage: string; status: string }[]; items: PlanItem[]; can_run: { model_id: string; title: string }[] };
+export type StartResponse = { state: DecisionState; questions: Question[]; understanding: Understanding; plan?: WorkflowPlan };
 export type DecisionTable = { title: string; columns: string[]; rows: unknown[] };
 export type DecisionChart = { title: string; unit: string; rows: { label: string; lower: number | string; upper: number | string }[] };
 export type DecisionMethod = {
@@ -37,7 +76,7 @@ export type DecisionMethod = {
 export type Analysis = {
   decision_id: string; revision: number; input_hash: string; hub_version: string; status: string;
   questions: Question[]; feasibility: { option_id: string; label: string; status: string; checks: { constraint_id: string; status: string; reason: string }[] }[];
-  methods: DecisionMethod[]; advice: unknown; risks: unknown; gaps: unknown; priority_gap: string | null;
+  methods: DecisionMethod[]; advice: unknown; risks: unknown; gaps: unknown; priority_gap: string | null; plan?: WorkflowPlan; execution?: { available: boolean; authorization: string; action_endpoint: string };
 };
 export type Consent = { authorized: boolean; epoch: string | null };
 export type HistoryItem = { decision_id: string; question: string; revision: number };
@@ -45,7 +84,7 @@ export type DecisionRecord = {
   decision_id: string;
   snapshots: { decision_id: string; revision: number; state: DecisionState; analysis: Analysis | null; confirmed_at: string }[];
   action: { option_id: string; occurred_at: string; recorded_at: string; revision: number; coverage: unknown } | null;
-  reviews: { option_id: string; observation: string; observed_at: string; kind: string; recorded_at: string }[];
+  reviews: { option_id: string; observation: string; observed_at: string; kind: string; recorded_at: string; hindsight?: { evidence: string | null; process_quality?: string | null; current_preferences: PreferenceSnapshot | null }; adopted_preferences?: PreferenceVersion }[];
 };
 export type RestoreResponse = { mode: 'preview' | 'restored'; isolated: boolean; eligible?: boolean; decision_count: number; reason?: string };
 

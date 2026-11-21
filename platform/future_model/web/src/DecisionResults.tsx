@@ -6,7 +6,8 @@ const statusText: Record<string, string> = {
   supportive: '支持', selected: '已选用', computed: '已计算', applied: '已应用',
   skipped: '未调用', rejected: '排除', blocked: '待补条件', insufficient: '信息不足',
   unconfirmed: '待确认', clarification: '待澄清', ready: '已分析', complete: '已完成',
-  conditional: '有条件', conflict: '存在分歧', undecided: '待比较',
+  conditional: '有条件', synthetic: '合成演示', user_attested: '用户声明核对，系统未独立验证',
+  verified: '旧版用户声明核对，系统未独立验证', conflict: '存在分歧', undecided: '待比较',
   accept: '可行', reject: '不可行', unresolved: '待核实', certain: '证实满足', possible: '可能满足',
   executed: '已执行', ineligible: '不适用', failed: '执行失败', clarify: '待澄清', analyzed: '已分析',
 };
@@ -100,19 +101,31 @@ function Method({ method, names }: { method: DecisionMethod; names: Names }) {
   </article>;
 }
 
-export function DecisionResults({ analysis, state, preview }: { analysis: Analysis; state: DecisionState; preview: boolean }) {
+export type ResultScope = { options: string; methods: string };
+
+export function DecisionResults({ analysis, state, preview, guided, scope, onScope }: {
+  analysis: Analysis; state: DecisionState; preview: boolean; guided: boolean; scope: ResultScope; onScope: (scope: ResultScope) => void;
+}) {
   const remainingGaps = Array.isArray(analysis.gaps) && analysis.priority_gap
     ? analysis.gaps.filter(gap => gap !== analysis.priority_gap) : analysis.gaps;
+  const options = analysis.feasibility.filter(option => scope.options === 'all' || option.status === scope.options);
+  const methods = analysis.methods.filter(method => scope.methods === 'all' || method.status === scope.methods);
   const names: Names = Object.fromEntries([...state.options, ...state.constraints, ...state.objectives, ...state.scenarios].map(item => [item.id, item.label]));
   return <div data-analysis-revision={analysis.revision}>
     <section className="card decision-result" aria-labelledby="decision-result-title">
       <div className="decision-section-heading"><div><h2 id="decision-result-title">当前分析</h2><p className="muted">修订 {analysis.revision} · 协调中枢 {analysis.hub_version}{preview ? ' · 自动重算预览' : ''}</p></div><span className="pill" data-status={analysis.status}>{displayStatus(analysis.status)}</span></div>
+      {guided && analysis.execution && <p className="decision-execution" data-authorization={analysis.execution.authorization}>外部执行：{analysis.execution.authorization === 'NOT_REQUESTED' ? '未授权' : analysis.execution.authorization} · 实际行动由你决定和执行。</p>}
       <h3>硬约束可行性</h3>
-      {analysis.feasibility.length ? <div className="table-wrap"><table className="decision-table"><thead><tr><th scope="col">方案</th><th scope="col">可行性</th><th scope="col">逐项检查</th></tr></thead><tbody>
-        {analysis.feasibility.map(option => <tr key={option.option_id} data-option-id={option.option_id}><th scope="row">{option.label || own(names, option.option_id)}</th><td><span className="pill" data-status={option.status}>{displayStatus(option.status)}</span></td><td>
+      {guided && analysis.feasibility.length > 0 && <div className="decision-scope">
+        <label>选择方案显示范围<select value={scope.options} onChange={event => onScope({ ...scope, options: event.target.value })}>
+          <option value="all">全部方案</option><option value="ACCEPT">可行</option><option value="UNRESOLVED">待核实</option><option value="REJECT">不可行</option>
+        </select></label><p>显示 {options.length} / {analysis.feasibility.length} 项方案</p>
+      </div>}
+      {options.length ? <div className="table-wrap"><table className="decision-table"><thead><tr><th scope="col">方案</th><th scope="col">可行性</th><th scope="col">逐项检查</th></tr></thead><tbody>
+        {options.map(option => <tr key={option.option_id} data-option-id={option.option_id}><th scope="row">{option.label || own(names, option.option_id)}</th><td><span className="pill" data-status={option.status}>{displayStatus(option.status)}</span></td><td>
           {option.checks.length > 0 && <ul className="decision-values">{option.checks.map(check => <li key={check.constraint_id}>{own(names, check.constraint_id) ?? check.constraint_id} · {displayStatus(check.status)} · {check.reason}</li>)}</ul>}
         </td></tr>)}
-      </tbody></table></div> : <p className="muted">请先填写候选方案。</p>}
+      </tbody></table></div> : <p className="muted">{analysis.feasibility.length ? '当前显示范围内没有方案。' : '请先填写候选方案。'}</p>}
       <div className="decision-advice"><h3>条件性建议</h3>{hasContent(analysis.advice) ? <Value value={analysis.advice} names={names}/> : <p>当前信息尚不足以给出建议。</p>}</div>
       {hasContent(analysis.risks) && <><h3>风险与长期影响</h3><Value value={analysis.risks} names={names}/></>}
       {hasContent(analysis.gaps) && <><h3>优先补充的信息</h3>
@@ -121,8 +134,13 @@ export function DecisionResults({ analysis, state, preview }: { analysis: Analys
       </>}
       <details><summary>分析输入摘要</summary><code className="hash">{analysis.input_hash}</code></details>
     </section>
-    <section className="card decision-result" aria-labelledby="decision-methods-title"><h2 id="decision-methods-title">方法审计</h2>
-      {analysis.methods.length ? analysis.methods.map(method => <Method key={`${method.model_id}@${method.version}`} method={method} names={names}/>) : <p className="muted">当前修订没有可审计的分析方法。</p>}
+    <section className="card decision-result" aria-labelledby="decision-methods-title"><h2 id="decision-methods-title" tabIndex={-1}>方法审计</h2>
+      {guided && <div className="decision-scope">
+        <label>选择方法显示范围<select value={scope.methods} onChange={event => onScope({ ...scope, methods: event.target.value })}>
+          <option value="all">全部方法</option><option value="EXECUTED">已执行</option><option value="INELIGIBLE">不适用</option><option value="FAILED">执行失败</option>
+        </select></label><p>显示 {methods.length} / {analysis.methods.length} 项方法</p>
+      </div>}
+      {methods.length ? methods.map(method => <Method key={`${method.model_id}@${method.version}`} method={method} names={names}/>) : <p className="muted">{analysis.methods.length ? '当前显示范围内没有方法。' : '当前修订没有可审计的分析方法。'}</p>}
     </section>
   </div>;
 }

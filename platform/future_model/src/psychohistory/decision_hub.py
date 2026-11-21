@@ -162,13 +162,17 @@ def run_method(method, context):
 
 
 class DecisionHub:
+    state_model = DecisionState
+    hub_version = HUB_VERSION
+
     def __init__(self, registry: DecisionRegistry | None = None, provider: UnderstandingProvider | None = None):
         self.registry = registry if registry is not None else default_registry()
         self.gate = self.registry.get(GATE_ID, "1.0.0")
         self.provider = provider
+        self.registry.execution_order()
 
     def start(self, original: str, *, allow_provider: bool = False):
-        state = DecisionState(decision_id=uuid4().hex, revision=1, question=original)
+        state = self.state_model(decision_id=uuid4().hex, revision=1, question=original)
         mode = "GUIDED_CONFIRMATION"
         message = "使用有针对性的澄清问题和明确措辞的原文片段。所有理解均需用户确认。"
         match = OPTION_PHRASE.search(original)
@@ -199,13 +203,16 @@ class DecisionHub:
             "understanding": {"mode": mode, "message": message, "suggestions": suggestions},
         }
 
+    def comparison_scope(self, state, feasible):
+        return feasible, []
+
     def analyze(self, state: DecisionState | dict):
-        state = DecisionState.model_validate(state)
+        state = self.state_model.model_validate(state)
         input_hash = sha256(canonical(state.model_dump(mode="json")).encode()).hexdigest()
         questions = [*question_list(state), *conflict_questions(state)]
         base = dict(decision_id=state.decision_id, revision=state.revision, input_hash=input_hash,
-                    hub_version=HUB_VERSION, questions=questions)
-        methods = self.registry.methods()
+                    hub_version=self.hub_version, questions=questions)
+        methods = self.registry.execution_order()
         if questions:
             attempted = [entry(method, "INELIGIBLE", ["先完成问题理解确认及输入修订。"])
                          for method in methods]
@@ -215,21 +222,33 @@ class DecisionHub:
         gate = run_method(self.gate, Context(state))
         feasibility = gate["result"]["feasibility"] if gate["status"] == "EXECUTED" else []
         accepted = {item["option_id"] for item in feasibility if item["status"] == "ACCEPT"}
-        context = Context(state, tuple(o for o in state.options if o.id in accepted))
+        feasible = tuple(option for option in state.options if option.id in accepted)
+        current, scope_risks = self.comparison_scope(state, feasible)
         attempted = [gate]
+        executed = {self.gate.key: gate["result"]} if gate["status"] == "EXECUTED" else {}
         for method in methods:
             if method.model_id == GATE_ID:
                 continue
-            attempted.append(
-                run_method(method, context) if context.feasible else
-                entry(method, "INELIGIBLE", ["当前没有经硬约束证实可行的方案。"])
-            )
+            candidates = feasible if method.candidate_scope == "structural" else current
+            missing = [key for key in method.depends_on if key not in executed]
+            if not feasible:
+                outcome = entry(method, "INELIGIBLE", ["当前没有经硬约束证实可行的方案。"])
+            elif not candidates:
+                outcome = entry(method, "INELIGIBLE", ["当前时点没有已确认可用的方案。"])
+            elif missing:
+                outcome = entry(method, "INELIGIBLE", [f"前置方法尚未成功执行：{key}" for key in missing])
+            else:
+                dependencies = {key: executed[key] for key in method.depends_on}
+                outcome = run_method(method, Context(state, candidates, dependencies))
+            attempted.append(outcome)
+            if outcome["status"] == "EXECUTED":
+                executed[method.key] = outcome["result"]
 
-        gaps, risks, advice = [], [], []
+        gaps, risks, advice = [], list(scope_risks), []
         conditional_scope = any(item["status"] == "UNRESOLVED" for item in feasibility)
         if conditional_scope:
             risks.append("仍有可行性未决的方案。任何比较仅适用于当前 ACCEPT 集。")
-        labels = {item.id: item.label for item in context.feasible}
+        labels = {item.id: item.label for item in feasible}
         constraints = {item.id: item.label for item in state.constraints}
         for item in feasibility:
             for check in item["checks"]:
@@ -254,9 +273,11 @@ class DecisionHub:
         if len(set(leaders_by_method)) > 1:
             risks.append("适用方法给出不同的优选集合。请检查各规则的适用条件和取舍。")
         if not advice:
-            if not context.feasible:
+            if not feasible:
                 advice.append("当前没有可证实的可行方案。请优先核实上述底线及其来源。")
-            elif len(context.feasible) == 1:
+            elif not current:
+                advice.append("当前时点没有已确认仍可用的方案。请核对期限或补充替代方案。")
+            elif len(current) == 1:
                 advice.append("当前仅一个方案通过底线；可在核实未决条件后再比较。")
             else:
                 advice.append("当前信息不足以确定严格排序。请参照各方法的比较范围及待补信息。")

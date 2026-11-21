@@ -14,6 +14,7 @@ import stat
 from uuid import uuid4
 
 from .contracts import canonical
+from .decision_preferences import AdoptedPreference, Hindsight
 from .decision_state import DecisionState, HUB_VERSION, SCHEMA_VERSION
 from .storage import checked_path, fsync_directory
 
@@ -21,6 +22,8 @@ from .storage import checked_path, fsync_directory
 _ID = re.compile(r'[0-9a-f]{32}')
 _SCHEMA = 1
 _BACKUP_VERSION = '1.0.0'
+_V05_WORKFLOW = '0.5.0'
+_V05_BACKUP_VERSION = '1.1.0'
 _COVERAGE = {
     'current_state': True, 'edit_history': True, 'confirmations': True,
     'action': True, 'reviews': True, 'sources': True,
@@ -66,7 +69,12 @@ def _state_identity(state):
     if not isinstance(state, dict) or state.get('schema_version') != SCHEMA_VERSION or state.get('confirmed') is not True:
         raise ValueError('A confirmed decision state is required')
     try:
-        validated = DecisionState.model_validate(state)
+        if state.get('workflow_version') == _V05_WORKFLOW:
+            from .decision_v05 import DecisionStateV05
+
+            validated = DecisionStateV05.model_validate(state)
+        else:
+            validated = DecisionState.model_validate(state)
     except ValueError as exc:
         raise ValueError('The saved decision does not satisfy the decision schema') from exc
     _options(state)
@@ -79,8 +87,9 @@ def _check_origin(original, state):
 
 
 def _valid_analysis(state, analysis):
+    version = _V05_WORKFLOW if state.get('workflow_version') == _V05_WORKFLOW else HUB_VERSION
     return (
-        isinstance(analysis, dict) and analysis.get('hub_version') == HUB_VERSION
+        isinstance(analysis, dict) and analysis.get('hub_version') == version
         and analysis.get('decision_id') == state['decision_id']
         and type(analysis.get('revision')) is int and analysis['revision'] == state['revision']
         and analysis.get('input_hash') == _digest(state)
@@ -129,6 +138,27 @@ def _coverage(options, chosen):
     return {option: 'CHOSEN' if option == chosen else 'UNOBSERVED' for option in options}
 
 
+def _uses_v05(record):
+    return any(snapshot['state'].get('workflow_version') == _V05_WORKFLOW for snapshot in record['snapshots']) or any(
+        'hindsight' in review for review in record['reviews']
+    )
+
+
+def _backup_version(records):
+    return _V05_BACKUP_VERSION if any(map(_uses_v05, records)) else _BACKUP_VERSION
+
+
+def _check_adoption(adopted, review, decision_id, review_index):
+    adoption = AdoptedPreference.model_validate(adopted)
+    hindsight = review.get('hindsight', {})
+    if adoption.model_dump(mode='json') != adopted or adoption.decision_id != decision_id or (
+        adoption.review_index != review_index or adoption.source_kind != review['kind']
+        or adopted['preferences'] != hindsight.get('current_preferences')
+        or _time(adoption.adopted_at) < _time(review['recorded_at'])
+    ):
+        raise ValueError('The export contains an unrelated future preference adoption')
+
+
 def _validate_exported_record(record):
     if not isinstance(record, dict) or set(record) != {'decision_id', 'snapshots', 'action', 'reviews'}:
         raise ValueError('The export contains an invalid decision record')
@@ -160,14 +190,19 @@ def _validate_exported_record(record):
     if action['coverage'] != _coverage(options, chosen):
         raise ValueError('The export contains invalid observation coverage')
     _event_times(action['occurred_at'], latest['confirmed_at'], _time(action['recorded_at']))
-    for review in reviews:
-        if not isinstance(review, dict) or set(review) != {'option_id', 'observation', 'kind', 'observed_at', 'recorded_at'}:
+    fields = {'option_id', 'observation', 'kind', 'observed_at', 'recorded_at'}
+    for index, review in enumerate(reviews, 1):
+        if not isinstance(review, dict) or not fields <= set(review) <= fields | {'hindsight', 'adopted_preferences'}:
             raise ValueError('The export contains an invalid observation')
         if review['option_id'] != chosen or review['kind'] not in ('real', 'synthetic') or (
             not isinstance(review['observation'], str) or not review['observation'].strip()
         ):
             raise ValueError('The export contains an observation unrelated to the actual action')
         _event_times(review['observed_at'], action['occurred_at'], _time(review['recorded_at']))
+        if 'hindsight' in review and Hindsight.model_validate(review['hindsight']).model_dump(mode='json') != review['hindsight']:
+            raise ValueError('The export contains an invalid hindsight entry')
+        if 'adopted_preferences' in review:
+            _check_adoption(review['adopted_preferences'], review, decision_id, index)
     return decision_id
 
 
@@ -297,12 +332,13 @@ class DecisionRecords:
             if not create:
                 return False
             self._create_file(self._records)
-        mode = 'rw' if write else 'ro'
-        db.execute('ATTACH DATABASE ? AS personal', (self._records.as_uri() + f'?mode={mode}',))
-        if write:
-            # SQLite commits the attached records and consent ledger together in
-            # rollback-journal mode. Apply secure deletion to both files.
-            self._write_settings(db, 'personal')
+        if not any(row[1] == 'personal' for row in db.execute('PRAGMA database_list')):
+            mode = 'rw' if write else 'ro'
+            db.execute('ATTACH DATABASE ? AS personal', (self._records.as_uri() + f'?mode={mode}',))
+            if write:
+                # SQLite commits the attached records and consent ledger together in
+                # rollback-journal mode. Apply secure deletion to both files.
+                self._write_settings(db, 'personal')
         version = db.execute('PRAGMA personal.user_version').fetchone()[0]
         if version == 0 and db.execute('SELECT 1 FROM personal.sqlite_master').fetchone() is None:
             if not create:
@@ -357,12 +393,12 @@ class DecisionRecords:
     def _render(record):
         return {**record, 'snapshots': [_present(item) for item in record['snapshots']]}
 
-    def _all(self, db):
+    def _all(self, db, *, write=False):
         expected = {key: tuple(history) for key, *history in db.execute(
             'SELECT identity, revision, events, deleted, content_hash FROM main.history WHERE deleted=0'
         )}
         records = []
-        if self._content(db):
+        if self._content(db, write=write):
             for decision_id, payload in db.execute('SELECT decision_id,payload FROM personal.records ORDER BY decision_id'):
                 counts = expected.pop(_digest(decision_id), None)
                 if counts is None:
@@ -371,6 +407,21 @@ class DecisionRecords:
         if expected:
             raise ValueError('Personal history is incomplete. Restore the latest authenticated export.')
         return records
+
+    def _adoptions(self, db, *, write=False):
+        return [
+            review['adopted_preferences'] for record in self._all(db, write=write)
+            for review in record['reviews'] if 'adopted_preferences' in review
+        ]
+
+    def _check_preference_version(self, db, snapshot, previous=None):
+        if snapshot is None or snapshot == previous or not snapshot.get('adopted_version_id'):
+            return
+        version_id = snapshot['adopted_version_id']
+        for adoption in self._adoptions(db, write=True):
+            if adoption['version_id'] == version_id and snapshot == {**adoption['preferences'], 'adopted_version_id': version_id}:
+                return
+        raise ValueError('The selected preference version is unavailable or its values or applicability were edited')
 
     def revoke(self, epoch):
         with self._authorized(epoch, write=True) as (db, _):
@@ -388,9 +439,11 @@ class DecisionRecords:
             if not _valid_analysis(state, analysis):
                 raise ValueError('Analysis does not match the confirmed decision revision')
             history = self._history(db, decision_id)
+            preferences = state.get('preferences')
             if history is None:
                 if revision != 1:
                     raise ValueError('The first saved decision revision must be 1')
+                self._check_preference_version(db, preferences)
                 self._content(db, write=True, create=True)
                 if self._record(db, decision_id) is not None:
                     raise ValueError('Decision has no active ledger entry')
@@ -409,6 +462,10 @@ class DecisionRecords:
                     raise ValueError('Predecision snapshots are closed after recording the actual action')
                 if revision != history[0] + 1:
                     raise ValueError('Revisions must be saved in consecutive order')
+                latest = record['snapshots'][-1]['state']
+                if latest.get('workflow_version') == _V05_WORKFLOW and state.get('workflow_version') != _V05_WORKFLOW:
+                    raise ValueError('Use the v0.5 workbench to revise this decision')
+                self._check_preference_version(db, preferences, latest.get('preferences'))
             snapshot = {
                 'decision_id': decision_id, 'revision': revision, 'state': state, 'analysis': analysis,
                 'analysis_hash': _digest(analysis), 'confirmed_at': datetime.now(UTC).isoformat(),
@@ -428,9 +485,11 @@ class DecisionRecords:
         with self._authorized(epoch) as (db, _):
             return self._render(self._get_record(db, decision_id))
 
-    def action(self, epoch, decision_id, option_id, occurred_at, revision):
+    def action(self, epoch, decision_id, option_id, occurred_at, revision, *, allow_v05=True):
         with self._authorized(epoch, write=True) as (db, _):
             record = self._get_record(db, decision_id, write=True)
+            if not allow_v05 and _uses_v05(record):
+                raise ValueError('Use the v0.5 workbench to record this action')
             latest = record['snapshots'][-1]
             if type(revision) is not int or revision != latest['revision']:
                 raise ValueError('The action must name the latest confirmed revision')
@@ -453,9 +512,11 @@ class DecisionRecords:
             self._write_record(db, record)
             return action
 
-    def review(self, epoch, decision_id, observation, observed_at, kind):
+    def review(self, epoch, decision_id, observation, observed_at, kind, *, hindsight=None, allow_v05=True):
         with self._authorized(epoch, write=True) as (db, _):
             record = self._get_record(db, decision_id, write=True)
+            if not allow_v05 and (hindsight is not None or _uses_v05(record)):
+                raise ValueError('Use the v0.5 workbench to record this review')
             action = record['action']
             if action is None:
                 raise ValueError('Record the actual action before reviewing it')
@@ -469,12 +530,38 @@ class DecisionRecords:
                 'observed_at': _event_times(observed_at, action['occurred_at'], recorded),
                 'recorded_at': recorded.isoformat(),
             }
+            if hindsight is not None:
+                review['hindsight'] = Hindsight.model_validate(hindsight).model_dump(mode='json')
             for existing in record['reviews']:
-                if all(existing[field] == review[field] for field in ('observation', 'kind', 'observed_at')):
+                if all(existing.get(field) == review.get(field) for field in ('observation', 'kind', 'observed_at', 'hindsight')):
                     return existing
             record['reviews'].append(review)
             self._write_record(db, record)
             return review
+
+    def preferences(self, epoch):
+        with self._authorized(epoch) as (db, _):
+            return sorted(self._adoptions(db), key=lambda version: (version['adopted_at'], version['version_id']), reverse=True)
+
+    def adopt_preferences(self, epoch, decision_id, review_index, confirmed):
+        with self._authorized(epoch, write=True) as (db, _):
+            if confirmed is not True:
+                raise ValueError('Explicit confirmation is required to adopt future preferences')
+            record = self._get_record(db, decision_id, write=True)
+            if type(review_index) is not int or not 1 <= review_index <= len(record['reviews']):
+                raise ValueError('Select an existing review')
+            review = record['reviews'][review_index - 1]
+            preferences = review.get('hindsight', {}).get('current_preferences')
+            if preferences is None:
+                raise ValueError('The selected review has no current preference statement')
+            if 'adopted_preferences' not in review:
+                review['adopted_preferences'] = {
+                    'version_id': uuid4().hex, 'adopted_at': datetime.now(UTC).isoformat(),
+                    'decision_id': decision_id, 'review_index': review_index,
+                    'source_kind': review['kind'], 'preferences': preferences,
+                }
+                self._write_record(db, record)
+            return review['adopted_preferences']
 
     def delete(self, epoch, decision_id):
         with self._authorized(epoch, write=True) as (db, _):
@@ -490,22 +577,27 @@ class DecisionRecords:
     def export(self, epoch):
         with self._authorized(epoch) as (db, key):
             records = [self._render(record) for record in self._all(db)]
+            version = _backup_version(records)
+            coverage = {**_COVERAGE, 'analysis': all(
+                item['analysis'] is not None for record in records for item in record['snapshots']
+            )}
+            if version == _V05_BACKUP_VERSION:
+                coverage.update(plans=True, hindsight=True, preference_versions=True)
             data = {
-                'backup_version': _BACKUP_VERSION, 'epoch': _digest(epoch),
+                'backup_version': version, 'epoch': _digest(epoch),
                 'exported_at': datetime.now(UTC).isoformat(), 'decisions': records,
-                'coverage': {**_COVERAGE, 'analysis': all(
-                    item['analysis'] is not None for record in records for item in record['snapshots']
-                )},
+                'coverage': coverage,
                 'external_backups': _EXTERNAL_BACKUPS,
             }
             # Sign the text rather than a JSON object whose numbers a browser
             # may reserialize differently (for example, 0.0 as 0).
             payload = canonical(data)
-            return {'backup_version': _BACKUP_VERSION, 'payload': payload, 'signature': _signature(payload, key)}
+            return {'backup_version': version, 'payload': payload, 'signature': _signature(payload, key)}
 
     def _restore_records(self, db, epoch, key, backup):
-        if not isinstance(backup, dict) or backup.get('backup_version') != _BACKUP_VERSION:
+        if not isinstance(backup, dict) or backup.get('backup_version') not in (_BACKUP_VERSION, _V05_BACKUP_VERSION):
             raise ValueError('Unrecognized personal export format')
+        version = backup['backup_version']
         payload = backup.get('payload')
         signature = backup.get('signature')
         if not isinstance(payload, str) or not isinstance(signature, str) or not re.fullmatch(r'[0-9a-f]{64}', signature):
@@ -520,7 +612,7 @@ class DecisionRecords:
         # Authentication limits the supported format to data emitted by export().
         # Current ledger checkpoints prevent rollback when an authentic copy is old.
         data = json.loads(payload)
-        if not isinstance(data, dict) or data.get('backup_version') != _BACKUP_VERSION or data.get('epoch') != _digest(epoch):
+        if not isinstance(data, dict) or data.get('backup_version') != version or data.get('epoch') != _digest(epoch):
             raise ValueError('The export belongs to a different format or consent grant')
         records = data.get('decisions')
         if not isinstance(records, list):
@@ -536,6 +628,8 @@ class DecisionRecords:
                 raise ValueError('The export contains deleted or unrecognized decisions')
             self._verify_record(record, history)
             seen.add(decision_id)
+        if _backup_version(records) != version:
+            raise ValueError('The export version does not match its decision records')
         return records
 
     def restore(self, epoch, backup, confirm=False):

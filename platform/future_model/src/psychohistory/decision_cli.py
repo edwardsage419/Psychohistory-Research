@@ -6,17 +6,22 @@ import sys
 from pydantic import ValidationError
 
 from .decision_api import (
-    MAX_DECISION_REQUEST, MAX_RESTORE_REQUEST, ActionInput, AnalysisInput, Epoch, RecordInput, RestoreInput, ReviewInput, SaveInput, StartInput,
+    MAX_DECISION_REQUEST, MAX_RESTORE_REQUEST, ActionInput, AdoptInput, AnalysisInput, Epoch,
+    RecordInput, RestoreInput, ReviewInput, SaveInput, StartInput, advanced_schemas,
 )
 from .decision_service import DecisionService
 
-def add_parser(subparsers):
-    decision = subparsers.add_parser("decision", help="v0.4 personal decision analysis and private records")
+def add_parser(subparsers, *, advanced=False):
+    name, version = ("decision-v05", "v0.5") if advanced else ("decision", "v0.4")
+    decision = subparsers.add_parser(name, help=f"{version} personal decision analysis and private records")
     actions = decision.add_subparsers(dest="action", required=True)
     for name in ("models", "status", "grant"):
         actions.add_parser(name)
-    for name in ("start", "analyze", "save", "history", "record", "action", "review", "export",
-                 "revoke", "delete", "restore"):
+    operations = ("start", "analyze", "save", "history", "record", "action", "review", "export",
+                  "revoke", "delete", "restore")
+    if advanced:
+        operations += ("preferences", "adopt-preferences")
+    for name in operations:
         action = actions.add_parser(name)
         action.add_argument("--input", type=Path, help="Read JSON from this private file (default: stdin)")
 
@@ -46,7 +51,8 @@ def input_data(path, action):
 
 
 def run(args):
-    service = DecisionService(args.data)
+    advanced = args.command == "decision-v05"
+    service = DecisionService(args.data, advanced=advanced)
     records = service.records
     if args.action == "models":
         return service.hub.registry.describe()
@@ -54,19 +60,25 @@ def run(args):
         return records.status()
     if args.action == "grant":
         return records.grant()
+    analysis_schema, save_schema, review_schema = advanced_schemas() if advanced else (AnalysisInput, SaveInput, ReviewInput)
     handlers = {
         "start": (StartInput, lambda question: service.hub.start(question)),
-        "analyze": (AnalysisInput, service.hub.analyze),
-        "save": (SaveInput, service.save),
+        "analyze": (analysis_schema, service.hub.analyze),
+        "save": (save_schema, service.save),
         "history": (Epoch, records.list),
         "record": (RecordInput, records.get),
-        "action": (ActionInput, records.action),
-        "review": (ReviewInput, records.review),
+        "action": (ActionInput, service.action),
+        "review": (review_schema, service.review),
         "export": (Epoch, records.export),
         "revoke": (Epoch, records.revoke),
         "delete": (RecordInput, records.delete),
         "restore": (RestoreInput, records.restore),
     }
+    if advanced:
+        handlers.update({
+            "preferences": (Epoch, records.preferences),
+            "adopt-preferences": (AdoptInput, records.adopt_preferences),
+        })
     schema, handler = handlers[args.action]
     try:
         data = schema.model_validate(input_data(args.input, args.action))
