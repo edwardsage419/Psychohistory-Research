@@ -1,0 +1,70 @@
+{
+  "code_commit": "6e5a4399da6ce0208dc5b8ea158ad53bc5bf69e5",
+  "base": "5909e1ae58dbfcb0d14d00c0561726ecb35e1028",
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14",
+    "sqlite": "3.53.1",
+    "node": "24.22.1",
+    "npm": "11.9.0",
+    "playwright": "1.62.0",
+    "chromium": "156.0.8078.79"
+  },
+  "verify_sh": {
+    "status": "PASS",
+    "pytest_passed": 288,
+    "pytest_subtests_passed": 11,
+    "warnings": 1,
+    "seconds": 24.96,
+    "pip_check": "PASS",
+    "typescript_and_vite": "PASS",
+    "stdlib_only": "PASS"
+  },
+  "browser_v04": {
+    "status": "PASS",
+    "checks": 14
+  },
+  "legacy_browser": {
+    "v01": "PASS",
+    "v02": "PASS",
+    "v03": "PASS"
+  },
+  "legacy_cli": {
+    "status": "PASS",
+    "successful": 43,
+    "expected_refusals": 13,
+    "restore": {
+      "v01": {
+        "source_commit": "7ea6eab94433e3669b6f492d802bb35316dc90d6",
+        "artifact_sha256": "d79eb08da2412757491ecc96290733d8aeec240b3c8aec7c8444c8e4fb779a37",
+        "backup_manifest_sha256": "1d7e249e4383875b7d2462ad4084ab819e44993cb86b090f8e2f8b6154ed9c73"
+      },
+      "v02": {
+        "source_commit": "dd05f32f79efc2f4f4f37117cc039dca1008ed76",
+        "artifact_sha256": "106a34318f686facb552fb61e4b480118b33c4d83570cd700eff4d1b9f335316",
+        "backup_manifest_sha256": "cb2f42a5d5acdb7239357ec2c5a599067818d7af192de46d2d74f80b534a24da"
+      },
+      "v03": {
+        "artifact_sha256": "0421d1cb01540eb67dfa7a0114a2f10ee0a5ad12f6b77ae1a7ddb3a9ec19d04f",
+        "backup_manifest_sha256": "9592f082d734886e5f957d29cf9fe4c7bfe1187d69e5e1fe708e67f7ff14f509"
+      }
+    }
+  },
+  "legacy_math_guards": {
+    "normal": {
+      "status": "PASS",
+      "optimization": 0
+    },
+    "O": {
+      "status": "PASS",
+      "optimization": 1
+    },
+    "env": {
+      "status": "PASS",
+      "optimization": 1
+    }
+  },
+  "independent_scientific_holdout": "NOT_RUN",
+  "real_user_effect": "NOT_RUN",
+  "remote_ci": "NOT_REQUESTED"
+}

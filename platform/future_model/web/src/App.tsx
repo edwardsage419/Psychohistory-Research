@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { MechanismWorkflow } from './MechanismWorkflow';
 import { ResearchWorkflow } from './ResearchWorkflow';
+import { DecisionWorkbench } from './DecisionWorkbench';
+import { DecisionApiError } from './decisionTypes';
 
 type Run={id:string;status:string;created_at:number;logs:string[];error:string|null;result_hash:string|null;kind?:string;protocol:string;code_sha256:string;config:Record<string,number>};
 type Model={model_id:string;version:string;capabilities:string[];source_sha256:string;assumptions:string[];scale:string;input:string;output:string;evidence:string;permission:string};
 type Asset={path:string;sha256:string;permission:string;scientific_status:{namespace:string;original_record:unknown}};
 type History={tick:number;prevalence:number;exposure_used:number;group_updated:boolean;snapshot_hash:string};
 type Result={scientific_status:string;versions:Record<string,string>;input:Record<string,number>;uncertainty:{kind:string};logs:string[];branches:Record<string,{parent_hash:string;history:History[];final_snapshot:{content_hash:string}}> ;comparison:{scenario_minus_baseline:number;interpretation:string}};
-const sections=['研究看板','研究工作流','机制实验','模型注册','实验工作台','情景历史','审批与证据'] as const;
+const sections=['研究看板','研究工作流','机制实验','模型注册','实验工作台','情景历史','审批与证据','个人决策工作台'] as const;
 const labels:Record<string,string>={PENDING:'待审批',APPROVED:'已批准',RUNNING:'运行中',COMPLETED:'已完成',FAILED:'失败',CANCELED:'已取消',BLOCKED:'已阻塞'};
 
 export function App(){
@@ -16,15 +18,21 @@ export function App(){
  const [historyOffset,setHistoryOffset]=useState(0);const [moreHistory,setMoreHistory]=useState(false);const [selectedRun,setSelectedRun]=useState<Run|null>(null);const refreshSequence=useRef(0);
  const [selected,setSelected]=useState('');const [result,setResult]=useState<Result|null>(null);const [error,setError]=useState('');const [busy,setBusy]=useState(false);
  const [form,setForm]=useState({seed:7,rounds:8,population:24,intervention:0.2});const [source,setSource]=useState('research/R233/R233_FINAL_ACCEPTANCE_STATUS.json');
- const api=useCallback(async <T,>(path:string,body?:unknown,version:'v1'|'v2'|'v3'='v1'):Promise<T>=>{
+ const api=useCallback(async <T,>(path:string,body?:unknown,version:'v1'|'v2'|'v3'|'v4'='v1'):Promise<T>=>{
    const response=await fetch(`/api/${version}/${path}`,{method:body===undefined?'GET':'POST',headers:{Authorization:`Bearer ${token}`,...(body===undefined?{}:{'Content-Type':'application/json'})},...(body===undefined?{}:{body:JSON.stringify(body)})});
-   const data=await response.json();if(!response.ok)throw new Error(typeof data.detail==='string'?data.detail:JSON.stringify(data.detail));return data as T;
+   const data=await response.json();
+   if(!response.ok){
+     if(version==='v4')throw new DecisionApiError(typeof data.detail==='string'?data.detail:data.detail?.[0]?.msg??'个人决策请求失败。',response.status);
+     throw new Error(typeof data.detail==='string'?data.detail:JSON.stringify(data.detail));
+   }
+   return data as T;
  },[token]);
  const refresh=useCallback(async()=>{const seq=++refreshSequence.current;const [r,live,m,a,chosen]=await Promise.all([api<Run[]>(`runs?limit=50&offset=${historyOffset}`),api<Run[]>('runs/active'),api<Model[]>('models'),api<Asset[]>('assets'),selected?api<Run>(`runs/${selected}`):Promise.resolve(null)]);if(seq!==refreshSequence.current)return r;setRuns([...new Map([...live,...r].map(run=>[run.id,run])).values()]);setMoreHistory(r.length===50);setSelectedRun(chosen);setModels(m);setAssets(a);return r;},[api,historyOffset,selected]);
  async function action(work:()=>Promise<void>){setBusy(true);setError('');try{await work();}catch(e){setError(String(e));}finally{setBusy(false);}}
  useEffect(()=>{if(!connected)return;let active=true;refresh().catch(e=>{if(active)setError(String(e));});const interval=setInterval(()=>{refresh().catch(e=>{if(active)setError(String(e));});},700);return()=>{active=false;clearInterval(interval);};},[connected,refresh]);
  const current=runs.find(r=>r.id===selected)||(selectedRun?.id===selected&&(!selectedRun.kind||selectedRun.kind==='legacy')?selectedRun:undefined);
  useEffect(()=>{let active=true;setResult(null);if(connected&&current?.status==='COMPLETED')api<Result>(`runs/${current.id}/result`).then(x=>{if(active)setResult(x);}).catch(e=>{if(active)setError(String(e));});return()=>{active=false;};},[connected,current?.id,current?.status,api]);
+ const personal=section==='个人决策工作台';
  const choose=(r:Run)=>{setSelected(r.id);setSection('实验工作台');};
  const status=(r:Run)=><span className={`status ${r.status.toLowerCase()}`}><span>{labels[r.status]}</span> <small>{r.status}</small></span>;
  const historyControls=<div className="actions" aria-label="实验历史分页"><button className="quiet" disabled={historyOffset===0||busy} onClick={()=>setHistoryOffset(Math.max(0,historyOffset-50))}>较新一页</button><span className="muted">历史第 {historyOffset/50+1} 页 · 活动任务始终显示</span><button className="quiet" disabled={!moreHistory||busy} onClick={()=>setHistoryOffset(historyOffset+50)}>较早一页</button></div>;
@@ -38,11 +46,12 @@ export function App(){
   <div className="two-col">{Object.entries(result.branches).map(([name,b])=><section className="card" key={name}><span className="eyebrow">{name.toUpperCase()}</span><h3>{name==='baseline'?'基线情景':'参数变化情景'}</h3><p className="muted">共同根快照</p><code className="hash">{b.parent_hash}</code><p className="muted">最终不可变快照</p><code className="hash">{b.final_snapshot.content_hash}</code><table><thead><tr><th>轮次</th><th>传播比例</th><th>使用的暴露</th><th>群体更新</th></tr></thead><tbody>{b.history.map(h=><tr key={h.tick}><td>{h.tick}</td><td>{h.prevalence.toFixed(3)}</td><td>{h.exposure_used.toFixed(3)}</td><td>{h.group_updated?'更新':'保持'}</td></tr>)}</tbody></table></section>)}</div>
   <section className="card"><h3>版本锁定与完整运行日志</h3><div className="version-row">{Object.entries(result.versions).map(([k,v])=><code key={k}>{k}@{v}</code>)}</div><pre>{(current?.logs||result.logs).join('\n')}</pre></section>
  </>;
- return <div className="layout"><aside><a className="brand" href="#"><span className="brand-icon">Ψ</span><span>心理史学<small>RESEARCH PLATFORM</small></span></a><div className="workspace"><span className="dot"/>Psychohistory-Platform<small>云端科研工作空间 · v0.3</small></div><nav aria-label="科研导航">{sections.map((name,i)=><button key={name} className={section===name?'active':''} onClick={()=>setSection(name)}><span className="nav-number" aria-hidden="true">0{i+1}</span>{name}</button>)}</nav><div className="sidebar-note"><span className="eyebrow">SCIENTIFIC BOUNDARY</span><p>保留未知，保留分歧。<br/>工程成功 ≠ 科学验证。</p><small>R073 / PESEN v0.1 保持冻结<br/>不启动原创模型熔炼</small></div></aside>
- <main><header><div className="breadcrumb">科研基础设施 <span>/</span> {section}</div><span className="session-state"><span className={connected?'dot':'dot offline'}/>{connected?'工作空间已连接':'本地会话未连接'}</span></header><div className="content"><div className="page-title"><div><span className="eyebrow">PSYCHOHISTORY RESEARCH · V0.3</span><h1>{section}</h1><p>从可追溯的机制，走向可重复的研究。</p></div><span className="pill outline">仅环回访问 · 零外部服务</span></div>
+ return <div className="layout"><aside><a className="brand" href="#"><span className="brand-icon">Ψ</span><span>心理史学<small>RESEARCH PLATFORM</small></span></a><div className="workspace"><span className="dot"/>Psychohistory-Platform<small>云端科研工作空间 · v0.3</small></div><nav aria-label="平台导航">{sections.map((name,i)=><button key={name} className={section===name?'active':''} aria-current={section===name?'page':undefined} onClick={()=>setSection(name)}><span className="nav-number" aria-hidden="true">0{i+1}</span>{name}</button>)}</nav><div className="sidebar-note"><span className="eyebrow">SCIENTIFIC BOUNDARY</span><p>保留未知，保留分歧。<br/>工程成功 ≠ 科学验证。</p><small>R073 / PESEN v0.1 保持冻结<br/>不启动原创模型熔炼</small></div></aside>
+ <main><header><div className="breadcrumb">{personal?'个人决策':'科研基础设施'} <span>/</span> {section}</div><span className="session-state"><span className={connected?'dot':'dot offline'}/>{connected?'工作空间已连接':'本地会话未连接'}</span></header><div className="content"><div className="page-title"><div><span className="eyebrow">{personal?'个人决策 · V0.4':'PSYCHOHISTORY RESEARCH · V0.3'}</span><h1>{section}</h1><p>{personal?'澄清现实选择，比较取舍，记录之后实际发生的事。':'从可追溯的机制，走向可重复的研究。'}</p></div><span className="pill outline">仅环回访问 · 零外部服务</span></div>
  {!connected&&<section className="card connection"><h2>连接本地科研会话</h2><p className="muted">使用服务启动时生成的本地令牌。令牌仅保留在当前页面内存，不写入浏览器存储。</p><form onSubmit={e=>{e.preventDefault();action(async()=>{await refresh();setConnected(true);});}}><label>本地访问令牌<input type="password" autoComplete="off" value={token} onChange={e=>setToken(e.target.value)} required/></label><button type="submit" disabled={busy}>连接工作空间</button></form></section>}
  {error&&<div role="alert" className="error">操作未完成：{error}</div>}
  {section==='研究看板'&&<><div className="metric-grid"><section className="card"><span>已注册机制</span><strong>{models.length.toString().padStart(2,'0')}</strong><small>版本锁定 · 独立能力</small></section><section className="card"><span>本页及活动实验</span><strong>{runs.length.toString().padStart(2,'0')}</strong><small>{runs.filter(r=>r.status==='COMPLETED').length} 个完成 · 失败与取消均保留</small></section><section className="card"><span>来源记录</span><strong>{assets.length.toString().padStart(2,'0')}</strong><small>只读登记 · 不自动执行</small></section></div><section className="banner"><div><span className="eyebrow">REPRODUCIBLE BY DESIGN</span><h2>每一次运行，都有来处与版本。</h2><p>个体状态更新 → 版本化适配器 → 双时间尺度群体传播。<br/>独立情景分支、显式不确定性与完整来源记录。</p></div><button onClick={()=>setSection('实验工作台')}>进入实验工作台 →</button></section><section className="card"><h2>近期实验与真实状态</h2>{taskTable}</section></>}
+ {connected&&<div hidden={!personal}><DecisionWorkbench api={api}/></div>}
  {section==='研究工作流'&&connected&&<ResearchWorkflow api={api}/>}
  {section==='机制实验'&&connected&&<MechanismWorkflow api={api}/>}
  {section==='模型注册'&&<div className="two-col">{models.map(m=><section className="card" key={m.model_id}><span className="eyebrow">VERSIONED MECHANISM</span><h2>{m.model_id}</h2><span className="pill">{m.version}</span><p>{m.scale}</p><dl><dt>输入</dt><dd>{m.input}</dd><dt>输出</dt><dd>{m.output}</dd><dt>证据边界</dt><dd>{m.evidence} / {m.permission}</dd></dl><h3>数学假设</h3><ul>{m.assumptions.map(a=><li key={a}>{a}</li>)}</ul><h3>声明能力</h3><p className="muted">{m.capabilities.join(' · ')}</p><h3>源码身份 SHA-256</h3><code className="hash">{m.source_sha256}</code></section>)}</div>}

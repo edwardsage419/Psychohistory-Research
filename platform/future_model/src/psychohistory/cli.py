@@ -13,6 +13,8 @@ def main(argv=None):
     parser.add_argument('--data',type=Path,default=default_root)
     parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[4])
     sub=parser.add_subparsers(dest='command',required=True)
+    from . import decision_cli
+    decision_cli.add_parser(sub)
     sub.add_parser('models')
     demo=sub.add_parser('demo');demo.add_argument('--seed',type=int,default=7);demo.add_argument('--rounds',type=int,default=8);demo.add_argument('--population',type=int,default=24);demo.add_argument('--intervention',type=float,default=.2)
     scan=sub.add_parser('discover');scan.add_argument('path')
@@ -55,7 +57,9 @@ def main(argv=None):
     args=parser.parse_args(argv)
     exit_code=0
     try:
-        if args.command == "research":
+        if args.command == "decision":
+            output = decision_cli.run(args)
+        elif args.command == "research":
             output, exit_code = research_command(args)
         elif args.command == "mechanism":
             output, exit_code = mechanism_command(args)
