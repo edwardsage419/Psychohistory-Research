@@ -240,10 +240,10 @@ export function DecisionHistory({ api, version, state, analysis, savedRevision, 
           <p>{latest.state.options.find(item => item.id === record.action?.option_id)?.label} · {formatTime(record.action.occurred_at)}</p>
           {latest.state.options.some(item => item.id !== record.action?.option_id) && <p className="muted">未观察：{latest.state.options.filter(item => item.id !== record.action?.option_id).map(item => item.label).join('、')}</p>}
         </> : <form onSubmit={recordAction}>
-          <div className="decision-grid">
+          <fieldset className="decision-grid decision-event-fields" disabled={busy}>
             <label>实际选择<select value={option} required onChange={event => setOption(event.target.value)}><option value="">请选择实际采取的方案</option>{latest.state.options.map(item => <option value={item.id} key={item.id}>{item.label}</option>)}</select></label>
             <label>行动时间（留空使用当前时间）<input type="datetime-local" value={actionAt} onChange={event => setActionAt(event.target.value)}/></label>
-          </div>
+          </fieldset>
           <button type="submit" disabled={busy || !option}>记录实际行动</button>
         </form>}
         {record.action && <><h4>事后观察</h4>
@@ -260,19 +260,21 @@ export function DecisionHistory({ api, version, state, analysis, savedRevision, 
             </div>}
           </li>)}</ol>}
           <form onSubmit={appendReview}>
-            <label>观察结果<textarea value={observation} required maxLength={6000} onChange={event => setObservation(event.target.value)}/></label>
-            <div className="decision-grid">
-              <label>回访性质<select value={reviewKind} required onChange={event => setReviewKind(event.target.value)}><option value="">选择观察性质</option><option value="real">真实观察</option><option value="synthetic">合成回访</option></select></label>
-              <label>观察时间（留空使用当前时间）<input type="datetime-local" value={reviewAt} onChange={event => setReviewAt(event.target.value)}/></label>
-            </div>
-            {guided && <details className="decision-disclosure"><summary>记录事后证据与当前偏好</summary>
-              <label>事前流程质量<textarea value={processQuality} maxLength={6000} placeholder="回看决定前的信息收集、底线核对和取舍。" onChange={event => setProcessQuality(event.target.value)}/></label>
-              <label>事后新证据<textarea value={hindsightEvidence} maxLength={6000} onChange={event => setHindsightEvidence(event.target.value)}/></label>
-              {!hindsightPreference ? <button type="button" className="quiet" onClick={() => setHindsightPreference(emptyPreference())}>填写回访时的偏好</button> : <>
-                <PreferenceFields value={hindsightPreference} change={setHindsightPreference}/>
-                <button type="button" className="quiet" onClick={() => setHindsightPreference(null)}>清除回访偏好输入</button>
-              </>}
-            </details>}
+            <fieldset className="decision-event-fields" disabled={busy}>
+              <label>观察结果<textarea value={observation} required maxLength={6000} onChange={event => setObservation(event.target.value)}/></label>
+              <div className="decision-grid">
+                <label>回访性质<select value={reviewKind} required onChange={event => setReviewKind(event.target.value)}><option value="">选择观察性质</option><option value="real">真实观察</option><option value="synthetic">合成回访</option></select></label>
+                <label>观察时间（留空使用当前时间）<input type="datetime-local" value={reviewAt} onChange={event => setReviewAt(event.target.value)}/></label>
+              </div>
+              {guided && <details className="decision-disclosure"><summary>记录事后证据与当前偏好</summary>
+                <label>事前流程质量<textarea value={processQuality} maxLength={6000} placeholder="回看决定前的信息收集、底线核对和取舍。" onChange={event => setProcessQuality(event.target.value)}/></label>
+                <label>事后新证据<textarea value={hindsightEvidence} maxLength={6000} onChange={event => setHindsightEvidence(event.target.value)}/></label>
+                {!hindsightPreference ? <button type="button" className="quiet" onClick={() => setHindsightPreference(emptyPreference())}>填写回访时的偏好</button> : <>
+                  <PreferenceFields value={hindsightPreference} change={setHindsightPreference}/>
+                  <button type="button" className="quiet" onClick={() => setHindsightPreference(null)}>清除回访偏好输入</button>
+                </>}
+              </details>}
+            </fieldset>
             <button type="submit" disabled={busy || !observation.trim() || !reviewKind || !!(hindsightPreference && !completePreference(hindsightPreference))}>追加回访</button>
           </form>
         </>}

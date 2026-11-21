@@ -659,14 +659,40 @@ def record_current_case(page, url, token, root, requests):
     assert not any(path == f'{V5}/action' for path in requests)
     snapshot = save(page, plan)
     assert snapshot['state']['intended_option_id'] == stay_id
-    record = post(page, 'record', button(page, life_question).click)
+    history_row = button(page, life_question)
+    expect(history_row).to_be_enabled()
+    # Defer the request to exercise editing during a pending record reload.
+    page.evaluate('''() => {
+      const original = window.fetch.bind(window);
+      window.fetch = (...args) => {
+        if (!String(args[0]).endsWith('/decisions/record')) return original(...args);
+        window.fetch = original;
+        return new Promise(resolve => {
+          window.releaseRecordFixture = () => {
+            delete window.releaseRecordFixture;
+            resolve(original(...args));
+          };
+        });
+      };
+    }''')
+    history_row.click()
+    page.wait_for_function('typeof window.releaseRecordFixture === "function"', timeout=10000)
+    choice = combobox(page, '实际选择')
+    try:
+        expect(choice).to_be_disabled()
+    finally:
+        with page.expect_response(lambda reply: urlsplit(reply.url).path == f'{V5}/record') as reloaded:
+            page.evaluate('window.releaseRecordFixture()')
+    expect(choice).to_be_enabled()
+    assert reloaded.value.ok
+    record = reloaded.value.json()
     assert record['action'] is None and not record['reviews']
     assert set(item['label'] for item in record['snapshots'][-1]['state']['options']) == {
         item['label'] for item in life['feasibility']
     }
     assert not any(path == f'{V5}/action' for path in requests)
 
-    combobox(page, '实际选择').select_option(label=stay)
+    choice.select_option(label=stay)
     action = post(page, 'action', button(page, '记录实际行动').click)
     assert action['option_id'] == stay_id and action['revision'] == snapshot['revision']
     assert {key: value for key, value in action['coverage'].items() if key != stay_id} == {
@@ -755,7 +781,7 @@ def run():
         'life': ['unknown preference and competing calculations', 'status quo after switching costs',
                  'display filters leave candidate set intact', 'plan confers no execution authority'],
         'privacy': ['research navigation, browser back, refresh and explicit session end',
-                    'choice-only observation', 'export and isolated v0.5 and historical v0.4 recovery',
+                    'choice-only observation and locked edits while reloading a record', 'export and isolated v0.5 and historical v0.4 recovery',
                     'separate process quality, hindsight and explicitly adopted preferences',
                     'old archive rejected after withdrawal', '390px layout', 'loopback and zero page errors'],
         'v04_fixture_commit': V04_RELEASE,
