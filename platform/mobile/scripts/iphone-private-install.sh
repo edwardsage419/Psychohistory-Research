@@ -16,16 +16,31 @@ valid_port() {
 valid_port "$LOCAL_PORT" || fail "本地端口必须在 1024 至 65535 之间。"
 valid_port "$HTTPS_PORT" || fail "HTTPS 端口必须在 1024 至 65535 之间。"
 
-for program in node curl tailscale; do
+for program in node curl; do
   command -v "$program" >/dev/null 2>&1 || fail "请先安装并配置 ${program}。"
 done
+
+# The macOS GUI executable must be called using its real path.
+# A manually created symlink in /usr/local/bin can crash with
+# 'bundleIdentifier is unknown to the registry' on macOS.
+if [[ "$(uname -s)" == "Darwin" && -x /Applications/Tailscale.app/Contents/MacOS/Tailscale ]]; then
+  tailscale_cli() {
+    TAILSCALE_BE_CLI=1 /Applications/Tailscale.app/Contents/MacOS/Tailscale "$@"
+  }
+else
+  command -v tailscale >/dev/null 2>&1 || fail "请先安装 Tailscale。"
+  tailscale_cli() {
+    TAILSCALE_BE_CLI=1 command tailscale "$@"
+  }
+fi
+
 node -e 'if (Number(process.versions.node.split(".")[0]) < 22) process.exit(1)' ||
   fail "需要 Node.js 22 或更新版本。"
-tailscale status >/dev/null 2>&1 ||
+tailscale_cli status >/dev/null 2>&1 ||
   fail "请在 Mac 登录 Tailscale，让 iPhone 加入同一个私人网络。"
 
 # Do not overwrite another existing Serve endpoint.
-SERVE_STATUS="$(tailscale serve status 2>&1 || true)"
+SERVE_STATUS="$(tailscale_cli serve status 2>&1 || true)"
 if printf '%s\n' "$SERVE_STATUS" | grep -Eq ":${HTTPS_PORT}([^0-9]|$)"; then
   fail "HTTPS 端口 $HTTPS_PORT 已配置，请检查现有 Serve 配置。"
 fi
@@ -65,4 +80,4 @@ printf '\n已启动公开应用文件的本地静态服务：127.0.0.1:%s\n' "$L
 printf '即将启动私人 Tailscale Serve HTTPS:%s（只允许 tailnet 内可访问的设备）。\n' "$HTTPS_PORT"
 printf '请在 iPhone Safari 打开终端输出的 HTTPS 地址，添加到主屏幕，并在主屏幕应用中确认离线资源就绪。\n'
 printf '勿启用 Funnel，勿传输真实个人数据。完成安装后按 Ctrl+C 结束此安装会话。\n\n'
-tailscale serve "--https=$HTTPS_PORT" "http://127.0.0.1:$LOCAL_PORT"
+tailscale_cli serve "--https=$HTTPS_PORT" "http://127.0.0.1:$LOCAL_PORT"

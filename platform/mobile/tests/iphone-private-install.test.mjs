@@ -12,11 +12,17 @@ test('private install helper has valid Bash syntax', () => {
 });
 test('private install helper binds loopback and never uses public funnel', () => {
   assert.match(source, /--host 127\.0\.0\.1/);
-  assert.match(source, /tailscale serve "--https=/);
+  assert.match(source, /tailscale_cli serve "--https=/);
   assert.doesNotMatch(source, /tailscale funnel\s/);
   assert.doesNotMatch(source, /tailscale serve --bg/);
   assert.match(source, /trap cleanup EXIT/);
 });
+test('macOS Tailscale avoids direct symlinks and uses official app executable', () => {
+  assert.match(source, /TAILSCALE_BE_CLI=1 \/Applications\/Tailscale\.app\/Contents\/MacOS\/Tailscale/);
+  assert.match(source, /tailscale_cli\(\)/);
+  assert.match(source, /tailscale_cli serve/);
+});
+
 test('Bash variables before Chinese punctuation use explicit braces', () => {
   // macOS Bash may extend variable-name parsing into full-width punctuation.
   // bash -n only checks syntax, so this test guards the reported runtime failure.
@@ -25,7 +31,7 @@ test('Bash variables before Chinese punctuation use explicit braces', () => {
 });
 
 test('private install helper checks port ownership and fails closed', () => {
-  assert.match(source, /tailscale serve status/);
+  assert.match(source, /tailscale_cli serve status/);
   assert.match(source, /已配置/);
-  assert.match(source, /tailscale status/);
+  assert.match(source, /tailscale_cli status/);
 });

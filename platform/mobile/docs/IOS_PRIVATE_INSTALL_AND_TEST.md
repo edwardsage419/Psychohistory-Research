@@ -15,7 +15,7 @@
    git rev-parse HEAD
    ~~~
 
-   已有该分支的受控工作树可直接使用。检查提交与 PR #59 的最新 head 一致。运行环境需要免费的 Node.js 22 或更新、curl 和已配置的 tailscale 命令。
+   已有该分支的受控工作树可直接使用。检查提交与 PR #59 的最新 head 一致。运行环境需要免费的 Node.js 22 或更新、curl 和 Mac 上已安装并登录的 Tailscale 应用。macOS 脚本优先直接调用 `/Applications/Tailscale.app/Contents/MacOS/Tailscale`，避免通过手工创建的 `/usr/local/bin/tailscale` 符号链接触发 Bundle Identifier 崩溃。如果之前根据旧指令创建了符号链接，脚本本身可以避开它；之后可通过 Tailscale 官方设置中的 CLI integration 安装正确的启动器。
 3. 执行：
 
    ~~~sh
