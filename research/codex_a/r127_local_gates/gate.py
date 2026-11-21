@@ -14,7 +14,7 @@ import sys
 import tempfile
 
 HERE = Path(__file__).resolve().parent
-PIN_MANIFEST_SHA256 = '291c87fc9f9855df5687d8795b8189213ed2f510218132030cc9aac37feae0a8'
+PIN_MANIFEST_SHA256 = '0bd0dd4da947d74cc75eafda9e50b7b8babf1a9ddab446d122a6b08f93659069'
 WORKFLOW = '.github/workflows/r127-van-huyck-1990-coordination-source-table-60-tests.yml'
 MODULE = 'r127_van_huyck_1990_min_effort_coordination_selection_exact'
 TEST_MODULE = 'test_'+MODULE
