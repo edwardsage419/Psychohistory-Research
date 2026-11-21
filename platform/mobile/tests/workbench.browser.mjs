@@ -279,7 +279,6 @@ async function recordedOutcome(page) {
 async function offlineReload(page) {
   const response = await page.reload({ waitUntil: 'load' });
   assert.equal(response?.fromServiceWorker(), true, 'Offline navigation bypassed the service worker');
-  assert.equal(await page.evaluate(() => navigator.onLine), false);
   assert.equal(await page.locator('#question').inputValue(), '', 'Private question survived reload without unlocking');
   assert.equal(await page.locator('#history-list').isHidden(), true);
 }
@@ -347,6 +346,7 @@ try {
   assert.equal(await page.evaluate(async () => Boolean((await navigator.serviceWorker.ready).active)), true);
   await visible(page.locator('#runtime-status').filter({ hasText: '本机离线资源已准备。' }));
   await closeServer();
+  await assert.rejects(fetch(origin.href), error => error.cause?.code === 'ECONNREFUSED', 'The origin must be unavailable');
   await context.setOffline(true);
   await offlineReload(page);
   const previousDraft = 'BROWSER_HISTORY_FIXTURE_ONLY';

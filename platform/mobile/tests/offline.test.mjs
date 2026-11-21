@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { spawn, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { once } from 'node:events';
-import { mkdtemp, mkdir, readFile, readdir, rm, writeFile, copyFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, readdir, rm, writeFile, copyFile, symlink } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -142,6 +142,18 @@ test('build emits deterministic digests and excludes non-public files', async t 
   assert.match(first.files.get('index.html').toString(), new RegExp(`src="\\./${scriptPath(first)}"`));
   const webManifest = [...first.files].find(([path]) => path.endsWith('/manifest.webmanifest'))[1];
   assert.equal(JSON.parse(webManifest).start_url, '../../');
+});
+
+test('build runs when the CLI path traverses a symbolic link', async t => {
+  const fixture = await buildFixture(t, 'one');
+  const parent = await mkdtemp(join(tmpdir(), 'mobile-alias-'));
+  t.after(() => rm(parent, { recursive: true, force: true }));
+  const alias = join(parent, 'mobile');
+  await symlink(fixture.root, alias);
+  await rm(join(fixture.root, 'dist'), { recursive: true });
+  const build = spawnSync(process.execPath, [join(alias, 'scripts/build.mjs')], { encoding: 'utf8' });
+  assert.equal(build.status, 0, build.stderr);
+  assert.deepEqual(await readFile(join(fixture.root, 'dist/release-manifest.json')), fixture.files.get('release-manifest.json'));
 });
 
 test('build rejects imports outside the packaged module graph', async t => {

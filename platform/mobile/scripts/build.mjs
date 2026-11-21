@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { lstat, mkdir, mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/promises';
+import { lstat, mkdir, mkdtemp, readFile, realpath, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, posix } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -97,7 +97,8 @@ export async function build() {
   return { destination, files, outputs, release };
 }
 
-if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+const entry = process.argv[1] && await realpath(process.argv[1]).catch(() => undefined);
+if (fileURLToPath(import.meta.url) === entry) {
   const { destination, release } = await build();
   console.log(`Built public release ${release} in ${destination}`);
 }

@@ -30,9 +30,13 @@ R073、PESEN v0.1 及其他冻结记录继续使用原科研协议。合成参�
 
 合成的有限调查参照将全部四个信号策略独立枚举。忽略信号的立即行动基线为 `6`，有信息时为 `6.9`，成本 `0.5` 时净值为 `+0.4`，成本 `0.9` 时为零，再提高即反转。另有共同到达时长边际的三组条件分布。依赖结构不同，净值分别为 `+0.76`、`-0.50`，条件分解的独立对照为 `-0.05`。这些工程结果只涵盖声明的合成输入。比较 C030 的中点假设与区间边界时，未声明联合矩形的结论保留外界标记。C031 的严格阈值案例在 `0.75` 上有导致并列的见证。
 
-移动端本地 `npm test` 为 **65 通过、0 失败、0 跳过**，其中有真实 Chromium 子测试。另运行独立的三个工作台浏览器流程和模型对照。固定桌面基线运行 **400 项 pytest、11 个子测试**，TypeScript/Vite、标准库核心、v0.1 至 v0.5 浏览器工作流和历史 v0.4 备份恢复通过。桌面既有 Starlette/httpx 弃用提示出现一次。
+移动端本地 `npm test` 为 **66 通过、0 失败、0 跳过**，其中有真实 Chromium 子测试。另运行独立的三个工作台浏览器流程和模型对照。固定桌面基线运行 **400 项 pytest、11 个子测试**，TypeScript/Vite、标准库核心、v0.1 至 v0.5 浏览器工作流和历史 v0.4 备份恢复通过。桌面既有 Starlette/httpx 弃用提示出现一次。
 
 本地 WebKit 下载被研发环境的域名策略拒绝。托管验证使用公开仓库既有免费标准运行器，Ubuntu 运行 Chromium，macOS 增加 WebKit 并保留 Chromium 负向测试。按报告对应 Draft HEAD 查阅实际托管结果。 [GitHub Actions](https://github.com/edwardsage419/Psychohistory-Research/actions/workflows/psychohistory-mobile-v01.yml)
+
+### 首轮托管失败与修复
+
+初版 Ubuntu 的浏览器用例把浏览器的在线提示当作离线证据，托管 Chromium 仍报告在线。现直接验证回环服务器端口无法连接，并要求重载响应来自 Service Worker。初版 macOS 在通过符号链接访问临时目录时，构建入口误以为自己仅被导入，造成测试包缺失。现用真实路径识别命令行入口，符号链接复现已由失败转为通过。 [首轮运行](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44866328901)
 
 ### 可复现命令
 
@@ -46,7 +50,7 @@ MOBILE_PARITY_BROWSER=chromium python scripts/verify-parity.py
 MOBILE_BROWSER=chromium node tests/workbench.browser.mjs
 ```
 
-浏览器命令使用 Playwright 1.62.1，支持通过 `PLAYWRIGHT_MODULE` 指向既有工具的 `index.mjs`，通过 `CHROMIUM_BIN` 指向系统 Chromium。已安装 Playwright WebKit 时，将浏览器参数改为 `webkit`。本次静态包包括 26 个公开文件。清单 SHA-256 为 `5d0ac5836f63ce9cedb1def8032576b47cf752502323f57fb9ec905203735128`，ZIP SHA-256 为 `dbca156a381bbc55b532d0cba7f50c90a1340f33bef3769d4656aa8bf29139ca`。发布前并行 main 已读回 `930f35c38cc820cc18d7ff4363ab92654b165529`，上游新增研究与交接记录不触及本次的移动端或桌面接口文件。
+浏览器命令使用 Playwright 1.62.1，支持通过 `PLAYWRIGHT_MODULE` 指向既有工具的 `index.mjs`，通过 `CHROMIUM_BIN` 指向系统 Chromium。已安装 Playwright WebKit 时，将浏览器参数改为 `webkit`。本次静态包包括 26 个公开文件。清单 SHA-256 为 `c636d56cd69af27407b7636f758c9daab63dacdd6bf9f738290c52e787afccbb`，ZIP SHA-256 为 `f02d7925f8ef2bd2d50db960de0c46cedde34a553d138436b1cbd9734158f8cc`。发布前并行 main 已读回 `930f35c38cc820cc18d7ff4363ab92654b165529`，上游新增研究与交接记录不触及本次的移动端或桌面接口文件。
 
 ## 真机验收记录
 
