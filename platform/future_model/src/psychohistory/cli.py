@@ -15,6 +15,7 @@ def main(argv=None):
     sub=parser.add_subparsers(dest='command',required=True)
     from . import decision_cli
     decision_cli.add_parser(sub)
+    decision_cli.add_parser(sub, advanced=True)
     sub.add_parser('models')
     demo=sub.add_parser('demo');demo.add_argument('--seed',type=int,default=7);demo.add_argument('--rounds',type=int,default=8);demo.add_argument('--population',type=int,default=24);demo.add_argument('--intervention',type=float,default=.2)
     scan=sub.add_parser('discover');scan.add_argument('path')
@@ -57,7 +58,7 @@ def main(argv=None):
     args=parser.parse_args(argv)
     exit_code=0
     try:
-        if args.command == "decision":
+        if args.command in {"decision", "decision-v05"}:
             output = decision_cli.run(args)
         elif args.command == "research":
             output, exit_code = research_command(args)

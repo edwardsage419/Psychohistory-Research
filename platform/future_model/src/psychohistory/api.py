@@ -12,7 +12,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from .plugins import registry
 from .decision_api import MAX_DECISION_REQUEST, MAX_RESTORE_REQUEST
-from .decision_api import PREFIX as DECISION_PREFIX, router as decision_router
+from .decision_api import DECISION_ROUTES, router as decision_router
 from .service import Service, ExperimentInput
 from .storage import checked_path, write_new
 
@@ -70,7 +70,7 @@ def create_app(root,repo,token=None):
         app.state.service=Service(root,repo)
         try:yield
         finally:app.state.service.close()
-    app=FastAPI(title='Psychohistory Platform v0.4',version='0.4.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
+    app=FastAPI(title='Psychohistory Platform v0.5',version='0.5.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
 
     @app.middleware('http')
     async def security(request:Request,call_next):
@@ -83,8 +83,8 @@ def create_app(root,repo,token=None):
                 length=request.headers.get('content-length')
                 if length is None:return JSONResponse({'detail':'Content-Length required'},status_code=411)
                 limit = 16384
-                if request.url.path.startswith(DECISION_PREFIX + "/"):
-                    limit = MAX_RESTORE_REQUEST if request.url.path == DECISION_PREFIX + "/restore" else MAX_DECISION_REQUEST
+                if request.url.path.startswith(DECISION_ROUTES):
+                    limit = MAX_RESTORE_REQUEST if request.url.path.endswith("/restore") else MAX_DECISION_REQUEST
                 if not length.isascii() or not length.isdecimal() or len(length) > 9 or int(length) > limit:
                     detail = 'Request exceeds 16 KiB' if limit == 16384 else 'Request exceeds the endpoint limit'
                     return JSONResponse({'detail':detail},status_code=413)
@@ -97,7 +97,7 @@ def create_app(root,repo,token=None):
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request, exc):
-        if request.url.path.startswith(DECISION_PREFIX + "/"):
+        if request.url.path.startswith(DECISION_ROUTES):
             detail = [{"msg": "个人决策请求字段缺失或格式无效。"}]
             return JSONResponse({"detail": detail}, status_code=422)
         return await request_validation_exception_handler(request, exc)
@@ -253,6 +253,7 @@ def create_app(root,repo,token=None):
         return app.state.service.mechanisms.compare(**data.model_dump())
 
     app.include_router(decision_router(root))
+    app.include_router(decision_router(root, advanced=True))
 
     dist=Path(__file__).resolve().parents[2]/'web/dist'
     if dist.is_dir():app.mount('/',StaticFiles(directory=dist,html=True),name='console')
