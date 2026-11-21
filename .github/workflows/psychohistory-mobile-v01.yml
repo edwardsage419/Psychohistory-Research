@@ -1,0 +1,62 @@
+name: Psychohistory Mobile v0.1 bootstrap verification
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+    paths:
+      - 'platform/mobile/**'
+      - '.github/workflows/psychohistory-mobile-v01.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: psychohistory-mobile-v01-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  mobile-bootstrap:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+        working-directory: platform/mobile
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '24'
+      - name: Check dependency-free mobile sources
+        run: |
+          set -euo pipefail
+          node --check src/core.mjs
+          node --check src/vault.mjs
+          node --check src/app.mjs
+          node --check sw.js
+          node --test tests/*.test.mjs
+      - name: Verify public offline asset manifest and no remote script dependency
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          manifest = json.loads(Path('manifest.webmanifest').read_text())
+          assert manifest['display'] == 'standalone'
+          assets = ['index.html', 'styles.css', 'src/core.mjs', 'src/vault.mjs',
+                    'src/app.mjs', 'sw.js', 'manifest.webmanifest', 'assets/icon.svg']
+          assert all(Path(path).is_file() for path in assets)
+          page = Path('index.html').read_text()
+          assert 'http://' not in page and 'https://' not in page
+          worker = Path('sw.js').read_text()
+          assert all(path in worker for path in assets if path != 'sw.js')
+          print('Offline static bundle: PASS (does not establish iPhone Safari parity)')
+          PY
