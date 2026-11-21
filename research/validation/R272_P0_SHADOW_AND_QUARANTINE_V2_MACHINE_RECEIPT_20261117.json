@@ -1,0 +1,145 @@
+{
+  "research": "R272",
+  "catalogue": "12-002",
+  "priority": "P0",
+  "date_utc": "2026-11-17",
+  "type": "ENGINEERING_INTEGRITY_REPLAY_AND_SYNTHETIC_FALSE_ACCEPTANCE",
+  "baseline_main": "f1761b89af48bc38f70c04b1369ce76ecb6492e9",
+  "main_during_report": "073496bed7b0e1ab0bafef7739fc02f8a4a004c4",
+  "original_production_workflow": {
+    "path": ".github/workflows/r272-exact-train-test-oos-e1.yml",
+    "git_blob_sha1": "3132b08cf4ee64b55f5112d2249894ea0ec9d42d",
+    "modified": false,
+    "deployed_new_candidate": false,
+    "still_optimizer_sensitive": true,
+    "still_automated_main_writeback": true
+  },
+  "original_candidate": {
+    "path": "research/validation/r272_single_entrypoint_failclosed_20261102.py",
+    "git_blob_sha1": "f33e4e7e544560d65342a899606311d169e4d122",
+    "modified": false
+  },
+  "quarantine_v2": {
+    "path": "research/validation/r272_quarantined_candidate_v2_20261117.py",
+    "git_blob_sha1": "e5143fe2e18f8acab5223f04a62cb4510ffbea57",
+    "state": "UNADOPTED_READ_ONLY_CANDIDATE",
+    "original_github_checkout_modified": false,
+    "source_identity_pins": 8,
+    "exact_allowlist_total": 9,
+    "uses_python_isolated_parent": true,
+    "sanitizes_python_environment": true,
+    "disposable_source_tree": true
+  },
+  "frozen_source": {
+    "protocol_git_blob": "9fbdb0078a58c4a9c0a548643227e30da5731119",
+    "generator_blob": "13843eecf2f9f05c19ee5545bdb224f58313f367",
+    "original_artifacts_blobs": [
+      "8fbbc73d239765f5c66395af1bcf9cf7a8df1f41",
+      "db3ca11ae224af52c2caf385c898e24aaa0cc54b",
+      "85d36858911a7eb79c73c607cddf45ea88852a60"
+    ],
+    "wrapper_blob": "8722fd4388421e3b1f77c6648b4ed1b38088c4b0",
+    "negative_suite_blob": "9b8a5a566b7f48c7e72ba34505d49eebe3a94b44",
+    "checker_zip_sha256": "f23b04706b60ac70bdbee6f051a74551779fb9d9a9b9af08c96cda345b055151"
+  },
+  "original_candidate_actual_native": {
+    "python_versions": [
+      "3.11.18",
+      "3.12.16"
+    ],
+    "internal_modes_per_version": [
+      "normal",
+      "optimized",
+      "double_optimized"
+    ],
+    "historical_native_tests_per_mode": 83,
+    "historical_negative_controls_per_mode": 15,
+    "clean_checkout_result": "PASS",
+    "actual_actions": true,
+    "archival_sources_unchanged": true
+  },
+  "false_acceptance": {
+    "scope": "DISPOSABLE_LOCAL_SOURCE_TREE_ONLY",
+    "extra_unpinned_modules": [
+      "research/validation/json.py",
+      "research/R272/json.py"
+    ],
+    "top_level_python_isolated": true,
+    "child_processes_isolated": false,
+    "old_candidate_claimed_status": "PASS",
+    "old_candidate_real_scientific_tests_executed": false,
+    "old_candidate_scientific_negative_suite_executed": false,
+    "source_evidence_bytes_unchanged": true,
+    "historical_production_compromised": "NOT_ESTABLISHED"
+  },
+  "quarantine_v2_adversarial": {
+    "same_two_unpinned_modules_excluded": true,
+    "actual_scientific_checks_executed": true,
+    "clean_full_checkout_test": "PASS",
+    "python_311": "PASS",
+    "python_312": "PASS",
+    "corrupted_original_results": "REJECTED_PREPROCESSING",
+    "limits": "BINDING_TO_PINNED_SOURCE_AND_CONTROLLED_INTERPRETER_NOT_FULL_FORMAL_SECURITY_PROOF"
+  },
+  "github_actions": {
+    "first": {
+      "id": 44037432313,
+      "conclusion": "success",
+      "use": "native_full_checkout_baseline"
+    },
+    "false_accept": {
+      "id": 44037737795,
+      "conclusion": "success",
+      "use": "false_pass_control"
+    },
+    "incomplete_fixture": {
+      "id": 44038227060,
+      "conclusion": "failure",
+      "reason": "v2 strict preimage list correctly rejected missing historical candidate in attacked fixture"
+    },
+    "final": {
+      "id": 44038360525,
+      "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44038360525",
+      "head_sha": "9dad41695941d17b0754bd7eae93ebda4bde242b",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 133886625473,
+          "kind": "synthetic_full_false_accept_and_v2_attack_regression",
+          "result": "success"
+        },
+        {
+          "id": 133886625843,
+          "kind": "python_3_11_native_full_checkout",
+          "result": "success"
+        },
+        {
+          "id": 133886625867,
+          "kind": "python_3_12_native_full_checkout",
+          "result": "success"
+        }
+      ]
+    }
+  },
+  "production_enforcement": {
+    "main_protected_last_checked": false,
+    "repo_rulesets_last_checked": 0,
+    "required_status_checks_proven": false,
+    "owner_approval_for_adoption": false,
+    "original_frozen_three_job_compatibility_adjudicated": false
+  },
+  "science": {
+    "evidence": "INTERNAL_NONBLIND_E1_ENGINEERING_ONLY",
+    "old_R272_acceptance": "CLOSED_BOUNDED_E1_FINITE_ARTIFICIAL_OUT_OF_SAMPLE_PREDICTION",
+    "old_acceptance_changed": false,
+    "formal_catalogue_item_closed": false,
+    "new_real_E2": 0,
+    "new_historical_E3": 0,
+    "external_reproduction": false,
+    "frozen_R073_changed": false,
+    "frozen_PESEN_changed": false
+  },
+  "added_paid_services": 0,
+  "account_billing_checked": false
+}

@@ -1,0 +1,344 @@
+name: R272 full-checkout unadopted-candidate integrity qualification
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r272-full-checkout-unadopted-candidate-20261117.yml'
+      - '.github/workflows/r272-exact-train-test-oos-e1.yml'
+      - 'research/validation/r272_single_entrypoint_failclosed_20261102.py'
+      - 'research/validation/r272_preimage_first_readonly_gate_20261102.py'
+      - 'research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py'
+      - 'research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip'
+      - 'research/validation/r272_quarantined_candidate_v2_20261117.py'
+      - 'research/validation/r272_frozen_independent_third_source_20261117.py'
+      - 'research/R272/r272_exact_train_test_prediction.py'
+      - 'research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv'
+      - 'research/R272/R272_EXACT_RESULTS.json'
+      - 'research/R272/R272_MACHINE_RECEIPT.json'
+      - 'protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md'
+  pull_request:
+    paths:
+      - '.github/workflows/r272-full-checkout-unadopted-candidate-20261117.yml'
+      - '.github/workflows/r272-exact-train-test-oos-e1.yml'
+      - 'research/validation/r272_single_entrypoint_failclosed_20261102.py'
+      - 'research/validation/r272_preimage_first_readonly_gate_20261102.py'
+      - 'research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py'
+      - 'research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip'
+      - 'research/validation/r272_quarantined_candidate_v2_20261117.py'
+      - 'research/validation/r272_frozen_independent_third_source_20261117.py'
+      - 'research/R272/r272_exact_train_test_prediction.py'
+      - 'research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv'
+      - 'research/R272/R272_EXACT_RESULTS.json'
+      - 'research/R272/R272_MACHINE_RECEIPT.json'
+      - 'protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-checkout-candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Execute archived candidate in actual full read-only checkout
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+          PYTHONNOUSERSITE: '1'
+        run: |
+          set -euo pipefail
+          python --version
+          python -B -I -S research/validation/r272_single_entrypoint_failclosed_20261102.py --root . \
+            > "$RUNNER_TEMP/r272-candidate.json"
+          python -I -S - "$RUNNER_TEMP/r272-candidate.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: obj=json.load(h)
+          def gate(test,code):
+              if test is not True:
+                  raise SystemExit("R272_FULL_CHECKOUT_FAIL_CLOSED_"+code)
+          gate(obj.get("status")=="PASS","STATUS")
+          gate(obj.get("scope")=="INTERNAL_NONBLIND_ARTIFICIAL_E1","SCOPE")
+          gate(obj.get("workflow_adopted") is False,"NOT_PRODUCTION")
+          gate(obj.get("actions_executed") is False,"NESTED_CI_CLAIM")
+          gate(obj.get("archive_bytes_preserved") is True,"ARCHIVE_INTEGRITY")
+          observed=obj.get("modes",[])
+          gate(len(observed)==3,"THREE_MODES")
+          for i,(mode,item) in enumerate(zip(("normal","optimized","double_optimized"),observed)):
+              gate(item.get("mode")==mode,"MODE_"+str(i))
+              gate(item.get("preimage")=="PASS","PREIMAGE_"+str(i))
+              gate(item.get("isolated_regeneration")=="PASS","REGEN_"+str(i))
+              gate(item.get("native_negatives")==15,"MUTATIONS_"+str(i))
+              gate(item.get("original_tests_exit")==0,"NATIVE_83_"+str(i))
+          print("R272_FULL_CHECKOUT_CANDIDATE_THREE_MODES_PASS")
+          PY
+      - name: Verify no tracked or untracked local science evidence modified
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code HEAD
+          git diff --cached --exit-code
+          if test -n "$(git status --porcelain --untracked-files=all)"; then
+            git status --short
+            exit 1
+          fi
+          echo 'R272_CHECKOUT_ARCHIVES_REMAIN_UNMODIFIED'
+
+      - name: Verify isolated v2 quarantine replays all science controls on actual checkout
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python -B -I -S research/validation/r272_quarantined_candidate_v2_20261117.py \
+            --root . > "$RUNNER_TEMP/r272-quarantine.json"
+          python -I -S - "$RUNNER_TEMP/r272-quarantine.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: x=json.load(h)
+          def gate(ok,tag):
+              if ok is not True: raise SystemExit("R272_QUARANTINE_RECEIPT_FAIL_"+tag)
+          gate(x.get("status")=="PASS_BOUNDED_QUARANTINED_R272_CANDIDATE","STATUS")
+          gate(x.get("archive_source_identities_pinned")==8,"PINS")
+          gate(x.get("complete_allowlist_files")==9,"ALLOWLIST")
+          gate(x.get("ordinary_optimized_double_optimized")==["normal","optimized","double_optimized"],"MODES")
+          gate(x.get("original_native_tests_each_mode")==83,"TEST_COUNT")
+          gate(x.get("native_negative_controls_each_mode")==15,"NEGATIVES")
+          gate(x.get("untrusted_neighbor_modules_excluded") is True,"NEIGHBOR_ISOLATION")
+          gate(x.get("archive_modified") is False,"ARCHIVE")
+          gate(x.get("new_E2")==0 and x.get("new_E3")==0,"SCIENCE")
+          print("R272_QUARANTINED_V2_REAL_CHECKOUT_3_MODES_PASS")
+          PY
+
+  frozen-third-independent-source:
+    needs: full-checkout-candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.12'
+      - name: Strict third-source replay of all 576 pinned original atoms
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          for mode in normal optimized double-optimized; do
+            case "$mode" in
+              normal) set -- ;;
+              optimized) set -- -O ;;
+              double-optimized) set -- -OO ;;
+            esac
+            python -B -I -S "$@" research/validation/r272_frozen_independent_third_source_20261117.py \
+              --root . > "$RUNNER_TEMP/r272-independent-$mode.json"
+            python -I -S - "$RUNNER_TEMP/r272-independent-$mode.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: a=json.load(h)
+          expected={
+              "status":"PASS_R272_PRESCORE_FROZEN_THIRD_SOURCE_AUDIT",
+              "archived_original_sources":576,
+              "separate_worlds":9,
+              "independent_source_bits_per_world":64,
+              "analytic_binomial_worlds":9,
+              "in_memory_mutations_rejected":3,
+              "frozen_science_changed":False,
+              "new_E2":0,
+              "new_E3":0,
+          }
+          for k,v in expected.items():
+              if a.get(k)!=v:
+                  raise SystemExit("R272_THIRD_SOURCE_FAIL_CLOSED_"+k)
+          print("R272_FROZEN_THIRD_SOURCE_576_ROWS_9_WORLDS_PASS")
+          PY
+          done
+          cmp "$RUNNER_TEMP/r272-independent-normal.json" \
+              "$RUNNER_TEMP/r272-independent-optimized.json"
+          cmp "$RUNNER_TEMP/r272-independent-normal.json" \
+              "$RUNNER_TEMP/r272-independent-double-optimized.json"
+          echo 'R272_THIRD_SOURCE_ALL_THREE_PYTHON_MODES_IDENTICAL'
+      - name: Verify frozen source tampering is rejected before a score
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/fake-root/research/R272"
+          cp research/R272/R272_EXACT_RESULTS.json "$RUNNER_TEMP/fake-root/research/R272/"
+          cp research/R272/R272_MACHINE_RECEIPT.json "$RUNNER_TEMP/fake-root/research/R272/"
+          python - "$RUNNER_TEMP/fake-root/research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv" <<'PY'
+          import sys
+          p="research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv"
+          with open(p,encoding="utf-8") as f: x=f.read()
+          y=x.replace("729/4096","731/4096",1)
+          if x==y: raise SystemExit("R272_MISSING_MUTATION_PREIMAGE")
+          with open(sys.argv[1],"w",encoding="utf-8") as f: f.write(y)
+          PY
+          if python -B -I -S research/validation/r272_frozen_independent_third_source_20261117.py \
+             --root "$RUNNER_TEMP/fake-root" > "$RUNNER_TEMP/unexpected-success.log" \
+             2> "$RUNNER_TEMP/r272-third-negative.log"; then
+            echo 'R272_THIRD_GATE_ACCEPTED_MUTATED_SOURCE'
+            exit 1
+          fi
+          grep -q 'R272_SOURCE_GATE_ARCHIVE_HASH_' "$RUNNER_TEMP/r272-third-negative.log"
+          echo 'R272_FROZEN_THIRD_SOURCE_SHA256_NEGATIVE_REJECTED'
+
+  actual-candidate-import-shadow-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.11'
+      - name: Reproduce unisolated import shadow with EXACT archived candidate copy
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/r272-shadow"
+          cp research/validation/r272_single_entrypoint_failclosed_20261102.py "$RUNNER_TEMP/r272-shadow/candidate.py"
+          cat > "$RUNNER_TEMP/r272-shadow/json.py" <<'PY'
+          print("R272_SYNTHETIC_JSON_MODULE_PRECHECK_EXIT")
+          raise SystemExit(0)
+          PY
+          python "$RUNNER_TEMP/r272-shadow/candidate.py" --selftest \
+            > "$RUNNER_TEMP/shadow-unisolated.log"
+          grep -Fx "R272_SYNTHETIC_JSON_MODULE_PRECHECK_EXIT" "$RUNNER_TEMP/shadow-unisolated.log"
+          if grep -q '"status": "PASS"' "$RUNNER_TEMP/shadow-unisolated.log"; then
+            echo "R272_SHADOW_TEST_UNEXPECTED_NATIVE_AUDIT"
+            exit 1
+          fi
+          python -I -S "$RUNNER_TEMP/r272-shadow/candidate.py" --selftest \
+            > "$RUNNER_TEMP/shadow-isolated.log"
+          python -I -S - "$RUNNER_TEMP/shadow-isolated.log" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: d=json.load(h)
+          if d.get("status")!="PASS" or d.get("negative_controls_rejected")!=5:
+              raise SystemExit("R272_ISOLATED_ENTRY_SELFTEST_FAIL")
+          print("R272_ACTUAL_SOURCE_IMPORT_SHADOW_REPRODUCED_AND_BLOCKED_FOR_PARENT")
+          PY
+      - name: Prove full R272 false-PASS under unpinned import shadow in disposable checkout
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python - "$RUNNER_TEMP/r272-forgery" <<'PY'
+          import pathlib,shutil,sys
+          root=pathlib.Path(sys.argv[1])
+          tracked=[
+              "research/validation/r272_single_entrypoint_failclosed_20261102.py",
+              "research/validation/r272_preimage_first_readonly_gate_20261102.py",
+              "research/validation/r272_pinned_native_replay_and_preimage_negative_20261102.py",
+              "research/validation/R272_P0_FAILCLOSED_CANDIDATE_20261102.zip",
+              "research/R272/r272_exact_train_test_prediction.py",
+              "research/R272/R272_ALL_576_ORIGINAL_TRAIN_AND_TEST_SOURCES.csv",
+              "research/R272/R272_EXACT_RESULTS.json",
+              "research/R272/R272_MACHINE_RECEIPT.json",
+              "protocols/R272_OUT_OF_SAMPLE_9_BERNOULLI_WORLDS_576_FULL_SOURCE_PRESCORE_FREEZE_2026-10-23.md",
+          ]
+          for name in tracked:
+              dst=root/name
+              dst.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copyfile(name,dst)
+          validation_shadow = """
+          import sys
+          if "r272_preimage_first_readonly_gate_" in sys.argv[0]:
+              print('{"status":"PASS","checked_archived_preimage":true,"isolated_regeneration_compared":true,"original_archives_untouched":true,"scientific":{"status":"PASS","rows":576}}')
+          elif "r272_pinned_native_replay_" in sys.argv[0]:
+              print('{"status":"PASS","negative_rejections_total":15,"preimage_corruption_rejected_before_emit":true,"same_corruption_masked_by_original_emit_then_accepted":true}')
+          else:
+              raise SystemExit("unexpected target")
+          raise SystemExit(0)
+          """
+          generator_shadow = """
+          import sys
+          print("Ran 83 tests in 0.001s",file=sys.stderr)
+          raise SystemExit(0)
+          """
+          (root/"research/validation/json.py").write_text(validation_shadow,encoding="utf-8")
+          (root/"research/R272/json.py").write_text(generator_shadow,encoding="utf-8")
+          print("R272_DISPOSABLE_TREE_COPIED_WITH_IDENTICAL_FROZEN_FILES")
+          PY
+          python -B -I -S research/validation/r272_single_entrypoint_failclosed_20261102.py \
+            --root "$RUNNER_TEMP/r272-forgery" > "$RUNNER_TEMP/r272-forged-accepted.json"
+          python -I -S - "$RUNNER_TEMP/r272-forged-accepted.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: d=json.load(h)
+          if d.get("status")!="PASS" or d.get("archive_bytes_preserved") is not True:
+              raise SystemExit("R272_FAILED_TO_REPRODUCE_FALSE_PASS")
+          if len(d.get("modes",[]))!=3 or any(x.get("native_negatives")!=15 for x in d["modes"]):
+              raise SystemExit("R272_FORGED_MODE_RECEIPT_MISMATCH")
+          print("R272_UNPINNED_SIBLING_IMPORTS_CAUSE_FULL_FALSE_ACCEPTANCE")
+          PY
+          # This is a deliberate negative result. It is a release blocker,
+          # never an endorsement of the current unadopted candidate.
+      - name: Quarantine v2 excludes injected modules and rejects modified original source
+        shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          PYTHONPATH="$RUNNER_TEMP/r272-forgery/research/validation" \
+            python -B -I -S research/validation/r272_quarantined_candidate_v2_20261117.py \
+              --root "$RUNNER_TEMP/r272-forgery" > "$RUNNER_TEMP/r272-safe-replay.json"
+          python -I -S - "$RUNNER_TEMP/r272-safe-replay.json" <<'PY'
+          import json,sys
+          with open(sys.argv[1],encoding="utf-8") as h: x=json.load(h)
+          if (x.get("status")!="PASS_BOUNDED_QUARANTINED_R272_CANDIDATE"
+              or x.get("untrusted_neighbor_modules_excluded") is not True
+              or x.get("original_native_tests_each_mode")!=83
+              or x.get("native_negative_controls_each_mode")!=15):
+              raise SystemExit("R272_QUARANTINE_FORGED_INPUT_NOT_ISOLATED")
+          print("R272_QUARANTINED_V2_BLOCKS_TWO_MODULE_INJECTION")
+          PY
+          cp -a "$RUNNER_TEMP/r272-forgery" "$RUNNER_TEMP/r272-forgery-bad-preimage"
+          printf '\n' >> "$RUNNER_TEMP/r272-forgery-bad-preimage/research/R272/R272_EXACT_RESULTS.json"
+          if python -B -I -S research/validation/r272_quarantined_candidate_v2_20261117.py \
+              --root "$RUNNER_TEMP/r272-forgery-bad-preimage" \
+              2> "$RUNNER_TEMP/r272-forged-bad-error.log"; then
+            echo 'R272_QUARANTINE_ACCEPTED_CORRUPT_FROZEN_RESULT'
+            exit 1
+          fi
+          grep -q 'R272_QUARANTINE_SOURCE_IDENTITY_MISMATCH_' "$RUNNER_TEMP/r272-forged-bad-error.log"
+          echo 'R272_QUARANTINED_V2_CORRUPTED_PREIMAGE_REJECTED'
+
+      - name: Recheck exact historical production workflow identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -I -S - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p=Path(".github/workflows/r272-exact-train-test-oos-e1.yml")
+          raw=p.read_bytes()
+          actual=hashlib.sha1(b"blob "+str(len(raw)).encode("ascii")+b"\0"+raw).hexdigest()
+          if actual!="3132b08cf4ee64b55f5112d2249894ea0ec9d42d":
+              raise SystemExit("R272_LEGACY_PRODUCTION_WORKFLOW_CHANGED_REQUIRES_OWNER_REVIEW")
+          print("R272_LEGACY_PRODUCTION_IDENTITY_UNCHANGED")
+          PY
+
+      - name: Enforce candidate is not installed as active production entrypoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -q 'r272_single_entrypoint_failclosed_20261102.py' \
+            .github/workflows/r272-exact-train-test-oos-e1.yml; then
+            echo 'R272_PRODUCTION_ALREADY_CHANGED_RECHECK_REQUIRED'
+            exit 1
+          fi
+          echo 'R272_UNSAFE_OLD_PRODUCTION_STILL_PRESENT_AND_NOT_ACTIVATED'
