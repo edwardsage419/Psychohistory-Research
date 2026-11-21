@@ -1,0 +1,115 @@
+{
+  "code_commit": "e291c654064e5b3d97cb949ae5ca528e0113616b",
+  "development_base": "f6115556ecf3ee6eed8f96b043497a51e5f1bf9a",
+  "v04_merge": "2ecc6433d9ec0819b0fe71ff965e0ee6b71a5f4d",
+  "draft_pr": 57,
+  "local": {
+    "status": "PASS",
+    "python": "3.12.14",
+    "sqlite": "3.53.1",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "node": "24.22.1",
+    "npm": "11.9.0",
+    "playwright": "1.62.0",
+    "chromium": "156.0.8078.79",
+    "tests_passed": 389,
+    "subtests_passed": 11,
+    "warnings": 1,
+    "production_build": "PASS",
+    "browser_v05": "PASS",
+    "legacy_browser_v01_v04": "PASS",
+    "legacy_cli_exit_0": 43,
+    "legacy_cli_expected_exit_1": 13,
+    "legacy_restore": {
+      "v01_restore": {
+        "source_commit": "7ea6eab94433e3669b6f492d802bb35316dc90d6",
+        "artifact_sha256": "d79eb08da2412757491ecc96290733d8aeec240b3c8aec7c8444c8e4fb779a37",
+        "backup_manifest_sha256": "ce0c0746f33f28ee024e37fe6cb49253f9cb4f6e03d075344dc482884f80890e"
+      },
+      "v02_restore": {
+        "source_commit": "dd05f32f79efc2f4f4f37117cc039dca1008ed76",
+        "artifact_sha256": "106a34318f686facb552fb61e4b480118b33c4d83570cd700eff4d1b9f335316",
+        "backup_manifest_sha256": "31b7ab19af22a9022b409a0d715b251e411bbc81a7d2df6052734ff26006200a"
+      },
+      "v03_restore": {
+        "artifact_sha256": "8e9f44be1b5bc2603c75d143b12734a582fbf3fa11c64e7edb5a4c9fb84dee9d",
+        "backup_manifest_sha256": "523309ac547e694b4a4dc546fcae2a706db99a68d759c583f61e3904d65c37bb"
+      }
+    },
+    "legacy_math_guards": {
+      "normal": {
+        "status": "PASS",
+        "optimization": 0
+      },
+      "optimize": {
+        "status": "PASS",
+        "optimization": 1
+      },
+      "env": {
+        "status": "PASS",
+        "optimization": 1
+      }
+    },
+    "rollback": {
+      "status": "PASS",
+      "v04_binary_commit": "2ecc6433d9ec0819b0fe71ff965e0ee6b71a5f4d",
+      "checks": [
+        "v05 reads preexisting v04 snapshot",
+        "v04 still reads original snapshot in mixed store",
+        "v04 rejects extended export",
+        "v04 revoke invalidates v05 backup and previous epoch",
+        "v05 regrant starts without previous records"
+      ]
+    }
+  },
+  "native": {
+    "run_id": 44856852834,
+    "status": "success",
+    "head_sha": "e291c654064e5b3d97cb949ae5ca528e0113616b",
+    "jobs": [
+      {
+        "id": 136700952418,
+        "runner": "acceptance (macos-15, Darwin, arm64)",
+        "conclusion": "success",
+        "completed_at": "2026-11-21T02:41:19Z",
+        "tests_passed": 388,
+        "skipped": 1,
+        "warnings": 1,
+        "subtests_passed": 11,
+        "python": "3.12.10",
+        "sqlite": "3.49.1",
+        "chromium": "151.0.7922.34",
+        "legacy_and_v05_browser": true
+      },
+      {
+        "id": 136700952554,
+        "runner": "acceptance (ubuntu-24.04, Linux, x86_64)",
+        "conclusion": "success",
+        "completed_at": "2026-11-21T02:39:30Z",
+        "tests_passed": 389,
+        "skipped": 0,
+        "warnings": 1,
+        "subtests_passed": 11,
+        "python": "3.12.16",
+        "sqlite": "3.45.1",
+        "chromium": "151.0.7922.34",
+        "legacy_and_v05_browser": true
+      }
+    ]
+  },
+  "first_native_run": {
+    "run_id": 44856051404,
+    "tested_code": "b4f8a4208672864521c36496e60d8a27d6e52ac6",
+    "ubuntu": {
+      "job_id": 136698413355,
+      "conclusion": "failure",
+      "failure": "pending record reload could clear an action selection"
+    },
+    "macos": {
+      "job_id": 136698413517,
+      "conclusion": "success"
+    }
+  },
+  "independent_scientific_holdout": "NOT_RUN",
+  "actual_personal_decision_improvement": "NOT_RUN"
+}
