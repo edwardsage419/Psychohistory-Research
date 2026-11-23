@@ -35,3 +35,5 @@ Study 2：原文对91项已完成学术任务与62项已完成非学术任务的
 模型轨：候选时间输入字段与最少追问门槛。数据轨：历史任务的完成、未完成、样本选择与可比性资格。独立验收轨：留出反例、简单基线对照及是否改善真实完成时间预测。产品轨：自然语言首答中分离目标、预测和硬截止。
 本轮人工核对了原论文前六页及数字，未独立复算原作者t/F检验，未运行程序测试，未进行个人用户验证。原论文实验结果不等于本产品的有效性证据。
 写前GitHub main查询最新提交为40c147b383f031cf2302201c0ac15718264eaa33；读取v3规程、开放PR；GitHub关键词BUEHLER、PLANNING_FALLACY、reference class forecasting均无结果，属关键词级去重，完整语义去重未知。无新增费用，不改变R073、PESEN及冻结协议。
+## 2026-11-23 retrospective semantic dedup correction
+A full-content comparison identified an earlier theory record dated 2026-11-21: `research/decision_methods/BUEHLER_GRIFFIN_ROSS_1994_PERSONAL_COMPLETION_TIME_FORECAST_BOUNDARY_2026-11-21.md`. It already covers the same original 1994 source, printed pp. 366–371, Studies 1–2 numerical findings, forecast versus external deadline, unfinished-task censoring, and acceptance examples. The keyword-only dedup assertion above was incomplete. This 2026-11-23 record is a **redundant extension, not a separate new method increment**. Its additional synthetic cases remain candidates, subject to independent holdout separation. Both historical records are preserved. No product validation is implied.
