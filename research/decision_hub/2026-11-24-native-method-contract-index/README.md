@@ -1,0 +1,8 @@
+# 第二十九轮：原生方法契约与离线全文索引构建器
+2026-11-24。基线 baa5dc413b96ff3d0b742a193255fc2bbe727281。核对main、近期提交、开放PR、v3.1、AGENTS、同步规程、协调交接及第8/28轮。读取固定7个方法/注册模块并比对blob；第8轮索引 6862d5a2cd3c7eb3f2da9a85d79c8b3386f2a102。本机git ls-remote DNS失败，无法下载全库。状态 NATIVE_METADATA_STATIC_EXTRACTED / NEW_TEXT_POSTINGS_EXECUTED / FULL_LOCAL_BUILD_NOT_RUN / INDEPENDENT_ACCEPTANCE_NOT_RUN。
+## 增量
+从真实Method声明及VOI共享模板提取15个方法的9类原文Python字段表达式、注册片段、validator/execute表达式、来源身份、scope、依赖。首次逐行提取漏掉VOI同行字段，未写入；修正为字段名定位。VOI特定outputs/assumptions/replay由原始调用片段保留，共享表达式可能为形参，不能当最终解析值。原始片段可能含括号及相邻Python表达式，静态索引不执行；完整动态describe、原生validate/execute未运行。证据等级为源码声明的SYNTHETIC_ENGINEERING_CANDIDATE。15/15方法、38条来源边核对，37匹配1变更；timing_actions为REVIEW_REQUIRED，未覆盖原历史来源。sourceReview=MATCHED_IDENTITIES_ONLY不代表科学准入。extract_contracts.js供固定快照离线复跑，静态提取不支持任意新Python语法，生产应使用原生registry.describe而非eval。
+## 全文索引
+新增8份第28轮未全文处理的真实档案，连接器blob及UTF8字节数均一致；逐文档词频实际JS执行，中英字符二元组/英文词，累计第28/29轮24份不同全文。未独立计算原始字节Git哈希；复跑要求精确Git blob。postings仅词频、标题、路径、身份，不复制全文。config包含154份固定路径、大小、blob及关联方法。build_index.js在已有仓库上离线读取原始字节、校验全部blob后构建逐文档词频索引，新文件独占创建，不自动上传、联网或使用私有数据。全库构建器未在完整工作树执行；8份词频核心已实测，不能将文件身份与正文审查等同。全库检索准确性、性能、Qwen自动关键词及语义排序未测。原生方法科学效力未重新审查。
+## 交接
+模型描述优先从现有registry.describe读取；LLM仅提出检索线索，不能生成执行入口或确认权限。原生validator依据已确认状态检查所需输入；结构化缺口与适用性规则需要真实原生执行及独立留出。全库构建器与静态契约可供完整版本复用，不单独启动Codex。独立轨复核来源变更及原生validator，模型轨将输入说明映射至实际schema，产品轨测试按需补问。无CI、产品修改、真实Qwen、训练、Codex、合并、部署、费用或冻结变更。
