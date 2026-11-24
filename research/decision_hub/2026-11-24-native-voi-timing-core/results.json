@@ -1,0 +1,30 @@
+{
+  "python": "3.13.5",
+  "counts": {
+    "point_cases": 2592,
+    "point_policy_checks": 6480,
+    "positive_net": 24,
+    "zero_net": 692,
+    "negative_net": 1876,
+    "interval_cases": 3456,
+    "interval_policy_checks": 13824,
+    "probability_rows": 216,
+    "probability_valid": 137,
+    "probability_invalid": 79,
+    "timing_cases": 150,
+    "timing_break_even_cases": 2592,
+    "timing_no_positive": 144,
+    "timing_boundary_profitable": 781
+  },
+  "controls": [
+    "unknown probability rejected",
+    "missing probability source rejected",
+    "nonempty invented source accepted (negative control)",
+    "missing cutoff is unknown",
+    "unconfirmed time is unknown",
+    "zero mass branch permits no action",
+    "zero mass policy sentinel",
+    "positive mass empty action row fails"
+  ],
+  "scope": "native fragments with synthetic fixtures; not full model validators or registry; timing _exact is research adapter"
+}
