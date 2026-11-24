@@ -1,0 +1,892 @@
+{
+  "summary": {
+    "episodes": 18,
+    "turns": 36,
+    "claims": 98,
+    "domains": {
+      "housing": 1,
+      "career": 3,
+      "learning": 2,
+      "time": 1,
+      "family": 1,
+      "consumption": 1,
+      "financial_planning": 1,
+      "wellness": 1,
+      "review": 1,
+      "travel": 1,
+      "household": 1,
+      "relationship": 1,
+      "risk": 1,
+      "work": 1,
+      "privacy": 1
+    },
+    "kinds": {
+      "HARD": 13,
+      "EXCLUSION": 1,
+      "USER_REPORTED": 19,
+      "UNKNOWN": 7,
+      "PREFERENCE": 8,
+      "REPORTED_UNCERTAIN": 3,
+      "REPORTED_PROMISE": 2,
+      "CONFIRM": 5,
+      "PAST_COST": 1,
+      "FUTURE_COST": 1,
+      "REVISION": 3,
+      "ESTIMATE": 3,
+      "HARD_CONSEQUENCE": 2,
+      "PROPOSED_ACTION": 3,
+      "CONDITIONAL_ACTION": 1,
+      "REPORTED_POSSIBILITY": 1,
+      "HYPOTHESIS": 3,
+      "REPORTED_EXTERNAL": 1,
+      "CONFIRMED_CHOICE": 1,
+      "TRIGGER": 1,
+      "ACTION": 1,
+      "EXCEPTION": 1,
+      "OBSERVED_OUTCOME": 1,
+      "COUNTERFACTUAL_CLAIM": 1,
+      "POSTHOC": 1,
+      "RETROSPECTIVE_ESTIMATE": 1,
+      "REPORTED_ESTIMATE": 2,
+      "GOAL": 4,
+      "CONDITIONAL_HARD": 2,
+      "REPORTED_UNVERIFIED": 1,
+      "UNAVAILABLE_EVIDENCE": 1,
+      "RECORD_INTENT": 1,
+      "EVENT_DEFINITION": 1,
+      "AUTHORIZATION_PROPOSAL": 1
+    },
+    "statuses": {
+      "ASK": 6,
+      "REJECT_CURRENT_OPTION": 1,
+      "CONDITIONAL": 12,
+      "RECOMPUTE": 2,
+      "DEADLINE_RISK_UNKNOWN": 1,
+      "CONDITIONAL_INFEASIBILITY": 1,
+      "UNKNOWN_PROBABILITY": 1,
+      "EVIDENCE_GAP": 1,
+      "CONDITIONAL_ONLY": 1,
+      "PLAN_CANDIDATE": 1,
+      "PLAN_CONFIRMATION": 1,
+      "REVIEW_ONLY": 1,
+      "NO_PROSPECTIVE_SCORE": 1,
+      "CLARIFY": 1,
+      "JOINT_INFEASIBLE": 1,
+      "VERIFY": 1,
+      "PROSPECTIVE_RECORD_CANDIDATE": 1,
+      "TEMPORARY_ONLY": 1,
+      "CONFIRM_SCOPED_STORAGE": 1
+    },
+    "questions": 17,
+    "negativeControls": 5,
+    "sourceIdentityChecks": 10
+  },
+  "rows": [
+    {
+      "episode": "L01",
+      "turn": 0,
+      "field": "combined_cost",
+      "kind": "HARD",
+      "start": 7,
+      "end": 18
+    },
+    {
+      "episode": "L01",
+      "turn": 0,
+      "field": "combined_cost",
+      "kind": "EXCLUSION",
+      "start": 19,
+      "end": 23
+    },
+    {
+      "episode": "L01",
+      "turn": 0,
+      "field": "rent",
+      "kind": "USER_REPORTED",
+      "start": 24,
+      "end": 29
+    },
+    {
+      "episode": "L01",
+      "turn": 0,
+      "field": "parking",
+      "kind": "UNKNOWN",
+      "start": 30,
+      "end": 36
+    },
+    {
+      "episode": "L01",
+      "turn": 1,
+      "field": "parking",
+      "kind": "USER_REPORTED",
+      "start": 4,
+      "end": 11
+    },
+    {
+      "episode": "L02",
+      "turn": 0,
+      "field": "salary",
+      "kind": "PREFERENCE",
+      "start": 0,
+      "end": 7
+    },
+    {
+      "episode": "L02",
+      "turn": 0,
+      "field": "night_shift",
+      "kind": "HARD",
+      "start": 9,
+      "end": 17
+    },
+    {
+      "episode": "L02",
+      "turn": 0,
+      "field": "A.night_shift",
+      "kind": "REPORTED_UNCERTAIN",
+      "start": 18,
+      "end": 26
+    },
+    {
+      "episode": "L02",
+      "turn": 0,
+      "field": "B.night_shift",
+      "kind": "REPORTED_PROMISE",
+      "start": 27,
+      "end": 34
+    },
+    {
+      "episode": "L02",
+      "turn": 1,
+      "field": "night_shift",
+      "kind": "CONFIRM",
+      "start": 15,
+      "end": 21
+    },
+    {
+      "episode": "L02",
+      "turn": 1,
+      "field": "A.night_shift",
+      "kind": "REPORTED_UNCERTAIN",
+      "start": 0,
+      "end": 7
+    },
+    {
+      "episode": "L03",
+      "turn": 0,
+      "field": "paid_fee",
+      "kind": "PAST_COST",
+      "start": 4,
+      "end": 8
+    },
+    {
+      "episode": "L03",
+      "turn": 0,
+      "field": "refundability",
+      "kind": "USER_REPORTED",
+      "start": 11,
+      "end": 15
+    },
+    {
+      "episode": "L03",
+      "turn": 0,
+      "field": "incremental_fee",
+      "kind": "FUTURE_COST",
+      "start": 18,
+      "end": 23
+    },
+    {
+      "episode": "L03",
+      "turn": 0,
+      "field": "benefit",
+      "kind": "UNKNOWN",
+      "start": 24,
+      "end": 31
+    },
+    {
+      "episode": "L03",
+      "turn": 1,
+      "field": "refundability",
+      "kind": "REVISION",
+      "start": 3,
+      "end": 10
+    },
+    {
+      "episode": "L04",
+      "turn": 0,
+      "field": "duration",
+      "kind": "ESTIMATE",
+      "start": 1,
+      "end": 8
+    },
+    {
+      "episode": "L04",
+      "turn": 0,
+      "field": "historical_duration",
+      "kind": "USER_REPORTED",
+      "start": 14,
+      "end": 21
+    },
+    {
+      "episode": "L04",
+      "turn": 0,
+      "field": "deadline",
+      "kind": "HARD",
+      "start": 22,
+      "end": 28
+    },
+    {
+      "episode": "L04",
+      "turn": 0,
+      "field": "early_reward",
+      "kind": "USER_REPORTED",
+      "start": 29,
+      "end": 35
+    },
+    {
+      "episode": "L04",
+      "turn": 1,
+      "field": "available_time",
+      "kind": "USER_REPORTED",
+      "start": 2,
+      "end": 9
+    },
+    {
+      "episode": "L04",
+      "turn": 1,
+      "field": "late_loss",
+      "kind": "HARD_CONSEQUENCE",
+      "start": 10,
+      "end": 19
+    },
+    {
+      "episode": "L05",
+      "turn": 0,
+      "field": "total_leave",
+      "kind": "HARD",
+      "start": 12,
+      "end": 17
+    },
+    {
+      "episode": "L05",
+      "turn": 0,
+      "field": "allocation",
+      "kind": "PROPOSED_ACTION",
+      "start": 18,
+      "end": 23
+    },
+    {
+      "episode": "L05",
+      "turn": 0,
+      "field": "recourse",
+      "kind": "CONDITIONAL_ACTION",
+      "start": 24,
+      "end": 37
+    },
+    {
+      "episode": "L05",
+      "turn": 1,
+      "field": "recourse_allowed",
+      "kind": "USER_REPORTED",
+      "start": 3,
+      "end": 11
+    },
+    {
+      "episode": "L05",
+      "turn": 1,
+      "field": "demands",
+      "kind": "REPORTED_POSSIBILITY",
+      "start": 12,
+      "end": 25
+    },
+    {
+      "episode": "L06",
+      "turn": 0,
+      "field": "experience",
+      "kind": "USER_REPORTED",
+      "start": 6,
+      "end": 13
+    },
+    {
+      "episode": "L06",
+      "turn": 0,
+      "field": "probability",
+      "kind": "HYPOTHESIS",
+      "start": 14,
+      "end": 23
+    },
+    {
+      "episode": "L06",
+      "turn": 0,
+      "field": "failure_loss",
+      "kind": "PREFERENCE",
+      "start": 31,
+      "end": 37
+    },
+    {
+      "episode": "L06",
+      "turn": 1,
+      "field": "return_window",
+      "kind": "REPORTED_PROMISE",
+      "start": 5,
+      "end": 10
+    },
+    {
+      "episode": "L06",
+      "turn": 1,
+      "field": "return_exclusion",
+      "kind": "USER_REPORTED",
+      "start": 11,
+      "end": 16
+    },
+    {
+      "episode": "L07",
+      "turn": 0,
+      "field": "group_effect",
+      "kind": "REPORTED_EXTERNAL",
+      "start": 2,
+      "end": 15
+    },
+    {
+      "episode": "L07",
+      "turn": 0,
+      "field": "option",
+      "kind": "PROPOSED_ACTION",
+      "start": 19,
+      "end": 24
+    },
+    {
+      "episode": "L07",
+      "turn": 0,
+      "field": "personal_effect",
+      "kind": "HYPOTHESIS",
+      "start": 30,
+      "end": 45
+    },
+    {
+      "episode": "L07",
+      "turn": 1,
+      "field": "source_context",
+      "kind": "USER_REPORTED",
+      "start": 3,
+      "end": 14
+    },
+    {
+      "episode": "L07",
+      "turn": 1,
+      "field": "target_context",
+      "kind": "USER_REPORTED",
+      "start": 21,
+      "end": 28
+    },
+    {
+      "episode": "L08",
+      "turn": 0,
+      "field": "loss_concern",
+      "kind": "PREFERENCE",
+      "start": 7,
+      "end": 11
+    },
+    {
+      "episode": "L08",
+      "turn": 0,
+      "field": "anticipated_regret",
+      "kind": "PREFERENCE",
+      "start": 12,
+      "end": 23
+    },
+    {
+      "episode": "L08",
+      "turn": 0,
+      "field": "criterion",
+      "kind": "UNKNOWN",
+      "start": 25,
+      "end": 34
+    },
+    {
+      "episode": "L08",
+      "turn": 1,
+      "field": "capital_preservation",
+      "kind": "PREFERENCE",
+      "start": 2,
+      "end": 7
+    },
+    {
+      "episode": "L08",
+      "turn": 1,
+      "field": "anticipated_regret",
+      "kind": "REVISION",
+      "start": 15,
+      "end": 22
+    },
+    {
+      "episode": "L09",
+      "turn": 0,
+      "field": "choice",
+      "kind": "CONFIRMED_CHOICE",
+      "start": 1,
+      "end": 9
+    },
+    {
+      "episode": "L09",
+      "turn": 0,
+      "field": "barrier",
+      "kind": "USER_REPORTED",
+      "start": 10,
+      "end": 17
+    },
+    {
+      "episode": "L09",
+      "turn": 1,
+      "field": "trigger",
+      "kind": "TRIGGER",
+      "start": 0,
+      "end": 9
+    },
+    {
+      "episode": "L09",
+      "turn": 1,
+      "field": "walk",
+      "kind": "ACTION",
+      "start": 10,
+      "end": 14
+    },
+    {
+      "episode": "L09",
+      "turn": 1,
+      "field": "trigger",
+      "kind": "EXCEPTION",
+      "start": 15,
+      "end": 22
+    },
+    {
+      "episode": "L10",
+      "turn": 0,
+      "field": "actual_salary",
+      "kind": "OBSERVED_OUTCOME",
+      "start": 2,
+      "end": 8
+    },
+    {
+      "episode": "L10",
+      "turn": 0,
+      "field": "unchosen_salary",
+      "kind": "COUNTERFACTUAL_CLAIM",
+      "start": 9,
+      "end": 16
+    },
+    {
+      "episode": "L10",
+      "turn": 0,
+      "field": "forecast_record",
+      "kind": "POSTHOC",
+      "start": 30,
+      "end": 39
+    },
+    {
+      "episode": "L10",
+      "turn": 0,
+      "field": "prior_probability",
+      "kind": "RETROSPECTIVE_ESTIMATE",
+      "start": 18,
+      "end": 26
+    },
+    {
+      "episode": "L10",
+      "turn": 1,
+      "field": "predecision_record",
+      "kind": "USER_REPORTED",
+      "start": 0,
+      "end": 2
+    },
+    {
+      "episode": "L11",
+      "turn": 0,
+      "field": "arrival",
+      "kind": "HARD",
+      "start": 5,
+      "end": 9
+    },
+    {
+      "episode": "L11",
+      "turn": 0,
+      "field": "drive_time",
+      "kind": "ESTIMATE",
+      "start": 19,
+      "end": 26
+    },
+    {
+      "episode": "L11",
+      "turn": 0,
+      "field": "rail_time",
+      "kind": "REPORTED_ESTIMATE",
+      "start": 27,
+      "end": 34
+    },
+    {
+      "episode": "L11",
+      "turn": 0,
+      "field": "walk_time",
+      "kind": "UNKNOWN",
+      "start": 35,
+      "end": 43
+    },
+    {
+      "episode": "L11",
+      "turn": 1,
+      "field": "departure",
+      "kind": "HARD",
+      "start": 0,
+      "end": 4
+    },
+    {
+      "episode": "L11",
+      "turn": 1,
+      "field": "rail_time_scope",
+      "kind": "CONFIRM",
+      "start": 7,
+      "end": 15
+    },
+    {
+      "episode": "L12",
+      "turn": 0,
+      "field": "kitchen",
+      "kind": "PREFERENCE",
+      "start": 2,
+      "end": 8
+    },
+    {
+      "episode": "L12",
+      "turn": 0,
+      "field": "bathroom",
+      "kind": "REPORTED_UNCERTAIN",
+      "start": 9,
+      "end": 17
+    },
+    {
+      "episode": "L12",
+      "turn": 0,
+      "field": "total",
+      "kind": "HARD",
+      "start": 18,
+      "end": 27
+    },
+    {
+      "episode": "L12",
+      "turn": 0,
+      "field": "borrowing",
+      "kind": "HARD",
+      "start": 28,
+      "end": 32
+    },
+    {
+      "episode": "L12",
+      "turn": 1,
+      "field": "minimums",
+      "kind": "CONFIRM",
+      "start": 2,
+      "end": 11
+    },
+    {
+      "episode": "L12",
+      "turn": 1,
+      "field": "defer",
+      "kind": "HARD",
+      "start": 12,
+      "end": 18
+    },
+    {
+      "episode": "L13",
+      "turn": 0,
+      "field": "relationship",
+      "kind": "GOAL",
+      "start": 1,
+      "end": 7
+    },
+    {
+      "episode": "L13",
+      "turn": 0,
+      "field": "observed_reply",
+      "kind": "USER_REPORTED",
+      "start": 13,
+      "end": 18
+    },
+    {
+      "episode": "L13",
+      "turn": 0,
+      "field": "other_person_intent",
+      "kind": "UNKNOWN",
+      "start": 19,
+      "end": 28
+    },
+    {
+      "episode": "L13",
+      "turn": 0,
+      "field": "block",
+      "kind": "PROPOSED_ACTION",
+      "start": 32,
+      "end": 36
+    },
+    {
+      "episode": "L13",
+      "turn": 1,
+      "field": "communication",
+      "kind": "PREFERENCE",
+      "start": 1,
+      "end": 5
+    },
+    {
+      "episode": "L13",
+      "turn": 1,
+      "field": "contact",
+      "kind": "CONDITIONAL_HARD",
+      "start": 7,
+      "end": 20
+    },
+    {
+      "episode": "L14",
+      "turn": 0,
+      "field": "bonus",
+      "kind": "REPORTED_ESTIMATE",
+      "start": 0,
+      "end": 13
+    },
+    {
+      "episode": "L14",
+      "turn": 0,
+      "field": "contract_evidence",
+      "kind": "USER_REPORTED",
+      "start": 14,
+      "end": 22
+    },
+    {
+      "episode": "L14",
+      "turn": 0,
+      "field": "cashflow",
+      "kind": "HARD_CONSEQUENCE",
+      "start": 32,
+      "end": 38
+    },
+    {
+      "episode": "L14",
+      "turn": 1,
+      "field": "bonus_guarantee",
+      "kind": "USER_REPORTED",
+      "start": 0,
+      "end": 6
+    },
+    {
+      "episode": "L14",
+      "turn": 1,
+      "field": "bonus_timing",
+      "kind": "UNKNOWN",
+      "start": 7,
+      "end": 15
+    },
+    {
+      "episode": "L15",
+      "turn": 0,
+      "field": "credential",
+      "kind": "GOAL",
+      "start": 10,
+      "end": 12
+    },
+    {
+      "episode": "L15",
+      "turn": 0,
+      "field": "skills",
+      "kind": "GOAL",
+      "start": 16,
+      "end": 22
+    },
+    {
+      "episode": "L15",
+      "turn": 0,
+      "field": "study_time",
+      "kind": "HARD",
+      "start": 23,
+      "end": 30
+    },
+    {
+      "episode": "L15",
+      "turn": 0,
+      "field": "learning",
+      "kind": "PREFERENCE",
+      "start": 32,
+      "end": 38
+    },
+    {
+      "episode": "L15",
+      "turn": 1,
+      "field": "credential",
+      "kind": "REVISION",
+      "start": 0,
+      "end": 6
+    },
+    {
+      "episode": "L15",
+      "turn": 1,
+      "field": "skills",
+      "kind": "CONFIRM",
+      "start": 7,
+      "end": 19
+    },
+    {
+      "episode": "L16",
+      "turn": 0,
+      "field": "recent_observations",
+      "kind": "USER_REPORTED",
+      "start": 4,
+      "end": 11
+    },
+    {
+      "episode": "L16",
+      "turn": 0,
+      "field": "hazard",
+      "kind": "REPORTED_UNVERIFIED",
+      "start": 12,
+      "end": 20
+    },
+    {
+      "episode": "L16",
+      "turn": 0,
+      "field": "hazard_verification",
+      "kind": "UNKNOWN",
+      "start": 25,
+      "end": 31
+    },
+    {
+      "episode": "L16",
+      "turn": 0,
+      "field": "route_safety",
+      "kind": "CONDITIONAL_HARD",
+      "start": 32,
+      "end": 45
+    },
+    {
+      "episode": "L16",
+      "turn": 1,
+      "field": "hazard_verification",
+      "kind": "UNAVAILABLE_EVIDENCE",
+      "start": 1,
+      "end": 4
+    },
+    {
+      "episode": "L16",
+      "turn": 1,
+      "field": "safe_action",
+      "kind": "GOAL",
+      "start": 11,
+      "end": 15
+    },
+    {
+      "episode": "L17",
+      "turn": 0,
+      "field": "historical_events",
+      "kind": "USER_REPORTED",
+      "start": 3,
+      "end": 16
+    },
+    {
+      "episode": "L17",
+      "turn": 0,
+      "field": "forecast",
+      "kind": "ESTIMATE",
+      "start": 22,
+      "end": 30
+    },
+    {
+      "episode": "L17",
+      "turn": 0,
+      "field": "calibration",
+      "kind": "HYPOTHESIS",
+      "start": 32,
+      "end": 40
+    },
+    {
+      "episode": "L17",
+      "turn": 1,
+      "field": "past_forecasts",
+      "kind": "USER_REPORTED",
+      "start": 0,
+      "end": 6
+    },
+    {
+      "episode": "L17",
+      "turn": 1,
+      "field": "forecast_record",
+      "kind": "RECORD_INTENT",
+      "start": 8,
+      "end": 14
+    },
+    {
+      "episode": "L17",
+      "turn": 1,
+      "field": "success",
+      "kind": "EVENT_DEFINITION",
+      "start": 15,
+      "end": 27
+    },
+    {
+      "episode": "L18",
+      "turn": 0,
+      "field": "persistence",
+      "kind": "HARD",
+      "start": 11,
+      "end": 15
+    },
+    {
+      "episode": "L18",
+      "turn": 0,
+      "field": "training",
+      "kind": "HARD",
+      "start": 16,
+      "end": 23
+    },
+    {
+      "episode": "L18",
+      "turn": 1,
+      "field": "persistence",
+      "kind": "AUTHORIZATION_PROPOSAL",
+      "start": 2,
+      "end": 8
+    },
+    {
+      "episode": "L18",
+      "turn": 1,
+      "field": "raw_text_retention",
+      "kind": "HARD",
+      "start": 9,
+      "end": 14
+    },
+    {
+      "episode": "L18",
+      "turn": 1,
+      "field": "training",
+      "kind": "CONFIRM",
+      "start": 15,
+      "end": 22
+    }
+  ],
+  "negativeControls": [
+    {
+      "k": "span",
+      "rejected": true
+    },
+    {
+      "k": "revision",
+      "rejected": true
+    },
+    {
+      "k": "interval",
+      "rejected": true
+    },
+    {
+      "k": "source",
+      "rejected": true
+    },
+    {
+      "k": "duplicate",
+      "rejected": true
+    }
+  ]
+}

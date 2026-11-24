@@ -1,0 +1,59 @@
+{
+  "id": "NSW_DW_1999",
+  "status": "SOURCE_METADATA_AND_VISIBLE_ROWS_VERIFIED_RAW_BYTES_BLOCKED",
+  "title": "National Supported Work Demonstration, Dehejia-Wahba experimental subsample",
+  "officialPage": "https://users.nber.org/~rdehejia/nswdata2.html",
+  "accessDate": "2026-11-24",
+  "licenseAsStated": "attributable noncommercial use (CC BY-NC); exact version not verified",
+  "sourceFiles": [
+    {
+      "url": "https://users.nber.org/~rdehejia/data/nswre74_treated.txt",
+      "reportedRows": 185,
+      "webVisibleRows": 19,
+      "byteHash": null
+    },
+    {
+      "url": "https://users.nber.org/~rdehejia/data/nswre74_control.txt",
+      "reportedRows": 260,
+      "webVisibleRows": 18,
+      "byteHash": null
+    }
+  ],
+  "reportedTotal": 445,
+  "fieldOrder": [
+    "treatment",
+    "age",
+    "education",
+    "Black",
+    "Hispanic",
+    "married",
+    "nodegree",
+    "RE74",
+    "RE75",
+    "RE78"
+  ],
+  "decisionTime": [
+    "age",
+    "education",
+    "Black",
+    "Hispanic",
+    "married",
+    "nodegree",
+    "RE74",
+    "RE75"
+  ],
+  "treatmentField": "treatment",
+  "outcome": "RE78",
+  "forbiddenPredictor": [
+    "RE78",
+    "posttreatment fields"
+  ],
+  "originalAccess": "www.nber.org linked text endpoints HTTP 403; users.nber.org text web view 185/260 lines; current container curl DNS resolution failed; no raw bytes or full row audit",
+  "references": [
+    "LaLonde (1986), AER 76, 604–620",
+    "Dehejia & Wahba (1999), JASA 94, 1053–1062",
+    "Dehejia & Wahba (2002), REStat 84, 151–161"
+  ],
+  "scope": "Historical male experimental subsample, pre-intervention selection; causal benchmark of group contrasts only if original randomization, selection and missingness adequately checked; no exact individual counterfactual; no modern training effect transfer; no personal demographic scoring without justification and fairness review.",
+  "release": "Metadata and original synthetic prompts only; no raw rows, no derived individual-level data, no redistribution into commercial product or model training. Raw full sample, bytes, missingness, independent sample and outcomes NOT_RUN."
+}

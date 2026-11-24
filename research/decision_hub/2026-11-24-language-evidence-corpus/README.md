@@ -1,0 +1,14 @@
+# 智能决策中枢第九轮：白话语义与证据边界语料第一批
+
+2026-11-24。状态 SYNTHETIC_DEVELOPMENT_CORPUS / EXTERNAL_DATA_SOURCE_METADATA_ONLY / LLM_NOT_RUN。基线 b8a6dd3673e25acc1494d28896ae492e3463a984；核对 main、AGENTS、v3.1、同步规程、开放 PR #59/#60/#61（仍 Draft）、近期产品交接、前八轮和现有数据目录。此轮不启动Codex。研究任务为复用现有理论资产，形成可追溯的自然语言多轮语义材料；非重复理论研究、非训练、非独立留出、非真实用户记录。
+
+## 原创数据
+18个不同决策情节，每个2轮，共36个普通中文输入，人工标注原文跨度、语义类别、字段、适用条件、已知/未知、修订、授权、允许的下一步、禁止推断、必要追问候选。领域及计数：{"episodes":18,"turns":36,"claims":98,"domains":{"housing":1,"career":3,"learning":2,"time":1,"family":1,"consumption":1,"financial_planning":1,"wellness":1,"review":1,"travel":1,"household":1,"relationship":1,"risk":1,"work":1,"privacy":1},"kinds":{"HARD":13,"EXCLUSION":1,"USER_REPORTED":19,"UNKNOWN":7,"PREFERENCE":8,"REPORTED_UNCERTAIN":3,"REPORTED_PROMISE":2,"CONFIRM":5,"PAST_COST":1,"FUTURE_COST":1,"REVISION":3,"ESTIMATE":3,"HARD_CONSEQUENCE":2,"PROPOSED_ACTION":3,"CONDITIONAL_ACTION":1,"REPORTED_POSSIBILITY":1,"HYPOTHESIS":3,"REPORTED_EXTERNAL":1,"CONFIRMED_CHOICE":1,"TRIGGER":1,"ACTION":1,"EXCEPTION":1,"OBSERVED_OUTCOME":1,"COUNTERFACTUAL_CLAIM":1,"POSTHOC":1,"RETROSPECTIVE_ESTIMATE":1,"REPORTED_ESTIMATE":2,"GOAL":4,"CONDITIONAL_HARD":2,"REPORTED_UNVERIFIED":1,"UNAVAILABLE_EVIDENCE":1,"RECORD_INTENT":1,"EVENT_DEFINITION":1,"AUTHORIZATION_PROPOSAL":1},"statuses":{"ASK":6,"REJECT_CURRENT_OPTION":1,"CONDITIONAL":12,"RECOMPUTE":2,"DEADLINE_RISK_UNKNOWN":1,"CONDITIONAL_INFEASIBILITY":1,"UNKNOWN_PROBABILITY":1,"EVIDENCE_GAP":1,"CONDITIONAL_ONLY":1,"PLAN_CANDIDATE":1,"PLAN_CONFIRMATION":1,"REVIEW_ONLY":1,"NO_PROSPECTIVE_SCORE":1,"CLARIFY":1,"JOINT_INFEASIBLE":1,"VERIFY":1,"PROSPECTIVE_RECORD_CANDIDATE":1,"TEMPORARY_ONLY":1,"CONFIRM_SCOPED_STORAGE":1},"questions":17,"negativeControls":5,"sourceIdentityChecks":10}。10个来源身份逐一与当前Git树匹配，正文审阅为本轮摘录与前轮已有审查，来源仅支持解释候选，不能赋予计算资格。文本中所有个人陈述为虚构；即使与实际文献有关也不是真实被试原话。包括资金口径、跨轮退款、共同资源、夜班、时间范围、情绪后悔、未观测反事实、已选后执行、缺失风险、非商业来源、授权用途分离。标注中的用户报告事实不等于独立事实；预期是候选响应类别，问句是可用示例，不要求逐字复述。相对日期必须在实际运行中结合时间上下文核实。对预算、风险、健康及金融等案例仅作为语义/证据处理，不提供个人行动建议。
+
+实际执行结构lint：原文唯一跨度与字符位置（JS UTF-16），固定来源、已存在的修订引用、比较符、区间和样本标识检查；5项人为破坏的负控均拒绝。脚本可复跑 node lint_corpus.js。通过是数据结构质量，不是语义标注准确性、模型提取率或独立验收。全部公开开发集；同一情节的两轮、未来改写与源案例须同组，禁止随机分散到训练/测试后冒充独立。独立验收轨另建未见语料；微调之前需要实际Qwen基线、错误类型分布、提示词/结构化输出对照、训练许可和独立留出，当前不启动训练。
+
+## 真实资料增量
+新登记作者托管的 NSW Dehejia-Wahba 实验子样本，官方资料页 https://users.nber.org/~rdehejia/nswdata2.html 明示可署名非商业使用。原始作者引用三篇论文，详见 real_source_register.json。源站链接 www.nber.org 两个文本均403；备用 users.nber.org 文本可由网页读取，返回185和260行，实际可见首段分别19和18行，验证10字段与处理组标记样例。当前计算容器 curl 不能解析 users.nber.org，未取得完整字节、哈希、全表数值、缺失或分布，未复算收益差。只归档来源元数据，禁止复制原始数据或未授权用于训练/商业产品。历史群体实验与现代个人职业选择不能直接迁移，随机化/缺失/样本选择和分析时点另审。该真实数据记录与36条虚构语料严格分开。
+
+## 后续责任
+数据轨可在允许的本地环境下载原始数据并核验来源、字节、许可、随机化及缺失，明确事前字段、处理和事后结果；模型轨审查群体因果与迁移适用边界；独立验收轨隔离真实新案例，避免将已有公开开发语料作为独立测试。手动窗口继续扩大不同能力和真实证据积累，下一步建立引用证据限定与跨文档冲突的检索样例，逐步准备本地Qwen实测前的数据和提示词。未启动Codex、模型训练、CI、合并、部署、科研准入或新增费用，冻结协议不变。

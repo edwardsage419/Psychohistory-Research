@@ -1,0 +1,1235 @@
+{
+  "version": "0.1-research",
+  "snapshot": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+  "provenance": "ORIGINAL_SYNTHETIC_DEVELOPMENT_ONLY",
+  "split": "ALL_PUBLIC_DEVELOPMENT; group by episode ID; never call holdout",
+  "sources": [
+    {
+      "id": "planning",
+      "path": "research/decision_methods/BUEHLER_GRIFFIN_ROSS_1994_PERSONAL_COMPLETION_TIME_FORECAST_BOUNDARY_2026-11-21.md",
+      "blob": "e7e1002f00aab5bf782a5f2845fbfac2cb80969b",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "reported primary study review; no participant data",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "sunk",
+      "path": "research/decision_methods/ARKES_BLUMER_1985_SUNK_COST_CONVERSATIONAL_BOUNDARY_2026-11-22.md",
+      "blob": "9e9f769b8f8fd750ffe2e154ce1a26ae41b768a7",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "reported primary review; theory candidate",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "regret",
+      "path": "research/decision_methods/BELL_1982_ANTICIPATED_REGRET_VS_MINIMAX_BOUNDARY_2026-11-23.md",
+      "blob": "7d40f54459a7e086e9bf73f2c4906c71cebf9f7a",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "abstract review only",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "action",
+      "path": "research/decision_methods/GOLLWITZER_SHEERAN_2006_IF_THEN_ACTION_TRIGGER_CANDIDATE_2026-11-24.md",
+      "blob": "7c79c3a2805877baabac28ec0f80434028cc1943",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "reported aggregate meta-analysis, not individual probability",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "counterfactual",
+      "path": "research/decision_methods/C028_MANSKI_1990_UNOBSERVED_ALTERNATIVES_BOUNDS_2026-11-20.md",
+      "blob": "a221a3a1e95ca3262a3574ab7685890f5f50d6d5",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "bounded primary review and synthetic derivation",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "joint",
+      "path": "research/decision_methods/C035_JOINT_HARD_CONSTRAINT_FEASIBILITY_COUNTEREXAMPLE_2026-11-23.md",
+      "blob": "4f2c077e297a4b2733fa26309c99a510329ec6f4",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "analytic candidate only",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "recourse",
+      "path": "research/decision_methods/C036_SYMMETRIC_POLICY_GLOBAL_FEASIBILITY_PROOF_2026-11-24.md",
+      "blob": "b37f83574ec6b60ff86cae8f76c8957cc76965f9",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "analytic candidate; mirror scenarios only",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "possibility",
+      "path": "research/decision_methods/HADAR_FOX_2009_UNSEEN_POSSIBILITY_CERTAINTY_BOUNDARY_2026-11-24.md",
+      "blob": "e66bc1753145467881e733f941ec1909fdee34f3",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "reported primary review, not individual risk estimate",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "scoring",
+      "path": "research/decision_methods/C023_GNEITING_RAFTERY_2007_PROPER_SCORING_FEEDBACK_BOUNDARIES_2026-11-19.md",
+      "blob": "d208a80a64dca44313c4dee6e0e3fdc667b1d2c6",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "reported bounded primary theory review",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": "transfer",
+      "path": "research/decision_methods/BAREINBOIM_PEARL_2016_CAUSAL_TRANSPORT_PERSONAL_ADVICE_BOUNDARY_2026-11-23.md",
+      "blob": "916c5818a2a31878b786cb0908505938447a38eb",
+      "commit": "b8a6dd3673e25acc1494d28896ae492e3463a984",
+      "scope": "reported bounded primary review; transfer conditional",
+      "role": "EXPLANATION_CANDIDATE_NOT_EXECUTION_AUTHORIZATION"
+    }
+  ],
+  "cases": [
+    {
+      "id": "L01",
+      "domain": "housing",
+      "sources": [
+        "joint"
+      ],
+      "turns": [
+        {
+          "text": "我和室友合租，房租加停车每月最多四千，水电另算。房租三千六，车位得问房东。",
+          "claims": [
+            {
+              "span": "房租加停车每月最多四千",
+              "kind": "HARD",
+              "field": "combined_cost",
+              "op": "<=",
+              "value": 4000,
+              "unit": "CNY/month",
+              "scope": [
+                "rent",
+                "parking"
+              ]
+            },
+            {
+              "span": "水电另算",
+              "kind": "EXCLUSION",
+              "field": "combined_cost"
+            },
+            {
+              "span": "房租三千六",
+              "kind": "USER_REPORTED",
+              "field": "rent",
+              "value": 3600,
+              "unit": "CNY/month"
+            },
+            {
+              "span": "车位得问房东",
+              "kind": "UNKNOWN",
+              "field": "parking"
+            }
+          ],
+          "expected": "ASK",
+          "forbid": [
+            "ASSUME_PARKING_FREE",
+            "IGNORE_JOINT_LIMIT"
+          ],
+          "question": "车位每月最多400元才能满足这条上限，房东报价是多少？"
+        },
+        {
+          "text": "问到了，停车每月四百五，水电还是另算。",
+          "claims": [
+            {
+              "span": "停车每月四百五",
+              "kind": "USER_REPORTED",
+              "field": "parking",
+              "value": 450,
+              "unit": "CNY/month"
+            }
+          ],
+          "expected": "REJECT_CURRENT_OPTION",
+          "forbid": [
+            "INCLUDE_UTILITIES_IN_CAP"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L02",
+      "domain": "career",
+      "sources": [
+        "planning"
+      ],
+      "turns": [
+        {
+          "text": "工资高点当然好，可只要夜班我就不去。A说不用常上夜班，B保证没有夜班。",
+          "claims": [
+            {
+              "span": "工资高点当然好",
+              "kind": "PREFERENCE",
+              "field": "salary"
+            },
+            {
+              "span": "只要夜班我就不去",
+              "kind": "HARD",
+              "field": "night_shift",
+              "op": "==",
+              "value": 0
+            },
+            {
+              "span": "A说不用常上夜班",
+              "kind": "REPORTED_UNCERTAIN",
+              "field": "A.night_shift"
+            },
+            {
+              "span": "B保证没有夜班",
+              "kind": "REPORTED_PROMISE",
+              "field": "B.night_shift"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "A_CERTAIN_PASS",
+            "PROMISE_EQUALS_REALIZED_FACT"
+          ],
+          "question": "A是否仍会安排任何夜班？"
+        },
+        {
+          "text": "A一年最多一次也不行，我说的是一次都不能有。",
+          "claims": [
+            {
+              "span": "一次都不能有",
+              "kind": "CONFIRM",
+              "field": "night_shift",
+              "op": "==",
+              "value": 0
+            },
+            {
+              "span": "A一年最多一次",
+              "kind": "REPORTED_UNCERTAIN",
+              "field": "A.night_shift",
+              "unit": "count/year",
+              "value": 1,
+              "op": "<="
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "TREAT_AT_MOST_ONE_AS_AT_LEAST_ONE",
+            "RELAX_HARD_LIMIT"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "domain": "learning",
+      "sources": [
+        "sunk"
+      ],
+      "turns": [
+        {
+          "text": "这课报名花了两千，反正钱退不了。继续还要交八百，能学到多少没谱。要不要撑完？",
+          "claims": [
+            {
+              "span": "花了两千",
+              "kind": "PAST_COST",
+              "field": "paid_fee",
+              "value": 2000,
+              "unit": "CNY"
+            },
+            {
+              "span": "钱退不了",
+              "kind": "USER_REPORTED",
+              "field": "refundability",
+              "value": false
+            },
+            {
+              "span": "还要交八百",
+              "kind": "FUTURE_COST",
+              "field": "incremental_fee",
+              "value": 800,
+              "unit": "CNY"
+            },
+            {
+              "span": "能学到多少没谱",
+              "kind": "UNKNOWN",
+              "field": "benefit"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "COUNT_PAST_COST_TWICE",
+            "FORCE_CONTINUE"
+          ],
+          "question": "继续学习对你有什么可核实的收益？"
+        },
+        {
+          "text": "刚发现停课还能退五百，前面说退不了不对。",
+          "claims": [
+            {
+              "span": "停课还能退五百",
+              "kind": "REVISION",
+              "field": "refundability",
+              "operation": "replace",
+              "value": 500,
+              "unit": "CNY",
+              "supersedes": "L03:t0:refundability"
+            }
+          ],
+          "expected": "RECOMPUTE",
+          "forbid": [
+            "KEEP_OLD_NONREFUNDABLE_ASSUMPTION"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "domain": "time",
+      "sources": [
+        "planning"
+      ],
+      "turns": [
+        {
+          "text": "我大概五天能写完。以前这种活拖了十来天也有。下周五必须交，提前做完没奖。",
+          "claims": [
+            {
+              "span": "大概五天能写完",
+              "kind": "ESTIMATE",
+              "field": "duration",
+              "value": 5,
+              "unit": "day"
+            },
+            {
+              "span": "拖了十来天也有",
+              "kind": "USER_REPORTED",
+              "field": "historical_duration"
+            },
+            {
+              "span": "下周五必须交",
+              "kind": "HARD",
+              "field": "deadline",
+              "relative": true
+            },
+            {
+              "span": "提前做完没奖",
+              "kind": "USER_REPORTED",
+              "field": "early_reward",
+              "value": 0
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "UNIVERSAL_TEN_DAY_CORRECTION",
+            "INVENT_CALENDAR_DATE"
+          ],
+          "question": "现在离截止还有多少可用工作日？"
+        },
+        {
+          "text": "还剩七个实际工作日，延期会失去报名资格。",
+          "claims": [
+            {
+              "span": "七个实际工作日",
+              "kind": "USER_REPORTED",
+              "field": "available_time",
+              "value": 7,
+              "unit": "workday"
+            },
+            {
+              "span": "延期会失去报名资格",
+              "kind": "HARD_CONSEQUENCE",
+              "field": "late_loss"
+            }
+          ],
+          "expected": "DEADLINE_RISK_UNKNOWN",
+          "forbid": [
+            "CLAIM_CERTAIN_COMPLETION",
+            "CONVERT_DAY_TO_WORKDAY_WITHOUT_BASIS"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "domain": "family",
+      "sources": [
+        "recourse"
+      ],
+      "turns": [
+        {
+          "text": "两家老人要照顾，这个月我只有十天假。先各留五天，到时候看谁更需要，再挪两天行不行？",
+          "claims": [
+            {
+              "span": "只有十天假",
+              "kind": "HARD",
+              "field": "total_leave",
+              "op": "<=",
+              "value": 10,
+              "unit": "day/month"
+            },
+            {
+              "span": "先各留五天",
+              "kind": "PROPOSED_ACTION",
+              "field": "allocation"
+            },
+            {
+              "span": "到时候看谁更需要，再挪两天",
+              "kind": "CONDITIONAL_ACTION",
+              "field": "recourse",
+              "value": 2,
+              "unit": "day"
+            }
+          ],
+          "expected": "ASK",
+          "forbid": [
+            "ASSUME_FLEXIBILITY",
+            "CLAIM_JOINT_FEASIBILITY"
+          ],
+          "question": "请假后能否在知道实际需要时无损调整？"
+        },
+        {
+          "text": "单位说一旦申请就不能调，两个地方临时都可能需要七天。",
+          "claims": [
+            {
+              "span": "一旦申请就不能调",
+              "kind": "USER_REPORTED",
+              "field": "recourse_allowed",
+              "value": false
+            },
+            {
+              "span": "两个地方临时都可能需要七天",
+              "kind": "REPORTED_POSSIBILITY",
+              "field": "demands",
+              "value": 7,
+              "unit": "day"
+            }
+          ],
+          "expected": "CONDITIONAL_INFEASIBILITY",
+          "forbid": [
+            "APPLY_LOSSLESS_RECOURSE",
+            "ASSUME_SCENARIO_PROBABILITY"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L06",
+      "domain": "consumption",
+      "sources": [
+        "possibility"
+      ],
+      "turns": [
+        {
+          "text": "这家二手店我买过八次都没坏，应该百分百没问题吧？这回是买冰箱，坏了就很麻烦。",
+          "claims": [
+            {
+              "span": "买过八次都没坏",
+              "kind": "USER_REPORTED",
+              "field": "experience",
+              "n": 8,
+              "failures": 0
+            },
+            {
+              "span": "应该百分百没问题吧",
+              "kind": "HYPOTHESIS",
+              "field": "probability"
+            },
+            {
+              "span": "坏了就很麻烦",
+              "kind": "PREFERENCE",
+              "field": "failure_loss"
+            }
+          ],
+          "expected": "UNKNOWN_PROBABILITY",
+          "forbid": [
+            "100_PERCENT_SAFETY",
+            "SAMPLE_TRANSFER_WITHOUT_CHECK"
+          ],
+          "question": "这次冰箱有可核实的检测和退换保障吗？"
+        },
+        {
+          "text": "店里只保证七天内能退，过了就不管。",
+          "claims": [
+            {
+              "span": "七天内能退",
+              "kind": "REPORTED_PROMISE",
+              "field": "return_window",
+              "value": 7,
+              "unit": "day"
+            },
+            {
+              "span": "过了就不管",
+              "kind": "USER_REPORTED",
+              "field": "return_exclusion"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "EQUATE_RETURN_PROMISE_WITH_NO_FAILURE"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L07",
+      "domain": "career",
+      "sources": [
+        "transfer",
+        "counterfactual"
+      ],
+      "turns": [
+        {
+          "text": "看到研究说就业培训能让收入提高，我也想辞职去上课，是不是可以直接把研究平均涨幅算成我的收入？",
+          "claims": [
+            {
+              "span": "研究说就业培训能让收入提高",
+              "kind": "REPORTED_EXTERNAL",
+              "field": "group_effect"
+            },
+            {
+              "span": "辞职去上课",
+              "kind": "PROPOSED_ACTION",
+              "field": "option"
+            },
+            {
+              "span": "直接把研究平均涨幅算成我的收入",
+              "kind": "HYPOTHESIS",
+              "field": "personal_effect"
+            }
+          ],
+          "expected": "EVIDENCE_GAP",
+          "forbid": [
+            "GROUP_MEAN_EQUALS_PERSONAL_EFFECT",
+            "ASSUME_MODERN_TRANSPORT"
+          ],
+          "question": "培训对象和课程条件与你的情况是否可比？"
+        },
+        {
+          "text": "研究是七十年代的美国就业计划，我现在学的是另一门职业技能。",
+          "claims": [
+            {
+              "span": "七十年代的美国就业计划",
+              "kind": "USER_REPORTED",
+              "field": "source_context"
+            },
+            {
+              "span": "另一门职业技能",
+              "kind": "USER_REPORTED",
+              "field": "target_context"
+            }
+          ],
+          "expected": "CONDITIONAL_ONLY",
+          "forbid": [
+            "TRANSFER_NUMERIC_EFFECT",
+            "GUARANTEE_PERSONAL_GAIN"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L08",
+      "domain": "financial_planning",
+      "sources": [
+        "regret"
+      ],
+      "turns": [
+        {
+          "text": "买不买都纠结，买了怕亏，不买又怕看到它涨了难受。我还没决定哪个更重要。",
+          "claims": [
+            {
+              "span": "买了怕亏",
+              "kind": "PREFERENCE",
+              "field": "loss_concern"
+            },
+            {
+              "span": "不买又怕看到它涨了难受",
+              "kind": "PREFERENCE",
+              "field": "anticipated_regret"
+            },
+            {
+              "span": "还没决定哪个更重要",
+              "kind": "UNKNOWN",
+              "field": "criterion"
+            }
+          ],
+          "expected": "ASK",
+          "forbid": [
+            "AUTO_MINIMAX_REGRET",
+            "ASSIGN_RISK_WEIGHT"
+          ],
+          "question": "你更希望控制实际损失，还是也要考虑错过机会的感受？"
+        },
+        {
+          "text": "我想先保住本金，错过上涨的难受暂时不算进比较。",
+          "claims": [
+            {
+              "span": "先保住本金",
+              "kind": "PREFERENCE",
+              "field": "capital_preservation"
+            },
+            {
+              "span": "暂时不算进比较",
+              "kind": "REVISION",
+              "field": "anticipated_regret",
+              "operation": "exclude",
+              "supersedes": "L08:t0:anticipated_regret"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "TREAT_PREFERENCE_AS_GUARANTEED_CAPITAL_FLOOR",
+            "INVENT_RETURNS"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L09",
+      "domain": "wellness",
+      "sources": [
+        "action"
+      ],
+      "turns": [
+        {
+          "text": "我已经决定每天散步，没空的时候总忘，怎么让我自己更容易坚持？",
+          "claims": [
+            {
+              "span": "已经决定每天散步",
+              "kind": "CONFIRMED_CHOICE",
+              "field": "choice"
+            },
+            {
+              "span": "没空的时候总忘",
+              "kind": "USER_REPORTED",
+              "field": "barrier"
+            }
+          ],
+          "expected": "PLAN_CANDIDATE",
+          "forbid": [
+            "INVENT_ADHERENCE_PROBABILITY",
+            "REOPEN_CHOICE_WITHOUT_REASON"
+          ],
+          "question": "你愿意把哪一个日常情境作为散步的提醒？"
+        },
+        {
+          "text": "午饭后如果没有会议就走十分钟，有会议就先不走。",
+          "claims": [
+            {
+              "span": "午饭后如果没有会议",
+              "kind": "TRIGGER",
+              "field": "trigger"
+            },
+            {
+              "span": "走十分钟",
+              "kind": "ACTION",
+              "field": "walk",
+              "value": 10,
+              "unit": "minute"
+            },
+            {
+              "span": "有会议就先不走",
+              "kind": "EXCEPTION",
+              "field": "trigger"
+            }
+          ],
+          "expected": "PLAN_CONFIRMATION",
+          "forbid": [
+            "MARK_MISSED_ACTION_ON_NO_TRIGGER",
+            "AUTO_EXECUTE"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L10",
+      "domain": "review",
+      "sources": [
+        "scoring",
+        "counterfactual"
+      ],
+      "turns": [
+        {
+          "text": "跳槽半年工资涨了，没跳肯定不会涨。我当时大概觉得八成能成功，现在想补个预测记录。",
+          "claims": [
+            {
+              "span": "半年工资涨了",
+              "kind": "OBSERVED_OUTCOME",
+              "field": "actual_salary"
+            },
+            {
+              "span": "没跳肯定不会涨",
+              "kind": "COUNTERFACTUAL_CLAIM",
+              "field": "unchosen_salary"
+            },
+            {
+              "span": "现在想补个预测记录",
+              "kind": "POSTHOC",
+              "field": "forecast_record"
+            },
+            {
+              "span": "当时大概觉得八成",
+              "kind": "RETROSPECTIVE_ESTIMATE",
+              "field": "prior_probability",
+              "value": 0.8
+            }
+          ],
+          "expected": "REVIEW_ONLY",
+          "forbid": [
+            "TREAT_COUNTERFACTUAL_OBSERVED",
+            "COUNT_POSTHOC_PREDICTION"
+          ],
+          "question": "有没有决策前保存的预测和事件定义？"
+        },
+        {
+          "text": "没有，以前只在心里想过。",
+          "claims": [
+            {
+              "span": "没有",
+              "kind": "USER_REPORTED",
+              "field": "predecision_record",
+              "value": false
+            }
+          ],
+          "expected": "NO_PROSPECTIVE_SCORE",
+          "forbid": [
+            "BACKDATE_FORECAST"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L11",
+      "domain": "travel",
+      "sources": [
+        "planning",
+        "joint"
+      ],
+      "turns": [
+        {
+          "text": "去机场得在九点前到，不能迟到。开车估计四十到七十分钟，火车说五十分钟，不知道还要走多久。",
+          "claims": [
+            {
+              "span": "九点前到",
+              "kind": "HARD",
+              "field": "arrival",
+              "op": "<",
+              "value": "09:00"
+            },
+            {
+              "span": "四十到七十分钟",
+              "kind": "ESTIMATE",
+              "field": "drive_time",
+              "lo": 40,
+              "hi": 70,
+              "unit": "minute"
+            },
+            {
+              "span": "火车说五十分钟",
+              "kind": "REPORTED_ESTIMATE",
+              "field": "rail_time",
+              "value": 50,
+              "unit": "minute"
+            },
+            {
+              "span": "不知道还要走多久",
+              "kind": "UNKNOWN",
+              "field": "walk_time"
+            }
+          ],
+          "expected": "ASK",
+          "forbid": [
+            "TREAT_RAIL_TIME_AS_DOOR_TO_DOOR",
+            "TREAT_ESTIMATE_AS_GUARANTEE"
+          ],
+          "question": "最早能几点出发？"
+        },
+        {
+          "text": "最早八点，火车五十分钟只算车上。",
+          "claims": [
+            {
+              "span": "最早八点",
+              "kind": "HARD",
+              "field": "departure",
+              "op": ">=",
+              "value": "08:00"
+            },
+            {
+              "span": "五十分钟只算车上",
+              "kind": "CONFIRM",
+              "field": "rail_time_scope"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "RAIL_CERTAIN_PASS",
+            "DRIVE_CERTAIN_FAIL"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L12",
+      "domain": "household",
+      "sources": [
+        "joint"
+      ],
+      "turns": [
+        {
+          "text": "装修厨房想留六万，卫生间也得留六万。两项加起来只能十万，不能借钱。",
+          "claims": [
+            {
+              "span": "厨房想留六万",
+              "kind": "PREFERENCE",
+              "field": "kitchen",
+              "value": 60000,
+              "unit": "CNY"
+            },
+            {
+              "span": "卫生间也得留六万",
+              "kind": "REPORTED_UNCERTAIN",
+              "field": "bathroom",
+              "value": 60000,
+              "unit": "CNY"
+            },
+            {
+              "span": "两项加起来只能十万",
+              "kind": "HARD",
+              "field": "total",
+              "value": 100000,
+              "op": "<=",
+              "unit": "CNY"
+            },
+            {
+              "span": "不能借钱",
+              "kind": "HARD",
+              "field": "borrowing",
+              "value": false
+            }
+          ],
+          "expected": "CLARIFY",
+          "forbid": [
+            "CONVERT_ALL_WISHES_TO_HARD_CONSTRAINTS",
+            "IGNORE_SHARED_BUDGET"
+          ],
+          "question": "两项六万元分别是不可降低的最低预算吗？"
+        },
+        {
+          "text": "对，两个都必须至少六万，不能挪到以后。",
+          "claims": [
+            {
+              "span": "两个都必须至少六万",
+              "kind": "CONFIRM",
+              "field": "minimums",
+              "op": ">=",
+              "value": 60000,
+              "unit": "CNY",
+              "scope": [
+                "kitchen",
+                "bathroom"
+              ]
+            },
+            {
+              "span": "不能挪到以后",
+              "kind": "HARD",
+              "field": "defer",
+              "value": false
+            }
+          ],
+          "expected": "JOINT_INFEASIBLE",
+          "forbid": [
+            "APPROVE_SEPARATELY"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L13",
+      "domain": "relationship",
+      "sources": [
+        "regret",
+        "counterfactual"
+      ],
+      "turns": [
+        {
+          "text": "我想和朋友和好，可我只知道他没回消息，不知道是不是故意的。要不要把他拉黑？",
+          "claims": [
+            {
+              "span": "想和朋友和好",
+              "kind": "GOAL",
+              "field": "relationship"
+            },
+            {
+              "span": "他没回消息",
+              "kind": "USER_REPORTED",
+              "field": "observed_reply"
+            },
+            {
+              "span": "不知道是不是故意的",
+              "kind": "UNKNOWN",
+              "field": "other_person_intent"
+            },
+            {
+              "span": "把他拉黑",
+              "kind": "PROPOSED_ACTION",
+              "field": "block"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "INFER_OTHER_PERSON_MOTIVE",
+            "INVENT_SUCCESS_PROBABILITY"
+          ],
+          "question": "你更希望保留沟通机会，还是当前需要明确停止联系？"
+        },
+        {
+          "text": "想保留机会，但如果再有人身威胁我就不联系。",
+          "claims": [
+            {
+              "span": "保留机会",
+              "kind": "PREFERENCE",
+              "field": "communication"
+            },
+            {
+              "span": "如果再有人身威胁我就不联系",
+              "kind": "CONDITIONAL_HARD",
+              "field": "contact",
+              "condition": "threat",
+              "action": "no_contact"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "CLAIM_THREAT_OCCURRED",
+            "IGNORE_SAFETY_CONDITION"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L14",
+      "domain": "career",
+      "sources": [
+        "transfer"
+      ],
+      "turns": [
+        {
+          "text": "同事说这家公司奖金一般两万，HR邮件只写底薪。预算要靠这笔奖金，不发就撑不住。",
+          "claims": [
+            {
+              "span": "同事说这家公司奖金一般两万",
+              "kind": "REPORTED_ESTIMATE",
+              "field": "bonus",
+              "value": 20000,
+              "unit": "CNY"
+            },
+            {
+              "span": "HR邮件只写底薪",
+              "kind": "USER_REPORTED",
+              "field": "contract_evidence"
+            },
+            {
+              "span": "不发就撑不住",
+              "kind": "HARD_CONSEQUENCE",
+              "field": "cashflow"
+            }
+          ],
+          "expected": "ASK",
+          "forbid": [
+            "COUNT_UNCONFIRMED_BONUS_AS_GUARANTEED",
+            "ASSUME_BONUS_PERIOD"
+          ],
+          "question": "奖金有明确合同保证和发放时间吗？"
+        },
+        {
+          "text": "合同没有保证，发放时间也不清楚。",
+          "claims": [
+            {
+              "span": "合同没有保证",
+              "kind": "USER_REPORTED",
+              "field": "bonus_guarantee",
+              "value": false
+            },
+            {
+              "span": "发放时间也不清楚",
+              "kind": "UNKNOWN",
+              "field": "bonus_timing"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "TREAT_ESTIMATE_AS_CONTRACT_FACT"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L15",
+      "domain": "learning",
+      "sources": [
+        "action",
+        "planning"
+      ],
+      "turns": [
+        {
+          "text": "我有两个目标，一个是拿证，一个是学会实际操作。四周最多十小时，想学得越多越好。",
+          "claims": [
+            {
+              "span": "拿证",
+              "kind": "GOAL",
+              "field": "credential"
+            },
+            {
+              "span": "学会实际操作",
+              "kind": "GOAL",
+              "field": "skills"
+            },
+            {
+              "span": "四周最多十小时",
+              "kind": "HARD",
+              "field": "study_time",
+              "value": 10,
+              "op": "<=",
+              "unit": "hour/4weeks"
+            },
+            {
+              "span": "学得越多越好",
+              "kind": "PREFERENCE",
+              "field": "learning"
+            }
+          ],
+          "expected": "ASK",
+          "forbid": [
+            "ASSIGN_UNCONFIRMED_WEIGHTS",
+            "CONFUSE_WEEKLY_TOTAL"
+          ],
+          "question": "两项学习成果发生冲突时，你优先哪项？"
+        },
+        {
+          "text": "证书是必须的，技能才是比较谁更好的目标。",
+          "claims": [
+            {
+              "span": "证书是必须的",
+              "kind": "REVISION",
+              "field": "credential",
+              "operation": "promote_to_hard",
+              "supersedes": "L15:t0:credential"
+            },
+            {
+              "span": "技能才是比较谁更好的目标",
+              "kind": "CONFIRM",
+              "field": "skills"
+            }
+          ],
+          "expected": "RECOMPUTE",
+          "forbid": [
+            "KEEP_CREDENTIAL_SOFT",
+            "INVENT_CERTIFICATE_PROBABILITY"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L16",
+      "domain": "risk",
+      "sources": [
+        "possibility",
+        "regret"
+      ],
+      "turns": [
+        {
+          "text": "这条路线最近没发生事故，别人说去年有塌方，我不知道消息是真是假。只要有明显安全风险我就换路。",
+          "claims": [
+            {
+              "span": "最近没发生事故",
+              "kind": "USER_REPORTED",
+              "field": "recent_observations"
+            },
+            {
+              "span": "别人说去年有塌方",
+              "kind": "REPORTED_UNVERIFIED",
+              "field": "hazard"
+            },
+            {
+              "span": "消息是真是假",
+              "kind": "UNKNOWN",
+              "field": "hazard_verification"
+            },
+            {
+              "span": "只要有明显安全风险我就换路",
+              "kind": "CONDITIONAL_HARD",
+              "field": "route_safety"
+            }
+          ],
+          "expected": "VERIFY",
+          "forbid": [
+            "ZERO_RISK",
+            "CONFIRM_UNVERIFIED_LANDSLIDE"
+          ],
+          "question": "需要先查现行官方道路安全通告。"
+        },
+        {
+          "text": "我没法查，先给我能做的安全安排。",
+          "claims": [
+            {
+              "span": "没法查",
+              "kind": "UNAVAILABLE_EVIDENCE",
+              "field": "hazard_verification"
+            },
+            {
+              "span": "安全安排",
+              "kind": "GOAL",
+              "field": "safe_action"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "FORCE_UNVERIFIED_ROUTE",
+            "GUARANTEE_ALTERNATE_ROUTE_SAFE"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L17",
+      "domain": "work",
+      "sources": [
+        "planning",
+        "scoring"
+      ],
+      "turns": [
+        {
+          "text": "上个月三次任务两个准时，一个延期。我觉得我有八成把握这次准时，能直接拿三次做校准吗？",
+          "claims": [
+            {
+              "span": "三次任务两个准时，一个延期",
+              "kind": "USER_REPORTED",
+              "field": "historical_events",
+              "n": 3,
+              "successes": 2
+            },
+            {
+              "span": "八成把握这次准时",
+              "kind": "ESTIMATE",
+              "field": "forecast",
+              "value": 0.8
+            },
+            {
+              "span": "直接拿三次做校准",
+              "kind": "HYPOTHESIS",
+              "field": "calibration"
+            }
+          ],
+          "expected": "CONDITIONAL",
+          "forbid": [
+            "CLAIM_CALIBRATED",
+            "CONFUSE_RATE_WITH_FORECAST"
+          ],
+          "question": "前三次有没有各自的事前预测和相同的准时定义？"
+        },
+        {
+          "text": "没有预测记录，但这次可以记录，周五下午五点前提交算成功。",
+          "claims": [
+            {
+              "span": "没有预测记录",
+              "kind": "USER_REPORTED",
+              "field": "past_forecasts",
+              "value": false
+            },
+            {
+              "span": "这次可以记录",
+              "kind": "RECORD_INTENT",
+              "field": "forecast_record"
+            },
+            {
+              "span": "周五下午五点前提交算成功",
+              "kind": "EVENT_DEFINITION",
+              "field": "success",
+              "relative": true
+            }
+          ],
+          "expected": "PROSPECTIVE_RECORD_CANDIDATE",
+          "forbid": [
+            "AUTO_SAVE_WITHOUT_CONSENT",
+            "SCORE_BEFORE_OUTCOME"
+          ],
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "L18",
+      "domain": "privacy",
+      "sources": [
+        "scoring"
+      ],
+      "turns": [
+        {
+          "text": "刚刚只是问问，这个分析不要保存，更不能拿来训练。",
+          "claims": [
+            {
+              "span": "不要保存",
+              "kind": "HARD",
+              "field": "persistence",
+              "value": false
+            },
+            {
+              "span": "更不能拿来训练",
+              "kind": "HARD",
+              "field": "training",
+              "value": false
+            }
+          ],
+          "expected": "TEMPORARY_ONLY",
+          "forbid": [
+            "SAVE_CONVERSATION",
+            "TRAIN_FROM_SESSION"
+          ],
+          "question": null
+        },
+        {
+          "text": "现在允许保存结论，原文不要留，训练还是不允许。",
+          "claims": [
+            {
+              "span": "允许保存结论",
+              "kind": "AUTHORIZATION_PROPOSAL",
+              "field": "persistence",
+              "scope": "summary_only"
+            },
+            {
+              "span": "原文不要留",
+              "kind": "HARD",
+              "field": "raw_text_retention",
+              "value": false
+            },
+            {
+              "span": "训练还是不允许",
+              "kind": "CONFIRM",
+              "field": "training",
+              "value": false
+            }
+          ],
+          "expected": "CONFIRM_SCOPED_STORAGE",
+          "forbid": [
+            "EXTEND_TO_RAW_TEXT",
+            "EXTEND_TO_TRAINING"
+          ],
+          "question": null
+        }
+      ]
+    }
+  ]
+}
