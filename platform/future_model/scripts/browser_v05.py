@@ -62,6 +62,7 @@ def method(analysis, identity, status='EXECUTED'):
 
 
 def connect(page, url, token, *, version=None):
+    version = version or os.environ.get('PH_BROWSER_WORKFLOW')
     page.goto(f'{url}?workflow={version}' if version else url)
     field(page, '本地访问令牌').fill(token)
     button(page, '连接工作空间').click()

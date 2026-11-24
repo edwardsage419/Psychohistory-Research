@@ -4,7 +4,7 @@ import { DecisionHistory } from './DecisionHistory';
 import { DecisionResults, type ResultScope } from './DecisionResults';
 import { completePreference } from './DecisionWorkflowInputs';
 import { decisionPath, demoQuestion, demoState } from './decisionTypes';
-import type { Analysis, Api, DecisionState, DecisionVersion, PreferenceVersion, Quantity, Question, SourcedRange, StartResponse, Understanding, WorkflowPlan } from './decisionTypes';
+import type { Analysis, Api, DecisionState, DecisionVersion, PersonalApiVersion, PreferenceVersion, Quantity, Question, SourcedRange, StartResponse, Understanding, WorkflowPlan } from './decisionTypes';
 import './decision.css';
 
 type Draft = { state: DecisionState; savedRevision: number; preview: boolean };
@@ -31,7 +31,7 @@ function invalidRange(quantity: SourcedRange) {
   return [quantity.lower, quantity.upper].some(value => value !== null && !decimal(value)) || (quantity.lower !== null && quantity.upper !== null && Number(quantity.lower) > Number(quantity.upper));
 }
 
-function structuredIssue(state: DecisionState): string {
+export function structuredIssue(state: DecisionState): string {
   if (state.options.some(option => !option.label.trim())) return '请填写已添加方案的名称。';
   if (state.objectives.some(objective => !objective.label.trim() || !objective.unit.trim())) return '请填写已添加目标的名称和单位。';
   if (state.constraints.some(constraint => !constraint.label.trim() || !constraint.unit.trim() || !decimal(constraint.threshold))) return '请填写各项硬约束的名称、单位和数值阈值。';
@@ -73,7 +73,7 @@ export function DecisionWorkbench({ api: appApi, version }: { api: Api; version:
     view.current = controller;
     return () => controller.abort();
   }, []);
-  const api: Api = useCallback(<T,>(path: string, body?: unknown, requestVersion?: DecisionVersion) => appApi<T>(path, body, requestVersion, view.current?.signal), [appApi]);
+  const api: Api = useCallback(<T,>(path: string, body?: unknown, requestVersion?: PersonalApiVersion) => appApi<T>(path, body, requestVersion, view.current?.signal), [appApi]);
   const [question, setQuestion] = useState('');
   const [draft, setDraft] = useState<Draft | null>(null);
   const [understanding, setUnderstanding] = useState<Understanding | null>(null);

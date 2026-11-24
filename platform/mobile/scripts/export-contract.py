@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""Generate Mobile's schema and method cards directly from Platform v0.5."""
+import argparse
+import json
+from pathlib import Path
+import sys
+
+MOBILE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(MOBILE.parent / 'future_model' / 'src'))
+
+from psychohistory.decision_v05 import DecisionStateV05, v05_registry
+
+
+def schema(node):
+    if isinstance(node, list):
+        return [schema(item) for item in node]
+    if not isinstance(node, dict):
+        return node
+    alternatives = node.get('anyOf', [])
+    if (len(alternatives) >= 2 and alternatives[0].get('type') == 'number'
+            and alternatives[1].get('pattern', '').startswith('^(?!^[-+.]*$)')):
+        decimal = {'type': 'decimal', **{k: node[k] for k in ('ge', 'le') if k in node}}
+        if len(alternatives) == 2:
+            return decimal
+        return {'anyOf': [decimal, *schema(alternatives[2:])],
+                **({'default': node['default']} if 'default' in node else {})}
+    return {key: schema(value) for key, value in node.items() if key != 'title'}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true')
+    args = parser.parse_args()
+    state = schema(DecisionStateV05.model_json_schema())
+    state['properties']['question']['minLength'] = 1
+    alphabet = map(chr, range(sys.maxunicode + 1))
+    casefold = {char: char.casefold() for char in alphabet if char.casefold() != char.lower()}
+    entries = [('stateSchema', state), ('modelCards', [m.describe() for m in v05_registry().execution_order()]),
+               ('casefoldOverrides', casefold)]
+    output = '// Generated from Platform v0.5 by scripts/export-contract.py.\n' + '\n'.join(
+        f'export const {name} = {json.dumps(value, ensure_ascii=False, indent=2)};' for name, value in entries
+    ) + '\n'
+    target = MOBILE / 'src' / 'platform-contract.generated.mjs'
+    if args.check:
+        if target.read_text(encoding='utf-8') != output:
+            sys.exit('Mobile contract is out of date with Platform v0.5.')
+    else:
+        target.write_text(output, encoding='utf-8')
+
+
+if __name__ == '__main__':
+    main()

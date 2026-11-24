@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from .plugins import registry
 from .decision_api import MAX_DECISION_REQUEST, MAX_RESTORE_REQUEST
 from .decision_api import DECISION_ROUTES, router as decision_router
+from .decision_conversation_api import create_conversation_root, router as conversation_router
 from .service import Service, ExperimentInput
 from .storage import checked_path, write_new
 
@@ -70,7 +71,8 @@ def create_app(root,repo,token=None):
         app.state.service=Service(root,repo)
         try:yield
         finally:app.state.service.close()
-    app=FastAPI(title='Psychohistory Platform v0.5',version='0.5.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
+    conversation = create_conversation_root(root)
+    app=FastAPI(title='Psychohistory Platform v0.6',version='0.6.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
 
     @app.middleware('http')
     async def security(request:Request,call_next):
@@ -252,8 +254,9 @@ def create_app(root,repo,token=None):
     def compare_trajectories(data: TrajectoryComparisonInput):
         return app.state.service.mechanisms.compare(**data.model_dump())
 
-    app.include_router(decision_router(root))
-    app.include_router(decision_router(root, advanced=True))
+    app.include_router(decision_router(root, on_revoke=conversation.clear))
+    app.include_router(decision_router(root, advanced=True, on_revoke=conversation.clear))
+    app.include_router(conversation_router(conversation))
 
     dist=Path(__file__).resolve().parents[2]/'web/dist'
     if dist.is_dir():app.mount('/',StaticFiles(directory=dist,html=True),name='console')

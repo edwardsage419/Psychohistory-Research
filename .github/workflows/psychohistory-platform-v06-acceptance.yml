@@ -1,0 +1,126 @@
+name: Psychohistory Platform v0.6 native engineering acceptance
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+    paths:
+      - 'platform/future_model/**'
+      - 'platform/mobile/**'
+      - '.github/workflows/psychohistory-platform-v06-acceptance.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: psychohistory-platform-v06-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  acceptance:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.head_ref == 'feat/psychohistory-platform-v0.6'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            system: Linux
+            architecture: x86_64
+            mobile_browser: chromium
+          - runner: macos-15
+            system: Darwin
+            architecture: arm64
+            mobile_browser: webkit
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+        working-directory: platform/future_model
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '24'
+      - name: Confirm native runner and exact Draft head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_SYSTEM: ${{ matrix.system }}
+          EXPECTED_ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(uname -s)" = "$EXPECTED_SYSTEM"
+          test "$(uname -m)" = "$EXPECTED_ARCHITECTURE"
+          git fetch --no-tags origin refs/heads/main:refs/remotes/origin/main
+          TEMP_ROOT="$(cd "$RUNNER_TEMP" && pwd -P)"
+          RECEIPTS="$(mktemp -d "$TEMP_ROOT/psychohistory-v06.XXXXXXXX")"
+          printf 'TMPDIR=%s\nPH_RECEIPTS=%s\n' "$TEMP_ROOT" "$RECEIPTS" >> "$GITHUB_ENV"
+          git rev-parse HEAD
+          uname -a
+          python3.12 -c 'import platform, sqlite3; print(platform.python_version(), sqlite3.sqlite_version)'
+          node --version
+          npm --version
+      - name: Compile and test the complete platform
+        run: |
+          set -euo pipefail
+          bash scripts/install.sh
+          bash scripts/verify.sh
+      - name: Reproduce existing CLI and math guards
+        run: |
+          set -euo pipefail
+          export PYTHONPATH=src
+          .venv/bin/python scripts/verify_v03_cli.py --repo "$GITHUB_WORKSPACE" --report "$PH_RECEIPTS/legacy-cli.json"
+          .venv/bin/python -S scripts/verify_v03_guards.py > "$PH_RECEIPTS/guarantees-normal.json"
+          .venv/bin/python -S -O scripts/verify_v03_guards.py > "$PH_RECEIPTS/guarantees-optimized.json"
+          PYTHONOPTIMIZE=1 .venv/bin/python -S scripts/verify_v03_guards.py > "$PH_RECEIPTS/guarantees-env.json"
+      - name: Install locked browser test runtime
+        run: |
+          set -euo pipefail
+          .venv/bin/python -m pip install --index-url https://pypi.org/simple --only-binary=:all: -r requirements-browser.lock
+          if [ "$(uname -s)" = Linux ]; then
+            .venv/bin/python -m playwright install --with-deps chromium
+          else
+            .venv/bin/python -m playwright install chromium
+          fi
+          EXECUTABLE="$(.venv/bin/python -c 'from playwright.sync_api import sync_playwright; p=sync_playwright().start(); print(p.chromium.executable_path); p.stop()')"
+          printf 'PH_CHROMIUM_EXECUTABLE=%s\n' "$EXECUTABLE" >> "$GITHUB_ENV"
+      - name: Reproduce synthetic browser acceptance and privacy lifecycle
+        run: |
+          set -euo pipefail
+          .venv/bin/python scripts/verify_v05_regression.py
+          PH_BROWSER_WORKFLOW=v05 PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v05.json" .venv/bin/python scripts/browser_v05.py
+          PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v06.json" .venv/bin/python scripts/browser_v06.py
+          cat "$PH_RECEIPTS/browser-v06.json"
+      - name: Verify mobile contract, offline models and local records
+        working-directory: platform/mobile
+        env:
+          MOBILE_BROWSER: ${{ matrix.mobile_browser }}
+          MOBILE_PARITY_BROWSER: ${{ matrix.mobile_browser }}
+        run: |
+          set -euo pipefail
+          export PATH="$GITHUB_WORKSPACE/platform/future_model/.venv/bin:$PATH"
+          npm install --prefix "$RUNNER_TEMP/mobile-browser" --no-save --no-audit --no-fund playwright@1.62.1
+          browser_root="$RUNNER_TEMP/mobile-browser/node_modules/playwright"
+          if [[ "$MOBILE_BROWSER" == webkit ]]; then
+            node "$browser_root/cli.js" install chromium webkit
+          else
+            node "$browser_root/cli.js" install chromium
+          fi
+          export PLAYWRIGHT_MODULE="$browser_root/index.mjs"
+          export CHROMIUM_BIN="$(node -e 'console.log(require(process.argv[1]).chromium.executablePath())' "$browser_root")"
+          python scripts/export-contract.py --check
+          npm run build
+          npm test
+          python scripts/verify-parity.py
+          node tests/workbench.browser.mjs
+          git diff --exit-code
