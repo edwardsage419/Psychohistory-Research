@@ -1,0 +1,226 @@
+{
+  "stats": {
+    "cases": 8192,
+    "worlds": 93312,
+    "stable": 3954,
+    "conditional": 4238,
+    "complete": 1458,
+    "partialCost": 4608,
+    "partialTime": 4608,
+    "incompleteWithStable": 2496,
+    "wholeRefusalLostCost": 3150,
+    "wholeRefusalLostTime": 3150,
+    "wholeRefusalLostStable": 2496,
+    "midpointUnsafe": 2550,
+    "midpointNotStable": 4238,
+    "questionCandidates": 4234,
+    "coverageBlocks": 8192
+  },
+  "example": {
+    "snapshot": {
+      "session": "demo",
+      "generation": 1,
+      "epoch": 1,
+      "scope": "two_actions",
+      "revision": 1,
+      "active": true,
+      "coverage": true,
+      "goal": true,
+      "rankConfirmed": true,
+      "rank": "A",
+      "values": {
+        "ac": {
+          "unit": "cost_unit",
+          "state": "CONFIRMED",
+          "domain": [
+            0
+          ]
+        },
+        "at": {
+          "unit": "day",
+          "state": "CONFIRMED",
+          "domain": [
+            1
+          ]
+        },
+        "bc": {
+          "unit": "cost_unit",
+          "state": "CONFIRMED",
+          "domain": [
+            0
+          ]
+        },
+        "bt": {
+          "unit": "day",
+          "state": "CONFIRMED",
+          "domain": [
+            1
+          ]
+        },
+        "budget": {
+          "unit": "cost_unit",
+          "state": "CONFIRMED",
+          "domain": [
+            0
+          ]
+        },
+        "deadline": {
+          "unit": "day",
+          "state": "CERTIFIED_DOMAIN",
+          "domain": [
+            0,
+            1,
+            2
+          ]
+        }
+      }
+    },
+    "result": {
+      "cost": {
+        "kind": "DESCRIPTIVE",
+        "delta": 0,
+        "deps": [
+          "ac",
+          "bc"
+        ]
+      },
+      "time": {
+        "kind": "DESCRIPTIVE",
+        "delta": 0,
+        "deps": [
+          "at",
+          "bt"
+        ]
+      },
+      "decision": {
+        "kind": "CONDITIONAL_SET",
+        "a": [
+          "FAIL",
+          "PASS"
+        ],
+        "b": [
+          "FAIL",
+          "PASS"
+        ],
+        "w": [
+          "A",
+          "NONE"
+        ]
+      },
+      "questions": [
+        "deadline"
+      ],
+      "authority": "NONE",
+      "status": "CONDITIONAL"
+    },
+    "midpointChoice": "A"
+  },
+  "revisionDemo": {
+    "old": [
+      {
+        "kind": "DESCRIPTIVE",
+        "delta": 1,
+        "deps": [
+          "ac",
+          "bc"
+        ]
+      },
+      {
+        "kind": "DESCRIPTIVE",
+        "delta": 1,
+        "deps": [
+          "at",
+          "bt"
+        ]
+      },
+      {
+        "kind": "CONDITIONAL_SET",
+        "a": [
+          "PASS"
+        ],
+        "b": [
+          "FAIL",
+          "PASS"
+        ],
+        "w": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "fresh": [
+      {
+        "key": "cost",
+        "reused": true,
+        "value": {
+          "kind": "DESCRIPTIVE",
+          "delta": 1,
+          "deps": [
+            "ac",
+            "bc"
+          ]
+        }
+      },
+      {
+        "key": "time",
+        "reused": true,
+        "value": {
+          "kind": "DESCRIPTIVE",
+          "delta": 1,
+          "deps": [
+            "at",
+            "bt"
+          ]
+        }
+      },
+      {
+        "key": "decision",
+        "reused": false,
+        "value": {
+          "kind": "STABLE_WITHIN_DOMAIN",
+          "a": [
+            "PASS"
+          ],
+          "b": [
+            "FAIL"
+          ],
+          "w": [
+            "A"
+          ]
+        }
+      }
+    ]
+  },
+  "controls": [
+    "old_revision_not_publishable",
+    "cost_time_reused",
+    "new_receipts_publish",
+    "budget_changes_decision",
+    "cost_edit_invalidation",
+    "revision_rebind",
+    "revoke_blocks",
+    "generation_no_reuse",
+    "epoch_no_reuse",
+    "goal_changes_decision",
+    "unbounded_blocks_decision_only",
+    "unit_mismatch",
+    "tampered_value",
+    "cross_session",
+    "incomplete_goal",
+    "unconfirmed_rank",
+    "correlation_counterexample"
+  ],
+  "correlation": {
+    "cartesian": [
+      "A",
+      "B",
+      "NONE"
+    ],
+    "actualJoint": [
+      "A",
+      "B"
+    ],
+    "scope": "requires independently certified rectangular domain; cannot presume independence or probabilities"
+  },
+  "status": "SYNTHETIC_ONLY"
+}

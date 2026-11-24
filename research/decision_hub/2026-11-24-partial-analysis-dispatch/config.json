@@ -1,0 +1,47 @@
+{
+  "domain": [
+    0,
+    1,
+    2
+  ],
+  "slots": [
+    "ac",
+    "at",
+    "bc",
+    "bt",
+    "budget",
+    "deadline"
+  ],
+  "methods": {
+    "cost_delta": {
+      "deps": [
+        "ac",
+        "bc"
+      ],
+      "unit": "cost_unit",
+      "kind": "descriptive"
+    },
+    "time_delta": {
+      "deps": [
+        "at",
+        "bt"
+      ],
+      "unit": "day",
+      "kind": "descriptive"
+    },
+    "decision": {
+      "deps": [
+        "ac",
+        "at",
+        "bc",
+        "bt",
+        "budget",
+        "deadline",
+        "rank",
+        "coverage"
+      ],
+      "kind": "conditional_decision"
+    }
+  },
+  "note": "All finite domains and confirmed facts are supplied by synthetic trusted fixture, not inferred from natural language. No real registered method invoked."
+}
