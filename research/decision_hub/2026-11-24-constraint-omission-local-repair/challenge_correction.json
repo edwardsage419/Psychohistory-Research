@@ -1,0 +1,60 @@
+{
+  "sourceBlob": "f169a5d523e205cf61a33977b1533ca0722f71c1",
+  "originalCount": 2,
+  "correctedUnconditionalCount": 3,
+  "conditionalDetection": "MISSED",
+  "challenge": [
+    {
+      "text": "预算不超过200元，工期不超过2天。",
+      "expectedCurrentUnconditional": 2,
+      "matches": 2
+    },
+    {
+      "text": "最多花两百，三天内必须交。",
+      "expectedCurrentUnconditional": 2,
+      "matches": 0
+    },
+    {
+      "text": "手头只有200元可用。",
+      "expectedCurrentUnconditional": 1,
+      "matches": 0
+    },
+    {
+      "text": "第三天之前要交付。",
+      "expectedCurrentUnconditional": 1,
+      "matches": 0
+    },
+    {
+      "text": "如果加班就不能超过200元。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 0,
+      "expectedConditional": 1
+    },
+    {
+      "text": "原来预算不超过200元，现在改了。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 1
+    },
+    {
+      "text": "朋友说预算不超过200元。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 1
+    },
+    {
+      "text": "预算不超过200元的假设下看看。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 1
+    },
+    {
+      "text": "优先质量，不设费用上限。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 0
+    },
+    {
+      "text": "预算不超过200元，工期不超过2天，这只是旧方案。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 2
+    }
+  ],
+  "impact": "Only the challenge count changes; no finite decision experiment result changes."
+}
