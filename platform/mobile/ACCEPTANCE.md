@@ -69,3 +69,28 @@ MOBILE_BROWSER=chromium node tests/workbench.browser.mjs
 | 可用性 | 安全区域、横竖屏、大字体、VoiceOver 读出顺序及触控操作 | NOT_RUN |
 
 本任务环境无可操作的物理 iPhone 和其已受信的专用安装源。Chromium 移动尺寸、浏览器断网及 macOS WebKit 都是工程证据。它们无法提供 iOS 主屏幕启动和系统存储逐出的实测结果。
+
+## v0.6 集成增量 · Mobile v0.2
+
+2026-11-24，在平台 v0.6 工作树取用 Draft PR #59 的 `fac395751d0429d2a3f3234672a60f2c715676ad` 移动包。保持原计算算子、v0.5 生成契约、缓存策略与加密账本。新增离线对话使用 v0.6 的摘要、待核对候选、用户确认与明确更正状态。可接受的词句和字段是桌面解释器的有限子集。
+
+| 工程检查 | 本轮实测 |
+| --- | --- |
+| 静态构建与缓存 | Node 24.22.1 构建通过，公开包修订 `d4ef32fd30ec99f9e8a4fdcfe6bf59e187975123df4e9339fcb115e3c4c3969f`。构建产物在 Git 忽略范围。 |
+| 移动套件 | 81 项通过、0 失败、0 跳过，含 10 项对话单测，以及真实 Chromium 中的 IndexedDB、WebCrypto、缓存原子更新和逐出恢复。 |
+| 共享契约及数值 | 生成契约校验通过。25/25 Python 与 Node、25/25 Python 与 Chromium 的共享 v0.5 数值和准入案例通过。 |
+| v0.6 对话语义抽查 | 6/6 合成文本的领域、方案原文和数字候选角色、指标、主体、数值、单位、原文来源与 Python 解释器一致。 |
+| 离线工作台 | Chromium 156.0.8078.79 移动视口下关闭实际预览端口，由 Service Worker 冷重载。通过对话候选确认、底线修订、职业、学习与居住案例，以及重算、加密历史、观察、恢复、两标签锁定与撤回。虚构私有标记未进入请求、URL、Web Storage、备份明文或控制台。 |
+| WebKit 与实体设备 | 托管 macOS 15 ARM64 的 WebKit 通过 25/25 契约用例、离线重载、加密历史、观察、恢复、两标签锁定及撤回。实体 iPhone 主屏幕冷启动、iOS VoiceOver 和用户 Mac 模型均为 NOT_RUN。当前移动包无 Mac 私有代理。 [托管复验](https://github.com/edwardsage419/Psychohistory-Research/actions/runs/45298601033/job/138125596759) |
+
+计算沿用共享 v0.5 输入口径。Mac 可选模型默认关闭，iPhone 需要经用户连接并授权的受支持私有桥接才能访问 Mac 服务；此移动静态包只运行设备内的离线引导与计算。私人 HTTPS 安装用于提供静态文件。真实设备与用户效果的发布门槛仍待验收。
+
+```sh
+npm run build
+CHROMIUM_BIN=/usr/bin/chromium npm test
+python scripts/export-contract.py --check
+MOBILE_PARITY_BROWSER=chromium CHROMIUM_BIN=/usr/bin/chromium python scripts/verify-parity.py
+MOBILE_BROWSER=chromium CHROMIUM_BIN=/usr/bin/chromium node tests/workbench.browser.mjs
+```
+
+通过 `PLAYWRIGHT_MODULE` 指定已安装 Playwright 的 `index.mjs`。上述服务只绑定本机回环地址。
