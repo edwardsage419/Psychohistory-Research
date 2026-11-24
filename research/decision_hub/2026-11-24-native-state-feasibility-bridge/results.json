@@ -1,0 +1,117 @@
+{
+  "environment": {
+    "python": "3.13.5",
+    "pydantic": "2.13.5",
+    "supported": false
+  },
+  "sources": {
+    "decision_state.py": "0840855431fbc88fe212785584277aa01be74d93",
+    "decision_feasibility.py": "6181d6c578c7ef251e9708d0ffcf65e95d35f88f"
+  },
+  "cases": 300,
+  "counts": {
+    "ACCEPT": 110,
+    "UNRESOLVED": 80,
+    "REJECT": 110
+  },
+  "controls": [
+    {
+      "name": "coverage missing",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "owner confirmation missing",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "revoked",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "stale revision",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "stale generation",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "foreign session",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "unconfirmed claim",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "third party",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "conditional constraint",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "omitted all constraints",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "unknown option reference",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "unknown constraint reference",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "duplicate measurement",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "reversed bounds",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "boolean numeric",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "nonfinite",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "fabricated field",
+      "result": "BLOCKED"
+    },
+    {
+      "name": "wrong unit",
+      "result": "UNRESOLVED"
+    },
+    {
+      "name": "wrong horizon",
+      "result": "UNRESOLVED"
+    },
+    {
+      "name": "missing measurement source",
+      "result": "UNRESOLVED"
+    },
+    {
+      "name": "missing constraint source",
+      "result": "UNRESOLVED"
+    },
+    {
+      "name": "missing measurement",
+      "result": "UNRESOLVED"
+    },
+    {
+      "name": "unknown quantity",
+      "result": "UNRESOLVED"
+    },
+    {
+      "name": "unknown with invented value",
+      "result": "BLOCKED"
+    }
+  ],
+  "source_string_counterexample": "ACCEPT",
+  "scope": "Native DecisionState import and unchanged AST functions; not complete registry, hub, Qwen, or real user consent"
+}

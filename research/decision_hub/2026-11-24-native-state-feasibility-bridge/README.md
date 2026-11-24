@@ -1,0 +1,8 @@
+# 第三十轮：原生决策输入与区间可行性连接实验
+2026-11-24。基线 1ec33be32e88c6db13e275dd80ef98fd444299da。核对main、近期提交、开放PR、AGENTS、v3.1、同步规程、产品交接、第24及29轮。实际读取decision_state、decision_feasibility、decision_registry、plugins及pyproject。git ls-remote DNS失败；将前两份原始文本复制到本机，git hash-object逐字节匹配0840855431fbc88fe212785584277aa01be74d93与6181d6c578c7ef251e9708d0ffcf65e95d35f88f。原始源码留在原仓库路径，不另复制。环境Python3.13.5/Pydantic2.13.5；项目要求Python>=3.12,<3.13及Pydantic2.13.4，故UNSUPPORTED_RUNTIME_EXPLORATION。实际import完整原生decision_state，执行原生feasibility函数AST，排除相对注册导入与METHOD构造；evaluate接收SimpleNamespace(state=原生DecisionState)。未调用真实registry.validate、完整hub、其他14个计算方法或正式产品。无科学独立验收。
+## 增量接口
+第24轮候选协议只描述自然语言角色和引文；这里从人工可信、已正规化的constraint/action/measurement记录进入真实DecisionState，measurement是本轮实验扩展角色，不是第24轮输出字段；真实数字、单位、范围、逻辑条件和关系正规化仍待实现。模拟宿主确认范围覆盖、当前版本、代次与会话；原型仅接受本人、无条件记录，明确禁止空约束集（真实系统可在用户明确确认无底线时支持空集）。没有真实权限验证、持久化或通用非可信输入解析，project只接收格式正常的测试夹具，不能直接接收任意LLM输出。原生模型校验Decimal、引用、区间、未知值和额外字段。源文字非空不代表证据真实。
+## 实际运行
+四比较符×5阈值×15合法整数闭区间=300组；原生evaluate与逐整数点独立比较路径全一致。接受110，拒绝110，未决80；单指标单行动，区间单调性支持端点判断，不含联合约束或排名。24项异常控制：18项桥接/原生schema拒绝，6项原生未决。另1个反例：来源只改成虚构文字，原生仍ACCEPT；这是来源真实性未被本函数验证的事实，不证明完整产品存在实际绕过。源身份/实际授权和语义覆盖必须由可信层提供。结果来自本机实际Python stdout转录；原始本机probe SHA256 db12e9a0f6763ae39d2fdc13550679e787ea2d17dbfc05a8d59944fc7a96879a，stdout SHA256 2941dea3bf0810bf10f823ae290df3861e55d1dfa582c55371b969e8d8049a74。复跑 python probe.py /path/to/repo/platform/future_model/src/psychohistory；脚本先校验两原生blob。正式版本环境、完整注册表和端到端仍需另测。
+## 后续
+原生DecisionState可作为桥接目标；应扩展受信量值和来源记录、条件分支及局部端口，而非另造数学核心。优先在支持版本环境实测原生registry和所有15方法的输入缺口、例外及真实Qwen提议，独立轨保管未见案例，产品轨核对实际追问负担。本轮无生产源码、CI、Codex、Qwen训练、合并、部署、额外费用或冻结改变。
