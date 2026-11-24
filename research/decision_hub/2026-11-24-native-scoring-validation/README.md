@@ -1,0 +1,8 @@
+# 第三十二轮：原生多目标、权重极值与共享误差验证
+2026-11-24。基线 217e8df6352dcefbb2685daad4c3e8adacdca759。核对main、近期提交、开放PR、AGENTS、v3.1、同步规程、产品交接、第31轮。实际读取decision_scoring.py blob 7832116703246bafc98831a6039d14c0d691cdd1，将原生5个连续块复制本机，逐块FNV1a UTF16匹配（初始两个重叠块修正为非重叠块后全部匹配），不等同完整原始字节Git验证。原生decision_state.py实际完整Git blob重验。Python3.13.5/Pydantic2.13.5与项目固定运行环境不一致，UNSUPPORTED_RUNTIME_EXPLORATION。原生Context以SimpleNamespace替代，feasible由合成夹具给定；未运行完整注册表、_comparability、_pareto、_weight_sensitivity、_c034的完整execute或实际自然语言。无独立验收。
+## 实际计算
+- 两行动两目标，每格6个闭区间（0/1/2端点），两目标各max/min，6^4×4=5184组；26244个矩形端点世界的直接比较路径与原生_pareto_relation一致。36相等、500 A支配、500 B支配、200各有优势、3948未决。矩形域中每目标差值区间独立；全域最坏差值端点决定保证支配，不能把该结论推广到未核实的相关域。
+- 3目标权重每个界在0、1/2、1上，137组非空盒与单纯形交集，27组差值系数(-1/0/1)^3，3699组最小与最大值（7398次原生_extreme调用）。6075个独立格点效用计算；盒与单纯形的顶点均在半步格上，因此线性极值可精确对照。每个返回权重见证均满足界和总和1；无概率含义。
+- 共享加性误差截断，a,b及offset上下界来自{-1,-1/2,0,1/2,1,3/2}，756组，2016个格点（分段线性转折点均在格内）与原生_clipping_cell一致；350组差值随偏移变化。a=.75,b=.25,偏移[0,1]，恒等差值=.5，截断差值[0,.5]；正向名义优势不能保证严格领先。未运行完整联合C034。
+## 资格与缺口
+15夹具×3原生validator=45项预期匹配（comparability和Pareto共用_basic_errors，另外检查pair）。无权重、无共同基数刻度时可显示分维度比较，不得产生综合效用排序；区间得分阻止点值权重敏感性，但可进入符合其他条件的C034；C034还要求2个max目标、误差结构来源、变换及必要共同偏移；缺分、单位或时间冲突使pair UNKNOWN。_basic_errors通过只是允许进入逐项核验，非比较成功。非空虚构score_basis仍可通过3验证器，不能将非空文本视为真实用户确认或科学证据。全局共同偏移模型及名义Pareto的实际语义应区分，未对所有联合依赖做证明。结果为实际本机stdout摘要；probe与fragment文本FNV匹配本机，SHA256记录在results.json。复跑 python probe.py /path/to/repo/platform/future_model/src/psychohistory，完整源码存在则重验Git blob。阶段累计8/15个登记方法涉及原生函数或共享validator验证，非完整方法验收。下一轮优先信息价值与行动时机原生验证，并将独立验收与真实Qwen缺口集中移交完整版本规格。无生产修改、CI、Codex、训练、合并、部署、费用或冻结改动。

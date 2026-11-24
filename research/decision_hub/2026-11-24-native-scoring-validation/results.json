@@ -1,0 +1,181 @@
+{
+  "mode": "CONNECTOR_FRAGMENT_FNV_MATCH",
+  "python": "3.13.5",
+  "pydantic": "2.13.5",
+  "state_blob": "0840855431fbc88fe212785584277aa01be74d93",
+  "scoring_blob": "7832116703246bafc98831a6039d14c0d691cdd1",
+  "fragment_hashes": [
+    "debc69fe",
+    "87614760",
+    "c262bcda",
+    "a122830c",
+    "936e6850"
+  ],
+  "stats": {
+    "pareto_cases": 5184,
+    "pareto_worlds": 26244,
+    "weight_cases": 3699,
+    "weight_bound_sets": 137,
+    "weight_grid_evaluations": 6075,
+    "clipping_cases": 756,
+    "clipping_grid_evaluations": 2016,
+    "clipping_nonconstant": 350
+  },
+  "pareto_relations": {
+    "EQUAL": 36,
+    "UNRESOLVED": 3948,
+    "B_DOMINATES": 500,
+    "A_DOMINATES": 500,
+    "INCOMPARABLE": 200
+  },
+  "controls": [
+    {
+      "name": "valid",
+      "validator_ready": [
+        true,
+        true,
+        true
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "unconfirmed weights",
+      "validator_ready": [
+        true,
+        false,
+        false
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "no common scale",
+      "validator_ready": [
+        true,
+        false,
+        false
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "missing weight",
+      "validator_ready": [
+        true,
+        false,
+        false
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "infeasible sum",
+      "validator_ready": [
+        true,
+        false,
+        false
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "interval score",
+      "validator_ready": [
+        true,
+        false,
+        true
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "missing score",
+      "validator_ready": [
+        true,
+        false,
+        false
+      ],
+      "pair": "UNKNOWN"
+    },
+    {
+      "name": "unit mismatch",
+      "validator_ready": [
+        true,
+        false,
+        false
+      ],
+      "pair": "UNKNOWN"
+    },
+    {
+      "name": "time mismatch",
+      "validator_ready": [
+        true,
+        false,
+        false
+      ],
+      "pair": "UNKNOWN"
+    },
+    {
+      "name": "unknown dependence",
+      "validator_ready": [
+        true,
+        true,
+        false
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "unknown transform",
+      "validator_ready": [
+        true,
+        true,
+        false
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "min objective",
+      "validator_ready": [
+        true,
+        true,
+        false
+      ],
+      "pair": "B_DOMINATES"
+    },
+    {
+      "name": "missing dependence source",
+      "validator_ready": [
+        true,
+        true,
+        false
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "unverified basis text",
+      "validator_ready": [
+        true,
+        true,
+        true
+      ],
+      "pair": "INCOMPARABLE"
+    },
+    {
+      "name": "shared offset missing",
+      "validator_ready": [
+        true,
+        true,
+        false
+      ],
+      "pair": "INCOMPARABLE"
+    }
+  ],
+  "example": {
+    "nominal_difference": "1/2",
+    "identity_difference": "1/2",
+    "clipped_bounds": [
+      "0",
+      "1/2"
+    ]
+  },
+  "local_sha256": {
+    "fragment": "ce04168cb5fad5cd7ffff26acf43c94b7b9cf0d63d48e2979c60e956d2ef593b",
+    "probe": "9033d0629edecc3bb88b1116fb41f504ddd8e0af631cae30095c05dde67dbd7f",
+    "stdout": "94b1890e64acb5d6ed7c5fc224a429f914c970697d772ae059fc80f47e312f38"
+  }
+}
