@@ -1,0 +1,395 @@
+{
+  "total": 10206,
+  "stats": {
+    "raw": {
+      "cases": 10206,
+      "exact": 8020,
+      "unsafe": 2186,
+      "wrongSafe": 0,
+      "unknown": 0,
+      "retained": 24786,
+      "requests": 0
+    },
+    "whole": {
+      "cases": 10206,
+      "exact": 4230,
+      "unsafe": 1602,
+      "wrongSafe": 0,
+      "unknown": 4374,
+      "retained": 11664,
+      "requests": 4374
+    },
+    "local": {
+      "cases": 10206,
+      "exact": 7812,
+      "unsafe": 2394,
+      "wrongSafe": 0,
+      "unknown": 0,
+      "retained": 20412,
+      "requests": 4374
+    },
+    "guarded": {
+      "cases": 10206,
+      "exact": 2916,
+      "unsafe": 0,
+      "wrongSafe": 0,
+      "unknown": 7290,
+      "retained": 20412,
+      "requests": 8748
+    },
+    "repair": {
+      "cases": 10206,
+      "exact": 10206,
+      "unsafe": 0,
+      "wrongSafe": 0,
+      "unknown": 0,
+      "retained": 20412,
+      "requests": 8748
+    }
+  },
+  "faultStats": {
+    "clean": {
+      "raw": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      },
+      "whole": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      },
+      "local": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      },
+      "guarded": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      },
+      "repair": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      }
+    },
+    "drop_cost": {
+      "raw": {
+        "exact": 1062,
+        "unsafe": 396,
+        "unknown": 0
+      },
+      "whole": {
+        "exact": 1062,
+        "unsafe": 396,
+        "unknown": 0
+      },
+      "local": {
+        "exact": 1062,
+        "unsafe": 396,
+        "unknown": 0
+      },
+      "guarded": {
+        "exact": 0,
+        "unsafe": 0,
+        "unknown": 1458
+      },
+      "repair": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      }
+    },
+    "drop_time": {
+      "raw": {
+        "exact": 1062,
+        "unsafe": 396,
+        "unknown": 0
+      },
+      "whole": {
+        "exact": 1062,
+        "unsafe": 396,
+        "unknown": 0
+      },
+      "local": {
+        "exact": 1062,
+        "unsafe": 396,
+        "unknown": 0
+      },
+      "guarded": {
+        "exact": 0,
+        "unsafe": 0,
+        "unknown": 1458
+      },
+      "repair": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      }
+    },
+    "drop_both": {
+      "raw": {
+        "exact": 648,
+        "unsafe": 810,
+        "unknown": 0
+      },
+      "whole": {
+        "exact": 648,
+        "unsafe": 810,
+        "unknown": 0
+      },
+      "local": {
+        "exact": 648,
+        "unsafe": 810,
+        "unknown": 0
+      },
+      "guarded": {
+        "exact": 0,
+        "unsafe": 0,
+        "unknown": 1458
+      },
+      "repair": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      }
+    },
+    "bad_cost": {
+      "raw": {
+        "exact": 1166,
+        "unsafe": 292,
+        "unknown": 0
+      },
+      "whole": {
+        "exact": 0,
+        "unsafe": 0,
+        "unknown": 1458
+      },
+      "local": {
+        "exact": 1062,
+        "unsafe": 396,
+        "unknown": 0
+      },
+      "guarded": {
+        "exact": 0,
+        "unsafe": 0,
+        "unknown": 1458
+      },
+      "repair": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      }
+    },
+    "bad_time": {
+      "raw": {
+        "exact": 1166,
+        "unsafe": 292,
+        "unknown": 0
+      },
+      "whole": {
+        "exact": 0,
+        "unsafe": 0,
+        "unknown": 1458
+      },
+      "local": {
+        "exact": 1062,
+        "unsafe": 396,
+        "unknown": 0
+      },
+      "guarded": {
+        "exact": 0,
+        "unsafe": 0,
+        "unknown": 1458
+      },
+      "repair": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      }
+    },
+    "bad_soft": {
+      "raw": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      },
+      "whole": {
+        "exact": 0,
+        "unsafe": 0,
+        "unknown": 1458
+      },
+      "local": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      },
+      "guarded": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      },
+      "repair": {
+        "exact": 1458,
+        "unsafe": 0,
+        "unknown": 0
+      }
+    }
+  },
+  "hostChecks": 40824,
+  "example": {
+    "text": "预算不超过100元，工期不超过1天，优先质量。",
+    "options": [
+      {
+        "id": "A",
+        "cost": 100,
+        "time": 1,
+        "utility": 1
+      },
+      {
+        "id": "B",
+        "cost": 200,
+        "time": 1,
+        "utility": 2
+      }
+    ],
+    "truth": "A",
+    "claims": [
+      {
+        "slot": "time",
+        "value": 1,
+        "quote": "工期不超过1天"
+      },
+      {
+        "slot": "goal",
+        "value": "quality",
+        "quote": "优先质量"
+      }
+    ],
+    "result": {
+      "choice": "B",
+      "retained": 2,
+      "requests": 0
+    }
+  },
+  "corpusConstraintClaims": 10,
+  "corpusExactMatches": 0,
+  "corpusAudit": [
+    {
+      "episode": "S02",
+      "turn": 1,
+      "quote": "必须离车站步行十五分钟以内",
+      "covered": false
+    },
+    {
+      "episode": "S02",
+      "turn": 2,
+      "quote": "步行上限改为十二分钟",
+      "covered": false
+    },
+    {
+      "episode": "S04",
+      "turn": 1,
+      "quote": "我们两个人都得能用厨房",
+      "covered": false
+    },
+    {
+      "episode": "S06",
+      "turn": 2,
+      "quote": "先别替我决定",
+      "covered": false
+    },
+    {
+      "episode": "S07",
+      "turn": 2,
+      "quote": "不要把风险偏好设成激进",
+      "covered": false
+    },
+    {
+      "episode": "S09",
+      "turn": 1,
+      "quote": "必须赶上周日晚的集合",
+      "covered": false
+    },
+    {
+      "episode": "S10",
+      "turn": 1,
+      "quote": "每周至少保留半天",
+      "covered": false
+    },
+    {
+      "episode": "S10",
+      "turn": 2,
+      "quote": "不作为强制条件了",
+      "covered": false
+    },
+    {
+      "episode": "S13",
+      "turn": 1,
+      "quote": "准确率必须不低于九成",
+      "covered": false
+    },
+    {
+      "episode": "S13",
+      "turn": 2,
+      "quote": "准确率的要求仅用于正式交付",
+      "covered": false
+    }
+  ],
+  "challenge": [
+    {
+      "text": "预算不超过200元，工期不超过2天。",
+      "expectedCurrentUnconditional": 2,
+      "matches": 2
+    },
+    {
+      "text": "最多花两百，三天内必须交。",
+      "expectedCurrentUnconditional": 2,
+      "matches": 0
+    },
+    {
+      "text": "手头只有200元可用。",
+      "expectedCurrentUnconditional": 1,
+      "matches": 0
+    },
+    {
+      "text": "第三天之前要交付。",
+      "expectedCurrentUnconditional": 1,
+      "matches": 0
+    },
+    {
+      "text": "如果加班就不能超过200元。",
+      "expectedCurrentUnconditional": 1,
+      "matches": 0
+    },
+    {
+      "text": "原来预算不超过200元，现在改了。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 1
+    },
+    {
+      "text": "朋友说预算不超过200元。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 1
+    },
+    {
+      "text": "预算不超过200元的假设下看看。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 1
+    },
+    {
+      "text": "优先质量，不设费用上限。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 0
+    },
+    {
+      "text": "预算不超过200元，工期不超过2天，这只是旧方案。",
+      "expectedCurrentUnconditional": 0,
+      "matches": 2
+    }
+  ],
+  "challengeExact": 2,
+  "scope": "Scanner is NOT a completeness or semantic authority; host coverage/goal values simulated; oracle-assisted confirmed repair only"
+}
