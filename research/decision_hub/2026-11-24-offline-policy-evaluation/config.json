@@ -1,0 +1,39 @@
+{
+  "source": {
+    "repo": "vincentarelbundock/Rdatasets",
+    "commit": "1dcc2bf5f955cc1224a3e1307256e1fe86b68dae",
+    "blob": "1ea4da5f9f6106f984a5766376546fef662f7ae0",
+    "path": "csv/causaldata/nsw_mixtape.csv",
+    "documentationBlob": "47dfa1c601bfe3fa2d1b0855d1331f6c1504d348",
+    "original": "https://users.nber.org/~rdehejia/nswdata.html",
+    "license": "Author permits public distribution on own site; data redistribution/commercial license unverified. No raw records redistributed.",
+    "identityLimit": "Mirror blob returned by connector; raw byte digest and equality to original files not independently verified; data_id is constant."
+  },
+  "method": {
+    "doi": "10.3982/ECTA15732",
+    "authors": "Athey & Wager",
+    "year": 2021,
+    "scope": "Publisher abstract only"
+  },
+  "seed": 245731,
+  "trainFraction": 0.6,
+  "costs": [
+    0,
+    1000,
+    2000,
+    3000
+  ],
+  "thresholds": [
+    0,
+    1000,
+    3000,
+    5000
+  ],
+  "shrink": 10,
+  "propensities": [
+    0.3,
+    0.4157303370786517,
+    0.5,
+    0.6
+  ]
+}
