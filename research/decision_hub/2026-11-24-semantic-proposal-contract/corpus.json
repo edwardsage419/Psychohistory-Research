@@ -1,0 +1,1101 @@
+{
+  "version": "0.1",
+  "provenance": "ORIGINAL_SYNTHETIC_PUBLIC_DEVELOPMENT_ONLY",
+  "split": "GROUP_BY_EPISODE; all turns and paraphrases stay together; no independent holdout",
+  "cases": [
+    {
+      "id": "S01",
+      "domain": "career",
+      "turns": [
+        {
+          "text": "想在两个岗位中选一个，留在维修部或者转去调度部。我更在意夜间休息，工资差多少还没问。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "留在维修部",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "转去调度部",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "criterion",
+                "quote": "夜间休息",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "unknown",
+                "quote": "工资差多少还没问",
+                "actor": "self",
+                "time": "current",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "tradeoff",
+              "evidence"
+            ]
+          }
+        },
+        {
+          "text": "转去调度部这项先撤掉，改成申请培训岗。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "转去调度部这项先撤掉",
+                "actor": "self",
+                "time": "future",
+                "modality": "negated",
+                "op": "retract",
+                "ref": "S01.1.2",
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "申请培训岗",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "tradeoff"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "domain": "housing",
+      "turns": [
+        {
+          "text": "看中东边和西边两套房。任何一套都必须离车站步行十五分钟以内。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "东边",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "西边",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "constraint",
+                "quote": "必须离车站步行十五分钟以内",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "feasibility"
+            ]
+          }
+        },
+        {
+          "text": "步行上限改为十二分钟，其他条件保留。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "constraint",
+                "quote": "步行上限改为十二分钟",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "replace",
+                "ref": "S02.1.3",
+                "condition": null
+              }
+            ],
+            "hints": [
+              "feasibility"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "domain": "study",
+      "turns": [
+        {
+          "text": "我想理解统计推断。周三去图书馆复习，或者周五参加答疑。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "goal",
+                "quote": "理解统计推断",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "周三去图书馆复习",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "周五参加答疑",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "resource",
+              "timing"
+            ]
+          }
+        },
+        {
+          "text": "如果周五需要加班，周五答疑就取消。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "周五答疑就取消",
+                "actor": "self",
+                "time": "future",
+                "modality": "conditional",
+                "op": "retract",
+                "ref": "S03.1.3",
+                "condition": "如果周五需要加班"
+              }
+            ],
+            "hints": [
+              "timing"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "domain": "household",
+      "turns": [
+        {
+          "text": "我们两个人都得能用厨房。想买电饭煲或者买小烤箱，家里只有一个空插座。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "constraint",
+                "quote": "我们两个人都得能用厨房",
+                "actor": "joint",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "买电饭煲",
+                "actor": "joint",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "买小烤箱",
+                "actor": "joint",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "fact",
+                "quote": "家里只有一个空插座",
+                "actor": "joint",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "feasibility",
+              "resource"
+            ]
+          }
+        },
+        {
+          "text": "插座数量刚核实是两个，之前那个数字不准。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "fact",
+                "quote": "插座数量刚核实是两个",
+                "actor": "joint",
+                "time": "current",
+                "modality": "reported",
+                "op": "replace",
+                "ref": "S04.1.4",
+                "condition": null
+              }
+            ],
+            "hints": [
+              "feasibility"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "domain": "third_party",
+      "turns": [
+        {
+          "text": "替同事想一想：她在考虑报考执照还是继续做现有工作。她的预算我不清楚。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "报考执照",
+                "actor": "other",
+                "time": "future",
+                "modality": "reported",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "继续做现有工作",
+                "actor": "other",
+                "time": "future",
+                "modality": "reported",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "unknown",
+                "quote": "她的预算我不清楚",
+                "actor": "other",
+                "time": "current",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "tradeoff",
+              "evidence"
+            ]
+          }
+        },
+        {
+          "text": "我本人暂时没有换工作的打算。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "我本人暂时没有换工作的打算",
+                "actor": "self",
+                "time": "current",
+                "modality": "negated",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "tradeoff"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "domain": "health",
+      "turns": [
+        {
+          "text": "只是做个假设，如果医生允许，我再考虑参加长跑活动。现在想先了解风险。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "参加长跑活动",
+                "actor": "self",
+                "time": "future",
+                "modality": "conditional",
+                "op": "add",
+                "ref": null,
+                "condition": "如果医生允许"
+              },
+              {
+                "role": "goal",
+                "quote": "了解风险",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "risk",
+              "evidence"
+            ]
+          }
+        },
+        {
+          "text": "医生的意见还没拿到，先别替我决定。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "unknown",
+                "quote": "医生的意见还没拿到",
+                "actor": "self",
+                "time": "current",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "constraint",
+                "quote": "先别替我决定",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "evidence"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "domain": "finance",
+      "turns": [
+        {
+          "text": "比较每月还款额和应急储蓄这两个指标，暂时没有选定贷款方案。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "criterion",
+                "quote": "每月还款额",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "criterion",
+                "quote": "应急储蓄",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "unknown",
+                "quote": "暂时没有选定贷款方案",
+                "actor": "self",
+                "time": "current",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "tradeoff",
+              "evidence"
+            ]
+          }
+        },
+        {
+          "text": "我只想先看现金流，不要把风险偏好设成激进。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "goal",
+                "quote": "先看现金流",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "constraint",
+                "quote": "不要把风险偏好设成激进",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "risk"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "domain": "review",
+      "turns": [
+        {
+          "text": "上个月选择了骑车上班，实际有三天迟到。坐公交会怎样我不知道。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "选择了骑车上班",
+                "actor": "self",
+                "time": "past",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "observation",
+                "quote": "实际有三天迟到",
+                "actor": "self",
+                "time": "past",
+                "modality": "reported",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "unknown",
+                "quote": "坐公交会怎样我不知道",
+                "actor": "self",
+                "time": "past",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "review"
+            ]
+          }
+        },
+        {
+          "text": "记录更正一下，实际是两天迟到。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "observation",
+                "quote": "实际是两天迟到",
+                "actor": "self",
+                "time": "past",
+                "modality": "reported",
+                "op": "replace",
+                "ref": "S08.1.2",
+                "condition": null
+              }
+            ],
+            "hints": [
+              "review"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "domain": "travel",
+      "turns": [
+        {
+          "text": "先比较当天出发和隔天出发。必须赶上周日晚的集合，航班延误概率没有资料。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "当天出发",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "隔天出发",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "constraint",
+                "quote": "必须赶上周日晚的集合",
+                "actor": "self",
+                "time": "future",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "unknown",
+                "quote": "航班延误概率没有资料",
+                "actor": "self",
+                "time": "future",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "timing",
+              "risk"
+            ]
+          }
+        },
+        {
+          "text": "如果集合改到周一早上，隔天出发也可以。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "隔天出发也可以",
+                "actor": "self",
+                "time": "future",
+                "modality": "conditional",
+                "op": "add",
+                "ref": null,
+                "condition": "如果集合改到周一早上"
+              }
+            ],
+            "hints": [
+              "timing"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "domain": "family",
+      "turns": [
+        {
+          "text": "我想把周末空出来陪家人，每周至少保留半天。可以周五买菜或者周六早起。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "goal",
+                "quote": "把周末空出来陪家人",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "constraint",
+                "quote": "每周至少保留半天",
+                "actor": "self",
+                "time": "future",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "周五买菜",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "周六早起",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "resource",
+              "timing"
+            ]
+          }
+        },
+        {
+          "text": "半天这项只是我希望做到的目标，不作为强制条件了。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "constraint",
+                "quote": "不作为强制条件了",
+                "actor": "self",
+                "time": "future",
+                "modality": "negated",
+                "op": "retract",
+                "ref": "S10.1.2",
+                "condition": null
+              },
+              {
+                "role": "goal",
+                "quote": "半天这项只是我希望做到的目标",
+                "actor": "self",
+                "time": "future",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "tradeoff"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "domain": "privacy",
+      "turns": [
+        {
+          "text": "这次可以临时分析，不要保存，也不要拿去训练。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "permission_intent",
+                "quote": "可以临时分析",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "permission_intent",
+                "quote": "不要保存",
+                "actor": "self",
+                "time": "current",
+                "modality": "negated",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "permission_intent",
+                "quote": "不要拿去训练",
+                "actor": "self",
+                "time": "current",
+                "modality": "negated",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "privacy"
+            ]
+          }
+        },
+        {
+          "text": "我撤回临时分析的许可，之前的对话不要再用于计算。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "permission_intent",
+                "quote": "撤回临时分析的许可",
+                "actor": "self",
+                "time": "current",
+                "modality": "negated",
+                "op": "retract",
+                "ref": "S11.1.1",
+                "condition": null
+              },
+              {
+                "role": "permission_intent",
+                "quote": "之前的对话不要再用于计算",
+                "actor": "self",
+                "time": "current",
+                "modality": "negated",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "privacy"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "domain": "consumption",
+      "turns": [
+        {
+          "text": "修旧相机大约五百，买二手相机费用还未知。想把拍摄质量维持住。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "修旧相机",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "estimate",
+                "quote": "大约五百",
+                "actor": "self",
+                "time": "future",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "买二手相机",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "unknown",
+                "quote": "费用还未知",
+                "actor": "self",
+                "time": "future",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "goal",
+                "quote": "把拍摄质量维持住",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "tradeoff",
+              "evidence"
+            ]
+          }
+        },
+        {
+          "text": "维修店说要七百，但还没有书面报价。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "estimate",
+                "quote": "维修店说要七百",
+                "actor": "self",
+                "time": "future",
+                "modality": "reported",
+                "op": "replace",
+                "ref": "S12.1.2",
+                "condition": null
+              },
+              {
+                "role": "unknown",
+                "quote": "还没有书面报价",
+                "actor": "self",
+                "time": "current",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "evidence"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "domain": "work",
+      "turns": [
+        {
+          "text": "想先弄明白效率和准确率怎么取舍。准确率必须不低于九成。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "criterion",
+                "quote": "效率",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "criterion",
+                "quote": "准确率怎么取舍",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "constraint",
+                "quote": "准确率必须不低于九成",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "feasibility",
+              "tradeoff"
+            ]
+          }
+        },
+        {
+          "text": "准确率的要求仅用于正式交付，试验阶段不套用这个底线。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "constraint",
+                "quote": "准确率的要求仅用于正式交付",
+                "actor": "self",
+                "time": "future",
+                "modality": "conditional",
+                "op": "replace",
+                "ref": "S13.1.3",
+                "condition": "正式交付"
+              },
+              {
+                "role": "fact",
+                "quote": "试验阶段不套用这个底线",
+                "actor": "self",
+                "time": "future",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "feasibility"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "domain": "relationship",
+      "turns": [
+        {
+          "text": "我在考虑先发消息沟通还是等到周末当面说。想减少误会，结果我预测不了。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "action",
+                "quote": "先发消息沟通",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "action",
+                "quote": "等到周末当面说",
+                "actor": "self",
+                "time": "future",
+                "modality": "proposed",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "goal",
+                "quote": "减少误会",
+                "actor": "self",
+                "time": "current",
+                "modality": "asserted",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              },
+              {
+                "role": "unknown",
+                "quote": "结果我预测不了",
+                "actor": "self",
+                "time": "future",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "tradeoff",
+              "risk"
+            ]
+          }
+        },
+        {
+          "text": "对方是否有空还不清楚，所以这两种方式都先留着。",
+          "proposal": {
+            "schema": "semantic-proposal/0.1",
+            "claims": [
+              {
+                "role": "unknown",
+                "quote": "对方是否有空还不清楚",
+                "actor": "other",
+                "time": "future",
+                "modality": "uncertain",
+                "op": "add",
+                "ref": null,
+                "condition": null
+              }
+            ],
+            "hints": [
+              "timing",
+              "evidence"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

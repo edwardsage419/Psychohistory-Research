@@ -1,0 +1,184 @@
+{
+  "episodes": 14,
+  "turns": 28,
+  "claims": 69,
+  "roleCounts": {
+    "action": 25,
+    "criterion": 5,
+    "unknown": 10,
+    "constraint": 10,
+    "goal": 7,
+    "fact": 3,
+    "observation": 2,
+    "permission_intent": 5,
+    "estimate": 2
+  },
+  "mutations": 336,
+  "mutationsRejected": 336,
+  "simulatedUnconditionalSupersessions": 7,
+  "conditionalPreserved": 2,
+  "controls": [
+    {
+      "case": "S01",
+      "turn": 1,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S01",
+      "turn": 2,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S02",
+      "turn": 1,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S02",
+      "turn": 2,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S03",
+      "turn": 1,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S03",
+      "turn": 2,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S04",
+      "turn": 1,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S04",
+      "turn": 2,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S05",
+      "turn": 1,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S05",
+      "turn": 2,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S06",
+      "turn": 1,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S06",
+      "turn": 2,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S07",
+      "turn": 1,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S07",
+      "turn": 2,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S08",
+      "turn": 1,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S08",
+      "turn": 2,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S09",
+      "turn": 1,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S09",
+      "turn": 2,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S10",
+      "turn": 1,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S10",
+      "turn": 2,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S11",
+      "turn": 1,
+      "hostSimulated": "SEPARATE_PERMISSION_FLOW"
+    },
+    {
+      "case": "S11",
+      "turn": 2,
+      "hostSimulated": "SEPARATE_PERMISSION_FLOW"
+    },
+    {
+      "case": "S12",
+      "turn": 1,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S12",
+      "turn": 2,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S13",
+      "turn": 1,
+      "hostSimulated": "READY_FOR_TRUSTED_ROUTER"
+    },
+    {
+      "case": "S13",
+      "turn": 2,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S14",
+      "turn": 1,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    },
+    {
+      "case": "S14",
+      "turn": 2,
+      "hostSimulated": "CONDITIONAL_ONLY"
+    }
+  ],
+  "demonstrations": [
+    {
+      "name": "grounded_wrong_role_passes_structure",
+      "result": "PROVISIONAL_ONLY",
+      "dispatch": "BLOCKED_CONTEXT"
+    },
+    {
+      "name": "omitted_constraint_passes_structure",
+      "result": "PROVISIONAL_ONLY",
+      "dispatch": "NEEDS_CONFIRMATION"
+    },
+    {
+      "name": "ambiguous_repeated_anchor_rejected",
+      "result": "ANCHOR"
+    },
+    {
+      "name": "permission_intent_is_not_authorization",
+      "result": "SEPARATE_PERMISSION_FLOW"
+    }
+  ],
+  "authority": "NONE",
+  "llm": "NOT_RUN"
+}

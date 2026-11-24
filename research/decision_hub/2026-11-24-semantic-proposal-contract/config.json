@@ -1,0 +1,57 @@
+{
+  "schema": "semantic-proposal/0.1",
+  "roles": [
+    "action",
+    "criterion",
+    "goal",
+    "constraint",
+    "fact",
+    "estimate",
+    "unknown",
+    "observation",
+    "permission_intent"
+  ],
+  "actors": [
+    "self",
+    "other",
+    "joint",
+    "unspecified"
+  ],
+  "times": [
+    "current",
+    "future",
+    "past",
+    "unspecified"
+  ],
+  "modalities": [
+    "asserted",
+    "proposed",
+    "hypothetical",
+    "conditional",
+    "reported",
+    "negated",
+    "uncertain"
+  ],
+  "ops": [
+    "add",
+    "replace",
+    "retract"
+  ],
+  "hints": [
+    "feasibility",
+    "tradeoff",
+    "resource",
+    "timing",
+    "risk",
+    "evidence",
+    "review",
+    "privacy"
+  ],
+  "limits": {
+    "text": 6000,
+    "claims": 24,
+    "quote": 300,
+    "hints": 4
+  },
+  "note": "Untrusted proposals; host controls confirmation; hints are discovery tags only."
+}
