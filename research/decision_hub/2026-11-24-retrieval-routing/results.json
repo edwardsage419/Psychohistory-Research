@@ -1,0 +1,1713 @@
+{
+  "stats": {
+    "raw": {
+      "hit1": 6,
+      "hit3": 6,
+      "recall3": 0.3181818181818182,
+      "negative_nonempty": 1
+    },
+    "bm25": {
+      "hit1": 6,
+      "hit3": 6,
+      "recall3": 0.3181818181818182,
+      "negative_nonempty": 1
+    },
+    "tag": {
+      "hit1": 18,
+      "hit3": 18,
+      "recall3": 0.9545454545454546,
+      "negative_nonempty": 0
+    }
+  },
+  "rows": [
+    {
+      "q": "我最多只能花三千，哪个超预算就别考虑",
+      "expected": [
+        "hard"
+      ],
+      "raw": [
+        "unobserved",
+        "timing"
+      ],
+      "bm25": [
+        "unobserved",
+        "timing"
+      ],
+      "tag": [
+        "hard"
+      ]
+    },
+    {
+      "q": "我每周上班不得超过四十小时",
+      "expected": [
+        "hard"
+      ],
+      "raw": [
+        "unobserved",
+        "voi"
+      ],
+      "bm25": [
+        "unobserved",
+        "voi"
+      ],
+      "tag": [
+        "hard"
+      ]
+    },
+    {
+      "q": "当初没选另一份工作，现在能知道结果吗",
+      "expected": [
+        "unobserved"
+      ],
+      "raw": [
+        "sunk",
+        "timing",
+        "pareto"
+      ],
+      "bm25": [
+        "sunk",
+        "timing",
+        "pareto"
+      ],
+      "tag": [
+        "unobserved"
+      ]
+    },
+    {
+      "q": "我没走另一条路，怎么知道它会不会更好",
+      "expected": [
+        "unobserved"
+      ],
+      "raw": [
+        "sunk",
+        "timing"
+      ],
+      "bm25": [
+        "timing",
+        "sunk"
+      ],
+      "tag": [
+        "unobserved"
+      ]
+    },
+    {
+      "q": "一个工资高，一个通勤短，还想陪家人",
+      "expected": [
+        "pareto"
+      ],
+      "raw": [
+        "pareto"
+      ],
+      "bm25": [
+        "pareto"
+      ],
+      "tag": [
+        "pareto"
+      ]
+    },
+    {
+      "q": "收入和生活质量怎么取舍",
+      "expected": [
+        "pareto"
+      ],
+      "raw": [
+        "sunk",
+        "timing",
+        "voi"
+      ],
+      "bm25": [
+        "sunk",
+        "timing",
+        "voi"
+      ],
+      "tag": [
+        "pareto"
+      ]
+    },
+    {
+      "q": "不知道概率，想选最坏情况下少吃亏的",
+      "expected": [
+        "regret"
+      ],
+      "raw": [
+        "timing",
+        "pareto",
+        "sunk"
+      ],
+      "bm25": [
+        "timing",
+        "sunk",
+        "voi"
+      ],
+      "tag": [
+        "regret"
+      ]
+    },
+    {
+      "q": "各个情景的收益范围都不确定，后悔值怎么算",
+      "expected": [
+        "interval"
+      ],
+      "raw": [
+        "sunk",
+        "timing",
+        "unobserved"
+      ],
+      "bm25": [
+        "timing",
+        "sunk",
+        "voi"
+      ],
+      "tag": [
+        "interval",
+        "regret"
+      ]
+    },
+    {
+      "q": "两个培训共用同一笔预算，加起来不能超",
+      "expected": [
+        "joint",
+        "hard"
+      ],
+      "raw": [
+        "sunk",
+        "unobserved",
+        "voi"
+      ],
+      "bm25": [
+        "voi",
+        "sunk",
+        "unobserved"
+      ],
+      "tag": [
+        "joint",
+        "hard"
+      ]
+    },
+    {
+      "q": "两个项目各自没超上限，但合计超了总额",
+      "expected": [
+        "joint",
+        "hard"
+      ],
+      "raw": [
+        "pareto",
+        "sunk",
+        "unobserved"
+      ],
+      "bm25": [
+        "sunk",
+        "unobserved",
+        "pareto"
+      ],
+      "tag": [
+        "joint",
+        "hard"
+      ]
+    },
+    {
+      "q": "先分配资源，知道之后可以临时调整",
+      "expected": [
+        "adjust"
+      ],
+      "raw": [
+        "pareto",
+        "timing",
+        "unobserved"
+      ],
+      "bm25": [
+        "unobserved",
+        "voi",
+        "timing"
+      ],
+      "tag": [
+        "adjust"
+      ]
+    },
+    {
+      "q": "到时候再看情况调配时间",
+      "expected": [
+        "adjust"
+      ],
+      "raw": [
+        "sunk",
+        "timing",
+        "voi"
+      ],
+      "bm25": [
+        "voi",
+        "timing",
+        "sunk"
+      ],
+      "tag": [
+        "adjust"
+      ]
+    },
+    {
+      "q": "要不要花钱了解一下再决定",
+      "expected": [
+        "voi"
+      ],
+      "raw": [
+        "sunk"
+      ],
+      "bm25": [
+        "sunk"
+      ],
+      "tag": [
+        "voi"
+      ]
+    },
+    {
+      "q": "先问几个人，调查是否值得",
+      "expected": [
+        "voi"
+      ],
+      "raw": [
+        "voi",
+        "timing",
+        "sunk"
+      ],
+      "bm25": [
+        "voi",
+        "timing",
+        "unobserved"
+      ],
+      "tag": [
+        "voi"
+      ]
+    },
+    {
+      "q": "等消息可能来不及，报名截止前能决定吗",
+      "expected": [
+        "timing",
+        "voi"
+      ],
+      "raw": [
+        "timing",
+        "sunk",
+        "pareto"
+      ],
+      "bm25": [
+        "timing",
+        "sunk",
+        "unobserved"
+      ],
+      "tag": [
+        "timing"
+      ]
+    },
+    {
+      "q": "调查结束时间可能超过最后期限",
+      "expected": [
+        "timing",
+        "voi"
+      ],
+      "raw": [
+        "timing",
+        "voi",
+        "sunk"
+      ],
+      "bm25": [
+        "timing",
+        "voi",
+        "unobserved"
+      ],
+      "tag": [
+        "timing",
+        "voi"
+      ]
+    },
+    {
+      "q": "已经花了钱退不了，要不要继续",
+      "expected": [
+        "sunk"
+      ],
+      "raw": [
+        "sunk"
+      ],
+      "bm25": [
+        "sunk"
+      ],
+      "tag": [
+        "sunk"
+      ]
+    },
+    {
+      "q": "交了钱拿不回，不甘心放弃",
+      "expected": [
+        "sunk"
+      ],
+      "raw": [
+        "sunk"
+      ],
+      "bm25": [
+        "sunk"
+      ],
+      "tag": [
+        "sunk"
+      ]
+    },
+    {
+      "q": "今天心情很差，为什么会这样",
+      "expected": [],
+      "raw": [
+        "sunk",
+        "unobserved"
+      ],
+      "bm25": [
+        "sunk",
+        "unobserved"
+      ],
+      "tag": []
+    },
+    {
+      "q": "帮我写一封感谢信",
+      "expected": [],
+      "raw": [],
+      "bm25": [],
+      "tag": []
+    }
+  ],
+  "gate_cases": 170,
+  "gate_status": {
+    "ELIGIBLE_FOR_NATIVE_VALIDATOR": 5,
+    "IDENTITY_MISMATCH": 40,
+    "BLOCKED": 35,
+    "RESEARCH_ONLY": 80
+  },
+  "identity_attacks": [
+    {
+      "id": "hard",
+      "key": "path",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "hard",
+      "key": "blob",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "key": "path",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "key": "blob",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "key": "path",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "key": "blob",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "key": "path",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "key": "blob",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "key": "path",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "key": "blob",
+      "status": "IDENTITY_MISMATCH"
+    }
+  ],
+  "gate_rows": [
+    {
+      "id": "hard",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "ELIGIBLE_FOR_NATIVE_VALIDATOR"
+    },
+    {
+      "id": "hard",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "hard",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "hard",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "hard",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "hard",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "hard",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "hard",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "hard",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "hard",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "hard",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "hard",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "hard",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "hard",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "hard",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "hard",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "unobserved",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "unobserved",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "pareto",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "ELIGIBLE_FOR_NATIVE_VALIDATOR"
+    },
+    {
+      "id": "pareto",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "pareto",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "pareto",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "pareto",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "pareto",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "pareto",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "pareto",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "pareto",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "pareto",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "ELIGIBLE_FOR_NATIVE_VALIDATOR"
+    },
+    {
+      "id": "regret",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "regret",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "regret",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "regret",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "regret",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "regret",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "regret",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "regret",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "regret",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "ELIGIBLE_FOR_NATIVE_VALIDATOR"
+    },
+    {
+      "id": "interval",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "interval",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "interval",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "interval",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "interval",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "interval",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "interval",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "interval",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "interval",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "joint",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "joint",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "adjust",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "voi",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "timing",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "ELIGIBLE_FOR_NATIVE_VALIDATOR"
+    },
+    {
+      "id": "timing",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "timing",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "timing",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "timing",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "timing",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "timing",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "timing",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "timing",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "timing",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "IDENTITY_MISMATCH"
+    },
+    {
+      "id": "sunk",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "confirmed",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "confirmed",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "unknown",
+      "inputs": "complete",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "qualified",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "exact",
+      "status": "RESEARCH_ONLY"
+    },
+    {
+      "id": "sunk",
+      "context": "unknown",
+      "inputs": "missing",
+      "evidence": "unknown",
+      "version": "changed",
+      "status": "RESEARCH_ONLY"
+    }
+  ]
+}
