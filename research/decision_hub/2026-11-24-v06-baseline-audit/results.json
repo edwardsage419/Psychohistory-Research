@@ -1,0 +1,361 @@
+{
+  "python": "3.13.5",
+  "cases": [
+    {
+      "dimension": "cost",
+      "case": "pending",
+      "confirmed": false,
+      "constraints_confirmed": false,
+      "projected": [],
+      "status": null,
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-cost"
+      ]
+    },
+    {
+      "dimension": "cost",
+      "case": "confirmed",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [
+        "talk-cost_max"
+      ],
+      "status": {
+        "A": "ACCEPT",
+        "B": "REJECT"
+      },
+      "active": [
+        "mA",
+        "mB",
+        "limit"
+      ],
+      "objectives": [
+        "talk-cost"
+      ]
+    },
+    {
+      "dimension": "cost",
+      "case": "dismissed",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-cost"
+      ]
+    },
+    {
+      "dimension": "cost",
+      "case": "explicit_no_constraint",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-cost"
+      ]
+    },
+    {
+      "dimension": "hours",
+      "case": "pending",
+      "confirmed": false,
+      "constraints_confirmed": false,
+      "projected": [],
+      "status": null,
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-hours"
+      ]
+    },
+    {
+      "dimension": "hours",
+      "case": "confirmed",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [
+        "talk-hours_max"
+      ],
+      "status": {
+        "A": "ACCEPT",
+        "B": "REJECT"
+      },
+      "active": [
+        "mA",
+        "mB",
+        "limit"
+      ],
+      "objectives": [
+        "talk-hours"
+      ]
+    },
+    {
+      "dimension": "hours",
+      "case": "dismissed",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-hours"
+      ]
+    },
+    {
+      "dimension": "hours",
+      "case": "explicit_no_constraint",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-hours"
+      ]
+    },
+    {
+      "dimension": "onsite",
+      "case": "pending",
+      "confirmed": false,
+      "constraints_confirmed": false,
+      "projected": [],
+      "status": null,
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-onsite"
+      ]
+    },
+    {
+      "dimension": "onsite",
+      "case": "confirmed",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [
+        "talk-onsite_max"
+      ],
+      "status": {
+        "A": "ACCEPT",
+        "B": "REJECT"
+      },
+      "active": [
+        "mA",
+        "mB",
+        "limit"
+      ],
+      "objectives": [
+        "talk-onsite"
+      ]
+    },
+    {
+      "dimension": "onsite",
+      "case": "dismissed",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-onsite"
+      ]
+    },
+    {
+      "dimension": "onsite",
+      "case": "explicit_no_constraint",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-onsite"
+      ]
+    },
+    {
+      "dimension": "income",
+      "case": "pending",
+      "confirmed": false,
+      "constraints_confirmed": false,
+      "projected": [],
+      "status": null,
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-income"
+      ]
+    },
+    {
+      "dimension": "income",
+      "case": "confirmed",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [
+        "talk-income_min"
+      ],
+      "status": {
+        "A": "ACCEPT",
+        "B": "REJECT"
+      },
+      "active": [
+        "mA",
+        "mB",
+        "limit"
+      ],
+      "objectives": [
+        "talk-income"
+      ]
+    },
+    {
+      "dimension": "income",
+      "case": "dismissed",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-income"
+      ]
+    },
+    {
+      "dimension": "income",
+      "case": "explicit_no_constraint",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-income"
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "name": "no context",
+      "confirmed": false,
+      "constraints_confirmed": false,
+      "projected": [],
+      "status": null,
+      "active": [],
+      "objectives": []
+    },
+    {
+      "name": "coupled",
+      "confirmed": false,
+      "constraints_confirmed": false,
+      "projected": [],
+      "status": null,
+      "active": [],
+      "objectives": []
+    },
+    {
+      "name": "one option",
+      "confirmed": false,
+      "constraints_confirmed": false,
+      "projected": [],
+      "status": null,
+      "active": [],
+      "objectives": []
+    },
+    {
+      "name": "unsupported conditional excluded",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-onsite"
+      ]
+    },
+    {
+      "name": "goal proxy objective generated",
+      "confirmed": true,
+      "constraints_confirmed": true,
+      "projected": [],
+      "status": {
+        "A": "ACCEPT",
+        "B": "ACCEPT"
+      },
+      "active": [
+        "goal",
+        "mA",
+        "mB"
+      ],
+      "objectives": [
+        "talk-income"
+      ]
+    }
+  ],
+  "dismissal_pairs": 4,
+  "confirmed_exclusions": 4,
+  "dismissed_accepts_b": 4,
+  "scope": "Original public_claims, active_claims, _project, build_state and evaluate functions; mock trace and model serialization, not full API, schema, language parser or decision hub"
+}
