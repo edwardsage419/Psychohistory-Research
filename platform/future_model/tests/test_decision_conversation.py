@@ -250,3 +250,37 @@ def test_known_relocation_exception_does_not_cover_unrelated_conditional():
     unrelated = c("onsite_max", "2", "days/week", text="如果签约，每周最多到岗2天。")
     assert blocking_constraints(base + [unrelated]) == [unrelated]
     assert blocking_constraints(base[:-1])
+
+
+@pytest.mark.parametrize("clears", [0, 1, 2])
+def test_pending_start_cannot_recreate_session_after_clear(clears):
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Event
+
+    entered, release = Event(), Event()
+
+    class BlockingProvider:
+        def propose(self, text, methods, *, allowed):
+            if allowed:
+                entered.set()
+                if not release.wait(10):
+                    raise RuntimeError("test provider timed out")
+            return {"status": "NOT_REQUESTED", "options": []}
+
+    hub = ConversationHub(provider=BlockingProvider())
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        pending = executor.submit(hub.start, Q, use_local_model=True)
+        try:
+            assert entered.wait(10)
+            for _ in range(clears):
+                hub.clear()
+            fresh = hub.start("我应该比较哪两个方案？") if clears else None
+        finally:
+            release.set()
+        if clears:
+            with pytest.raises(KeyError, match="Session invalidated"):
+                pending.result(timeout=10)
+            assert list(hub._sessions) == [fresh["session_id"]]
+        else:
+            result = pending.result(timeout=10)
+            assert list(hub._sessions) == [result["session_id"]]

@@ -166,6 +166,7 @@ class ConversationHub:
         self.records = records
         self._lock = RLock()
         self._sessions = OrderedDict()
+        self._generation = 0
 
     def status(self):
         return {"conversation_version": VERSION, "engine_version": self.hub.hub_version,
@@ -198,11 +199,15 @@ class ConversationHub:
         return deepcopy(result)
 
     def start(self, question, *, use_local_model=False):
+        with self._lock:
+            generation = self._generation
         base = DecisionStateV05.model_validate(self.hub.start(question)["state"])
         reading = interpret(question)
         row = Conversation(uuid4().hex, base, reading["domain"])
         self._ingest(row, question, reading, use_local_model)
         with self._lock:
+            if generation != self._generation:
+                raise KeyError("Session invalidated")
             self._expire()
             return self._update(row)
 
@@ -409,6 +414,7 @@ class ConversationHub:
 
     def clear(self):
         with self._lock:
+            self._generation += 1
             self._sessions.clear()
 
     def _view(self, row):
