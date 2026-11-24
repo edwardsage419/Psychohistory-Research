@@ -1,0 +1,198 @@
+{
+  "grid": {
+    "cases": 11907,
+    "exactAgreement": 11907,
+    "naiveClassificationDiffers": 2427
+  },
+  "gate": {
+    "cases": 768,
+    "unsafeAllows": 0
+  },
+  "scenarios": [
+    {
+      "id": "symmetric",
+      "B": 1,
+      "H": 1,
+      "C": 10,
+      "benefit": [
+        24,
+        72
+      ],
+      "harm": [
+        0,
+        48
+      ],
+      "net": 24,
+      "utility": [
+        14,
+        14
+      ],
+      "witnesses": [
+        {
+          "bothQuit": 48,
+          "prevented": 24,
+          "caused": 0,
+          "neither": 928,
+          "value": 14
+        },
+        {
+          "bothQuit": 0,
+          "prevented": 72,
+          "caused": 48,
+          "neither": 880,
+          "value": 14
+        }
+      ],
+      "classification": "A_STRICT",
+      "naive": 14
+    },
+    {
+      "id": "asymmetric",
+      "B": 1,
+      "H": 2,
+      "C": 10,
+      "benefit": [
+        24,
+        72
+      ],
+      "harm": [
+        0,
+        48
+      ],
+      "net": 24,
+      "utility": [
+        -34,
+        14
+      ],
+      "witnesses": [
+        {
+          "bothQuit": 48,
+          "prevented": 24,
+          "caused": 0,
+          "neither": 928,
+          "value": 14
+        },
+        {
+          "bothQuit": 0,
+          "prevented": 72,
+          "caused": 48,
+          "neither": 880,
+          "value": -34
+        }
+      ],
+      "classification": "UNRESOLVED",
+      "naive": 14
+    },
+    {
+      "id": "large_cost",
+      "B": 1,
+      "H": 1,
+      "C": 30,
+      "benefit": [
+        24,
+        72
+      ],
+      "harm": [
+        0,
+        48
+      ],
+      "net": 24,
+      "utility": [
+        -6,
+        -6
+      ],
+      "witnesses": [
+        {
+          "bothQuit": 48,
+          "prevented": 24,
+          "caused": 0,
+          "neither": 928,
+          "value": -6
+        },
+        {
+          "bothQuit": 0,
+          "prevented": 72,
+          "caused": 48,
+          "neither": 880,
+          "value": -6
+        }
+      ],
+      "classification": "B_STRICT",
+      "naive": -6
+    },
+    {
+      "id": "zero_cost",
+      "B": 1,
+      "H": 2,
+      "C": 0,
+      "benefit": [
+        24,
+        72
+      ],
+      "harm": [
+        0,
+        48
+      ],
+      "net": 24,
+      "utility": [
+        -24,
+        24
+      ],
+      "witnesses": [
+        {
+          "bothQuit": 48,
+          "prevented": 24,
+          "caused": 0,
+          "neither": 928,
+          "value": 24
+        },
+        {
+          "bothQuit": 0,
+          "prevented": 72,
+          "caused": 48,
+          "neither": 880,
+          "value": -24
+        }
+      ],
+      "classification": "UNRESOLVED",
+      "naive": 24
+    },
+    {
+      "id": "tie",
+      "B": 1,
+      "H": 1,
+      "C": 24,
+      "benefit": [
+        24,
+        72
+      ],
+      "harm": [
+        0,
+        48
+      ],
+      "net": 24,
+      "utility": [
+        0,
+        0
+      ],
+      "witnesses": [
+        {
+          "bothQuit": 48,
+          "prevented": 24,
+          "caused": 0,
+          "neither": 928,
+          "value": 0
+        },
+        {
+          "bothQuit": 0,
+          "prevented": 72,
+          "caused": 48,
+          "neither": 880,
+          "value": 0
+        }
+      ],
+      "classification": "TIE",
+      "naive": 0
+    }
+  ]
+}

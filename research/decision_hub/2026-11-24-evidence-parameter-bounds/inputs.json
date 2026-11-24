@@ -1,0 +1,51 @@
+{
+  "source": {
+    "id": "H24Q",
+    "doi": "10.1038/s41586-024-07500-2",
+    "url": "https://www.nature.com/articles/s41586-024-07500-2",
+    "priorCommit": "c81fd070e8cf3c09e2e8a1ab099a06d98ad26542",
+    "priorBlob": "cf7b32d1996107042a98cb16c504d5379af8b5da",
+    "scope": "trial group marginal quit rates; published rounded sample estimates, not known population probabilities",
+    "denominator": 1000,
+    "p0": 72,
+    "p1": 48
+  },
+  "scenarios": [
+    {
+      "id": "symmetric",
+      "B": 1,
+      "H": 1,
+      "C": 10
+    },
+    {
+      "id": "asymmetric",
+      "B": 1,
+      "H": 2,
+      "C": 10
+    },
+    {
+      "id": "large_cost",
+      "B": 1,
+      "H": 1,
+      "C": 30
+    },
+    {
+      "id": "zero_cost",
+      "B": 1,
+      "H": 2,
+      "C": 0
+    },
+    {
+      "id": "tie",
+      "B": 1,
+      "H": 1,
+      "C": 24
+    }
+  ],
+  "methodSource": {
+    "url": "https://academic.oup.com/biostatistics/article/26/1/kxaf011/8155299",
+    "title": "Sensitivity analysis for the probability of benefit in randomized controlled trials with a binary treatment and a binary outcome",
+    "scope": "publisher search excerpt of section 2 equation (1); prior Tian & Pearl (2000) attribution in source; full article not reviewed"
+  },
+  "status": "DEVELOPMENT_ONLY_FIXED_MARGINS_AND_SYNTHETIC_UTILITY"
+}
