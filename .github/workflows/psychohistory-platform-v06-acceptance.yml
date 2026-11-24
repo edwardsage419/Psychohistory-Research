@@ -84,6 +84,7 @@ jobs:
           .venv/bin/python -S -O scripts/verify_v03_guards.py > "$PH_RECEIPTS/guarantees-optimized.json"
           PYTHONOPTIMIZE=1 .venv/bin/python -S scripts/verify_v03_guards.py > "$PH_RECEIPTS/guarantees-env.json"
       - name: Install locked browser test runtime
+        id: desktop_browser
         run: |
           set -euo pipefail
           .venv/bin/python -m pip install --index-url https://pypi.org/simple --only-binary=:all: -r requirements-browser.lock
@@ -98,10 +99,15 @@ jobs:
         run: |
           set -euo pipefail
           .venv/bin/python scripts/verify_v05_regression.py
-          PH_BROWSER_WORKFLOW=v05 PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v05.json" .venv/bin/python scripts/browser_v05.py
           PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v06.json" .venv/bin/python scripts/browser_v06.py
           cat "$PH_RECEIPTS/browser-v06.json"
+      - name: Exercise the complete legacy v0.5 browser workflow
+        if: ${{ !cancelled() && steps.desktop_browser.conclusion == 'success' }}
+        run: |
+          set -euo pipefail
+          PH_BROWSER_WORKFLOW=v05 PH_BROWSER_REPORT="$PH_RECEIPTS/browser-v05.json" .venv/bin/python scripts/browser_v05.py
       - name: Verify mobile contract, offline models and local records
+        if: ${{ !cancelled() && steps.desktop_browser.conclusion == 'success' }}
         working-directory: platform/mobile
         env:
           MOBILE_BROWSER: ${{ matrix.mobile_browser }}

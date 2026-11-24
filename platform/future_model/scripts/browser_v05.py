@@ -376,7 +376,15 @@ def learning_case(page):
     assert_revision(page, deadline_edit)
 
     tab(page, '信息价值')
-    refreshed = edit_analysis(page, lambda: field(page, f'{last}来源').fill(''),
+    source = field(page, f'{last}来源')
+    expect(source).not_to_have_value('')
+
+    def clear_probability_source():
+        source.press('ControlOrMeta+A')
+        source.press('Backspace')
+        expect(source).to_have_value('')
+
+    refreshed = edit_analysis(page, clear_probability_source,
                               lambda state: not complete_probabilities(state))
     method(refreshed, 'voi_point', 'INELIGIBLE')
     method(refreshed, 'timing_investigation', 'INELIGIBLE')
