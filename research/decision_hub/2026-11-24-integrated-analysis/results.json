@@ -1,0 +1,685 @@
+{
+  "summary": {
+    "cases": 12,
+    "answer_updates": 2,
+    "receipt_controls": 8,
+    "identity_controls": 12,
+    "empty_control": 1,
+    "total": 35,
+    "correct": 35,
+    "statuses": {
+      "RESOLVED": 6,
+      "ASK": 1,
+      "BLOCKED": 1,
+      "UNRESOLVED": 2,
+      "CLARIFY": 1,
+      "OUT_OF_SCOPE": 1
+    }
+  },
+  "rows": [
+    {
+      "id": "housing_monthly",
+      "text": "房租每月最多3000元，A每月2500元，B每月3500元，选便宜的。",
+      "expected": {
+        "status": "RESOLVED",
+        "leaders": [
+          "A"
+        ],
+        "reject": [
+          "B"
+        ],
+        "ask": null
+      },
+      "actual": {
+        "status": "RESOLVED",
+        "leaders": [
+          "A"
+        ],
+        "reject": [
+          "B"
+        ],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {},
+            "result": {
+              "states": {
+                "A": "ACCEPT",
+                "B": "REJECT"
+              },
+              "leaders": [
+                "A"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "learning_strict",
+      "text": "培训费用之前最多4000，现在必须低于3000。A 3000元，B 2900元。",
+      "expected": {
+        "status": "RESOLVED",
+        "leaders": [
+          "B"
+        ],
+        "reject": [
+          "A"
+        ],
+        "ask": null
+      },
+      "actual": {
+        "status": "RESOLVED",
+        "leaders": [
+          "B"
+        ],
+        "reject": [
+          "A"
+        ],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {},
+            "result": {
+              "states": {
+                "A": "REJECT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "B"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "career_exception",
+      "text": "A薪资高但需搬家，每周到岗不超过两天而且家人同意才可以，B不用搬家。",
+      "expected": {
+        "status": "ASK",
+        "leaders": [],
+        "reject": [],
+        "ask": "family"
+      },
+      "actual": {
+        "status": "ASK",
+        "leaders": [],
+        "reject": [],
+        "ask": "family",
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {
+              "family": false
+            },
+            "result": {
+              "states": {
+                "A": "REJECT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "B"
+              ],
+              "known": true
+            }
+          },
+          {
+            "world": {
+              "family": true
+            },
+            "result": {
+              "states": {
+                "A": "ACCEPT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "A"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "career_no_question",
+      "text": "A需搬家，但每周要到岗五天，家人是否同意未知；只有不超过两天且家人同意才可搬。",
+      "expected": {
+        "status": "RESOLVED",
+        "leaders": [
+          "B"
+        ],
+        "reject": [
+          "A"
+        ],
+        "ask": null
+      },
+      "actual": {
+        "status": "RESOLVED",
+        "leaders": [
+          "B"
+        ],
+        "reject": [
+          "A"
+        ],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {
+              "family": false
+            },
+            "result": {
+              "states": {
+                "A": "REJECT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "B"
+              ],
+              "known": true
+            }
+          },
+          {
+            "world": {
+              "family": true
+            },
+            "result": {
+              "states": {
+                "A": "REJECT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "B"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "time_tradeoff",
+      "text": "A收入更高，B有更多自由时间，两者底线都满足。",
+      "expected": {
+        "status": "RESOLVED",
+        "leaders": [
+          "A",
+          "B"
+        ],
+        "reject": [],
+        "ask": null
+      },
+      "actual": {
+        "status": "RESOLVED",
+        "leaders": [
+          "A",
+          "B"
+        ],
+        "reject": [],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {},
+            "result": {
+              "states": {
+                "A": "ACCEPT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "A",
+                "B"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "uncertain_scenarios",
+      "text": "两种方案在两个情景的效用已确认，A为0和4，B为1和1。我想减少最大错失收益。",
+      "expected": {
+        "status": "RESOLVED",
+        "leaders": [
+          "A"
+        ],
+        "reject": [],
+        "ask": null
+      },
+      "actual": {
+        "status": "RESOLVED",
+        "leaders": [
+          "A"
+        ],
+        "reject": [],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "C029@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {},
+            "result": {
+              "states": {
+                "A": "ACCEPT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "A"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "shared_budget",
+      "text": "两个培训要同时参加，共用一笔预算。",
+      "expected": {
+        "status": "BLOCKED",
+        "leaders": [],
+        "reject": [],
+        "ask": null
+      },
+      "actual": {
+        "status": "BLOCKED",
+        "leaders": [],
+        "reject": [],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0"
+          ],
+          "blocked": [
+            "C035@1.0.0"
+          ]
+        }
+      }
+    },
+    {
+      "id": "unit_mismatch",
+      "text": "每月支出最多3000，A给的是年度支出，B每月2500。",
+      "expected": {
+        "status": "UNRESOLVED",
+        "leaders": [],
+        "reject": [],
+        "ask": null
+      },
+      "actual": {
+        "status": "UNRESOLVED",
+        "leaders": [],
+        "reject": [],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {},
+            "result": {
+              "states": {
+                "A": "UNRESOLVED",
+                "B": "ACCEPT"
+              },
+              "leaders": [],
+              "known": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pending_semantics",
+      "text": "我还没确定每月预算，也没确认比较范围。",
+      "expected": {
+        "status": "CLARIFY",
+        "leaders": [],
+        "reject": [],
+        "ask": null
+      },
+      "actual": {
+        "status": "CLARIFY",
+        "leaders": [],
+        "reject": [],
+        "ask": null
+      }
+    },
+    {
+      "id": "known_unavailable",
+      "text": "A培训报名已结束，B仍可报名，目标为学习效果。",
+      "expected": {
+        "status": "RESOLVED",
+        "leaders": [
+          "B"
+        ],
+        "reject": [
+          "A"
+        ],
+        "ask": null
+      },
+      "actual": {
+        "status": "RESOLVED",
+        "leaders": [
+          "B"
+        ],
+        "reject": [
+          "A"
+        ],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {},
+            "result": {
+              "states": {
+                "A": "REJECT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "B"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unknown_values",
+      "text": "A和B均可行，A效果未知，B已知。",
+      "expected": {
+        "status": "UNRESOLVED",
+        "leaders": [],
+        "reject": [],
+        "ask": null
+      },
+      "actual": {
+        "status": "UNRESOLVED",
+        "leaders": [],
+        "reject": [],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {},
+            "result": {
+              "states": {
+                "A": "ACCEPT",
+                "B": "ACCEPT"
+              },
+              "leaders": [],
+              "known": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "scope_outside",
+      "text": "我心情不佳，想知道原因。",
+      "expected": {
+        "status": "OUT_OF_SCOPE",
+        "leaders": [],
+        "reject": [],
+        "ask": null
+      },
+      "actual": {
+        "status": "OUT_OF_SCOPE",
+        "leaders": [],
+        "reject": [],
+        "ask": null
+      }
+    }
+  ],
+  "updates": [
+    {
+      "family": false,
+      "revision": 2,
+      "actual": {
+        "status": "RESOLVED",
+        "leaders": [
+          "B"
+        ],
+        "reject": [
+          "A"
+        ],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {
+              "family": false
+            },
+            "result": {
+              "states": {
+                "A": "REJECT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "B"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "family": true,
+      "revision": 2,
+      "actual": {
+        "status": "RESOLVED",
+        "leaders": [
+          "A"
+        ],
+        "reject": [],
+        "ask": null,
+        "plan": {
+          "order": [
+            "c028_interval_feasibility@1.0.0",
+            "pareto@1.0.0"
+          ],
+          "blocked": []
+        },
+        "rows": [
+          {
+            "world": {
+              "family": true
+            },
+            "result": {
+              "states": {
+                "A": "ACCEPT",
+                "B": "ACCEPT"
+              },
+              "leaders": [
+                "A"
+              ],
+              "known": true
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "controls": [
+    {
+      "id": "exact",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "id": "changed_revision",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "revoked",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "restored_old_epoch",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "changed_same_revision",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "tampered_output",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "fabricated_snapshot",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "id": "fresh_revision",
+      "expected": true,
+      "actual": true
+    }
+  ],
+  "admission": [
+    {
+      "kind": "exact",
+      "key": "c028_interval_feasibility@1.0.0",
+      "actual": true
+    },
+    {
+      "kind": "wrong_blob",
+      "key": "c028_interval_feasibility@1.0.0",
+      "actual": false
+    },
+    {
+      "kind": "wrong_path",
+      "key": "c028_interval_feasibility@1.0.0",
+      "actual": false
+    },
+    {
+      "kind": "wrong_version",
+      "key": "c028_interval_feasibility@1.0.0",
+      "actual": false
+    },
+    {
+      "kind": "exact",
+      "key": "pareto@1.0.0",
+      "actual": true
+    },
+    {
+      "kind": "wrong_blob",
+      "key": "pareto@1.0.0",
+      "actual": false
+    },
+    {
+      "kind": "wrong_path",
+      "key": "pareto@1.0.0",
+      "actual": false
+    },
+    {
+      "kind": "wrong_version",
+      "key": "pareto@1.0.0",
+      "actual": false
+    },
+    {
+      "kind": "exact",
+      "key": "C029@1.0.0",
+      "actual": true
+    },
+    {
+      "kind": "wrong_blob",
+      "key": "C029@1.0.0",
+      "actual": false
+    },
+    {
+      "kind": "wrong_path",
+      "key": "C029@1.0.0",
+      "actual": false
+    },
+    {
+      "kind": "wrong_version",
+      "key": "C029@1.0.0",
+      "actual": false
+    }
+  ],
+  "empty_control": {
+    "status": "BLOCKED",
+    "leaders": [],
+    "reject": [],
+    "ask": null,
+    "plan": {
+      "order": [
+        "c028_interval_feasibility@1.0.0",
+        "pareto@1.0.0"
+      ],
+      "blocked": []
+    }
+  }
+}
