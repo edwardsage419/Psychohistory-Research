@@ -1,0 +1,95 @@
+{
+  "execution": "Native Python fragment executed in local research runtime; aggregate transcription of actual stdout, full outputs reproducible by scripts",
+  "source": {
+    "commit": "96b4293aa6b4d3c4cf16ece126e4dff07f25874f",
+    "blob": "fff9d6c8e20c6a57c4ae9756bf5d6fe0e81f61b4",
+    "fragmentChecks": [
+      {
+        "block": "option constants",
+        "fnv": "7c807535",
+        "length": 990
+      },
+      {
+        "block": "option functions",
+        "fnv": "52e14116",
+        "length": 3452
+      },
+      {
+        "block": "_HEDGE",
+        "fnv": "b22a5649",
+        "length": 83
+      },
+      {
+        "block": "_ONSITE",
+        "fnv": "b1beb7fa",
+        "length": 83
+      },
+      {
+        "block": "_MOVE",
+        "fnv": "c7aa43af",
+        "length": 49
+      },
+      {
+        "block": "_COST",
+        "fnv": "b318a45b",
+        "length": 130
+      },
+      {
+        "block": "_INCOME",
+        "fnv": "c763f911",
+        "length": 160
+      },
+      {
+        "block": "_HOUR",
+        "fnv": "c27fb60f",
+        "length": 39
+      }
+    ],
+    "localFragmentSHA256": "3e9da3a410b102c4bd443e8c1af38264a6384ef24b6c7beed14da04f81e55074",
+    "localProbeSHA256": "759944ad919e193177dd5a430aed822165df33cf90a7612a17d263603e501759",
+    "localFullOutputSHA256": "c53053add7fdc45ac962dcac31a8849080a5364ad4eb4d6fb91ed134b193f3b9"
+  },
+  "development": {
+    "cases": 116,
+    "groups": 12,
+    "nonActionCases": 62,
+    "baseline": {
+      "action_cases": 54,
+      "action_exact": 41,
+      "false_action_cases": 61,
+      "wrong_action_cases": 13,
+      "action_abstain": 0
+    },
+    "candidate": {
+      "action_cases": 54,
+      "action_exact": 40,
+      "false_action_cases": 0,
+      "wrong_action_cases": 0,
+      "action_abstain": 14
+    },
+    "revised": {
+      "action_cases": 54,
+      "action_exact": 53,
+      "false_action_cases": 0,
+      "wrong_action_cases": 0,
+      "action_abstain": 1
+    },
+    "role_exact": 102,
+    "revised_role_exact": 115,
+    "remaining": "我想比较咖啡店和图书馆"
+  },
+  "challenge": {
+    "cases": 16,
+    "roleExact": 2,
+    "baselineFalse": 10,
+    "candidateFalse": 3,
+    "actionCases": 6,
+    "actionExact": 1,
+    "falseExamples": [
+      "我朋友想比较留在原公司和接受新岗位",
+      "如果只是替同事比较续租旧房和搬去新房",
+      "这是假设：我想比较接受全职和选择兼职"
+    ],
+    "status": "SAME_AUTHOR_DEVELOPMENT_CHALLENGE_FAILED"
+  }
+}
