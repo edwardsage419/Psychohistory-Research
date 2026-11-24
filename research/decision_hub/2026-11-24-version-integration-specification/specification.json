@@ -1,0 +1,701 @@
+{
+  "specVersion": "v0.7-candidate-0.1",
+  "base": "de3e0ebe8bf2b9af0744b6fb619eb43f1d75ff1e",
+  "pr61": {
+    "head": "96b4293aa6b4d3c4cf16ece126e4dff07f25874f",
+    "base": "e3dd603b0784c2e2b9edbef7056e82f727bddbad",
+    "state": "OPEN_DRAFT",
+    "mergeable": true,
+    "authorReport": {
+      "path": "platform/future_model/reports/V06_ACCEPTANCE.md",
+      "blob": "366446c5c570a6afe653317058c4a4adfe556cbf",
+      "independent": "NOT_RUN"
+    }
+  },
+  "priorIndexBlob": "2f53afd2c0c1c6ecd791f566e73d067e19b4d174",
+  "assets": [
+    {
+      "round": 1,
+      "path": "research/decision_hub/2026-11-24-confirmed-constraint-projection-coverage.py",
+      "blob": "ba614d3df300c3a890d23e090c3709dfa746e025",
+      "stage": "understand",
+      "capability": "coverage",
+      "evidence": "SYNTHETIC",
+      "priority": "core",
+      "description": "确认硬约束不得丢失",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 2,
+      "path": "research/decision_hub/2026-11-24-semantic-revision/README.md",
+      "blob": "801d48d62a05659d3afedf1f56a555afa12c5236",
+      "stage": "understand",
+      "capability": "revision_condition",
+      "evidence": "SYNTHETIC",
+      "priority": "core",
+      "description": "修订及条件树",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 3,
+      "path": "research/decision_hub/2026-11-24-retrieval-routing/README.md",
+      "blob": "c0301e9a0c9371cc41a3fdecff2b2e9f18492912",
+      "stage": "discover",
+      "capability": "registry_gate",
+      "evidence": "SYNTHETIC",
+      "priority": "core",
+      "description": "发现与执行隔离",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 4,
+      "path": "research/decision_hub/2026-11-24-composition-dispatch/README.md",
+      "blob": "8953af15d57350d892c5dddd401c5c2bdd6f237d",
+      "stage": "compute",
+      "capability": "typed_dependency",
+      "evidence": "SYNTHETIC",
+      "priority": "core",
+      "description": "类型和依赖闭包",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 5,
+      "path": "research/decision_hub/2026-11-24-minimal-clarification/README.md",
+      "blob": "762053d80d444145e5b76ddd96a2266919174b52",
+      "stage": "understand",
+      "capability": "question_policy",
+      "evidence": "SYNTHETIC",
+      "priority": "core",
+      "description": "有限世界最少追问",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 6,
+      "path": "research/decision_hub/2026-11-24-integrated-analysis/README.md",
+      "blob": "9f3294756c22b012a53863df47984043065f4de7",
+      "stage": "compute",
+      "capability": "snapshot_receipt",
+      "evidence": "SYNTHETIC",
+      "priority": "core",
+      "description": "确认后计算链",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 7,
+      "path": "research/decision_hub/2026-11-24-product-value-evaluation/README.md",
+      "blob": "1050e4beac46e9045d782117e497e25abbb4aeb5",
+      "stage": "validate",
+      "capability": "comparative_evaluation",
+      "evidence": "DESIGN_SYNTHETIC",
+      "priority": "core",
+      "description": "端到端独立对照设计",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 8,
+      "path": "research/decision_hub/2026-11-24-method-corpus-index/README.md",
+      "blob": "ce48cbbe0f922b96e166fc50326e9d57462d66cd",
+      "stage": "discover",
+      "capability": "source_index",
+      "evidence": "INVENTORY_PARTIAL_REVIEW",
+      "priority": "core",
+      "description": "154文档身份与15方法映射",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 9,
+      "path": "research/decision_hub/2026-11-24-language-evidence-corpus/README.md",
+      "blob": "27ba2f09121efdc4bf57f78a0039877d1bc86f92",
+      "stage": "understand",
+      "capability": "language_dev_corpus",
+      "evidence": "SYNTHETIC_CORPUS",
+      "priority": "core",
+      "description": "36轮白话开发材料",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 10,
+      "path": "research/decision_hub/2026-11-24-external-evidence-conflict/REVIEW_V2.md",
+      "blob": "d15a063f9c01524ca64745121d5a96791939b5fe",
+      "stage": "evidence",
+      "capability": "source_scope",
+      "evidence": "REPORTED_AGGREGATES_SYNTHETIC_GATE",
+      "priority": "core",
+      "description": "外部证据口径及冲突",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 11,
+      "path": "research/decision_hub/2026-11-24-evidence-parameter-bounds/README.md",
+      "blob": "c864cb58cb6ca7f327bcefe251ef5227493850ee",
+      "stage": "evidence",
+      "capability": "counterfactual_bounds",
+      "evidence": "CONDITIONAL_ALGEBRA",
+      "priority": "research",
+      "description": "联合反事实范围",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 12,
+      "path": "research/decision_hub/2026-11-24-learning-schedule/README.md",
+      "blob": "72d7ae55999a34e1dabbfeab116dfcf199254ce1",
+      "stage": "compute",
+      "capability": "retention_schedule",
+      "evidence": "SOURCE_MODEL_SYNTHETIC",
+      "priority": "research",
+      "description": "复习期限",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 13,
+      "path": "research/decision_hub/2026-11-24-adaptive-resource-allocation/README.md",
+      "blob": "7485bf6a5e6d4ea037fedebed0b752655f047000",
+      "stage": "compute",
+      "capability": "adaptive_allocation",
+      "evidence": "SYNTHETIC",
+      "priority": "research",
+      "description": "有限资源动态规划",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 14,
+      "path": "research/decision_hub/2026-11-24-real-learning-prediction/README.md",
+      "blob": "0c4a40989cfa88bf4a49ed05da0156bf75b56ab5",
+      "stage": "predict",
+      "capability": "learner_holdout",
+      "evidence": "REAL_DEV_PREDICTION",
+      "priority": "research",
+      "description": "已见来源学习预测",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 15,
+      "path": "research/decision_hub/2026-11-24-forgetting-model-competition/README.md",
+      "blob": "be570b1e02504b02d398daef536269783bde716d",
+      "stage": "predict",
+      "capability": "model_competition",
+      "evidence": "REAL_DEV_PREDICTION",
+      "priority": "research",
+      "description": "遗忘与简单基线",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 16,
+      "path": "research/decision_hub/2026-11-24-nested-predictive-combination/README.md",
+      "blob": "e9cff27fdd84ab17c1add3221018ed5d48ebc8eb",
+      "stage": "predict",
+      "capability": "nested_combination",
+      "evidence": "REAL_DEV_PREDICTION",
+      "priority": "research",
+      "description": "动态残差修正",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 17,
+      "path": "research/decision_hub/2026-11-24-online-model-tracking/REVIEW_V2.md",
+      "blob": "ab81e05240187bc4504f869aadf62db243377ebc",
+      "stage": "learn",
+      "capability": "online_tracking",
+      "evidence": "REAL_REPLAY_SYNTHETIC",
+      "priority": "research",
+      "description": "对数域模型组合勘误",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 18,
+      "path": "research/decision_hub/2026-11-24-feedback-replay-and-rollback/README.md",
+      "blob": "f55a6fb6a801bb765b96530ce71b45e58d802852",
+      "stage": "learn",
+      "capability": "feedback_receipt",
+      "evidence": "SYNTHETIC",
+      "priority": "core",
+      "description": "反馈修订与代次隔离",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 19,
+      "path": "research/decision_hub/2026-11-24-sequential-model-admission/README.md",
+      "blob": "a2decfe7ff548aa98c94477c247bb50b6961a49f",
+      "stage": "learn",
+      "capability": "sequential_review",
+      "evidence": "DERIVATION_SYNTHETIC",
+      "priority": "research",
+      "description": "连续比较与错误率预算",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 20,
+      "path": "research/decision_hub/2026-11-24-prediction-to-action-value/README.md",
+      "blob": "e59e6da8e2c00899d5d23ee20e1c187853a06b94",
+      "stage": "decide",
+      "capability": "cost_loss",
+      "evidence": "REAL_REPLAY_HYPOTHETICAL",
+      "priority": "research",
+      "description": "预测和行动损失分离",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 21,
+      "path": "research/decision_hub/2026-11-24-offline-policy-evaluation/README.md",
+      "blob": "6e7ed462df54b6d763f01fd91bab245173542105",
+      "stage": "validate",
+      "capability": "offline_policy",
+      "evidence": "REAL_ROW_LEVEL_BLOCKED",
+      "priority": "blocked",
+      "description": "NSW身份和设计未核",
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED",
+      "identityMatched": true
+    },
+    {
+      "round": 22,
+      "path": "research/decision_hub/2026-11-24-capability-integration/README.md",
+      "blob": "93b85fb9ce9da73a1166beebac9d15a8e0c73af5",
+      "capability": "接口与资格传递",
+      "evidence": "SYNTHETIC_CONTRACT",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 23,
+      "path": "research/decision_hub/2026-11-24-native-option-role-audit/README.md",
+      "blob": "8b184edb783c69a59d2e9867c007b184afc16961",
+      "capability": "原生语言反例",
+      "evidence": "NATIVE_FRAGMENT_CHALLENGE_FAILED",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 24,
+      "path": "research/decision_hub/2026-11-24-semantic-proposal-contract/README.md",
+      "blob": "f7aee2c6392fa4588b717bb0c311cb253c48dd1e",
+      "capability": "多轮语义候选",
+      "evidence": "SYNTHETIC_CONTRACT",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 25,
+      "path": "research/decision_hub/2026-11-24-local-model-evaluation-runner/README.md",
+      "blob": "25a8d05c03ad9f30cc6f307277725cee99ea03c6",
+      "capability": "本地对照评价",
+      "evidence": "MOCK_CORE_ONLY",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 26,
+      "path": "research/decision_hub/2026-11-24-constraint-omission-local-repair/README.md",
+      "blob": "7e9c9003fefd22d39010d92e6ca39f9d9ebf6aac",
+      "capability": "约束遗漏和局部修复",
+      "evidence": "SYNTHETIC_SCANNER_FAILED",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 27,
+      "path": "research/decision_hub/2026-11-24-partial-analysis-dispatch/README.md",
+      "blob": "08051d3b029ebb3acca1380bdf5b92ad99d8a44d",
+      "capability": "局部分析与依赖失效",
+      "evidence": "SYNTHETIC_FINITE",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 28,
+      "path": "research/decision_hub/2026-11-24-content-method-retrieval/README.md",
+      "blob": "36ca07db56fc64865d6cc7a5db87384583604844",
+      "capability": "双语正文检索",
+      "evidence": "REPOSITORY_SUBSET",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 29,
+      "path": "research/decision_hub/2026-11-24-native-method-contract-index/README.md",
+      "blob": "585bce3e9c878e2ead241e9fefc6f93937780790",
+      "capability": "原生接口索引",
+      "evidence": "STATIC_SOURCE_AND_PARTIAL_INDEX",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 30,
+      "path": "research/decision_hub/2026-11-24-native-state-feasibility-bridge/README.md",
+      "blob": "0b56dae921c6e16850a1b9681b69344329db3f99",
+      "capability": "原生状态和底线",
+      "evidence": "UNSUPPORTED_RUNTIME_FRAGMENT",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 31,
+      "path": "research/decision_hub/2026-11-24-native-regret-validation/README.md",
+      "blob": "a04076828e5094365f3efcbb1b22f5dc8b58cd44",
+      "capability": "原生后悔",
+      "evidence": "UNSUPPORTED_RUNTIME_FRAGMENT",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 32,
+      "path": "research/decision_hub/2026-11-24-native-scoring-validation/README.md",
+      "blob": "222642e89b38b2927b56b54854a55d380e3a9bdc",
+      "capability": "原生权重和评分",
+      "evidence": "UNSUPPORTED_RUNTIME_FRAGMENT",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    },
+    {
+      "round": 33,
+      "path": "research/decision_hub/2026-11-24-native-voi-timing-core/README.md",
+      "blob": "77d269d669df170f767b90111b3430449a2b0078",
+      "capability": "原生信息价值和时机",
+      "evidence": "UNSUPPORTED_RUNTIME_FRAGMENT",
+      "identityMatched": true,
+      "productionAdmission": "NOT_GRANTED_BY_THIS_RESEARCH",
+      "independentAcceptance": "NOT_ESTABLISHED"
+    }
+  ],
+  "corrections": [
+    {
+      "path": "research/decision_hub/2026-11-24-product-value-evaluation/CORRECTION.md",
+      "blob": "49cb38571f963c64358bfcb7840672b681d134e1",
+      "rule": "USE_CORRECTION_FOR_AFFECTED_CLAIMS; preserve historical results"
+    },
+    {
+      "path": "research/decision_hub/2026-11-24-external-evidence-conflict/REVIEW_V2.md",
+      "blob": "d15a063f9c01524ca64745121d5a96791939b5fe",
+      "rule": "USE_CORRECTION_FOR_AFFECTED_CLAIMS; preserve historical results"
+    },
+    {
+      "path": "research/decision_hub/2026-11-24-online-model-tracking/REVIEW_V2.md",
+      "blob": "ab81e05240187bc4504f869aadf62db243377ebc",
+      "rule": "USE_CORRECTION_FOR_AFFECTED_CLAIMS; preserve historical results"
+    },
+    {
+      "path": "research/decision_hub/2026-11-24-constraint-omission-local-repair/CORRECTION.md",
+      "blob": "427b56f4966efb1e8f65953ad2395aff985fe7df",
+      "rule": "USE_CORRECTION_FOR_AFFECTED_CLAIMS; preserve historical results"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "B01",
+      "title": "基线与兼容",
+      "rounds": [
+        7,
+        22,
+        25,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "scope": "复核#61独立验收、现main与待审分支差异；经所有者授权才确定基线；复用v0.5/v0.6、手机、API/CLI与恢复路径；禁止重复合并#59/#60。",
+      "acceptance": "锁定真实提交、依赖与运行环境；支持Python3.12及固定Pydantic；旧功能完整回归、移动跨端契约和恢复通过；不以作者报告替代独立验收。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B02",
+      "title": "开放白话入口与语义账本",
+      "rounds": [
+        1,
+        2,
+        5,
+        9,
+        23,
+        24,
+        25,
+        26
+      ],
+      "scope": "本地Qwen可选提议角色、主体、时态、逻辑极性、条件、量值、归属、单位、候选及修订；保留原文证据、冲突、未知；可信宿主核对覆盖，明确确认与撤回；不能只依赖正则或逐字匹配。",
+      "acceptance": "固定独立情节，测角色/条件/约束遗漏、错确认、撤回、重复锚点、假设及第三方；初答无强制技术字段，通常至多一个关键追问；重大风险需要补问时说明原因。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B03",
+      "title": "本地推理和降级",
+      "rounds": [
+        23,
+        24,
+        25
+      ],
+      "scope": "复用现有环回传输、白名单及逐轮授权；完成实际JSON输出与请求限额；无服务、超时、非法输出、拒绝授权时提供可用规则/结构化降级；禁止自动训练或调用计费API。",
+      "acceptance": "实机记录Ollama版本、模型digest、量化、资源和原始公开样本响应；完整对照原规则、自然回复、结构化回复、同份回复核验；失败/拒答计入分母。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B04",
+      "title": "科学检索与来源资格",
+      "rounds": [
+        3,
+        8,
+        10,
+        11,
+        22,
+        28,
+        29
+      ],
+      "scope": "构建最新许可合规全文索引；保留路径、blob、来源版本、证据类型和适用边界；语言模型只提出检索线索，真正的执行资格来自原生注册表；先本地库，可选用户授权免费外部查证，离线明确限制。",
+      "acceptance": "对固定154份历史清单按blob重建，更新版本另记；盲测正负及多意图检索；同编号、来源变更、冲突、因果迁移和未核验引用不能授权；timing_actions变更隔离待审。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B05",
+      "title": "可信输入投影与覆盖",
+      "rounds": [
+        1,
+        2,
+        6,
+        24,
+        26,
+        30
+      ],
+      "scope": "原文候选到正规化量值和DecisionState；结构化义务覆盖、单位/周期/时域/币种、严格/非严格比较、选项与测量引用、来源身份。联合约束未获方法资格则保持未知。",
+      "acceptance": "独立测试每一已确认底线必须有有效投影，漏项不能使未知变通过，错误局部不得静默删除，联合预算反例必须保留UNKNOWN；不生成虚构概率或共同尺度。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B06",
+      "title": "按需模型调度与局部分析",
+      "rounds": [
+        3,
+        4,
+        5,
+        6,
+        22,
+        27,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "scope": "稳定方法端口，版本化依赖DAG、缺口代码和目标适配；注册表原生describe/validate/execute；局部描述和条件性结论独立出口，计算收据与当前修订绑定；全局安全门控优先于优化。",
+      "acceptance": "15个既有入口分别跑合法、缺项、不适用、异常、边界及独立数值基线；阻断未授权、错误依赖、未确认和过期输出；允许局部结果不被无关未知阻塞。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B07",
+      "title": "解释、图表和行动规划",
+      "rounds": [
+        5,
+        6,
+        7,
+        11,
+        20,
+        27,
+        31,
+        32,
+        33
+      ],
+      "scope": "首答直接给有依据的差异、关键限制、条件性建议；模型选择理由、可行性、区间、权重反转、后悔、信息价值及等待边界按需展开；图表、文字与结果快照一致；用户选择及行动授权分离。",
+      "acceptance": "用户修改参数后图文同修订，旧结果不可覆盖；未确定权重时仍做分维度比较；没有证据的未知不得改为概率；确认已知范围后才显示阈值；真实首次用户测试操作与理解。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B08",
+      "title": "可追溯证据及派生结果",
+      "rounds": [
+        10,
+        11,
+        20,
+        21,
+        22,
+        27,
+        30,
+        31,
+        32,
+        33
+      ],
+      "scope": "每个输出记录原始证据身份、模型和版本、输入、假设、scope、cutoff及真实父依赖；区分来源报告、合成、观察、预测、因果、条件建议；保留冲突、证据许可及审计。",
+      "acceptance": "负控：来源文字非空、相同编号、过期材料、合成预测、未选反事实、情景变事实、无条件效应外推不能获得现实计算资格；跨模块语义资格不能只由布尔标记声称。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B09",
+      "title": "隐私、记录、复盘及恢复",
+      "rounds": [
+        2,
+        7,
+        18,
+        19,
+        22,
+        24,
+        27
+      ],
+      "scope": "默认临时分析；本地保存、跨会话使用、反馈、研究和训练单独授权；事件时间与修订历史；原预测不重写，未选结果未知；撤回/删除/恢复以真实持久化权限状态为准；模型回退另立版本。",
+      "acceptance": "跨会话、过期回调、重复请求、并发、断电、备份/旧版本恢复、授权代次、删除、导出验证；真实设备缓存与VoiceOver/冷启动检查；无私人数据公开。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B10",
+      "title": "科研候选与可扩展接口",
+      "rounds": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22
+      ],
+      "scope": "提供独立研究候选适配及版本登记接口；学习预测、资源分配、在线更新、决策价值及因果部分识别只在隔离沙盒；NSW维持阻塞；C035/C036及其他候选不自动上线。",
+      "acceptance": "测试候选无法成为生产执行入口、无默认权重变动、无自动更新；独立验收和所有者明确授权后逐方法晋级。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B11",
+      "title": "真实产品增量与独立验收",
+      "rounds": [
+        7,
+        9,
+        23,
+        24,
+        25,
+        26,
+        28,
+        29
+      ],
+      "scope": "锁定开发集、独立留出、对照臂与评审；同原始问题/证据、同回答预算，盲评普通ChatGPT、原始Qwen、v0.6、候选及规则基线；结构化能力与端到端分开。",
+      "acceptance": "预注册主指标、分母、最小改善和样本计划；零关键错误为固定验收门槛而非现实零风险；报告正确可操作覆盖、正确未知、漏拒、耗时及真实负担，优越性不足保留UNKNOWN。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    },
+    {
+      "id": "B12",
+      "title": "Mac与iPhone端到端",
+      "rounds": [
+        7,
+        22,
+        25,
+        27
+      ],
+      "scope": "先真实Mac本地推理，再授权范围内实现手机到Mac安全连接；不开放公网、不默认转发个人数据；保留手机离线确定性分析，Mac关机或网络断开可降级。",
+      "acceptance": "真实设备、认证、连接撤销、网络故障、离线冷启动、隐私与一致性；托管macOS和模拟浏览器不能代替实体设备；无法取得实机则明确受阻，不发布完成结论。",
+      "implementation": "NOT_AUTHORIZED",
+      "acceptanceState": "NOT_RUN"
+    }
+  ],
+  "gates": [
+    {
+      "id": "baseline_independent_review",
+      "state": "NOT_RUN",
+      "owner": "独立验收轨"
+    },
+    {
+      "id": "owner_baseline_and_development_authorization",
+      "state": "NOT_GRANTED",
+      "owner": "所有者"
+    },
+    {
+      "id": "frozen_holdout_and_metric_plan",
+      "state": "NOT_ESTABLISHED",
+      "owner": "独立验收轨"
+    },
+    {
+      "id": "supported_runtime_full_registry",
+      "state": "NOT_RUN",
+      "owner": "Codex及独立验收轨"
+    },
+    {
+      "id": "real_mac_ollama",
+      "state": "NOT_RUN",
+      "owner": "产品轨及用户控制设备"
+    },
+    {
+      "id": "real_iphone",
+      "state": "NOT_RUN",
+      "owner": "产品轨及用户控制设备"
+    },
+    {
+      "id": "implementation_and_regression",
+      "state": "NOT_RUN",
+      "owner": "Codex"
+    },
+    {
+      "id": "independent_product_comparison",
+      "state": "NOT_RUN",
+      "owner": "独立验收轨"
+    },
+    {
+      "id": "privacy_and_recovery",
+      "state": "NOT_RUN",
+      "owner": "独立验收轨"
+    },
+    {
+      "id": "owner_merge_and_deploy_authorization",
+      "state": "NOT_GRANTED",
+      "owner": "所有者"
+    }
+  ],
+  "formalDevelopmentAuthorization": "NOT_GRANTED",
+  "notes": "Source tree identity crosscheck only; previous research results retained with original evidence scope. No re-execution of 33 studies. Candidate specification, not a development order."
+}
