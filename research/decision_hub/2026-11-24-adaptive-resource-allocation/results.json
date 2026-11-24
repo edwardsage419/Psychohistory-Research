@@ -1,0 +1,149 @@
+{
+  "example": {
+    "fixed": {
+      "v": 1.8974349999999998,
+      "counts": [
+        4,
+        1
+      ]
+    },
+    "adaptive": {
+      "v": 1.9628913253750004,
+      "action": 0,
+      "paths": [
+        {
+          "correct": true,
+          "prob": 0.445,
+          "posterior": 0.7078651685393258,
+          "next": 0.7955056179775281,
+          "following": 0,
+          "conditionalValue": 2.090674880337079
+        },
+        {
+          "correct": false,
+          "prob": 0.555,
+          "posterior": 0.06306306306306306,
+          "next": 0.34414414414414407,
+          "following": 0,
+          "conditionalValue": 1.8604342407657661
+        }
+      ]
+    },
+    "greedy": {
+      "v": 1.9628913253750004,
+      "action": 0,
+      "paths": [
+        {
+          "correct": true,
+          "prob": 0.445,
+          "posterior": 0.7078651685393258,
+          "next": 0.7955056179775281,
+          "following": 1,
+          "conditionalValue": 2.090674880337079
+        },
+        {
+          "correct": false,
+          "prob": 0.555,
+          "posterior": 0.06306306306306306,
+          "next": 0.34414414414414407,
+          "following": 0,
+          "conditionalValue": 1.8604342407657661
+        }
+      ]
+    },
+    "hiddenCheck": 1.9628913253750002
+  },
+  "grid": {
+    "cases": 432,
+    "feasible": 360,
+    "infeasible": 72,
+    "dpAgreement": 432,
+    "hiddenAgreement": 360,
+    "adaptiveBeatsFixed": 215,
+    "adaptiveBeatsGreedy": 143,
+    "allPoliciesFeasible": 360,
+    "maxHiddenError": 1.3322676295501878e-15,
+    "maxAdaptGain": 0.11136974448000103,
+    "maxGreedyGap": 0.03550359532800007,
+    "maxExample": {
+      "skills": [
+        {
+          "p": 0.2,
+          "T": 0.15,
+          "G": 0.2,
+          "S": 0.1,
+          "w": 1,
+          "c": 1,
+          "min": 1
+        },
+        {
+          "p": 0.8,
+          "T": 0.15,
+          "G": 0.2,
+          "S": 0.1,
+          "w": 2,
+          "c": 1,
+          "min": 1
+        }
+      ],
+      "budget": 6,
+      "fixed": {
+        "v": 2.30503575,
+        "counts": [
+          5,
+          1
+        ]
+      },
+      "adaptive": {
+        "v": 2.3793850575600013,
+        "action": 0,
+        "paths": [
+          {
+            "correct": true,
+            "prob": 0.3400000000000001,
+            "posterior": 0.5294117647058822,
+            "next": 0.5999999999999999,
+            "following": 1,
+            "conditionalValue": 2.5519323388000004
+          },
+          {
+            "correct": false,
+            "prob": 0.6600000000000001,
+            "posterior": 0.030303030303030304,
+            "next": 0.17575757575757575,
+            "following": 1,
+            "conditionalValue": 2.29049706419394
+          }
+        ]
+      },
+      "greedy": {
+        "v": 2.3438814622320012,
+        "action": 0,
+        "paths": [
+          {
+            "correct": true,
+            "prob": 0.3400000000000001,
+            "posterior": 0.5294117647058822,
+            "next": 0.5999999999999999,
+            "following": 0,
+            "conditionalValue": 2.5261683772000008
+          },
+          {
+            "correct": false,
+            "prob": 0.6600000000000001,
+            "posterior": 0.030303030303030304,
+            "next": 0.17575757575757575,
+            "following": 0,
+            "conditionalValue": 2.2499760817939403
+          }
+        ]
+      }
+    }
+  },
+  "bayes": {
+    "cases": 320,
+    "pass": 320,
+    "impossibleBranches": 88
+  },
+  "counterexamples": []
+}
