@@ -64,6 +64,7 @@ function ConfirmGroup({ view, busy, onConfirm }: { view: ConversationView; busy:
       </li>;
     })}</ul>}
     {options.length > 0 && <fieldset className="conversation-option-confirm"><legend>本次要考虑的方案</legend>{options.map(option => <label key={option.id} className="decision-check"><input type="checkbox" checked={optionChoices[option.id] !== false} disabled={busy} onChange={event => setOptionChoices({ ...optionChoices, [option.id]: event.target.checked })}/>{option.label}</label>)}</fieldset>}
+    <p className="muted">舍弃一项理解只表示那项提取有误。如果原来的底线仍然适用，请补充正确条件，或选择继续核实。只有全部底线已说明时才确认下方范围。</p>
     <label className="decision-check"><input type="checkbox" checked={context} disabled={busy} onChange={event => setContext(event.target.checked)}/>我已说明本次目的和硬约束</label>
     <label className="decision-check"><input type="checkbox" checked={checked} disabled={busy} onChange={event => setChecked(event.target.checked)}/>我已核对本组理解</label>
     <button type="submit" disabled={!checked || busy}>确认本组理解</button>

@@ -118,6 +118,43 @@ def active_claims(claims):
             and (item["kind"] != "conditional" or item["field"] == "move_if_onsite_max")]
 
 
+def blocking_constraints(claims):
+    """Unresolved hard obligations cannot disappear from the projection."""
+    relevant = [c for c in claims if c["field"] in set(BOUNDS) | {"move_if_onsite_max"}
+                and c["kind"] not in {"previous", "estimate"}
+                and c["status"] not in {"DISMISSED", "SUPERSEDED"}]
+    confirmed = {"USER_CONFIRMED", "EXTERNALLY_VERIFIED"}
+    exceptions = [c for c in relevant if c["field"] == "move_if_onsite_max"]
+    exception = exceptions[0] if len(exceptions) == 1 else None
+    # Only the existing explicitly supported relocation exception is executable.
+    def companion(c, field, value):
+        return (exception is not None and c["kind"] == "conditional" and c["field"] == field
+                and not c["subject"].strip() and c["confirmed_at"] is not None
+                and c["status"] in confirmed | {"UNKNOWN"}
+                and bool(exception["source"].strip()) and c["source"].endswith(exception["source"])
+                and evidence_number(c) == value)
+    valid_exception = bool(exception and exception["kind"] == "conditional"
+                           and exception["status"] in confirmed and not exception["subject"].strip()
+                           and evidence_number(exception) is not None
+                           and any(c["field"] == "move_allowed" and c["kind"] != "conditional"
+                                   and c["status"] in confirmed and not c["subject"].strip()
+                                   and evidence_number(c) == 0 for c in relevant)
+                           and any(companion(c, "onsite_max", evidence_number(exception)) for c in relevant)
+                           and any(companion(c, "move_allowed", 1) for c in relevant))
+    blocked = []
+    for c in relevant:
+        if c["field"] == "move_if_onsite_max":
+            if not valid_exception:
+                blocked.append(c)
+        elif c["kind"] == "conditional":
+            if not (valid_exception and (companion(c, "onsite_max", evidence_number(exception))
+                                        or companion(c, "move_allowed", 1))):
+                blocked.append(c)
+        elif (c["status"] not in confirmed or c["subject"].strip() or evidence_number(c) is None):
+            blocked.append(c)
+    return blocked
+
+
 def option_id(label):
     return "o-" + sha256(normalize("NFC", label.strip()).encode()).hexdigest()[:18]
 
@@ -210,6 +247,10 @@ class ConversationHub:
         short_yes = text.strip().strip("。！!") in {"对", "是", "正确", "没错", "对的"}
         reading = interpret(text, focus=None if target else focus,
                             known_options=(item["label"] for item in snapshot.options.values()))
+        # New substantive input may contain a new obligation even when parsing misses it.
+        # A short answer to the exact pending claim is the only narrow exception.
+        if not (target and short_yes):
+            snapshot.context_confirmed = False
         self._ingest(snapshot, text, reading, use_local_model)
         snapshot.revision += 1
         snapshot.analysis = None
@@ -253,6 +294,10 @@ class ConversationHub:
                     row.ledger = confirm_claim(row.ledger, key)
             for key in option_ids:
                 row.options[key]["status"] = "CONFIRMED"
+            # Discarding a proposed interpretation is not itself withdrawal of a real limit.
+            if any(claims[key]["field"] in set(BOUNDS) | {"move_if_onsite_max"}
+                   for key in dismiss_claim_ids):
+                row.context_confirmed = False
             row.context_confirmed = row.context_confirmed or accept_context
             row.revision += 1
             row.selected_option_id = None
@@ -287,10 +332,7 @@ class ConversationHub:
 
     def _project(self, row):
         claims = public_claims(row)
-        blocking = [c for c in claims if c["field"] in set(BOUNDS) | {"move_if_onsite_max"}
-                    and c["kind"] not in {"previous", "estimate"}
-                    and (c["kind"] != "conditional" or c["field"] == "move_if_onsite_max")
-                    and c["status"] in {"PROVISIONAL", "CONFLICT", "INCOMPARABLE", "UNKNOWN"}]
+        blocking = blocking_constraints(claims)
         ready = row.context_confirmed and not row.coupled and not blocking and sum(
             opt["status"] == "CONFIRMED" for opt in row.options.values()) >= 2
         chosen = row.base.model_copy(update={"revision": row.saved_revision + 1})
@@ -457,7 +499,7 @@ def summarize(row, claims):
             initial = "不同比较方式给出不同结果。先看你更在意的取舍。"
         elif len(leader_sets) == 1 and len(next(iter(leader_sets))) == 1 and not result["conditional_scope"]:
             label = names[next(iter(leader_sets))[0]]
-            initial = f"按当前核对的数据和条件，可以优先考虑{label}。"
+            initial = f"按当前已核对的比较指标，{label}在该计算范围内占优。是否符合整体目标仍需核对。"
         else:
             initial = "目前可以判断部分取舍，现有资料还不足以给出唯一选择。"
         question, focus = None, None
@@ -482,6 +524,13 @@ def summarize(row, claims):
         unknowns = ["你可以直接核对下方选项和条件，也可以用一句话补充。"]
     if not pending and not conflicts and row.analysis is None and row.context_confirmed:
         question = "还要比较哪些实际可以采取的方案？"
+        focus = None
+    unresolved = blocking_constraints(claims)
+    if unresolved and not pending and not conflicts:
+        initial = "目前只能保留条件性分析，尚不能完成全部底线筛查。"
+        warning = "有已记录但尚无法完整计算的底线：" + "；".join(c["source"] for c in unresolved[:3])
+        unknowns = ["条件的适用范围、单位或计算表达仍待核实。"]
+        question = "能否明确这项底线何时适用，以及用什么单位比较？"
         focus = None
     if row.coupled:
         initial = "各项分别符合条件，还不能证明同时采用时也可行。"

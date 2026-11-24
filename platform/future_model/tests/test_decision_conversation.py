@@ -198,3 +198,55 @@ def test_line_protocol_retains_temporary_session_only_in_one_process(tmp_path):
     finally:
         program.stdin.close()
         assert program.wait(timeout=10) == 0
+
+
+# Owner-authorized repair following A35-01 through A35-04.
+def test_unsupported_conditional_limit_cannot_disappear_from_gate():
+    hub = ConversationHub()
+    text = ("我该选「方案甲」，还是「方案乙」？方案甲每周到岗1天，方案乙每周到岗4天。"
+            "如果签约，我每周最多到岗2天。")
+    started = hub.start(text)
+    assert any(c["field"] == "onsite_max" and c["kind"] == "conditional"
+               for c in started["claims"])
+    result = checked(hub, started)
+    assert result["analysis"] is None
+    assert not result["state"]["constraints_confirmed"]
+    assert "底线" in result["summary"]["warning"]
+
+
+def test_unprojectable_monthly_budget_blocks_gate():
+    from psychohistory.decision_conversation import blocking_constraints
+
+    claim = dict(field="cost_max", kind="constraint", subject="", value="3000",
+                 unit="yuan/month", source="每月预算最多3000元",
+                 status="USER_CONFIRMED", confirmed_at="fixture")
+    assert blocking_constraints([claim]) == [claim]
+    assert not blocking_constraints([{**claim, "unit": "yuan"}])
+
+
+def test_context_must_be_reconfirmed_after_substantive_turn():
+    hub = ConversationHub()
+    initial = checked(hub, hub.start(Q))
+    revised = hub.turn(initial["session_id"], initial["revision"], "还要照顾家人。")
+    assert revised["analysis"] is None
+    assert not revised["state"]["constraints_confirmed"]
+    retry = hub.analyze(revised["session_id"], revised["revision"])
+    assert retry["analysis"] is None
+    assert not retry["state"]["confirmed"]
+
+
+def test_known_relocation_exception_does_not_cover_unrelated_conditional():
+    from psychohistory.decision_conversation import blocking_constraints
+
+    source = "每周到岗不超过三天就可以搬家。"
+    def c(field, value, unit, kind="conditional", status="USER_CONFIRMED", text=source):
+        return dict(field=field, value=value, unit=unit, kind=kind, status=status,
+                    subject="", confirmed_at="fixture", source=text)
+    base = [c("move_allowed", "no", "", "constraint", text="不能搬家"),
+            c("move_if_onsite_max", "3", "days/week"),
+            c("onsite_max", "3", "days/week", status="UNKNOWN"),
+            c("move_allowed", "yes", "", status="UNKNOWN")]
+    assert blocking_constraints(base) == []
+    unrelated = c("onsite_max", "2", "days/week", text="如果签约，每周最多到岗2天。")
+    assert blocking_constraints(base + [unrelated]) == [unrelated]
+    assert blocking_constraints(base[:-1])
