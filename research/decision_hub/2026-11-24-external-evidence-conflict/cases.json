@@ -1,0 +1,377 @@
+{
+  "sources": [
+    {
+      "id": "C15",
+      "study": "CTRIP2010",
+      "year": 2015,
+      "version": "journal",
+      "doi": "10.1093/qje/qju032",
+      "url": "https://doi.org/10.1093/qje/qju032",
+      "read": "publisher abstract/search; publisher direct fetch blocked; schedule corroborated by https://www.nber.org/digest/sep13/evidence-chinese-experiment-working-home",
+      "pop": "call_center_volunteers",
+      "action": "4_home_days",
+      "comparator": "5_office_days",
+      "horizon": "9_months",
+      "metric": "output",
+      "unit": "relative_percent",
+      "value": 13
+    },
+    {
+      "id": "C13",
+      "study": "CTRIP2010",
+      "year": 2013,
+      "version": "working_paper",
+      "doi": "10.3386/w18871",
+      "url": "https://www.nber.org/papers/w18871",
+      "read": "working paper abstract/search; same trial as C15",
+      "pop": "call_center_volunteers",
+      "action": "4_home_days",
+      "comparator": "5_office_days",
+      "horizon": "9_months",
+      "metric": "output",
+      "unit": "relative_percent",
+      "value": 13
+    },
+    {
+      "id": "I23",
+      "study": "INDIA_DATA_ENTRY",
+      "year": 2023,
+      "version": "working_paper",
+      "doi": "10.3386/w31515",
+      "url": "https://www.nber.org/papers/w31515",
+      "read": "NBER abstract/search, direct open blocked; full paper and exact version hash not verified",
+      "pop": "data_entry_workers",
+      "action": "home_vs_office",
+      "comparator": "office",
+      "horizon": "trial_unspecified",
+      "metric": "output",
+      "unit": "relative_percent",
+      "value": -18
+    },
+    {
+      "id": "H24Q",
+      "study": "TRIP2021",
+      "year": 2024,
+      "version": "journal",
+      "doi": "10.1038/s41586-024-07500-2",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11208135/",
+      "read": "full HTML sections Abstract, Main, Experiment, Retention and Fig 2; CC BY 4.0; raw data not downloaded",
+      "pop": "graduate_tech_employees",
+      "action": "2_home_days",
+      "comparator": "5_office_days",
+      "horizon": "6_months",
+      "metric": "quit",
+      "unit": "percentage_points",
+      "value": -2.4,
+      "treatment": 4.8,
+      "control": 7.2,
+      "n": 1612,
+      "ci": [
+        -4.72,
+        -0.0748
+      ],
+      "p": 0.043
+    },
+    {
+      "id": "H24P",
+      "study": "TRIP2021",
+      "year": 2024,
+      "version": "journal",
+      "doi": "10.1038/s41586-024-07500-2",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11208135/",
+      "read": "HTML Main and performance section; reported equivalence tests for performance grades; exact margins not extracted",
+      "pop": "graduate_tech_employees",
+      "action": "2_home_days",
+      "comparator": "5_office_days",
+      "horizon": "2_years",
+      "metric": "performance_grades",
+      "unit": "qualitative_equivalence",
+      "value": null
+    },
+    {
+      "id": "H24L",
+      "study": "TRIP2021",
+      "year": 2024,
+      "version": "journal",
+      "doi": "10.1038/s41586-024-07500-2",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11208135/",
+      "read": "Fig 2, above-median total commute >90 min, subset n=611",
+      "pop": "graduate_tech_long_commute_90",
+      "action": "2_home_days",
+      "comparator": "5_office_days",
+      "horizon": "6_months",
+      "metric": "quit",
+      "unit": "percentage_points",
+      "value": -3.11,
+      "p": 0.062,
+      "ci": [
+        -6.37,
+        0.156
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "E01",
+      "prompt": "原来客服实验居家四天做了九个月，产出变化多少？",
+      "q": {
+        "pop": "call_center_volunteers",
+        "action": "4_home_days",
+        "comparator": "5_office_days",
+        "horizon": "9_months",
+        "metric": "output",
+        "unit": "relative_percent"
+      },
+      "expected": {
+        "status": "report",
+        "source": "C15"
+      }
+    },
+    {
+      "id": "E02",
+      "prompt": "印度录入实验里居家相对办公室产出变化？",
+      "q": {
+        "pop": "data_entry_workers",
+        "action": "home_vs_office",
+        "comparator": "office",
+        "horizon": "trial_unspecified",
+        "metric": "output",
+        "unit": "relative_percent"
+      },
+      "expected": {
+        "status": "report",
+        "source": "I23"
+      }
+    },
+    {
+      "id": "E03",
+      "prompt": "2021年那项科技公司混合办公实验，半年离职率差几个百分点？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "6_months",
+        "metric": "quit",
+        "unit": "percentage_points"
+      },
+      "expected": {
+        "status": "report",
+        "source": "H24Q"
+      }
+    },
+    {
+      "id": "E04",
+      "prompt": "那项混合办公实验两年绩效评级有什么结果？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "2_years",
+        "metric": "performance_grades",
+        "unit": "qualitative_equivalence"
+      },
+      "expected": {
+        "status": "report",
+        "source": "H24P"
+      }
+    },
+    {
+      "id": "E05",
+      "prompt": "我是不是会少33%离职概率？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "6_months",
+        "metric": "quit",
+        "unit": "percentage_points",
+        "level": "individual"
+      },
+      "expected": {
+        "status": "individual_unknown",
+        "source": null
+      }
+    },
+    {
+      "id": "E06",
+      "prompt": "居家办公到底能提高多少产出？",
+      "q": {
+        "pop": null,
+        "action": null,
+        "comparator": null,
+        "horizon": null,
+        "metric": "output",
+        "unit": "relative_percent"
+      },
+      "expected": {
+        "status": "clarify",
+        "source": null
+      }
+    },
+    {
+      "id": "E07",
+      "prompt": "把印度和客服的结果平均，给所有工作一个提高比例。",
+      "q": {
+        "pop": "all_jobs",
+        "action": "all_remote",
+        "comparator": "office",
+        "horizon": "any",
+        "metric": "output",
+        "unit": "relative_percent"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E08",
+      "prompt": "我做软件开发，完全在家五天的绩效评级会怎样？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "5_home_days",
+        "comparator": "5_office_days",
+        "horizon": "2_years",
+        "metric": "performance_grades",
+        "unit": "qualitative_equivalence"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E09",
+      "prompt": "半年离职率降低33个百分点，对吗？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "6_months",
+        "metric": "quit",
+        "unit": "relative_percent"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E10",
+      "prompt": "能证明混合办公两年绩效提高恰好0%吗？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "2_years",
+        "metric": "performance_grades",
+        "unit": "relative_percent"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E11",
+      "prompt": "通勤超过90分钟那一组，能说离职下降在5%水平显著吗？",
+      "q": {
+        "pop": "graduate_tech_long_commute_90",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "6_months",
+        "metric": "quit",
+        "unit": "percentage_points",
+        "requireSignificance": true
+      },
+      "expected": {
+        "status": "not_significant",
+        "source": "H24L"
+      }
+    },
+    {
+      "id": "E12",
+      "prompt": "截至2014年底，客服实验报告的产出变化？",
+      "q": {
+        "pop": "call_center_volunteers",
+        "action": "4_home_days",
+        "comparator": "5_office_days",
+        "horizon": "9_months",
+        "metric": "output",
+        "unit": "relative_percent",
+        "asOf": 2014
+      },
+      "expected": {
+        "status": "report",
+        "source": "C13"
+      }
+    },
+    {
+      "id": "E13",
+      "prompt": "截至2020年底，2021年混合办公离职结果是什么？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "6_months",
+        "metric": "quit",
+        "unit": "percentage_points",
+        "asOf": 2020
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E14",
+      "prompt": "那项科技公司试验三年后离职率？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "3_years",
+        "metric": "quit",
+        "unit": "percentage_points"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E15",
+      "prompt": "混合办公研究里的离职率差异，达到5%显著吗？",
+      "q": {
+        "pop": "graduate_tech_employees",
+        "action": "2_home_days",
+        "comparator": "5_office_days",
+        "horizon": "6_months",
+        "metric": "quit",
+        "unit": "percentage_points",
+        "requireSignificance": true
+      },
+      "expected": {
+        "status": "report",
+        "source": "H24Q"
+      }
+    },
+    {
+      "id": "E16",
+      "prompt": "客服实验2013和2015的两份报告可算两次独立复现吗？",
+      "q": {
+        "pop": "call_center_volunteers",
+        "action": "4_home_days",
+        "comparator": "5_office_days",
+        "horizon": "9_months",
+        "metric": "output",
+        "unit": "relative_percent",
+        "countStudies": true
+      },
+      "expected": {
+        "status": "deduplicate",
+        "source": "C15"
+      }
+    }
+  ]
+}

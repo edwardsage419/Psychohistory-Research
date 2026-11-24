@@ -1,0 +1,253 @@
+{
+  "rows": [
+    {
+      "id": "E01",
+      "gate": {
+        "status": "report",
+        "source": "C15"
+      },
+      "baseline": {
+        "status": "report",
+        "source": "I23"
+      },
+      "expected": {
+        "status": "report",
+        "source": "C15"
+      }
+    },
+    {
+      "id": "E02",
+      "gate": {
+        "status": "report",
+        "source": "I23"
+      },
+      "baseline": {
+        "status": "report",
+        "source": "I23"
+      },
+      "expected": {
+        "status": "report",
+        "source": "I23"
+      }
+    },
+    {
+      "id": "E03",
+      "gate": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "expected": {
+        "status": "report",
+        "source": "H24Q"
+      }
+    },
+    {
+      "id": "E04",
+      "gate": {
+        "status": "report",
+        "source": "H24P"
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24P"
+      },
+      "expected": {
+        "status": "report",
+        "source": "H24P"
+      }
+    },
+    {
+      "id": "E05",
+      "gate": {
+        "status": "individual_unknown",
+        "source": null
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "expected": {
+        "status": "individual_unknown",
+        "source": null
+      }
+    },
+    {
+      "id": "E06",
+      "gate": {
+        "status": "clarify",
+        "source": null
+      },
+      "baseline": {
+        "status": "report",
+        "source": "I23"
+      },
+      "expected": {
+        "status": "clarify",
+        "source": null
+      }
+    },
+    {
+      "id": "E07",
+      "gate": {
+        "status": "no_exact_scope",
+        "source": null
+      },
+      "baseline": {
+        "status": "report",
+        "source": "I23"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E08",
+      "gate": {
+        "status": "no_exact_scope",
+        "source": null
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24P"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E09",
+      "gate": {
+        "status": "no_exact_scope",
+        "source": null
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E10",
+      "gate": {
+        "status": "no_exact_scope",
+        "source": null
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24P"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E11",
+      "gate": {
+        "status": "not_significant",
+        "source": "H24L"
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "expected": {
+        "status": "not_significant",
+        "source": "H24L"
+      }
+    },
+    {
+      "id": "E12",
+      "gate": {
+        "status": "report",
+        "source": "C13"
+      },
+      "baseline": {
+        "status": "report",
+        "source": "I23"
+      },
+      "expected": {
+        "status": "report",
+        "source": "C13"
+      }
+    },
+    {
+      "id": "E13",
+      "gate": {
+        "status": "no_exact_scope",
+        "source": null
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E14",
+      "gate": {
+        "status": "no_exact_scope",
+        "source": null
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "expected": {
+        "status": "no_exact_scope",
+        "source": null
+      }
+    },
+    {
+      "id": "E15",
+      "gate": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "baseline": {
+        "status": "report",
+        "source": "H24Q"
+      },
+      "expected": {
+        "status": "report",
+        "source": "H24Q"
+      }
+    },
+    {
+      "id": "E16",
+      "gate": {
+        "status": "deduplicate",
+        "source": "C15",
+        "studyCount": 1
+      },
+      "baseline": {
+        "status": "report",
+        "source": "I23"
+      },
+      "expected": {
+        "status": "deduplicate",
+        "source": "C15"
+      }
+    }
+  ],
+  "gateCorrect": 16,
+  "baselineCorrect": 4,
+  "total": 16,
+  "quitAbsolutePP": -2.4000000000000004,
+  "quitRelativePercent": -33.333333333333336,
+  "studyCount": 3,
+  "documentCount": 4,
+  "naiveIncomparableOutputAverage": -2.5
+}
