@@ -1,0 +1,50 @@
+{
+  "purpose": "Six fictional engineering acceptance cases authored before reading v0.6 implementation. They do not establish scientific validity or substitute for testing with users.",
+  "cases": [
+    {
+      "id": "work",
+      "question": "我该留在现有的样品排期岗位，还是接受白榆研究站的协调岗位？我希望三周内决定。月收入至少 12000 元，且每周工时最多 42 小时。留在现岗位每月收入 12500 元，每周 40 小时。白榆岗位的工时据口头通知是每周 41 小时，工资还没有书面确认。",
+      "turns": [
+        "白榆研究站刚发来虚构的书面确认，月收入是 11800 元。我先要确认的是它能不能达到原来 12000 元的底线。",
+        "我重新算过家庭预算，月收入底线改为 11500 元，之前 12000 元作废。每周 42 小时的上限不变。"
+      ],
+      "anchors": ["白榆研究站", "收入", "工时"],
+      "check": "A change to the income floor must be attributed to the new user turn. The new offer moves from below the floor to satisfying it if both supplied quantities are confirmed and aligned."
+    },
+    {
+      "id": "learning",
+      "question": "我该报名秋叶木工夜课，还是跟着公开教程自己练习？六周内想做出一件小家具。我每周最多有 5 小时，夜课每周要 7 小时，自学时间还没估好。我没有关于学成机会的统计。",
+      "turns": ["我只知道自学计划每周约 4 小时，来源是我刚做的虚构排程。想先比较能否安排进一周，再看学到多少。"],
+      "anchors": ["夜课", "自学", "时间"],
+      "check": "Ask about the unresolved feasible route or the desired outcome when needed. Preserve the lack of probability data."
+    },
+    {
+      "id": "budget",
+      "question": "我该现在花 900 元换坏了的吸尘器，还是先花 160 元维修？这个月最多能动用 700 元，不能占用应急金。我不清楚维修能维持多久。",
+      "turns": ["虚构维修清单上没有耐用时长。我宁可把它记成未知，也不想先填一个概率。"],
+      "anchors": ["吸尘器", "维修", "应急金"],
+      "check": "The hard budget excludes the purchase at 900. Maintenance remains conditional on the unknown service life."
+    },
+    {
+      "id": "living",
+      "question": "我该继续独住在松芽巷，还是试着和同事合住？先住一个月就能退的方案可以考虑，但长期合约我不能接受。合住能省一些钱，噪音还没确认。我周末前决定。",
+      "turns": ["合住只有虚构的一月试住条件，没有真实的噪音测量。请把住在松芽巷保留在比较里。"],
+      "anchors": ["松芽巷", "合住", "试住"],
+      "check": "Keep the status quo as a candidate. Treat noise data as unknown and trial terms as sourced only when supplied."
+    },
+    {
+      "id": "moving",
+      "question": "我该五月搬到虚构的云灯镇，还是再住六个月等工作调动明确？我只知道搬家后通勤可能更短，租金和真正的调动日期还没有证据。",
+      "turns": ["没有授权外部查询，请只记录我说过的。没有租金、没有调动日期，也没有通勤实际测量。"],
+      "anchors": ["云灯镇", "调动", "租金"],
+      "check": "Keep source gaps explicit. No outbound data retrieval is authorized."
+    },
+    {
+      "id": "risk",
+      "question": "我该把虚构的周末社区展览改到室内，还是保留露天安排？如果损失超过 800 元就接受不了；室内要提前两天确认，露天的取消损失还没查到，也没有可信的降雨概率。",
+      "turns": ["请先比较损失底线和最晚还能改场地的时间。不要假设下雨概率，更不需要帮我预订。"],
+      "anchors": ["室内", "露天", "损失"],
+      "check": "Use conditional comparisons and report the need for a sourced loss estimate. Never fabricate a rain chance or authorize a reservation."
+    }
+  ]
+}

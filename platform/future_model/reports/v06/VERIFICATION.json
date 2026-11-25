@@ -1,0 +1,128 @@
+{
+  "version": "0.6.0",
+  "scope": "Developer engineering verification, fictional inputs only",
+  "main_baseline": "e3dd603b0784c2e2b9edbef7056e82f727bddbad",
+  "product_commit": "99b56939860d89505bea4c12b0e3fc7e71048d30",
+  "native_test_commit": "e3efac10d0eb422c481056111beec5a184954c2e",
+  "sources": {
+    "v05_main_merge": "0e574a7c7077824bb700d5fa9c5654e39348fe79",
+    "pr59_mobile": "fac395751d0429d2a3f3234672a60f2c715676ad",
+    "pr60_ollama_transport": "4f6c57d75ecd6680327920cd8cbafcbc6b11c77a"
+  },
+  "local_linux": {
+    "python": {
+      "passed": 451,
+      "subtests_passed": 11,
+      "warnings": 1,
+      "build": "PASS",
+      "stdlib_core": "PASS"
+    },
+    "legacy_cli": {
+      "status": "PASS",
+      "commands": 56,
+      "successful": 43,
+      "expected_rejections": 13,
+      "tested_commit": "99b56939860d89505bea4c12b0e3fc7e71048d30"
+    },
+    "legacy_browser": {
+      "version_range": "v0.1-v0.5",
+      "status": "PASS",
+      "v05_after_harness_fix": "PASS"
+    },
+    "v06_browser_receipt": "BROWSER_RESULTS.json",
+    "mobile": {
+      "tests_passed": 81,
+      "failed": 0,
+      "skipped": 0,
+      "python_node": "25/25",
+      "python_chromium": "25/25",
+      "intake_semantics_samples": "6/6",
+      "browser_offline_reload": "PASS",
+      "static_build_revision": "d4ef32fd30ec99f9e8a4fdcfe6bf59e187975123df4e9339fcb115e3c4c3969f"
+    },
+    "v05_binary_round_trip": {
+      "status": "PASS",
+      "legacy_v05_binary": "0e574a7c7077824bb700d5fa9c5654e39348fe79",
+      "checks": [
+        "older signed export restores in current authorized ledger",
+        "recomputation input hash equals original",
+        "v0.5 binary reads confirmed v0.6 snapshot",
+        "older binary revocation rejects newer archived records"
+      ]
+    }
+  },
+  "native_runs": [
+    {
+      "id": 45297631255,
+      "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/45297631255",
+      "commit": "99b56939860d89505bea4c12b0e3fc7e71048d30",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "runner": "macos-15, Darwin, arm64, webkit",
+          "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/45297631255/job/138121963621",
+          "conclusion": "failure",
+          "failed_steps": [
+            "Reproduce synthetic browser acceptance and privacy lifecycle"
+          ]
+        },
+        {
+          "runner": "ubuntu-24.04, Linux, x86_64, chromium",
+          "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/45297631255/job/138121964063",
+          "conclusion": "success",
+          "failed_steps": []
+        }
+      ],
+      "failure": "Mac v0.5 Chromium response timeout after clearing the likelihood source; fixed by keyboard input in the legacy browser harness."
+    },
+    {
+      "id": 45298601033,
+      "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/45298601033",
+      "commit": "e3efac10d0eb422c481056111beec5a184954c2e",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "runner": "macos-15, Darwin, arm64, webkit",
+          "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/45298601033/job/138125596759",
+          "conclusion": "success",
+          "failed_steps": [],
+          "python_passed": 450,
+          "python_skipped": 1,
+          "subtests_passed": 11,
+          "desktop_chromium": "151.0.7922.34",
+          "desktop_browser_v01_to_v06": "PASS",
+          "mobile_tests_passed": 81,
+          "mobile_tests_skipped": 0,
+          "mobile_node_parity": "25/25",
+          "mobile_browser": "WebKit",
+          "mobile_browser_parity": "25/25",
+          "mobile_offline_records": "PASS"
+        },
+        {
+          "runner": "ubuntu-24.04, Linux, x86_64, chromium",
+          "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/45298601033/job/138125597333",
+          "conclusion": "success",
+          "failed_steps": [],
+          "python_passed": 451,
+          "python_skipped": 0,
+          "subtests_passed": 11,
+          "desktop_chromium": "151.0.7922.34",
+          "desktop_browser_v01_to_v06": "PASS",
+          "mobile_tests_passed": 81,
+          "mobile_tests_skipped": 0,
+          "mobile_node_parity": "25/25",
+          "mobile_browser": "Chromium",
+          "mobile_browser_parity": "25/25",
+          "mobile_offline_records": "PASS"
+        }
+      ]
+    }
+  ],
+  "not_run": [
+    "physical_iPhone",
+    "actual_Mac_Ollama_Qwen3.5",
+    "independent_scientific_validation",
+    "first_time_user_study",
+    "real_decision_effects"
+  ]
+}

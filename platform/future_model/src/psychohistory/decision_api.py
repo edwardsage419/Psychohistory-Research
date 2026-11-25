@@ -9,7 +9,7 @@ from .decision_state import DecisionState, Identity, InputModel, Key, Original, 
 
 PREFIX = "/api/v4/decisions"
 PREFIX_V05 = "/api/v5/decisions"
-DECISION_ROUTES = (PREFIX + "/", PREFIX_V05 + "/")
+DECISION_ROUTES = (PREFIX + "/", PREFIX_V05 + "/", "/api/v6/decisions/", "/api/v7/decisions/")
 MAX_DECISION_REQUEST = 256 * 1024
 MAX_RESTORE_REQUEST = 32 * 1024 * 1024
 EpochToken = Annotated[str, StringConstraints(min_length=1, max_length=128)]
@@ -73,7 +73,7 @@ def advanced_schemas():
     return AdvancedAnalysis, AdvancedSave, AdvancedReview
 
 
-def router(root, *, advanced=False):
+def router(root, *, advanced=False, invalidate=None, invalidate_record=None):
     routes = APIRouter(prefix=PREFIX_V05 if advanced else PREFIX)
     service = DecisionService(root, advanced=advanced)
     analysis_schema, save_schema, review_schema = advanced_schemas() if advanced else (AnalysisInput, SaveInput, ReviewInput)
@@ -101,6 +101,8 @@ def router(root, *, advanced=False):
 
     @routes.post("/revoke")
     def revoke(data: Epoch):
+        if invalidate is not None:
+            return invalidate(records.revoke, data.epoch)
         return records.revoke(data.epoch)
 
     @routes.post("/save")
@@ -130,6 +132,8 @@ def router(root, *, advanced=False):
 
     @routes.post("/delete")
     def delete(data: RecordInput):
+        if invalidate_record is not None:
+            return invalidate_record(records.delete, data.epoch, data.decision_id, include_decision=True)
         return records.delete(data.epoch, data.decision_id)
 
     @routes.post("/restore")
