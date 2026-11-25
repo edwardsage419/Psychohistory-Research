@@ -10,10 +10,11 @@ const timestamp = (value: string) => value ? new Date(value).toISOString() : new
 const formatTime = (value: string) => new Date(value).toLocaleString();
 type Notice = { text: string; error?: boolean };
 
-export function DecisionHistory({ api, version, state, analysis, savedRevision, onSave, onLoad, onClear, onApplyPreference }: {
+export function DecisionHistory({ api, version, state, analysis, savedRevision, onSave, onLoad, onClear, onApplyPreference, saveConfirmed }: {
   api: Api; version: DecisionVersion; state: DecisionState | null; analysis: Analysis | null; savedRevision: number;
-  onSave: (state: DecisionState) => void; onLoad: (state: DecisionState) => void; onClear: (decisionId?: string) => void;
+  onSave: (state: DecisionState) => void; onLoad?: (state: DecisionState) => void; onClear: (decisionId?: string) => void;
   onApplyPreference: (preference: PreferenceVersion) => void;
+  saveConfirmed?: { revision: number; save: (epoch: string) => Promise<void> };
 }) {
   const guided = version === 'v5';
   const [consent, setConsent] = useState<Consent | null>(null);
@@ -40,6 +41,9 @@ export function DecisionHistory({ api, version, state, analysis, savedRevision, 
   useEffect(() => { const urls = downloadUrls.current; return () => { for (const url of urls) URL.revokeObjectURL(url); urls.clear(); }; }, []);
   const latest = record?.snapshots.at(-1);
   const epoch = consent?.authorized ? consent.epoch : null;
+  const [approvedSave, setApprovedSave] = useState('');
+  const saveIdentity = analysis && saveConfirmed ? `${analysis.input_hash}:${saveConfirmed.revision}` : '';
+  const canSave = !!state?.confirmed && !!analysis && analysis.status !== 'CLARIFY' && state.revision > savedRevision && !(record?.decision_id === state.decision_id && record.action);
 
   async function refreshHistory(currentEpoch: string) {
     setHistory(await api<HistoryItem[]>(endpoint('history'), { epoch: currentEpoch }, version));
@@ -81,6 +85,7 @@ export function DecisionHistory({ api, version, state, analysis, savedRevision, 
     setHistory([]);
     setPreferenceVersions(null);
     setPreferenceSelection(null);
+    setApprovedSave('');
     clearRecord();
     clearBackup();
     onClear();
@@ -122,9 +127,11 @@ export function DecisionHistory({ api, version, state, analysis, savedRevision, 
   }, [api, version]);
 
   function save() {
-    if (!state || !analysis || !epoch) return;
+    if (!state || !epoch || !canSave || (saveConfirmed && approvedSave !== saveIdentity)) return;
     void run(async () => {
-      await api(endpoint('save'), { epoch, state }, version);
+      if (saveConfirmed) await saveConfirmed.save(epoch);
+      else await api(endpoint('save'), { epoch, state }, version);
+      setApprovedSave('');
       onSave(state);
       setNotice({ text: '已保存当前修订' });
       await refreshHistory(epoch);
@@ -180,9 +187,9 @@ export function DecisionHistory({ api, version, state, analysis, savedRevision, 
       setNotice({ text: '已授权本地保存' });
     })}>授权本地保存</button>}
     {epoch && <>
-      {state?.confirmed && analysis && analysis.status !== 'CLARIFY' && state.revision > savedRevision && <p className="muted">选择「保存当前决策」即确认本修订的底线、方案、目标、权重及依据，并保存事前分析。</p>}
+      {canSave && (saveConfirmed ? <label className="decision-check"><input type="checkbox" checked={approvedSave === saveIdentity} disabled={busy} onChange={event => setApprovedSave(event.target.checked ? saveIdentity : '')}/>我确认保存本次已核对的决策</label> : <p className="muted">选择「保存当前决策」即确认本修订的底线、方案、目标、权重及依据，并保存事前分析。</p>)}
       <div className="decision-actions">
-        <button type="button" disabled={busy || !state?.confirmed || !analysis || analysis.status === 'CLARIFY' || state.revision <= savedRevision || (record?.decision_id === state.decision_id && !!record.action)} onClick={save}>保存当前决策</button>
+        <button type="button" disabled={busy || !canSave || (!!saveConfirmed && approvedSave !== saveIdentity)} onClick={save}>保存当前决策</button>
         <button type="button" className="quiet" disabled={busy} onClick={() => void run(async () => {
           const data = await api<unknown>(endpoint('export'), { epoch }, version);
           const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
@@ -214,7 +221,7 @@ export function DecisionHistory({ api, version, state, analysis, savedRevision, 
       {record && latest && <section className="decision-record" aria-label="决策记录详情">
         <h3>{latest.state.question}</h3>
         <div className="decision-actions">
-          <button type="button" className="quiet" disabled={busy} onClick={() => onLoad(latest.state)}>载入最新修订</button>
+          {onLoad && <button type="button" className="quiet" disabled={busy} onClick={() => onLoad(latest.state)}>载入最新修订</button>}
           <button type="button" className="quiet decision-danger" disabled={busy || confirmation === 'delete'} onClick={() => setConfirmation('delete')}>删除此决策</button>
         </div>
         {confirmation === 'delete' && <div className="decision-confirmation"><p>删除会移除该决策的修订、实际行动和回访。</p><div className="decision-actions">

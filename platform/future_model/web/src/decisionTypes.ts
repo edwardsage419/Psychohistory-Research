@@ -1,5 +1,6 @@
 export type DecisionVersion = 'v4' | 'v5';
-export type Api = <T>(path: string, body?: unknown, version?: DecisionVersion, signal?: AbortSignal) => Promise<T>;
+export type PersonalApiVersion = DecisionVersion | 'v6';
+export type Api = <T>(path: string, body?: unknown, version?: PersonalApiVersion, signal?: AbortSignal) => Promise<T>;
 export const decisionPath = 'decisions';
 
 export class DecisionApiError extends Error {
@@ -76,7 +77,7 @@ export type DecisionMethod = {
 export type Analysis = {
   decision_id: string; revision: number; input_hash: string; hub_version: string; status: string;
   questions: Question[]; feasibility: { option_id: string; label: string; status: string; checks: { constraint_id: string; status: string; reason: string }[] }[];
-  methods: DecisionMethod[]; advice: unknown; risks: unknown; gaps: unknown; priority_gap: string | null; plan?: WorkflowPlan; execution?: { available: boolean; authorization: string; action_endpoint: string };
+  methods: DecisionMethod[]; advice: unknown; risks: unknown; gaps: unknown; priority_gap: string | null; plan?: WorkflowPlan; execution?: { available: boolean; authorization: string; action_endpoint: string }; temporal_scope?: Record<string, string>;
 };
 export type Consent = { authorized: boolean; epoch: string | null };
 export type HistoryItem = { decision_id: string; question: string; revision: number };
