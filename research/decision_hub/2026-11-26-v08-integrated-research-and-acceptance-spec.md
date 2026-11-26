@@ -1,0 +1,78 @@
+# v0.8 自主决策引擎完整研发候选规格与研究资产映射
+2026-11-26（项目日期）。RESEARCH_SPEC_CANDIDATE / MANIFEST_STRUCTURE_CHECKED / DEVELOPMENT_NOT_AUTHORIZED / NATIVE_NOT_RUN_THIS_ROUND / INDEPENDENT_NOT_RUN。本文件是手动科研窗口的版本准备成果，非正式产品交接、开发命令、合并授权、科学准入或验收签发。产品轨仍维护唯一交接，不修改原文件。所有者尚未授权v0.8开发、训练、部署、费用或合并。
+## 1. 固定基线及证据
+起始main 3893ca17f29334772217ca8871d4fb199e158a12；v0.7起点 6e44ecf50e9e8de0d8a3eb76766cd0d3bf44ab9c；固定Draft #62 e61bbad10932edabc9a87483e5407fdae6c751cc；#61仍待审，历史Qwen分支仅封存参考。核对35近期提交、14开放PR、正式v3.2前30行（blob 7cee2ec8e740ef3b89c0b5d4b2fc7336fac19b85）、同步规程前30行（26c4d946e48f01858fb8e8c2cb06e4f7ba91bf05）、唯一交接前30行（5e74f4f0b37141d631740e844ad8bbbfed232e07）。实际读取固定v0.7 V07_RESEARCH_INTEGRATION.md 05508e59216294b0ff312df78c14adedf7cb6520、V07_INDEPENDENT_HANDOFF.md a6af56d5741f137433b081452cf0acd116dbf217、V07_ACCEPTANCE.md 4c1287f5d4b01b11bf801b8b49b95d622a149425。比较origin到main：26提交、26新增研究文档，无平台源码变更。main到#62：diverged，候选独有1、落后26，merge base origin，126候选变更文件，其中18个platform/future_model/src/psychohistory/文件（上一轮17个为手工计数误差，本轮以实际程序计数纠正）。非合并冲突检查或运行验收；不把#62作为已验收main。
+作者报告631 Python测试+11子测试、84移动测试、两组25跨端复算、15原生方法、154文档索引；本轮未重跑，不声称CI或独立通过。开放白话公开开发32情节64轮167标注：25/28词法数值、7/23数值单位、12/27硬义务、17/18未知、条件0/5、他人主体0/4、修订0/10，未达完整语义门。真实设备、真实用户、独立留出、联网验证、自主学习及竞争优势未知。timing_actions历史来源CHANGED待独立审查，不因本规格解除。所有历史原文、冻结、R073、PESEN及证据级别保持。
+## 2. 近期26报告唯一清单
+逐项实际读取每份固定main报告1–8行及连接器blob，结合此前手动研究的实际实验与报告；没有重跑全部实验或重新验完整文件字节。一次批量读取超连接器调用限制，改三批9+9+8，全部成功。清单唯一主归属，不限制多模块引用。R132与R93核心重复，按R133勘误不增加独立算法/独立样本；R134–137共享外部dev及标注输入，不能视为四套独立语料或端到端语义成绩。研究代码归档不等于生产代码。外部源合法性、许可版本按各原报告再核，禁止未经许可训练与再分发。
+|组|文件后缀（共同前缀 research/decision_hub/2026-11-25-，扩展名.md）|Git blob|用途及边界|
+|---|---|---|---|
+|A|condition-polarity-attachment-candidate-audit|81df7d2fc56f29084ecc623b98cdf0991d3260d4|R131 条件及极性候选，开发集候选诊断|
+|A|external-ud-development-corpus-structural-audit|db9cc100d96d49832fe32879a706f63830301773|R134 外部句法开发数据，字节与许可审查|
+|A|nonprojective-dependency-decoder-external-diagnostic|0218ff41ee8fd68e5df1b2886cdfbee3368c8426|R137 非投射解码，标注条件下评分诊断|
+|A|projective-dependency-decoder-external-diagnostic|c40a09357a858644a0da922097cd6367ca696df6|R136 投射解码，标注条件下评分诊断|
+|A|source-bound-relation-support-projection|dff5ab32d4ea2698256f725f1ae3726578e4a015|R133 原文关系绑定及R132重复勘误|
+|A|ud-negation-head-candidate-diagnostic|d81cbedafee148a0c1e065f39254bac7abe6e14d|R135 已知否定词元的外部依附诊断|
+|A|unicode-grounded-language-candidate-bridge|e5c32f5fa91e79a33c06e5b95be491207c6a526d|跨端坐标，JS实际研究与Python片段|
+|B|joint-guarded-policy-applicability|5fed5e9108fbc97257fbf0546d521aa3cf725769|共享解释及条件适用，有限域研究|
+|B|correlated-interpretation-question-separation|2ef743e0ea767dcc3ba551eff819eae71b1e2df7|R132 复用R93核心，不重复算法/独立样本|
+|B|adaptive-clarification-port-guarantees|9178ff491047925e17f88fb1ab82f843bd254285|自适应具名输出保证前沿，有限域研究|
+|B|shared-information-source-cost-frontier|bd639403c82166ee5ed98c94f09289f601209b92|共享来源成本双资源前沿，确定回答夹具|
+|C|v07-dismissed-claim-reproposal-audit|95616e3d1c316a7f56f49fc81f07e51e16e6d13d|略过重提，原生片段复现|
+|C|v07-knowledge-qualification-shared-parameter-bridge|df5a962a58ba0601b6014fad47c39cd3ebdb0e33|完整隔离模块+数学片段，人工资格|
+|C|v07-partial-result-authority-boundary|2214aaf19b8fcf4dc8a5a3b9995e59b9ff3dfacf|原生源码审查及抽象权威压力测试|
+|C|v07-scenario-score-basis-regret-integration-audit|57ba5834bae5ab139525e46d4afc4a6d0414f697|完整评分模块+账本和后悔片段|
+|C|v07-semantic-projection-boundary-batch|5442d4bbeb465bbd11d5901e150a5887263e61ca|同文作用域、角色修订、时效与测量顺序，片段|
+|C|v07-session-incarnation-reuse-audit|03871df4f98e6670fa7fe0d1e4cd85b0ee7240b4|会话实例复用，源码片段|
+|D|conditional-model-alternative-coverage|8fa6c050fd71d60823e4dc99d4f4f7310b579a0d|竞争方法适用域，有限域|
+|D|resumable-budgeted-world-join|d4a85f1e92744d1179f76a47cf56926d17b18cf3|预算续算，实际研究代码复用|
+|D|world-bound-multistage-result-join|af4daae1aaeee5a36a140d8a0f272a48c064368b|联合情景连接，实际研究代码复用|
+|E|cross-decision-obligation-union|19fa2b270056d448bd93b587049198d284c5eecf|现金义务身份并集，有限域|
+|E|joint-goal-deadline-extension-frontier|6587769d44804abed17808e7986368178455fbdf|完成日期及延期前沿，有限域|
+|E|ledger-to-budgeted-threshold-integration|cf792bd6aba79bc3edd2d9329084362604c4c63a|账本到收益阈值及续算，四代码连接|
+|E|recurring-benefit-feasibility-threshold|9c27c104e3be8f18eebc18f5ad8a0e10e2940fcf|持续收益门槛，有限域|
+|F|bounded-residual-correction-gate|0b4a892b4daf7c1b887dc93ca672797068d3da63|有界残差双评价门，有限域|
+|F|scope-qualified-residual-transfer|78baa41869cc982f067f36fe0e7de1e0702dd06f|跨范围收缩迁移，有限域|
+A自主语言7，B条件与澄清4，C原生接口安全6，D方法及调度3，E长期资源4，F反馈2。总26。范围仅v0.7起点之后的增量；此前61项已整合身份和R系列、C/D/E/F等研究保留，不声称全库完整清点。其余历史依赖优先沿固定v0.7整合报告与各报告的固定引用取得。
+## 3. 版本统一目标
+交付一个自主引擎的完整候选版本（授权后再实施），白话→原文候选/独立覆盖→可信主体/条件/事实/修订→知识与科学参数→硬门与方法选择→局部或完整计算→自然语言结论/一个优先追问→计划、记录和复盘。零新增费用，运行不调用GPT/Qwen/Claude/第三方权重、嵌入、重排或生成模型；ChatGPT/Codex仅研发。网页作为当前开发与本地验证入口，独立Mac/iPhone是目标产品；采用共享协议及自主核心，不能以PWA称独立原生App。手机核心完整离线能力尚未证实。真机受阻要保留明确状态并完成可运行的离线核心及可复验包，不因设备缺失伪造全门通过，不将旧Qwen列为前置。
+## 4. 共同接口及实现边界（命名为研究提案，不强制新框架）
+RawTurn: 原始UTF8与摘要、固定编码坐标（建议Unicode标量半开区间，各端显式转换）、session_instance/turn_id/revision/epoch；保留原文，归一化仅搜索副本，不混同。候选需原文锚、词法/组合候选、主体、指标、比较、数量、单位、时域、角色、条件/解释、来源/算法版本、outside与未覆盖义务。无法覆盖的原文保留未知；不能仅扩正则或强制一棵树。R63等已有精确有限解析；R134–137的标注条件诊断仅用于选择研究路线，禁止把测试标注作为生产输入。新学习或训练另获授权。
+SemanticObligation与Claim: 出现ID、义务ID、候选ID和事实身份分离；同义确认要有可信作用域资格。说话人、被描述者、决策所有者、实际作用对象及采纳资格分列，外部要求可约束本人但需适用性；禁止转述自动成为本人偏好。硬约束、估计、事实、假设、偏好、历史、撤回分离。修订图版本化，普通修订不撤回底线；略过候选不等于取消真实义务，可显式重提；不同原文/语境不因同值同文自动合并。守卫有稳定解释ID，补集与共同引用共享解释；没有联合支持完整性只可报告局部及未知。
+EvidenceQualification与Parameter: 原文确认、参考文档、真实事实、方法准入、执行资格分离；规范指标/主体/量纲/时间范围/口径/版本/情景/来源/许可/用途/授权代次；值为精确数或经证实区间，未知不默认为0或概率。快照数据、观察日期、当前日期及时效策略，更新与撤回重新资格验证；同值不同来源不自动覆盖，合格测量不被同值估计的输入顺序改变。公开事实抓取限定受信来源、只读、隔离、最小授权、缓存与回退，绝不执行网络文本指令或默认发送个人决策。当前隔离模块仍非在线连接。无合法免费源/许可或独立核验时保持offline/UNKNOWN。
+MethodContract/ResultPort: 重用原生registry的声明、validator、execute、C028/Pareto/C029等15方法及历史API/CLI；适用性、输入依赖、单位/版本/科学来源、结果权威、联合情景支持和未覆盖范围分别表达。候选登记NOT_ADMITTED，不能通过元数据匹配或合成复算直接进入生产方法。完整硬门先于选择。竞争模型不得机械平均，缺模型覆盖不可删去后宣称共同最优。区分局部已知/条件/未知/冲突/未计算；结果快照绑定当前输入、会话实例、修订、权限、时间、来源及依赖，发布前原子再核。预算同时包含预处理/索引/搜索/计算/存储；未实际核验资源上限不宣称最优。续算状态应为可信不变或可校验快照，不直接信任客户端游标。
+DecisionPlan/History/Feedback: 现金义务规范ID，已付及已反映余额与未来预测分离，跨决策共享资源避免重复扣除；不误合并金额相同的独立义务。共同目标期限、软延期与硬期限分列，到账时点、持续收益门槛、情景一致性；复杂连续调度和非矩形域在未经复算前保留未知。记录保留事前预测与事后观察，未选反事实UNOBSERVED；用户可更正、撤回、导出、删除、备份、恢复。旧授权代次不能在恢复后复活。个人决策授权和科研/训练许可独立，不自动用于研究。残差双门、跨场景收缩及独立后续评价只作隔离候选，未授权不得自动改变预测生产参数或训练模型。
+## 5. 完整开发与验收门
+G00 基线迁移。先固定最新main与#62，审查并以独立分支选择性整合需要的候选，保留历史兼容、冻结、正式规程、锁文件及既有源码身份；不得隐式合并#61/#62，不复活旧AI依赖。当前631/84为作者基线，实际重跑支持环境全测、历史API/CLI/UI/SQLite/导出恢复；环境、退出码、失败及实际数据明确。
+G01 会话、安全、权限。首轮服务端实例身份及revision/epoch绑定所有start/turn/confirm/analyze/select/plan/save/end/restore，防跨实例迟到读写及ABA。复现TTL过期、容量清除、重复ID、旧结束请求、迟到计算、撤回恢复；旧/未知/局部结果不可选择、保存为完整建议；过期界面标历史。测试真实API并发与退出、旧缓存、跨午夜、旧备份及独立隐私负例。
+G02 自主语义。复用A、B的组合数量/条件、R102/103/104/116/131等既有候选；评估确定性原型与自主符号/统计候选，禁止无限正则扩展与虚构覆盖。真实输入逐轮检验主体、他人转述、否定、严格门槛、单位币种/周期、条件链、同一守卫多引用、复合数量、指代、跨轮修订、未知检测、Unicode/编码、略过重提与同文不同义务。必须保留现有房租停车、夜班实际排班和搬家例外正向能力。不能把候选召回、标注条件解码视为原生语义正确。固定公开开发集逐义务计分及历史对照；门槛保持原有权威规格，未见验收另由独立轨冻结，不能用此合成报告调独立评分。
+G03 知识与可信参数。使用C的实际隔离/投影实验、R66/67/106等已有证据知识接口；真实参数从原文、测量、外部事实各自核验；情景评价口径修订不得静默重标旧分，明确等价/转换/重新确认才重绑。同义重复要保留全部证据，冲突不默认选择。真实账本到build_state验证估计/事实顺序、角色更正、来源/版本/用途/时效变化及单独参数撤回。断网、缓存过期、恶意内容、合法允许的只读公开事实更新均测试；实时不可用则明确限界。timing_actions继续待审。
+G04 数学与调度。先跑真正native validator和C028；所有硬约束独立核验后选择，缺少一个方案评分不自动0，不要求硬门排除方案无关数据。复用原生C029/Pareto与D的联合支持、分支模型覆盖及预算续算。完整域上复算、未知域明确保守外包、竞争模型分歧保留；逐情景可行不等于统一解释或统一行动。局部分析与完整权威字段隔离，真实依赖与版本失效，拒绝跨情景拼接、任意平均及旧收据。预算中断、重启、前缀证书、篡改、并发、不同来源与方法失效全部回归。C035/C036/长期DP等候选仅经各自准入门后进入相应执行，不默认激活。
+G05 自主交互。保留原生planner的确定失败见证暂缓机制；使用B具名输出保证/共享信息成本候选，不以数量最大化覆盖必要确认。先给当前有效结果、最少必要追问，明确拒答和退出；不同策略前沿不能并集宣称全部保证。真实用户无需数学术语或手选模型，参数可编辑、单位/依据/条件按需展开、图表可复算、旧结果标时点、修改自动失效。最坏深度并非真实问数；比较真实任务完成率、实际追问数、时间和误解，不用合成计数冒充体验。
+G06 长期个人决策。E资产及既有R97/R98/R99/R100/R101/R119/R124/R125连接原生resources/records；真实中文输入到账与预测修订、资金/工时/共享义务、旧计划进度和联合期限；在有限支持范围内运行机会成本、软延期前沿、最低持续收益，并标条件。用多个真实入口的虚构决策验证重复支付、到账延迟、计划修改、历史复用、撤回与恢复；旧决策不得无授权进入新分析，反事实保持未知。未实现复杂调度明确。
+G07 自主学习。F及已有C025、R18/R44/R110仅作为研究候选；在不自动训练的条件下验证事前/事后、偏差/低估双门、时间顺序留出、跨范围资格、负向案例、性能下降与回退。候选隔离可重放，未观察反事实不评价为失败；真实改进需独立样本与授权。生产学习/自动权重/新模型训练不在未授权范围。
+G08 独立产品与隐私。保留Web/API/CLI共享核心、版本协议和本地数据；在现有Mac/iPhone资源下设计并验证共享核心/本地优先，实际安装、冷启动、断网、交互、序列化、中文字符、签名备份与撤回、最小权限、资源占用及更新回退。现有PWA不能替代Swift/真机；不自动购买开发账号、服务器或分发。验收Mac/iPhone若未执行明确阻塞；不得宣称已独立手机全引擎。数据用途限制、导出删除、恢复隔离、历史数据迁移负向控制。
+G09 独立验收与版本审查。由独立轨保管未见语料与真实任务，预先登记指标、最小差异和严重度；对相同任务/信息/合理预算比较v0.7、普通ChatGPT、专业工具与简单方法。分开报告语义义务召回、单位/主体/条件/修订、正确未知、错误放行/拒绝、数值误差、来源、跨轮连续性、追问数、实际任务时间、反馈及资源；真实用户、独立留出、真实跨端证据缺失均不能宣布优势或全面通过。保持硬安全门优先，不把统计平均抵消重大错误；科学证据等级与工程验收分别签发。
+门之间为研究依赖，不要求五小时工作流等待。独立任务可并行；G09完整签发需全部实际适用门通过。资源/证据不足时交付明确PARTIAL/BLOCKED/NOT_RUN及最小复现与保守降级，不改目标、不偷降门槛、不拆成零碎Codex任务。优先在完整版本内实现已资格可复用接口，开放研究候选保持隔离直至验收；没有授权前仅研究。所有者保留最终版本范围和合并决定。
+## 6. 规格结构验证
+实际JS对比origin→main文件集合，检查26条清单唯一、完整、blob格式、组映射、每门有验收主题、依赖有效及无环；另注入缺文档、重复、坏哈希格式、坏组、缺门、循环、无效依赖、空验收主题8个变体，全部拒绝。此为规格结构校验，不是字节密码学再验证、覆盖完整性证明、生产算法或独立科学评价；26个blob来自实际三批只读头部。结构检查代码和数据：
+```js
+const manifest=[["A","condition-polarity-attachment-candidate-audit","81df7d2fc56f29084ecc623b98cdf0991d3260d4","R131 条件及极性候选，开发集候选诊断"],["A","external-ud-development-corpus-structural-audit","db9cc100d96d49832fe32879a706f63830301773","R134 外部句法开发数据，字节与许可审查"],["A","nonprojective-dependency-decoder-external-diagnostic","0218ff41ee8fd68e5df1b2886cdfbee3368c8426","R137 非投射解码，标注条件下评分诊断"],["A","projective-dependency-decoder-external-diagnostic","c40a09357a858644a0da922097cd6367ca696df6","R136 投射解码，标注条件下评分诊断"],["A","source-bound-relation-support-projection","dff5ab32d4ea2698256f725f1ae3726578e4a015","R133 原文关系绑定及R132重复勘误"],["A","ud-negation-head-candidate-diagnostic","d81cbedafee148a0c1e065f39254bac7abe6e14d","R135 已知否定词元的外部依附诊断"],["A","unicode-grounded-language-candidate-bridge","e5c32f5fa91e79a33c06e5b95be491207c6a526d","跨端坐标，JS实际研究与Python片段"],["B","joint-guarded-policy-applicability","5fed5e9108fbc97257fbf0546d521aa3cf725769","共享解释及条件适用，有限域研究"],["B","correlated-interpretation-question-separation","2ef743e0ea767dcc3ba551eff819eae71b1e2df7","R132 复用R93核心，不重复算法/独立样本"],["B","adaptive-clarification-port-guarantees","9178ff491047925e17f88fb1ab82f843bd254285","自适应具名输出保证前沿，有限域研究"],["B","shared-information-source-cost-frontier","bd639403c82166ee5ed98c94f09289f601209b92","共享来源成本双资源前沿，确定回答夹具"],["C","v07-dismissed-claim-reproposal-audit","95616e3d1c316a7f56f49fc81f07e51e16e6d13d","略过重提，原生片段复现"],["C","v07-knowledge-qualification-shared-parameter-bridge","df5a962a58ba0601b6014fad47c39cd3ebdb0e33","完整隔离模块+数学片段，人工资格"],["C","v07-partial-result-authority-boundary","2214aaf19b8fcf4dc8a5a3b9995e59b9ff3dfacf","原生源码审查及抽象权威压力测试"],["C","v07-scenario-score-basis-regret-integration-audit","57ba5834bae5ab139525e46d4afc4a6d0414f697","完整评分模块+账本和后悔片段"],["C","v07-semantic-projection-boundary-batch","5442d4bbeb465bbd11d5901e150a5887263e61ca","同文作用域、角色修订、时效与测量顺序，片段"],["C","v07-session-incarnation-reuse-audit","03871df4f98e6670fa7fe0d1e4cd85b0ee7240b4","会话实例复用，源码片段"],["D","conditional-model-alternative-coverage","8fa6c050fd71d60823e4dc99d4f4f7310b579a0d","竞争方法适用域，有限域"],["D","resumable-budgeted-world-join","d4a85f1e92744d1179f76a47cf56926d17b18cf3","预算续算，实际研究代码复用"],["D","world-bound-multistage-result-join","af4daae1aaeee5a36a140d8a0f272a48c064368b","联合情景连接，实际研究代码复用"],["E","cross-decision-obligation-union","19fa2b270056d448bd93b587049198d284c5eecf","现金义务身份并集，有限域"],["E","joint-goal-deadline-extension-frontier","6587769d44804abed17808e7986368178455fbdf","完成日期及延期前沿，有限域"],["E","ledger-to-budgeted-threshold-integration","cf792bd6aba79bc3edd2d9329084362604c4c63a","账本到收益阈值及续算，四代码连接"],["E","recurring-benefit-feasibility-threshold","9c27c104e3be8f18eebc18f5ad8a0e10e2940fcf","持续收益门槛，有限域"],["F","bounded-residual-correction-gate","0b4a892b4daf7c1b887dc93ca672797068d3da63","有界残差双评价门，有限域"],["F","scope-qualified-residual-transfer","78baa41869cc982f067f36fe0e7de1e0702dd06f","跨范围收缩迁移，有限域"]];
+const actual=["research/decision_hub/2026-11-25-adaptive-clarification-port-guarantees.md","research/decision_hub/2026-11-25-bounded-residual-correction-gate.md","research/decision_hub/2026-11-25-condition-polarity-attachment-candidate-audit.md","research/decision_hub/2026-11-25-conditional-model-alternative-coverage.md","research/decision_hub/2026-11-25-correlated-interpretation-question-separation.md","research/decision_hub/2026-11-25-cross-decision-obligation-union.md","research/decision_hub/2026-11-25-external-ud-development-corpus-structural-audit.md","research/decision_hub/2026-11-25-joint-goal-deadline-extension-frontier.md","research/decision_hub/2026-11-25-joint-guarded-policy-applicability.md","research/decision_hub/2026-11-25-ledger-to-budgeted-threshold-integration.md","research/decision_hub/2026-11-25-nonprojective-dependency-decoder-external-diagnostic.md","research/decision_hub/2026-11-25-projective-dependency-decoder-external-diagnostic.md","research/decision_hub/2026-11-25-recurring-benefit-feasibility-threshold.md","research/decision_hub/2026-11-25-resumable-budgeted-world-join.md","research/decision_hub/2026-11-25-scope-qualified-residual-transfer.md","research/decision_hub/2026-11-25-shared-information-source-cost-frontier.md","research/decision_hub/2026-11-25-source-bound-relation-support-projection.md","research/decision_hub/2026-11-25-ud-negation-head-candidate-diagnostic.md","research/decision_hub/2026-11-25-unicode-grounded-language-candidate-bridge.md","research/decision_hub/2026-11-25-v07-dismissed-claim-reproposal-audit.md","research/decision_hub/2026-11-25-v07-knowledge-qualification-shared-parameter-bridge.md","research/decision_hub/2026-11-25-v07-partial-result-authority-boundary.md","research/decision_hub/2026-11-25-v07-scenario-score-basis-regret-integration-audit.md","research/decision_hub/2026-11-25-v07-semantic-projection-boundary-batch.md","research/decision_hub/2026-11-25-v07-session-incarnation-reuse-audit.md","research/decision_hub/2026-11-25-world-bound-multistage-result-join.md"];
+const prefix="research/decision_hub/2026-11-25-",assetPath=x=>prefix+x[1]+".md";
+const gates=[["G00",[],["BASELINE","HISTORY","OFFLINE"]],["G01",["G00"],["IDENTITY","EPOCH","REVISION","AUTHORITY"]],["G02",["G01"],["RAW","COVERAGE","SCOPE","CONDITION","UNKNOWN"]],["G03",["G01","G02"],["EVIDENCE","SOURCE","UNIT","BASIS"]],["G04",["G03"],["HARD_GATE","METHOD","SUPPORT","PARTIAL","BUDGET"]],["G05",["G04"],["ASK","REFUSAL","UI","REPLAY"]],["G06",["G03","G04"],["LEDGER","DEADLINE","REUSE","FORECAST"]],["G07",["G06"],["FEEDBACK","HOLDOUT","ROLLBACK"]],["G08",["G01","G05","G06","G07"],["PRIVACY","MOBILE","RECOVERY","RESOURCE"]],["G09",["G08"],["INDEPENDENT","BASELINE_COMPARE","RELEASE_REVIEW"]]];
+const map={"A":["G02"],"B":["G02","G04","G05"],"C":["G01","G02","G03","G04","G08"],"D":["G04"],"E":["G06"],"F":["G07"]};
+function validate(rows,files,gs,mapping){
+ const ids=gs.map(x=>x[0]),names=rows.map(assetPath),groups=Object.keys(mapping);
+ if(new Set(names).size!==names.length||JSON.stringify(names.slice().sort())!==JSON.stringify(files.slice().sort()))return false;
+ if(rows.some(x=>!groups.includes(x[0])||!/^[a-f0-9]{40}$/.test(x[2])||!x[3]))return false;
+ if(groups.some(g=>!rows.some(x=>x[0]===g)||!mapping[g].length||mapping[g].some(id=>!ids.includes(id))))return false;
+ if(new Set(ids).size!==ids.length||gs.some(x=>!x[2].length||x[1].some(y=>!ids.includes(y))))return false;
+ let done=new Set();for(let i=0;i<gs.length;i++){let ready=gs.filter(x=>!done.has(x[0])&&x[1].every(y=>done.has(y)));if(!ready.length)break;ready.forEach(x=>done.add(x[0]))}
+ return done.size===gs.length;
+}
+console.log(validate(manifest,actual,gates,map));
+```
+结果：{"assets":26,"groups":{"A":7,"B":4,"C":6,"D":3,"E":4,"F":2},"gates":10,"structureChecks":9,"passed":9,"engineFiles":18}。
+## 7. 当前决定及后续
+本轮将研究资产归并为6组、10个候选验收门，选择了接口命名、依赖、候选优先级与范围；并非用户已批准的开发规格，仍需下一轮重点核查所有前置依赖的可重放入口、原生可达回归、实际资源上限和独立轨准备状态。未核对完整26报告所有代码，不重计原实验，不宣称五轨本轮执行结果或真实竞品证据。未启动Codex、正式源码开发、训练、CI、合并、部署、费用或冻结变更。建议科研轨继续自主语言原始输入与独立未知覆盖，手动窗口集中打通端到端可重放候选；待所有者确认后一次完整工程版本交付。
