@@ -4,7 +4,7 @@
 
 ## 固定研发基线
 
-- GitHub `main` 起点 `ef2ea2b83ba05907f1c7a5719d7ed8db35c40957`。Draft #62 固定 `e61bbad10932edabc9a87483e5407fdae6c751cc`，共同历史为 `6e44ecf50e9e8de0d8a3eb76766cd0d3bf44ab9c`。相对该共同历史，当前 main 增加 26 份研究报告与 v0.8 规格。候选只将 #62 的 126 项平台文件变化重放到独立分支，提交历史保留单独的工程重放提交。交付前重新核对主线并保留研究提交 `d73bf7e3ad4032d2c94346953ba7ebe14f4a0757`。研发规程、研究目录、历史结论与冻结内容保持在各自原始版本。 [Draft #62](https://github.com/edwardsage419/Psychohistory-Research/pull/62)
+- GitHub `main` 起点 `ef2ea2b83ba05907f1c7a5719d7ed8db35c40957`。Draft #62 固定 `e61bbad10932edabc9a87483e5407fdae6c751cc`，共同历史为 `6e44ecf50e9e8de0d8a3eb76766cd0d3bf44ab9c`。相对该共同历史，当前 main 增加 26 份研究报告与 v0.8 规格。候选只将 #62 的 126 项平台文件变化重放到独立分支，提交历史保留单独的工程重放提交。交付前重新核对主线并保留研究提交 `d73bf7e3ad4032d2c94346953ba7ebe14f4a0757` 与 Draft 创建时最新的 `82803894d9adf4a2a8bd7b8ff4ceaf4ba58da430`。研发规程、研究目录、历史结论与冻结内容保持在各自原始版本。 [Draft #62](https://github.com/edwardsage419/Psychohistory-Research/pull/62)
 - 开工核对 14 个开放 Draft PR，读取 v3.2、继承 v3.1 条款、同步规程、产品轨交接和 #62 的固定代码、公开开发、作者验收及独立交接。26 份专项报告逐路径校验 blob。#59–#61 的重叠工程沿 #62 追溯。 [源资产清单](../docs/V08_RESEARCH_INTEGRATION.md)
 - 基线现场重跑为 631 项 Python 测试、11 个子测试、Web 构建、标准库核心及 84 项移动测试通过。v0.8 使用既有锁文件。新运行入口无需预训练权重、外部 AI 推理、嵌入、生成或重排服务。
 
