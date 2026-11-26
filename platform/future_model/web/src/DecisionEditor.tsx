@@ -24,10 +24,10 @@ function questionStep(field: string): Step {
   return '问题与时限';
 }
 
-function QuantityEditor({ label, value, unit, onChange }: { label: string; value?: Quantity; unit: string; onChange: (value: Quantity) => void }) {
+function QuantityEditor({ label, value, unit, onChange, locked }: { label: string; value?: Quantity; unit: string; locked?: boolean; onChange: (value: Quantity) => void }) {
   const quantity = value ?? emptyQuantity(unit);
   const set = (patch: Partial<Quantity>) => onChange({ ...quantity, ...patch });
-  return <fieldset className="decision-quantity" data-quantity-label={label}>
+  return <fieldset className="decision-quantity" data-quantity-label={label} disabled={locked}>
     <legend>{label}</legend>
     <div className="decision-fields">
       <label>数据性质<select aria-label={`${label}数据性质`} value={quantity.kind} onChange={event => {
@@ -52,11 +52,13 @@ function Dependence({ label, value, source, additional, onChange }: { label: str
   </div>;
 }
 
-export function DecisionEditor({ state, questions, understanding, plan, guided, update, confirm, reset }: {
-  state: DecisionState; questions: Question[]; understanding: Understanding | null; plan?: WorkflowPlan; guided: boolean; update: Update; confirm: () => void; reset: () => void;
+export function DecisionEditor({ state, questions, understanding, plan, guided, update, confirm, reset, advancedApply }: {
+  state: DecisionState; questions: Question[]; understanding: Understanding | null; plan?: WorkflowPlan; guided: boolean; update: Update; confirm: () => void; reset?: () => void; advancedApply?: { label: string; disabled: boolean };
 }) {
   const [selection, setStep] = useState<Step>(guided ? '决策意图与证据' : '底线与方案');
   const [showAll, setShowAll] = useState(false);
+  const fromDialogue = (id: string) => !!advancedApply && id.startsWith('talk-');
+  const lockedOption = (id: string) => !!advancedApply && /^o-[a-f0-9]{18}$/.test(id);
   const relevant = new Set<Step>(['决策意图与证据', '问题与时限', '底线与方案', '目标与权重']);
   if (state.objectives.length && state.options.length >= 2) relevant.add('评分与误差');
   if (state.scenarios.length || state.information || state.timing) relevant.add('情景与参考');
@@ -85,11 +87,11 @@ export function DecisionEditor({ state, questions, understanding, plan, guided, 
     goTo(questionStep(item.target.field), option && criterion ? `${option.label} · ${criterion.label}` : undefined);
   }
   const constraintStep = <>
-    <label className="decision-check"><input type="checkbox" checked={state.constraints_confirmed} onChange={event => update({ constraints_confirmed: event.target.checked })}/>我确认底线清单完整（也可确认没有硬约束）</label>
+    <label className="decision-check"><input type="checkbox" checked={state.constraints_confirmed} disabled={!!advancedApply} onChange={event => update({ constraints_confirmed: event.target.checked })}/>我确认底线清单完整（也可确认没有硬约束）</label>
     <h4>硬约束</h4>
     {state.constraints.map((constraint, index) => {
       const set = (patch: Partial<typeof constraint>) => update({ constraints: state.constraints.map(item => item.id === constraint.id ? { ...item, ...patch } : item) });
-      return <fieldset className="decision-quantity" key={constraint.id}><legend>{constraint.label || `底线 ${index + 1}`}</legend>
+      return <fieldset className="decision-quantity" key={constraint.id} disabled={fromDialogue(constraint.id)}><legend>{constraint.label || `底线 ${index + 1}`}</legend>
         <div className="decision-fields">
           <label>底线名称<input value={constraint.label} onChange={event => set({ label: event.target.value })}/></label>
           <label>比较符号<select value={constraint.operator} onChange={event => set({ operator: event.target.value as typeof constraint.operator })}>{Object.entries(operatorLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
@@ -111,9 +113,9 @@ export function DecisionEditor({ state, questions, understanding, plan, guided, 
     {state.options.map((option, index) => {
       const set = (patch: Partial<typeof option>) => update({ options: state.options.map(item => item.id === option.id ? { ...item, ...patch } : item) });
       return <fieldset className="decision-quantity" key={option.id}><legend>{option.label || `方案 ${index + 1}`}</legend>
-        <label>方案名称<input value={option.label} onChange={event => set({ label: event.target.value })}/></label>
-        {state.constraints.map(constraint => <QuantityEditor key={constraint.id} label={`${option.label || '方案'} · ${constraint.label || '底线'}`} unit={constraint.unit} value={option.measurements[constraint.id]} onChange={value => set({ measurements: { ...option.measurements, [constraint.id]: value } })}/>)}
-        <button type="button" className="quiet" onClick={() => update({
+        <label>方案名称<input readOnly={lockedOption(option.id)} value={option.label} onChange={event => set({ label: event.target.value })}/></label>
+        {state.constraints.map(constraint => <QuantityEditor key={constraint.id} locked={fromDialogue(constraint.id)} label={`${option.label || '方案'} · ${constraint.label || '底线'}`} unit={constraint.unit} value={option.measurements[constraint.id]} onChange={value => set({ measurements: { ...option.measurements, [constraint.id]: value } })}/>)}
+        <button type="button" className="quiet" disabled={lockedOption(option.id)} onClick={() => update({
           options: state.options.filter(item => item.id !== option.id),
           scenarios: state.scenarios.map(scenario => ({ ...scenario, utilities: omit(scenario.utilities, option.id) })),
           reference_option_id: state.reference_option_id === option.id ? null : state.reference_option_id,
@@ -139,9 +141,9 @@ export function DecisionEditor({ state, questions, understanding, plan, guided, 
       const weight = state.weights[objective.id] ?? { lower: '', upper: '' };
       return <fieldset className="decision-quantity" key={objective.id}><legend>{objective.label || `目标 ${index + 1}`}</legend>
         <div className="decision-grid">
-          <label>目标名称<input value={objective.label} onChange={event => set({ label: event.target.value })}/></label>
-          <label>目标单位<input value={objective.unit} onChange={event => set({ unit: event.target.value })}/></label>
-          <label>目标方向<select value={objective.direction} onChange={event => set({ direction: event.target.value as typeof objective.direction })}><option value="max">越大越好</option><option value="min">越小越好</option></select></label>
+          <label>目标名称<input readOnly={fromDialogue(objective.id)} value={objective.label} onChange={event => set({ label: event.target.value })}/></label>
+          <label>目标单位<input readOnly={fromDialogue(objective.id)} value={objective.unit} onChange={event => set({ unit: event.target.value })}/></label>
+          <label>目标方向<select disabled={fromDialogue(objective.id)} value={objective.direction} onChange={event => set({ direction: event.target.value as typeof objective.direction })}><option value="max">越大越好</option><option value="min">越小越好</option></select></label>
           <div className="decision-grid">
             <label>{objective.label || `目标 ${index + 1}`}权重下界<input inputMode="decimal" value={weight.lower} onChange={event => update({ weights: { ...state.weights, [objective.id]: { ...weight, lower: event.target.value } } })}/></label>
             <label>{objective.label || `目标 ${index + 1}`}权重上界<input inputMode="decimal" value={weight.upper} onChange={event => update({ weights: { ...state.weights, [objective.id]: { ...weight, upper: event.target.value } } })}/></label>
@@ -149,7 +151,7 @@ export function DecisionEditor({ state, questions, understanding, plan, guided, 
         </div>
         <div className="decision-actions">
           {state.weights[objective.id] && <button type="button" className="quiet" onClick={() => update({ weights: omit(state.weights, objective.id), weights_confirmed: false })}>清除 {objective.label} 权重</button>}
-          <button type="button" className="quiet" onClick={() => update({
+          <button type="button" className="quiet" disabled={fromDialogue(objective.id)} onClick={() => update({
             objectives: state.objectives.filter(item => item.id !== objective.id), weights: omit(state.weights, objective.id), shared_offsets: omit(state.shared_offsets, objective.id),
             options: state.options.map(option => ({ ...option, scores: omit(option.scores, objective.id) })),
           })}>移除目标 {index + 1}</button>
@@ -163,7 +165,7 @@ export function DecisionEditor({ state, questions, understanding, plan, guided, 
     <Dependence label="评分误差依赖" additional={{ key: 'shared_additive', label: '同一目标的误差为共享加性偏移' }} value={state.score_dependence} source={state.score_dependence_source} onChange={(score_dependence, score_dependence_source) => update({ score_dependence, score_dependence_source })}/>
     {!state.options.length || !state.objectives.length ? <p className="muted">添加方案和目标后可填写评分区间。</p> : state.options.map(option => <fieldset className="decision-quantity" key={option.id}>
       <legend>{option.label || '未命名方案'}</legend>
-      {state.objectives.map(objective => <QuantityEditor key={objective.id} label={`${option.label || '方案'} · ${objective.label || '目标'}`} unit={objective.unit} value={option.scores[objective.id]} onChange={value => update({ options: state.options.map(item => item.id === option.id ? { ...item, scores: { ...item.scores, [objective.id]: value } } : item) })}/>)}
+      {state.objectives.map(objective => <QuantityEditor key={objective.id} locked={fromDialogue(objective.id)} label={`${option.label || '方案'} · ${objective.label || '目标'}`} unit={objective.unit} value={option.scores[objective.id]} onChange={value => update({ options: state.options.map(item => item.id === option.id ? { ...item, scores: { ...item.scores, [objective.id]: value } } : item) })}/>)}
     </fieldset>)}
     <details className="decision-disclosure"><summary>共享误差与评分变换</summary>
       <div className="decision-grid">
@@ -246,9 +248,9 @@ export function DecisionEditor({ state, questions, understanding, plan, guided, 
       {step === '决策偏好' && <PreferenceInput state={state} update={update}/>}
     </div>
     <div className="decision-actions decision-editor-actions">
-      {!state.confirmed && <button type="button" onClick={confirm} disabled={!state.question.trim()}>确认并分析</button>}
-      {state.confirmed && <span className="muted">修改后自动计算预览，保存时确认当前修订。</span>}
-      <button type="button" className="quiet" onClick={reset}>开始新决策</button>
+      {advancedApply ? <button type="button" onClick={confirm} disabled={advancedApply.disabled}>{advancedApply.label}</button> : !state.confirmed && <button type="button" onClick={confirm} disabled={!state.question.trim()}>确认并分析</button>}
+      {!advancedApply && state.confirmed && <span className="muted">修改后自动计算预览，保存时确认当前修订。</span>}
+      {reset && <button type="button" className="quiet" onClick={reset}>开始新决策</button>}
     </div>
   </section>;
 }

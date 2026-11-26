@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#192e2a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>心理史学 · 离线决策工作台</title>
+</head>
+<body>
+  <a class="skip" href="#workspace">跳到工作台</a>
+  <header class="mast">
+    <div class="mast-content">
+      <div class="identity"><span class="mark" aria-hidden="true">✳</span><span>心理史学<span class="version">离线决策工作台</span></span></div>
+      <span id="network" class="network" role="status">检查连接状态</span>
+    </div>
+  </header>
+  <main id="workspace">
+    <section id="describe" class="intro" aria-labelledby="hero-title">
+      <div class="intro-copy">
+        <p class="stage-label">决策工作台</p>
+        <h1 id="hero-title">把难选的事，理清楚</h1>
+        <p>先说出你的问题，再确认底线、比较选项和证据。条件改变时，随时重新计算。</p>
+      </div>
+      <form id="question-form" class="prompt" autocomplete="off">
+        <label for="question">你正在考虑什么？</label>
+        <textarea id="question" name="question" rows="3" maxlength="6000" required spellcheck="false" placeholder="例如：我该继续进修，还是接受一份新工作？"></textarea>
+        <p id="question-message" class="message" role="status"></p>
+        <div class="controls">
+          <button type="submit">整理这个问题 <span aria-hidden="true">→</span></button>
+          <button id="demo" class="quiet" type="button">载入虚构示例</button>
+        </div>
+      </form>
+      <p id="mobile-model-status" class="help">正在加载本机离线能力。</p>
+    </section>
+
+    <section id="clarify" class="panel" aria-labelledby="clarify-title" hidden>
+      <div class="panel-head">
+        <div><p class="stage-label">整理与确认</p><h2 id="clarify-title" tabindex="-1">确认决策条件</h2></div>
+        <button id="back-to-question" class="quiet" type="button">回到问题</button>
+      </div>
+      <section id="intake" class="intake" aria-label="离线对话" hidden></section>
+      <div id="clarifications" class="clarifications"></div>
+      <p class="help">根据原文措辞整理候选项，并用待办提示缺失信息。请亲自核对，未知的数值可以留空。</p>
+      <div id="editor"></div>
+      <p id="analysis-message" class="message" role="status"></p>
+      <div class="confirmation">
+        <label class="check"><input id="confirm-state" type="checkbox" autocomplete="off">我已核对当前条件、假设和所填资料</label>
+        <button id="analyze" type="button">计算并比较 <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section id="results" class="panel" aria-labelledby="result-title" hidden>
+      <div class="panel-head">
+        <div><p class="stage-label">本机结果</p><h2 id="result-title" tabindex="-1">计算与比较</h2></div>
+        <div class="controls">
+          <button id="edit" class="quiet" type="button">调整条件</button>
+          <button id="go-to-save" class="secondary" type="button">保存到本机记录</button>
+        </div>
+      </div>
+      <div id="result-content"></div>
+    </section>
+
+    <details class="panel" id="advanced">
+      <summary>高级输入 · v0.5.0 决策状态 JSON</summary>
+      <p class="help">可粘贴或选取 v0.5.0 决策状态，在本机重新核对和确认后计算。v0.7 会话和计算凭据请在桌面本地工作台打开。明文 JSON 可能包含个人信息。加密备份请使用下方的恢复入口。</p>
+      <label for="state-file">读取状态 JSON（可选）</label>
+      <input id="state-file" type="file" accept=".json,application/json">
+      <label for="matrix">决策状态 JSON</label>
+      <textarea id="matrix" class="code-field" rows="10" spellcheck="false" autocomplete="off" maxlength="16777216"></textarea>
+      <div class="controls">
+        <button id="show-json" class="secondary" type="button">将当前条件填入编辑器</button>
+        <button id="apply-json" class="secondary" type="button">采用 JSON 作为待确认条件</button>
+      </div>
+      <p id="json-message" class="message" role="status"></p>
+    </details>
+
+    <section id="records" class="panel" aria-labelledby="records-title">
+      <div class="panel-head">
+        <div><p class="stage-label">本机保管</p><h2 id="records-title">历史记录与复盘</h2></div>
+        <button id="end-session" class="quiet" type="button">锁定并清空会话</button>
+      </div>
+      <p id="vault-status" class="help" aria-live="polite">检查本机存储状态</p>
+      <label for="passphrase">本机加密口令（至少 12 字符）</label>
+      <input id="passphrase" type="password" autocomplete="off" spellcheck="false" placeholder="输入现有口令，或首次保存时设置">
+      <label class="check"><input id="save-consent" type="checkbox" autocomplete="off">我授权加密保存这次操作涉及的个人资料</label>
+      <div class="controls">
+        <button id="save" class="secondary" type="button" disabled>保存当前分析</button>
+        <button id="load" class="secondary" type="button">解锁记录</button>
+      </div>
+      <p id="message" class="message" role="status"></p>
+      <div id="history-list" hidden></div>
+      <div id="record-content" hidden></div>
+      <details id="privacy">
+        <summary>加密备份、恢复与撤回</summary>
+        <p class="help">口令只在本次操作中使用。浏览器可能清理应用数据。用同一设备和同一应用来源的当前加密备份恢复，需要保留本机撤回账本。设备下载及系统副本请自行保管。</p>
+        <button id="export" class="secondary" type="button">导出加密备份</button>
+        <fieldset>
+          <legend>恢复加密备份</legend>
+          <label for="backup-file">选择备份文件</label>
+          <input id="backup-file" type="file" accept=".json,application/json">
+          <label class="check"><input id="restore-confirm" type="checkbox" autocomplete="off">我确认用该加密备份恢复至本机</label>
+          <button id="restore" class="secondary" type="button">校验并恢复</button>
+        </fieldset>
+        <fieldset>
+          <legend>撤回与删除</legend>
+          <p class="help">撤回授权会删除此应用内的全部个人决策记录，并阻止旧备份重新导入。外部副本由你管理。</p>
+          <label class="check"><input id="delete-confirm" type="checkbox" autocomplete="off">我确认撤回授权并删除本机全部决策记录</label>
+          <button id="delete" class="danger" type="button">撤回并删除</button>
+        </fieldset>
+      </details>
+    </section>
+    <footer>
+      <p id="runtime-status" aria-live="polite">检查离线准备状态</p>
+      <p>计算在本机完成。证据由你提供，应用只记录你实际执行的行动。</p>
+      <p>离线理解依据原文措辞和你确认的条件。</p>
+    </footer>
+    <noscript><p>请启用 JavaScript 以在本机运行决策计算及加密。</p></noscript>
+  </main>
+  <script type="module" src="./src/app.mjs"></script>
+</body>
+</html>

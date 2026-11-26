@@ -2,6 +2,12 @@
 
 本地个人决策工作台与中文科研控制台共享 CLI、API 和独立数学核心。v0.1 基础工作台运行两个**完全合成机制**：个体 Bernoulli 状态更新、双轮群体传播。研究目录只读登记，不能将运行或构建成功当作真实预测、因果识别或科学结题。
 
+## v0.7 自主基础候选
+
+默认 Web 入口使用本地自主解析和原生决策方法。中文对话、证据核对、离线科学索引、情景计算和已核对的现金与时间状态使用同一会话修订。该候选覆盖有限的语言结构。v0.5 工作台和历史研究入口继续可用。
+
+[启动、兼容与回退](docs/V07_WORKBENCH.md) · [工程验收](reports/V07_ACCEPTANCE.md) · [研究整合](docs/V07_RESEARCH_INTEGRATION.md) · [独立验收交接](docs/V07_INDEPENDENT_HANDOFF.md)
+
 ## 云端安装与启动
 
 要求 Python 3.12、Node.js 24 LTS、npm、Git。Linux 已实测，GitHub 托管 macOS 15 Apple Silicon ARM64 已原生实测（53 项通过、1 项 Linux 专用跳过；浏览器 9 步和备份恢复成功），用户 M4 MacBook Air 实机仍 **NOT_RUN**；不要求个人电脑在线。所有命令从 `platform/future_model/` 执行。macOS 使用不含符号链接的规范化工作路径作为 `--data` 目录，避免直接使用经 `/var` 或 `/tmp` 符号链接的路径。详细记录见 [逐门验收](reports/ACCEPTANCE.md)。
