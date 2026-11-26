@@ -5,14 +5,16 @@ from pydantic import Field
 from .decision_api import EpochToken
 from .decision_candidates import default_candidate_registry
 from .decision_knowledge import discover_knowledge, local_knowledge
-from .decision_resources import ResourceState
-from .decision_conversation import ConversationHub
+from .decision_feedback import FeedbackFreezeInput, FeedbackObservation
+from .decision_resources import GoalDeadlineInput, JointResourceInput, RecurringBenefitInput, ResourceState
+from .decision_conversation import VERSION, ConversationHub
 from .decision_records import DecisionRecords
 from .decision_service import personal_data_root
 from .decision_state import Identity, InputModel, Key, Original, Text
 from .decision_v05 import DecisionStateV05
 
 PREFIX = "/api/v7/decisions"
+CURRENT_PREFIX = "/api/v8/decisions"
 LEGACY_PREFIX = "/api/v6/decisions"
 
 
@@ -21,6 +23,7 @@ class EndInput(InputModel):
 
 
 class SessionInput(EndInput):
+    session_instance: Identity | None = None
     revision: int = Field(ge=1, le=1_000_000, strict=True)
 
 
@@ -28,6 +31,20 @@ class StartInput(InputModel):
     question: Original
     session_id: Identity | None = None
     use_local_model: bool = Field(default=False, strict=True)
+
+
+class CloseCurrentInput(SessionInput):
+    session_instance: Identity
+
+
+class StartCurrentInput(InputModel):
+    question: Original
+    cancel_nonce: Identity | None = None
+    use_local_model: bool = Field(default=False, strict=True)
+
+
+class CancelStartInput(InputModel):
+    cancel_nonce: Identity
 
 
 class TurnInput(SessionInput):
@@ -83,6 +100,26 @@ class ReuseInput(SessionInput):
     reuse_epoch: EpochToken
 
 
+class FeedbackToken(InputModel):
+    token: EpochToken
+
+
+class FeedbackInput(FeedbackToken):
+    observation: FeedbackObservation
+
+
+class JointResourcesRequest(CloseCurrentInput):
+    request: JointResourceInput
+
+
+class RecurringBenefitRequest(CloseCurrentInput):
+    request: RecurringBenefitInput
+
+
+class GoalDeadlineRequest(CloseCurrentInput):
+    request: GoalDeadlineInput
+
+
 class ResourceRecord(InputModel):
     epoch: EpochToken
     decision_id: Identity
@@ -107,26 +144,58 @@ OPERATIONS = {
 }
 
 
-def invoke(hub, operation, request):
-    schema = OPERATIONS[operation]
+CURRENT_OPERATIONS = {
+    **OPERATIONS, "start": StartCurrentInput, "end": CloseCurrentInput, "discard": CloseCurrentInput,
+    "cancel_start": CancelStartInput, "joint_resources": JointResourcesRequest,
+    "recurring_benefit": RecurringBenefitRequest, "goal_deadline_frontier": GoalDeadlineRequest,
+}
+
+
+def invoke(hub, operation, request, *, current=False):
+    schema = (CURRENT_OPERATIONS if current else OPERATIONS)[operation]
     validated = schema.model_validate(request)
-    return getattr(hub, operation)(**{key: getattr(validated, key) for key in schema.model_fields})
+    arguments = {
+        key: getattr(validated, key) for key in schema.model_fields
+    }
+    if isinstance(validated, SessionInput) and current != (validated.session_instance is not None):
+        raise ValueError("请求必须使用对应版本的会话身份。")
+    if isinstance(validated, StartCurrentInput):
+        arguments["current"] = True
+    return getattr(hub, operation)(**arguments)
+
+
+def current_capabilities(hub):
+    return {**hub.capabilities(), "platform_version": VERSION,
+            "conversation_contract": {"protocol": VERSION, "session_instance": "REQUIRED",
+                                      "first_request": "CANCELLATION_NONCE_ONLY",
+                                      "result_authority": ["FULL_ANALYSIS", "DESCRIPTIVE_ONLY"],
+                                      "joint_resources": "DESCRIPTIVE_ONLY",
+                                      "recurring_benefit": "NOT_ADMITTED",
+                                      "goal_deadline_frontier": "NOT_ADMITTED",
+                                      "feedback": "ISOLATED_DEVELOPMENT_ONLY"},
+            "active_method_manifest": {
+                "contract": "1.0.0",
+                "methods": [{"id": method.model_id, "version": method.version, "source": method.source_baseline}
+                            for method in hub.hub.registry.methods()],
+            },
+            "language_adapters": hub.candidate_parsers.describe()}
 
 
 def create_conversation_root(root):
     return ConversationHub(records=DecisionRecords(personal_data_root(root)))
 
 
-def router(hub, *, legacy=False):
-    api = APIRouter(prefix=LEGACY_PREFIX if legacy else PREFIX)
+def router(hub, *, legacy=False, current=False):
+    api = APIRouter(prefix=CURRENT_PREFIX if current else LEGACY_PREFIX if legacy else PREFIX)
+    version_label = "v8" if current else "v6" if legacy else "v7"
 
     @api.get("/status")
     def status():
-        return hub.status()
+        return hub.status(current=current)
 
     @api.get("/capabilities")
     def capabilities():
-        return hub.capabilities()
+        return current_capabilities(hub) if current else hub.capabilities()
 
     @api.get("/models")
     def models():
@@ -163,11 +232,30 @@ def router(hub, *, legacy=False):
         def replay(data: ResourceReplay):
             return hub.records.resource_replay(data.epoch, data.decision_id, revision=data.revision)
 
+    if current:
+        @api.post("/feedback/freeze")
+        def feedback_freeze(data: FeedbackFreezeInput):
+            return hub.feedback.freeze(data)
+
+        @api.post("/feedback/observe")
+        def feedback_observe(data: FeedbackInput):
+            return hub.feedback.observe(data.token, data.observation)
+
+        @api.post("/feedback/evaluate")
+        def feedback_evaluate(data: FeedbackToken):
+            return hub.feedback.evaluate(data.token)
+
+        @api.post("/feedback/rollback")
+        def feedback_rollback(data: FeedbackToken):
+            return hub.feedback.rollback(data.token)
+
     def endpoint(operation, schema):
         def handle(data: schema):
-            return invoke(hub, operation, data)
+            return invoke(hub, operation, data, current=current)
         return handle
 
-    for operation, schema in OPERATIONS.items():
-        api.add_api_route(f"/{operation}", endpoint(operation, schema), methods=["POST"], name=f"{'v6' if legacy else 'v7'}_{operation}")
+    for operation, schema in (CURRENT_OPERATIONS if current else OPERATIONS).items():
+        path = "cancel-start" if operation == "cancel_start" else operation
+        api.add_api_route(f"/{path}", endpoint(operation, schema), methods=["POST"],
+                          name=f"{version_label}_{operation}")
     return api

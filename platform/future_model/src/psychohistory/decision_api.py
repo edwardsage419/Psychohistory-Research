@@ -9,7 +9,7 @@ from .decision_state import DecisionState, Identity, InputModel, Key, Original, 
 
 PREFIX = "/api/v4/decisions"
 PREFIX_V05 = "/api/v5/decisions"
-DECISION_ROUTES = (PREFIX + "/", PREFIX_V05 + "/", "/api/v6/decisions/", "/api/v7/decisions/")
+DECISION_ROUTES = (PREFIX + "/", PREFIX_V05 + "/", "/api/v6/decisions/", "/api/v7/decisions/", "/api/v8/decisions/")
 MAX_DECISION_REQUEST = 256 * 1024
 MAX_RESTORE_REQUEST = 32 * 1024 * 1024
 EpochToken = Annotated[str, StringConstraints(min_length=1, max_length=128)]

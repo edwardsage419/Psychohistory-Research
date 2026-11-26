@@ -14,6 +14,7 @@ import unicodedata
 from pydantic import ConfigDict, Field, StringConstraints, field_validator, model_validator
 
 from .contracts import canonical
+from .decision_semantics import comparison
 from .decision_state import Identity, InputModel, Kind, Text, TextLine
 
 ClaimOrigin = Literal['USER', 'LOCAL_MODEL', 'RULES']
@@ -21,6 +22,7 @@ Purpose = Literal['save', 'personalization', 'research', 'training']
 Digest = Annotated[str, StringConstraints(pattern=r'^[0-9a-f]{64}$')]
 MAX_CLAIMS = 96
 _PURPOSES = ('save', 'personalization', 'research', 'training')
+_HARD_ROLES = {'constraint', 'strict_constraint'}
 
 
 def _hash(value):
@@ -91,6 +93,11 @@ class ClaimInput(_Frozen):
     def _key(self):
         return _normalized(self.field), _normalized(self.subject)
 
+    def _group_key(self):
+        scope = self.metadata.scope if self.metadata else None
+        basis = scope if self.role == 'scenario_score' and scope and scope.startswith('scenario-basis:') else None
+        return (*self._key(), basis)
+
     def _comparison_scope(self):
         metadata = self.metadata or SourceMetadata()
         return tuple(map(_normalized, (self.unit, metadata.observed_at, metadata.population, metadata.scope)))
@@ -135,7 +142,7 @@ def _claim_id(claim, position):
 
 
 def _validate_correction(candidate, prior):
-    if prior.confirmed_at is None or prior.claim._key() != candidate.claim._key():
+    if prior.confirmed_at is None or prior.claim._group_key() != candidate.claim._group_key():
         raise ValueError('A correction must identify prior confirmed evidence about the same field and subject')
     old = prior.claim.metadata or SourceMetadata()
     new = candidate.claim.metadata or SourceMetadata()
@@ -168,6 +175,7 @@ class EvidenceLedger(_Frozen):
     def coherent_history(self):
         seen = {}
         corrected = set()
+        hard_constraints = set()
         for index, entry in enumerate(self.entries, 1):
             if entry.claim_id != _claim_id(entry.claim, index):
                 raise ValueError('Evidence identity does not match its recorded content')
@@ -182,9 +190,25 @@ class EvidenceLedger(_Frozen):
                     raise ValueError('Correction must refer to earlier, active evidence')
                 prior = seen[entry.supersedes]
                 _validate_correction(entry, prior)
+                if entry.supersedes in hard_constraints:
+                    if entry.claim.role not in _HARD_ROLES | {'revision'} or entry.claim.kind != 'fact':
+                        raise ValueError('A hard constraint requires an explicit hard constraint revision')
+                    # A bare revised number cannot silently turn a strict limit inclusive.
+                    old_operator = comparison(prior.claim.source)
+                    if entry.claim.role == 'revision' and (
+                        prior.claim.role == 'strict_constraint' or old_operator in {'<', '>'}
+                    ):
+                        direction = old_operator[0] if old_operator in {'<', '>', '<=', '>='} else (
+                            '>' if entry.claim.field.endswith('_min') else '<'
+                        )
+                        if comparison(entry.claim.source) not in {direction, direction + '='}:
+                            raise ValueError('Revising a strict hard constraint requires an explicit comparison')
+                    hard_constraints.add(entry.claim_id)
                 if _time(entry.confirmed_at) < _time(prior.confirmed_at):
                     raise ValueError('Correction predates its original confirmation')
                 corrected.add(entry.supersedes)
+            if entry.claim.role in _HARD_ROLES:
+                hard_constraints.add(entry.claim_id)
             if entry.operator_proof is not None and (
                 not entry.claim._supported() or not _proof_matches(entry, entry.operator_proof)
             ):
@@ -197,7 +221,7 @@ class EvidenceLedger(_Frozen):
         by_field = {}
         entries = []
         for entry in self.entries:
-            by_field.setdefault(entry.claim._key(), []).append(entry)
+            by_field.setdefault(entry.claim._group_key(), []).append(entry)
             proof = entry.operator_proof
             verified = _proof_trusted(proof, verifier)
             if entry.claim_id in superseded:
@@ -213,7 +237,7 @@ class EvidenceLedger(_Frozen):
                 trace['operator_verification'] = proof.model_dump(mode='json', include={'issuer', 'verified_at', 'content_sha256'})
             entries.append({**trace, 'status': status})
         return {'entries': entries, 'groups': [
-            _group(field, subject, rows, superseded) for (field, subject), rows in by_field.items()
+            _group(field, subject, rows, superseded) for (field, subject, _), rows in by_field.items()
         ]}
 
 
@@ -239,13 +263,14 @@ def _group(field, subject, entries, superseded):
     }
 
 
-def draft_claims(ledger: EvidenceLedger, claims: Iterable[ClaimInput | dict], *, origin: ClaimOrigin = 'USER'):
+def draft_claims(ledger: EvidenceLedger, claims: Iterable[ClaimInput | dict], *, origin: ClaimOrigin = 'USER', dismissed: Iterable[str] = ()):
     """Add immutable, deduplicated proposals without changing current evidence."""
     if origin not in ('USER', 'LOCAL_MODEL', 'RULES'):
         raise ValueError('Unknown evidence origin')
     entries = list(ledger.entries)
     superseded = {entry.supersedes for entry in entries if entry.supersedes is not None}
-    known = {entry.claim._duplicate_key() for entry in entries if entry.claim_id not in superseded}
+    inactive = superseded | set(dismissed)
+    known = {entry.claim._duplicate_key() for entry in entries if entry.claim_id not in inactive}
     for item in claims:
         claim = ClaimInput.model_validate(item)
         key = claim._duplicate_key()

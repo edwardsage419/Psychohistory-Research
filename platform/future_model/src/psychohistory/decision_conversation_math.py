@@ -3,6 +3,7 @@ from decimal import Decimal, InvalidOperation
 from hashlib import sha256
 from unicodedata import normalize
 
+from .decision_feasibility import GATE_ID, METHOD as FEASIBILITY_METHOD, check_constraint, inconsistent_measurements, metric_key
 from .decision_language import interpret
 from .decision_semantics import comparison, monetary_scope
 from .decision_v05 import DecisionStateV05
@@ -58,9 +59,13 @@ def evidence_number(item):
     return None
 
 
+def _is_estimate(item):
+    return item["kind"] == "estimate" or item.get("evidence_kind") == "estimate"
+
+
 def measure(item, unit, number):
     return {"lower": number, "upper": number, "unit": unit,
-            "kind": "estimate" if item["kind"] == "estimate" else "fact", "source": item["source"]}
+            "kind": "estimate" if _is_estimate(item) else "fact", "source": item["source"]}
 
 
 def sourced_key(item):
@@ -68,7 +73,7 @@ def sourced_key(item):
 
 
 def _current_evidence(item, name):
-    if not item or item["kind"] in {"estimate", "conditional", "previous"}:
+    if not item or _is_estimate(item) or item["kind"] in {"conditional", "previous"}:
         return None
     number = evidence_number(item)
     if number is None:
@@ -96,12 +101,24 @@ def _joint_measurement(active, name, unit):
             "source": source, "horizon": JOINT_HORIZON}
 
 
+def _scope(item):
+    metadata = item.get("metadata") or {}
+    return (item["unit"], *(metadata.get(field) or "" for field in ("observed_at", "population", "scope")))
+
+
 def _active_evidence(claims):
     active = {}
     for item in claims:
         key = sourced_key(item)
         prior = active.get(key)
         if prior and item["field"] in BOUNDS and _operator(prior) in {"<", ">"}:
+            continue
+        if (prior and _is_estimate(item) and not _is_estimate(prior)
+                and prior["kind"] in {"fact", "measurement", "revision"}
+                and _scope(prior) == _scope(item)
+                and evidence_number(prior) is not None
+                and evidence_number(prior) == evidence_number(item)):
+            # Both entries survived the trusted ledger's scope and conflict validation.
             continue
         active[key] = item
     return active
@@ -144,7 +161,7 @@ def build_state(base, options, claims, *, ready, overrides=None):
     exception_limit = evidence_number(exception) if exception else None
     for field, (measurement, label, unit, operator) in BOUNDS.items():
         item = active.get(f"{field}:")
-        if item is None or item["kind"] in {"estimate", "previous"}:
+        if item is None or _is_estimate(item) or item["kind"] == "previous":
             continue
         number = evidence_number(item)
         if number is None or (field == "move_allowed" and number == 1):
@@ -170,7 +187,7 @@ def build_state(base, options, claims, *, ready, overrides=None):
             measured = _current_evidence(value, name) if field == "night_shift_max" else (
                 evidence_number(value) if value else None
             )
-            if measured is None or value["kind"] == "estimate":
+            if measured is None or _is_estimate(value):
                 continue
             result = measure(value, unit, measured)
             if field == "night_shift_max":
@@ -178,7 +195,7 @@ def build_state(base, options, claims, *, ready, overrides=None):
             if field == "move_allowed" and exception_limit is not None and measured == 1:
                 attendance = active.get(f"onsite:{name}")
                 attendance_number = evidence_number(attendance) if attendance else None
-                if attendance_number is None or attendance["kind"] == "estimate":
+                if attendance_number is None or _is_estimate(attendance):
                     continue
                 result = measure(value, unit, Decimal(attendance_number > exception_limit))
                 result["source"] = f"{value['source']}；{attendance['source']}；{exception['source']}"[:400]
@@ -221,7 +238,7 @@ def build_state(base, options, claims, *, ready, overrides=None):
     evidence = [item for item in initial["evidence"] if not item["id"].startswith("talk-")][:12]
     for item in claims[-28:]:
         identifier = "talk-" + sha256(item["id"].encode()).hexdigest()[:22]
-        kind = "estimate" if item["kind"] == "estimate" else "fact"
+        kind = "estimate" if _is_estimate(item) else "fact"
         label = f"{item['subject']} {item['value']} {item['unit']}".strip()[:400]
         evidence.append({"id": identifier, "label": label, "kind": kind, "source": item["source"][:400],
                          "verification": "user_confirmed", "scope": "用户确认原文。外部情况待核实。"})
@@ -229,3 +246,58 @@ def build_state(base, options, claims, *, ready, overrides=None):
     if initial["information"]:
         initial["information"]["verification_source"] = None
     return DecisionStateV05.model_validate(initial)
+
+
+def descriptive_analysis(state, *, context_confirmed: bool):
+    """Publish isolated grounded calculations without feasibility or decision authority."""
+    if not context_confirmed:
+        return None
+
+    checks = []
+    for option in state.options:
+        inconsistent = inconsistent_measurements(state, option)
+        for constraint in state.constraints:
+            measurement = option.measurements.get(constraint.id)
+            if (not constraint.id.startswith("talk-") or measurement is None or measurement.kind != "fact"
+                    or metric_key(constraint, state.deadline) in inconsistent):
+                continue
+            status, _ = check_constraint(constraint, measurement, state.deadline)
+            if status != "CERTAIN_FAIL":
+                continue
+            checks.append({
+                "option_id": option.id, "option_label": option.label, "constraint_id": constraint.id,
+                "constraint_label": constraint.label, "status": "CONDITIONAL_VIOLATION",
+                "method": GATE_ID, "method_version": FEASIBILITY_METHOD.version,
+                "unit": constraint.unit, "horizon": constraint.horizon or state.deadline,
+                "operator": constraint.operator, "threshold": format(constraint.threshold, "f"),
+                "lower": format(measurement.lower, "f"), "upper": format(measurement.upper, "f"),
+                "dependencies": [constraint.source, measurement.source],
+            })
+
+    differences = []
+    if len(state.options) == 2:
+        left, right = state.options
+        for objective in state.objectives:
+            if not objective.id.startswith("talk-"):
+                continue
+            a, b = left.scores.get(objective.id), right.scores.get(objective.id)
+            if (not a or not b or a.lower is None or b.lower is None or a.lower != a.upper
+                    or b.lower != b.upper or a.lower == b.lower or not a.source.strip() or not b.source.strip()
+                    or a.unit != objective.unit or b.unit != objective.unit
+                    or (a.horizon or state.deadline) != (b.horizon or state.deadline)
+                    or a.kind != "fact" or b.kind != "fact"):
+                continue
+            high, low = (left, right) if a.lower > b.lower else (right, left)
+            differences.append({
+                "objective_id": objective.id, "label": objective.label,
+                "higher_option_id": high.id, "higher_option_label": high.label,
+                "lower_option_id": low.id, "lower_option_label": low.label,
+                "amount": format(abs(a.lower - b.lower), "f"),
+                "unit": objective.unit, "horizon": a.horizon or state.deadline,
+                "dependencies": [a.source, b.source],
+            })
+
+    if not checks and not differences:
+        return None
+    return {"version": "1.0.0", "authority": "NONE", "status": "DESCRIPTIVE_ONLY",
+            "checks": checks, "differences": differences}

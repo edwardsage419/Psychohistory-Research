@@ -10,7 +10,7 @@ import re
 import unicodedata
 
 
-VERSION = "offline-knowledge@1.0.0"
+VERSION = "offline-knowledge@1.1.0"
 MANIFEST_PATH = Path("research/decision_hub/2026-11-24-method-corpus-index/corpus_index.json")
 MANIFEST_BLOB = "6862d5a2cd3c7eb3f2da9a85d79c8b3386f2a102"
 MANIFEST_SIZE = 154
@@ -115,6 +115,7 @@ class KnowledgeIndex:
 
     def __init__(self, root):
         root = Path(root).resolve()
+        self._root = root
         self._manifest, raw_manifest = _verification(root, MANIFEST_PATH, MANIFEST_BLOB)
         self._policy, policy = _verification(root, POLICY_PATH, POLICY_BLOB)
         self._rows = []
@@ -215,6 +216,12 @@ class KnowledgeIndex:
             return "AVAILABLE"
         return "PARTIAL"
 
+    def _controls_current(self):
+        return all(
+            _verification(self._root, path, blob)[0]["status"] == "VERIFIED"
+            for path, blob in ((MANIFEST_PATH, MANIFEST_BLOB), (POLICY_PATH, POLICY_BLOB))
+        )
+
     def report(self):
         statuses = Counter(row["status"] for row in self._rows)
         counts = {
@@ -236,6 +243,7 @@ class KnowledgeIndex:
         }
         return deepcopy({
             "version": VERSION, "status": self.status, "authority": "NONE",
+            "snapshot_scope": "INDEX_BUILD_TIME",
             "manifest": self._manifest, "publication_policy": self._policy,
             "counts": counts, "documents": self._rows, "source_edges": self._edges,
             "unlisted_paths": self._unlisted,
@@ -247,6 +255,10 @@ class KnowledgeIndex:
             raise ValueError("knowledge query must be text up to 6000 characters")
         if type(limit) is not int or not 1 <= limit <= 20:
             raise ValueError("knowledge search limit must be 1–20")
+        result = {"version": VERSION, "status": self.status, "authority": "NONE",
+                  "ranking": "BM25_BODY_LEXICAL_RELEVANCE", "hits": [], "omitted_stale_hits": 0}
+        if not self._controls_current():
+            return {**result, "status": "UNAVAILABLE"}
         terms = list(dict.fromkeys(_tokens(query)))
         scores = defaultdict(float)
         total = len(self._cards)
@@ -261,20 +273,27 @@ class KnowledgeIndex:
                 scores[doc] += idf * count * (K1 + 1) / (count + K1 * norm)
         ranked = sorted(scores, key=lambda doc: (-scores[doc], self._cards[doc]["path"]))[:limit]
         term_set = set(terms)
-        hits = []
         for doc in ranked:
+            card = self._cards[doc]
+            identity, _ = _verification(self._root, Path(card["path"]), card["version"])
+            if identity["status"] != "VERIFIED":
+                result["omitted_stale_hits"] += 1
+                result["status"] = "PARTIAL"
+                continue
             lines = self._lines[doc]
             line = max(lines, key=lambda value: len(term_set.intersection(_tokens(value))))
-            hits.append({"card": deepcopy(self._cards[doc]), "relevance": scores[doc], "snippet": _excerpt(line, 240)})
-        return {
-            "version": VERSION, "status": self.status, "authority": "NONE",
-            "ranking": "BM25_BODY_LEXICAL_RELEVANCE", "hits": hits,
-        }
+            result["hits"].append({"card": deepcopy(card), "relevance": scores[doc], "snippet": _excerpt(line, 240)})
+        return result
 
     def method_sources(self, method):
         """Match native registered paths and versions to the archived exact source edges."""
         archived = self._methods.get(method.key)
-        edges = [edge for edge in self._edges if edge["method"] == method.key]
+        edges = []
+        for edge in self._edges:
+            if edge["method"] != method.key:
+                continue
+            current, _ = _verification(self._root, Path(edge["path"]), edge["expected_current_blob"])
+            edges.append({**edge, "current_verification": current["status"]})
         native_paths = (method.sources,) if isinstance(method.sources, str) else method.sources
         matches = (archived and method.source_baseline == archived["sourceBaseline"]
                    and method.candidate_scope == archived["scope"]
@@ -284,9 +303,11 @@ class KnowledgeIndex:
             edge["checkout_status"] in {"INDEXED", "BYTE_DUPLICATE"}
             and edge["checkout_blob"] == edge["expected_current_blob"]
             and edge["historical_status"] == "MATCH"
+            and edge["current_verification"] == "VERIFIED"
             for edge in edges
         )
-        return ("MATCHED_REFERENCE_ONLY" if matches and matched_bytes else "REVIEW_REQUIRED"), deepcopy(edges)
+        return ("MATCHED_REFERENCE_ONLY" if matches and matched_bytes and self._controls_current()
+                else "REVIEW_REQUIRED"), edges
 
 
 @lru_cache(maxsize=1)

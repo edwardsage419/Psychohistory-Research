@@ -1,0 +1,110 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+		EF8000000000000000000001 /* PsychohistoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8000000000000000000005 /* PsychohistoryApp.swift */; };
+		EF8000000000000000000002 /* EvidenceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8000000000000000000006 /* EvidenceViews.swift */; };
+		EF8000000000000000000003 /* DecisionProtocol in Frameworks */ = {isa = PBXBuildFile; productRef = EF8000000000000000000014 /* DecisionProtocol */; };
+
+		EF8000000000000000000004 /* Psychohistory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psychohistory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF8000000000000000000005 /* PsychohistoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychohistoryApp.swift; sourceTree = "<group>"; };
+		EF8000000000000000000006 /* EvidenceViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvidenceViews.swift; sourceTree = "<group>"; };
+		EF8000000000000000000007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+
+		EF8000000000000000000008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (EF8000000000000000000003 /* DecisionProtocol in Frameworks */,);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF8000000000000000000009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (EF8000000000000000000001 /* PsychohistoryApp.swift in Sources */, EF8000000000000000000002 /* EvidenceViews.swift in Sources */,);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		EF800000000000000000000A /* Main group */ = {
+			isa = PBXGroup;
+			children = (EF800000000000000000000B /* App */, EF800000000000000000000C /* Products */,);
+			sourceTree = "<group>";
+		};
+		EF800000000000000000000B /* App */ = {
+			isa = PBXGroup;
+			children = (EF8000000000000000000005 /* PsychohistoryApp.swift */, EF8000000000000000000006 /* EvidenceViews.swift */, EF8000000000000000000007 /* Info.plist */, EF8000000000000000000017 /* App.xcconfig */,);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EF800000000000000000000C /* Products */ = {
+			isa = PBXGroup;
+			children = (EF8000000000000000000004 /* Psychohistory.app */,);
+			name = Products;
+			sourceTree = "<group>";
+		};
+
+		EF800000000000000000000D /* Psychohistory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF800000000000000000000F;
+			buildPhases = (EF8000000000000000000009 /* Sources */, EF8000000000000000000008 /* Frameworks */,);
+			buildRules = ();
+			dependencies = ();
+			name = Psychohistory;
+			packageProductDependencies = (EF8000000000000000000014 /* DecisionProtocol */,);
+			productName = Psychohistory;
+			productReference = EF8000000000000000000004 /* Psychohistory.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF800000000000000000000E /* Project object */ = {
+			isa = PBXProject;
+			attributes = { BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 1600; };
+			buildConfigurationList = EF8000000000000000000010;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = "zh-Hans";
+			hasScannedForEncodings = 0;
+			knownRegions = ("zh-Hans", Base,);
+			mainGroup = EF800000000000000000000A /* Main group */;
+			packageReferences = (EF8000000000000000000013 /* Local package */,);
+			productRefGroup = EF800000000000000000000C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (EF800000000000000000000D /* Psychohistory */,);
+		};
+
+		EF800000000000000000000F /* Target configurations */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (EF8000000000000000000011 /* Debug */, EF8000000000000000000012 /* Release */,);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF8000000000000000000010 /* Project configurations */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (EF8000000000000000000015 /* Debug */, EF8000000000000000000016 /* Release */,);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF8000000000000000000011 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF8000000000000000000017 /* App.xcconfig */;
+			buildSettings = { SWIFT_OPTIMIZATION_LEVEL = "-Onone"; };
+			name = Debug;
+		};
+		EF8000000000000000000012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF8000000000000000000017 /* App.xcconfig */;
+			buildSettings = {};
+			name = Release;
+		};
+		EF8000000000000000000013 /* Local package */ = {isa = XCLocalSwiftPackageReference; relativePath = "."; };
+		EF8000000000000000000014 /* DecisionProtocol */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF8000000000000000000013 /* Local package */;
+			productName = DecisionProtocol;
+		};
+		EF8000000000000000000015 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {}; name = Debug; };
+		EF8000000000000000000016 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {}; name = Release; };
+		EF8000000000000000000017 /* App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = App.xcconfig; sourceTree = "<group>"; };
+	};
+	rootObject = EF800000000000000000000E /* Project object */;
+}

@@ -3,10 +3,12 @@ import json
 import sys
 
 from .contracts import canonical
-from .decision_conversation_api import OPERATIONS, create_conversation_root, invoke
+from .decision_conversation_api import (
+    CURRENT_OPERATIONS, OPERATIONS, create_conversation_root, current_capabilities, invoke,
+)
 
 
-def talk(data):
+def talk(data, *, current=False):
     hub = create_conversation_root(data)
     while raw := sys.stdin.buffer.readline(262145):
         try:
@@ -17,11 +19,11 @@ def talk(data):
                 raise ValueError("Invalid message")
             operation = message["operation"]
             if operation == "status" and message["data"] == {}:
-                result = hub.status()
+                result = hub.status(current=current)
             elif operation == "capabilities" and message["data"] == {}:
-                result = hub.capabilities()
-            elif isinstance(operation, str) and operation in OPERATIONS:
-                result = invoke(hub, operation, message["data"])
+                result = current_capabilities(hub) if current else hub.capabilities()
+            elif isinstance(operation, str) and operation in (CURRENT_OPERATIONS if current else OPERATIONS):
+                result = invoke(hub, operation, message["data"], current=current)
             else:
                 raise ValueError("Unknown operation")
         except (TypeError, ValueError, KeyError, PermissionError, RecursionError):

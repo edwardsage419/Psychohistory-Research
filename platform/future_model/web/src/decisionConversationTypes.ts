@@ -1,4 +1,5 @@
 import type { Analysis, DecisionState } from './decisionTypes';
+import type { PartialAnalysis, RevisionReceipt, SessionRevision } from './conversationProtocol';
 
 export type Claim = {
   id: string;
@@ -23,18 +24,18 @@ export type ConversationSummary = {
   warning: string | null;
   focus: string | null;
 };
-export type ConversationView = {
-  session_id: string;
-  revision: number;
+export type ConversationView = SessionRevision & {
+  cancel_nonce?: string;
   dialogue: { role: 'user' | 'assistant'; text: string }[];
   summary: ConversationSummary;
   claims: Claim[];
   options: ConversationOption[];
   analysis: Analysis | null;
+  partial_analysis?: PartialAnalysis | null;
   state: DecisionState;
   phase: 'CLARIFY' | 'ANALYZED';
   local_model_status: string;
-  result: { session_id: string; revision: number; protocol: string; cutoff: string; receipt_sha256: string };
+  result: RevisionReceipt & { cutoff: string; receipt_sha256: string };
   knowledge: {
     methods: { method: string; title?: string; requirements?: { id: string; description: string }[] }[];
     search: { hits: { card: { title: string; path: string; version: string; applicability_boundary: string | null }; snippet: string }[] };

@@ -35,7 +35,7 @@ def frozen_cases():
     return rows
 
 
-def connect(page, url, token, version=None):
+def connect(page, url, token, version="v07"):
     response = page.goto(f'{url}/?workflow={version}' if version else f'{url}/')
     assert response is not None and response.ok
     field(page, '本地访问令牌').fill(token)

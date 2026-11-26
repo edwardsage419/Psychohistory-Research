@@ -16,6 +16,7 @@ from time import perf_counter
 
 ROOT = Path(__file__).resolve().parents[3]
 HUB = ROOT / "research/decision_hub"
+V08_PREFIX = "/api/v8/decisions"
 CORPORA = (
     ("2026-11-24-language-evidence-corpus/language_corpus.json",
      "be1cddcc80e78e3df9a35775279c4b4f7f3ae1bb"),
@@ -175,22 +176,59 @@ def coverage_row(gold, text, claims, obligations, explicit_unknowns, lexical):
     }
 
 
+def candidate_coverage(gold, text, semantic):
+    """Score raw candidate anchors separately from the frozen ledger dimensions."""
+    target = span(gold, text)
+    relations = []
+    for relation in semantic["relations"]:
+        anchor = span(relation["target"], text)
+        if contains(anchor, target) or contains(target, anchor):
+            relations.append(relation)
+    condition = gold.get("condition")
+    edit = gold.get("operation", gold.get("op"))
+    return {
+        "literal_condition_anchor": any(
+            row["kind"] == "condition" and row["guard"]["source"] == condition
+            for row in relations
+        ) if condition and condition in text else None,
+        "other_attribution_anchor": any(
+            row["kind"] == "attribution" for row in relations
+        ) if gold.get("actor") == "other" else None,
+        "edit_marker_anchor": any(
+            row["operation"] == edit and contains(span(row["target"], text), target)
+            for row in semantic["edits"]
+        ) if edit in {"replace", "retract"} else None,
+    }
+
+
 class Replay:
     def __init__(self, client, prefix):
         self.client = client
         self.prefix = prefix
         self.samples = []
         self.calls = Counter()
+        self.session_handles = {}
 
     async def request(self, op, body):
         start = perf_counter()
         self.calls[op] += 1
+        if self.prefix == V08_PREFIX and op != "start":
+            identity, revision = self.session_handles[body["session_id"]]
+            body = {**body, "session_instance": identity}
+            if op == "end":
+                body["revision"] = revision
         response = await self.client.post(f"{self.prefix}/{op}", json=body)
         if op in {"start", "turn"}:
             self.samples.append((perf_counter() - start) * 1000)
         if response.status_code != 200:
             raise RuntimeError(f"{op} HTTP {response.status_code}: {response.text}")
-        return response.json()
+        payload = response.json()
+        if self.prefix == V08_PREFIX:
+            if op == "end":
+                del self.session_handles[body["session_id"]]
+            elif "session_instance" in payload:
+                self.session_handles[payload["session_id"]] = (payload["session_instance"], payload["revision"])
+        return payload
 
 
 def bind(view):
@@ -217,8 +255,12 @@ async def evaluate_case(api, episode):
         obligations = semantic.get("obligations", [])
         unknowns = semantic.get("unknowns", [])
         quantities = [item for item in semantic.get("candidates", []) if item.get("kind") == "quantity"]
-        comparison = [coverage_row(gold, text, fresh_claims, obligations, unknowns, quantities)
-                      for gold in gold_claims(turn)]
+        comparison = []
+        for gold in gold_claims(turn):
+            row = coverage_row(gold, text, fresh_claims, obligations, unknowns, quantities)
+            if api.prefix == V08_PREFIX:
+                row["source_candidates"] = candidate_coverage(gold, text, semantic)
+            comparison.append(row)
         analysis = view.get("analysis") or {}
         knowledge = view.get("knowledge") or {}
         search = knowledge.get("search", {})
@@ -292,6 +334,14 @@ def stats(rows):
                            "revision_link_present")
         },
     }
+
+
+def source_candidate_stats(rows):
+    candidates = [annotation["source_candidates"] for row in rows for annotation in row["annotations"]]
+    return {name: {
+        "matched": sum(candidate[name] is True for candidate in candidates),
+        "total": sum(candidate[name] is not None for candidate in candidates),
+    } for name in candidates[0]}
 
 
 
@@ -490,6 +540,8 @@ def main():
     parser.add_argument("--prefix", default="/api/v7/decisions")
     parser.add_argument("--label", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--summary-only", action="store_true",
+                        help="Omit individual replay turns and confirmation probes from the output.")
     options = parser.parse_args()
     os.environ["PSYCHOHISTORY_LOCAL_AI"] = "0"
     import psychohistory
@@ -525,9 +577,16 @@ def main():
                                                       for outcome in trial["outcomes"].values()).items())),
         "production_index": knowledge, "api_requests": dict(calls), "turns": rows,
     }
+    if options.prefix == V08_PREFIX:
+        result["source_candidate_anchors"] = source_candidate_stats(rows)
+    if options.summary_only:
+        del result["turns"]
+        del result["confirmation_pressure"]
     options.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print(json.dumps(result["confirmation_outcomes"], ensure_ascii=False))
+    if options.prefix == V08_PREFIX:
+        print(json.dumps(result["source_candidate_anchors"], ensure_ascii=False))
 
 
 if __name__ == "__main__":

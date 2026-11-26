@@ -2,6 +2,8 @@
 
 from datetime import UTC, date, datetime
 from decimal import Decimal
+from fractions import Fraction
+from math import ceil
 import re
 from typing import Annotated, Literal
 
@@ -196,9 +198,13 @@ def _cash_feasibility(balance, reserve, option, applicable):
         if balance < reserve:
             return {"status": "INFEASIBLE", "reason": "BALANCE_BELOW_RESERVE", "reserve": _money(reserve)}
         return {"status": "UNKNOWN", "reason": "FUTURE_COST_REQUIRED"}
-    margin = balance - option.future_cost - reserve
+    return _cash_margin(balance, reserve, option.future_cost)
+
+
+def _cash_margin(balance, reserve, future_cost):
+    margin = balance - future_cost - reserve
     return {"status": "FEASIBLE" if OPERATORS[">="](margin, 0) else "INFEASIBLE",
-            "future_cost": _money(option.future_cost), "reserve": _money(reserve), "margin": _money(margin)}
+            "future_cost": _money(future_cost), "reserve": _money(reserve), "margin": _money(margin)}
 
 
 def _schedule(tasks, capacity, first):
@@ -286,3 +292,317 @@ def evaluate_resources(state: ResourceState, *, current_date: date | None = None
     return {"version": RESOURCE_VERSION, "as_of": state.as_of.isoformat(), "evaluated_on": today.isoformat(),
             "cash": cash, "options": options, "unapplied_limits": state.limits,
             "authority": "NONE", "qualification": "CONFIRMED_USER_INPUT_ONLY"}
+
+
+JOINT_RESOURCE_VERSION = "1.0.0"
+RECURRING_BENEFIT_VERSION = "1.0.0"
+GOAL_DEADLINE_VERSION = "1.0.0"
+
+
+class CashObligation(InputModel):
+    """An explicitly reconciled canonical identity in the current cash account."""
+
+    id: Key
+    amount: NonnegativeMoney
+    due: CivilDate
+    reflected_payment_id: Key | None = None
+
+
+class JointResourceInput(InputModel):
+    version: Literal["1.0.0"] = JOINT_RESOURCE_VERSION
+    confirmed: bool = Field(strict=True)
+    option_ids: list[Key] = Field(min_length=2, max_length=24)
+    cash_allocations: dict[Key, Annotated[list[CashObligation], Field(max_length=24)]] | None = Field(
+        default=None, max_length=24
+    )
+    shared_task_ids: list[Key] = Field(default_factory=list, max_length=24)
+
+    @model_validator(mode="after")
+    def check_scope(self):
+        if len(set(self.option_ids)) != len(self.option_ids):
+            raise ValueError("同一计划只能选择一次。")
+        if len(set(self.shared_task_ids)) != len(self.shared_task_ids):
+            raise ValueError("共用任务标识必须唯一。")
+        if self.cash_allocations is not None:
+            if set(self.cash_allocations) != set(self.option_ids):
+                raise ValueError("每项所选计划须具有明确的现金义务清单。")
+            for obligations in self.cash_allocations.values():
+                if len({row.id for row in obligations}) != len(obligations):
+                    raise ValueError("同一计划不能重复列出同一现金义务。")
+        return self
+
+
+def _joint_cash(state, request, selected, today):
+    details, balance = _cash_position(state, today)
+    if balance is None:
+        return details
+    if state.reserve is None:
+        return {**details, "status": "UNKNOWN", "reason": "RESERVE_REQUIRED"}
+    if request.cash_allocations is None:
+        return {**details, "status": "UNKNOWN", "reason": "CASH_ALLOCATIONS_REQUIRED"}
+    obligations = {}
+    payments = {event.id: event for event in state.cash.events if event.kind == "actual_expense"}
+    refunded_payments = {event.refund_of for event in state.cash.events
+                         if event.kind == "actual_refund" and event.amount > 0}
+    linked_payments = {}
+    for option in selected:
+        allocated = Decimal(0)
+        for row in request.cash_allocations[option.option_id]:
+            old = obligations.setdefault(row.id, row)
+            if old != row:
+                return {**details, "status": "CONFLICT", "reason": "CASH_OBLIGATION_CONFLICT",
+                        "obligation_id": row.id}
+            if row.reflected_payment_id is None:
+                allocated += row.amount
+                continue
+            payment = payments.get(row.reflected_payment_id)
+            if (payment is None or payment.amount != row.amount or payment.date > today
+                    or payment.id in refunded_payments):
+                return {**details, "status": "UNKNOWN", "reason": "PAYMENT_RECONCILIATION_REQUIRED",
+                        "obligation_id": row.id}
+            if linked_payments.setdefault(payment.id, row.id) != row.id:
+                return {**details, "status": "CONFLICT", "reason": "PAYMENT_LINKED_TWICE"}
+        if option.future_cost is None or option.future_cost != allocated:
+            return {**details, "status": "UNKNOWN", "reason": "ALLOCATION_COVERAGE_REQUIRED",
+                    "option_id": option.option_id}
+
+    outstanding = [row for row in obligations.values() if row.reflected_payment_id is None]
+    total = sum((row.amount for row in outstanding), Decimal(0))
+    return {
+        **details,
+        **_cash_margin(balance, state.reserve, total),
+        "outstanding_ids": sorted(row.id for row in outstanding),
+        "reflected_payment_ids": sorted(linked_payments),
+    }
+
+
+def _joint_time(state, request, selected, today):
+    if state.capacity is None and not state.shared_tasks and all(option.tasks is None for option in selected):
+        return {"status": "NOT_APPLICABLE"}
+    if today != state.as_of:
+        return {"status": "UNKNOWN", "reason": "CURRENT_TIME_SNAPSHOT_REQUIRED"}
+    if any(option.tasks is None for option in selected):
+        return {"status": "UNKNOWN", "reason": "TASK_SCOPE_PROGRESS_OR_DEADLINE_REQUIRED"}
+    shared_ids = set(request.shared_task_ids)
+    tasks = {}
+    used_shared_ids = set()
+    for option in selected:
+        for task in option.tasks:
+            if task.id not in tasks:
+                tasks[task.id] = task
+            elif task.id not in shared_ids:
+                return {"status": "UNKNOWN", "reason": "TASK_IDENTITY_REQUIRED", "task_id": task.id}
+            elif tasks[task.id] != task:
+                return {"status": "CONFLICT", "reason": "TASK_REVISION_CONFLICT", "task_id": task.id}
+            else:
+                used_shared_ids.add(task.id)
+    if shared_ids != used_shared_ids:
+        return {"status": "UNKNOWN", "reason": "SHARED_TASK_SCOPE_MISMATCH"}
+    # Both lists were already validated by the archive-compatible snapshot contract.
+    # Keep all merged tasks, including when the joint list exceeds one option's cap.
+    combined = ResourceOption(option_id="joint", tasks=[]).model_copy(update={"tasks": list(tasks.values())})
+    return _time_feasibility(state, combined, today, True)
+
+
+def evaluate_joint_resources(state: ResourceState, request: JointResourceInput, *, current_date: date | None = None) -> dict:
+    """Compare simultaneous plans under a confirmed, bounded shared snapshot."""
+    today = current_date if current_date is not None else datetime.now(UTC).date()
+    result = {"version": JOINT_RESOURCE_VERSION, "authority": "NONE", "as_of": state.as_of.isoformat(),
+              "evaluated_on": today.isoformat(), "option_ids": request.option_ids}
+    options = {option.option_id: option for option in state.options}
+    if not request.confirmed:
+        return {**result, "status": "UNKNOWN", "reason": "JOINT_SCOPE_CONFIRMATION_REQUIRED"}
+    if not set(request.option_ids) <= options.keys():
+        return {**result, "status": "UNKNOWN", "reason": "CONFIRMED_PLAN_REQUIRED"}
+    selected = [options[key] for key in request.option_ids]
+    cash_applicable = (
+        request.cash_allocations is not None or state.cash is not None or state.reserve is not None
+        or any(option.future_cost is not None for option in selected)
+    )
+    cash = _joint_cash(state, request, selected, today) if cash_applicable else {"status": "NOT_APPLICABLE"}
+    time = _joint_time(state, request, selected, today)
+    statuses = {cash["status"], time["status"]}
+    if "INFEASIBLE" in statuses:
+        status = "INFEASIBLE"
+    elif statuses <= {"FEASIBLE", "NOT_APPLICABLE"} and "FEASIBLE" in statuses and not state.limits:
+        status = "FEASIBLE"
+    else:
+        status = "UNKNOWN"
+    return {**result, "status": status, "cash": cash, "time": time, "unapplied_limits": state.limits}
+
+
+Period = Annotated[int, Field(ge=1, le=30, strict=True)]
+
+
+class BenefitGoal(InputModel):
+    id: Key
+    cost: NonnegativeMoney
+    earliest: Period = 1
+    deadline: Period
+    hard_deadline: bool = Field(default=True, strict=True)
+
+
+class _SingleSlotScenario(InputModel):
+    confirmed: bool = Field(strict=True)
+    horizon: Period
+    fixed_period: Period
+    fixed_cost: NonnegativeMoney
+    base_income: NonnegativeMoney
+    goals: tuple[BenefitGoal, BenefitGoal]
+
+    @model_validator(mode="after")
+    def check_periods(self):
+        first, second = self.goals
+        if self.fixed_period > self.horizon or any(
+            not goal.earliest <= goal.deadline <= self.horizon for goal in self.goals
+        ):
+            raise ValueError("计划时点与硬期限必须在给定时域内。")
+        if first.id == second.id:
+            raise ValueError("需要两项不同的既有目标。")
+        return self
+
+
+class GoalDeadlineInput(_SingleSlotScenario):
+    version: Literal["1.0.0"] = GOAL_DEADLINE_VERSION
+
+
+class RecurringBenefitInput(_SingleSlotScenario):
+    version: Literal["1.0.0"] = RECURRING_BENEFIT_VERSION
+    benefit_delay: Period
+    quantum: Annotated[Money, Field(gt=0)]
+
+    @model_validator(mode="after")
+    def check_hard_deadlines(self):
+        if any(not goal.hard_deadline for goal in self.goals):
+            raise ValueError("持续收益门槛需要固定的目标硬期限。")
+        return self
+
+
+def _goal_pairs(request, include_plan):
+    left, right = request.goals
+    left_limit = left.deadline if left.hard_deadline else request.horizon
+    right_limit = right.deadline if right.hard_deadline else request.horizon
+    for a in range(left.earliest, left_limit + 1):
+        for b in range(right.earliest, right_limit + 1):
+            if a != b and (not include_plan or request.fixed_period not in (a, b)):
+                yield a, b
+
+
+def _balance_path(balance, request, first, second, include_plan):
+    left, right = request.goals
+    for period in range(1, request.horizon + 1):
+        balance += request.base_income
+        if include_plan and period == request.fixed_period:
+            balance -= request.fixed_cost
+        if period == first:
+            balance -= left.cost
+        if period == second:
+            balance -= right.cost
+        yield period, balance
+
+
+def _benefit_units(balance, reserve, request, first, second):
+    minimum_units = 0
+    for period, balance in _balance_path(balance, request, first, second, include_plan=True):
+        gap = reserve - balance
+        if gap <= 0:
+            continue
+        payouts = max(0, period - request.fixed_period - request.benefit_delay + 1)
+        if payouts == 0:
+            return None
+        # Fraction prevents rounding before taking the required integer ceiling.
+        units = Fraction(gap) / (payouts * Fraction(request.quantum))
+        minimum_units = max(minimum_units, ceil(units))
+    return minimum_units
+
+
+def _cash_scenario(state, request, today, version):
+    result = {"version": version, "authority": "NONE",
+              "admission": "NOT_ADMITTED", "scope": "TWO_SINGLE_SLOT_GOALS",
+              "as_of": state.as_of.isoformat(), "evaluated_on": today.isoformat(), "horizon": request.horizon}
+    if not request.confirmed:
+        return {**result, "status": "UNKNOWN", "reason": "SCENARIO_CONFIRMATION_REQUIRED"}, None
+    if today.toordinal() + request.horizon > date.max.toordinal() or state.limits:
+        return {**result, "status": "UNKNOWN", "reason": "SCENARIO_SCOPE_UNRESOLVED"}, None
+    cash, balance = _cash_position(state, today)
+    if balance is None or state.reserve is None:
+        return {**result, "status": "UNKNOWN", "reason": cash.get("reason", "RESERVE_REQUIRED")}, None
+    return {**result, "currency": cash["currency"], "starting_balance": _money(balance),
+            "reserve": _money(state.reserve), "assumed_base_income_per_period": _money(request.base_income)}, balance
+
+
+def _witness_dates(request, today, pair):
+    return {goal.id: date.fromordinal(today.toordinal() + period).isoformat()
+            for goal, period in zip(request.goals, pair, strict=True)}
+
+
+def evaluate_recurring_benefit(state: ResourceState, request: RecurringBenefitInput, *,
+                               current_date: date | None = None) -> dict:
+    """Conditional one-slot scenario using only the verified current cash balance."""
+    today = current_date if current_date is not None else datetime.now(UTC).date()
+    result, balance = _cash_scenario(state, request, today, RECURRING_BENEFIT_VERSION)
+    if balance is None:
+        return result
+
+    result["benefit_from_period"] = request.fixed_period + request.benefit_delay
+    best = None
+    witness_dates = []
+    if balance >= state.reserve:
+        for first, second in _goal_pairs(request, include_plan=True):
+            units = _benefit_units(balance, state.reserve, request, first, second)
+            if units is None or (best is not None and units > best):
+                continue
+            if best is None or units < best:
+                best = units
+                witness_dates = []
+            witness_dates.append(_witness_dates(request, today, (first, second)))
+    if best is None:
+        return {**result, "status": "NO_FINITE_THRESHOLD"}
+    return {**result, "status": "CONDITIONAL", "minimum_per_period": _money(best * request.quantum),
+            "witness_dates": witness_dates}
+
+
+def _deadline_frontier(balance, reserve, request, today, include_plan):
+    pairs = []
+    if balance >= reserve:
+        for first, second in _goal_pairs(request, include_plan=include_plan):
+            path = _balance_path(balance, request, first, second, include_plan=include_plan)
+            if all(remaining >= reserve for _, remaining in path):
+                pairs.append((first, second))
+    if not pairs:
+        return {"status": "NO_JOINT_COMPLETION_WITHIN_HORIZON"}
+
+    left, right = request.goals
+    by_extension = {}
+    for first, second in pairs:
+        extension = (max(0, first - left.deadline), max(0, second - right.deadline))
+        by_extension.setdefault(extension, _witness_dates(request, today, (first, second)))
+    frontier = {}
+    best_right = request.horizon + 1
+    for delay_left, delay_right in sorted(by_extension):
+        if delay_right < best_right:
+            frontier[delay_left, delay_right] = by_extension[delay_left, delay_right]
+            best_right = delay_right
+    earliest = (min(pair[0] for pair in pairs), min(pair[1] for pair in pairs))
+    return {
+        "status": "CONDITIONAL", "on_time": (0, 0) in frontier,
+        "marginal_earliest": _witness_dates(request, today, earliest),
+        "marginal_earliest_joint": earliest in pairs,
+        "extensions": [{left.id: a, right.id: b} for a, b in frontier],
+        "witness_dates": list(frontier.values()),
+        "joint_completion_count": len(pairs),
+    }
+
+
+def evaluate_goal_deadlines(state: ResourceState, request: GoalDeadlineInput, *,
+                            current_date: date | None = None) -> dict:
+    """Compare conditionally attainable deadline extensions without changing goals."""
+    today = current_date if current_date is not None else datetime.now(UTC).date()
+    result, balance = _cash_scenario(state, request, today, GOAL_DEADLINE_VERSION)
+    if balance is None:
+        return result
+    return {
+        **result, "status": "CONDITIONAL",
+        "without_fixed_plan": _deadline_frontier(balance, state.reserve, request, today, include_plan=False),
+        "with_fixed_plan": _deadline_frontier(balance, state.reserve, request, today, include_plan=True),
+    }

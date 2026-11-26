@@ -13,19 +13,26 @@ from uuid import uuid4
 from unicodedata import normalize
 
 from .contracts import canonical
-from .decision_conversation_math import BOUNDS, MEASURES, build_state, evidence_number
+from .decision_conversation_math import BOUNDS, MEASURES, build_state, descriptive_analysis, evidence_number
 from .decision_evidence import EvidenceLedger, PurposeConsent, confirm_claim, draft_claims
 from .decision_knowledge import discover_knowledge
 from .decision_knowledge_updates import knowledge_network_status
 from .decision_language import interpret
-from .decision_resources import ResourceState, evaluate_resources
-from .decision_semantics import blocking_obligations
-from .decision_scenarios import confirmed_scenarios, scenario_candidates
+from .decision_resources import (
+    ResourceState, evaluate_goal_deadlines, evaluate_joint_resources,
+    evaluate_recurring_benefit, evaluate_resources,
+)
+from .decision_semantics import SEMANTIC_VERSION, blocking_obligations
+from .decision_parser_registry import ParserRegistry, RawTurn
+from .decision_feedback import FeedbackLab
+from .decision_records import MAX_LEGACY_SESSION_IDS
+from .decision_scenarios import confirmed_scenarios, draft_scenario_claims
 from .decision_v05 import DecisionHubV05, DecisionStateV05
 
-VERSION = "0.7.0"
+VERSION = "0.8.0"
+LEGACY_VERSION = "0.7.0"
 MAX_CANCELLATIONS = 512
-PARSER_VERSION = VERSION
+PARSER_VERSION = SEMANTIC_VERSION
 MAX_SESSIONS = 48
 SESSION_TTL = 45 * 60
 MAX_TURNS = 20
@@ -79,6 +86,10 @@ class Conversation:
     session_id: str
     base: DecisionStateV05
     domain: str
+    protocol: str = LEGACY_VERSION
+    instance: str = field(default_factory=lambda: uuid4().hex)
+    authority_generation: int = 0
+    cancel_nonce: str | None = None
     ledger: EvidenceLedger = field(default_factory=EvidenceLedger)
     options: dict[str, dict] = field(default_factory=dict)
     dialogue: list[dict] = field(default_factory=list)
@@ -177,19 +188,22 @@ def option_id(label):
 
 
 class ConversationHub:
-    def __init__(self, *, hub=None, parser=interpret, records=None):
+    def __init__(self, *, hub=None, parser=interpret, records=None, candidate_parsers=None):
         self.hub = hub or DecisionHubV05()
         self._parse = parser
         self.records = records
+        self.candidate_parsers = candidate_parsers if candidate_parsers is not None else ParserRegistry()
+        self.feedback = FeedbackLab()
         self._lock = RLock()
         self._sessions = OrderedDict()
         self._generation = 0
         self._pending = {}
+        self._legacy_ids = set()
         self._cancelled = {}
         self._reject_client_starts_until = 0
 
-    def status(self):
-        return {"conversation_version": VERSION, "engine_version": self.hub.hub_version,
+    def status(self, *, current=False):
+        return {"conversation_version": VERSION if current else LEGACY_VERSION, "engine_version": self.hub.hub_version,
                 "local_model": {"enabled": False, "status": "LOCAL_AI_DISABLED"},
                 "cognition": {"version": PARSER_VERSION, "coverage": "BOUNDED_RULES",
                               "network": "OFFLINE", "open_language": "NOT_ESTABLISHED"},
@@ -201,7 +215,7 @@ class ConversationHub:
     def capabilities():
         path = Path(__file__).resolve().parents[3] / "mobile" / "src" / "platform-capabilities.json"
         if not path.is_file():
-            return {"platform_version": VERSION, "cross_end_contract": "UNAVAILABLE"}
+            return {"platform_version": LEGACY_VERSION, "cross_end_contract": "UNAVAILABLE"}
         return json.loads(path.read_text(encoding="utf-8"))
 
     def _expire(self):
@@ -213,12 +227,14 @@ class ConversationHub:
             if self._cancelled[sid] <= now:
                 del self._cancelled[sid]
 
-    def _read(self, sid, revision):
+    def _read(self, sid, revision, session_instance=None, *, check_reuse=True):
         self._expire()
         row = self._sessions.get(sid)
-        if row is None:
+        if row is None or (row.protocol == VERSION and row.instance != session_instance):
             raise KeyError("Session expired")
-        if row.reuse_authority is not None:
+        if row.protocol == LEGACY_VERSION and session_instance is not None:
+            raise KeyError("Session protocol mismatch")
+        if check_reuse and row.reuse_authority is not None:
             self.records.resource_for_reuse(*row.reuse_authority)
         if row.revision != revision:
             raise ValueError("此会话已更新，请用当前版本继续。")
@@ -235,39 +251,60 @@ class ConversationHub:
             self._sessions.popitem(last=False)
         return deepcopy(result)
 
-    def start(self, question, *, use_local_model=False, session_id=None):
-        sid = session_id or uuid4().hex
+    def start(self, question, *, use_local_model=False, session_id=None, cancel_nonce=None, current=False):
+        protocol = VERSION if current else LEGACY_VERSION
+        nonce = cancel_nonce if current else session_id
+        # v8 always uses a server address. Legacy clients require a one-time
+        # echo of their supplied identifier for the live-session handshake.
+        sid = uuid4().hex if current or session_id is None else session_id
+        reservation = (protocol, nonce or sid)
         with self._lock:
             self._expire()
-            if sid in self._cancelled or (session_id is not None and monotonic() < self._reject_client_starts_until):
+            if reservation in self._cancelled or (nonce is not None and monotonic() < self._reject_client_starts_until):
                 raise KeyError("Session invalidated")
-            if sid in self._pending or sid in self._sessions or len(self._pending) >= MAX_SESSIONS:
+            if reservation in self._pending or len(self._pending) >= MAX_SESSIONS:
                 raise ValueError("此对话标识已在使用或暂时无法开始新对话。")
+            if not current and session_id is not None:
+                if self.records is not None:
+                    self.records.reserve_legacy_session(session_id)
+                else:
+                    if session_id in self._legacy_ids:
+                        raise KeyError("Session invalidated")
+                    if len(self._legacy_ids) >= MAX_LEGACY_SESSION_IDS:
+                        raise ValueError("旧版会话标识容量已满，请使用 v0.8。")
+                    self._legacy_ids.add(session_id)
             generation = self._generation
-            self._pending[sid] = generation
+            self._pending[reservation] = generation
         try:
             base = DecisionStateV05.model_validate(self.hub.start(question)["state"])
             reading = self._parse(question)
-            row = Conversation(sid, base, reading["domain"])
+            row = Conversation(sid, base, reading["domain"], protocol=protocol,
+                               authority_generation=generation, cancel_nonce=nonce)
             self._ingest(row, question, reading, use_local_model)
             row.knowledge = discover_knowledge(question)
             with self._lock:
-                if generation != self._generation or sid in self._cancelled:
+                if generation != self._generation or reservation in self._cancelled:
                     raise KeyError("Session invalidated")
                 return self._update(row)
         finally:
             with self._lock:
-                self._pending.pop(sid, None)
+                self._pending.pop(reservation, None)
 
     def _ingest(self, row, text, reading, legacy_model_requested):
         row.local_receipt = {
             "status": "LEGACY_REQUEST_RETIRED" if legacy_model_requested else "LOCAL_AI_DISABLED",
             "notice": "旧模型参数已退役。本轮使用自主离线解析。" if legacy_model_requested else None,
         }
-        row.semantic_turns.append(reading.get("semantic", {
+        turn = reading.get("semantic", {
             "version": PARSER_VERSION, "coverage": "BOUNDED_RULES",
             "obligations": [], "candidates": [], "unknowns": [],
-        }))
+        })
+        if row.protocol == VERSION:
+            index = len(row.semantic_turns)
+            raw_turn = RawTurn(text, row.instance, row.revision + bool(index), index, row.authority_generation)
+            turn = {**turn, "raw_turn": raw_turn.describe(),
+                    "alternative_parses": self.candidate_parsers.propose(raw_turn)}
+        row.semantic_turns.append(turn)
         row.cutoff = datetime.now(UTC).isoformat()
         names = reading["options"]
         if not names and not row.options:
@@ -285,22 +322,25 @@ class ConversationHub:
                 key = option_id(label)
                 row.options.setdefault(key, {"id": key, "label": label, "status": "PROVISIONAL"})
         raw = []
-        scenario_claims = scenario_candidates(text, (item["label"] for item in row.options.values()))
-        for item in [*reading["claims"], *scenario_claims]:
+        source_metadata = {"source_identity": "current_user", "channel": "user_self_report",
+                           "version": PARSER_VERSION}
+        for item in reading["claims"]:
             if item.get("source") and item["source"] in text and all(len(str(v)) <= 400 for v in item.values()):
                 role = item["kind"]
                 kind = "estimate" if role == "estimate" else "assumption" if role in {"conditional", "scenario_score"} else "fact"
-                raw.append({**item, "kind": kind, "role": role, "metadata": {"source_identity": "current_user", "channel": "user_self_report", "version": PARSER_VERSION}})
+                raw.append({**item, "kind": kind, "role": role, "metadata": source_metadata})
                 subject = item["subject"].strip()
                 if subject and len(subject) <= 100 and len(row.options) < 24:
                     key = option_id(subject)
                     row.options.setdefault(key, {"id": key, "label": subject, "status": "PROVISIONAL"})
-        row.ledger = draft_claims(row.ledger, raw, origin="USER")
+        row.ledger = draft_claims(row.ledger, raw, origin="USER", dismissed=row.dismissed)
+        row.ledger = draft_scenario_claims(row.ledger, text, (item["label"] for item in row.options.values()),
+                                          metadata=source_metadata, dismissed=row.dismissed)
         row.dialogue.append({"role": "user", "text": text})
 
-    def turn(self, session_id, revision, text, *, use_local_model=False):
+    def turn(self, session_id, revision, text, *, use_local_model=False, session_instance=None):
         with self._lock:
-            snapshot = deepcopy(self._read(session_id, revision))
+            snapshot = deepcopy(self._read(session_id, revision, session_instance))
         if sum(item["role"] == "user" for item in snapshot.dialogue) >= MAX_TURNS:
             raise ValueError("会话已达到轮次上限，请开始新会话。")
         focus = snapshot.focus
@@ -325,13 +365,13 @@ class ConversationHub:
                 snapshot.ledger = confirm_claim(snapshot.ledger, target)
                 self._compute(snapshot)
         with self._lock:
-            self._read(session_id, revision)
+            self._read(session_id, revision, session_instance)
             return self._update(snapshot)
 
     def confirm(self, session_id, revision, claim_ids=(), option_ids=(), accept_context=False,
-                corrections=(), dismiss_claim_ids=()):
+                corrections=(), dismiss_claim_ids=(), *, session_instance=None):
         with self._lock:
-            row = deepcopy(self._read(session_id, revision))
+            row = deepcopy(self._read(session_id, revision, session_instance))
             claims = {item["id"]: item for item in public_claims(row)}
             corrections = {item.claim_id: item.supersedes for item in corrections}
             targets = set(claim_ids) | set(corrections) | set(dismiss_claim_ids)
@@ -367,9 +407,9 @@ class ConversationHub:
             self._compute(row)
             return self._update(row)
 
-    def analyze(self, session_id, revision, *, state=None, confirmed=False):
+    def analyze(self, session_id, revision, *, state=None, confirmed=False, session_instance=None):
         with self._lock:
-            row = deepcopy(self._read(session_id, revision))
+            row = deepcopy(self._read(session_id, revision, session_instance))
             if state is not None:
                 if not confirmed:
                     raise ValueError("请确认高级输入的来源及含义。")
@@ -442,11 +482,11 @@ class ConversationHub:
         row.previous_gate = current
         row.analysis = result
 
-    def update_resources(self, session_id, revision, *, resources=None, confirmed=False):
+    def update_resources(self, session_id, revision, *, resources=None, confirmed=False, session_instance=None):
         if not confirmed:
             raise ValueError("请明确核对本次共同资源与来源。")
         with self._lock:
-            row = deepcopy(self._read(session_id, revision))
+            row = deepcopy(self._read(session_id, revision, session_instance))
             if resources is not None:
                 if not {item.option_id for item in resources.options} <= row.options.keys():
                     raise ValueError("资源须引用当前对话中的方案标识。")
@@ -455,15 +495,39 @@ class ConversationHub:
                 row.reuse_authority = None
             return self._recompute_resources(row)
 
-    def reuse_resources(self, session_id, revision, *, epoch, decision_id, reuse_epoch):
+    def reuse_resources(self, session_id, revision, *, epoch, decision_id, reuse_epoch, session_instance=None):
         with self._lock:
-            row = deepcopy(self._read(session_id, revision))
+            row = deepcopy(self._read(session_id, revision, session_instance))
             authority = (epoch, decision_id, reuse_epoch)
             if self.records is None:
                 raise PermissionError("此会话无法读取已授权的本地记录。")
             row.resources = ResourceState.model_validate(self.records.resource_for_reuse(*authority))
             row.reuse_authority = authority
             return self._recompute_resources(row)
+
+    def joint_resources(self, session_id, revision, request, *, session_instance):
+        return self._resource_query(session_id, revision, request, session_instance, evaluate_joint_resources)
+
+    def recurring_benefit(self, session_id, revision, request, *, session_instance):
+        return self._resource_query(session_id, revision, request, session_instance, evaluate_recurring_benefit)
+
+    def goal_deadline_frontier(self, session_id, revision, request, *, session_instance):
+        return self._resource_query(session_id, revision, request, session_instance, evaluate_goal_deadlines)
+
+    def _resource_query(self, session_id, revision, request, session_instance, evaluate):
+        with self._lock:
+            row = self._read(session_id, revision, session_instance)
+            self._check_resource_date(row)
+            if row.resources is None:
+                raise ValueError("请先核对本次共同资源。")
+            result = evaluate(row.resources, request)
+            self._read(session_id, revision, session_instance)
+            return {"analysis": result, "authority": "NONE", "session_id": session_id,
+                    "session_instance": session_instance, "revision": revision,
+                    "authority_generation": row.authority_generation,
+                    "dependency_sha256": _sha({"resources": row.resources.model_dump(mode="json"),
+                                               "request": request.model_dump(mode="json"),
+                                               "result": result})}
 
     def _recompute_resources(self, row):
         row.revision += 1
@@ -477,9 +541,9 @@ class ConversationHub:
         if row.resource_result is not None and row.resource_result["evaluated_on"] != datetime.now(UTC).date().isoformat():
             raise ValueError("共同资源时点已变化，请重新核对和计算。")
 
-    def select(self, session_id, revision, option_id, *, confirmed):
+    def select(self, session_id, revision, option_id, *, confirmed, session_instance=None):
         with self._lock:
-            row = deepcopy(self._read(session_id, revision))
+            row = deepcopy(self._read(session_id, revision, session_instance))
             self._check_resource_date(row)
             if (not confirmed or row.analysis is None or not any(
                 item["option_id"] == option_id and item["status"] == "ACCEPT"
@@ -492,9 +556,9 @@ class ConversationHub:
             row.revision += 1
             return self._update(row)
 
-    def plan(self, session_id, revision, option_id, trigger, *, confirmed):
+    def plan(self, session_id, revision, option_id, trigger, *, confirmed, session_instance=None):
         with self._lock:
-            row = deepcopy(self._read(session_id, revision))
+            row = deepcopy(self._read(session_id, revision, session_instance))
             self._check_resource_date(row)
             if not confirmed or row.selected_option_id != option_id or row.analysis is None:
                 raise ValueError("请先明确选择方案，再确认这条行动计划。")
@@ -503,9 +567,9 @@ class ConversationHub:
             self._compute(row)
             return self._update(row)
 
-    def save(self, session_id, revision, epoch, *, save_confirmed):
+    def save(self, session_id, revision, epoch, *, save_confirmed, session_instance=None):
         with self._lock:
-            row = self._read(session_id, revision)
+            row = self._read(session_id, revision, session_instance)
             self._check_resource_date(row)
             if row.reuse_authority is not None:
                 raise PermissionError("跨会话资源仅用于临时分析，须移除后才能保存。")
@@ -517,7 +581,7 @@ class ConversationHub:
                 raise PermissionError("本地保存授权已失效。")
             if row.analysis is None or row.state is None:
                 raise ValueError("请先核对并完成当前分析。")
-            analysis = {**row.analysis, "conversation": {"version": VERSION, "revision": row.revision,
+            analysis = {**row.analysis, "conversation": {"version": row.protocol, "revision": row.revision,
                          "confirmed_sources": active_claims(public_claims(row)),
                          "result": result_receipt(row, row.state, public_claims(row), purpose="saved_decision"),
                          "selection": row.selected_option_id, "plan": row.selected_plan}}
@@ -526,26 +590,55 @@ class ConversationHub:
             row.saved_revision = row.state.revision
             return saved
 
-    def end(self, session_id):
+    def _cancel_reservation(self, reservation):
+        if reservation not in self._cancelled and len(self._cancelled) >= MAX_CANCELLATIONS:
+            # A bounded overflow invalidates pending work before allowing new reservations.
+            self._generation += 1
+            self._reject_client_starts_until = monotonic() + SESSION_TTL
+        else:
+            self._cancelled[reservation] = monotonic() + SESSION_TTL
+
+    def cancel_start(self, cancel_nonce):
         with self._lock:
             self._expire()
-            self._sessions.pop(session_id, None)
-            if session_id not in self._cancelled and len(self._cancelled) >= MAX_CANCELLATIONS:
-                self._generation += 1
-                self._reject_client_starts_until = monotonic() + SESSION_TTL
+            self._cancel_reservation((VERSION, cancel_nonce))
+        return {"status": "ENDED"}
+
+    def end(self, session_id, revision=None, session_instance=None):
+        with self._lock:
+            self._expire()
+            if session_instance is not None:
+                # Cleanup must work even if a resource grant has just expired.
+                self._read(session_id, revision, session_instance, check_reuse=False)
+                del self._sessions[session_id]
             else:
-                self._cancelled[session_id] = monotonic() + SESSION_TTL
+                row = self._sessions.get(session_id)
+                if row is not None:
+                    if row.protocol != LEGACY_VERSION:
+                        raise KeyError("Session protocol mismatch")
+                    del self._sessions[session_id]
+                else:
+                    self._cancel_reservation((LEGACY_VERSION, session_id))
+        return {"status": "ENDED"}
+
+    def discard(self, session_id, revision, *, session_instance):
+        """Close precisely this instance when the final reply could still be in transit."""
+        with self._lock:
+            self._expire()
+            row = self._sessions.get(session_id)
+            if row is None or row.protocol != VERSION or row.instance != session_instance:
+                raise KeyError("Session expired")
+            if revision > row.revision:
+                raise ValueError("请使用最近收到的会话修订。")
+            del self._sessions[session_id]
         return {"status": "ENDED"}
 
     def clear(self):
         with self._lock:
             self._expire()
             self._generation += 1
-            for sid in self._sessions.keys() | self._pending.keys():
-                if len(self._cancelled) >= MAX_CANCELLATIONS:
-                    self._reject_client_starts_until = monotonic() + SESSION_TTL
-                    break
-                self._cancelled[sid] = monotonic() + SESSION_TTL
+            for reservation in self._pending:
+                self._cancel_reservation(reservation)
             self._sessions.clear()
 
     def invalidate(self, operation, *args):
@@ -565,7 +658,7 @@ class ConversationHub:
                 or (row.reuse_authority is not None and row.reuse_authority[1] == decision_id)
             ]
             for sid in related:
-                self.end(sid)
+                del self._sessions[sid]
             return result
 
     def _view(self, row):
@@ -575,15 +668,31 @@ class ConversationHub:
         message = " ".join(filter(None, (summary["conclusion"], summary["question"])))
         if not row.dialogue or row.dialogue[-1] != {"role": "assistant", "text": message}:
             row.dialogue.append({"role": "assistant", "text": message})
+        receipt = result_receipt(row, state, claims, summary=summary)
+        partial = None
+        if row.protocol == VERSION and row.analysis is None:
+            partial = descriptive_analysis(state, context_confirmed=row.context_confirmed)
+            if partial is not None:
+                partial = {**partial, "session_id": row.session_id, "session_instance": row.instance,
+                           "revision": row.revision, "authority_generation": row.authority_generation,
+                           "dependency_sha256": receipt["layers"]["preparation"]["sha256"]}
+                del receipt["receipt_sha256"]
+                receipt["layers"]["partial_calculation"] = {
+                    "status": "DESCRIPTIVE_ONLY", "version": partial["version"], "sha256": _sha(partial),
+                    "parent_sha256": partial["dependency_sha256"],
+                }
+                receipt["receipt_sha256"] = _sha(receipt)
         return {
-            "session_id": row.session_id, "revision": row.revision, "conversation_version": VERSION,
+            "session_id": row.session_id, "revision": row.revision, "conversation_version": row.protocol,
+            **({"session_instance": row.instance, "cancel_nonce": row.cancel_nonce} if row.protocol == VERSION else {}),
             "dialogue": row.dialogue, "summary": summary, "claims": claims, "options": list(row.options.values()),
             "state": state.model_dump(mode="json"), "analysis": row.analysis,
             "semantic": {"turns": row.semantic_turns, "blocking_obligations": row.blockers},
             "knowledge": row.knowledge,
             "resources": {"state": row.resources.model_dump(mode="json"), "result": row.resource_result,
                           "reused": row.reuse_authority is not None} if row.resources is not None else None,
-            "result": result_receipt(row, state, claims, summary=summary),
+            "result": receipt,
+            **({"partial_analysis": partial} if row.protocol == VERSION else {}),
             "phase": "ANALYZED" if row.analysis is not None else "CLARIFY",
             "local_model_status": row.local_receipt["status"], "local_model_receipt": row.local_receipt,
             "selected_option_id": row.selected_option_id, "selected_plan": row.selected_plan,
@@ -635,7 +744,10 @@ def result_receipt(row, state, claims, *, purpose="temporary_analysis", summary=
     if summary is not None:
         layers["explanation"] = {"status": "CONTROLLED", "sha256": _sha(summary),
                                  "parent_sha256": layers["calculation"]["sha256"] or dependency_hash}
-    receipt = {"protocol": VERSION, "principal": "local_workspace", "session_id": row.session_id,
+    receipt = {"protocol": row.protocol, "principal": "local_workspace", "session_id": row.session_id,
+               **({"session_instance": row.instance, "authority_generation": row.authority_generation,
+                   "reuse_authority_sha256": _sha(row.reuse_authority) if row.reuse_authority else None}
+                  if row.protocol == VERSION else {}),
                "decision_id": state.decision_id, "revision": row.revision, "purpose": purpose,
                "cutoff": row.cutoff, "layers": layers, "external_verification": "NOT_CONNECTED"}
     return {**receipt, "receipt_sha256": _sha(receipt)}

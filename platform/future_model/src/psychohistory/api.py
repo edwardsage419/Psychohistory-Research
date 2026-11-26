@@ -72,7 +72,7 @@ def create_app(root,repo,token=None):
         try:yield
         finally:app.state.service.close()
     conversation = create_conversation_root(root)
-    app=FastAPI(title='Psychohistory Platform v0.7',version='0.7.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
+    app=FastAPI(title='Psychohistory Platform v0.8',version='0.8.0',lifespan=lifespan,docs_url=None,redoc_url=None,openapi_url=None)
 
     @app.middleware('http')
     async def security(request:Request,call_next):
@@ -260,6 +260,7 @@ def create_app(root,repo,token=None):
                                        invalidate_record=conversation.invalidate_record))
     app.include_router(conversation_router(conversation))
     app.include_router(conversation_router(conversation, legacy=True))
+    app.include_router(conversation_router(conversation, current=True))
 
     dist=Path(__file__).resolve().parents[2]/'web/dist'
     if dist.is_dir():app.mount('/',StaticFiles(directory=dist,html=True),name='console')

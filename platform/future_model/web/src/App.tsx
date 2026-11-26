@@ -5,6 +5,8 @@ import { ResearchWorkflow } from './ResearchWorkflow';
 import { DecisionWorkbench } from './DecisionWorkbench';
 import { DecisionConversation } from './DecisionConversation';
 import { DecisionApiError } from './decisionTypes';
+import { acceptConversationView, closingRequest, mutationIdentity, type ConversationApiVersion, type ConversationHandle } from './conversationProtocol';
+import type { ConversationView } from './decisionConversationTypes';
 
 type Run={id:string;status:string;created_at:number;logs:string[];error:string|null;result_hash:string|null;kind?:string;protocol:string;code_sha256:string;config:Record<string,number>};
 type Model={model_id:string;version:string;capabilities:string[];source_sha256:string;assumptions:string[];scale:string;input:string;output:string;evidence:string;permission:string};
@@ -14,41 +16,56 @@ type Result={scientific_status:string;versions:Record<string,string>;input:Recor
 const sections=['研究看板','研究工作流','机制实验','模型注册','实验工作台','情景历史','审批与证据','个人决策工作台'] as const;
 const labels:Record<string,string>={PENDING:'待审批',APPROVED:'已批准',RUNNING:'运行中',COMPLETED:'已完成',FAILED:'失败',CANCELED:'已取消',BLOCKED:'已阻塞'};
 
+async function requestApi<T>(token:string, path:string, body:unknown, version:string, signal:AbortSignal):Promise<T> {
+ const response=await fetch(`/api/${version}/${path}`,{signal,cache:'no-store',method:body===undefined?'GET':'POST',headers:{Authorization:`Bearer ${token}`,...(body===undefined?{}:{'Content-Type':'application/json'})},...(body===undefined?{}:{body:JSON.stringify(body)})});
+ const data=await response.json();
+ signal.throwIfAborted();
+ if(!response.ok){
+   if(['v4','v5','v6','v7','v8'].includes(version))throw new DecisionApiError(typeof data.detail==='string'?data.detail:data.detail?.[0]?.msg??'个人决策请求失败。',response.status);
+   throw new Error(typeof data.detail==='string'?data.detail:JSON.stringify(data.detail));
+ }
+ return data as T;
+}
+
 export function App(){
  const [workflow]=useState(()=>new URLSearchParams(window.location.search).get('workflow'));
  const legacy=workflow==='v04';
+ const conversationVersion:ConversationApiVersion=workflow==='v07'?'v7':'v8';
  const conversational=workflow!=='v04'&&workflow!=='v05'&&workflow!=='research';
  const [section,setSection]=useState<string>(conversational?'个人决策工作台':'研究看板');
  const [token,setToken]=useState('');const [connected,setConnected]=useState(false);
  const [visitedPersonal,setVisitedPersonal]=useState(false);
  const personal=section==='个人决策工作台';
- const conversationId=useRef<string|null>(null);
- const registerConversation=useCallback((id:string|null)=>{conversationId.current=id;},[]);
- const closeConversation=useCallback(()=>{
-   const session_id=conversationId.current;
-   conversationId.current=null;
-   if(token&&session_id)void fetch('/api/v7/decisions/end',{method:'POST',cache:'no-store',keepalive:true,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body:JSON.stringify({session_id})}).catch(()=>{});
- },[token]);
+ const conversationHandle=useRef<ConversationHandle|null>(null);
+ const registerConversation=useCallback((handle:ConversationHandle|null)=>{conversationHandle.current=handle;},[]);
+ const closeConversation=useCallback((obsolete?:ConversationHandle, discard=false)=>{
+   const handle=obsolete??conversationHandle.current;
+   if(!obsolete)conversationHandle.current=null;
+   if(!token||!handle)return;
+   const {operation,body}=closingRequest(handle,conversationVersion,discard);
+   void fetch(`/api/${conversationVersion}/decisions/${operation}`,{method:'POST',cache:'no-store',keepalive:true,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body:JSON.stringify(body)}).catch(()=>{});
+ },[token,conversationVersion]);
+ const startConversation=useCallback(async (nonce:string, body:Record<string,unknown>)=>{
+   const identity=conversationVersion==='v8'?{cancel_nonce:nonce}:{session_id:nonce};
+   const next=await requestApi<ConversationView>(token,'decisions/start',{...body,...identity},conversationVersion,AbortSignal.timeout(30_000));
+   const live=conversationHandle.current;
+   if(live&&'cancel_nonce' in live&&live.cancel_nonce===nonce)return next;
+   if(acceptConversationView(next,null,nonce,conversationVersion))closeConversation(mutationIdentity(next,conversationVersion));
+   throw new DOMException('Conversation ended','AbortError');
+ },[token,conversationVersion,closeConversation]);
  const [session,setSession] = useState(()=>new AbortController());
  const [runs,setRuns]=useState<Run[]>([]);const [models,setModels]=useState<Model[]>([]);const [assets,setAssets]=useState<Asset[]>([]);
  const [historyOffset,setHistoryOffset]=useState(0);const [moreHistory,setMoreHistory]=useState(false);const [selectedRun,setSelectedRun]=useState<Run|null>(null);const refreshSequence=useRef(0);
  const [selected,setSelected]=useState('');const [result,setResult]=useState<Result|null>(null);const [error,setError]=useState('');const [busy,setBusy]=useState(false);
  const [form,setForm]=useState({seed:7,rounds:8,population:24,intervention:0.2});const [source,setSource]=useState('research/R233/R233_FINAL_ACCEPTANCE_STATUS.json');
- const api=useCallback(async <T,>(path:string,body?:unknown,version:'v1'|'v2'|'v3'|'v4'|'v5'|'v6'|'v7'='v1',scope?:AbortSignal):Promise<T>=>{
+ const api=useCallback(<T,>(path:string,body?:unknown,version:'v1'|'v2'|'v3'|'v4'|'v5'|'v6'|'v7'|'v8'='v1',scope?:AbortSignal):Promise<T>=>{
    const signal=scope?AbortSignal.any([session.signal,scope]):session.signal;
-   const response=await fetch(`/api/${version}/${path}`,{signal,cache:'no-store',method:body===undefined?'GET':'POST',headers:{Authorization:`Bearer ${token}`,...(body===undefined?{}:{'Content-Type':'application/json'})},...(body===undefined?{}:{body:JSON.stringify(body)})});
-   const data=await response.json();
-   signal.throwIfAborted();
-   if(!response.ok){
-     if(version==='v4'||version==='v5'||version==='v6'||version==='v7')throw new DecisionApiError(typeof data.detail==='string'?data.detail:data.detail?.[0]?.msg??'个人决策请求失败。',response.status);
-     throw new Error(typeof data.detail==='string'?data.detail:JSON.stringify(data.detail));
-   }
-   return data as T;
+   return requestApi<T>(token,path,body,version,signal);
  },[token,session]);
  const refresh=useCallback(async()=>{const seq=++refreshSequence.current;const [r,live,m,a,chosen]=await Promise.all([api<Run[]>(`runs?limit=50&offset=${historyOffset}`),api<Run[]>('runs/active'),api<Model[]>('models'),api<Asset[]>('assets'),selected?api<Run>(`runs/${selected}`):Promise.resolve(null)]);if(seq!==refreshSequence.current)return r;setRuns([...new Map([...live,...r].map(run=>[run.id,run])).values()]);setMoreHistory(r.length===50);setSelectedRun(chosen);setModels(m);setAssets(a);return r;},[api,historyOffset,selected]);
  async function action(work:()=>Promise<void>){const current=session;setBusy(true);setError('');try{await work();}catch(e){if(!current.signal.aborted)setError(String(e));}finally{if(!current.signal.aborted)setBusy(false);}}
  const endSession=useCallback(()=>{
-   closeConversation();
+   closeConversation(undefined,true);
    session.abort();
    setSession(new AbortController());
    refreshSequence.current+=1;
@@ -78,12 +95,12 @@ export function App(){
   <div className="two-col">{Object.entries(result.branches).map(([name,b])=><section className="card" key={name}><span className="eyebrow">{name.toUpperCase()}</span><h3>{name==='baseline'?'基线情景':'参数变化情景'}</h3><p className="muted">共同根快照</p><code className="hash">{b.parent_hash}</code><p className="muted">最终不可变快照</p><code className="hash">{b.final_snapshot.content_hash}</code><table><thead><tr><th>轮次</th><th>传播比例</th><th>使用的暴露</th><th>群体更新</th></tr></thead><tbody>{b.history.map(h=><tr key={h.tick}><td>{h.tick}</td><td>{h.prevalence.toFixed(3)}</td><td>{h.exposure_used.toFixed(3)}</td><td>{h.group_updated?'更新':'保持'}</td></tr>)}</tbody></table></section>)}</div>
   <section className="card"><h3>版本锁定与完整运行日志</h3><div className="version-row">{Object.entries(result.versions).map(([k,v])=><code key={k}>{k}@{v}</code>)}</div><pre>{(current?.logs||result.logs).join('\n')}</pre></section>
  </>;
- return <div className="layout"><aside><a className="brand" href="#"><span className="brand-icon">Ψ</span><span>心理史学<small>RESEARCH PLATFORM</small></span></a><div className="workspace"><span className="dot"/>Psychohistory-Platform<small>云端科研工作空间 · v0.3</small></div><nav aria-label="平台导航">{sections.map((name,i)=><button key={name} className={section===name?'active':''} aria-current={section===name?'page':undefined} onClick={()=>{if(name==='个人决策工作台')setVisitedPersonal(true);else if(conversational)closeConversation();setSection(name);}}><span className="nav-number" aria-hidden="true">0{i+1}</span>{name}</button>)}</nav><div className="sidebar-note"><span className="eyebrow">SCIENTIFIC BOUNDARY</span><p>保留未知，保留分歧。<br/>工程成功 ≠ 科学验证。</p><small>R073 / PESEN v0.1 保持冻结<br/>不启动原创模型熔炼</small></div></aside>
- <main><header><div className="breadcrumb">{personal?'个人决策':'科研基础设施'} <span>/</span> {section}</div><div className="session-controls"><span className="session-state"><span className={connected?'dot':'dot offline'}/>{connected?'工作空间已连接':'本地会话未连接'}</span>{connected&&<button type="button" className="quiet" onClick={endSession}>结束本地会话</button>}</div></header><div className="content"><div className="page-title"><div><span className="eyebrow">{personal?(conversational?'个人决策 · V0.7':legacy?'个人决策 · V0.4':'个人决策 · V0.5'):'PSYCHOHISTORY RESEARCH · V0.3'}</span><h1>{section}</h1><p>{personal?'澄清现实选择，比较取舍，记录之后实际发生的事。':'从可追溯的机制，走向可重复的研究。'}</p></div><span className="pill outline">仅环回访问 · 零外部服务</span></div>
- {!connected&&<section className="card connection"><h2>{personal&&conversational?'连接本地工作空间':'连接本地科研会话'}</h2><p className="muted">使用服务启动时生成的本地令牌。令牌仅保留在当前页面内存，不写入浏览器存储。</p><form onSubmit={e=>{e.preventDefault();action(async()=>{const current=session;if(personal&&conversational)await api('decisions/status',undefined,'v7');else await refresh();if(!current.signal.aborted)setConnected(true);});}}><label>本地访问令牌<input type="password" autoComplete="off" value={token} onChange={e=>setToken(e.target.value)} required/></label><button type="submit" disabled={busy}>连接工作空间</button></form></section>}
+ return <div className="layout"><aside><a className="brand" href="#"><span className="brand-icon">Ψ</span><span>心理史学<small>RESEARCH PLATFORM</small></span></a><div className="workspace"><span className="dot"/>Psychohistory-Platform<small>云端科研工作空间 · v0.3</small></div><nav aria-label="平台导航">{sections.map((name,i)=><button key={name} className={section===name?'active':''} aria-current={section===name?'page':undefined} onClick={()=>{if(name==='个人决策工作台')setVisitedPersonal(true);else if(conversational)closeConversation(undefined,true);setSection(name);}}><span className="nav-number" aria-hidden="true">0{i+1}</span>{name}</button>)}</nav><div className="sidebar-note"><span className="eyebrow">SCIENTIFIC BOUNDARY</span><p>保留未知，保留分歧。<br/>工程成功 ≠ 科学验证。</p><small>R073 / PESEN v0.1 保持冻结<br/>不启动原创模型熔炼</small></div></aside>
+ <main><header><div className="breadcrumb">{personal?'个人决策':'科研基础设施'} <span>/</span> {section}</div><div className="session-controls"><span className="session-state"><span className={connected?'dot':'dot offline'}/>{connected?'工作空间已连接':'本地会话未连接'}</span>{connected&&<button type="button" className="quiet" onClick={endSession}>结束本地会话</button>}</div></header><div className="content"><div className="page-title"><div><span className="eyebrow">{personal?(conversational?(conversationVersion==='v8'?'个人决策 · V0.8':'个人决策 · V0.7'):legacy?'个人决策 · V0.4':'个人决策 · V0.5'):'PSYCHOHISTORY RESEARCH · V0.3'}</span><h1>{section}</h1><p>{personal?'澄清现实选择，比较取舍，记录之后实际发生的事。':'从可追溯的机制，走向可重复的研究。'}</p></div><span className="pill outline">仅环回访问 · 零外部服务</span></div>
+ {!connected&&<section className="card connection"><h2>{personal&&conversational?'连接本地工作空间':'连接本地科研会话'}</h2><p className="muted">使用服务启动时生成的本地令牌。令牌仅保留在当前页面内存，不写入浏览器存储。</p><form onSubmit={e=>{e.preventDefault();action(async()=>{const current=session;if(personal&&conversational)await api('decisions/status',undefined,conversationVersion);else await refresh();if(!current.signal.aborted)setConnected(true);});}}><label>本地访问令牌<input type="password" autoComplete="off" value={token} onChange={e=>setToken(e.target.value)} required/></label><button type="submit" disabled={busy}>连接工作空间</button></form></section>}
  {error&&<div role="alert" className="error">操作未完成：{error}</div>}
  {section==='研究看板'&&<><div className="metric-grid"><section className="card"><span>已注册机制</span><strong>{models.length.toString().padStart(2,'0')}</strong><small>版本锁定 · 独立能力</small></section><section className="card"><span>本页及活动实验</span><strong>{runs.length.toString().padStart(2,'0')}</strong><small>{runs.filter(r=>r.status==='COMPLETED').length} 个完成 · 失败与取消均保留</small></section><section className="card"><span>来源记录</span><strong>{assets.length.toString().padStart(2,'0')}</strong><small>只读登记 · 不自动执行</small></section></div><section className="banner"><div><span className="eyebrow">REPRODUCIBLE BY DESIGN</span><h2>每一次运行，都有来处与版本。</h2><p>个体状态更新 → 版本化适配器 → 双时间尺度群体传播。<br/>独立情景分支、显式不确定性与完整来源记录。</p></div><button onClick={()=>setSection('实验工作台')}>进入实验工作台 →</button></section><section className="card"><h2>近期实验与真实状态</h2>{taskTable}</section></>}
- {connected&&personal&&conversational&&<DecisionConversation api={api} registerConversation={registerConversation} closeConversation={closeConversation}/>}
+ {connected&&personal&&conversational&&<DecisionConversation version={conversationVersion} api={api} startConversation={startConversation} registerConversation={registerConversation} closeConversation={closeConversation}/>}
  {connected&&!conversational&&(personal||(legacy&&visitedPersonal))&&<div hidden={!personal}><DecisionWorkbench api={api} version={legacy?'v4':'v5'}/></div>}
  {section==='研究工作流'&&connected&&<ResearchWorkflow api={api}/>}
  {section==='机制实验'&&connected&&<MechanismWorkflow api={api}/>}

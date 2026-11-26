@@ -1,5 +1,6 @@
-"""Run synthetic decision cases through the real v0.7 JSON-lines CLI with egress denied."""
+"""Run synthetic decision cases through the v0.7 or v0.8 CLI with egress denied."""
 
+import argparse
 from datetime import UTC, datetime, timedelta
 import json
 import os
@@ -32,7 +33,7 @@ SCENARIOS = (CHOICE + "情景平常：方案甲得10分，方案乙得6分。情
 
 
 def session(view):
-    return {key: view[key] for key in ("session_id", "revision")}
+    return {key: view[key] for key in ("session_id", "revision", "session_instance") if key in view}
 
 
 def confirm(call, view, **kwargs):
@@ -98,7 +99,8 @@ def exercise(call):
     delayed = call("update_resources", {**session(timed), "resources": timing, "confirmed": True})
     assert gate(delayed) == {"方案甲": "REJECT", "方案乙": "REJECT"}
     assert call("analyze", session(timed))["status"] == "REJECTED"
-    call("end", {"session_id": delayed["session_id"]})
+    close = session(delayed) if "session_instance" in delayed else {"session_id": delayed["session_id"]}
+    assert call("end", close)["status"] == "ENDED"
     assert call("analyze", session(delayed))["status"] == "REJECTED"
     return {"candidate": status["conversation_version"], "math_version": status["engine_version"],
             "joint": {"question": JOINT, "feasibility": gate(joint_view)},
@@ -110,11 +112,14 @@ def exercise(call):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--protocol", choices=("v07", "v08"), default="v07")
+    command = f"decision-{parser.parse_args().protocol}"
     source = Path(__file__).resolve().parents[1] / "src"
     environment = {**os.environ, "PYTHONPATH": str(source), "PSYCHOHISTORY_LOCAL_AI": "1",
                    "PSYCHOHISTORY_LOCAL_MODEL": "obsolete-fixture", "OLLAMA_HOST": "http://127.0.0.1:11434"}
     with TemporaryDirectory(prefix="ph-v07-offline-") as directory, subprocess.Popen(
-        [sys.executable, "-c", OFFLINE_BOOTSTRAP, "--data", str(Path(directory) / "workspace"), "decision-v07"],
+        [sys.executable, "-c", OFFLINE_BOOTSTRAP, "--data", str(Path(directory) / "workspace"), command],
         stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True, encoding="utf-8", env=environment,
     ) as process:
         def call(operation, data):
@@ -127,7 +132,7 @@ def main():
         finally:
             process.stdin.close()
         assert process.wait(timeout=10) == 0
-    output = {"status": "PASS", "entry": "decision-v07 JSON lines", "socket_audit": "ALL_SOCKET_OPERATIONS_DENIED", **result}
+    output = {"status": "PASS", "entry": f"{command} JSON lines", "socket_audit": "ALL_SOCKET_OPERATIONS_DENIED", **result}
     print(json.dumps(output, ensure_ascii=False, indent=2))
 
 

@@ -5,7 +5,7 @@ from hashlib import sha256
 from unicodedata import normalize
 
 
-SEMANTIC_VERSION = "0.7.0"
+SEMANTIC_VERSION = "0.8.0"
 CONFIRMED = {"USER_CONFIRMED", "EXTERNALLY_VERIFIED"}
 BOUND_FIELDS = {
     "cost_max", "cost_min", "income_max", "income_min", "hours_max", "hours_min",
@@ -32,10 +32,13 @@ PARKING = r"停车(?:费用|费|位租金|位)?|车位(?:费|租金)?"
 JOINT = r"合计|共计|总共|一共|一起|加起来|加在一起|合在一起|合并|相加|共享|共用|联合|共同|两项"
 NIGHT = r"夜班|夜间班次|夜间值班"
 EXTERNAL_PARTY = (
-    r"(?:同事|朋友|室友|伴侣|配偶|家人|亲戚|爸妈|父母|我妈|我爸|老板|主管|雇主|客户|同学|房东|"
-    r"他|她|他们|她们|对方|公司|招聘方|经纪人|中介|负责人|人事|部门|HR)"
-    r"(?:的|说|听说|称|表示|承诺|转述|希望|要求|规定|告诉我|转告|认为|打算|自己|[:：]|也|不|要|能|预算|上限|底线|最晚|$)"
+    r"(?P<actor>同事|朋友|室友|伴侣|配偶|家人|亲戚|爸妈|父母|我妈|我爸|老板|主管|雇主|客户|同学|房东|"
+    r"他们|她们|他|她|对方|公司|招聘方|经纪人|中介|负责人|人事|部门|HR)"
+    r"(?P<cue>的|说|听说|称|表示|承诺|转述|希望|要求|规定|告诉我|转告|认为|打算|在考虑|正在考虑|自己|"
+    r"[:：]|也|不|要|能|预算|上限|底线|最晚|是否|$)"
 )
+_EXTERNAL_PARTY = re.compile(EXTERNAL_PARTY, re.IGNORECASE)
+REPORTING_CUES = frozenset({"说", "听说", "称", "表示", "承诺", "转述", "告诉我", "转告"})
 REPORTED = r"听说|转述|据称|据说|口头(?:说|表示|承诺)|承诺|保证|宣称|计划|预计|如果|假如|假设|除非|尚未|未确认|不确定|不知道|能否|是否"
 QUOTE_OR_REPORT = r"[“”‘’「」『』\"`]|据|传闻|有人说|别人说|对方称"
 NEGATION = r"不能|不得|不可以|不允许|不可|没有|未|不"
@@ -95,11 +98,22 @@ def is_joint(clause: str) -> bool:
 
 
 def scope_reference(text: str) -> str | None:
-    match = re.search(EXTERNAL_PARTY, text, re.IGNORECASE)
+    match = external_attribution(text)
     if match:
         return match[0]
     match = re.search(QUOTE_OR_REPORT, text)
     return match[0] if match else None
+
+
+def external_attribution(text: str) -> re.Match | None:
+    return _EXTERNAL_PARTY.search(text)
+
+
+def source_anchor(source, start, raw_sha256):
+    """Bind a displayed span to exact UTF-8 source and Unicode scalar coordinates."""
+    end = start + len(source)
+    identifier = sha256(f"{raw_sha256}:{start}:{end}".encode()).hexdigest()[:24]
+    return {"id": identifier, "source": source, "span": {"start": start, "end": end}}
 
 
 def fingerprint(item):

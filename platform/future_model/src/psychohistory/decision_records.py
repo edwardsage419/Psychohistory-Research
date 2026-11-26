@@ -22,6 +22,7 @@ from .storage import checked_path, fsync_directory
 
 _ID = re.compile(r'[0-9a-f]{32}')
 _SCHEMA = 1
+MAX_LEGACY_SESSION_IDS = 65_536
 _BACKUP_VERSION = '1.0.0'
 _V05_WORKFLOW = '0.5.0'
 _V05_BACKUP_VERSION = '1.1.0'
@@ -231,6 +232,7 @@ class DecisionRecords:
         self.root = checked_path(root)
         self._ledger = self.root / 'consent.sqlite3'
         self._records = self.root / 'records.sqlite3'
+        self._legacy_sessions = self.root / 'legacy-session-ids.sqlite3'
 
     def _check_root(self):
         checked_path(self.root)
@@ -261,11 +263,12 @@ class DecisionRecords:
         fsync_directory(self.root)
 
     @contextmanager
-    def _database(self, *, write=False):
+    def _database(self, *, write=False, path=None):
         self._check_root()
-        self._check_file(self._ledger)
+        path = self._ledger if path is None else path
+        self._check_file(path)
         mode = 'rw' if write else 'ro'
-        db = sqlite3.connect(self._ledger.as_uri() + f'?mode={mode}', uri=True, timeout=10)
+        db = sqlite3.connect(path.as_uri() + f'?mode={mode}', uri=True, timeout=10)
         try:
             if write:
                 self._write_settings(db, 'main')
@@ -275,6 +278,21 @@ class DecisionRecords:
             db.commit()
         finally:
             db.close()
+
+    def reserve_legacy_session(self, session_id):
+        """Retain only a bounded hash of a v6/v7 client-minted control identifier."""
+        digest = sha256(_decision_id(session_id).encode("ascii")).digest()
+        self.root.mkdir(parents=True, exist_ok=True, mode=0o700)
+        self._check_root()
+        self._create_file(self._legacy_sessions)
+        with self._database(write=True, path=self._legacy_sessions) as db:
+            db.execute("CREATE TABLE IF NOT EXISTS used (digest BLOB PRIMARY KEY) WITHOUT ROWID")
+            count, = db.execute("SELECT COUNT(*) FROM used").fetchone()
+            if count >= MAX_LEGACY_SESSION_IDS:
+                raise ValueError("旧版会话标识容量已满，请使用 v0.8。")
+            inserted = db.execute("INSERT OR IGNORE INTO used VALUES (?)", (digest,))
+            if inserted.rowcount != 1:
+                raise KeyError("Session invalidated")
 
     @staticmethod
     def _write_settings(db, schema):

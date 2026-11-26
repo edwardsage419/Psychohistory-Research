@@ -7,6 +7,7 @@ import { DecisionResults, type ResultScope } from './DecisionResults';
 import { structuredIssue } from './DecisionWorkbench';
 import type { Claim, ConversationStatus, ConversationView } from './decisionConversationTypes';
 import type { Api, DecisionState, PersonalApiVersion, PreferenceVersion } from './decisionTypes';
+import { acceptConversationView, mutationIdentity, partialObservations, type ConversationApiVersion, type ConversationHandle } from './conversationProtocol';
 import './conversation.css';
 
 const noFilter: ResultScope = { options: 'all', methods: 'all' };
@@ -94,8 +95,10 @@ function EvidenceAudit({ claims }: { claims: Claim[] }) {
   </section>;
 }
 
-export function DecisionConversation({ api: appApi, registerConversation, closeConversation }: {
-  api: Api; registerConversation: (id: string | null) => void; closeConversation: () => void;
+export function DecisionConversation({ version, api: appApi, startConversation, registerConversation, closeConversation }: {
+  version: ConversationApiVersion; api: Api;
+  startConversation: (nonce: string, body: Record<string, unknown>) => Promise<ConversationView>;
+  registerConversation: (handle: ConversationHandle | null) => void; closeConversation: (obsolete?: ConversationHandle, discard?: boolean) => void;
 }) {
   const controller = useRef<AbortController | null>(null);
   useLayoutEffect(() => {
@@ -103,7 +106,7 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
     controller.current = active;
     return () => active.abort();
   }, []);
-  const api: Api = useCallback(<T,>(path: string, body?: unknown, version: PersonalApiVersion = 'v7') => appApi<T>(path, body, version, controller.current?.signal), [appApi]);
+  const api: Api = useCallback(<T,>(path: string, body?: unknown, target: PersonalApiVersion = version) => appApi<T>(path, body, target, controller.current?.signal), [appApi, version]);
   const [status, setStatus] = useState<ConversationStatus | null>(null);
   const [view, setView] = useState<ConversationView | null>(null);
   const liveView = useRef<ConversationView | null>(null);
@@ -113,6 +116,7 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState<string | null>(null);
   const [invalidating, setInvalidating] = useState(false);
+  const [verificationRequired, setVerificationRequired] = useState(false);
   const [error, setError] = useState('');
   const [advanced, setAdvanced] = useState(false);
   const [scope, setScope] = useState<ResultScope>(noFilter);
@@ -123,8 +127,11 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
   const reply = useRef<HTMLTextAreaElement>(null);
   const state = view?.state ?? null;
   const dirty = !!draft && draft !== state;
-  const analysis = !invalidating && !dirty ? view?.analysis ?? null : null;
-  const summary = !invalidating && (!dirty || !view?.analysis) ? view?.summary : null;
+  const current = !invalidating && !verificationRequired;
+  const analysis = current && !dirty ? view?.analysis ?? null : null;
+  const partial = current && !dirty && view ? partialObservations(view) : [];
+  const currentSelection = current && !dirty ? view?.selected_option_id : null;
+  const summary = current && (!dirty || !view?.analysis) ? view?.summary : null;
   const confirmed = !!state?.confirmed && !!state.constraints_confirmed;
   const hasView = !!view;
 
@@ -143,13 +150,14 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
     if (onlyDecisionId && liveView.current?.state.decision_id !== onlyDecisionId) return;
     sequence.current += 1;
     liveView.current = null;
-    closeConversation();
+    closeConversation(undefined, invalidating || verificationRequired);
     setView(null);
     setDraft(null);
     setInput('');
     setBusy(null);
     operation.current = null;
     setInvalidating(false);
+    setVerificationRequired(false);
     setError('');
     setAdvanced(false);
     setChoosing(null);
@@ -159,38 +167,45 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
   }
 
   async function perform(name: string, body: Record<string, unknown>, whose = liveView.current, invalidates = false) {
-    if (operation.current || (whose && liveView.current !== whose)) return false;
+    if (operation.current || (whose && (liveView.current !== whose || verificationRequired))) return false;
     const request = ++sequence.current;
-    const startId = name === 'start' ? crypto.randomUUID().replaceAll('-', '') : null;
-    if (startId) registerConversation(startId);
+    const viewLifetime = controller.current?.signal;
+    const nonce = name === 'start' ? crypto.randomUUID().replaceAll('-', '') : null;
+    if (nonce) registerConversation({ cancel_nonce: nonce });
     operation.current = name;
     setBusy(name);
     setError('');
     if (invalidates) setInvalidating(true);
     try {
-      const next = await api<ConversationView>(endpoint(name), { ...(whose ? { session_id: whose.session_id, revision: whose.revision } : startId ? { session_id: startId } : {}), ...body });
-      if (request !== sequence.current) return false;
-      if (next.session_id !== (whose?.session_id ?? startId)
-          || (whose && next.revision !== whose.revision + 1)
-          || next.result.session_id !== next.session_id || next.result.revision !== next.revision
-          || next.result.protocol !== '0.7.0') throw new Error('返回内容与当前对话不一致。');
+      const next = nonce ? await startConversation(nonce, body)
+        : await api<ConversationView>(endpoint(name), { ...body, ...(whose ? mutationIdentity(whose, version) : {}) });
+      const matches = acceptConversationView(next, whose, nonce, version);
+      if (request !== sequence.current || viewLifetime?.aborted) {
+        if (nonce && matches) closeConversation(mutationIdentity(next, version));
+        return false;
+      }
+      if (!matches) throw new Error('返回内容与当前对话不一致。');
       liveView.current = next;
-      registerConversation(next.session_id);
+      registerConversation(mutationIdentity(next, version));
       setView(next);
       setDraft(next.state);
       setInvalidating(false);
       setChoosing(null);
       if (name === 'start' || name === 'turn') {
         setInput('');
-            setTrigger('');
+        setTrigger('');
       }
       return true;
     } catch (failure) {
-      if (startId && request === sequence.current) closeConversation();
-      if (request === sequence.current && !(failure instanceof DOMException && failure.name === 'AbortError')) setError(failure instanceof Error ? failure.message : '操作未完成，请重试。');
+      if (viewLifetime?.aborted) return false;
+      if (nonce && request === sequence.current && !(failure instanceof DOMException && failure.name === 'AbortError')) closeConversation();
+      if (request === sequence.current && !(failure instanceof DOMException && failure.name === 'AbortError')) {
+        if (whose) setVerificationRequired(true);
+        setError(failure instanceof Error ? failure.message : '操作未完成，请重试。');
+      }
       return false;
     } finally {
-      if (request === sequence.current) {
+      if (request === sequence.current && !controller.current?.signal.aborted) {
         operation.current = null;
         setBusy(null);
       }
@@ -199,7 +214,7 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
 
   function submit(event: FormEvent) {
     event.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || verificationRequired) return;
     if (view) void perform('turn', { text: input }, view, true);
     else void perform('start', { question: input }, null);
   }
@@ -221,9 +236,12 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
     operation.current = 'save';
     setBusy('save');
     try {
-      await api(endpoint('save'), { session_id: current.session_id, revision: current.revision, epoch, save_confirmed: true });
+      await api(endpoint('save'), { ...mutationIdentity(current, version), epoch, save_confirmed: true });
+    } catch (failure) {
+      if (request === sequence.current && !controller.current?.signal.aborted) setVerificationRequired(true);
+      throw failure;
     } finally {
-      if (request === sequence.current) {
+      if (request === sequence.current && !controller.current?.signal.aborted) {
         operation.current = null;
         setBusy(null);
       }
@@ -235,7 +253,7 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
     setAdvanced(true);
   }
 
-  return <div id="decision-conversation" className="decision-workbench decision-conversation" data-workflow="v07" data-phase={view?.phase} data-conversation-revision={view?.revision} data-local-model-status={view?.local_model_status ?? status?.local_model?.status}>
+  return <div id="decision-conversation" className="decision-workbench decision-conversation" data-workflow={version === 'v8' ? 'v08' : 'v07'} data-phase={view?.phase} data-conversation-revision={view?.revision} data-local-model-status={view?.local_model_status ?? status?.local_model?.status}>
     {!view && <section className="card conversation-entry" aria-labelledby="conversation-entry-title">
       <h2 id="conversation-entry-title">你正在考虑什么？</h2>
       <p>说说你面临的选择，以及现在最难判断的地方。</p>
@@ -248,6 +266,7 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
     {view && <>
       <section className="card conversation-main" aria-label="决策对话">
         <div className="conversation-thread-top"><h2>决策对话</h2><button type="button" className="text-button" disabled={!!busy} onClick={() => reset()}>开始新决策</button></div>
+        {verificationRequired && <p role="status" className="decision-notice">当前结果已失效。开始新决策后可重新核对条件。</p>}
         <p className="conversation-user"><span>你</span>{view.dialogue.filter(message => message.role === 'user').at(-1)?.text ?? state?.question}</p>
         {summary && <div className="conversation-answer" aria-live="polite">
           {summary.warning && <p className="conversation-warning">{summary.warning}</p>}
@@ -257,11 +276,16 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
           {summary.unknowns?.length > 0 && <div><h3>仍待核实</h3><List items={summary.unknowns}/></div>}
           {summary.question && <section className="conversation-followup" aria-label="待回答的问题" data-focus={summary.focus}><strong>{summary.question}</strong></section>}
         </div>}
+        {partial.length > 0 && <section className="conversation-answer" aria-label="已核对的局部分析">
+          <h3>已核对的局部分析</h3>
+          <p>以下结果仅适用于已核对的条件。仍需补充信息才能比较完整方案。</p>
+          <List items={partial}/>
+        </section>}
         {view.dialogue.length > 1 && <details className="conversation-transcript"><summary>查看对话记录</summary><ol>{view.dialogue.map((message, index) => <li key={index}><strong>{message.role === 'user' ? '你' : '工作台'}</strong><p>{message.text}</p></li>)}</ol></details>}
         <form className="conversation-reply" onSubmit={submit}>
-          <label>补充或修正<textarea ref={reply} value={input} onChange={event => setInput(event.target.value)} placeholder="直接说明你知道的情况，或指出需要改正的内容。" required maxLength={6000} autoComplete="off" disabled={!!busy}/></label>
+          <label>补充或修正<textarea ref={reply} value={input} onChange={event => setInput(event.target.value)} placeholder="直接说明你知道的情况，或指出需要改正的内容。" required maxLength={6000} autoComplete="off" disabled={!!busy || verificationRequired}/></label>
           {dirty && <p className="muted">若先发送对话，工作台会按新回复重新整理高级输入。</p>}
-          <button type="submit" disabled={!!busy || !input.trim()}>发送</button>
+          <button type="submit" disabled={!!busy || verificationRequired || !input.trim()}>发送</button>
           <AnalysisPurpose status={status}/>
         </form>
       </section>
@@ -270,7 +294,7 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
         {state.constraints.length > 0 ? <ul className="conversation-constraints">{state.constraints.map(item => <li key={item.id}><strong>{item.label}</strong><span>{operators[item.operator]} {item.threshold} {item.unit}</span></li>)}</ul> : <p className="muted">{state.constraints_confirmed ? '已确认没有硬约束。' : '硬约束清单待确认。'}</p>}
         {view.claims.filter(claim => isConstraint(claim) && isPending(claim)).map(claim => <p className="conversation-constraint-pending" key={claim.id}>待核对的底线 · {readback(claim)}</p>)}
         <div className="conversation-options">{view.options.map(option => {
-          const chosen = view.selected_option_id === option.id;
+          const chosen = currentSelection === option.id;
           const verdict = analysis?.feasibility.find(item => item.option_id === option.id)?.status;
           const selectable = verdict === 'ACCEPT' && (analysis?.temporal_scope?.[option.id] ?? 'FEASIBLE') === 'FEASIBLE';
           return <article key={option.id} data-option-id={option.id} data-option-status={option.status} data-feasibility={verdict} className="conversation-option">
@@ -284,12 +308,12 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
             </div></div>}
           </article>;
         })}</div>
-        <ConfirmGroup key={`${view.session_id}:${view.revision}`} view={view} busy={!!busy} onConfirm={choice => void perform('confirm', choice, view, true)}/>
+        <ConfirmGroup key={`${view.session_instance ?? view.session_id}:${view.revision}`} view={view} busy={!!busy || verificationRequired} onConfirm={choice => void perform('confirm', choice, view, true)}/>
         <div className="decision-actions conversation-compute">
-          {confirmed && <button type="button" disabled={!!busy || dirty} onClick={() => void perform('analyze', {}, view, true)}>计算并比较</button>}
+          {confirmed && <button type="button" disabled={!!busy || dirty || verificationRequired} onClick={() => void perform('analyze', {}, view, true)}>计算并比较</button>}
           {dirty && <button type="button" className="quiet" disabled={!!busy} onClick={() => { setDraft(state); setInvalidating(false); setError(''); }}>撤销未应用的高级编辑</button>}
         </div>
-        {view.selected_option_id && <form className="conversation-plan" onSubmit={event => { event.preventDefault(); if (trigger.trim()) void perform('plan', { option_id: view.selected_option_id, trigger, confirmed: true }); }}>
+        {currentSelection && <form className="conversation-plan" onSubmit={event => { event.preventDefault(); if (trigger.trim()) void perform('plan', { option_id: currentSelection, trigger, confirmed: true }); }}>
           <h3>为这个选择写一个条件计划</h3>
           <label>触发条件<input value={trigger} onChange={event => setTrigger(event.target.value)} maxLength={400} placeholder="如果……再采取这个行动" disabled={!!busy}/></label>
           <button type="submit" disabled={!!busy || dirty || invalidating || !trigger.trim()}>确认条件计划</button>
@@ -299,7 +323,7 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
       </section>}
       <details className="conversation-details">
         <summary>共同资源与进度</summary>
-        <DecisionResources key={view.result.receipt_sha256} view={view} busy={!!busy}
+        <DecisionResources key={view.result.receipt_sha256} view={view} busy={!!busy || verificationRequired}
           onApply={resources => { void perform('update_resources', { resources, confirmed: true }, view, true); }}/>
       </details>
       {!!view.knowledge?.search.hits.length && <details className="conversation-details">
@@ -318,7 +342,7 @@ export function DecisionConversation({ api: appApi, registerConversation, closeC
         <summary>高级输入与审计</summary>
         <p className="conversation-advanced-note">请在对话中修正已核对的方案与数值。选择「应用高级输入并比较」将确认此处填写的数据、来源、情景和比较条件。</p>
         <EvidenceAudit claims={view.claims}/>
-        <DecisionEditor key={view.session_id} state={draft} understanding={null} questions={analysis?.questions ?? []} plan={analysis?.plan} guided update={patch => setDraft(current => current && ({ ...current, ...patch }))} confirm={applyAdvanced} advancedApply={{ label: '应用高级输入并比较', disabled: !!busy || !dirty }}/>
+        <DecisionEditor key={view.session_id} state={draft} understanding={null} questions={analysis?.questions ?? []} plan={analysis?.plan} guided update={patch => setDraft(current => current && ({ ...current, ...patch }))} confirm={applyAdvanced} advancedApply={{ label: '应用高级输入并比较', disabled: !!busy || !dirty || verificationRequired }}/>
         {analysis && <DecisionResults analysis={analysis} state={state ?? draft} guided preview={false} scope={scope} onScope={setScope}/>}
         {dirty && <p className="decision-notice">应用高级输入后会显示新的比较。</p>}
       </details>}

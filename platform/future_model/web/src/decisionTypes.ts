@@ -1,5 +1,5 @@
 export type DecisionVersion = 'v4' | 'v5';
-export type PersonalApiVersion = DecisionVersion | 'v6' | 'v7';
+export type PersonalApiVersion = DecisionVersion | 'v6' | 'v7' | 'v8';
 export type Api = <T>(path: string, body?: unknown, version?: PersonalApiVersion, signal?: AbortSignal) => Promise<T>;
 export const decisionPath = 'decisions';
 

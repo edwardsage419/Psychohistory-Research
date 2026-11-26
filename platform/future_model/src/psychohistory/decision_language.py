@@ -4,11 +4,12 @@ import re
 import unicodedata
 from collections.abc import Iterable
 from decimal import Decimal
+from hashlib import sha256
 
 from .decision_semantics import (
     BOUND_FIELDS, CLARIFICATIONS, CNY, MONTH, NIGHT, NON_CNY, NON_MONTHLY, PARKING,
-    RENT, REPORTED, SEMANTIC_VERSION, blocking_obligations, comparison, is_joint,
-    monetary_scope, occurrence, scope_reference,
+    RENT, REPORTED, REPORTING_CUES, SEMANTIC_VERSION, blocking_obligations, comparison,
+    external_attribution, is_joint, monetary_scope, occurrence, scope_reference, source_anchor,
 )
 
 
@@ -32,7 +33,10 @@ _CHOICE_START = re.compile(
     r"要不要|究竟|到底|是选|该选|应该|纠结要不要|纠结|犹豫|正在考虑|考虑|比较一下|比较|权衡|想知道|有点|"
     r"备选(?:是|有)?|可选(?:是|有)?|选项(?:是|有)?|要不|到底是|是)(?:\s*)"
 )
-_SENTENCES = re.compile(r"[^。！？!?；;\n]+")
+_SENTENCE_ENDS = "。！？!?；;\n"
+_QUOTES = dict(zip("“‘「『", "”’」』", strict=True))
+_SELF_RESET = re.compile(r"^(?:(?:但(?:是)?|而|不过)\s*)?(?:我(?:本人|自己|的|不|只|必须|预算|从不)|本人)")
+_REPORT_RESET = re.compile(r"^(?:(?:但(?:是)?|而|不过)\s*(?:我|本人)|我(?:本人|自己)|本人)")
 _ASCII_LABEL = r"[A-Za-zＡ-Ｚａ-ｚ][0-9０-９]{0,3}(?![A-Za-zＡ-Ｚａ-ｚ0-9０-９])"
 _HAN_LABEL = r"[甲乙丙丁戊己庚辛]"
 _LABEL_ROLE = r"方案|选项|岗位|工作|课程|培训|项目|房源|房子|公寓|计划|[Oo]ffer"
@@ -190,18 +194,40 @@ def _number(token: str) -> str | None:
     return result.rstrip("0").rstrip(".") if "." in result else result
 
 
-def _clauses(sentence: str) -> list[str]:
-    """Keep grouping commas inside Arabic numerals and preserve original spans."""
-    parts = []
+def _parts(text: str, delimiters: str):
+    """Split source spans while keeping quoted text and thousands separators intact."""
     start = 0
-    for match in re.finditer(r"[,，]", sentence):
-        pos = match.start()
-        if pos and sentence[pos - 1].isdigit() and re.match(r"[0-9０-９]{3}(?![0-9０-９])", sentence[pos + 1:]):
+    quote_ends = []
+    for pos, char in enumerate(text):
+        closed = False
+        if quote_ends and char == quote_ends[-1]:
+            quote_ends.pop()
+            closed = True
+        elif char in _QUOTES or char == '"':
+            quote_ends.append(_QUOTES.get(char, char))
+        if quote_ends:
             continue
-        parts.append(sentence[start:pos].strip())
-        start = match.end()
-    parts.append(sentence[start:].strip())
-    return [part for part in parts if part]
+        if closed and delimiters == _SENTENCE_ENDS and pos and text[pos - 1] in delimiters and (
+            _SELF_RESET.match(text[pos + 1:].lstrip())
+        ):
+            end = pos + 1
+        elif char not in delimiters or char in ",，" and pos and text[pos - 1].isdigit() and re.match(
+            r"[0-9０-９]{3}(?![0-9０-９])", text[pos + 1:pos + 5],
+        ):
+            continue
+        else:
+            end = pos
+        fragment = text[start:end]
+        if fragment.strip():
+            yield fragment.strip(), start + len(fragment) - len(fragment.lstrip())
+        start = pos + 1
+    fragment = text[start:]
+    if fragment.strip():
+        yield fragment.strip(), start + len(fragment) - len(fragment.lstrip())
+
+
+def _clauses(sentence: str) -> list[str]:
+    return [clause for clause, _ in _parts(sentence, ",，")]
 
 
 def _looks_labeled(label: str) -> bool:
@@ -566,10 +592,89 @@ _LEXICAL_DATE = re.compile(
 _LEXICAL_NUMERAL = re.compile(rf"(?P<percent>百分之)?(?P<count>{_COUNT})\s*(?P<suffix>[%％]|成)?")
 _LEXICAL_UNIT = re.compile(
     rf"(?P<currency>{NON_CNY}|{CNY})|(?P<hour>(?:个\s*)?(?:小时|钟头))|"
-    r"(?P<minute>分钟)|(?P<second>秒)|(?P<day>天|日)|(?P<week>周)|(?P<month>个月|月)|"
+    r"(?P<minute>分钟)|(?P<second>秒)|(?P<workday>工作日)|(?P<day>天|日)|(?P<week>周)|(?P<month>个月|月)|"
     r"(?P<count>次|个|人|套)|(?P<distance>公里|千米|米)",
     re.IGNORECASE,
 )
+_PERIODS = re.compile(
+    rf"(?P<month>{MONTH}|月薪)|(?P<week>{_WEEK})|(?P<year>每年|按年|[/／]\s*年|年薪)"
+    r"|(?P<day>每天|每日|按日|[/／]\s*[天日])"
+    r"|(?P<event>每次|单次|按次|[/／]\s*次)",
+)
+_GUARD_OPENERS = ("前提是", "如果说", "如果", "假如", "假设", "除非", "若是", "只要", "一旦", "万一", "要是", "只有", "若")
+_GUARD_CONTINUATIONS = ("并且", "而且", "同时", "或者", "且", "或", "并")
+_BRANCH_MARKER = re.compile(r"(?<![本刚曾已现早也])(?:那么|我(?:就|才|则)|就(?=不|只|得|可|必|要|能|取消)|则|才(?=会|能|可|肯))")
+_SCOPE_ONLY = re.compile(r"仅(?:适用|用于)(?:于)?(?P<scope>.+)$")
+_EDIT_MARKER = re.compile(
+    rf"(?P<replace>{_REVISION}|更正|修正|刚核实|实际是)|"
+    r"(?P<retract>撤回|撤掉|取消|作废|不再适用|不作为强制条件)"
+)
+
+
+def _condition_relations(sentence, start, clauses, raw_sha256):
+    """Attach guard and branch anchors without assuming either branch is true."""
+    relations = []
+    guard = None
+    polarity = "when_true"
+    primary_polarity = polarity
+    branch_seen = False
+    for index, (clause, pos) in enumerate(clauses):
+        target = clause
+        target_pos = pos
+        prefix_length = next((i for i, char in enumerate(clause) if char.isalnum()), len(clause))
+        search = clause[prefix_length:]
+        opening = next(
+            (candidate for candidate in _GUARD_OPENERS if search.startswith(candidate)), None,
+        )
+        if not opening:
+            prefix = re.match(r"^(?:但(?:是)?|不过|而)\s*", search)
+            if prefix:
+                search = search[prefix.end():]
+                opening = next((candidate for candidate in _GUARD_OPENERS if search.startswith(candidate)), None)
+        if opening:
+            guard_start = pos + len(clause) - len(search)
+            boundary = _BRANCH_MARKER.search(search, len(opening))
+            primary_polarity = "when_false" if opening == "除非" else "when_true"
+            polarity = primary_polarity
+            branch_seen = False
+            if boundary:
+                target_pos = guard_start + boundary.start()
+                target = search[boundary.start():]
+                guard_end = target_pos
+            else:
+                guard_end = pos + len(clause)
+                target = ""
+            source = sentence[guard_start:guard_end].rstrip()
+            guard = source_anchor(source, start + guard_start, raw_sha256)
+        elif guard and not branch_seen and clause.startswith(_GUARD_CONTINUATIONS):
+            guard_start = guard["span"]["start"] - start
+            source = sentence[guard_start:pos + len(clause)]
+            guard = source_anchor(source, start + guard_start, raw_sha256)
+            continue
+        elif guard and clause.startswith("否则"):
+            polarity = "when_false" if primary_polarity == "when_true" or not branch_seen else "when_true"
+        elif scoped := _SCOPE_ONLY.search(clause):
+            guard = source_anchor(scoped["scope"], start + pos + scoped.start("scope"), raw_sha256)
+            primary_polarity = polarity = "when_true"
+        if guard and target:
+            relations.append((index, {
+                "kind": "condition", "guard": guard,
+                "target": source_anchor(target, start + target_pos, raw_sha256),
+                "polarity": polarity, "authority": "NONE",
+            }))
+            branch_seen = True
+    return relations
+
+
+def _personal_choice_scope(sentence):
+    label = _LABELED_CLAUSE.match(sentence)
+    if label and re.fullmatch(_LABEL, label["label"]):
+        return True
+    attribution = external_attribution(sentence)
+    if not attribution:
+        return True
+    choice_cue = re.search(_OPTION_HINT, sentence)
+    return bool(choice_cue and choice_cue.start() < attribution.start())
 
 
 def _verified_amount(clause):
@@ -639,11 +744,12 @@ def _claim_candidate(item, start, guard=None):
             "source_identity": "current_user", "authority": "NONE", "status": "PROVISIONAL"}
 
 
-def _lexical_candidates(text):
+def _lexical_candidates(text, raw_sha256):
     calendars = list(_LEXICAL_DATE.finditer(text))
     durations = [match for match in calendars if _DURATION_BOUNDARY.fullmatch(match[0])]
     dates = [match for match in calendars if match not in durations]
-    segments = list(re.finditer(r"[^。！？!?；;\n，,]+", text))
+    segments = [(clause, start + offset) for sentence, start in _parts(text, _SENTENCE_ENDS)
+                for clause, offset in _parts(sentence, ",，")]
     candidates = [
         {"kind": "date", "source": match[0], "span": _span(match[0], match.start()),
          "reading": "UNANCHORED_DATE", "value": None, "unit": None,
@@ -655,7 +761,10 @@ def _lexical_candidates(text):
             continue
         source = match[0].rstrip()
         end = match.start() + len(source)
-        unit_match = _LEXICAL_UNIT.match(text[end:].lstrip())
+        unit_start = end
+        while unit_start < len(text) and text[unit_start] in " \t\u3000":
+            unit_start += 1
+        unit_match = _LEXICAL_UNIT.match(text, unit_start)
         if not unit_match and not match["suffix"] and not match["percent"]:
             if re.search(rf"(?:{_LABEL_ROLE})\s*$", text[:match.start()]) or (
                 len(match["count"]) == 1 and match["count"] in _DIGIT_CHARS
@@ -665,6 +774,7 @@ def _lexical_candidates(text):
         if value is None:
             continue
         unit = unit_match.lastgroup if unit_match else None
+        unit_source = unit_match[0] if unit_match else None
         if unit == "currency":
             unit = unit_match[0] if re.search(NON_CNY, unit_match[0], re.IGNORECASE) else "CNY"
         if any(duration.start() <= match.start() < duration.end() for duration in durations):
@@ -675,13 +785,21 @@ def _lexical_candidates(text):
             reading = "LITERAL"
         if match["suffix"] or match["percent"]:
             unit = "tenth" if match["suffix"] == "成" else "percent"
-        location = next((segment[0] for segment in segments
-                         if segment.start() <= match.start() < segment.end()), "")
-        periods = [label for label, word in (("month", MONTH), ("week", _WEEK)) if re.search(word, location)]
+            token = "suffix" if match["suffix"] else "percent"
+            unit_source = match[token]
+            unit_start = match.start(token)
+        location, start = next(((part, pos) for part, pos in segments if pos <= match.start() < pos + len(part)),
+                               ("", 0))
+        periods = list(_PERIODS.finditer(location))
+        labels = {token.lastgroup for token in periods}
+        period = periods[0] if len(labels) == 1 else None
         candidate = {"kind": "quantity", "source": source, "span": _span(source, match.start()),
                      "reading": reading, "value": value, "unit": unit,
-                     "unit_source": unit_match[0] if unit_match else None,
-                     "period": periods[0] if len(periods) == 1 else None, "authority": "NONE"}
+                     "unit_source": unit_source,
+                     "unit_anchor": source_anchor(unit_source, unit_start, raw_sha256) if unit_source else None,
+                     "period": period.lastgroup if period else None,
+                     "period_anchor": source_anchor(period[0], start + period.start(), raw_sha256) if period else None,
+                     "authority": "NONE"}
         if unit in {"tenth", "percent"}:
             ratio = Decimal(value).scaleb(-1 if unit == "tenth" else -2)
             candidate["ratio"] = format(ratio.normalize(), "f")
@@ -782,29 +900,40 @@ def _clause_obligations(clause, content, start, subject, scope, reference, candi
 
 def interpret(text: str, focus: str | None = None, *, known_options: Iterable[str] = ()) -> dict:
     """Extract exact-source candidates. The conversation layer confirms or rejects them."""
+    raw_sha256 = sha256(text.encode("utf-8")).hexdigest()
     field, _, focus_subject = (focus or "").partition(":")
     focus_subject = focus_subject.strip()
-    sentence_spans = [(match[0].strip(), match.start() + len(match[0]) - len(match[0].lstrip()))
-                      for match in _SENTENCES.finditer(text) if match[0].strip()]
+    sentence_spans = list(_parts(text, _SENTENCE_ENDS))
     sentences = [sentence for sentence, _ in sentence_spans]
-    options = _options(sentences, field)
-    aliases = _option_aliases((*known_options, *options))
+    options = _options([sentence for sentence in sentences if _personal_choice_scope(sentence)], field)
+    option_order = tuple(dict.fromkeys((*known_options, *options)))
+    aliases = _option_aliases(option_order)
     claims = []
     claim_candidates = []
     obligations = []
+    relations = []
+    edits = []
+    references = []
     previous_seen = False
     for sentence, start in sentence_spans:
         sentence_claims = []
         raw_clauses = []
-        cursor = 0
-        clauses = _clauses(sentence)
+        clause_spans = list(_parts(sentence, ",，"))
+        clauses = [clause for clause, _ in clause_spans]
+        condition_links = dict(_condition_relations(sentence, start, clause_spans, raw_sha256))
         conditional_start = _conditional_start(clauses)
+        if condition_links:
+            first_guard_start = next(iter(condition_links.values()))["guard"]["span"]["start"] - start
+            conditional_start = min(
+                conditional_start,
+                next(i for i, (clause, pos) in enumerate(clause_spans) if pos <= first_guard_start < pos + len(clause)),
+            )
+        relations.extend(condition_links.values())
         subject = ""
+        carried_actor = None
         inferred_focus = field
         correction_pending = False
-        for index, clause in enumerate(clauses):
-            pos = sentence.index(clause, cursor)
-            cursor = pos + len(clause)
+        for index, (clause, pos) in enumerate(clause_spans):
             conditional = index >= conditional_start
             if index == conditional_start:
                 subject = ""
@@ -830,9 +959,38 @@ def interpret(text: str, focus: str | None = None, *, known_options: Iterable[st
                 r"另一|别的|新方案|其它|其他|至于", clause
             ):
                 actual_subject = focus_subject
-            reference = scope_reference(content)
+            if _REPORT_RESET.match(clause):
+                carried_actor = None
+            attribution = external_attribution(content)
+            actor = carried_actor
+            if attribution:
+                actor_start = start + pos + len(clause) - len(content) + attribution.start("actor")
+                actor = source_anchor(attribution["actor"], actor_start, raw_sha256)
+                if attribution["cue"] in REPORTING_CUES:
+                    carried_actor = actor
+            reference = scope_reference(content) or (actor["source"] if actor else None)
+            clause_anchor = source_anchor(clause, start + pos, raw_sha256)
+            if actor:
+                relations.append({"kind": "attribution", "actor": actor, "target": clause_anchor,
+                                  "authority": "NONE", "applicability": "UNKNOWN"})
+            if marker := _EDIT_MARKER.search(content):
+                marker_pos = start + pos + len(clause) - len(content) + marker.start()
+                edits.append({"operation": marker.lastgroup,
+                              "marker": source_anchor(marker[0], marker_pos, raw_sha256),
+                              "target": clause_anchor, "authority": "NONE",
+                              "status": "UNRESOLVED_TARGET"})
+            unresolved_reference = _OPTION_REFERENCE.match(content)
+            if unresolved_reference and not explicit:
+                actual_subject = ""
+                word = unresolved_reference[0]
+                candidates = list(option_order)
+                if word in {"前者", "后者"} and len(option_order) == 2:
+                    candidates = [option_order[0 if word == "前者" else 1]]
+                ref_start = start + pos + len(clause) - len(content)
+                references.append({"anchor": source_anchor(word, ref_start, raw_sha256),
+                                   "possible_targets": candidates, "authority": "NONE", "outside": True})
             local = []
-            if not reference:
+            if not reference and not unresolved_reference:
                 if is_joint(content):
                     if joint := _joint_claim(content, actual_subject, source, scoped):
                         local.append(joint)
@@ -850,7 +1008,7 @@ def interpret(text: str, focus: str | None = None, *, known_options: Iterable[st
                     local.append(night)
                 local.extend(_narrative(content, source, scoped, actual_subject))
             sentence_claims.extend(local)
-            raw_clauses.append((clause, content, start + pos, actual_subject, scoped, reference, local))
+            raw_clauses.append((clause, content, start + pos, actual_subject, scoped, reference, local, actor))
             if scoped == "previous":
                 previous_seen = True
         exception = None
@@ -866,11 +1024,18 @@ def interpret(text: str, focus: str | None = None, *, known_options: Iterable[st
                     "conditional", "move_if_onsite_max", "", next(iter(onsite)), "days/week", scope_text,
                 )
                 sentence_claims.append(exception)
-        for raw_clause in raw_clauses:
-            obligations.extend(_clause_obligations(*raw_clause, exception, guard))
-            for item in raw_clause[-1]:
+        for index, raw_clause in enumerate(raw_clauses):
+            actor = raw_clause[-1]
+            effective_guard = condition_links[index]["guard"]["source"] if index in condition_links else guard
+            extracted = _clause_obligations(*raw_clause[:-1], exception, effective_guard)
+            for obligation in extracted:
+                if actor:
+                    obligation["attribution"] = actor
+                    obligation["subject"] = obligation["subject"] or actor["source"]
+            obligations.extend(extracted)
+            for item in raw_clause[-2]:
                 claim_candidates.append(_claim_candidate(item, start if item["source"] == sentence
-                                                         else raw_clause[2], guard))
+                                                         else raw_clause[2], effective_guard))
         if exception:
             claim_candidates.append(_claim_candidate(exception, start + sentence.index(exception["source"]), guard))
         claims.extend(sentence_claims)
@@ -880,7 +1045,9 @@ def interpret(text: str, focus: str | None = None, *, known_options: Iterable[st
             claims.extend(local)
             if local and (start := text.find(option)) >= 0:
                 claim_candidates.extend(_claim_candidate(item, start) for item in local)
-    if len(sentences) == 1 and not any(item["field"] == field for item in claims):
+    if len(sentences) == 1 and not relations and not references and not scope_reference(text) and not any(
+        item["field"] == field for item in claims
+    ):
         focused = _focus_answer(text.strip(), field, focus_subject)
         if focused:
             claims.append(focused)
@@ -896,9 +1063,11 @@ def interpret(text: str, focus: str | None = None, *, known_options: Iterable[st
     unknowns = [item for item in obligations if item["status"] == "UNKNOWN"]
     first_critical = next((item for item in unknowns if item["hard"]), None)
     first = first_critical or next(iter(unknowns), None)
-    semantic = {"version": SEMANTIC_VERSION, "coverage": "BOUNDED_RULES",
-                "span_encoding": "unicode_code_points", "candidates": _lexical_candidates(text),
+    semantic = {"version": SEMANTIC_VERSION, "coverage": "BOUNDED_RULES", "outside": True,
+                "span_encoding": "unicode_code_points", "raw_sha256": raw_sha256,
+                "candidates": _lexical_candidates(text, raw_sha256),
                 "claim_candidates": claim_candidates[:96],
+                "relations": relations[:96], "edits": edits[:96], "references": references[:96],
                 "obligations": [item for item in obligations if item["hard"]], "unknowns": unknowns,
                 "clarification": CLARIFICATIONS[first["reason"]] if first else None}
     intent = "比较" + "与".join(f"「{option}」" for option in options) if len(options) >= 2 else text.strip()
