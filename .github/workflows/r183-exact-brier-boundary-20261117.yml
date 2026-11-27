@@ -1,0 +1,98 @@
+name: R183 exact Brier secondary boundary native verification
+
+on:
+  push:
+    paths:
+      - '.github/workflows/r183-exact-brier-boundary-20261117.yml'
+      - 'research/R183/secondary_brier_scope_20261117/independent_brier.js'
+      - 'research/R183/secondary_brier_scope_20261117/python_crosscheck.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-artificial-boundary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact 45-world replay with archived source SHA and two mutations
+        shell: bash
+        run: |
+          set -euo pipefail
+          node research/R183/secondary_brier_scope_20261117/independent_brier.js > "$RUNNER_TEMP/r183-secondary-brier.json"
+          python - "$RUNNER_TEMP/r183-secondary-brier.json" <<'PY'
+          from fractions import Fraction as F
+          import json,sys
+          with open(sys.argv[1],encoding='utf-8') as handle: actual=json.load(handle)
+          with open("research/R183/secondary_brier_scope_20261117/receipt.json",encoding='utf-8') as handle: recorded=json.load(handle)
+          def require(ok,code):
+              if ok is not True: raise SystemExit("R183_FAIL_CLOSED_"+code)
+          require(actual.get("status")=="PASS_INDEPENDENT_FRACTION_RECOMPUTATION","STATUS")
+          require(actual.get("input_sha256")==recorded["input"]["expected_sha256"],"SOURCE_SHA")
+          require(actual.get("archived_worlds")==45 and actual.get("archived_training_pairs")==4125,"COVERAGE")
+          require(actual.get("positive_count")==45 and len(actual.get("grouped",[]))==3,"DIRECTION")
+          require(actual.get("minimum",{}).get("delta")==recorded["extrema"]["min"]["exact"],"MINIMUM")
+          require(actual.get("maximum",{}).get("delta")==recorded["extrema"]["max"]["exact"],"MAXIMUM")
+          for group,pinned in zip(actual["grouped"],recorded["by_n"]):
+              require(group["n"]==pinned["n"] and group["positive"]==pinned["count"],"GROUP_COUNTS")
+              require(group["smallest"]["delta"]==pinned["min"],"GROUP_MIN")
+              require(group["largest"]["delta"]==pinned["max"],"GROUP_MAX")
+          c=actual.get("off_grid_counterexample",{})
+          archived=recorded["outside_frozen_domain_counterexample"]
+          require(c.get("expected_MLE_Brier")==archived["expected_mle_brier"],"OFFGRID_MLE")
+          require(c.get("expected_halfcount_Brier")==archived["expected_halfcount_brier"],"OFFGRID_HALF")
+          require(c.get("MLE_minus_halfcount")==archived["delta"],"OFFGRID_DELTA")
+          require(F(c["expected_MLE_Brier"])-F(c["expected_halfcount_Brier"])==F(c["MLE_minus_halfcount"]),"FRACTION_ARITHMETIC")
+          require(actual.get("negative_controls")==["pmf_mutation_REJECTED","score_mutation_REJECTED"],"NEGATIVE_CONTROLS")
+          require(actual.get("empirical_E2")==0 and actual.get("historical_E3")==0,"EVIDENCE_SCOPE")
+          print("R183_45_WORLDS_NATIVE_EXACT_BRIER_PASS")
+          print("R183_OFF_GRID_COUNTEREXAMPLE_NATIVE_PASS")
+          PY
+      - name: Direct independent Python Fraction three-case crosscheck
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum research/R183/secondary_brier_scope_20261117/python_crosscheck.py
+          for optimization in 0 1; do
+            PYTHONOPTIMIZE="$optimization" python -B research/R183/secondary_brier_scope_20261117/python_crosscheck.py > "$RUNNER_TEMP/r183-python-check-$optimization.log"
+            grep -Fx "PYTHON_FRACTION_SPOT_CHECK_PASS 3" "$RUNNER_TEMP/r183-python-check-$optimization.log"
+            test "$(grep -c '^PASS n=' "$RUNNER_TEMP/r183-python-check-$optimization.log")" -eq 3
+            PYTHONOPTIMIZE="$optimization" python -B - <<'PY'
+          from fractions import Fraction as F
+          import sys
+          sys.path.insert(0,"research/R183/secondary_brier_scope_20261117")
+          from python_crosscheck import evaluate
+          for n,p in ((0,F(1,4)),(4,F(-1,100)),(4,F(101,100))):
+              try: evaluate(n,p)
+              except ValueError: continue
+              raise SystemExit("R183_PYTHON_OPTIMIZED_INVALID_INPUT_ACCEPTED")
+          print("R183_PYTHON_NEGATIVE_CONTROLS_PASS")
+          PY
+          done
+      - name: SHA pin rejects substituted source before computing
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - "$RUNNER_TEMP/r183-mutated-input.json" <<'PY'
+          import json,sys
+          src="research/R183/R183_EXACT_RESULTS.json"
+          with open(src,encoding='utf-8') as handle: d=json.load(handle)
+          d["worlds"][0]["expected_halfcount_out_of_sample_Brier_exact"]="1/2"
+          with open(sys.argv[1],"w",encoding="utf-8") as handle: json.dump(d,handle)
+          PY
+          if node research/R183/secondary_brier_scope_20261117/independent_brier.js "$RUNNER_TEMP/r183-mutated-input.json" 2>"$RUNNER_TEMP/r183-rejection.log"; then
+            echo "R183_FAIL_OPEN_SUBSTITUTED_INPUT"
+            exit 1
+          fi
+          grep -q 'SOURCE_SHA256_MISMATCH' "$RUNNER_TEMP/r183-rejection.log"
+          echo 'R183_SUBSTITUTED_SOURCE_REJECTED'
