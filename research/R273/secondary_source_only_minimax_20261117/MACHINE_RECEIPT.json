@@ -1,0 +1,138 @@
+{
+  "research_id": "R273",
+  "catalogue_id": "12-003",
+  "date_utc": "2026-11-17",
+  "type": "POST_HOC_SECONDARY_E1_ARTIFICIAL_MINIMAX_SOURCE_ONLY",
+  "base_main": "f1761b89af48bc38f70c04b1369ce76ecb6492e9",
+  "original_freeze_commit": "91abafbaf627dbf67f86208a82008a5be419e507",
+  "source": {
+    "path": "research/R273/R273_ALL_1728_ORIGINAL_CROSS_POPULATION_SOURCES.csv",
+    "git_blob_sha1": "ef22eb3c74f3aafdb24ea26153123329755d18e7",
+    "sha256": "b4f417d0b218fd1aaa9082ab7a49e52675df59af9fd80841e74888b31dcd6d52",
+    "row_count": 1728
+  },
+  "original_result": {
+    "path": "research/R273/R273_EXACT_CROSS_POPULATION_RESULTS.json",
+    "git_blob_sha1": "4db10236ea9c07a8aa17684f421e9a3a89d9a708",
+    "sha256": "1f1e35d20ddd486bb7d71c65cea96e9590912268c93f17ad1ec99b7f6ac463b8",
+    "original_worlds": 27
+  },
+  "theorem": {
+    "domain": "source_4_Bernoulli_a_independent_target_Bernoulli_b",
+    "a_options": [
+      "1/4",
+      "1/2",
+      "3/4"
+    ],
+    "b_options": [
+      "1/4",
+      "1/2",
+      "3/4"
+    ],
+    "observable": "source-only training fourbits, optional known a and independent internal randomness",
+    "target_data_available": false,
+    "model_rule": "q(X,U) in [0,1], U independent of target b",
+    "excess_risk": "E[(q-b)^2] relative to target-true-b oracle Brier b(1-b)",
+    "equalities": "(G_1/4+G_3/4)/2 = E[(q-1/2)^2] + 1/16",
+    "sharp_minimax_excess_risk": "1/16",
+    "attaining_rule": "q=1/2 almost surely",
+    "newly_added_comparator_not_in_original_frozen_models": "CONSTANT_HALF"
+  },
+  "rows": [
+    {
+      "a": "1/4",
+      "source_oracle": {
+        "r1": "0",
+        "r3": "1/4",
+        "max": "1/4"
+      },
+      "source_laplace": {
+        "r1": "1/36",
+        "r3": "7/36",
+        "max": "7/36"
+      },
+      "posthoc_constant_half": {
+        "r1": "1/16",
+        "r3": "1/16",
+        "max": "1/16"
+      }
+    },
+    {
+      "a": "1/2",
+      "source_oracle": {
+        "r1": "1/16",
+        "r3": "1/16",
+        "max": "1/16"
+      },
+      "source_laplace": {
+        "r1": "13/144",
+        "r3": "13/144",
+        "max": "13/144"
+      },
+      "posthoc_constant_half": {
+        "r1": "1/16",
+        "r3": "1/16",
+        "max": "1/16"
+      }
+    },
+    {
+      "a": "3/4",
+      "source_oracle": {
+        "r1": "1/4",
+        "r3": "0",
+        "max": "1/4"
+      },
+      "source_laplace": {
+        "r1": "7/36",
+        "r3": "1/36",
+        "max": "7/36"
+      },
+      "posthoc_constant_half": {
+        "r1": "1/16",
+        "r3": "1/16",
+        "max": "1/16"
+      }
+    }
+  ],
+  "execution": {
+    "isolated_V8_all_1728_rows_recomputed": true,
+    "archived_27_worlds_verified": 27,
+    "identical_source_marginal_checks": 144,
+    "independent_python_Fraction_analytical_full_value_grid": true,
+    "original_GitHub_run": {
+      "id": 44035175824,
+      "conclusion": "failure",
+      "cause": "initial negative control triggered canonical fraction guard before target mass guard"
+    },
+    "successful_GitHub_run": {
+      "id": 44035277277,
+      "job_id": 133876573726,
+      "commit": "aab3efc221f1087a0585035643e2af1eec1d4b08",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44035277277",
+      "runner": "ubuntu-24.04",
+      "node": "22",
+      "python": "3.11",
+      "permission": "contents:read"
+    },
+    "source_mass_mutation_rejected": true,
+    "input_source_sha256_mutation_rejected": true,
+    "source_sixbits_and_all_per_row_Brier_checked": true,
+    "original_generator_imported": false
+  },
+  "limits": {
+    "source_and_target_only_synthetic": true,
+    "observational_source_indistinguishability_not_empirical_extrapolation": true,
+    "no_external_independent_researcher_replication": true,
+    "no_real_target_population_dataset": true,
+    "new_real_human_E2": 0,
+    "new_historical_E3": 0,
+    "old_R273_frozen_protocol_changed": false,
+    "formal_catalogue_queue_changed": false,
+    "frozen_R073_unchanged": true,
+    "frozen_PESEN_unchanged": true,
+    "paid_services_added": 0,
+    "account_billing_not_verified": true
+  }
+}
