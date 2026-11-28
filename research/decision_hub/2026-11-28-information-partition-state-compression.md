@@ -1,0 +1,12 @@
+# 信息分组联合状态压缩
+2026-11-28。RESEARCH_CANDIDATE / SYNTHETIC_EXECUTED / NATIVE_NOT_RUN / INDEPENDENT_NOT_RUN / authority NONE。
+基线a6702e00dd1059cdf6d6e36fc273be60060481aa。核对HEAD，沿用近期规程及相关情景、多阶段信息、状态压缩研究。未重新核对开放PR、唯一交接及全库去重。
+三期，固定世界支持集及披露分组：0期共同，1期按第一位分组，2期完全披露。每世界状态现金及任务位；0期可投入a，1期到账g，1/2期可完成一次当期世界对应目标支付b。终点所有世界必须完成目标。固定时点和世界顺序、信息分组、转移规则时，完整状态向量去重保留可达性；不保留所有路径。若信息历史依赖行动或观察，则必须扩大状态键。此夹具无此类依赖。
+```js
+function experiment(){let o={cases:0,match:0,unsafe:0,full:0,compressed:0};for(let mask=1;mask<16;mask++)for(let c=0;c<=6;c++)for(let a=1;a<=3;a++)for(let b=1;b<=3;b++)for(let g=0;g<=2;g++){let W=[[0,0],[0,1],[1,0],[1,1]].filter((_,i)=>mask>>i&1);function run(mode){let q=[W.map(()=>[c,0])];for(let t=0;t<3;t++){let n=[];for(let ss of q){function rec(i,p,act){if(i===W.length){n.push(p);return}let [cash,m]=ss[i];if(t===1&&m&1)cash+=g;for(let k=0;k<4;k++){if(act.some((v,j)=>(t===0||t===1&&W[j][0]===W[i][0])&&v!==k))continue;let x=cash,y=m;if(k===1){if(t!==0||x<a)continue;x-=a;y|=1}if(k>=2){if(t===0||y&2||k!==W[i][t-1]+2||x<b)continue;x-=b;y|=2}rec(i+1,p.concat([[x,y]]),act.concat(k))}}rec(0,[],[])}if(mode){let map=new Map;for(let s of n){let key=mode===1?JSON.stringify(s):JSON.stringify(s.map(x=>x[0]));if(!map.has(key))map.set(key,s)}n=[...map.values()]}q=n;if(mode===0)o.full+=q.length;if(mode===1)o.compressed+=q.length}return q.some(s=>s.every(x=>x[1]&2))}let x=run(0),y=run(1),z=run(2);if(x!==y)throw Error("mismatch");o.cases++;o.match++;o.unsafe+=+(x!==z)}return o}console.log(experiment());
+```
+实测2835配置全部一致，弱基线也无错误；full53220 compressed38100，减少28.41%。追加资格反例，先可选投入，随后可选到账，终点要求已投入且现金>=b；按现金保留首个状态可能丢失资格。
+```js
+function experiment(){let o={cases:0,wrong:0};for(let c=0;c<5;c++)for(let a=1;a<4;a++)for(let g=0;g<4;g++)for(let b=1;b<5;b++){let states=[[c,0]];if(c>=a)states.push([c-a,1]);let next=states.flatMap(([x,m])=>[[x,m],...(m?[[x+g,m]]:[])]);let exact=next.some(([x,m])=>m&&x>=b);let map=new Map;for(let s of next)if(!map.has(s[0]))map.set(s[0],s);let weak=[...map.values()].some(([x,m])=>m&&x>=b);o.cases++;o.wrong+=+(exact!==weak)}return o}console.log(experiment());
+```
+实测240配置16错误。该反例是单世界资格机制，不是联合原型错误率。参数、基线由研究者选定，共享转移函数，非独立验收。状态计数非性能。未整合此前多目标续算、完整见证、安全检查点或原生产品。无生产修改、训练、合并、部署、主动CI或新增费用。
