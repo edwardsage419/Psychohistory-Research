@@ -65,7 +65,13 @@ class Method:
 
 
 class DecisionRegistry(Registry):
+    def __init__(self):
+        super().__init__()
+        self._sealed = False
+
     def register(self, plugin):
+        if self._sealed:
+            raise ValueError("Active method releases are immutable")
         if not isinstance(plugin, Method):
             raise ValueError("需要版本化的决策方法契约")
         if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_.-]{1,63}", plugin.model_id):
@@ -91,6 +97,30 @@ class DecisionRegistry(Registry):
 
     def methods(self):
         return tuple(self._plugins.values())
+
+    def for_release(self, manifest):
+        """Select one reviewed exact version per family in a separate snapshot.
+
+        Source pins identify the reviewed method. The caller must build the
+        manifest from its trusted release configuration, never from a request.
+        """
+        from .decision_feasibility import GATE_ID
+
+        selected = DecisionRegistry()
+        families = set()
+        for model_id, version, source in manifest:
+            if model_id in families:
+                raise ValueError("Only one active version per method family")
+            method = self.get(model_id, version)
+            if method.source_baseline != source:
+                raise ValueError("Active method source differs from release manifest")
+            selected.register(method)
+            families.add(model_id)
+        if (GATE_ID, "1.0.0") not in selected._plugins:
+            raise ValueError("Active manifest must select the supported hard gate")
+        selected.execution_order()
+        selected._sealed = True
+        return selected
 
     def execution_order(self):
         methods = {method.key: method for method in self.methods()}

@@ -48,7 +48,9 @@ def v05_registry():
         scope = "structural" if method in timing_methods else method.candidate_scope
         registry.register(replace(method, source_baseline=V05_SOURCE, candidate_scope=scope,
                                   depends_on=tuple(dict.fromkeys(dependencies))))
-    return registry
+    return registry.for_release(
+        (method.model_id, method.version, method.source_baseline) for method in registry.methods()
+    )
 
 
 class DecisionHubV05(DecisionHub):

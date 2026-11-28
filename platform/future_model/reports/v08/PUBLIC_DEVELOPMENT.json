@@ -1,0 +1,168 @@
+{
+  "corpora": {
+    "2026-11-24-language-evidence-corpus/language_corpus.json": "be1cddcc80e78e3df9a35775279c4b4f7f3ae1bb",
+    "2026-11-24-semantic-proposal-contract/corpus.json": "05c239f3f3b1f46235fa2464d2945c21c6c08132"
+  },
+  "arm": "current-v0.8",
+  "api": "/api/v8/decisions",
+  "sample_type": "PUBLIC_SYNTHETIC_DEVELOPMENT_ONLY",
+  "environment": {
+    "python": "3.12.14",
+    "system": "Linux",
+    "machine": "x86_64",
+    "http_transport": "IN_PROCESS_ASGI",
+    "loaded_source_sha256": {
+      "decision_api.py": "a5f8ceaf5b7949b69053e8723de5adec34ef30454bb8f7e1e4053b205caae777",
+      "decision_candidates.py": "489a4ad56964c4aa5db60e23e109b0b2f85eb5a4300970eb086cdf075b8bb8b3",
+      "decision_cli.py": "98cb8abba793ab99c71b2097d932a77566cacbcd92daf92449010327b336ccb2",
+      "decision_composition.py": "6911c3ea928c3499cec42806a0f62813e3ef1409e6159454510fcb50b5cc7383",
+      "decision_conversation.py": "5683f0efe4c5ca4c9fcb9c8c1a46cb6b435513ee0e5a63ab617f7f316deb69ee",
+      "decision_conversation_api.py": "8900641e10bd14e4b0a047c707504ccb44a0d2a26858ece4bbab6fd029df7d18",
+      "decision_conversation_cli.py": "b1a8f08d948a4da7d53822d2fd2cadf434a73d8c39af97f0f81f70335fc6d591",
+      "decision_conversation_math.py": "8669a1d0a006ece92a6797c75b192928f8efc9682f9d46f41b71ad0b3296a9db",
+      "decision_evidence.py": "38473e79e3ce325f794b796ca7e600a72b453f4496994688afd8c5712d475e27",
+      "decision_extensions.py": "c95807bea90148daede026dd186eb86f67735e56f526b884a7e4a3cc7bef953c",
+      "decision_feasibility.py": "fb4d9afb1da6e37629ddcb5a826deaf08fe40478c7cccb59a940e580dbaed31d",
+      "decision_feedback.py": "20a96d755f8408fa9613ec0c12c8d74a4e3d9512fc09ff9b12eccd3ae0e36b1d",
+      "decision_hub.py": "7d0916ca8c14e76cb51acfb39e5419e54d94ee91d6325247177aa557ab147c19",
+      "decision_knowledge.py": "04a3e01a063b51fecf94a4830cd2f7a7fadb9626f41895e77367ffa87f6d75e4",
+      "decision_knowledge_planning.py": "c10edf264cd084c83c315b8f75b2cf8a04cecfa55523f062f7b6fae0e36a0f7f",
+      "decision_knowledge_updates.py": "ba080a41f099bc036c97b6d3b99e96c8e6fd795d01d38e1aee01b3b54a4b821f",
+      "decision_language.py": "ba29470fcc537c750eb8e138a0c9aff7da5718c9b9a9107e6b383d4568b6fbc3",
+      "decision_parser_registry.py": "521ac6330b7162d6382e8b33c2cc8b98efec17b0e6d835843c5f87bb1666b744",
+      "decision_planner.py": "7bad645375331e2bb82fbb6a77138a2064311d236fc5dbb2a690b151e7830f7d",
+      "decision_preferences.py": "0c93c9304b20933748242088a12ff4db1c0afee20a5982bd5b21e9b47dbb8ae3",
+      "decision_records.py": "7a6e88c6faaa8dc3a931be260783aad1f4c1ca5c34fbe475bd55cbf6a421d9ff",
+      "decision_registry.py": "f97b6567a1f00086fe4be7944fc8525330fa783dba2cd9d395bc6b31fd3f367d",
+      "decision_regret.py": "9142de1c9fe79a610020bd441d215383ee1946641a4e01835eeb019c5300c407",
+      "decision_resources.py": "e7dc16909873c0d1ea5ec52b8b6aa7cb1024182921e6d1b183513325b5e406db",
+      "decision_scenarios.py": "c5ffaa4954e6f2db279e1115e45c701c93d73aa6422e3eefd7968606b8433d45",
+      "decision_scoring.py": "3e48b3aa1f682fa6e3bb3d4d961a406c2726bece6cd5ac8b71ec9bf44e1750b6",
+      "decision_semantics.py": "b94a13d1c3ca31d0d2631bb93cd5eb086ad8493abe11c711174a128313d292f1",
+      "decision_service.py": "c0804a84d5b3a114057ed48aac5c2398351b68b43d474c24eb8e04a5d583f12e",
+      "decision_state.py": "b5b9edea459cc04b673baaba8b6d95c6b2a3353f7327e81a76d176dd56c9f266",
+      "decision_timing.py": "9106dd914af1550c1e75d565859cc39b9bb6abe8936a5de904964a1e2ff3a195",
+      "decision_v05.py": "23ba58447cc7de0dca6349b1cf53aaacc7c86c2dc1e80bb412e0c44574be8a9b",
+      "decision_voi.py": "4f4338799f3dd3554ad61ccbdfcd775db3b7a00badc23615d1db44bed206a993",
+      "decision_voi_math.py": "8daccfc4d0cf6bca2aaee1c8607ffe2c9212eaa22a5444c6938bd08c799e6c8d"
+    }
+  },
+  "summary": {
+    "episodes": 32,
+    "turns": 64,
+    "annotations": 167,
+    "turns_with_new_ledger_claims": 3,
+    "turns_with_unconfirmed_analysis": 0,
+    "turns_without_confirmation_or_selection": 64,
+    "new_ledger_candidates": 3,
+    "invalid_semantic_spans": 0,
+    "ungrounded_or_ambiguous_ledger_anchors": 0,
+    "annotation_ledger_anchor_coverage": 3,
+    "annotation_obligation_overlap": 19,
+    "hard_annotations": 27,
+    "hard_anchor_coverage": 12,
+    "explicit_unknown_annotations": 18,
+    "specific_unknown_annotations": 17,
+    "false_confirmed_certainty_matches": 0,
+    "provisional_fact_labels_on_uncertainty": 0,
+    "turns_with_unprompted_gate": 0,
+    "turns_with_local_knowledge_hits": 64,
+    "knowledge_status_counts": {
+      "AVAILABLE": 64
+    },
+    "turns_with_retrieval_authority": 0,
+    "question_mark_counts": {
+      "0": 20,
+      "1": 44
+    },
+    "numeric_obligations": 28,
+    "ascii_baseline_value_matches": 0,
+    "lexical_value_matches": 25,
+    "numerics_with_annotated_units": 23,
+    "lexical_value_and_unit_matches": 7,
+    "native_field_value_matches": 0,
+    "native_field_value_and_unit_matches": 0,
+    "condition_retained_outcomes": {
+      "missing": 5
+    },
+    "comparison_retained_outcomes": {
+      "retained": 5,
+      "missing": 5
+    },
+    "other_subject_retained_outcomes": {
+      "missing": 3,
+      "retained": 1
+    },
+    "revision_link_present_outcomes": {
+      "missing": 10
+    }
+  },
+  "legacy_cold_action_proxy": {
+    "turns": 28,
+    "actionTP": 6,
+    "actionFP": 4,
+    "actionFN": 9,
+    "actionExact": 21,
+    "goldConstraints": 10,
+    "candidateClaims": 3,
+    "emptyClaims": 25,
+    "emptyBoth": 21,
+    "anyClaimAnchor": 1,
+    "hardFieldAnchor": 0
+  },
+  "resource_measurements": {
+    "raw_request_median_ms": 4.373,
+    "raw_request_max_ms": 232.25,
+    "max_process_rss_linux_kib": 64856
+  },
+  "confirmation_outcomes": {
+    "CONSERVATIVE_UNKNOWN": 2,
+    "CORRECT": 9,
+    "CORRECT_REJECT": 1,
+    "CORRECT_UNKNOWN": 5,
+    "UNRESOLVED_SUPPORTED_REFERENCE": 2
+  },
+  "production_index": {
+    "status": "AVAILABLE",
+    "counts": {
+      "expected": 154,
+      "indexed": 154,
+      "identity_verified": 154,
+      "missing": 0,
+      "changed": 0,
+      "unreadable": 0,
+      "byte_duplicates": 0,
+      "invalid_utf8": 0,
+      "licence_policy_unverified": 0,
+      "empty_text": 0,
+      "unlisted": 0,
+      "documented_duplicate_supplements": 1,
+      "source_edges": 38,
+      "historical_source_changes": 1,
+      "body_bytes": 697064,
+      "tokens": 132483,
+      "unique_terms": 29755
+    },
+    "authority": "NONE"
+  },
+  "api_requests": {
+    "start": 41,
+    "turn": 32,
+    "end": 41,
+    "confirm": 9
+  },
+  "source_candidate_anchors": {
+    "literal_condition_anchor": {
+      "matched": 4,
+      "total": 4
+    },
+    "other_attribution_anchor": {
+      "matched": 4,
+      "total": 4
+    },
+    "edit_marker_anchor": {
+      "matched": 7,
+      "total": 10
+    }
+  }
+}

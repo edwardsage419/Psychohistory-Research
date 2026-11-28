@@ -1,7 +1,7 @@
 """Consent-scoped personal records, kept outside the research store."""
 
 from contextlib import contextmanager
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from hashlib import sha256
 import hmac
 import json
@@ -15,15 +15,19 @@ from uuid import uuid4
 
 from .contracts import canonical
 from .decision_preferences import AdoptedPreference, Hindsight
+from .decision_resources import ResourceState, evaluate_resources
 from .decision_state import DecisionState, HUB_VERSION, SCHEMA_VERSION
 from .storage import checked_path, fsync_directory
 
 
 _ID = re.compile(r'[0-9a-f]{32}')
 _SCHEMA = 1
+MAX_LEGACY_SESSION_IDS = 65_536
 _BACKUP_VERSION = '1.0.0'
 _V05_WORKFLOW = '0.5.0'
 _V05_BACKUP_VERSION = '1.1.0'
+_RESOURCE_BACKUP_VERSION = '1.2.0'
+_RESOURCE_FIELDS = {'resource_state', 'resource_prediction'}
 _COVERAGE = {
     'current_state': True, 'edit_history': True, 'confirmations': True,
     'action': True, 'reviews': True, 'sources': True,
@@ -118,6 +122,7 @@ def _record_digest(record):
         'decision_id': record['decision_id'], 'action': record['action'], 'reviews': record['reviews'],
         'snapshots': [
             {field: snapshot[field] for field in ('decision_id', 'revision', 'state', 'confirmed_at')}
+            | {field: snapshot[field] for field in _RESOURCE_FIELDS if field in snapshot}
             for snapshot in record['snapshots']
         ],
     })
@@ -145,6 +150,8 @@ def _uses_v05(record):
 
 
 def _backup_version(records):
+    if any('resource_state' in snapshot for record in records for snapshot in record['snapshots']):
+        return _RESOURCE_BACKUP_VERSION
     return _V05_BACKUP_VERSION if any(map(_uses_v05, records)) else _BACKUP_VERSION
 
 
@@ -167,9 +174,10 @@ def _validate_exported_record(record):
     if not isinstance(snapshots, list) or not snapshots or not isinstance(reviews, list):
         raise ValueError('The export contains incomplete decision history')
     for revision, snapshot in enumerate(snapshots, 1):
-        if not isinstance(snapshot, dict) or set(snapshot) != {
+        base_fields = {
             'decision_id', 'revision', 'state', 'analysis', 'analysis_status', 'confirmed_at',
-        }:
+        }
+        if not isinstance(snapshot, dict) or set(snapshot) not in (base_fields, base_fields | _RESOURCE_FIELDS):
             raise ValueError('The export contains an invalid decision snapshot')
         if _state_identity(snapshot['state']) != (decision_id, revision) or (
             snapshot['decision_id'], snapshot['revision']
@@ -177,6 +185,10 @@ def _validate_exported_record(record):
             raise ValueError('The export contains mismatched decision identities')
         _check_origin(snapshots[0]['state'], snapshot['state'])
         _time(snapshot['confirmed_at'])
+        if 'resource_state' in snapshot:
+            _check_resource(snapshot['resource_state'], snapshot['state'])
+            if not isinstance(snapshot['resource_prediction'], dict):
+                raise ValueError('The export contains an invalid resource prediction')
     if action is None:
         if reviews:
             raise ValueError('The export contains observations without an actual action')
@@ -206,6 +218,13 @@ def _validate_exported_record(record):
     return decision_id
 
 
+def _check_resource(resource, decision_state):
+    model = ResourceState.model_validate(resource)
+    if {option.option_id for option in model.options} - set(_options(decision_state)):
+        raise ValueError('Resource inputs must reference options from the same decision revision')
+    return model
+
+
 class DecisionRecords:
     """User-private SQLite files with a separately retained consent and deletion ledger."""
 
@@ -213,6 +232,7 @@ class DecisionRecords:
         self.root = checked_path(root)
         self._ledger = self.root / 'consent.sqlite3'
         self._records = self.root / 'records.sqlite3'
+        self._legacy_sessions = self.root / 'legacy-session-ids.sqlite3'
 
     def _check_root(self):
         checked_path(self.root)
@@ -243,11 +263,12 @@ class DecisionRecords:
         fsync_directory(self.root)
 
     @contextmanager
-    def _database(self, *, write=False):
+    def _database(self, *, write=False, path=None):
         self._check_root()
-        self._check_file(self._ledger)
+        path = self._ledger if path is None else path
+        self._check_file(path)
         mode = 'rw' if write else 'ro'
-        db = sqlite3.connect(self._ledger.as_uri() + f'?mode={mode}', uri=True, timeout=10)
+        db = sqlite3.connect(path.as_uri() + f'?mode={mode}', uri=True, timeout=10)
         try:
             if write:
                 self._write_settings(db, 'main')
@@ -257,6 +278,21 @@ class DecisionRecords:
             db.commit()
         finally:
             db.close()
+
+    def reserve_legacy_session(self, session_id):
+        """Retain only a bounded hash of a v6/v7 client-minted control identifier."""
+        digest = sha256(_decision_id(session_id).encode("ascii")).digest()
+        self.root.mkdir(parents=True, exist_ok=True, mode=0o700)
+        self._check_root()
+        self._create_file(self._legacy_sessions)
+        with self._database(write=True, path=self._legacy_sessions) as db:
+            db.execute("CREATE TABLE IF NOT EXISTS used (digest BLOB PRIMARY KEY) WITHOUT ROWID")
+            count, = db.execute("SELECT COUNT(*) FROM used").fetchone()
+            if count >= MAX_LEGACY_SESSION_IDS:
+                raise ValueError("旧版会话标识容量已满，请使用 v0.8。")
+            inserted = db.execute("INSERT OR IGNORE INTO used VALUES (?)", (digest,))
+            if inserted.rowcount != 1:
+                raise KeyError("Session invalidated")
 
     @staticmethod
     def _write_settings(db, schema):
@@ -428,16 +464,20 @@ class DecisionRecords:
             if self._content(db, write=True):
                 db.execute('DELETE FROM personal.records')
             db.execute('UPDATE main.history SET revision=0, events=0, deleted=1, content_hash=NULL')
+            if self._resource_reuse_exists(db):
+                db.execute('DELETE FROM main.resource_reuse')
             db.execute('UPDATE main.consent SET epoch=NULL, signing_key=NULL')
         return {'authorized': False, 'epoch': None, 'scope': 'local_store', 'external_backups': _EXTERNAL_BACKUPS}
 
-    def save(self, epoch, state, analysis):
+    def save(self, epoch, state, analysis, *, resource_state=None):
         with self._authorized(epoch, write=True) as (db, _):
             state = json.loads(canonical(state))
             analysis = json.loads(canonical(analysis))
             decision_id, revision = _state_identity(state)
             if not _valid_analysis(state, analysis):
                 raise ValueError('Analysis does not match the confirmed decision revision')
+            resource = _check_resource(resource_state, state) if resource_state is not None else None
+            resource_data = resource.model_dump(mode='json') if resource is not None else None
             history = self._history(db, decision_id)
             preferences = state.get('preferences')
             if history is None:
@@ -455,7 +495,7 @@ class DecisionRecords:
                 _check_origin(record['snapshots'][0]['state'], state)
                 if revision <= history[0]:
                     existing = record['snapshots'][revision - 1]
-                    if state == existing['state']:
+                    if state == existing['state'] and existing.get('resource_state') == resource_data:
                         return _present(existing)
                     raise ValueError('A saved revision cannot be replaced')
                 if record['action'] is not None:
@@ -470,8 +510,12 @@ class DecisionRecords:
                 'decision_id': decision_id, 'revision': revision, 'state': state, 'analysis': analysis,
                 'analysis_hash': _digest(analysis), 'confirmed_at': datetime.now(UTC).isoformat(),
             }
+            if resource is not None:
+                snapshot['resource_state'] = resource_data
+                snapshot['resource_prediction'] = evaluate_resources(resource)
             record['snapshots'].append(snapshot)
             self._write_record(db, record)
+            self._remove_resource_reuse(db, decision_id)
             return _present(snapshot)
 
     def list(self, epoch):
@@ -484,6 +528,87 @@ class DecisionRecords:
     def get(self, epoch, decision_id):
         with self._authorized(epoch) as (db, _):
             return self._render(self._get_record(db, decision_id))
+
+    @staticmethod
+    def _resource_reuse_exists(db):
+        return db.execute('SELECT 1 FROM main.sqlite_master WHERE type=? AND name=?', ('table', 'resource_reuse')).fetchone() is not None
+
+    @staticmethod
+    def _resource_reuse(db, decision_id):
+        if DecisionRecords._resource_reuse_exists(db):
+            return db.execute('SELECT token, revision FROM main.resource_reuse WHERE identity=?', (_digest(decision_id),)).fetchone()
+        return None
+
+    @staticmethod
+    def _remove_resource_reuse(db, decision_id):
+        if DecisionRecords._resource_reuse_exists(db):
+            db.execute('DELETE FROM main.resource_reuse WHERE identity=?', (_digest(decision_id),))
+
+    def grant_resource_reuse(self, epoch, decision_id, *, confirmed):
+        if confirmed is not True:
+            raise PermissionError('Explicit permission is required for cross-session resource reuse')
+        with self._authorized(epoch, write=True) as (db, _):
+            latest = self._get_record(db, decision_id, write=True)['snapshots'][-1]
+            if 'resource_state' not in latest:
+                raise ValueError('No confirmed resource snapshot is available for reuse')
+            token = uuid4().hex
+            db.execute('''CREATE TABLE IF NOT EXISTS main.resource_reuse (
+                identity TEXT PRIMARY KEY, token TEXT NOT NULL, revision INTEGER NOT NULL
+            )''')
+            db.execute('INSERT OR REPLACE INTO main.resource_reuse VALUES (?,?,?)',
+                       (_digest(decision_id), _digest(token), latest['revision']))
+            return {'decision_id': decision_id, 'revision': latest['revision'], 'reuse_epoch': token, 'authorized': True}
+
+    def revoke_resource_reuse(self, epoch, decision_id, reuse_epoch):
+        with self._authorized(epoch, write=True) as (db, _):
+            self._require_resource_reuse(db, decision_id, reuse_epoch)
+            self._remove_resource_reuse(db, decision_id)
+            return {'decision_id': decision_id, 'reuse_epoch': None, 'authorized': False}
+
+    def _require_resource_reuse(self, db, decision_id, reuse_epoch):
+        grant = self._resource_reuse(db, _decision_id(decision_id))
+        if (grant is None or not isinstance(reuse_epoch, str) or not _ID.fullmatch(reuse_epoch)
+                or not hmac.compare_digest(grant[0], _digest(reuse_epoch))):
+            raise PermissionError('Active cross-session resource permission is required')
+        return grant[1]
+
+    def resource_for_reuse(self, epoch, decision_id, reuse_epoch):
+        """Return shared inputs only. A new decision must confirm its own option inputs."""
+        with self._authorized(epoch) as (db, _):
+            revision = self._require_resource_reuse(db, decision_id, reuse_epoch)
+            latest = self._get_record(db, decision_id)['snapshots'][-1]
+            if latest['revision'] != revision or 'resource_state' not in latest:
+                raise PermissionError('The permitted resource revision is unavailable')
+            return ResourceState.model_validate({**latest['resource_state'], 'options': []})
+
+    def resource_replay(self, epoch, decision_id, *, revision=None):
+        """Replay original inputs and keep actual observations separate from the prediction."""
+        with self._authorized(epoch) as (db, _):
+            record = self._get_record(db, decision_id)
+            snapshots = record['snapshots']
+            if revision is None:
+                revision = len(snapshots)
+            if type(revision) is not int or not 1 <= revision <= len(snapshots):
+                raise ValueError('Select an existing confirmed revision for replay')
+            snapshot = snapshots[revision - 1]
+            if 'resource_state' not in snapshot:
+                raise ValueError('No confirmed resource prediction is available for replay')
+            submitted = ResourceState.model_validate(snapshot['resource_state'])
+            original = snapshot['resource_prediction']
+            replayed = evaluate_resources(submitted, current_date=date.fromisoformat(original['evaluated_on']))
+            action = record['action']
+            if action is not None and action['revision'] != revision:
+                action = None
+            reviews = record['reviews'] if action is not None else []
+            outcomes = {option: 'UNOBSERVED' for option in _options(snapshot['state'])}
+            if action is not None:
+                outcomes[action['option_id']] = ('USER_REPORTED' if any(review['kind'] == 'real' for review in reviews)
+                                                 else 'NO_REAL_REVIEW')
+            return {
+                'status': 'REPLAYED', 'decision_id': decision_id, 'revision': revision,
+                'original_prediction': original, 'replayed_prediction': replayed, 'matches_original': original == replayed,
+                'actual_action': action, 'reviews': reviews, 'outcome_coverage': outcomes, 'training': 'DISABLED',
+            }
 
     def action(self, epoch, decision_id, option_id, occurred_at, revision, *, allow_v05=True):
         with self._authorized(epoch, write=True) as (db, _):
@@ -570,6 +695,7 @@ class DecisionRecords:
                 raise KeyError('Unknown decision')
             if self._content(db, write=True):
                 db.execute('DELETE FROM personal.records WHERE decision_id=?', (decision_id,))
+            self._remove_resource_reuse(db, decision_id)
             db.execute('UPDATE main.history SET revision=0,events=0,deleted=1,content_hash=NULL WHERE identity=?',
                        (_digest(decision_id),))
         return {'decision_id': decision_id, 'deleted': True, 'external_backups': _EXTERNAL_BACKUPS}
@@ -581,8 +707,10 @@ class DecisionRecords:
             coverage = {**_COVERAGE, 'analysis': all(
                 item['analysis'] is not None for record in records for item in record['snapshots']
             )}
-            if version == _V05_BACKUP_VERSION:
+            if version in (_V05_BACKUP_VERSION, _RESOURCE_BACKUP_VERSION):
                 coverage.update(plans=True, hindsight=True, preference_versions=True)
+            if version == _RESOURCE_BACKUP_VERSION:
+                coverage.update(resource_snapshots=True, resource_predictions=True)
             data = {
                 'backup_version': version, 'epoch': _digest(epoch),
                 'exported_at': datetime.now(UTC).isoformat(), 'decisions': records,
@@ -595,7 +723,9 @@ class DecisionRecords:
             return {'backup_version': version, 'payload': payload, 'signature': _signature(payload, key)}
 
     def _restore_records(self, db, epoch, key, backup):
-        if not isinstance(backup, dict) or backup.get('backup_version') not in (_BACKUP_VERSION, _V05_BACKUP_VERSION):
+        if not isinstance(backup, dict) or backup.get('backup_version') not in (
+            _BACKUP_VERSION, _V05_BACKUP_VERSION, _RESOURCE_BACKUP_VERSION,
+        ):
             raise ValueError('Unrecognized personal export format')
         version = backup['backup_version']
         payload = backup.get('payload')
