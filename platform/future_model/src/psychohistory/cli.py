@@ -16,6 +16,7 @@ def main(argv=None):
     from . import decision_cli
     decision_cli.add_parser(sub)
     decision_cli.add_parser(sub, advanced=True)
+    sub.add_parser('decision-v07', aliases=['decision-v06'], help='autonomous conversation over JSON lines on stdin')
     sub.add_parser('models')
     demo=sub.add_parser('demo');demo.add_argument('--seed',type=int,default=7);demo.add_argument('--rounds',type=int,default=8);demo.add_argument('--population',type=int,default=24);demo.add_argument('--intervention',type=float,default=.2)
     scan=sub.add_parser('discover');scan.add_argument('path')
@@ -58,6 +59,9 @@ def main(argv=None):
     args=parser.parse_args(argv)
     exit_code=0
     try:
+        if args.command in {"decision-v07", "decision-v06"}:
+            from .decision_conversation_cli import talk
+            return talk(args.data)
         if args.command in {"decision", "decision-v05"}:
             output = decision_cli.run(args)
         elif args.command == "research":

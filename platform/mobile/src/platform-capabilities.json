@@ -1,0 +1,36 @@
+{
+  "schema": "psychohistory.cross-end-capabilities.v1",
+  "platform_version": "0.7.0",
+  "desktop": {
+    "v07_workflow": "LOCAL_API_CLI_WEB",
+    "mobile_bridge": "UNAVAILABLE"
+  },
+  "mobile": {
+    "package_version": "0.3.0",
+    "runtime": "OFFLINE_PWA",
+    "v07_workflow": "UNSUPPORTED",
+    "intake": "DETERMINISTIC_GUIDANCE",
+    "personal_history": "LOCAL_VAULT"
+  },
+  "exchange": {
+    "decision_state": {
+      "workflow_version": "0.5.0",
+      "mode": "MANUAL_RECONFIRMATION"
+    },
+    "v07_receipts": "UNSUPPORTED",
+    "encrypted_backup": "INSTALLATION_LOCAL"
+  },
+  "shared_methods": [
+    { "model_id": "c028_interval_feasibility", "version": "1.0.0" },
+    { "model_id": "comparability", "version": "1.0.0" },
+    { "model_id": "pareto", "version": "1.0.0" },
+    { "model_id": "weight_sensitivity", "version": "1.0.0" },
+    { "model_id": "c034_joint_robustness", "version": "1.0.0" },
+    { "model_id": "C029", "version": "1.0.0" },
+    { "model_id": "C030", "version": "1.0.0" },
+    { "model_id": "C031", "version": "1.0.0" },
+    { "model_id": "voi_point", "version": "1.0.0" },
+    { "model_id": "timing_actions", "version": "1.0.0" },
+    { "model_id": "timing_investigation", "version": "1.0.0" }
+  ]
+}

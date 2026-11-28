@@ -1,0 +1,173 @@
+{
+  "status": "PASS",
+  "chromium": "156.0.8078.79",
+  "engineering_case_sha256": "e67d6d0493d80882ff306e3e25d4f595a87f36d994290681b3fba622044eac82",
+  "evaluation_scope": "Fictional engineering cases frozen before implementation review. No scientific or user study.",
+  "cross_domain": [
+    {
+      "domain": "work",
+      "user_turns": 3,
+      "maximum_visible_follow_ups": 1,
+      "forced_technical_inputs": 0,
+      "anchors_visible_in_structured_reply": [
+        "白榆研究站",
+        "收入",
+        "工时"
+      ],
+      "anchors_expected": 3,
+      "candidate_count": 2,
+      "claim_count": 4,
+      "extracted_fields": [
+        "goal",
+        "hours_max",
+        "income_min"
+      ],
+      "assessment_limit": "This case evaluates conversation and grounding without a confirmed model comparison."
+    },
+    {
+      "domain": "learning",
+      "user_turns": 2,
+      "maximum_visible_follow_ups": 1,
+      "forced_technical_inputs": 0,
+      "anchors_visible_in_structured_reply": [
+        "夜课",
+        "时间"
+      ],
+      "anchors_expected": 3,
+      "candidate_count": 2,
+      "claim_count": 2,
+      "extracted_fields": [
+        "hours",
+        "hours_max"
+      ],
+      "assessment_limit": "This case evaluates conversation and grounding without a confirmed model comparison."
+    },
+    {
+      "domain": "budget",
+      "user_turns": 2,
+      "maximum_visible_follow_ups": 1,
+      "forced_technical_inputs": 0,
+      "anchors_visible_in_structured_reply": [
+        "吸尘器",
+        "维修"
+      ],
+      "anchors_expected": 3,
+      "candidate_count": 2,
+      "claim_count": 4,
+      "extracted_fields": [
+        "cost",
+        "cost_max",
+        "preference"
+      ],
+      "assessment_limit": "This case evaluates conversation and grounding without a confirmed model comparison."
+    },
+    {
+      "domain": "living",
+      "user_turns": 2,
+      "maximum_visible_follow_ups": 1,
+      "forced_technical_inputs": 0,
+      "anchors_visible_in_structured_reply": [
+        "松芽巷",
+        "合住"
+      ],
+      "anchors_expected": 3,
+      "candidate_count": 2,
+      "claim_count": 1,
+      "extracted_fields": [
+        "deadline"
+      ],
+      "assessment_limit": "This case evaluates conversation and grounding without a confirmed model comparison."
+    },
+    {
+      "domain": "moving",
+      "user_turns": 2,
+      "maximum_visible_follow_ups": 1,
+      "forced_technical_inputs": 0,
+      "anchors_visible_in_structured_reply": [
+        "云灯镇",
+        "调动"
+      ],
+      "anchors_expected": 3,
+      "candidate_count": 2,
+      "claim_count": 0,
+      "extracted_fields": [],
+      "assessment_limit": "This case evaluates conversation and grounding without a confirmed model comparison."
+    },
+    {
+      "domain": "risk",
+      "user_turns": 2,
+      "maximum_visible_follow_ups": 1,
+      "forced_technical_inputs": 0,
+      "anchors_visible_in_structured_reply": [
+        "室内",
+        "露天",
+        "损失"
+      ],
+      "anchors_expected": 3,
+      "candidate_count": 4,
+      "claim_count": 0,
+      "extracted_fields": [],
+      "assessment_limit": "This case evaluates conversation and grounding without a confirmed model comparison."
+    }
+  ],
+  "native_v07_cases": {
+    "joint": {
+      "question": "房租和停车费合计每月最多3000元。A：每月房租2600元，停车费每月500元。B：每月房租2600元，停车费每月300元。C：每月房租2600元，停车费300。",
+      "gate": {
+        "A": "REJECT",
+        "B": "ACCEPT",
+        "C": "UNRESOLVED"
+      },
+      "version": "0.7.0"
+    },
+    "night": {
+      "question": "我不接受夜班。A：老板说没有夜班。B：当前实际排班有夜班。C：当前实际排班没有夜班。D：承诺不安排夜班。",
+      "gate": {
+        "A": "UNRESOLVED",
+        "B": "REJECT",
+        "C": "ACCEPT",
+        "D": "UNRESOLVED"
+      },
+      "version": "0.7.0"
+    },
+    "risk": {
+      "question": "我该选「方案甲」，还是「方案乙」？情景平常：方案甲得10分，方案乙得6分。情景变动：方案甲得0分，方案乙得7分。都比较未来30天，分差可比较，分数越高越好。",
+      "method": "C029@1.0.0",
+      "leader": "方案乙"
+    },
+    "resources": {
+      "cash": "750.00",
+      "cash_gate": {
+        "方案甲": "REJECT",
+        "方案乙": "ACCEPT"
+      },
+      "time_gate": {
+        "方案甲": "ACCEPT",
+        "方案乙": "UNRESOLVED"
+      },
+      "revised_time_gate": {
+        "方案甲": "REJECT",
+        "方案乙": "REJECT"
+      },
+      "stale_status": 422
+    },
+    "knowledge": {
+      "hits": 3,
+      "authority": "NONE"
+    }
+  },
+  "checks": [
+    "plain-language conversation without forced technical inputs",
+    "single clarification per reply",
+    "no invented probability evidence",
+    "offline autonomous path and retired model flag compatibility",
+    "verified correction and stale-state refusal",
+    "v0.5 calculation, gate and trace parity",
+    "unsupported methods remain ineligible",
+    "confirmed choice and plan grant no execution",
+    "separate storage and record consent",
+    "isolated recovery and withdrawn backup refusal",
+    "explicit local session end and narrow viewport",
+    "loopback and zero page errors"
+  ]
+}

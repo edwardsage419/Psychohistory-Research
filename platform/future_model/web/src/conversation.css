@@ -1,0 +1,71 @@
+.decision-conversation { --conversation-accent: #0c685a; max-width: 880px; }
+.conversation-entry { position: relative; padding: clamp(22px, 5vw, 46px); border-top: 3px solid #328776; background: #fff; }
+.conversation-entry h2 { font-size: clamp(22px, 3.1vw, 30px); letter-spacing: -.022em; }
+.conversation-entry > p { color: #526b70; margin: 0 0 22px; }
+.conversation-entry textarea { min-height: 152px; background: #fafcfb; font-size: 15px; }
+.conversation-main, .conversation-context { padding: clamp(18px, 3.3vw, 32px); }
+.conversation-thread-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+.conversation-thread-top button { text-decoration: underline; text-underline-offset: 4px; }
+.conversation-thread-top h2 { margin: 0; }
+.conversation-user { display: flex; align-items: flex-start; gap: 9px; margin: 0 0 18px 28px; padding: 13px 15px; border-radius: 12px 12px 3px 12px; background: #edf5f2; overflow-wrap: anywhere; white-space: pre-wrap; }
+.conversation-user span { flex: 0 0 30px; font-weight: 700; color: #216358; }
+.conversation-answer { border-left: 2px solid #c5ded6; padding: 1px 0 1px 15px; }
+.conversation-answer h3 { margin: 13px 0 4px; }
+.conversation-answer p { margin: 0 0 10px; }
+.conversation-answer ul { margin: 2px 0 9px; padding-left: 20px; }
+.conversation-answer li { color: #36565a; font-size: 13px; overflow-wrap: anywhere; }
+.conversation-conclusion { color: #223f42; font-size: 15px; font-weight: 600; }
+.conversation-warning { border-radius: 7px; padding: 8px 12px; color: #73501b; background: #fbf1da; }
+.conversation-followup { margin: 12px 0 4px; color: #1d4b43; font-size: 17px; line-height: 1.65; overflow-wrap: anywhere; }
+.conversation-transcript { margin: 12px 0; }
+.conversation-transcript ol { margin: 8px 0; padding-left: 23px; }
+.conversation-transcript p { margin: 3px 0 10px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.conversation-reply { margin-top: 15px; padding-top: 16px; border-top: 1px solid var(--decision-line); }
+.conversation-purpose { display: inline-block; vertical-align: top; margin: 2px 0 0 13px; }
+.conversation-purpose[open] { display: block; margin: 12px 0 0; padding: 10px 13px; background: #f5f9f7; border: 1px solid var(--decision-line); border-radius: 7px; }
+.conversation-purpose summary { margin: 7px 0; }
+.conversation-purpose p { color: #526b70; margin: 8px 0; font-size: 13px; }
+.conversation-purpose .decision-check { margin-bottom: 6px; }
+.conversation-constraints { display: grid; gap: 6px; padding-left: 0; margin: 11px 0; list-style: none; }
+.conversation-constraints li { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; padding: 7px 11px; border-left: 2px solid #78a79b; color: #36565a; background: #f2f7f6; }
+.conversation-constraints strong { color: #234e47; }
+.conversation-constraint-pending { color: #75541f; font-size: 13px; }
+.conversation-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 194px), 1fr)); align-items: start; gap: 11px; margin: 15px 0; }
+.conversation-option { border: 1px solid var(--decision-line); border-radius: 8px; padding: 13px; min-width: 0; }
+.conversation-option h3 { font-size: 15px; margin: 0 0 10px; overflow-wrap: anywhere; }
+.conversation-option p { margin: 5px 0; font-size: 13px; overflow-wrap: anywhere; }
+.conversation-option p:empty { display: none; }
+.conversation-option > button, .conversation-chosen { display: block; margin-top: 11px !important; }
+.conversation-chosen { color: #16604e; font-size: 13px; font-weight: 700; }
+.conversation-choice-prompt { border-top: 1px solid var(--decision-line); padding-top: 6px; margin-top: 12px; }
+.conversation-confirm { border: 1px solid var(--decision-line); background: #f8fbfa; border-radius: 8px; margin-top: 18px; padding: 14px; }
+.conversation-confirm h3, .conversation-plan h3 { margin-top: 0; }
+.conversation-claim-list { margin: 0; padding: 0; list-style: none; }
+.conversation-claim-list li { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 7px 15px; padding: 8px 0; border-bottom: 1px solid var(--decision-line); color: #36565a; }
+.conversation-claim-list strong { font-size: 13px; }
+.conversation-claim-list small { display: block; color: #567174; overflow-wrap: anywhere; }
+.conversation-claim-choice { min-width: 140px; }
+.conversation-claim-list select { margin: 1px 0 4px; padding: 5px 9px; }
+.conversation-option-confirm { margin: 13px 0 0; border: 1px solid var(--decision-line); min-width: 0; border-radius: 7px; padding: 2px 11px; }
+.conversation-option-confirm legend { color: #466567; padding: 0 5px; font-size: 13px; }
+.conversation-compute:not(:empty), .conversation-plan { margin-top: 19px; }
+.conversation-plan { padding-top: 17px; border-top: 1px solid var(--decision-line); }
+.conversation-details { margin: 0 0 16px; border: 1px solid var(--decision-line); border-radius: 8px; background: #fff; }
+.conversation-details > summary { padding: 13px 15px; margin: 0; font-size: 14px; font-weight: 650; color: var(--conversation-accent); }
+.conversation-details[open] > summary { border-bottom: 1px solid var(--decision-line); }
+.conversation-details > .card { border: 0; margin-bottom: 0; box-shadow: none; }
+.conversation-details > .decision-notice { margin: 12px 17px; }
+.conversation-footer { font-size: 12px; line-height: 1.7; color: #526b70; }
+.conversation-footer a { white-space: nowrap; margin-left: 9px; color: #155f67; text-underline-offset: 3px; }
+@media (max-width: 520px) {
+  .conversation-user { margin-left: 11px; padding: 10px; }
+  .conversation-claim-list li { align-items: stretch; }
+  .conversation-claim-choice { min-width: 0; }
+  .conversation-purpose { margin-left: 8px; }
+}
+.conversation-purposes { display: grid; grid-template-columns: repeat(auto-fit, minmax(115px, 1fr)); gap: 8px 12px; margin: 10px 0 4px; }
+.conversation-purposes div { min-width: 0; }
+.conversation-purposes dt { color: #456369; }
+.conversation-purposes dd { color: #233f42; }
+.conversation-changes { padding-left: 9px; border-left: 2px solid #80a79a; }
+.conversation-advanced-note { margin: 11px 17px 0; color: #526b70; font-size: 13px; }

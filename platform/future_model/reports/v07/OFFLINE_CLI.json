@@ -1,0 +1,149 @@
+{
+  "status": "PASS",
+  "entry": "decision-v07 JSON lines",
+  "socket_audit": "ALL_SOCKET_OPERATIONS_DENIED",
+  "candidate": "0.7.0",
+  "math_version": "0.5.0",
+  "joint": {
+    "question": "房租和停车费合计每月最多3000元。A：每月房租2600元，停车费每月500元。B：每月房租2600元，停车费每月300元。C：每月房租2600元，停车费300。",
+    "feasibility": {
+      "A": "REJECT",
+      "B": "ACCEPT",
+      "C": "UNRESOLVED"
+    }
+  },
+  "night": {
+    "question": "我不接受夜班。A：老板说没有夜班。B：当前实际排班有夜班。C：当前实际排班没有夜班。D：承诺不安排夜班。",
+    "feasibility": {
+      "A": "UNRESOLVED",
+      "B": "REJECT",
+      "C": "ACCEPT",
+      "D": "UNRESOLVED"
+    }
+  },
+  "risk": {
+    "question": "我该选「方案甲」，还是「方案乙」？情景平常：方案甲得10分，方案乙得6分。情景变动：方案甲得0分，方案乙得7分。都比较未来30天，分差可比较，分数越高越好。",
+    "executed": "C029",
+    "leaders": [
+      "方案乙"
+    ]
+  },
+  "cash": {
+    "snapshot": {
+      "as_of": "2026-11-25",
+      "cash": {
+        "currency": "CNY",
+        "opening_balance": "1000",
+        "opening_date": "2026-11-25",
+        "covered_through": "2026-11-25",
+        "source": "虚构期初余额",
+        "events": [
+          {
+            "kind": "actual_expense",
+            "id": "paid",
+            "amount": "400",
+            "date": "2026-11-25",
+            "source": "虚构已付款"
+          },
+          {
+            "kind": "actual_refund",
+            "id": "received",
+            "amount": "150",
+            "date": "2026-11-25",
+            "source": "虚构已到账",
+            "refund_of": "paid"
+          },
+          {
+            "kind": "estimated_income",
+            "id": "forecast",
+            "amount": "1000",
+            "date": "2026-11-25",
+            "source": "虚构未到账"
+          }
+        ]
+      },
+      "options": [
+        {
+          "option_id": "o-378c405900ecdfdd3b",
+          "future_cost": "800"
+        },
+        {
+          "option_id": "o-54414b4cfdb0d3b1a9",
+          "future_cost": "700"
+        }
+      ]
+    },
+    "balance": "750.00",
+    "feasibility": {
+      "方案甲": "REJECT",
+      "方案乙": "ACCEPT"
+    }
+  },
+  "time": {
+    "revised_snapshot": {
+      "as_of": "2026-11-25",
+      "capacity": [
+        {
+          "date": "2026-11-25",
+          "minutes": 0
+        },
+        {
+          "date": "2026-11-26",
+          "minutes": 120
+        }
+      ],
+      "shared_tasks": [
+        {
+          "id": "old-plan",
+          "label": "虚构旧计划",
+          "total_minutes": 150,
+          "completed_minutes": 30,
+          "deadline": "2026-11-26",
+          "mode": "splittable",
+          "source": "虚构进度",
+          "prior_plan_id": "old-decision"
+        }
+      ],
+      "options": [
+        {
+          "option_id": "o-378c405900ecdfdd3b",
+          "tasks": [
+            {
+              "id": "new-a",
+              "label": "虚构新事项",
+              "total_minutes": 25,
+              "completed_minutes": 0,
+              "deadline": "2026-11-26",
+              "mode": "splittable",
+              "source": "虚构计划"
+            }
+          ]
+        },
+        {
+          "option_id": "o-54414b4cfdb0d3b1a9",
+          "tasks": [
+            {
+              "id": "new-b",
+              "label": "虚构连续事项",
+              "total_minutes": 20,
+              "completed_minutes": 0,
+              "deadline": "2026-11-26",
+              "mode": "continuous",
+              "source": "虚构计划"
+            }
+          ]
+        }
+      ]
+    },
+    "before": {
+      "方案甲": "ACCEPT",
+      "方案乙": "UNRESOLVED"
+    },
+    "after": {
+      "方案甲": "REJECT",
+      "方案乙": "REJECT"
+    }
+  },
+  "obsolete_revision": "REJECTED",
+  "ended_session": "REJECTED"
+}

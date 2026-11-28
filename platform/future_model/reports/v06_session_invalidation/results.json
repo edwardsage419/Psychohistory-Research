@@ -1,0 +1,83 @@
+{
+  "python": "3.13.5",
+  "source_hashes": [
+    "27de3a72",
+    "fcb73f3b",
+    "675b4bf7"
+  ],
+  "patched_hashes": [
+    "0e87d01c",
+    "422b6124",
+    "8b12d60f"
+  ],
+  "cases": 80,
+  "old_recreated": 30,
+  "new_recreated": 0,
+  "groups": [
+    {
+      "fixed": false,
+      "mode": "no_clear",
+      "old_status": "accepted",
+      "remaining": 1,
+      "fresh_preserved": null,
+      "count": 10
+    },
+    {
+      "fixed": false,
+      "mode": "clear",
+      "old_status": "accepted",
+      "remaining": 1,
+      "fresh_preserved": null,
+      "count": 10
+    },
+    {
+      "fixed": false,
+      "mode": "double_clear",
+      "old_status": "accepted",
+      "remaining": 1,
+      "fresh_preserved": null,
+      "count": 10
+    },
+    {
+      "fixed": false,
+      "mode": "new_after_clear",
+      "old_status": "accepted",
+      "remaining": 2,
+      "fresh_preserved": true,
+      "count": 10
+    },
+    {
+      "fixed": true,
+      "mode": "no_clear",
+      "old_status": "accepted",
+      "remaining": 1,
+      "fresh_preserved": null,
+      "count": 10
+    },
+    {
+      "fixed": true,
+      "mode": "clear",
+      "old_status": "rejected",
+      "remaining": 0,
+      "fresh_preserved": null,
+      "count": 10
+    },
+    {
+      "fixed": true,
+      "mode": "double_clear",
+      "old_status": "rejected",
+      "remaining": 0,
+      "fresh_preserved": null,
+      "count": 10
+    },
+    {
+      "fixed": true,
+      "mode": "new_after_clear",
+      "old_status": "rejected",
+      "remaining": 1,
+      "fresh_preserved": true,
+      "count": 10
+    }
+  ],
+  "scope": "Native init/start/end/clear methods, mocked state, ingest, expire and update. Actual threads; no real Ollama, API, full registry or supported runtime."
+}
