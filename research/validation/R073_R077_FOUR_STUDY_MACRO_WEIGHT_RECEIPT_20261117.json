@@ -1,0 +1,152 @@
+{
+  "date_utc": "2026-11-17",
+  "scope": "SECONDARY_BOUNDED_NONBLIND_HUMAN_STUDY_LEVEL_MACRO_SENSITIVITY_ONLY",
+  "existing_scientific_studies": [
+    "R073",
+    "R074",
+    "R075",
+    "R077"
+  ],
+  "excluded_source_reuse": "R076 reuses R074/R075; other Montero mirrors duplicate R073",
+  "original_archive_blobs": {
+    "R073": "6dc0b5958c4dd0418f09e66cdbc7ae363d8186e4",
+    "R074": "c10edcc19526278aac6be6811b5cab00e24d7b20",
+    "R075": "50e3cbef9184ea36cd5edb5e3fe7abae40dd19e6",
+    "R077": "13946754afc06e529f2d3a2072a7bae297453fa9"
+  },
+  "training_designs": {
+    "R073": "internal treatment-specific leave-session-out E2",
+    "R074": "independent author experiment within-study treatment-specific refit E3",
+    "R075": "independent author experiment within-study treatment-specific refit, intended actions and realized feedback E3",
+    "R077": "fourth author experiment, R073 source-trained parameters, no target labels fit E3"
+  },
+  "aggregate_study_rows": [
+    {
+      "study": "R073",
+      "sessions": 12,
+      "scored_events": 18424,
+      "M1": 0.1341970798874635,
+      "M3": 0.12475795617162207,
+      "M4": 0.12054640684474983,
+      "M3_minus_M1": -0.009439123715841404,
+      "M3_better": 10,
+      "M3_worse": 2,
+      "M4_minus_M3": -0.004211549326872251,
+      "M4_better": 10,
+      "M4_worse": 2
+    },
+    {
+      "study": "R074",
+      "sessions": 18,
+      "scored_events": 15338,
+      "M1": 0.09422480547913488,
+      "M3": 0.07130947710579069,
+      "M4": 0.0744799781462265,
+      "M3_minus_M1": -0.022915328373344184,
+      "M3_better": 16,
+      "M3_worse": 2,
+      "M4_minus_M3": 0.003170501040435799,
+      "M4_better": 5,
+      "M4_worse": 13
+    },
+    {
+      "study": "R075",
+      "sessions": 18,
+      "scored_events": 26116,
+      "M1": 0.17008962586292692,
+      "M3": 0.14097227005861615,
+      "M4": 0.1285554056107595,
+      "M3_minus_M1": -0.029117355804310772,
+      "M3_better": 18,
+      "M3_worse": 0,
+      "M4_minus_M3": -0.012416864447856633,
+      "M4_better": 15,
+      "M4_worse": 3
+    },
+    {
+      "study": "R077",
+      "sessions": 15,
+      "scored_events": 1040,
+      "M1": 0.15113955349473138,
+      "M3": 0.12092879302400986,
+      "M4": 0.11901009354754336,
+      "M3_minus_M1": -0.030210760470721517,
+      "M3_better": 14,
+      "M3_worse": 1,
+      "M4_minus_M3": -0.001918699476466503,
+      "M4_better": 8,
+      "M4_worse": 7
+    }
+  ],
+  "study_equal_means": {
+    "M3_minus_M1": -0.02292064209105447,
+    "M4_minus_M3": -0.003844153052689897
+  },
+  "leave_one_study_out": [
+    {
+      "excluded": "R073",
+      "M3_minus_M1": -0.027414481549458827,
+      "M4_minus_M3": -0.0037216876279624455
+    },
+    {
+      "excluded": "R074",
+      "M3_minus_M1": -0.02292241333029123,
+      "M4_minus_M3": -0.006182371083731796
+    },
+    {
+      "excluded": "R075",
+      "M3_minus_M1": -0.020855070853302366,
+      "M4_minus_M3": -0.0009865825876343183
+    },
+    {
+      "excluded": "R077",
+      "M3_minus_M1": -0.020490602631165453,
+      "M4_minus_M3": -0.0044859709114310285
+    }
+  ],
+  "any_nonnegative_study_weights_sum_one": {
+    "observed_four_study_M3_minus_M1_range": [
+      -0.030210760470721517,
+      -0.009439123715841404
+    ],
+    "observed_four_study_M4_minus_M3_range": [
+      -0.012416864447856633,
+      0.003170501040435799
+    ],
+    "M3_negative_for_any_weights": true,
+    "M4_negative_for_any_weights": false,
+    "R074_weight_flip_other_three_equal": 0.6610131093053971,
+    "R074_weight_flip_is_a_math_sensitivity_not_actual_population_weight": true
+  },
+  "actual_execution": {
+    "github_action_fail_run": 44046897632,
+    "failure_reason": "workflow test grep matched itself, main scientific macro checks had already passed",
+    "github_action_success_run": 44047084034,
+    "github_action_job": 133915348011,
+    "verified_commit": "a63a1d236b799bf77a84edb0717c519350516e4e",
+    "success_url": "https://github.com/edwardsage419/Psychohistory-Research/actions/runs/44047084034",
+    "run_conclusion": "success",
+    "node_version_major": 22,
+    "runner": "ubuntu-24.04",
+    "source_blob_sha1_checked": 4,
+    "original_archived_model_paired_deltas_recomputed": 8,
+    "session_better_worse_count_reconciliations": 8,
+    "in_memory_false_macro_mutation": "REJECTED",
+    "external_synthetic_false_macro_ci": "REJECTED"
+  },
+  "limitations": {
+    "original_subject_or_session_rows_loaded": false,
+    "new_true_human_model_predictions": false,
+    "study_level_cross_study_meta_inference_p_value": "NOT_RUN",
+    "per_session_study_scores_available": false,
+    "true_cohort_generalization": "NOT_ESTABLISHED",
+    "model_training_protocols_comparable_only_in_limited_structure": true,
+    "new_E2": 0,
+    "new_E3": 0,
+    "frozen_protocols_changed": false,
+    "original154_pending_queue_changed": false,
+    "formal_phase2_classification_started": false,
+    "paid_services_added": 0,
+    "account_billing_checked": false
+  }
+}
