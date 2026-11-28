@@ -1,0 +1,9 @@
+# 有界长期规划搜索与续算
+2026-11-28。RESEARCH_CANDIDATE / SYNTHETIC_EXECUTED / NATIVE_NOT_RUN / INDEPENDENT_NOT_RUN / authority NONE。
+基线 e51e7d4a1c3be97a2f692e2ea18b8d3ec5bc4774。核对HEAD及开放PR #63/#62/#61/#60/#59，沿用近期规程及 longitudinal-state-equivalence-compression、cross-revision-computation-reuse-publication。未重新核对唯一交接或全库去重。已有v0.8 composition签名续算，本轮仅验证长期规划有限搜索分批语义，不替代已有合同。
+五期状态(t,c,m,v)，转移同上一轮。DFS待处理栈保存完整未搜索节点；每次弹出一个节点消耗一个预算。找到满足目标的终点返回PASS，栈空且无见证返回FAIL，否则UNKNOWN。对有限树，暂停仅切分同一遍历序列，可信完整状态恢复后终点判断一致。PASS/FAIL仅指给定合成模型的存在性，不是现实行动授权。终点状态不是完整行动路径见证，生产须保留路径并独立重放。预算为节点数，不是实际CPU/内存/时间上限。
+```js
+function experiment(){let o={cases:0,resumes:0,checks:0,earlyPass:0,earlyFail:0,unknown:0};for(let cash=0;cash<=5;cash++)for(let a=1;a<=3;a++)for(let b=1;b<=3;b++)for(let g=0;g<=3;g++)for(let goal=1;goal<=5;goal++){let next=([t,c,m,v])=>{if(t===5)return [];let n=[[t+1,c,m,v]];if(!(m&1)&&c>=a)n.push([t+1,c-a,m|1,v+1]);if(!(m&2)&&c>=b)n.push([t+1,c-b,m|2,v+1]);if((m&1)&&!(m&4))n.push([t+1,c+g,m|4,v]);if((m&2)&&!(m&8)&&c>=1)n.push([t+1,c-1,m|8,v+3]);return n};function advance(s,budget){while(budget--&&s.q.length&&!s.hit){let x=s.q.pop();if(x[0]===5){if(x[3]>=goal)s.hit=x}else s.q.push(...next(x))}return s.hit?"PASS":s.q.length?"UNKNOWN":"FAIL"}let init=()=>({q:[[0,cash,0,0]],hit:null});let full=advance(init(),100000);for(let budget of [1,3,7,16]){let s=init(),status=advance(s,budget);if(status==="PASS")o.earlyPass++;else if(status==="FAIL")o.earlyFail++;else o.unknown++;while(status==="UNKNOWN"){s=JSON.parse(JSON.stringify(s));status=advance(s,budget);o.resumes++}if(status!==full)throw Error("resume");o.checks++}o.cases++}return o}console.log(experiment());
+```
+实测 cases1080 resumes20616 checks4320 earlyPass1134 earlyFail560 unknown2626。参照共享同一搜索函数，仅验证切分一致性；未独立验证数学正确性。研究者选定夹具、预算及基线；重复配置非独立样本。
+生产检查点须绑定完整实例、修订、权限、来源、情景、方法、目标、搜索顺序和已处理/待处理边界；使用可信宿主认证、原子持久化及回退保护。不能接受任意JSON作为权威状态，不能因丢失栈误报FAIL。恢复前检查当前授权及撤回，旧代次不能发布。需另测篡改、截断、重复、崩溃、跨实例、真实设备资源、完整见证及独立参照。无生产修改、训练、合并、部署、主动CI或新增费用。
