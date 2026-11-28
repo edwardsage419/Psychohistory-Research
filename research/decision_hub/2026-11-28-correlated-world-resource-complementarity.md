@@ -1,0 +1,8 @@
+# 相关情景与跨阶段资源互补
+2026-11-28。RESEARCH_CANDIDATE / SYNTHETIC_EXECUTED / NATIVE_NOT_RUN / INDEPENDENT_NOT_RUN / authority NONE。
+基线145c705332f129298181ce69e9ad5f6da3353480。核对HEAD，沿用近期已读规程及 event-order-and-two-stage-information。未重新核对开放PR、唯一交接及全库去重。
+两个阶段均在行动前披露当前要求；第一阶段支付p，随后若两阶段类型相同则在第二阶段支付前获得g，第二阶段支付q。假定收益到账及资格为可信夹具条件，不能提前用于第一阶段。每世界最低初始资金 max(p,p+q-g)，无互补时g=0；共同初始资金取合法世界最大值。若世界集合覆盖未确认则UNKNOWN，不可自行删去世界。此模型不含提前不可逆选择、其他资源、随机概率或真实收益资格。相关性基线为完整笛卡尔积且无互补；因此其差异也包含未出现的边际类型，不全是纯相关性效应。逐资金单位搜索是同一研究者编写的参照，不是独立验收。
+```js
+function experiment(){let o={n:0,checks:0,correlationSavings:0,complementSavings:0,unsafeMarginal:0,maxSavings:0};for(let mask=1;mask<16;mask++)for(let a=1;a<=4;a++)for(let b=1;b<=4;b++)for(let u=1;u<=4;u++)for(let v=1;v<=4;v++)for(let g=0;g<=3;g++){let w=[[0,0],[0,1],[1,0],[1,1]].filter((_,i)=>mask>>i&1);let costs=w.map(([x,y])=>{let p=x?b:a,q=y?v:u;return Math.max(p,p+q-(x===y?g:0))});let exact=Math.max(...costs),ind=Math.max(a,b)+Math.max(u,v),no=Math.max(...w.map(([x,y])=>(x?b:a)+(y?v:u)));let ref=0;while(!w.every(([x,y])=>ref>=(x?b:a)&&ref-(x?b:a)+(x===y?g:0)>=(y?v:u)))ref++;if(ref!==exact||exact>no||no>ind)throw Error("mismatch");o.n++;o.checks++;o.correlationSavings+=+(no<ind);o.complementSavings+=+(exact<no);o.unsafeMarginal+=+(Math.max(...w.map(([x])=>x?b:a),...w.map(([,y])=>y?v:u))<exact);o.maxSavings=Math.max(o.maxSavings,ind-exact)}return o}console.log(experiment());
+```
+实测 n15360 checks15360 correlationSavings5184 complementSavings4824 unsafeMarginal13148 maxSavings7。计数重叠且非独立样本。研究者选定整数参数、基线及范围。后续分离边际支持变化与纯相关效应，加入信息披露限制及策略证书；绑定情景覆盖、到账、来源、修订和权限身份。无原生运行、独立留出、真实用户、训练、合并、部署、主动CI或新增费用。
