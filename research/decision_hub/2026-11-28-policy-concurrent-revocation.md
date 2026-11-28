@@ -1,0 +1,3 @@
+# 并发发布与撤回事务
+基线 edcfa1a2030bf5483f893e0806fb3169681eeadb。实际容器运行 policy_concurrency.py，输出 SQLite 3.46.1 {('delete', 'publish'): 20, ('delete', 'revoke'): 20, ('wal', 'publish'): 20, ('wal', 'revoke'): 20}。
+复用 policy_scope_publish.publish，两个线程独立连接，固定scope [4,1,2,1,1]，18条合法证书。通过SQLite trace callback在首事务UPDATE前持有写锁，启动另一线程后释放。另一线程启动事件不证明其已经进入SQLite锁等待。两日志模式各两顺序各20次。发布先取得锁则发布成功，撤回先取得锁则发布拒绝；最终raw/mac/result均NULL，旧发布拒绝，integrity_check ok。80次均通过。固定参数、密钥、单行表；不是独立样本，不证明客户端缓存撤回、任意并发调度、真实崩溃或磁盘删除。完整脚本为聊天附件。唯一交接与全库去重未核实。无生产修改、训练、合并、部署或新增费用。
