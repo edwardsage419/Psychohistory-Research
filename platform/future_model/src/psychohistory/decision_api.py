@@ -145,4 +145,33 @@ def router(root, *, advanced=False):
         def adopt(data: AdoptInput):
             return records.adopt_preferences(data.epoch, data.decision_id, data.review_index, data.confirmed)
 
+
+    if advanced:
+        import asyncio
+        from .decision_local_ai import LocalDecisionAI
+        from .decision_v05 import DecisionStateV05
+
+        local_ai = LocalDecisionAI()
+
+        class LocalAIConfirmedInput(InputModel):
+            state: DecisionStateV05
+            model_key: str = Field(min_length=1, max_length=128)
+            confirmed_by_user: bool = Field(default=False, strict=True)
+
+        @routes.get("/local-ai/status")
+        def local_ai_status():
+            return local_ai.status()
+
+        @routes.post("/local-ai/propose")
+        async def local_ai_propose(data: StartInput):
+            # Blocking localhost inference runs outside FastAPI's event loop.
+            return await asyncio.to_thread(local_ai.propose, data.question)
+
+        @routes.post("/local-ai/analyze")
+        def local_ai_analyze(data: LocalAIConfirmedInput):
+            # The model never gets to authorize or compute its own state.
+            return local_ai.analyze_confirmed(
+                data.state, data.model_key, confirmed_by_user=data.confirmed_by_user
+            )
+
     return routes

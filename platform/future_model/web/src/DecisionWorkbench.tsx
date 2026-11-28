@@ -65,7 +65,7 @@ function structuredIssue(state: DecisionState): string {
   return '';
 }
 
-export function DecisionWorkbench({ api: appApi, version }: { api: Api; version: DecisionVersion }) {
+export function DecisionWorkbench({ api: appApi, version, initialQuestion = '' }: { api: Api; version: DecisionVersion; initialQuestion?: string }) {
   const guided = version === 'v5';
   const view = useRef<AbortController | null>(null);
   useLayoutEffect(() => {
@@ -74,8 +74,9 @@ export function DecisionWorkbench({ api: appApi, version }: { api: Api; version:
     return () => controller.abort();
   }, []);
   const api: Api = useCallback(<T,>(path: string, body?: unknown, requestVersion?: DecisionVersion) => appApi<T>(path, body, requestVersion, view.current?.signal), [appApi]);
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState(initialQuestion);
   const [draft, setDraft] = useState<Draft | null>(null);
+  useEffect(() => { if (initialQuestion && !draft) setQuestion(initialQuestion); }, [initialQuestion]);
   const [understanding, setUnderstanding] = useState<Understanding | null>(null);
   const [initialQuestions, setInitialQuestions] = useState<Question[]>([]);
   const [initialPlan, setInitialPlan] = useState<WorkflowPlan>();
